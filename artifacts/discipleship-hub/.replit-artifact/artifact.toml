@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "JesusOnline Discipleship Hub"
+version = "1.0.0"
+id = "artifacts/discipleship-hub"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24794
+
+[services.development]
+run = "pnpm --filter @workspace/discipleship-hub run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/discipleship-hub", "run", "build" ]
+publicDir = "artifacts/discipleship-hub/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24794"
+BASE_PATH = "/"

@@ -66,7 +66,7 @@ export default function Home() {
       {/* ── Global Impact Strip ── */}
       <section style={{ backgroundColor: '#002f55' }}>
         <div className="container mx-auto px-4 py-8">
-          <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x" style={{ divideColor: 'rgba(255,255,255,0.15)' }}>
+          <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-white/15">
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 py-5 sm:py-4 px-6 text-center sm:text-left">
               <Globe className="w-6 h-6 shrink-0" style={{ color: '#0083de' }} />
               <div>

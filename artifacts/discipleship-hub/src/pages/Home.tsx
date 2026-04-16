@@ -11,20 +11,29 @@ export default function Home() {
     <div className="w-full">
       {/* Hero Section */}
       <section className="py-20 md:py-32 px-4 container mx-auto text-center max-w-4xl relative">
-        {/* Subtle decorative background element */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 border border-border/40 rotate-45 pointer-events-none -z-10 hidden md:block"></div>
-        
-        <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold text-foreground tracking-tight mb-6 leading-tight">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 border border-border/30 rotate-45 pointer-events-none -z-10 hidden md:block"></div>
+
+        <h1 className="text-4xl md:text-6xl lg:text-7xl mb-6" style={{ color: '#002f55' }}>
           Equipping Disciplers <br className="hidden md:block" /> Worldwide
         </h1>
         <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
           A global theological resource library providing pastors and ministry leaders with trusted, biblical tools for deep spiritual formation and disciple-making.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link href="/topics" className="w-full sm:w-auto inline-flex justify-center items-center px-6 py-3 bg-primary text-primary-foreground font-medium rounded hover:bg-primary/90 transition-colors">
+          <Link
+            href="/topics"
+            className="w-full sm:w-auto inline-flex justify-center items-center px-7 py-3 font-medium rounded transition-colors"
+            style={{ backgroundColor: '#0083de', color: '#ffffff' }}
+            data-testid="button-browse-topics"
+          >
             Browse by Topic
           </Link>
-          <Link href="/resources" className="w-full sm:w-auto inline-flex justify-center items-center px-6 py-3 bg-transparent border border-input text-foreground font-medium rounded hover:bg-accent/5 transition-colors">
+          <Link
+            href="/resources"
+            className="w-full sm:w-auto inline-flex justify-center items-center px-7 py-3 font-medium rounded border transition-colors bg-transparent hover:bg-blue-50"
+            style={{ borderColor: '#0083de', color: '#0083de' }}
+            data-testid="button-explore-resources"
+          >
             Explore Ministry Resources
           </Link>
         </div>
@@ -33,25 +42,25 @@ export default function Home() {
       {/* Three Pillars Section */}
       <section className="py-16 bg-white border-y border-border">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-8 border border-border rounded-md hover:border-primary/30 transition-colors">
-              <Book className="w-8 h-8 text-primary mb-4" strokeWidth={1.5} />
-              <h2 className="font-serif text-2xl font-semibold mb-3">Foundations of Faith</h2>
-              <p className="text-muted-foreground leading-relaxed">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="p-8 border border-border rounded hover:border-primary/40 transition-colors">
+              <Book className="w-7 h-7 mb-4" style={{ color: '#0083de' }} strokeWidth={1.5} />
+              <h2 className="text-xl mb-3" style={{ color: '#002f55' }}>Foundations of Faith</h2>
+              <p className="text-muted-foreground leading-relaxed text-base">
                 Core biblical doctrines and theological essentials to build a resilient, orthodox faith.
               </p>
             </div>
-            <div className="p-8 border border-border rounded-md hover:border-primary/30 transition-colors">
-              <Sprout className="w-8 h-8 text-primary mb-4" strokeWidth={1.5} />
-              <h2 className="font-serif text-2xl font-semibold mb-3">Spiritual Growth</h2>
-              <p className="text-muted-foreground leading-relaxed">
+            <div className="p-8 border border-border rounded hover:border-primary/40 transition-colors">
+              <Sprout className="w-7 h-7 mb-4" style={{ color: '#0083de' }} strokeWidth={1.5} />
+              <h2 className="text-xl mb-3" style={{ color: '#002f55' }}>Spiritual Growth</h2>
+              <p className="text-muted-foreground leading-relaxed text-base">
                 Resources for cultivating personal spiritual disciplines, prayer, and deep communion with God.
               </p>
             </div>
-            <div className="p-8 border border-border rounded-md hover:border-primary/30 transition-colors">
-              <Users className="w-8 h-8 text-primary mb-4" strokeWidth={1.5} />
-              <h2 className="font-serif text-2xl font-semibold mb-3">Disciple-Making & Ministry</h2>
-              <p className="text-muted-foreground leading-relaxed">
+            <div className="p-8 border border-border rounded hover:border-primary/40 transition-colors">
+              <Users className="w-7 h-7 mb-4" style={{ color: '#0083de' }} strokeWidth={1.5} />
+              <h2 className="text-xl mb-3" style={{ color: '#002f55' }}>Disciple-Making &amp; Ministry</h2>
+              <p className="text-muted-foreground leading-relaxed text-base">
                 Practical guides and frameworks for mentoring others and leading healthy churches.
               </p>
             </div>
@@ -63,10 +72,10 @@ export default function Home() {
       <section className="py-20 container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
           <div>
-            <h2 className="font-serif text-3xl font-bold text-foreground mb-2">Featured Resources</h2>
-            <p className="text-muted-foreground">Hand-selected tools for current ministry needs.</p>
+            <h2 className="text-3xl mb-2" style={{ color: '#002f55' }}>Featured Resources</h2>
+            <p className="text-muted-foreground text-base">Hand-selected tools for current ministry needs.</p>
           </div>
-          <Link href="/resources" className="text-primary font-medium hover:underline inline-flex items-center">
+          <Link href="/resources" className="font-medium hover:underline inline-flex items-center text-sm" style={{ color: '#0083de' }}>
             View all resources <ArrowRight className="w-4 h-4 ml-1" />
           </Link>
         </div>
@@ -81,40 +90,40 @@ export default function Home() {
       {/* Training Pathways */}
       <section className="py-20 bg-white border-t border-border">
         <div className="container mx-auto px-4 max-w-5xl">
-          <h2 className="font-serif text-3xl font-bold text-center mb-12">Training Pathways</h2>
-          
+          <h2 className="text-3xl text-center mb-12" style={{ color: '#002f55' }}>Training Pathways</h2>
+
           <div className="flex flex-col gap-4">
-            <Link href="/topics/discipleship" className="group block p-6 border border-border rounded-md hover:border-primary transition-colors bg-background">
+            <Link href="/topics/discipleship" className="group block p-6 border border-border rounded hover:border-primary transition-colors bg-background" data-testid="pathway-discipleship">
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
-                  <h3 className="font-serif text-xl font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">Start a Discipleship Group</h3>
-                  <p className="text-muted-foreground">A step-by-step curriculum for launching and leading your first group.</p>
+                  <h3 className="text-lg mb-1 transition-colors group-hover:text-primary" style={{ color: '#002f55' }}>Start a Discipleship Group</h3>
+                  <p className="text-muted-foreground text-base">A step-by-step curriculum for launching and leading your first group.</p>
                 </div>
-                <div className="inline-flex items-center font-medium text-primary shrink-0">
+                <div className="inline-flex items-center font-medium shrink-0 text-sm" style={{ color: '#0083de' }}>
                   Begin Pathway <ArrowRight className="w-4 h-4 ml-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
                 </div>
               </div>
             </Link>
 
-            <Link href="/topics/church-leadership" className="group block p-6 border border-border rounded-md hover:border-primary transition-colors bg-background">
+            <Link href="/topics/church-leadership" className="group block p-6 border border-border rounded hover:border-primary transition-colors bg-background" data-testid="pathway-leadership">
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
-                  <h3 className="font-serif text-xl font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">Training Local Leaders</h3>
-                  <p className="text-muted-foreground">Assessments, doctrinal foundations, and pastoral care training for elders.</p>
+                  <h3 className="text-lg mb-1 transition-colors group-hover:text-primary" style={{ color: '#002f55' }}>Training Local Leaders</h3>
+                  <p className="text-muted-foreground text-base">Assessments, doctrinal foundations, and pastoral care training for elders.</p>
                 </div>
-                <div className="inline-flex items-center font-medium text-primary shrink-0">
+                <div className="inline-flex items-center font-medium shrink-0 text-sm" style={{ color: '#0083de' }}>
                   Explore Pathway <ArrowRight className="w-4 h-4 ml-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
                 </div>
               </div>
             </Link>
 
-            <Link href="/topics/evangelism" className="group block p-6 border border-border rounded-md hover:border-primary transition-colors bg-background">
+            <Link href="/topics/evangelism" className="group block p-6 border border-border rounded hover:border-primary transition-colors bg-background" data-testid="pathway-evangelism">
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
-                  <h3 className="font-serif text-xl font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">Evangelism Foundations</h3>
-                  <p className="text-muted-foreground">Mastering the core gospel message and learning to share it clearly.</p>
+                  <h3 className="text-lg mb-1 transition-colors group-hover:text-primary" style={{ color: '#002f55' }}>Evangelism Foundations</h3>
+                  <p className="text-muted-foreground text-base">Mastering the core gospel message and learning to share it clearly.</p>
                 </div>
-                <div className="inline-flex items-center font-medium text-primary shrink-0">
+                <div className="inline-flex items-center font-medium shrink-0 text-sm" style={{ color: '#0083de' }}>
                   Explore Pathway <ArrowRight className="w-4 h-4 ml-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
                 </div>
               </div>

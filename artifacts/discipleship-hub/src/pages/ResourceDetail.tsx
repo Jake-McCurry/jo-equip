@@ -24,19 +24,31 @@ export default function ResourceDetail() {
     switch (resource.type) {
       case "pdf":
         return (
-          <button className="flex items-center justify-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-medium rounded hover:bg-primary/90 transition-colors w-full sm:w-auto">
+          <button
+            className="flex items-center justify-center gap-2 px-6 py-3 font-medium rounded transition-colors w-full sm:w-auto"
+            style={{ backgroundColor: '#0083de', color: '#ffffff' }}
+            data-testid="button-download-pdf"
+          >
             <Download className="w-4 h-4" /> Download PDF Guide
           </button>
         );
       case "video":
         return (
-          <button className="flex items-center justify-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-medium rounded hover:bg-primary/90 transition-colors w-full sm:w-auto">
+          <button
+            className="flex items-center justify-center gap-2 px-6 py-3 font-medium rounded transition-colors w-full sm:w-auto"
+            style={{ backgroundColor: '#0083de', color: '#ffffff' }}
+            data-testid="button-watch-video"
+          >
             <Play className="w-4 h-4 fill-current" /> Watch Video
           </button>
         );
       default:
         return (
-          <button className="flex items-center justify-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-medium rounded hover:bg-primary/90 transition-colors w-full sm:w-auto">
+          <button
+            className="flex items-center justify-center gap-2 px-6 py-3 font-medium rounded transition-colors w-full sm:w-auto"
+            style={{ backgroundColor: '#0083de', color: '#ffffff' }}
+            data-testid="button-access-resource"
+          >
             <ExternalLink className="w-4 h-4" /> Access Resource
           </button>
         );
@@ -49,37 +61,37 @@ export default function ResourceDetail() {
         <ArrowLeft className="w-4 h-4 mr-2" /> Back to Library
       </Link>
 
-      <article className="bg-white border border-border rounded-lg p-6 md:p-10 mb-16">
+      <article className="bg-white border border-border rounded p-6 md:p-10 mb-16">
         <div className="mb-6 flex flex-wrap items-center gap-3">
           <TypeBadge type={resource.type} />
           {topic && (
-            <Link href={`/topics/${topic.id}`} className="text-xs font-medium text-muted-foreground hover:text-primary uppercase tracking-wider">
+            <Link href={`/topics/${topic.id}`} className="text-xs font-medium text-muted-foreground hover:text-primary uppercase tracking-wider transition-colors">
               {topic.name}
             </Link>
           )}
         </div>
 
-        <h1 className="font-serif text-3xl md:text-5xl font-bold text-foreground mb-4 leading-tight">
+        <h1 className="text-3xl md:text-4xl mb-4 leading-tight" style={{ color: '#002f55' }}>
           {resource.title}
         </h1>
-        
+
         <div className="text-sm text-muted-foreground mb-10 pb-6 border-b border-border">
-          By <span className="font-medium text-foreground">{resource.author}</span>
+          By <span className="font-medium" style={{ color: '#002f55' }}>{resource.author}</span>
         </div>
 
-        <div className="prose prose-slate prose-lg max-w-none mb-10 text-foreground">
-          <p className="lead text-xl text-muted-foreground">
+        <div className="mb-10">
+          <p className="text-xl text-muted-foreground leading-relaxed">
             {resource.description}
           </p>
-          
+
           {resource.summary && resource.summary.length > 0 && (
             <div className="mt-8 bg-background p-6 rounded border border-border">
-              <h3 className="font-serif text-xl font-semibold mb-4">Key Themes Covered</h3>
-              <ul className="space-y-3 m-0 p-0 list-none">
+              <h3 className="text-lg mb-4" style={{ color: '#002f55' }}>Key Themes Covered</h3>
+              <ul className="space-y-3">
                 {resource.summary.map((point, idx) => (
                   <li key={idx} className="flex items-start">
-                    <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 mr-3 shrink-0" />
-                    <span>{point}</span>
+                    <CheckCircle2 className="w-5 h-5 mt-0.5 mr-3 shrink-0" style={{ color: '#0083de' }} />
+                    <span className="text-base">{point}</span>
                   </li>
                 ))}
               </ul>
@@ -89,7 +101,7 @@ export default function ResourceDetail() {
 
         <div className="pt-8 border-t border-border flex flex-col sm:flex-row items-center gap-4">
           {getPrimaryAction()}
-          <button className="flex items-center justify-center gap-2 px-6 py-3 bg-transparent border border-input text-foreground font-medium rounded hover:bg-accent/5 transition-colors w-full sm:w-auto">
+          <button className="flex items-center justify-center gap-2 px-6 py-3 bg-transparent border border-input text-foreground font-medium rounded hover:bg-muted/50 transition-colors w-full sm:w-auto" data-testid="button-save-later">
             Save for Later
           </button>
         </div>
@@ -97,7 +109,7 @@ export default function ResourceDetail() {
 
       {relatedResources.length > 0 && (
         <section>
-          <h2 className="font-serif text-2xl font-bold mb-6 pb-4 border-b border-border">Related in {topic?.name}</h2>
+          <h2 className="text-2xl mb-6 pb-4 border-b border-border" style={{ color: '#002f55' }}>Related in {topic?.name}</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {relatedResources.map(r => (
               <ResourceCard key={r.id} resource={r} />

@@ -30,21 +30,21 @@ export function ResourceCard({ resource }: ResourceCardProps) {
   };
 
   return (
-    <Link href={`/resources/${resource.id}`} className="group block h-full">
-      <div className="flex flex-col h-full bg-white border border-border rounded-md p-6 transition-colors duration-200 hover:border-primary">
+    <Link href={`/resources/${resource.id}`} className="group block h-full" data-testid={`card-resource-${resource.id}`}>
+      <div className="flex flex-col h-full bg-white border border-border rounded p-6 transition-colors duration-200 hover:border-primary">
         <div className="mb-4">
           <TypeBadge type={resource.type} />
         </div>
-        
-        <h3 className="text-xl font-serif font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+
+        <h3 className="text-lg mb-2 group-hover:text-primary transition-colors leading-snug" style={{ color: '#002f55' }}>
           {resource.title}
         </h3>
-        
+
         <p className="text-sm text-muted-foreground mb-6 flex-grow leading-relaxed">
           {resource.description}
         </p>
-        
-        <div className="pt-4 border-t border-border/50 mt-auto flex items-center justify-between text-sm font-medium text-primary">
+
+        <div className="pt-4 border-t border-border/50 mt-auto flex items-center justify-between text-sm font-medium" style={{ color: '#0083de' }}>
           <span className="flex items-center">
             {getIcon(resource.type)}
             {getActionText(resource.type)}

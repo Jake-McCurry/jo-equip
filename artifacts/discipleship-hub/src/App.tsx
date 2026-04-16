@@ -9,6 +9,7 @@ import Home from "@/pages/Home";
 import Resources from "@/pages/Resources";
 import ResourceDetail from "@/pages/ResourceDetail";
 import TopicsList, { TopicDetail } from "@/pages/Topic";
+import Brand from "@/pages/Brand";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ function Router() {
         <Route path="/resources/:id" component={ResourceDetail} />
         <Route path="/topics" component={TopicsList} />
         <Route path="/topics/:topic" component={TopicDetail} />
+        <Route path="/brand" component={Brand} />
         <Route component={NotFound} />
       </Switch>
     </Layout>

@@ -7,6 +7,20 @@ interface LayoutProps {
   children: React.ReactNode;
 }
 
+// Reusable open-book brand mark — matches the favicon
+function OpenBookMark({ size = 28 }: { size?: number }) {
+  return (
+    <svg viewBox="0 0 64 64" width={size} height={size} xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect width="64" height="64" rx="10" fill="#0083de" />
+      <g stroke="#ffffff" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" fill="none">
+        <path d="M10 18 Q 22 14 32 20 L 32 50 Q 22 44 10 48 Z" />
+        <path d="M54 18 Q 42 14 32 20 L 32 50 Q 42 44 54 48 Z" />
+      </g>
+      <circle cx="32" cy="20" r="3" fill="#de5b00" />
+    </svg>
+  );
+}
+
 export function Layout({ children }: LayoutProps) {
   const [location] = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -25,46 +39,33 @@ export function Layout({ children }: LayoutProps) {
   return (
     <div className="min-h-[100dvh] flex flex-col bg-background text-foreground font-sans">
 
-      {/* ── Top bar: JesusOnline branding strip ── */}
-      <div className="w-full py-2 px-4 flex items-center justify-between" style={{ backgroundColor: '#001f3d' }}>
-        <img
-          src={logoWhite}
-          alt="JesusOnline"
-          className="h-6 w-auto"
-          style={{ filter: 'brightness(1)' }}
-        />
-        <span className="text-xs" style={{ color: 'rgba(255,255,255,0.5)' }}>
-          equip.jesusonline.com
-        </span>
-      </div>
-
-      {/* ── Main nav: Equip sub-brand ── */}
-      <header className="sticky top-0 z-50 w-full" style={{ backgroundColor: '#002f55' }}>
+      {/* ── Unified header ── */}
+      <header className="sticky top-0 z-50 w-full" style={{ backgroundColor: '#002f55', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
         <div className="container mx-auto px-4 md:px-6 flex items-center justify-between py-3">
 
-          {/* Logo: Equip brand mark */}
-          <Link href="/" className="flex items-center gap-3 hover:opacity-85 transition-opacity">
-            <div className="flex items-center gap-2">
-              <div
-                className="flex items-center justify-center w-8 h-8 rounded"
-                style={{ backgroundColor: '#0083de' }}
-              >
-                {/* Simple cross/book icon mark */}
-                <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M9 7h7M9 11h5" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
-                </svg>
-              </div>
-              <div className="hidden sm:flex flex-col leading-none">
+          {/* Left: JesusOnline logo + EQUIP sub-brand mark */}
+          <Link href="/" className="flex items-center gap-3 md:gap-4 hover:opacity-90 transition-opacity">
+            <img
+              src={logoWhite}
+              alt="JesusOnline"
+              className="h-6 md:h-7 w-auto"
+            />
+            <span className="hidden sm:block w-px h-7 md:h-8" style={{ backgroundColor: 'rgba(255,255,255,0.2)' }} />
+            <div className="hidden sm:flex items-center gap-2">
+              <OpenBookMark size={32} />
+              <div className="flex flex-col leading-none">
                 <span className="text-white font-semibold text-base tracking-wide" style={{ fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif' }}>
                   EQUIP
                 </span>
-                <span className="text-xs" style={{ color: 'rgba(255,255,255,0.55)', fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif', letterSpacing: '0.04em' }}>
+                <span className="text-[11px] mt-0.5" style={{ color: 'rgba(255,255,255,0.55)', fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif', letterSpacing: '0.04em' }}>
                   Discipleship Hub
                 </span>
               </div>
-              <span className="sm:hidden text-white font-semibold text-base" style={{ fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif' }}>EQUIP</span>
+            </div>
+            {/* Mobile-only compact mark */}
+            <div className="sm:hidden flex items-center gap-2">
+              <OpenBookMark size={26} />
+              <span className="text-white font-semibold text-sm" style={{ fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif' }}>EQUIP</span>
             </div>
           </Link>
 
@@ -147,25 +148,27 @@ export function Layout({ children }: LayoutProps) {
 
             {/* Brand column */}
             <div className="max-w-xs">
-              <img
-                src={logoWhite}
-                alt="JesusOnline"
-                className="h-7 w-auto mb-1"
-              />
+              <div className="flex items-center gap-3 mb-3">
+                <OpenBookMark size={32} />
+                <img src={logoWhite} alt="JesusOnline" className="h-6 w-auto" />
+              </div>
               <div className="mb-4">
                 <span className="text-xs font-semibold tracking-widest uppercase" style={{ color: '#0083de' }}>
                   Equip · Discipleship Hub
                 </span>
               </div>
-              <p className="text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.6)' }}>
+              <p className="text-sm leading-relaxed mb-3" style={{ color: 'rgba(255,255,255,0.6)' }}>
                 Equipping pastors, disciplers, and ministry leaders worldwide with trusted theological resources — in every nation, every language.
+              </p>
+              <p className="text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>
+                equip.jesusonline.com
               </p>
             </div>
 
             {/* Links */}
             <div className="flex gap-12 text-sm">
               <div className="flex flex-col gap-3">
-                <h4 className="font-semibold text-white text-sm" style={{ color: '#ffffff' }}>Ministry</h4>
+                <h4 className="font-semibold text-sm" style={{ color: '#ffffff' }}>Ministry</h4>
                 <Link href="/topics" className="transition-colors" style={{ color: 'rgba(255,255,255,0.6)' }}
                   onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = '#ffffff'; }}
                   onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.6)'; }}
@@ -180,7 +183,7 @@ export function Layout({ children }: LayoutProps) {
                 >Training Pathways</Link>
               </div>
               <div className="flex flex-col gap-3">
-                <h4 className="font-semibold text-white text-sm" style={{ color: '#ffffff' }}>Organization</h4>
+                <h4 className="font-semibold text-sm" style={{ color: '#ffffff' }}>Organization</h4>
                 <a href="https://jesusonline.com" target="_blank" rel="noopener noreferrer" className="transition-colors" style={{ color: 'rgba(255,255,255,0.6)' }}
                   onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = '#ffffff'; }}
                   onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.6)'; }}

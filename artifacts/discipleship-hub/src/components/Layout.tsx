@@ -27,10 +27,11 @@ export function Layout({ children }: LayoutProps) {
 
   const navLinks = [
     { name: "Home", path: "/" },
-    { name: "Topics", path: "/topics" },
-    { name: "Ministry Skills", path: "/topics/discipleship" },
-    { name: "Resources", path: "/resources" },
-    { name: "Tools", path: "/resources?type=tool" },
+    { name: "Channels", path: "/channels" },
+    { name: "Playlists", path: "/playlists" },
+    { name: "Books", path: "/books" },
+    { name: "Translate", path: "/translate" },
+    { name: "More", path: "/more" },
   ];
 
   const isActive = (path: string) =>
@@ -43,7 +44,7 @@ export function Layout({ children }: LayoutProps) {
       <header className="sticky top-0 z-50 w-full" style={{ backgroundColor: '#002f55', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
         <div className="container mx-auto px-4 md:px-6 flex items-center justify-between py-3">
 
-          {/* Left: JesusOnline logo + EQUIP sub-brand mark */}
+          {/* Left: JesusOnline logo + JO EQUIP sub-brand mark */}
           <Link href="/" className="flex items-center gap-3 md:gap-4 hover:opacity-90 transition-opacity">
             <img
               src={logoWhite}
@@ -55,22 +56,22 @@ export function Layout({ children }: LayoutProps) {
               <OpenBookMark size={32} />
               <div className="flex flex-col leading-none">
                 <span className="text-white font-semibold text-base tracking-wide" style={{ fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif' }}>
-                  EQUIP
+                  JO EQUIP
                 </span>
                 <span className="text-[11px] mt-0.5" style={{ color: 'rgba(255,255,255,0.55)', fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif', letterSpacing: '0.04em' }}>
-                  Discipleship Hub
+                  Ministry Resources Hub
                 </span>
               </div>
             </div>
             {/* Mobile-only compact mark */}
             <div className="sm:hidden flex items-center gap-2">
               <OpenBookMark size={26} />
-              <span className="text-white font-semibold text-sm" style={{ fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif' }}>EQUIP</span>
+              <span className="text-white font-semibold text-sm" style={{ fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif' }}>JO EQUIP</span>
             </div>
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-0.5">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
@@ -99,8 +100,8 @@ export function Layout({ children }: LayoutProps) {
             </button>
           </nav>
 
-          {/* Mobile Toggle */}
-          <div className="flex items-center gap-1 md:hidden">
+          {/* Mobile / Tablet Toggle */}
+          <div className="flex items-center gap-1 lg:hidden">
             <button className="p-2" style={{ color: 'rgba(255,255,255,0.7)' }} aria-label="Search">
               <Search className="w-5 h-5" />
             </button>
@@ -117,7 +118,7 @@ export function Layout({ children }: LayoutProps) {
 
         {/* Mobile Nav */}
         {mobileMenuOpen && (
-          <div className="md:hidden w-full py-3 px-4 flex flex-col gap-1" style={{ backgroundColor: '#001f3d', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+          <div className="lg:hidden w-full py-3 px-4 flex flex-col gap-1" style={{ backgroundColor: '#001f3d', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
             {navLinks.map((link) => (
               <Link
                 key={link.path}
@@ -154,11 +155,11 @@ export function Layout({ children }: LayoutProps) {
               </div>
               <div className="mb-4">
                 <span className="text-xs font-semibold tracking-widest uppercase" style={{ color: '#0083de' }}>
-                  Equip · Discipleship Hub
+                  JO EQUIP · Ministry Resources Hub
                 </span>
               </div>
               <p className="text-sm leading-relaxed mb-3" style={{ color: 'rgba(255,255,255,0.6)' }}>
-                Equipping pastors, disciplers, and ministry leaders worldwide with trusted theological resources — in every nation, every language.
+                A free digital library of practical discipleship tools for pastors and leaders for enhanced ministry impact.
               </p>
               <p className="text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>
                 equip.jesusonline.com
@@ -168,34 +169,18 @@ export function Layout({ children }: LayoutProps) {
             {/* Links */}
             <div className="flex gap-12 text-sm">
               <div className="flex flex-col gap-3">
-                <h4 className="font-semibold text-sm" style={{ color: '#ffffff' }}>Ministry</h4>
-                <Link href="/topics" className="transition-colors" style={{ color: 'rgba(255,255,255,0.6)' }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = '#ffffff'; }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.6)'; }}
-                >Browse Topics</Link>
-                <Link href="/resources" className="transition-colors" style={{ color: 'rgba(255,255,255,0.6)' }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = '#ffffff'; }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.6)'; }}
-                >Resource Library</Link>
-                <Link href="/topics/discipleship" className="transition-colors" style={{ color: 'rgba(255,255,255,0.6)' }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = '#ffffff'; }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.6)'; }}
-                >Training Pathways</Link>
+                <h4 className="font-semibold text-sm" style={{ color: '#ffffff' }}>Explore</h4>
+                <Link href="/channels" className="transition-colors hover:text-white" style={{ color: 'rgba(255,255,255,0.6)' }}>Channels</Link>
+                <Link href="/playlists" className="transition-colors hover:text-white" style={{ color: 'rgba(255,255,255,0.6)' }}>Playlists</Link>
+                <Link href="/books" className="transition-colors hover:text-white" style={{ color: 'rgba(255,255,255,0.6)' }}>Books</Link>
+                <Link href="/translate" className="transition-colors hover:text-white" style={{ color: 'rgba(255,255,255,0.6)' }}>Translate</Link>
               </div>
               <div className="flex flex-col gap-3">
                 <h4 className="font-semibold text-sm" style={{ color: '#ffffff' }}>Organization</h4>
-                <a href="https://jesusonline.com" target="_blank" rel="noopener noreferrer" className="transition-colors" style={{ color: 'rgba(255,255,255,0.6)' }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = '#ffffff'; }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.6)'; }}
-                >JesusOnline.com</a>
-                <a href="#" className="transition-colors" style={{ color: 'rgba(255,255,255,0.6)' }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = '#ffffff'; }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.6)'; }}
-                >About</a>
-                <a href="#" className="transition-colors" style={{ color: 'rgba(255,255,255,0.6)' }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = '#ffffff'; }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.6)'; }}
-                >Contact</a>
+                <a href="https://jesusonline.com" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-white" style={{ color: 'rgba(255,255,255,0.6)' }}>JesusOnline.com</a>
+                <Link href="/more" className="transition-colors hover:text-white" style={{ color: 'rgba(255,255,255,0.6)' }}>About</Link>
+                <Link href="/more" className="transition-colors hover:text-white" style={{ color: 'rgba(255,255,255,0.6)' }}>Beliefs</Link>
+                <Link href="/more" className="transition-colors hover:text-white" style={{ color: 'rgba(255,255,255,0.6)' }}>Contact</Link>
               </div>
             </div>
           </div>

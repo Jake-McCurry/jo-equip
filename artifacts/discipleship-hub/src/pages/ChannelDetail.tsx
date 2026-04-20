@@ -1,14 +1,9 @@
 import React from "react";
 import { Link, useParams } from "wouter";
 import { getChannel, getSubTopicsByChannel } from "@/data/channels";
-import { Building2, Sprout, ShieldCheck, ArrowRight, Book, ListVideo, Smartphone } from "lucide-react";
+import { ChannelArt } from "@/components/ChannelArt";
+import { ArrowRight, Book, ListVideo, Smartphone, MenuSquare } from "lucide-react";
 import NotFound from "./not-found";
-
-const CHANNEL_ICONS = {
-  church: Building2,
-  growth: Sprout,
-  evidence: ShieldCheck,
-} as const;
 
 const FORMAT_META: Record<string, { label: string; icon: React.ComponentType<{ className?: string }> }> = {
   book: { label: "Book", icon: Book },
@@ -23,36 +18,27 @@ export default function ChannelDetail() {
   if (!channel) return <NotFound />;
 
   const subs = getSubTopicsByChannel(channel.id);
-  const Icon = CHANNEL_ICONS[channel.id];
 
   return (
     <div>
-      {/* Channel hero */}
+      {/* Channel hero with thematic illustration */}
       <div className="relative overflow-hidden" style={{ background: channel.gradient }}>
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            backgroundImage: "repeating-linear-gradient(45deg, rgba(255,255,255,0.05) 0, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 18px)",
-          }}
-        />
-        <div className="absolute -top-20 -right-20 w-72 h-72 rounded-full pointer-events-none" style={{ backgroundColor: 'rgba(255,255,255,0.08)', filter: 'blur(20px)' }} />
+        <div className="absolute inset-0 opacity-30">
+          <ChannelArt channel={channel.id} className="absolute inset-0 w-full h-full" />
+        </div>
+        <div className="absolute inset-0 pointer-events-none" style={{ background: `linear-gradient(90deg, ${channel.gradient.match(/#[0-9a-f]+/i)?.[0] ?? '#000'}cc 0%, transparent 60%)` }} />
         <div className="container mx-auto px-4 py-14 md:py-20 relative">
           <Link href="/channels" className="inline-flex items-center text-sm font-medium mb-6 transition-colors" style={{ color: 'rgba(255,255,255,0.85)' }}>
             ← All Channels
           </Link>
-          <div className="flex items-start gap-5 max-w-3xl">
-            <div className="shrink-0 w-14 h-14 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'rgba(255,255,255,0.15)' }}>
-              <Icon className="w-7 h-7" strokeWidth={1.5} style={{ color: '#ffffff' }} />
-            </div>
-            <div>
-              <h1 className="text-4xl md:text-5xl mb-3" style={{ color: '#ffffff', fontWeight: 500 }}>{channel.name}</h1>
-              <p className="text-lg leading-relaxed mb-2" style={{ color: 'rgba(255,255,255,0.95)' }}>
-                {channel.tagline}
-              </p>
-              <p className="leading-relaxed" style={{ color: 'rgba(255,255,255,0.8)' }}>
-                {channel.description}
-              </p>
-            </div>
+          <div className="max-w-3xl">
+            <h1 className="text-4xl md:text-5xl mb-3" style={{ color: '#ffffff', fontWeight: 500 }}>{channel.name}</h1>
+            <p className="text-lg leading-relaxed mb-2" style={{ color: 'rgba(255,255,255,0.95)' }}>
+              {channel.tagline}
+            </p>
+            <p className="leading-relaxed" style={{ color: 'rgba(255,255,255,0.85)' }}>
+              {channel.description}
+            </p>
           </div>
         </div>
       </div>
@@ -87,10 +73,12 @@ export default function ChannelDetail() {
               <h3 className="text-base font-semibold mb-3 group-hover:text-primary transition-colors leading-snug" style={{ color: '#002f55' }}>
                 {sub.name}
               </h3>
+
               {sub.formats && sub.formats.length > 0 && (
-                <div className="flex flex-wrap gap-1.5 mt-auto pt-3 border-t border-border/50">
+                <div className="flex flex-wrap gap-1.5 mb-3">
                   {sub.formats.map(fmt => {
                     const meta = FORMAT_META[fmt];
+                    if (!meta) return null;
                     const FmtIcon = meta.icon;
                     return (
                       <span key={fmt} className="inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded" style={{ color: '#002f55', backgroundColor: 'rgba(0,47,85,0.06)' }}>
@@ -101,6 +89,16 @@ export default function ChannelDetail() {
                   })}
                 </div>
               )}
+
+              {/* See menu CTA */}
+              <span
+                className="inline-flex items-center gap-1.5 text-xs font-semibold mt-auto pt-3 border-t border-border/60 group-hover:underline"
+                style={{ color: channel.accentColor }}
+              >
+                <MenuSquare className="w-3.5 h-3.5" />
+                See menu
+                <ArrowRight className="w-3.5 h-3.5 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+              </span>
             </Link>
           ))}
         </div>

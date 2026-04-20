@@ -1,28 +1,21 @@
 import React from "react";
 import { Link } from "wouter";
-import { Settings, Info, Mail, FileText, ShieldCheck, ExternalLink, ArrowRight } from "lucide-react";
+import { Users2, BookOpen, Mail, FileText, ExternalLink, ArrowRight } from "lucide-react";
 
 const SECTIONS = [
   {
     title: "About",
-    icon: Info,
+    icon: Users2,
     description: "Learn about JesusOnline Ministries and the EQUIP initiative.",
     href: "#",
     accent: "#0083de",
   },
   {
     title: "Statement of Faith",
-    icon: ShieldCheck,
+    icon: BookOpen,
     description: "Our doctrinal convictions and biblical foundations.",
     href: "#",
     accent: "#002f55",
-  },
-  {
-    title: "Contact",
-    icon: Mail,
-    description: "Reach the EQUIP team for questions or partnership.",
-    href: "#",
-    accent: "#de5b00",
   },
   {
     title: "JO Mobile App",
@@ -40,11 +33,11 @@ const SECTIONS = [
     accent: "#0083de",
   },
   {
-    title: "Settings",
-    icon: Settings,
-    description: "Display and language preferences (coming soon).",
+    title: "Contact",
+    icon: Mail,
+    description: "Reach the EQUIP team for questions or partnership.",
     href: "#",
-    accent: "#002f55",
+    accent: "#de5b00",
   },
 ];
 
@@ -55,10 +48,10 @@ export default function More() {
         <div className="text-xs font-semibold tracking-widest uppercase mb-3" style={{ color: '#0083de' }}>
           More
         </div>
-        <h1 className="text-4xl md:text-5xl mb-4" style={{ color: '#002f55' }}>About & Settings</h1>
+        <h1 className="text-4xl md:text-5xl mb-4" style={{ color: '#002f55' }}>About and More</h1>
         <div className="h-0.5 w-12 mb-5" style={{ backgroundColor: '#de5b00' }}></div>
         <p className="text-muted-foreground leading-relaxed text-lg">
-          Information about JesusOnline Ministries, our beliefs, contact details, and account preferences.
+          Information about JesusOnline Ministries, our beliefs, and how to get in touch.
         </p>
       </div>
 

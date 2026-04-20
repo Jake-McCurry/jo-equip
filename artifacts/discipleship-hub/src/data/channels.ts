@@ -1,10 +1,16 @@
-export type ResourceFormat = "book" | "playlist" | "app";
+export type ResourceFormat = "book" | "playlist" | "app" | "pdf" | "video";
 
 export type ChannelId = "church" | "growth" | "evidence";
 
 export interface SubTopicItem {
   number: number;
   title: string;
+  /** Optional per-item links (PDF / Video / App) */
+  links?: {
+    pdf?: string;
+    video?: string;
+    app?: string;
+  };
 }
 
 export interface SubTopic {
@@ -14,6 +20,8 @@ export interface SubTopic {
   description?: string;
   formats?: ResourceFormat[];
   items?: SubTopicItem[];
+  /** Link to the JO App series page if available */
+  appUrl?: string;
 }
 
 export interface Channel {
@@ -26,16 +34,17 @@ export interface Channel {
   gradient: string;
 }
 
+/* Display order: Evidence, Growth, Church */
 export const channels: Channel[] = [
   {
-    id: "church",
-    name: "Church Resources",
-    shortName: "Church",
-    tagline: "Multiply disciples and plant vibrant churches",
+    id: "evidence",
+    name: "Evidence Resources",
+    shortName: "Evidence",
+    tagline: "Convince doubters with the truth about Jesus, God, and the Bible",
     description:
-      "Develop fruitful, prayer-fueled, Spirit-led ministries that multiply disciples and plant churches, all in obedience to Christ and His inspired Word.",
-    accentColor: "#002f55",
-    gradient: "linear-gradient(135deg, #0a3f6b 0%, #002f55 55%, #00152a 100%)",
+      "Persuade doubters with clear, compelling truths about the true identity of Christ, the existence of God, and the reliability of the Bible.",
+    accentColor: "#de5b00",
+    gradient: "linear-gradient(135deg, #f59e4a 0%, #de5b00 60%, #9f4100 100%)",
   },
   {
     id: "growth",
@@ -48,16 +57,18 @@ export const channels: Channel[] = [
     gradient: "linear-gradient(135deg, #2dbf85 0%, #00855c 55%, #004d36 100%)",
   },
   {
-    id: "evidence",
-    name: "Evidence Resources",
-    shortName: "Evidence",
-    tagline: "Convince doubters with the truth about Jesus, God, and the Bible",
+    id: "church",
+    name: "Church Resources",
+    shortName: "Church",
+    tagline: "Multiply disciples and plant vibrant churches",
     description:
-      "Persuade doubters with clear, compelling truths about the true identity of Christ, the existence of God, and the reliability of the Bible.",
-    accentColor: "#de5b00",
-    gradient: "linear-gradient(135deg, #f59e4a 0%, #de5b00 60%, #9f4100 100%)",
+      "Develop fruitful, prayer-fueled, Spirit-led ministries that multiply disciples and plant churches, all in obedience to Christ and His inspired Word.",
+    accentColor: "#5b3a8a",
+    gradient: "linear-gradient(135deg, #8b65b8 0%, #5b3a8a 55%, #361f5c 100%)",
   },
 ];
+
+const JO_JESUS_IDENTITY = "https://app.jesusonline.com/series/73";
 
 export const subTopics: SubTopic[] = [
   // ── CHURCH RESOURCES ──
@@ -87,19 +98,20 @@ export const subTopics: SubTopic[] = [
     channelId: "evidence",
     name: "Jesus' True Identity",
     formats: ["book", "playlist", "app"],
+    appUrl: JO_JESUS_IDENTITY,
+    /* Pulled from JO App "Evidence For Jesus' True Identity" series #73 */
     items: [
-      { number: 1, title: "Was Jesus a Real Person?" },
-      { number: 2, title: "Was There a Jesus Conspiracy?" },
-      { number: 3, title: "Is Jesus God?" },
-      { number: 4, title: "Are the Gospel Accounts of Jesus True?" },
-      { number: 5, title: "Is Jesus the Jewish Messiah?" },
-      { number: 6, title: "Did Jesus Rise from the Dead?" },
-      { number: 7, title: "Did Jesus claim to be God?" },
-      { number: 8, title: "Did the Apostles Believe Jesus is God?" },
-      { number: 9, title: "Why Were Other Gospels Excluded from New Testament?" },
-      { number: 10, title: "Is Jesus Relevant Today?" },
-      { number: 11, title: "What Is Jesus' Plan for Us?" },
-      { number: 12, title: "Is Jesus Coming Back?" },
+      { number: 1, title: "Who is the Real Jesus?",                                                 links: { app: JO_JESUS_IDENTITY } },
+      { number: 2, title: "Was Jesus a Real Person?",                                               links: { app: JO_JESUS_IDENTITY } },
+      { number: 3, title: "Did Jesus Rise from the Dead?",                                          links: { app: JO_JESUS_IDENTITY } },
+      { number: 4, title: "Jesus' Death and Resurrection: Copied from Other Ancient Deities?",     links: { app: JO_JESUS_IDENTITY } },
+      { number: 5, title: "Harvard Law Professor Puts Jesus' Resurrection on Trial",                links: { app: JO_JESUS_IDENTITY } },
+      { number: 6, title: "The Jesus Family Tomb: Fact or Fiction?",                                links: { app: JO_JESUS_IDENTITY } },
+      { number: 7, title: "Was Jesus the Messiah?",                                                 links: { app: JO_JESUS_IDENTITY } },
+      { number: 8, title: "Is Jesus God?",                                                          links: { app: JO_JESUS_IDENTITY } },
+      { number: 9, title: "Did Jesus Claim to Be God?",                                             links: { app: JO_JESUS_IDENTITY } },
+      { number: 10, title: "Did the Apostles Believe Jesus Is God?",                                links: { app: JO_JESUS_IDENTITY } },
+      { number: 11, title: "Is Jesus the Only Way to God?",                                         links: { app: JO_JESUS_IDENTITY } },
     ],
   },
   {
@@ -145,4 +157,12 @@ export function getSubTopicsByChannel(channelId: string): SubTopic[] {
 
 export function getSubTopic(channelId: string, subId: string): SubTopic | undefined {
   return subTopics.find(s => s.channelId === channelId && s.id === subId);
+}
+
+/** Returns the next sub-topic within the same channel, wrapping to first */
+export function getNextSubTopic(channelId: string, subId: string): SubTopic | undefined {
+  const list = getSubTopicsByChannel(channelId);
+  const idx = list.findIndex(s => s.id === subId);
+  if (idx === -1 || list.length < 2) return undefined;
+  return list[(idx + 1) % list.length];
 }

@@ -1,24 +1,85 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useParams } from "wouter";
-import { getChannel, getSubTopic, ResourceFormat } from "@/data/channels";
-import { Book, ListVideo, Smartphone, ArrowLeft, ChevronRight, Clock } from "lucide-react";
+import { getChannel, getSubTopic, getNextSubTopic, SubTopicItem } from "@/data/channels";
+import { FileText, Video, Smartphone, ArrowLeft, ArrowRight, ChevronRight } from "lucide-react";
 import NotFound from "./not-found";
 
-const FORMAT_META: Record<ResourceFormat, { label: string; icon: React.ComponentType<{ className?: string }>; description: string }> = {
-  book: { label: "Book", icon: Book, description: "Read in-depth chapters covering this topic." },
-  playlist: { label: "Playlist", icon: ListVideo, description: "Watch a video series exploring each question." },
-  app: { label: "App", icon: Smartphone, description: "Open the JO mobile app for the interactive experience." },
-};
+function FormatButton({
+  label,
+  icon: Icon,
+  href,
+  accent,
+}: {
+  label: string;
+  icon: React.ComponentType<{ className?: string }>;
+  href?: string;
+  accent: string;
+}) {
+  const enabled = !!href && href !== "#";
+  const className = "inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-[11px] font-semibold uppercase tracking-wider transition-all";
+  const enabledStyle = { backgroundColor: `${accent}15`, color: accent, border: `1px solid ${accent}33` };
+  const disabledStyle = { backgroundColor: 'rgba(0,0,0,0.04)', color: '#9ca3af', border: '1px solid rgba(0,0,0,0.06)' };
+  if (enabled) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={e => e.stopPropagation()}
+        className={`${className} hover:shadow-sm`}
+        style={enabledStyle}
+      >
+        <Icon className="w-3 h-3" />
+        {label}
+      </a>
+    );
+  }
+  return (
+    <span
+      className={`${className} cursor-not-allowed`}
+      style={disabledStyle}
+      title={`${label} coming soon`}
+    >
+      <Icon className="w-3 h-3" />
+      {label}
+    </span>
+  );
+}
+
+function QuestionRow({ item, accent }: { item: SubTopicItem; accent: string }) {
+  return (
+    <li
+      className="flex items-start gap-4 p-4 bg-white border border-border rounded hover:shadow-sm hover:border-primary/40 transition-all"
+      data-testid={`item-${item.number}`}
+    >
+      <span
+        className="shrink-0 w-9 h-9 rounded-full flex items-center justify-center font-mono font-semibold text-sm"
+        style={{ backgroundColor: `${accent}15`, color: accent }}
+      >
+        {item.number}
+      </span>
+      <div className="flex-grow min-w-0">
+        <h3 className="text-base leading-snug mb-2.5" style={{ color: '#002f55' }}>
+          {item.title}
+        </h3>
+        <div className="flex flex-wrap gap-1.5">
+          <FormatButton label="PDF"   icon={FileText}   href={item.links?.pdf}   accent={accent} />
+          <FormatButton label="Video" icon={Video}      href={item.links?.video} accent={accent} />
+          <FormatButton label="App"   icon={Smartphone} href={item.links?.app}   accent={accent} />
+        </div>
+      </div>
+    </li>
+  );
+}
 
 export default function SubTopic() {
   const params = useParams();
   const channel = getChannel(params.channelId ?? "");
   const sub = getSubTopic(params.channelId ?? "", params.subId ?? "");
-  const [activeFormat, setActiveFormat] = useState<ResourceFormat | null>(null);
+  const next = getNextSubTopic(params.channelId ?? "", params.subId ?? "");
 
   if (!channel || !sub) return <NotFound />;
 
-  const formats = sub.formats ?? [];
   const hasItems = (sub.items?.length ?? 0) > 0;
 
   return (
@@ -45,36 +106,12 @@ export default function SubTopic() {
           <div className="text-xs uppercase tracking-widest font-semibold mb-2" style={{ color: 'rgba(255,255,255,0.7)' }}>
             {channel.name}
           </div>
-          <h1 className="text-3xl md:text-5xl mb-5" style={{ color: '#ffffff', fontWeight: 500 }}>
+          <h1 className="text-3xl md:text-5xl mb-2" style={{ color: '#ffffff', fontWeight: 500 }}>
             {sub.name}
           </h1>
-
-          {/* Format tabs */}
-          {formats.length > 0 && (
-            <div className="flex flex-wrap gap-2 mt-6">
-              {formats.map(fmt => {
-                const meta = FORMAT_META[fmt];
-                const FmtIcon = meta.icon;
-                const isActive = activeFormat === fmt;
-                return (
-                  <button
-                    key={fmt}
-                    onClick={() => setActiveFormat(isActive ? null : fmt)}
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded transition-all text-sm font-medium"
-                    style={{
-                      backgroundColor: isActive ? '#ffffff' : 'rgba(255,255,255,0.15)',
-                      color: isActive ? channel.accentColor : '#ffffff',
-                      border: `1px solid ${isActive ? '#ffffff' : 'rgba(255,255,255,0.25)'}`,
-                    }}
-                    data-testid={`format-${fmt}`}
-                  >
-                    <FmtIcon className="w-4 h-4" />
-                    {meta.label}
-                  </button>
-                );
-              })}
-            </div>
-          )}
+          <p className="text-sm md:text-base" style={{ color: 'rgba(255,255,255,0.8)' }}>
+            Each question links to a PDF, video, or the JO App.
+          </p>
         </div>
       </div>
 
@@ -83,30 +120,7 @@ export default function SubTopic() {
           <ArrowLeft className="w-4 h-4 mr-2" /> Back to {channel.name}
         </Link>
 
-        {/* Active format details */}
-        {activeFormat && (
-          <div className="mb-10 p-6 rounded border" style={{ backgroundColor: `${channel.accentColor}08`, borderColor: `${channel.accentColor}33` }}>
-            <div className="flex items-start gap-4">
-              <div className="w-11 h-11 rounded flex items-center justify-center shrink-0" style={{ backgroundColor: channel.accentColor }}>
-                {React.createElement(FORMAT_META[activeFormat].icon, { className: "w-5 h-5 text-white" })}
-              </div>
-              <div className="flex-grow">
-                <div className="text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: channel.accentColor }}>
-                  {FORMAT_META[activeFormat].label} Format
-                </div>
-                <p className="text-sm text-muted-foreground mb-3">
-                  {FORMAT_META[activeFormat].description}
-                </p>
-                <div className="inline-flex items-center gap-2 text-xs" style={{ color: '#6b7280' }}>
-                  <Clock className="w-3.5 h-3.5" />
-                  Linked content coming soon
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Numbered items */}
+        {/* Numbered items with per-question PDF/Video/App buttons */}
         {hasItems ? (
           <>
             <div className="mb-6 pb-4 border-b border-border">
@@ -115,24 +129,7 @@ export default function SubTopic() {
             </div>
             <ol className="space-y-2">
               {sub.items!.map(item => (
-                <li
-                  key={item.number}
-                  className="flex items-start gap-4 p-4 bg-white border border-border rounded hover:shadow-sm hover:border-primary/40 transition-all group cursor-pointer"
-                  data-testid={`item-${sub.id}-${item.number}`}
-                >
-                  <span
-                    className="shrink-0 w-9 h-9 rounded-full flex items-center justify-center font-mono font-semibold text-sm"
-                    style={{ backgroundColor: `${channel.accentColor}15`, color: channel.accentColor }}
-                  >
-                    {item.number}
-                  </span>
-                  <div className="flex-grow min-w-0 pt-1.5">
-                    <h3 className="text-base leading-snug group-hover:text-primary transition-colors" style={{ color: '#002f55' }}>
-                      {item.title}
-                    </h3>
-                  </div>
-                  <ChevronRight className="shrink-0 w-5 h-5 text-muted-foreground/40 group-hover:text-primary group-hover:translate-x-0.5 transition-all mt-2" />
-                </li>
+                <QuestionRow key={item.number} item={item} accent={channel.accentColor} />
               ))}
             </ol>
           </>
@@ -141,6 +138,36 @@ export default function SubTopic() {
             <p className="text-muted-foreground mb-2">Resources for this topic are being prepared.</p>
             <p className="text-sm text-muted-foreground/70">Check back soon for books, playlists, and app content.</p>
           </div>
+        )}
+
+        {/* Next sub-topic CTA */}
+        {next && (
+          <Link
+            href={`/channels/${channel.id}/${next.id}`}
+            className="group block mt-12 p-6 md:p-7 rounded border-2 hover:shadow-md transition-all"
+            style={{ borderColor: channel.accentColor, backgroundColor: `${channel.accentColor}06` }}
+            data-testid="next-subtopic"
+          >
+            <div className="flex items-center justify-between gap-4">
+              <div>
+                <div className="text-xs font-semibold uppercase tracking-widest mb-1" style={{ color: channel.accentColor }}>
+                  Up Next
+                </div>
+                <h3 className="text-xl md:text-2xl font-semibold group-hover:underline" style={{ color: '#002f55' }}>
+                  {next.name}
+                </h3>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Continue exploring {channel.shortName} Resources
+                </p>
+              </div>
+              <div
+                className="shrink-0 w-12 h-12 rounded-full flex items-center justify-center transition-transform group-hover:translate-x-1"
+                style={{ backgroundColor: channel.accentColor }}
+              >
+                <ArrowRight className="w-5 h-5 text-white" />
+              </div>
+            </div>
+          </Link>
         )}
       </div>
     </div>

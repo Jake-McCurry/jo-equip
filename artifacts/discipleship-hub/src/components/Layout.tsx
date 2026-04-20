@@ -40,33 +40,33 @@ export function Layout({ children }: LayoutProps) {
   return (
     <div className="min-h-[100dvh] flex flex-col bg-background text-foreground font-sans">
 
-      {/* ── Unified header ── */}
+      {/* ── Unified header — taller for bigger logo + sub-line ── */}
       <header className="sticky top-0 z-50 w-full" style={{ backgroundColor: '#002f55', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
-        <div className="container mx-auto px-4 md:px-6 flex items-center justify-between py-3">
+        <div className="container mx-auto px-4 md:px-6 flex items-center justify-between py-4 md:py-5">
 
           {/* Left: JesusOnline logo + JO EQUIP sub-brand mark */}
-          <Link href="/" className="flex items-center gap-3 md:gap-4 hover:opacity-90 transition-opacity">
+          <Link href="/" className="flex items-center gap-3 md:gap-5 hover:opacity-90 transition-opacity">
             <img
               src={logoWhite}
               alt="JesusOnline"
-              className="h-6 md:h-7 w-auto"
+              className="h-8 md:h-10 w-auto"
             />
-            <span className="hidden sm:block w-px h-7 md:h-8" style={{ backgroundColor: 'rgba(255,255,255,0.2)' }} />
-            <div className="hidden sm:flex items-center gap-2">
-              <OpenBookMark size={32} />
+            <span className="hidden sm:block w-px h-9 md:h-11" style={{ backgroundColor: 'rgba(255,255,255,0.2)' }} />
+            <div className="hidden sm:flex items-center gap-2.5">
+              <OpenBookMark size={40} />
               <div className="flex flex-col leading-none">
-                <span className="text-white font-semibold text-base tracking-wide" style={{ fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif' }}>
+                <span className="text-white font-semibold text-lg md:text-xl tracking-wide" style={{ fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif' }}>
                   JO EQUIP
                 </span>
-                <span className="text-[11px] mt-0.5" style={{ color: 'rgba(255,255,255,0.55)', fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif', letterSpacing: '0.04em' }}>
+                <span className="text-[12px] md:text-[13px] mt-1" style={{ color: 'rgba(255,255,255,0.6)', fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif', letterSpacing: '0.05em' }}>
                   Ministry Resources Hub
                 </span>
               </div>
             </div>
             {/* Mobile-only compact mark */}
             <div className="sm:hidden flex items-center gap-2">
-              <OpenBookMark size={26} />
-              <span className="text-white font-semibold text-sm" style={{ fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif' }}>JO EQUIP</span>
+              <OpenBookMark size={32} />
+              <span className="text-white font-semibold text-base" style={{ fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif' }}>JO EQUIP</span>
             </div>
           </Link>
 
@@ -85,7 +85,7 @@ export function Layout({ children }: LayoutProps) {
               >
                 {link.name}
                 {isActive(link.path) && (
-                  <span className="absolute bottom-0 left-3 right-3 h-0.5 rounded-full" style={{ backgroundColor: '#de5b00' }} />
+                  <span className="absolute -bottom-1 left-3 right-3 h-0.5 rounded-full" style={{ backgroundColor: '#de5b00' }} />
                 )}
               </Link>
             ))}

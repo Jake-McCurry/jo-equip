@@ -6,6 +6,7 @@ import NotFound from "@/pages/not-found";
 
 import { Layout } from "@/components/Layout";
 import Home from "@/pages/Home";
+import Welcome from "@/pages/Welcome";
 import Resources from "@/pages/Resources";
 import ResourceDetail from "@/pages/ResourceDetail";
 import Channels from "@/pages/Channels";
@@ -24,6 +25,7 @@ function Router() {
     <Layout>
       <Switch>
         <Route path="/" component={Home} />
+        <Route path="/welcome" component={Welcome} />
         <Route path="/channels" component={Channels} />
         <Route path="/channels/:channelId" component={ChannelDetail} />
         <Route path="/channels/:channelId/:subId" component={SubTopic} />

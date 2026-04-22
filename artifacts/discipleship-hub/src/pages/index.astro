@@ -1,0 +1,139 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import ChannelArt from "@/components/ChannelArt.astro";
+import { channels } from "@/data/channels";
+import { ArrowRight, Globe, Users2, BookOpen, Smartphone } from "lucide-react";
+
+const baseUrl = import.meta.env.BASE_URL;
+const join = (p: string) =>
+  (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
+---
+<Layout>
+  {/* Hero */}
+  <section class="relative py-12 md:py-20 px-4 text-center overflow-hidden" style="background-color:#0083de;">
+    <div class="pointer-events-none absolute inset-0 overflow-hidden">
+      <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-10" style="background-color:#002f55;"></div>
+      <div class="absolute -bottom-32 -left-20 w-80 h-80 rounded-full opacity-10" style="background-color:#002f55;"></div>
+      <div class="absolute top-1/4 left-8 w-2 h-2 rounded-full opacity-20 bg-white"></div>
+      <div class="absolute top-1/3 right-12 w-3 h-3 rounded-full opacity-15 bg-white"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-2 h-2 rounded-full opacity-20 bg-white"></div>
+    </div>
+
+    <div class="relative container mx-auto max-w-4xl">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium mb-6" style="background-color:rgba(255,255,255,0.15);color:#ffffff;">
+        <Globe className="w-3.5 h-3.5" />
+        Make and Multiply Disciples
+      </div>
+
+      <h1 class="text-3xl md:text-5xl lg:text-6xl mb-3 leading-tight" style="color:#ffffff;font-weight:500;">JO EQUIP</h1>
+      <div class="text-xl md:text-2xl mb-5 font-medium" style="color:rgba(255,255,255,0.92);">
+        Ministry Resources Hub
+      </div>
+      <p class="text-base md:text-lg mb-7 max-w-2xl mx-auto leading-relaxed" style="color:rgba(255,255,255,0.92);">
+        A free digital library of practical discipleship tools for pastors and leaders for enhanced ministry impact.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href={join("/welcome")}
+          class="w-full sm:w-auto inline-flex justify-center items-center px-8 py-3 font-semibold rounded transition-colors"
+          style="background-color:#ffffff;color:#0083de;"
+        >
+          Welcome to JO EQUIP
+          <ArrowRight className="w-4 h-4 ml-2" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* Brand Info Strip */}
+  <section style="background-color:#002f55;">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-white/15">
+        <a href={join("/more")} class="group flex items-center justify-center gap-4 py-6 px-6 transition-colors hover:bg-white/5">
+          <div class="w-11 h-11 rounded shrink-0 flex items-center justify-center" style="background-color:rgba(0,131,222,0.2);">
+            <Users2 className="w-5 h-5" style={{ color: "#0083de" }} />
+          </div>
+          <div class="text-left">
+            <div class="text-lg md:text-xl font-semibold text-white leading-tight tracking-wide group-hover:underline" style='font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;'>About</div>
+            <div class="text-[11px] mt-1 font-medium tracking-widest uppercase" style="color:rgba(255,255,255,0.55);">JesusOnline Ministries</div>
+          </div>
+        </a>
+        <a href={join("/more")} class="group flex items-center justify-center gap-4 py-6 px-6 transition-colors hover:bg-white/5">
+          <div class="w-11 h-11 rounded shrink-0 flex items-center justify-center" style="background-color:rgba(0,131,222,0.2);">
+            <BookOpen className="w-5 h-5" style={{ color: "#0083de" }} />
+          </div>
+          <div class="text-left">
+            <div class="text-lg md:text-xl font-semibold text-white leading-tight tracking-wide group-hover:underline" style='font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;'>Beliefs</div>
+            <div class="text-[11px] mt-1 font-medium tracking-widest uppercase" style="color:rgba(255,255,255,0.55);">Statement of Faith</div>
+          </div>
+        </a>
+        <a href="https://jesusonline.com" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-center gap-4 py-6 px-6 transition-colors hover:bg-white/5">
+          <div class="w-11 h-11 rounded shrink-0 flex items-center justify-center" style="background-color:rgba(222,91,0,0.2);">
+            <Smartphone className="w-5 h-5" style={{ color: "#de5b00" }} />
+          </div>
+          <div class="text-left">
+            <div class="text-lg md:text-xl font-semibold text-white leading-tight tracking-wide group-hover:underline" style='font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;'>JO App</div>
+            <div class="text-[11px] mt-1 font-medium tracking-widest uppercase" style="color:rgba(255,255,255,0.55);">Growing in Christ</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* Welcome teaser */}
+  <section class="py-12 md:py-14 bg-white">
+    <div class="container mx-auto px-4 max-w-3xl text-center">
+      <div class="mb-6">
+        <h2 class="text-3xl md:text-4xl" style="color:#002f55;">Welcome to JO EQUIP</h2>
+        <div class="mt-2 h-0.5 w-12 mx-auto" style="background-color:#de5b00;"></div>
+      </div>
+      <p class="text-lg leading-relaxed mb-5" style="color:#374151;">
+        A free digital library of practical discipleship tools, carefully selected and grouped into <strong style="color:#002f55;">three channels</strong> to
+        help pastors and ministry leaders fulfill Christ's Great Commission with greater effectiveness.
+      </p>
+      <a href={join("/welcome")} class="inline-flex items-center text-sm font-semibold hover:underline" style="color:#0083de;">
+        Read the full welcome
+        <ArrowRight className="w-4 h-4 ml-1" />
+      </a>
+    </div>
+  </section>
+
+  {/* Three Channels */}
+  <section class="py-16 md:py-20 border-t" style="background-color:#f4f7fb;border-color:var(--color-border);">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-2">
+        <h2 class="text-3xl md:text-4xl" style="color:#002f55;">Three Channels for Your Ministry Needs</h2>
+        <div class="mt-2 h-0.5 w-12 mx-auto" style="background-color:#de5b00;"></div>
+      </div>
+      <p class="text-center text-base max-w-2xl mx-auto mb-10 mt-3" style="color:var(--color-muted-foreground);">
+        Resources grouped by purpose so you can quickly find exactly what you need for your ministry context.
+      </p>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {channels.map(channel => (
+          <a href={join(`/channels/${channel.id}`)} class="group flex flex-col bg-white border rounded overflow-hidden hover:shadow-lg transition-all" style="border-color:var(--color-border);">
+            <div class="relative aspect-[16/9] overflow-hidden" style={`background:${channel.gradient};`}>
+              <ChannelArt channel={channel.id} class="absolute inset-0" />
+            </div>
+            <div class="p-7 flex flex-col flex-grow" style={`border-top:4px solid ${channel.accentColor};`}>
+              <h3 class="text-2xl mb-1 group-hover:text-primary transition-colors" style="color:#002f55;">{channel.name}</h3>
+              <p class="text-sm font-medium mb-4" style={`color:${channel.accentColor};`}>{channel.tagline}</p>
+              <p class="leading-relaxed text-sm mb-5 flex-grow" style="color:var(--color-muted-foreground);">{channel.description}</p>
+              <span class="inline-flex items-center text-sm font-medium mt-auto" style={`color:${channel.accentColor};`}>
+                Explore {channel.shortName}
+                <ArrowRight className="w-4 h-4 ml-1.5" />
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <div class="text-center mt-10">
+        <a href={join("/channels")} class="inline-flex items-center text-sm font-semibold hover:underline" style="color:#0083de;">
+          View all channels & topics
+          <ArrowRight className="w-4 h-4 ml-1" />
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

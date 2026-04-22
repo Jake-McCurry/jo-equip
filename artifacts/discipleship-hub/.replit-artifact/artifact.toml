@@ -19,12 +19,8 @@ run = "pnpm --filter @workspace/discipleship-hub run dev"
 
 [services.production]
 build = [ "pnpm", "--filter", "@workspace/discipleship-hub", "run", "build" ]
-publicDir = "artifacts/discipleship-hub/dist/public"
+publicDir = "artifacts/discipleship-hub/dist"
 serve = "static"
-
-[[services.production.rewrites]]
-from = "/*"
-to = "/index.html"
 
 [services.env]
 PORT = "24794"

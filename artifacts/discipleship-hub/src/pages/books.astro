@@ -1,0 +1,25 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { Book } from "lucide-react";
+---
+<Layout title="Books · JO EQUIP">
+  <div class="container mx-auto px-4 py-12 md:py-16">
+    <div class="max-w-3xl mb-12">
+      <div class="flex items-center gap-3 mb-3">
+        <div class="w-9 h-9 rounded flex items-center justify-center" style="background-color:rgba(222,91,0,0.1);">
+          <Book className="w-5 h-5" style={{ color: "#de5b00" }} />
+        </div>
+        <span class="text-xs font-semibold tracking-widest uppercase" style="color:#de5b00;">Reading Library</span>
+      </div>
+      <h1 class="text-4xl md:text-5xl mb-4" style="color:#002f55;">Books</h1>
+      <div class="h-0.5 w-12 mb-5" style="background-color:#de5b00;"></div>
+      <p class="leading-relaxed text-lg" style="color:var(--color-muted-foreground);">
+        Free downloadable books, study guides, and articles from trusted authors and ministries.
+      </p>
+    </div>
+
+    <div class="py-20 text-center border border-dashed rounded bg-white" style="border-color:var(--color-border);">
+      <p style="color:var(--color-muted-foreground);">Book listings are being prepared. Check back soon.</p>
+    </div>
+  </div>
+</Layout>

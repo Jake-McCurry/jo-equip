@@ -1,7 +1,9 @@
 # Deploying JO EQUIP to Cloudflare Pages
 
-The site is a static React/Vite build with no server, no database, and no
-per-user state — ideal for Cloudflare Pages' free tier.
+The site is built with **Astro** — every route is pre-rendered to a real HTML
+file at build time. There's no server, no database, and no per-user state.
+Browsers receive complete HTML on first request, which is dramatically faster
+on 3G and slow connections than a typical React SPA.
 
 The deploy loop, once set up, is:
 
@@ -33,20 +35,20 @@ Pick the repo you just pushed. Then enter these settings **exactly**:
 | Field                       | Value                                                                   |
 | --------------------------- | ----------------------------------------------------------------------- |
 | Production branch           | `main`                                                                  |
-| Framework preset            | **None** (don't pick Vite — this is a monorepo)                         |
+| Framework preset            | **None** (don't pick Astro — this is a pnpm monorepo)                   |
 | Build command               | `pnpm install --frozen-lockfile && pnpm --filter @workspace/discipleship-hub run build` |
-| Build output directory      | `artifacts/discipleship-hub/dist/public`                                |
+| Build output directory      | `artifacts/discipleship-hub/dist`                                       |
 | Root directory (advanced)   | *(leave blank — keep the repo root)*                                    |
 
 #### Environment variables (Build → Add variable)
 
 Set both for the **Production** and **Preview** environments:
 
-| Name          | Value  | Why                                                       |
-| ------------- | ------ | --------------------------------------------------------- |
-| `NODE_VERSION`| `20`   | Cloudflare defaults to Node 18; Vite 7 needs 20+          |
-| `BASE_PATH`   | `/`    | Required by `vite.config.ts`; `/` = serve at domain root  |
-| `PORT`        | `3000` | Required by `vite.config.ts` even at build time           |
+| Name           | Value  | Why                                                       |
+| -------------- | ------ | --------------------------------------------------------- |
+| `NODE_VERSION` | `20`   | Cloudflare defaults to Node 18; Astro 6 needs 20+         |
+| `BASE_PATH`    | `/`    | Required by `astro.config.mjs`; `/` = serve at domain root|
+| `PORT`         | `3000` | Required by `astro.config.mjs` even at build time         |
 
 Click **Save and Deploy**. The first build takes 2–3 minutes.
 
@@ -88,24 +90,25 @@ before they go to the main domain.
 
 ## What's already configured for you
 
-- `public/_redirects` — sends all unknown paths to `index.html` so deep links
-  like `/channels/evidence/jesus-true-identity` work after a hard refresh.
-- `public/favicon.svg` — referenced with a relative path so it works at any
-  domain root.
-- Build output goes to `dist/public/` (not the more common `dist/`) — that's
-  why the output directory above ends in `/dist/public`.
+- **Pre-rendered HTML for every route** — including each Channel and SubTopic
+  page. No client-side routing needed; deep links and refreshes always work.
+- A pre-rendered `404.html` is generated automatically. Cloudflare Pages
+  serves it for any unknown path with no extra config.
+- `public/favicon.svg` and `public/opengraph.jpg` — copied to `dist/` at build.
+- **Minimal JavaScript** — only the mobile menu hydrates on the client
+  (≈60 KB gzipped, lazy). Desktop visitors and 3G mobile users with JS
+  disabled still see and navigate the entire site.
 
 ---
 
 ## Troubleshooting
 
-**Build fails with "PORT environment variable is required"** — you forgot to
-set `PORT=3000` in the Pages env vars. Add it and re-deploy.
+**Build fails with "Invalid PORT value"** — you forgot to set `PORT=3000`
+in the Pages env vars. Add it and re-deploy.
 
 **Build fails on `pnpm install` with "lockfile is not up to date"** — drop
 `--frozen-lockfile` from the build command, or run `pnpm install` locally
 and push the updated `pnpm-lock.yaml`.
 
-**404 on a deep link** (e.g. visit `equip.jesusonline.com/welcome` directly) —
-confirm `public/_redirects` shipped to `dist/public/_redirects` after the
-build. Vite copies everything in `public/` automatically.
+**Wrong base path / broken assets after deploy** — double-check `BASE_PATH=/`
+is set in the Pages env. Astro reads it at build time to prefix all URLs.

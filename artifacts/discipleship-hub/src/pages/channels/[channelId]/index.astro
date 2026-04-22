@@ -1,0 +1,88 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import ChannelArt from "@/components/ChannelArt.astro";
+import { channels, getChannel, getSubTopicsByChannel } from "@/data/channels";
+import { ArrowRight, Book, ListVideo, Smartphone, MenuSquare } from "lucide-react";
+
+const baseUrl = import.meta.env.BASE_URL;
+const join = (p: string) =>
+  (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
+
+export function getStaticPaths() {
+  return channels.map(c => ({ params: { channelId: c.id } }));
+}
+
+const { channelId } = Astro.params;
+const channel = getChannel(channelId!);
+if (!channel) return Astro.redirect(join("/channels"));
+
+const subs = getSubTopicsByChannel(channel.id);
+
+const FORMAT_META: Record<string, { label: string; icon: any }> = {
+  book: { label: "Book", icon: Book },
+  playlist: { label: "Playlist", icon: ListVideo },
+  app: { label: "App", icon: Smartphone },
+};
+---
+<Layout title={`${channel.name} · JO EQUIP`} description={channel.description}>
+  {/* Channel hero */}
+  <div class="relative overflow-hidden" style={`background:${channel.gradient};`}>
+    <div class="absolute inset-0 opacity-30">
+      <ChannelArt channel={channel.id} class="absolute inset-0 w-full h-full" />
+    </div>
+    <div class="container mx-auto px-4 py-14 md:py-20 relative">
+      <a href={join("/channels")} class="inline-flex items-center text-sm font-medium mb-6 transition-colors" style="color:rgba(255,255,255,0.85);">← All Channels</a>
+      <div class="max-w-3xl">
+        <h1 class="text-4xl md:text-5xl mb-3" style="color:#ffffff;font-weight:500;">{channel.name}</h1>
+        <p class="text-lg leading-relaxed mb-2" style="color:rgba(255,255,255,0.95);">{channel.tagline}</p>
+        <p class="leading-relaxed" style="color:rgba(255,255,255,0.85);">{channel.description}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mx-auto px-4 py-12 md:py-16">
+    <div class="flex items-center justify-between mb-8 pb-4 border-b" style="border-color:var(--color-border);">
+      <div>
+        <h2 class="text-2xl" style="color:#002f55;">Topics in this Channel</h2>
+        <div class="mt-2 h-0.5 w-12" style="background-color:#de5b00;"></div>
+      </div>
+      <span class="text-sm" style="color:var(--color-muted-foreground);">{subs.length} topics</span>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {subs.map((sub, idx) => (
+        <a href={join(`/channels/${channel.id}/${sub.id}`)} class="group flex flex-col bg-white border rounded p-5 hover:shadow-md transition-all" style={`border-color:var(--color-border);border-left:4px solid ${channel.accentColor};`}>
+          <div class="flex items-start justify-between gap-3 mb-3">
+            <span class="text-xs font-mono font-semibold px-2 py-0.5 rounded" style={`color:${channel.accentColor};background-color:${channel.accentColor}11;`}>
+              {String(idx + 1).padStart(2, "0")}
+            </span>
+            <ArrowRight className="w-4 h-4" style={{ color: "var(--color-muted-foreground)" }} />
+          </div>
+          <h3 class="text-base font-semibold mb-3 group-hover:text-primary transition-colors leading-snug" style="color:#002f55;">{sub.name}</h3>
+
+          {sub.formats && sub.formats.length > 0 && (
+            <div class="flex flex-wrap gap-1.5 mb-3">
+              {sub.formats.map(fmt => {
+                const meta = FORMAT_META[fmt];
+                if (!meta) return null;
+                const FmtIcon = meta.icon;
+                return (
+                  <span class="inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded" style="color:#002f55;background-color:rgba(0,47,85,0.06);">
+                    <FmtIcon className="w-3 h-3" />
+                    {meta.label}
+                  </span>
+                );
+              })}
+            </div>
+          )}
+
+          <span class="inline-flex items-center gap-1.5 text-xs font-semibold mt-auto pt-3 border-t group-hover:underline" style={`color:${channel.accentColor};border-color:rgba(229,231,235,0.6);`}>
+            <MenuSquare className="w-3.5 h-3.5" />
+            See menu
+            <ArrowRight className="w-3.5 h-3.5" />
+          </span>
+        </a>
+      ))}
+    </div>
+  </div>
+</Layout>

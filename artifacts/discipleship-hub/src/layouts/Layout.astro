@@ -1,0 +1,164 @@
+---
+import "@/styles/global.css";
+import logo from "@/assets/jol-logo-white.png";
+import OpenBookMark from "@/components/OpenBookMark.astro";
+import MobileMenu from "@/components/MobileMenu.tsx";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "JO EQUIP · Ministry Resources Hub",
+  description = "A free digital library of practical discipleship tools for pastors and ministry leaders.",
+} = Astro.props;
+
+const baseUrl = import.meta.env.BASE_URL;
+const join = (p: string) =>
+  (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
+
+const navLinks = [
+  { name: "Home", path: "/" },
+  { name: "Channels", path: "/channels" },
+  { name: "Playlists", path: "/playlists" },
+  { name: "Books", path: "/books" },
+  { name: "Translate", path: "/translate" },
+  { name: "More", path: "/more" },
+];
+
+// Active-state detection — strip the base prefix from current path first
+const rawPath = Astro.url.pathname;
+const stripBase = (p: string) => {
+  const b = baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl;
+  if (b && p.startsWith(b)) return p.slice(b.length) || "/";
+  return p;
+};
+const currentPath = stripBase(rawPath);
+
+function isActive(linkPath: string) {
+  return linkPath === "/" ? currentPath === "/" : currentPath.startsWith(linkPath);
+}
+
+const navLinksWithActive = navLinks.map(l => ({ ...l, active: isActive(l.path) }));
+const year = new Date().getFullYear();
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href={join("/favicon.svg")} />
+    <link rel="apple-touch-icon" href={join("/favicon.svg")} />
+    <meta name="theme-color" content="#002f55" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={join("/opengraph.jpg")} />
+  </head>
+  <body class="min-h-[100dvh] flex flex-col">
+
+    {/* Header */}
+    <header class="sticky top-0 z-50 w-full" style="background-color:#002f55;border-bottom:1px solid rgba(255,255,255,0.08);">
+      <div class="container mx-auto px-4 md:px-6 flex items-center justify-between py-4 md:py-5 relative">
+
+        <a href={join("/")} class="flex items-center gap-3 md:gap-5 hover:opacity-90 transition-opacity">
+          <img src={logo.src} alt="JesusOnline" width={logo.width} height={logo.height} class="h-8 md:h-10 w-auto" />
+          <span class="hidden sm:block w-px h-9 md:h-11" style="background-color:rgba(255,255,255,0.2);"></span>
+          <div class="hidden sm:flex items-center gap-2.5">
+            <OpenBookMark size={40} />
+            <div class="flex flex-col leading-none">
+              <span class="text-white font-semibold text-lg md:text-xl tracking-wide" style='font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;'>
+                JO EQUIP
+              </span>
+              <span class="text-[12px] md:text-[13px] mt-1" style='color:rgba(255,255,255,0.6);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;letter-spacing:0.05em;'>
+                Ministry Resources Hub
+              </span>
+            </div>
+          </div>
+          <div class="sm:hidden flex items-center gap-2">
+            <OpenBookMark size={32} />
+            <span class="text-white font-semibold text-base" style='font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;'>JO EQUIP</span>
+          </div>
+        </a>
+
+        {/* Desktop Nav */}
+        <nav class="hidden lg:flex items-center gap-0.5">
+          {navLinksWithActive.map(link => (
+            <a
+              href={join(link.path)}
+              class="relative px-3 py-2 text-sm font-medium transition-colors rounded hover:text-white"
+              style={`color:${link.active ? "#ffffff" : "rgba(255,255,255,0.65)"};`}
+            >
+              {link.name}
+              {link.active && (
+                <span class="absolute -bottom-1 left-3 right-3 h-0.5 rounded-full" style="background-color:#de5b00;"></span>
+              )}
+            </a>
+          ))}
+        </nav>
+
+        {/* Mobile menu (React island — only this ships JS) */}
+        <div class="lg:hidden">
+          <MobileMenu navLinks={navLinksWithActive} baseUrl={baseUrl} client:load />
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-grow">
+      <slot />
+    </main>
+
+    {/* Footer */}
+    <footer class="mt-16 pt-12 pb-8" style="background-color:#002f55;">
+      <div class="container mx-auto px-4 md:px-6">
+        <div class="flex flex-col md:flex-row justify-between items-start gap-10 pb-10" style="border-bottom:1px solid rgba(255,255,255,0.12);">
+          <div class="max-w-xs">
+            <div class="flex items-center gap-3 mb-3">
+              <OpenBookMark size={32} />
+              <img src={logo.src} alt="JesusOnline" width={logo.width} height={logo.height} class="h-6 w-auto" />
+            </div>
+            <div class="mb-4">
+              <span class="text-xs font-semibold tracking-widest uppercase" style="color:#0083de;">
+                JO EQUIP · Ministry Resources Hub
+              </span>
+            </div>
+            <p class="text-sm leading-relaxed mb-3" style="color:rgba(255,255,255,0.6);">
+              A free digital library of practical discipleship tools for pastors and leaders for enhanced ministry impact.
+            </p>
+            <p class="text-xs" style="color:rgba(255,255,255,0.4);">
+              equip.jesusonline.com
+            </p>
+          </div>
+
+          <div class="flex gap-12 text-sm">
+            <div class="flex flex-col gap-3">
+              <h4 class="font-semibold text-sm" style="color:#ffffff;">Explore</h4>
+              <a href={join("/channels")} class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.6);">Channels</a>
+              <a href={join("/playlists")} class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.6);">Playlists</a>
+              <a href={join("/books")} class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.6);">Books</a>
+              <a href={join("/translate")} class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.6);">Translate</a>
+            </div>
+            <div class="flex flex-col gap-3">
+              <h4 class="font-semibold text-sm" style="color:#ffffff;">Organization</h4>
+              <a href="https://jesusonline.com" target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.6);">JesusOnline.com</a>
+              <a href={join("/more")} class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.6);">About</a>
+              <a href={join("/more")} class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.6);">Beliefs</a>
+              <a href={join("/more")} class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.6);">Contact</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs" style="color:rgba(255,255,255,0.4);">
+          <p>&copy; {year} JesusOnline Ministries. All rights reserved.</p>
+          <div class="flex gap-5">
+            <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

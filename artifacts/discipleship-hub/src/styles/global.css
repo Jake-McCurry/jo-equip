@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-background: hsl(0, 0%, 100%);
+  --color-foreground: hsl(207, 60%, 12%);
+  --color-border: hsl(210, 15%, 88%);
+  --color-muted-foreground: hsl(210, 15%, 42%);
+  --color-primary: hsl(205, 100%, 44%);
+
+  --font-sans: "Open Sans", sans-serif;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-size: 18px;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    line-height: 1.2;
+    color: #002f55;
+  }
+}

@@ -1,0 +1,72 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import ChannelArt from "@/components/ChannelArt.astro";
+import { channels, getSubTopicsByChannel } from "@/data/channels";
+import { ArrowRight, ChevronRight } from "lucide-react";
+
+const baseUrl = import.meta.env.BASE_URL;
+const join = (p: string) =>
+  (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
+---
+<Layout title="Welcome · JO EQUIP">
+  <section class="bg-white">
+    <div class="container mx-auto px-4 py-14 md:py-20 max-w-4xl">
+      <div class="text-xs font-semibold tracking-widest uppercase mb-3" style="color:#0083de;">Welcome</div>
+      <h1 class="text-4xl md:text-5xl mb-4" style="color:#002f55;">Welcome to JO EQUIP</h1>
+      <div class="h-0.5 w-12 mb-7" style="background-color:#de5b00;"></div>
+      <div class="space-y-5 text-lg leading-relaxed" style="color:#374151;">
+        <p>
+          Welcome to <strong style="color:#002f55;">JO EQUIP</strong> — a free digital library of practical
+          discipleship tools created specifically to help better equip pastors and ministry leaders for a greater
+          ministry impact and fruitful discipleship multiplication.
+        </p>
+        <p>
+          If you are a disciple-maker passionate about seeing God's Kingdom expand through spiritual multiplication,
+          JO EQUIP is your free, trusted resource to help you strengthen His Church and advance His Kingdom.
+        </p>
+        <p>
+          These carefully selected resources, grouped in the following channels, are designed to help you serve with
+          greater effectiveness and spiritual vitality in fulfilling Christ's Great Commission.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-14 md:py-20 border-t" style="background-color:#f4f7fb;border-color:var(--color-border);">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl md:text-4xl" style="color:#002f55;">Three Channels of Resources for Your Ministry Needs</h2>
+        <div class="mt-2 h-0.5 w-12 mx-auto" style="background-color:#de5b00;"></div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {channels.map(channel => {
+          const subs = getSubTopicsByChannel(channel.id);
+          return (
+            <a href={join(`/channels/${channel.id}`)} class="group flex flex-col bg-white border rounded overflow-hidden hover:shadow-lg transition-all" style="border-color:var(--color-border);">
+              <div class="relative aspect-[16/9] overflow-hidden" style={`background:${channel.gradient};`}>
+                <ChannelArt channel={channel.id} class="absolute inset-0" />
+              </div>
+              <div class="p-6 flex flex-col flex-grow" style={`border-top:4px solid ${channel.accentColor};`}>
+                <h3 class="text-xl mb-1 group-hover:text-primary transition-colors" style="color:#002f55;">{channel.name}</h3>
+                <p class="text-sm font-medium mb-4" style={`color:${channel.accentColor};`}>{channel.tagline}</p>
+                <ul class="space-y-1.5 mb-4 flex-grow">
+                  {subs.map(s => (
+                    <li class="flex items-start gap-2 text-sm" style="color:#4b5563;">
+                      <ChevronRight className="w-3.5 h-3.5 mt-1 shrink-0" style={{ color: channel.accentColor }} />
+                      <span class="leading-snug">{s.name}</span>
+                    </li>
+                  ))}
+                </ul>
+                <span class="inline-flex items-center text-sm font-semibold mt-auto pt-3 border-t" style={`color:${channel.accentColor};border-color:rgba(229,231,235,0.6);`}>
+                  Explore {channel.shortName}
+                  <ArrowRight className="w-4 h-4 ml-1.5" />
+                </span>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+</Layout>

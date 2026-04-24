@@ -1,0 +1,103 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { ListVideo, ChevronLeft, Play } from "lucide-react";
+import { playlists } from "@/data/playlists";
+
+export function getStaticPaths() {
+  return playlists.map(p => ({ params: { id: p.id }, props: { playlist: p } }));
+}
+
+const { playlist } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
+const join = (p: string) =>
+  (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
+
+const count = playlist.videos.length;
+const pageTitle = `${playlist.title} · JO EQUIP`;
+---
+<Layout title={pageTitle}>
+  <div class="container mx-auto px-4 py-8 md:py-12">
+
+    <a
+      href={join("/playlists")}
+      class="inline-flex items-center gap-1.5 text-sm font-medium mb-6 transition-colors hover:underline focus:outline-none focus-visible:underline"
+      style="color:#0083de;"
+    >
+      <ChevronLeft className="w-4 h-4" />
+      All playlists
+    </a>
+
+    <div class="max-w-3xl mb-10 md:mb-12">
+      <div class="flex items-center gap-3 mb-3">
+        <div class="w-9 h-9 rounded flex items-center justify-center" style="background-color:rgba(0,131,222,0.1);">
+          <ListVideo className="w-5 h-5" style={{ color: "#0083de" }} />
+        </div>
+        <span class="text-xs font-semibold tracking-widest uppercase" style="color:#0083de;">
+          Playlist · {count} {count === 1 ? "video" : "videos"}
+        </span>
+      </div>
+      <h1 class="text-3xl md:text-4xl mb-4" style="color:#002f55;">{playlist.title}</h1>
+      <div class="h-0.5 w-12" style="background-color:#de5b00;"></div>
+    </div>
+
+    <ol class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 list-none p-0">
+      {playlist.videos.map((video, idx) => (
+        <li class="bg-white border rounded overflow-hidden" style="border-color:var(--color-border);">
+          <button
+            type="button"
+            class="yt-facade group relative block w-full aspect-video bg-slate-900 overflow-hidden cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+            style="--tw-ring-color:#0083de;"
+            data-yt-id={video.videoId}
+            data-yt-title={video.title}
+            aria-label={`Play video: ${video.title}`}
+          >
+            <img
+              src={`https://i.ytimg.com/vi/${video.videoId}/hqdefault.jpg`}
+              alt=""
+              loading="lazy"
+              width="480"
+              height="360"
+              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+            />
+            <div class="absolute inset-0 flex items-center justify-center bg-black/10 group-hover:bg-black/25 transition-colors">
+              <div class="w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center transition-transform duration-200 group-hover:scale-110 shadow-lg" style="background-color:rgba(255,255,255,0.95);">
+                <Play className="w-7 h-7 md:w-8 md:h-8 ml-1" style={{ color: "#de5b00", fill: "#de5b00" }} />
+              </div>
+            </div>
+          </button>
+          <div class="p-4 md:p-5 flex items-start gap-3">
+            <span class="shrink-0 w-7 h-7 rounded text-xs font-semibold flex items-center justify-center" style="background-color:rgba(0,47,85,0.08);color:#002f55;">
+              {idx + 1}
+            </span>
+            <h3 class="font-semibold leading-snug" style='color:#002f55;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;'>
+              {video.title}
+            </h3>
+          </div>
+        </li>
+      ))}
+    </ol>
+
+  </div>
+
+  <script is:inline>
+    document.querySelectorAll(".yt-facade").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var id = btn.getAttribute("data-yt-id");
+        var title = btn.getAttribute("data-yt-title") || "";
+        if (!id) return;
+        var iframe = document.createElement("iframe");
+        iframe.src = "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1&rel=0&modestbranding=1";
+        iframe.title = title;
+        iframe.loading = "lazy";
+        iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+        iframe.allowFullscreen = true;
+        iframe.className = "absolute inset-0 w-full h-full border-0";
+        var wrapper = document.createElement("div");
+        wrapper.className = "relative w-full aspect-video bg-black";
+        wrapper.appendChild(iframe);
+        btn.replaceWith(wrapper);
+        try { iframe.focus({ preventScroll: true }); } catch (e) {}
+      });
+    });
+  </script>
+</Layout>

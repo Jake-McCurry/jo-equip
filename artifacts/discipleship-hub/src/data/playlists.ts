@@ -113,7 +113,7 @@ export const playlists: Playlist[] = [
     title: "Hope in Times of Crisis",
     playlistId: "PLyI_AdjR33H0zgKEjJe7unAxY_wJgtqDp",
     videos: [
-      { title: "Hope in Times of Crisis", videoId: yt("j6NDvGvLgDU") },
+      { title: "Hope in Times of Crisis", videoId: yt("cIATt88b_MM") },
       { title: "God is Greater Than You Think", videoId: yt("j6NDvGvLgDU") },
       { title: "God Loves You More Than You Know", videoId: yt("xM-SlFmGQps") },
       { title: "God Keeps His Promises", videoId: yt("WQpQlkFMwgk") },
@@ -146,7 +146,7 @@ export const playlists: Playlist[] = [
       { title: "Total Life Discipleship: Kingdom Power - Be Filled with the Holy Spirit", videoId: yt("E78uWvxZOOM") },
       { title: "Total Life Discipleship: Kingdom Power - Walk in the Spirit", videoId: yt("S-4pXuEF1FI") },
       { title: "Total Life Discipleship: Kingdom Prayer - Topics", videoId: yt("MtX-fFMtXG4") },
-      { title: "Total Life Discipleship: Kingdom Prayer - Building Blocks", videoId: yt("You5ArBCx1U") },
+      { title: "Total Life Discipleship: Kingdom Prayer - Building Blocks", videoId: yt("E46dx0kLSRQ") },
       { title: "Total Life Discipleship: Kingdom Promises", videoId: yt("You5ArBCx1U") },
       { title: "Total Life Discipleship: Kingdom Authority", videoId: yt("gAInNUwcbpU") },
     ],

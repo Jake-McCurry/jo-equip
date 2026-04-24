@@ -86,11 +86,19 @@ const pageTitle = `${playlist.title} · JO EQUIP`;
         var title = btn.getAttribute("data-yt-title") || "";
         if (!id) return;
         var iframe = document.createElement("iframe");
-        iframe.src = "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1&rel=0&modestbranding=1";
+        iframe.src =
+          "https://www.youtube.com/embed/" +
+          encodeURIComponent(id) +
+          "?rel=0&modestbranding=1&playsinline=1";
         iframe.title = title;
-        iframe.loading = "lazy";
-        iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-        iframe.allowFullscreen = true;
+        iframe.width = "560";
+        iframe.height = "315";
+        iframe.setAttribute(
+          "allow",
+          "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+        );
+        iframe.setAttribute("allowfullscreen", "");
+        iframe.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
         iframe.className = "absolute inset-0 w-full h-full border-0";
         var wrapper = document.createElement("div");
         wrapper.className = "relative w-full aspect-video bg-black";

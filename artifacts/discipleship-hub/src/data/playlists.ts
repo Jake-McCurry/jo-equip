@@ -115,7 +115,7 @@ export const playlists: Playlist[] = [
     videos: [
       { title: "Hope in Times of Crisis", videoId: yt("j6NDvGvLgDU") },
       { title: "God is Greater Than You Think", videoId: yt("j6NDvGvLgDU") },
-      { title: "God Loves You More Than You Know", videoId: "" },
+      { title: "God Loves You More Than You Know", videoId: yt("xM-SlFmGQps") },
       { title: "God Keeps His Promises", videoId: yt("WQpQlkFMwgk") },
       { title: "God is Dependable", videoId: yt("SsEQ8L5RoLM") },
       { title: "God Is Always With You", videoId: yt("wgUGXg91NPg") },

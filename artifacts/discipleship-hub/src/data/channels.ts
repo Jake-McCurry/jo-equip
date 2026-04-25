@@ -5,7 +5,11 @@ export type ChannelId = "church" | "growth" | "evidence";
 export interface SubTopicItem {
   number: number;
   title: string;
-  /** Optional per-item links (PDF / Video / App) */
+  /** ID of a book in src/data/books.ts — when set, this item's PDF button links to that book. */
+  bookId?: string;
+  /** ID of a YouTube video inside this sub-topic's `playlistId` — when set, this item's Video button deep-links to that video. */
+  videoId?: string;
+  /** Optional per-item external link overrides. */
   links?: {
     pdf?: string;
     video?: string;
@@ -22,6 +26,8 @@ export interface SubTopic {
   items?: SubTopicItem[];
   /** Link to the JO App series page if available */
   appUrl?: string;
+  /** ID of a playlist in src/data/playlists.ts — required for any item.videoId to resolve to a /playlist deep-link. */
+  playlistId?: string;
 }
 
 export interface Channel {
@@ -99,19 +105,21 @@ export const subTopics: SubTopic[] = [
     name: "Jesus' True Identity",
     formats: ["book", "playlist", "app"],
     appUrl: JO_JESUS_IDENTITY,
-    /* Pulled from JO App "Evidence For Jesus' True Identity" series #73 */
+    playlistId: "who-is-the-real-jesus",
+    /* Pulled from JO App "Evidence For Jesus' True Identity" series #73.
+       Per-item bookId / videoId set only where a specific PDF / video matches the item title. */
     items: [
-      { number: 1, title: "Who is the Real Jesus?",                                                 links: { app: JO_JESUS_IDENTITY } },
-      { number: 2, title: "Was Jesus a Real Person?",                                               links: { app: JO_JESUS_IDENTITY } },
-      { number: 3, title: "Did Jesus Rise from the Dead?",                                          links: { app: JO_JESUS_IDENTITY } },
-      { number: 4, title: "Jesus' Death and Resurrection: Copied from Other Ancient Deities?",     links: { app: JO_JESUS_IDENTITY } },
-      { number: 5, title: "Harvard Law Professor Puts Jesus' Resurrection on Trial",                links: { app: JO_JESUS_IDENTITY } },
-      { number: 6, title: "The Jesus Family Tomb: Fact or Fiction?",                                links: { app: JO_JESUS_IDENTITY } },
-      { number: 7, title: "Was Jesus the Messiah?",                                                 links: { app: JO_JESUS_IDENTITY } },
-      { number: 8, title: "Is Jesus God?",                                                          links: { app: JO_JESUS_IDENTITY } },
-      { number: 9, title: "Did Jesus Claim to Be God?",                                             links: { app: JO_JESUS_IDENTITY } },
-      { number: 10, title: "Did the Apostles Believe Jesus Is God?",                                links: { app: JO_JESUS_IDENTITY } },
-      { number: 11, title: "Is Jesus the Only Way to God?",                                         links: { app: JO_JESUS_IDENTITY } },
+      { number: 1, title: "Who is the Real Jesus?",                                                 bookId: "who-is-the-real-jesus", videoId: "BVxw0pojBHM", links: { app: JO_JESUS_IDENTITY } },
+      { number: 2, title: "Was Jesus a Real Person?",                                               videoId: "vQ0Wro-Rgtw",          links: { app: JO_JESUS_IDENTITY } },
+      { number: 3, title: "Did Jesus Rise from the Dead?",                                          videoId: "T_78mbFTmYY",          links: { app: JO_JESUS_IDENTITY } },
+      { number: 4, title: "Jesus' Death and Resurrection: Copied from Other Ancient Deities?",                                       links: { app: JO_JESUS_IDENTITY } },
+      { number: 5, title: "Harvard Law Professor Puts Jesus' Resurrection on Trial",                                                 links: { app: JO_JESUS_IDENTITY } },
+      { number: 6, title: "The Jesus Family Tomb: Fact or Fiction?",                                                                 links: { app: JO_JESUS_IDENTITY } },
+      { number: 7, title: "Was Jesus the Messiah?",                                                 videoId: "Jn1M1c9iNfg",          links: { app: JO_JESUS_IDENTITY } },
+      { number: 8, title: "Is Jesus God?",                                                          videoId: "9pIWZfEAV0I",          links: { app: JO_JESUS_IDENTITY } },
+      { number: 9, title: "Did Jesus Claim to Be God?",                                                                              links: { app: JO_JESUS_IDENTITY } },
+      { number: 10, title: "Did the Apostles Believe Jesus Is God?",                                                                 links: { app: JO_JESUS_IDENTITY } },
+      { number: 11, title: "Is Jesus the Only Way to God?",                                                                          links: { app: JO_JESUS_IDENTITY } },
     ],
   },
   {
@@ -119,8 +127,9 @@ export const subTopics: SubTopic[] = [
     channelId: "evidence",
     name: "Existence of God",
     formats: ["book", "playlist", "app"],
+    playlistId: "science-and-the-origin-of-life",
     items: [
-      { number: 1, title: "Did the Universe Have a Beginning?" },
+      { number: 1, title: "Did the Universe Have a Beginning?", videoId: "-z8D-mutYUg" },
       { number: 2, title: "Why is Only Earth Suitable for Life?" },
       { number: 3, title: "Is the Universe a Product of Design or Chance?" },
       { number: 4, title: "How Did Life Begin?" },

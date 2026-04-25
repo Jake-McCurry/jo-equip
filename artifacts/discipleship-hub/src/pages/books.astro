@@ -1,25 +1,293 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import { Book } from "lucide-react";
+import { Book as BookIcon, Download } from "lucide-react";
+import { books } from "@/data/books";
+
+const baseUrl = import.meta.env.BASE_URL;
+const join = (p: string) =>
+  (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
 ---
 <Layout title="Books · JO EQUIP">
   <div class="container mx-auto px-4 py-12 md:py-16">
     <div class="max-w-3xl mb-12">
       <div class="flex items-center gap-3 mb-3">
         <div class="w-9 h-9 rounded flex items-center justify-center" style="background-color:rgba(222,91,0,0.1);">
-          <Book className="w-5 h-5" style={{ color: "#de5b00" }} />
+          <BookIcon className="w-5 h-5" style={{ color: "#de5b00" }} />
         </div>
         <span class="text-xs font-semibold tracking-widest uppercase" style="color:#de5b00;">Reading Library</span>
       </div>
       <h1 class="text-4xl md:text-5xl mb-4" style="color:#002f55;">Books</h1>
       <div class="h-0.5 w-12 mb-5" style="background-color:#de5b00;"></div>
       <p class="leading-relaxed text-lg" style="color:var(--color-muted-foreground);">
-        Free downloadable books, study guides, and articles from trusted authors and ministries.
+        Download these free books to enhance your ministry impact.
       </p>
     </div>
 
-    <div class="py-20 text-center border border-dashed rounded bg-white" style="border-color:var(--color-border);">
-      <p style="color:var(--color-muted-foreground);">Book listings are being prepared. Check back soon.</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      {books.map(book => (
+        <article id={book.id} class="border rounded-lg bg-white overflow-hidden flex flex-col transition-shadow hover:shadow-md scroll-mt-24" style="border-color:var(--color-border);">
+          <div class="p-5 pb-4 flex items-center justify-center bg-white" style="min-height:18rem;">
+            <img
+              src={join(book.cover)}
+              alt={`${book.title} book cover`}
+              loading="lazy"
+              class="w-auto h-auto max-h-72 max-w-full object-contain"
+            />
+          </div>
+          <div class="px-5 pb-5 pt-3 border-t text-center" style="border-color:var(--color-border);">
+            <button
+              type="button"
+              class="book-download-btn inline-flex items-center justify-center gap-2 font-semibold text-sm uppercase tracking-wide transition-colors hover:opacity-75"
+              style="color:#0083de;"
+              data-pdf={join(book.pdf)}
+              data-title={book.title}
+              data-id={book.id}
+              aria-label={`Download ${book.title}`}
+            >
+              <Download className="w-4 h-4" />
+              Download
+            </button>
+          </div>
+        </article>
+      ))}
     </div>
   </div>
+
+  <!-- Email gate modal -->
+  <div
+    id="email-gate"
+    class="fixed inset-0 z-50 hidden items-center justify-center p-4"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="email-gate-title"
+    aria-describedby="email-gate-desc"
+  >
+    <div class="absolute inset-0 bg-black/60" data-gate-close></div>
+    <div class="relative bg-white rounded-lg shadow-xl max-w-md w-full p-6 md:p-8">
+      <button
+        type="button"
+        class="absolute top-3 right-3 p-1 rounded text-gray-400 hover:text-gray-700 transition-colors"
+        aria-label="Close"
+        data-gate-close
+      >
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+        </svg>
+      </button>
+      <h2 id="email-gate-title" class="text-2xl mb-2" style="color:#002f55;">Get free ministry resources</h2>
+      <div class="h-0.5 w-10 mb-4" style="background-color:#de5b00;"></div>
+      <p id="email-gate-desc" class="text-sm mb-5 leading-relaxed" style="color:var(--color-muted-foreground);">
+        Enter your email to download
+        <span id="email-gate-book" class="font-semibold" style="color:#002f55;">this book</span>.
+        We'll occasionally share new resources — unsubscribe anytime.
+      </p>
+      <form id="email-gate-form" class="flex flex-col gap-3" novalidate>
+        <label class="sr-only" for="email-gate-input">Email address</label>
+        <input
+          id="email-gate-input"
+          type="email"
+          name="email"
+          required
+          autocomplete="email"
+          placeholder="you@example.com"
+          aria-describedby="email-gate-error"
+          class="w-full px-4 py-3 border rounded text-base focus:outline-none focus:ring-2 focus:border-transparent"
+          style="border-color:var(--color-border);"
+        />
+        <p id="email-gate-error" class="text-sm hidden" role="alert" aria-live="polite" style="color:#c0392b;">Please enter a valid email address.</p>
+        <button
+          id="email-gate-submit"
+          type="submit"
+          class="w-full py-3 rounded font-semibold text-white text-base transition-colors hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed"
+          style="background-color:#de5b00;"
+        >
+          Download book
+        </button>
+        <p class="text-xs text-center" style="color:var(--color-muted-foreground);">
+          Your email is only used for ministry resource updates.
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <script is:inline>
+    (function () {
+      const STORAGE_KEY = "jo_equip_email_v1";
+      const SUBSCRIBE_ENDPOINT = "/api/subscribe";
+      const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+      const gate = document.getElementById("email-gate");
+      const form = document.getElementById("email-gate-form");
+      const bookLabel = document.getElementById("email-gate-book");
+      const errorEl = document.getElementById("email-gate-error");
+      const input = document.getElementById("email-gate-input");
+      const submitBtn = document.getElementById("email-gate-submit");
+      if (!gate || !form || !bookLabel || !input || !submitBtn) return;
+
+      // In-memory fallback for environments where localStorage throws (private browsing, strict policies).
+      let memoryEmail = null;
+      let pendingPdf = null;
+      let pendingTitle = null;
+      let pendingId = null;
+      let lastFocusedEl = null;
+      let isSubmitting = false;
+
+      function safeGet() {
+        try { return localStorage.getItem(STORAGE_KEY) || memoryEmail; }
+        catch (_e) { return memoryEmail; }
+      }
+      function safeSet(value) {
+        memoryEmail = value;
+        try { localStorage.setItem(STORAGE_KEY, value); } catch (_e) { /* ignore */ }
+      }
+
+      function isValidEmail(value) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+      }
+
+      function triggerDownload(url) {
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "";
+        a.rel = "noopener";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      }
+
+      function showError(show) {
+        if (!errorEl) return;
+        if (show) {
+          errorEl.classList.remove("hidden");
+          input.setAttribute("aria-invalid", "true");
+        } else {
+          errorEl.classList.add("hidden");
+          input.removeAttribute("aria-invalid");
+        }
+      }
+
+      function openGate(url, title, id, triggerEl) {
+        pendingPdf = url;
+        pendingTitle = title;
+        pendingId = id;
+        lastFocusedEl = triggerEl || document.activeElement;
+        bookLabel.textContent = title || "this book";
+        showError(false);
+        isSubmitting = false;
+        submitBtn.disabled = false;
+        input.value = "";
+        gate.classList.remove("hidden");
+        gate.classList.add("flex");
+        document.body.style.overflow = "hidden";
+        // Move focus into the dialog after it becomes visible.
+        setTimeout(function () { input.focus(); }, 50);
+      }
+
+      function closeGate() {
+        gate.classList.add("hidden");
+        gate.classList.remove("flex");
+        document.body.style.overflow = "";
+        // Restore focus to the element that opened the dialog.
+        if (lastFocusedEl && typeof lastFocusedEl.focus === "function") {
+          try { lastFocusedEl.focus(); } catch (_e) { /* ignore */ }
+        }
+        lastFocusedEl = null;
+      }
+
+      function submitEmail(email) {
+        try {
+          fetch(SUBSCRIBE_ENDPOINT, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              email: email,
+              source: "jo-equip-books",
+              book_id: pendingId,
+              book_title: pendingTitle,
+            }),
+            keepalive: true,
+          }).catch(function () { /* fire-and-forget */ });
+        } catch (_e) { /* ignore */ }
+      }
+
+      function trapFocus(e) {
+        if (gate.classList.contains("hidden")) return;
+        if (e.key !== "Tab") return;
+        const nodes = gate.querySelectorAll(FOCUSABLE);
+        if (!nodes.length) return;
+        const first = nodes[0];
+        const last = nodes[nodes.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+
+      document.querySelectorAll(".book-download-btn").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          const url = btn.getAttribute("data-pdf");
+          const title = btn.getAttribute("data-title");
+          const id = btn.getAttribute("data-id");
+          if (!url) return;
+          const stored = safeGet();
+          if (stored && isValidEmail(stored)) {
+            triggerDownload(url);
+          } else {
+            openGate(url, title, id, btn);
+          }
+        });
+      });
+
+      // Deep-link: /books?download=<book-id> auto-scrolls to the matching card
+      // and triggers its download flow (gate or direct download per stored email).
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const wanted = params.get("download");
+        if (wanted) {
+          const card = document.getElementById(wanted);
+          const targetBtn = card ? card.querySelector(".book-download-btn") : null;
+          if (card) {
+            try { card.scrollIntoView({ behavior: "smooth", block: "center" }); } catch (_e) { /* ignore */ }
+          }
+          if (targetBtn) {
+            // Defer so any pending paint / smooth-scroll begins before the modal opens.
+            setTimeout(function () { targetBtn.click(); }, 250);
+          }
+        }
+      } catch (_e) { /* ignore */ }
+
+      gate.querySelectorAll("[data-gate-close]").forEach(function (el) {
+        el.addEventListener("click", closeGate);
+      });
+
+      document.addEventListener("keydown", function (e) {
+        if (gate.classList.contains("hidden")) return;
+        if (e.key === "Escape") { closeGate(); return; }
+        trapFocus(e);
+      });
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (isSubmitting) return;
+        const email = (input.value || "").trim();
+        if (!isValidEmail(email)) {
+          showError(true);
+          input.focus();
+          return;
+        }
+        isSubmitting = true;
+        submitBtn.disabled = true;
+        safeSet(email);
+        submitEmail(email);
+        const url = pendingPdf;
+        closeGate();
+        if (url) {
+          setTimeout(function () { triggerDownload(url); }, 100);
+        }
+      });
+    })();
+  </script>
 </Layout>

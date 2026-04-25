@@ -41,7 +41,7 @@ function btnClass(enabled: boolean) {
 
       <div class="text-xs uppercase tracking-widest font-semibold mb-2" style="color:rgba(255,255,255,0.7);">{channel.name}</div>
       <h1 class="text-3xl md:text-5xl mb-2" style="color:#ffffff;font-weight:500;">{sub.name}</h1>
-      <p class="text-sm md:text-base" style="color:rgba(255,255,255,0.8);">Each question links to a PDF, video, or the JO App.</p>
+      <p class="text-sm md:text-base" style="color:rgba(255,255,255,0.8);">PDFs, videos, and JO App resources are linked where available.</p>
     </div>
   </div>
 
@@ -58,17 +58,19 @@ function btnClass(enabled: boolean) {
         </div>
         <ol class="space-y-2">
           {sub.items!.map(item => {
-            // Resolve PDF link: internal book on /books, or external override.
-            const pdfHref = sub.bookId
-              ? join(`/books?download=${encodeURIComponent(sub.bookId)}#${encodeURIComponent(sub.bookId)}`)
+            // PDF: enabled only when this specific item has a matching book in our library
+            // (or an explicit external `links.pdf` override).
+            const pdfHref = item.bookId
+              ? join(`/books?download=${encodeURIComponent(item.bookId)}#${encodeURIComponent(item.bookId)}`)
               : item.links?.pdf;
-            const pdfInternal = !!sub.bookId;
+            const pdfInternal = !!item.bookId;
 
-            // Resolve Video link: internal playlist deep-link, or external override.
-            const videoHref = sub.playlistId
-              ? join(`/playlist/${encodeURIComponent(sub.playlistId)}${item.videoId ? `?play=${encodeURIComponent(item.videoId)}` : ""}`)
+            // Video: enabled only when this item has a matching video inside the sub-topic's playlist
+            // (or an explicit external `links.video` override). No fallback to the playlist index.
+            const videoHref = item.videoId && sub.playlistId
+              ? join(`/playlist/${encodeURIComponent(sub.playlistId)}?play=${encodeURIComponent(item.videoId)}`)
               : item.links?.video;
-            const videoInternal = !!sub.playlistId;
+            const videoInternal = !!(item.videoId && sub.playlistId);
 
             const appHref = item.links?.app;
 

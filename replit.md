@@ -43,10 +43,17 @@ Brand: #002f55 navy, #0083de blue, #de5b00 orange. No DB / auth / per-user serve
 - TODO: Add Cloudflare Pages Function at `functions/api/subscribe.js` to forward emails to Virtuous CRM (user is mid-transition from Mailchimp → Virtuous; needs API key + list/segment ID).
 
 ### Channel sub-topic cross-links (`src/pages/channels/[channelId]/[subId].astro`)
-- A sub-topic in `src/data/channels.ts` can declare `bookId` (matches an `id` in `src/data/books.ts`) and/or `playlistId` (matches an `id` in `src/data/playlists.ts`). When set, every item's PDF / Video button is enabled and routes to internal pages instead of external URLs.
-- An item can also declare `videoId` (matches a `videoId` inside the sub-topic's `playlistId`). When present, the Video button deep-links to that specific video.
+- Per-item linking. Each `SubTopicItem` in `src/data/channels.ts` independently declares which resources exist for that specific question:
+  - `bookId?: string` → matches an `id` in `src/data/books.ts`. Enables the PDF button on this item only.
+  - `videoId?: string` → matches a `videoId` inside the sub-topic's `playlistId`. Enables the Video button on this item only.
+  - `links?.app` → enables the App button.
+  - Buttons without a corresponding ID stay grayed out (with a "coming soon" tooltip).
+- `SubTopic.playlistId` is required for any `item.videoId` to resolve (it tells us which playlist to deep-link into) but does not by itself enable any buttons.
 - Internal links omit `target="_blank"`; external links (App, external `links` overrides) keep `target="_blank" rel="noopener noreferrer"`.
 - Deep-link contracts:
   - `/books?download=<bookId>` — auto-scrolls to the book card with `id={bookId}` and triggers its existing email-gate-then-download flow (gate is NOT bypassed).
   - `/playlist/<playlistId>?play=<videoId>` — auto-scrolls to `<li id="video-<videoId>">` and replaces the YouTube facade with an autoplay iframe.
-- Currently mapped: `jesus-true-identity` → book `who-is-the-real-jesus` + playlist `who-is-the-real-jesus`; `existence-of-god` → book `has-science-discovered-god` + playlist `science-and-the-origin-of-life`. `reliability-of-the-bible` is intentionally unmapped (no matching book/playlist yet) — its PDF/Video buttons stay grayed out.
+- Current per-item mappings (Evidence channel):
+  - `jesus-true-identity` (playlistId: who-is-the-real-jesus): item #1 has bookId `who-is-the-real-jesus` + videoId; items #2, #3, #7, #8 have videoId only; items #4, #5, #6, #9, #10, #11 have App only.
+  - `existence-of-god` (playlistId: science-and-the-origin-of-life): item #1 has videoId only; items #2–#7 have nothing yet (no app links set either).
+  - `reliability-of-the-bible`: no playlist or book mappings yet.

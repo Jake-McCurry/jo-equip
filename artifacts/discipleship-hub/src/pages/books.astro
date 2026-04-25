@@ -25,7 +25,7 @@ const join = (p: string) =>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
       {books.map(book => (
-        <article class="border rounded-lg bg-white overflow-hidden flex flex-col transition-shadow hover:shadow-md" style="border-color:var(--color-border);">
+        <article id={book.id} class="border rounded-lg bg-white overflow-hidden flex flex-col transition-shadow hover:shadow-md scroll-mt-24" style="border-color:var(--color-border);">
           <div class="p-5 pb-4 flex items-center justify-center bg-white" style="min-height:18rem;">
             <img
               src={join(book.cover)}
@@ -240,6 +240,24 @@ const join = (p: string) =>
           }
         });
       });
+
+      // Deep-link: /books?download=<book-id> auto-scrolls to the matching card
+      // and triggers its download flow (gate or direct download per stored email).
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const wanted = params.get("download");
+        if (wanted) {
+          const card = document.getElementById(wanted);
+          const targetBtn = card ? card.querySelector(".book-download-btn") : null;
+          if (card) {
+            try { card.scrollIntoView({ behavior: "smooth", block: "center" }); } catch (_e) { /* ignore */ }
+          }
+          if (targetBtn) {
+            // Defer so any pending paint / smooth-scroll begins before the modal opens.
+            setTimeout(function () { targetBtn.click(); }, 250);
+          }
+        }
+      } catch (_e) { /* ignore */ }
 
       gate.querySelectorAll("[data-gate-close]").forEach(function (el) {
         el.addEventListener("click", closeGate);

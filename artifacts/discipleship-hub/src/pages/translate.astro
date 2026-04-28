@@ -1,8 +1,18 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { Languages, Globe, Chrome, Smartphone, ExternalLink } from "lucide-react";
+import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 ---
-<Layout title="Translate · JO EQUIP">
+<Layout
+  title="Translate · JO EQUIP"
+  description="Read JO EQUIP in your heart language. Step-by-step instructions for translating the site with Google Translate on Chrome, Safari, Android, and any browser."
+>
+  <Fragment slot="head">
+    <BreadcrumbsLd items={[
+      { name: "Home", url: "/" },
+      { name: "Translate", url: "/translate" },
+    ]} />
+  </Fragment>
   <div class="container mx-auto px-4 py-12 md:py-16 max-w-4xl">
     <div class="mb-10">
       <div class="flex items-center gap-3 mb-3">

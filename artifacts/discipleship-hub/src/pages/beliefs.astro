@@ -1,6 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { BookOpen, ExternalLink, ArrowRight } from "lucide-react";
+import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 
 const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
@@ -59,6 +60,13 @@ const groups = [
   title="What We Believe · JO EQUIP"
   description="The Bible is the sole basis of our beliefs. JesusOnline Ministries has adopted the Statement of Faith used by Cru (Campus Crusade for Christ, Int'l)."
 >
+  <Fragment slot="head">
+    <BreadcrumbsLd items={[
+      { name: "Home", url: "/" },
+      { name: "More", url: "/more" },
+      { name: "What We Believe", url: "/beliefs" },
+    ]} />
+  </Fragment>
   <section class="bg-white">
     <div class="container mx-auto px-4 py-14 md:py-20 max-w-4xl">
       <div class="text-xs font-semibold tracking-widest uppercase mb-3" style="color:#0083de;">Statement of Faith</div>

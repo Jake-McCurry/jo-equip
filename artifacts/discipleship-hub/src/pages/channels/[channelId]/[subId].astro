@@ -2,6 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import { subTopics, getChannel, getSubTopic, getNextSubTopic } from "@/data/channels";
 import { FileText, Video, Smartphone, ArrowLeft, ArrowRight, ChevronRight } from "lucide-react";
+import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 
 const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
@@ -26,6 +27,14 @@ function btnClass(enabled: boolean) {
 }
 ---
 <Layout title={`${sub.name} · ${channel.shortName} · JO EQUIP`} description={`${sub.name} — ${channel.tagline}`}>
+  <Fragment slot="head">
+    <BreadcrumbsLd items={[
+      { name: "Home", url: "/" },
+      { name: "Channels", url: "/channels" },
+      { name: channel.shortName, url: `/channels/${channel.id}` },
+      { name: sub.name, url: `/channels/${channel.id}/${sub.id}` },
+    ]} />
+  </Fragment>
   {/* Hero */}
   <div class="relative overflow-hidden" style={`background:${channel.gradient};`}>
     <div class="absolute inset-0 pointer-events-none" style="background-image:repeating-linear-gradient(45deg, rgba(255,255,255,0.05) 0, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 18px);"></div>

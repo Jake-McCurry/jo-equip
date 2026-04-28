@@ -2,6 +2,7 @@
 import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
+import pagefind from "astro-pagefind";
 import tailwindcss from "@tailwindcss/vite";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -22,7 +23,7 @@ export default defineConfig({
   base,
   trailingSlash: "ignore",
   output: "static",
-  integrations: [react(), sitemap()],
+  integrations: [react(), sitemap(), pagefind()],
   vite: {
     plugins: [tailwindcss()],
     resolve: {

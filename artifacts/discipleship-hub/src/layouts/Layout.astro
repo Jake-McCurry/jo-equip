@@ -3,6 +3,7 @@ import "@/styles/global.css";
 import logo from "@/assets/jol-logo-white.png";
 import OpenBookMark from "@/components/OpenBookMark.astro";
 import MobileMenu from "@/components/MobileMenu.tsx";
+import { Search as SearchIcon } from "lucide-react";
 
 interface Props {
   title?: string;
@@ -146,10 +147,28 @@ const gtmEnabled = import.meta.env.PROD;
               )}
             </a>
           ))}
+          <a
+            href={join("/search")}
+            class="ml-2 inline-flex items-center justify-center w-9 h-9 rounded transition-colors hover:bg-white/10"
+            style="color:rgba(255,255,255,0.85);"
+            aria-label="Search the library"
+            title="Search"
+          >
+            <SearchIcon className="w-4 h-4" />
+          </a>
         </nav>
 
-        {/* Mobile menu (React island — only this ships JS) */}
-        <div class="lg:hidden">
+        {/* Mobile: search icon + menu */}
+        <div class="lg:hidden flex items-center gap-1">
+          <a
+            href={join("/search")}
+            class="inline-flex items-center justify-center w-10 h-10 rounded transition-colors hover:bg-white/10"
+            style="color:rgba(255,255,255,0.85);"
+            aria-label="Search the library"
+            title="Search"
+          >
+            <SearchIcon className="w-5 h-5" />
+          </a>
           <MobileMenu navLinks={navLinksWithActive} baseUrl={baseUrl} client:load />
         </div>
       </div>

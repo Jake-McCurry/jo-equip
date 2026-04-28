@@ -3,12 +3,22 @@ import Layout from "@/layouts/Layout.astro";
 import ChannelArt from "@/components/ChannelArt.astro";
 import { channels, getSubTopicsByChannel } from "@/data/channels";
 import { ArrowRight } from "lucide-react";
+import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 
 const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
   (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
 ---
-<Layout title="Channels · JO EQUIP">
+<Layout
+  title="Channels · JO EQUIP"
+  description="Browse three free resource channels from JesusOnline Ministries: Evidence (apologetics), Growth (discipleship), and Church (evangelism, discipleship-making, and church planting)."
+>
+  <Fragment slot="head">
+    <BreadcrumbsLd items={[
+      { name: "Home", url: "/" },
+      { name: "Channels", url: "/channels" },
+    ]} />
+  </Fragment>
   <div class="container mx-auto px-4 py-12 md:py-16">
     <div class="max-w-3xl mb-12">
       <div class="text-xs font-semibold tracking-widest uppercase mb-3" style="color:#0083de;">Resource Channels</div>

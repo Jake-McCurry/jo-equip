@@ -1,6 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { Users2, BookOpen, Mail, FileText, ExternalLink, ArrowRight } from "lucide-react";
+import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 
 const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
@@ -56,7 +57,16 @@ const SECTIONS: Section[] = [
   },
 ];
 ---
-<Layout title="About and More · JO EQUIP">
+<Layout
+  title="About and More · JO EQUIP"
+  description="About JesusOnline Ministries, our Statement of Faith, the JO Mobile App, privacy policy, and how to contact us."
+>
+  <Fragment slot="head">
+    <BreadcrumbsLd items={[
+      { name: "Home", url: "/" },
+      { name: "More", url: "/more" },
+    ]} />
+  </Fragment>
   <div class="container mx-auto px-4 py-12 md:py-16">
     <div class="max-w-3xl mb-12">
       <div class="text-xs font-semibold tracking-widest uppercase mb-3" style="color:#0083de;">More</div>

@@ -2,6 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import { ListVideo, ChevronLeft, Play } from "lucide-react";
 import { playlists } from "@/data/playlists";
+import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 
 export function getStaticPaths() {
   return playlists.map(p => ({ params: { id: p.id }, props: { playlist: p } }));
@@ -14,8 +15,16 @@ const join = (p: string) =>
 
 const count = playlist.videos.length;
 const pageTitle = `${playlist.title} · JO EQUIP`;
+const pageDesc = `Watch the "${playlist.title}" video series on JO EQUIP — ${count} ${count === 1 ? "video" : "videos"} from JesusOnline Ministries to help you grow in faith and disciple others.`;
 ---
-<Layout title={pageTitle}>
+<Layout title={pageTitle} description={pageDesc}>
+  <Fragment slot="head">
+    <BreadcrumbsLd items={[
+      { name: "Home", url: "/" },
+      { name: "Playlists", url: "/playlists" },
+      { name: playlist.title, url: `/playlist/${playlist.id}` },
+    ]} />
+  </Fragment>
   <div class="container mx-auto px-4 py-8 md:py-12">
 
     <a

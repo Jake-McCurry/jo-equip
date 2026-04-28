@@ -1,6 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { Globe, Target, Megaphone, ArrowRight, ExternalLink } from "lucide-react";
+import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 
 const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
@@ -25,6 +26,13 @@ const milestones = [
   title="About · JO EQUIP"
   description="JesusOnline Ministries uses the internet to help people worldwide discover Jesus, follow Him, and share Him with others."
 >
+  <Fragment slot="head">
+    <BreadcrumbsLd items={[
+      { name: "Home", url: "/" },
+      { name: "More", url: "/more" },
+      { name: "About", url: "/about" },
+    ]} />
+  </Fragment>
   <section class="bg-white">
     <div class="container mx-auto px-4 py-14 md:py-20 max-w-4xl">
       <div class="text-xs font-semibold tracking-widest uppercase mb-3" style="color:#0083de;">About</div>

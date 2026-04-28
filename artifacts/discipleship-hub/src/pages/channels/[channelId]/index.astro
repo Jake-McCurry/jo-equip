@@ -3,6 +3,7 @@ import Layout from "@/layouts/Layout.astro";
 import ChannelArt from "@/components/ChannelArt.astro";
 import { channels, getChannel, getSubTopicsByChannel } from "@/data/channels";
 import { ArrowRight, Book, ListVideo, Smartphone, MenuSquare } from "lucide-react";
+import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 
 const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
@@ -25,6 +26,13 @@ const FORMAT_META: Record<string, { label: string; icon: any }> = {
 };
 ---
 <Layout title={`${channel.name} · JO EQUIP`} description={channel.description}>
+  <Fragment slot="head">
+    <BreadcrumbsLd items={[
+      { name: "Home", url: "/" },
+      { name: "Channels", url: "/channels" },
+      { name: channel.shortName, url: `/channels/${channel.id}` },
+    ]} />
+  </Fragment>
   {/* Channel hero */}
   <div class="relative overflow-hidden" style={`background:${channel.gradient};`}>
     <div class="absolute inset-0 opacity-30">

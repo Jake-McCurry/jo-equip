@@ -53,8 +53,10 @@ const canonicalPath = currentPath === "/" ? "/" : currentPath.replace(/\/$/, "")
 const canonicalUrl = SITE + canonicalPath;
 const absoluteImage = SITE + image;
 
-// GTM container — gated on PUBLIC_GTM_ID env var so it stays inert until configured.
-const gtmId = import.meta.env.PUBLIC_GTM_ID as string | undefined;
+// GTM container ID — public identifier, safe to commit.
+// Gated on PROD so dev/preview builds don't pollute analytics.
+const GTM_ID = "GTM-PKJQNCS";
+const gtmEnabled = import.meta.env.PROD;
 ---
 <!doctype html>
 <html lang="en">
@@ -90,9 +92,9 @@ const gtmId = import.meta.env.PUBLIC_GTM_ID as string | undefined;
     {/* Per-page additions (e.g. JSON-LD) */}
     <slot name="head" />
 
-    {/* Google Tag Manager — only renders when PUBLIC_GTM_ID is set at build time. */}
-    {gtmId && (
-      <script is:inline set:html={`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${gtmId}');`} />
+    {/* Google Tag Manager — production-only so dev builds don't pollute analytics. */}
+    {gtmEnabled && (
+      <script is:inline set:html={`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${GTM_ID}');`} />
     )}
   </head>
   <body class="min-h-[100dvh] flex flex-col">
@@ -101,8 +103,8 @@ const gtmId = import.meta.env.PUBLIC_GTM_ID as string | undefined;
     <a href="#main-content" class="skip-to-content">Skip to main content</a>
 
     {/* GTM noscript fallback */}
-    {gtmId && (
-      <noscript set:html={`<iframe src="https://www.googletagmanager.com/ns.html?id=${gtmId}" height="0" width="0" style="display:none;visibility:hidden"></iframe>`} />
+    {gtmEnabled && (
+      <noscript set:html={`<iframe src="https://www.googletagmanager.com/ns.html?id=${GTM_ID}" height="0" width="0" style="display:none;visibility:hidden"></iframe>`} />
     )}
 
     {/* Header */}

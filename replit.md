@@ -53,7 +53,7 @@ Brand: #002f55 navy, #0083de blue, #de5b00 orange. No DB / auth / per-user serve
   - default headers: `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`, `X-Frame-Options: SAMEORIGIN`
 - **SEO tags** (in Layout.astro): canonical URL hardcoded to `https://equip.jesusonline.com` + base-stripped path (so dev hosts don't pollute canonicals); full Open Graph (url/site_name/locale/image+alt+dims); Twitter `summary_large_image`. Per-page `<slot name="head"/>` for JSON-LD.
 - **JSON-LD**: home page (index.astro) injects an Organization + WebSite graph via the head slot.
-- **Tracking**: GTM snippet in Layout.astro is gated on `PUBLIC_GTM_ID` env var (set at build time on Cloudflare). When unset, no script renders. Per-book download tracking will be done in GTM via the unique PDF URLs (no backend tracking endpoint).
+- **Tracking**: GTM container `GTM-PKJQNCS` hardcoded in Layout.astro and gated on `import.meta.env.PROD` so dev/preview builds don't pollute analytics. Per-book download tracking is done in GTM via the unique PDF URLs (no backend tracking endpoint).
 - **Accessibility**:
   - Skip-to-main-content link (visually hidden until focused) at top of every page; `<main id="main-content">`.
   - `aria-current="page"` on the active nav link in both desktop nav and mobile menu.

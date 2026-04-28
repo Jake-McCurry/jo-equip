@@ -40,17 +40,19 @@ export interface Channel {
   gradient: string;
 }
 
-/* Display order: Evidence, Growth, Church */
+/* Display order: Evidence, Growth, Church
+ * Channel palette (palette B — softer pastoral feel; reserves orange #de5b00 for links).
+ * Evidence = Slate Blue, Growth = Sage, Church = Plum. */
 export const channels: Channel[] = [
   {
     id: "evidence",
     name: "Evidence Resources",
     shortName: "Evidence",
-    tagline: "Convince doubters with the truth about Jesus, God, and the Bible",
+    tagline: "Reach skeptics with evidence about Jesus",
     description:
-      "Persuade doubters with clear, compelling truths about the true identity of Christ, the existence of God, and the reliability of the Bible.",
-    accentColor: "#de5b00",
-    gradient: "linear-gradient(135deg, #f59e4a 0%, #de5b00 60%, #9f4100 100%)",
+      "Persuade doubters with clear, compelling facts about the true identity of Christ, the existence of God, and the reliability of the Bible.",
+    accentColor: "#3b5a99",
+    gradient: "linear-gradient(135deg, #6e8ac1 0%, #3b5a99 60%, #243a66 100%)",
   },
   {
     id: "growth",
@@ -59,8 +61,8 @@ export const channels: Channel[] = [
     tagline: "Build believers into mature, fruitful disciples",
     description:
       "Disciple believers to become all that God created them to be, so they may do all that He has created them to do.",
-    accentColor: "#00855c",
-    gradient: "linear-gradient(135deg, #2dbf85 0%, #00855c 55%, #004d36 100%)",
+    accentColor: "#4c8a4c",
+    gradient: "linear-gradient(135deg, #7ab87a 0%, #4c8a4c 55%, #2d5a2d 100%)",
   },
   {
     id: "church",
@@ -69,8 +71,8 @@ export const channels: Channel[] = [
     tagline: "Multiply disciples and plant vibrant churches",
     description:
       "Develop fruitful, prayer-fueled, Spirit-led ministries that multiply disciples and plant churches, all in obedience to Christ and His inspired Word.",
-    accentColor: "#5b3a8a",
-    gradient: "linear-gradient(135deg, #8b65b8 0%, #5b3a8a 55%, #361f5c 100%)",
+    accentColor: "#7a3a8a",
+    gradient: "linear-gradient(135deg, #a675b8 0%, #7a3a8a 55%, #4d2058 100%)",
   },
 ];
 

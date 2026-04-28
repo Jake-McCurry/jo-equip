@@ -1,6 +1,6 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import { Users2, BookOpen, Mail, FileText, ExternalLink, ArrowRight } from "lucide-react";
+import { Users2, BookOpen, Mail, FileText, ExternalLink, ArrowRight, Send } from "lucide-react";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 
 const baseUrl = import.meta.env.BASE_URL;
@@ -32,11 +32,18 @@ const SECTIONS: Section[] = [
     accent: "#002f55",
   },
   {
+    title: "Newsletter",
+    icon: Send,
+    description: "Subscribe to the Make and Multiply Disciples newsletter for updates and new resources.",
+    href: "/newsletter",
+    accent: "#0083de",
+  },
+  {
     title: "JO Mobile App",
     icon: ExternalLink,
     description: "Get the JesusOnline app: Growing in Christ, anywhere, anytime.",
     href: "https://app.jesusonline.com",
-    accent: "#00855c",
+    accent: "#4c8a4c",
     external: true,
   },
   {
@@ -50,8 +57,8 @@ const SECTIONS: Section[] = [
   {
     title: "Contact",
     icon: Mail,
-    description: "Send a comment or question to the JesusOnline team.",
-    href: "https://jesusonline.com/send-comment/",
+    description: "Email us directly at equip@jesusonline.com with comments or questions.",
+    href: "mailto:equip@jesusonline.com",
     accent: "#de5b00",
     external: true,
   },

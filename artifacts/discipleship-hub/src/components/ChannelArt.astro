@@ -1,106 +1,42 @@
 ---
+import { Image } from "astro:assets";
 import type { ChannelId } from "@/data/channels";
+import churchImg from "@/assets/channels/church.jpg";
+import evidenceImg from "@/assets/channels/evidence.jpg";
+import growthImg from "@/assets/channels/growth.jpg";
+
 interface Props {
   channel: ChannelId;
   class?: string;
 }
 const { channel, class: className = "" } = Astro.props;
-const accent =
-  channel === "church" ? "#5b3a8a" :
-  channel === "growth" ? "#00855c" :
-  "#de5b00";
+
+const imgMap = {
+  church: churchImg,
+  growth: growthImg,
+  evidence: evidenceImg,
+};
+
+/* Duotone effect:
+ * The parent card sets `background: channel.gradient` (palette B).
+ * We render the photo on top, grayscaled and brightened, then
+ * mix-blend-mode:multiply blends it INTO the colored gradient — the photo's
+ * darker areas darken the gradient while lighter areas let the channel
+ * color come through, producing a duotone "tinted photo" look. */
 ---
-<div class={className}>
-  {channel === "church" && (
-    <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" class="w-full h-full" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      <defs>
-        <linearGradient id="church-sky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#ffffff" stop-opacity="0.18" />
-          <stop offset="1" stop-color="#ffffff" stop-opacity="0" />
-        </linearGradient>
-      </defs>
-      <circle cx="250" cy="55" r="40" fill="#ffffff" opacity="0.12" />
-      <circle cx="250" cy="55" r="22" fill="#ffffff" opacity="0.18" />
-      <path d="M0,150 Q60,120 120,140 T240,135 T320,145 L320,200 L0,200 Z" fill="rgba(255,255,255,0.08)" />
-      <path d="M0,165 Q80,140 160,158 T320,160 L320,200 L0,200 Z" fill="rgba(255,255,255,0.12)" />
-      <g transform="translate(110,50)">
-        <rect x="42" y="30" width="16" height="40" fill="#ffffff" opacity="0.95" />
-        <polygon points="50,0 36,30 64,30" fill="#ffffff" opacity="0.95" />
-        <rect x="48.5" y="-12" width="3" height="14" fill="#ffffff" />
-        <rect x="44" y="-7" width="12" height="3" fill="#ffffff" />
-        <rect x="10" y="70" width="80" height="60" fill="#ffffff" opacity="0.95" />
-        <path d={`M44 130 L44 108 Q50 100 56 108 L56 130 Z`} fill={accent} />
-        <path d="M22 100 L22 90 Q26 84 30 90 L30 100 Z" fill={accent} opacity="0.7" />
-        <path d="M70 100 L70 90 Q74 84 78 90 L78 100 Z" fill={accent} opacity="0.7" />
-        <rect x="-5" y="90" width="20" height="40" fill="#ffffff" opacity="0.85" />
-        <path d="M0 110 L0 102 Q3 98 7 102 L7 110 Z" fill={accent} opacity="0.6" />
-        <rect x="85" y="90" width="20" height="40" fill="#ffffff" opacity="0.85" />
-        <path d="M93 110 L93 102 Q96 98 100 102 L100 110 Z" fill={accent} opacity="0.6" />
-      </g>
-      <rect x="0" y="180" width="320" height="20" fill="rgba(0,0,0,0.15)" />
-      <rect x="0" y="180" width="320" height="200" fill="url(#church-sky)" />
-    </svg>
-  )}
-
-  {channel === "growth" && (
-    <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" class="w-full h-full" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      <circle cx="60" cy="50" r="28" fill="#ffffff" opacity="0.18" />
-      <circle cx="60" cy="50" r="14" fill="#ffffff" opacity="0.25" />
-      <g opacity="0.4">
-        <path d="M40 175 Q40 160 36 152 M40 175 Q40 162 44 154" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" />
-        <ellipse cx="35" cy="151" rx="6" ry="3" fill="#ffffff" transform="rotate(-30 35 151)" />
-        <ellipse cx="45" cy="153" rx="6" ry="3" fill="#ffffff" transform="rotate(30 45 153)" />
-        <path d="M280 175 Q280 158 274 148 M280 175 Q280 160 286 150" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" />
-        <ellipse cx="273" cy="147" rx="6" ry="3" fill="#ffffff" transform="rotate(-30 273 147)" />
-        <ellipse cx="287" cy="149" rx="6" ry="3" fill="#ffffff" transform="rotate(30 287 149)" />
-      </g>
-      <g transform="translate(160,180)">
-        <path d="M-3 0 L-3 -55 Q-3 -65 0 -68 Q3 -65 3 -55 L3 0 Z" fill="#ffffff" opacity="0.95" />
-        <ellipse cx="-22" cy="-50" rx="20" ry="9" fill="#ffffff" opacity="0.9" transform="rotate(-25 -22 -50)" />
-        <ellipse cx="22" cy="-50" rx="20" ry="9" fill="#ffffff" opacity="0.9" transform="rotate(25 22 -50)" />
-        <ellipse cx="-30" cy="-80" rx="22" ry="10" fill="#ffffff" opacity="0.95" transform="rotate(-20 -30 -80)" />
-        <ellipse cx="30" cy="-80" rx="22" ry="10" fill="#ffffff" opacity="0.95" transform="rotate(20 30 -80)" />
-        <ellipse cx="-18" cy="-110" rx="20" ry="9" fill="#ffffff" transform="rotate(-30 -18 -110)" />
-        <ellipse cx="18" cy="-110" rx="20" ry="9" fill="#ffffff" transform="rotate(30 18 -110)" />
-        <ellipse cx="0" cy="-125" rx="14" ry="8" fill="#ffffff" />
-        <circle cx="-15" cy="-85" r="3.5" fill={accent} />
-        <circle cx="20" cy="-95" r="3.5" fill={accent} />
-        <circle cx="-5" cy="-115" r="3.5" fill={accent} />
-        <circle cx="10" cy="-105" r="3" fill={accent} opacity="0.85" />
-      </g>
-      <ellipse cx="160" cy="190" rx="180" ry="14" fill="rgba(0,0,0,0.18)" />
-    </svg>
-  )}
-
-  {channel === "evidence" && (
-    <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" class="w-full h-full" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      <circle cx="50" cy="40" r="2" fill="#ffffff" opacity="0.5" />
-      <circle cx="280" cy="55" r="2.5" fill="#ffffff" opacity="0.4" />
-      <circle cx="290" cy="160" r="2" fill="#ffffff" opacity="0.4" />
-      <circle cx="35" cy="155" r="2" fill="#ffffff" opacity="0.4" />
-      <g transform="translate(60,70)">
-        <ellipse cx="100" cy="118" rx="100" ry="8" fill="rgba(0,0,0,0.2)" />
-        <path d="M5 20 Q50 8 100 20 L100 110 Q50 100 5 110 Z" fill="#ffffff" opacity="0.95" />
-        <path d="M195 20 Q150 8 100 20 L100 110 Q150 100 195 110 Z" fill="#ffffff" opacity="0.95" />
-        <line x1="100" y1="20" x2="100" y2="110" stroke={accent} stroke-width="1.5" opacity="0.4" />
-        <line x1="20" y1="38" x2="92" y2="33" stroke={accent} stroke-width="1.5" opacity="0.55" />
-        <line x1="20" y1="48" x2="92" y2="44" stroke={accent} stroke-width="1.5" opacity="0.4" />
-        <line x1="20" y1="58" x2="80" y2="55" stroke={accent} stroke-width="1.5" opacity="0.4" />
-        <line x1="20" y1="68" x2="92" y2="66" stroke={accent} stroke-width="1.5" opacity="0.4" />
-        <line x1="20" y1="78" x2="75" y2="76" stroke={accent} stroke-width="1.5" opacity="0.4" />
-        <line x1="108" y1="33" x2="180" y2="38" stroke={accent} stroke-width="1.5" opacity="0.55" />
-        <line x1="108" y1="44" x2="180" y2="48" stroke={accent} stroke-width="1.5" opacity="0.4" />
-        <line x1="108" y1="55" x2="170" y2="58" stroke={accent} stroke-width="1.5" opacity="0.4" />
-        <line x1="108" y1="66" x2="180" y2="68" stroke={accent} stroke-width="1.5" opacity="0.4" />
-        <line x1="108" y1="76" x2="165" y2="78" stroke={accent} stroke-width="1.5" opacity="0.4" />
-      </g>
-      <g transform="translate(190,75)">
-        <line x1="48" y1="48" x2="78" y2="78" stroke="#ffffff" stroke-width="9" stroke-linecap="round" />
-        <line x1="48" y1="48" x2="78" y2="78" stroke={accent} stroke-width="4" stroke-linecap="round" opacity="0.6" />
-        <circle cx="28" cy="28" r="28" fill="rgba(255,255,255,0.25)" stroke="#ffffff" stroke-width="5" />
-        <circle cx="28" cy="28" r="28" fill="none" stroke={accent} stroke-width="2" opacity="0.4" />
-        <ellipse cx="18" cy="18" rx="7" ry="4" fill="#ffffff" opacity="0.6" transform="rotate(-30 18 18)" />
-      </g>
-    </svg>
-  )}
+<div class={`overflow-hidden ${className}`} style="position:absolute;inset:0;" aria-hidden="true">
+  <Image
+    src={imgMap[channel]}
+    alt=""
+    widths={[640, 1024]}
+    sizes="(min-width: 1024px) 33vw, 100vw"
+    loading="lazy"
+    class="w-full h-full object-cover"
+    style="position:absolute;inset:0;filter:grayscale(100%) brightness(1.4) contrast(0.9);mix-blend-mode:multiply;"
+  />
+  {/* Soft top-left highlight for depth */}
+  <div
+    class="pointer-events-none"
+    style="position:absolute;inset:0;background:linear-gradient(135deg, rgba(255,255,255,0.16) 0%, transparent 45%, rgba(0,0,0,0.18) 100%);"
+  ></div>
 </div>

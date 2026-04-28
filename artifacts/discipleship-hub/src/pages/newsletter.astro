@@ -1,0 +1,139 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { Globe, Send, Mail, ArrowRight } from "lucide-react";
+import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
+---
+<Layout
+  title="Newsletter · JO EQUIP"
+  description="Subscribe to the Make and Multiply Disciples newsletter from JesusOnline Ministries — practical discipleship resources delivered to your inbox."
+>
+  <Fragment slot="head">
+    <BreadcrumbsLd items={[
+      { name: "Home", url: "/" },
+      { name: "More", url: "/more" },
+      { name: "Newsletter", url: "/newsletter" },
+    ]} />
+  </Fragment>
+
+  <section class="bg-white">
+    <div class="container mx-auto px-4 py-14 md:py-20 max-w-2xl text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium mb-6" style="background-color:rgba(0,131,222,0.1);color:#0083de;">
+        <Globe className="w-3.5 h-3.5" />
+        Make and Multiply Disciples
+      </div>
+      <h1 class="text-4xl md:text-5xl mb-4" style="color:#002f55;">Newsletter</h1>
+      <div class="h-0.5 w-12 mx-auto mb-6" style="background-color:#de5b00;"></div>
+      <p class="text-lg leading-relaxed mb-2" style="color:#374151;">
+        Get the <strong style="color:#002f55;">Make and Multiply Disciples</strong> newsletter from
+        JesusOnline Ministries — fresh discipleship resources, ministry encouragement, and updates from JO EQUIP, delivered to your inbox.
+      </p>
+      <p class="text-sm mb-10" style="color:var(--color-muted-foreground);">
+        Free. No spam. Unsubscribe anytime.
+      </p>
+
+      {/*
+        PLACEHOLDER FORM. The Mailchimp embed will replace this block once
+        the audience and signup form ID are provisioned. Until then the form
+        does nothing on submit (handled by inline script below) and shows a
+        friendly note pointing people to the contact email.
+      */}
+      <div
+        class="text-xs font-semibold tracking-widest uppercase mb-3 inline-block px-3 py-1 rounded"
+        style="background-color:rgba(222,91,0,0.1);color:#de5b00;"
+      >
+        Coming soon — placeholder form
+      </div>
+
+      <form
+        id="newsletter-form"
+        class="bg-white border rounded p-6 md:p-7 text-left"
+        style="border-color:var(--color-border);border-top:4px solid #0083de;"
+      >
+        <label for="newsletter-name" class="block text-sm font-semibold mb-2" style="color:#002f55;">
+          Your name
+        </label>
+        <input
+          type="text"
+          id="newsletter-name"
+          name="name"
+          autocomplete="name"
+          class="w-full mb-4 px-4 py-2.5 border rounded text-base"
+          style="border-color:var(--color-border);color:#002f55;"
+        />
+
+        <label for="newsletter-email" class="block text-sm font-semibold mb-2" style="color:#002f55;">
+          Email address <span style="color:#de5b00;">*</span>
+        </label>
+        <input
+          type="email"
+          id="newsletter-email"
+          name="email"
+          autocomplete="email"
+          required
+          class="w-full mb-5 px-4 py-2.5 border rounded text-base"
+          style="border-color:var(--color-border);color:#002f55;"
+        />
+
+        <button
+          type="submit"
+          class="w-full inline-flex justify-center items-center gap-2 px-6 py-3 font-semibold rounded transition-colors hover:opacity-90"
+          style="background-color:#0083de;color:#ffffff;"
+        >
+          <Send className="w-4 h-4" />
+          Subscribe
+        </button>
+
+        <p
+          id="newsletter-status"
+          class="mt-4 text-sm hidden"
+          style="color:#002f55;"
+          role="status"
+          aria-live="polite"
+        ></p>
+      </form>
+
+      <div class="mt-10 pt-8 border-t" style="border-color:var(--color-border);">
+        <div class="inline-flex items-center justify-center gap-2 mb-3" style="color:#0083de;">
+          <Mail className="w-4 h-4" />
+          <span class="text-xs font-semibold tracking-widest uppercase">Prefer email?</span>
+        </div>
+        <p class="text-base" style="color:#374151;">
+          Write to <a href="mailto:equip@jesusonline.com" class="font-semibold hover:underline" style="color:#0083de;">equip@jesusonline.com</a>
+          and we'll add you to the list.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* PLACEHOLDER submit handler. Replace with Mailchimp embed/integration when ready.
+      For now: shows a thank-you and points users to the contact email. */}
+  <script is:inline>
+    (function () {
+      var form = document.getElementById("newsletter-form");
+      var status = document.getElementById("newsletter-status");
+      if (!form || !status) return;
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var emailEl = document.getElementById("newsletter-email");
+        if (!emailEl || !("value" in emailEl)) return;
+        var input = emailEl;
+        var email = String(input.value).trim();
+        var valid = "checkValidity" in input ? input.checkValidity() : /.+@.+\..+/.test(email);
+        if (!valid) {
+          status.textContent = "Please enter a valid email address.";
+          status.style.color = "#de5b00";
+          input.setAttribute("aria-invalid", "true");
+          status.classList.remove("hidden");
+          input.focus();
+          return;
+        }
+        input.removeAttribute("aria-invalid");
+        status.textContent =
+          "Thanks! Our newsletter signup is launching soon. In the meantime, please email equip@jesusonline.com and we'll add you to the list.";
+        status.style.color = "#002f55";
+        status.classList.remove("hidden");
+        form.querySelector("button[type='submit']").setAttribute("disabled", "true");
+      });
+    })();
+  </script>
+</Layout>

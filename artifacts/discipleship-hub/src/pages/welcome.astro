@@ -54,7 +54,7 @@ const join = (p: string) =>
           const subs = getSubTopicsByChannel(channel.id);
           return (
             <a href={join(`/channels/${channel.id}`)} class="group flex flex-col bg-white border rounded overflow-hidden hover:shadow-lg transition-all" style="border-color:var(--color-border);">
-              <div class="relative aspect-[16/9] overflow-hidden" style={`background:${channel.gradient};`}>
+              <div class="relative aspect-[64/22] overflow-hidden" style={`background:${channel.gradient};`}>
                 <ChannelArt channel={channel.id} class="absolute inset-0" />
               </div>
               <div class="p-6 flex flex-col flex-grow" style={`border-top:4px solid ${channel.accentColor};`}>

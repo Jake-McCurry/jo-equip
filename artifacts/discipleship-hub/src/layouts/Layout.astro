@@ -7,11 +7,14 @@ import MobileMenu from "@/components/MobileMenu.tsx";
 interface Props {
   title?: string;
   description?: string;
+  /** Override the OG/Twitter image. Path relative to site root, e.g. "/opengraph.jpg" */
+  image?: string;
 }
 
 const {
   title = "JO EQUIP · Ministry Resources Hub",
   description = "A free digital library of practical discipleship tools for pastors and ministry leaders.",
+  image = "/opengraph.jpg",
 } = Astro.props;
 
 const baseUrl = import.meta.env.BASE_URL;
@@ -42,6 +45,16 @@ function isActive(linkPath: string) {
 
 const navLinksWithActive = navLinks.map(l => ({ ...l, active: isActive(l.path) }));
 const year = new Date().getFullYear();
+
+// Canonical URL — always points at the production site, base-prefix-free.
+// This is what we want indexed regardless of dev/preview hosts.
+const SITE = "https://equip.jesusonline.com";
+const canonicalPath = currentPath === "/" ? "/" : currentPath.replace(/\/$/, "");
+const canonicalUrl = SITE + canonicalPath;
+const absoluteImage = SITE + image;
+
+// GTM container — gated on PUBLIC_GTM_ID env var so it stays inert until configured.
+const gtmId = import.meta.env.PUBLIC_GTM_ID as string | undefined;
 ---
 <!doctype html>
 <html lang="en">
@@ -50,15 +63,47 @@ const year = new Date().getFullYear();
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/svg+xml" href={join("/favicon.svg")} />
     <link rel="apple-touch-icon" href={join("/favicon.svg")} />
     <meta name="theme-color" content="#002f55" />
+
+    {/* Open Graph */}
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content={join("/opengraph.jpg")} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content="JO EQUIP · Ministry Resources Hub" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content={absoluteImage} />
+    <meta property="og:image:alt" content="JO EQUIP — Ministry Resources Hub" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    {/* Twitter / X card */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={absoluteImage} />
+    <meta name="twitter:image:alt" content="JO EQUIP — Ministry Resources Hub" />
+
+    {/* Per-page additions (e.g. JSON-LD) */}
+    <slot name="head" />
+
+    {/* Google Tag Manager — only renders when PUBLIC_GTM_ID is set at build time. */}
+    {gtmId && (
+      <script is:inline set:html={`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${gtmId}');`} />
+    )}
   </head>
   <body class="min-h-[100dvh] flex flex-col">
+
+    {/* Skip-to-main-content link for keyboard users (visually hidden until focused). */}
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+
+    {/* GTM noscript fallback */}
+    {gtmId && (
+      <noscript set:html={`<iframe src="https://www.googletagmanager.com/ns.html?id=${gtmId}" height="0" width="0" style="display:none;visibility:hidden"></iframe>`} />
+    )}
 
     {/* Header */}
     <header class="sticky top-0 z-50 w-full" style="background-color:#002f55;border-bottom:1px solid rgba(255,255,255,0.08);">
@@ -85,12 +130,13 @@ const year = new Date().getFullYear();
         </a>
 
         {/* Desktop Nav */}
-        <nav class="hidden lg:flex items-center gap-0.5">
+        <nav class="hidden lg:flex items-center gap-0.5" aria-label="Primary">
           {navLinksWithActive.map(link => (
             <a
               href={join(link.path)}
               class="relative px-3 py-2 text-sm font-medium transition-colors rounded hover:text-white"
               style={`color:${link.active ? "#ffffff" : "rgba(255,255,255,0.65)"};`}
+              aria-current={link.active ? "page" : undefined}
             >
               {link.name}
               {link.active && (
@@ -107,7 +153,7 @@ const year = new Date().getFullYear();
       </div>
     </header>
 
-    <main class="flex-grow">
+    <main id="main-content" class="flex-grow">
       <slot />
     </main>
 
@@ -125,10 +171,10 @@ const year = new Date().getFullYear();
                 JO EQUIP · Ministry Resources Hub
               </span>
             </div>
-            <p class="text-sm leading-relaxed mb-3" style="color:rgba(255,255,255,0.6);">
+            <p class="text-sm leading-relaxed mb-3" style="color:rgba(255,255,255,0.75);">
               A free digital library of practical discipleship tools for pastors and leaders for enhanced ministry impact.
             </p>
-            <p class="text-xs" style="color:rgba(255,255,255,0.4);">
+            <p class="text-xs" style="color:rgba(255,255,255,0.6);">
               equip.jesusonline.com
             </p>
           </div>
@@ -136,26 +182,25 @@ const year = new Date().getFullYear();
           <div class="flex gap-12 text-sm">
             <div class="flex flex-col gap-3">
               <h4 class="font-semibold text-sm" style="color:#ffffff;">Explore</h4>
-              <a href={join("/channels")} class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.6);">Channels</a>
-              <a href={join("/playlists")} class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.6);">Playlists</a>
-              <a href={join("/books")} class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.6);">Books</a>
-              <a href={join("/translate")} class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.6);">Translate</a>
+              <a href={join("/channels")} class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.75);">Channels</a>
+              <a href={join("/playlists")} class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.75);">Playlists</a>
+              <a href={join("/books")} class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.75);">Books</a>
+              <a href={join("/translate")} class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.75);">Translate</a>
             </div>
             <div class="flex flex-col gap-3">
               <h4 class="font-semibold text-sm" style="color:#ffffff;">Organization</h4>
-              <a href="https://jesusonlineministries.org" target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.6);">JesusOnlineMinistries.org</a>
-              <a href={join("/more")} class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.6);">About</a>
-              <a href={join("/more")} class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.6);">Beliefs</a>
-              <a href={join("/more")} class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.6);">Contact</a>
+              <a href="https://jesusonlineministries.org" target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.75);">JesusOnlineMinistries.org</a>
+              <a href={join("/about")} class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.75);">About</a>
+              <a href={join("/beliefs")} class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.75);">Beliefs</a>
+              <a href="https://jesusonline.com/send-comment/" target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.75);">Contact</a>
             </div>
           </div>
         </div>
 
-        <div class="mt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs" style="color:rgba(255,255,255,0.4);">
+        <div class="mt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs" style="color:rgba(255,255,255,0.7);">
           <p>&copy; {year} JesusOnline Ministries. All rights reserved.</p>
           <div class="flex gap-5">
-            <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+            <a href="https://jesusonlineministries.org/privacy-policy/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Privacy Policy</a>
           </div>
         </div>
       </div>

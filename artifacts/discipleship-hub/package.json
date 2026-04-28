@@ -21,5 +21,8 @@
     "react-dom": "catalog:",
     "tailwindcss": "catalog:",
     "typescript": "~5.9.2"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.2"
   }
 }

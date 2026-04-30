@@ -1,22 +1,26 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import { BookOpen, ExternalLink, ArrowRight } from "lucide-react";
+import { BookOpen, ExternalLink, ArrowRight, Crown, Heart, Users, Flame, Church, Globe } from "lucide-react";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 
 const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
   (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
 
-/* Core beliefs grouped into themes for easier reading. */
+/* Core beliefs grouped into themes for easier reading.
+ * Each group renders as a panel card matching The Bible card above (border-left
+ * accent + icon badge + heading + paragraphs). */
 const groups = [
   {
     heading: "God",
+    icon: Crown,
     items: [
       "There is one true God, eternally existing in three persons — Father, Son, and Holy Spirit — each possessing equally all the attributes of Deity and the characteristics of personality.",
     ],
   },
   {
     heading: "Jesus Christ",
+    icon: Heart,
     items: [
       "Jesus Christ is God, the living Word, who became flesh through His miraculous conception by the Holy Spirit and His virgin birth — perfect Deity and true humanity united in one person forever.",
       "He lived a sinless life and voluntarily atoned for the sins of mankind by dying on the cross as our substitute, satisfying divine justice and accomplishing salvation for all who trust in Him alone.",
@@ -27,6 +31,7 @@ const groups = [
   },
   {
     heading: "Mankind & Salvation",
+    icon: Users,
     items: [
       "Man was originally created in the image of God. He sinned by disobeying God; that historic fall brought all mankind under divine condemnation, and human nature is now corrupted and unable to please God apart from regeneration by the Holy Spirit.",
       "The salvation of man is wholly a work of God's free grace — not the work, in whole or in part, of human merit, goodness, or religious ceremony. God justifies and imputes His righteousness to those who put their faith in Christ alone.",
@@ -35,6 +40,7 @@ const groups = [
   },
   {
     heading: "The Holy Spirit",
+    icon: Flame,
     items: [
       "The Holy Spirit has come into the world to reveal and glorify Christ and to apply His saving work — convicting sinners, drawing them to Christ, imparting new life, and continually indwelling and sealing them until the day of redemption.",
       "Every believer is called to live in the power of the indwelling Spirit, walking in obedience and bearing fruit to the glory of God.",
@@ -42,6 +48,7 @@ const groups = [
   },
   {
     heading: "The Church & Eternity",
+    icon: Church,
     items: [
       "God admonishes His people to assemble together regularly for worship, the ordinances, edification through the Scriptures, and mutual encouragement.",
       "At physical death, the believer enters immediately into eternal, conscious fellowship with the Lord, awaiting the resurrection of the body to everlasting glory.",
@@ -50,6 +57,7 @@ const groups = [
   },
   {
     heading: "The Great Commission",
+    icon: Globe,
     items: [
       "The Lord Jesus Christ commanded all believers to proclaim the Gospel throughout the world and to disciple men of every nation. Fulfilling that commission requires that all worldly and personal ambitions be subordinated to a total commitment to Him.",
     ],
@@ -104,26 +112,31 @@ const groups = [
     </div>
   </section>
 
-  <section class="py-14 md:py-20 bg-white border-t" style="border-color:var(--color-border);">
+  <section class="py-14 md:py-20 border-t" style="background-color:#f4f7fb;border-color:var(--color-border);">
     <div class="container mx-auto px-4 max-w-4xl">
       <div class="mb-10">
         <h2 class="text-3xl md:text-4xl" style="color:#002f55;">Core Beliefs</h2>
         <div class="mt-2 h-0.5 w-12" style="background-color:#de5b00;"></div>
       </div>
-      <div class="space-y-8">
-        {groups.map(g => (
-          <div>
-            <h3 class="text-xl mb-3" style="color:#002f55;">{g.heading}</h3>
-            <ul class="space-y-3">
-              {g.items.map(item => (
-                <li class="flex gap-3 text-base leading-relaxed" style="color:#374151;">
-                  <span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full" style="background-color:#de5b00;"></span>
-                  <span>{item}</span>
-                </li>
+      <div class="space-y-6">
+        {groups.map(g => {
+          const Icon = g.icon;
+          return (
+            <div class="bg-white border rounded p-7 md:p-10" style="border-color:var(--color-border);border-left:4px solid #0083de;">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 rounded flex items-center justify-center" style="background-color:rgba(0,131,222,0.1);">
+                  <Icon className="w-5 h-5" style={{ color: "#0083de" }} />
+                </div>
+                <h3 class="text-2xl" style="color:#002f55;">{g.heading}</h3>
+              </div>
+              {g.items.map((item, i) => (
+                <p class={`text-base leading-relaxed${i < g.items.length - 1 ? " mb-4" : ""}`} style="color:#374151;">
+                  {item}
+                </p>
               ))}
-            </ul>
-          </div>
-        ))}
+            </div>
+          );
+        })}
       </div>
 
       <p class="mt-10 text-sm" style="color:var(--color-muted-foreground);">

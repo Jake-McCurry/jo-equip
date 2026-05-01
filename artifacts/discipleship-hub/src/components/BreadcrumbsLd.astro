@@ -1,0 +1,29 @@
+---
+interface Crumb {
+  name: string;
+  url: string;
+}
+
+interface Props {
+  items: Crumb[];
+}
+
+const { items } = Astro.props;
+
+const SITE = "https://equip.jesusonline.com";
+
+const stripTrailing = (s: string) => (s.endsWith("/") && s.length > 1 ? s.slice(0, -1) : s);
+const toAbs = (url: string) => stripTrailing(SITE + (url.startsWith("/") ? url : "/" + url));
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: items.map((item, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: item.name,
+    item: toAbs(item.url),
+  })),
+};
+---
+<script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />

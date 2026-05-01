@@ -1,13 +1,25 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import { Image } from "astro:assets";
 import { Book as BookIcon, Download } from "lucide-react";
 import { books } from "@/data/books";
+import { getBookCover } from "@/data/bookCovers";
+import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 
 const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
   (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
 ---
-<Layout title="Books · JO EQUIP">
+<Layout
+  title="Books · JO EQUIP"
+  description="Free downloadable PDF books on discipleship, evangelism, the evidence for Jesus, prayer, and Christian growth — for pastors, leaders, and growing believers."
+>
+  <Fragment slot="head">
+    <BreadcrumbsLd items={[
+      { name: "Home", url: "/" },
+      { name: "Books", url: "/books" },
+    ]} />
+  </Fragment>
   <div class="container mx-auto px-4 py-12 md:py-16">
     <div class="max-w-3xl mb-12">
       <div class="flex items-center gap-3 mb-3">
@@ -24,15 +36,23 @@ const join = (p: string) =>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-      {books.map(book => (
+      {books.map(book => {
+        const cover = getBookCover(book.id);
+        return (
         <article id={book.id} class="border rounded-lg bg-white overflow-hidden flex flex-col transition-shadow hover:shadow-md scroll-mt-24" style="border-color:var(--color-border);">
           <div class="p-5 pb-4 flex items-center justify-center bg-white" style="min-height:18rem;">
-            <img
-              src={join(book.cover)}
-              alt={`${book.title} book cover`}
-              loading="lazy"
-              class="w-auto h-auto max-h-72 max-w-full object-contain"
-            />
+            {cover ? (
+              <Image
+                src={cover}
+                alt={`${book.title} book cover`}
+                widths={[240, 480]}
+                sizes="(min-width: 1024px) 320px, (min-width: 640px) 45vw, 90vw"
+                loading="lazy"
+                class="w-auto h-auto max-h-72 max-w-full object-contain"
+              />
+            ) : (
+              <div class="text-sm" style="color:var(--color-muted-foreground);">No cover available</div>
+            )}
           </div>
           <div class="px-5 pb-5 pt-3 border-t text-center" style="border-color:var(--color-border);">
             <button
@@ -49,7 +69,8 @@ const join = (p: string) =>
             </button>
           </div>
         </article>
-      ))}
+        );
+      })}
     </div>
   </div>
 

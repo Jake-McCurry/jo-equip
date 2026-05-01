@@ -1,20 +1,79 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import { Users2, BookOpen, Mail, FileText, ExternalLink, ArrowRight } from "lucide-react";
+import { Users2, BookOpen, Mail, FileText, ExternalLink, ArrowRight, Send } from "lucide-react";
+import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 
 const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
   (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
 
-const SECTIONS = [
-  { title: "About", icon: Users2, description: "Learn about JesusOnline Ministries and the EQUIP initiative.", href: "#", accent: "#0083de" },
-  { title: "Statement of Faith", icon: BookOpen, description: "Our doctrinal convictions and biblical foundations.", href: "#", accent: "#002f55" },
-  { title: "JO Mobile App", icon: ExternalLink, description: "Get the JesusOnline app: Growing in Christ, anywhere, anytime.", href: "https://app.jesusonline.com", accent: "#00855c", external: true },
-  { title: "Privacy Policy", icon: FileText, description: "How we handle your information.", href: "#", accent: "#0083de" },
-  { title: "Contact", icon: Mail, description: "Reach the EQUIP team for questions or partnership.", href: "#", accent: "#de5b00" },
+interface Section {
+  title: string;
+  icon: any;
+  description: string;
+  href: string;
+  accent: string;
+  external?: boolean;
+}
+
+const SECTIONS: Section[] = [
+  {
+    title: "About",
+    icon: Users2,
+    description: "Learn about JesusOnline Ministries — our mission, vision, strategy, and history.",
+    href: "/about",
+    accent: "#0083de",
+  },
+  {
+    title: "Statement of Faith",
+    icon: BookOpen,
+    description: "Our doctrinal convictions and biblical foundations.",
+    href: "/beliefs",
+    accent: "#002f55",
+  },
+  {
+    title: "Newsletter",
+    icon: Send,
+    description: "Subscribe to the Make and Multiply Disciples newsletter for updates and new resources.",
+    href: "/newsletter",
+    accent: "#0083de",
+  },
+  {
+    title: "JO APP",
+    icon: ExternalLink,
+    description: "Access the JesusOnline web app: Grow in Christ, anywhere, anytime.",
+    href: "https://app.jesusonline.com",
+    accent: "#4c8a4c",
+    external: true,
+  },
+  {
+    title: "Privacy Policy",
+    icon: FileText,
+    description: "How JesusOnline Ministries handles your information.",
+    href: "https://jesusonlineministries.org/privacy-policy/",
+    accent: "#0083de",
+    external: true,
+  },
+  {
+    title: "Contact",
+    icon: Mail,
+    description: "Email us directly at equip@jesusonline.com with comments or questions.",
+    href: "mailto:equip@jesusonline.com",
+    accent: "#de5b00",
+    external: true,
+  },
 ];
 ---
-<Layout title="About and More · JO EQUIP">
+<Layout
+  title="About and More · JO EQUIP"
+  description="About JesusOnline Ministries, our Statement of Faith, the JO APP, privacy policy, and how to contact us."
+>
+  <Fragment slot="head">
+    <BreadcrumbsLd items={[
+      { name: "Home", url: "/" },
+      { name: "More", url: "/more" },
+    ]} />
+  </Fragment>
   <div class="container mx-auto px-4 py-12 md:py-16">
     <div class="max-w-3xl mb-12">
       <div class="text-xs font-semibold tracking-widest uppercase mb-3" style="color:#0083de;">More</div>
@@ -45,7 +104,7 @@ const SECTIONS = [
             </div>
             <p class="text-sm leading-relaxed mb-4" style="color:var(--color-muted-foreground);">{s.description}</p>
             <span class="inline-flex items-center text-sm font-medium" style={`color:${s.accent};`}>
-              Open <ArrowRight className="w-4 h-4 ml-1" />
+              {s.external ? (<>Open <ExternalLink className="w-4 h-4 ml-1" /></>) : (<>Open <ArrowRight className="w-4 h-4 ml-1" /></>)}
             </span>
           </a>
         );

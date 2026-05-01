@@ -3,12 +3,22 @@ import Layout from "@/layouts/Layout.astro";
 import ChannelArt from "@/components/ChannelArt.astro";
 import { channels, getSubTopicsByChannel } from "@/data/channels";
 import { ArrowRight, ChevronRight } from "lucide-react";
+import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 
 const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
   (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
 ---
-<Layout title="Welcome · JO EQUIP">
+<Layout
+  title="Welcome · JO EQUIP"
+  description="Welcome to JO EQUIP — a free digital library of discipleship tools across three channels: Evidence, Growth, and Church Resources."
+>
+  <Fragment slot="head">
+    <BreadcrumbsLd items={[
+      { name: "Home", url: "/" },
+      { name: "Welcome", url: "/welcome" },
+    ]} />
+  </Fragment>
   <section class="bg-white">
     <div class="container mx-auto px-4 py-14 md:py-20 max-w-4xl">
       <div class="text-xs font-semibold tracking-widest uppercase mb-3" style="color:#0083de;">Welcome</div>
@@ -44,7 +54,7 @@ const join = (p: string) =>
           const subs = getSubTopicsByChannel(channel.id);
           return (
             <a href={join(`/channels/${channel.id}`)} class="group flex flex-col bg-white border rounded overflow-hidden hover:shadow-lg transition-all" style="border-color:var(--color-border);">
-              <div class="relative aspect-[16/9] overflow-hidden" style={`background:${channel.gradient};`}>
+              <div class="relative aspect-[64/22] overflow-hidden" style={`background:${channel.gradient};`}>
                 <ChannelArt channel={channel.id} class="absolute inset-0" />
               </div>
               <div class="p-6 flex flex-col flex-grow" style={`border-top:4px solid ${channel.accentColor};`}>

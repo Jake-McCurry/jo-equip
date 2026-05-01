@@ -1,0 +1,66 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Search from "astro-pagefind/components/Search";
+import { Search as SearchIcon } from "lucide-react";
+import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
+---
+<Layout
+  title="Search · JO EQUIP"
+  description="Search the JO EQUIP library — books, playlists, channels, and topics from JesusOnline Ministries."
+>
+  <Fragment slot="head">
+    <BreadcrumbsLd items={[
+      { name: "Home", url: "/" },
+      { name: "Search", url: "/search" },
+    ]} />
+    {/* Pagefind UI default styles. Loaded from the static index generated at build time. */}
+    <link rel="stylesheet" href={import.meta.env.BASE_URL.replace(/\/$/, "") + "/pagefind/pagefind-ui.css"} />
+  </Fragment>
+
+  <div class="container mx-auto px-4 py-12 md:py-16 max-w-3xl">
+    <div class="mb-10">
+      <div class="flex items-center gap-3 mb-3">
+        <div class="w-9 h-9 rounded flex items-center justify-center" style="background-color:rgba(0,131,222,0.1);">
+          <SearchIcon className="w-5 h-5" style={{ color: "#0083de" }} />
+        </div>
+        <span class="text-xs font-semibold tracking-widest uppercase" style="color:#0083de;">Find a Resource</span>
+      </div>
+      <h1 class="text-4xl md:text-5xl mb-4" style="color:#002f55;">Search the library</h1>
+      <div class="h-0.5 w-12 mb-5" style="background-color:#de5b00;"></div>
+      <p class="leading-relaxed text-lg" style="color:var(--color-muted-foreground);">
+        Search across all channels, topics, playlists, and books on JO EQUIP.
+      </p>
+    </div>
+
+    <div class="jo-search bg-white border rounded p-5 md:p-6" style="border-color:var(--color-border);">
+      <Search id="search" className="pagefind-ui" uiOptions={{ showImages: false, resetStyles: false }} />
+      <p class="mt-4 text-xs" style="color:var(--color-muted-foreground);">
+        Tip: search by topic ("evangelism"), book title ("Hearing the Voice of God"), or keyword ("resurrection").
+      </p>
+    </div>
+  </div>
+
+  <style is:global>
+    /* Tone Pagefind UI to the JO EQUIP brand. */
+    .pagefind-ui {
+      --pagefind-ui-primary: #002f55;
+      --pagefind-ui-text: #002f55;
+      --pagefind-ui-background: #ffffff;
+      --pagefind-ui-border: rgba(0, 47, 85, 0.15);
+      --pagefind-ui-tag: #f4f7fb;
+      --pagefind-ui-border-width: 1px;
+      --pagefind-ui-border-radius: 6px;
+      --pagefind-ui-font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    .pagefind-ui .pagefind-ui__search-input {
+      font-size: 1rem;
+    }
+    .pagefind-ui .pagefind-ui__result-link {
+      color: #002f55;
+      font-weight: 600;
+    }
+    .pagefind-ui .pagefind-ui__result-link:hover {
+      color: #0083de;
+    }
+  </style>
+</Layout>

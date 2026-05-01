@@ -1,0 +1,135 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { Globe, Target, Megaphone, ArrowRight, ExternalLink } from "lucide-react";
+import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
+
+const baseUrl = import.meta.env.BASE_URL;
+const join = (p: string) =>
+  (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
+
+const strategy = [
+  { n: "1", text: "We advertise questions people are already asking about Jesus." },
+  { n: "2", text: "They click the ads, which link to compelling articles and videos." },
+  { n: "3", text: "They discover answers that reveal the truth about Jesus." },
+  { n: "4", text: "We follow up with those who respond." },
+];
+
+const milestones = [
+  { year: "2001", text: "Larry Chapman summarized evidence for God's existence and Jesus' deity for a Young Life leader." },
+  { year: "2003", text: "Bill Bright and Larry agreed to co-publish that evidence as single-issue magazines for Campus Crusade for Christ, Int'l." },
+  { year: "2006", text: "The Y-Jesus articles launched online during the release of the Da Vinci Code movie, beginning the internet ministry." },
+  { year: "2020", text: "During the COVID-19 pandemic, JesusOnline reached twice as many people as the prior year." },
+  { year: "2023", text: "Annual decisions for Christ surged from 85,421 in 2019 to over 2 million in 2023." },
+];
+---
+<Layout
+  title="About · JO EQUIP"
+  description="JesusOnline Ministries uses the internet to help people worldwide discover Jesus, follow Him, and share Him with others."
+>
+  <Fragment slot="head">
+    <BreadcrumbsLd items={[
+      { name: "Home", url: "/" },
+      { name: "More", url: "/more" },
+      { name: "About", url: "/about" },
+    ]} />
+  </Fragment>
+  <section class="bg-white">
+    <div class="container mx-auto px-4 py-14 md:py-20 max-w-4xl">
+      <div class="text-xs font-semibold tracking-widest uppercase mb-3" style="color:#0083de;">About</div>
+      <h1 class="text-4xl md:text-5xl mb-4" style="color:#002f55;">About JesusOnline Ministries</h1>
+      <div class="h-0.5 w-12 mb-7" style="background-color:#de5b00;"></div>
+      <p class="text-lg leading-relaxed" style="color:#374151;">
+        JO EQUIP is part of <strong style="color:#002f55;">JesusOnline Ministries</strong> — a global digital
+        outreach using the internet to introduce people to Jesus, disciple them, and equip leaders to do the same.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-14 md:py-20 border-t" style="background-color:#f4f7fb;border-color:var(--color-border);">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <div class="grid md:grid-cols-2 gap-6 mb-10">
+        <div class="bg-white border rounded p-7" style="border-color:var(--color-border);border-top:4px solid #0083de;">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded flex items-center justify-center" style="background-color:rgba(0,131,222,0.1);">
+              <Target className="w-5 h-5" style={{ color: "#0083de" }} />
+            </div>
+            <h2 class="text-xl" style="color:#002f55;">Our Mission</h2>
+          </div>
+          <p class="text-base leading-relaxed" style="color:#374151;">
+            To use the internet to help people worldwide discover who Jesus really is, receive Him as Lord and
+            Savior, follow Him through personal online discipleship, and share Him with others.
+          </p>
+        </div>
+
+        <div class="bg-white border rounded p-7" style="border-color:var(--color-border);border-top:4px solid #de5b00;">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded flex items-center justify-center" style="background-color:rgba(222,91,0,0.1);">
+              <Globe className="w-5 h-5" style={{ color: "#de5b00" }} />
+            </div>
+            <h2 class="text-xl" style="color:#002f55;">Our Vision</h2>
+          </div>
+          <p class="text-base leading-relaxed" style="color:#374151;">
+            To share the evidence-based gospel of Jesus with <strong style="color:#002f55;">1 billion people</strong>
+            by the end of 2030, with <strong style="color:#002f55;">30 million</strong> committing their lives to Christ.
+          </p>
+        </div>
+      </div>
+
+      <div class="bg-white border rounded p-7" style="border-color:var(--color-border);border-top:4px solid #002f55;">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-10 h-10 rounded flex items-center justify-center" style="background-color:rgba(0,47,85,0.1);">
+            <Megaphone className="w-5 h-5" style={{ color: "#002f55" }} />
+          </div>
+          <h2 class="text-xl" style="color:#002f55;">Our Strategy — A Proven 4-Step Outreach</h2>
+        </div>
+        <p class="text-base leading-relaxed mb-5" style="color:#374151;">
+          JesusOnline reaches people online who want to know the truth about Jesus… with the truth about Jesus.
+        </p>
+        <ol class="space-y-3">
+          {strategy.map(s => (
+            <li class="flex gap-4">
+              <span class="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-mono font-semibold" style="background-color:rgba(0,131,222,0.1);color:#0083de;">{s.n}</span>
+              <span class="pt-1.5 text-base leading-relaxed" style="color:#374151;">{s.text}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-14 md:py-20 bg-white border-t" style="border-color:var(--color-border);">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <div class="mb-8">
+        <h2 class="text-3xl md:text-4xl" style="color:#002f55;">Our History</h2>
+        <div class="mt-2 h-0.5 w-12" style="background-color:#de5b00;"></div>
+      </div>
+      <ol class="space-y-4">
+        {milestones.map(m => (
+          <li class="flex gap-5 bg-white border rounded p-5" style="border-color:var(--color-border);">
+            <span class="shrink-0 font-mono font-semibold text-base md:text-lg pt-0.5" style="color:#0083de;min-width:3.5rem;">{m.year}</span>
+            <span class="text-base leading-relaxed" style="color:#374151;">{m.text}</span>
+          </li>
+        ))}
+      </ol>
+      <p class="mt-8 text-sm" style="color:var(--color-muted-foreground);">
+        Read more on the
+        <a href="https://jesusonlineministries.org/about-us/" target="_blank" rel="noopener noreferrer" class="font-semibold inline-flex items-center gap-1 hover:underline" style="color:#0083de;">
+          JesusOnline Ministries site<ExternalLink className="w-3.5 h-3.5" />
+        </a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-12 md:py-14" style="background-color:#002f55;">
+    <div class="container mx-auto px-4 max-w-3xl text-center">
+      <h2 class="text-2xl md:text-3xl mb-3" style="color:#ffffff;">Read what we believe</h2>
+      <p class="text-base mb-6" style="color:rgba(255,255,255,0.85);">
+        Our doctrinal convictions and biblical foundations.
+      </p>
+      <a href={join("/beliefs")} class="inline-flex items-center px-6 py-3 font-semibold rounded transition-colors" style="background-color:#ffffff;color:#0083de;">
+        Statement of Faith
+        <ArrowRight className="w-4 h-4 ml-2" />
+      </a>
+    </div>
+  </section>
+</Layout>

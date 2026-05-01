@@ -80,10 +80,54 @@ const JO_JESUS_IDENTITY = "https://app.jesusonline.com/series/73";
 
 export const subTopics: SubTopic[] = [
   // ── CHURCH RESOURCES ──
+  { id: "make-multiply-disciples-newsletter", channelId: "church", name: "Making & Multiplying Disciples Newsletter" },
+  {
+    id: "total-life-discipleship-principles",
+    channelId: "church",
+    name: "Total Life Discipleship Core Principles",
+    formats: ["playlist"],
+    playlistId: "total-life-discipleship-core-principles",
+    /* Each item videoId matches a video inside the
+       `total-life-discipleship-core-principles` playlist (see playlists.ts),
+       so each Video button deep-links to the right video in /playlist/<id>?play=<videoId>. */
+    items: [
+      { number: 1,  title: "What Is Total Life Discipleship?",                                                 videoId: "XU3PUCwaKos" },
+      { number: 2,  title: "Total Life Discipleship: God's Vision",                                            videoId: "psw_5rn9WFY" },
+      { number: 3,  title: "Total Life Discipleship: Personal Transformation",                                 videoId: "56GWpb0F2qU" },
+      { number: 4,  title: "Total Life Discipleship: Eternal Impact",                                          videoId: "Wq2g9GTgc_Q" },
+      { number: 5,  title: "Total Life Discipleship: Kingdom Maturity",                                        videoId: "ysSDA-Aq_ck" },
+      { number: 6,  title: "Total Life Discipleship: Kingdom Faith",                                           videoId: "M2rPlUzj50Y" },
+      { number: 7,  title: "Total Life Discipleship: Kingdom Power - Be Filled with the Holy Spirit",          videoId: "E78uWvxZOOM" },
+      { number: 8,  title: "Total Life Discipleship: Kingdom Power - Walk in the Spirit",                      videoId: "S-4pXuEF1FI" },
+      { number: 9,  title: "Total Life Discipleship: Kingdom Prayer - Topics",                                 videoId: "MtX-fFMtXG4" },
+      { number: 10, title: "Total Life Discipleship: Kingdom Prayer - Building Blocks",                        videoId: "E46dx0kLSRQ" },
+      { number: 11, title: "Total Life Discipleship: Kingdom Promises",                                        videoId: "You5ArBCx1U" },
+      { number: 12, title: "Total Life Discipleship: Kingdom Authority",                                       videoId: "gAInNUwcbpU" },
+    ],
+  },
+  {
+    id: "become-growing-church",
+    channelId: "church",
+    name: "Become a Growing Church",
+    /* 12 attributes of a growing church. No playlist/book mappings yet — items render with grayed action buttons. */
+    items: [
+      { number: 1,  title: "A Unique Church Vision" },
+      { number: 2,  title: "A Hope-Filled Church" },
+      { number: 3,  title: "A Total Life Discipleship Church" },
+      { number: 4,  title: "A JesusOnline Media-Resourced Church" },
+      { number: 5,  title: "A God-Exalting Church" },
+      { number: 6,  title: "A Spirit-Dependent Church" },
+      { number: 7,  title: "A Life Application Church" },
+      { number: 8,  title: "A Loving Relational Church" },
+      { number: 9,  title: "An Online Outreach Church" },
+      { number: 10, title: "An Attractive Church" },
+      { number: 11, title: "An Inviting Church" },
+      { number: 12, title: "A Model / Example Church" },
+    ],
+  },
   { id: "understanding-evangelism", channelId: "church", name: "Understanding Evangelism" },
   { id: "sharing-your-faith", channelId: "church", name: "Sharing Your Faith" },
   { id: "next-steps-new-believers", channelId: "church", name: "Next Steps for New Believers" },
-  { id: "total-life-discipleship", channelId: "church", name: "Total Life Discipleship" },
   { id: "rapid-church-planting", channelId: "church", name: "Rapid Church Planting" },
   { id: "disciple-making-movement", channelId: "church", name: "Disciple Making Movement" },
   { id: "survey-of-the-bible", channelId: "church", name: "Survey of the Bible" },

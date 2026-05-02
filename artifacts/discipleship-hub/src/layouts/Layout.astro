@@ -71,6 +71,19 @@ const gtmEnabled = import.meta.env.PROD;
     <link rel="apple-touch-icon" href={join("/favicon.svg")} />
     <meta name="theme-color" content="#002f55" />
 
+    {/* Early-connection hints — get DNS+TLS done before scripts request these origins.
+        These don't initiate downloads; they just warm the connection so when GTM
+        injects its tags, GA4 fires, or YouTube thumbnails load, those requests
+        skip ~100–300 ms of handshake latency. */}
+    {gtmEnabled && (
+      <>
+        <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+        <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
+      </>
+    )}
+    <link rel="dns-prefetch" href="https://i.ytimg.com" />
+    <link rel="dns-prefetch" href="https://app.jesusonline.com" />
+
     {/* Open Graph */}
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -113,7 +126,9 @@ const gtmEnabled = import.meta.env.PROD;
       <div class="container mx-auto px-4 md:px-6 flex items-center justify-between py-4 md:py-5 relative">
 
         <a href={join("/")} class="flex items-center gap-3 md:gap-5 hover:opacity-90 transition-opacity">
-          <Image src={logoSrc} alt="JesusOnline" widths={[200, 400]} sizes="200px" format="webp" quality={85} class="h-8 md:h-10 w-auto" loading="eager" />
+          {/* fetchpriority=high tells the browser this is the LCP candidate
+              and to prioritize it over the in-viewport channel art photos. */}
+          <Image src={logoSrc} alt="JesusOnline" widths={[200, 400]} sizes="200px" format="webp" quality={85} class="h-8 md:h-10 w-auto" loading="eager" fetchpriority="high" />
           <span class="hidden sm:block w-px h-9 md:h-11" style="background-color:rgba(255,255,255,0.2);"></span>
           <div class="hidden sm:flex items-center gap-2.5">
             <OpenBookMark size={40} />

@@ -1,8 +1,10 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import ChannelArt from "@/components/ChannelArt.astro";
+import { Image } from "astro:assets";
 import { channels, getChannel, getSubTopicsByChannel } from "@/data/channels";
-import { ArrowRight, MenuSquare } from "lucide-react";
+import { getBookCover } from "@/data/bookCovers";
+import { ArrowRight, MenuSquare, FileText, Video, Smartphone } from "lucide-react";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 
 const baseUrl = import.meta.env.BASE_URL;
@@ -52,24 +54,59 @@ const subs = getSubTopicsByChannel(channel.id);
       <span class="text-sm" style="color:var(--color-muted-foreground);">{subs.length} topics</span>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      {subs.map((sub, idx) => (
-        <a href={join(`/channels/${channel.id}/${sub.id}`)} class="group flex flex-col bg-white border rounded p-5 hover:shadow-md transition-all" style={`border-color:var(--color-border);border-left:4px solid ${channel.accentColor};`}>
-          <div class="flex items-start justify-between gap-3 mb-3">
-            <span class="text-xs font-mono font-semibold px-2 py-0.5 rounded" style={`color:${channel.accentColor};background-color:${channel.accentColor}11;`}>
-              {String(idx + 1).padStart(2, "0")}
-            </span>
-            <ArrowRight className="w-4 h-4" style={{ color: "var(--color-muted-foreground)" }} />
-          </div>
-          <h3 class="text-base font-semibold mb-3 group-hover:text-primary transition-colors leading-snug" style="color:#002f55;">{sub.name}</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {subs.map((sub, idx) => {
+        const coverId = sub.coverId || sub.bookId;
+        const cover = coverId ? getBookCover(coverId) : undefined;
+        const bookHref = sub.bookId ? join(`/books?download=${encodeURIComponent(sub.bookId)}#${encodeURIComponent(sub.bookId)}`) : undefined;
+        const playlistHref = sub.playlistId ? join(`/playlist/${encodeURIComponent(sub.playlistId)}`) : undefined;
+        const appHref = sub.appUrl;
+        const formats = sub.formats ?? [];
+        return (
+          <div class="flex flex-col bg-white border rounded overflow-hidden hover:shadow-md transition-all" style={`border-color:var(--color-border);border-left:4px solid ${channel.accentColor};`}>
+            <div class="p-5 pb-0">
+              <div class="flex items-start justify-between gap-3 mb-3">
+                <span class="text-xs font-mono font-semibold px-2 py-0.5 rounded" style={`color:${channel.accentColor};background-color:${channel.accentColor}11;`}>
+                  {String(idx + 1).padStart(2, "0")}
+                </span>
+              </div>
+              <h3 class="text-base font-semibold leading-snug mb-4" style="color:#002f55;">{sub.name}</h3>
+            </div>
 
-          <span class="inline-flex items-center gap-1.5 text-xs font-semibold mt-auto pt-3 border-t group-hover:underline" style={`color:${channel.accentColor};border-color:rgba(229,231,235,0.6);`}>
-            <MenuSquare className="w-3.5 h-3.5" />
-            See menu
-            <ArrowRight className="w-3.5 h-3.5" />
-          </span>
-        </a>
-      ))}
+            {cover && (
+              <div class="flex justify-center px-5 mb-3">
+                <Image src={cover} alt={sub.name} width={160} class="rounded shadow-sm" loading="lazy" />
+              </div>
+            )}
+
+            {formats.length > 0 && (
+              <div class="flex flex-wrap justify-center gap-1.5 px-5 mb-4">
+                {formats.includes("book") && (
+                  bookHref
+                    ? <a href={bookHref} class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wider hover:shadow-sm" style="background-color:#de5b0014;color:#de5b00;border:1px solid #de5b0040;" onclick="event.stopPropagation();"><FileText className="w-3 h-3" />Book</a>
+                    : <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wider cursor-not-allowed" style="background-color:rgba(0,0,0,0.04);color:#9ca3af;border:1px solid rgba(0,0,0,0.06);"><FileText className="w-3 h-3" />Book</span>
+                )}
+                {formats.includes("playlist") && (
+                  playlistHref
+                    ? <a href={playlistHref} class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wider hover:shadow-sm" style="background-color:#de5b0014;color:#de5b00;border:1px solid #de5b0040;" onclick="event.stopPropagation();"><Video className="w-3 h-3" />Playlist</a>
+                    : <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wider cursor-not-allowed" style="background-color:rgba(0,0,0,0.04);color:#9ca3af;border:1px solid rgba(0,0,0,0.06);"><Video className="w-3 h-3" />Playlist</span>
+                )}
+                {formats.includes("app") && (
+                  appHref
+                    ? <a href={appHref} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wider hover:shadow-sm" style="background-color:#de5b0014;color:#de5b00;border:1px solid #de5b0040;" onclick="event.stopPropagation();"><Smartphone className="w-3 h-3" />App</a>
+                    : <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wider cursor-not-allowed" style="background-color:rgba(0,0,0,0.04);color:#9ca3af;border:1px solid rgba(0,0,0,0.06);"><Smartphone className="w-3 h-3" />App</span>
+                )}
+              </div>
+            )}
+
+            <a href={join(`/channels/${channel.id}/${sub.id}`)} class="group flex items-center justify-center gap-2 mt-auto mx-5 mb-5 px-4 py-2.5 rounded font-semibold text-sm transition-all" style={`background-color:${channel.accentColor};color:#ffffff;`}>
+              <MenuSquare className="w-4 h-4" />
+              See Menu
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+            </a>
+          </div>
+        );
+      })}
     </div>
   </div>
 </Layout>

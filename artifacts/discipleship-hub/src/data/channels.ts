@@ -30,6 +30,8 @@ export interface SubTopic {
   playlistId?: string;
   /** ID of a book in src/data/books.ts — when set, the sub-topic page shows the book cover and a topic-level Book button. */
   bookId?: string;
+  /** ID of a cover image in src/assets/books/covers/ — shows the cover without requiring a downloadable book. Falls back to bookId for the cover lookup. */
+  coverId?: string;
 }
 
 export interface Channel {
@@ -192,7 +194,8 @@ export const subTopics: SubTopic[] = [
     id: "reliability-of-the-bible",
     channelId: "evidence",
     name: "Reliability of the Bible",
-    formats: ["app"],
+    formats: ["book", "playlist", "app"],
+    coverId: "reliability-of-the-bible",
     items: [
       { number: 1, title: "Are the Gospels Reliable?" },
       { number: 2, title: "Is the Bible True?" },

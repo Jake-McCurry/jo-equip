@@ -177,6 +177,7 @@ export const subTopics: SubTopic[] = [
     name: "Existence of God",
     formats: ["book", "playlist", "app"],
     playlistId: "science-and-the-origin-of-life",
+    bookId: "has-science-discovered-god",
     items: [
       { number: 1, title: "Did the Universe Have a Beginning?", videoId: "-z8D-mutYUg" },
       { number: 2, title: "Why is Only Earth Suitable for Life?" },

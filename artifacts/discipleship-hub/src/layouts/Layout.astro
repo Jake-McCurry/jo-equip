@@ -129,22 +129,15 @@ const gtmEnabled = import.meta.env.PROD;
           {/* fetchpriority=high tells the browser this is the LCP candidate
               and to prioritize it over the in-viewport channel art photos. */}
           <Image src={logoSrc} alt="JesusOnline" widths={[200, 400]} sizes="200px" format="webp" quality={85} class="h-8 md:h-10 w-auto" loading="eager" fetchpriority="high" />
-          <span class="hidden sm:block w-px h-9 md:h-11" style="background-color:rgba(255,255,255,0.2);"></span>
-          <div class="hidden sm:flex items-center gap-2.5">
-            <OpenBookMark size={40} />
-            <div class="flex flex-col leading-none">
-              <span class="text-white font-semibold text-lg md:text-xl tracking-wide" style='font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;'>
-                JO EQUIP
-              </span>
-              <span class="text-[12px] md:text-[13px] mt-1" style='color:rgba(255,255,255,0.6);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;letter-spacing:0.05em;'>
-                Ministry Resources Hub
-              </span>
-            </div>
+          <div class="hidden sm:flex flex-col leading-none">
+            <span class="text-white font-semibold text-lg md:text-xl tracking-wide" style='font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;'>
+              JesusOnline Equip
+            </span>
+            <span class="text-[12px] md:text-[13px] mt-1" style='color:rgba(255,255,255,0.6);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;letter-spacing:0.05em;'>
+              Ministry Resources Hub
+            </span>
           </div>
-          <div class="sm:hidden flex items-center gap-2">
-            <OpenBookMark size={32} />
-            <span class="text-white font-semibold text-base" style='font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;'>JO EQUIP</span>
-          </div>
+          <span class="sm:hidden text-white font-semibold text-base" style='font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;'>JesusOnline Equip</span>
         </a>
 
         {/* Desktop Nav */}

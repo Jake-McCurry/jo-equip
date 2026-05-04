@@ -28,6 +28,8 @@ export interface SubTopic {
   appUrl?: string;
   /** ID of a playlist in src/data/playlists.ts — required for any item.videoId to resolve to a /playlist deep-link. */
   playlistId?: string;
+  /** ID of a book in src/data/books.ts — when set, the sub-topic page shows the book cover and a topic-level Book button. */
+  bookId?: string;
 }
 
 export interface Channel {
@@ -152,6 +154,7 @@ export const subTopics: SubTopic[] = [
     formats: ["book", "playlist", "app"],
     appUrl: JO_JESUS_IDENTITY,
     playlistId: "who-is-the-real-jesus",
+    bookId: "who-is-the-real-jesus",
     /* Pulled from JO App "Evidence For Jesus' True Identity" series #73.
        Per-item bookId / videoId set only where a specific PDF / video matches the item title. */
     items: [

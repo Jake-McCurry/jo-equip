@@ -17,6 +17,13 @@ const imgMap = {
   evidence: evidenceImg,
 };
 
+const objectPositionMap: Record<ChannelId, string> = {
+  church: "center 22%",
+  growth: "center center",
+  evidence: "center center",
+};
+const objectPosition = objectPositionMap[channel];
+
 /* Duotone effect:
  * The parent card sets `background: channel.gradient` (palette B).
  * We render the photo on top, grayscaled and brightened, then
@@ -32,6 +39,6 @@ const imgMap = {
     sizes="(min-width: 1024px) 33vw, 100vw"
     loading="lazy"
     class="w-full h-full object-cover"
-    style="position:absolute;inset:0;"
+    style={`position:absolute;inset:0;object-position:${objectPosition};`}
   />
 </div>

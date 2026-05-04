@@ -38,14 +38,16 @@ const subs = getSubTopicsByChannel(channel.id);
     <div class="container mx-auto px-4 py-14 md:py-20 relative">
       <a href={join("/channels")} class="inline-flex items-center text-sm font-medium mb-6 transition-colors" style="color:rgba(255,255,255,0.85);">← All Channels</a>
       <div class="max-w-3xl">
-        <h1 class="text-4xl md:text-5xl mb-3" style="color:#ffffff;font-weight:500;">{channel.name}</h1>
-        <p class="text-lg leading-relaxed mb-2" style="color:rgba(255,255,255,0.95);">{channel.tagline}</p>
-        <p class="leading-relaxed" style="color:rgba(255,255,255,0.85);">{channel.description}</p>
+        <h1 class="text-4xl md:text-5xl" style="color:#ffffff;font-weight:500;">{channel.name}</h1>
       </div>
     </div>
   </div>
 
   <div class="container mx-auto px-4 py-12 md:py-16">
+    <div class="max-w-3xl mb-10">
+      <p class="text-lg leading-relaxed mb-2 font-medium" style={`color:${channel.accentColor};`}>{channel.tagline}</p>
+      <p class="leading-relaxed" style="color:var(--color-muted-foreground);">{channel.description}</p>
+    </div>
     <div class="flex items-center justify-between mb-8 pb-4 border-b" style="border-color:var(--color-border);">
       <div>
         <h2 class="text-2xl" style="color:#002f55;">Topics in this Channel</h2>

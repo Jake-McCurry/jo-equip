@@ -1,8 +1,7 @@
 ---
 import "@/styles/global.css";
-import logo from "@/assets/jol-logo-white.png";
-import OpenBookMark from "@/components/OpenBookMark.astro";
-import MobileMenu from "@/components/MobileMenu.tsx";
+import { Image } from "astro:assets";
+import logoSrc from "@/assets/jol-logo-white.png";
 import { Search as SearchIcon } from "lucide-react";
 
 interface Props {
@@ -71,6 +70,19 @@ const gtmEnabled = import.meta.env.PROD;
     <link rel="apple-touch-icon" href={join("/favicon.svg")} />
     <meta name="theme-color" content="#002f55" />
 
+    {/* Early-connection hints — get DNS+TLS done before scripts request these origins.
+        These don't initiate downloads; they just warm the connection so when GTM
+        injects its tags, GA4 fires, or YouTube thumbnails load, those requests
+        skip ~100–300 ms of handshake latency. */}
+    {gtmEnabled && (
+      <>
+        <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+        <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
+      </>
+    )}
+    <link rel="dns-prefetch" href="https://i.ytimg.com" />
+    <link rel="dns-prefetch" href="https://app.jesusonline.com" />
+
     {/* Open Graph */}
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -113,23 +125,18 @@ const gtmEnabled = import.meta.env.PROD;
       <div class="container mx-auto px-4 md:px-6 flex items-center justify-between py-4 md:py-5 relative">
 
         <a href={join("/")} class="flex items-center gap-3 md:gap-5 hover:opacity-90 transition-opacity">
-          <img src={logo.src} alt="JesusOnline" width={logo.width} height={logo.height} class="h-8 md:h-10 w-auto" />
-          <span class="hidden sm:block w-px h-9 md:h-11" style="background-color:rgba(255,255,255,0.2);"></span>
-          <div class="hidden sm:flex items-center gap-2.5">
-            <OpenBookMark size={40} />
-            <div class="flex flex-col leading-none">
-              <span class="text-white font-semibold text-lg md:text-xl tracking-wide" style='font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;'>
-                JO EQUIP
-              </span>
-              <span class="text-[12px] md:text-[13px] mt-1" style='color:rgba(255,255,255,0.6);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;letter-spacing:0.05em;'>
-                Ministry Resources Hub
-              </span>
-            </div>
+          {/* fetchpriority=high tells the browser this is the LCP candidate
+              and to prioritize it over the in-viewport channel art photos. */}
+          <Image src={logoSrc} alt="JesusOnline" widths={[200, 400]} sizes="200px" format="webp" quality={85} class="h-8 md:h-10 w-auto" loading="eager" fetchpriority="high" />
+          <div class="hidden sm:flex flex-col leading-none">
+            <span class="text-white font-semibold text-lg md:text-xl tracking-wide" style='font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;'>
+              JesusOnline Equip
+            </span>
+            <span class="text-[12px] md:text-[13px] mt-1" style='color:rgba(255,255,255,0.6);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;letter-spacing:0.05em;'>
+              Ministry Resources Hub
+            </span>
           </div>
-          <div class="sm:hidden flex items-center gap-2">
-            <OpenBookMark size={32} />
-            <span class="text-white font-semibold text-base" style='font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;'>JO EQUIP</span>
-          </div>
+          <span class="sm:hidden text-white font-semibold text-base" style='font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;'>JesusOnline Equip</span>
         </a>
 
         {/* Desktop Nav */}
@@ -169,10 +176,87 @@ const gtmEnabled = import.meta.env.PROD;
           >
             <SearchIcon className="w-5 h-5" />
           </a>
-          <MobileMenu navLinks={navLinksWithActive} baseUrl={baseUrl} client:load />
+          {/* Mobile hamburger — vanilla HTML + tiny inline script (no React shipped). */}
+          <button
+            id="mobile-nav-trigger"
+            type="button"
+            class="p-2 text-white"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="mobile-nav-panel"
+          >
+            <svg id="mobile-nav-icon-open" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+            <svg id="mobile-nav-icon-close" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none;"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
         </div>
       </div>
+
+      {/* Mobile nav panel — hidden until trigger toggles `data-open`. */}
+      <div
+        id="mobile-nav-panel"
+        role="navigation"
+        aria-label="Mobile"
+        class="lg:hidden absolute left-0 right-0 top-full w-full py-3 px-4 flex-col gap-1 z-40 hidden data-[open=true]:flex"
+        style="background-color:#001f3d;border-top:1px solid rgba(255,255,255,0.1);"
+      >
+        {navLinksWithActive.map(link => (
+          <a
+            href={join(link.path)}
+            aria-current={link.active ? "page" : undefined}
+            class="text-base font-medium py-3 px-3 rounded transition-colors"
+            style={`color:${link.active ? "#ffffff" : "rgba(255,255,255,0.8)"};${link.active ? "background-color:rgba(255,255,255,0.08);" : ""}`}
+          >
+            {link.name}
+          </a>
+        ))}
+      </div>
     </header>
+
+    <script is:inline>
+      (function () {
+        var trigger = document.getElementById("mobile-nav-trigger");
+        var panel = document.getElementById("mobile-nav-panel");
+        var iconOpen = document.getElementById("mobile-nav-icon-open");
+        var iconClose = document.getElementById("mobile-nav-icon-close");
+        if (!trigger || !panel) return;
+        var prevOverflow = "";
+        function setOpen(open) {
+          panel.dataset.open = open ? "true" : "false";
+          trigger.setAttribute("aria-expanded", open ? "true" : "false");
+          trigger.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+          if (iconOpen && iconClose) {
+            iconOpen.style.display = open ? "none" : "";
+            iconClose.style.display = open ? "" : "none";
+          }
+          if (open) {
+            prevOverflow = document.body.style.overflow;
+            document.body.style.overflow = "hidden";
+            var firstLink = panel.querySelector("a[href]");
+            if (firstLink) firstLink.focus();
+          } else {
+            document.body.style.overflow = prevOverflow;
+          }
+        }
+        trigger.addEventListener("click", function () {
+          setOpen(panel.dataset.open !== "true");
+        });
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && panel.dataset.open === "true") {
+            e.preventDefault();
+            setOpen(false);
+            trigger.focus();
+          }
+        });
+        // Close panel on link click (delegate inside panel).
+        panel.addEventListener("click", function (e) {
+          var t = e.target;
+          while (t && t !== panel) {
+            if (t.tagName === "A") { setOpen(false); return; }
+            t = t.parentNode;
+          }
+        });
+      })();
+    </script>
 
     <main id="main-content" class="flex-grow">
       <slot />
@@ -183,13 +267,13 @@ const gtmEnabled = import.meta.env.PROD;
       <div class="container mx-auto px-4 md:px-6">
         <div class="flex flex-col md:flex-row justify-between items-start gap-10 pb-10" style="border-bottom:1px solid rgba(255,255,255,0.12);">
           <div class="max-w-xs">
-            <div class="flex items-center gap-3 mb-3">
-              <OpenBookMark size={32} />
-              <img src={logo.src} alt="JesusOnline" width={logo.width} height={logo.height} class="h-6 w-auto" />
+            <div class="flex items-center gap-3 mb-2">
+              <Image src={logoSrc} alt="JesusOnline" widths={[150, 300]} sizes="150px" format="webp" quality={85} class="h-6 w-auto" loading="lazy" />
+              <span class="font-semibold text-base tracking-wide" style="color:#ffffff;">JO EQUIP</span>
             </div>
             <div class="mb-4">
-              <span class="text-xs font-semibold tracking-widest uppercase" style="color:#0083de;">
-                JO EQUIP · Ministry Resources Hub
+              <span class="text-[10px] font-medium tracking-widest uppercase" style="color:rgba(255,255,255,0.55);">
+                Ministry Resources Hub
               </span>
             </div>
             <p class="text-sm leading-relaxed mb-3" style="color:rgba(255,255,255,0.75);">

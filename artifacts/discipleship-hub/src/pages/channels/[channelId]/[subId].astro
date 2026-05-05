@@ -1,6 +1,8 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import { Image } from "astro:assets";
 import { subTopics, getChannel, getSubTopic, getNextSubTopic } from "@/data/channels";
+import { getBookCover } from "@/data/bookCovers";
 import { FileText, Video, Smartphone, ArrowLeft, ArrowRight, ChevronRight } from "lucide-react";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 
@@ -21,6 +23,17 @@ if (!channel || !sub) return Astro.redirect(join("/channels"));
 
 const next = getNextSubTopic(channelId!, subId!);
 const hasItems = (sub.items?.length ?? 0) > 0;
+
+const topicCoverId = sub.coverId || sub.bookId;
+const topicBookCover = topicCoverId ? getBookCover(topicCoverId) : undefined;
+const topicBookHref = sub.bookId
+  ? join(`/books?download=${encodeURIComponent(sub.bookId)}#${encodeURIComponent(sub.bookId)}`)
+  : undefined;
+const topicPlaylistHref = sub.playlistId
+  ? join(`/playlist/${encodeURIComponent(sub.playlistId)}`)
+  : undefined;
+const topicAppHref = sub.appUrl;
+const showTopicButtons = topicBookCover && sub.formats && sub.formats.length > 0;
 
 function btnClass(enabled: boolean) {
   return "inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-[11px] font-semibold uppercase tracking-wider transition-all" + (enabled ? " hover:shadow-sm" : " cursor-not-allowed");
@@ -61,8 +74,42 @@ function btnClass(enabled: boolean) {
 
     {hasItems ? (
       <>
+        {topicBookCover && (
+          <div class="mb-8 flex flex-col items-center">
+            <div class="max-w-[240px] w-full">
+              <Image
+                src={topicBookCover}
+                alt={sub.name}
+                widths={[240, 480]}
+                sizes="240px"
+                class="w-full h-auto rounded shadow-md"
+                loading="eager"
+              />
+            </div>
+            {showTopicButtons && (
+              <div class="flex flex-wrap justify-center gap-2 mt-5">
+                {sub.formats!.includes("book") && (
+                  topicBookHref
+                    ? <a href={topicBookHref} class={btnClass(true)} style="background-color:#de5b0014;color:#de5b00;border:1px solid #de5b0040;"><FileText className="w-3 h-3" />Book</a>
+                    : <span class={btnClass(false)} style="background-color:rgba(0,0,0,0.04);color:#9ca3af;border:1px solid rgba(0,0,0,0.06);" title="Book coming soon"><FileText className="w-3 h-3" />Book</span>
+                )}
+                {sub.formats!.includes("playlist") && (
+                  topicPlaylistHref
+                    ? <a href={topicPlaylistHref} class={btnClass(true)} style="background-color:#de5b0014;color:#de5b00;border:1px solid #de5b0040;"><Video className="w-3 h-3" />Playlist</a>
+                    : <span class={btnClass(false)} style="background-color:rgba(0,0,0,0.04);color:#9ca3af;border:1px solid rgba(0,0,0,0.06);" title="Playlist coming soon"><Video className="w-3 h-3" />Playlist</span>
+                )}
+                {sub.formats!.includes("app") && (
+                  topicAppHref
+                    ? <a href={topicAppHref} target="_blank" rel="noopener noreferrer" class={btnClass(true)} style="background-color:#de5b0014;color:#de5b00;border:1px solid #de5b0040;"><Smartphone className="w-3 h-3" />App</a>
+                    : <span class={btnClass(false)} style="background-color:rgba(0,0,0,0.04);color:#9ca3af;border:1px solid rgba(0,0,0,0.06);" title="App coming soon"><Smartphone className="w-3 h-3" />App</span>
+                )}
+              </div>
+            )}
+          </div>
+        )}
+
         <div class="mb-6 pb-4 border-b" style="border-color:var(--color-border);">
-          <h2 class="text-2xl" style="color:#002f55;">Questions Explored</h2>
+          <h2 class="text-2xl" style="color:#002f55;">Articles</h2>
           <div class="mt-2 h-0.5 w-12" style="background-color:#de5b00;"></div>
         </div>
         <ol class="space-y-2">

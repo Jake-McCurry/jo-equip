@@ -2,7 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import ChannelArt from "@/components/ChannelArt.astro";
 import { channels } from "@/data/channels";
-import { ArrowRight, Globe, Users2, BookOpen, Smartphone } from "lucide-react";
+import { ArrowRight, Users2, BookOpen, Smartphone } from "lucide-react";
 
 const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
@@ -40,7 +40,7 @@ const jsonLd = {
     <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
   </Fragment>
   {/* Hero — compact padding so the call-to-action sits above the fold. */}
-  <section class="relative py-8 md:py-12 px-4 text-center overflow-hidden" style="background-color:#0083de;">
+  <section class="relative py-5 md:py-8 px-4 text-center overflow-hidden" style="background-color:#0083de;">
     <div class="pointer-events-none absolute inset-0 overflow-hidden">
       <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-10" style="background-color:#002f55;"></div>
       <div class="absolute -bottom-32 -left-20 w-80 h-80 rounded-full opacity-10" style="background-color:#002f55;"></div>
@@ -50,7 +50,7 @@ const jsonLd = {
     </div>
 
     <div class="relative container mx-auto max-w-4xl">
-      <h1 class="text-3xl md:text-5xl lg:text-6xl mb-2 leading-tight" style="color:#ffffff;font-weight:500;">JO EQUIP</h1>
+      <h1 class="text-4xl md:text-5xl mb-2 leading-tight" style="color:#ffffff;font-weight:500;">JO EQUIP</h1>
       <div class="text-xl md:text-2xl mb-4 font-medium" style="color:rgba(255,255,255,0.92);">
         Ministry Resources Hub
       </div>
@@ -69,20 +69,6 @@ const jsonLd = {
           <ArrowRight className="w-4 h-4 ml-2" />
         </a>
 
-        {/* Secondary CTA: Make and Multiply Disciples newsletter signup. Same pill style as before so it doesn't compete with Welcome. */}
-        <div class="flex flex-col items-center gap-1 mt-1">
-          <a
-            href={join("/newsletter")}
-            class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium transition-colors hover:bg-white/25"
-            style="background-color:rgba(255,255,255,0.15);color:#ffffff;"
-          >
-            <Globe className="w-3.5 h-3.5" />
-            Make and Multiply Disciples
-          </a>
-          <span class="text-[11px] font-medium tracking-widest uppercase" style="color:rgba(255,255,255,0.75);">
-            Get Newsletter
-          </span>
-        </div>
       </div>
     </div>
   </section>
@@ -154,10 +140,12 @@ const jsonLd = {
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {channels.map(channel => (
           <a href={join(`/channels/${channel.id}`)} class="group flex flex-col bg-white border rounded overflow-hidden hover:shadow-lg transition-all" style="border-color:var(--color-border);">
+            <div style={`height:14px;background-color:${channel.accentColor};`}></div>
             <div class="relative aspect-[64/22] overflow-hidden" style={`background:${channel.gradient};`}>
               <ChannelArt channel={channel.id} class="absolute inset-0" />
             </div>
-            <div class="p-7 flex flex-col flex-grow" style={`border-top:4px solid ${channel.accentColor};`}>
+            <div style={`height:6px;background-color:${channel.accentColor};`}></div>
+            <div class="p-7 flex flex-col flex-grow">
               <h3 class="text-2xl mb-1 group-hover:text-primary transition-colors" style="color:#002f55;">{channel.name}</h3>
               <p class="text-sm font-medium mb-4" style={`color:${channel.accentColor};`}>{channel.tagline}</p>
               <p class="leading-relaxed text-sm mb-5 flex-grow" style="color:var(--color-muted-foreground);">{channel.description}</p>

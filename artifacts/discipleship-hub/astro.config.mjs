@@ -23,6 +23,9 @@ export default defineConfig({
   base,
   trailingSlash: "ignore",
   output: "static",
+  /* Prefetch in-viewport links so visitor navigation feels instant.
+     Adds ~1KB of JS but eliminates next-page wait. */
+  prefetch: { defaultStrategy: "viewport" },
   integrations: [react(), sitemap(), pagefind()],
   vite: {
     plugins: [tailwindcss()],

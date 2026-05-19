@@ -28,6 +28,10 @@ export interface SubTopic {
   appUrl?: string;
   /** ID of a playlist in src/data/playlists.ts — required for any item.videoId to resolve to a /playlist deep-link. */
   playlistId?: string;
+  /** ID of a book in src/data/books.ts — when set, the sub-topic page shows the book cover and a topic-level Book button. */
+  bookId?: string;
+  /** ID of a cover image in src/assets/books/covers/ — shows the cover without requiring a downloadable book. Falls back to bookId for the cover lookup. */
+  coverId?: string;
 }
 
 export interface Channel {
@@ -152,6 +156,7 @@ export const subTopics: SubTopic[] = [
     formats: ["book", "playlist", "app"],
     appUrl: JO_JESUS_IDENTITY,
     playlistId: "who-is-the-real-jesus",
+    bookId: "who-is-the-real-jesus",
     /* Pulled from JO App "Evidence For Jesus' True Identity" series #73.
        Per-item bookId / videoId set only where a specific PDF / video matches the item title. */
     items: [
@@ -174,6 +179,7 @@ export const subTopics: SubTopic[] = [
     name: "Existence of God",
     formats: ["book", "playlist", "app"],
     playlistId: "science-and-the-origin-of-life",
+    bookId: "has-science-discovered-god",
     items: [
       { number: 1, title: "Did the Universe Have a Beginning?", videoId: "-z8D-mutYUg" },
       { number: 2, title: "Why is Only Earth Suitable for Life?" },
@@ -188,7 +194,8 @@ export const subTopics: SubTopic[] = [
     id: "reliability-of-the-bible",
     channelId: "evidence",
     name: "Reliability of the Bible",
-    formats: ["app"],
+    formats: ["book", "playlist", "app"],
+    coverId: "reliability-of-the-bible",
     items: [
       { number: 1, title: "Are the Gospels Reliable?" },
       { number: 2, title: "Is the Bible True?" },

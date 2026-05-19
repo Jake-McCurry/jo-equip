@@ -65,10 +65,15 @@ async function handleSubscribe(request, env) {
 
   console.log("[subscribe] VIRTUOUS_API_KEY is present, length:", env.VIRTUOUS_API_KEY.length);
 
+  // Note: a "Book Downloaded" detail is encoded into referenceSource
+  // (e.g. "jo-equip-books:who-is-the-real-jesus") so you can build Virtuous
+  // automation rules without needing customFields on the Contact payload.
+  const referenceSourceFull = bookId ? `${source}:${bookId}` : source;
+
   const payload = {
     contactType: "Household",
     name: email,
-    referenceSource: source,
+    referenceSource: referenceSourceFull,
     referenceId: bookId || undefined,
     contactIndividuals: [
       {
@@ -85,9 +90,6 @@ async function handleSubscribe(request, env) {
         ],
       },
     ],
-    customFields: bookTitle
-      ? [{ name: "Book Downloaded", value: bookTitle }]
-      : [],
   };
 
   try {

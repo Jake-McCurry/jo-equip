@@ -38,9 +38,9 @@ Brand: #002f55 navy, #0083de blue, #de5b00 orange. No DB / auth / per-user serve
 - Email gate before first download:
   - Modal collects email; remembered in `localStorage` under `jo_equip_email_v1` (with in-memory fallback for private/strict modes).
   - Subsequent downloads on the same browser bypass the modal.
-  - Form POSTs fire-and-forget to `/api/subscribe` with `{ email, source, book_id, book_title }` — endpoint NOT YET IMPLEMENTED. Downloads work regardless (404 doesn't block).
+  - Form POSTs fire-and-forget to `/api/subscribe` with `{ email, source, book_id, book_title }`. Endpoint is a Cloudflare Pages Function at `functions/api/subscribe.js` that forwards to Virtuous (`POST https://api.virtuoussoftware.com/api/Contact`). Requires `VIRTUOUS_API_KEY` env var in CF Pages dashboard. Endpoint always returns 200 to client (download never blocked); upstream errors logged to CF function logs only.
+  - Virtuous payload: Household contact with one primary individual (firstName "Friend", lastName "Subscriber"), Home Email opted-in, `referenceSource` = source string (e.g. `jo-equip-books`), `referenceId` = book_id, custom field `Book Downloaded` = book_title. List/tag assignment is meant to be done in Virtuous via automation rules keyed off `referenceSource`.
   - Modal is fully accessible: focus trap, Escape to close, focus restoration, role/aria attributes.
-- TODO: Add Cloudflare Pages Function at `functions/api/subscribe.js` to forward emails to Virtuous CRM (user is mid-transition from Mailchimp → Virtuous; needs API key + list/segment ID).
 
 ### SEO / a11y / cache / tracking (site-wide)
 

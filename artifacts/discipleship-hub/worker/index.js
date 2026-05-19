@@ -1,21 +1,15 @@
 /**
- * Cloudflare Pages Function: POST /api/subscribe
+ * Cloudflare Worker entry for jo-equip.
  *
- * Receives email captures from the book-download gate on /books and
- * forwards them to Virtuous as a new contact.
+ * Handles:
+ *   POST /api/subscribe   → forwards book-download email captures to Virtuous
+ *   Everything else       → served from static assets (the built Astro site)
  *
- * Env vars (set in Cloudflare Pages dashboard → Settings → Environment variables):
- *   VIRTUOUS_API_KEY   (required)  Bearer token from Virtuous → Settings → API
+ * Env vars (set in Cloudflare → Workers & Pages → jo-equip → Settings → Variables and Secrets):
+ *   VIRTUOUS_API_KEY  (secret, required)  Bearer token from Virtuous → Settings → API
  *
- * Request body (JSON):
- *   { email, source, book_id, book_title }
- *
- * Behavior:
- *   - Always returns 200 to the client so the PDF download is never blocked,
- *     even if Virtuous is misconfigured or temporarily unreachable.
- *   - Logs all upstream errors to the Cloudflare Pages function log so we can
- *     debug iteratively. Inspect logs in CF dashboard → Pages → jo-equip →
- *     Functions → Real-time logs.
+ * Bindings (declared in wrangler.jsonc):
+ *   ASSETS  static-assets binding pointing at ./dist
  */
 
 const VIRTUOUS_CONTACT_URL = "https://api.virtuoussoftware.com/api/Contact";
@@ -33,7 +27,14 @@ function isValidEmail(value) {
   return typeof value === "string" && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
 
-export async function onRequestPost({ request, env }) {
+async function handleSubscribe(request, env) {
+  if (request.method !== "POST") {
+    return new Response(
+      JSON.stringify({ ok: false, error: "Method not allowed" }),
+      { status: 405, headers: { ...JSON_HEADERS, Allow: "POST" } },
+    );
+  }
+
   let body;
   try {
     body = await request.json();
@@ -51,19 +52,13 @@ export async function onRequestPost({ request, env }) {
   }
 
   if (!env.VIRTUOUS_API_KEY) {
-    console.error("[subscribe] VIRTUOUS_API_KEY is not set in Pages env vars");
-    // Return 200 so user's download still works even if we're misconfigured.
+    console.error("[subscribe] VIRTUOUS_API_KEY is not set");
     return jsonResponse({ ok: true, warning: "not_configured" }, 200);
   }
 
-  // Virtuous Contact API payload.
-  // A "Household" contact with a single primary individual whose email is
-  // the captured value. We pass the source + book metadata as a reference
-  // string + custom field so you can build automation rules in Virtuous
-  // (e.g. "if originSegmentCode = jo-equip-books, add to Book Downloads list").
   const payload = {
     contactType: "Household",
-    name: email, // placeholder household name; Virtuous requires one
+    name: email,
     referenceSource: source,
     referenceId: bookId || undefined,
     contactIndividuals: [
@@ -105,7 +100,6 @@ export async function onRequestPost({ request, env }) {
         resp.statusText,
         errText.slice(0, 500),
       );
-      // Still 200 so download isn't blocked.
       return jsonResponse({ ok: true, warning: "upstream_error" }, 200);
     }
 
@@ -116,17 +110,15 @@ export async function onRequestPost({ request, env }) {
   }
 }
 
-// Reject all other methods cleanly.
-export async function onRequest({ request }) {
-  if (request.method === "POST") {
-    // Will be handled by onRequestPost above; this branch is a safety net.
-    return jsonResponse({ ok: false, error: "Unhandled POST" }, 500);
-  }
-  return new Response(
-    JSON.stringify({ ok: false, error: "Method not allowed" }),
-    {
-      status: 405,
-      headers: { ...JSON_HEADERS, Allow: "POST" },
-    },
-  );
-}
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+
+    if (url.pathname === "/api/subscribe") {
+      return handleSubscribe(request, env);
+    }
+
+    // Everything else: serve from the static assets binding.
+    return env.ASSETS.fetch(request);
+  },
+};

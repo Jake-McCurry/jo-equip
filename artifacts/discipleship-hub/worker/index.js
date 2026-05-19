@@ -28,7 +28,10 @@ function isValidEmail(value) {
 }
 
 async function handleSubscribe(request, env) {
+  console.log("[subscribe] handler invoked", request.method, request.url);
+
   if (request.method !== "POST") {
+    console.log("[subscribe] rejecting non-POST method:", request.method);
     return new Response(
       JSON.stringify({ ok: false, error: "Method not allowed" }),
       { status: 405, headers: { ...JSON_HEADERS, Allow: "POST" } },
@@ -38,7 +41,8 @@ async function handleSubscribe(request, env) {
   let body;
   try {
     body = await request.json();
-  } catch {
+  } catch (e) {
+    console.error("[subscribe] invalid JSON body:", String(e));
     return jsonResponse({ ok: false, error: "Invalid JSON body" }, 400);
   }
 
@@ -47,14 +51,19 @@ async function handleSubscribe(request, env) {
   const bookId = String(body?.book_id || "").slice(0, 128);
   const bookTitle = String(body?.book_title || "").slice(0, 256);
 
+  console.log("[subscribe] received submission", JSON.stringify({ email, source, bookId, bookTitle }));
+
   if (!isValidEmail(email)) {
+    console.log("[subscribe] rejecting invalid email format");
     return jsonResponse({ ok: false, error: "Invalid email address" }, 400);
   }
 
   if (!env.VIRTUOUS_API_KEY) {
-    console.error("[subscribe] VIRTUOUS_API_KEY is not set");
+    console.error("[subscribe] VIRTUOUS_API_KEY is not set in Worker env");
     return jsonResponse({ ok: true, warning: "not_configured" }, 200);
   }
+
+  console.log("[subscribe] VIRTUOUS_API_KEY is present, length:", env.VIRTUOUS_API_KEY.length);
 
   const payload = {
     contactType: "Household",
@@ -92,17 +101,19 @@ async function handleSubscribe(request, env) {
       body: JSON.stringify(payload),
     });
 
+    const respText = await resp.text().catch(() => "(no body)");
+
     if (!resp.ok) {
-      const errText = await resp.text().catch(() => "(no body)");
       console.error(
         "[subscribe] Virtuous API error",
         resp.status,
         resp.statusText,
-        errText.slice(0, 500),
+        respText.slice(0, 1000),
       );
       return jsonResponse({ ok: true, warning: "upstream_error" }, 200);
     }
 
+    console.log("[subscribe] Virtuous success:", resp.status, respText.slice(0, 300));
     return jsonResponse({ ok: true }, 200);
   } catch (err) {
     console.error("[subscribe] Fetch to Virtuous failed", String(err));

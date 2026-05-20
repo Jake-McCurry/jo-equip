@@ -24,6 +24,32 @@ if (!channel || !sub) return Astro.redirect(join("/channels"));
 const next = getNextSubTopic(channelId!, subId!);
 const hasItems = (sub.items?.length ?? 0) > 0;
 
+/* JSON-LD: CollectionPage with an ItemList of the sub-topic's lesson titles.
+   Note: we deliberately do NOT use FAQPage schema here — Google requires
+   the full answer text be visible on the page for FAQ rich snippets, and
+   our "answers" live in linked PDFs/videos/app pages instead of inline.
+   ItemList is the honest, valid choice and still helps Google understand
+   what each sub-topic page contains. */
+const SITE = "https://equip.jesusonline.com";
+const subTopicJsonLd = hasItems ? {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": `${SITE}/channels/${channel.id}/${sub.id}#page`,
+  "name": `${sub.name} · ${channel.shortName} · JO EQUIP`,
+  "url": `${SITE}/channels/${channel.id}/${sub.id}`,
+  "isPartOf": { "@id": `${SITE}/#website` },
+  "about": sub.name,
+  "mainEntity": {
+    "@type": "ItemList",
+    "numberOfItems": sub.items!.length,
+    "itemListElement": sub.items!.map(item => ({
+      "@type": "ListItem",
+      "position": item.number,
+      "name": item.title,
+    })),
+  },
+} : null;
+
 const topicCoverId = sub.coverId || sub.bookId;
 const topicBookCover = topicCoverId ? getBookCover(topicCoverId) : undefined;
 const topicBookHref = sub.bookId
@@ -47,6 +73,9 @@ function btnClass(enabled: boolean) {
       { name: channel.shortName, url: `/channels/${channel.id}` },
       { name: sub.name, url: `/channels/${channel.id}/${sub.id}` },
     ]} />
+    {subTopicJsonLd && (
+      <script type="application/ld+json" is:inline set:html={JSON.stringify(subTopicJsonLd)} />
+    )}
   </Fragment>
   {/* Hero */}
   <div class="relative overflow-hidden" style={`background:${channel.gradient};`}>

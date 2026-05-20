@@ -9,6 +9,52 @@ import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
   (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
+
+/* JSON-LD: a CollectionPage that contains an ItemList of Book entries.
+   Each Book is marked free + downloadable so Google can show it in
+   structured book results (and understand we offer free resources). */
+const SITE = "https://equip.jesusonline.com";
+const booksJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": `${SITE}/books#collection`,
+  "name": "Free Ministry Books — JO EQUIP",
+  "url": `${SITE}/books`,
+  "isPartOf": { "@id": `${SITE}/#website` },
+  "mainEntity": {
+    "@type": "ItemList",
+    "numberOfItems": books.length,
+    "itemListElement": books.map((b, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Book",
+        "@id": `${SITE}/books/${b.id}#book`,
+        "name": b.title,
+        ...(b.author ? { "author": { "@type": "Person", "name": b.author } } : {}),
+        "publisher": { "@id": "https://jesusonlineministries.org/#org" },
+        "image": `${SITE}${b.cover}`,
+        "url": `${SITE}/books/${b.id}`,
+        "bookFormat": "https://schema.org/EBook",
+        "inLanguage": "en",
+        "isAccessibleForFree": true,
+        "workExample": {
+          "@type": "Book",
+          "bookFormat": "https://schema.org/EBook",
+          "encodingFormat": "application/pdf",
+          "url": `${SITE}${b.pdf}`,
+          "isAccessibleForFree": true,
+          "inLanguage": "en",
+          "potentialAction": {
+            "@type": "ReadAction",
+            "target": `${SITE}${b.pdf}`,
+            "actionStatus": "https://schema.org/PotentialActionStatus",
+          },
+        },
+      },
+    })),
+  },
+};
 ---
 <Layout
   title="Books · JO EQUIP"
@@ -19,6 +65,7 @@ const join = (p: string) =>
       { name: "Home", url: "/" },
       { name: "Books", url: "/books" },
     ]} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(booksJsonLd)} />
   </Fragment>
   <div class="container mx-auto px-4 py-12 md:py-16">
     <div class="max-w-3xl mb-12">
@@ -54,7 +101,7 @@ const join = (p: string) =>
               <div class="text-sm" style="color:var(--color-muted-foreground);">No cover available</div>
             )}
           </div>
-          <div class="px-5 pb-5 pt-3 border-t text-center" style="border-color:var(--color-border);">
+          <div class="px-5 pb-5 pt-3 border-t flex items-center justify-center gap-5" style="border-color:var(--color-border);">
             <button
               type="button"
               class="book-download-btn inline-flex items-center justify-center gap-2 font-semibold text-sm uppercase tracking-wide transition-colors hover:opacity-75"
@@ -67,6 +114,14 @@ const join = (p: string) =>
               <Download className="w-4 h-4" />
               Download
             </button>
+            <a
+              href={join(`/books/${book.id}`)}
+              class="text-sm font-medium transition-colors hover:opacity-75"
+              style="color:var(--color-muted-foreground);"
+              aria-label={`View details for ${book.title}`}
+            >
+              Details
+            </a>
           </div>
         </article>
         );

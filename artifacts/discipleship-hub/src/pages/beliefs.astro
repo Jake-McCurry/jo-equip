@@ -9,6 +9,28 @@ const join = (p: string) =>
 
 /* Full Cru Statement of Faith — 17 numbered articles, verbatim.
  * Source: https://www.cru.org/us/en/about/statement-of-faith.html */
+const SITE = "https://equip.jesusonline.com";
+/* `datePublished` is when the Statement of Faith page first went live on this site.
+   `dateModified` auto-updates on every build so Google sees fresh content signals.
+   Update DATE_PUBLISHED if the page is ever materially rewritten. */
+const DATE_PUBLISHED = "2026-05-01";
+const beliefsJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "@id": `${SITE}/beliefs#article`,
+  "headline": "What We Believe — Statement of Faith",
+  "name": "What We Believe · JO EQUIP",
+  "url": `${SITE}/beliefs`,
+  "isPartOf": { "@id": `${SITE}/#website` },
+  "author": { "@id": "https://jesusonlineministries.org/#org" },
+  "publisher": { "@id": "https://jesusonlineministries.org/#org" },
+  "datePublished": DATE_PUBLISHED,
+  "dateModified": new Date().toISOString().slice(0, 10),
+  "inLanguage": "en",
+  "about": "Statement of Faith adopted from Cru (Campus Crusade for Christ, Int'l).",
+  "image": `${SITE}/opengraph.jpg`,
+};
+
 const articles = [
   "There is one true God, eternally existing in three persons — Father, Son and Holy Spirit — each of whom possesses equally all the attributes of Deity and the characteristics of personality.",
   "Jesus is God, the living Word, who became flesh through His miraculous conception by the Holy Spirit and His virgin birth. Hence, He is perfect Deity and true humanity united in one person forever.",
@@ -39,6 +61,7 @@ const articles = [
       { name: "More", url: "/more" },
       { name: "What We Believe", url: "/beliefs" },
     ]} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(beliefsJsonLd)} />
   </Fragment>
   <section class="bg-white">
     <div class="container mx-auto px-4 py-14 md:py-20 max-w-4xl">

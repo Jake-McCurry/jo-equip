@@ -1,0 +1,201 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { Headphones, Volume2, Chrome, Smartphone, Apple, ExternalLink } from "lucide-react";
+import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
+---
+<Layout
+  title="Listen · JO EQUIP"
+  description="Listen to JO EQUIP articles and resources read aloud. Free, built-in options for Microsoft Edge, iPhone, iPad, Android, and Chrome — no signup required."
+>
+  <Fragment slot="head">
+    <BreadcrumbsLd items={[
+      { name: "Home", url: "/" },
+      { name: "Listen", url: "/listen" },
+    ]} />
+  </Fragment>
+  <div class="container mx-auto px-4 py-12 md:py-16 max-w-4xl">
+    <div class="mb-10">
+      <div class="flex items-center gap-3 mb-3">
+        <div class="w-9 h-9 rounded flex items-center justify-center" style="background-color:rgba(0,131,222,0.1);">
+          <Headphones className="w-5 h-5" style={{ color: "#0083de" }} />
+        </div>
+        <span class="text-xs font-semibold tracking-widest uppercase" style="color:#0083de;">Audio Access</span>
+      </div>
+      <h1 class="text-4xl md:text-5xl mb-4" style="color:#002f55;">Listen to JO EQUIP</h1>
+      <div class="h-0.5 w-12 mb-5" style="background-color:#de5b00;"></div>
+      <p class="leading-relaxed text-lg" style="color:var(--color-muted-foreground);">
+        Prefer to listen instead of read? Have JO EQUIP articles read aloud to you with these free,
+        built-in tools — perfect for driving, exercising, or giving your eyes a rest. Pick the option
+        that matches the device you're using right now.
+      </p>
+    </div>
+
+    {/* Top recommendation: Microsoft Edge */}
+    <div class="bg-white border rounded p-6 md:p-8 mb-5" style="border-color:var(--color-border);border-top:4px solid #de5b00;">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="text-xs font-semibold tracking-widest uppercase px-2 py-0.5 rounded" style="background-color:rgba(222,91,0,0.1);color:#de5b00;">Top Pick</span>
+      </div>
+      <div class="flex items-center gap-3 mb-5 pb-4 border-b" style="border-color:var(--color-border);">
+        <Volume2 className="w-6 h-6" style={{ color: "#0083de" }} />
+        <h2 class="text-xl font-semibold" style="color:#002f55;">Microsoft Edge — Read Aloud</h2>
+      </div>
+      <p class="text-sm leading-relaxed mb-5" style="color:var(--color-muted-foreground);">
+        Edge has a built-in Read Aloud feature with high-quality, natural-sounding neural voices.
+        It's free, works on Windows, Mac, iOS, and Android, and requires no signup or extra installs.
+      </p>
+      <ol class="space-y-5">
+        <li class="flex gap-4">
+          <span class="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-mono font-semibold mt-0.5" style="background-color:rgba(0,131,222,0.1);color:#0083de;">1</span>
+          <div>
+            <h4 class="text-base font-semibold mb-1" style="color:#002f55;">Open this site in Microsoft Edge</h4>
+            <div class="leading-relaxed text-sm" style="color:var(--color-muted-foreground);">
+              Don't have Edge yet?
+              <a href="https://www.microsoft.com/edge/download" target="_blank" rel="noopener noreferrer" class="inline-flex items-center font-medium hover:underline" style="color:#0083de;">
+                Download it for free
+                <ExternalLink className="w-3.5 h-3.5 ml-1" />
+              </a>
+            </div>
+          </div>
+        </li>
+        <li class="flex gap-4">
+          <span class="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-mono font-semibold mt-0.5" style="background-color:rgba(0,131,222,0.1);color:#0083de;">2</span>
+          <div>
+            <h4 class="text-base font-semibold mb-1" style="color:#002f55;">Click the speaker icon in the address bar</h4>
+            <div class="leading-relaxed text-sm" style="color:var(--color-muted-foreground);">Or right-click anywhere on the page and choose <strong>Read aloud</strong>. You can also press <kbd class="px-1.5 py-0.5 text-xs rounded border" style="background-color:rgba(0,47,85,0.05);border-color:var(--color-border);color:#002f55;">Ctrl</kbd> + <kbd class="px-1.5 py-0.5 text-xs rounded border" style="background-color:rgba(0,47,85,0.05);border-color:var(--color-border);color:#002f55;">Shift</kbd> + <kbd class="px-1.5 py-0.5 text-xs rounded border" style="background-color:rgba(0,47,85,0.05);border-color:var(--color-border);color:#002f55;">U</kbd>.</div>
+          </div>
+        </li>
+        <li class="flex gap-4">
+          <span class="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-mono font-semibold mt-0.5" style="background-color:rgba(0,131,222,0.1);color:#0083de;">3</span>
+          <div>
+            <h4 class="text-base font-semibold mb-1" style="color:#002f55;">Pick a voice and speed</h4>
+            <div class="leading-relaxed text-sm" style="color:var(--color-muted-foreground);">Click <strong>Voice options</strong> in the playback bar at the top — choose any neural voice (the most natural ones are labeled "Natural") and adjust the reading speed to taste.</div>
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    {/* iPhone / iPad */}
+    <div class="bg-white border rounded p-6 md:p-8 mb-5" style="border-color:var(--color-border);">
+      <div class="flex items-center gap-3 mb-5 pb-4 border-b" style="border-color:var(--color-border);">
+        <Apple className="w-6 h-6" style={{ color: "#0083de" }} />
+        <h2 class="text-xl font-semibold" style="color:#002f55;">iPhone or iPad — Spoken Content</h2>
+      </div>
+      <p class="text-sm leading-relaxed mb-5" style="color:var(--color-muted-foreground);">
+        iOS and iPadOS have a built-in screen reader that uses high-quality Siri voices.
+        You only need to enable it once.
+      </p>
+      <ol class="space-y-5">
+        <li class="flex gap-4">
+          <span class="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-mono font-semibold mt-0.5" style="background-color:rgba(0,131,222,0.1);color:#0083de;">1</span>
+          <div>
+            <h4 class="text-base font-semibold mb-1" style="color:#002f55;">Enable Speak Screen (one-time setup)</h4>
+            <div class="leading-relaxed text-sm" style="color:var(--color-muted-foreground);">Open <strong>Settings → Accessibility → Spoken Content</strong> and turn on <strong>Speak Screen</strong>.</div>
+          </div>
+        </li>
+        <li class="flex gap-4">
+          <span class="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-mono font-semibold mt-0.5" style="background-color:rgba(0,131,222,0.1);color:#0083de;">2</span>
+          <div>
+            <h4 class="text-base font-semibold mb-1" style="color:#002f55;">Open any JO EQUIP page</h4>
+            <div class="leading-relaxed text-sm" style="color:var(--color-muted-foreground);">In Safari, Chrome, or any browser — go to the article you want read aloud.</div>
+          </div>
+        </li>
+        <li class="flex gap-4">
+          <span class="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-mono font-semibold mt-0.5" style="background-color:rgba(0,131,222,0.1);color:#0083de;">3</span>
+          <div>
+            <h4 class="text-base font-semibold mb-1" style="color:#002f55;">Swipe down with two fingers from the top</h4>
+            <div class="leading-relaxed text-sm" style="color:var(--color-muted-foreground);">iOS will start reading the whole page aloud. A small playback controller appears so you can pause, skip, or speed up.</div>
+          </div>
+        </li>
+        <li class="flex gap-4">
+          <span class="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-mono font-semibold mt-0.5" style="background-color:rgba(0,131,222,0.1);color:#0083de;">4</span>
+          <div>
+            <h4 class="text-base font-semibold mb-1" style="color:#002f55;">Pick a better voice (optional)</h4>
+            <div class="leading-relaxed text-sm" style="color:var(--color-muted-foreground);">In <strong>Spoken Content → Voices → English</strong>, the <strong>Siri</strong> and <strong>Premium / Enhanced</strong> voices sound the most natural. Tap to download them once for offline use.</div>
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    {/* Android */}
+    <div class="bg-white border rounded p-6 md:p-8 mb-5" style="border-color:var(--color-border);">
+      <div class="flex items-center gap-3 mb-5 pb-4 border-b" style="border-color:var(--color-border);">
+        <Smartphone className="w-6 h-6" style={{ color: "#0083de" }} />
+        <h2 class="text-xl font-semibold" style="color:#002f55;">Android — Select to Speak</h2>
+      </div>
+      <p class="text-sm leading-relaxed mb-5" style="color:var(--color-muted-foreground);">
+        Android phones include a built-in Google text-to-speech tool that can read any web page aloud
+        with natural-sounding neural voices.
+      </p>
+      <ol class="space-y-5">
+        <li class="flex gap-4">
+          <span class="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-mono font-semibold mt-0.5" style="background-color:rgba(0,131,222,0.1);color:#0083de;">1</span>
+          <div>
+            <h4 class="text-base font-semibold mb-1" style="color:#002f55;">Turn on Select to Speak</h4>
+            <div class="leading-relaxed text-sm" style="color:var(--color-muted-foreground);">Open <strong>Settings → Accessibility → Select to Speak</strong> and turn it on. (On some phones it's under <strong>Settings → Accessibility → Installed services</strong>.)</div>
+          </div>
+        </li>
+        <li class="flex gap-4">
+          <span class="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-mono font-semibold mt-0.5" style="background-color:rgba(0,131,222,0.1);color:#0083de;">2</span>
+          <div>
+            <h4 class="text-base font-semibold mb-1" style="color:#002f55;">Open any JO EQUIP page</h4>
+            <div class="leading-relaxed text-sm" style="color:var(--color-muted-foreground);">Then tap the small Select to Speak floating button (or the Accessibility button in your navigation bar).</div>
+          </div>
+        </li>
+        <li class="flex gap-4">
+          <span class="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-mono font-semibold mt-0.5" style="background-color:rgba(0,131,222,0.1);color:#0083de;">3</span>
+          <div>
+            <h4 class="text-base font-semibold mb-1" style="color:#002f55;">Tap "Play all" or drag to select text</h4>
+            <div class="leading-relaxed text-sm" style="color:var(--color-muted-foreground);">Tap the play arrow to read the whole page, or drag to highlight just a section.</div>
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    {/* Chrome extension */}
+    <div class="bg-white border rounded p-6 md:p-8 mb-8" style="border-color:var(--color-border);">
+      <div class="flex items-center gap-3 mb-5 pb-4 border-b" style="border-color:var(--color-border);">
+        <Chrome className="w-6 h-6" style={{ color: "#0083de" }} />
+        <h2 class="text-xl font-semibold" style="color:#002f55;">Google Chrome — Read Aloud extension</h2>
+      </div>
+      <p class="text-sm leading-relaxed mb-5" style="color:var(--color-muted-foreground);">
+        If you'd rather stay in Chrome, the free <strong>Read Aloud</strong> extension adds a single-click
+        page reader with several voice options.
+      </p>
+      <ol class="space-y-5">
+        <li class="flex gap-4">
+          <span class="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-mono font-semibold mt-0.5" style="background-color:rgba(0,131,222,0.1);color:#0083de;">1</span>
+          <div>
+            <h4 class="text-base font-semibold mb-1" style="color:#002f55;">Install the free extension</h4>
+            <div class="leading-relaxed text-sm" style="color:var(--color-muted-foreground);">
+              <a href="https://chromewebstore.google.com/detail/read-aloud-a-text-to-spee/hdhinadidafjejdhmfkjgnolgimiaplp" target="_blank" rel="noopener noreferrer" class="inline-flex items-center font-medium hover:underline" style="color:#0083de;">
+                Read Aloud on the Chrome Web Store
+                <ExternalLink className="w-3.5 h-3.5 ml-1" />
+              </a>
+              <div class="mt-1">Click "Add to Chrome" — it's free and runs entirely in your browser.</div>
+            </div>
+          </div>
+        </li>
+        <li class="flex gap-4">
+          <span class="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-mono font-semibold mt-0.5" style="background-color:rgba(0,131,222,0.1);color:#0083de;">2</span>
+          <div>
+            <h4 class="text-base font-semibold mb-1" style="color:#002f55;">Click the speaker icon</h4>
+            <div class="leading-relaxed text-sm" style="color:var(--color-muted-foreground);">Pin the extension to your toolbar, then click the speaker icon on any JO EQUIP page to start listening.</div>
+          </div>
+        </li>
+        <li class="flex gap-4">
+          <span class="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-mono font-semibold mt-0.5" style="background-color:rgba(0,131,222,0.1);color:#0083de;">3</span>
+          <div>
+            <h4 class="text-base font-semibold mb-1" style="color:#002f55;">Pick your voice in settings</h4>
+            <div class="leading-relaxed text-sm" style="color:var(--color-muted-foreground);">In the extension settings, switch between Google, Microsoft, and Amazon voices — the natural ones sound noticeably better than the defaults.</div>
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    <div class="p-5 rounded text-sm" style="background-color:rgba(0,131,222,0.06);border-left:4px solid #0083de;color:#002f55;">
+      <strong>Heads up:</strong> These are all third-party tools we don't control. Quality and voice availability
+      vary by device and operating system. Theological terms and Hebrew/Greek names may not always pronounce
+      perfectly — but for most articles, the experience is very natural.
+    </div>
+  </div>
+</Layout>

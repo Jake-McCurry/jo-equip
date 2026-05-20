@@ -101,8 +101,8 @@ const JO_JESUS_IDENTITY = "https://app.jesusonline.com/series/73";
  * Special cases (preserved manually, NOT in spreadsheet):
  *   • make-multiply-disciples-newsletter (placeholder, no items)
  *   • become-growing-church (equip-original long-form articles, see bcgArticles.ts)
- *   • bible-training-curriculum (Joshua Nations partner content — items still empty
- *     because URLs point off-platform; can be wired later if desired)
+ *   • online-bible-training-year-1 / -year-2 (Joshua Nations partner content — items
+ *     link to joshuanations.org/lessons/<slug>, not app.jesusonline.com)
  */
 export const subTopics: SubTopic[] = [
   // ── LEGACY ID PLACEHOLDERS (kept so previously-published URLs don't 404; content now lives under the more-specific spreadsheet-derived sub-topics in the Growth channel) ──
@@ -242,50 +242,68 @@ export const subTopics: SubTopic[] = [
       { number: 27, title: 'Revelation', links: { app: 'https://app.jesusonline.com/post/93662-7-revelation' } },
     ],
   },
+  /* Joshua Nations Online Bible Training (partner content).
+     Lesson URLs point to joshuanations.org/lessons/<slug>, not app.jesusonline.com.
+     Split into Year 1 (17 lessons) and Year 2 (19 lessons) sub-topics to preserve
+     the curriculum's two-year structure. Sub-topic appUrl points to the all-videos
+     index so the topic-level "App" button opens Joshua Nations' video library. */
   {
-    id: 'bible-training-curriculum',
+    id: 'online-bible-training-year-1',
     channelId: 'church',
-    name: 'Bible Training Curriculum',
+    name: 'Online Bible Training — Year 1 (Joshua Nations)',
+    formats: ['app'],
+    appUrl: 'https://joshuanations.org/media/all-videos',
     items: [
-      { number: 1, title: 'Online Bible Training Year 1', links: { app: 'https://joshuanations.org/media/all-videos' } },
-      { number: 2, title: 'JN101 | Bible Doctrine', links: { app: 'https://joshuanations.org/lessons/jn101-bible-doctrine' } },
-      { number: 3, title: 'JN102 | Doctrine of God the Father', links: { app: 'https://joshuanations.org/lessons/jn102-doctrine-of-god-the-father' } },
-      { number: 4, title: 'JN103 | Doctrine of the Son', links: { app: 'https://joshuanations.org/lessons/doctrine-of-the-father' } },
-      { number: 5, title: 'JN104 | Doctrine of God the Spirit / The Person of the Holy Spirit and the Trinity', links: { app: 'https://joshuanations.org/lessons/doctrine-of-god-the-spirit-the-person-of-the-holy-spirit-and-the-trinity' } },
-      { number: 6, title: 'JN105 | The Holy Spirit and the Life of a Believer', links: { app: 'https://joshuanations.org/lessons/jn105-the-holy-spirit-and-the-life-of-a-believer' } },
-      { number: 7, title: 'JN106 | Angels and Demons', links: { app: 'https://joshuanations.org/lessons/lesson-06-angels-and-demons' } },
-      { number: 8, title: 'JN107 | Man and Sin', links: { app: 'https://joshuanations.org/lessons/jn107-man-and-demons' } },
-      { number: 9, title: 'JN108 | Covenants and Salvation', links: { app: 'https://joshuanations.org/lessons/jn108-covenants-and-salvation' } },
-      { number: 10, title: 'JN109 | The Church', links: { app: 'https://joshuanations.org/lessons/jn109-the-church' } },
-      { number: 11, title: 'JN110 | The End Times', links: { app: 'https://joshuanations.org/lessons/jn110-the-end-time' } },
-      { number: 12, title: 'JN111 | Old Testament Survey', links: { app: 'https://joshuanations.org/lessons/jn111-old-testament-survey' } },
-      { number: 13, title: 'JN112 | New Testament Survey', links: { app: 'https://joshuanations.org/lessons/jn112-new-testament-survey-2' } },
-      { number: 14, title: 'JN113 |  Faith', links: { app: 'https://joshuanations.org/lessons/jn113-faith' } },
-      { number: 15, title: 'JN114 | Prayer', links: { app: 'https://joshuanations.org/lessons/jn114-prayer' } },
-      { number: 16, title: 'JN115 |  Evangelism and Missions', links: { app: 'https://joshuanations.org/lessons/jn115-evangelism' } },
-      { number: 17, title: 'JN116 | Discipleship', links: { app: 'https://joshuanations.org/lessons/jn116-discipleship' } },
-      { number: 18, title: 'JN117 | Biblical Prosperity and Stewardship', links: { app: 'https://joshuanations.org/lessons/jn117-stewardship' } },
-      { number: 19, title: 'JN201 | The Roles within the Family', links: { app: 'https://joshuanations.org/lessons/jn201-the-roles-within-the-family' } },
-      { number: 20, title: 'JN202 | Raising Spiritual Champions', links: { app: 'https://joshuanations.org/lessons/jn202-raising-spiritual-champions' } },
-      { number: 21, title: 'JN203 | The Five-Fold Ministry', links: { app: 'https://joshuanations.org/lessons/jn203-the-five-fold-ministry' } },
-      { number: 22, title: 'JN204 | Church Planting (part 1)', links: { app: 'https://joshuanations.org/lessons/jn204-church-planting-part-1' } },
-      { number: 23, title: 'JN205 | Church Planting (part 2)', links: { app: 'https://joshuanations.org/lessons/jn205-church-planting-part-2' } },
-      { number: 24, title: 'JN206 | Marketplace Ministry (part 1)', links: { app: 'https://joshuanations.org/lessons/jn206-marketplace-ministry-part-1' } },
-      { number: 25, title: 'JN207 | Marketplace Ministry (part 2)', links: { app: 'https://joshuanations.org/lessons/jn207-marketplace-ministry-part-2' } },
-      { number: 26, title: 'JN208 | Preaching Ministry', links: { app: 'https://joshuanations.org/lessons/jn208-preaching-ministry' } },
-      { number: 27, title: 'JN209 | The Sacraments of the Church', links: { app: 'https://joshuanations.org/lessons/jn209-the-sacraments-of-the-church' } },
-      { number: 28, title: 'JN120 | People Skills', links: { app: 'https://joshuanations.org/lessons/jn210-people-skills' } },
-      { number: 29, title: 'JN211 | Managing Ministry', links: { app: 'https://joshuanations.org/lessons/jn211-managing-ministry' } },
-      { number: 30, title: 'JN212 | Social Justice and Adoption', links: { app: 'https://joshuanations.org/lessons/jn212-lesson-12-social-justice-and-adoption' } },
-      { number: 31, title: 'JN213 | Leadership', links: { app: 'https://joshuanations.org/lessons/jn213-leadership' } },
-      { number: 32, title: 'JN214 | Developing a Vision', links: { app: 'https://joshuanations.org/lessons/jn214-developing-a-vision' } },
-      { number: 33, title: 'JN215 | Delegation', links: { app: 'https://joshuanations.org/lessons/jn215-delegation' } },
-      { number: 34, title: 'JN216 | Spiritual Growth Disciplines', links: { app: 'https://joshuanations.org/lessons/jn216-spiritual-growth-disciplines' } },
-      { number: 35, title: 'JN217 | Identity in Christ', links: { app: 'http://joshuanations.org/lessons/jn217-identity-in-christ' } },
-      { number: 36, title: 'JN218 | Hearing the Voice of God', links: { app: 'https://joshuanations.org/lessons/jn218-hearing-the-voice-of-god' } },
-      { number: 37, title: 'JN219 | God\'s Heart for Israel', links: { app: 'https://joshuanations.org/lessons/jn219-gods-heart-for-israel' } },
+      { number: 1,  title: 'JN101 | Bible Doctrine',                                                                       links: { app: 'https://joshuanations.org/lessons/jn101-bible-doctrine' } },
+      { number: 2,  title: 'JN102 | Doctrine of God the Father',                                                           links: { app: 'https://joshuanations.org/lessons/jn102-doctrine-of-god-the-father' } },
+      { number: 3,  title: 'JN103 | Doctrine of the Son',                                                                  links: { app: 'https://joshuanations.org/lessons/doctrine-of-the-father' } },
+      { number: 4,  title: 'JN104 | Doctrine of God the Spirit / The Person of the Holy Spirit and the Trinity',           links: { app: 'https://joshuanations.org/lessons/doctrine-of-god-the-spirit-the-person-of-the-holy-spirit-and-the-trinity' } },
+      { number: 5,  title: 'JN105 | The Holy Spirit and the Life of a Believer',                                           links: { app: 'https://joshuanations.org/lessons/jn105-the-holy-spirit-and-the-life-of-a-believer' } },
+      { number: 6,  title: 'JN106 | Angels and Demons',                                                                    links: { app: 'https://joshuanations.org/lessons/lesson-06-angels-and-demons' } },
+      { number: 7,  title: 'JN107 | Man and Sin',                                                                          links: { app: 'https://joshuanations.org/lessons/jn107-man-and-demons' } },
+      { number: 8,  title: 'JN108 | Covenants and Salvation',                                                              links: { app: 'https://joshuanations.org/lessons/jn108-covenants-and-salvation' } },
+      { number: 9,  title: 'JN109 | The Church',                                                                           links: { app: 'https://joshuanations.org/lessons/jn109-the-church' } },
+      { number: 10, title: 'JN110 | The End Times',                                                                        links: { app: 'https://joshuanations.org/lessons/jn110-the-end-time' } },
+      { number: 11, title: 'JN111 | Old Testament Survey',                                                                 links: { app: 'https://joshuanations.org/lessons/jn111-old-testament-survey' } },
+      { number: 12, title: 'JN112 | New Testament Survey',                                                                 links: { app: 'https://joshuanations.org/lessons/jn112-new-testament-survey-2' } },
+      { number: 13, title: 'JN113 | Faith',                                                                                links: { app: 'https://joshuanations.org/lessons/jn113-faith' } },
+      { number: 14, title: 'JN114 | Prayer',                                                                               links: { app: 'https://joshuanations.org/lessons/jn114-prayer' } },
+      { number: 15, title: 'JN115 | Evangelism and Missions',                                                              links: { app: 'https://joshuanations.org/lessons/jn115-evangelism' } },
+      { number: 16, title: 'JN116 | Discipleship',                                                                         links: { app: 'https://joshuanations.org/lessons/jn116-discipleship' } },
+      { number: 17, title: 'JN117 | Biblical Prosperity and Stewardship',                                                  links: { app: 'https://joshuanations.org/lessons/jn117-stewardship' } },
     ],
   },
+  {
+    id: 'online-bible-training-year-2',
+    channelId: 'church',
+    name: 'Online Bible Training — Year 2 (Joshua Nations)',
+    formats: ['app'],
+    appUrl: 'https://joshuanations.org/media/all-videos',
+    items: [
+      { number: 1,  title: 'JN201 | The Roles within the Family',           links: { app: 'https://joshuanations.org/lessons/jn201-the-roles-within-the-family' } },
+      { number: 2,  title: 'JN202 | Raising Spiritual Champions',           links: { app: 'https://joshuanations.org/lessons/jn202-raising-spiritual-champions' } },
+      { number: 3,  title: 'JN203 | The Five-Fold Ministry',                links: { app: 'https://joshuanations.org/lessons/jn203-the-five-fold-ministry' } },
+      { number: 4,  title: 'JN204 | Church Planting (part 1)',              links: { app: 'https://joshuanations.org/lessons/jn204-church-planting-part-1' } },
+      { number: 5,  title: 'JN205 | Church Planting (part 2)',              links: { app: 'https://joshuanations.org/lessons/jn205-church-planting-part-2' } },
+      { number: 6,  title: 'JN206 | Marketplace Ministry (part 1)',         links: { app: 'https://joshuanations.org/lessons/jn206-marketplace-ministry-part-1' } },
+      { number: 7,  title: 'JN207 | Marketplace Ministry (part 2)',         links: { app: 'https://joshuanations.org/lessons/jn207-marketplace-ministry-part-2' } },
+      { number: 8,  title: 'JN208 | Preaching Ministry',                    links: { app: 'https://joshuanations.org/lessons/jn208-preaching-ministry' } },
+      { number: 9,  title: 'JN209 | The Sacraments of the Church',          links: { app: 'https://joshuanations.org/lessons/jn209-the-sacraments-of-the-church' } },
+      { number: 10, title: 'JN210 | People Skills',                         links: { app: 'https://joshuanations.org/lessons/jn210-people-skills' } },
+      { number: 11, title: 'JN211 | Managing Ministry',                     links: { app: 'https://joshuanations.org/lessons/jn211-managing-ministry' } },
+      { number: 12, title: 'JN212 | Social Justice and Adoption',           links: { app: 'https://joshuanations.org/lessons/jn212-lesson-12-social-justice-and-adoption' } },
+      { number: 13, title: 'JN213 | Leadership',                            links: { app: 'https://joshuanations.org/lessons/jn213-leadership' } },
+      { number: 14, title: 'JN214 | Developing a Vision',                   links: { app: 'https://joshuanations.org/lessons/jn214-developing-a-vision' } },
+      { number: 15, title: 'JN215 | Delegation',                            links: { app: 'https://joshuanations.org/lessons/jn215-delegation' } },
+      { number: 16, title: 'JN216 | Spiritual Growth Disciplines',          links: { app: 'https://joshuanations.org/lessons/jn216-spiritual-growth-disciplines' } },
+      { number: 17, title: 'JN217 | Identity in Christ',                    links: { app: 'https://joshuanations.org/lessons/jn217-identity-in-christ' } },
+      { number: 18, title: 'JN218 | Hearing the Voice of God',              links: { app: 'https://joshuanations.org/lessons/jn218-hearing-the-voice-of-god' } },
+      { number: 19, title: 'JN219 | God\'s Heart for Israel',               links: { app: 'https://joshuanations.org/lessons/jn219-gods-heart-for-israel' } },
+    ],
+  },
+  /* Legacy ID kept so previously-published URLs to /channels/church/bible-training-curriculum don't 404.
+     New visitors should land on the two year-specific sub-topics above. */
+  { id: 'bible-training-curriculum', channelId: 'church', name: 'Bible Training Curriculum' },
   {
     id: 'become-growing-church',
     channelId: 'church',

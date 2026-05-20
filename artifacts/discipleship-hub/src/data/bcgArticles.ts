@@ -19,7 +19,11 @@ export type ArticleBlock =
   | { type: "h3"; text: string }
   | { type: "ul"; items: string[] }
   | { type: "ol"; items: string[] }
-  | { type: "quote"; html: string; cite?: string };
+  | { type: "quote"; html: string; cite?: string }
+  /* Inline illustration. `src` is the basename of a file in src/assets/bcg/
+     (resolved via bcgImages.ts). `alt` is required for a11y/SEO. `caption`
+     is optional and renders as a muted <figcaption>. */
+  | { type: "figure"; src: string; alt: string; caption?: string };
 
 export interface BcgArticle {
   id: string;
@@ -48,6 +52,7 @@ export const bcgArticles: BcgArticle[] = [
 
       { type: "h2", text: "Our Core Philosophy" },
       { type: "p", html: "<strong>Grow deep. God will grow you wide.</strong>" },
+      { type: "figure", src: "grow-deep-grow-wide", alt: "Illustration of deep roots crossing a canyon to draw from a river below — a visual metaphor for spiritual depth fueling lasting growth." },
       { type: "p", html: "We believe real success in God’s Kingdom is measured first by depth, not numbers. When disciples are rooted in Christ, transformed by His Word, and equipped to follow Him daily, healthy growth follows naturally. Healthy sheep reproduce. Healthy flocks expand." },
 
       { type: "p", html: "That’s why our resources focus on:" },
@@ -56,9 +61,11 @@ export const bcgArticles: BcgArticle[] = [
         "Engaging media that makes truth accessible and life-changing",
         "Practical discipleship tools that help your people thrive right where God has planted them",
       ]},
+      { type: "figure", src: "high-quality-nutrients", alt: "Three watercolor emblems representing biblical teaching, engaging media, and discipleship tools — the high-quality nutrients JesusOnline provides for the local flock." },
 
       { type: "p", html: "We’re not promising explosive numerical growth. These are tools, not magic. But we are confident that when you minister God’s way — caring for the sheep, preaching the Word, and making disciples — He is faithful to bless the work." },
       { type: "p", html: "Isn’t it reasonable to expect that if you pour yourself into faithful, biblical ministry, the Lord of the Harvest will bring the increase in His perfect timing?" },
+      { type: "figure", src: "lord-of-the-harvest", alt: "Venn diagram contrasting human faithfulness (caring for the sheep, preaching the Word) with divine provision (timing, blessing, increase) — meeting in the middle as true Kingdom increase." },
 
       { type: "h2", text: "Let’s Build Christ’s Kingdom Together" },
       { type: "p", html: "If you’re a pastor or church leader who wants to focus on depth over hype, we’d love to partner with you." },

@@ -10,9 +10,11 @@
  * route by subId → article source (e.g. a registry map).
  */
 import Layout from "@/layouts/Layout.astro";
+import { Image } from "astro:assets";
 import { subTopics, getChannel, getSubTopic } from "@/data/channels";
 import { bcgArticles, getBcgArticle, getNextBcgArticle } from "@/data/bcgArticles";
 import type { ArticleBlock } from "@/data/bcgArticles";
+import { getBcgImage } from "@/data/bcgImages";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 import { ArrowLeft, ArrowRight, ChevronRight } from "lucide-react";
 
@@ -133,6 +135,24 @@ const metaDescription = plain(article.description);
                 {b.cite && <cite>— {b.cite}</cite>}
               </blockquote>
             );
+          case "figure": {
+            const img = getBcgImage(b.src);
+            if (!img) return null;
+            return (
+              <figure>
+                <Image
+                  src={img}
+                  alt={b.alt}
+                  widths={[480, 800, 1200]}
+                  sizes="(min-width: 768px) 720px, 100vw"
+                  format="webp"
+                  quality={80}
+                  loading="lazy"
+                />
+                {b.caption && <figcaption set:html={b.caption} />}
+              </figure>
+            );
+          }
         }
       })}
     </article>
@@ -214,4 +234,21 @@ const metaDescription = plain(article.description);
     color: #6b7280;
   }
   .bcg-prose strong { color: #002f55; }
+  .bcg-prose figure {
+    margin: 2rem 0;
+  }
+  .bcg-prose figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 47, 85, 0.06);
+  }
+  .bcg-prose figcaption {
+    margin-top: 0.65rem;
+    font-size: 0.875rem;
+    color: #6b7280;
+    text-align: center;
+    line-height: 1.5;
+  }
 </style>

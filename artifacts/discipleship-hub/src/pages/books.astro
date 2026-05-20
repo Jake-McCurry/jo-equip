@@ -10,6 +10,14 @@ const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
   (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
 
+/* Cloudflare Turnstile site key — public, safe to commit (appears in HTML).
+   The default `1x00000000000000000000AA` is Cloudflare's "always passes" test
+   key — fine for local/dev but does NOT block bots. Before going to scale,
+   create a real widget at https://dash.cloudflare.com → Turnstile and replace
+   this constant, then set TURNSTILE_SECRET_KEY as a Worker secret to enforce
+   verification server-side. */
+const TURNSTILE_SITE_KEY = "1x00000000000000000000AA";
+
 /* JSON-LD: a CollectionPage that contains an ItemList of Book entries.
    Each Book is marked free + downloadable so Google can show it in
    structured book results (and understand we offer free resources). */
@@ -171,6 +179,15 @@ const booksJsonLd = {
           style="border-color:var(--color-border);"
         />
         <p id="email-gate-error" class="text-sm hidden" role="alert" aria-live="polite" style="color:#c0392b;">Please enter a valid email address.</p>
+        <!-- Cloudflare Turnstile: invisible bot check. Token is populated into
+             a hidden input named `cf-turnstile-response` automatically. -->
+        <div
+          id="email-gate-turnstile"
+          class="cf-turnstile"
+          data-sitekey={TURNSTILE_SITE_KEY}
+          data-size="flexible"
+          data-theme="light"
+        ></div>
         <button
           id="email-gate-submit"
           type="submit"
@@ -270,7 +287,7 @@ const booksJsonLd = {
         lastFocusedEl = null;
       }
 
-      function submitEmail(email) {
+      function submitEmail(email, turnstileToken) {
         try {
           fetch(SUBSCRIBE_ENDPOINT, {
             method: "POST",
@@ -280,10 +297,22 @@ const booksJsonLd = {
               source: "jo-equip-books",
               book_id: pendingId,
               book_title: pendingTitle,
+              turnstile_token: turnstileToken || "",
             }),
             keepalive: true,
           }).catch(function () { /* fire-and-forget */ });
         } catch (_e) { /* ignore */ }
+      }
+
+      function getTurnstileToken() {
+        // Turnstile injects a hidden input named "cf-turnstile-response"
+        // into the widget container once the user passes the challenge.
+        try {
+          const el = document.querySelector(
+            '#email-gate-turnstile input[name="cf-turnstile-response"]'
+          );
+          return el && el.value ? el.value : "";
+        } catch (_e) { return ""; }
       }
 
       function trapFocus(e) {
@@ -357,7 +386,15 @@ const booksJsonLd = {
         isSubmitting = true;
         submitBtn.disabled = true;
         safeSet(email);
-        submitEmail(email);
+        submitEmail(email, getTurnstileToken());
+        // Turnstile tokens are single-use. Reset so a re-open of the modal
+        // (e.g. different tab, cleared storage, in-memory-only session)
+        // gets a fresh token instead of one the Worker will reject.
+        try {
+          if (window.turnstile && typeof window.turnstile.reset === "function") {
+            window.turnstile.reset("#email-gate-turnstile");
+          }
+        } catch (_e) { /* ignore */ }
         const url = pendingPdf;
         closeGate();
         if (url) {
@@ -366,4 +403,13 @@ const booksJsonLd = {
       });
     })();
   </script>
+
+  <!-- Cloudflare Turnstile — loaded lazily, only on the /books page where
+       the email gate lives. `defer` keeps it from blocking render. -->
+  <script
+    src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+    async
+    defer
+    is:inline
+  ></script>
 </Layout>

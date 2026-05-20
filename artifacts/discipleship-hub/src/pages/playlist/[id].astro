@@ -16,6 +16,39 @@ const join = (p: string) =>
 const count = playlist.videos.length;
 const pageTitle = `${playlist.title} · JO EQUIP`;
 const pageDesc = `Watch the "${playlist.title}" video series on JO EQUIP — ${count} ${count === 1 ? "video" : "videos"} from JesusOnline Ministries to help you grow in faith and disciple others.`;
+
+/* JSON-LD: ItemList of VideoObject entries — gets the playlist's videos
+   eligible for Google video search and Knowledge Graph indexing. We don't
+   have uploadDate per video, so video rich-result thumbnails in SERPs
+   aren't guaranteed, but the schema still strengthens overall indexing. */
+const SITE = "https://equip.jesusonline.com";
+const playlistJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "@id": `${SITE}/playlist/${playlist.id}#videos`,
+  "name": playlist.title,
+  "url": `${SITE}/playlist/${playlist.id}`,
+  "numberOfItems": count,
+  "itemListElement": playlist.videos.map((v, i) => ({
+    "@type": "ListItem",
+    "position": i + 1,
+    "item": {
+      "@type": "VideoObject",
+      "@id": `https://www.youtube.com/watch?v=${v.videoId}`,
+      "name": v.title,
+      "description": `${v.title} — part of "${playlist.title}" on JO EQUIP.`,
+      "thumbnailUrl": [
+        `https://i.ytimg.com/vi/${v.videoId}/hqdefault.jpg`,
+        `https://i.ytimg.com/vi/${v.videoId}/maxresdefault.jpg`,
+      ],
+      "contentUrl": `https://www.youtube.com/watch?v=${v.videoId}`,
+      "embedUrl": `https://www.youtube.com/embed/${v.videoId}`,
+      "publisher": { "@id": "https://jesusonlineministries.org/#org" },
+      "inLanguage": "en",
+      "isFamilyFriendly": true,
+    },
+  })),
+};
 ---
 <Layout title={pageTitle} description={pageDesc}>
   <Fragment slot="head">
@@ -24,6 +57,7 @@ const pageDesc = `Watch the "${playlist.title}" video series on JO EQUIP — ${c
       { name: "Playlists", url: "/playlists" },
       { name: playlist.title, url: `/playlist/${playlist.id}` },
     ]} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(playlistJsonLd)} />
   </Fragment>
   <div class="container mx-auto px-4 py-8 md:py-12">
 

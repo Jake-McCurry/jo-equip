@@ -42,17 +42,30 @@ Brand: #002f55 navy, #0083de blue, #de5b00 orange. No DB / auth / per-user serve
   - Virtuous payload: Household contact with one primary individual (firstName "Friend", lastName "Subscriber"), Home Email opted-in, `referenceSource` = source string (e.g. `jo-equip-books`), `referenceId` = book_id, custom field `Book Downloaded` = book_title. List/tag assignment is meant to be done in Virtuous via automation rules keyed off `referenceSource`.
   - Modal is fully accessible: focus trap, Escape to close, focus restoration, role/aria attributes.
 
+### Listen page (`/listen`)
+
+- Free text-to-speech "read this site aloud" instructions, in the main nav slot previously held by Translate.
+- Leads with Microsoft Edge's built-in Read Aloud (top pick, orange "Top Pick" badge + orange top-border), then iOS Spoken Content, Android Select to Speak, then Chrome Read Aloud extension as fallback.
+- Translate page is unchanged and now lives as a card on `/more` (plum `#7a3a8a` accent).
+
 ### SEO / a11y / cache / tracking (site-wide)
 
-- **Sitemap**: `@astrojs/sitemap` integration generates `sitemap-index.xml` + `sitemap-0.xml` at build. Robots.txt at `public/robots.txt` references the sitemap-index.
+- **Sitemap**: `@astrojs/sitemap` integration generates `sitemap-index.xml` + `sitemap-0.xml` at build. Configured with `lastmod: new Date()` so every URL gets a `<lastmod>` stamp on each deploy — signals freshness to Google. Robots.txt at `public/robots.txt` references the sitemap-index.
 - **Caching** (`public/_headers`, served by Cloudflare Pages):
   - `/_astro/*` (hashed bundles) → `max-age=31536000, immutable`
   - `/books/*.pdf` and `/books/covers/*` → `max-age=2592000, must-revalidate` (30 days)
   - `/favicon.svg`, `/opengraph.jpg` → `max-age=86400`
   - everything else → `max-age=0, must-revalidate` (HTML revalidates immediately)
-  - default headers: `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`, `X-Frame-Options: SAMEORIGIN`
+  - default headers: `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`, `X-Frame-Options: SAMEORIGIN`, `Strict-Transport-Security: max-age=63072000; includeSubDomains; preload` (HSTS — 2-year, preload-eligible), `Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()` (opts out of powerful APIs we never use + FLoC)
 - **SEO tags** (in Layout.astro): canonical URL hardcoded to `https://equip.jesusonline.com` + base-stripped path (so dev hosts don't pollute canonicals); full Open Graph (url/site_name/locale/image+alt+dims); Twitter `summary_large_image`. Per-page `<slot name="head"/>` for JSON-LD.
-- **JSON-LD**: home page (index.astro) injects an Organization + WebSite graph via the head slot. Inner pages emit a `BreadcrumbList` graph via the reusable `src/components/BreadcrumbsLd.astro` component (call with `<BreadcrumbsLd items={[{name,url},...]} />` inside `<Fragment slot="head">`; URLs are root-relative paths — the component prefixes them with the canonical SITE).
+- **JSON-LD** (extensive per-page coverage):
+  - **Home** (`index.astro`): `Organization` (with `email`, `contactPoint`, `sameAs` for cross-domain identity) + `WebSite` graph.
+  - **All inner pages**: `BreadcrumbList` via the reusable `src/components/BreadcrumbsLd.astro` component (call with `<BreadcrumbsLd items={[{name,url},...]} />` inside `<Fragment slot="head">`; URLs are root-relative paths — the component prefixes them with the canonical SITE).
+  - **`/books`**: `CollectionPage` → `ItemList` of `Book` items, each with `bookFormat: EBook`, `isAccessibleForFree: true`, and a nested `workExample` Book carrying the PDF URL + `ReadAction`.
+  - **`/playlist/[id]`**: `ItemList` of `VideoObject` items (name, thumbnailUrl ×2, contentUrl, embedUrl, publisher, inLanguage, isFamilyFriendly). `uploadDate` is deliberately omitted because we don't have it — this means Google can index videos but won't show rich video thumbnails in SERPs.
+  - **`/channels/<channel>/<subId>`**: `CollectionPage` → `ItemList` of sub-topic items. **NOT FAQPage** — items have no inline answer text (answers live in linked PDFs/videos/app), so FAQPage would violate Google's policy. `ItemList` is the honest, valid choice.
+  - **`/about`**: `AboutPage` schema linking to the JOM Organization entity.
+  - **`/beliefs`**: `Article` schema with `datePublished` (set via `DATE_PUBLISHED` constant — update if page materially rewritten) and `dateModified` (auto-stamped at build time).
 - **Per-page meta descriptions**: every page passes its own `description` prop to Layout. The default (used only as a fallback) is the home description. Search engines now see distinct descriptions per route for better SERP snippets.
 - **Image optimization**: book covers live in `src/assets/books/covers/` (NOT `public/`) and are loaded via `src/data/bookCovers.ts` (a `import.meta.glob('../assets/books/covers/*', { eager })` map keyed by file basename). `books.astro` renders them with Astro's `<Image>` from `astro:assets` (`widths={[240,480]}` + `sizes`), producing per-cover `srcset` of optimized webp (90% size reduction at build, ~150KB → ~15KB). Sharp is installed as a direct dep of `@workspace/discipleship-hub` (Astro's image service requires it at the consuming package level).
 - **Custom 404** (`src/pages/404.astro`): brand-styled Page Not Found with cards linking to Home, Channels, Playlists, Books, and a tail link to the search page. Astro emits `dist/404.html` automatically; Cloudflare Pages serves it for unknown routes.

@@ -14,6 +14,18 @@ const strategy = [
   { n: "4", text: "We follow up with those who respond." },
 ];
 
+const SITE = "https://equip.jesusonline.com";
+const aboutJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "@id": `${SITE}/about#page`,
+  "name": "About JesusOnline Ministries · JO EQUIP",
+  "url": `${SITE}/about`,
+  "isPartOf": { "@id": `${SITE}/#website` },
+  "about": { "@id": "https://jesusonlineministries.org/#org" },
+  "mainEntity": { "@id": "https://jesusonlineministries.org/#org" },
+};
+
 const milestones = [
   { year: "2001", text: "Larry Chapman summarized evidence for God's existence and Jesus' deity for a Young Life leader." },
   { year: "2003", text: "Bill Bright and Larry agreed to co-publish that evidence as single-issue magazines for Campus Crusade for Christ, Int'l." },
@@ -32,6 +44,7 @@ const milestones = [
       { name: "More", url: "/more" },
       { name: "About", url: "/about" },
     ]} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(aboutJsonLd)} />
   </Fragment>
   <section class="bg-white">
     <div class="container mx-auto px-4 py-14 md:py-20 max-w-4xl">

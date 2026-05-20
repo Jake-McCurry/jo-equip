@@ -131,12 +131,23 @@ function renderTemplate({
   }
   .cover .eyebrow {
     font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
-    font-size: 9.5pt;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: #de5b00;
-    font-weight: 600;
-    margin-bottom: 0.6em;
+    margin-bottom: 0.9em;
+    line-height: 1.15;
+  }
+  .cover .eyebrow .brand-name {
+    display: block;
+    font-size: 18pt;
+    font-weight: 700;
+    color: #002f55;
+    letter-spacing: -0.005em;
+  }
+  .cover .eyebrow .brand-tag {
+    display: block;
+    margin-top: 0.18em;
+    font-size: 10.5pt;
+    font-weight: 400;
+    color: #6b7280;
+    letter-spacing: 0.01em;
   }
   .cover h1 {
     font-family: Georgia, "Times New Roman", serif;
@@ -168,7 +179,10 @@ function renderTemplate({
     color: #6b7280;
   }
   .cover .footer-block .brand {
-    color: #002f55; font-weight: 700; letter-spacing: 0.06em;
+    color: #002f55; font-weight: 700;
+  }
+  .cover .footer-block .brand-tag {
+    color: #6b7280; font-weight: 400;
   }
 
   /* Body content */
@@ -224,7 +238,10 @@ function renderTemplate({
 </head>
 <body>
   <section class="cover">
-    <div class="eyebrow">JesusOnline · EQUIP</div>
+    <div class="eyebrow">
+      <span class="brand-name">JesusOnline Equip</span>
+      <span class="brand-tag">Ministry Resources Hub</span>
+    </div>
     <h1>${escTitle}</h1>
     <span class="rule"></span>
     <div class="meta">
@@ -232,7 +249,7 @@ function renderTemplate({
       Read or share online: <span style="color:#002f55">${sourceUrl.replace(/^https?:\/\//, "")}</span>
     </div>
     <div class="footer-block">
-      <span class="brand">JESUSONLINE EQUIP</span> · equip.jesusonline.com<br />
+      <span class="brand">JesusOnline Equip</span> <span class="brand-tag">· Ministry Resources Hub</span> · equip.jesusonline.com<br />
       Free media and discipleship resources for pastors, leaders, and growing disciples.
     </div>
   </section>
@@ -246,8 +263,8 @@ function renderTemplate({
 
 /* puppeteer header/footer templates — small JO branding + page numbers. */
 const FOOTER_TEMPLATE = `
-  <div style="width:100%;font-family:'Helvetica Neue',Arial,sans-serif;font-size:8pt;color:#6b7280;padding:0 0.8in;display:flex;justify-content:space-between;">
-    <span style="color:#002f55;font-weight:600;letter-spacing:0.05em;">JESUSONLINE EQUIP</span>
+  <div style="width:100%;font-family:'Helvetica Neue',Arial,sans-serif;font-size:8pt;color:#6b7280;padding:0 0.8in;display:flex;justify-content:space-between;align-items:center;">
+    <span><span style="color:#002f55;font-weight:700;">JesusOnline Equip</span> <span style="color:#9ca3af;">· Ministry Resources Hub</span></span>
     <span>Page <span class="pageNumber"></span> of <span class="totalPages"></span></span>
     <span>equip.jesusonline.com</span>
   </div>`;

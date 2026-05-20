@@ -15,9 +15,9 @@ export interface ArticlePdfMeta {
 }
 
 export const articlePdfs: Record<string, ArticlePdfMeta> = {
-  "20010-experiencing-god-24-7": { title: "Experiencing God 24/7 Overview", bytes: 108659, modified: "2023-11-02T22:33:42" },
-  "20011-quiet-time-with-god": { title: "Quiet Time with God", bytes: 115149, modified: "2023-11-07T19:42:04" },
-  "20012-activity-time-with-god": { title: "Activity Time with God", bytes: 110857, modified: "2023-11-02T17:58:21" },
+  "20010-experiencing-god-24-7": { title: "Experiencing God 24/7 Overview", bytes: 110963, modified: "2023-11-02T22:33:42" },
+  "20011-quiet-time-with-god": { title: "Quiet Time with God", bytes: 117435, modified: "2023-11-07T19:42:04" },
+  "20012-activity-time-with-god": { title: "Activity Time with God", bytes: 113003, modified: "2023-11-02T17:58:21" },
 };
 
 /** Extract the app-slug portion of an app.jesusonline.com/post/<slug> URL. */

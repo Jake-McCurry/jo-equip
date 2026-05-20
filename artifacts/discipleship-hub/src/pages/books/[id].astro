@@ -1,0 +1,137 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { Image } from "astro:assets";
+import { Download, ArrowLeft } from "lucide-react";
+import { books } from "@/data/books";
+import { getBookCover } from "@/data/bookCovers";
+import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
+
+/* One static page per book, generated at build. Purpose:
+   1. Give every book a unique, shareable URL with a proper Open Graph
+      image (= the book's cover) so links shared on Facebook / Twitter /
+      iMessage / Slack render with the actual cover instead of the
+      generic site OG.
+   2. Provide a clean per-book Book JSON-LD entity that Google can index
+      independently (in addition to the ItemList on /books).
+   The download button on this page is just an anchor that links to
+   /books?download=<id>, reusing the existing email-gate JS on the books
+   index page — no JS duplication. */
+export function getStaticPaths() {
+  return books.map(book => ({ params: { id: book.id }, props: { book } }));
+}
+
+const { book } = Astro.props;
+const cover = getBookCover(book.id);
+
+const baseUrl = import.meta.env.BASE_URL;
+const join = (p: string) =>
+  (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
+
+const byline = book.author ? ` by ${book.author}` : "";
+const pageTitle = `${book.title} · Free Download · JO EQUIP`;
+const pageDesc = `Free PDF download — ${book.title}${byline}. A practical discipleship resource from JesusOnline Ministries Equip.`;
+
+const SITE = "https://equip.jesusonline.com";
+const bookJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Book",
+  "@id": `${SITE}/books/${book.id}#book`,
+  "name": book.title,
+  ...(book.author ? { "author": { "@type": "Person", "name": book.author } } : {}),
+  "publisher": { "@id": "https://jesusonlineministries.org/#org" },
+  "image": `${SITE}${book.cover}`,
+  "url": `${SITE}/books/${book.id}`,
+  "bookFormat": "https://schema.org/EBook",
+  "inLanguage": "en",
+  "isAccessibleForFree": true,
+  "workExample": {
+    "@type": "Book",
+    "bookFormat": "https://schema.org/EBook",
+    "encodingFormat": "application/pdf",
+    "url": `${SITE}${book.pdf}`,
+    "isAccessibleForFree": true,
+    "inLanguage": "en",
+    "potentialAction": {
+      "@type": "ReadAction",
+      "target": `${SITE}${book.pdf}`,
+      "actionStatus": "https://schema.org/PotentialActionStatus",
+    },
+  },
+};
+---
+<Layout
+  title={pageTitle}
+  description={pageDesc}
+  image={book.cover}
+  imageAlt={`${book.title} — book cover`}
+>
+  <Fragment slot="head">
+    <BreadcrumbsLd items={[
+      { name: "Home", url: "/" },
+      { name: "Books", url: "/books" },
+      { name: book.title, url: `/books/${book.id}` },
+    ]} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(bookJsonLd)} />
+  </Fragment>
+
+  <div class="container mx-auto px-4 py-10 md:py-14 max-w-5xl">
+    <a
+      href={join("/books")}
+      class="inline-flex items-center gap-2 text-sm font-medium mb-8 hover:opacity-75 transition-opacity"
+      style="color:#0083de;"
+    >
+      <ArrowLeft className="w-4 h-4" /> Back to all books
+    </a>
+
+    <div class="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-8 md:gap-12 items-start">
+      <div class="flex justify-center md:justify-start">
+        {cover ? (
+          <Image
+            src={cover}
+            alt={`${book.title} book cover`}
+            widths={[280, 560]}
+            sizes="(min-width: 768px) 280px, 90vw"
+            class="w-full max-w-[280px] h-auto rounded shadow-lg"
+          />
+        ) : (
+          <div
+            class="w-full max-w-[280px] aspect-[2/3] rounded bg-gray-100 flex items-center justify-center text-sm"
+            style="color:var(--color-muted-foreground);"
+          >
+            No cover available
+          </div>
+        )}
+      </div>
+
+      <div>
+        <span class="text-xs font-semibold tracking-widest uppercase" style="color:#de5b00;">
+          Free PDF · Book
+        </span>
+        <h1 class="text-3xl md:text-4xl mt-3 mb-3" style="color:#002f55;">{book.title}</h1>
+        {book.author && (
+          <p class="text-base mb-5" style="color:var(--color-muted-foreground);">
+            by <span class="font-medium" style="color:#002f55;">{book.author}</span>
+          </p>
+        )}
+        <div class="h-0.5 w-12 mb-6" style="background-color:#de5b00;"></div>
+        <p class="text-base leading-relaxed mb-8" style="color:var(--color-muted-foreground);">
+          A practical discipleship resource from JesusOnline Ministries — free to download
+          and share with your church, small group, or ministry team.
+        </p>
+
+        {/* Download CTA — links to /books?download=<id>, which the existing
+            email-gate JS on /books picks up and auto-triggers. */}
+        <a
+          href={join(`/books?download=${book.id}`)}
+          class="inline-flex items-center gap-2 px-6 py-3 rounded font-semibold text-white text-base transition-colors hover:opacity-90"
+          style="background-color:#de5b00;"
+        >
+          <Download className="w-4 h-4" /> Download PDF
+        </a>
+        <p class="text-xs mt-3" style="color:var(--color-muted-foreground);">
+          We'll ask for your email on the next step so we can share new resources occasionally.
+        </p>
+      </div>
+    </div>
+  </div>
+</Layout>

@@ -9,12 +9,15 @@ interface Props {
   description?: string;
   /** Override the OG/Twitter image. Path relative to site root, e.g. "/opengraph.jpg" */
   image?: string;
+  /** Alt text for the OG/Twitter image. Defaults to the site tagline. */
+  imageAlt?: string;
 }
 
 const {
   title = "JO EQUIP · Ministry Resources Hub",
   description = "A free digital library of practical discipleship tools for pastors and ministry leaders.",
   image = "/opengraph.jpg",
+  imageAlt = "JO EQUIP — Ministry Resources Hub",
 } = Astro.props;
 
 const baseUrl = import.meta.env.BASE_URL;
@@ -91,16 +94,23 @@ const gtmEnabled = import.meta.env.PROD;
     <meta property="og:site_name" content="JO EQUIP · Ministry Resources Hub" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:image" content={absoluteImage} />
-    <meta property="og:image:alt" content="JO EQUIP — Ministry Resources Hub" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={imageAlt} />
+    {/* Width/height hints only apply to the default 1200×630 site OG.
+        For per-page overrides (e.g. book covers), let crawlers detect dims
+        on their own rather than lying about them. */}
+    {image === "/opengraph.jpg" && (
+      <>
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+      </>
+    )}
 
     {/* Twitter / X card */}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={absoluteImage} />
-    <meta name="twitter:image:alt" content="JO EQUIP — Ministry Resources Hub" />
+    <meta name="twitter:image:alt" content={imageAlt} />
 
     {/* Per-page additions (e.g. JSON-LD) */}
     <slot name="head" />

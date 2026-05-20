@@ -1,6 +1,6 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import { Users2, BookOpen, Mail, FileText, ExternalLink, ArrowRight, Send } from "lucide-react";
+import { Users2, BookOpen, Mail, FileText, ExternalLink, ArrowRight, Send, Languages } from "lucide-react";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 
 const baseUrl = import.meta.env.BASE_URL;
@@ -45,6 +45,13 @@ const SECTIONS: Section[] = [
     href: "https://app.jesusonline.com",
     accent: "#4c8a4c",
     external: true,
+  },
+  {
+    title: "Translate",
+    icon: Languages,
+    description: "Read JO EQUIP in your heart language — step-by-step instructions for Google Translate on any device.",
+    href: "/translate",
+    accent: "#7a3a8a",
   },
   {
     title: "Privacy Policy",

@@ -32,12 +32,18 @@ const objectPosition = objectPositionMap[channel];
  * color come through, producing a duotone "tinted photo" look. */
 ---
 <div class={`overflow-hidden ${className}`} style="position:absolute;inset:0;" aria-hidden="true">
+  {/* Below-the-fold decorative art. `loading=lazy` + `decoding=async` keep
+      it off the critical path. AVIF first (then webp fallback) typically
+      cuts these from ~30KB → ~12KB on top of the source-side recompress. */}
   <Image
     src={imgMap[channel]}
     alt=""
-    widths={[640, 1024]}
+    widths={[480, 800]}
     sizes="(min-width: 1024px) 33vw, 100vw"
+    formats={["avif", "webp"]}
+    quality={70}
     loading="lazy"
+    decoding="async"
     class="w-full h-full object-cover"
     style={`position:absolute;inset:0;object-position:${objectPosition};`}
   />

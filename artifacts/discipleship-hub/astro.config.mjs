@@ -2,6 +2,7 @@
 import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
+import partytown from "@astrojs/partytown";
 import pagefind from "astro-pagefind";
 import tailwindcss from "@tailwindcss/vite";
 import path from "node:path";
@@ -32,6 +33,16 @@ export default defineConfig({
        `lastmod` values after each deploy and recrawls accordingly. */
     sitemap({ lastmod: new Date() }),
     pagefind(),
+    /* Partytown: runs <script type="text/partytown"> in a Web Worker
+       instead of the main thread. We use it for GTM + GA4 (set up in
+       Layout.astro) — biggest single mobile PSI win for this site.
+       `forward` tells Partytown which window properties to proxy so
+       dataLayer.push() calls still work transparently from main-thread code. */
+    partytown({
+      config: {
+        forward: ["dataLayer.push", "gtag"],
+      },
+    }),
   ],
   vite: {
     plugins: [tailwindcss()],

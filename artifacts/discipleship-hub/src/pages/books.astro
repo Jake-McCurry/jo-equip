@@ -331,6 +331,20 @@ const booksJsonLd = {
         }
       }
 
+      // Lazy-load Turnstile only when the user actually opens the gate.
+      // Avoids ~20KB of JS + a third-party request on every /books visit
+      // for visitors who never click a download.
+      let turnstileLoadStarted = false;
+      function ensureTurnstileLoaded() {
+        if (turnstileLoadStarted) return;
+        turnstileLoadStarted = true;
+        const s = document.createElement("script");
+        s.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
+        s.async = true;
+        s.defer = true;
+        document.head.appendChild(s);
+      }
+
       document.querySelectorAll(".book-download-btn").forEach(function (btn) {
         btn.addEventListener("click", function () {
           const url = btn.getAttribute("data-pdf");
@@ -341,6 +355,7 @@ const booksJsonLd = {
           if (stored && isValidEmail(stored)) {
             triggerDownload(url);
           } else {
+            ensureTurnstileLoaded();
             openGate(url, title, id, btn);
           }
         });
@@ -404,12 +419,8 @@ const booksJsonLd = {
     })();
   </script>
 
-  <!-- Cloudflare Turnstile — loaded lazily, only on the /books page where
-       the email gate lives. `defer` keeps it from blocking render. -->
-  <script
-    src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-    async
-    defer
-    is:inline
-  ></script>
+  {/* Turnstile script is loaded on-demand by ensureTurnstileLoaded() in the
+      gate handler above — only when a visitor clicks a download. This keeps
+      the third-party request off the critical path for the 99%+ of /books
+      visits that never trigger the modal (return visitors, scrapers, bots). */}
 </Layout>

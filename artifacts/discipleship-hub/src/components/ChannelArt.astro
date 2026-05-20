@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Picture } from "astro:assets";
 import type { ChannelId } from "@/data/channels";
 import churchImg from "@/assets/channels/church.jpg";
 import evidenceImg from "@/assets/channels/evidence.jpg";
@@ -33,9 +33,10 @@ const objectPosition = objectPositionMap[channel];
 ---
 <div class={`overflow-hidden ${className}`} style="position:absolute;inset:0;" aria-hidden="true">
   {/* Below-the-fold decorative art. `loading=lazy` + `decoding=async` keep
-      it off the critical path. AVIF first (then webp fallback) typically
-      cuts these from ~30KB → ~12KB on top of the source-side recompress. */}
-  <Image
+      it off the critical path. <Picture> emits AVIF + webp + fallback jpg
+      via the <picture>/<source> tag set, so modern browsers serve AVIF
+      (~30–50% smaller than webp) automatically. */}
+  <Picture
     src={imgMap[channel]}
     alt=""
     widths={[480, 800]}

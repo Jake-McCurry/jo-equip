@@ -93,6 +93,16 @@ Brand: #002f55 navy, #0083de blue, #de5b00 orange. No DB / auth / per-user serve
 - **Brand contact**: `equip@jesusonline.com` is the EQUIP-specific contact email. Used on `/more` (Contact card → mailto), in the footer's Organization column, and on `/newsletter` as the manual subscribe fallback. The legacy `https://jesusonline.com/send-comment/` link has been removed.
 - **Footer**: Privacy → external `https://jesusonlineministries.org/privacy-policy/`. Contact → `mailto:equip@jesusonline.com`. Newsletter → `/newsletter`. Terms link removed entirely. About → `/about`, Beliefs → `/beliefs`.
 
+### Become a Growing Church (BCG) long-form articles
+- Sub-topic id: `become-growing-church` in `src/data/channels.ts`, channelId `church`.
+- 12 attributes (May 2026 rewrite): God's Unique Vision for Your Church → A JesusOnline EQUIPPED Church → A Total Life Discipleship Church → A Transformational Teaching Church → A Spirit-dependent Church → A Hope-filled Church → A Focused Worship Church → A Love-demonstrating Relational Church → A Great Commission Church → An Online Outreach Church → An Attractive and Inviting Church → A Model / Example Church.
+- `SubTopic.hideNumbers: true` flag suppresses the "1. 2. 3." badge column on the public list (kept the `number` field on items for ItemList JSON-LD ordering only).
+- `SubTopicItem.articleId` opt-in: when set, the item's title becomes a link to `/channels/church/become-growing-church/<articleId>` and a "Read Article" button appears in the action row. Items without an articleId are list-only.
+- Article bodies live in `src/data/bcgArticles.ts` as a typed-block array (`p`, `h2`, `h3`, `ul`, `ol`, `quote`). Paragraph/list-item strings may contain inline HTML (`<strong>`/`<em>`/`<a>`) — rendered with `set:html` in the page component, so keep them author-controlled. To add a new article: append an entry to `bcgArticles`, then set the matching `articleId` on the SubTopicItem in `channels.ts`. The route picks it up automatically.
+- Route: `src/pages/channels/[channelId]/[subId]/[articleId].astro`. `getStaticPaths()` walks all sub-topic items and emits a path only when both the `articleId` is set AND a matching `bcgArticles` entry exists (so referenced-but-not-yet-written articles don't 404 the build).
+- Each article page emits its own `Article` JSON-LD with `datePublished` (BCG content refresh date, May 2026) + auto-stamped `dateModified`, BreadcrumbsLd, prev/next nav within the BCG set, and an inline scoped `.bcg-prose` style block (brand navy headings, orange links, blue-bar blockquote).
+- Items 1–4 are written (God's Unique Vision, JesusOnline EQUIPPED, Total Life Discipleship, Transformational Teaching). Items 5–12 are list-only until their long-form content is provided.
+
 ### Channel sub-topic cross-links (`src/pages/channels/[channelId]/[subId].astro`)
 - Per-item linking. Each `SubTopicItem` in `src/data/channels.ts` independently declares which resources exist for that specific question:
   - `bookId?: string` → matches an `id` in `src/data/books.ts`. Enables the PDF button on this item only.

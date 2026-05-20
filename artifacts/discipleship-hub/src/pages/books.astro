@@ -11,12 +11,13 @@ const join = (p: string) =>
   (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
 
 /* Cloudflare Turnstile site key — public, safe to commit (appears in HTML).
-   The default `1x00000000000000000000AA` is Cloudflare's "always passes" test
-   key — fine for local/dev but does NOT block bots. Before going to scale,
-   create a real widget at https://dash.cloudflare.com → Turnstile and replace
-   this constant, then set TURNSTILE_SECRET_KEY as a Worker secret to enforce
-   verification server-side. */
-const TURNSTILE_SITE_KEY = "1x00000000000000000000AA";
+   This is the live `equip.jesusonline.com` widget in Managed mode (issued
+   May 2026). Server-side enforcement requires `TURNSTILE_SECRET_KEY` to be
+   set as a Worker secret in the CF dashboard — without it the Worker logs
+   a warning and lets submissions through. CF's universal test key
+   `1x00000000000000000000AA` (always passes) can be temporarily swapped in
+   for local dev if needed. */
+const TURNSTILE_SITE_KEY = "0x4AAAAAADTRH1wS2tchk8Tw";
 
 /* JSON-LD: a CollectionPage that contains an ItemList of Book entries.
    Each Book is marked free + downloadable so Google can show it in

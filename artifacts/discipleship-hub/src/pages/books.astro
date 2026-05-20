@@ -10,6 +10,15 @@ const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
   (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
 
+/* Cloudflare Turnstile site key — public, safe to commit (appears in HTML).
+   This is the live `equip.jesusonline.com` widget in Managed mode (issued
+   May 2026). Server-side enforcement requires `TURNSTILE_SECRET_KEY` to be
+   set as a Worker secret in the CF dashboard — without it the Worker logs
+   a warning and lets submissions through. CF's universal test key
+   `1x00000000000000000000AA` (always passes) can be temporarily swapped in
+   for local dev if needed. */
+const TURNSTILE_SITE_KEY = "0x4AAAAAADTRH1wS2tchk8Tw";
+
 /* JSON-LD: a CollectionPage that contains an ItemList of Book entries.
    Each Book is marked free + downloadable so Google can show it in
    structured book results (and understand we offer free resources). */
@@ -171,6 +180,15 @@ const booksJsonLd = {
           style="border-color:var(--color-border);"
         />
         <p id="email-gate-error" class="text-sm hidden" role="alert" aria-live="polite" style="color:#c0392b;">Please enter a valid email address.</p>
+        <!-- Cloudflare Turnstile: invisible bot check. Token is populated into
+             a hidden input named `cf-turnstile-response` automatically. -->
+        <div
+          id="email-gate-turnstile"
+          class="cf-turnstile"
+          data-sitekey={TURNSTILE_SITE_KEY}
+          data-size="flexible"
+          data-theme="light"
+        ></div>
         <button
           id="email-gate-submit"
           type="submit"
@@ -270,7 +288,7 @@ const booksJsonLd = {
         lastFocusedEl = null;
       }
 
-      function submitEmail(email) {
+      function submitEmail(email, turnstileToken) {
         try {
           fetch(SUBSCRIBE_ENDPOINT, {
             method: "POST",
@@ -280,10 +298,22 @@ const booksJsonLd = {
               source: "jo-equip-books",
               book_id: pendingId,
               book_title: pendingTitle,
+              turnstile_token: turnstileToken || "",
             }),
             keepalive: true,
           }).catch(function () { /* fire-and-forget */ });
         } catch (_e) { /* ignore */ }
+      }
+
+      function getTurnstileToken() {
+        // Turnstile injects a hidden input named "cf-turnstile-response"
+        // into the widget container once the user passes the challenge.
+        try {
+          const el = document.querySelector(
+            '#email-gate-turnstile input[name="cf-turnstile-response"]'
+          );
+          return el && el.value ? el.value : "";
+        } catch (_e) { return ""; }
       }
 
       function trapFocus(e) {
@@ -302,6 +332,20 @@ const booksJsonLd = {
         }
       }
 
+      // Lazy-load Turnstile only when the user actually opens the gate.
+      // Avoids ~20KB of JS + a third-party request on every /books visit
+      // for visitors who never click a download.
+      let turnstileLoadStarted = false;
+      function ensureTurnstileLoaded() {
+        if (turnstileLoadStarted) return;
+        turnstileLoadStarted = true;
+        const s = document.createElement("script");
+        s.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
+        s.async = true;
+        s.defer = true;
+        document.head.appendChild(s);
+      }
+
       document.querySelectorAll(".book-download-btn").forEach(function (btn) {
         btn.addEventListener("click", function () {
           const url = btn.getAttribute("data-pdf");
@@ -312,6 +356,7 @@ const booksJsonLd = {
           if (stored && isValidEmail(stored)) {
             triggerDownload(url);
           } else {
+            ensureTurnstileLoaded();
             openGate(url, title, id, btn);
           }
         });
@@ -357,7 +402,15 @@ const booksJsonLd = {
         isSubmitting = true;
         submitBtn.disabled = true;
         safeSet(email);
-        submitEmail(email);
+        submitEmail(email, getTurnstileToken());
+        // Turnstile tokens are single-use. Reset so a re-open of the modal
+        // (e.g. different tab, cleared storage, in-memory-only session)
+        // gets a fresh token instead of one the Worker will reject.
+        try {
+          if (window.turnstile && typeof window.turnstile.reset === "function") {
+            window.turnstile.reset("#email-gate-turnstile");
+          }
+        } catch (_e) { /* ignore */ }
         const url = pendingPdf;
         closeGate();
         if (url) {
@@ -366,4 +419,9 @@ const booksJsonLd = {
       });
     })();
   </script>
+
+  {/* Turnstile script is loaded on-demand by ensureTurnstileLoaded() in the
+      gate handler above — only when a visitor clicks a download. This keeps
+      the third-party request off the critical path for the 99%+ of /books
+      visits that never trigger the modal (return visitors, scrapers, bots). */}
 </Layout>

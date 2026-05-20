@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Picture } from "astro:assets";
 import type { ChannelId } from "@/data/channels";
 import churchImg from "@/assets/channels/church.jpg";
 import evidenceImg from "@/assets/channels/evidence.jpg";
@@ -32,12 +32,19 @@ const objectPosition = objectPositionMap[channel];
  * color come through, producing a duotone "tinted photo" look. */
 ---
 <div class={`overflow-hidden ${className}`} style="position:absolute;inset:0;" aria-hidden="true">
-  <Image
+  {/* Below-the-fold decorative art. `loading=lazy` + `decoding=async` keep
+      it off the critical path. <Picture> emits AVIF + webp + fallback jpg
+      via the <picture>/<source> tag set, so modern browsers serve AVIF
+      (~30–50% smaller than webp) automatically. */}
+  <Picture
     src={imgMap[channel]}
     alt=""
-    widths={[640, 1024]}
+    widths={[480, 800]}
     sizes="(min-width: 1024px) 33vw, 100vw"
+    formats={["avif", "webp"]}
+    quality={70}
     loading="lazy"
+    decoding="async"
     class="w-full h-full object-cover"
     style={`position:absolute;inset:0;object-position:${objectPosition};`}
   />

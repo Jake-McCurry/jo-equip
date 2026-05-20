@@ -9,6 +9,12 @@ export interface SubTopicItem {
   bookId?: string;
   /** ID of a YouTube video inside this sub-topic's `playlistId` — when set, this item's Video button deep-links to that video. */
   videoId?: string;
+  /**
+   * ID of an article body in a per-subtopic article data file (e.g. src/data/bcgArticles.ts).
+   * When set, the item's title becomes a link to /channels/<channelId>/<subId>/<articleId>
+   * which renders the full long-form article. Items without an articleId are list-only.
+   */
+  articleId?: string;
   /** Optional per-item external link overrides. */
   links?: {
     pdf?: string;
@@ -32,6 +38,8 @@ export interface SubTopic {
   bookId?: string;
   /** ID of a cover image in src/assets/books/covers/ — shows the cover without requiring a downloadable book. Falls back to bookId for the cover lookup. */
   coverId?: string;
+  /** When true, the list page renders items without the leading "1. 2. 3." number badges. */
+  hideNumbers?: boolean;
 }
 
 export interface Channel {
@@ -113,19 +121,23 @@ export const subTopics: SubTopic[] = [
     id: "become-growing-church",
     channelId: "church",
     name: "Become a Growing Church",
-    /* 12 attributes of a growing church. No playlist/book mappings yet — items render with grayed action buttons. */
+    /* 12 attributes of a growing church (renamed May 2026 to match the
+       Become a Growing Church doc). Items 1–4 link to per-article pages
+       under /channels/church/become-growing-church/<articleId>; items 5–12
+       are list-only until their long-form content is written. */
+    hideNumbers: true,
     items: [
-      { number: 1,  title: "A Unique Church Vision" },
-      { number: 2,  title: "A Hope-Filled Church" },
-      { number: 3,  title: "A Total Life Discipleship Church" },
-      { number: 4,  title: "A JesusOnline Media-Resourced Church" },
-      { number: 5,  title: "A God-Exalting Church" },
-      { number: 6,  title: "A Spirit-Dependent Church" },
-      { number: 7,  title: "A Life Application Church" },
-      { number: 8,  title: "A Loving Relational Church" },
-      { number: 9,  title: "An Online Outreach Church" },
-      { number: 10, title: "An Attractive Church" },
-      { number: 11, title: "An Inviting Church" },
+      { number: 1,  title: "God’s Unique Vision for Your Church",            articleId: "gods-unique-vision-for-your-church" },
+      { number: 2,  title: "A JesusOnline EQUIPPED Church",                  articleId: "a-jesusonline-equipped-church" },
+      { number: 3,  title: "A Total Life Discipleship Church",               articleId: "a-total-life-discipleship-church" },
+      { number: 4,  title: "A Transformational Teaching Church",             articleId: "a-transformational-teaching-church" },
+      { number: 5,  title: "A Spirit-dependent Church" },
+      { number: 6,  title: "A Hope-filled Church" },
+      { number: 7,  title: "A Focused Worship Church" },
+      { number: 8,  title: "A Love-demonstrating Relational Church" },
+      { number: 9,  title: "A Great Commission Church" },
+      { number: 10, title: "An Online Outreach Church" },
+      { number: 11, title: "An Attractive and Inviting Church" },
       { number: 12, title: "A Model / Example Church" },
     ],
   },

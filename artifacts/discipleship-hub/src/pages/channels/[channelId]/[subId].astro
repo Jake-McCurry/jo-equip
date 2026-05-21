@@ -3,6 +3,7 @@ import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
 import { subTopics, getChannel, getSubTopic, getNextSubTopic } from "@/data/channels";
 import { getBookCover } from "@/data/bookCovers";
+import { extractAppSlug, hasArticlePdf } from "@/data/articles";
 import { FileText, Video, Smartphone, ArrowLeft, ArrowRight, ChevronRight } from "lucide-react";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 
@@ -146,12 +147,21 @@ function btnClass(enabled: boolean) {
         </div>
         <ol class="space-y-2">
           {sub.items!.map(item => {
-            // PDF: enabled only when this specific item has a matching book in our library
-            // (or an explicit external `links.pdf` override).
+            // PDF resolution order (per-item):
+            //   1. item.bookId  → curated EQUIP book (with email gate)
+            //   2. item.links.pdf  → explicit external override
+            //   3. item.links.app  → if the app slug has a generated article
+            //      PDF in /articles/, link to it directly (no email gate)
+            // Article PDFs are auto-generated from app.jesusonline.com source
+            // by @workspace/scripts articles:build — see src/data/articles.ts.
+            const appArticleSlug = extractAppSlug(item.links?.app);
+            const articlePdfHref = hasArticlePdf(appArticleSlug)
+              ? join(`/articles/${appArticleSlug}.pdf`)
+              : undefined;
             const pdfHref = item.bookId
               ? join(`/books?download=${encodeURIComponent(item.bookId)}#${encodeURIComponent(item.bookId)}`)
-              : item.links?.pdf;
-            const pdfInternal = !!item.bookId;
+              : (item.links?.pdf ?? articlePdfHref);
+            const pdfInternal = !!item.bookId || (!item.links?.pdf && !!articlePdfHref);
 
             // Video: enabled only when this item has a matching video inside the sub-topic's playlist
             // (or an explicit external `links.video` override). No fallback to the playlist index.

@@ -11,6 +11,8 @@
   Cache-Control: public, max-age=2592000, must-revalidate
 /books/covers/*
   Cache-Control: public, max-age=2592000, must-revalidate
+/articles/*.pdf
+  Cache-Control: public, max-age=2592000, must-revalidate
 
 # Brand assets — safe to cache for a day.
 /favicon.svg

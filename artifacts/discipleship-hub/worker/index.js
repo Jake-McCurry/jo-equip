@@ -7,8 +7,9 @@
  *
  * Env vars (set in Cloudflare → Workers & Pages → jo-equip → Settings → Variables and Secrets):
  *   VIRTUOUS_API_KEY       (secret, required)  Bearer token from Virtuous → Settings → API
- *   TURNSTILE_SECRET_KEY   (secret, recommended) Cloudflare Turnstile secret key.
- *                          If unset, Turnstile verification is skipped (a warning is logged).
+ *   TURNSTILE_SECRET_KEY   (secret, required)  Cloudflare Turnstile secret key.
+ *                          If unset, every submission is rejected (fail-closed) so the
+ *                          Worker can never make CRM writes without bot verification.
  *                          Get one: https://dash.cloudflare.com → Turnstile → your widget → "Secret key"
  *
  * Bindings (declared in wrangler.jsonc):
@@ -26,6 +27,26 @@
 const VIRTUOUS_CONTACT_URL = "https://api.virtuoussoftware.com/api/Contact";
 const TURNSTILE_VERIFY_URL =
   "https://challenges.cloudflare.com/turnstile/v0/siteverify";
+
+/**
+ * Repository-controlled allowlists.  Both sets must be kept in sync with
+ * src/data/books.ts whenever books are added or removed.  Accepting only
+ * known values prevents attackers from injecting arbitrary campaign metadata
+ * into CRM records via the public form.
+ */
+const VALID_SOURCES = new Set(["jo-equip-books"]);
+
+const VALID_BOOK_IDS = new Set([
+  "adventure-of-living-with-jesus",
+  "who-is-the-real-jesus",
+  "has-science-discovered-god",
+  "extraordinary-evangelism",
+  "soul-prescription",
+  "from-coping-to-cure",
+  "40-days-of-gods-love",
+  "hearing-the-voice-of-god",
+  "struggle-for-inner-peace",
+]);
 
 const JSON_HEADERS = {
   "Content-Type": "application/json",
@@ -54,11 +75,19 @@ async function hashEmail(email) {
   }
 }
 
-/** Verify Cloudflare Turnstile token. Returns true if valid (or if no secret configured). */
+/**
+ * Verify Cloudflare Turnstile token.  Fail-closed: if the production secret
+ * is not configured, every submission is rejected so an unconfigured deploy
+ * cannot become an open relay into the CRM.  The caller treats a `false`
+ * result as "do not forward to Virtuous", and the client still gets a 200
+ * so the download UX is unaffected.
+ */
 async function verifyTurnstile(token, env, clientIp) {
   if (!env.TURNSTILE_SECRET_KEY) {
-    console.warn("[subscribe] TURNSTILE_SECRET_KEY not set — skipping verification");
-    return true;
+    console.error(
+      "[subscribe] TURNSTILE_SECRET_KEY not set — rejecting submission (fail-closed)",
+    );
+    return false;
   }
   if (!token || typeof token !== "string") {
     return false;
@@ -133,8 +162,9 @@ async function handleSubscribe(request, env, ctx) {
   }
 
   const email = String(body?.email || "").trim().toLowerCase();
-  const source = String(body?.source || "jo-equip").slice(0, 64);
-  const bookId = String(body?.book_id || "").slice(0, 128);
+  // Accept only the canonical source string; anything else is rejected.
+  const rawSource = String(body?.source || "");
+  const rawBookId = String(body?.book_id || "");
   // book_title is accepted by the client contract but not forwarded — title
   // can be resolved from book_id on the receiving side via books.ts.
   const turnstileToken = String(body?.turnstile_token || "");
@@ -142,6 +172,19 @@ async function handleSubscribe(request, env, ctx) {
   if (!isValidEmail(email)) {
     return jsonResponse({ ok: false, error: "Invalid email address" }, 400);
   }
+
+  // Allowlist check: source must be a known campaign identifier.
+  if (!VALID_SOURCES.has(rawSource)) {
+    return jsonResponse({ ok: false, error: "Invalid source" }, 400);
+  }
+  const source = rawSource;
+
+  // Allowlist check: book_id, when supplied, must be a known book identifier.
+  // An empty book_id is acceptable (generic subscription without a specific book).
+  if (rawBookId !== "" && !VALID_BOOK_IDS.has(rawBookId)) {
+    return jsonResponse({ ok: false, error: "Invalid book_id" }, 400);
+  }
+  const bookId = rawBookId;
 
   const emailHash = await hashEmail(email);
 
@@ -177,7 +220,11 @@ async function handleSubscribe(request, env, ctx) {
           {
             type: "Home Email",
             value: email,
-            isOptedIn: true,
+            // isOptedIn is intentionally omitted (defaults to false in Virtuous).
+            // Mailbox ownership is unverified at this point — a public caller can
+            // submit any email address.  Opt-in consent must be confirmed through
+            // a CRM-side double-opt-in flow (e.g. a Virtuous automation that sends
+            // a confirmation email) before the contact is treated as opted in.
             isPrimary: true,
           },
         ],

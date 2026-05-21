@@ -52,6 +52,21 @@ Set both for the **Production** and **Preview** environments:
 
 Click **Save and Deploy**. The first build takes 2–3 minutes.
 
+#### Worker secrets (Settings → Variables and Secrets → Add — Type: **Secret**)
+
+The `/api/subscribe` endpoint is enforced by the Cloudflare Worker
+(`worker/index.js`). It will reject every submission until both of these
+secrets are configured. This is intentional — a missing Turnstile secret
+would otherwise leave the CRM open to scripted abuse.
+
+| Name                   | Value                                                                                            | Why                                                                                                                                                                                                                              |
+| ---------------------- | ------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `VIRTUOUS_API_KEY`     | Bearer token from Virtuous → **Settings → API**                                                  | Allows the Worker to create contacts in Virtuous when someone downloads a book.                                                                                                                                                  |
+| `TURNSTILE_SECRET_KEY` | Secret key from Cloudflare dashboard → **Turnstile → `equip.jesusonline.com` widget → Settings** | Verifies the Turnstile token submitted by the browser. **Required for production.** If unset, the Worker fails closed: the download still works for the visitor, but no contact is sent to Virtuous and an error is logged.      |
+
+Set both as **Secret** (not Plaintext) and apply to the **Production**
+environment. After saving, redeploy once so the running Worker picks them up.
+
 ### 3. Point `equip.jesusonline.com` at the Pages project
 
 After the first deploy succeeds, in the Pages project:

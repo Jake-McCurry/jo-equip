@@ -1,6 +1,6 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import Search from "astro-pagefind/components/Search";
+import PagefindSearch from "astro-pagefind/components/Search";
 import { Search as SearchIcon } from "lucide-react";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 ---
@@ -33,7 +33,7 @@ import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
     </div>
 
     <div class="jo-search bg-white border rounded p-5 md:p-6" style="border-color:var(--color-border);">
-      <Search id="search" className="pagefind-ui" uiOptions={{ showImages: false, resetStyles: false }} />
+      <PagefindSearch id="search" className="pagefind-ui" uiOptions={{ showImages: false, resetStyles: false }} />
       <p class="mt-4 text-xs" style="color:var(--color-muted-foreground);">
         Tip: search by topic ("evangelism"), book title ("Hearing the Voice of God"), or keyword ("resurrection").
       </p>

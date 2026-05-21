@@ -27,7 +27,23 @@
  */
 import { readFileSync, writeFileSync, existsSync, mkdirSync, statSync } from "node:fs";
 import { resolve } from "node:path";
+import { spawnSync } from "node:child_process";
 import puppeteer, { type Browser } from "puppeteer";
+
+/* Resolve a Chromium binary. Puppeteer's bundled-Chrome installer fails in
+   this sandbox (unzip segfault, glibc mismatch), so we depend on the
+   Nix-installed system Chromium. The exact Nix store path changes across
+   reinstalls, so fall back to `which chromium`. Override with
+   PUPPETEER_EXECUTABLE_PATH when running in CI / other environments. */
+function resolveChromiumPath(): string {
+  if (process.env.PUPPETEER_EXECUTABLE_PATH) return process.env.PUPPETEER_EXECUTABLE_PATH;
+  const which = spawnSync("which", ["chromium"], { encoding: "utf8" });
+  const path = which.stdout?.trim();
+  if (path && existsSync(path)) return path;
+  throw new Error(
+    "No Chromium found. Install via Replit's package manager (`installSystemDependencies([\"chromium\"])`) or set PUPPETEER_EXECUTABLE_PATH.",
+  );
+}
 
 const ROOT = resolve(process.cwd(), "..");
 const MAPPING_PATH = resolve(process.cwd(), "data/slug-mapping.json");
@@ -96,6 +112,14 @@ function sanitizeHtml(html: string): string {
   return html
     .replace(/<script[\s\S]*?<\/script>/gi, "")
     .replace(/<iframe[\s\S]*?<\/iframe>/gi, "")
+    .replace(/<(object|embed|form|svg|math|link|meta|style)[\s\S]*?<\/\1>/gi, "")
+    .replace(/<(object|embed|link|meta|input)\b[^>]*\/?>/gi, "")
+    .replace(/\son[a-z]+\s*=\s*"[^"]*"/gi, "")
+    .replace(/\son[a-z]+\s*=\s*'[^']*'/gi, "")
+    .replace(/\son[a-z]+\s*=\s*[^\s>]+/gi, "")
+    .replace(/(href|src)\s*=\s*"\s*javascript:[^"]*"/gi, '$1="#"')
+    .replace(/(href|src)\s*=\s*'\s*javascript:[^']*'/gi, "$1='#'")
+    .replace(/(href|src)\s*=\s*"\s*data:(?!image\/)[^"]*"/gi, '$1="#"')
     .replace(/<p class="link-more">[\s\S]*?<\/p>/gi, "")
     .replace(/src="\/(?!\/)/g, 'src="https://apicontent.jesusonline.com/')
     .replace(/href="\/(?!\/)/g, 'href="https://apicontent.jesusonline.com/');
@@ -289,7 +313,7 @@ async function buildOne(
 
     const outPath = resolve(OUT_DIR, `${appSlug}.pdf`);
     const cached = cache[appSlug];
-    if (!FORCE && cached && cached.modified === post.modified && existsSync(outPath)) {
+    if (!FORCE && cached && cached.modified === post.modified && cached.wp_id === entry.wp_id && existsSync(outPath)) {
       return { ok: true, skipped: true, bytes: cached.bytes, title: cached.title };
     }
 
@@ -303,7 +327,19 @@ async function buildOne(
 
     const page = await browser.newPage();
     try {
-      await page.setContent(html, { waitUntil: "networkidle0", timeout: 30000 });
+      /* Defense-in-depth: only allow requests to apicontent (for images) and
+         data: URIs. Blocks any exfiltration attempt if upstream HTML is ever
+         compromised. */
+      await page.setRequestInterception(true);
+      page.on("request", req => {
+        const url = req.url();
+        if (url.startsWith("data:") || url.startsWith("https://apicontent.jesusonline.com/")) {
+          req.continue();
+        } else {
+          req.abort();
+        }
+      });
+      await page.setContent(html, { waitUntil: "load", timeout: 30000 });
       await page.pdf({
         path: outPath,
         format: "Letter",
@@ -408,19 +444,31 @@ async function main() {
   if (SLUG_FILTER) entries = entries.filter(([s]) => s === SLUG_FILTER);
   if (LIMIT) entries = entries.slice(0, LIMIT);
 
+  /* Prune cache entries whose slug is no longer in the mapping (only on a
+     full run — partial runs with --slug/--limit must not delete other slugs).
+     This keeps the emitted manifest aligned with the active mapping. */
+  const isFullRun = !SLUG_FILTER && !LIMIT;
+  if (isFullRun) {
+    for (const k of Object.keys(cache)) {
+      if (!(k in mapping)) delete cache[k];
+    }
+  }
+
   console.log(`Generating ${entries.length} article PDF(s) with concurrency=${CONCURRENCY}...`);
   const t0 = Date.now();
   const browser = await puppeteer.launch({
     headless: true,
-    // Use the Nix-installed system Chromium (138). Puppeteer's bundled-Chrome
-    // installer fails in this sandbox (shared-library mismatches), so we
-    // depend on the system binary instead. Override with PUPPETEER_EXECUTABLE_PATH
-    // if you need a different build (CI etc).
-    executablePath: process.env.PUPPETEER_EXECUTABLE_PATH ?? "/nix/store/qa9cnw4v5xkxyip6mb9kxqfq1z4x2dx1-chromium-138.0.7204.100/bin/chromium",
+    executablePath: resolveChromiumPath(),
     args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"],
   });
 
   let okCount = 0, skippedCount = 0, failed: string[] = [];
+  let sinceFlush = 0;
+  const flushCache = () => {
+    writeFileSync(CACHE_PATH, JSON.stringify(cache, null, 2));
+    writeManifest(cache);
+    sinceFlush = 0;
+  };
   try {
     await pool(entries, CONCURRENCY, async ([appSlug, entry]) => {
       const r = await buildOne(browser, appSlug, entry, cache);
@@ -433,13 +481,15 @@ async function main() {
       if (last.ok && last.skipped) skippedCount++;
       else if (last.ok) okCount++;
       else failed.push(`${last.appSlug}: ${last.error}`);
+      // Incremental cache flush every 20 successful PDFs so a killed run
+      // resumes from the last flush instead of restarting at zero.
+      if (last.ok && !last.skipped) sinceFlush++;
+      if (sinceFlush >= 20) flushCache();
     });
   } finally {
+    flushCache();
     await browser.close();
   }
-
-  writeFileSync(CACHE_PATH, JSON.stringify(cache, null, 2));
-  writeManifest(cache);
 
   const elapsed = ((Date.now() - t0) / 1000).toFixed(1);
   const totalBytes = Object.values(cache).reduce((sum, m) => sum + m.bytes, 0);

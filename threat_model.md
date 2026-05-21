@@ -39,7 +39,7 @@ There is no user authentication surface in the production JO EQUIP site, but the
 
 Required guarantees:
 - Public signup endpoints MUST not treat a submitted email address as verified ownership of that mailbox.
-- Anti-bot controls for public form submission MUST fail closed for production traffic, or the deployment process must guarantee their presence.
+- Anti-bot controls for public form submission MUST fail closed for production traffic, or the deployment process and deployment documentation MUST guarantee their presence before a live release.
 
 ### Tampering
 
@@ -64,6 +64,7 @@ The public site contains an unauthenticated endpoint that can trigger third-part
 Required guarantees:
 - Public submission endpoints MUST include effective abuse controls proportionate to the cost of each downstream action.
 - External calls MUST remain bounded in latency and failure impact so abuse does not degrade the site.
+- Production deployment instructions MUST treat anti-abuse secrets for privileged public endpoints as required configuration, not optional hardening.
 
 ### Elevation of Privilege
 
@@ -71,4 +72,5 @@ There is no classic role-based privilege model in the public site, but the Worke
 
 Required guarantees:
 - The Worker MUST only perform privileged CRM actions that correspond to the intended public workflow.
+- The Worker MUST NOT continue privileged CRM writes when required anti-abuse configuration such as `TURNSTILE_SECRET_KEY` is missing.
 - Author-controlled HTML rendered via `set:html` MUST never become user-controlled input without introducing sanitization first.

@@ -125,14 +125,28 @@ function sanitizeHtml(html: string): string {
        puppeteer can fetch them during render. */
     .replace(/src="\/(?!\/)/g, 'src="https://apicontent.jesusonline.com/')
     /* Hrefs must NEVER point at the internal WP backend (apicontent). The
-       public-facing equivalent is app.jesusonline.com. Rewrite all three
-       forms: root-relative, absolute http(s), and protocol-relative. */
-    .replace(/href="\/(?!\/)/g, 'href="https://app.jesusonline.com/')
-    .replace(/href="https?:\/\/apicontent\.jesusonline\.com\//gi, 'href="https://app.jesusonline.com/')
-    .replace(/href="\/\/apicontent\.jesusonline\.com\//gi, 'href="https://app.jesusonline.com/')
-    .replace(/href='\/(?!\/)/g, "href='https://app.jesusonline.com/")
-    .replace(/href='https?:\/\/apicontent\.jesusonline\.com\//gi, "href='https://app.jesusonline.com/")
-    .replace(/href='\/\/apicontent\.jesusonline\.com\//gi, "href='https://app.jesusonline.com/");
+       public-facing app uses /post/<slug> regardless of the WP category
+       prefix (e.g. /uncategorized/, /pwa/time-with-god/, /video/...). For
+       any apicontent href, drop the category path and rewrite to
+       https://app.jesusonline.com/post/<last-slug>. Preserve trailing
+       query/hash. Handles "double-quoted, 'single-quoted; absolute
+       http(s) and protocol-relative //apicontent forms. */
+    .replace(
+      /href=(["'])(?:https?:)?\/\/apicontent\.jesusonline\.com\/([^"'#?]*?)([?#][^"']*)?\1/gi,
+      (_m, q: string, path: string, suffix: string | undefined) => {
+        const slug = path.replace(/\/+$/, "").split("/").filter(Boolean).pop() ?? "";
+        return `href=${q}https://app.jesusonline.com/post/${slug}${suffix ?? ""}${q}`;
+      },
+    )
+    /* Root-relative hrefs from WP REST (rare — REST usually emits absolute):
+       same treatment, use last segment as the post slug. */
+    .replace(
+      /href=(["'])\/(?!\/)([^"'#?]*?)([?#][^"']*)?\1/g,
+      (_m, q: string, path: string, suffix: string | undefined) => {
+        const slug = path.replace(/\/+$/, "").split("/").filter(Boolean).pop() ?? "";
+        return `href=${q}https://app.jesusonline.com/post/${slug}${suffix ?? ""}${q}`;
+      },
+    );
 }
 
 /* Branded HTML template. Inline CSS keeps puppeteer fast (no external font

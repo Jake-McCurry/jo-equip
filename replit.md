@@ -119,6 +119,11 @@ EQUIP's channel pages link out to ~606 articles on `app.jesusonline.com/post/<sl
 - **Site speed**: zero impact on page loads — PDFs are static files fetched only on click, not on page render. No new third-party scripts, no extra hydration, no extra HTML on the channel page (manifest is tree-shaken to just the lookup function for the slugs referenced).
 - **Regenerating after content changes**: re-run `pnpm --filter @workspace/scripts run articles:build`. The script re-fetches every post's `modified` timestamp and only rebuilds drifted ones, so subsequent runs are fast (seconds for an unchanged corpus). Use `--force` to rebuild everything, `--slug=<app-slug>` to rebuild one, `--limit=N` to spot-check.
 
+### Channel index page (`src/pages/channels/[channelId]/index.astro`)
+- Sub-topic cards show three orange badges: **PDF**, **Playlist**, **App**.
+- The PDF badge (was "Book") activates when the sub-topic OR any of its items has either a `bookId` (email-gated book download) OR an `app` link whose slug resolves via `hasArticlePdf(extractAppSlug(...))` in `src/data/articles.ts` (auto-generated article PDF). Per-item PDFs are resolved on the `[subId].astro` page itself; the channel-index badge just links there.
+- The welcome page (`src/pages/welcome.astro`) uses the SAME compact channel-card layout as the home page (hero image + tagline + description + Explore CTA) — the long bulleted sub-topic list was removed May 2026.
+
 ### Channel sub-topic cross-links (`src/pages/channels/[channelId]/[subId].astro`)
 - Per-item linking. Each `SubTopicItem` in `src/data/channels.ts` independently declares which resources exist for that specific question:
   - `bookId?: string` → matches an `id` in `src/data/books.ts`. Enables the PDF button on this item only.

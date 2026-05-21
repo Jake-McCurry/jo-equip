@@ -7,8 +7,9 @@
  *
  * Env vars (set in Cloudflare → Workers & Pages → jo-equip → Settings → Variables and Secrets):
  *   VIRTUOUS_API_KEY       (secret, required)  Bearer token from Virtuous → Settings → API
- *   TURNSTILE_SECRET_KEY   (secret, recommended) Cloudflare Turnstile secret key.
- *                          If unset, Turnstile verification is skipped (a warning is logged).
+ *   TURNSTILE_SECRET_KEY   (secret, required)  Cloudflare Turnstile secret key.
+ *                          If unset, every submission is rejected (fail-closed) so the
+ *                          Worker can never make CRM writes without bot verification.
  *                          Get one: https://dash.cloudflare.com → Turnstile → your widget → "Secret key"
  *
  * Bindings (declared in wrangler.jsonc):
@@ -74,11 +75,19 @@ async function hashEmail(email) {
   }
 }
 
-/** Verify Cloudflare Turnstile token. Returns true if valid (or if no secret configured). */
+/**
+ * Verify Cloudflare Turnstile token.  Fail-closed: if the production secret
+ * is not configured, every submission is rejected so an unconfigured deploy
+ * cannot become an open relay into the CRM.  The caller treats a `false`
+ * result as "do not forward to Virtuous", and the client still gets a 200
+ * so the download UX is unaffected.
+ */
 async function verifyTurnstile(token, env, clientIp) {
   if (!env.TURNSTILE_SECRET_KEY) {
-    console.warn("[subscribe] TURNSTILE_SECRET_KEY not set — skipping verification");
-    return true;
+    console.error(
+      "[subscribe] TURNSTILE_SECRET_KEY not set — rejecting submission (fail-closed)",
+    );
+    return false;
   }
   if (!token || typeof token !== "string") {
     return false;

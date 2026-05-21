@@ -46,13 +46,15 @@ export const bcgArticles: BcgArticle[] = [
     description:
       "Faithful pastor or small-church leader feeling stuck? JesusOnline offers free media and discipleship resources to help you grow deep — God will grow you wide.",
     blocks: [
+      { type: "figure", src: "bgc1-1", alt: "Opening illustration for God’s Unique Vision for Your Church — a faithful shepherd and the flock God has entrusted to him." },
+
       { type: "p", html: "Are you a faithful church leader or small congregation feeling stuck? You’re pouring everything into ministry, yet the church isn’t growing the way you hoped." },
       { type: "p", html: "JesusOnline is here to help." },
       { type: "p", html: "We don’t offer quick-fix formulas or worldly church-growth strategies. Instead, we provide high-quality free media and discipleship resources designed to help you feed and shepherd the flock God has already entrusted to you." },
+      { type: "figure", src: "bgc1-2", alt: "JesusOnline’s free media and discipleship resources — practical tools to help pastors feed and shepherd their flock." },
 
       { type: "h2", text: "Our Core Philosophy" },
       { type: "p", html: "<strong>Grow deep. God will grow you wide.</strong>" },
-      { type: "figure", src: "grow-deep-grow-wide", alt: "Illustration of deep roots crossing a canyon to draw from a river below — a visual metaphor for spiritual depth fueling lasting growth." },
       { type: "p", html: "We believe real success in God’s Kingdom is measured first by depth, not numbers. When disciples are rooted in Christ, transformed by His Word, and equipped to follow Him daily, healthy growth follows naturally. Healthy sheep reproduce. Healthy flocks expand." },
 
       { type: "p", html: "That’s why our resources focus on:" },
@@ -61,15 +63,15 @@ export const bcgArticles: BcgArticle[] = [
         "Engaging media that makes truth accessible and life-changing",
         "Practical discipleship tools that help your people thrive right where God has planted them",
       ]},
-      { type: "figure", src: "high-quality-nutrients", alt: "Three watercolor emblems representing biblical teaching, engaging media, and discipleship tools — the high-quality nutrients JesusOnline provides for the local flock." },
 
       { type: "p", html: "We’re not promising explosive numerical growth. These are tools, not magic. But we are confident that when you minister God’s way — caring for the sheep, preaching the Word, and making disciples — He is faithful to bless the work." },
       { type: "p", html: "Isn’t it reasonable to expect that if you pour yourself into faithful, biblical ministry, the Lord of the Harvest will bring the increase in His perfect timing?" },
-      { type: "figure", src: "lord-of-the-harvest", alt: "Venn diagram contrasting human faithfulness (caring for the sheep, preaching the Word) with divine provision (timing, blessing, increase) — meeting in the middle as true Kingdom increase." },
+      { type: "figure", src: "bgc1-3", alt: "The Lord of the Harvest brings the increase in His perfect timing." },
 
       { type: "h2", text: "Let’s Build Christ’s Kingdom Together" },
       { type: "p", html: "If you’re a pastor or church leader who wants to focus on depth over hype, we’d love to partner with you." },
       { type: "p", html: "Whether your church is small, rural, urban, or somewhere in between — your flock matters to God. Let us help you strengthen and equip them." },
+      { type: "figure", src: "bgc1-4", alt: "Partnering with pastors and church leaders to strengthen and equip the flock God has entrusted to them." },
 
       { type: "h2", text: "Ready to go deeper?" },
       { type: "p", html: "Explore the articles below to see how JesusOnline can help your church become:" },
@@ -89,6 +91,7 @@ export const bcgArticles: BcgArticle[] = [
 
       { type: "p", html: "Discover practical, biblical resources created specifically to help churches like yours flourish right where God has planted you." },
       REGISTER_CTA,
+      { type: "figure", src: "bgc1-5", alt: "Become a free JesusOnline EQUIPPED Church — closing call to register and partner together." },
     ],
   },
 
@@ -98,12 +101,19 @@ export const bcgArticles: BcgArticle[] = [
     description:
       "Small-church pastors wear many hats with little support. JesusOnline’s free Watch → Learn → Live resources help you save prep time, engage your people, and deepen retention.",
     blocks: [
+      { type: "figure", src: "bgc2-1", alt: "Opening illustration for A JesusOnline EQUIPPED Church — the many hats a small-church pastor wears." },
+
       { type: "p", html: "If you are a pastor or leader of a small church, you carry a unique load of responsibilities. You wear multiple hats every single week, often with limited resources and little to no staff support. You may even work at another job just to make ends meet — while still being expected to preach, counsel, visit, lead, and manage the church." },
       { type: "p", html: "You’re frequently swamped with day-to-day survival tasks, leaving little time or energy for the bigger vision God has given you. On top of that, attempts to try new things are sometimes met with resistance from well-meaning members who prefer to keep doing things “the way we’ve always done them.” Reaching new generations and adapting to cultural shifts can feel nearly impossible." },
+      { type: "figure", src: "bgc2-2", alt: "The weight of small-church ministry — survival tasks, resistance to change, and the challenge of reaching new generations." },
+
       { type: "p", html: "JesusOnline is here to come alongside you. And there are no fees or hidden costs. What we offer is totally free." },
       { type: "p", html: "We don’t offer trendy church-growth formulas or worldly success strategies. Instead, we provide high-quality, free media and discipleship resources created specifically to help you faithfully feed and shepherd the flock God has entrusted to you." },
+      { type: "figure", src: "bgc2-3", alt: "Totally free, high-quality media and discipleship resources for the local church." },
+
       { type: "p", html: "<strong>JO EQUIP</strong> is a free digital library of practical discipleship tools for pastors and ministry leaders — carefully organized into three purpose-driven channels so you can find exactly what you need, when you need it." },
       { type: "p", html: "JesusOnline offers free <em>Watch → Learn → Live</em> resources to strengthen engagement, depth, and retention in your ministry." },
+      { type: "figure", src: "bgc2-4", alt: "The Watch → Learn → Live model — short videos, deeper teaching articles, and practical life application." },
 
       { type: "h2", text: "A Simple 5-Step Process for a Sermon, Bible Study, or Discipleship Group" },
       { type: "ol", items: [
@@ -113,6 +123,7 @@ export const bcgArticles: BcgArticle[] = [
         "<strong>Deliver Your Teaching.</strong> Communicate with freedom and confidence, knowing the core content is solid and well-researched.",
         "<strong>Extend the Impact.</strong> At the end of your message, share a specific link (or QR code) from the JesusOnline app that takes people directly to the article and related resources you used. They can now review the main points, reflect deeper, answer discussion questions, and apply the truth — all on their phones. It becomes their personal takeaway notes and discipleship tool for the week.",
       ]},
+      { type: "figure", src: "bgc2-5", alt: "The 5-step process: Select → Build → Capture → Deliver → Extend — turning one sermon into an ongoing discipleship experience." },
 
       { type: "h2", text: "Why Pastors Love This Approach" },
       { type: "ul", items: [
@@ -122,11 +133,13 @@ export const bcgArticles: BcgArticle[] = [
         "Dramatically improves retention and real-life application",
         "Turns one sermon into an ongoing discipleship experience",
       ]},
+      { type: "figure", src: "bgc2-6", alt: "Why pastors love this approach — saved prep time, deeper engagement, and lasting retention." },
 
       { type: "p", html: "All resources are completely free, mobile-friendly, and thoughtfully created with the real challenges of small-church ministry in mind." },
       { type: "p", html: 'Visit <a href="/">JO EQUIP</a> today and explore the channels.' },
       { type: "p", html: "We’d love to partner with you. Let’s build Christ’s kingdom together. Lead your church to become all God wants it to be so it can do all God wants it to do." },
       REGISTER_CTA,
+      { type: "figure", src: "bgc2-7", alt: "Closing illustration — partnering together to build Christ’s kingdom." },
     ],
   },
 
@@ -137,16 +150,19 @@ export const bcgArticles: BcgArticle[] = [
       "Saved by grace, formed for obedience. A grace-based, Spirit-dependent path to disciples who actually obey all Jesus commanded — through knowledge, motivation, and practical methodology.",
     blocks: [
       { type: "quote", html: "Teach these new disciples to obey all the commands I have given you. …", cite: "Matthew 28:20, NLT" },
+      { type: "figure", src: "bgc3-1", alt: "The Great Commission — making disciples who obey all that Jesus commanded." },
 
       { type: "p", html: "Jesus’ final charge in the Great Commission calls the church not merely to make converts but to form disciples who obey all that He commanded. This mission raises honest questions for every believer: If salvation is by grace through faith and not by works, why does obedience matter? How do we move beyond inspiration to actual transformation? And how can we live out this obedience in every sphere of life?" },
 
       { type: "h2", text: "Saved by Grace, Formed for Obedience" },
+      { type: "figure", src: "bgc3-2", alt: "Saved by grace, formed for obedience — Ephesians 2:8–10." },
       { type: "p", html: "Scripture settles the tension between grace and obedience with beautiful clarity. Ephesians 2:8–10 reminds us:" },
       { type: "quote", html: "God saved you by his grace when you believed… Salvation is not a reward for the good things we have done… For we are God’s masterpiece. He has created us anew in Christ Jesus, so we can do the good things he planned for us long ago." },
       { type: "p", html: "We are saved by grace alone, through faith alone. Nothing we do earns or maintains this gift. Yet the same passage declares that we are saved <em>for</em> good works. Obedience is not the root of salvation; it is the natural fruit of a life made new in Christ. Genuine faith produces change (James 2:14–26), and love for Jesus expresses itself in keeping His commands (John 14:15)." },
       { type: "p", html: "Total Life Discipleship embraces this gospel reality. It rejects both self-reliant legalism and passive faith that never bears fruit. Instead, it equips believers to obey through three essentials: knowledge of Christ’s commands, motivation rooted in love, and practical methodology for daily obedience." },
 
       { type: "h2", text: "The Three Essentials of Obedience" },
+      { type: "figure", src: "bgc3-3", alt: "The three essentials of obedience — Knowledge, Motivation, and Methodology." },
       { type: "p", html: "Obedience rarely fails for just one reason. A practical framework helps diagnose where we get stuck:" },
 
       { type: "h3", text: "1. Knowledge — Do I know what Jesus actually commanded?" },
@@ -166,6 +182,7 @@ export const bcgArticles: BcgArticle[] = [
       { type: "p", html: "When any of these three is missing, obedience falters. Many failures trace back to motivation (the heart). Others want to obey but fail because they rely on self-effort. They never learned <em>how</em> to obey." },
 
       { type: "h2", text: "Exhortation vs. Teaching: Why Sermons Often Leave Us Inspired but Unchanged" },
+      { type: "figure", src: "bgc3-4", alt: "Exhortation versus teaching — stirring the heart and equipping the hands." },
       { type: "p", html: "Preaching typically includes two complementary elements:" },
       { type: "ul", items: [
         "<strong>Exhortation</strong> stirs the heart, appeals to the will, and urges action with passion, encouragement, or warning.",
@@ -175,6 +192,7 @@ export const bcgArticles: BcgArticle[] = [
       { type: "p", html: "Many modern sermons lean heavily on exhortation. Passionate calls to “obey God!” or “step out in faith!” feel urgent and emotionally powerful. But without clear methodology, listeners leave motivated yet unequipped. They know they should forgive, pray more, or resist sin — but not <em>how</em> when the pain is fresh or the habit is entrenched. The result is repeated frustration and, eventually, cynicism." },
       { type: "p", html: "Healthy discipleship preaching balances all three elements of obedience: clear knowledge of the command, gospel motivation rooted in grace, and practical steps for daily life." },
       { type: "p", html: "Total Life Discipleship offers a clear and compelling answer. It is a grace-filled journey that invites every believer to align their entire existence with God’s eternal purposes. Far from a burdensome program, it begins with God’s vision of us, leads to personal transformation into the likeness of Christ, and flows outward into eternal impact for His kingdom. At its heart, this discipleship is relationship-centered, grace-based, Spirit-dependent, love-motivated, and biblically focused." },
+      { type: "figure", src: "bgc3-5", alt: "The grace-filled journey of Total Life Discipleship — God’s vision, personal transformation, and eternal impact." },
 
       { type: "h2", text: "God’s Vision: Seeing Life from His Perspective" },
       { type: "p", html: "Every journey of discipleship must begin where God begins — with His loving vision of us." },
@@ -193,6 +211,7 @@ export const bcgArticles: BcgArticle[] = [
       { type: "p", html: "Total Life Discipleship provides practical wisdom for living out Christ’s commands in relationships, work, trials, and mission — equipping us not only to know and desire obedience but to walk in it daily." },
 
       { type: "h2", text: "The Five Pillars That Sustain the Journey" },
+      { type: "figure", src: "bgc3-6", alt: "The five pillars of Total Life Discipleship — relationship-centered, grace-based, Spirit-dependent, love-motivated, biblically focused." },
       { type: "p", html: "Total Life Discipleship stands firmly on truths that guard our hearts and direct our steps:" },
       { type: "ul", items: [
         "<strong>Relationship-centered:</strong> Prioritizing intimacy with God above all, then with believers and others.",
@@ -219,6 +238,7 @@ export const bcgArticles: BcgArticle[] = [
       ]},
 
       REGISTER_CTA,
+      { type: "figure", src: "bgc3-7", alt: "A daily invitation to walk closely with Christ — closing illustration." },
     ],
   },
 
@@ -228,7 +248,10 @@ export const bcgArticles: BcgArticle[] = [
     description:
       "Three complementary teaching objectives — head, hands, and heart — and the three foundational truths that produce lasting heart change in the believers you shepherd.",
     blocks: [
+      { type: "figure", src: "bgc4-1", alt: "Opening illustration for A Transformational Teaching Church — equipping believers through God’s Word." },
+
       { type: "p", html: "As a pastor or church leader, as you shepherd your flock, it is wise to reflect on how the Lord equips His people through His Word. Scripture calls us not only to know the truth, but to live it out and be transformed by it." },
+      { type: "figure", src: "bgc4-2", alt: "Knowing the truth, living it out, and being transformed by it — the threefold call of Scripture." },
       { type: "p", html: "There are three distinct yet complementary teaching objectives and sermon approaches:" },
 
       { type: "h2", text: "1. Bible Knowledge (The Head)" },
@@ -241,6 +264,7 @@ export const bcgArticles: BcgArticle[] = [
       { type: "p", html: "This is the deepest and most vital level of biblical teaching. It moves beyond the transmission of information or even the application of principles to focus on the foundational core truths of the Gospel that produce genuine heart change and lasting transformation." },
       { type: "p", html: "Total Life Discipleship is a lifelong journey of following Jesus Christ so that we become all that God created us to be and do all that He created us to do. It intentionally forms Christlike character, renews the mind with God’s perspective, and cultivates a fully surrendered heart." },
       { type: "p", html: "At its core, Total Life Discipleship rests on three essential truths that few churches teach with clarity and balance. When rightly understood and applied, they reshape how believers see God, themselves, and the daily Christian life." },
+      { type: "figure", src: "bgc4-3", alt: "Three foundational truths — the character of God, our new identity in Christ, and the ministry of the Holy Spirit." },
 
       { type: "h2", text: "Three Foundational Truths" },
 
@@ -265,6 +289,7 @@ export const bcgArticles: BcgArticle[] = [
       { type: "p", html: "By grounding God’s people in the full character of God, their new identity in Christ, and the empowering ministry of the Holy Spirit, we can help churches move beyond surface-level growth into the deep, lasting transformation that pleases the Lord and bears eternal fruit." },
 
       { type: "h2", text: "Free JesusOnline Watch → Learn → Live Resources" },
+      { type: "figure", src: "bgc4-4", alt: "Free JesusOnline Watch → Learn → Live resources — short videos, deeper articles, and practical application." },
       { type: "p", html: "<strong>Capture attention immediately</strong> with a powerful video clip to introduce your message. A well-chosen video sets the emotional tone, illustrates the theme, and draws people in from the very first moment." },
       { type: "p", html: "<strong>Deepen your content</strong> by weaving key insights from the article into your teaching. Use it as rich resource material to add credibility, fresh perspectives, and biblical connections to your sermon." },
       { type: "p", html: "<strong>Drive lasting impact</strong> by sharing the app link at the end of your message. This simple tool helps your people review, remember, and apply the core essence of the sermon long after they leave the service." },

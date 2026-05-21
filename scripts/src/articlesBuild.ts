@@ -121,8 +121,18 @@ function sanitizeHtml(html: string): string {
     .replace(/(href|src)\s*=\s*'\s*javascript:[^']*'/gi, "$1='#'")
     .replace(/(href|src)\s*=\s*"\s*data:(?!image\/)[^"]*"/gi, '$1="#"')
     .replace(/<p class="link-more">[\s\S]*?<\/p>/gi, "")
+    /* Images legitimately live on apicontent — rewrite root-relative src so
+       puppeteer can fetch them during render. */
     .replace(/src="\/(?!\/)/g, 'src="https://apicontent.jesusonline.com/')
-    .replace(/href="\/(?!\/)/g, 'href="https://apicontent.jesusonline.com/');
+    /* Hrefs must NEVER point at the internal WP backend (apicontent). The
+       public-facing equivalent is app.jesusonline.com. Rewrite all three
+       forms: root-relative, absolute http(s), and protocol-relative. */
+    .replace(/href="\/(?!\/)/g, 'href="https://app.jesusonline.com/')
+    .replace(/href="https?:\/\/apicontent\.jesusonline\.com\//gi, 'href="https://app.jesusonline.com/')
+    .replace(/href="\/\/apicontent\.jesusonline\.com\//gi, 'href="https://app.jesusonline.com/')
+    .replace(/href='\/(?!\/)/g, "href='https://app.jesusonline.com/")
+    .replace(/href='https?:\/\/apicontent\.jesusonline\.com\//gi, "href='https://app.jesusonline.com/")
+    .replace(/href='\/\/apicontent\.jesusonline\.com\//gi, "href='https://app.jesusonline.com/");
 }
 
 /* Branded HTML template. Inline CSS keeps puppeteer fast (no external font

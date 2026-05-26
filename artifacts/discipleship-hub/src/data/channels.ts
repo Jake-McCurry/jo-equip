@@ -40,6 +40,10 @@ export interface SubTopic {
   coverId?: string;
   /** When true, the list page renders items without the leading "1. 2. 3." number badges. */
   hideNumbers?: boolean;
+  /** When set, this sub-topic is a child of another sub-topic. Children are hidden
+   *  from the channel index grid; their parent's detail page lists them as cards.
+   *  Direct child URLs still work so previously-published links don't 404. */
+  parentId?: string;
 }
 
 export interface Channel {

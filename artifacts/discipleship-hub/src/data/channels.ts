@@ -114,54 +114,21 @@ export const subTopics: SubTopic[] = [
   { id: 'devotionals',  channelId: 'growth', name: 'Devotionals' },
 
   // ── CHURCH RESOURCES ──
+  // Display order (top-level only; children render on their parent's page):
+  //   01 make-multiply-disciples-newsletter
+  //   02 total-life-discipleship-principles  (kept ID, renamed to "Total Life Discipleship")
+  //   03 become-growing-church
+  //   04 share-jesus  (parent of understanding-evangelism, sharing-your-faith, next-steps-new-believers)
+  //   05 survey-of-the-bible  (renamed "Joshua Nations: Survey of the Bible")
+  //   06 joshua-nations-online-bible-training  (parent of online-bible-training-year-1, year-2)
+  //   07 disciple-making-movement  (renamed "Joshua Nations: Disciple Making Movement")
+  //   08 rapid-church-planting  (renamed "Joshua Nations: Rapid Church Planting")
+  // Legacy `bible-training-curriculum` placeholder removed May 2026.
   { id: 'make-multiply-disciples-newsletter', channelId: 'church', name: 'Making & Multiplying Disciples Newsletter' },
-  {
-    id: 'understanding-evangelism',
-    channelId: 'church',
-    name: 'Understanding Evangelism',
-    items: [
-      { number: 1, title: 'What Is Evangelism?', links: { app: 'https://app.jesusonline.com/post/40101-what-is-evangelism' } },
-      { number: 2, title: 'Reasons Why Believers Should Witness', links: { app: 'https://app.jesusonline.com/post/40102-reasons-why-believers-should-witness' } },
-      { number: 3, title: 'Why Christians Fail to Witness', links: { app: 'https://app.jesusonline.com/post/40103-why-christians-fail-to-witness' } },
-      { number: 4, title: 'The Importance of Scripture', links: { app: 'https://app.jesusonline.com/post/40104-the-importance-of-scripture-in-evangelism' } },
-      { number: 5, title: 'Evangelism Is A Process', links: { app: 'https://app.jesusonline.com/post/41105-evangelism-is-a-process' } },
-      { number: 6, title: 'Digital Evangelism', links: { app: 'https://app.jesusonline.com/post/40106-digital-evangelism' } },
-      { number: 7, title: 'Answering Questions', links: { app: 'https://app.jesusonline.com/post/40107-answering-questions' } },
-    ],
-  },
-  {
-    id: 'sharing-your-faith',
-    channelId: 'church',
-    name: 'Sharing Your Faith',
-    items: [
-      { number: 1, title: 'The Power', links: { app: 'https://app.jesusonline.com/post/41005-the-power' } },
-      { number: 2, title: 'Your Personal Testimony', links: { app: 'https://app.jesusonline.com/post/41006-your-personal-testimony' } },
-      { number: 3, title: 'Attitudes and Approaches', links: { app: 'https://app.jesusonline.com/post/41007-attitudes-and-approaches' } },
-      { number: 4, title: 'Asking Questions Using  Conversations', links: { app: 'https://app.jesusonline.com/post/41008-asking-questions-using-conversations' } },
-      { number: 5, title: 'Articulating the Gospel', links: { app: 'https://app.jesusonline.com/post/41010-articulating-the-gospel' } },
-      { number: 6, title: 'Answering Objections', links: { app: 'https://app.jesusonline.com/post/41013-answering-objections' } },
-      { number: 7, title: 'Answering Specific Objections', links: { app: 'https://app.jesusonline.com/post/41014-answering-specific-objections' } },
-    ],
-  },
-  {
-    id: 'next-steps-new-believers',
-    channelId: 'church',
-    name: 'Next Steps for New Believers',
-    items: [
-      { number: 1, title: 'Next Steps for New Believers', links: { app: 'https://app.jesusonline.com/post/43001-next-steps-for-new-believers' } },
-      { number: 2, title: 'Your First Step', links: { app: 'https://app.jesusonline.com/post/43002-your-first-step' } },
-      { number: 3, title: 'Assurance of Your Salvation', links: { app: 'https://app.jesusonline.com/post/43003-assurance-of-your-salvation' } },
-      { number: 4, title: 'Embrace Your New Identity', links: { app: 'https://app.jesusonline.com/post/43004-embrace-your-new-identity' } },
-      { number: 5, title: 'Accept God’s Love', links: { app: 'https://app.jesusonline.com/post/43005-accept-gods-love' } },
-      { number: 6, title: 'Depend on the Spirit', links: { app: 'https://app.jesusonline.com/post/43006-depend-on-the-spirit' } },
-      { number: 7, title: 'Enjoy God’s Family', links: { app: 'https://app.jesusonline.com/post/43007-enjoy-gods-family' } },
-      { number: 8, title: 'Discover God’s Plan for You', links: { app: 'https://app.jesusonline.com/post/43008-discover-gods-plan-for-you' } },
-    ],
-  },
   {
     id: 'total-life-discipleship-principles',
     channelId: 'church',
-    name: 'Total Life Discipleship Core Principles',
+    name: 'Total Life Discipleship',
     formats: ['playlist'],
     playlistId: 'total-life-discipleship-core-principles',
     items: [
@@ -180,42 +147,89 @@ export const subTopics: SubTopic[] = [
     ],
   },
   {
-    id: 'rapid-church-planting',
+    id: 'become-growing-church',
     channelId: 'church',
-    name: 'Rapid Church Planting',
+    name: 'Become a Growing Church',
+    /* 12 attributes of a growing church (renamed May 2026 to match the
+       Become a Growing Church doc). Items 1–4 link to per-article pages
+       under /channels/church/become-growing-church/<articleId>; items 5–12
+       are list-only until their long-form content is written. */
+    hideNumbers: true,
     items: [
-      { number: 1, title: 'Why Plant a Church', links: { app: 'https://app.jesusonline.com/post/93610-01-why-plant-a-church' } },
-      { number: 2, title: 'Definition and Purpose of a Church', links: { app: 'https://app.jesusonline.com/post/93610-02-definition-and-purpose-of-a-church' } },
-      { number: 3, title: 'Motivation for Planting a Church', links: { app: 'https://app.jesusonline.com/post/93610-03-motivation-for-planting-a-church' } },
-      { number: 4, title: 'Values, Vision, and Style for Your Church', links: { app: 'https://app.jesusonline.com/post/93610-04-values-vision-and-style-for-your-church' } },
-      { number: 5, title: 'Planning and Strategy', links: { app: 'https://app.jesusonline.com/post/93610-05-planning-and-strategy' } },
-      { number: 6, title: 'The Church Planting Team', links: { app: 'https://app.jesusonline.com/post/93610-06-the-church-planting-team' } },
-      { number: 7, title: 'Spiritual Warfare and Outreach', links: { app: 'https://app.jesusonline.com/post/93610-07-spiritual-warfare-and-outreach' } },
-      { number: 8, title: 'Meet on a Regular Basis for worship prayer and study', links: { app: 'https://app.jesusonline.com/post/93610-08-meet-on-a-regular-basis-for-worship-prayer-and-study' } },
-      { number: 9, title: 'Connect New Believers to a Process of Discipleship', links: { app: 'https://app.jesusonline.com/post/93610-09-connect-new-believers-to-a-process-of-discipleship' } },
-      { number: 10, title: 'Repeat the Process as Often as Possible', links: { app: 'https://app.jesusonline.com/post/93610-10-repeat-the-process-as-often-as-possible' } },
-      { number: 11, title: 'Ten Key Elements of Church Planting Movements', links: { app: 'https://app.jesusonline.com/post/93610-11-ten-key-elements-of-church-planting-movements' } },
-      { number: 12, title: 'The Church Represented in the Marketplace', links: { app: 'https://app.jesusonline.com/post/93610-12-the-church-represented-in-the-marketplace' } },
+      { number: 1,  title: 'God’s Unique Vision for Your Church',            articleId: 'gods-unique-vision-for-your-church' },
+      { number: 2,  title: 'A JesusOnline EQUIPPED Church',                  articleId: 'a-jesusonline-equipped-church' },
+      { number: 3,  title: 'A Total Life Discipleship Church',               articleId: 'a-total-life-discipleship-church' },
+      { number: 4,  title: 'A Transformational Teaching Church',             articleId: 'a-transformational-teaching-church' },
+      { number: 5,  title: 'A Spirit-dependent Church' },
+      { number: 6,  title: 'A Hope-filled Church' },
+      { number: 7,  title: 'A Focused Worship Church' },
+      { number: 8,  title: 'A Love-demonstrating Relational Church' },
+      { number: 9,  title: 'A Great Commission Church' },
+      { number: 10, title: 'An Online Outreach Church' },
+      { number: 11, title: 'An Attractive and Inviting Church' },
+      { number: 12, title: 'A Model / Example Church' },
+    ],
+  },
+  /* Share Jesus — parent of the three evangelism sub-topics. The children
+     keep their original IDs so previously-published URLs continue to work;
+     they're hidden from the channel grid via `parentId` and rendered as
+     cards on the Share Jesus detail page. */
+  {
+    id: 'share-jesus',
+    channelId: 'church',
+    name: 'Share Jesus',
+    description: 'Equip believers to share their faith with confidence — from understanding evangelism, to sharing the gospel in everyday conversations, to helping new believers take their next steps.',
+  },
+  {
+    id: 'understanding-evangelism',
+    channelId: 'church',
+    parentId: 'share-jesus',
+    name: 'Understanding Evangelism',
+    items: [
+      { number: 1, title: 'What Is Evangelism?', links: { app: 'https://app.jesusonline.com/post/40101-what-is-evangelism' } },
+      { number: 2, title: 'Reasons Why Believers Should Witness', links: { app: 'https://app.jesusonline.com/post/40102-reasons-why-believers-should-witness' } },
+      { number: 3, title: 'Why Christians Fail to Witness', links: { app: 'https://app.jesusonline.com/post/40103-why-christians-fail-to-witness' } },
+      { number: 4, title: 'The Importance of Scripture', links: { app: 'https://app.jesusonline.com/post/40104-the-importance-of-scripture-in-evangelism' } },
+      { number: 5, title: 'Evangelism Is A Process', links: { app: 'https://app.jesusonline.com/post/41105-evangelism-is-a-process' } },
+      { number: 6, title: 'Digital Evangelism', links: { app: 'https://app.jesusonline.com/post/40106-digital-evangelism' } },
+      { number: 7, title: 'Answering Questions', links: { app: 'https://app.jesusonline.com/post/40107-answering-questions' } },
     ],
   },
   {
-    id: 'disciple-making-movement',
+    id: 'sharing-your-faith',
     channelId: 'church',
-    name: 'Disciple Making Movement',
+    parentId: 'share-jesus',
+    name: 'Sharing Your Faith',
     items: [
-      { number: 1, title: 'Lesson 1: Intimacy with God', links: { app: 'https://app.jesusonline.com/post/93621-1-lesson-1-intimacy-with-god' } },
-      { number: 2, title: 'Lesson 2: Prayer and Fasting', links: { app: 'https://app.jesusonline.com/post/93621-2-lesson-2-prayer-and-fasting' } },
-      { number: 3, title: 'Lesson 3: Hearing God\'s Voice', links: { app: 'https://app.jesusonline.com/post/93621-3-lesson-3-hearing-gods-voice' } },
-      { number: 4, title: 'Lesson 4: Called and Committed', links: { app: 'https://app.jesusonline.com/post/93621-4-lesson-4-called-and-committed' } },
-      { number: 5, title: 'Lesson 5: Healthy Family', links: { app: 'https://app.jesusonline.com/post/93621-5-lesson-5-healthy-family' } },
-      { number: 6, title: 'Lesson 6: Understanding Disciple-Making Movement', links: { app: 'https://app.jesusonline.com/post/93621-6-lesson-6-understanding-disciple-making-movement' } },
-      { number: 7, title: 'Lesson 7: Developing Culturally Relevant Disciple Making Strategy', links: { app: 'https://app.jesusonline.com/post/93621-7-lesson-7-developing-culturally-relevant-disciple-making-strategy' } },
+      { number: 1, title: 'The Power', links: { app: 'https://app.jesusonline.com/post/41005-the-power' } },
+      { number: 2, title: 'Your Personal Testimony', links: { app: 'https://app.jesusonline.com/post/41006-your-personal-testimony' } },
+      { number: 3, title: 'Attitudes and Approaches', links: { app: 'https://app.jesusonline.com/post/41007-attitudes-and-approaches' } },
+      { number: 4, title: 'Asking Questions Using  Conversations', links: { app: 'https://app.jesusonline.com/post/41008-asking-questions-using-conversations' } },
+      { number: 5, title: 'Articulating the Gospel', links: { app: 'https://app.jesusonline.com/post/41010-articulating-the-gospel' } },
+      { number: 6, title: 'Answering Objections', links: { app: 'https://app.jesusonline.com/post/41013-answering-objections' } },
+      { number: 7, title: 'Answering Specific Objections', links: { app: 'https://app.jesusonline.com/post/41014-answering-specific-objections' } },
+    ],
+  },
+  {
+    id: 'next-steps-new-believers',
+    channelId: 'church',
+    parentId: 'share-jesus',
+    name: 'Next Steps for New Believers',
+    items: [
+      { number: 1, title: 'Next Steps for New Believers', links: { app: 'https://app.jesusonline.com/post/43001-next-steps-for-new-believers' } },
+      { number: 2, title: 'Your First Step', links: { app: 'https://app.jesusonline.com/post/43002-your-first-step' } },
+      { number: 3, title: 'Assurance of Your Salvation', links: { app: 'https://app.jesusonline.com/post/43003-assurance-of-your-salvation' } },
+      { number: 4, title: 'Embrace Your New Identity', links: { app: 'https://app.jesusonline.com/post/43004-embrace-your-new-identity' } },
+      { number: 5, title: 'Accept God’s Love', links: { app: 'https://app.jesusonline.com/post/43005-accept-gods-love' } },
+      { number: 6, title: 'Depend on the Spirit', links: { app: 'https://app.jesusonline.com/post/43006-depend-on-the-spirit' } },
+      { number: 7, title: 'Enjoy God’s Family', links: { app: 'https://app.jesusonline.com/post/43007-enjoy-gods-family' } },
+      { number: 8, title: 'Discover God’s Plan for You', links: { app: 'https://app.jesusonline.com/post/43008-discover-gods-plan-for-you' } },
     ],
   },
   {
     id: 'survey-of-the-bible',
     channelId: 'church',
-    name: 'Survey of the Bible',
+    name: 'Joshua Nations: Survey of the Bible',
     items: [
       { number: 1, title: 'Matthew', links: { app: 'https://app.jesusonline.com/post/93660-1-matthew' } },
       { number: 2, title: 'Mark', links: { app: 'https://app.jesusonline.com/post/93660-2-mark' } },
@@ -246,15 +260,25 @@ export const subTopics: SubTopic[] = [
       { number: 27, title: 'Revelation', links: { app: 'https://app.jesusonline.com/post/93662-7-revelation' } },
     ],
   },
-  /* Joshua Nations Online Bible Training (partner content).
+  /* Joshua Nations Online Bible Training (partner content) — parent + 2 children.
      Lesson URLs point to joshuanations.org/lessons/<slug>, not app.jesusonline.com.
      Split into Year 1 (17 lessons) and Year 2 (19 lessons) sub-topics to preserve
-     the curriculum's two-year structure. Sub-topic appUrl points to the all-videos
-     index so the topic-level "App" button opens Joshua Nations' video library. */
+     the curriculum's two-year structure. The parent appUrl points to the all-videos
+     index so its topic-level "App" button opens Joshua Nations' video library.
+     Children keep their original IDs so previously-published URLs continue to work. */
+  {
+    id: 'joshua-nations-online-bible-training',
+    channelId: 'church',
+    name: 'Joshua Nations: Online Bible Training',
+    description: 'A two-year video Bible-training curriculum from Joshua Nations covering doctrine, the Christian life, family, ministry, and leadership.',
+    formats: ['app'],
+    appUrl: 'https://joshuanations.org/media/all-videos',
+  },
   {
     id: 'online-bible-training-year-1',
     channelId: 'church',
-    name: 'Online Bible Training — Year 1 (Joshua Nations)',
+    parentId: 'joshua-nations-online-bible-training',
+    name: 'Year 1',
     formats: ['app'],
     appUrl: 'https://joshuanations.org/media/all-videos',
     items: [
@@ -280,7 +304,8 @@ export const subTopics: SubTopic[] = [
   {
     id: 'online-bible-training-year-2',
     channelId: 'church',
-    name: 'Online Bible Training — Year 2 (Joshua Nations)',
+    parentId: 'joshua-nations-online-bible-training',
+    name: 'Year 2',
     formats: ['app'],
     appUrl: 'https://joshuanations.org/media/all-videos',
     items: [

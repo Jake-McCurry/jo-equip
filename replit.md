@@ -98,9 +98,9 @@ Data lives in `src/data/channels.ts` (channels + sub-topics + per-item links). `
 - **Slug resolution** (`scripts/data/slug-mapping.json`): 3-tier — exact slug → leading-number prefix → fuzzy title-word search. Coverage 596/606 = 98.3%. 10 unresolved are from a partially-renumbered `22300-*`/`62001-*` devotional series.
 - **Cache** (`scripts/data/articles-cache.json`): keyed by app slug. Skips PDF when `cached.modified === post.modified` AND file exists. Flushed every 20 successful PDFs so killed runs resume cleanly.
 - **Concurrency**: 4–6 pages in one Chromium. Full run 8–10 min. Sandbox 120s bash limit → runs as ~7 chunks of `timeout 105 npx tsx ...`.
-- **Template**: Letter, Georgia serif, navy headings, orange rule, blue blockquote bar. Cover lead "JesusOnline Equip / Ministry Resources Hub". Strips leading catalog number from title (`^[\d][\d.\-]*\s+`). Sanitizes `<script>`/`<iframe>`, drops WP `<p class="link-more">`, rewrites root-relative URLs to absolute.
+- **Template**: Letter, Georgia serif, navy headings, orange rule, blue blockquote bar. Cover lead "JesusOnline Equip / Ministry Resources Hub". Optional **series eyebrow** above the article title — driven by `coverLeadFor(appSlug)`; currently maps slug prefixes `93610-` / `93621-` / `93660-` → "Joshua Nations" (keep in sync if new JN sub-topics land). Strips leading catalog number from title (`^[\d][\d.\-]*\s+`). Sanitizes `<script>`/`<iframe>`, drops WP `<p class="link-more">`, rewrites root-relative URLs to absolute.
 - **Manifest** (`src/data/articles.ts`): **AUTO-GENERATED** — do not hand-edit. Exports `articlePdfs`, `extractAppSlug`, `hasArticlePdf`, `getArticlePdfMeta`. Tree-shaken to just the lookups used.
-- **Regenerate**: re-run `articles:build`. Incremental by `modified` timestamp. Flags: `--force`, `--slug=<app-slug>`, `--limit=N`.
+- **Regenerate**: re-run `articles:build`. Incremental by `modified` timestamp. Flags: `--force`, `--slug=<app-slug>` (also accepts comma-separated list for rebuilding a related set), `--limit=N`.
 
 ### Become a Growing Church (BCG) long-form articles
 

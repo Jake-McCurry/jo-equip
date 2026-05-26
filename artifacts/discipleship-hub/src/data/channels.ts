@@ -330,31 +330,37 @@ export const subTopics: SubTopic[] = [
       { number: 19, title: 'JN219 | God\'s Heart for Israel',               links: { app: 'https://joshuanations.org/lessons/jn219-gods-heart-for-israel' } },
     ],
   },
-  /* Legacy ID kept so previously-published URLs to /channels/church/bible-training-curriculum don't 404.
-     New visitors should land on the two year-specific sub-topics above. */
-  { id: 'bible-training-curriculum', channelId: 'church', name: 'Bible Training Curriculum' },
   {
-    id: 'become-growing-church',
+    id: 'disciple-making-movement',
     channelId: 'church',
-    name: 'Become a Growing Church',
-    /* 12 attributes of a growing church (renamed May 2026 to match the
-       Become a Growing Church doc). Items 1–4 link to per-article pages
-       under /channels/church/become-growing-church/<articleId>; items 5–12
-       are list-only until their long-form content is written. */
-    hideNumbers: true,
+    name: 'Joshua Nations: Disciple Making Movement',
     items: [
-      { number: 1,  title: 'God’s Unique Vision for Your Church',            articleId: 'gods-unique-vision-for-your-church' },
-      { number: 2,  title: 'A JesusOnline EQUIPPED Church',                  articleId: 'a-jesusonline-equipped-church' },
-      { number: 3,  title: 'A Total Life Discipleship Church',               articleId: 'a-total-life-discipleship-church' },
-      { number: 4,  title: 'A Transformational Teaching Church',             articleId: 'a-transformational-teaching-church' },
-      { number: 5,  title: 'A Spirit-dependent Church' },
-      { number: 6,  title: 'A Hope-filled Church' },
-      { number: 7,  title: 'A Focused Worship Church' },
-      { number: 8,  title: 'A Love-demonstrating Relational Church' },
-      { number: 9,  title: 'A Great Commission Church' },
-      { number: 10, title: 'An Online Outreach Church' },
-      { number: 11, title: 'An Attractive and Inviting Church' },
-      { number: 12, title: 'A Model / Example Church' },
+      { number: 1, title: 'Lesson 1: Intimacy with God', links: { app: 'https://app.jesusonline.com/post/93621-1-lesson-1-intimacy-with-god' } },
+      { number: 2, title: 'Lesson 2: Prayer and Fasting', links: { app: 'https://app.jesusonline.com/post/93621-2-lesson-2-prayer-and-fasting' } },
+      { number: 3, title: 'Lesson 3: Hearing God\'s Voice', links: { app: 'https://app.jesusonline.com/post/93621-3-lesson-3-hearing-gods-voice' } },
+      { number: 4, title: 'Lesson 4: Called and Committed', links: { app: 'https://app.jesusonline.com/post/93621-4-lesson-4-called-and-committed' } },
+      { number: 5, title: 'Lesson 5: Healthy Family', links: { app: 'https://app.jesusonline.com/post/93621-5-lesson-5-healthy-family' } },
+      { number: 6, title: 'Lesson 6: Understanding Disciple-Making Movement', links: { app: 'https://app.jesusonline.com/post/93621-6-lesson-6-understanding-disciple-making-movement' } },
+      { number: 7, title: 'Lesson 7: Developing Culturally Relevant Disciple Making Strategy', links: { app: 'https://app.jesusonline.com/post/93621-7-lesson-7-developing-culturally-relevant-disciple-making-strategy' } },
+    ],
+  },
+  {
+    id: 'rapid-church-planting',
+    channelId: 'church',
+    name: 'Joshua Nations: Rapid Church Planting',
+    items: [
+      { number: 1, title: 'Why Plant a Church', links: { app: 'https://app.jesusonline.com/post/93610-01-why-plant-a-church' } },
+      { number: 2, title: 'Definition and Purpose of a Church', links: { app: 'https://app.jesusonline.com/post/93610-02-definition-and-purpose-of-a-church' } },
+      { number: 3, title: 'Motivation for Planting a Church', links: { app: 'https://app.jesusonline.com/post/93610-03-motivation-for-planting-a-church' } },
+      { number: 4, title: 'Values, Vision, and Style for Your Church', links: { app: 'https://app.jesusonline.com/post/93610-04-values-vision-and-style-for-your-church' } },
+      { number: 5, title: 'Planning and Strategy', links: { app: 'https://app.jesusonline.com/post/93610-05-planning-and-strategy' } },
+      { number: 6, title: 'The Church Planting Team', links: { app: 'https://app.jesusonline.com/post/93610-06-the-church-planting-team' } },
+      { number: 7, title: 'Spiritual Warfare and Outreach', links: { app: 'https://app.jesusonline.com/post/93610-07-spiritual-warfare-and-outreach' } },
+      { number: 8, title: 'Meet on a Regular Basis for worship prayer and study', links: { app: 'https://app.jesusonline.com/post/93610-08-meet-on-a-regular-basis-for-worship-prayer-and-study' } },
+      { number: 9, title: 'Connect New Believers to a Process of Discipleship', links: { app: 'https://app.jesusonline.com/post/93610-09-connect-new-believers-to-a-process-of-discipleship' } },
+      { number: 10, title: 'Repeat the Process as Often as Possible', links: { app: 'https://app.jesusonline.com/post/93610-10-repeat-the-process-as-often-as-possible' } },
+      { number: 11, title: 'Ten Key Elements of Church Planting Movements', links: { app: 'https://app.jesusonline.com/post/93610-11-ten-key-elements-of-church-planting-movements' } },
+      { number: 12, title: 'The Church Represented in the Marketplace', links: { app: 'https://app.jesusonline.com/post/93610-12-the-church-represented-in-the-marketplace' } },
     ],
   },
   // ── GROWTH RESOURCES ──
@@ -1099,16 +1105,32 @@ export function getChannel(id: string): Channel | undefined {
   return channels.find(c => c.id === id);
 }
 
+/** Top-level sub-topics for a channel (children are hidden from the channel grid; they
+ *  render as cards on their parent's detail page instead). */
 export function getSubTopicsByChannel(channelId: string): SubTopic[] {
-  return subTopics.filter(s => s.channelId === channelId);
+  return subTopics.filter(s => s.channelId === channelId && !s.parentId);
+}
+
+/** Children of a parent sub-topic, in declaration order. */
+export function getSubTopicChildren(parentId: string): SubTopic[] {
+  return subTopics.filter(s => s.parentId === parentId);
 }
 
 export function getSubTopic(channelId: string, subId: string): SubTopic | undefined {
   return subTopics.find(s => s.channelId === channelId && s.id === subId);
 }
 
-/** Returns the next sub-topic within the same channel, wrapping to first */
+/** Returns the next sub-topic to surface after this one.
+ *  - For a child sub-topic: the next sibling under the same parent (no wrap; undefined if last).
+ *  - For a top-level sub-topic: the next top-level sub-topic in the channel, wrapping to first. */
 export function getNextSubTopic(channelId: string, subId: string): SubTopic | undefined {
+  const current = getSubTopic(channelId, subId);
+  if (!current) return undefined;
+  if (current.parentId) {
+    const siblings = getSubTopicChildren(current.parentId);
+    const idx = siblings.findIndex(s => s.id === subId);
+    return idx >= 0 && idx + 1 < siblings.length ? siblings[idx + 1] : undefined;
+  }
   const list = getSubTopicsByChannel(channelId);
   const idx = list.findIndex(s => s.id === subId);
   if (idx === -1 || list.length < 2) return undefined;

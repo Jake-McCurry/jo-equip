@@ -98,7 +98,10 @@ const subs = getSubTopicsByChannel(channel.id);
                   {String(idx + 1).padStart(2, "0")}
                 </span>
               </div>
-              <h3 class="text-base font-semibold leading-snug mb-4" style="color:#002f55;">{sub.name}</h3>
+              <h3 class="text-base font-semibold leading-snug mb-2" style="color:#002f55;">{sub.name}</h3>
+              {sub.description && (
+                <p class="text-sm leading-relaxed mb-4" style="color:var(--color-muted-foreground);">{sub.description}</p>
+              )}
             </div>
 
             {cover && (
@@ -107,7 +110,10 @@ const subs = getSubTopicsByChannel(channel.id);
               </div>
             )}
 
-            {formats.length > 0 && (
+            {/* Format badges (PDF / Playlist / App) intentionally hidden on the
+                Church channel — those categories are conveyed inside the topic page
+                itself, not on the channel index card. */}
+            {channel.id !== "church" && formats.length > 0 && (
               <div class="flex flex-wrap justify-center gap-1.5 px-5 mb-4">
                 {formats.includes("book") && (
                   bookHref

@@ -70,7 +70,12 @@ for (const a of args) {
   argMap[k] = v ?? true;
 }
 const LIMIT = argMap.limit ? Number(argMap.limit) : undefined;
-const SLUG_FILTER = typeof argMap.slug === "string" ? argMap.slug : undefined;
+/* --slug accepts a single slug or a comma-separated list (e.g.
+   --slug=93610-01-foo,93621-1-bar). Useful for rebuilding a related set
+   without forcing a full-run cache walk. */
+const SLUG_FILTER: Set<string> | undefined = typeof argMap.slug === "string"
+  ? new Set(argMap.slug.split(",").map(s => s.trim()).filter(Boolean))
+  : undefined;
 const FORCE = !!argMap.force;
 const CONCURRENCY = Number(argMap.concurrency ?? 4);
 
@@ -156,8 +161,10 @@ function renderTemplate({
   title,
   bodyHtml,
   sourceUrl,
-}: { title: string; bodyHtml: string; sourceUrl: string }): string {
+  coverLead,
+}: { title: string; bodyHtml: string; sourceUrl: string; coverLead?: string }): string {
   const escTitle = title.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+  const escLead = coverLead ? coverLead.replace(/&/g, "&amp;").replace(/</g, "&lt;") : "";
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -196,6 +203,15 @@ function renderTemplate({
     font-weight: 400;
     color: #6b7280;
     letter-spacing: 0.01em;
+  }
+  .cover .series-lead {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 17pt;
+    line-height: 1.2;
+    color: #0083de;
+    font-weight: 600;
+    letter-spacing: 0.005em;
+    margin: 0 0 0.25em 0;
   }
   .cover h1 {
     font-family: Georgia, "Times New Roman", serif;
@@ -290,6 +306,7 @@ function renderTemplate({
       <span class="brand-name">JesusOnline Equip</span>
       <span class="brand-tag">Ministry Resources Hub</span>
     </div>
+    ${escLead ? `<div class="series-lead">${escLead}</div>` : ""}
     <h1>${escTitle}</h1>
     <span class="rule"></span>
     <div class="meta">
@@ -317,6 +334,19 @@ const FOOTER_TEMPLATE = `
     <span>equip.jesusonline.com</span>
   </div>`;
 const HEADER_TEMPLATE = `<div></div>`;
+
+/* Optional cover-page lead line shown above the article title.
+   Used to brand a series (e.g. all Joshua Nations sub-topic articles get a
+   "Joshua Nations" eyebrow above the title). The slug prefixes below come
+   from `artifacts/discipleship-hub/src/data/channels.ts`:
+     - 93660-* → Survey of the Bible
+     - 93621-* → Disciple Making Movement
+     - 93610-* → Rapid Church Planting
+   Keep this list in sync when new Joshua Nations sub-topics are added. */
+function coverLeadFor(appSlug: string): string | undefined {
+  if (/^936(10|21|60)-/.test(appSlug)) return "Joshua Nations";
+  return undefined;
+}
 
 async function fetchPost(wpId: number): Promise<WpPost | null> {
   const url = `https://apicontent.jesusonline.com/wp-json/wp/v2/posts/${wpId}?_fields=id,slug,modified,title,content,link`;
@@ -347,6 +377,7 @@ async function buildOne(
       title: displayTitle,
       bodyHtml,
       sourceUrl: `app.jesusonline.com/post/${appSlug}`,
+      coverLead: coverLeadFor(appSlug),
     });
 
     const page = await browser.newPage();
@@ -465,7 +496,7 @@ async function main() {
   }
 
   let entries = Object.entries(mapping);
-  if (SLUG_FILTER) entries = entries.filter(([s]) => s === SLUG_FILTER);
+  if (SLUG_FILTER) entries = entries.filter(([s]) => SLUG_FILTER.has(s));
   if (LIMIT) entries = entries.slice(0, LIMIT);
 
   /* Prune cache entries whose slug is no longer in the mapping (only on a

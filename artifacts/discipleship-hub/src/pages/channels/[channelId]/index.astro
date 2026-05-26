@@ -98,7 +98,10 @@ const subs = getSubTopicsByChannel(channel.id);
                   {String(idx + 1).padStart(2, "0")}
                 </span>
               </div>
-              <h3 class="text-base font-semibold leading-snug mb-4" style="color:#002f55;">{sub.name}</h3>
+              <h3 class="text-base font-semibold leading-snug mb-2" style="color:#002f55;">{sub.name}</h3>
+              {sub.description && (
+                <p class="text-sm leading-relaxed mb-4" style="color:var(--color-muted-foreground);">{sub.description}</p>
+              )}
             </div>
 
             {cover && (

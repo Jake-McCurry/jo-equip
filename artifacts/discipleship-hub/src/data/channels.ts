@@ -124,11 +124,12 @@ export const subTopics: SubTopic[] = [
   //   07 disciple-making-movement  (renamed "Joshua Nations: Disciple Making Movement")
   //   08 rapid-church-planting  (renamed "Joshua Nations: Rapid Church Planting")
   // Legacy `bible-training-curriculum` placeholder removed May 2026.
-  { id: 'make-multiply-disciples-newsletter', channelId: 'church', name: 'Making & Multiplying Disciples Newsletter' },
+  { id: 'make-multiply-disciples-newsletter', channelId: 'church', name: 'Making & Multiplying Disciples Newsletter', description: 'Subscribe to our newsletter for disciple-makers.' },
   {
     id: 'total-life-discipleship-principles',
     channelId: 'church',
     name: 'Total Life Discipleship',
+    description: 'Disciple people with a holistic, Kingdom perspective.',
     formats: ['playlist'],
     playlistId: 'total-life-discipleship-core-principles',
     items: [
@@ -150,6 +151,7 @@ export const subTopics: SubTopic[] = [
     id: 'become-growing-church',
     channelId: 'church',
     name: 'Become a Growing Church',
+    description: 'Discover a unique, kingdom-centered vision for church growth.',
     /* 12 attributes of a growing church (renamed May 2026 to match the
        Become a Growing Church doc). Items 1–4 link to per-article pages
        under /channels/church/become-growing-church/<articleId>; items 5–12
@@ -178,7 +180,7 @@ export const subTopics: SubTopic[] = [
     id: 'share-jesus',
     channelId: 'church',
     name: 'Share Jesus',
-    description: 'Equip believers to share their faith with confidence — from understanding evangelism, to sharing the gospel in everyday conversations, to helping new believers take their next steps.',
+    description: 'Develop an effective evangelism ministry.',
   },
   {
     id: 'understanding-evangelism',
@@ -230,6 +232,7 @@ export const subTopics: SubTopic[] = [
     id: 'survey-of-the-bible',
     channelId: 'church',
     name: 'Joshua Nations: Survey of the Bible',
+    description: 'Encounter the heart and plan of God from Genesis to Revelation.',
     items: [
       { number: 1, title: 'Matthew', links: { app: 'https://app.jesusonline.com/post/93660-1-matthew' } },
       { number: 2, title: 'Mark', links: { app: 'https://app.jesusonline.com/post/93660-2-mark' } },
@@ -270,7 +273,7 @@ export const subTopics: SubTopic[] = [
     id: 'joshua-nations-online-bible-training',
     channelId: 'church',
     name: 'Joshua Nations: Online Bible Training',
-    description: 'A two-year video Bible-training curriculum from Joshua Nations covering doctrine, the Christian life, family, ministry, and leadership.',
+    description: 'Receive comprehensive Biblical training designed for church leaders.',
     formats: ['app'],
     appUrl: 'https://joshuanations.org/media/all-videos',
   },
@@ -334,6 +337,7 @@ export const subTopics: SubTopic[] = [
     id: 'disciple-making-movement',
     channelId: 'church',
     name: 'Joshua Nations: Disciple Making Movement',
+    description: 'Build a movement to multiply disciples, groups, and churches.',
     items: [
       { number: 1, title: 'Lesson 1: Intimacy with God', links: { app: 'https://app.jesusonline.com/post/93621-1-lesson-1-intimacy-with-god' } },
       { number: 2, title: 'Lesson 2: Prayer and Fasting', links: { app: 'https://app.jesusonline.com/post/93621-2-lesson-2-prayer-and-fasting' } },
@@ -348,6 +352,7 @@ export const subTopics: SubTopic[] = [
     id: 'rapid-church-planting',
     channelId: 'church',
     name: 'Joshua Nations: Rapid Church Planting',
+    description: 'Plant new churches quickly to bring the Gospel to the unreached.',
     items: [
       { number: 1, title: 'Why Plant a Church', links: { app: 'https://app.jesusonline.com/post/93610-01-why-plant-a-church' } },
       { number: 2, title: 'Definition and Purpose of a Church', links: { app: 'https://app.jesusonline.com/post/93610-02-definition-and-purpose-of-a-church' } },

@@ -1,7 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
-import { Book as BookIcon, Download } from "lucide-react";
+import { Book as BookIcon, BookOpen } from "lucide-react";
 import { books } from "@/data/books";
 import { getBookCover } from "@/data/bookCovers";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
@@ -13,8 +13,9 @@ const join = (p: string) =>
 /* Cloudflare Turnstile site key — public, safe to commit (appears in HTML).
    This is the live `equip.jesusonline.com` widget in Managed mode (issued
    May 2026). Server-side enforcement requires `TURNSTILE_SECRET_KEY` to be
-   set as a Worker secret in the CF dashboard — without it the Worker logs
-   a warning and lets submissions through. CF's universal test key
+   set as a Worker secret in the CF dashboard — `verifyTurnstile()` fails
+   CLOSED if it is missing (logs an error and skips the Virtuous CRM write),
+   so submissions are never forwarded without a verified token. CF's universal test key
    `1x00000000000000000000AA` (always passes) can be temporarily swapped in
    for local dev if needed. */
 const TURNSTILE_SITE_KEY = "0x4AAAAAADTRH1wS2tchk8Tw";
@@ -87,7 +88,7 @@ const booksJsonLd = {
       <h1 class="text-4xl md:text-5xl mb-4" style="color:#002f55;">Books</h1>
       <div class="h-0.5 w-12 mb-5" style="background-color:#de5b00;"></div>
       <p class="leading-relaxed text-lg" style="color:var(--color-muted-foreground);">
-        Download these free books to enhance your ministry impact.
+        Read these free books online — open any of them in a new tab, then download to keep or share.
       </p>
     </div>
 
@@ -118,10 +119,10 @@ const booksJsonLd = {
               data-pdf={join(book.pdf)}
               data-title={book.title}
               data-id={book.id}
-              aria-label={`Download ${book.title}`}
+              aria-label={`Read ${book.title}`}
             >
-              <Download className="w-4 h-4" />
-              Download
+              <BookOpen className="w-4 h-4" />
+              Read
             </button>
             <a
               href={join(`/books/${book.id}`)}
@@ -162,7 +163,7 @@ const booksJsonLd = {
       <h2 id="email-gate-title" class="text-2xl mb-2" style="color:#002f55;">Get free ministry resources</h2>
       <div class="h-0.5 w-10 mb-4" style="background-color:#de5b00;"></div>
       <p id="email-gate-desc" class="text-sm mb-5 leading-relaxed" style="color:var(--color-muted-foreground);">
-        Enter your email to download
+        Enter your email to read
         <span id="email-gate-book" class="font-semibold" style="color:#002f55;">this book</span>.
         We'll occasionally share new resources — unsubscribe anytime.
       </p>
@@ -195,7 +196,7 @@ const booksJsonLd = {
           class="w-full py-3 rounded font-semibold text-white text-base transition-colors hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed"
           style="background-color:#de5b00;"
         >
-          Download book
+          Read book
         </button>
         <p class="text-xs text-center" style="color:var(--color-muted-foreground);">
           Your email is only used for ministry resource updates.
@@ -239,14 +240,33 @@ const booksJsonLd = {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
       }
 
-      function triggerDownload(url) {
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = "";
-        a.rel = "noopener";
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
+      // Open the book PDF in a new tab so visitors can read it in the browser
+      // and download it themselves if they want (matching how article PDFs
+      // behave). `allowSameTabFallback` is used for the deep-link auto-trigger,
+      // where the open happens on page load (no user gesture) and may be
+      // blocked by a popup blocker — in that case we navigate the current tab
+      // so the visitor still reaches the book.
+      function openBook(url, allowSameTabFallback) {
+        let win = null;
+        try { win = window.open(url, "_blank"); } catch (_e) { win = null; }
+        if (win) {
+          try { win.opener = null; } catch (_e) { /* ignore */ }
+        } else if (allowSameTabFallback) {
+          window.location.href = url;
+        }
+      }
+
+      // Shared entry point for opening a book: gated on first use (email
+      // capture), then opens directly on subsequent visits.
+      function requestBook(url, title, id, triggerEl, isDeepLink) {
+        if (!url) return;
+        const stored = safeGet();
+        if (stored && isValidEmail(stored)) {
+          openBook(url, !!isDeepLink);
+        } else {
+          ensureTurnstileLoaded();
+          openGate(url, title, id, triggerEl);
+        }
       }
 
       function showError(show) {
@@ -348,22 +368,18 @@ const booksJsonLd = {
 
       document.querySelectorAll(".book-download-btn").forEach(function (btn) {
         btn.addEventListener("click", function () {
-          const url = btn.getAttribute("data-pdf");
-          const title = btn.getAttribute("data-title");
-          const id = btn.getAttribute("data-id");
-          if (!url) return;
-          const stored = safeGet();
-          if (stored && isValidEmail(stored)) {
-            triggerDownload(url);
-          } else {
-            ensureTurnstileLoaded();
-            openGate(url, title, id, btn);
-          }
+          requestBook(
+            btn.getAttribute("data-pdf"),
+            btn.getAttribute("data-title"),
+            btn.getAttribute("data-id"),
+            btn,
+            false
+          );
         });
       });
 
       // Deep-link: /books?download=<book-id> auto-scrolls to the matching card
-      // and triggers its download flow (gate or direct download per stored email).
+      // and triggers its open flow (gate, or open directly per stored email).
       try {
         const params = new URLSearchParams(window.location.search);
         const wanted = params.get("download");
@@ -375,7 +391,15 @@ const booksJsonLd = {
           }
           if (targetBtn) {
             // Defer so any pending paint / smooth-scroll begins before the modal opens.
-            setTimeout(function () { targetBtn.click(); }, 250);
+            setTimeout(function () {
+              requestBook(
+                targetBtn.getAttribute("data-pdf"),
+                targetBtn.getAttribute("data-title"),
+                targetBtn.getAttribute("data-id"),
+                targetBtn,
+                true
+              );
+            }, 250);
           }
         }
       } catch (_e) { /* ignore */ }
@@ -413,9 +437,9 @@ const booksJsonLd = {
         } catch (_e) { /* ignore */ }
         const url = pendingPdf;
         closeGate();
-        if (url) {
-          setTimeout(function () { triggerDownload(url); }, 100);
-        }
+        // Open synchronously within the submit gesture so the new tab is not
+        // treated as an unsolicited popup (deferring it would get it blocked).
+        if (url) { openBook(url, false); }
       });
     })();
   </script>

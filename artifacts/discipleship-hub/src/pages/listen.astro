@@ -60,8 +60,8 @@ import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
         <li class="flex gap-4">
           <span class="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-mono font-semibold mt-0.5" style="background-color:rgba(0,131,222,0.1);color:#0083de;">2</span>
           <div>
-            <h4 class="text-base font-semibold mb-1" style="color:#002f55;">Click the speaker icon in the address bar</h4>
-            <div class="leading-relaxed text-sm" style="color:var(--color-muted-foreground);">Or right-click anywhere on the page and choose <strong>Read aloud</strong>. You can also press <kbd class="px-1.5 py-0.5 text-xs rounded border" style="background-color:rgba(0,47,85,0.05);border-color:var(--color-border);color:#002f55;">Ctrl</kbd> + <kbd class="px-1.5 py-0.5 text-xs rounded border" style="background-color:rgba(0,47,85,0.05);border-color:var(--color-border);color:#002f55;">Shift</kbd> + <kbd class="px-1.5 py-0.5 text-xs rounded border" style="background-color:rgba(0,47,85,0.05);border-color:var(--color-border);color:#002f55;">U</kbd>.</div>
+            <h4 class="text-base font-semibold mb-1" style="color:#002f55;">Start Read Aloud</h4>
+            <div class="leading-relaxed text-sm" style="color:var(--color-muted-foreground);">Right-click anywhere on the page and choose <strong>Read aloud</strong>, or press <kbd class="px-1.5 py-0.5 text-xs rounded border" style="background-color:rgba(0,47,85,0.05);border-color:var(--color-border);color:#002f55;">Ctrl</kbd> + <kbd class="px-1.5 py-0.5 text-xs rounded border" style="background-color:rgba(0,47,85,0.05);border-color:var(--color-border);color:#002f55;">Shift</kbd> + <kbd class="px-1.5 py-0.5 text-xs rounded border" style="background-color:rgba(0,47,85,0.05);border-color:var(--color-border);color:#002f55;">U</kbd>. On article pages you can also click the <strong>Read aloud</strong> (open-book) icon on the right side of the address bar.</div>
           </div>
         </li>
         <li class="flex gap-4">
@@ -155,47 +155,49 @@ import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
     <div class="bg-white border rounded p-6 md:p-8 mb-8" style="border-color:var(--color-border);">
       <div class="flex items-center gap-3 mb-5 pb-4 border-b" style="border-color:var(--color-border);">
         <Chrome className="w-6 h-6" style={{ color: "#0083de" }} />
-        <h2 class="text-xl font-semibold" style="color:#002f55;">Google Chrome — Read Aloud extension</h2>
+        <h2 class="text-xl font-semibold" style="color:#002f55;">Google Chrome — Listen to this page</h2>
       </div>
       <p class="text-sm leading-relaxed mb-5" style="color:var(--color-muted-foreground);">
-        If you'd rather stay in Chrome, the free <strong>Read Aloud</strong> extension adds a single-click
-        page reader with several voice options.
+        Recent versions of Chrome can read any page aloud with no extension — built in on Android and
+        newer desktop Chrome, with adjustable voice, speed, and text highlighting.
       </p>
       <ol class="space-y-5">
         <li class="flex gap-4">
           <span class="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-mono font-semibold mt-0.5" style="background-color:rgba(0,131,222,0.1);color:#0083de;">1</span>
           <div>
-            <h4 class="text-base font-semibold mb-1" style="color:#002f55;">Install the free extension</h4>
-            <div class="leading-relaxed text-sm" style="color:var(--color-muted-foreground);">
-              <a href="https://chromewebstore.google.com/detail/read-aloud-a-text-to-spee/hdhinadidafjejdhmfkjgnolgimiaplp" target="_blank" rel="noopener noreferrer" class="inline-flex items-center font-medium hover:underline" style="color:#0083de;">
-                Read Aloud on the Chrome Web Store
-                <ExternalLink className="w-3.5 h-3.5 ml-1" />
-              </a>
-              <div class="mt-1">Click "Add to Chrome" — it's free and runs entirely in your browser.</div>
-            </div>
+            <h4 class="text-base font-semibold mb-1" style="color:#002f55;">Open any JO EQUIP page in Chrome</h4>
+            <div class="leading-relaxed text-sm" style="color:var(--color-muted-foreground);">Go to the article you want read aloud.</div>
           </div>
         </li>
         <li class="flex gap-4">
           <span class="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-mono font-semibold mt-0.5" style="background-color:rgba(0,131,222,0.1);color:#0083de;">2</span>
           <div>
-            <h4 class="text-base font-semibold mb-1" style="color:#002f55;">Click the speaker icon</h4>
-            <div class="leading-relaxed text-sm" style="color:var(--color-muted-foreground);">Pin the extension to your toolbar, then click the speaker icon on any JO EQUIP page to start listening.</div>
+            <h4 class="text-base font-semibold mb-1" style="color:#002f55;">Open the menu and choose "Listen to this page"</h4>
+            <div class="leading-relaxed text-sm" style="color:var(--color-muted-foreground);">Tap or click the three-dot menu (<strong>⋮</strong>) and select <strong>Listen to this page</strong>. A playback bar appears at the bottom — play, pause, skip, or change speed and voice from there.</div>
           </div>
         </li>
         <li class="flex gap-4">
           <span class="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-mono font-semibold mt-0.5" style="background-color:rgba(0,131,222,0.1);color:#0083de;">3</span>
           <div>
-            <h4 class="text-base font-semibold mb-1" style="color:#002f55;">Pick your voice in settings</h4>
-            <div class="leading-relaxed text-sm" style="color:var(--color-muted-foreground);">In the extension settings, switch between Google, Microsoft, and Amazon voices — the natural ones sound noticeably better than the defaults.</div>
+            <h4 class="text-base font-semibold mb-1" style="color:#002f55;">Don't see the option? Use the free Read Aloud extension</h4>
+            <div class="leading-relaxed text-sm" style="color:var(--color-muted-foreground);">
+              On older desktop Chrome, install
+              <a href="https://chromewebstore.google.com/detail/read-aloud-a-text-to-spee/hdhinadidafjejdhmfkjgnolgimiaplp" target="_blank" rel="noopener noreferrer" class="inline-flex items-center font-medium hover:underline" style="color:#0083de;">
+                Read Aloud from the Chrome Web Store
+                <ExternalLink className="w-3.5 h-3.5 ml-1" />
+              </a>
+              , then click its speaker icon on any page. Its settings offer Google, Microsoft, and Amazon voices.
+            </div>
           </div>
         </li>
       </ol>
     </div>
 
     <div class="p-5 rounded text-sm" style="background-color:rgba(0,131,222,0.06);border-left:4px solid #0083de;color:#002f55;">
-      <strong>Heads up:</strong> These are all third-party tools we don't control. Quality and voice availability
-      vary by device and operating system. Theological terms and Hebrew/Greek names may not always pronounce
-      perfectly — but for most articles, the experience is very natural.
+      <strong>Heads up:</strong> These read-aloud features are built into your browser or device — we don't
+      control them, so quality and voice availability vary by device and operating system. Theological terms
+      and Hebrew/Greek names may not always pronounce perfectly — but for most articles, the experience is
+      very natural.
     </div>
   </div>
 </Layout>

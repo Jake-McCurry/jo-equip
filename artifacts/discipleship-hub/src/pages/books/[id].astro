@@ -1,7 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
-import { Download, ArrowLeft } from "lucide-react";
+import { BookOpen, ArrowLeft } from "lucide-react";
 import { books } from "@/data/books";
 import { getBookCover } from "@/data/bookCovers";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
@@ -119,16 +119,17 @@ const bookJsonLd = {
           and share with your church, small group, or ministry team.
         </p>
 
-        {/* Download CTA — links to /books?download=<id>, which the existing
-            email-gate JS on /books picks up and auto-triggers. */}
+        {/* Read CTA — links to /books?download=<id>, which the existing
+            email-gate JS on /books picks up and auto-opens the PDF in a new tab. */}
         <a
           href={join(`/books?download=${book.id}`)}
           class="inline-flex items-center gap-2 px-6 py-3 rounded font-semibold text-white text-base transition-colors hover:opacity-90"
           style="background-color:#de5b00;"
         >
-          <Download className="w-4 h-4" /> Download PDF
+          <BookOpen className="w-4 h-4" /> Read PDF
         </a>
         <p class="text-xs mt-3" style="color:var(--color-muted-foreground);">
+          Opens in a new tab to read online — download it from there to keep or share.
           We'll ask for your email on the next step so we can share new resources occasionally.
         </p>
       </div>

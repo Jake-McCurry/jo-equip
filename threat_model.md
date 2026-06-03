@@ -13,6 +13,7 @@ Production assumptions for this scan:
 ## Assets
 
 - **Subscriber email addresses and consent state** — the Worker accepts email addresses and forwards them into Virtuous as opted-in contacts. Incorrect handling can create privacy, spam, and reputation risk.
+- **Browser-stored subscriber identifiers** — if subscriber emails or equivalent identifiers are persisted in client-side storage, they become available to any script that executes on the origin, including analytics tags and third-party embeds.
 - **CRM API credentials** — `VIRTUOUS_API_KEY` and `TURNSTILE_SECRET_KEY` protect outbound CRM operations and anti-bot validation.
 - **Site integrity and reputation** — the public site represents a ministry brand; abuse of public forms or injected content can harm trust even without account compromise.
 - **Analytics and third-party embeds** — GTM and Virtuous embed code run with access to user browsers and must not become a path for data exposure beyond intended collection.
@@ -21,6 +22,7 @@ Production assumptions for this scan:
 
 - **Browser to Cloudflare Worker** — all `/api/subscribe` requests cross from untrusted clients into server-side processing. Request bodies, query params, headers, and origin context are attacker-controlled.
 - **Worker to external services** — the Worker calls Cloudflare Turnstile verification and Virtuous CRM with secrets. Fail-open behavior or over-trusting upstream assumptions can enable abuse.
+- **First-party pages to third-party browser scripts** — GTM and the Virtuous newsletter embed execute in the user's browser with access to the same origin's DOM and storage context. Any sensitive state persisted in browser storage crosses into that trust boundary.
 - **Static content authors to rendered HTML** — some article content is rendered with `set:html`, so only repository-controlled content may flow into those sinks.
 - **Repository code to deployment configuration** — secrets and deployment visibility materially affect exploitability. Production security controls must not rely on optional, silently missing configuration for core abuse prevention.
 
@@ -51,10 +53,11 @@ Required guarantees:
 
 ### Information Disclosure
 
-The main sensitive data here is email addresses, secrets, and any internal error detail exposed through logs or responses. The Worker already avoids logging raw emails, and the Express logger redacts cookies and authorization headers.
+The main sensitive data here is email addresses, secrets, and any internal error detail exposed through logs or responses. The Worker already avoids logging raw emails, and the Express logger redacts cookies and authorization headers. The browser side must also avoid persisting raw subscriber data in origin-wide storage when third-party scripts are present on the site.
 
 Required guarantees:
 - Raw subscriber emails and secrets MUST NOT appear in logs or client-visible error responses.
+- Raw subscriber emails MUST NOT be stored in browser-accessible persistent storage unless every script with origin access is trusted to receive them.
 - Third-party scripts and embeds MUST receive only the minimum data intentionally shared with them.
 
 ### Denial of Service

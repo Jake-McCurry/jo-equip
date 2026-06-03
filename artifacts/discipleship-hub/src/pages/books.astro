@@ -207,7 +207,10 @@ const booksJsonLd = {
 
   <script is:inline>
     (function () {
-      const STORAGE_KEY = "jo_equip_email_v1";
+      // Stores a non-sensitive consent flag ("1") — never the raw email address.
+      // The legacy key stored the raw email; we migrate and erase it on load.
+      const STORAGE_KEY = "jo_equip_subscribed_v1";
+      const LEGACY_KEY = "jo_equip_email_v1";
       const SUBSCRIBE_ENDPOINT = "/api/subscribe";
       const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
@@ -220,20 +223,32 @@ const booksJsonLd = {
       if (!gate || !form || !bookLabel || !input || !submitBtn) return;
 
       // In-memory fallback for environments where localStorage throws (private browsing, strict policies).
-      let memoryEmail = null;
+      let memoryConsented = false;
       let pendingPdf = null;
       let pendingTitle = null;
       let pendingId = null;
       let lastFocusedEl = null;
       let isSubmitting = false;
 
-      function safeGet() {
-        try { return localStorage.getItem(STORAGE_KEY) || memoryEmail; }
-        catch (_e) { return memoryEmail; }
+      // Migrate visitors who have the old key (which stored their raw email).
+      // Promote to the new boolean flag and erase the sensitive value.
+      function migrateLegacyStorage() {
+        try {
+          if (localStorage.getItem(LEGACY_KEY)) {
+            localStorage.setItem(STORAGE_KEY, "1");
+            localStorage.removeItem(LEGACY_KEY);
+          }
+        } catch (_e) { /* ignore */ }
       }
-      function safeSet(value) {
-        memoryEmail = value;
-        try { localStorage.setItem(STORAGE_KEY, value); } catch (_e) { /* ignore */ }
+      migrateLegacyStorage();
+
+      function safeGet() {
+        try { return localStorage.getItem(STORAGE_KEY) === "1" || memoryConsented; }
+        catch (_e) { return memoryConsented; }
+      }
+      function safeSet() {
+        memoryConsented = true;
+        try { localStorage.setItem(STORAGE_KEY, "1"); } catch (_e) { /* ignore */ }
       }
 
       function isValidEmail(value) {
@@ -260,8 +275,7 @@ const booksJsonLd = {
       // capture), then opens directly on subsequent visits.
       function requestBook(url, title, id, triggerEl, isDeepLink) {
         if (!url) return;
-        const stored = safeGet();
-        if (stored && isValidEmail(stored)) {
+        if (safeGet()) {
           openBook(url, !!isDeepLink);
         } else {
           ensureTurnstileLoaded();
@@ -425,7 +439,7 @@ const booksJsonLd = {
         }
         isSubmitting = true;
         submitBtn.disabled = true;
-        safeSet(email);
+        safeSet();
         submitEmail(email, getTurnstileToken());
         // Turnstile tokens are single-use. Reset so a re-open of the modal
         // (e.g. different tab, cleared storage, in-memory-only session)

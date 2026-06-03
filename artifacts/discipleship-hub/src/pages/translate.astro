@@ -29,11 +29,15 @@ import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
       </p>
     </div>
 
-    {/* Method 1: Chrome desktop */}
-    <div class="bg-white border rounded p-6 md:p-8 mb-5" style="border-color:var(--color-border);">
+    {/* Method 1: Chrome desktop — RECOMMENDED (most visitors use Chrome) */}
+    <div class="bg-white rounded-lg p-6 md:p-8 mb-6 shadow-lg" style="border:2px solid #0083de;border-top:5px solid #de5b00;">
+      <div class="flex flex-wrap items-center gap-2 mb-3">
+        <span class="text-xs font-semibold tracking-widest uppercase px-2 py-0.5 rounded" style="background-color:rgba(222,91,0,0.12);color:#de5b00;">Recommended</span>
+        <span class="text-xs font-medium" style="color:var(--color-muted-foreground);">Most of our visitors use Chrome</span>
+      </div>
       <div class="flex items-center gap-3 mb-5 pb-4 border-b" style="border-color:var(--color-border);">
-        <Chrome className="w-6 h-6" style={{ color: "#0083de" }} />
-        <h2 class="text-xl font-semibold" style="color:#002f55;">Google Chrome (desktop)</h2>
+        <Chrome className="w-7 h-7" style={{ color: "#0083de" }} />
+        <h2 class="text-2xl font-bold" style="color:#002f55;">Google Chrome (desktop)</h2>
       </div>
       <ol class="space-y-5">
         <li class="flex gap-4">
@@ -78,7 +82,7 @@ import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
           <span class="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-mono font-semibold mt-0.5" style="background-color:rgba(0,131,222,0.1);color:#0083de;">2</span>
           <div>
             <h4 class="text-base font-semibold mb-1" style="color:#002f55;">Safari on iPhone or iPad</h4>
-            <div class="leading-relaxed text-sm" style="color:var(--color-muted-foreground);">Tap the <strong>aA</strong> icon on the left of the address bar, then tap <strong>Translate to [language]</strong>. (You may need to enable translation in Settings → Safari → Translate the first time.)</div>
+            <div class="leading-relaxed text-sm" style="color:var(--color-muted-foreground);">Tap the <strong>aA</strong> icon at the left of the address bar, then tap <strong>Translate to [language]</strong>. The first time, tap <strong>Enable Translation</strong> when prompted — after that, pages translate automatically. (Requires iOS / iPadOS 15 or later.)</div>
           </div>
         </li>
       </ol>

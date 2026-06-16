@@ -31,7 +31,26 @@ export default defineConfig({
     react(),
     /* Stamp every sitemap entry with the build date so Google sees fresh
        `lastmod` values after each deploy and recrawls accordingly. */
-    sitemap({ lastmod: new Date() }),
+    sitemap({
+      lastmod: new Date(),
+      /* Keep utility pages out of the sitemap: /thank-you is noindex (listing a
+         noindex page sends Google mixed signals) and /search is an internal
+         results page Google discourages indexing. */
+      filter: (page) => !/\/(thank-you|search)\/?$/.test(page),
+      /* Emit URLs WITHOUT a trailing slash so they match our self-referencing
+         canonical tags (Layout.astro strips the trailing slash on every path
+         except the root). When the sitemap URL ("/about/") and the page's
+         canonical ("/about") disagree, Google files the sitemap URL under
+         "Alternate page with proper canonical tag" and won't index it. The
+         site root is the one exception — its canonical keeps the trailing
+         slash, so we leave it untouched. */
+      serialize: (item) => {
+        if (item.url !== "https://equip.jesusonline.com/") {
+          item.url = item.url.replace(/\/$/, "");
+        }
+        return item;
+      },
+    }),
     pagefind(),
     /* Partytown: runs <script type="text/partytown"> in a Web Worker
        instead of the main thread. We use it for GTM + GA4 (set up in

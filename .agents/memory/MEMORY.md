@@ -1,0 +1,1 @@
+- [URL trailing-slash convention](url-trailing-slash-convention.md) — discipleship-hub URLs are no-slash except root; canonical + sitemap + internal links must agree or Google flags "alternate page with proper canonical tag".

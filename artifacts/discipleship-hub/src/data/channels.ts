@@ -152,24 +152,27 @@ export const subTopics: SubTopic[] = [
     channelId: 'church',
     name: 'Become a Growing Church',
     description: 'Discover a unique, kingdom-centered vision for church growth.',
-    /* 12 attributes of a growing church (renamed May 2026 to match the
-       Become a Growing Church doc). Items 1–11 link to per-article pages
-       under /channels/church/become-growing-church/<articleId>; item 12 is
-       list-only until its long-form content is written. */
+    /* Church-growth models (rewritten June 2026 to match the new Become a
+       Growing Church source docs). "Anatomy of Obedience" is a supporting
+       article inserted after Total Life Discipleship. Items with an
+       articleId link to per-article pages under
+       /channels/church/become-growing-church/<articleId>; the final
+       Model / Example Church is list-only until its content is written. */
     hideNumbers: true,
     items: [
-      { number: 1,  title: 'God’s Unique Vision for Your Church',            articleId: 'gods-unique-vision-for-your-church' },
+      { number: 1,  title: 'A Unique Vision for Kingdom-Focused Growth',     articleId: 'gods-unique-vision-for-your-church' },
       { number: 2,  title: 'A JesusOnline EQUIPPED Church',                  articleId: 'a-jesusonline-equipped-church' },
       { number: 3,  title: 'A Total Life Discipleship Church',               articleId: 'a-total-life-discipleship-church' },
-      { number: 4,  title: 'A Transformational Teaching Church',             articleId: 'a-transformational-teaching-church' },
-      { number: 5,  title: 'A Spirit-dependent Church',                      articleId: 'a-spirit-dependent-church' },
-      { number: 6,  title: 'A Hope-filled Church',                           articleId: 'a-hope-filled-church' },
-      { number: 7,  title: 'An Intentional Worship Church',                  articleId: 'an-intentional-worship-church' },
+      { number: 4,  title: 'Anatomy of Obedience',                           articleId: 'anatomy-of-obedience' },
+      { number: 5,  title: 'A Transformational Teaching Church',             articleId: 'a-transformational-teaching-church' },
+      { number: 6,  title: 'A Spirit-dependent Church',                      articleId: 'a-spirit-dependent-church' },
+      { number: 7,  title: 'A Hope-filled Church',                           articleId: 'a-hope-filled-church' },
       { number: 8,  title: 'A Love-demonstrating Relational Church',         articleId: 'a-love-demonstrating-relational-church' },
-      { number: 9,  title: 'A Great Commission Church',                      articleId: 'a-great-commission-church' },
-      { number: 10, title: 'An Online Outreach Church',                      articleId: 'an-online-outreach-church' },
-      { number: 11, title: 'An Attractive and Inviting Church',             articleId: 'an-attractive-and-inviting-church' },
-      { number: 12, title: 'A Model / Example Church' },
+      { number: 9,  title: 'An Intentional Worship Church',                  articleId: 'an-intentional-worship-church' },
+      { number: 10, title: 'A Great Commission Church',                      articleId: 'a-great-commission-church' },
+      { number: 11, title: 'An Online Outreach Church',                      articleId: 'an-online-outreach-church' },
+      { number: 12, title: 'An Attractive and Inviting Church',             articleId: 'an-attractive-and-inviting-church' },
+      { number: 13, title: 'A Model / Example Church' },
     ],
   },
   /* Share Jesus — parent of the three evangelism sub-topics. The children

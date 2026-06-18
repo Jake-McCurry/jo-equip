@@ -51,20 +51,20 @@ const WLL: ArticleBlock[] = [
 export const bcgArticles: BcgArticle[] = [
   {
     id: "gods-unique-vision-for-your-church",
-    title: "God’s Unique Vision for Your Church",
+    title: "A Unique Vision for Kingdom-Focused Growth",
     description:
-      "Faithful pastor or small-church leader feeling stuck? JesusOnline offers free media and discipleship resources to help you grow deep — God will grow you wide.",
+      "Faithful pastor or small-group leader not seeing growth? JesusOnline offers free media and discipleship resources to help you grow deep — and God will grow you wide.",
     blocks: [
-      { type: "figure", src: "bgc1-1", alt: "Opening illustration for God’s Unique Vision for Your Church — a faithful shepherd and the flock God has entrusted to him." },
+      { type: "figure", src: "bgc1-1", alt: "Opening illustration for A Unique Vision for Kingdom-Focused Growth — a faithful shepherd and the flock God has entrusted to him." },
 
-      { type: "p", html: "Are you a faithful church leader or small congregation feeling stuck? You’re pouring everything into ministry, yet the church isn’t growing the way you hoped." },
+      { type: "p", html: "You are a pastor, a small-group leader, or an elder of a congregation. You have been faithful to the Great Shepherd, feeding and shepherding His sheep. Yet you are not seeing the growth and vitality you long for." },
       { type: "p", html: "JesusOnline is here to help." },
-      { type: "p", html: "We don’t offer quick-fix formulas or worldly church-growth strategies. Instead, we provide high-quality free media and discipleship resources designed to help you feed and shepherd the flock God has already entrusted to you." },
+      { type: "p", html: "We provide high-quality free media and discipleship resources designed to help you equip the people God has already entrusted to you — so they can fully participate in the missions and ministries for which God designed them." },
       { type: "figure", src: "bgc1-2", alt: "JesusOnline’s free media and discipleship resources — practical tools to help pastors feed and shepherd their flock." },
 
       { type: "h2", text: "Our Core Philosophy" },
-      { type: "p", html: "<strong>Grow deep. God will grow you wide.</strong>" },
-      { type: "p", html: "We believe real success in God’s Kingdom is measured first by depth, not numbers. When disciples are rooted in Christ, transformed by His Word, and equipped to follow Him daily, healthy growth follows naturally. Healthy sheep reproduce. Healthy flocks expand." },
+      { type: "p", html: "<strong>Grow deep, and God will grow you wide.</strong>" },
+      { type: "p", html: "We believe real success in God’s Kingdom is measured first by depth (maturity), not by width (numbers). When disciples are rooted in Christ, transformed by His Word, and equipped to follow Him daily, healthy growth follows naturally. Healthy sheep reproduce. Healthy flocks multiply." },
 
       { type: "p", html: "That’s why our resources focus on:" },
       { type: "ul", items: [
@@ -73,14 +73,22 @@ export const bcgArticles: BcgArticle[] = [
         "Practical discipleship tools that help your people thrive right where God has planted them",
       ]},
 
-      { type: "p", html: "We’re not promising explosive numerical growth. These are tools, not magic. But we are confident that when you minister God’s way — caring for the sheep, preaching the Word, and making disciples — He is faithful to bless the work." },
-      { type: "p", html: "Isn’t it reasonable to expect that if you pour yourself into faithful, biblical ministry, the Lord of the Harvest will bring the increase in His perfect timing?" },
+      { type: "p", html: "We are confident that when you minister God’s way — equipping saints toward Kingdom maturity to more fully and fruitfully participate in God’s mission — He is faithful to bless the work of your hands." },
+      { type: "p", html: "Isn’t it reasonable to expect that if you pour yourself into faithful, biblical ministry, the Lord of the Harvest will bring the increase in His perfect timing? After all, making disciples of all nations is His mandate (Matthew 28:19), spiritual multiplication is His strategy (2 Timothy 2:2), and you are His coworker (1 Corinthians 3:9)." },
       { type: "figure", src: "bgc1-3", alt: "The Lord of the Harvest brings the increase in His perfect timing." },
 
       { type: "h2", text: "Let’s Build Christ’s Kingdom Together" },
-      { type: "p", html: "If you’re a pastor or church leader who wants to focus on depth over hype, we’d love to partner with you." },
-      { type: "p", html: "Whether your church is small, rural, urban, or somewhere in between — your flock matters to God. Let us help you strengthen and equip them." },
+      { type: "p", html: "If you are a disciple-maker — whether in formal ministry or through informal relationships — and you’re passionate about transformation that results in eternal impact, we’d love to partner with you." },
+      { type: "p", html: "To become any of the churches described in this series is not a program but a process. It involves discipleship, because it requires the changing of individual hearts and the culture of the church by the power of the Holy Spirit." },
+      { type: "p", html: "It is human nature to look at what we consider a successful church or group and try to imitate what they do. While it is wise to learn from one another — and there is certainly a valid strategy in multiplying churches and groups that share common characteristics — God has created your fellowship to be unique." },
+      { type: "p", html: "Just as He has filled the earth with a wide variety of flowers, trees, and birds, He desires His people to reach every segment of society in their own distinct way. Simply copying other churches or groups because you want to be like them will not fulfill the God-given identity and mission of your fellowship." },
       { type: "figure", src: "bgc1-4", alt: "Partnering with pastors and church leaders to strengthen and equip the flock God has entrusted to them." },
+
+      { type: "p", html: "Whether you’re discipling one person or leading discipleship for an entire church — whether you lead a small group or pastor many churches — your labor is a critical element in His plan to advance His Kingdom on earth. Let us help you better equip God’s people for the good works He has prepared for them (Ephesians 2:10)." },
+
+      { type: "h2", text: "Growing Church Models" },
+      { type: "p", html: "Definitions of the church vary, and there are many rich traditions and expressions. In this series of articles, when we use the word “church,” we mean a local gathering of believers called out to be sent out by Jesus. The church is functionally a fellowship — a community on God’s mission." },
+      { type: "p", html: "Therefore, the principles and approaches discussed in these church models apply not only to local congregations but also to home churches and to both formal and informal small groups." },
 
       { type: "h2", text: "Ready to go deeper?" },
       { type: "p", html: "Explore the articles below to see how JesusOnline can help your church become:" },
@@ -90,8 +98,8 @@ export const bcgArticles: BcgArticle[] = [
         '<a href="/channels/church/become-growing-church/a-transformational-teaching-church">A Transformational Teaching Church</a>',
         '<a href="/channels/church/become-growing-church/a-spirit-dependent-church">A Spirit-dependent Church</a>',
         '<a href="/channels/church/become-growing-church/a-hope-filled-church">A Hope-filled Church</a>',
-        '<a href="/channels/church/become-growing-church/an-intentional-worship-church">An Intentional Worship Church</a>',
         '<a href="/channels/church/become-growing-church/a-love-demonstrating-relational-church">A Love-demonstrating Relational Church</a>',
+        '<a href="/channels/church/become-growing-church/an-intentional-worship-church">An Intentional Worship Church</a>',
         '<a href="/channels/church/become-growing-church/a-great-commission-church">A Great Commission Church</a>',
         '<a href="/channels/church/become-growing-church/an-online-outreach-church">An Online Outreach Church</a>',
         '<a href="/channels/church/become-growing-church/an-attractive-and-inviting-church">An Attractive and Inviting Church</a>',
@@ -117,24 +125,27 @@ export const bcgArticles: BcgArticle[] = [
       { type: "figure", src: "bgc2-2", alt: "The weight of small-church ministry — survival tasks, resistance to change, and the challenge of reaching new generations." },
 
       { type: "p", html: "JesusOnline is here to come alongside you. And there are no fees or hidden costs. What we offer is totally free." },
-      { type: "p", html: "We don’t offer trendy church-growth formulas or worldly success strategies. Instead, we provide high-quality, free media and discipleship resources created specifically to help you faithfully feed and shepherd the flock God has entrusted to you." },
+      { type: "p", html: "We don’t offer trendy church-growth formulas or worldly success strategies. Instead, we provide high-quality, free media and discipleship resources created specifically to help you faithfully equip the flock God has entrusted to you." },
       { type: "figure", src: "bgc2-3", alt: "Totally free, high-quality media and discipleship resources for the local church." },
 
-      { type: "p", html: "<strong>JO EQUIP</strong> is a free digital library of practical discipleship tools for pastors and ministry leaders — carefully organized into three purpose-driven channels so you can find exactly what you need, when you need it." },
-      { type: "p", html: "JesusOnline offers free <em>Watch → Learn → Live</em> resources to strengthen engagement, depth, and retention in your ministry." },
+      { type: "p", html: "<strong>JO EQUIP</strong> is a free digital library of practical discipleship tools for pastors and disciple-makers — carefully organized into three mission-driven channels so you can find exactly what you need, when you need it." },
+      { type: "p", html: "JesusOnline offers free <em>Watch → Learn → Live</em> resources to strengthen engagement, depth, and retention in your ministry. You can use them for your Sunday message, your Bible study, or your discipleship ministry." },
       { type: "figure", src: "bgc2-4", alt: "The Watch → Learn → Live model — short videos, deeper teaching articles, and practical life application." },
 
-      { type: "h2", text: "A Simple 5-Step Process for a Sermon, Bible Study, or Discipleship Group" },
+      { type: "h2", text: "Sunday Messages" },
+      { type: "p", html: "We believe the primary purpose of Sunday messages is “teaching them to obey everything I have commanded you” (Matthew 28:20)." },
+
+      { type: "h3", text: "A Simple 5-Step Process You Can Use This Sunday" },
       { type: "ol", items: [
-        "<strong>Select a Topic.</strong> Browse the JO EQUIP library and choose a topic that fits your upcoming message (from Evidence, Growth, or Church channels).",
-        "<strong>Build Your Message.</strong> Use the article as your skeleton outline or rich resource material. Embellish it with your own illustrations, personal stories, pastoral insights, and relevant examples from your congregation. The content is biblical, trustworthy, and ready to save you hours of preparation.",
+        "<strong>Select a Topic.</strong> Browse the JO EQUIP library and choose a topic that fits your upcoming message (from the Evidence, Growth, or Church channels).",
+        "<strong>Build Your Message.</strong> Use the article as your skeleton outline or rich resource material. Develop the key truths with your own illustrations, personal stories, pastoral insights, and relevant examples from your congregation. The content is biblical, trustworthy, and ready to save you hours of preparation.",
         "<strong>Capture Attention Immediately.</strong> Play the summary video at the very beginning of your message. It sets the emotional tone, gives people a clear preview of where you’re going, and draws in even distracted or first-time visitors.",
-        "<strong>Deliver Your Teaching.</strong> Communicate with freedom and confidence, knowing the core content is solid and well-researched.",
-        "<strong>Extend the Impact.</strong> At the end of your message, share a specific link (or QR code) from the JesusOnline app that takes people directly to the article and related resources you used. They can now review the main points, reflect deeper, answer discussion questions, and apply the truth — all on their phones. It becomes their personal takeaway notes and discipleship tool for the week.",
+        "<strong>Deliver Your Teaching.</strong> Preach with freedom and confidence, knowing the core content is solid and well-researched.",
+        "<strong>Extend the Impact Beyond Sunday.</strong> At the end of your message, share a specific link (or QR code) from the JesusOnline app that takes people directly to the article and related resources you used. They can now review the main points, reflect deeper, answer discussion questions, and apply the truth — all on their phones. It becomes their personal takeaway notes and discipleship tool for the week.",
       ]},
       { type: "figure", src: "bgc2-5", alt: "The 5-step process: Select → Build → Capture → Deliver → Extend — turning one sermon into an ongoing discipleship experience." },
 
-      { type: "h2", text: "Why Pastors Love This Approach" },
+      { type: "h3", text: "Why Pastors Love This Approach" },
       { type: "ul", items: [
         "Saves significant preparation time",
         "Provides high-quality, biblically faithful, transformational content",
@@ -144,9 +155,22 @@ export const bcgArticles: BcgArticle[] = [
       ]},
       { type: "figure", src: "bgc2-6", alt: "Why pastors love this approach — saved prep time, deeper engagement, and lasting retention." },
 
+      { type: "h2", text: "Bible Study" },
+      { type: "p", html: "You can use our Bible study series or create your own using our materials." },
+      { type: "h3", text: "A Simple 2-Step Process to Create a Bible Study" },
+      { type: "ol", items: [
+        "<strong>Select a Bible study series.</strong> Bible study series are found on the JO EQUIP Growth channel.",
+        "<strong>Develop new habits.</strong> We believe the main goal of Bible study is life transformation through practice. End each study by creating a simple action plan to apply the truths learned — then begin the next meeting by sharing how people put the plan into practice.",
+      ]},
+      { type: "p", html: "<strong>Optional: create your own Bible studies.</strong> The JesusOnline app library offers hundreds of articles and many article series. You’ll find some of them useful as the basis for a Bible study, and you can turn any article into a stand-alone study." },
+
+      { type: "h2", text: "Discipleship Ministry" },
+      { type: "p", html: "Our resource materials in the Church channel are both Spirit-led and strategically organized to help you strengthen your ministry." },
+      { type: "p", html: 'If you’d like to develop or improve your discipleship ministry, we offer free coaching — just <a href="mailto:equip@jesusonline.com">email us at equip@jesusonline.com</a> for more information.' },
+
       { type: "p", html: "All resources are completely free, mobile-friendly, and thoughtfully created with the real challenges of small-church ministry in mind." },
-      { type: "p", html: 'Visit <a href="/">JO EQUIP</a> today and explore the channels.' },
-      { type: "p", html: "We’d love to partner with you. Let’s build Christ’s kingdom together. Lead your church to become all God wants it to be so it can do all God wants it to do." },
+      { type: "p", html: "All we ask in return is that you identify your church as a JesusOnline EQUIPPED church. This simple acknowledgment lets you freely use our videos, articles, and app links with our full permission. When people see the JesusOnline logo at the end of a video — or notice the resources you’re sharing — they’ll know you’re part of this ministry partnership." },
+      { type: "p", html: 'Ready to get started? Visit <a href="/">JO EQUIP</a> today and explore the channels. We’d love to partner with you. Let’s build Christ’s kingdom together — one faithful church at a time.' },
       REGISTER_CTA,
       { type: "figure", src: "bgc2-7", alt: "Closing illustration — partnering together to build Christ’s kingdom." },
     ],
@@ -156,68 +180,30 @@ export const bcgArticles: BcgArticle[] = [
     id: "a-total-life-discipleship-church",
     title: "A Total Life Discipleship Church",
     description:
-      "Saved by grace, formed for obedience. A grace-based, Spirit-dependent path to disciples who actually obey all Jesus commanded — through knowledge, motivation, and practical methodology.",
+      "JesusOnline’s philosophy of discipleship — a grace-filled, Spirit-dependent journey from God’s vision of us, to personal transformation, to eternal impact, sustained by five pillars.",
     blocks: [
       { type: "quote", html: "Teach these new disciples to obey all the commands I have given you. …", cite: "Matthew 28:20, NLT" },
       { type: "figure", src: "bgc3-1", alt: "The Great Commission — making disciples who obey all that Jesus commanded." },
 
-      { type: "p", html: "Jesus’ final charge in the Great Commission calls the church not merely to make converts but to form disciples who obey all that He commanded. This mission raises honest questions for every believer: If salvation is by grace through faith and not by works, why does obedience matter? How do we move beyond inspiration to actual transformation? And how can we live out this obedience in every sphere of life?" },
-
-      { type: "h2", text: "Saved by Grace, Formed for Obedience" },
-      { type: "figure", src: "bgc3-2", alt: "Saved by grace, formed for obedience — Ephesians 2:8–10." },
-      { type: "p", html: "Scripture settles the tension between grace and obedience with beautiful clarity. Ephesians 2:8–10 reminds us:" },
-      { type: "quote", html: "God saved you by his grace when you believed… Salvation is not a reward for the good things we have done… For we are God’s masterpiece. He has created us anew in Christ Jesus, so we can do the good things he planned for us long ago." },
-      { type: "p", html: "We are saved by grace alone, through faith alone. Nothing we do earns or maintains this gift. Yet the same passage declares that we are saved <em>for</em> good works. Obedience is not the root of salvation; it is the natural fruit of a life made new in Christ. Genuine faith produces change (James 2:14–26), and love for Jesus expresses itself in keeping His commands (John 14:15)." },
-      { type: "p", html: "Total Life Discipleship embraces this gospel reality. It rejects both self-reliant legalism and passive faith that never bears fruit. Instead, it equips believers to obey through three essentials: knowledge of Christ’s commands, motivation rooted in love, and practical methodology for daily obedience." },
-
-      { type: "h2", text: "The Three Essentials of Obedience" },
-      { type: "figure", src: "bgc3-3", alt: "The three essentials of obedience — Knowledge, Motivation, and Methodology." },
-      { type: "p", html: "Obedience rarely fails for just one reason. A practical framework helps diagnose where we get stuck:" },
-
-      { type: "h3", text: "1. Knowledge — Do I know what Jesus actually commanded?" },
-      { type: "p", html: "You cannot obey what you do not know. The Great Commission requires teaching the full scope of Jesus’ words: how to handle anger, lust, money, forgiveness, prayer, and love for enemies. Regular reading of the Gospels, systematic Bible study, and clear preaching build this foundation." },
-
-      { type: "h3", text: "2. Motivation — Do I desire to obey?" },
-      { type: "p", html: "Head knowledge is not enough. The heart must want to follow. The gospel fuels this desire by reminding us of God’s love, Christ’s sacrifice, and the new heart He gives (Ezekiel 36:26–27). When love for Jesus grows, obedience shifts from drudgery to delight. Gratitude replaces guilt as the primary driver." },
-
-      { type: "h3", text: "3. Methodology — Do I know how to obey?" },
-      { type: "p", html: "Many believers know what to do and even want to do it and yet feel stuck. This is where practical instruction is vital." },
-      { type: "ul", items: [
-        "<em>“Do not be anxious”</em> (Philippians 4:6) becomes doable through specific prayer rhythms, thanksgiving, and renewing the mind.",
-        "<em>“Love your enemies”</em> is lived out by praying for them and serving them practically.",
-        "<em>“Flee sexual immorality”</em> requires habits like accountability and guarding inputs.",
-      ]},
-      { type: "p", html: "The New Testament is rich in both commands and the “how-to” wisdom that follows." },
-      { type: "p", html: "When any of these three is missing, obedience falters. Many failures trace back to motivation (the heart). Others want to obey but fail because they rely on self-effort. They never learned <em>how</em> to obey." },
-
-      { type: "h2", text: "Exhortation vs. Teaching: Why Sermons Often Leave Us Inspired but Unchanged" },
-      { type: "figure", src: "bgc3-4", alt: "Exhortation versus teaching — stirring the heart and equipping the hands." },
-      { type: "p", html: "Preaching typically includes two complementary elements:" },
-      { type: "ul", items: [
-        "<strong>Exhortation</strong> stirs the heart, appeals to the will, and urges action with passion, encouragement, or warning.",
-        "<strong>Teaching</strong> explains truth, clarifies meaning, and equips with practical methodology. It addresses the head and hands.",
-      ]},
-      { type: "p", html: "Jesus and the apostles used both. Paul often taught deep doctrine for chapters before saying, “Therefore… live this way.”" },
-      { type: "p", html: "Many modern sermons lean heavily on exhortation. Passionate calls to “obey God!” or “step out in faith!” feel urgent and emotionally powerful. But without clear methodology, listeners leave motivated yet unequipped. They know they should forgive, pray more, or resist sin — but not <em>how</em> when the pain is fresh or the habit is entrenched. The result is repeated frustration and, eventually, cynicism." },
-      { type: "p", html: "Healthy discipleship preaching balances all three elements of obedience: clear knowledge of the command, gospel motivation rooted in grace, and practical steps for daily life." },
-      { type: "p", html: "Total Life Discipleship offers a clear and compelling answer. It is a grace-filled journey that invites every believer to align their entire existence with God’s eternal purposes. Far from a burdensome program, it begins with God’s vision of us, leads to personal transformation into the likeness of Christ, and flows outward into eternal impact for His kingdom. At its heart, this discipleship is relationship-centered, grace-based, Spirit-dependent, love-motivated, and biblically focused." },
-      { type: "figure", src: "bgc3-5", alt: "The grace-filled journey of Total Life Discipleship — God’s vision, personal transformation, and eternal impact." },
+      { type: "p", html: "<em>Total Life Discipleship</em> refers to JesusOnline’s philosophy and approach to Christian discipleship." },
+      { type: "p", html: "Christian discipleship is a lifelong journey of becoming more like Jesus in every way, so as to expand His Kingdom on earth as it is in heaven. Jesus is our Master Teacher. This journey is faith-driven and action-oriented (cf. Matthew 25:14–30; Luke 19:11–27), and it is measured by obedience (read more in <a href=\"/channels/church/become-growing-church/anatomy-of-obedience\">Anatomy of Obedience</a>). Its goal is far loftier, and its scope far greater, than our individual spiritual growth and change." },
+      { type: "p", html: "Total Life Discipleship begins with God’s vision of us, leads to personal transformation into the likeness of Christ, and flows outward into eternal impact for His kingdom. It is a grace-filled journey that invites every believer to align their entire existence with God’s eternal purposes. At its core, this discipleship is relationship-centered, grace-based, Spirit-dependent, love-motivated, and biblically focused — five pillars that keep our walk with the Lord both authentic and fruitful." },
 
       { type: "h2", text: "God’s Vision: Seeing Life from His Perspective" },
       { type: "p", html: "Every journey of discipleship must begin where God begins — with His loving vision of us." },
       { type: "p", html: "Our heavenly Father sees not our failures or frailties but the finished work of His Son. <em>“Anyone who belongs to Christ has become a new person. The old life is gone; a new life has begun!”</em> (2 Corinthians 5:17, NLT)." },
       { type: "p", html: "He knit each of us together with intentional care (Psalm 139:13–14). Our personalities, strengths, and even our weaknesses serve His design. Before we drew our first breath, He set us apart for kingdom purposes (Jeremiah 1:5). When we rest in His unwavering love — <em>“Abide in My love”</em> (John 15:9) — circumstances lose their power to define us. We begin to view ourselves, others, and our daily paths through the clarifying light of His truth." },
-      { type: "p", html: "This vision is foundational to obedience. It renews our minds with God’s perspective, replacing worldly lies with biblical truth and grounding every command in His fatherly care." },
+      { type: "p", html: "This inspiring vision is foundational to obedience. It renews our minds with God’s perspective, replacing worldly lies with biblical truth and grounding every command in His fatherly care." },
+      { type: "figure", src: "bgc3-5", alt: "The grace-filled journey of Total Life Discipleship — God’s vision, personal transformation, and eternal impact." },
 
       { type: "h2", text: "Personal Transformation: Becoming the Person God Created You to Be" },
-      { type: "p", html: "God’s vision is meant to be lived. Transformation begins at the moment of salvation, when our old identity is exchanged for a new one in Christ (Ephesians 4:21–24). Yet this new life unfolds as a lifelong process of renewal by the Holy Spirit." },
+      { type: "p", html: "God’s vision is meant to be lived out. Transformation begins at the moment of salvation, when our old identity is exchanged for a new one in Christ (Ephesians 4:21–24). Yet this new life must be nurtured to maturity as a lifelong process of renewal by the Holy Spirit." },
+      { type: "p", html: "Experiential knowledge of grace stirs holy desires, and gratitude for Christ’s sacrifice shifts obedience from a burdensome duty to a joyful response of love." },
       { type: "p", html: "True change touches the core of our character — our values, convictions, and responses. <em>“Let God transform you into a new person by changing the way you think”</em> (Romans 12:2, NLT). Trials refine us, building endurance and trust so that we reflect more of Christ’s nature (Romans 5:3–4; 8:28). As we comprehend the breadth, length, depth, and height of God’s love, we are filled with His fullness (Ephesians 3:17–19). Love received becomes love reflected." },
-      { type: "p", html: "Grace softens our hearts, the Spirit stirs holy desires, and gratitude for Christ’s sacrifice replaces guilt or duty. Obedience shifts from burden to joyful response." },
 
       { type: "h2", text: "Eternal Impact: Pursuing God’s Master Plan" },
-      { type: "p", html: "A life transformed by God naturally bears lasting fruit. We were created <em>“to do the good things He planned for us long ago”</em> (Ephesians 2:10). Our days are not accidental; God has placed us in this generation with specific gifts, experiences, and relationships to advance His kingdom." },
-      { type: "p", html: "Eternal impact flows from obedient partnership with the Lord — dependent on the Holy Spirit rather than frantic self-effort. <em>“I can do all things through Christ who gives me strength”</em> (Philippians 4:13). We steward time, talent, and treasure for heaven’s sake, investing in what matters to God and storing up treasures that never fade (Matthew 6:21)." },
-      { type: "p", html: "Total Life Discipleship provides practical wisdom for living out Christ’s commands in relationships, work, trials, and mission — equipping us not only to know and desire obedience but to walk in it daily." },
+      { type: "p", html: "A life transformed by God naturally bears lasting fruit. We were created <em>“to do the good things He planned for us long ago”</em> (Ephesians 2:10, NLT). Our days are not accidental; God has placed us in this generation with specific gifts, experiences, and relationships to advance His kingdom." },
+      { type: "p", html: "Eternal impact flows from obedient partnership with the Lord — dependent on the Holy Spirit rather than obstinate self-effort. <em>“I can do all things through Christ who gives me strength”</em> (Philippians 4:13). We steward time, talent, and treasure for heaven’s sake, investing in what matters to God and storing up treasures that never fade (Matthew 6:21)." },
 
       { type: "h2", text: "The Five Pillars That Sustain the Journey" },
       { type: "figure", src: "bgc3-6", alt: "The five pillars of Total Life Discipleship — relationship-centered, grace-based, Spirit-dependent, love-motivated, biblically focused." },
@@ -232,18 +218,14 @@ export const bcgArticles: BcgArticle[] = [
       { type: "p", html: "These pillars keep discipleship balanced, preventing both burnout and complacency. They ensure that exhortation stirs the heart while teaching equips the hands, producing disciples who obey all that Jesus commanded." },
 
       { type: "h2", text: "A Daily Invitation to Walk with Christ" },
-      { type: "p", html: "Total Life Discipleship is not a program to complete but a daily invitation to walk closely with the One who formed you, redeemed you, and calls you by name. As you behold His vision, yield to His transforming work, and step into His purposes, your life will echo with eternal significance." },
+      { type: "p", html: "Total Life Discipleship is not a program to complete but a daily invitation to walk intimately with the One who formed you, redeemed you, and calls you by name. As you behold His vision, yield to His transforming work, and step faithfully into His purposes, your life of eternal significance will one day receive the Lord’s approval: <em>“Well done, good and faithful servant”</em> (Matthew 25:21, NKJV)." },
 
-      { type: "h2", text: "Free JesusOnline Watch → Learn → Live Resources" },
-      { type: "p", html: "<strong>Capture attention immediately</strong> with a powerful video clip to introduce your message. A well-chosen video sets the emotional tone, illustrates the theme, and draws people in from the very first moment." },
-      { type: "p", html: "<strong>Deepen your content</strong> by weaving key insights from the article into your teaching. Use it as rich resource material to add credibility, fresh perspectives, and biblical connections to your sermon." },
-      { type: "p", html: "<strong>Drive lasting impact</strong> by sharing the app link at the end of your message. This simple tool helps your people review, remember, and apply the core essence of the sermon long after they leave the service." },
-
+      ...WLL,
       { type: "h3", text: "Total Life Discipleship" },
       { type: "ul", items: [
-        "Core Principles (PDF • Video • App)",
-        "Kingdom Mentality (PDF • Video • App)",
-        "Building Blocks for Maturity (PDF • Video • App)",
+        "Part 1: Core Principles (PDF • Video • App)",
+        "Part 2: Kingdom Perspective (PDF • Video • App)",
+        "Part 3: Building Blocks for Maturity (PDF • Video • App)",
       ]},
 
       REGISTER_CTA,
@@ -252,16 +234,55 @@ export const bcgArticles: BcgArticle[] = [
   },
 
   {
+    id: "anatomy-of-obedience",
+    title: "Anatomy of Obedience",
+    description:
+      "Why does obedience matter if we are saved by grace? The anatomy of biblical obedience — knowledge, motivation, and methodology — and how healthy discipleship balances all three.",
+    blocks: [
+      { type: "quote", html: "Therefore go and make disciples of all nations, baptizing them in the name of the Father and the Son and the Holy Spirit, teaching them to obey everything I have commanded you. And remember, I am with you always, to the end of the age.", cite: "Matthew 28:19–20" },
+      { type: "p", html: "Jesus’ final charge in the Great Commission calls the church to make disciples who obey all that He commanded. This mission raises honest questions for every believer: If salvation is by grace through faith and not by works, why does obedience matter? How do we move beyond inspiration and instruction to actual transformation? And how can we live out this obedience in every sphere of life?" },
+
+      { type: "h2", text: "Saved by Grace, Formed for Obedience" },
+      { type: "figure", src: "bgc3-2", alt: "Saved by grace, formed for obedience — Ephesians 2:8–10." },
+      { type: "p", html: "Scripture settles the tension between grace and obedience with beautiful clarity. Ephesians 2:8–10 reminds us:" },
+      { type: "quote", html: "God saved you by his grace when you believed… Salvation is not a reward for the good things we have done… For we are God’s masterpiece. He has created us anew in Christ Jesus, so we can do the good things he planned for us long ago." },
+      { type: "p", html: "We are saved by grace alone, through faith alone. Nothing we do earns or maintains this gift. Yet the same passage declares that we are saved <em>for</em> good works. Obedience is not the root of salvation; it is the natural fruit of a life made new in Christ. Genuine faith produces change (James 2:14–26), and love for Jesus is expressed by keeping His commands (John 14:15). Biblical obedience is an act of faith in Christ." },
+      { type: "p", html: "However, obedience is not the goal of the Christian life. It is the means by which we live the abundant life Jesus promised, experience God’s presence, participate in His mission, and fulfill the eternal purposes for which we were redeemed. Obedience is the path to Kingdom maturity — to becoming <em>“a mature person, attaining to the measure of Christ’s full stature”</em> (Ephesians 4:13)." },
+
+      { type: "h2", text: "The Three Essentials of Obedience" },
+      { type: "figure", src: "bgc3-3", alt: "The three essentials of obedience — Knowledge, Motivation, and Methodology." },
+      { type: "p", html: "We often fail to obey because one or more of the following are not adequately addressed:" },
+
+      { type: "h3", text: "1. Knowledge — Do I know what Jesus actually commanded?" },
+      { type: "p", html: "You cannot obey what you do not know. Jesus directs us to learn to obey everything He has commanded. These topics cover all aspects of daily life: God, His Kingdom, our identity in Christ, purpose in life, family, relationships, work, money, sex, health, education, government, love, forgiveness, prayer, the church, and more." },
+
+      { type: "h3", text: "2. Motivation — Do I desire to obey?" },
+      { type: "p", html: "Informational knowledge is not enough. The heart must want to follow. God’s character, Christ’s sacrifice and love, our new identity in Christ, the Holy Spirit within us, and the Kingdom of God all move our new hearts to deeper devotional love and desire (Ezekiel 36:26–27; 2 Corinthians 5:14)." },
+
+      { type: "h3", text: "3. Methodology — Do I know how to obey?" },
+      { type: "p", html: "The Bible gives us both descriptive examples and prescriptive instructions for how to live out God’s truths in everyday life. When we are born again, we are spiritual babies. We are no longer of this world, and the ways of this world no longer apply. We must receive clear Kingdom instructions to live as citizens of His Kingdom." },
+
+      { type: "h2", text: "Exhortation and Teaching" },
+      { type: "figure", src: "bgc3-4", alt: "Exhortation versus teaching — stirring the heart and equipping the hands." },
+      { type: "p", html: "Jesus and the apostles addressed all three essentials. Paul’s letters usually begin with deep doctrinal truths — building knowledge and motivation. Then, with a pivotal <em>“therefore,”</em> he transitions and explains at length how to live (methodology)." },
+      { type: "p", html: "Much modern preaching leans heavily on exhortation — passionate calls to “obey God!” or “step out in faith!” These feel urgent and emotionally powerful, but without clear teaching on method, listeners leave motivated yet unequipped. They know they should forgive, pray, or resist sin — but not <em>how</em>, when the pain is fresh or the habit is entrenched. The result is repeated frustration and, eventually, cynicism." },
+      { type: "p", html: "Discipleship is measured by obedience. Healthy discipleship balances all three essentials: clear knowledge of the command, gospel motivation rooted in grace, and practical steps for daily life." },
+
+      REGISTER_CTA,
+    ],
+  },
+
+  {
     id: "a-transformational-teaching-church",
     title: "A Transformational Teaching Church",
     description:
-      "Three complementary teaching objectives — head, hands, and heart — and the three foundational truths that produce lasting heart change in the believers you shepherd.",
+      "Three complementary dimensions of teaching — head, hands, and heart — and the three core truths that produce irreversible heart change in the believers you shepherd.",
     blocks: [
       { type: "figure", src: "bgc4-1", alt: "Opening illustration for A Transformational Teaching Church — equipping believers through God’s Word." },
 
-      { type: "p", html: "As a pastor or church leader, as you shepherd your flock, it is wise to reflect on how the Lord equips His people through His Word. Scripture calls us not only to know the truth, but to live it out and be transformed by it." },
+      { type: "p", html: "The first-century believers were devoted to the apostles’ teaching (Acts 2:42). As a pastor or church leader shepherding your flock, it is wise to reflect on how the Lord equips His people through His Word — calling us not only to know the truth, but to live it out and be transformed by it." },
       { type: "figure", src: "bgc4-2", alt: "Knowing the truth, living it out, and being transformed by it — the threefold call of Scripture." },
-      { type: "p", html: "There are three distinct yet complementary teaching objectives and sermon approaches:" },
+      { type: "p", html: "There are three distinct and complementary dimensions to teaching:" },
 
       { type: "h2", text: "1. Bible Knowledge (The Head)" },
       { type: "p", html: "This is the foundational, verse-by-verse expository teaching that builds a solid understanding of Scripture. It focuses on what the Bible says — its history, context, doctrines, and accurate interpretation. The goal is biblical literacy and doctrinal soundness so that God’s people may <em>“know the truth”</em> (John 8:32)." },
@@ -269,15 +290,16 @@ export const bcgArticles: BcgArticle[] = [
       { type: "h2", text: "2. Life Application (The Hands)" },
       { type: "p", html: "This approach draws practical principles and examples from Scripture and shows how they apply to everyday life. It answers the question, <em>How should we live?</em> It equips believers to obey God’s Word in their relationships, work, decisions, and daily challenges. This is the bridge between knowledge and action." },
 
-      { type: "h2", text: "3. Transformational Discipleship (The Heart)" },
-      { type: "p", html: "This is the deepest and most vital level of biblical teaching. It moves beyond the transmission of information or even the application of principles to focus on the foundational core truths of the Gospel that produce genuine heart change and lasting transformation." },
-      { type: "p", html: "Total Life Discipleship is a lifelong journey of following Jesus Christ so that we become all that God created us to be and do all that He created us to do. It intentionally forms Christlike character, renews the mind with God’s perspective, and cultivates a fully surrendered heart." },
-      { type: "p", html: "At its core, Total Life Discipleship rests on three essential truths that few churches teach with clarity and balance. When rightly understood and applied, they reshape how believers see God, themselves, and the daily Christian life." },
-      { type: "figure", src: "bgc4-3", alt: "Three foundational truths — the character of God, our new identity in Christ, and the ministry of the Holy Spirit." },
+      { type: "h2", text: "3. Transformation (The Heart)" },
+      { type: "p", html: "This is the deepest and most vital level of biblical teaching. It moves beyond the transmission of information, or even the application of principles, to focus on the foundational core truths of the Gospel that genuinely change the heart and irreversibly transform lives." },
+      { type: "p", html: "Our resources are specifically designed to strengthen this third dimension of teaching — transformation (the Heart)." },
 
-      { type: "h2", text: "Three Foundational Truths" },
+      { type: "h2", text: "3 Core Truths" },
+      { type: "p", html: "The following three truths are the essential content of teaching and the bedrock of discipleship, including Total Life Discipleship." },
+      { type: "p", html: "When believers internalize these truths, the Holy Spirit produces irreversible heart change and Christlike maturity. They bring every dimension of life — thoughts, desires, habits, relationships, work, time, resources, and purpose — under the loving lordship of Jesus Christ. The result is not merely informed or active believers, but disciples who are radically transformed from the inside out (Romans 12:2; Galatians 4:19)." },
+      { type: "figure", src: "bgc4-3", alt: "Three core truths — the character of God, our new identity in Christ, and the ministry of the Holy Spirit." },
 
-      { type: "h3", text: "1. The Full Character and Nature of God" },
+      { type: "h3", text: "1. The Character and Nature of God" },
       { type: "p", html: "Our view of God’s character and attributes shapes everything else in our lives — our worship, our trust, our obedience, and our responses to trials. While God’s attributes are often mentioned in sermons, they are rarely taught as a complete, balanced whole. The result is a fragmented, sometimes distorted image of God." },
       { type: "p", html: "For example, when we elevate His love above His holiness and justice — or any other attribute at the expense of the others — we no longer see the God of Scripture. A true vision of God in all His glory (merciful yet righteous, loving yet sovereign) becomes the foundation for healthy fear of the Lord, deep worship, and transformed living." },
 
@@ -287,15 +309,12 @@ export const bcgArticles: BcgArticle[] = [
 
       { type: "h3", text: "3. The Ministry and Power of the Holy Spirit" },
       { type: "p", html: "The Holy Spirit has been given to every believer to dwell within them, empower them, comfort them, convict them, and guide them into all truth. He is not a distant force but a personal Helper who enables us to live the Christian life as God intends." },
-      { type: "p", html: "Tragically, many believers have little understanding of the Spirit’s various ministries or how to cooperate with Him daily. Without this knowledge, they are left striving in their own strength — only to experience repeated frustration, burnout, and defeat. True discipleship teaches believers how to walk by the Spirit, rely on His power, and yield to His leading moment by moment." },
-      { type: "p", html: "These three foundational truths — who God is, who we are in Christ, and how the Holy Spirit helps us — form the bedrock of Total Life Discipleship. When they are clearly taught and deeply embraced, the Holy Spirit uses them to produce lasting heart change and Christlike maturity." },
-      { type: "p", html: "The result is not merely informed or active believers, but those who are radically transformed from the inside out so that Christ is formed in them (Romans 12:2; Galatians 4:19). This holistic approach equips the church to overcome sin patterns, cultivate godly character, and live with eternal impact right where God has placed His people." },
+      { type: "p", html: "Tragically, many believers have little understanding of the Spirit’s various ministries or how to cooperate with Him daily. Without this knowledge, they are left striving in their own strength — only to experience repeated frustration, burnout, and defeat. Believers must walk by the Spirit, relying on His power and yielding to His leading moment by moment." },
 
-      { type: "h2", text: "A Balanced Ministry" },
-      { type: "p", html: "A healthy, thriving church embraces all three dimensions of biblical teaching. Teaching that remains only in the head may produce knowledgeable believers who remain largely unchanged. Teaching that emphasizes life application without sufficient depth can become shallow or moralistic." },
-      { type: "p", html: "Yet when Bible Knowledge, Life Application, and Transformational Discipleship work together in harmony, the Holy Spirit uses God’s Word to renew the whole person — head, hands, and heart — for His glory." },
-      { type: "p", html: "This integrated approach lies at the very heart of what JesusOnline seeks to support. Our resources are designed especially to strengthen the third dimension — Total Life Discipleship — while honoring and building upon faithful expository teaching and practical application." },
-      { type: "p", html: "By grounding God’s people in the full character of God, their new identity in Christ, and the empowering ministry of the Holy Spirit, we can help churches move beyond surface-level growth into the deep, lasting transformation that pleases the Lord and bears eternal fruit." },
+      { type: "h2", text: "Head, Hands, and Heart Together" },
+      { type: "p", html: "A transformational teaching church applies all three dimensions of teaching to help believers internalize the three core truths." },
+      { type: "p", html: "By wholistically — head, hands, and heart — teaching God’s people on the full character of God, their new identity in Christ, and the empowering ministry of the Holy Spirit, you can help them break free from sinful habits, develop Christlike character, live in dynamic fellowship with God, and make an eternal impact right where He has placed them." },
+      { type: "p", html: "This integrated approach is the very focus of what JesusOnline exists to support." },
 
       { type: "h2", text: "Free JesusOnline Watch → Learn → Live Resources" },
       { type: "figure", src: "bgc4-4", alt: "Free JesusOnline Watch → Learn → Live resources — short videos, deeper articles, and practical application." },
@@ -330,7 +349,7 @@ export const bcgArticles: BcgArticle[] = [
       { type: "p", html: "A church demonstrates dependence on the Holy Spirit when its practices, priorities, and outcomes increasingly reflect reliance on God’s power rather than human strategies, programs, or charisma alone. The results belong to God. Yet this dependence is rarely perfect; it is an ongoing journey of learning to lean on the Spirit amid weakness, failure, and the daily pressures of ministry." },
 
       { type: "h2", text: "Marks of a Spirit-Dependent Church" },
-      { type: "p", html: "Such dependence is seen in a church that values fervent corporate prayer, regularly seeking God’s direction for decisions and plans — even when human strategies still compete for attention. It appears in biblical preaching and teaching, centered on Christ, that honestly confronts sin, calls for repentance and holiness, and leads to real, though sometimes gradual, transformation in people’s lives. Worship, though imperfect, carries moments of genuine passion and Christ-exalting focus." },
+      { type: "p", html: "Such dependence is seen in a church that values fervent corporate prayer, regularly seeking God’s direction for decisions and plans — even when human strategies still compete for attention. It appears in biblical preaching and teaching, centered on Christ, that honestly confronts sin, calls for repentance and holiness, and leads to real, though sometimes gradual, transformation in people’s lives. Worship, though imperfect, carries moments of genuine passion and Christ-exalting focus. The church also makes room for spiritual gifts to build up the body and encourages believers to share the gospel with boldness — often in spite of fear or inadequacy." },
       { type: "p", html: "Corporate dependence grows as individual believers — with all their struggles — learn to recognize the Holy Spirit’s personal ministries and cooperate with Him more consistently. He patiently teaches truth and illuminates Scripture; helps us in prayer when words fail; keeps us moving toward holiness even when we stumble; comforts us in trials; fosters peace in broken relationships; protects us from evil; guides our decisions; and empowers our service." },
       { type: "p", html: "The clearest evidence is the growing fruit of the Spirit within the community — love, joy, peace, patience, kindness, generosity, and unity — visible not in flawless performance but in relationships that reflect grace, forgiveness, and “bearing with one another in love” through trials. Dependence on the Spirit also shows itself in the humility that admits human weakness, confesses sin quickly, and keeps returning to the Spirit for fresh filling and strength." },
       { type: "p", html: "The Christian life is not a burden of flawless performance we must carry alone. It is Christ living His life in us and through us by the power of the Holy Spirit — bringing freedom, peace, joy, and victory even in our imperfection. By God’s grace, we walk this path one day at a time, always returning to a yielded heart through confession, faith, and obedience." },
@@ -341,6 +360,7 @@ export const bcgArticles: BcgArticle[] = [
         "Walking by the Spirit (PDF • Video • App)",
         "Power for Supernatural Living (PDF • Video • App)",
         "Walk in the Spirit, a video series (PDF • Video • App)",
+        "Living by the Spirit (PDF • Video • App)",
         "How to Be Filled with the Holy Spirit (PDF • Video • App)",
         "Holy Spirit, a New Life in Christ Bible study (PDF • Video • App)",
       ]},
@@ -374,7 +394,7 @@ export const bcgArticles: BcgArticle[] = [
         "Focus on God’s supernatural presence more than your adversity.",
       ]},
       { type: "p", html: "Through such intentional, Scripture-saturated guidance, a church not only sustains its members but equips them to walk as beacons of hope in their daily lives." },
-      { type: "p", html: "JesusOnline stands ready as a faithful partner, offering a treasury of free resources to help your church fully embrace and reflect this hope-filled identity. These resources equip you not merely to teach, but to create weekly encounters where the God of hope moves powerfully among His people." },
+      { type: "p", html: "JesusOnline stands ready as a faithful partner, offering a treasury of free resources to help your church fully embrace and reflect this hope-filled identity. These resources equip you not merely to teach, but to create weekly encounters where the God of hope moves powerfully among His people. Through them, both first-time visitors and longtime believers can experience the refreshing work described in Romans 15:13 — being filled with joy and peace as they trust in Him, overflowing with hope by the power of the Holy Spirit." },
       { type: "p", html: "In a world hungry for assurance, JesusOnline resources help transform your church into a vibrant wellspring of renewal: a place where burdens are lifted, perspectives are renewed, and hearts are continually pointed toward the living hope found in Christ alone." },
 
       ...WLL,
@@ -383,6 +403,53 @@ export const bcgArticles: BcgArticle[] = [
         "Hope in Times of Crisis (PDF • Video • App)",
         "Bible Promises for Hope (PDF • Video • App)",
         "God Is Hope (PDF • Video • App)",
+      ]},
+
+      REGISTER_CTA,
+    ],
+  },
+
+  {
+    id: "a-love-demonstrating-relational-church",
+    title: "A Love-demonstrating Relational Church",
+    description:
+      "The greatest witness to the world is the sacrificial love Christians show one another. How a relational church prioritizes depth over breadth — fueled by God’s unconditional, unstoppable, unfathomable love.",
+    blocks: [
+      { type: "p", html: "At its heart, the love-demonstrating relational church believes that the greatest witness to the world is not flashy services or impressive buildings, but the tangible, sacrificial love Christians show toward one another and their neighbors. Jesus Himself declared this the defining mark of His followers:" },
+      { type: "quote", html: "By this everyone will know that you are my disciples, if you love one another.", cite: "John 13:35" },
+      { type: "p", html: "The relational church takes this command seriously — not as a nice sentiment, but as its core operating system." },
+
+      { type: "h2", text: "What It Looks Like in Practice" },
+      { type: "p", html: "A love-demonstrating relational church prioritizes depth over breadth. Instead of chasing crowds through entertaining or trendy programs and events, it invests in small groups, mentorship, shared meals, and consistent presence in one another’s lives. Members know each other’s stories — the joys, the struggles, the messy middle — and choose to stay committed to one another anyway." },
+      { type: "p", html: "It values vulnerability and authenticity. Sermons address real pain, not just polished theology. Testimonies include failures as well as victories. Leaders model transparency rather than projecting perfection, creating safety for people to bring their whole selves to the fellowship — a community on God’s mission." },
+      { type: "p", html: "It practices love in action — families adopting singles and seniors, practical help in times of crisis, generous giving, and quick reconciliation when conflict arises." },
+      { type: "p", html: "It is relationally outward-focused. True love is never contained within the community; by its very nature it flows outward. Members are equipped to build genuine friendships in their neighborhoods, workplaces, and schools. Evangelism flows naturally from relationships rather than programmed encounters. People are seen not as projects to be converted, but as image-bearers to be loved — whether or not they ever become part of the fellowship." },
+
+      { type: "h2", text: "Why This Matters Now" },
+      { type: "p", html: "Research continues to show rising rates of isolation, anxiety, and depression, especially among younger generations. Many have left institutional religion because it felt transactional or performative. A relational church offers a compelling alternative: belonging before believing, love before lectures, family before formality." },
+      { type: "p", html: "This relational focus does not diminish the importance of preaching, worship, or biblical truth — quite the opposite. Sound doctrine and passionate worship find their richest expression when embodied in loving community." },
+
+      { type: "h2", text: "The Transforming Power Behind It All" },
+      { type: "p", html: "This “love-demonstrating” is not merely external friendliness or human love produced by self-effort. Nor does it imply moral compromise or an “anything goes” attitude. A love-demonstrating relational church taps into a source far deeper and greater: God’s love. It recognizes that His love is being poured out on, and demonstrated through, His people. His love is holy, righteous, transformational, and supernatural." },
+      { type: "p", html: "It begins with God’s people being personally transformed by God’s love — unconditional, unstoppable, and unfathomable." },
+      { type: "ul", items: [
+        "<strong>God’s love is unconditional.</strong> He loves you because of who He is, not because of what you have or haven’t done. “But God demonstrates His own love toward us, in that while we were still sinners, Christ died for us” (Romans 5:8, NKJV).",
+        "<strong>God’s love is unstoppable.</strong> No matter the circumstance, you will never be separated from the love God has for you (Romans 8:38–39).",
+        "<strong>God’s love is unfathomable.</strong> God’s love for you is so vast that it surpasses anything your mind can imagine — “how wide, how long, how high, and how deep his love is” (Ephesians 3:18–19).",
+      ]},
+      { type: "p", html: "As 1 John 4:19 reminds us, “We love because he first loved us.”" },
+      { type: "p", html: "First, people experience God’s love by beginning a genuine relationship with Him. Then, as they cultivate that relationship, they encounter His limitless, transforming love. They delight in the reality of being forever loved by God, allowing this truth to become their constant source of identity and assurance. Because they know they are unconditionally, unstoppably, and unfathomably loved, the Holy Spirit enables them to become channels of that same love. God desires His loving nature to become their nature, so that His love overflows from them to others. When people are secure in God’s forever love, that transforming love naturally touches everyone within their sphere of influence." },
+      { type: "p", html: "The world desperately needs living demonstrations of the love of Christ expressed through His people, together. This vision is not about trying harder to love others. It is about being so filled with God’s love that loving others becomes the natural overflow of a transformed life." },
+
+      ...WLL,
+      { type: "h3", text: "Love Focus Resources" },
+      { type: "ul", items: [
+        "Forever Loved series (PDF • Video • App)",
+        "Experience God’s Love playlist (PDF • Video • App)",
+        "40 Days of God’s Love (PDF • Video • App)",
+        "Timeless Love, Transforming Love (PDF • Video • App)",
+        "Love Bible studies (PDF • Video • App)",
+        "One Another series (PDF • Video • App)",
       ]},
 
       REGISTER_CTA,
@@ -401,7 +468,7 @@ export const bcgArticles: BcgArticle[] = [
       { type: "p", html: "Music is one of the primary ways we exalt God during corporate worship. King David identified himself as “Israel’s beloved singer of songs” (2 Samuel 23:1) and brought organized music — especially instrumental music and structured choral worship — into the formal worship of Yahweh." },
       { type: "p", html: "Music is powerful because it is the language of our hearts. It stirs the heart, unites the congregation, and lifts our collective voice toward heaven. The melody and instrumentation move and engage us, while the lyrics convey their message. So we must ask: are the words of the songs we sing acceptable in the sight of the LORD (cf. Psalm 19:14)? An intentional worship church is deliberate about selecting and singing songs that are rich in biblical truth, theologically sound, and vertically focused on God." },
 
-      { type: "h2", text: "God Must Remain the Focal Point" },
+      { type: "h2", text: "Core Principle: God Must Remain the Focal Point" },
       { type: "p", html: "Regardless of the style of music, the focus should always be on God — not on the song leaders or the worship band’s performance. An effective worship leader or team makes it a priority not to be the focal point." },
       { type: "ul", items: [
         "The platform is not a stage for talent; it is a place of service.",
@@ -458,53 +525,6 @@ export const bcgArticles: BcgArticle[] = [
   },
 
   {
-    id: "a-love-demonstrating-relational-church",
-    title: "A Love-demonstrating Relational Church",
-    description:
-      "The greatest witness to the world is the sacrificial love Christians show one another. How a relational church prioritizes depth over breadth — fueled by God’s unconditional, unstoppable, unfathomable love.",
-    blocks: [
-      { type: "p", html: "At its heart, the love-demonstrating relational church believes that the greatest witness to the world is not flashy services or impressive buildings, but the tangible, sacrificial love Christians show toward one another and their neighbors. Jesus Himself declared this the defining mark of His followers:" },
-      { type: "quote", html: "By this everyone will know that you are my disciples, if you love one another.", cite: "John 13:35" },
-      { type: "p", html: "The relational church takes this command seriously — not as a nice sentiment, but as its core operating system." },
-
-      { type: "h2", text: "What It Looks Like in Practice" },
-      { type: "p", html: "A love-demonstrating relational church prioritizes depth over breadth. Instead of chasing crowds through trendy programs and events, it invests in small groups, mentorship, shared meals, and consistent presence in one another’s lives. Members know each other’s stories — the joys, the struggles, the messy middle — and choose to stay committed to one another anyway." },
-      { type: "p", html: "It values vulnerability and authenticity. Sermons address real pain, not just polished theology. Testimonies include failures as well as victories. Leaders model transparency rather than projecting perfection, creating safety for people to bring their whole selves to the fellowship — a community on God’s mission." },
-      { type: "p", html: "It practices love in action — families adopting singles and seniors, practical help in times of crisis, generous giving, and quick reconciliation when conflict arises." },
-      { type: "p", html: "It is relationally outward-focused. True love is never contained within the community; by its very nature it flows outward. Members are equipped to build genuine friendships in their neighborhoods, workplaces, and schools. Evangelism flows naturally from relationships rather than programmed encounters. People are seen not as projects to be converted, but as image-bearers to be loved — whether or not they ever become part of the fellowship." },
-
-      { type: "h2", text: "Why This Matters Now" },
-      { type: "p", html: "Research continues to show rising rates of isolation, anxiety, and depression, especially among younger generations. Many have left institutional religion because it felt transactional or performative. A relational church offers a compelling alternative: belonging before believing, love before lectures, family before formality." },
-      { type: "p", html: "This relational focus does not diminish the importance of preaching, worship, or biblical truth — quite the opposite. Sound doctrine and passionate worship find their richest expression when embodied in loving community." },
-
-      { type: "h2", text: "The Transforming Power Behind It All" },
-      { type: "p", html: "This “love-demonstrating” is not merely external friendliness or human love produced by self-effort. Nor does it imply moral compromise or an “anything goes” attitude. A love-demonstrating relational church taps into a source far deeper and greater: God’s love. It recognizes that His love is being poured out on, and demonstrated through, His people. His love is holy, righteous, transformational, and supernatural." },
-      { type: "p", html: "It begins with God’s people being personally transformed by God’s love — unconditional, unstoppable, and unfathomable." },
-      { type: "ul", items: [
-        "<strong>God’s love is unconditional.</strong> He loves you because of who He is, not because of what you have or haven’t done. “But God demonstrates His own love toward us, in that while we were still sinners, Christ died for us” (Romans 5:8, NKJV).",
-        "<strong>God’s love is unstoppable.</strong> No matter the circumstance, you will never be separated from the love God has for you (Romans 8:38–39).",
-        "<strong>God’s love is unfathomable.</strong> God’s love for you is so vast that it surpasses anything your mind can imagine — “how wide, how long, how high, and how deep his love is” (Ephesians 3:18–19).",
-      ]},
-      { type: "p", html: "As 1 John 4:19 reminds us, “We love because he first loved us.”" },
-      { type: "p", html: "First, people experience God’s love by beginning a genuine relationship with Him. Then, as they cultivate that relationship, they encounter His limitless, transforming love. They delight in the reality of being forever loved by God, allowing this truth to become their constant source of identity and assurance. Because they know they are unconditionally, unstoppably, and unfathomably loved, the Holy Spirit enables them to become channels of that same love to others." },
-      { type: "p", html: "The world desperately needs living demonstrations of the love of Christ expressed through His people, together. This vision is not about trying harder to love others. It is about being so filled with God’s love that loving others becomes the natural overflow of a transformed life." },
-
-      ...WLL,
-      { type: "h3", text: "Love Focus Resources" },
-      { type: "ul", items: [
-        "Forever Loved series (PDF • Video • App)",
-        "Experience God’s Love playlist (PDF • Video • App)",
-        "40 Days of God’s Love (PDF • Video • App)",
-        "Timeless Love, Transforming Love (PDF • Video • App)",
-        "Love Bible studies (PDF • Video • App)",
-        "One Another series (PDF • Video • App)",
-      ]},
-
-      REGISTER_CTA,
-    ],
-  },
-
-  {
     id: "a-great-commission-church",
     title: "A Great Commission Church",
     description:
@@ -514,7 +534,7 @@ export const bcgArticles: BcgArticle[] = [
       { type: "p", html: "When the apostle Paul was called by Jesus to proclaim the gospel to the Gentiles, he established local churches as the primary means of accomplishing the Great Commission." },
 
       { type: "h2", text: "The Supreme Task of the Church" },
-      { type: "p", html: "Dr. Oswald J. Smith, founding pastor of The Peoples Church in Toronto, Canada, asked, “What is the supreme task of the church?” In his classic book <em>The Cry of the World</em>, he answered:" },
+      { type: "p", html: "Dr. Oswald J. Smith, founding pastor of The People’s Church in Toronto, Canada, asked, “What is the supreme task of the church?” In his classic book <em>The Cry of the World</em>, he answered:" },
       { type: "quote", html: "The supreme task of the Church is the evangelization of the world. I believe that with all my heart. The most important work of the Church of Jesus Christ is world evangelization." },
       { type: "p", html: "Unfortunately, the statistics show that such Great Commission churches are few. A Great Commission church keeps its primary focus on Jesus’ mandate to make disciples of all nations — passionately advancing the Gospel and equipping believers to reach the world." },
       { type: "p", html: "When he traveled to Israel, Smith observed the stark contrast between the Sea of Galilee, teeming with life, and the Dead Sea, stagnant and lifeless. The Sea of Galilee had both an inlet and an outlet, keeping its water fresh, whereas the Dead Sea had no outlet. He writes:" },
@@ -529,7 +549,7 @@ export const bcgArticles: BcgArticle[] = [
 
       { type: "h2", text: "A Great Commission Church’s Budget" },
       { type: "quote", html: "Where your treasure is, there will your heart be also.", cite: "Matthew 6:21" },
-      { type: "p", html: "When Dr. Smith began his ministry at The Peoples Church, he was committed to aligning its budget with the vision of reaching the world for Christ. Yet his auditor revealed that the church was in debt. As Smith began communicating the Great Commission vision from the pulpit, giving increased. A few years later, 85% of the church’s annual budget was sent to support world missions; only 15% was spent on church expenses. Smith’s goal was to increase missions giving to 90% of the total budget — just the opposite of the average church, which allocates only 10–15% to missions." },
+      { type: "p", html: "When Dr. Smith began his ministry at The People’s Church, he was committed to aligning its budget with the vision of reaching the world for Christ. Yet his auditor revealed that the church was in debt. As Smith began communicating the Great Commission vision from the pulpit, giving increased. A few years later, 85% of the church’s annual budget was sent to support world missions; only 15% was spent on church expenses. Smith’s goal was to increase missions giving to 90% of the total budget — just the opposite of the average church, which allocates only 10–15% to missions." },
 
       { type: "h2", text: "How a Local Church Can Participate" },
       { type: "p", html: "So how does a local church participate in fulfilling Jesus’ Great Commission? Here are a few practical ways:" },
@@ -609,10 +629,10 @@ export const bcgArticles: BcgArticle[] = [
 
       { type: "h2", text: "Top Factors “Church Shoppers” Prioritize" },
       { type: "ul", items: [
-        "<strong>Quality of preaching and teaching</strong> (often ranked first). Visitors seek clear, relevant, biblical exposition that connects eternal truth to daily life — depth without excessive jargon, practical application, and authenticity from the preacher.",
-        "<strong>A warm, genuine welcome and hospitality.</strong> Do greeters smile and offer helpful guidance? Do regular attendees — not merely staff — notice and engage visitors naturally? Relational warmth rooted in the love of Christ outweighs polished programs.",
-        "<strong>Style of worship and service flow.</strong> Music, atmosphere, and order should feel engaging and accessible. Newcomers appreciate services that are easy to follow, with gentle explanations of elements such as communion or the offering.",
-        "<strong>Location and convenience.</strong> Proximity, parking, clear signage, and suitable service times significantly influence decisions, especially for families and busy individuals.",
+        "<strong>Quality of preaching and teaching</strong> (often ranked first, cited by roughly 83%). Visitors seek clear, relevant, biblical exposition that connects eternal truth to daily life — depth without excessive jargon, practical application, and authenticity from the preacher.",
+        "<strong>A warm, genuine welcome and hospitality</strong> (cited by about 79%). Do greeters smile and offer helpful guidance? Do regular attendees — not merely staff — notice and engage visitors naturally? Relational warmth rooted in the love of Christ outweighs polished programs.",
+        "<strong>Style of worship and service flow</strong> (around 74%). Music, atmosphere, and order should feel engaging and accessible. Newcomers appreciate services that are easy to follow, with gentle explanations of elements such as communion or the offering.",
+        "<strong>Location and convenience</strong> (approximately 70%). Proximity, parking, clear signage, and suitable service times significantly influence decisions, especially for families and busy individuals.",
         "<strong>Community, relationships, and belonging.</strong> Many, particularly younger adults, long for authentic connection amid widespread loneliness — a place where people genuinely care and where low-pressure pathways to friendship exist.",
         "<strong>Children’s and family considerations.</strong> Parents assess safety, cleanliness, and family-friendliness. Even without elaborate programs, a welcoming posture toward children speaks volumes.",
         "<strong>Relevance, authenticity, and values alignment.</strong> Is the church genuine rather than performative? Does the teaching address real struggles?",

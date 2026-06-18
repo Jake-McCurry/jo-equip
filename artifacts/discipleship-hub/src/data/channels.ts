@@ -153,22 +153,22 @@ export const subTopics: SubTopic[] = [
     name: 'Become a Growing Church',
     description: 'Discover a unique, kingdom-centered vision for church growth.',
     /* 12 attributes of a growing church (renamed May 2026 to match the
-       Become a Growing Church doc). Items 1–4 link to per-article pages
-       under /channels/church/become-growing-church/<articleId>; items 5–12
-       are list-only until their long-form content is written. */
+       Become a Growing Church doc). Items 1–11 link to per-article pages
+       under /channels/church/become-growing-church/<articleId>; item 12 is
+       list-only until its long-form content is written. */
     hideNumbers: true,
     items: [
       { number: 1,  title: 'God’s Unique Vision for Your Church',            articleId: 'gods-unique-vision-for-your-church' },
       { number: 2,  title: 'A JesusOnline EQUIPPED Church',                  articleId: 'a-jesusonline-equipped-church' },
       { number: 3,  title: 'A Total Life Discipleship Church',               articleId: 'a-total-life-discipleship-church' },
       { number: 4,  title: 'A Transformational Teaching Church',             articleId: 'a-transformational-teaching-church' },
-      { number: 5,  title: 'A Spirit-dependent Church' },
-      { number: 6,  title: 'A Hope-filled Church' },
-      { number: 7,  title: 'A Focused Worship Church' },
-      { number: 8,  title: 'A Love-demonstrating Relational Church' },
-      { number: 9,  title: 'A Great Commission Church' },
-      { number: 10, title: 'An Online Outreach Church' },
-      { number: 11, title: 'An Attractive and Inviting Church' },
+      { number: 5,  title: 'A Spirit-dependent Church',                      articleId: 'a-spirit-dependent-church' },
+      { number: 6,  title: 'A Hope-filled Church',                           articleId: 'a-hope-filled-church' },
+      { number: 7,  title: 'An Intentional Worship Church',                  articleId: 'an-intentional-worship-church' },
+      { number: 8,  title: 'A Love-demonstrating Relational Church',         articleId: 'a-love-demonstrating-relational-church' },
+      { number: 9,  title: 'A Great Commission Church',                      articleId: 'a-great-commission-church' },
+      { number: 10, title: 'An Online Outreach Church',                      articleId: 'an-online-outreach-church' },
+      { number: 11, title: 'An Attractive and Inviting Church',             articleId: 'an-attractive-and-inviting-church' },
       { number: 12, title: 'A Model / Example Church' },
     ],
   },

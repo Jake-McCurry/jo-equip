@@ -111,7 +111,7 @@ Data lives in `src/data/channels.ts` (channels + sub-topics + per-item links). `
 - To add an article: append to `bcgArticles` + set matching `articleId` on the SubTopicItem.
 - Route `src/pages/channels/[channelId]/[subId]/[articleId].astro` only emits paths where both `articleId` and a matching `bcgArticles` entry exist (so referenced-but-unwritten articles don't 404 the build).
 - Each article page emits Article JSON-LD (`datePublished` = May 2026 refresh, `dateModified` = build time), BreadcrumbsLd, prev/next nav within BCG, and scoped `.bcg-prose` styles.
-- Items 1–4 written (God's Unique Vision, EQUIPPED, Total Life Discipleship, Transformational Teaching). 5–12 list-only.
+- Items 1–11 written. 1–4 have figures (bgc1-*..bgc4-* PNGs); 5–11 (Spirit-dependent, Hope-filled, Intentional Worship, Love-demonstrating, Great Commission, Online Outreach, Attractive) are text-only (no source images supplied). Item 12 (A Model / Example Church) stays list-only (no source doc). Item 7 renamed "A Focused Worship Church" → "An Intentional Worship Church" to match its source doc. The repeated "Watch → Learn → Live Resources" block is a shared `WLL` ArticleBlock[] const spread into the articles that use it. bcgArticles array order = channel item order so prev/next nav flows.
 - **Figures**: PNGs in `src/assets/bcg/` → `src/data/bcgImages.ts` (import.meta.glob map). Rendered with `<Image>` (widths 480/800/1200, `format="webp"`, q80, lazy). Source deck: `attached_assets/BGC1_slides_1779306265782.pptx` — slides 4/5/7/8/9/10 illustrate the Ministry Flourishing Framework / Zone 1–3 and are reserved for later BCG articles.
 
 ### Internal pages

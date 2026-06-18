@@ -224,7 +224,8 @@ function btnClass(enabled: boolean) {
             const buttons: { label: string; icon: any; href?: string; internal?: boolean }[] = [
               { label: "PDF", icon: FileText, href: pdfHref, internal: pdfInternal },
               { label: "Video", icon: Video, href: videoHref, internal: videoInternal },
-              { label: "App", icon: Smartphone, href: appHref, internal: false },
+              // App button is omitted for BCG article items (those with an articleId).
+              ...(item.articleId ? [] : [{ label: "App", icon: Smartphone, href: appHref, internal: false }]),
             ];
             // Article: when an item has an articleId, its title is a link
             // to /channels/<channelId>/<subId>/<articleId> (the per-article page).
@@ -247,7 +248,7 @@ function btnClass(enabled: boolean) {
                   <div class="flex flex-wrap gap-1.5">
                     {articleHref && (
                       <a href={articleHref} class={btnClass(true)} style="background-color:#de5b0014;color:#de5b00;border:1px solid #de5b0040;">
-                        <FileText className="w-3 h-3" />Read Article
+                        <FileText className="w-3 h-3" />Read
                       </a>
                     )}
                     {buttons.map(b => {

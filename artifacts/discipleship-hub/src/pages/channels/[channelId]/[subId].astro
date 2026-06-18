@@ -4,6 +4,7 @@ import { Image } from "astro:assets";
 import { subTopics, getChannel, getSubTopic, getSubTopicChildren, getSubTopicsByChannel, getNextSubTopic } from "@/data/channels";
 import { getBookCover } from "@/data/bookCovers";
 import { extractAppSlug, hasArticlePdf } from "@/data/articles";
+import { hasBcgArticlePdf } from "@/data/bcgArticlePdfs";
 import { FileText, Video, Smartphone, ArrowLeft, ArrowRight, ChevronRight } from "lucide-react";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 
@@ -207,10 +208,15 @@ function btnClass(enabled: boolean) {
             const articlePdfHref = hasArticlePdf(appArticleSlug)
               ? join(`/articles/${appArticleSlug}.pdf`)
               : undefined;
+            // BCG article items link to their locally generated PDF at
+            // /articles/bcg/<articleId>.pdf (see scripts bcg:pdf).
+            const bcgPdfHref = hasBcgArticlePdf(item.articleId)
+              ? join(`/articles/bcg/${item.articleId}.pdf`)
+              : undefined;
             const pdfHref = item.bookId
               ? join(`/books?download=${encodeURIComponent(item.bookId)}#${encodeURIComponent(item.bookId)}`)
-              : (item.links?.pdf ?? articlePdfHref);
-            const pdfInternal = !!item.bookId || (!item.links?.pdf && !!articlePdfHref);
+              : (item.links?.pdf ?? bcgPdfHref ?? articlePdfHref);
+            const pdfInternal = !!item.bookId || (!item.links?.pdf && (!!bcgPdfHref || !!articlePdfHref));
 
             // Video: enabled only when this item has a matching video inside the sub-topic's playlist
             // (or an explicit external `links.video` override). No fallback to the playlist index.

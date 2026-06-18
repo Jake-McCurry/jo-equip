@@ -15,8 +15,9 @@ import { subTopics, getChannel, getSubTopic } from "@/data/channels";
 import { bcgArticles, getBcgArticle, getNextBcgArticle } from "@/data/bcgArticles";
 import type { ArticleBlock } from "@/data/bcgArticles";
 import { getBcgImage } from "@/data/bcgImages";
+import { hasBcgArticlePdf } from "@/data/bcgArticlePdfs";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
-import { ArrowLeft, ArrowRight, ChevronRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ChevronRight, Download } from "lucide-react";
 
 const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
@@ -48,6 +49,7 @@ if (!channel || !sub || !article) return Astro.redirect(join("/channels"));
 
 const nextArticle = getNextBcgArticle(article.id);
 const subItem = sub.items?.find(i => i.articleId === article.id);
+const pdfHref = hasBcgArticlePdf(article.id) ? join(`/articles/bcg/${article.id}.pdf`) : null;
 
 const SITE = "https://equip.jesusonline.com";
 const articleUrl = `${SITE}/channels/${channel.id}/${sub.id}/${article.id}`;
@@ -109,9 +111,16 @@ const metaDescription = plain(article.description);
   </div>
 
   <div class="container mx-auto px-4 py-12 md:py-16 max-w-3xl">
-    <a href={join(`/channels/${channel.id}/${sub.id}`)} class="inline-flex items-center text-sm font-medium mb-8 transition-colors hover:text-primary" style="color:var(--color-muted-foreground);">
-      <ArrowLeft className="w-4 h-4 mr-2" /> Back to {sub.name}
-    </a>
+    <div class="flex items-center justify-between gap-4 flex-wrap mb-8">
+      <a href={join(`/channels/${channel.id}/${sub.id}`)} class="inline-flex items-center text-sm font-medium transition-colors hover:text-primary" style="color:var(--color-muted-foreground);">
+        <ArrowLeft className="w-4 h-4 mr-2" /> Back to {sub.name}
+      </a>
+      {pdfHref && (
+        <a href={pdfHref} download class="inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-md border-2 transition-colors hover:text-white" style={`color:${channel.accentColor};border-color:${channel.accentColor};`} onmouseover={`this.style.backgroundColor='${channel.accentColor}';`} onmouseout="this.style.backgroundColor='transparent';">
+          <Download className="w-4 h-4" /> Download PDF
+        </a>
+      )}
+    </div>
 
     {/* Article body. Block types are author-controlled; html strings are
         rendered with set:html — never pipe untrusted content through this. */}

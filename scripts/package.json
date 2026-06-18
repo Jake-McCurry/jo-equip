@@ -7,6 +7,7 @@
     "hello": "tsx ./src/hello.ts",
     "compress-pdfs": "tsx ./src/compressPdfs.ts",
     "articles:build": "tsx ./src/articlesBuild.ts",
+    "bcg:pdf": "tsx ./src/bcgPdfBuild.ts",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "devDependencies": {

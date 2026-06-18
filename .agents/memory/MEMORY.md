@@ -1,1 +1,2 @@
 - [URL trailing-slash convention](url-trailing-slash-convention.md) — discipleship-hub URLs are no-slash except root; canonical + sitemap + internal links must agree or Google flags "alternate page with proper canonical tag".
+- [Leaf script importing artifact data](leaf-script-imports-artifact-data.md) — @workspace/scripts must load artifact-local TS data via runtime `import(pathToFileURL(...))` + local type mirror, never a static cross-package import (breaks tsc rootDir).

@@ -1,3 +1,5 @@
+// Playlist catalog for the JO EQUIP discipleship hub.
+// Last reviewed: 2026-06-18.
 export interface PlaylistVideo {
   title: string;
   videoId: string;

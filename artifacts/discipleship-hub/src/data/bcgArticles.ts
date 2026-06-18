@@ -223,9 +223,9 @@ export const bcgArticles: BcgArticle[] = [
       ...WLL,
       { type: "h3", text: "Total Life Discipleship" },
       { type: "ul", items: [
-        "Part 1: Core Principles (PDF • Video • App)",
+        '<a href="/channels/church/total-life-discipleship-principles">Part 1: Core Principles</a> (PDF • Video • App)',
         "Part 2: Kingdom Perspective (PDF • Video • App)",
-        "Part 3: Building Blocks for Maturity (PDF • Video • App)",
+        '<a href="/channels/growth/building-blocks">Part 3: Building Blocks for Maturity</a> (PDF • Video • App)',
       ]},
 
       REGISTER_CTA,
@@ -324,9 +324,9 @@ export const bcgArticles: BcgArticle[] = [
 
       { type: "h3", text: "From Building Blocks for Maturity" },
       { type: "ul", items: [
-        "God’s Majestic Qualities (PDF • Video • App)",
-        "Your New Identity, Overview (PDF • Video • App)",
-        "Walking by the Spirit (PDF • Video • App)",
+        '<a href="/channels/growth/building-blocks">God’s Majestic Qualities</a> (PDF • Video • App)',
+        '<a href="/channels/growth/building-blocks">Your New Identity, Overview</a> (PDF • Video • App)',
+        '<a href="/channels/growth/building-blocks">Walking by the Spirit</a> (PDF • Video • App)',
       ]},
 
       { type: "h3", text: "Recommended Resources on Amazon" },
@@ -400,7 +400,7 @@ export const bcgArticles: BcgArticle[] = [
       ...WLL,
       { type: "h3", text: "Hope Resources" },
       { type: "ul", items: [
-        "Hope in Times of Crisis (PDF • Video • App)",
+        '<a href="/channels/growth/hope-times-crisis">Hope in Times of Crisis</a> (PDF • Video • App)',
         "Bible Promises for Hope (PDF • Video • App)",
         "God Is Hope (PDF • Video • App)",
       ]},
@@ -444,9 +444,9 @@ export const bcgArticles: BcgArticle[] = [
       ...WLL,
       { type: "h3", text: "Love Focus Resources" },
       { type: "ul", items: [
-        "Forever Loved series (PDF • Video • App)",
+        '<a href="/channels/growth/forever-loved">Forever Loved series</a> (PDF • Video • App)',
         "Experience God’s Love playlist (PDF • Video • App)",
-        "40 Days of God’s Love (PDF • Video • App)",
+        '<a href="/channels/growth/days-god-s-love">40 Days of God’s Love</a> (PDF • Video • App)',
         "Timeless Love, Transforming Love (PDF • Video • App)",
         "Love Bible studies (PDF • Video • App)",
         "One Another series (PDF • Video • App)",

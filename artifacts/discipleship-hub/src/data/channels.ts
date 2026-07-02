@@ -237,7 +237,7 @@ export const subTopics: SubTopic[] = [
     id: 'bible-mastery',
     channelId: 'church',
     name: 'Bible Mastery',
-    description: 'Grow in understanding and handling of God\'s Word — study methods, book-by-book surveys, and structured Bible training.',
+    description: 'Deepen your understanding of the Bible to teach the word of truth rightly.',
   },
   {
     id: 'bible-study-methods',
@@ -258,7 +258,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'church',
     parentId: 'bible-mastery',
     name: 'Online Bible Training (Joshua Nations)',
-    description: 'Receive comprehensive Biblical training designed for church leaders.',
+    description: 'A FREE 2-year comprehensive online Biblical training course by Joshua Nations.',
     formats: ['app'],
     appUrl: 'https://joshuanations.org/media/all-videos',
   },
@@ -323,7 +323,6 @@ export const subTopics: SubTopic[] = [
     channelId: 'church',
     parentId: 'bible-mastery',
     name: 'Survey of the Bible (Joshua Nations)',
-    description: 'Encounter the heart and plan of God from Genesis to Revelation.',
   },
   {
     id: 'survey-of-the-bible-ot',

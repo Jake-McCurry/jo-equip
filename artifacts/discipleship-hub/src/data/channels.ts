@@ -116,10 +116,11 @@ export const subTopics: SubTopic[] = [
   //   02 total-life-discipleship-principles  (kept ID, renamed to "Total Life Discipleship")
   //   03 become-growing-church
   //   04 share-jesus  (parent of understanding-evangelism, sharing-your-faith, next-steps-new-believers)
-  //   05 survey-of-the-bible  (renamed "Survey of the Bible (Joshua Nations)")
-  //   06 joshua-nations-online-bible-training  (parent of online-bible-training-year-1, year-2)
+  //   05 sermon-toolbox  (intro-only placeholder — content list pending)
+  //   06 bible-mastery  (parent of bible-study-methods, joshua-nations-online-bible-training, survey-of-the-bible, bibleproject)
   //   07 disciple-making-movement  (renamed "Disciple Making Movement (Joshua Nations)")
-  //   08 rapid-church-planting  (renamed "Rapid Church Planting (Joshua Nations)")
+  //   08 biblical-counseling-insights  (intro-only placeholder — content list pending)
+  //   09 rapid-church-planting  (renamed "Rapid Church Planting (Joshua Nations)")
   // Legacy `bible-training-curriculum` placeholder removed May 2026.
   { id: 'make-multiply-disciples-newsletter', channelId: 'church', name: 'Making & Multiplying Disciples Newsletter', description: 'Subscribe to our newsletter for disciple-makers.' },
   {
@@ -227,6 +228,16 @@ export const subTopics: SubTopic[] = [
       { number: 7, title: 'Enjoy God’s Family', links: { app: 'https://app.jesusonline.com/post/43007-enjoy-gods-family' } },
       { number: 8, title: 'Discover God’s Plan for You', links: { app: 'https://app.jesusonline.com/post/43008-discover-gods-plan-for-you' } },
     ],
+  },
+  /* ── SERMON TOOLBOX ──
+     Intro-only placeholder added to match the Church spreadsheet; content list
+     pending. With no items/children it renders the "resources being prepared"
+     empty state and greyed-out badges on the channel grid. */
+  {
+    id: 'sermon-toolbox',
+    channelId: 'church',
+    name: 'Sermon Toolbox',
+    description: 'Develop Biblically-grounded, transformational messages for Kingdom maturity.',
   },
   /* ── BIBLE MASTERY (parent) ──
      Grouping added to match the Church spreadsheet. Nests Bible study
@@ -573,6 +584,16 @@ export const subTopics: SubTopic[] = [
       { number: 8, title: "Lesson 8: How? Your Story", links: { app: "https://app.jesusonline.com/post/93624-8-lesson-8-how-your-story" } },
       { number: 9, title: "Lesson 9: Commissioning", links: { app: "https://app.jesusonline.com/post/93624-9-lesson-9-commissioning" } },
     ],
+  },
+  /* ── BIBLICAL COUNSELING INSIGHTS ──
+     Intro-only placeholder added to match the Church spreadsheet; content list
+     pending. With no items/children it renders the "resources being prepared"
+     empty state and greyed-out badges on the channel grid. */
+  {
+    id: 'biblical-counseling-insights',
+    channelId: 'church',
+    name: 'Biblical Counseling Insights',
+    description: 'Strengthen individuals, families, and the church by empowering them to live God\'s way.',
   },
   {
     id: 'rapid-church-planting',

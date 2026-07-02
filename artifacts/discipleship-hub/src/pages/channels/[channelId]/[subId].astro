@@ -5,6 +5,7 @@ import { subTopics, getChannel, getSubTopic, getSubTopicChildren, getSubTopicsBy
 import { getBookCover } from "@/data/bookCovers";
 import { extractAppSlug, hasArticlePdf } from "@/data/articles";
 import { hasBcgArticlePdf } from "@/data/bcgArticlePdfs";
+import { hasBsmArticlePdf } from "@/data/bsmArticlePdfs";
 import { FileText, Video, Smartphone, ArrowLeft, ArrowRight, ChevronRight } from "lucide-react";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 
@@ -216,10 +217,15 @@ function btnClass(enabled: boolean) {
             const bcgPdfHref = hasBcgArticlePdf(item.articleId)
               ? join(`/articles/bcg/${item.articleId}.pdf`)
               : undefined;
+            // Bible Study Methods article items link to their locally generated
+            // PDF at /articles/bsm/<articleId>.pdf (see scripts bsm:pdf).
+            const bsmPdfHref = hasBsmArticlePdf(item.articleId)
+              ? join(`/articles/bsm/${item.articleId}.pdf`)
+              : undefined;
             const pdfHref = item.bookId
               ? join(`/books?download=${encodeURIComponent(item.bookId)}#${encodeURIComponent(item.bookId)}`)
-              : (item.links?.pdf ?? bcgPdfHref ?? articlePdfHref);
-            const pdfInternal = !!item.bookId || (!item.links?.pdf && (!!bcgPdfHref || !!articlePdfHref));
+              : (item.links?.pdf ?? bcgPdfHref ?? bsmPdfHref ?? articlePdfHref);
+            const pdfInternal = !!item.bookId || (!item.links?.pdf && (!!bcgPdfHref || !!bsmPdfHref || !!articlePdfHref));
 
             // Video: enabled only when this item has a matching video inside the sub-topic's playlist
             // (or an explicit external `links.video` override). No fallback to the playlist index.

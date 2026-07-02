@@ -116,10 +116,10 @@ export const subTopics: SubTopic[] = [
   //   02 total-life-discipleship-principles  (kept ID, renamed to "Total Life Discipleship")
   //   03 become-growing-church
   //   04 share-jesus  (parent of understanding-evangelism, sharing-your-faith, next-steps-new-believers)
-  //   05 survey-of-the-bible  (renamed "Joshua Nations: Survey of the Bible")
+  //   05 survey-of-the-bible  (renamed "Survey of the Bible (Joshua Nations)")
   //   06 joshua-nations-online-bible-training  (parent of online-bible-training-year-1, year-2)
-  //   07 disciple-making-movement  (renamed "Joshua Nations: Disciple Making Movement")
-  //   08 rapid-church-planting  (renamed "Joshua Nations: Rapid Church Planting")
+  //   07 disciple-making-movement  (renamed "Disciple Making Movement (Joshua Nations)")
+  //   08 rapid-church-planting  (renamed "Rapid Church Planting (Joshua Nations)")
   // Legacy `bible-training-curriculum` placeholder removed May 2026.
   { id: 'make-multiply-disciples-newsletter', channelId: 'church', name: 'Making & Multiplying Disciples Newsletter', description: 'Subscribe to our newsletter for disciple-makers.' },
   {
@@ -231,7 +231,7 @@ export const subTopics: SubTopic[] = [
   {
     id: 'survey-of-the-bible',
     channelId: 'church',
-    name: 'Joshua Nations: Survey of the Bible',
+    name: 'Survey of the Bible (Joshua Nations)',
     description: 'Encounter the heart and plan of God from Genesis to Revelation.',
     items: [
       { number: 1, title: 'Matthew', links: { app: 'https://app.jesusonline.com/post/93660-1-matthew' } },
@@ -272,7 +272,7 @@ export const subTopics: SubTopic[] = [
   {
     id: 'joshua-nations-online-bible-training',
     channelId: 'church',
-    name: 'Joshua Nations: Online Bible Training',
+    name: 'Online Bible Training (Joshua Nations)',
     description: 'Receive comprehensive Biblical training designed for church leaders.',
     formats: ['app'],
     appUrl: 'https://joshuanations.org/media/all-videos',
@@ -336,7 +336,7 @@ export const subTopics: SubTopic[] = [
   {
     id: 'disciple-making-movement',
     channelId: 'church',
-    name: 'Joshua Nations: Disciple Making Movement',
+    name: 'Disciple Making Movement (Joshua Nations)',
     description: 'Build a movement to multiply disciples, groups, and churches.',
     items: [
       { number: 1, title: 'Lesson 1: Intimacy with God', links: { app: 'https://app.jesusonline.com/post/93621-1-lesson-1-intimacy-with-god' } },
@@ -351,7 +351,7 @@ export const subTopics: SubTopic[] = [
   {
     id: 'rapid-church-planting',
     channelId: 'church',
-    name: 'Joshua Nations: Rapid Church Planting',
+    name: 'Rapid Church Planting (Joshua Nations)',
     description: 'Plant new churches quickly to bring the Gospel to the unreached.',
     items: [
       { number: 1, title: 'Why Plant a Church', links: { app: 'https://app.jesusonline.com/post/93610-01-why-plant-a-church' } },

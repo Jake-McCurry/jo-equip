@@ -9,6 +9,7 @@
     "articles:build": "tsx ./src/articlesBuild.ts",
     "bcg:pdf": "tsx ./src/bcgPdfBuild.ts",
     "bsm:pdf": "tsx ./src/bsmPdfBuild.ts",
+    "bible-pages:check": "tsx ./src/biblePagesCheck.ts",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "devDependencies": {

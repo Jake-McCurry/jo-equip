@@ -32,9 +32,12 @@ const hasItems = (sub.items?.length ?? 0) > 0;
 const parent = sub.parentId ? getSubTopic(channelId!, sub.parentId) : undefined;
 
 /* Number prefix for child cards: "<parentPos>.<childPos>" e.g. "04.1".
- * parentPos is the parent's 1-based index in the channel's top-level list. */
+ * parentPos is this sub-topic's 1-based index among its own siblings — the
+ * channel's top-level list for a top-level parent, or its parent's children
+ * for a nested parent (avoids "00.x" on grandchild cards). */
 const topLevel = getSubTopicsByChannel(channelId!);
-const parentPos = hasChildren ? topLevel.findIndex(s => s.id === sub.id) + 1 : 0;
+const siblings = sub.parentId ? getSubTopicChildren(sub.parentId) : topLevel;
+const parentPos = hasChildren ? siblings.findIndex(s => s.id === sub.id) + 1 : 0;
 
 /* JSON-LD: CollectionPage with an ItemList of the sub-topic's lesson titles.
    Note: we deliberately do NOT use FAQPage schema here — Google requires

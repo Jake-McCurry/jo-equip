@@ -5896,5 +5896,785 @@
     "modified": "2026-06-19T23:13:24",
     "bytes": 79003,
     "title": "Attributes of Holiness"
+  },
+  "93651-4-numbers": {
+    "wp_id": 21937,
+    "modified": "2026-04-30T03:08:38",
+    "bytes": 111471,
+    "title": "Numbers"
+  },
+  "93651-1-genesis": {
+    "wp_id": 21934,
+    "modified": "2026-04-30T03:07:41",
+    "bytes": 112902,
+    "title": "Genesis"
+  },
+  "93651-2-exodus": {
+    "wp_id": 21935,
+    "modified": "2026-04-30T03:07:54",
+    "bytes": 113810,
+    "title": "Exodus"
+  },
+  "93651-3-leviticus": {
+    "wp_id": 21936,
+    "modified": "2026-04-30T03:08:13",
+    "bytes": 104536,
+    "title": "Leviticus"
+  },
+  "93651-6-joshua": {
+    "wp_id": 21939,
+    "modified": "2026-04-30T03:09:10",
+    "bytes": 106498,
+    "title": "Joshua"
+  },
+  "93651-7-judges": {
+    "wp_id": 21940,
+    "modified": "2026-04-30T03:09:25",
+    "bytes": 106755,
+    "title": "Judges"
+  },
+  "93651-8-ruth": {
+    "wp_id": 21941,
+    "modified": "2026-04-30T03:09:38",
+    "bytes": 98203,
+    "title": "Ruth"
+  },
+  "93651-5-deuteronomy": {
+    "wp_id": 21938,
+    "modified": "2026-04-30T03:08:56",
+    "bytes": 105802,
+    "title": "Deuteronomy"
+  },
+  "93652-1-1-kings": {
+    "wp_id": 21956,
+    "modified": "2026-04-30T03:10:59",
+    "bytes": 165123,
+    "title": "1 Kings"
+  },
+  "93651-9-1-samuel": {
+    "wp_id": 21942,
+    "modified": "2026-04-30T03:09:57",
+    "bytes": 124199,
+    "title": "1 Samuel"
+  },
+  "93652-2-2-kings": {
+    "wp_id": 21957,
+    "modified": "2026-04-30T03:11:21",
+    "bytes": 159070,
+    "title": "2 Kings"
+  },
+  "93652-0-2-samuel": {
+    "wp_id": 21955,
+    "modified": "2026-04-30T03:10:10",
+    "bytes": 118690,
+    "title": "2 Samuel"
+  },
+  "93652-7-psalms": {
+    "wp_id": 21961,
+    "modified": "2026-04-30T03:13:26",
+    "bytes": 101087,
+    "title": "Psalms"
+  },
+  "93652-5-esther": {
+    "wp_id": 21989,
+    "modified": "2026-04-30T03:12:58",
+    "bytes": 109280,
+    "title": "Esther"
+  },
+  "93652-3-1-&-2-chronicles": {
+    "wp_id": 21958,
+    "modified": "2026-04-30T03:11:37",
+    "bytes": 88327,
+    "title": "1 & 2 Chronicles"
+  },
+  "93652-6-job": {
+    "wp_id": 21960,
+    "modified": "2026-04-30T03:13:09",
+    "bytes": 100592,
+    "title": "Job"
+  },
+  "93653-1-isaiah": {
+    "wp_id": 21964,
+    "modified": "2026-04-30T03:18:00",
+    "bytes": 121068,
+    "title": "Isaiah"
+  },
+  "93652-9-ecclesiastes": {
+    "wp_id": 21963,
+    "modified": "2026-04-30T03:13:53",
+    "bytes": 95883,
+    "title": "Ecclesiastes"
+  },
+  "93653-4-ezekiel": {
+    "wp_id": 22007,
+    "modified": "2026-04-30T03:19:37",
+    "bytes": 122925,
+    "title": "Ezekiel"
+  },
+  "93653-5-daniel": {
+    "wp_id": 22008,
+    "modified": "2026-04-30T03:20:13",
+    "bytes": 177962,
+    "title": "Daniel"
+  },
+  "93653-7-joel": {
+    "wp_id": 22010,
+    "modified": "2026-04-30T03:21:54",
+    "bytes": 90091,
+    "title": "Joel"
+  },
+  "93653-6-hosea": {
+    "wp_id": 22009,
+    "modified": "2026-04-30T03:22:02",
+    "bytes": 100583,
+    "title": "Hosea"
+  },
+  "93653-8-amos": {
+    "wp_id": 22011,
+    "modified": "2026-04-30T03:22:20",
+    "bytes": 86818,
+    "title": "Amos"
+  },
+  "93653-9-obadiah": {
+    "wp_id": 22012,
+    "modified": "2026-04-30T03:22:38",
+    "bytes": 84928,
+    "title": "Obadiah"
+  },
+  "93654-1-micah": {
+    "wp_id": 22017,
+    "modified": "2026-04-30T03:23:16",
+    "bytes": 93594,
+    "title": "Micah"
+  },
+  "93654-2-nahum": {
+    "wp_id": 22018,
+    "modified": "2026-04-30T03:24:17",
+    "bytes": 85968,
+    "title": "Nahum"
+  },
+  "93654-3-habakkuk": {
+    "wp_id": 22019,
+    "modified": "2026-04-30T03:24:33",
+    "bytes": 90072,
+    "title": "Habakkuk"
+  },
+  "93654-0-jonah": {
+    "wp_id": 22013,
+    "modified": "2026-04-30T03:23:01",
+    "bytes": 95398,
+    "title": "Jonah"
+  },
+  "93654-5-haggai": {
+    "wp_id": 22021,
+    "modified": "2026-04-30T03:25:08",
+    "bytes": 91307,
+    "title": "Haggai"
+  },
+  "93654-4-Zephaniah": {
+    "wp_id": 22020,
+    "modified": "2026-04-30T03:24:52",
+    "bytes": 88965,
+    "title": "Zephaniah"
+  },
+  "93654-7-malachi": {
+    "wp_id": 22023,
+    "modified": "2026-04-30T03:25:39",
+    "bytes": 95836,
+    "title": "Malachi"
+  },
+  "93654-6-Zechariah": {
+    "wp_id": 22022,
+    "modified": "2026-04-30T03:25:23",
+    "bytes": 101029,
+    "title": "Zechariah"
+  },
+  "38604-overview-exodus-ch-1-18": {
+    "wp_id": 11060,
+    "modified": "2021-08-07T16:47:55",
+    "bytes": 79385,
+    "title": "Overview: Exodus Ch. 1 -18"
+  },
+  "38603-overview-genesis-ch-12-50": {
+    "wp_id": 11059,
+    "modified": "2021-08-07T16:47:38",
+    "bytes": 163507,
+    "title": "Overview: Genesis Ch. 12-50"
+  },
+  "38602-overview-genesis-ch-1-11": {
+    "wp_id": 11057,
+    "modified": "2021-08-07T16:46:50",
+    "bytes": 145111,
+    "title": "Overview: Genesis Ch. 1-11"
+  },
+  "38601-overview-tanak-old-testament": {
+    "wp_id": 11055,
+    "modified": "2021-08-07T16:34:07",
+    "bytes": 115742,
+    "title": "Overview: TaNaK / Old Testament"
+  },
+  "38605-overview-exodus-ch-19-40": {
+    "wp_id": 11061,
+    "modified": "2021-08-07T16:48:10",
+    "bytes": 78253,
+    "title": "Overview: Exodus Ch. 19-40"
+  },
+  "38608-overview-deuteronomy": {
+    "wp_id": 11064,
+    "modified": "2021-08-07T16:49:04",
+    "bytes": 75826,
+    "title": "Overview: Deuteronomy"
+  },
+  "38607-overview-numbers": {
+    "wp_id": 11063,
+    "modified": "2021-08-07T16:48:49",
+    "bytes": 154783,
+    "title": "Overview: Numbers"
+  },
+  "38606-overview-leviticus": {
+    "wp_id": 11062,
+    "modified": "2021-08-07T16:48:28",
+    "bytes": 138391,
+    "title": "Overview: Leviticus"
+  },
+  "38609-overview-joshua": {
+    "wp_id": 11065,
+    "modified": "2021-08-07T16:51:57",
+    "bytes": 73728,
+    "title": "Overview: Joshua"
+  },
+  "38612-overview-2-samuel": {
+    "wp_id": 11068,
+    "modified": "2021-08-07T16:50:48",
+    "bytes": 74968,
+    "title": "Overview: 2 Samuel"
+  },
+  "38610-overview-judges": {
+    "wp_id": 11066,
+    "modified": "2021-08-07T16:50:43",
+    "bytes": 127865,
+    "title": "Overview: Judges"
+  },
+  "38611-overview-1-samuel": {
+    "wp_id": 11067,
+    "modified": "2021-08-07T16:50:45",
+    "bytes": 107500,
+    "title": "Overview: 1 Samuel"
+  },
+  "38615-overview-isaiah-40-66": {
+    "wp_id": 11071,
+    "modified": "2020-05-14T16:28:14",
+    "bytes": 70565,
+    "title": "Overview: Isaiah 40-66"
+  },
+  "38616-overview-jeremiah": {
+    "wp_id": 11072,
+    "modified": "2021-08-07T17:08:54",
+    "bytes": 74088,
+    "title": "Overview: Jeremiah"
+  },
+  "38613-overview-1-2-kings": {
+    "wp_id": 11069,
+    "modified": "2021-08-07T16:50:50",
+    "bytes": 129288,
+    "title": "Overview: 1-2 Kings"
+  },
+  "38614-overview-isaiah-1-39": {
+    "wp_id": 11070,
+    "modified": "2021-08-07T17:03:12",
+    "bytes": 130524,
+    "title": "Overview: Isaiah 1-39"
+  },
+  "38617-overview-ezekiel-1-33": {
+    "wp_id": 11073,
+    "modified": "2021-08-07T17:09:51",
+    "bytes": 72826,
+    "title": "Overview: Ezekiel 1-33"
+  },
+  "38620-overview-joel": {
+    "wp_id": 11095,
+    "modified": "2021-08-07T17:10:52",
+    "bytes": 75665,
+    "title": "Overview: Joel"
+  },
+  "38618-overview-ezekiel-34-48": {
+    "wp_id": 11074,
+    "modified": "2020-05-14T16:29:01",
+    "bytes": 70579,
+    "title": "Overview: Ezekiel 34-48"
+  },
+  "38619-overview-hosea": {
+    "wp_id": 11075,
+    "modified": "2021-08-07T17:10:29",
+    "bytes": 128134,
+    "title": "Overview: Hosea"
+  },
+  "38621-overview-amos": {
+    "wp_id": 11096,
+    "modified": "2021-08-07T17:11:13",
+    "bytes": 75563,
+    "title": "Overview: Amos"
+  },
+  "38624-overview-micah": {
+    "wp_id": 11099,
+    "modified": "2021-08-07T17:11:53",
+    "bytes": 75689,
+    "title": "Overview: Micah"
+  },
+  "38622-overview-obadiah": {
+    "wp_id": 11097,
+    "modified": "2021-08-07T17:11:29",
+    "bytes": 133949,
+    "title": "Overview: Obadiah"
+  },
+  "38623-overview-jonah": {
+    "wp_id": 11098,
+    "modified": "2021-08-07T17:11:41",
+    "bytes": 110341,
+    "title": "Overview: Jonah"
+  },
+  "38625-overview-nahum": {
+    "wp_id": 11100,
+    "modified": "2021-08-07T17:12:07",
+    "bytes": 73488,
+    "title": "Overview: Nahum"
+  },
+  "38626-overview-habakkuk": {
+    "wp_id": 11101,
+    "modified": "2021-08-07T17:12:20",
+    "bytes": 131855,
+    "title": "Overview: Habakkuk"
+  },
+  "38628-overview-haggai": {
+    "wp_id": 11103,
+    "modified": "2021-08-07T17:12:55",
+    "bytes": 75656,
+    "title": "Overview: Haggai"
+  },
+  "38627-overview-zephaniah": {
+    "wp_id": 11102,
+    "modified": "2021-08-07T17:12:42",
+    "bytes": 149557,
+    "title": "Overview: Zephaniah"
+  },
+  "38629-overview-zechariah": {
+    "wp_id": 11104,
+    "modified": "2021-08-07T17:13:11",
+    "bytes": 76665,
+    "title": "Overview: Zechariah"
+  },
+  "38633-overview-job": {
+    "wp_id": 11118,
+    "modified": "2021-08-07T17:33:56",
+    "bytes": 76012,
+    "title": "Overview: Job"
+  },
+  "38630-overview-malachi": {
+    "wp_id": 11115,
+    "modified": "2021-08-07T17:32:24",
+    "bytes": 129547,
+    "title": "Overview: Malachi"
+  },
+  "38632-overview-proverbs": {
+    "wp_id": 11117,
+    "modified": "2021-08-07T17:33:43",
+    "bytes": 132400,
+    "title": "Overview: Proverbs"
+  },
+  "38631-overview-psalms": {
+    "wp_id": 11116,
+    "modified": "2021-08-07T17:33:30",
+    "bytes": 137523,
+    "title": "Overview: Psalms"
+  },
+  "38634-overview-song-of-songs": {
+    "wp_id": 11119,
+    "modified": "2021-08-07T17:34:08",
+    "bytes": 133958,
+    "title": "Overview: Song of Songs"
+  },
+  "38636-overview-lamentations": {
+    "wp_id": 11121,
+    "modified": "2021-08-07T17:34:44",
+    "bytes": 122789,
+    "title": "Overview: Lamentations"
+  },
+  "38637-overview-ecclesiastes": {
+    "wp_id": 11122,
+    "modified": "2021-08-07T17:38:22",
+    "bytes": 75922,
+    "title": "Overview: Ecclesiastes"
+  },
+  "38635-overview-ruth": {
+    "wp_id": 11120,
+    "modified": "2021-08-07T17:34:34",
+    "bytes": 123166,
+    "title": "Overview: Ruth"
+  },
+  "38641-overview-chronicles": {
+    "wp_id": 11137,
+    "modified": "2021-08-07T17:40:21",
+    "bytes": 76257,
+    "title": "Overview: Chronicles"
+  },
+  "38639-overview-daniel": {
+    "wp_id": 11124,
+    "modified": "2021-08-07T17:39:33",
+    "bytes": 114819,
+    "title": "Overview: Daniel"
+  },
+  "38638-overview-esther": {
+    "wp_id": 11123,
+    "modified": "2021-08-07T17:38:35",
+    "bytes": 124125,
+    "title": "Overview: Esther"
+  },
+  "38640-overview-ezra-nehemiah": {
+    "wp_id": 11125,
+    "modified": "2021-08-07T17:40:52",
+    "bytes": 142095,
+    "title": "Overview: Ezra-Nehemiah"
+  },
+  "38701-overview-new-testament": {
+    "wp_id": 8183,
+    "modified": "2021-08-07T17:43:17",
+    "bytes": 73841,
+    "title": "Overview: New Testament"
+  },
+  "38704-overview-mark": {
+    "wp_id": 8198,
+    "modified": "2021-08-07T17:45:59",
+    "bytes": 74253,
+    "title": "Overview Mark"
+  },
+  "38702-overview-matthew-ch-1-13": {
+    "wp_id": 8180,
+    "modified": "2021-08-07T17:45:29",
+    "bytes": 98126,
+    "title": "Overview: Matthew Ch. 1-13"
+  },
+  "38703-overview-matthew-ch-14-28": {
+    "wp_id": 8197,
+    "modified": "2020-03-27T22:41:26",
+    "bytes": 69696,
+    "title": "Overview Matthew Ch. 14-28"
+  },
+  "38705-overview-john-ch-1-12": {
+    "wp_id": 8201,
+    "modified": "2021-08-07T17:46:17",
+    "bytes": 68004,
+    "title": "Overview: John Ch. 1-12"
+  },
+  "38706-overview-john-ch-13-21": {
+    "wp_id": 8202,
+    "modified": "2020-03-27T22:42:32",
+    "bytes": 69456,
+    "title": "Overview: John Ch. 13-21"
+  },
+  "38708-overview-luke-ch-10-24": {
+    "wp_id": 8200,
+    "modified": "2020-03-27T22:46:04",
+    "bytes": 69505,
+    "title": "Overview: Luke  Ch. 10-24"
+  },
+  "38707-overview-luke-ch-1-9": {
+    "wp_id": 8199,
+    "modified": "2021-08-07T17:46:31",
+    "bytes": 126378,
+    "title": "Overview: Luke Ch. 1-9"
+  },
+  "38709-overview-acts-ch-1-12": {
+    "wp_id": 8203,
+    "modified": "2021-08-07T17:46:51",
+    "bytes": 70880,
+    "title": "Overview: Acts Ch. 1-12"
+  },
+  "38710-overview-acts-ch-13-28": {
+    "wp_id": 8204,
+    "modified": "2020-03-27T22:43:41",
+    "bytes": 70110,
+    "title": "Overview: Acts Ch. 13-28"
+  },
+  "38712-overview-romans-ch-5-16": {
+    "wp_id": 8206,
+    "modified": "2020-03-27T22:44:29",
+    "bytes": 70316,
+    "title": "Overview: Romans Ch. 5-16"
+  },
+  "38711-overview-romans-ch-1-4": {
+    "wp_id": 8205,
+    "modified": "2021-08-07T17:47:09",
+    "bytes": 123365,
+    "title": "Overview: Romans Ch. 1-4"
+  },
+  "38713-overview-1-corinthians": {
+    "wp_id": 8272,
+    "modified": "2021-08-07T17:47:30",
+    "bytes": 73673,
+    "title": "Overview: 1 Corinthians"
+  },
+  "38714-overview-2-corinthians": {
+    "wp_id": 8274,
+    "modified": "2021-08-07T17:47:45",
+    "bytes": 76288,
+    "title": "Overview: 2 Corinthians"
+  },
+  "38715-overview-galatians": {
+    "wp_id": 8276,
+    "modified": "2021-08-07T17:50:53",
+    "bytes": 76492,
+    "title": "Overview: Galatians"
+  },
+  "38719-overview-1-thessalonians": {
+    "wp_id": 8288,
+    "modified": "2021-08-07T18:06:16",
+    "bytes": 74421,
+    "title": "Overview: 1 Thessalonians"
+  },
+  "38716-overview-ephesians": {
+    "wp_id": 8278,
+    "modified": "2021-08-07T17:51:10",
+    "bytes": 110154,
+    "title": "Overview: Ephesians"
+  },
+  "38718-overview-colossians": {
+    "wp_id": 8286,
+    "modified": "2021-08-07T18:05:18",
+    "bytes": 142222,
+    "title": "Overview: Colossians"
+  },
+  "38717-overview-philippians": {
+    "wp_id": 8280,
+    "modified": "2021-08-07T17:51:23",
+    "bytes": 120349,
+    "title": "Overview: Philippians"
+  },
+  "38720-overview-2-thessalonians": {
+    "wp_id": 8290,
+    "modified": "2021-07-03T21:34:31",
+    "bytes": 75345,
+    "title": "Overview: 2 Thessalonians"
+  },
+  "38723-overview-titus": {
+    "wp_id": 8298,
+    "modified": "2021-08-07T18:10:39",
+    "bytes": 73900,
+    "title": "Overview: Titus"
+  },
+  "38722-overview-2-timothy": {
+    "wp_id": 8295,
+    "modified": "2021-08-07T18:09:43",
+    "bytes": 116827,
+    "title": "Overview: 2 Timothy"
+  },
+  "38721-overview-1-timothy": {
+    "wp_id": 8292,
+    "modified": "2021-08-07T18:09:31",
+    "bytes": 111033,
+    "title": "Overview: 1 Timothy"
+  },
+  "38724-overview-philemon": {
+    "wp_id": 8300,
+    "modified": "2021-08-07T18:11:00",
+    "bytes": 73508,
+    "title": "Overview: Philemon"
+  },
+  "38725-overview-hebrews": {
+    "wp_id": 8302,
+    "modified": "2021-08-07T18:11:11",
+    "bytes": 73556,
+    "title": "Overview: Hebrews"
+  },
+  "38726-overview-james": {
+    "wp_id": 8304,
+    "modified": "2021-08-07T18:11:27",
+    "bytes": 105154,
+    "title": "Overview: James"
+  },
+  "38727-overview-1-peter": {
+    "wp_id": 8306,
+    "modified": "2021-08-07T18:11:40",
+    "bytes": 73026,
+    "title": "Overview: 1 Peter"
+  },
+  "38728-overview-2-peter": {
+    "wp_id": 8308,
+    "modified": "2021-08-07T18:11:55",
+    "bytes": 74793,
+    "title": "Overview: 2 Peter"
+  },
+  "38729-overview-1-3-john": {
+    "wp_id": 8310,
+    "modified": "2021-08-07T18:12:09",
+    "bytes": 74750,
+    "title": "Overview: 1-3 John"
+  },
+  "38732-overview-revelation-ch-12-22": {
+    "wp_id": 8316,
+    "modified": "2020-03-27T22:38:17",
+    "bytes": 68368,
+    "title": "Overview: Revelation Ch. 12-22"
+  },
+  "38730-overview-jude": {
+    "wp_id": 8312,
+    "modified": "2021-08-07T18:12:26",
+    "bytes": 117915,
+    "title": "Overview: Jude"
+  },
+  "38731-overview-revelation-ch-1-11": {
+    "wp_id": 8314,
+    "modified": "2021-08-07T18:12:51",
+    "bytes": 111774,
+    "title": "Overview: Revelation Ch. 1-11"
+  },
+  "93622-1-lesson-1-demography-cultraure-religious-beliiefs": {
+    "wp_id": 21666,
+    "modified": "2026-04-30T02:30:52",
+    "bytes": 117238,
+    "title": "Lesson 1. Demography, Cultraure & Religious Beliiefs"
+  },
+  "93622-4-lesson-4-orality-training": {
+    "wp_id": 21669,
+    "modified": "2026-04-30T02:32:44",
+    "bytes": 109268,
+    "title": "Lesson 4. Orality Training"
+  },
+  "93622-2-lesson-2-spiritual-warfare": {
+    "wp_id": 21667,
+    "modified": "2026-04-30T02:31:32",
+    "bytes": 159878,
+    "title": "Lesson 2. Spiritual Warfare"
+  },
+  "93622-3-lesson-3-prayer-walking": {
+    "wp_id": 21668,
+    "modified": "2026-04-30T02:32:23",
+    "bytes": 115561,
+    "title": "Lesson 3. Prayer Walking"
+  },
+  "93623-1-lesson-1-relational-evangelism": {
+    "wp_id": 21670,
+    "modified": "2026-04-30T02:35:54",
+    "bytes": 158071,
+    "title": "Lesson 1. Relational Evangelism"
+  },
+  "93623-4-lesson-4-the-3-3rds-group-format": {
+    "wp_id": 21680,
+    "modified": "2026-04-30T02:44:16",
+    "bytes": 147677,
+    "title": "Lesson 4. The 3/3rds Group Format"
+  },
+  "93623-5-lesson-5-gathering-as-a-church": {
+    "wp_id": 21681,
+    "modified": "2026-04-30T02:44:53",
+    "bytes": 112499,
+    "title": "Lesson 5. Gathering as a Church"
+  },
+  "93623-3-lesson-3-call-to-repentance-belief-and-baptism": {
+    "wp_id": 21679,
+    "modified": "2026-04-30T02:40:58",
+    "bytes": 110055,
+    "title": "Lesson 3. Call to Repentance, Belief, and Baptism"
+  },
+  "93623-2-lesson-2-person-of-peace": {
+    "wp_id": 21671,
+    "modified": "2026-04-30T02:40:29",
+    "bytes": 151919,
+    "title": "Lesson 2. Person of Peace"
+  },
+  "93623-9-lesson-9-worship-life-of-the-disciple": {
+    "wp_id": 21685,
+    "modified": "2026-04-30T02:47:32",
+    "bytes": 124272,
+    "title": "Lesson 9. Worship Life of the Disciple"
+  },
+  "93623-7-lesson-7-bible-study-methods": {
+    "wp_id": 21683,
+    "modified": "2026-04-30T02:46:30",
+    "bytes": 123177,
+    "title": "Lesson 7. Bible Study Methods"
+  },
+  "93623-8-lesson-8-prayer": {
+    "wp_id": 21684,
+    "modified": "2026-04-30T02:47:06",
+    "bytes": 151867,
+    "title": "Lesson 8. Prayer"
+  },
+  "93623-6-lesson-6-freedom-ministry": {
+    "wp_id": 21682,
+    "modified": "2026-04-30T02:45:40",
+    "bytes": 122868,
+    "title": "Lesson 6. Freedom Ministry"
+  },
+  "93624-2-lesson-2-selecting-leaders": {
+    "wp_id": 21710,
+    "modified": "2026-04-30T02:52:33",
+    "bytes": 105502,
+    "title": "Lesson 2. Selecting Leaders"
+  },
+  "93624-1-lesson-1-call-to-give-and-serve": {
+    "wp_id": 21709,
+    "modified": "2026-04-30T02:49:45",
+    "bytes": 113467,
+    "title": "Lesson 1. Call to Give and Serve"
+  },
+  "93624-4-lesson-4-coaching-leaders-nurturing-skill-and-ability-in-others": {
+    "wp_id": 21712,
+    "modified": "2026-04-30T02:53:08",
+    "bytes": 160152,
+    "title": "Lesson 4. Coaching Leaders: Nurturing Skill and Ability in Others"
+  },
+  "93624-3-lesson-3-modeling-to-multiply-leaders": {
+    "wp_id": 21711,
+    "modified": "2026-04-30T02:52:47",
+    "bytes": 191717,
+    "title": "Lesson 3. Modeling to Multiply Leaders"
+  },
+  "93624-8-lesson-8-how-your-story": {
+    "wp_id": 21716,
+    "modified": "2026-04-30T02:56:29",
+    "bytes": 110807,
+    "title": "Lesson 8. How? Your Story"
+  },
+  "93624-6-lesson-6-evangelism-who-list-of-100": {
+    "wp_id": 21714,
+    "modified": "2026-04-30T02:55:55",
+    "bytes": 110513,
+    "title": "Lesson 6. Evangelism Who? List of 100"
+  },
+  "93624-7-lesson-7-how-gods-story": {
+    "wp_id": 21715,
+    "modified": "2026-04-30T02:56:13",
+    "bytes": 579268,
+    "title": "Lesson 7. How? God’s Story"
+  },
+  "93624-5-lesson-5-four-fields-and-multiplication": {
+    "wp_id": 21713,
+    "modified": "2026-04-30T02:55:40",
+    "bytes": 303659,
+    "title": "Lesson 5. Four Fields and Multiplication"
+  },
+  "93653-3-lamentation": {
+    "wp_id": 22006,
+    "modified": "2026-04-30T03:19:15",
+    "bytes": 87368,
+    "title": "Lamentations"
+  },
+  "93651-old-tesatament-introduction": {
+    "wp_id": 21943,
+    "modified": "2026-04-30T03:07:13",
+    "bytes": 81111,
+    "title": "Old Testament Introduction"
+  },
+  "93652-8-proverbs": {
+    "wp_id": 21962,
+    "modified": "2026-04-30T03:13:39",
+    "bytes": 93800,
+    "title": "Proverbs"
+  },
+  "93624-9-lesson-9-commissioning": {
+    "wp_id": 21717,
+    "modified": "2026-04-30T02:56:53",
+    "bytes": 111708,
+    "title": "Lesson 9. Commissioning"
   }
 }

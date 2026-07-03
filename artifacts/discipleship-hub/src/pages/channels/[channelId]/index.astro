@@ -4,8 +4,7 @@ import ChannelArt from "@/components/ChannelArt.astro";
 import { Image } from "astro:assets";
 import { channels, getChannel, getSubTopicsByChannel } from "@/data/channels";
 import { getBookCover } from "@/data/bookCovers";
-import { extractAppSlug, hasArticlePdf } from "@/data/articles";
-import { ArrowRight, MenuSquare, FileText, Video, Smartphone } from "lucide-react";
+import { ArrowRight, MenuSquare } from "lucide-react";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 
 const baseUrl = import.meta.env.BASE_URL;
@@ -61,35 +60,6 @@ const subs = getSubTopicsByChannel(channel.id);
       {subs.map((sub, idx) => {
         const coverId = sub.coverId || sub.bookId;
         const cover = coverId ? getBookCover(coverId) : undefined;
-        const subHref = join(`/channels/${channel.id}/${sub.id}`);
-
-        // A badge is "active" (orange link) if either the sub-topic itself or any of its items
-        // provides that resource type. Per-item resources link to the sub-topic detail page,
-        // where the per-item PDF/Video/App buttons live.
-        //
-        // The "book" badge is rendered as "PDF" — it covers both downloadable books (email-gated)
-        // and the auto-generated article PDFs we ship for Growth/Church items that link to
-        // app.jesusonline.com posts. See `src/data/articles.ts` for the slug→PDF manifest.
-        const items = sub.items ?? [];
-        const hasItemBook     = items.some(i => i.bookId);
-        const hasItemArticlePdf = items.some(i => hasArticlePdf(extractAppSlug(i.links?.app)));
-        const hasItemPdf      = hasItemBook || hasItemArticlePdf;
-        const hasItemPlaylist = items.some(i => i.videoId);
-        const hasItemApp      = items.some(i => i.links?.app);
-
-        const bookHref     = sub.bookId     ? join(`/books?download=${encodeURIComponent(sub.bookId)}#${encodeURIComponent(sub.bookId)}`) : (hasItemPdf      ? subHref : undefined);
-        const playlistHref = sub.playlistId ? join(`/playlist/${encodeURIComponent(sub.playlistId)}`)                                    : (hasItemPlaylist ? subHref : undefined);
-        const appHref      = sub.appUrl     ?? (hasItemApp ? subHref : undefined);
-        const appIsExternal = !!sub.appUrl;
-
-        // Auto-derive `formats` when not explicitly set so spreadsheet-generated sub-topics
-        // surface their per-item content. Explicit `formats` arrays are still honored
-        // (lets a sub-topic show greyed-out "coming soon" badges intentionally).
-        const formats: typeof sub.formats = sub.formats ?? [
-          ...(bookHref     ? ['book'     as const] : []),
-          ...(playlistHref ? ['playlist' as const] : []),
-          ...(appHref      ? ['app'      as const] : []),
-        ];
         return (
           <div class="flex flex-col bg-white border rounded overflow-hidden hover:shadow-md transition-all" style={`border-color:var(--color-border);border-left:4px solid ${channel.accentColor};`}>
             <div class="p-5 pb-0">
@@ -107,29 +77,6 @@ const subs = getSubTopicsByChannel(channel.id);
             {cover && (
               <div class="flex justify-center px-5 mb-3">
                 <Image src={cover} alt={sub.name} width={160} class="rounded shadow-sm" loading="lazy" />
-              </div>
-            )}
-
-            {/* Format badges (PDF / Playlist / App) intentionally hidden on the
-                Church channel — those categories are conveyed inside the topic page
-                itself, not on the channel index card. */}
-            {channel.id !== "church" && formats.length > 0 && (
-              <div class="flex flex-wrap justify-center gap-1.5 px-5 mb-4">
-                {formats.includes("book") && (
-                  bookHref
-                    ? <a href={bookHref} class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wider hover:shadow-sm" style="background-color:#de5b0014;color:#de5b00;border:1px solid #de5b0040;" onclick="event.stopPropagation();"><FileText className="w-3 h-3" />PDF</a>
-                    : <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wider cursor-not-allowed" style="background-color:rgba(0,0,0,0.04);color:#9ca3af;border:1px solid rgba(0,0,0,0.06);"><FileText className="w-3 h-3" />PDF</span>
-                )}
-                {formats.includes("playlist") && (
-                  playlistHref
-                    ? <a href={playlistHref} class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wider hover:shadow-sm" style="background-color:#de5b0014;color:#de5b00;border:1px solid #de5b0040;" onclick="event.stopPropagation();"><Video className="w-3 h-3" />Playlist</a>
-                    : <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wider cursor-not-allowed" style="background-color:rgba(0,0,0,0.04);color:#9ca3af;border:1px solid rgba(0,0,0,0.06);"><Video className="w-3 h-3" />Playlist</span>
-                )}
-                {formats.includes("app") && (
-                  appHref
-                    ? <a href={appHref} {...(appIsExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})} class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wider hover:shadow-sm" style="background-color:#de5b0014;color:#de5b00;border:1px solid #de5b0040;" onclick="event.stopPropagation();"><Smartphone className="w-3 h-3" />App</a>
-                    : <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wider cursor-not-allowed" style="background-color:rgba(0,0,0,0.04);color:#9ca3af;border:1px solid rgba(0,0,0,0.06);"><Smartphone className="w-3 h-3" />App</span>
-                )}
               </div>
             )}
 

@@ -1,0 +1,175 @@
+---
+import { BookOpen, Sparkles, Compass, HeartHandshake } from "lucide-react";
+
+interface Props {
+  accent?: string;
+}
+const { accent = "#7a3a8a" } = Astro.props;
+
+const sections = [
+  {
+    n: 1,
+    icon: BookOpen,
+    title: "Insights from Pastor Jon",
+    body: "Biblical wisdom and pastoral reflections to refresh your soul.",
+  },
+  {
+    n: 2,
+    icon: Sparkles,
+    title: "JO EQUIP Spotlight",
+    body: "New and featured resources from the hub.",
+  },
+  {
+    n: 3,
+    icon: Compass,
+    title: "Practical Strategies",
+    body: "Actionable ways to integrate JesusOnline tools for personal discipleship and church growth.",
+  },
+  {
+    n: 4,
+    icon: HeartHandshake,
+    title: "Ways to Engage",
+    body: "Share your story or review, submit prayer requests, see lives reached online, learn how your church can grow, and request personal coaching.",
+  },
+];
+
+// Mailchimp audience: jesusonline.us1. The form posts directly (no third-party
+// script needed). Only EMAIL, FNAME, and COUNTRY are merge fields on this
+// audience — there is no "church" merge tag in the provided embed.
+const MC_ACTION =
+  "https://jesusonline.us1.list-manage.com/subscribe/post?u=c02949f5de137184b156da9bc&id=e06ba0649d&f_id=00bb87e5f0";
+const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
+---
+<div class="max-w-3xl mx-auto">
+  <p class="text-lg leading-relaxed" style="color:#002f55;font-weight:500;">
+    Pastors, are you hungry for fresh encouragement and proven tools to make and multiply disciples?
+  </p>
+  <p class="text-base leading-relaxed mt-4" style="color:#374151;">
+    Subscribe to the free <strong style="color:#002f55;">Making and Multiplying Disciples Newsletter</strong> —
+    your monthly source of hope, insight, and practical equipping.
+  </p>
+
+  {/* Each issue features */}
+  <h2 class="text-2xl mt-12 mb-2" style="color:#002f55;">Each issue features</h2>
+  <div class="h-0.5 w-12 mb-8" style={`background-color:#de5b00;`}></div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+    {sections.map((s) => {
+      const Icon = s.icon;
+      return (
+        <div
+          class="flex flex-col bg-white border rounded p-5"
+          style={`border-color:var(--color-border);border-left:4px solid ${accent};`}
+        >
+          <div class="flex items-center gap-3 mb-3">
+            <span
+              class="shrink-0 w-10 h-10 rounded-full flex items-center justify-center"
+              style={`background-color:${accent}15;color:${accent};`}
+            >
+              <Icon className="w-5 h-5" />
+            </span>
+            <span class="text-xs font-mono font-semibold px-2 py-0.5 rounded" style={`color:${accent};background-color:${accent}11;`}>
+              {`Section ${s.n}`}
+            </span>
+          </div>
+          <h3 class="text-base font-semibold leading-snug mb-1.5" style="color:#002f55;">{s.title}</h3>
+          <p class="text-sm leading-relaxed" style="color:var(--color-muted-foreground);">{s.body}</p>
+        </div>
+      );
+    })}
+  </div>
+
+  {/* Partnership callout */}
+  <div class="mt-10 rounded p-6 md:p-7" style={`background-color:${accent}0a;border:1px solid ${accent}33;`}>
+    <p class="text-base leading-relaxed" style="color:#002f55;">
+      This isn't just another newsletter — it's a monthly partnership that strengthens your calling,
+      equips your leaders, and amplifies your Great Commission impact.
+    </p>
+    <p class="text-base leading-relaxed mt-3 font-semibold" style={`color:${accent};`}>
+      Sign up today and receive encouragement and resources that honor your time and multiply your ministry!
+    </p>
+  </div>
+
+  {/* Sign-up form (Mailchimp POST) */}
+  <div
+    id="signup"
+    class="mt-10 bg-white border rounded p-6 md:p-8"
+    style={`border-color:var(--color-border);border-top:4px solid ${accent};`}
+  >
+    <h2 class="text-xl mb-1" style="color:#002f55;">Free Sign Up</h2>
+    <p class="text-sm mb-6" style="color:var(--color-muted-foreground);">Free. No spam. Unsubscribe anytime.</p>
+
+    <form
+      action={MC_ACTION}
+      method="post"
+      target="_blank"
+      class="space-y-4"
+    >
+      <div>
+        <label for="mm-email" class="block text-sm font-medium mb-1.5" style="color:#002f55;">
+          Email <span style="color:#de5b00;">*</span>
+        </label>
+        <input
+          type="email"
+          name="EMAIL"
+          id="mm-email"
+          required
+          autocomplete="email"
+          class="w-full rounded border px-3 py-2.5 text-sm outline-none focus-visible:ring-2"
+          style="border-color:var(--color-border);color:#002f55;"
+        />
+      </div>
+
+      <div>
+        <label for="mm-name" class="block text-sm font-medium mb-1.5" style="color:#002f55;">
+          Name <span style="color:#de5b00;">*</span>
+        </label>
+        <input
+          type="text"
+          name="FNAME"
+          id="mm-name"
+          required
+          autocomplete="name"
+          class="w-full rounded border px-3 py-2.5 text-sm outline-none focus-visible:ring-2"
+          style="border-color:var(--color-border);color:#002f55;"
+        />
+      </div>
+
+      <div>
+        <label for="mm-country" class="block text-sm font-medium mb-1.5" style="color:#002f55;">
+          Country
+        </label>
+        <input
+          type="text"
+          name="COUNTRY"
+          id="mm-country"
+          autocomplete="country-name"
+          class="w-full rounded border px-3 py-2.5 text-sm outline-none focus-visible:ring-2"
+          style="border-color:var(--color-border);color:#002f55;"
+        />
+      </div>
+
+      {/* Mailchimp audience tag */}
+      <input type="hidden" name="tags" value="5798198" />
+
+      {/* Bot-prevention honeypot — do not remove */}
+      <div aria-hidden="true" style="position:absolute;left:-5000px;">
+        <input type="text" name={MC_HONEYPOT} tabindex="-1" value="" />
+      </div>
+
+      <button
+        type="submit"
+        class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded font-semibold text-sm transition-all hover:shadow-md"
+        style={`background-color:${accent};color:#ffffff;`}
+      >
+        Free Sign Up
+      </button>
+    </form>
+
+    <p class="text-xs mt-4" style="color:var(--color-muted-foreground);">
+      Prefer email? Write to
+      <a href="mailto:equip@jesusonline.com" class="font-semibold hover:underline" style="color:#de5b00;">equip@jesusonline.com</a>
+      and we'll add you to the list.
+    </p>
+  </div>
+</div>

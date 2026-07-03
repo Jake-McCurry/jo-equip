@@ -287,13 +287,14 @@ export const bcgArticles: BcgArticle[] = [
     id: "a-transformational-teaching-church",
     title: "A Transformational Teaching Church",
     description:
-      "Three complementary dimensions of teaching — head, hands, and heart — and the three core truths that produce irreversible heart change in the believers you shepherd.",
+      "Three complementary aspects of teaching — head, hands, and heart — and the three essential truths that produce irreversible heart change in the believers you shepherd.",
     blocks: [
       { type: "figure", src: "bgc4-1", alt: "Opening illustration for A Transformational Teaching Church — equipping believers through God’s Word." },
 
-      { type: "p", html: "The first-century believers were devoted to the apostles’ teaching (Acts 2:42). As a pastor or church leader shepherding your flock, it is wise to reflect on how the Lord equips His people through His Word — calling us not only to know the truth, but to live it out and be transformed by it." },
+      { type: "p", html: "The first-century believers were devoted to the apostles’ teaching (Acts 2:42)." },
+      { type: "p", html: "Scripture calls us not only to know the truth, but to live it out and be transformed by it (cf. John 8:31–32; 17:17; Romans 12:2; 2 Corinthians 3:18; James 1:22–25; 1 John 2:4)." },
       { type: "figure", src: "bgc4-2", alt: "Knowing the truth, living it out, and being transformed by it — the threefold call of Scripture." },
-      { type: "p", html: "There are three distinct and complementary dimensions to teaching:" },
+      { type: "p", html: "There are three distinct and complementary aspects to teaching:" },
 
       { type: "h2", text: "1. Bible Knowledge (The Head)" },
       { type: "p", html: "This is the foundational, verse-by-verse expository teaching that builds a solid understanding of Scripture. It focuses on what the Bible says — its history, context, doctrines, and accurate interpretation. The goal is biblical literacy and doctrinal soundness so that God’s people may <em>“know the truth”</em> (John 8:32)." },
@@ -303,14 +304,14 @@ export const bcgArticles: BcgArticle[] = [
 
       { type: "h2", text: "3. Transformation (The Heart)" },
       { type: "p", html: "This is the deepest and most vital level of biblical teaching. It moves beyond the transmission of information, or even the application of principles, to focus on the foundational core truths of the Gospel that genuinely change the heart and irreversibly transform lives." },
-      { type: "p", html: "Our resources are specifically designed to strengthen this third dimension of teaching — transformation (the Heart)." },
+      { type: "p", html: "Our resources are specifically designed to strengthen the third dimension of teaching: transformation (the Heart)." },
 
-      { type: "h2", text: "3 Core Truths" },
-      { type: "p", html: "The following three truths are the essential content of teaching and the bedrock of discipleship, including Total Life Discipleship." },
+      { type: "h2", text: "3 Essential Truths" },
+      { type: "p", html: "The following three truths are the core content of teaching and the bedrock of discipleship, including Total Life Discipleship." },
       { type: "p", html: "When believers internalize these truths, the Holy Spirit produces irreversible heart change and Christlike maturity. They bring every dimension of life — thoughts, desires, habits, relationships, work, time, resources, and purpose — under the loving lordship of Jesus Christ. The result is not merely informed or active believers, but disciples who are radically transformed from the inside out (Romans 12:2; Galatians 4:19)." },
-      { type: "figure", src: "bgc4-3", alt: "Three core truths — the character of God, our new identity in Christ, and the ministry of the Holy Spirit." },
+      { type: "figure", src: "bgc4-3", alt: "Three essential truths — the character of God, our new identity in Christ, and the ministry of the Holy Spirit." },
 
-      { type: "h3", text: "1. The Character and Nature of God" },
+      { type: "h3", text: "1. The Full Character and Nature of God" },
       { type: "p", html: "Our view of God’s character and attributes shapes everything else in our lives — our worship, our trust, our obedience, and our responses to trials. While God’s attributes are often mentioned in sermons, they are rarely taught as a complete, balanced whole. The result is a fragmented, sometimes distorted image of God." },
       { type: "p", html: "For example, when we elevate His love above His holiness and justice — or any other attribute at the expense of the others — we no longer see the God of Scripture. A true vision of God in all His glory (merciful yet righteous, loving yet sovereign) becomes the foundation for healthy fear of the Lord, deep worship, and transformed living." },
 
@@ -323,8 +324,8 @@ export const bcgArticles: BcgArticle[] = [
       { type: "p", html: "Tragically, many believers have little understanding of the Spirit’s various ministries or how to cooperate with Him daily. Without this knowledge, they are left striving in their own strength — only to experience repeated frustration, burnout, and defeat. Believers must walk by the Spirit, relying on His power and yielding to His leading moment by moment." },
 
       { type: "h2", text: "Head, Hands, and Heart Together" },
-      { type: "p", html: "A transformational teaching church applies all three dimensions of teaching to help believers internalize the three core truths." },
-      { type: "p", html: "By wholistically — head, hands, and heart — teaching God’s people on the full character of God, their new identity in Christ, and the empowering ministry of the Holy Spirit, you can help them break free from sinful habits, develop Christlike character, live in dynamic fellowship with God, and make an eternal impact right where He has placed them." },
+      { type: "p", html: "A transformational teaching church applies the three aspects of teaching to help believers internalize the three essential truths." },
+      { type: "p", html: "By holistically — head, hands, and heart — teaching God’s people about the full character of God, their new identity in Christ, and the empowering ministry of the Holy Spirit, you can help them break free from sinful habits, develop Christlike character, live in a dynamic fellowship with God, and make an eternal impact right where He has placed them." },
       { type: "p", html: "This integrated approach is the very focus of what JesusOnline exists to support." },
 
       { type: "h2", text: "Free JesusOnline Watch → Learn → Live Resources" },

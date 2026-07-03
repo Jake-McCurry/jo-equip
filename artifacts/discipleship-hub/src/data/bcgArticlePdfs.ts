@@ -19,7 +19,7 @@ export const bcgArticlePdfs: Record<string, BcgArticlePdfMeta> = {
   "a-love-demonstrating-relational-church": { bytes: 107766 },
   "a-spirit-dependent-church": { bytes: 89656 },
   "a-total-life-discipleship-church": { bytes: 585550 },
-  "a-transformational-teaching-church": { bytes: 434950 },
+  "a-transformational-teaching-church": { bytes: 434762 },
   "an-attractive-and-inviting-church": { bytes: 111656 },
   "an-intentional-worship-church": { bytes: 112510 },
   "an-online-outreach-church": { bytes: 99279 },

@@ -24,7 +24,7 @@ export const bcgArticlePdfs: Record<string, BcgArticlePdfMeta> = {
   "an-intentional-worship-church": { bytes: 112510 },
   "an-online-outreach-church": { bytes: 99279 },
   "anatomy-of-obedience": { bytes: 383037 },
-  "gods-unique-vision-for-your-church": { bytes: 615457 },
+  "gods-unique-vision-for-your-church": { bytes: 616018 },
 };
 
 export function hasBcgArticlePdf(id: string | undefined | null): boolean {

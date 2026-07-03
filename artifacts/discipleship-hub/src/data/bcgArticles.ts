@@ -65,9 +65,10 @@ export const bcgArticles: BcgArticle[] = [
     blocks: [
       { type: "figure", src: "bgc1-1", alt: "Opening illustration for A Unique Vision for Kingdom-Focused Growth — a faithful shepherd and the flock God has entrusted to him." },
 
-      { type: "p", html: "You are a pastor, a small-group leader, or an elder of a congregation. You have been faithful to the Great Shepherd, feeding and shepherding His sheep. Yet you are not seeing the growth and vitality you long for." },
-      { type: "p", html: "JesusOnline is here to help." },
-      { type: "p", html: "We provide high-quality free media and discipleship resources designed to help you equip the people God has already entrusted to you — so they can fully participate in the missions and ministries for which God designed them." },
+      { type: "p", html: "You are a pastor, a small-group leader, or an elder/leader of a congregation. You have been faithful to the Great Shepherd, feeding and shepherding His sheep. Yet you are not seeing growth and vitality." },
+      { type: "p", html: "God has a unique vision for your church — one that fits your people perfectly and releases fresh growth, life, and Kingdom impact." },
+      { type: "p", html: "JesusOnline Ministries is here to help." },
+      { type: "p", html: "We provide high-quality free media and discipleship resources designed to assist you in equipping God’s people He has already entrusted to you, so that they can fully participate in the missions and ministries for which God has designed them." },
       { type: "figure", src: "bgc1-2", alt: "JesusOnline’s free media and discipleship resources — practical tools to help pastors feed and shepherd their flock." },
 
       { type: "h2", text: "Our Core Philosophy" },
@@ -81,25 +82,25 @@ export const bcgArticles: BcgArticle[] = [
         "Practical discipleship tools that help your people thrive right where God has planted them",
       ]},
 
-      { type: "p", html: "We are confident that when you minister God’s way — equipping saints toward Kingdom maturity to more fully and fruitfully participate in God’s mission — He is faithful to bless the work of your hands." },
+      { type: "p", html: "We are confident that when you minister God’s way — equipping the saints toward Kingdom maturity so they can more fully and fruitfully participate in God’s master plan — He is faithful to bless the work of your hands." },
       { type: "p", html: "Isn’t it reasonable to expect that if you pour yourself into faithful, biblical ministry, the Lord of the Harvest will bring the increase in His perfect timing? After all, making disciples of all nations is His mandate (Matthew 28:19), spiritual multiplication is His strategy (2 Timothy 2:2), and you are His coworker (1 Corinthians 3:9)." },
       { type: "figure", src: "bgc1-3", alt: "The Lord of the Harvest brings the increase in His perfect timing." },
 
       { type: "h2", text: "Let’s Build Christ’s Kingdom Together" },
       { type: "p", html: "If you are a disciple-maker — whether in formal ministry or through informal relationships — and you’re passionate about transformation that results in eternal impact, we’d love to partner with you." },
-      { type: "p", html: "To become any of the churches described in this series is not a program but a process. It involves discipleship, because it requires the changing of individual hearts and the culture of the church by the power of the Holy Spirit." },
-      { type: "p", html: "It is human nature to look at what we consider a successful church or group and try to imitate what they do. While it is wise to learn from one another — and there is certainly a valid strategy in multiplying churches and groups that share common characteristics — God has created your fellowship to be unique." },
-      { type: "p", html: "Just as He has filled the earth with a wide variety of flowers, trees, and birds, He desires His people to reach every segment of society in their own distinct way. Simply copying other churches or groups because you want to be like them will not fulfill the God-given identity and mission of your fellowship." },
+      { type: "p", html: "To become any of the following churches is not a program but a process. It involves discipleship, because it requires the change of individual hearts and the culture of the church by the power of the Holy Spirit." },
+      { type: "p", html: "It is human nature to look at what we consider a successful church or group and try to imitate what they do. While it is wise to learn from one another — and while there is certainly a valid strategy in multiplying churches and groups that share common characteristics — God has created your fellowship to be unique." },
+      { type: "p", html: "Just as He has filled the earth with a wide variety of flowers, trees, and birds, He desires His people to reach every segment of society in their own distinct way. Simply copying other churches or groups because you want to be like them will not fulfill your fellowship’s God-given unique identity and mission." },
       { type: "figure", src: "bgc1-4", alt: "Partnering with pastors and church leaders to strengthen and equip the flock God has entrusted to them." },
 
-      { type: "p", html: "Whether you’re discipling one person or leading discipleship for an entire church — whether you lead a small group or pastor many churches — your labor is a critical element in His plan to advance His Kingdom on earth. Let us help you better equip God’s people for the good works He has prepared for them (Ephesians 2:10)." },
+      { type: "p", html: "Whether you’re discipling one person or leading discipleship for an entire church — whether you are a leader of a small group or a pastor of many churches — your labor is a critical element in His plan to advance His Kingdom on earth. Let us assist you in better equipping God’s people for the good works He has prepared for them (Ephesians 2:10)." },
 
       { type: "h2", text: "Growing Church Models" },
-      { type: "p", html: "Definitions of the church vary, and there are many rich traditions and expressions. In this series of articles, when we use the word “church,” we mean a local gathering of believers called out to be sent out by Jesus. The church is functionally a fellowship — a community on God’s mission." },
+      { type: "p", html: "The definition of the church varies, and there are many rich traditions and expressions. In this series of articles, when we use the word “church,” we are referring to a local gathering of believers called out to be sent out by Jesus. The church is functionally a fellowship — a community on God’s mission." },
       { type: "p", html: "Therefore, the principles and approaches discussed in these church models apply not only to local congregations but also to home churches and to both formal and informal small groups." },
 
       { type: "h2", text: "Ready to go deeper?" },
-      { type: "p", html: "Explore the articles below to see how JesusOnline can help your church become:" },
+      { type: "p", html: "Explore the articles below to see how JesusOnline Ministries can help your church become:" },
       { type: "ul", items: [
         '<a href="/channels/church/become-growing-church/a-jesusonline-equipped-church">A JesusOnline EQUIPPED Church</a>',
         '<a href="/channels/church/become-growing-church/a-total-life-discipleship-church">A Total Life Discipleship Church</a>',

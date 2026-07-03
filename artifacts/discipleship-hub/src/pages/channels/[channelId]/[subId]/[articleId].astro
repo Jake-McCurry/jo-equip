@@ -1,22 +1,25 @@
 ---
 /**
- * Per-article long-form pages for the "Become a Growing Church" sub-topic.
+ * Per-article long-form pages for Church sub-topics with authored content.
  *
  * Route: /channels/<channelId>/<subId>/<articleId>
  *
- * Currently scoped to BCG only — getStaticPaths filters items by
- * `articleId` and looks them up in `bcgArticles`. To add another
- * sub-topic with long-form articles in the future, extend the lookup to
- * route by subId → article source (e.g. a registry map).
+ * Two content sources are supported, resolved by articleId:
+ *   - "Become a Growing Church"  → bcgArticles (may include figures + PDFs)
+ *   - "Bible Study Methods"      → bibleStudyMethods (text-only + PDFs)
+ * Both share the ArticleBlock shape so the body renderer is source-agnostic.
  */
 import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
 import { subTopics, getChannel, getSubTopic } from "@/data/channels";
 import { bcgArticles, getBcgArticle, getNextBcgArticle } from "@/data/bcgArticles";
 import type { ArticleBlock } from "@/data/bcgArticles";
+import { bibleStudyMethods, getBibleStudyMethod, getNextBibleStudyMethod } from "@/data/bibleStudyMethods";
 import { getBcgImage } from "@/data/bcgImages";
+import { hasBcgArticlePdf } from "@/data/bcgArticlePdfs";
+import { hasBsmArticlePdf } from "@/data/bsmArticlePdfs";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
-import { ArrowLeft, ArrowRight, ChevronRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ChevronRight, Download } from "lucide-react";
 
 const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
@@ -24,16 +27,18 @@ const join = (p: string) =>
 
 export function getStaticPaths() {
   /* Walk all sub-topics, emit a path for every item that has an articleId
-     AND a matching entry in bcgArticles. If an articleId is referenced in
-     channels.ts but no article body exists yet, the path is skipped so the
-     build doesn't 404. */
+     AND a matching entry in one of the article sources (bcgArticles or
+     bibleStudyMethods). If an articleId is referenced in channels.ts but no
+     article body exists yet, the path is skipped so the build doesn't 404. */
+  const known = new Set([
+    ...bcgArticles.map(a => a.id),
+    ...bibleStudyMethods.map(a => a.id),
+  ]);
   const paths: { params: { channelId: string; subId: string; articleId: string } }[] = [];
   for (const s of subTopics) {
     if (!s.items) continue;
     for (const item of s.items) {
-      if (!item.articleId) continue;
-      // BCG is the only source for now; tighten this when more sub-topics get articles.
-      if (!bcgArticles.some(a => a.id === item.articleId)) continue;
+      if (!item.articleId || !known.has(item.articleId)) continue;
       paths.push({ params: { channelId: s.channelId, subId: s.id, articleId: item.articleId } });
     }
   }
@@ -43,20 +48,25 @@ export function getStaticPaths() {
 const { channelId, subId, articleId } = Astro.params;
 const channel = getChannel(channelId!);
 const sub = getSubTopic(channelId!, subId!);
-const article = articleId ? getBcgArticle(articleId) : undefined;
+/* Resolve the article from whichever source owns this id. */
+const bcg = articleId ? getBcgArticle(articleId) : undefined;
+const bsm = articleId ? getBibleStudyMethod(articleId) : undefined;
+const article = bcg ?? bsm;
 if (!channel || !sub || !article) return Astro.redirect(join("/channels"));
 
-const nextArticle = getNextBcgArticle(article.id);
-const subItem = sub.items?.find(i => i.articleId === article.id);
+const nextArticle = bcg ? getNextBcgArticle(article.id) : getNextBibleStudyMethod(article.id);
+const pdfHref = bcg
+  ? (hasBcgArticlePdf(article.id) ? join(`/articles/bcg/${article.id}.pdf`) : null)
+  : (hasBsmArticlePdf(article.id) ? join(`/articles/bsm/${article.id}.pdf`) : null);
 
 const SITE = "https://equip.jesusonline.com";
 const articleUrl = `${SITE}/channels/${channel.id}/${sub.id}/${article.id}`;
 
-/* JSON-LD Article schema. `datePublished` is set to the BCG content
-   refresh date (May 2026) and `dateModified` stamps at build time so
-   Google sees freshness on every deploy. publisher links to the
-   JesusOnline Ministries Organization defined on the home page. */
-const DATE_PUBLISHED = "2026-05-18";
+/* JSON-LD Article schema. `datePublished` reflects each source's content
+   date and `dateModified` stamps at build time so Google sees freshness on
+   every deploy. publisher links to the JesusOnline Ministries Organization
+   defined on the home page. */
+const DATE_PUBLISHED = bcg ? "2026-05-18" : "2026-07-02";
 const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
@@ -109,9 +119,16 @@ const metaDescription = plain(article.description);
   </div>
 
   <div class="container mx-auto px-4 py-12 md:py-16 max-w-3xl">
-    <a href={join(`/channels/${channel.id}/${sub.id}`)} class="inline-flex items-center text-sm font-medium mb-8 transition-colors hover:text-primary" style="color:var(--color-muted-foreground);">
-      <ArrowLeft className="w-4 h-4 mr-2" /> Back to {sub.name}
-    </a>
+    <div class="flex items-center justify-between gap-4 flex-wrap mb-8">
+      <a href={join(`/channels/${channel.id}/${sub.id}`)} class="inline-flex items-center text-sm font-medium transition-colors hover:text-primary" style="color:var(--color-muted-foreground);">
+        <ArrowLeft className="w-4 h-4 mr-2" /> Back to {sub.name}
+      </a>
+      {pdfHref && (
+        <a href={pdfHref} download class="inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-md border-2 transition-colors hover:text-white" style={`color:${channel.accentColor};border-color:${channel.accentColor};`} onmouseover={`this.style.backgroundColor='${channel.accentColor}';`} onmouseout="this.style.backgroundColor='transparent';">
+          <Download className="w-4 h-4" /> Download PDF
+        </a>
+      )}
+    </div>
 
     {/* Article body. Block types are author-controlled; html strings are
         rendered with set:html — never pipe untrusted content through this. */}

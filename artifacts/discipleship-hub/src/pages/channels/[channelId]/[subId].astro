@@ -4,6 +4,8 @@ import { Image } from "astro:assets";
 import { subTopics, getChannel, getSubTopic, getSubTopicChildren, getSubTopicsByChannel, getNextSubTopic } from "@/data/channels";
 import { getBookCover } from "@/data/bookCovers";
 import { extractAppSlug, hasArticlePdf } from "@/data/articles";
+import { hasBcgArticlePdf } from "@/data/bcgArticlePdfs";
+import { hasBsmArticlePdf } from "@/data/bsmArticlePdfs";
 import { FileText, Video, Smartphone, ArrowLeft, ArrowRight, ChevronRight } from "lucide-react";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 
@@ -31,9 +33,12 @@ const hasItems = (sub.items?.length ?? 0) > 0;
 const parent = sub.parentId ? getSubTopic(channelId!, sub.parentId) : undefined;
 
 /* Number prefix for child cards: "<parentPos>.<childPos>" e.g. "04.1".
- * parentPos is the parent's 1-based index in the channel's top-level list. */
+ * parentPos is this sub-topic's 1-based index among its own siblings — the
+ * channel's top-level list for a top-level parent, or its parent's children
+ * for a nested parent (avoids "00.x" on grandchild cards). */
 const topLevel = getSubTopicsByChannel(channelId!);
-const parentPos = hasChildren ? topLevel.findIndex(s => s.id === sub.id) + 1 : 0;
+const siblings = sub.parentId ? getSubTopicChildren(sub.parentId) : topLevel;
+const parentPos = hasChildren ? siblings.findIndex(s => s.id === sub.id) + 1 : 0;
 
 /* JSON-LD: CollectionPage with an ItemList of the sub-topic's lesson titles.
    Note: we deliberately do NOT use FAQPage schema here — Google requires
@@ -52,8 +57,8 @@ const subTopicJsonLd = hasItems ? {
   "about": sub.name,
   "mainEntity": {
     "@type": "ItemList",
-    "numberOfItems": sub.items!.length,
-    "itemListElement": sub.items!.map(item => ({
+    "numberOfItems": sub.items!.filter(item => !item.unlisted).length,
+    "itemListElement": sub.items!.filter(item => !item.unlisted).map(item => ({
       "@type": "ListItem",
       "position": item.number,
       "name": item.title,
@@ -195,7 +200,7 @@ function btnClass(enabled: boolean) {
           <div class="mt-2 h-0.5 w-12" style="background-color:#de5b00;"></div>
         </div>
         <ol class="space-y-2">
-          {sub.items!.map(item => {
+          {sub.items!.filter(item => !item.unlisted).map(item => {
             // PDF resolution order (per-item):
             //   1. item.bookId  → curated EQUIP book (with email gate)
             //   2. item.links.pdf  → explicit external override
@@ -207,10 +212,20 @@ function btnClass(enabled: boolean) {
             const articlePdfHref = hasArticlePdf(appArticleSlug)
               ? join(`/articles/${appArticleSlug}.pdf`)
               : undefined;
+            // BCG article items link to their locally generated PDF at
+            // /articles/bcg/<articleId>.pdf (see scripts bcg:pdf).
+            const bcgPdfHref = hasBcgArticlePdf(item.articleId)
+              ? join(`/articles/bcg/${item.articleId}.pdf`)
+              : undefined;
+            // Bible Study Methods article items link to their locally generated
+            // PDF at /articles/bsm/<articleId>.pdf (see scripts bsm:pdf).
+            const bsmPdfHref = hasBsmArticlePdf(item.articleId)
+              ? join(`/articles/bsm/${item.articleId}.pdf`)
+              : undefined;
             const pdfHref = item.bookId
               ? join(`/books?download=${encodeURIComponent(item.bookId)}#${encodeURIComponent(item.bookId)}`)
-              : (item.links?.pdf ?? articlePdfHref);
-            const pdfInternal = !!item.bookId || (!item.links?.pdf && !!articlePdfHref);
+              : (item.links?.pdf ?? bcgPdfHref ?? bsmPdfHref ?? articlePdfHref);
+            const pdfInternal = !!item.bookId || (!item.links?.pdf && (!!bcgPdfHref || !!bsmPdfHref || !!articlePdfHref));
 
             // Video: enabled only when this item has a matching video inside the sub-topic's playlist
             // (or an explicit external `links.video` override). No fallback to the playlist index.
@@ -224,7 +239,8 @@ function btnClass(enabled: boolean) {
             const buttons: { label: string; icon: any; href?: string; internal?: boolean }[] = [
               { label: "PDF", icon: FileText, href: pdfHref, internal: pdfInternal },
               { label: "Video", icon: Video, href: videoHref, internal: videoInternal },
-              { label: "App", icon: Smartphone, href: appHref, internal: false },
+              // App button is omitted for BCG article items (those with an articleId).
+              ...(item.articleId ? [] : [{ label: "App", icon: Smartphone, href: appHref, internal: false }]),
             ];
             // Article: when an item has an articleId, its title is a link
             // to /channels/<channelId>/<subId>/<articleId> (the per-article page).
@@ -247,7 +263,7 @@ function btnClass(enabled: boolean) {
                   <div class="flex flex-wrap gap-1.5">
                     {articleHref && (
                       <a href={articleHref} class={btnClass(true)} style="background-color:#de5b0014;color:#de5b00;border:1px solid #de5b0040;">
-                        <FileText className="w-3 h-3" />Read Article
+                        <FileText className="w-3 h-3" />Read
                       </a>
                     )}
                     {buttons.map(b => {

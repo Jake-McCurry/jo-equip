@@ -1,3 +1,5 @@
+// Playlist catalog for the JO EQUIP discipleship hub.
+// Last reviewed: 2026-06-18.
 export interface PlaylistVideo {
   title: string;
   videoId: string;
@@ -33,9 +35,10 @@ export const playlists: Playlist[] = [
       { title: "Was Jesus a Real Person?", videoId: yt("vQ0Wro-Rgtw") },
       { title: "Did Jesus Rise from the Dead?", videoId: yt("T_78mbFTmYY") },
       { title: "Is Jesus God?", videoId: yt("9pIWZfEAV0I") },
-      { title: "Is Jesus Relevant To You?", videoId: yt("B9ODEIAUVQc") },
       { title: "Who is the Jewish Messiah?", videoId: yt("Jn1M1c9iNfg") },
       { title: "Is There a Jesus Conspiracy?", videoId: yt("kci8WYFedOQ") },
+      { title: "Did Jesus Claim to be God?", videoId: yt("Mg4MrjR6KJU") },
+      { title: "Is Jesus Relevant To You?", videoId: yt("e0jMauxD1Y0") },
     ],
   },
   {
@@ -58,6 +61,7 @@ export const playlists: Playlist[] = [
       { title: "Purpose For Life", videoId: yt("1ngNjwYu83o") },
       { title: "Begin the Relationship", videoId: yt("wzkaO_XIdmY") },
       { title: "Gift of Heaven", videoId: yt("XB7wGTnYeaE") },
+      { title: "Is Jesus Relevant To You?", videoId: yt("e0jMauxD1Y0") },
     ],
   },
   {
@@ -152,6 +156,14 @@ export const playlists: Playlist[] = [
       { title: "Everlasting Lovingkindness", videoId: yt("YxQQqnHaN6E") },
       { title: "God Is Love", videoId: yt("Kd4wxIqjCz8") },
       { title: "Born To Be Loved", videoId: yt("l9zLcyKtZn0") },
+    ],
+  },
+  {
+    id: "5-steps-to-break-destructive-behavior",
+    title: "5 Steps to Break Destructive Behavior",
+    playlistId: "",
+    videos: [
+      { title: "5 Steps to Break Destructive Behavior", videoId: yt("2GRTSDSxjhI") },
     ],
   },
 ];

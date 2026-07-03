@@ -339,12 +339,18 @@ const HEADER_TEMPLATE = `<div></div>`;
    Used to brand a series (e.g. all Joshua Nations sub-topic articles get a
    "Joshua Nations" eyebrow above the title). The slug prefixes below come
    from `artifacts/discipleship-hub/src/data/channels.ts`:
-     - 93660-* → Survey of the Bible
-     - 93621-* → Disciple Making Movement
-     - 93610-* → Rapid Church Planting
-   Keep this list in sync when new Joshua Nations sub-topics are added. */
+     - 93651–93654 → Survey of the Bible (Old Testament)
+     - 93660–93662 → Survey of the Bible (New Testament)
+     - 93621–93624 → Disciple Making Movement (Units 1–4)
+     - 93610-*     → Rapid Church Planting
+   BibleProject (38601-* / 38701-*) is a different ministry and gets NO
+   Joshua Nations eyebrow. Keep this list in sync when new Joshua Nations
+   sub-topics are added. */
 function coverLeadFor(appSlug: string): string | undefined {
-  if (/^936(10|21|60)-/.test(appSlug)) return "Joshua Nations";
+  if (/^93610-/.test(appSlug)) return "Joshua Nations";       // Rapid Church Planting
+  if (/^9362[1-4]-/.test(appSlug)) return "Joshua Nations";   // Disciple Making Movement units 1–4
+  if (/^9365[1-4]-/.test(appSlug)) return "Joshua Nations";   // Survey of the Bible (OT)
+  if (/^9366[0-2]-/.test(appSlug)) return "Joshua Nations";   // Survey of the Bible (NT)
   return undefined;
 }
 

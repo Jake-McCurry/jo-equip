@@ -15,6 +15,13 @@ export interface SubTopicItem {
    * which renders the full long-form article. Items without an articleId are list-only.
    */
   articleId?: string;
+  /**
+   * When true, the item is NOT rendered in the sub-topic's visible list and is
+   * omitted from the ItemList JSON-LD, but its `articleId` still generates a
+   * long-form article page. Use for supporting articles that should only be
+   * reachable via inline links from other articles.
+   */
+  unlisted?: boolean;
   /** Optional per-item external link overrides. */
   links?: {
     pdf?: string;
@@ -152,8 +159,10 @@ export const subTopics: SubTopic[] = [
     description: 'Discover a unique, kingdom-centered vision for church growth.',
     /* Church-growth models (rewritten June 2026 to match the new Become a
        Growing Church source docs). "Anatomy of Obedience" is a supporting
-       article inserted after Total Life Discipleship. Items with an
-       articleId link to per-article pages under
+       article that is intentionally `unlisted` — it does not appear in this
+       visible list, but its article page is still generated and reached only
+       via an inline link inside the Total Life Discipleship article. Items
+       with an articleId link to per-article pages under
        /channels/church/become-growing-church/<articleId>; the final
        Model / Example Church is list-only until its content is written. */
     hideNumbers: true,
@@ -161,16 +170,18 @@ export const subTopics: SubTopic[] = [
       { number: 1,  title: 'A Unique Vision for Kingdom-Focused Growth',     articleId: 'gods-unique-vision-for-your-church' },
       { number: 2,  title: 'A JesusOnline EQUIPPED Church',                  articleId: 'a-jesusonline-equipped-church' },
       { number: 3,  title: 'A Total Life Discipleship Church',               articleId: 'a-total-life-discipleship-church' },
-      { number: 4,  title: 'Anatomy of Obedience',                           articleId: 'anatomy-of-obedience' },
-      { number: 5,  title: 'A Transformational Teaching Church',             articleId: 'a-transformational-teaching-church' },
-      { number: 6,  title: 'A Spirit-dependent Church',                      articleId: 'a-spirit-dependent-church' },
-      { number: 7,  title: 'A Hope-filled Church',                           articleId: 'a-hope-filled-church' },
-      { number: 8,  title: 'A Love-demonstrating Relational Church',         articleId: 'a-love-demonstrating-relational-church' },
-      { number: 9,  title: 'An Intentional Worship Church',                  articleId: 'an-intentional-worship-church' },
-      { number: 10, title: 'A Great Commission Church',                      articleId: 'a-great-commission-church' },
-      { number: 11, title: 'An Online Outreach Church',                      articleId: 'an-online-outreach-church' },
-      { number: 12, title: 'An Attractive and Inviting Church',             articleId: 'an-attractive-and-inviting-church' },
-      { number: 13, title: 'A Model / Example Church' },
+      { number: 4,  title: 'A Transformational Teaching Church',             articleId: 'a-transformational-teaching-church' },
+      { number: 5,  title: 'A Spirit-dependent Church',                      articleId: 'a-spirit-dependent-church' },
+      { number: 6,  title: 'A Hope-filled Church',                           articleId: 'a-hope-filled-church' },
+      { number: 7,  title: 'A Love-demonstrating Relational Church',         articleId: 'a-love-demonstrating-relational-church' },
+      { number: 8,  title: 'An Intentional Worship Church',                  articleId: 'an-intentional-worship-church' },
+      { number: 9,  title: 'A Great Commission Church',                      articleId: 'a-great-commission-church' },
+      { number: 10, title: 'An Online Outreach Church',                      articleId: 'an-online-outreach-church' },
+      { number: 11, title: 'An Attractive and Inviting Church',             articleId: 'an-attractive-and-inviting-church' },
+      { number: 12, title: 'A Model / Example Church' },
+      /* Supporting article — unlisted (see comment above): reachable only via
+         the inline link inside the Total Life Discipleship article. */
+      { number: 99, title: 'Anatomy of Obedience', articleId: 'anatomy-of-obedience', unlisted: true },
     ],
   },
   /* Share Jesus — parent of the three evangelism sub-topics. The children

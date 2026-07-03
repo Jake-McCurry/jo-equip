@@ -32,6 +32,14 @@ export interface BcgArticle {
   /** ~155-char SEO meta description + social card subtitle. */
   description: string;
   blocks: ArticleBlock[];
+  /**
+   * When true, the article is excluded from the BCG prev/next navigation
+   * sequence — no other article links to it via "Next Article", and its own
+   * page shows no next CTA. The page is still generated; it is reachable only
+   * via inline links from other articles (e.g. Anatomy of Obedience is linked
+   * from the Total Life Discipleship article).
+   */
+  unlisted?: boolean;
 }
 
 const REGISTER_CTA: ArticleBlock = {
@@ -236,6 +244,9 @@ export const bcgArticles: BcgArticle[] = [
   {
     id: "anatomy-of-obedience",
     title: "Anatomy of Obedience",
+    // Supporting article: excluded from the BCG list + prev/next nav; reachable
+    // only via the inline link inside the Total Life Discipleship article.
+    unlisted: true,
     description:
       "Why does obedience matter if we are saved by grace? The anatomy of biblical obedience — knowledge, motivation, and methodology — and how healthy discipleship balances all three.",
     blocks: [
@@ -679,10 +690,16 @@ export function getBcgArticle(id: string): BcgArticle | undefined {
   return bcgArticles.find(a => a.id === id);
 }
 
-/** Returns the next published BCG article (the one right after `id`), wrapping to first. */
+/**
+ * Returns the next published BCG article (the one right after `id`), wrapping to
+ * first. `unlisted` articles are excluded from the sequence: they are never
+ * returned as a "next" target, and asking for the next of an unlisted article
+ * returns undefined (so its page shows no next CTA — it is inline-link-only).
+ */
 export function getNextBcgArticle(id: string): BcgArticle | undefined {
-  if (bcgArticles.length < 2) return undefined;
-  const idx = bcgArticles.findIndex(a => a.id === id);
+  const listed = bcgArticles.filter(a => !a.unlisted);
+  if (listed.length < 2) return undefined;
+  const idx = listed.findIndex(a => a.id === id);
   if (idx === -1) return undefined;
-  return bcgArticles[(idx + 1) % bcgArticles.length];
+  return listed[(idx + 1) % listed.length];
 }

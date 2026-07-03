@@ -57,8 +57,8 @@ const subTopicJsonLd = hasItems ? {
   "about": sub.name,
   "mainEntity": {
     "@type": "ItemList",
-    "numberOfItems": sub.items!.length,
-    "itemListElement": sub.items!.map(item => ({
+    "numberOfItems": sub.items!.filter(item => !item.unlisted).length,
+    "itemListElement": sub.items!.filter(item => !item.unlisted).map(item => ({
       "@type": "ListItem",
       "position": item.number,
       "name": item.title,
@@ -200,7 +200,7 @@ function btnClass(enabled: boolean) {
           <div class="mt-2 h-0.5 w-12" style="background-color:#de5b00;"></div>
         </div>
         <ol class="space-y-2">
-          {sub.items!.map(item => {
+          {sub.items!.filter(item => !item.unlisted).map(item => {
             // PDF resolution order (per-item):
             //   1. item.bookId  → curated EQUIP book (with email gate)
             //   2. item.links.pdf  → explicit external override

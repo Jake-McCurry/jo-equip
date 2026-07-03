@@ -65,9 +65,10 @@ export const bcgArticles: BcgArticle[] = [
     blocks: [
       { type: "figure", src: "bgc1-1", alt: "Opening illustration for A Unique Vision for Kingdom-Focused Growth — a faithful shepherd and the flock God has entrusted to him." },
 
-      { type: "p", html: "You are a pastor, a small-group leader, or an elder of a congregation. You have been faithful to the Great Shepherd, feeding and shepherding His sheep. Yet you are not seeing the growth and vitality you long for." },
-      { type: "p", html: "JesusOnline is here to help." },
-      { type: "p", html: "We provide high-quality free media and discipleship resources designed to help you equip the people God has already entrusted to you — so they can fully participate in the missions and ministries for which God designed them." },
+      { type: "p", html: "You are a pastor, a small-group leader, or an elder/leader of a congregation. You have been faithful to the Great Shepherd, feeding and shepherding His sheep. Yet you are not seeing growth and vitality." },
+      { type: "p", html: "God has a unique vision for your church — one that fits your people perfectly and releases fresh growth, life, and Kingdom impact." },
+      { type: "p", html: "JesusOnline Ministries is here to help." },
+      { type: "p", html: "We provide high-quality free media and discipleship resources designed to assist you in equipping God’s people He has already entrusted to you, so that they can fully participate in the missions and ministries for which God has designed them." },
       { type: "figure", src: "bgc1-2", alt: "JesusOnline’s free media and discipleship resources — practical tools to help pastors feed and shepherd their flock." },
 
       { type: "h2", text: "Our Core Philosophy" },
@@ -81,25 +82,25 @@ export const bcgArticles: BcgArticle[] = [
         "Practical discipleship tools that help your people thrive right where God has planted them",
       ]},
 
-      { type: "p", html: "We are confident that when you minister God’s way — equipping saints toward Kingdom maturity to more fully and fruitfully participate in God’s mission — He is faithful to bless the work of your hands." },
+      { type: "p", html: "We are confident that when you minister God’s way — equipping the saints toward Kingdom maturity so they can more fully and fruitfully participate in God’s master plan — He is faithful to bless the work of your hands." },
       { type: "p", html: "Isn’t it reasonable to expect that if you pour yourself into faithful, biblical ministry, the Lord of the Harvest will bring the increase in His perfect timing? After all, making disciples of all nations is His mandate (Matthew 28:19), spiritual multiplication is His strategy (2 Timothy 2:2), and you are His coworker (1 Corinthians 3:9)." },
       { type: "figure", src: "bgc1-3", alt: "The Lord of the Harvest brings the increase in His perfect timing." },
 
       { type: "h2", text: "Let’s Build Christ’s Kingdom Together" },
       { type: "p", html: "If you are a disciple-maker — whether in formal ministry or through informal relationships — and you’re passionate about transformation that results in eternal impact, we’d love to partner with you." },
-      { type: "p", html: "To become any of the churches described in this series is not a program but a process. It involves discipleship, because it requires the changing of individual hearts and the culture of the church by the power of the Holy Spirit." },
-      { type: "p", html: "It is human nature to look at what we consider a successful church or group and try to imitate what they do. While it is wise to learn from one another — and there is certainly a valid strategy in multiplying churches and groups that share common characteristics — God has created your fellowship to be unique." },
-      { type: "p", html: "Just as He has filled the earth with a wide variety of flowers, trees, and birds, He desires His people to reach every segment of society in their own distinct way. Simply copying other churches or groups because you want to be like them will not fulfill the God-given identity and mission of your fellowship." },
+      { type: "p", html: "To become any of the following churches is not a program but a process. It involves discipleship, because it requires the change of individual hearts and the culture of the church by the power of the Holy Spirit." },
+      { type: "p", html: "It is human nature to look at what we consider a successful church or group and try to imitate what they do. While it is wise to learn from one another — and while there is certainly a valid strategy in multiplying churches and groups that share common characteristics — God has created your fellowship to be unique." },
+      { type: "p", html: "Just as He has filled the earth with a wide variety of flowers, trees, and birds, He desires His people to reach every segment of society in their own distinct way. Simply copying other churches or groups because you want to be like them will not fulfill your fellowship’s God-given unique identity and mission." },
       { type: "figure", src: "bgc1-4", alt: "Partnering with pastors and church leaders to strengthen and equip the flock God has entrusted to them." },
 
-      { type: "p", html: "Whether you’re discipling one person or leading discipleship for an entire church — whether you lead a small group or pastor many churches — your labor is a critical element in His plan to advance His Kingdom on earth. Let us help you better equip God’s people for the good works He has prepared for them (Ephesians 2:10)." },
+      { type: "p", html: "Whether you’re discipling one person or leading discipleship for an entire church — whether you are a leader of a small group or a pastor of many churches — your labor is a critical element in His plan to advance His Kingdom on earth. Let us assist you in better equipping God’s people for the good works He has prepared for them (Ephesians 2:10)." },
 
       { type: "h2", text: "Growing Church Models" },
-      { type: "p", html: "Definitions of the church vary, and there are many rich traditions and expressions. In this series of articles, when we use the word “church,” we mean a local gathering of believers called out to be sent out by Jesus. The church is functionally a fellowship — a community on God’s mission." },
+      { type: "p", html: "The definition of the church varies, and there are many rich traditions and expressions. In this series of articles, when we use the word “church,” we are referring to a local gathering of believers called out to be sent out by Jesus. The church is functionally a fellowship — a community on God’s mission." },
       { type: "p", html: "Therefore, the principles and approaches discussed in these church models apply not only to local congregations but also to home churches and to both formal and informal small groups." },
 
       { type: "h2", text: "Ready to go deeper?" },
-      { type: "p", html: "Explore the articles below to see how JesusOnline can help your church become:" },
+      { type: "p", html: "Explore the articles below to see how JesusOnline Ministries can help your church become:" },
       { type: "ul", items: [
         '<a href="/channels/church/become-growing-church/a-jesusonline-equipped-church">A JesusOnline EQUIPPED Church</a>',
         '<a href="/channels/church/become-growing-church/a-total-life-discipleship-church">A Total Life Discipleship Church</a>',
@@ -128,16 +129,24 @@ export const bcgArticles: BcgArticle[] = [
     blocks: [
       { type: "figure", src: "bgc2-1", alt: "Opening illustration for A JesusOnline EQUIPPED Church — the many hats a small-church pastor wears." },
 
-      { type: "p", html: "If you are a pastor or leader of a small church, you carry a unique load of responsibilities. You wear multiple hats every single week, often with limited resources and little to no staff support. You may even work at another job just to make ends meet — while still being expected to preach, counsel, visit, lead, and manage the church." },
+      { type: "p", html: "If you are a pastor of a small church, you carry a unique load of responsibilities. You wear multiple hats every single week, often with limited resources and little to no support staff. You may even work at another job to make ends meet — while still being expected to preach, counsel, visit, lead, and manage the church." },
       { type: "p", html: "You’re frequently swamped with day-to-day survival tasks, leaving little time or energy for the bigger vision God has given you. On top of that, attempts to try new things are sometimes met with resistance from well-meaning members who prefer to keep doing things “the way we’ve always done them.” Reaching new generations and adapting to cultural shifts can feel nearly impossible." },
       { type: "figure", src: "bgc2-2", alt: "The weight of small-church ministry — survival tasks, resistance to change, and the challenge of reaching new generations." },
 
-      { type: "p", html: "JesusOnline is here to come alongside you. And there are no fees or hidden costs. What we offer is totally free." },
-      { type: "p", html: "We don’t offer trendy church-growth formulas or worldly success strategies. Instead, we provide high-quality, free media and discipleship resources created specifically to help you faithfully equip the flock God has entrusted to you." },
+      { type: "p", html: "JesusOnline Ministries is here to come alongside you. And there are no fees or hidden costs. What we offer is totally free." },
+      { type: "p", html: "We provide high-quality, free media and discipleship resources created specifically to assist you in faithfully equipping the flock God has entrusted to you." },
       { type: "figure", src: "bgc2-3", alt: "Totally free, high-quality media and discipleship resources for the local church." },
 
       { type: "p", html: "<strong>JO EQUIP</strong> is a free digital library of practical discipleship tools for pastors and disciple-makers — carefully organized into three mission-driven channels so you can find exactly what you need, when you need it." },
-      { type: "p", html: "JesusOnline offers free <em>Watch → Learn → Live</em> resources to strengthen engagement, depth, and retention in your ministry. You can use them for your Sunday message, your Bible study, or your discipleship ministry." },
+      { type: "p", html: "JesusOnline offers free <em>Watch → Learn → Live</em> resources to strengthen engagement, depth, and retention in your ministry." },
+
+      { type: "h3", text: "1. Watch" },
+      { type: "p", html: "Open your message with a powerful, well-crafted video clip. Short, high-impact videos set the emotional tone, provide an overview of the message, and draw people in immediately — even those who may be distracted or visiting for the first time. Perfect for sermon introductions, youth groups, or small-group discussions." },
+      { type: "h3", text: "2. Learn" },
+      { type: "p", html: "Weave insightful articles and written resources into your sermon preparation and Bible studies. Draw from fresh biblical perspectives, credible scholarship, and practical insights that add depth and authority to your messages. Whether you’re preaching on core doctrines or everyday Christian living, these tools help you connect Scripture to real life with greater clarity and impact." },
+      { type: "h3", text: "3. Live" },
+      { type: "p", html: "End your message by simply sharing the JesusOnline app (app.jesusonline.com) or its QR code. This gives your people an easy, ongoing way to review the sermon, reflect on the key truths, complete related Bible studies or devotionals, and actually apply what they’ve heard long after they leave the service. Many pastors use the app to extend the impact of their teaching week after week." },
+      { type: "p", html: "You can use our resources for your Sunday message, your Bible study, or your discipleship ministry." },
       { type: "figure", src: "bgc2-4", alt: "The Watch → Learn → Live model — short videos, deeper teaching articles, and practical life application." },
 
       { type: "h2", text: "Sunday Messages" },
@@ -174,11 +183,44 @@ export const bcgArticles: BcgArticle[] = [
 
       { type: "h2", text: "Discipleship Ministry" },
       { type: "p", html: "Our resource materials in the Church channel are both Spirit-led and strategically organized to help you strengthen your ministry." },
-      { type: "p", html: 'If you’d like to develop or improve your discipleship ministry, we offer free coaching — just <a href="mailto:equip@jesusonline.com">email us at equip@jesusonline.com</a> for more information.' },
-
+      { type: "p", html: 'If you’re looking to develop or improve your discipleship ministry, we offer free coaching — contact Pastor Jonathan for more information (<a href="mailto:equip@jesusonline.com">equip@jesusonline.com</a>).' },
       { type: "p", html: "All resources are completely free, mobile-friendly, and thoughtfully created with the real challenges of small-church ministry in mind." },
-      { type: "p", html: "All we ask in return is that you identify your church as a JesusOnline EQUIPPED church. This simple acknowledgment lets you freely use our videos, articles, and app links with our full permission. When people see the JesusOnline logo at the end of a video — or notice the resources you’re sharing — they’ll know you’re part of this ministry partnership." },
-      { type: "p", html: 'Ready to get started? Visit <a href="/">JO EQUIP</a> today and explore the channels. We’d love to partner with you. Let’s build Christ’s kingdom together — one faithful church at a time.' },
+
+      { type: "h2", text: "Three Dedicated Channels to Support Your Ministry" },
+      { type: "p", html: '<strong><a href="/channels/evidence">Evidence resources</a></strong> help skeptics and doubters in your congregation (or community) encounter compelling reasons for faith. Topics include:' },
+      { type: "ul", items: [
+        "Jesus’ true identity",
+        "The existence of God",
+        "The reliability of the Bible",
+      ]},
+      { type: "p", html: "Use these for apologetics sermons, seeker-friendly services, or one-on-one conversations." },
+      { type: "p", html: '<strong><a href="/channels/growth">Growth resources</a></strong> build mature, fruitful disciples in your church. Extensive tools cover:' },
+      { type: "ul", items: [
+        "Bible study",
+        "Devotionals",
+        "Prayer guides",
+        "Worship",
+        "Experiencing God 24/7",
+        "Laying a solid foundation",
+        "Building blocks for maturity",
+        "Attitude and behavior",
+        "Godly relationships",
+      ]},
+      { type: "p", html: "Ideal for small groups, discipleship classes, mentoring, and personal spiritual formation." },
+      { type: "p", html: '<strong><a href="/channels/church">Church resources</a></strong> multiply disciples and strengthen your church’s health and mission. Practical materials cover:' },
+      { type: "ul", items: [
+        "Making and multiplying disciples",
+        "Total life discipleship core principles",
+        "Becoming a growing church",
+        "Understanding evangelism and sharing your faith",
+        "Next steps for new believers",
+        "Rapid church planting and disciple-making movements",
+        "Survey of the Bible and Bible training curriculum",
+      ]},
+      { type: "p", html: "Great for leadership training, outreach planning, and developing a disciple-making culture." },
+      { type: "p", html: "All of these resources are high-quality and designed with small-church realities in mind. Whether you’re preparing a sermon, equipping leaders, discipling new believers, or reaching your community, JO EQUIP and the JesusOnline app are here to lighten your load and multiply your impact — without adding to your budget or administrative burden." },
+      { type: "p", html: "You focus on what only you can do as the shepherd of your flock. Let us help equip the saints for the work of ministry." },
+      { type: "p", html: 'Ready to get started? Visit <a href="/">JO EQUIP</a> today and explore the channels.' },
       REGISTER_CTA,
       { type: "figure", src: "bgc2-7", alt: "Closing illustration — partnering together to build Christ’s kingdom." },
     ],
@@ -477,7 +519,8 @@ export const bcgArticles: BcgArticle[] = [
       { type: "p", html: "<em>Note: This article is written primarily with churches in the Western world in mind. However, the biblical truths it presents apply to all congregations, in every cultural context. We strongly encourage you to thoughtfully adapt and apply these principles to your own local situation and culture.</em>" },
 
       { type: "h2", text: "Worship Through Music" },
-      { type: "p", html: "Music is one of the primary ways we exalt God during corporate worship. King David identified himself as “Israel’s beloved singer of songs” (2 Samuel 23:1) and brought organized music — especially instrumental music and structured choral worship — into the formal worship of Yahweh." },
+      { type: "p", html: "Music is one of the primary ways we exalt God during corporate worship services." },
+      { type: "p", html: "King David identified himself as “Israel’s beloved singer of songs” (2 Samuel 23:1) and brought organized music — especially instrumental music and structured choral worship — into the formal worship of Yahweh." },
       { type: "p", html: "Music is powerful because it is the language of our hearts. It stirs the heart, unites the congregation, and lifts our collective voice toward heaven. The melody and instrumentation move and engage us, while the lyrics convey their message. So we must ask: are the words of the songs we sing acceptable in the sight of the LORD (cf. Psalm 19:14)? An intentional worship church is deliberate about selecting and singing songs that are rich in biblical truth, theologically sound, and vertically focused on God." },
 
       { type: "h2", text: "Core Principle: God Must Remain the Focal Point" },
@@ -653,21 +696,27 @@ export const bcgArticles: BcgArticle[] = [
       { type: "p", html: "At the heart of it all, church shoppers are not primarily seeking perfection or entertainment. They desire a place to encounter God, form meaningful relationships, and grow spiritually within a welcoming community. Churches that combine solid biblical teaching with sincere love and practicality bear lasting fruit." },
 
       { type: "h2", text: "What Can a Small Church Do to Be Attractive?" },
-      { type: "p", html: "Smaller congregations may lack extensive resources, yet they possess unique strengths — intimacy, intergenerational fellowship, and the opportunity to live out the biblical vision of the church as God’s family (Ephesians 2:19; 4:11–16). With prayerful intention, even modest adjustments can communicate care and create space for the Holy Spirit’s work." },
+      { type: "p", html: "Smaller congregations may lack extensive resources, yet they possess unique strengths — intimacy, intergenerational fellowship, and the opportunity to live out the biblical vision of the church as God’s family (Ephesians 2:19; 4:11–16). The “cover” of first impressions does influence whether someone opens the pages of your life together. With prayerful intention, even modest adjustments can communicate care and create space for the Holy Spirit’s work." },
 
       { type: "h3", text: "Sanctuary Impressions" },
-      { type: "p", html: "The first moments upon entering matter profoundly. Are visitors greeted with genuine smiles and helpfulness, feeling seen yet not overwhelmed? Many small churches have sanctuaries built for larger crowds than currently attend, and a mostly empty room can feel discouraging. Consider creative rearrangements: remove excess pews or chairs, or set out round tables seating five to eight with chairs primarily facing the platform. Space that appears comfortably occupied creates a warmer, fuller impression and naturally fosters interaction during prayer or discussion." },
+      { type: "p", html: "The first moments upon entering matter profoundly. Are visitors greeted with genuine smiles and helpfulness, feeling seen yet not overwhelmed? Many small churches have sanctuaries built for larger crowds than currently attend, and a mostly empty room can feel discouraging. Consider creative rearrangements: remove excess pews or chairs, or set out round tables seating five to eight with chairs primarily facing the platform. This provides room for Bibles, notes, or a cup of coffee. Space that appears comfortably occupied creates a warmer, fuller impression and naturally fosters interaction during prayer or discussion." },
 
       { type: "h3", text: "The Centrality of Preaching and Teaching" },
       { type: "p", html: "Surveys confirm that transformational insight in the message carries far greater weight than the delivery skill of the messenger. Substance — clear biblical truth, practical application, and Spirit-empowered challenge — builds committed disciples. Delivery serves the message: enthusiasm, clarity, vocal variety, eye contact, and relatable illustrations help profound truths land effectively." },
-      { type: "p", html: "Aim for balance — roughly 80% content and 20% delivery. Pastors can grow by recording sermons, seeking honest feedback, and prioritizing authenticity over performance. The goal remains encountering God and seeing lives transformed, not merely impressing with words." },
+      { type: "p", html: "Aim for balance — roughly 80% content and 20% delivery. Passion for Scripture naturally enhances communication. Pastors can grow by recording sermons, seeking honest feedback, and prioritizing authenticity over performance. For newcomers, engaging delivery aids initial connection; for all, faithful exposition that meets real needs leads to lasting change. The goal remains encountering God and seeing lives transformed, not merely impressing with words." },
 
       { type: "h3", text: "Welcoming Families and Children" },
       { type: "p", html: "The absence of a dedicated children’s program need not hinder hospitality. Many vibrant small churches view this as an opportunity for authentic intergenerational discipleship." },
       { type: "ul", items: [
-        "<strong>Cultivate a culture of grace.</strong> Publicly affirm that children are a blessing and that their sounds and movements are welcomed as part of family worship.",
+        "<strong>Cultivate a culture of grace.</strong> Publicly affirm that children are a blessing and that their sounds and movements are welcomed as part of family worship. This reassures parents and signals belonging.",
         "<strong>Train the congregation.</strong> Encourage older saints especially to respond with patience and joy — offering smiles, quiet help, or sitting near families as an expression of Christ’s love for the little ones (Matthew 19:14).",
-        "<strong>Offer practical supports.</strong> Prepare simple “busy bags” with crayons and sermon-related coloring sheets; incorporate brief children’s moments; reserve flexible seating near the front or sides for families; and preach accessibly, using illustrations that speak to all ages.",
+      ]},
+      { type: "p", html: "Practical supports include:" },
+      { type: "ul", items: [
+        "Prepare simple “busy bags” with crayons, sermon-related coloring sheets, or quiet activities.",
+        "Incorporate brief children’s moments, object lessons, or invitations for kids to participate in singing, Scripture reading, or prayer.",
+        "Reserve flexible seating near the front or sides for families, perhaps with a quiet corner or cry room.",
+        "Preach accessibly, using illustrations that speak to all ages and occasionally addressing children directly.",
       ]},
 
       { type: "h2", text: "A Hopeful Conclusion" },

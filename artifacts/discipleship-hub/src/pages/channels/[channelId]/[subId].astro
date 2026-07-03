@@ -8,6 +8,7 @@ import { hasBcgArticlePdf } from "@/data/bcgArticlePdfs";
 import { hasBsmArticlePdf } from "@/data/bsmArticlePdfs";
 import { FileText, Video, Smartphone, ArrowLeft, ArrowRight, ChevronRight } from "lucide-react";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
+import MakeMultiplyNewsletter from "@/components/MakeMultiplyNewsletter.astro";
 
 const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
@@ -28,6 +29,11 @@ const next = getNextSubTopic(channelId!, subId!);
 const children = getSubTopicChildren(sub.id);
 const hasChildren = children.length > 0;
 const hasItems = (sub.items?.length ?? 0) > 0;
+
+/* The Make & Multiply Disciples Newsletter sub-topic renders a dedicated
+ * landing page (intro + "each issue features" + Mailchimp signup form)
+ * instead of the standard items/empty layout. */
+const isNewsletter = sub.id === "make-multiply-disciples-newsletter";
 
 /* For child sub-topics, surface the parent in the breadcrumb (Channels > Church > Share Jesus > Year 1). */
 const parent = sub.parentId ? getSubTopic(channelId!, sub.parentId) : undefined;
@@ -132,7 +138,9 @@ function btnClass(enabled: boolean) {
       <ArrowLeft className="w-4 h-4 mr-2" /> Back to {channel.name}
     </a>
 
-    {hasChildren ? (
+    {isNewsletter ? (
+      <MakeMultiplyNewsletter accent={channel.accentColor} />
+    ) : hasChildren ? (
       <>
         <div class="mb-6 pb-4 border-b" style="border-color:var(--color-border);">
           <h2 class="text-2xl" style="color:#002f55;">Topics</h2>

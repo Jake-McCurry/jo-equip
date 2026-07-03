@@ -24,6 +24,7 @@ import { resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import { spawnSync } from "node:child_process";
 import puppeteer, { type Browser } from "puppeteer";
+import { END_PAGE_CSS, END_PAGE_HTML } from "./pdfEndPage";
 
 /* Local mirror of the BcgArticle/ArticleBlock shapes from
    artifacts/discipleship-hub/src/data/bcgArticles.ts. Duplicated (rather than
@@ -256,6 +257,7 @@ function renderTemplate({ title, bodyHtml, sourceUrl }: { title: string; bodyHtm
   .article figcaption {
     font-size: 9.5pt; color: #6b7280; text-align: center; margin-top: 0.3em;
   }
+${END_PAGE_CSS}
 </style>
 </head>
 <body>
@@ -280,6 +282,7 @@ function renderTemplate({ title, bodyHtml, sourceUrl }: { title: string; bodyHtm
     <h1>${escTitle}</h1>
     ${bodyHtml}
   </section>
+${END_PAGE_HTML}
 </body>
 </html>`;
 }

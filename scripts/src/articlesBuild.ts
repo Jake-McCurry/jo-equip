@@ -29,6 +29,7 @@ import { readFileSync, writeFileSync, existsSync, mkdirSync, statSync } from "no
 import { resolve } from "node:path";
 import { spawnSync } from "node:child_process";
 import puppeteer, { type Browser } from "puppeteer";
+import { END_PAGE_CSS, END_PAGE_HTML } from "./pdfEndPage";
 
 /* Resolve a Chromium binary. Puppeteer's bundled-Chrome installer fails in
    this sandbox (unzip segfault, glibc mismatch), so we depend on the
@@ -298,6 +299,7 @@ function renderTemplate({
   .article hr {
     border: 0; border-top: 1px solid #e5e7eb; margin: 1.4em 0;
   }
+${END_PAGE_CSS}
 </style>
 </head>
 <body>
@@ -322,6 +324,7 @@ function renderTemplate({
     <h1>${escTitle}</h1>
     ${bodyHtml}
   </section>
+${END_PAGE_HTML}
 </body>
 </html>`;
 }

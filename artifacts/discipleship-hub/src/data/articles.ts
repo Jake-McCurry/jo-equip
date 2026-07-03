@@ -15,7 +15,7 @@ export interface ArticlePdfMeta {
 }
 
 export const articlePdfs: Record<string, ArticlePdfMeta> = {
-  "20010-experiencing-god-24-7": { title: "Experiencing God 24/7 Overview", bytes: 110827, modified: "2023-11-02T22:33:42" },
+  "20010-experiencing-god-24-7": { title: "Experiencing God 24/7 Overview", bytes: 135242, modified: "2023-11-02T22:33:42" },
   "20011-quiet-time-with-god": { title: "Quiet Time with God", bytes: 117435, modified: "2023-11-07T19:42:04" },
   "20012-activity-time-with-god": { title: "Activity Time with God", bytes: 112819, modified: "2023-11-02T17:58:21" },
   "20013-family-time-with-god": { title: "Family Time with God", bytes: 108986, modified: "2023-11-02T18:02:23" },

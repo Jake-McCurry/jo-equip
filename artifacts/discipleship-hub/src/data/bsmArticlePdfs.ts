@@ -15,7 +15,7 @@ export interface BsmArticlePdfMeta {
 export const bsmArticlePdfs: Record<string, BsmArticlePdfMeta> = {
   "bible-recap": { bytes: 97236 },
   "inductive-bible-study": { bytes: 94690 },
-  "soap-method": { bytes: 88401 },
+  "soap-method": { bytes: 122926 },
   "topical-bible-study": { bytes: 95710 },
 };
 

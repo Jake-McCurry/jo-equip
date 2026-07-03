@@ -25,6 +25,7 @@ import { resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import { spawnSync } from "node:child_process";
 import puppeteer, { type Browser } from "puppeteer";
+import { END_PAGE_CSS, END_PAGE_HTML } from "./pdfEndPage";
 
 /* Local mirror of the ArticleBlock/BibleStudyMethodArticle shapes from
    artifacts/discipleship-hub/src/data/bibleStudyMethods.ts. Duplicated (rather
@@ -231,6 +232,7 @@ function renderTemplate({ title, bodyHtml, sourceUrl }: { title: string; bodyHtm
     display: block; margin-top: 0.4em; font-style: normal;
     font-size: 9.5pt; color: #6b7280;
   }
+${END_PAGE_CSS}
 </style>
 </head>
 <body>
@@ -255,6 +257,7 @@ function renderTemplate({ title, bodyHtml, sourceUrl }: { title: string; bodyHtm
     <h1>${escTitle}</h1>
     ${bodyHtml}
   </section>
+${END_PAGE_HTML}
 </body>
 </html>`;
 }

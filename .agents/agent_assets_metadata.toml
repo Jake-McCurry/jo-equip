@@ -11,3 +11,9 @@ id = "yt95SH6ZvnNSC8vmX9t3T"
 uri = "file://artifacts/discipleship-hub/public/articles/20011-quiet-time-with-god.pdf"
 type = "pdf"
 title = "Updated branding sample"
+
+[[outputs]]
+id = "odZSPunTOsUebMkSkfuda"
+uri = "file://.local/video-content-matches.md"
+type = "text"
+title = "Video → Written Content — Match Proof List"

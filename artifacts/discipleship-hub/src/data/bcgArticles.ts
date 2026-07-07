@@ -673,6 +673,11 @@ export const bcgArticles: BcgArticle[] = [
   {
     id: "an-attractive-and-inviting-church",
     title: "An Attractive and Inviting Church",
+    /* Unlisted July 2026: the Church sheet v.062526 split this into two list
+       items (Attractive Church / Inviting Church) whose replacement articles
+       are pending. Page stays reachable at its original URL (and PDF) but is
+       excluded from prev/next navigation. */
+    unlisted: true,
     description:
       "What draws a newcomer to return? The factors “church shoppers” prioritize — and practical, grace-filled ways a small church can remove barriers so people encounter the living God.",
     blocks: [

@@ -163,28 +163,38 @@ export const subTopics: SubTopic[] = [
     channelId: 'church',
     name: 'Become a Growing Church',
     description: 'Discover a unique, kingdom-centered vision for church growth.',
-    /* Church-growth models (rewritten June 2026 to match the new Become a
-       Growing Church source docs). "Anatomy of Obedience" is a supporting
-       article that is intentionally `unlisted` — it does not appear in this
-       visible list, but its article page is still generated and reached only
-       via an inline link inside the Total Life Discipleship article. Items
-       with an articleId link to per-article pages under
-       /channels/church/become-growing-church/<articleId>; the final
-       Model / Example Church is list-only until its content is written. */
+    /* Church-growth models. Titles follow the Church sheet v.062526 (July 2026):
+       leading "A/An" dropped, item 1 renamed "God's Unique Vision for
+       Kingdom-focused Growth", and the former combined "An Attractive and
+       Inviting Church" split into two list items (11 Attractive / 12 Inviting)
+       whose replacement articles are pending — until they land, the combined
+       article stays reachable as an `unlisted` entry so its URL + PDF keep
+       working. "Anatomy of Obedience" is likewise a supporting article that is
+       intentionally `unlisted` — it does not appear in this visible list, but
+       its article page is still generated and reached only via an inline link
+       inside the Total Life Discipleship article. Items with an articleId link
+       to per-article pages under
+       /channels/church/become-growing-church/<articleId>; Inviting Church and
+       Model/Example Church are list-only until their content is written. */
     hideNumbers: true,
     items: [
-      { number: 1,  title: 'A Unique Vision for Kingdom-Focused Growth',     articleId: 'gods-unique-vision-for-your-church' },
-      { number: 2,  title: 'A JesusOnline EQUIPPED Church',                  articleId: 'a-jesusonline-equipped-church' },
-      { number: 3,  title: 'A Total Life Discipleship Church',               articleId: 'a-total-life-discipleship-church' },
-      { number: 4,  title: 'A Transformational Teaching Church',             articleId: 'a-transformational-teaching-church' },
-      { number: 5,  title: 'A Spirit-dependent Church',                      articleId: 'a-spirit-dependent-church' },
-      { number: 6,  title: 'A Hope-filled Church',                           articleId: 'a-hope-filled-church' },
-      { number: 7,  title: 'A Love-demonstrating Relational Church',         articleId: 'a-love-demonstrating-relational-church' },
-      { number: 8,  title: 'An Intentional Worship Church',                  articleId: 'an-intentional-worship-church' },
-      { number: 9,  title: 'A Great Commission Church',                      articleId: 'a-great-commission-church' },
-      { number: 10, title: 'An Online Outreach Church',                      articleId: 'an-online-outreach-church' },
-      { number: 11, title: 'An Attractive and Inviting Church',             articleId: 'an-attractive-and-inviting-church' },
-      { number: 12, title: 'A Model / Example Church' },
+      { number: 1,  title: "God's Unique Vision for Kingdom-focused Growth", articleId: 'gods-unique-vision-for-your-church' },
+      { number: 2,  title: 'JesusOnline EQUIPPED Church',                    articleId: 'a-jesusonline-equipped-church' },
+      { number: 3,  title: 'Total Life Discipleship Church',                 articleId: 'a-total-life-discipleship-church' },
+      { number: 4,  title: 'Transformational Teaching Church',               articleId: 'a-transformational-teaching-church' },
+      { number: 5,  title: 'Spirit-dependent Church',                        articleId: 'a-spirit-dependent-church' },
+      { number: 6,  title: 'Hope-filled Church',                             articleId: 'a-hope-filled-church' },
+      { number: 7,  title: 'Love-demonstrating Relational Church',           articleId: 'a-love-demonstrating-relational-church' },
+      { number: 8,  title: 'Intentional Worship Church',                     articleId: 'an-intentional-worship-church' },
+      { number: 9,  title: 'Great Commission Church',                        articleId: 'a-great-commission-church' },
+      { number: 10, title: 'Online Outreach Church',                         articleId: 'an-online-outreach-church' },
+      { number: 11, title: 'Attractive Church' },
+      { number: 12, title: 'Inviting Church' },
+      { number: 13, title: 'Model/Example Church' },
+      /* Former combined article — unlisted so /channels/church/become-growing-church/
+         an-attractive-and-inviting-church (and its PDF) stay live until the two
+         replacement articles (Attractive / Inviting) are provided. */
+      { number: 98, title: 'An Attractive and Inviting Church', articleId: 'an-attractive-and-inviting-church', unlisted: true },
       /* Supporting article — unlisted (see comment above): reachable only via
          the inline link inside the Total Life Discipleship article. */
       { number: 99, title: 'Anatomy of Obedience', articleId: 'anatomy-of-obedience', unlisted: true },
@@ -256,6 +266,16 @@ export const subTopics: SubTopic[] = [
     name: 'Sermon Toolbox',
     description: 'Develop Biblically-grounded, transformational messages for Kingdom maturity.',
   },
+  /* Sub-level added per Church sheet v.062526 — content pending (article lives
+     in the shared OneDrive folder; not yet published). Empty placeholder until
+     the material is provided. */
+  {
+    id: 'bible-study-tools',
+    channelId: 'church',
+    parentId: 'sermon-toolbox',
+    name: 'Bible Study Tools',
+    description: 'Tools and resources for studying the Bible in sermon preparation.',
+  },
   /* ── BIBLE MASTERY (parent) ──
      Grouping added to match the Church spreadsheet. Nests Bible study
      methods, the Joshua Nations training/survey curricula, and BibleProject
@@ -274,11 +294,12 @@ export const subTopics: SubTopic[] = [
     name: 'Bible Study Methods',
     description: 'Simple, proven methods for studying Scripture on your own.',
     hideNumbers: true,
+    /* Titles follow the Church sheet v.062526. */
     items: [
-      { number: 1, title: 'Inductive Bible Study (OIA)', articleId: 'inductive-bible-study' },
-      { number: 2, title: 'The S.O.A.P. Method', articleId: 'soap-method' },
-      { number: 3, title: 'Topical & Thematic Bible Study', articleId: 'topical-bible-study' },
-      { number: 4, title: 'Bible R.E.C.A.P.', articleId: 'bible-recap' },
+      { number: 1, title: 'Inductive Bible Study Method', articleId: 'inductive-bible-study' },
+      { number: 2, title: 'S.O.A.P. Method', articleId: 'soap-method' },
+      { number: 3, title: 'Topical/Thematic Bible Study Method', articleId: 'topical-bible-study' },
+      { number: 4, title: 'R.E.C.A.P. Method', articleId: 'bible-recap' },
     ],
   },
   {
@@ -532,6 +553,15 @@ export const subTopics: SubTopic[] = [
       { number: 31, title: "Overview: Revelation Ch. 1-11", links: { app: "https://app.jesusonline.com/post/38731-overview-revelation-ch-1-11" } },
       { number: 32, title: "Overview: Revelation Ch. 12-22", links: { app: "https://app.jesusonline.com/post/38732-overview-revelation-ch-12-22" } },
     ],
+  },
+  /* Sub-level 06.5 added per Church sheet v.062526 — no content listed yet.
+     Empty placeholder until courses are provided. */
+  {
+    id: 'bible-courses',
+    channelId: 'church',
+    parentId: 'bible-mastery',
+    name: 'Bible Courses',
+    description: 'Structured courses for deepening your knowledge of the Bible.',
   },
   /* ── DISCIPLE MAKING MOVEMENT (parent, top-level) ──
      Split into the curriculum's four units; each unit is a child sub-topic. */

@@ -74,7 +74,7 @@ const subs = getSubTopicsByChannel(channel.id);
               )}
             </div>
 
-            {cover && (
+            {cover && channel.id !== "evidence" && (
               <div class="flex justify-center px-5 mb-3">
                 <Image src={cover} alt={sub.name} width={160} class="rounded shadow-sm" loading="lazy" />
               </div>

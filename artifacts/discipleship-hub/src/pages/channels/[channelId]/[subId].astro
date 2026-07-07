@@ -170,7 +170,7 @@ function btnClass(enabled: boolean) {
     ) : hasItems ? (
       <>
         {topicBookCover && (
-          <div class="mb-8 flex flex-col items-center">
+          <div class={`mb-8 flex flex-col ${channel.id === "evidence" ? "items-start" : "items-center"}`}>
             <div class="max-w-[240px] w-full">
               <Image
                 src={topicBookCover}
@@ -182,7 +182,7 @@ function btnClass(enabled: boolean) {
               />
             </div>
             {showTopicButtons && (
-              <div class="flex flex-wrap justify-center gap-2 mt-5">
+              <div class={`flex flex-wrap gap-2 mt-5 ${channel.id === "evidence" ? "justify-start" : "justify-center"}`}>
                 {sub.formats!.includes("book") && (
                   topicBookHref
                     ? <a href={topicBookHref} class={btnClass(true)} style="background-color:#de5b0014;color:#de5b00;border:1px solid #de5b0040;"><FileText className="w-3 h-3" />Book</a>

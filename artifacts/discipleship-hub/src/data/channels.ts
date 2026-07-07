@@ -951,6 +951,19 @@ export const subTopics: SubTopic[] = [
     ],
   },
   {
+    id: 'attributes-of-god',
+    channelId: 'growth',
+    name: 'Attributes of God',
+    items: [
+      { number: 1, title: 'The Supreme Pursuit of the Heart', links: { app: 'https://app.jesusonline.com/post/32211-the-supreme-pursuit-of-the-heart' } },
+      { number: 2, title: 'Attributes of Self-Existence', links: { app: 'https://app.jesusonline.com/post/32212-attributes-of-self-existence' } },
+      { number: 3, title: 'Attributes of Sovereignty', links: { app: 'https://app.jesusonline.com/post/32213-attributes-of-sovereignty' } },
+      { number: 4, title: 'Attributes of Holiness', links: { app: 'https://app.jesusonline.com/post/32214-attributes-of-holiness' } },
+      { number: 5, title: 'Attributes of Love', links: { app: 'https://app.jesusonline.com/post/32215-attributes-of-love' } },
+      { number: 6, title: 'Live in the Light of His Majesty', links: { app: 'https://app.jesusonline.com/post/32216-live-in-the-light-of-his-majesty' } },
+    ],
+  },
+  {
     id: 'identity-in-christ',
     channelId: 'growth',
     name: 'Identity in Christ',

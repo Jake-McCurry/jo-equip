@@ -166,16 +166,15 @@ export const subTopics: SubTopic[] = [
     /* Church-growth models. Titles follow the Church sheet v.062526 (July 2026):
        leading "A/An" dropped, item 1 renamed "God's Unique Vision for
        Kingdom-focused Growth", and the former combined "An Attractive and
-       Inviting Church" split into two list items (11 Attractive / 12 Inviting)
-       whose replacement articles are pending — until they land, the combined
-       article stays reachable as an `unlisted` entry so its URL + PDF keep
-       working. "Anatomy of Obedience" is likewise a supporting article that is
-       intentionally `unlisted` — it does not appear in this visible list, but
-       its article page is still generated and reached only via an inline link
-       inside the Total Life Discipleship article. Items with an articleId link
-       to per-article pages under
-       /channels/church/become-growing-church/<articleId>; Inviting Church and
-       Model/Example Church are list-only until their content is written. */
+       Inviting Church" split into two list items (11 Attractive / 12 Inviting),
+       each now backed by its own article; the combined article stays reachable
+       as an `unlisted` entry so its URL + PDF keep working. "Anatomy of
+       Obedience" is likewise a supporting article that is intentionally
+       `unlisted` — it does not appear in this visible list, but its article
+       page is still generated and reached only via an inline link inside the
+       Total Life Discipleship article. Items with an articleId link to
+       per-article pages under
+       /channels/church/become-growing-church/<articleId>. */
     hideNumbers: true,
     items: [
       { number: 1,  title: "God's Unique Vision for Kingdom-focused Growth", articleId: 'gods-unique-vision-for-your-church' },
@@ -188,12 +187,13 @@ export const subTopics: SubTopic[] = [
       { number: 8,  title: 'Intentional Worship Church',                     articleId: 'an-intentional-worship-church' },
       { number: 9,  title: 'Great Commission Church',                        articleId: 'a-great-commission-church' },
       { number: 10, title: 'Online Outreach Church',                         articleId: 'an-online-outreach-church' },
-      { number: 11, title: 'Attractive Church' },
-      { number: 12, title: 'Inviting Church' },
-      { number: 13, title: 'Model/Example Church' },
-      /* Former combined article — unlisted so /channels/church/become-growing-church/
-         an-attractive-and-inviting-church (and its PDF) stay live until the two
-         replacement articles (Attractive / Inviting) are provided. */
+      { number: 11, title: 'Attractive Church', articleId: 'an-attractive-church' },
+      { number: 12, title: 'Inviting Church', articleId: 'an-inviting-church' },
+      { number: 13, title: 'Model/Example Church', articleId: 'a-model-church' },
+      /* Former combined article — superseded by an-attractive-church /
+         an-inviting-church (July 2026) but kept unlisted so
+         /channels/church/become-growing-church/an-attractive-and-inviting-church
+         (and its PDF) stay live for link durability. */
       { number: 98, title: 'An Attractive and Inviting Church', articleId: 'an-attractive-and-inviting-church', unlisted: true },
       /* Supporting article — unlisted (see comment above): reachable only via
          the inline link inside the Total Life Discipleship article. */

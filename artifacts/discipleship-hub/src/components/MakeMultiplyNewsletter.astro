@@ -1,83 +1,47 @@
 ---
-import { BookOpen, Sparkles, Compass, HeartHandshake } from "lucide-react";
-
 interface Props {
   accent?: string;
 }
 const { accent = "#7a3a8a" } = Astro.props;
 
-const sections = [
+const features = [
   {
-    n: 1,
-    icon: BookOpen,
     title: "Insights from Pastor Jon",
     body: "Biblical wisdom and pastoral reflections to refresh your soul.",
   },
   {
-    n: 2,
-    icon: Sparkles,
     title: "JO EQUIP Spotlight",
     body: "New and featured resources from the hub.",
   },
   {
-    n: 3,
-    icon: Compass,
     title: "Practical Strategies",
     body: "Actionable ways to integrate JesusOnline tools for personal discipleship and church growth.",
   },
   {
-    n: 4,
-    icon: HeartHandshake,
     title: "Ways to Engage",
     body: "Share your story or review, submit prayer requests, see lives reached online, learn how your church can grow, and request personal coaching.",
   },
 ];
 
 // Mailchimp audience: jesusonline.us1. The form posts directly (no third-party
-// script needed). Only EMAIL, FNAME, and COUNTRY are merge fields on this
-// audience — there is no "church" merge tag in the provided embed.
+// script needed). Merge fields on this audience: EMAIL, FNAME (First Name),
+// CHURCH (Church/Ministry), COUNTRY, and MMERGE8 (Gender dropdown).
 const MC_ACTION =
   "https://jesusonline.us1.list-manage.com/subscribe/post?u=c02949f5de137184b156da9bc&id=e06ba0649d&f_id=00bb87e5f0";
 const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
 ---
 <div class="max-w-3xl mx-auto">
-  <p class="text-lg leading-relaxed" style="color:#002f55;font-weight:500;">
-    Pastors, are you hungry for fresh encouragement and proven tools to make and multiply disciples?
-  </p>
-  <p class="text-base leading-relaxed mt-4" style="color:#374151;">
+  <p class="text-base leading-relaxed" style="color:#374151;">
     Subscribe to the free <strong style="color:#002f55;">Making and Multiplying Disciples Newsletter</strong> —
-    your monthly source of hope, insight, and practical equipping.
+    your monthly source of hope, insight, and practical equipping. Each issue features:
   </p>
-
-  {/* Each issue features */}
-  <h2 class="text-2xl mt-12 mb-2" style="color:#002f55;">Each issue features</h2>
-  <div class="h-0.5 w-12 mb-8" style={`background-color:#de5b00;`}></div>
-
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-    {sections.map((s) => {
-      const Icon = s.icon;
-      return (
-        <div
-          class="flex flex-col bg-white border rounded p-5"
-          style={`border-color:var(--color-border);border-left:4px solid ${accent};`}
-        >
-          <div class="flex items-center gap-3 mb-3">
-            <span
-              class="shrink-0 w-10 h-10 rounded-full flex items-center justify-center"
-              style={`background-color:${accent}15;color:${accent};`}
-            >
-              <Icon className="w-5 h-5" />
-            </span>
-            <span class="text-xs font-mono font-semibold px-2 py-0.5 rounded" style={`color:${accent};background-color:${accent}11;`}>
-              {`Section ${s.n}`}
-            </span>
-          </div>
-          <h3 class="text-base font-semibold leading-snug mb-1.5" style="color:#002f55;">{s.title}</h3>
-          <p class="text-sm leading-relaxed" style="color:var(--color-muted-foreground);">{s.body}</p>
-        </div>
-      );
-    })}
-  </div>
+  <ul class="mt-4 space-y-2 pl-5 list-disc" style="color:#374151;">
+    {features.map((f) => (
+      <li class="text-base leading-relaxed">
+        <strong style="color:#002f55;">{f.title}</strong> — {f.body}
+      </li>
+    ))}
+  </ul>
 
   {/* Partnership callout */}
   <div class="mt-10 rounded p-6 md:p-7" style={`background-color:${accent}0a;border:1px solid ${accent}33;`}>
@@ -121,15 +85,30 @@ const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
       </div>
 
       <div>
-        <label for="mm-name" class="block text-sm font-medium mb-1.5" style="color:#002f55;">
-          Name <span style="color:#de5b00;">*</span>
+        <label for="mm-fname" class="block text-sm font-medium mb-1.5" style="color:#002f55;">
+          First Name <span style="color:#de5b00;">*</span>
         </label>
         <input
           type="text"
           name="FNAME"
-          id="mm-name"
+          id="mm-fname"
           required
-          autocomplete="name"
+          autocomplete="given-name"
+          class="w-full rounded border px-3 py-2.5 text-sm outline-none focus-visible:ring-2"
+          style="border-color:var(--color-border);color:#002f55;"
+        />
+      </div>
+
+      <div>
+        <label for="mm-church" class="block text-sm font-medium mb-1.5" style="color:#002f55;">
+          Church/Ministry <span style="color:#de5b00;">*</span>
+        </label>
+        <input
+          type="text"
+          name="CHURCH"
+          id="mm-church"
+          required
+          autocomplete="organization"
           class="w-full rounded border px-3 py-2.5 text-sm outline-none focus-visible:ring-2"
           style="border-color:var(--color-border);color:#002f55;"
         />
@@ -147,6 +126,22 @@ const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
           class="w-full rounded border px-3 py-2.5 text-sm outline-none focus-visible:ring-2"
           style="border-color:var(--color-border);color:#002f55;"
         />
+      </div>
+
+      <div>
+        <label for="mm-gender" class="block text-sm font-medium mb-1.5" style="color:#002f55;">
+          Gender
+        </label>
+        <select
+          name="MMERGE8"
+          id="mm-gender"
+          class="w-full rounded border px-3 py-2.5 text-sm outline-none focus-visible:ring-2 bg-white"
+          style="border-color:var(--color-border);color:#002f55;"
+        >
+          <option value=""></option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
       </div>
 
       {/* Mailchimp audience tag */}

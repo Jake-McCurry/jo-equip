@@ -15,3 +15,5 @@ A slug set-diff of a `JO_EQUIP_Growth_Channel(*)` sheet against `artifacts/disci
 - CSV drops all cell fill colors (gray = no-change, yellow = move). Rely instead on the **trailing text column** the author adds (e.g. `Move from Godly Relationships`) to identify movers — it's more reliable than color anyway.
 - Sheet column layout: A=L1 num, B=L1 title, C=L2 num (e.g. 04.1), D=L2 title, E=L3 num, F=L3 title, G=leaf title, H=slug (append to `app.jesusonline.com/post/`), I=move-tag.
 - To scope-check "does the rest match", diff sheet slugs vs `post/<slug>` in channels.ts and group by the sheet's L1 topic; report gaps per section rather than a raw list.
+
+**Intentional site>sheet exceptions (do NOT auto-remove on re-sync):** the Marriage subtopic (`marriage-godly-relationships`) keeps an extra intro article `34501` ("How To Cultivate Your Marriage") that is NOT on the sheet — user-confirmed to keep. When syncing, adding sheet items is safe, but deleting on-site items the sheet omits is a content-loss decision: ask the user, don't silently delete.

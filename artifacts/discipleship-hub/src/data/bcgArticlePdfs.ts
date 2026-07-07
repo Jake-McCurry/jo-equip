@@ -17,14 +17,17 @@ export const bcgArticlePdfs: Record<string, BcgArticlePdfMeta> = {
   "a-hope-filled-church": { bytes: 123618 },
   "a-jesusonline-equipped-church": { bytes: 647682 },
   "a-love-demonstrating-relational-church": { bytes: 126106 },
+  "a-model-church": { bytes: 118238 },
   "a-spirit-dependent-church": { bytes: 110591 },
   "a-total-life-discipleship-church": { bytes: 602119 },
   "a-transformational-teaching-church": { bytes: 451684 },
   "an-attractive-and-inviting-church": { bytes: 133082 },
+  "an-attractive-church": { bytes: 133566 },
   "an-intentional-worship-church": { bytes: 131603 },
+  "an-inviting-church": { bytes: 168444 },
   "an-online-outreach-church": { bytes: 118674 },
   "anatomy-of-obedience": { bytes: 402762 },
-  "gods-unique-vision-for-your-church": { bytes: 634697 },
+  "gods-unique-vision-for-your-church": { bytes: 635734 },
 };
 
 export function hasBcgArticlePdf(id: string | undefined | null): boolean {

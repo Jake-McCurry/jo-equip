@@ -6,6 +6,13 @@
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",
+    /* Serve pages at their no-trailing-slash URL and 301 "/page/" → "/page"
+       so the served URL always matches the self-referencing canonical tags,
+       sitemap entries, and internal links (site-wide no-slash convention;
+       the root "/" is unaffected). Default "auto-trailing-slash" would do
+       the OPPOSITE — redirect "/page" → "/page/" for directory-index assets
+       — making every canonical point at a redirecting URL. */
+    "html_handling": "drop-trailing-slash",
     "run_worker_first": ["/api/*"]
   },
   "observability": {

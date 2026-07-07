@@ -2,7 +2,6 @@
 import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
-import partytown from "@astrojs/partytown";
 import pagefind from "astro-pagefind";
 import tailwindcss from "@tailwindcss/vite";
 import path from "node:path";
@@ -52,16 +51,10 @@ export default defineConfig({
       },
     }),
     pagefind(),
-    /* Partytown: runs <script type="text/partytown"> in a Web Worker
-       instead of the main thread. We use it for GTM + GA4 (set up in
-       Layout.astro) — biggest single mobile PSI win for this site.
-       `forward` tells Partytown which window properties to proxy so
-       dataLayer.push() calls still work transparently from main-thread code. */
-    partytown({
-      config: {
-        forward: ["dataLayer.push", "gtag"],
-      },
-    }),
+    /* NOTE: Partytown was removed (July 2026). It ran GTM in a Web Worker for
+       a mobile PSI win, but made the container undetectable by Tag Assistant,
+       GTM Preview mode, and third-party scanners. GTM now uses the standard
+       main-thread snippet in Layout.astro. */
   ],
   vite: {
     plugins: [tailwindcss()],

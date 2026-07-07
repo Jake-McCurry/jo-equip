@@ -7,12 +7,40 @@ import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
   (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
+
+/* JSON-LD: a CollectionPage containing an ItemList of the playlists shown
+   on this page. Generated from the same `playlists` array that renders the
+   visible cards, so positions/titles/URLs can never drift out of sync.
+   URLs use the canonical no-trailing-slash form (site-wide convention). */
+const SITE = "https://equip.jesusonline.com";
+const playlistsJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": `${SITE}/playlists#collection`,
+  "name": "Video Playlists — JO EQUIP",
+  "description":
+    "Curated YouTube video playlists on knowing Jesus, evidence for the Christian faith, life in the Spirit, total life discipleship, and hope in times of crisis.",
+  "url": `${SITE}/playlists`,
+  "isPartOf": { "@id": `${SITE}/#website` },
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListOrder": "https://schema.org/ItemListOrderAscending",
+    "numberOfItems": playlists.length,
+    "itemListElement": playlists.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "name": p.title,
+      "url": `${SITE}/playlist/${p.id}`,
+    })),
+  },
+};
 ---
 <Layout
   title="Playlists · JO EQUIP"
   description="Curated YouTube video playlists on knowing Jesus, evidence for the Christian faith, life in the Spirit, total life discipleship, and hope in times of crisis."
 >
   <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(playlistsJsonLd)} />
     <BreadcrumbsLd items={[
       { name: "Home", url: "/" },
       { name: "Playlists", url: "/playlists" },

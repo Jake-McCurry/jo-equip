@@ -111,8 +111,9 @@ export const bcgArticles: BcgArticle[] = [
         '<a href="/channels/church/become-growing-church/an-intentional-worship-church">An Intentional Worship Church</a>',
         '<a href="/channels/church/become-growing-church/a-great-commission-church">A Great Commission Church</a>',
         '<a href="/channels/church/become-growing-church/an-online-outreach-church">An Online Outreach Church</a>',
-        '<a href="/channels/church/become-growing-church/an-attractive-and-inviting-church">An Attractive and Inviting Church</a>',
-        "A Model / Example Church",
+        '<a href="/channels/church/become-growing-church/an-attractive-church">An Attractive Church</a>',
+        '<a href="/channels/church/become-growing-church/an-inviting-church">An Inviting Church</a>',
+        '<a href="/channels/church/become-growing-church/a-model-church">A Model Church</a>',
       ]},
 
       { type: "p", html: "Discover practical, biblical resources created specifically to help churches like yours flourish right where God has planted you." },
@@ -671,8 +672,269 @@ export const bcgArticles: BcgArticle[] = [
   },
 
   {
+    id: "an-attractive-church",
+    title: "An Attractive Church",
+    description:
+      "What makes a church truly attractive to a newcomer? The factors “church shoppers” prioritize — and practical, grace-filled ways a small church can remove barriers to the gospel.",
+    blocks: [
+      { type: "p", html: "<em>Note: This article is written primarily with churches in the Western world in mind. However, the biblical truths it presents apply to all congregations, in every cultural context. We strongly encourage you to thoughtfully adapt and apply these principles to your own local situation and culture.</em>" },
+
+      { type: "p", html: "What makes a church or home group truly attractive to a newcomer? What impression do they carry away from their first visit, and what draws them to return? These questions matter deeply, for the church is called to reflect the welcoming heart of Christ, removing unnecessary barriers so that souls may encounter the living God." },
+      { type: "p", html: "“Church shoppers” — first-time visitors, those relocating, or individuals exploring faith — evaluate congregations through a blend of practical, emotional, and spiritual lenses. Surveys from respected sources such as Pew Research and Barna consistently reveal shared priorities. While no church can be all things to all people, thoughtful attention to these areas can open doors for genuine gospel impact." },
+
+      { type: "h2", text: "Top Factors “Church Shoppers” Prioritize" },
+      { type: "ul", items: [
+        "<strong>Quality of preaching and teaching</strong> (often ranked first, with approximately 83% citing its importance). Visitors seek clear, relevant, biblical exposition that connects eternal truth to daily life. They desire depth without excessive jargon, practical application, and authenticity from the preacher. Weak or routine messages frequently prevent return visits, whereas transformative insights foster lasting loyalty.",
+        "<strong>A warm, genuine welcome and hospitality</strong> (cited by about 79%). Do greeters smile and offer helpful guidance? Do regular attendees — not merely staff — notice and engage visitors in a natural way? People quickly sense whether they are seen and valued or left feeling invisible. Relational warmth from the congregation often outweighs polished programs.",
+        "<strong>Style of worship and service flow</strong> (around 74%). Music, atmosphere, and overall order should feel engaging and accessible. Preferences differ — contemporary, traditional, or blended — but newcomers appreciate services that are easy to follow, with gentle explanations of elements such as communion or the offering.",
+        "<strong>Location and convenience</strong> (approximately 70%). Proximity, parking, clear signage, and suitable service times significantly influence decisions, especially for families and busy individuals.",
+        "<strong>Community, relationships, and belonging.</strong> Many, particularly younger adults, long for authentic connection amid widespread loneliness. They seek a place where people genuinely care for one another and where low-pressure pathways exist for friendship and involvement.",
+        "<strong>Children’s and family considerations.</strong> Parents often assess safety, cleanliness, and the overall family-friendliness of the environment. Even without elaborate programs, a welcoming posture toward children speaks volumes about care and professionalism.",
+        "<strong>Relevance, authenticity, and values alignment.</strong> Is the church genuine rather than performative? Does the teaching address real struggles? Do beliefs and practices resonate with the visitor’s search for purpose, truth, and an alternative to superficial culture?",
+      ]},
+      { type: "p", html: "Additional factors include practical outreach to those in need, clean and well-maintained facilities, a spirit of inclusion, and thoughtful, non-intrusive follow-up." },
+      { type: "p", html: "At the heart of it all, church shoppers are not primarily seeking perfection or entertainment. They desire a place to encounter God, form meaningful relationships, and grow spiritually within a welcoming community. Churches that combine solid biblical teaching with sincere love and practicality often bear lasting fruit." },
+
+      { type: "h2", text: "What Can a Small Church Do to Be Attractive?" },
+      { type: "p", html: "Smaller congregations may lack extensive resources, yet they possess unique strengths — intimacy, intergenerational fellowship, and the opportunity to live out the biblical vision of the church as God’s family (Ephesians 2:19; 4:11–16). The “cover” of first impressions does influence whether someone opens the pages of your life together. With prayerful intention, even modest adjustments can communicate care and create space for the Holy Spirit’s work." },
+
+      { type: "h3", text: "Sanctuary Impressions" },
+      { type: "p", html: "The first moments upon entering matter profoundly. Are visitors greeted with genuine smiles and helpfulness, feeling seen yet not overwhelmed? Many small churches have sanctuaries built for larger crowds than currently attend, and a mostly empty room can feel discouraging. Consider creative rearrangements: remove excess pews or chairs and arrange round tables seating five to eight, placing chairs primarily on the side facing the platform. This provides space for Bibles, notes, or a cup of coffee and naturally fosters interaction during prayer or discussion. Tables that appear comfortably occupied create a warmer, fuller impression." },
+
+      { type: "h3", text: "The Centrality of Preaching and Teaching" },
+      { type: "p", html: "Smaller churches may not attract highly polished orators, yet surveys confirm that transformational insights in the message carry far greater weight than oratory skill alone. Substance — clear biblical truth, practical application, and Spirit-empowered challenge — builds committed disciples. Delivery serves the message: enthusiasm, clarity, vocal variety, eye contact, and relatable illustrations help profound truths land effectively." },
+      { type: "p", html: "Aim for balance — roughly 80% content and 20% delivery. Passion for Scripture naturally enhances communication. Pastors can grow through recording sermons, seeking honest feedback, and prioritizing authenticity over performance. For newcomers, engaging delivery aids initial connection; for all, faithful exposition that meets real needs leads to lasting change. The goal remains encountering God and seeing lives transformed, not merely impressing with words." },
+
+      { type: "h3", text: "Welcoming Families and Children" },
+      { type: "p", html: "The absence of a dedicated children’s program need not hinder hospitality. Many vibrant small churches view this as an opportunity for authentic intergenerational discipleship." },
+      { type: "ul", items: [
+        "<strong>Cultivate a culture of grace.</strong> Publicly affirm that children are a blessing and that their sounds and movements are welcomed as part of family worship. This reassures parents and signals belonging.",
+        "<strong>Train the congregation.</strong> Encourage older saints especially to respond with patience and joy — offering smiles, quiet help, or sitting near families as an expression of Christ’s love for the little ones (Matthew 19:14).",
+      ]},
+      { type: "p", html: "Practical supports include:" },
+      { type: "ul", items: [
+        "Prepare simple “busy bags” with crayons, sermon-related coloring sheets, or quiet activities.",
+        "Incorporate brief children’s moments, object lessons, or invitations for kids to participate in singing, Scripture reading, or prayer.",
+        "Reserve flexible seating near the front or sides for families, perhaps with a quiet corner or cry room.",
+        "Preach accessibly, using illustrations that speak to all ages and occasionally addressing children directly.",
+      ]},
+      { type: "p", html: "Such measures foster a shared family experience that strengthens home discipleship and reflects the shepherding care of pastor-teachers." },
+
+      { type: "h2", text: "A Hopeful Conclusion" },
+      { type: "p", html: "An attractive church ultimately flows from dependence on the Holy Spirit and fidelity to Scripture. By addressing first impressions with wisdom and love, small congregations can remove obstacles so that newcomers may clearly hear the gospel and experience the warmth of God’s people." },
+      { type: "p", html: "May every church and home group prayerfully examine itself — not out of pressure to perform, but with a desire to equip the saints and glorify Christ (Ephesians 4:11–16). In doing so, we participate in the Father’s redemptive work, inviting others into the joy of knowing and following Jesus." },
+      { type: "p", html: "JesusOnline can’t help you with sanctuary impressions or with welcoming families and children, but we can provide resources for transformational teaching supported by inspiring videos." },
+
+      ...WLL,
+      { type: "h3", text: "Transformational Teaching Resources" },
+      { type: "ul", items: [
+        '<a href="/channels/growth">JO EQUIP Grow resources</a>',
+        '<a href="/playlists">JO EQUIP playlists</a>',
+      ]},
+
+      REGISTER_CTA,
+    ],
+  },
+
+  {
+    id: "an-inviting-church",
+    title: "An Inviting Church",
+    description:
+      "Why would your members eagerly invite others? Cultivate a compelling Unique Value Proposition and equip your church family with practical tools for joyful invitation.",
+    blocks: [
+      { type: "p", html: "<em>Note: This article is written primarily with churches in the Western world in mind. However, the biblical truths it presents apply to all congregations, in every cultural context. We strongly encourage you to thoughtfully adapt and apply these principles to your own local situation and culture.</em>" },
+
+      { type: "p", html: "Every faithful pastor and church leader longs to see their congregation naturally inviting others to join them in worship on Sunday mornings. You have likely encouraged and even exhorted your members to reach out, to be bold in extending invitations, and to welcome newcomers with open arms. This desire flows from a heart aligned with the Great Commission — our Lord’s call to make disciples of all nations (Matthew 28:19)." },
+      { type: "p", html: "Yet a deeper question remains: <em>Why would your members eagerly invite others?</em> What is it about your church family that stirs such genuine excitement in their hearts that they long to share it, confident that others, too, will find blessing and transformation there?" },
+      { type: "p", html: "Consider how people recommend a cherished restaurant or a powerful film. They do so not because someone has urged them, but from authentic delight — an experience so meaningful they cannot help but share it. In the same way, invitations to church should spring not primarily from dutiful pressure, but from lives deeply touched by the presence of Christ among His people." },
+
+      { type: "h2", text: "Your Church’s Unique Value Proposition" },
+      { type: "p", html: "A church’s Unique Value Proposition (UVP) is the distinctive combination of biblical truth, spiritual experience, and practical ministry that sets it apart in its community. It answers the heartfelt question: <em>Why would someone choose this church family over others nearby?</em> More than marketing language, programs, or doctrinal statements, a faithful UVP flows from prayerful discernment of God’s calling, reflects the living reality of Christ among His people, and equips believers to invite others with authentic joy." },
+      { type: "p", html: "Members are naturally most eager to share something when it is uniquely beneficial — something others cannot readily find elsewhere. This uniqueness, whether actual or perceived, is one of the strongest motivators for joyful invitation. What does your church offer that truly cannot be said about other congregations nearby?" },
+      { type: "p", html: "Through the resources of JO EQUIP, your church can cultivate a compelling UVP:" },
+      { type: "ul", items: [
+        'You can become known as a <a href="/channels/church/become-growing-church/a-hope-filled-church">hope-filled church</a>, making hope a hallmark of your identity and a beacon of gospel assurance in a despairing world.',
+        'You can be known as a <a href="/channels/church/become-growing-church/a-transformational-teaching-church">transformational, teaching church</a>, utilizing inspiring media and the JO App for sermon follow-up and ongoing discipleship — an integrated approach rare among local congregations.',
+        'You can be identified as a <a href="/channels/church/become-growing-church/a-total-life-discipleship-church">Total Life Discipleship church</a>, motivating members to become all God created them to be so they can do all He created them to do. Rather than urging greater self-effort, you lead by repeatedly sharing God’s vision for their lives, fostering authentic transformation by the power of the Holy Spirit.',
+      ]},
+      { type: "p", html: "Beyond uniqueness, how does your church stand out more than similar churches in your area? With God’s guidance, your church can thrive in other crucial areas that promote deeper relationships with Christ and His community." },
+      { type: "ul", items: [
+        'Being a <a href="/channels/church/become-growing-church/a-love-demonstrating-relational-church">love-demonstrating relational church</a>, where authentic fellowship reflects the warmth of God’s family.',
+        'Being a <a href="/channels/church/become-growing-church/a-spirit-dependent-church">Spirit-dependent church</a>, relying on the Holy Spirit’s guidance in every aspect of ministry.',
+        'Being an <a href="/channels/church/become-growing-church/an-intentional-worship-church">intentional worship church</a>, where gatherings exalt Christ with reverence and joy.',
+        'Being an <a href="/channels/church/become-growing-church/an-online-outreach-church">online outreach church</a>, extending the gospel’s reach through digital means.',
+        'Being a <a href="/channels/church/become-growing-church/a-great-commission-church">Great Commission-focused church</a>, intentionally advancing Christ’s mission in your community and around the world.',
+      ]},
+      { type: "p", html: "When church members personally experience the transformational benefits offered in the Become a Growing Church resources, they will be excited to tell others. Through practical, biblically grounded teachings on identity in Christ, Spirit-led fellowship, purposeful discipleship, and authentic community, they discover renewed hope, clarity of calling, and the joy of belonging to God’s family. As these realities reshape their daily lives and shared life together, a natural desire emerges: they long for others to encounter the same life-changing grace." },
+      { type: "p", html: "In such a church, inviting others becomes an overflow of love rather than an assigned task. It echoes the early church, devoted to teaching, fellowship, breaking bread, and prayer, so that “the Lord added to their number day by day those who were being saved” (Acts 2:42–47)." },
+      { type: "p", html: "As you reflect on your church’s life together, ask the Lord to cultivate an environment so vibrant with His presence — nourished by these equipping resources and marked by distinctive excellence — that your members naturally become inviters. May every gathering be marked by such evident love, truth, and joy in Christ that those who come encounter not merely a service, but the living God who changes lives forever. In this way, your church becomes not only welcoming, but truly inviting — a beacon that draws others into the abundant life found in Jesus." },
+
+      { type: "h2", text: "Practical Tools and Ways for Church Members to Invite Others" },
+      { type: "p", html: "Every pastor and church leader longs to see members naturally inviting others into the life of the church, not out of obligation, but from hearts overflowing with gratitude for what God is doing. As believers experience the transformative power of a hope-filled, Spirit-dependent community nourished by resources like the Become a Growing Church series and JO EQUIP, they become eager to share this grace with friends, neighbors, coworkers, and family. The invitation flows best when it arises from personal testimony and is supported by simple, effective tools." },
+      { type: "p", html: "Here are practical ways members can extend warm, authentic invitations, rooted in prayerful dependence on the Holy Spirit and the unique value your church offers:" },
+
+      { type: "h3", text: "1. Share Personal Testimonies of Transformation" },
+      { type: "ul", items: [
+        "Encourage members to speak naturally about how God has renewed their hope, clarified their identity in Christ, or strengthened their walk through the church’s discipleship. A simple story — “I’ve found renewed purpose through the teachings on who I am in Christ” — often opens doors more powerfully than any program.",
+        "Tie it to JO EQUIP resources: “The JO App has helped me grow daily in God’s Word — would you like to check it out with me?”",
+      ]},
+
+      { type: "h3", text: "2. Use Ready-to-Share Digital Tools from JO EQUIP and the JO App" },
+      { type: "ul", items: [
+        "<strong>JO App:</strong> Members can invite others to download the free app (available on iOS and Android), which offers the NET Bible, daily devotions, interactive studies, worship resources, and Total Life Discipleship tools. It serves as an excellent “next step” for seekers exploring the claims of Christ or believers pursuing deeper growth.",
+        "Share links to specific JO App articles or sermon follow-up content via text, email, or social media. The app’s prayer community and evidence-based “Facts for Faith” sections are particularly inviting for those with questions.",
+      ]},
+
+      { type: "h3", text: "3. Practical Invitation Aids" },
+      { type: "ul", items: [
+        "<strong>Invitation cards or digital invites:</strong> Provide attractive printed cards or shareable graphics highlighting a specific upcoming service, sermon series, or special event. Include a warm welcome message and QR code linking to the church website.",
+        "<strong>Social media and personal networks:</strong> Encourage members to post brief, genuine updates: a photo from worship with a caption about God’s faithfulness, or a direct invitation: “Join us this Sunday — I’d love for you to experience this with me.”",
+        "<strong>Everyday conversations:</strong> Train members in simple, relational approaches, such as asking, “Do you attend church anywhere?” or “I’ve been so encouraged lately — would you ever be interested in coming with me?” Follow up with prayer and genuine care.",
+      ]},
+
+      { type: "h3", text: "4. Relational and Event-Based Invitations" },
+      { type: "ul", items: [
+        "Invite people first to low-pressure gatherings: a small group, a community outreach event, or a meal following worship.",
+        "Highlight your church’s distinctive strengths — hope-filled identity in Christ, Spirit-led fellowship, or intentional discipleship — so the invitation feels personal and compelling.",
+        "Follow through with hospitality: assign greeters, prepare newcomer packets, and ensure follow-up contact that reflects God’s welcoming love.",
+      ]},
+
+      { type: "h3", text: "5. Prayerful Preparation and Equipping" },
+      { type: "ul", items: [
+        "Begin with prayer — for specific people God has placed in their lives and for boldness tempered by love.",
+        "Periodically equip the congregation during services: share brief testimonies, distribute tools, and practice simple invitation language together. This builds confidence and reinforces that inviting is a natural outflow of transformed lives.",
+      ]},
+
+      { type: "p", html: "As members step out in these ways, trusting the Holy Spirit’s work, they participate in the Great Commission not as a duty, but as joyful witnesses. The early church grew as ordinary believers lived out their faith in authentic community, and the Lord added daily to their number (Acts 2:47). May your church family, equipped through these resources and marked by distinctive excellence, become a beacon that draws many into the abundant life found in Jesus Christ." },
+      { type: "p", html: "Pastors, consider weaving these practical steps into your ongoing equipping ministry. The Lord who calls His people to invite is faithful to empower them as they do so." },
+
+      { type: "h2", text: "A Promotional Church Business Card" },
+      { type: "p", html: "A well-designed business card serves as a simple yet powerful tool for members to extend warm invitations. It captures the church’s Unique Value Proposition (UVP) at a glance and reflects the hope and excellence of your ministry. Aim for a clean, professional layout that feels inviting and faith-honoring — perhaps with a subtle cross or open Bible motif, warm earth tones, and ample white space for readability." },
+
+      { type: "h3", text: "Recommended Card Specifications" },
+      { type: "ul", items: [
+        "<strong>Size:</strong> Standard 3.5\" × 2\" (horizontal orientation works well).",
+        "<strong>Paper:</strong> Matte or slightly textured cardstock (14–16 pt) for a quality feel.",
+        "<strong>Front side:</strong> Focused and welcoming — church identity and core UVP.",
+        "<strong>Back side:</strong> Informative with bullet points and a clear call to action.",
+        "<strong>Design tips:</strong> Use a readable serif or clean sans-serif font. Include your church logo if available. Add a QR code on the front or back linking to your website or JO App download page. Keep text concise for scannability.",
+      ]},
+
+      { type: "h3", text: "Sample Front Side (Main Identity & UVP)" },
+      { type: "ul", items: [
+        "<strong>Top:</strong> Church name in larger, elegant font.",
+        "<strong>Center:</strong> A concise byline UVP statement answering, “Why would someone choose your church family over others nearby?”",
+        "<strong>Bottom:</strong> Address, service times, and contact info.",
+        "<strong>Optional:</strong> Subtle tagline or scripture at the footer.",
+      ]},
+      { type: "p", html: "Example text:" },
+      { type: "quote", html: "<strong>[Church Name]</strong><br>Equipping you to flourish with God’s hope in every circumstance.<br><br>Sunday Worship: [Time] · [Street Address] · [City, State, ZIP] · [Phone] | [Church Email]<br><br>“Join us as we grow together in the grace and knowledge of our Lord Jesus Christ.” (2 Peter 3:18)" },
+
+      { type: "h3", text: "Possible UVP Statements for Your Church Identity" },
+      { type: "ul", items: [
+        "Equipping you to flourish with God’s hope in every circumstance.",
+        "Guiding you to shift from chaos to God’s majesty in life’s storms.",
+        "Transforming fear into faith through a greater view of God.",
+        "Helping you experience God’s victory and strength in difficult times.",
+        "Helping you become all God created you to be.",
+        "Equipping you to do all God created you to do.",
+        "Leading you into Spirit-dependent, grace-based obedience.",
+        "Anchoring you in relationship-centered, love-motivated discipleship.",
+        "Supernatural peace and power found in Christ.",
+        "Rising above trials with unshakable hope in Christ.",
+        "Deeper identity and peace through Spirit-dependent living.",
+        "Lasting life change through transformational teaching.",
+        "Transforming trials into eternal impact through Christ’s power.",
+        "Leading you into genuine Christlike transformation.",
+        "Helping you align your life with God’s eternal purposes.",
+        "Helping you experience deep heart transformation through God’s Word.",
+        "Guiding you to embrace your new identity in Christ.",
+        "Helping you know the full majestic character of God.",
+        "Equipping you to walk daily by the Holy Spirit’s power.",
+        "Holistic teaching that transforms head, hands, and heart.",
+        "Anchoring life in God, new identity in Christ, and the Spirit’s power.",
+        "Guiding you from God’s vision to personal transformation.",
+      ]},
+
+      { type: "h3", text: "Sample Back Side (Uniquenesses, Areas of Excellence & URL)" },
+      { type: "ul", items: [
+        "<strong>Header:</strong> “What Makes Our Church Family Unique?” or “Discover the Difference”.",
+        "<strong>Bullet points:</strong> 3–5, kept brief.",
+        "<strong>Footer:</strong> Church URL, QR code, and a gentle invitation.",
+      ]},
+      { type: "p", html: "Example text:" },
+      { type: "quote", html: "<strong>Experience a Church That Equips You to Flourish</strong><br>• Hope-Filled Identity in Christ<br>• Transformational Teaching with JO App<br>• Total-Life Discipleship by God’s Vision<br>• Love-Demonstrating Relational Fellowship<br>• Spirit-Dependent Ministry in All Things<br><br>Visit us and experience the abundant life found in Jesus.<br>[Church Website URL] [QR Code]" },
+
+      { type: "h3", text: "Possible Back-Side Bullet Points" },
+      { type: "p", html: "Here is a variety of concise, scannable options for the back of your promotional card:" },
+      { type: "ul", items: [
+        "Hope-Filled Identity in Christ",
+        "Transformational Teaching with JO App",
+        "Total-Life Discipleship by God’s Vision",
+        "Love-Demonstrating Relational Fellowship",
+        "Warm Authentic Community in Christ",
+        "Spirit-Dependent Ministry in All Things",
+        "Intentional Worship and Outreach",
+        "Exalting Christ in Worship",
+        "Great Commission Focus with Joy",
+        "Advancing Christ’s Mission Together",
+        "Heart Transformation Through God’s Word",
+        "Spirit-Led Discipleship and Growth",
+      ]},
+
+      { type: "h3", text: "Distribution Ideas" },
+      { type: "ul", items: [
+        "Include in newcomer packets, hand out during services, or encourage members to carry a small supply in wallets or cars.",
+        "Pair with relational training: “Share your own story first, then offer the card as a next step.”",
+      ]},
+      { type: "p", html: "Such a card becomes more than promotional material — it serves as a quiet witness, reflecting the vibrant, equipping life of your church family. Pray over the design process, asking the Lord to use these simple tools to draw hearts toward Himself." },
+
+      REGISTER_CTA,
+    ],
+  },
+
+  {
+    id: "a-model-church",
+    title: "A Model Church",
+    description:
+      "A flexible, Spirit-led order of service that weaves the Become a Growing Church principles into your Sunday gathering — offered as a prayerful three-month trial.",
+    blocks: [
+      { type: "p", html: "In the preceding articles, we have offered a number of practical suggestions designed to help your church grow both in depth and in breadth — becoming a community marked by genuine transformation and vibrant hope in Christ." },
+      { type: "p", html: "You may choose to incorporate some of these elements and the accompanying resources from Jesus Online Ministries, even if you are not yet prepared to adopt them all. Change is rarely easy. We grow comfortable with familiar routines, yet without intentional change, we cannot expect different outcomes. If the current patterns are not producing the fruit you long to see, a fresh approach may be what the Lord is inviting." },
+      { type: "p", html: "What follows is one example of how a church might revise its Sunday gathering to weave together the core principles we have discussed. This represents a significant shift, so we recommend presenting it humbly to the congregation as a three-month trial. At the end of that season, evaluate together — under the Spirit’s guidance — whether to continue or adjust. Such a step can be taken prayerfully, with grace and unity." },
+      { type: "p", html: "This proposed order of service is crafted to continually reinforce the transformational truths of the gospel that we so easily forget. In a world that daily pulls us away from God’s highway of holiness and hope, we need regular, Spirit-empowered reminders of who God is and who we are in Christ. Each element is designed to create a unique church experience that fosters lasting transformation in the lives of every attendee." },
+
+      { type: "h2", text: "A Proposed Unique Church Order of Service" },
+      { type: "ol", items: [
+        "<strong>Welcome</strong> (unscripted, warm, and personal). <em>Purpose:</em> To greet one another in the love of Christ and create an atmosphere of genuine belonging.",
+        "<strong>Core Identity Statement.</strong> <em>Purpose:</em> To clearly declare the church’s identity for newcomers and to reinforce it for longtime members. For example: “We are a hope-centered church devoted to transformational teaching, so that you may become all that God created you to be and fulfill all He created you to do.”",
+        "<strong>Transition to Hope Video.</strong> <em>Purpose:</em> To gently shift everyone’s focus from the cares and distractions of the week to the presence, power, and resources of God. Suggested script: “As we gather together this morning, many of us have stepped out of a week marked by various struggles, difficulties, and challenges. In the midst of these, it can be difficult to turn our minds from those distractions and fully focus on the Lord. So let us begin by turning our hearts toward Him through a short video. It will help us refocus on God and the abundant resources He provides, as we entrust our challenges to His faithful care.”",
+        "<strong>Show a Hope Video.</strong> <em>Purpose:</em> To captivate hearts and minds with one of the seventeen videos from the <a href=\"/channels/growth/hope-times-crisis\">“Hope in Times of Crisis”</a> series, reminding the congregation of God’s immediate and sufficient grace for every circumstance.",
+        "<strong>Personal Takeaway.</strong> <em>Purpose:</em> To model how to apply biblical truth personally and encourage the congregation to do the same. (The pastor or leader briefly shares, in their own words, one key insight from the video.)",
+        "<strong>Congregation Prayer Requests.</strong> <em>Purpose:</em> To invite the community to share burdens and needs openly.",
+        "<strong>Small-Group Prayer.</strong> <em>Purpose:</em> To practice relational prayer, build community, and anchor every request in the truth of who God is and who we are in Him. (The congregation breaks into small groups to pray for the shared requests. At the same time, the screen gently displays an attribute of God along with a corresponding characteristic of our new identity in Christ — serving as timely reminders and reasons for praise.)",
+        "<strong>Communion or Baptisms</strong> (optional).",
+        "<strong>Worship and/or Praise Songs.</strong> <em>Purpose:</em> To respond to God’s goodness with wholehearted adoration and thanksgiving.",
+        "<strong>Transformational Sermon.</strong> <em>Purpose:</em> To equip believers with truth that renews the mind and shapes daily life. (A message rooted in Scripture that connects directly to the <a href=\"/channels/growth/building-blocks\">building blocks of Christian maturity</a>.)",
+        "<strong>Prayer and/or Devotion Songs.</strong> <em>Purpose:</em> To respond to the preached Word with surrender, commitment, and renewed devotion to Christ.",
+        "<strong>Communion or Baptisms</strong> (alternate time slot).",
+        "<strong>Closing Promise.</strong> <em>Purpose:</em> To send the congregation forth with a fresh assurance of God’s faithfulness that they can carry into the week. (The congregation joins together in reciting a Bible promise, projected on the screen, that has been thoughtfully chosen to reinforce the sermon’s theme. This promise is drawn from the rich collection of “Bible Promises for Hope” available in the Jesus Online App.)",
+      ]},
+
+      { type: "p", html: "This model is not intended as a rigid formula, but as a flexible framework through which the Holy Spirit can work more deeply in your midst. May the Lord grant you wisdom, courage, and unity as you seek His leading for the unique calling He has placed on your church family. As you step forward in obedience, may you witness the joy of lives truly transformed for His glory." },
+
+      REGISTER_CTA,
+    ],
+  },
+
+  {
     id: "an-attractive-and-inviting-church",
     title: "An Attractive and Inviting Church",
+    /* Unlisted July 2026: the Church sheet v.062526 split this into two list
+       items, now backed by their own articles (an-attractive-church /
+       an-inviting-church). Page stays reachable at its original URL (and PDF)
+       for link durability but is excluded from prev/next navigation. */
+    unlisted: true,
     description:
       "What draws a newcomer to return? The factors “church shoppers” prioritize — and practical, grace-filled ways a small church can remove barriers so people encounter the living God.",
     blocks: [

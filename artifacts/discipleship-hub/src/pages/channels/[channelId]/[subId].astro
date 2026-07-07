@@ -235,12 +235,15 @@ function btnClass(enabled: boolean) {
               : (item.links?.pdf ?? bcgPdfHref ?? bsmPdfHref ?? articlePdfHref);
             const pdfInternal = !!item.bookId || (!item.links?.pdf && (!!bcgPdfHref || !!bsmPdfHref || !!articlePdfHref));
 
-            // Video: enabled only when this item has a matching video inside the sub-topic's playlist
-            // (or an explicit external `links.video` override). No fallback to the playlist index.
-            const videoHref = item.videoId && sub.playlistId
-              ? join(`/playlist/${encodeURIComponent(sub.playlistId)}?play=${encodeURIComponent(item.videoId)}`)
+            // Video: enabled only when this item has a matching video inside a
+            // playlist — the sub-topic's own `playlistId`, or a per-item
+            // `videoPlaylistId` override when the video lives in another playlist.
+            // Falls back to an explicit external `links.video` override.
+            const videoPlaylistId = item.videoPlaylistId ?? sub.playlistId;
+            const videoHref = item.videoId && videoPlaylistId
+              ? join(`/playlist/${encodeURIComponent(videoPlaylistId)}?play=${encodeURIComponent(item.videoId)}`)
               : item.links?.video;
-            const videoInternal = !!(item.videoId && sub.playlistId);
+            const videoInternal = !!(item.videoId && videoPlaylistId);
 
             const appHref = item.links?.app;
 

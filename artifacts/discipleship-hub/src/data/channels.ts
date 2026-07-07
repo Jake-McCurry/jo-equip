@@ -10,6 +10,12 @@ export interface SubTopicItem {
   /** ID of a YouTube video inside this sub-topic's `playlistId` — when set, this item's Video button deep-links to that video. */
   videoId?: string;
   /**
+   * ID of the playlist (in src/data/playlists.ts) that contains `videoId`, when
+   * that video lives in a DIFFERENT playlist than the sub-topic's own
+   * `playlistId`. Defaults to the sub-topic's `playlistId` when omitted.
+   */
+  videoPlaylistId?: string;
+  /**
    * ID of an article body in a per-subtopic article data file (e.g. src/data/bcgArticles.ts).
    * When set, the item's title becomes a link to /channels/<channelId>/<subId>/<articleId>
    * which renders the full long-form article. Items without an articleId are list-only.
@@ -1855,7 +1861,7 @@ export const subTopics: SubTopic[] = [
       { number: 2, title: 'Was Jesus a Real Person?', videoId: 'vQ0Wro-Rgtw', links: { app: 'https://app.jesusonline.com/post/51002-was-jesus-a-real-person' } },
       { number: 3, title: 'Did Jesus Rise from the Dead?', videoId: 'T_78mbFTmYY', links: { app: 'https://app.jesusonline.com/post/51003-did-jesus-rise-from-the-dead' } },
       { number: 4, title: 'Jesus’ Death and Resurrection: Copied from other Ancient Deities?', links: { app: 'https://app.jesusonline.com/post/51004-jesus-death-and-resurrection-copied-from-other-ancient-deities' } },
-      { number: 5, title: 'Harvard Law Professor Puts Jesus\' Resurrection on Trial', links: { app: 'https://app.jesusonline.com/post/51005-harvard-law-professor-puts-jesus-resurrection-on-trial' } },
+      { number: 5, title: 'Harvard Law Professor Puts Jesus\' Resurrection on Trial', videoId: '8mqGQrW1Q0A', videoPlaylistId: 'facts-for-faith', links: { app: 'https://app.jesusonline.com/post/51005-harvard-law-professor-puts-jesus-resurrection-on-trial' } },
       { number: 6, title: 'The Jesus Family Tomb: Fact or Fiction', links: { app: 'https://app.jesusonline.com/post/51006-the-jesus-family-tomb-fact-or-fiction' } },
       { number: 7, title: 'Is Jesus the Jewish Messiah?', videoId: 'Jn1M1c9iNfg', links: { app: 'https://app.jesusonline.com/post/51007-is-jesus-the-jewish-messiah' } },
       { number: 8, title: 'Is Jesus God?', videoId: '9pIWZfEAV0I', links: { app: 'https://app.jesusonline.com/post/51008-is-jesus-god' } },

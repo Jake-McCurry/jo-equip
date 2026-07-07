@@ -16,3 +16,15 @@ When resolving `app.jesusonline.com/post/<slug>` links to WordPress post ids (fo
 **Why:** the auto-PDF importer is REST-driven; a review gate expects a PDF on every app-linked survey item. A same-book Overview PDF satisfies that with genuinely relevant content, without forcing a wrong-book PDF or dropping the working App link.
 
 **How to apply:** for a `936xx` book with no REST post, WP `?search=<bookword>` (no prefix filter) to find its `38xxx-overview-<book>` slug; confirm the PDF exists under `public/articles/`; set `links.pdf: "/articles/<overview-slug>.pdf"` on that item.
+
+## articlesBuild worklist comes from slug-mapping.json, not channels.ts
+
+`scripts/src/articlesBuild.ts` builds its work list from `scripts/data/slug-mapping.json` (`Object.entries(mapping)`, then filters by `--slug`). **There is NO committed resolver that regenerates that mapping** — it is a hand-maintained static data file. So when a channel item gets a NEW app slug (e.g. a spreadsheet renumbering: `32281-...` → `32211-...`), running `articles:build --slug=<newslug>` reports "Generating 0" because the new slug is not a key in the mapping — even though the WP post exists.
+
+**Why:** the mapping predates any renumbering; `--slug` filters an already-fixed key set. Stale mapping keys silently drop new slugs from generation.
+
+**How to apply (add new slugs before generating PDFs):**
+1. Confirm each new slug resolves in LIVE WP: `GET https://apicontent.jesusonline.com/wp-json/wp/v2/posts?slug=<slug>&_fields=id,slug` returns exactly 1 result.
+2. Inject `mapping[<channelAppSlug>] = { wp_id, wp_slug, method: "exact" }` into `scripts/data/slug-mapping.json` (only for keys not already present).
+3. Run `pnpm --filter @workspace/scripts run articles:build -- --slug=<comma,list>` with `PUPPETEER_EXECUTABLE_PATH` set to the Nix chromium (`/nix/store/*chromium*/bin/chromium`). This regenerates PDFs + the `src/data/articles.ts` manifest so `hasArticlePdf()` lights up the buttons.
+Note: a spreadsheet renumber can leave the OLD-number PDF orphaned in `public/articles/` (e.g. `32281-the-supreme-pursuit-of-the-heart.pdf` after content moved to `32211-...`); harmless but not tree-shaken into the manifest.

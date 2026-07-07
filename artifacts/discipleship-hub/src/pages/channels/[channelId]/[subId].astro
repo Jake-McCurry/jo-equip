@@ -269,11 +269,6 @@ function btnClass(enabled: boolean) {
                       : item.title}
                   </h3>
                   <div class="flex flex-wrap gap-1.5">
-                    {articleHref && (
-                      <a href={articleHref} class={btnClass(true)} style="background-color:#de5b0014;color:#de5b00;border:1px solid #de5b0040;">
-                        <FileText className="w-3 h-3" />Read
-                      </a>
-                    )}
                     {buttons.map(b => {
                       const enabled = !!b.href && b.href !== "#";
                       const Icon = b.icon;
@@ -296,6 +291,11 @@ function btnClass(enabled: boolean) {
                         </a>
                       );
                     })}
+                    {articleHref && (
+                      <a href={articleHref} class={btnClass(true)} style="background-color:#de5b0014;color:#de5b00;border:1px solid #de5b0040;">
+                        <FileText className="w-3 h-3" />Read
+                      </a>
+                    )}
                   </div>
                 </div>
               </li>

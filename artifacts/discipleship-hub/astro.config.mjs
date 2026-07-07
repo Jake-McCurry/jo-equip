@@ -24,6 +24,13 @@ export default defineConfig({
   base,
   trailingSlash: "ignore",
   output: "static",
+  /* The standalone "Attributes of God" Growth sub-topic was folded into
+     "Growing Closer to God" › "The Majesty of God" during the 070626 reorg.
+     Preserve any shared/indexed link to the old route. */
+  redirects: {
+    "/channels/growth/attributes-of-god":
+      "/channels/growth/bb-growing-closer-majesty",
+  },
   /* Prefetch in-viewport links so visitor navigation feels instant.
      Adds ~1KB of JS but eliminates next-page wait. */
   prefetch: { defaultStrategy: "viewport" },

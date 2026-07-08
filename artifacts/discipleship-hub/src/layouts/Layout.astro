@@ -125,6 +125,14 @@ const gtmEnabled = import.meta.env.PROD;
     {gtmEnabled && (
       <script is:inline set:html={`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${GTM_ID}');`} />
     )}
+
+    {/* Crazy Egg heatmap/session tracking — production-only for the same reason
+        as GTM (dev/preview traffic would pollute recordings). Standard async
+        snippet; https:// made explicit (the provided snippet was
+        protocol-relative). Account script: 0010/0959. */}
+    {gtmEnabled && (
+      <script is:inline type="text/javascript" src="https://script.crazyegg.com/pages/scripts/0010/0959.js" async></script>
+    )}
   </head>
   <body class="min-h-[100dvh] flex flex-col">
 

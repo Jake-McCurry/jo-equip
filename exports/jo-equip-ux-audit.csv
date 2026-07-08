@@ -1,0 +1,20 @@
+Rank,Severity,Area,Problem,Recommendation,Status
+1,High,Brand / Global,"Two competing brand names: header says 'JesusOnline Equip', hero and content say 'JO EQUIP'","Pick one public-facing name and use it consistently across header, hero, titles, and copy",Open
+2,High,Home page,"'JO EQUIP' appears 3x above the fold (header, headline, button); 'Ministry Resources Hub' appears 2x",Keep brand in the headline once; remove the duplicate tagline; use action language in the button,Open
+3,High,Home page,"Primary CTA 'Welcome to JO EQUIP' is a greeting, not an action; users came for resources",Change hero button to 'Explore the 3 Channels' (link/scroll to the channels),Open
+4,High,Welcome loop,"/welcome page mostly repeats the home page (same description, same 3 channel cards); only 2 paragraphs are unique","Merge the 2 unique paragraphs into the home midpage section; retire /welcome with a redirect - or give it real content (personal letter, photo, video)",Open
+5,High,Welcome loop,Circular journey: hero button > welcome page > channel cards > back where home already pointed; 3 separate links funnel into it,Remove the intermediary hop; point all entry links directly at channels/content,Open
+6,High,Topic hubs,"Internal catalog numbers leak to visitors: card badges show '09.1', '09.2' (spreadsheet numbering)","Show simple 1,2,3 sequence numbers or none; keep internal numbering out of the UI",Open
+7,High,Topic sub-pages,"Orphaned page titles: sub-pages titled just 'Introduction', 'Worship' etc. give zero context from search/shared links",Include the parent name in the visible title (e.g. 'The Lord's Prayer Guide - Introduction'),Open
+8,High,Navigation,Back links skip a level: sub-pages say 'Back to Growth Resources' instead of the direct parent hub,"Back link should always go one level up (to the topic hub, not the channel)",Open
+9,High,Mobile home,"Product is buried on mobile: hero = screen 1, About/Beliefs/JO APP strip = screen 2, welcome teaser = screen 3; channels start ~screen 4",Move channels up; demote the institutional strip below the channels or into the footer on mobile,Open
+10,Medium,Copy / Global,"Interface narrates itself: 'Tap a playlist to watch the videos', 'open any of them in a new tab, then download...', 'resources are linked where available'","Replace instructional filler with value copy (what the content is, why it matters)",Open
+11,Medium,Topic cards,Vague card CTA 'See Menu' (restaurant language),Use 'View topics' / 'Explore' so users know what they'll get,Open
+12,Medium,Growth channel,"Choice overload: 21 flat topic cards with no grouping, descriptions, or guidance on where to start",Add light grouping (e.g. Foundations / Prayer / Bible Studies) and/or a highlighted 'Start here' card,Open
+13,Medium,Topic hub cards,"Empty cards: title + 'See Menu' only - no hint of contents (item count, PDF vs video)",Add a one-line description or content count/badges to each card,Open
+14,Medium,Resource buttons,Greyed 'coming soon' buttons rely on hover tooltips - invisible on touch devices; mobile users see dead buttons,Hide unavailable buttons or show a visible 'Coming soon' label instead of a tooltip,Open
+15,Medium,Newsletter,Form doesn't actually subscribe - submits into a 'please email us' message; quietly non-functional forms erode trust,Either wire up the real signup (Mailchimp) or replace with an honest 'Coming soon - email us to join' notice,Open
+16,Low,Navigation,'Listen' (TTS instructions) holds a top-level nav slot while Search hides behind an icon; core content is Channels/Books/Playlists,Move Listen under 'More'; consider giving Search more prominence,Open
+17,Low,Playlists,First playlist shown has only 1 video - undercuts the 'playlist' promise as the lead item,"Order playlists by strength/depth, not fixed sequence",Open
+18,Low,Playlists,Redundant links: whole card is clickable AND a 'View full playlist' link goes to the same place,Keep one affordance (clickable card with a visual cue),Open
+19,Low,Channel pages,Channel hero banners spend ~350px on a title before any content - expensive on mobile,"Reduce hero height, especially on small screens",Open

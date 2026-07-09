@@ -266,15 +266,20 @@ export const subTopics: SubTopic[] = [
     name: 'Sermon Toolbox',
     description: 'Develop Biblically-grounded, transformational messages for Kingdom maturity.',
   },
-  /* Sub-level added per Church sheet v.062526 — content pending (article lives
-     in the shared OneDrive folder; not yet published). Empty placeholder until
-     the material is provided. */
+  /* Sub-level added per Church sheet v.062526; content supplied July 2026
+     from the user's "Bible Study Tools" docx. */
   {
     id: 'bible-study-tools',
     channelId: 'church',
     parentId: 'sermon-toolbox',
     name: 'Bible Study Tools',
     description: 'Tools and resources for studying the Bible in sermon preparation.',
+    hideNumbers: true,
+    /* Content from the user's "Bible Study Tools" docx (July 2026) — a
+       single authored resource guide, rendered via bibleStudyMethods.ts. */
+    items: [
+      { number: 1, title: 'Bible Study Tools', articleId: 'essential-bible-study-tools' },
+    ],
   },
   /* ── BIBLE MASTERY (parent) ──
      Grouping added to match the Church spreadsheet. Nests Bible study

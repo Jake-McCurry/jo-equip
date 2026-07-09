@@ -28,3 +28,7 @@ When resolving `app.jesusonline.com/post/<slug>` links to WordPress post ids (fo
 2. Inject `mapping[<channelAppSlug>] = { wp_id, wp_slug, method: "exact" }` into `scripts/data/slug-mapping.json` (only for keys not already present).
 3. Run `pnpm --filter @workspace/scripts run articles:build -- --slug=<comma,list>` with `PUPPETEER_EXECUTABLE_PATH` set to the Nix chromium (`/nix/store/*chromium*/bin/chromium`). This regenerates PDFs + the `src/data/articles.ts` manifest so `hasArticlePdf()` lights up the buttons.
 Note: a spreadsheet renumber can leave the OLD-number PDF orphaned in `public/articles/` (e.g. `32281-the-supreme-pursuit-of-the-heart.pdf` after content moved to `32211-...`); harmless but not tree-shaken into the manifest.
+
+## Spreadsheet omissions can be deliberate
+
+When the Church/Growth content spreadsheet skips one item mid-sequence (e.g. From Coping to Cure omitting "I Hate Pain!" 65612), verify against WP REST before assuming a typo: `?slug=` exact + `?search=` on both posts AND pages. If WP has nothing, the omission is deliberate (the article was never published) — mirror the sheet and drop the item rather than adding a dead app link. The app frontend's 200-for-everything SPA behavior makes curl status checks useless for this.

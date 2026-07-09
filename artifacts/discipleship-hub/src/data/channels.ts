@@ -132,7 +132,7 @@ export const subTopics: SubTopic[] = [
   //   05 sermon-toolbox  (intro-only placeholder — content list pending)
   //   06 bible-mastery  (parent of bible-study-methods, joshua-nations-online-bible-training, survey-of-the-bible, bibleproject)
   //   07 disciple-making-movement  (renamed "Disciple Making Movement (Joshua Nations)")
-  //   08 biblical-counseling-insights  (intro-only placeholder — content list pending)
+  //   08 biblical-counseling-insights  (parent of soul-prescription, from-coping-to-cure, struggle-inner-peace, i-want-happiness-now — per sheet v.070826)
   //   09 rapid-church-planting  (renamed "Rapid Church Planting (Joshua Nations)")
   // Legacy `bible-training-curriculum` placeholder removed May 2026.
   { id: 'make-multiply-disciples-newsletter', channelId: 'church', name: 'Making & Multiplying Disciples Newsletter', description: 'Subscribe to our newsletter for disciple-makers.' },
@@ -632,15 +632,115 @@ export const subTopics: SubTopic[] = [
       { number: 9, title: "Lesson 9: Commissioning", links: { app: "https://app.jesusonline.com/post/93624-9-lesson-9-commissioning" } },
     ],
   },
-  /* ── BIBLICAL COUNSELING INSIGHTS ──
-     Intro-only placeholder added to match the Church spreadsheet; content list
-     pending. With no items/children it renders the "resources being prepared"
-     empty state and greyed-out badges on the channel grid. */
+  /* ── BIBLICAL COUNSELING INSIGHTS (parent) ──
+     Populated per Church sheet v.070826 (July 2026): four child series.
+     "From Coping to Cure" and "Struggle for Inner Peace" also exist in the
+     Growth channel (ids from-cope-cure / inner-peace) — the user chose to
+     show them in BOTH places, so these are independent Church copies with
+     their own ids. The Growth copies stay unchanged. Same app slugs, so
+     generated article PDFs are shared automatically.
+     Sheet's From Coping to Cure omits "I Hate Pain!" (65612) — verified
+     July 2026: that article does NOT exist in the WP catalog (posts/pages,
+     exact + search), so the omission is deliberate and the Church copy has
+     18 items. NOTE: the Growth copy still lists it with a dead app link. */
   {
     id: 'biblical-counseling-insights',
     channelId: 'church',
     name: 'Biblical Counseling Insights',
     description: 'Strengthen individuals, families, and the church by empowering them to live God\'s way.',
+  },
+  {
+    id: 'soul-prescription',
+    channelId: 'church',
+    parentId: 'biblical-counseling-insights',
+    name: 'Soul Prescription',
+    items: [
+      { number: 1, title: 'The Heart of the Problem', links: { app: 'https://app.jesusonline.com/post/65501-1-the-heart-of-the-problem' } },
+      { number: 2, title: 'The Secret to Lasting Health', links: { app: 'https://app.jesusonline.com/post/65502-2-the-secret-to-lasting-health' } },
+      { number: 3, title: 'Knowing God (Step 1: Adopt a correct view of God)', links: { app: 'https://app.jesusonline.com/post/65503-3-knowing-god-step-1-adopt-a-correct-view-of-god' } },
+      { number: 4, title: 'Embracing Truth (Step 2: Revise your false beliefs)', links: { app: 'https://app.jesusonline.com/post/65504-4-embracing-truth-step-2-revise-your-false-beliefs' } },
+      { number: 5, title: 'Turning Around (Step 3: Repent of your sin)', links: { app: 'https://app.jesusonline.com/post/65505-5-turning-around-step-3-repent-of-your-sin' } },
+      { number: 6, title: 'Defending Your Ground (Step 4: Defend against spiritual attacks)', links: { app: 'https://app.jesusonline.com/post/65506-6-defending-your-ground-step-4-defend-against-spiritual-attacks' } },
+      { number: 7, title: 'Preventing Setbacks (Step 5: Flee temptation)', links: { app: 'https://app.jesusonline.com/post/65507-preventing-setbacks-step-5-flee-temptation' } },
+      { number: 8, title: 'Your Sin Diagnosis', links: { app: 'https://app.jesusonline.com/post/65508-8-your-sin-diagnosis' } },
+      { number: 9, title: 'Pride: It\'s All about Me', links: { app: 'https://app.jesusonline.com/post/65509-9-pride-its-all-about-me' } },
+      { number: 10, title: 'Fear: From Doubt to Dread', links: { app: 'https://app.jesusonline.com/post/65510-10-fear-from-doubt-to-dread' } },
+      { number: 11, title: 'Anger: When Mad Is Bad', links: { app: 'https://app.jesusonline.com/post/65511-11-anger-when-mad-is-bad' } },
+      { number: 12, title: 'Overindulgence: Enough Is Not Enough', links: { app: 'https://app.jesusonline.com/post/65512-12-overindulgence-enough-is-not-enough' } },
+      { number: 13, title: 'Dissatisfaction: The Restless Heart', links: { app: 'https://app.jesusonline.com/post/65513-13-dissatisfaction-the-restless-heart' } },
+      { number: 14, title: 'Immorality: Sex Misused', links: { app: 'https://app.jesusonline.com/post/65514-14-immorality-sex-misused' } },
+      { number: 15, title: 'Deceit: Showing a False Face', links: { app: 'https://app.jesusonline.com/post/65515-15-deceit-showing-a-false-face' } },
+      { number: 16, title: 'Divisiveness: Disturbing the Peace', links: { app: 'https://app.jesusonline.com/post/65516-16-divisiveness-disturbing-the-peace' } },
+      { number: 17, title: 'Rebellion: Playing against Your Own Team', links: { app: 'https://app.jesusonline.com/post/65517-17-rebellion-playing-against-your-own-team' } },
+      { number: 18, title: 'Irresponsibility: The Undisciplined Life', links: { app: 'https://app.jesusonline.com/post/65518-18-irresponsibility-the-undisciplined-life' } },
+      { number: 19, title: 'Conclusion', links: { app: 'https://app.jesusonline.com/post/65519-conclusion' } },
+      { number: 20, title: 'Appendix A: How to Know God Personally', links: { app: 'https://app.jesusonline.com/post/65520-appendix-a-how-to-know-god-personally' } },
+      { number: 21, title: 'Appendix B: How to Be Filled with the Holy Spirit', links: { app: 'https://app.jesusonline.com/post/65521-appendix-b-how-to-be-filled-with-the-holy-spirit' } },
+      { number: 22, title: 'Appendix C: Spiritual Breathing', links: { app: 'https://app.jesusonline.com/post/65522-appendix-c-spiritual-breathing' } },
+    ],
+  },
+  {
+    id: 'from-coping-to-cure',
+    channelId: 'church',
+    parentId: 'biblical-counseling-insights',
+    name: 'From Coping to Cure',
+    items: [
+      { number: 1, title: 'The Myth of Complexity', links: { app: 'https://app.jesusonline.com/post/65601-1-the-myth-of-complexity' } },
+      { number: 2, title: 'How Can I Find Peace and Satisfaction in This World?', links: { app: 'https://app.jesusonline.com/post/65602-2-how-can-i-find-peace-and-satisfaction-in-this-world' } },
+      { number: 3, title: 'Most of Us Have Had a Poor Start in Life!', links: { app: 'https://app.jesusonline.com/post/65603-3-most-of-us-have-had-a-poor-start-in-life' } },
+      { number: 4, title: 'God\'s Sharpest Tools, My Biggest Problems', links: { app: 'https://app.jesusonline.com/post/65604-4-gods-sharpest-tools-my-biggest-problems' } },
+      { number: 5, title: 'Sin Has Not Been Eliminated as of the Date of Publication of This Course', links: { app: 'https://app.jesusonline.com/post/65605-5-sin-has-not-been-eliminated-as-of-the-date-of-publication-of-this-course' } },
+      { number: 6, title: 'Why Don\'t You Just Concentrate on the Positive?', links: { app: 'https://app.jesusonline.com/post/65606-6-why-dont-you-just-concentrate-on-the-positive' } },
+      { number: 7, title: 'Look! Do You Want Me to Drive This Car or Do You Want to Do It?', links: { app: 'https://app.jesusonline.com/post/65607-7-look-do-you-want-me-to-drive-this-car-or-do-you-want-to-do-it' } },
+      { number: 8, title: 'Why Is It Difficult to Walk by a Mirror Without Looking at Yourself?', links: { app: 'https://app.jesusonline.com/post/65608-8-why-is-it-difficult-to-walk-by-a-mirror-without-looking-at-yourself' } },
+      { number: 9, title: 'At What Age Is It Acceptable to Sulk When You Can\'t Have What You Want?', links: { app: 'https://app.jesusonline.com/post/65609-9-at-what-age-is-it-acceptable-to-sulk-when-you-cant-have-what-you-want' } },
+      { number: 10, title: 'Boom! The Wing of the Plane Smacked Me in the Head', links: { app: 'https://app.jesusonline.com/post/65610-10-boom-the-wing-of-the-plane-smacked-me-in-the-head' } },
+      { number: 11, title: 'I Need to Forgive Those Soldiers', links: { app: 'https://app.jesusonline.com/post/65611-11-i-need-to-forgive-those-soldiers' } },
+      { number: 12, title: 'Your Wife Has Inoperable Cancer', links: { app: 'https://app.jesusonline.com/post/65613-13-your-wife-has-inoperable-cancer' } },
+      { number: 13, title: 'Living and Dying', links: { app: 'https://app.jesusonline.com/post/65614-14-living-and-dying' } },
+      { number: 14, title: 'I Prayed But I Still Didn\'t Feel Right', links: { app: 'https://app.jesusonline.com/post/65615-15-i-prayed-but-i-still-didnt-feel-right' } },
+      { number: 15, title: 'Anyone Who Talks About "Rejoicing Always" Just Doesn\'t Understand the Real Situation', links: { app: 'https://app.jesusonline.com/post/65616-16-anyone-who-talks-about-rejoicing-always-just-doesnt-understand-the-real-situation' } },
+      { number: 16, title: 'Anger Is One Letter Away from Danger', links: { app: 'https://app.jesusonline.com/post/65617-17-anger-is-one-letter-away-from-danger' } },
+      { number: 17, title: 'If You Don\'t Want To, You Aren\'t Going To', links: { app: 'https://app.jesusonline.com/post/65618-18-if-you-dont-want-to-you-arent-going-to' } },
+      { number: 18, title: 'The Foundation', links: { app: 'https://app.jesusonline.com/post/65619-19-the-foundation' } },
+    ],
+  },
+  {
+    id: 'struggle-inner-peace',
+    channelId: 'church',
+    parentId: 'biblical-counseling-insights',
+    name: 'Struggle for Inner Peace',
+    items: [
+      { number: 1, title: 'Life\'s Many Stresses', links: { app: 'https://app.jesusonline.com/post/65701-1-lifes-many-stresses' } },
+      { number: 2, title: 'Self-Discovery', links: { app: 'https://app.jesusonline.com/post/65702-2-self-discovery' } },
+      { number: 3, title: 'After Discovery…What?', links: { app: 'https://app.jesusonline.com/post/65703-3-after-discoverywhat' } },
+      { number: 4, title: 'The Impact of Our Emotions', links: { app: 'https://app.jesusonline.com/post/65704-4-the-impact-of-our-emotions' } },
+      { number: 5, title: 'Embracing the Truth', links: { app: 'https://app.jesusonline.com/post/65705-5-embracing-the-truth' } },
+      { number: 6, title: 'Behaviors That Stand in the Way of Your Peace', links: { app: 'https://app.jesusonline.com/post/65706-6-behaviors-that-stand-in-the-way-of-your-peace' } },
+      { number: 7, title: 'Mind and Body', links: { app: 'https://app.jesusonline.com/post/65707-7-mind-and-body' } },
+      { number: 8, title: 'There IS Hope', links: { app: 'https://app.jesusonline.com/post/65708-8-there-is-hope' } },
+      { number: 9, title: 'The Responsibility Is Yours', links: { app: 'https://app.jesusonline.com/post/65709-9-the-responsibility-is-yours' } },
+      { number: 10, title: 'Help for a Hard Journey', links: { app: 'https://app.jesusonline.com/post/65710-10-help-for-a-hard-journey' } },
+    ],
+  },
+  {
+    id: 'i-want-happiness-now',
+    channelId: 'church',
+    parentId: 'biblical-counseling-insights',
+    name: 'I Want Happiness Now',
+    items: [
+      { number: 1, title: 'Indestructible', links: { app: 'https://app.jesusonline.com/post/65801-1-indestructible' } },
+      { number: 2, title: 'Contentment', links: { app: 'https://app.jesusonline.com/post/65802-2-contentment' } },
+      { number: 3, title: 'It Takes Commitment', links: { app: 'https://app.jesusonline.com/post/65803-3-it-takes-commitment' } },
+      { number: 4, title: 'Living with Yourself', links: { app: 'https://app.jesusonline.com/post/65804-4-living-with-yourself' } },
+      { number: 5, title: 'Living with Others', links: { app: 'https://app.jesusonline.com/post/65805-5-living-with-others' } },
+      { number: 6, title: 'How Are You Using Your Words?', links: { app: 'https://app.jesusonline.com/post/65806-6-how-are-you-using-your-words' } },
+      { number: 7, title: 'Are Your Feelings and Emotions Positive or Negative?', links: { app: 'https://app.jesusonline.com/post/65807-7-are-your-feelings-and-emotions-positive-or-negative' } },
+      { number: 8, title: 'What\'s in Your Head?', links: { app: 'https://app.jesusonline.com/post/65808-8-whats-in-your-head' } },
+      { number: 9, title: 'Goals', links: { app: 'https://app.jesusonline.com/post/65809-9-goals' } },
+      { number: 10, title: 'Marriage and Parenting', links: { app: 'https://app.jesusonline.com/post/65810-10-marriage-and-parenting' } },
+      { number: 11, title: 'Happiness — It\'s Your Choice!', links: { app: 'https://app.jesusonline.com/post/65811-11-happiness-its-your-choice' } },
+    ],
   },
   {
     id: 'rapid-church-planting',
@@ -1499,10 +1599,10 @@ export const subTopics: SubTopic[] = [
       { number: 10, title: 'Boom! The Wing of the Plane Smacked Me in the Head', links: { app: 'https://app.jesusonline.com/post/65610-10-boom-the-wing-of-the-plane-smacked-me-in-the-head' } },
       { number: 11, title: 'I Need to Forgive Those Soldiers', links: { app: 'https://app.jesusonline.com/post/65611-11-i-need-to-forgive-those-soldiers' } },
       { number: 12, title: 'I Hate Pain!', links: { app: 'https://app.jesusonline.com/post/65612-12-i-hate-pain' } },
-      { number: 13, title: 'You Wife Has Inoperable Cancer', links: { app: 'https://app.jesusonline.com/post/65613-13-your-wife-has-inoperable-cancer' } },
+      { number: 13, title: 'Your Wife Has Inoperable Cancer', links: { app: 'https://app.jesusonline.com/post/65613-13-your-wife-has-inoperable-cancer' } },
       { number: 14, title: 'Living and Dying', links: { app: 'https://app.jesusonline.com/post/65614-14-living-and-dying' } },
       { number: 15, title: 'I Prayed But I Still Didn\'t Feel Right', links: { app: 'https://app.jesusonline.com/post/65615-15-i-prayed-but-i-still-didnt-feel-right' } },
-      { number: 16, title: 'Anyonoe Who Talks About "Rejoicing Always" Just Doesn\'t Understand the Real Situation', links: { app: 'https://app.jesusonline.com/post/65616-16-anyone-who-talks-about-rejoicing-always-just-doesnt-understand-the-real-situation' } },
+      { number: 16, title: 'Anyone Who Talks About "Rejoicing Always" Just Doesn\'t Understand the Real Situation', links: { app: 'https://app.jesusonline.com/post/65616-16-anyone-who-talks-about-rejoicing-always-just-doesnt-understand-the-real-situation' } },
       { number: 17, title: 'Anger Is One Letter Away from Danger', links: { app: 'https://app.jesusonline.com/post/65617-17-anger-is-one-letter-away-from-danger' } },
       { number: 18, title: 'If You Don\'t Want To, You Aren\'t Going To', links: { app: 'https://app.jesusonline.com/post/65618-18-if-you-dont-want-to-you-arent-going-to' } },
       { number: 19, title: 'The Foundation', links: { app: 'https://app.jesusonline.com/post/65619-19-the-foundation' } },

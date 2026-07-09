@@ -1307,7 +1307,7 @@ export const subTopics: SubTopic[] = [
     id: 'experiencing-god',
     channelId: 'growth',
     name: 'Experiencing God 24/7',
-    description: 'Explain others how to experience God\'s presence in everyday life.',
+    description: 'Explain to others how to experience God\'s presence in everyday life.',
     items: [
       { number: 1, title: 'Experiencing God 24/7 Overview', links: { app: 'https://app.jesusonline.com/post/20010-experiencing-god-24-7' } },
       { number: 2, title: 'Quiet Time with God', links: { app: 'https://app.jesusonline.com/post/20011-quiet-time-with-god' } },

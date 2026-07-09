@@ -38,7 +38,7 @@ Single privileged endpoint: `POST /api/subscribe` (book-download email capture �
 
 ### Books page (`/books`)
 
-- 9 PDFs in `public/books/`, covers in `src/assets/books/covers/` (NOT `public/`; loaded via `src/data/bookCovers.ts` import.meta.glob map, rendered with `<Image>` for ~90% size reduction).
+- 13 PDFs in `public/books/`, covers in `src/assets/books/covers/`. July 2026 additions: Extraordinary Evangelism Student Guide (color front cover prepended as PDF page 1; source began at a plain title page), Eight Great Ways to Honor Your Husband / Wife (David Chadwick), and Soul Prescription: 5 Steps (condensed edition, separate from full Soul Prescription; cover rendered from the PDF's own title page). (NOT `public/`; loaded via `src/data/bookCovers.ts` import.meta.glob map, rendered with `<Image>` for ~90% size reduction).
 - Order + metadata in `src/data/books.ts`.
 - Email gate: modal on first download, remembered in `localStorage` under `jo_equip_subscribed_v1` as a non-sensitive boolean flag `"1"` (in-memory fallback for strict modes). Raw email addresses are never persisted in browser storage — only forwarded to the Worker then discarded client-side. On first load, any legacy `jo_equip_email_v1` entry (which stored raw email) is migrated to the new key and erased. Fire-and-forget POST to `/api/subscribe` with Turnstile token. Endpoint always returns 200 — downloads never blocked. Modal is fully accessible (focus trap, Esc, focus restore, ARIA).
 - `/books/<id>` per-book detail pages set OG image to the book's cover; Download CTA is just `<a href="/books?download=<id>">` — the books index JS auto-triggers the gated download.

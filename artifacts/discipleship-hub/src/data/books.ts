@@ -67,4 +67,37 @@ export const books: Book[] = [
     cover: "/books/covers/struggle-for-inner-peace.png",
     pdf: "/books/struggle-for-inner-peace.pdf",
   },
+  /* July 2026 additions (user eBooks zip). The Student Guide PDF ships with
+     its color front cover prepended as page 1 (source PDF began at a plain
+     title page). "Soul Prescription: 5 Steps" is the condensed edition —
+     distinct from the full "Soul Prescription" above; its cover is rendered
+     from the PDF's own title page (no separate cover art supplied). */
+  {
+    id: "extraordinary-evangelism-student-guide",
+    title: "Extraordinary Evangelism: A Student Guide",
+    author: "Dave R. Chapman",
+    cover: "/books/covers/extraordinary-evangelism-student-guide.png",
+    pdf: "/books/extraordinary-evangelism-student-guide.pdf",
+  },
+  {
+    id: "eight-great-ways-to-honor-your-husband",
+    title: "Eight Great Ways to Honor Your Husband",
+    author: "Marilynn Chadwick",
+    cover: "/books/covers/eight-great-ways-to-honor-your-husband.png",
+    pdf: "/books/eight-great-ways-to-honor-your-husband.pdf",
+  },
+  {
+    id: "eight-great-ways-to-honor-your-wife",
+    title: "Eight Great Ways to Honor Your Wife",
+    author: "David Chadwick",
+    cover: "/books/covers/eight-great-ways-to-honor-your-wife.png",
+    pdf: "/books/eight-great-ways-to-honor-your-wife.pdf",
+  },
+  {
+    id: "soul-prescription-5-steps",
+    title: "Soul Prescription: 5 Steps to True Healing and Freedom",
+    author: "Bill Bright and Henry Brandt",
+    cover: "/books/covers/soul-prescription-5-steps.png",
+    pdf: "/books/soul-prescription-5-steps.pdf",
+  },
 ];

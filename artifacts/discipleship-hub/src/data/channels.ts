@@ -772,6 +772,7 @@ export const subTopics: SubTopic[] = [
     id: 'adventure-living-jesus',
     channelId: 'growth',
     name: 'The Adventure of Living with Jesus (Basic Discipleship)',
+    description: 'Equip new believers with essential truths about new life with Jesus.',
     items: [
       { number: 1, title: 'Introduction', links: { app: 'https://app.jesusonline.com/post/60100-1-introduction' } },
       { number: 2, title: 'Becoming a New Person in Christ', links: { app: 'https://app.jesusonline.com/post/60101-1-becoming-a-new-person-in-christ' } },
@@ -788,6 +789,7 @@ export const subTopics: SubTopic[] = [
     id: 'new-life-christ',
     channelId: 'growth',
     name: 'New Life in Christ (Intermediate Discipleship)',
+    description: 'Help believers live out their new life in Christ more fully.',
     items: [
       { number: 1, title: 'Four Immediate Benefits', links: { app: 'https://app.jesusonline.com/post/22010-008-four-immediate-benefits' } },
       { number: 2, title: 'How Can You Be Sure of Your Relationship with Christ', links: { app: 'https://app.jesusonline.com/post/22010-015-how-can-you-be-sure-of-your-relationship-with-christ' } },
@@ -835,6 +837,7 @@ export const subTopics: SubTopic[] = [
     id: 'solid-foundation',
     channelId: 'growth',
     name: 'Laying a Solid Foundation',
+    description: 'Instruct believers to lay a solid foundation for their spiritual maturity.',
     items: [
       { number: 1, title: 'God and You', links: { app: 'https://app.jesusonline.com/post/31051-god-and-you' } },
       { number: 2, title: 'Sin That Has Destroyed Humanity', links: { app: 'https://app.jesusonline.com/post/31052-sin-that-has-destroyed-humanity' } },
@@ -851,6 +854,7 @@ export const subTopics: SubTopic[] = [
     id: 'building-blocks',
     channelId: 'growth',
     name: 'Building Blocks for Maturity',
+    description: 'Provide practical tools to help believers become fruitful disciples of Jesus.',
   },
   {
     id: 'bb-seeing-life',
@@ -1089,6 +1093,7 @@ export const subTopics: SubTopic[] = [
     id: 'attributes-of-god',
     channelId: 'growth',
     name: 'Attributes of God',
+    description: 'Open people\'s eyes to behold the majesty of God\'s character.',
     items: [
       { number: 1, title: 'The Supreme Pursuit of the Heart', links: { app: 'https://app.jesusonline.com/post/32211-the-supreme-pursuit-of-the-heart' } },
       { number: 2, title: 'Attributes of Self-Existence', links: { app: 'https://app.jesusonline.com/post/32212-attributes-of-self-existence' } },
@@ -1102,6 +1107,7 @@ export const subTopics: SubTopic[] = [
     id: 'identity-in-christ',
     channelId: 'growth',
     name: 'Your Identity in Christ',
+    description: 'Show believers who they truly are in Christ and how to walk in it.',
     items: [
       { number: 1, title: 'Embracing Your New Identity in Christ', links: { app: 'https://app.jesusonline.com/post/32310-embracing-your-new-identity-in-christ' } },
       { number: 2, title: 'What the Bible Says About the New You', links: { app: 'https://app.jesusonline.com/post/32311-what-the-bible-says-about-the-new-you' } },
@@ -1120,6 +1126,7 @@ export const subTopics: SubTopic[] = [
     id: 'ministry-holy-spirit',
     channelId: 'growth',
     name: 'Ministry of the Holy Spirit',
+    description: 'Train others how to follow and cooperate with the Holy Spirit.',
     items: [
       { number: 1, title: 'Who Is the Holy Spirit?', links: { app: 'https://app.jesusonline.com/post/32410-who-is-the-holy-spirit' } },
       { number: 2, title: 'The Exchanged Life: Christ Living in You Through the Holy Spirit', links: { app: 'https://app.jesusonline.com/post/32420-the-exchanged-life' } },
@@ -1136,6 +1143,7 @@ export const subTopics: SubTopic[] = [
     id: 'prayer',
     channelId: 'growth',
     name: 'Prayer',
+    description: 'Lead others into an effective prayer life.',
     items: [
       { number: 1, title: 'What is Prayer?', links: { app: 'https://app.jesusonline.com/post/23101-what-is-prayer' } },
       { number: 2, title: 'Why Pray?', links: { app: 'https://app.jesusonline.com/post/23102-why-pray' } },
@@ -1152,6 +1160,7 @@ export const subTopics: SubTopic[] = [
     id: 'prayer-guides',
     channelId: 'growth',
     name: 'The Lord\'s Prayer Guide',
+    description: 'Teach Jesus\' model prayer to strengthen others\' connection with God.',
   },
   {
     id: 'lords-prayer-introduction',
@@ -1274,6 +1283,7 @@ export const subTopics: SubTopic[] = [
     id: 'church-life',
     channelId: 'growth',
     name: 'Church Life',
+    description: 'Develop believers to thrive as active members of the Church.',
   },
   {
     id: '5-steps-break-destructive-behavior',
@@ -1297,6 +1307,7 @@ export const subTopics: SubTopic[] = [
     id: 'experiencing-god',
     channelId: 'growth',
     name: 'Experiencing God 24/7',
+    description: 'Explain others how to experience God\'s presence in everyday life.',
     items: [
       { number: 1, title: 'Experiencing God 24/7 Overview', links: { app: 'https://app.jesusonline.com/post/20010-experiencing-god-24-7' } },
       { number: 2, title: 'Quiet Time with God', links: { app: 'https://app.jesusonline.com/post/20011-quiet-time-with-god' } },
@@ -1312,6 +1323,7 @@ export const subTopics: SubTopic[] = [
     id: 'seven-habits',
     channelId: 'growth',
     name: 'Seven Habits',
+    description: 'Instill seven essential habits that help people grow closer to God.',
     playlistId: '7-habits-deeper-relationship-with-god',
     items: [
       { number: 1, title: 'Cultivate 7 Habits', videoId: 'c2QgWzLjLco', links: { app: 'https://app.jesusonline.com/post/32270-duty-discipline-delight' } },
@@ -1328,6 +1340,7 @@ export const subTopics: SubTopic[] = [
     id: 'forever-loved',
     channelId: 'growth',
     name: 'Forever Loved',
+    description: 'Anchor believers securely in God\'s unchanging love.',
     items: [
       { number: 1, title: 'Introduction', links: { app: 'https://app.jesusonline.com/post/25211-introduction' } },
       { number: 2, title: 'Parable of the Lost Son', links: { app: 'https://app.jesusonline.com/post/25212-parable-of-the-lost-son' } },
@@ -1341,6 +1354,7 @@ export const subTopics: SubTopic[] = [
     id: 'hope-times-crisis',
     channelId: 'growth',
     name: 'Hope in Times of Crisis',
+    description: 'Prepare others with biblical hope in God for life\'s journey.',
     playlistId: 'hope-in-times-of-crisis',
     items: [
       { number: 1, title: 'God in Times of Crisis', videoId: 'cIATt88b_MM', links: { app: 'https://app.jesusonline.com/post/22002-01-god-in-times-of-crisis' } },
@@ -1367,6 +1381,7 @@ export const subTopics: SubTopic[] = [
     id: 'bible-promises-hope',
     channelId: 'growth',
     name: 'Bible Promises for Hope',
+    description: 'Anchor people in God\'s promises to maintain confident hope.',
     items: [
       { number: 1, title: 'Hope in God\'s Promises', links: { app: 'https://app.jesusonline.com/post/23251-hope-in-gods-promises' } },
       { number: 2, title: 'Promises Overview', links: { app: 'https://app.jesusonline.com/post/23252-promises-overview' } },
@@ -1382,6 +1397,7 @@ export const subTopics: SubTopic[] = [
     id: 'attitude-behavior',
     channelId: 'growth',
     name: 'Attitudes and Behavior',
+    description: 'Guide believers toward transformed attitudes and godly behavior.',
     items: [
       { number: 1, title: 'Change Attitudes and Behavior', links: { app: 'https://app.jesusonline.com/post/33001-change-attitudes-and-behavior' } },
       { number: 2, title: 'Dealing with Behavior Problems', links: { app: 'https://app.jesusonline.com/post/33010-dealing-with-behavior-problems' } },
@@ -1401,6 +1417,7 @@ export const subTopics: SubTopic[] = [
     id: 'successful-marriage',
     channelId: 'growth',
     name: 'Successful Marriage',
+    description: 'Give couples tools to build strong, Christ-centered marriages.',
   },
   {
     id: 'keys-happy-family-living',
@@ -1457,6 +1474,7 @@ export const subTopics: SubTopic[] = [
     id: 'godly-relationships',
     channelId: 'growth',
     name: 'Godly Relationships',
+    description: 'Coach others how to cultivate healthy, godly relationships.',
     items: [
       { number: 1, title: 'Relationships Start with You', links: { app: 'https://app.jesusonline.com/post/34100-relationship-starts-with-you' } },
       { number: 2, title: 'Broken Relationships', links: { app: 'https://app.jesusonline.com/post/34200-broken-relationships' } },
@@ -1494,6 +1512,7 @@ export const subTopics: SubTopic[] = [
     id: 'inner-peace',
     channelId: 'growth',
     name: 'Inner Peace',
+    description: 'Aid believers to experience the lasting peace Jesus provides.',
     items: [
       { number: 1, title: 'Life\'s Many Stresses', links: { app: 'https://app.jesusonline.com/post/65701-1-lifes-many-stresses' } },
       { number: 2, title: 'Self-Discovery', links: { app: 'https://app.jesusonline.com/post/65702-2-self-discovery' } },
@@ -1511,6 +1530,7 @@ export const subTopics: SubTopic[] = [
     id: 'bible-study',
     channelId: 'growth',
     name: 'Bible Studies',
+    description: 'Use these Bible studies to lead others deeper into God\'s Word.',
   },
   {
     id: 'abiding-christ',
@@ -1635,6 +1655,7 @@ export const subTopics: SubTopic[] = [
     id: 'devotionals',
     channelId: 'growth',
     name: 'Devotionals',
+    description: 'Inspire believers with these daily devotionals.',
   },
   {
     id: 'discover-jesus-gospels',
@@ -2205,6 +2226,7 @@ export const subTopics: SubTopic[] = [
     id: 'jesus-true-identity',
     channelId: 'evidence',
     name: 'Jesus\' True Identity',
+    description: 'Equip people with clear evidence for Jesus\' true identity as God-man.',
     formats: ['book', 'playlist', 'app'],
     appUrl: 'https://app.jesusonline.com/series/73',
     playlistId: 'who-is-the-real-jesus',
@@ -2231,6 +2253,7 @@ export const subTopics: SubTopic[] = [
     id: 'existence-of-god',
     channelId: 'evidence',
     name: 'Existence of God',
+    description: 'Help others discover compelling evidence for the existence of God.',
     formats: ['book', 'playlist', 'app'],
     playlistId: 'science-and-the-origin-of-life',
     bookId: 'has-science-discovered-god',
@@ -2248,6 +2271,7 @@ export const subTopics: SubTopic[] = [
     id: 'reliability-of-the-bible',
     channelId: 'evidence',
     name: 'Reliability of the Bible',
+    description: 'Develop believers\' confidence in the trustworthiness of the Bible.',
     formats: ['book', 'playlist', 'app'],
     coverId: 'reliability-of-the-bible',
     items: [

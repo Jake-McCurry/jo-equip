@@ -1,4 +1,6 @@
 ---
+import MakeMultiplySignupForm from "@/components/MakeMultiplySignupForm.astro";
+
 interface Props {
   accent?: string;
 }
@@ -22,13 +24,6 @@ const features = [
     body: "Share your story or review, submit prayer requests, see lives reached online, learn how your church can grow, and request personal coaching.",
   },
 ];
-
-// Mailchimp audience: jesusonline.us1. The form posts directly (no third-party
-// script needed). Merge fields on this audience: EMAIL, FNAME (First Name),
-// CHURCH (Church/Ministry), COUNTRY, and MMERGE8 (Gender dropdown).
-const MC_ACTION =
-  "https://jesusonline.us1.list-manage.com/subscribe/post?u=c02949f5de137184b156da9bc&id=e06ba0649d&f_id=00bb87e5f0";
-const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
 ---
 <div class="max-w-3xl mx-auto">
   <p class="text-base leading-relaxed" style="color:#374151;">
@@ -54,117 +49,8 @@ const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
     </p>
   </div>
 
-  {/* Sign-up form (Mailchimp POST) */}
-  <div
-    id="signup"
-    class="mt-10 bg-white border rounded p-6 md:p-8"
-    style={`border-color:var(--color-border);border-top:4px solid ${accent};`}
-  >
-    <h2 class="text-xl mb-1" style="color:#002f55;">Free Sign Up</h2>
-    <p class="text-sm mb-6" style="color:var(--color-muted-foreground);">Free. No spam. Unsubscribe anytime.</p>
-
-    <form
-      action={MC_ACTION}
-      method="post"
-      target="_blank"
-      class="space-y-4"
-    >
-      <div>
-        <label for="mm-email" class="block text-sm font-medium mb-1.5" style="color:#002f55;">
-          Email <span style="color:#de5b00;">*</span>
-        </label>
-        <input
-          type="email"
-          name="EMAIL"
-          id="mm-email"
-          required
-          autocomplete="email"
-          class="w-full rounded border px-3 py-2.5 text-sm outline-none focus-visible:ring-2"
-          style="border-color:var(--color-border);color:#002f55;"
-        />
-      </div>
-
-      <div>
-        <label for="mm-fname" class="block text-sm font-medium mb-1.5" style="color:#002f55;">
-          First Name <span style="color:#de5b00;">*</span>
-        </label>
-        <input
-          type="text"
-          name="FNAME"
-          id="mm-fname"
-          required
-          autocomplete="given-name"
-          class="w-full rounded border px-3 py-2.5 text-sm outline-none focus-visible:ring-2"
-          style="border-color:var(--color-border);color:#002f55;"
-        />
-      </div>
-
-      <div>
-        <label for="mm-church" class="block text-sm font-medium mb-1.5" style="color:#002f55;">
-          Church/Ministry <span style="color:#de5b00;">*</span>
-        </label>
-        <input
-          type="text"
-          name="CHURCH"
-          id="mm-church"
-          required
-          autocomplete="organization"
-          class="w-full rounded border px-3 py-2.5 text-sm outline-none focus-visible:ring-2"
-          style="border-color:var(--color-border);color:#002f55;"
-        />
-      </div>
-
-      <div>
-        <label for="mm-country" class="block text-sm font-medium mb-1.5" style="color:#002f55;">
-          Country
-        </label>
-        <input
-          type="text"
-          name="COUNTRY"
-          id="mm-country"
-          autocomplete="country-name"
-          class="w-full rounded border px-3 py-2.5 text-sm outline-none focus-visible:ring-2"
-          style="border-color:var(--color-border);color:#002f55;"
-        />
-      </div>
-
-      <div>
-        <label for="mm-gender" class="block text-sm font-medium mb-1.5" style="color:#002f55;">
-          Gender
-        </label>
-        <select
-          name="MMERGE8"
-          id="mm-gender"
-          class="w-full rounded border px-3 py-2.5 text-sm outline-none focus-visible:ring-2 bg-white"
-          style="border-color:var(--color-border);color:#002f55;"
-        >
-          <option value=""></option>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-        </select>
-      </div>
-
-      {/* Mailchimp audience tag */}
-      <input type="hidden" name="tags" value="5798198" />
-
-      {/* Bot-prevention honeypot — do not remove */}
-      <div aria-hidden="true" style="position:absolute;left:-5000px;">
-        <input type="text" name={MC_HONEYPOT} tabindex="-1" value="" />
-      </div>
-
-      <button
-        type="submit"
-        class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded font-semibold text-sm transition-all hover:shadow-md"
-        style={`background-color:${accent};color:#ffffff;`}
-      >
-        Free Sign Up
-      </button>
-    </form>
-
-    <p class="text-xs mt-4" style="color:var(--color-muted-foreground);">
-      Prefer email? Write to
-      <a href="mailto:equip@jesusonline.com" class="font-semibold hover:underline" style="color:#de5b00;">equip@jesusonline.com</a>
-      and we'll add you to the list.
-    </p>
+  {/* Sign-up form (shared Mailchimp POST form) */}
+  <div class="mt-10">
+    <MakeMultiplySignupForm accent={accent} />
   </div>
 </div>

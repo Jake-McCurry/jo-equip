@@ -2,6 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import { Globe } from "lucide-react";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
+import MakeMultiplySignupForm from "@/components/MakeMultiplySignupForm.astro";
 ---
 <Layout
   title="Newsletter · JO EQUIP"
@@ -23,37 +24,14 @@ import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
       </div>
       <h1 class="text-4xl md:text-5xl mb-4" style="color:#002f55;">Newsletter</h1>
       <div class="h-0.5 w-12 mx-auto mb-6" style="background-color:#de5b00;"></div>
-      <p class="text-lg leading-relaxed mb-2" style="color:#374151;">
+      <p class="text-lg leading-relaxed mb-10" style="color:#374151;">
         Subscribe to the <strong style="color:#002f55;">Make and Multiply Disciples</strong> newsletter from
         JesusOnline Ministries — fresh discipleship resources, ministry encouragement, and updates from JO EQUIP, delivered to your inbox.
       </p>
-      <p class="text-sm mb-10" style="color:var(--color-muted-foreground);">
-        Free. No spam. Unsubscribe anytime.
-      </p>
 
-      {/* Virtuous embedded signup form */}
-      <div
-        class="bg-white border rounded p-6 md:p-7 text-left"
-        style="border-color:var(--color-border);border-top:4px solid #0083de;"
-      >
-        <div id="virtuous-form-container">
-          <script
-            is:inline
-            src="https://cdn.virtuoussoftware.com/virtuous.embed.min.js"
-            data-vform="EE6816FB-A952-4D18-85ED-8566218FD091"
-            data-orgId="8193"
-            data-isGiving="false"
-            data-dependencies="[]"
-          ></script>
-          <noscript>
-            <p class="text-sm" style="color:#002f55;">
-              Please enable JavaScript to use the signup form, or email
-              <a href="mailto:equip@jesusonline.com" class="font-semibold hover:underline" style="color:#0083de;">equip@jesusonline.com</a>
-              and we'll add you to the list.
-            </p>
-          </noscript>
-        </div>
-      </div>
+      {/* Shared Mailchimp signup form — identical to the one on
+          /channels/church/make-multiply-disciples-newsletter */}
+      <MakeMultiplySignupForm accent="#0083de" />
 
     </div>
   </section>

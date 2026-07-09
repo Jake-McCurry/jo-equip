@@ -54,7 +54,14 @@ const bsm = articleId ? getBibleStudyMethod(articleId) : undefined;
 const article = bcg ?? bsm;
 if (!channel || !sub || !article) return Astro.redirect(join("/channels"));
 
-const nextArticle = bcg ? getNextBcgArticle(article.id) : getNextBibleStudyMethod(article.id);
+/* Next-article nav, scoped to the CURRENT sub-topic: the source arrays can
+   hold articles from multiple sub-topics (e.g. bibleStudyMethods also holds
+   the Sermon Toolbox tools guide), so a raw "next in array" could link into
+   a different sub-topic under this subId — a path that was never emitted. */
+let nextArticle = bcg ? getNextBcgArticle(article.id) : getNextBibleStudyMethod(article.id);
+if (nextArticle && !(sub.items ?? []).some(i => i.articleId === nextArticle!.id)) {
+  nextArticle = undefined;
+}
 const pdfHref = bcg
   ? (hasBcgArticlePdf(article.id) ? join(`/articles/bcg/${article.id}.pdf`) : null)
   : (hasBsmArticlePdf(article.id) ? join(`/articles/bsm/${article.id}.pdf`) : null);

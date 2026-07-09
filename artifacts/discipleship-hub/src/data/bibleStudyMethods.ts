@@ -1,15 +1,19 @@
 /**
- * Long-form "Bible Study Methods" articles for the Bible Mastery grouping
- * (/channels/church/bible-study-methods/<articleId>).
+ * Long-form authored articles for Church sub-topics that aren't sourced from
+ * the JOM WordPress: the "Bible Study Methods" set (Bible Mastery grouping,
+ * /channels/church/bible-study-methods/<articleId>) plus the Sermon Toolbox
+ * "Bible Study Tools" resource guide
+ * (/channels/church/bible-study-tools/essential-bible-study-tools).
  *
- * These are original JO EQUIP content pieces (not sourced from the JOM
- * WordPress). Content is stored as the same typed-block sequence used by
- * bcgArticles so the shared article page can render both. Paragraph and
- * list-item strings may contain inline HTML and are rendered with `set:html`,
- * so keep them author-controlled.
+ * Content is stored as the same typed-block sequence used by bcgArticles so
+ * the shared article page can render both. Paragraph and list-item strings
+ * may contain inline HTML and are rendered with `set:html`, so keep them
+ * author-controlled.
  *
- * To add a new method: append an entry here and set the matching `articleId`
- * on the corresponding SubTopicItem in channels.ts.
+ * To add a new article: append an entry here and set the matching `articleId`
+ * on the corresponding SubTopicItem in channels.ts. The article route scopes
+ * "Next Article" nav to the current sub-topic, so mixing sub-topics in this
+ * one array is safe.
  */
 
 import type { ArticleBlock } from "./bcgArticles";
@@ -169,6 +173,79 @@ export const bibleStudyMethods: BibleStudyMethodArticle[] = [
 
       { type: "h2", text: "Read Prayerfully" },
       { type: "p", html: "As you read, talk to God about everything you are thinking. It may be helpful to write down what you have discovered from the reading and your reflection. Be mindful of His presence and His love. Thank Him for what you are reading, learning, and thinking. Give Him your focused attention and concentration." },
+    ],
+  },
+
+  /* ── Sermon Toolbox › Bible Study Tools ──
+     Resource guide sourced from the user's "Bible Study Tools" docx
+     (July 2026). External links restored from the docx hyperlink rels;
+     all verified live at authoring time. */
+  {
+    id: "essential-bible-study-tools",
+    title: "Bible Study Tools",
+    description:
+      "A curated guide to trusted, free Bible study tools — the NET Bible, Bible Gateway, Bible Hub, BibleProject, and more — for sermon preparation and serious study.",
+    blocks: [
+      { type: "p", html: "Great sermons and Bible teaching begin with careful study of God's Word. The free tools below put translations, commentaries, original-language helps, and study resources within reach of every pastor, teacher, and serious Bible student." },
+
+      { type: "h2", text: "NET Bible" },
+      { type: "p", html: "The NET (New English Translation) Bible is available in the JO App (app.jesusonline.com). <a href=\"https://app.jesusonline.com/reader\" target=\"_blank\" rel=\"noopener noreferrer\">Read the NET Bible on the JO App</a>." },
+      { type: "p", html: "NET Bible also offers a free online Bible at <a href=\"https://netbible.org/\" target=\"_blank\" rel=\"noopener noreferrer\">netbible.org</a>. This site provides 60,932 notes by more than 25 scholars — experts in the original biblical languages — who translated the NET Bible directly from the best currently available Hebrew, Aramaic, and Greek texts. The website is a great reference source for serious Bible students." },
+
+      { type: "h2", text: "Bible Gateway" },
+      { type: "p", html: "<a href=\"https://www.biblegateway.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Bible Gateway</a> (biblegateway.com) is a searchable online Bible tool hosting more than 200 versions of the Bible in over 70 languages that you can freely read, research, and reference anywhere. Including a library of audio Bibles, mobile apps, devotionals, email newsletters, and other free resources, Bible Gateway equips you not only to read the Bible, but to understand it." },
+      { type: "ul", items: [
+        "<a href=\"https://www.biblegateway.com/passage/\" target=\"_blank\" rel=\"noopener noreferrer\">Lookup Passage</a>",
+        "<a href=\"https://www.biblegateway.com/keyword/\" target=\"_blank\" rel=\"noopener noreferrer\">Keyword Search</a>",
+        "<a href=\"https://www.biblegateway.com/topical/\" target=\"_blank\" rel=\"noopener noreferrer\">Topical Index</a>",
+      ] },
+
+      { type: "h2", text: "Bible Hub" },
+      { type: "p", html: "<a href=\"https://biblehub.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Bible Hub</a> (biblehub.com) is an online parallel Bible with search and study tools including parallel texts, cross references, Treasury of Scripture, and commentaries. This site provides quick access to topical studies, interlinears, sermons, Strong's and many more resources, and is a great way to link any verse on your site to an instant menu of 25 versions. This website allows you to:" },
+      { type: "ul", items: [
+        "<strong>Search:</strong> Enter any combination of book, abbreviation, chapter, verse, or keyword.",
+        "<strong>Read:</strong> Click any version name to read the full chapter for that text.",
+        "<strong>Study:</strong> Click any study tab to view <a href=\"https://biblehub.com/sermons/matthew/1-1.htm\" target=\"_blank\" rel=\"noopener noreferrer\">sermons</a>, <a href=\"https://biblehub.com/topical/matthew/1-1.htm\" target=\"_blank\" rel=\"noopener noreferrer\">topics</a>, <a href=\"https://biblehub.com/commentaries/matthew/1-1.htm\" target=\"_blank\" rel=\"noopener noreferrer\">commentaries</a>, <a href=\"https://biblehub.com/interlinear/\" target=\"_blank\" rel=\"noopener noreferrer\">interlinear</a>, <a href=\"https://biblehub.com/strongs.htm\" target=\"_blank\" rel=\"noopener noreferrer\">Strong's</a>, or <a href=\"https://biblehub.com/text/matthew/1-1.htm\" target=\"_blank\" rel=\"noopener noreferrer\">Greek and Hebrew</a> for your passage.",
+      ] },
+
+      { type: "h2", text: "Bible Study Tools" },
+      { type: "p", html: "<a href=\"https://www.biblestudytools.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Bible Study Tools</a> (biblestudytools.com) is the largest free online Bible website for verse search and in-depth studies. It aims to offer the freshest and most compelling biblically-based content to Christians who take their relationship with Christ seriously, giving Christians of any age and at any stage the opportunity to read, study, understand, and apply the Bible to their lives. With free devotionals, study guides, helpful articles, and rich personalization functions, visitors can make the most of their Bible study time and unlock its meaning:" },
+      { type: "ul", items: [
+        "<a href=\"https://www.biblestudytools.com/devotionals/\" target=\"_blank\" rel=\"noopener noreferrer\">Devotionals</a>",
+        "<a href=\"https://www.biblestudytools.com/topical-verses/\" target=\"_blank\" rel=\"noopener noreferrer\">Topical Verses</a>",
+        "<a href=\"https://www.biblestudytools.com/commentaries/\" target=\"_blank\" rel=\"noopener noreferrer\">Bible Commentaries</a>",
+        "<a href=\"https://www.biblestudytools.com/concordances/\" target=\"_blank\" rel=\"noopener noreferrer\">Bible Concordances</a>",
+        "<a href=\"https://www.biblestudytools.com/dictionaries/\" target=\"_blank\" rel=\"noopener noreferrer\">Bible Dictionaries</a>",
+        "<a href=\"https://www.biblestudytools.com/encyclopedias/\" target=\"_blank\" rel=\"noopener noreferrer\">Encyclopedias</a>",
+        "<a href=\"https://www.biblestudytools.com/history/\" target=\"_blank\" rel=\"noopener noreferrer\">Church History</a>",
+        "<a href=\"https://www.biblestudytools.com/classics/\" target=\"_blank\" rel=\"noopener noreferrer\">Christian Classics</a>",
+        "<a href=\"https://www.biblestudytools.com/pastor-resources/\" target=\"_blank\" rel=\"noopener noreferrer\">Pastor Resources</a>",
+        "<a href=\"https://www.biblestudytools.com/sunday-school-lessons/\" target=\"_blank\" rel=\"noopener noreferrer\">Sunday School Lessons</a>",
+      ] },
+
+      { type: "h2", text: "BibleProject" },
+      { type: "p", html: "Explore the <a href=\"https://bibleproject.com/explore/\" target=\"_blank\" rel=\"noopener noreferrer\">BibleProject animated videos</a> about the books of the Bible and various Bible themes like Holiness, Holy Spirit, The Messiah, The Covenants, and many more." },
+      { type: "p", html: "From page one to the final word, the Bible is a unified story that leads to Jesus. In addition to videos and podcasts, their Bible resources help people experience the Bible in a way that is approachable, engaging, and transformative." },
+      { type: "p", html: "To learn more about their ministry and find Bible study resources, visit <a href=\"https://bibleproject.com/\" target=\"_blank\" rel=\"noopener noreferrer\">bibleproject.com</a>." },
+
+      { type: "h2", text: "The Gospel Coalition" },
+      { type: "p", html: "<a href=\"https://www.thegospelcoalition.org/\" target=\"_blank\" rel=\"noopener noreferrer\">The Gospel Coalition</a> is a global fellowship of evangelical churches in the Reformed tradition deeply committed to renewing our faith in the gospel of Christ and to reforming our ministry practices to conform fully to the Scriptures." },
+      { type: "p", html: "Their website (thegospelcoalition.org) offers daily Bible reading and devotionals, articles, blogs, commentary, essays, and other resources. They also offer different country editions in several different languages." },
+      { type: "p", html: "Try their <a href=\"https://www.thegospelcoalition.org/commentary/\" target=\"_blank\" rel=\"noopener noreferrer\">Bible commentary in the U.S. Edition</a>." },
+
+      { type: "h2", text: "The Navigators Bible Study Tools" },
+      { type: "p", html: "The Navigators is a ministry that shares the gospel of Jesus and helps people grow in their relationship with Him through <a href=\"https://www.navigators.org/life-to-life/\" target=\"_blank\" rel=\"noopener noreferrer\">Life-to-Life®</a> discipleship, creating spiritual generations of believers." },
+      { type: "p", html: "Browse through their <a href=\"https://www.navigators.org/resource/bible-study-tools/\" target=\"_blank\" rel=\"noopener noreferrer\">most popular Bible study tools</a>, including free PDF downloads, book excerpts, and even full eBooks. As you explore these Bible study resources, discover new and fresh ways to read and apply Scripture." },
+      { type: "p", html: "Visit <a href=\"https://www.navigators.org/resource/\" target=\"_blank\" rel=\"noopener noreferrer\">The Navigators</a> for more resources." },
+
+      { type: "h2", text: "English Bible Translations" },
+      { type: "p", html: "The original manuscripts of the Bible — known as the autographs — were written by their respective authors but have not survived. Nevertheless, the biblical text has been faithfully preserved and transmitted through thousands of ancient manuscripts and fragments discovered around the world." },
+      { type: "p", html: "The Scriptures were originally composed in Hebrew (most of the Old Testament), Aramaic (small portions of the Old Testament), and Greek (the entire New Testament). Biblical scholars carefully study and compare these and other Latin manuscripts to produce accurate translations of the Bible into modern languages." },
+      { type: "p", html: "Today, there are many English versions of the Bible. \u201C<a href=\"https://www.olivetree.com/blog/a-guide-to-finding-the-right-bible-translation/\" target=\"_blank\" rel=\"noopener noreferrer\">A Guide to Finding the Right Bible Translation</a>\u201D by Olive Tree Bible Software will help you understand different English translations." },
+
+      { type: "h2", text: "Scripture Memorization" },
+      { type: "p", html: "The Navigators shows you how to memorize Scripture with a proven method. Read the article, \u201C<a href=\"https://www.navigators.org/resource/how-to-memorize-scripture/\" target=\"_blank\" rel=\"noopener noreferrer\">How to Memorize Scripture</a>.\u201D" },
+      { type: "p", html: "The <a href=\"https://www.navigators.org/resource/topical-memory-system/\" target=\"_blank\" rel=\"noopener noreferrer\">Topical Memory System (TMS)</a> is a simple, easy-to-use system for memorizing key Bible verses that point to essential gospel truths." },
     ],
   },
 ];

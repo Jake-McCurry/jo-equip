@@ -5713,5 +5713,170 @@
     "wp_id": 776,
     "wp_slug": "34501-how-to-cultivate-marriage",
     "method": "exact"
+  },
+  "65501-1-the-heart-of-the-problem": {
+    "wp_id": 7101,
+    "wp_slug": "65501-1-the-heart-of-the-problem",
+    "method": "exact"
+  },
+  "65502-2-the-secret-to-lasting-health": {
+    "wp_id": 7088,
+    "wp_slug": "65502-2-the-secret-to-lasting-health",
+    "method": "exact"
+  },
+  "65503-3-knowing-god-step-1-adopt-a-correct-view-of-god": {
+    "wp_id": 7103,
+    "wp_slug": "65503-3-knowing-god-step-1-adopt-a-correct-view-of-god",
+    "method": "exact"
+  },
+  "65504-4-embracing-truth-step-2-revise-your-false-beliefs": {
+    "wp_id": 7105,
+    "wp_slug": "65504-4-embracing-truth-step-2-revise-your-false-beliefs",
+    "method": "exact"
+  },
+  "65505-5-turning-around-step-3-repent-of-your-sin": {
+    "wp_id": 7157,
+    "wp_slug": "65505-5-turning-around-step-3-repent-of-your-sin",
+    "method": "exact"
+  },
+  "65506-6-defending-your-ground-step-4-defend-against-spiritual-attacks": {
+    "wp_id": 7162,
+    "wp_slug": "65506-6-defending-your-ground-step-4-defend-against-spiritual-attacks",
+    "method": "exact"
+  },
+  "65507-preventing-setbacks-step-5-flee-temptation": {
+    "wp_id": 7171,
+    "wp_slug": "65507-7-preventing-setbacks-step-5-flee-temptation",
+    "method": "prefix"
+  },
+  "65508-8-your-sin-diagnosis": {
+    "wp_id": 7176,
+    "wp_slug": "65508-8-your-sin-diagnosis",
+    "method": "exact"
+  },
+  "65509-9-pride-its-all-about-me": {
+    "wp_id": 11513,
+    "wp_slug": "65509-9-pride-its-all-about-me",
+    "method": "exact"
+  },
+  "65510-10-fear-from-doubt-to-dread": {
+    "wp_id": 11514,
+    "wp_slug": "65510-10-fear-from-doubt-to-dread",
+    "method": "exact"
+  },
+  "65511-11-anger-when-mad-is-bad": {
+    "wp_id": 11515,
+    "wp_slug": "65511-11-anger-when-mad-is-bad",
+    "method": "exact"
+  },
+  "65512-12-overindulgence-enough-is-not-enough": {
+    "wp_id": 11516,
+    "wp_slug": "65512-12-overindulgence-enough-is-not-enough",
+    "method": "exact"
+  },
+  "65513-13-dissatisfaction-the-restless-heart": {
+    "wp_id": 11517,
+    "wp_slug": "65513-13-dissatisfaction-the-restless-heart",
+    "method": "exact"
+  },
+  "65514-14-immorality-sex-misused": {
+    "wp_id": 11518,
+    "wp_slug": "65514-14-immorality-sex-misused",
+    "method": "exact"
+  },
+  "65515-15-deceit-showing-a-false-face": {
+    "wp_id": 11519,
+    "wp_slug": "65515-15-deceit-showing-a-false-face",
+    "method": "exact"
+  },
+  "65516-16-divisiveness-disturbing-the-peace": {
+    "wp_id": 11520,
+    "wp_slug": "65516-16-divisiveness-disturbing-the-peace",
+    "method": "exact"
+  },
+  "65517-17-rebellion-playing-against-your-own-team": {
+    "wp_id": 11521,
+    "wp_slug": "65517-17-rebellion-playing-against-your-own-team",
+    "method": "exact"
+  },
+  "65518-18-irresponsibility-the-undisciplined-life": {
+    "wp_id": 11522,
+    "wp_slug": "65518-18-irresponsibility-the-undisciplined-life",
+    "method": "exact"
+  },
+  "65519-conclusion": {
+    "wp_id": 11533,
+    "wp_slug": "65519-conclusion",
+    "method": "exact"
+  },
+  "65520-appendix-a-how-to-know-god-personally": {
+    "wp_id": 11534,
+    "wp_slug": "65520-appendix-a-how-to-know-god-personally",
+    "method": "exact"
+  },
+  "65521-appendix-b-how-to-be-filled-with-the-holy-spirit": {
+    "wp_id": 11535,
+    "wp_slug": "65521-appendix-b-how-to-be-filled-with-the-holy-spirit",
+    "method": "exact"
+  },
+  "65522-appendix-c-spiritual-breathing": {
+    "wp_id": 11536,
+    "wp_slug": "65522-appendix-c-spiritual-breathing",
+    "method": "exact"
+  },
+  "65801-1-indestructible": {
+    "wp_id": 11373,
+    "wp_slug": "65801-1-indestructible",
+    "method": "exact"
+  },
+  "65802-2-contentment": {
+    "wp_id": 11374,
+    "wp_slug": "65802-2-contentment",
+    "method": "exact"
+  },
+  "65803-3-it-takes-commitment": {
+    "wp_id": 11375,
+    "wp_slug": "65803-3-it-takes-commitment",
+    "method": "exact"
+  },
+  "65804-4-living-with-yourself": {
+    "wp_id": 11376,
+    "wp_slug": "65804-4-living-with-yourself",
+    "method": "exact"
+  },
+  "65805-5-living-with-others": {
+    "wp_id": 11377,
+    "wp_slug": "65805-5-living-with-others",
+    "method": "exact"
+  },
+  "65806-6-how-are-you-using-your-words": {
+    "wp_id": 11378,
+    "wp_slug": "65806-6-how-are-you-using-your-words",
+    "method": "exact"
+  },
+  "65807-7-are-your-feelings-and-emotions-positive-or-negative": {
+    "wp_id": 11379,
+    "wp_slug": "65807-7-are-your-feelings-and-emotions-positive-or-negative",
+    "method": "exact"
+  },
+  "65808-8-whats-in-your-head": {
+    "wp_id": 11381,
+    "wp_slug": "65808-8-whats-in-your-head",
+    "method": "exact"
+  },
+  "65809-9-goals": {
+    "wp_id": 11380,
+    "wp_slug": "65809-9-goals",
+    "method": "exact"
+  },
+  "65810-10-marriage-and-parenting": {
+    "wp_id": 11382,
+    "wp_slug": "65810-10-marriage-and-parenting",
+    "method": "exact"
+  },
+  "65811-11-happiness-its-your-choice": {
+    "wp_id": 11383,
+    "wp_slug": "65811-11-happiness-its-your-choice",
+    "method": "exact"
   }
 }

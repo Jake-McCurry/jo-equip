@@ -401,13 +401,16 @@ export const bcgArticles: BcgArticle[] = [
     description:
       "Lasting ministry fruit comes from dependence on the Holy Spirit, not human strategy. The marks of a Spirit-dependent church — fervent prayer, Christ-centered teaching, and the fruit of the Spirit.",
     blocks: [
+      { type: "figure", src: "bgc5s2-1", alt: "Becoming a Spirit-dependent church — moving from human strategy to God’s power. A church family sharing a meal together." },
       { type: "p", html: "A church demonstrates dependence on the Holy Spirit when its practices, priorities, and outcomes increasingly reflect reliance on God’s power rather than human strategies, programs, or charisma alone. The results belong to God. Yet this dependence is rarely perfect; it is an ongoing journey of learning to lean on the Spirit amid weakness, failure, and the daily pressures of ministry." },
 
       { type: "h2", text: "Marks of a Spirit-Dependent Church" },
       { type: "p", html: "Such dependence is seen in a church that values fervent corporate prayer, regularly seeking God’s direction for decisions and plans — even when human strategies still compete for attention. It appears in biblical preaching and teaching, centered on Christ, that honestly confronts sin, calls for repentance and holiness, and leads to real, though sometimes gradual, transformation in people’s lives. Worship, though imperfect, carries moments of genuine passion and Christ-exalting focus. The church also makes room for spiritual gifts to build up the body and encourages believers to share the gospel with boldness — often in spite of fear or inadequacy." },
       { type: "p", html: "Corporate dependence grows as individual believers — with all their struggles — learn to recognize the Holy Spirit’s personal ministries and cooperate with Him more consistently. He patiently teaches truth and illuminates Scripture; helps us in prayer when words fail; keeps us moving toward holiness even when we stumble; comforts us in trials; fosters peace in broken relationships; protects us from evil; guides our decisions; and empowers our service." },
       { type: "p", html: "The clearest evidence is the growing fruit of the Spirit within the community — love, joy, peace, patience, kindness, generosity, and unity — visible not in flawless performance but in relationships that reflect grace, forgiveness, and “bearing with one another in love” through trials. Dependence on the Spirit also shows itself in the humility that admits human weakness, confesses sin quickly, and keeps returning to the Spirit for fresh filling and strength." },
+      { type: "figure", src: "bgc5s2-5", alt: "The evidence of the Spirit’s growing fruit — visible in relationships that reflect grace, forgiveness, and endurance through trials: love, joy, peace, patience, kindness, generosity, unity." },
       { type: "p", html: "The Christian life is not a burden of flawless performance we must carry alone. It is Christ living His life in us and through us by the power of the Holy Spirit — bringing freedom, peace, joy, and victory even in our imperfection. By God’s grace, we walk this path one day at a time, always returning to a yielded heart through confession, faith, and obedience." },
+      { type: "figure", src: "bgc5s2-8", alt: "Walk in the freedom of the Spirit — a sunlit path through the trees." },
 
       ...WLL,
       { type: "h3", text: "Holy Spirit Resources" },
@@ -430,8 +433,10 @@ export const bcgArticles: BcgArticle[] = [
     description:
       "Christian hope is confident expectation grounded in Christ’s resurrection. How a hope-filled church lifts eyes from earthly chaos to God’s steady presence — with five grace-centered shifts in focus.",
     blocks: [
+      { type: "figure", src: "bgc6s2-1", alt: "Become a hope-filled church — stand as a radiant beacon in a world often shadowed by uncertainty." },
       { type: "p", html: "A hope-filled church stands as a radiant beacon in a world often shadowed by uncertainty, offering confidence rooted in Christ’s resurrection. Without hope, people struggle with despair, isolation, and stagnation. With it, they endure hardship better and pursue growth." },
       { type: "p", html: "Christian hope isn’t vague wishful thinking — it is confident expectation grounded in God’s character, His promises, and the resurrection of Jesus. This hope transforms despair into assurance, reminding people that suffering has meaning and that God’s good and perfect purposes will be fulfilled, even amid challenges that sometimes make no sense." },
+      { type: "figure", src: "bgc5s-3", alt: "Biblical hope is not wishful thinking — comparison of cultural optimism (vague wishful thinking that ignores reality) with Christian hope (confident expectation grounded in God’s character, His promises, and the resurrection of Jesus)." },
       { type: "p", html: "Instead of burdening seekers with guilt and rules, a hope-filled church looks at the world through God’s perspective and proclaims His plans for “a future and a hope” (Jeremiah 29:11). It leads people to repentance through the radiance of hope in Christ." },
       { type: "p", html: "A hope-filled church is also an instrument of the “God of hope,” equipping believers not merely to survive the challenges of life but to thrive in the abundant life Jesus promises. The church in hope witnesses to the Gospel’s strength, pursues God’s kingdom with a unified vision, and fosters a fellowship — a community on God’s mission — where faith can flourish." },
       { type: "p", html: "Hope in Christ is a powerful motivator, giving people resilience, resourcefulness, and endurance. It faithfully refreshes and replenishes the souls of those who are heavy-laden, because it helps them focus on God’s trustworthy character and His unfailing promises." },
@@ -448,9 +453,11 @@ export const bcgArticles: BcgArticle[] = [
         "Focus on the next step instead of trying to predict the future.",
         "Focus on God’s supernatural presence more than your adversity.",
       ]},
+      { type: "figure", src: "bgc6s2-5", alt: "Five God-centered shifts in perspective — instead of your circumstances, focus on God’s majesty; instead of limited resources, God’s faithfulness; instead of worries about tomorrow, today’s blessings; instead of predicting the future, the next step; instead of adversity, God’s supernatural presence." },
       { type: "p", html: "Through such intentional, Scripture-saturated guidance, a church not only sustains its members but equips them to walk as beacons of hope in their daily lives." },
       { type: "p", html: "JesusOnline stands ready as a faithful partner, offering a treasury of free resources to help your church fully embrace and reflect this hope-filled identity. These resources equip you not merely to teach, but to create weekly encounters where the God of hope moves powerfully among His people. Through them, both first-time visitors and longtime believers can experience the refreshing work described in Romans 15:13 — being filled with joy and peace as they trust in Him, overflowing with hope by the power of the Holy Spirit." },
       { type: "p", html: "In a world hungry for assurance, JesusOnline resources help transform your church into a vibrant wellspring of renewal: a place where burdens are lifted, perspectives are renewed, and hearts are continually pointed toward the living hope found in Christ alone." },
+      { type: "figure", src: "bgc5s-8", alt: "Free resources to enhance engagement — Watch (powerful video clips capture attention), Learn (article insights deepen content), Live (an app link helps people apply the sermon all week)." },
 
       ...WLL,
       { type: "h3", text: "Hope Resources" },
@@ -470,11 +477,13 @@ export const bcgArticles: BcgArticle[] = [
     description:
       "The greatest witness to the world is the sacrificial love Christians show one another. How a relational church prioritizes depth over breadth — fueled by God’s unconditional, unstoppable, unfathomable love.",
     blocks: [
+      { type: "figure", src: "bgc7s2-1", alt: "The Love-demonstrating Relational Church — friends gathered around a table in warm fellowship." },
       { type: "p", html: "At its heart, the love-demonstrating relational church believes that the greatest witness to the world is not flashy services or impressive buildings, but the tangible, sacrificial love Christians show toward one another and their neighbors. Jesus Himself declared this the defining mark of His followers:" },
       { type: "quote", html: "By this everyone will know that you are my disciples, if you love one another.", cite: "John 13:35" },
       { type: "p", html: "The relational church takes this command seriously — not as a nice sentiment, but as its core operating system." },
 
       { type: "h2", text: "What It Looks Like in Practice" },
+      { type: "figure", src: "bgc7s2-3", alt: "The blueprint of relational community — depth over breadth, vulnerability and authenticity, love in action, relationally outward-focused." },
       { type: "p", html: "A love-demonstrating relational church prioritizes depth over breadth. Instead of chasing crowds through entertaining or trendy programs and events, it invests in small groups, mentorship, shared meals, and consistent presence in one another’s lives. Members know each other’s stories — the joys, the struggles, the messy middle — and choose to stay committed to one another anyway." },
       { type: "p", html: "It values vulnerability and authenticity. Sermons address real pain, not just polished theology. Testimonies include failures as well as victories. Leaders model transparency rather than projecting perfection, creating safety for people to bring their whole selves to the fellowship — a community on God’s mission." },
       { type: "p", html: "It practices love in action — families adopting singles and seniors, practical help in times of crisis, generous giving, and quick reconciliation when conflict arises." },
@@ -487,6 +496,7 @@ export const bcgArticles: BcgArticle[] = [
       { type: "h2", text: "The Transforming Power Behind It All" },
       { type: "p", html: "This “love-demonstrating” is not merely external friendliness or human love produced by self-effort. Nor does it imply moral compromise or an “anything goes” attitude. A love-demonstrating relational church taps into a source far deeper and greater: God’s love. It recognizes that His love is being poured out on, and demonstrated through, His people. His love is holy, righteous, transformational, and supernatural." },
       { type: "p", html: "It begins with God’s people being personally transformed by God’s love — unconditional, unstoppable, and unfathomable." },
+      { type: "figure", src: "bgc7s2-5", alt: "The source of personal transformation — God’s love is unconditional, unstoppable, unfathomable." },
       { type: "ul", items: [
         "<strong>God’s love is unconditional.</strong> He loves you because of who He is, not because of what you have or haven’t done. “But God demonstrates His own love toward us, in that while we were still sinners, Christ died for us” (Romans 5:8, NKJV).",
         "<strong>God’s love is unstoppable.</strong> No matter the circumstance, you will never be separated from the love God has for you (Romans 8:38–39).",
@@ -495,6 +505,7 @@ export const bcgArticles: BcgArticle[] = [
       { type: "p", html: "As 1 John 4:19 reminds us, “We love because he first loved us.”" },
       { type: "p", html: "First, people experience God’s love by beginning a genuine relationship with Him. Then, as they cultivate that relationship, they encounter His limitless, transforming love. They delight in the reality of being forever loved by God, allowing this truth to become their constant source of identity and assurance. Because they know they are unconditionally, unstoppably, and unfathomably loved, the Holy Spirit enables them to become channels of that same love. God desires His loving nature to become their nature, so that His love overflows from them to others. When people are secure in God’s forever love, that transforming love naturally touches everyone within their sphere of influence." },
       { type: "p", html: "The world desperately needs living demonstrations of the love of Christ expressed through His people, together. This vision is not about trying harder to love others. It is about being so filled with God’s love that loving others becomes the natural overflow of a transformed life." },
+      { type: "figure", src: "bgc7s2-7", alt: "The ripple effect of forever love — when people are secure in God’s forever love, that transforming love naturally touches everyone within their sphere of influence." },
 
       ...WLL,
       { type: "h3", text: "Love Focus Resources" },
@@ -517,6 +528,7 @@ export const bcgArticles: BcgArticle[] = [
     description:
       "Music is the language of the heart. How an intentional worship church keeps God the focal point — with four biblical song categories, a service flow, and practical ways to equip every worshipper.",
     blocks: [
+      { type: "figure", src: "bgc7s-1", alt: "The Intentional Worship Church — equipping congregations to worship in spirit and truth. A hymnal open on a chair in a quiet sanctuary." },
       { type: "p", html: "<em>Note: This article is written primarily with churches in the Western world in mind. However, the biblical truths it presents apply to all congregations, in every cultural context. We strongly encourage you to thoughtfully adapt and apply these principles to your own local situation and culture.</em>" },
 
       { type: "h2", text: "Worship Through Music" },
@@ -532,6 +544,7 @@ export const bcgArticles: BcgArticle[] = [
         "The goal is not to impress people but to direct every heart toward the greatness of God.",
       ]},
       { type: "p", html: "When musicians and leaders step back — through humble posture, simple arrangements, and lyrics that keep pointing upward — the church is freed to worship in spirit and truth." },
+      { type: "figure", src: "bgc7s-2", alt: "The platform is a place of service, not a stage for talent — congregation and worship leaders both directing their focus upward to God." },
 
       { type: "h2", text: "Evaluating Songs by Purpose: Four Biblical Categories" },
       { type: "p", html: "Based on its lyrics, every song has a primary purpose. Understanding this helps worship leaders build a balanced, intentional service that mirrors the flow of Scripture and the believer’s response to God. The four main categories are:" },
@@ -573,8 +586,10 @@ export const bcgArticles: BcgArticle[] = [
         "<strong>Leadership posture.</strong> Worship leaders should dress modestly, avoid flashy gestures, and regularly remind the church: “We are here to exalt Christ, not to perform.”",
         "<strong>Test everything.</strong> Ask: Would this song and its presentation still exalt God if the worship team were hidden? Does the arrangement help or hinder the congregation’s voice? Does the song fit one of the four biblical purposes?",
       ]},
+      { type: "figure", src: "bgc7s-8", alt: "Practical filters for the intentional worship leader — theological depth and singability, leadership posture, and the “hidden team” test." },
       { type: "p", html: "When music and lyrics work together to proclaim God’s worth — with every leader and musician intentionally deflecting attention back to Him — the church is truly edified, unbelievers sense the presence of God, and Christ is magnified. In an intentional worship church, the goal of every song, every leader, and every gathering remains the same as the goal of every believer’s life: to glorify God and enjoy Him forever." },
       { type: "p", html: "This intentional approach transforms worship from a performance or a passive event into a powerful, God-centered act of ascribing worth to the One who alone is worthy." },
+      { type: "figure", src: "bgc7s-9", alt: "A powerful, God-centered act of ascribing worth — the final goal of every song, every leader, and every gathering: to glorify God and enjoy Him forever." },
 
       REGISTER_CTA,
     ],
@@ -586,6 +601,7 @@ export const bcgArticles: BcgArticle[] = [
     description:
       "World evangelization is the supreme task of the church. Drawing on Oswald J. Smith’s vision, how a Great Commission church makes missions its DNA — in its preaching, its budget, and its practice.",
     blocks: [
+      { type: "figure", src: "bgc8s-1", alt: "The Great Commission Church — a globe beside an open Bible, recalling Jesus’ command to “go and make disciples of all nations.”" },
       { type: "p", html: "Jesus’ last command to His disciples was to “go and make disciples of all nations” (Matthew 28:19). After Pentecost, His followers obediently began the process of world evangelization, known as the Great Commission." },
       { type: "p", html: "When the apostle Paul was called by Jesus to proclaim the gospel to the Gentiles, he established local churches as the primary means of accomplishing the Great Commission." },
 
@@ -602,6 +618,7 @@ export const bcgArticles: BcgArticle[] = [
       { type: "p", html: "Smith speaks to this issue:" },
       { type: "quote", html: "When Jesus left His disciples … He gave them but one task; namely, world evangelization … Jesus never told us to build colleges, universities, and seminaries, but we have done it … And we ought to have done it, because it is all important and worthwhile. But the one and only thing that He did tell us to do is the one and only thing that we have left undone. We have not given His Gospel to the entire world. We have not carried out His orders." },
       { type: "p", html: "Smith points out that missions should not be delegated to a small group within the church, but should be the focus of every person — beginning with the head pastor, elders, deacons, and staff. In other words, missions should not be shoved into a corner or treated as just another ministry; it should be embraced as the DNA of the entire church." },
+      { type: "figure", src: "bgc8s-5", alt: "Missions as the DNA of the entire church — not delegated to a small group, but the focus of every person, beginning with the head pastor, elders, deacons, and staff." },
 
       { type: "h2", text: "A Great Commission Church’s Budget" },
       { type: "quote", html: "Where your treasure is, there will your heart be also.", cite: "Matthew 6:21" },
@@ -620,7 +637,9 @@ export const bcgArticles: BcgArticle[] = [
         "Pray for the world to be reached for Christ.",
         "Equip church members in global missions (e.g., a course such as Perspectives).",
       ]},
+      { type: "figure", src: "bgc8s-7", alt: "Practical ways a local church can participate in the Great Commission — preach it from the pulpit, support local outreach, send and host missionaries, reach immigrants, partner with missions organizations, pray, and equip members." },
       { type: "p", html: "Although Oswald J. Smith has gone to his reward in Heaven, he leaves behind a Great Commission–focused church that has not only reached millions for Christ but still follows his example of obedience to Jesus’ words: “Go into all the world and make disciples of all nations.”" },
+      { type: "figure", src: "bgc8s-8", alt: "“Go into all the world and make disciples of all nations” — a lasting legacy of obedience to Jesus’ Great Commission." },
 
       REGISTER_CTA,
     ],
@@ -632,10 +651,12 @@ export const bcgArticles: BcgArticle[] = [
     description:
       "In a digital age, an online presence is an essential extension of the Great Commission. How even small churches can reach their locality and the world online — with free JesusOnline gospel resources.",
     blocks: [
+      { type: "figure", src: "bgc10s2-1", alt: "The Online Outreach Church — the internet as a vast mission field where even modest congregations can shine." },
       { type: "p", html: "In our digital age, an online presence is no longer merely helpful for a church — it has become an essential extension of its calling to fulfill the Great Commission. As followers of Christ, we are commissioned to “go and make disciples of all nations” (Matthew 28:19), a mandate that transcends physical walls and embraces every available means to reach hearts with the gospel. Today, the internet stands as a vast mission field, where even modest congregations can shine." },
 
       { type: "h2", text: "Why It Matters Deeply for Small Churches" },
       { type: "p", html: "Many people first encounter a church not through its doors, but through a search engine, a social media post, or a streamed service. Recent data underscores this reality: roughly 89% of churches maintain some form of digital presence, and about 25 million Americans engage with church life online — either primarily or alongside in-person attendance. More than 80% of people visit a church’s website before deciding to attend in person, making a clear and welcoming online “front door” essential." },
+      { type: "figure", src: "bgc10s2-2", alt: "The digital front door — about 89% of churches maintain a digital presence, 25 million Americans engage with church life online, and more than 80% of people visit a church’s website before attending in person." },
       { type: "p", html: "For small churches, the advantages are particularly compelling. Limited seating or resources need no longer constrain outreach. A faithful online witness can:" },
       { type: "ul", items: [
         "Extend evangelism beyond Sunday mornings — reaching the unchurched, the hurting, or those in remote areas who may never initially step inside a building.",
@@ -643,19 +664,23 @@ export const bcgArticles: BcgArticle[] = [
         "Fuel measurable growth. Churches with growing online engagement often see corresponding increases in in-person attendance; online views can serve as a leading indicator of vitality.",
       ]},
       { type: "p", html: "Studies of small congregations show that consistent, authentic social media use can accelerate follower growth, boost engagement, and foster year-over-year expansion — outcomes that align beautifully with stewarding the gifts God has given, however small the starting point." },
+      { type: "figure", src: "bgc10s2-5", alt: "Digital roads for the gospel — just as the early church leveraged Roman roads and the common Greek language, churches today use websites, video, and social media to proclaim Christ." },
 
       { type: "h2", text: "A Reflective Perspective" },
       { type: "p", html: "This is not about chasing trends or worldly metrics, but about faithful obedience. Just as the early church leveraged Roman roads and the common Greek language to spread the Good News, we are privileged to use digital “roads” — websites, video, and social media platforms — to proclaim Christ." },
       { type: "p", html: "An online presence equips a small church to be more hospitable, visible, and responsive to a world that increasingly lives online. It allows testimonies of transformation to travel far, prayers to be shared instantly, and the hope of the gospel to meet seekers in their moments of need." },
+      { type: "figure", src: "bgc10s2-6", alt: "A hospitable, visible, responsive online presence — testimonies travel far, prayers are shared instantly, and the hope of the gospel meets seekers in their moments of need." },
 
       { type: "h2", text: "Reaching Your Locality Online" },
       { type: "p", html: "When people arrive at your website, what do they see? Is it attractive and inviting? Does it clearly highlight your church’s unique distinctives — its heart for God’s Word, its love for people, and its place in the community? A well-crafted website provides a powerful opportunity to engage visitors with the gospel even before they set foot in your building." },
       { type: "p", html: "JesusOnline offers engaging, biblically grounded presentations that your church can easily incorporate into your website. These resources help turn casual visitors into people who encounter the living Christ, strengthening your local ministry impact." },
+      { type: "figure", src: "bgc9s-8", alt: "Engaging, biblically grounded gospel presentations for your church website — turning casual visitors into people who encounter the living Christ." },
 
       { type: "h2", text: "Reaching the World Online" },
       { type: "p", html: "Your church can also extend its ministry presence internationally. By partnering with JesusOnline, even a small congregation can reach 30 to 50 people with a gospel presentation for every dollar invested in targeted outreach. What is even more remarkable is that, on average, one or two of those individuals indicate they have committed their lives to Christ as a result. We handle all the logistics, follow-up, and discipleship connections, allowing your church to participate without strain." },
       { type: "p", html: "Each March and April, we invite churches to join a special Easter Outreach that presents an evidence-based gospel, clearly sharing the historical reality that Christ rose from the dead and offers forgiveness, love, and eternal hope. This is one of the most powerful seasons to introduce people to Jesus. Together, we can deliver the resurrection gospel directly to young adults and seekers on their phones." },
       { type: "p", html: "Every day, our concise nine-minute video presents compelling historical evidence that Christ conquered the grave, guiding viewers toward a personal commitment to follow Him. Join other believing churches around the world in proclaiming the resurrection of Jesus to those who may never walk into a church building — but who will encounter Him online." },
+      { type: "figure", src: "bgc10s2-9", alt: "Proclaiming the resurrection online — a concise nine-minute video presents compelling historical evidence that Christ conquered the grave, reaching people on their phones around the world." },
       { type: "p", html: "An online outreach church is not a replacement for the gathered body of believers, but a faithful extension of it — multiplying your church’s witness for the glory of God and the advance of His Kingdom. Whether strengthening your local presence or reaching across the globe, the Lord who calls us also equips us." },
       { type: "p", html: "If your church would like assistance evaluating your current website, incorporating ready-made gospel resources, or exploring partnership in digital outreach, we would be glad to help. May the Lord grant wisdom and fruitfulness as you prayerfully consider how best to shine His light in this digital harvest field." },
 
@@ -677,12 +702,14 @@ export const bcgArticles: BcgArticle[] = [
     description:
       "What makes a church truly attractive to a newcomer? The factors “church shoppers” prioritize — and practical, grace-filled ways a small church can remove barriers to the gospel.",
     blocks: [
+      { type: "figure", src: "bgc11s2-1", alt: "Cultivating an Attractive Church — small congregations possess a unique advantage in creating spaces of profound warmth, biblical substance, and authentic welcome." },
       { type: "p", html: "<em>Note: This article is written primarily with churches in the Western world in mind. However, the biblical truths it presents apply to all congregations, in every cultural context. We strongly encourage you to thoughtfully adapt and apply these principles to your own local situation and culture.</em>" },
 
       { type: "p", html: "What makes a church or home group truly attractive to a newcomer? What impression do they carry away from their first visit, and what draws them to return? These questions matter deeply, for the church is called to reflect the welcoming heart of Christ, removing unnecessary barriers so that souls may encounter the living God." },
       { type: "p", html: "“Church shoppers” — first-time visitors, those relocating, or individuals exploring faith — evaluate congregations through a blend of practical, emotional, and spiritual lenses. Surveys from respected sources such as Pew Research and Barna consistently reveal shared priorities. While no church can be all things to all people, thoughtful attention to these areas can open doors for genuine gospel impact." },
 
       { type: "h2", text: "Top Factors “Church Shoppers” Prioritize" },
+      { type: "figure", src: "bgc11s2-2", alt: "What church shoppers are actually seeking — Truth (quality of preaching and values alignment), Community (meaningful relationships and belonging), Environment (warm hospitality and service flow), and Family (children and intergenerational integration), all centered on encountering God and growing spiritually." },
       { type: "ul", items: [
         "<strong>Quality of preaching and teaching</strong> (often ranked first, with approximately 83% citing its importance). Visitors seek clear, relevant, biblical exposition that connects eternal truth to daily life. They desire depth without excessive jargon, practical application, and authenticity from the preacher. Weak or routine messages frequently prevent return visits, whereas transformative insights foster lasting loyalty.",
         "<strong>A warm, genuine welcome and hospitality</strong> (cited by about 79%). Do greeters smile and offer helpful guidance? Do regular attendees — not merely staff — notice and engage visitors in a natural way? People quickly sense whether they are seen and valued or left feeling invisible. Relational warmth from the congregation often outweighs polished programs.",
@@ -703,6 +730,7 @@ export const bcgArticles: BcgArticle[] = [
 
       { type: "h3", text: "The Centrality of Preaching and Teaching" },
       { type: "p", html: "Smaller churches may not attract highly polished orators, yet surveys confirm that transformational insights in the message carry far greater weight than oratory skill alone. Substance — clear biblical truth, practical application, and Spirit-empowered challenge — builds committed disciples. Delivery serves the message: enthusiasm, clarity, vocal variety, eye contact, and relatable illustrations help profound truths land effectively." },
+      { type: "figure", src: "bgc11s2-5", alt: "Substance carries greater weight than polish — transformational biblical insights outweigh rhetorical skill and oratory polish: clear biblical truth, practical application, Spirit-empowered challenge." },
       { type: "p", html: "Aim for balance — roughly 80% content and 20% delivery. Passion for Scripture naturally enhances communication. Pastors can grow through recording sermons, seeking honest feedback, and prioritizing authenticity over performance. For newcomers, engaging delivery aids initial connection; for all, faithful exposition that meets real needs leads to lasting change. The goal remains encountering God and seeing lives transformed, not merely impressing with words." },
 
       { type: "h3", text: "Welcoming Families and Children" },
@@ -719,6 +747,7 @@ export const bcgArticles: BcgArticle[] = [
         "Preach accessibly, using illustrations that speak to all ages and occasionally addressing children directly.",
       ]},
       { type: "p", html: "Such measures foster a shared family experience that strengthens home discipleship and reflects the shepherding care of pastor-teachers." },
+      { type: "figure", src: "bgc11s2-8", alt: "Cultivating an atmosphere of transformation — when a church aligns spatial warmth (sanctuary and welcome), biblical substance (preaching and truth), and family inclusion (intergenerational participation), it creates an environment primed for life change." },
 
       { type: "h2", text: "A Hopeful Conclusion" },
       { type: "p", html: "An attractive church ultimately flows from dependence on the Holy Spirit and fidelity to Scripture. By addressing first impressions with wisdom and love, small congregations can remove obstacles so that newcomers may clearly hear the gospel and experience the warmth of God’s people." },
@@ -742,6 +771,7 @@ export const bcgArticles: BcgArticle[] = [
     description:
       "Why would your members eagerly invite others? Cultivate a compelling Unique Value Proposition and equip your church family with practical tools for joyful invitation.",
     blocks: [
+      { type: "figure", src: "bgc12s2-1", alt: "Become an Inviting Church — extending invitations and welcoming newcomers with open arms." },
       { type: "p", html: "<em>Note: This article is written primarily with churches in the Western world in mind. However, the biblical truths it presents apply to all congregations, in every cultural context. We strongly encourage you to thoughtfully adapt and apply these principles to your own local situation and culture.</em>" },
 
       { type: "p", html: "Every faithful pastor and church leader longs to see their congregation naturally inviting others to join them in worship on Sunday mornings. You have likely encouraged and even exhorted your members to reach out, to be bold in extending invitations, and to welcome newcomers with open arms. This desire flows from a heart aligned with the Great Commission — our Lord’s call to make disciples of all nations (Matthew 28:19)." },
@@ -750,6 +780,7 @@ export const bcgArticles: BcgArticle[] = [
 
       { type: "h2", text: "Your Church’s Unique Value Proposition" },
       { type: "p", html: "A church’s Unique Value Proposition (UVP) is the distinctive combination of biblical truth, spiritual experience, and practical ministry that sets it apart in its community. It answers the heartfelt question: <em>Why would someone choose this church family over others nearby?</em> More than marketing language, programs, or doctrinal statements, a faithful UVP flows from prayerful discernment of God’s calling, reflects the living reality of Christ among His people, and equips believers to invite others with authentic joy." },
+      { type: "figure", src: "bgc12s2-3", alt: "Defining your Unique Value Proposition (UVP) — the distinctive intersection of biblical truth, spiritual experience, and practical ministry that sets a church apart in its community." },
       { type: "p", html: "Members are naturally most eager to share something when it is uniquely beneficial — something others cannot readily find elsewhere. This uniqueness, whether actual or perceived, is one of the strongest motivators for joyful invitation. What does your church offer that truly cannot be said about other congregations nearby?" },
       { type: "p", html: "Through the resources of JO EQUIP, your church can cultivate a compelling UVP:" },
       { type: "ul", items: [
@@ -757,6 +788,7 @@ export const bcgArticles: BcgArticle[] = [
         'You can be known as a <a href="/channels/church/become-growing-church/a-transformational-teaching-church">transformational, teaching church</a>, utilizing inspiring media and the JO App for sermon follow-up and ongoing discipleship — an integrated approach rare among local congregations.',
         'You can be identified as a <a href="/channels/church/become-growing-church/a-total-life-discipleship-church">Total Life Discipleship church</a>, motivating members to become all God created them to be so they can do all He created them to do. Rather than urging greater self-effort, you lead by repeatedly sharing God’s vision for their lives, fostering authentic transformation by the power of the Holy Spirit.',
       ]},
+      { type: "figure", src: "bgc12s2-4", alt: "Uniqueness is the strongest motivator for joyful invitation — a UVP-driven church replaces guilt and obligation with genuine excitement, blending in with being distinctly beneficial, and scripted programs with natural, joyful overflow." },
       { type: "p", html: "Beyond uniqueness, how does your church stand out more than similar churches in your area? With God’s guidance, your church can thrive in other crucial areas that promote deeper relationships with Christ and His community." },
       { type: "ul", items: [
         'Being a <a href="/channels/church/become-growing-church/a-love-demonstrating-relational-church">love-demonstrating relational church</a>, where authentic fellowship reflects the warmth of God’s family.',
@@ -768,6 +800,7 @@ export const bcgArticles: BcgArticle[] = [
       { type: "p", html: "When church members personally experience the transformational benefits offered in the Become a Growing Church resources, they will be excited to tell others. Through practical, biblically grounded teachings on identity in Christ, Spirit-led fellowship, purposeful discipleship, and authentic community, they discover renewed hope, clarity of calling, and the joy of belonging to God’s family. As these realities reshape their daily lives and shared life together, a natural desire emerges: they long for others to encounter the same life-changing grace." },
       { type: "p", html: "In such a church, inviting others becomes an overflow of love rather than an assigned task. It echoes the early church, devoted to teaching, fellowship, breaking bread, and prayer, so that “the Lord added to their number day by day those who were being saved” (Acts 2:42–47)." },
       { type: "p", html: "As you reflect on your church’s life together, ask the Lord to cultivate an environment so vibrant with His presence — nourished by these equipping resources and marked by distinctive excellence — that your members naturally become inviters. May every gathering be marked by such evident love, truth, and joy in Christ that those who come encounter not merely a service, but the living God who changes lives forever. In this way, your church becomes not only welcoming, but truly inviting — a beacon that draws others into the abundant life found in Jesus." },
+      { type: "figure", src: "bgc12s2-7", alt: "Healthy internal identity creates natural outward invitation — a compelling UVP and JO EQUIP resources cultivate a thriving community, generate joyful member confidence, and result in natural, eager invitations." },
 
       { type: "h2", text: "Practical Tools and Ways for Church Members to Invite Others" },
       { type: "p", html: "Every pastor and church leader longs to see members naturally inviting others into the life of the church, not out of obligation, but from hearts overflowing with gratitude for what God is doing. As believers experience the transformative power of a hope-filled, Spirit-dependent community nourished by resources like the Become a Growing Church series and JO EQUIP, they become eager to share this grace with friends, neighbors, coworkers, and family. The invitation flows best when it arises from personal testimony and is supported by simple, effective tools." },
@@ -798,6 +831,7 @@ export const bcgArticles: BcgArticle[] = [
         "Highlight your church’s distinctive strengths — hope-filled identity in Christ, Spirit-led fellowship, or intentional discipleship — so the invitation feels personal and compelling.",
         "Follow through with hospitality: assign greeters, prepare newcomer packets, and ensure follow-up contact that reflects God’s welcoming love.",
       ]},
+      { type: "figure", src: "bgc12s2-8", alt: "Equipping members across the entire invitation spectrum — spontaneous to structured, analog/relational (personal testimonies, relational and event-based invitations) to digital/equipped (social media outreach, ready-to-share tools from JO EQUIP and the JO App)." },
 
       { type: "h3", text: "5. Prayerful Preparation and Equipping" },
       { type: "ul", items: [

@@ -51,7 +51,7 @@ Single privileged endpoint: `POST /api/subscribe` (book-download email capture â
 
 ### Newsletter (`/newsletter`)
 
-Placeholder form. On submit JS shows a thank-you pointing to `equip@jesusonline.com` until Mailchimp embed is wired in. Linked from hero CTA, `/more`, footer.
+Live Mailchimp signup via shared component `src/components/MakeMultiplySignupForm.astro` (direct POST to `jesusonline.us1.list-manage.com`, honeypot bot field, audience tag 5798198; fields EMAIL/FNAME/CHURCH/COUNTRY/MMERGE8-Gender). The SAME form is used on `/channels/church/make-multiply-disciples-newsletter` (via `MakeMultiplyNewsletter.astro`) â€” keep them in sync by editing only the shared component. `/newsletter` accent blue `#0083de`; channel page accent plum. Former Virtuous embed removed July 2026. Linked from hero CTA, `/more`, footer.
 
 ### SEO / a11y / cache / tracking
 

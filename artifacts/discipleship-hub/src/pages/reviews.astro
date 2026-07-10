@@ -6,6 +6,13 @@ import { Star, Mail } from "lucide-react";
 const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
   (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
+
+const categories = [
+  { id: "general", name: "General Testimonials" },
+  { id: "evidence", name: "Evidence for Faith Reviews" },
+  { id: "growth", name: "Discipleship & Growth Reviews" },
+  { id: "church", name: "Church Equipping Reviews" },
+];
 ---
 <Layout
   title="Reviews · JO EQUIP"
@@ -31,6 +38,15 @@ const join = (p: string) =>
     </div>
 
     <div class="max-w-3xl">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+        {categories.map(cat => (
+          <section id={cat.id} class="bg-white border rounded px-5 py-4" style="border-color:var(--color-border);border-left:4px solid #de5b00;">
+            <h2 class="text-lg mb-1" style="color:#002f55;">{cat.name}</h2>
+            <p class="text-sm" style="color:var(--color-muted-foreground);">Coming soon</p>
+          </section>
+        ))}
+      </div>
+
       <div class="bg-white border rounded p-8 text-center" style="border-color:var(--color-border);border-top:4px solid #de5b00;">
         <div class="w-12 h-12 mx-auto rounded-full flex items-center justify-center mb-4" style="background-color:rgba(0,131,222,0.1);">
           <Star className="w-6 h-6" style={{ color: "#0083de" }} />

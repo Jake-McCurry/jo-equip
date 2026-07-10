@@ -29,15 +29,13 @@ const statements: Record<string, string> = {
 };
 const statement = statements[channel.id] ?? channel.description;
 
-/* "Explore N Articles/Topics" line per sub-topic. */
+/* "Explore N Topics" line per sub-topic (uniform "Topics" wording per user). */
 function exploreLabel(subId: string): string {
   const children = subTopics.filter(s => s.parentId === subId);
-  if (children.length > 0)
-    return `Explore ${children.length} ${children.length === 1 ? "Topic" : "Topics"}`;
   const sub = subTopics.find(s => s.id === subId);
   const listed = (sub?.items ?? []).filter((i: { unlisted?: boolean }) => !i.unlisted);
-  if (listed.length > 0)
-    return `Explore ${listed.length} ${listed.length === 1 ? "Article" : "Articles"}`;
+  const count = children.length > 0 ? children.length : listed.length;
+  if (count > 0) return `Explore ${count} ${count === 1 ? "Topic" : "Topics"}`;
   return "Explore";
 }
 ---

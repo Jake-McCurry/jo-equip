@@ -27,6 +27,9 @@
     font-weight: 500;
     line-height: 1.2;
     color: #002f55;
+    /* Fallback fonts (when Helvetica Neue is unavailable) kern pairs like
+       "ry" too tightly at this synthesized weight — disable pair kerning. */
+    font-kerning: none;
   }
 
   /* Brand-colored visible focus ring for keyboard users.

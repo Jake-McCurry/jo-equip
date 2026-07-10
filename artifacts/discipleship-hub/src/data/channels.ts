@@ -97,7 +97,7 @@ export const channels: Channel[] = [
     id: "church",
     name: "Church Resources",
     shortName: "Church",
-    tagline: "Multiply disciples and plant vibrant churches",
+    tagline: "Multiply disciples and build vibrant churches",
     description:
       "Develop fruitful, prayer-fueled, Spirit-led ministries that multiply disciples and plant churches, all in obedience to Christ and His inspired Word.",
     accentColor: "#7a3a8a",

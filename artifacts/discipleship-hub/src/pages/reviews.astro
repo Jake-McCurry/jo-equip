@@ -1,0 +1,61 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
+import { Star, Mail } from "lucide-react";
+
+const baseUrl = import.meta.env.BASE_URL;
+const join = (p: string) =>
+  (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
+---
+<Layout
+  title="Reviews · JO EQUIP"
+  description="What pastors and ministry leaders are saying about JO EQUIP — the free Ministry Resources Hub from JesusOnline Ministries."
+>
+  <Fragment slot="head">
+    <BreadcrumbsLd items={[
+      { name: "Home", url: "/" },
+      { name: "Reviews", url: "/reviews" },
+    ]} />
+  </Fragment>
+
+  <div class="container mx-auto px-4 py-12 md:py-16">
+    <div class="max-w-3xl mb-10">
+      <div class="text-xs font-semibold tracking-widest uppercase mb-3" style="color:#0083de;">From Pastors and Leaders</div>
+      <h1 class="text-4xl md:text-5xl mb-4" style="color:#002f55;">Reviews</h1>
+      <div class="h-0.5 w-12 mb-5" style="background-color:#de5b00;"></div>
+      <p class="leading-relaxed text-lg" style="color:var(--color-muted-foreground);">
+        Pastors and ministry leaders around the world use JO EQUIP resources to
+        make and multiply disciples. Their stories and reviews will be shared
+        here soon.
+      </p>
+    </div>
+
+    <div class="max-w-3xl">
+      <div class="bg-white border rounded p-8 text-center" style="border-color:var(--color-border);border-top:4px solid #de5b00;">
+        <div class="w-12 h-12 mx-auto rounded-full flex items-center justify-center mb-4" style="background-color:rgba(0,131,222,0.1);">
+          <Star className="w-6 h-6" style={{ color: "#0083de" }} />
+        </div>
+        <h2 class="text-2xl mb-2" style="color:#002f55;">Reviews coming soon</h2>
+        <p class="text-base leading-relaxed mb-6 max-w-xl mx-auto" style="color:var(--color-muted-foreground);">
+          We're gathering reviews from pastors and leaders who use these
+          resources in their ministries. Has JO EQUIP helped your ministry?
+          We'd love to hear from you.
+        </p>
+        <a
+          href="mailto:equip@jesusonline.com?subject=My%20JO%20EQUIP%20review"
+          class="inline-flex items-center px-6 py-3 font-semibold rounded text-white transition-colors"
+          style="background-color:#0083de;"
+        >
+          <Mail className="w-4 h-4 mr-2" />
+          Share your story
+        </a>
+      </div>
+
+      <div class="text-center mt-8">
+        <a href={join("/")} class="text-sm font-medium hover:underline" style="color:#0083de;">
+          &larr; Back to home
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>

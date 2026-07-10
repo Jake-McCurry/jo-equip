@@ -90,7 +90,7 @@ Data lives in `src/data/channels.ts` (channels + sub-topics + per-item links). `
 
 **Channel index** (`src/pages/channels/[channelId]/index.astro`, July 2026 redesign from user docx): shortened hero (~30% less padding), per-channel statement paragraph under the hero (hardcoded map in the page — Evidence "Reach skeptics…", Growth "Disciple believers…", Church "Build fruitful, Spirit-led ministries…plant churches" per doc), "{N} Topics in this Channel" heading, and simplified topic cards (no number badges, covers, or "See Menu" button). Card title AND a channel-accent "Explore N Topics >" line both link to the sub-topic page; wording is uniformly "Topics" per user (count = child sub-topic count if any, else listed non-`unlisted` item count; plain "Explore" when zero — newsletter card). Per-item PDF resolution happens on the `[subId].astro` page.
 
-**Sub-topic detail** (`src/pages/channels/[channelId]/[subId].astro`) per-item linking — each `SubTopicItem` declares its own resources:
+**Sub-topic detail** (`src/pages/channels/[channelId]/[subId].astro`; July 2026 banner cleanup per user docx: no channel-name eyebrow, no "Back to <Channel>" link, no "PDFs, videos…" tagline; book cover + topic buttons left-aligned above Articles in all channels) per-item linking — each `SubTopicItem` declares its own resources:
 
 - `bookId` → matches `id` in `src/data/books.ts`, enables PDF button (links to `/books?download=...`).
 - `videoId` → matches a videoId inside the sub-topic's `playlistId`, enables Video button (links to `/playlist/<playlistId>?play=<videoId>` — autoplay).

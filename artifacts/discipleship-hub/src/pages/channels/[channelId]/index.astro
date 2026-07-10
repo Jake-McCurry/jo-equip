@@ -1,10 +1,8 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import ChannelArt from "@/components/ChannelArt.astro";
-import { Image } from "astro:assets";
-import { channels, getChannel, getSubTopicsByChannel } from "@/data/channels";
-import { getBookCover } from "@/data/bookCovers";
-import { ArrowRight, MenuSquare } from "lucide-react";
+import { channels, getChannel, getSubTopicsByChannel, subTopics } from "@/data/channels";
+import { ArrowRight } from "lucide-react";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 
 const baseUrl = import.meta.env.BASE_URL;
@@ -21,6 +19,27 @@ if (!channel) return Astro.redirect(join("/channels"));
 
 const subs = getSubTopicsByChannel(channel.id);
 
+/* Channel statement shown under the hero (per user's topics-page mockup). */
+const statements: Record<string, string> = {
+  evidence: "Reach skeptics with strong evidence for Christ, God, and the Bible.",
+  growth:
+    "Disciple believers to become all that God created them to be, so they may do all that He has created them to do.",
+  church:
+    "Build fruitful, Spirit-led ministries that multiply disciples and plant churches in obedience to Christ and His Word.",
+};
+const statement = statements[channel.id] ?? channel.description;
+
+/* "Explore N Articles/Topics" line per sub-topic. */
+function exploreLabel(subId: string): string {
+  const children = subTopics.filter(s => s.parentId === subId);
+  if (children.length > 0)
+    return `Explore ${children.length} ${children.length === 1 ? "Topic" : "Topics"}`;
+  const sub = subTopics.find(s => s.id === subId);
+  const listed = (sub?.items ?? []).filter((i: { unlisted?: boolean }) => !i.unlisted);
+  if (listed.length > 0)
+    return `Explore ${listed.length} ${listed.length === 1 ? "Article" : "Articles"}`;
+  return "Explore";
+}
 ---
 <Layout title={`${channel.name} · JO EQUIP`} description={channel.description}>
   <Fragment slot="head">
@@ -35,54 +54,43 @@ const subs = getSubTopicsByChannel(channel.id);
     <div class="absolute inset-0 opacity-30">
       <ChannelArt channel={channel.id} class="absolute inset-0 w-full h-full" />
     </div>
-    <div class="container mx-auto px-4 py-14 md:py-20 relative">
-      <a href={join("/channels")} class="inline-flex items-center text-sm font-medium mb-6 transition-colors" style="color:rgba(255,255,255,0.85);">← All Channels</a>
+    <div class="container mx-auto px-4 py-10 md:py-14 relative">
+      <a href={join("/channels")} class="inline-flex items-center text-sm font-medium mb-5 transition-colors" style="color:rgba(255,255,255,0.85);">← All Channels</a>
       <div class="max-w-3xl">
         <h1 class="text-4xl md:text-5xl" style="color:#ffffff;font-weight:500;">{channel.name}</h1>
       </div>
     </div>
   </div>
 
-  <div class="container mx-auto px-4 pt-6 md:pt-8 pb-12 md:pb-16">
-    <div class="max-w-3xl mb-10">
-      <p class="text-lg leading-relaxed mb-2 font-medium" style={`color:${channel.accentColor};`}>{channel.tagline}</p>
-      <p class="leading-relaxed" style="color:var(--color-muted-foreground);">{channel.description}</p>
+  <div class="container mx-auto px-4 pt-8 md:pt-10 pb-12 md:pb-16">
+    <div class="max-w-3xl mb-8">
+      <p class="text-lg md:text-xl leading-relaxed" style="color:#374151;">{statement}</p>
     </div>
-    <div class="flex items-center justify-between mb-8 pb-4 border-b" style="border-color:var(--color-border);">
-      <div>
-        <h2 class="text-2xl" style="color:#002f55;">Topics in this Channel</h2>
-        <div class="mt-2 h-0.5 w-12" style="background-color:#de5b00;"></div>
-      </div>
-      <span class="text-sm" style="color:var(--color-muted-foreground);">{subs.length} topics</span>
+    <div class="mb-8 pb-4 border-b" style="border-color:var(--color-border);">
+      <h2 class="text-2xl" style="color:#002f55;">{subs.length} Topics in this Channel</h2>
+      <div class="mt-2 h-0.5 w-12" style="background-color:#de5b00;"></div>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-      {subs.map((sub, idx) => {
-        const coverId = sub.coverId || sub.bookId;
-        const cover = coverId ? getBookCover(coverId) : undefined;
+      {subs.map(sub => {
+        const href = join(`/channels/${channel.id}/${sub.id}`);
         return (
-          <div class="flex flex-col bg-white border rounded overflow-hidden hover:shadow-md transition-all" style={`border-color:var(--color-border);border-left:4px solid ${channel.accentColor};`}>
-            <div class="p-5 pb-0">
-              <div class="flex items-start justify-between gap-3 mb-3">
-                <span class="text-xs font-mono font-semibold px-2 py-0.5 rounded" style={`color:${channel.accentColor};background-color:${channel.accentColor}11;`}>
-                  {String(idx + 1).padStart(2, "0")}
-                </span>
-              </div>
-              <h3 class="text-base font-semibold leading-snug mb-2" style="color:#002f55;">{sub.name}</h3>
-              {sub.description && (
-                <p class="text-sm leading-relaxed mb-4" style="color:var(--color-muted-foreground);">{sub.description}</p>
-              )}
-            </div>
-
-            {cover && channel.id !== "evidence" && (
-              <div class="flex justify-center px-5 mb-3">
-                <Image src={cover} alt={sub.name} width={160} class="rounded shadow-sm" loading="lazy" />
-              </div>
+          <div
+            class="flex flex-col bg-white border rounded p-5 hover:shadow-md transition-all"
+            style={`border-color:var(--color-border);border-left:4px solid ${channel.accentColor};`}
+          >
+            <h3 class="text-base font-semibold leading-snug mb-2">
+              <a href={href} class="hover:underline" style="color:#002f55;">{sub.name}</a>
+            </h3>
+            {sub.description && (
+              <p class="text-sm leading-relaxed mb-4" style="color:var(--color-muted-foreground);">{sub.description}</p>
             )}
-
-            <a href={join(`/channels/${channel.id}/${sub.id}`)} class="group flex items-center justify-center gap-2 mt-auto mx-5 mb-5 px-4 py-2.5 rounded font-semibold text-sm transition-all" style={`background-color:${channel.accentColor};color:#ffffff;`}>
-              <MenuSquare className="w-4 h-4" />
-              See Menu
+            <a
+              href={href}
+              class="group inline-flex items-center gap-1.5 mt-auto text-sm font-semibold hover:underline"
+              style={`color:${channel.accentColor};`}
+            >
+              {exploreLabel(sub.id)}
               <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </a>
           </div>

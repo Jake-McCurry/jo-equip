@@ -145,7 +145,7 @@ const quickLinks: QuickLink[] = [
   </section>
 
   {/* Quick links — Reviews · About · Beliefs · JO APP */}
-  <section style="background-color:#002f55;">
+  <section style="background-color:#0083de;">
     <div class="container mx-auto px-4">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 divide-white/15 sm:gap-y-px lg:divide-x lg:divide-white/15">
         {quickLinks.map(link => {
@@ -157,12 +157,12 @@ const quickLinks: QuickLink[] = [
               rel={link.external ? "noopener noreferrer" : undefined}
               class="group flex items-center justify-start lg:justify-center gap-4 py-5 px-6 transition-colors hover:bg-white/5"
             >
-              <div class="w-11 h-11 rounded shrink-0 flex items-center justify-center" style="background-color:rgba(0,131,222,0.2);">
-                <Icon className="w-5 h-5" style={{ color: "#0083de" }} />
+              <div class="w-11 h-11 rounded shrink-0 flex items-center justify-center" style="background-color:rgba(255,255,255,0.18);">
+                <Icon className="w-5 h-5" style={{ color: "#ffffff" }} />
               </div>
               <div class="text-left">
                 <div class="text-lg md:text-xl font-semibold text-white leading-tight tracking-wide group-hover:underline" style='font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;'>{link.title}</div>
-                <div class="text-[11px] mt-1 font-medium tracking-widest uppercase" style="color:rgba(255,255,255,0.55);">{link.subtitle}</div>
+                <div class="text-[11px] mt-1 font-medium tracking-widest uppercase" style="color:rgba(255,255,255,0.8);">{link.subtitle}</div>
               </div>
             </a>
           );

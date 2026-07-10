@@ -1,22 +1,16 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
-import { Star, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
+import { reviewCategories } from "@/data/reviews";
 
 const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
   (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
-
-const categories = [
-  { id: "general", name: "General Testimonials" },
-  { id: "evidence", name: "Evidence for Faith Reviews" },
-  { id: "growth", name: "Discipleship & Growth Reviews" },
-  { id: "church", name: "Church Equipping Reviews" },
-];
 ---
 <Layout
   title="Reviews · JO EQUIP"
-  description="What pastors and ministry leaders are saying about JO EQUIP — the free Ministry Resources Hub from JesusOnline Ministries."
+  description="What pastors and ministry leaders around the world are saying about JO EQUIP — the free Ministry Resources Hub from JesusOnline Ministries."
 >
   <Fragment slot="head">
     <BreadcrumbsLd items={[
@@ -31,31 +25,59 @@ const categories = [
       <h1 class="text-4xl md:text-5xl mb-4" style="color:#002f55;">Reviews</h1>
       <div class="h-0.5 w-12 mb-5" style="background-color:#de5b00;"></div>
       <p class="leading-relaxed text-lg" style="color:var(--color-muted-foreground);">
-        Pastors and ministry leaders around the world use JO EQUIP resources to
-        make and multiply disciples. Their stories and reviews will be shared
-        here soon.
+        For many years, pastors, evangelists, and missionaries around the world
+        have used these JesusOnline articles and videos to clearly present the
+        Gospel, answer tough questions, and disciple people into a vibrant
+        relationship with Christ. Hear what they're saying.
       </p>
     </div>
 
-    <div class="max-w-3xl">
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
-        {categories.map(cat => (
-          <section id={cat.id} class="bg-white border rounded px-5 py-4" style="border-color:var(--color-border);border-left:4px solid #de5b00;">
-            <h2 class="text-lg mb-1" style="color:#002f55;">{cat.name}</h2>
-            <p class="text-sm" style="color:var(--color-muted-foreground);">Coming soon</p>
-          </section>
-        ))}
-      </div>
+    {/* Jump links */}
+    <nav aria-label="Review categories" class="flex flex-wrap gap-2 mb-12">
+      {reviewCategories.map(cat => (
+        <a
+          href={`#${cat.id}`}
+          class="text-sm font-semibold px-4 py-2 bg-white border rounded transition-colors hover:shadow-sm"
+          style="color:#002f55;border-color:var(--color-border);border-left:3px solid #de5b00;"
+        >
+          {cat.name}
+        </a>
+      ))}
+    </nav>
 
+    <div class="space-y-16 max-w-5xl">
+      {reviewCategories.map(cat => (
+        <section id={cat.id} class="scroll-mt-24">
+          <h2 class="text-2xl md:text-3xl mb-1" style="color:#002f55;">{cat.name}</h2>
+          <div class="h-0.5 w-10 mb-6" style="background-color:#de5b00;"></div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {cat.reviews.map(r => (
+              <figure
+                class="bg-white border rounded px-5 py-5 flex flex-col"
+                style="border-color:var(--color-border);border-left:4px solid #de5b00;"
+              >
+                <blockquote class="text-[15px] leading-relaxed flex-grow" style="color:#374151;">
+                  &ldquo;{r.quote}&rdquo;
+                </blockquote>
+                <figcaption class="mt-4 text-sm font-semibold" style="color:#002f55;">
+                  &mdash;{r.author}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+
+    <div class="max-w-3xl mt-16">
       <div class="bg-white border rounded p-8 text-center" style="border-color:var(--color-border);border-top:4px solid #de5b00;">
         <div class="w-12 h-12 mx-auto rounded-full flex items-center justify-center mb-4" style="background-color:rgba(0,131,222,0.1);">
-          <Star className="w-6 h-6" style={{ color: "#0083de" }} />
+          <Mail className="w-6 h-6" style={{ color: "#0083de" }} />
         </div>
-        <h2 class="text-2xl mb-2" style="color:#002f55;">Reviews coming soon</h2>
+        <h2 class="text-2xl mb-2" style="color:#002f55;">Share your story</h2>
         <p class="text-base leading-relaxed mb-6 max-w-xl mx-auto" style="color:var(--color-muted-foreground);">
-          We're gathering reviews from pastors and leaders who use these
-          resources in their ministries. Has JO EQUIP helped your ministry?
-          We'd love to hear from you.
+          Share your story to encourage others. Has JO EQUIP helped your
+          ministry? We'd love to hear from you.
         </p>
         <a
           href="mailto:equip@jesusonline.com?subject=My%20JO%20EQUIP%20review"

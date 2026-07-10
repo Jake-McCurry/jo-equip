@@ -113,6 +113,16 @@ before they go to the main domain.
 - **Minimal JavaScript** — only the mobile menu hydrates on the client
   (≈60 KB gzipped, lazy). Desktop visitors and 3G mobile users with JS
   disabled still see and navigate the entire site.
+- **Environment-aware crawl protection** (`worker/index.js`) — the Worker
+  checks the request hostname on every request. On the production host
+  (`equip.jesusonline.com`) the static `robots.txt` and sitemaps are served
+  untouched. On ANY other hostname (staging, previews, `*.workers.dev`) the
+  Worker automatically serves a blocking `robots.txt` (`Disallow: /`),
+  returns 404 for all `/sitemap*.xml` requests, and adds
+  `X-Robots-Tag: noindex, nofollow` to every response. No per-environment
+  configuration or manual step is needed — new non-production deployments
+  inherit the protection automatically. If the production domain ever
+  changes, update `PRODUCTION_HOSTNAME` in `worker/index.js`.
 
 ---
 

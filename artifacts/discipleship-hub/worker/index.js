@@ -24,6 +24,36 @@
  *   - Turnstile keeps automated bots from polluting Virtuous and burning quota.
  */
 
+/**
+ * SEO environment isolation (SEO-003 / SEO-004).
+ *
+ * Both the staging and production Workers are built from this same file, so
+ * crawl policy is decided per-request from the Host header:
+ *   - Production host  → static robots.txt + sitemaps from ./dist, untouched.
+ *   - Any other host (staging, previews, *.workers.dev) →
+ *       • /robots.txt        → "Disallow: /" (never the production file)
+ *       • /sitemap*.xml      → 404 (no sitemap discovery off-production)
+ *       • every response     → "X-Robots-Tag: noindex, nofollow"
+ * New non-production deployments inherit this automatically — no manual step.
+ */
+const PRODUCTION_HOSTNAME = "equip.jesusonline.com";
+
+const NON_PROD_ROBOTS_TXT = "User-agent: *\nDisallow: /\n";
+
+/** Matches /sitemap-index.xml, /sitemap-0.xml, etc. at the site root. */
+const SITEMAP_PATH_RE = /^\/sitemap[^/]*\.xml$/;
+
+function isProductionHost(hostname) {
+  return hostname === PRODUCTION_HOSTNAME;
+}
+
+/** Return a copy of `response` with the noindex header set (asset responses have immutable headers). */
+function withNoIndexHeader(response) {
+  const copy = new Response(response.body, response);
+  copy.headers.set("X-Robots-Tag", "noindex, nofollow");
+  return copy;
+}
+
 const VIRTUOUS_CONTACT_URL = "https://api.virtuoussoftware.com/api/Contact";
 const TURNSTILE_VERIFY_URL =
   "https://challenges.cloudflare.com/turnstile/v0/siteverify";
@@ -244,12 +274,38 @@ async function handleSubscribe(request, env, ctx) {
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
+    const isProd = isProductionHost(url.hostname);
+
+    // Non-production crawl isolation: block robots, hide sitemaps.
+    if (!isProd) {
+      if (url.pathname === "/robots.txt") {
+        return new Response(NON_PROD_ROBOTS_TXT, {
+          status: 200,
+          headers: {
+            "Content-Type": "text/plain; charset=utf-8",
+            "Cache-Control": "no-store",
+            "X-Robots-Tag": "noindex, nofollow",
+          },
+        });
+      }
+      if (SITEMAP_PATH_RE.test(url.pathname)) {
+        return new Response("Not found", {
+          status: 404,
+          headers: {
+            "Cache-Control": "no-store",
+            "X-Robots-Tag": "noindex, nofollow",
+          },
+        });
+      }
+    }
 
     if (url.pathname === "/api/subscribe") {
-      return handleSubscribe(request, env, ctx);
+      const response = await handleSubscribe(request, env, ctx);
+      return isProd ? response : withNoIndexHeader(response);
     }
 
     // Everything else: serve from the static assets binding.
-    return env.ASSETS.fetch(request);
+    const response = await env.ASSETS.fetch(request);
+    return isProd ? response : withNoIndexHeader(response);
   },
 };

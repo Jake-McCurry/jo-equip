@@ -32,6 +32,42 @@ const EXCLUDED = new Set(["hearing-the-voice-of-god"]);
 
 const TARGET_HEIGHT = 900;
 
+/**
+ * Text drawn onto specific thumbnails after resize (attribution lines the
+ * source cover art is missing). Coordinates are in the final 900px-tall
+ * image; `bottom` is the annotate offset from the bottom edge.
+ */
+interface Overlay {
+  text: string;
+  font: string;
+  pointsize: number;
+  fill: string;
+  shadow: string;
+  bottom: number;
+}
+
+const DEJAVU_SANS = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf";
+const DEJAVU_SERIF = "/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf";
+
+const OVERLAYS: Record<string, Overlay> = {
+  "adventure-of-living-with-jesus": {
+    text: "Mary and Friends",
+    font: DEJAVU_SANS,
+    pointsize: 34,
+    fill: "white",
+    shadow: "rgba(40,20,0,0.65)",
+    bottom: 26,
+  },
+  "beholding-the-majesty-of-god": {
+    text: "JesusOnline Ministries",
+    font: DEJAVU_SERIF,
+    pointsize: 30,
+    fill: "rgb(233,220,180)",
+    shadow: "rgba(10,15,35,0.65)",
+    bottom: 24,
+  },
+};
+
 function run(cmd: string, args: string[]): void {
   const res = spawnSync(cmd, args, { stdio: ["ignore", "inherit", "inherit"] });
   if (res.status !== 0) {
@@ -63,10 +99,23 @@ try {
     ]);
 
     const out = join(COVERS_DIR, `${id}.jpg`);
+    const overlay = OVERLAYS[id];
+    const overlayArgs = overlay
+      ? [
+          "-font", overlay.font,
+          "-pointsize", String(overlay.pointsize),
+          "-gravity", "south",
+          "-fill", overlay.shadow,
+          "-annotate", `+2+${overlay.bottom - 2}`, overlay.text,
+          "-fill", overlay.fill,
+          "-annotate", `+0+${overlay.bottom}`, overlay.text,
+        ]
+      : [];
     run("magick", [
       `${raw}.jpg`,
       "-fuzz", "1%", "-trim", "+repage",
       "-resize", `x${TARGET_HEIGHT}`,
+      ...overlayArgs,
       "-strip", "-quality", "85",
       out,
     ]);

@@ -3,9 +3,7 @@
  * One-shot builder for the "Walking in the Spirit" ebook PDF.
  *
  * Source: attached_assets/FINALWalking_in_the_Spirit_1783978825795.pdf
- * Cover:  attached_assets/FINAL_cover7_1783979469133.png
- *         (converted from FINAL_cover7_1783979469133.pdf, which is actually
- *         a Photoshop file — flattened via `magick "<file>[0]" -flatten`)
+ * Cover:  attached_assets/FINAL_cover7_copy_1783980069813.png
  *
  * The source Contents page numbers were verified against the printed page
  * footers (spot-checked chapters 1-2, Appendix A-E) — all correct, so no
@@ -31,7 +29,10 @@ const SRC_PDF = resolve(
   ROOT,
   "attached_assets/FINALWalking_in_the_Spirit_1783978825795.pdf",
 );
-const SRC_COVER = resolve(ROOT, "attached_assets/FINAL_cover7_1783979469133.png");
+const SRC_COVER = resolve(
+  ROOT,
+  "attached_assets/FINAL_cover7_copy_1783980069813.png",
+);
 const OUT_PDF = resolve(
   ROOT,
   "artifacts/discipleship-hub/public/books/walking-in-the-spirit.pdf",

@@ -10,10 +10,12 @@
     "bcg:pdf": "tsx ./src/bcgPdfBuild.ts",
     "bsm:pdf": "tsx ./src/bsmPdfBuild.ts",
     "bible-pages:check": "tsx ./src/biblePagesCheck.ts",
+    "book:new-identity": "tsx ./src/newIdentityBookBuild.ts",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "devDependencies": {
     "@types/node": "catalog:",
+    "pdf-lib": "^1.17.1",
     "puppeteer": "^25.0.4",
     "tsx": "catalog:"
   }

@@ -106,4 +106,10 @@ export const books: Book[] = [
     cover: "/books/covers/beholding-the-majesty-of-god.png",
     pdf: "/books/beholding-the-majesty-of-god.pdf",
   },
+  {
+    id: "your-new-identity-in-christ",
+    title: "Your New Identity in Christ",
+    cover: "/books/covers/your-new-identity-in-christ.png",
+    pdf: "/books/your-new-identity-in-christ.pdf",
+  },
 ];

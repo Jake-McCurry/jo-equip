@@ -81,6 +81,7 @@ const VALID_BOOK_IDS = new Set([
   "eight-great-ways-to-honor-your-wife",
   "soul-prescription-5-steps",
   "beholding-the-majesty-of-god",
+  "your-new-identity-in-christ",
 ]);
 
 const JSON_HEADERS = {

@@ -76,6 +76,11 @@ const VALID_BOOK_IDS = new Set([
   "40-days-of-gods-love",
   "hearing-the-voice-of-god",
   "struggle-for-inner-peace",
+  "extraordinary-evangelism-student-guide",
+  "eight-great-ways-to-honor-your-husband",
+  "eight-great-ways-to-honor-your-wife",
+  "soul-prescription-5-steps",
+  "beholding-the-majesty-of-god",
 ]);
 
 const JSON_HEADERS = {

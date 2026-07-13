@@ -100,4 +100,10 @@ export const books: Book[] = [
     cover: "/books/covers/soul-prescription-5-steps.png",
     pdf: "/books/soul-prescription-5-steps.pdf",
   },
+  {
+    id: "beholding-the-majesty-of-god",
+    title: "Beholding the Majesty of God",
+    cover: "/books/covers/beholding-the-majesty-of-god.png",
+    pdf: "/books/beholding-the-majesty-of-god.pdf",
+  },
 ];

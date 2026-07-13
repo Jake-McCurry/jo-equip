@@ -2,14 +2,15 @@
 /**
  * One-shot builder for the "Your New Identity in Christ" ebook PDF.
  *
- * Source: attached_assets/New_Identify_lightsans_cambria_1783973721791.pdf
- * Cover:  attached_assets/final_cover_contemporary2_1783973721790.jpg
+ * Source: attached_assets/FINAL_New_Identity_in_Christ_ebook_1783977679574.pdf
+ * Cover:  attached_assets/final_cover_contemporary2_1783977730284.jpg
  *
  * Steps:
- *  1. Fix the Contents pages (source pages 2-5): all chapter/back-matter
- *     entries have dot leaders but no page numbers (and chapter 1 shows a
- *     wrong "1" — the chapter actually starts on printed page 6). Numbers
- *     were measured against the printed footer page numbers of the source.
+ *  1. Fix the Contents: the FINAL source has page numbers baked in and all
+ *     are correct except "All Key Verses (NET Bible)" which says 61 but the
+ *     section starts on printed page 62 (verified against page footers).
+ *     The wrong right-aligned "61" is painted over and "62" is drawn
+ *     right-aligned to the same edge.
  *  2. Prepend the cover art as page 1 (full-bleed letter page).
  *  3. Compress with Ghostscript /ebook and write to
  *     artifacts/discipleship-hub/public/books/your-new-identity-in-christ.pdf
@@ -24,11 +25,11 @@ import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
 const ROOT = resolve(process.cwd(), "..");
 const SRC_PDF = resolve(
   ROOT,
-  "attached_assets/New_Identify_lightsans_cambria_1783973721791.pdf",
+  "attached_assets/FINAL_New_Identity_in_Christ_ebook_1783977679574.pdf",
 );
 const SRC_COVER = resolve(
   ROOT,
-  "attached_assets/final_cover_contemporary2_1783973721790.jpg",
+  "attached_assets/final_cover_contemporary2_1783977730284.jpg",
 );
 const OUT_PDF = resolve(
   ROOT,
@@ -39,69 +40,48 @@ const PAGE_H = 792;
 const PAGE_W = 612;
 
 /**
- * TOC entries to number. `page` is the 0-based index in the SOURCE pdf
- * (before the cover is prepended). Coordinates come from `pdftotext -bbox`:
- * `xDotsEnd` = xMax of the dot leader, `yMaxDots` = bottom of the line's
- * font box (top-origin), `boxH` = font box height (≈ font size * 1.02).
+ * Wrong "All Key Verses" TOC number on source page 4 (0-based index 3).
+ * Coordinates from `pdftotext -bbox` (top-origin): the "61" occupies
+ * x 527.5-535.8, y 493.1-506.1; numbers in this TOC are right-aligned to
+ * x=535.8 with a font box height of 13.0 (≈ 12.75pt).
  */
-interface TocFix {
-  page: number;
-  xDotsEnd: number;
-  yMaxDots: number;
-  boxH: number;
-  num: string;
-}
-
-const TOC_FIXES: TocFix[] = [
-  // page 2 of source (index 1)
-  { page: 1, xDotsEnd: 350.204, yMaxDots: 145.837, boxH: 12.258, num: "6" },
-  { page: 1, xDotsEnd: 345.204, yMaxDots: 285.987, boxH: 12.258, num: "11" },
-  { page: 1, xDotsEnd: 340.904, yMaxDots: 443.587, boxH: 12.258, num: "15" },
-  { page: 1, xDotsEnd: 345.954, yMaxDots: 652.987, boxH: 12.258, num: "18" },
-  // page 3 (index 2)
-  { page: 2, xDotsEnd: 346.654, yMaxDots: 257.587, boxH: 12.258, num: "21" },
-  { page: 2, xDotsEnd: 344.104, yMaxDots: 501.537, boxH: 12.258, num: "24" },
-  // page 4 (index 3)
-  { page: 3, xDotsEnd: 350.054, yMaxDots: 93.137, boxH: 12.258, num: "28" },
-  { page: 3, xDotsEnd: 347.654, yMaxDots: 233.287, boxH: 12.258, num: "32" },
-  { page: 3, xDotsEnd: 354.104, yMaxDots: 425.187, boxH: 12.258, num: "35" },
-  { page: 3, xDotsEnd: 367.754, yMaxDots: 599.837, boxH: 12.258, num: "39" },
-  { page: 3, xDotsEnd: 355.1, yMaxDots: 705.03, boxH: 13.62, num: "42" },
-  // page 5 (index 4)
-  { page: 4, xDotsEnd: 317.45, yMaxDots: 281.33, boxH: 13.62, num: "62" },
-  { page: 4, xDotsEnd: 354.7, yMaxDots: 319.037, boxH: 12.258, num: "55" },
-  { page: 4, xDotsEnd: 305.05, yMaxDots: 357.03, boxH: 13.62, num: "66" },
-];
-
-/** The wrong "1" after chapter 1's dots (source page 2) — painted over. */
-const WRONG_NUMBER_BOX = { page: 1, x0: 351.3, x1: 360.5, y0: 132.5, y1: 147 };
+const FIX = {
+  pageIndex: 3,
+  rightEdge: 535.8,
+  yMin: 493.1,
+  yMax: 506.1,
+  correct: "62",
+};
 
 async function main(): Promise<void> {
   const doc = await PDFDocument.load(readFileSync(SRC_PDF));
-  const font = await doc.embedFont(StandardFonts.TimesRoman);
-  const pages = doc.getPages();
+  // The TOC numbers are set in Noto Sans at ~9.5pt (measured: digit ink is
+  // 14px tall in a 150dpi render → 6.7pt cap height). Helvetica is the
+  // closest standard font; 9.4pt reproduces the same optical digit height.
+  const font = await doc.embedFont(StandardFonts.Helvetica);
+  const page = doc.getPages()[FIX.pageIndex];
 
-  // Paint over the incorrect existing "1".
-  const wb = WRONG_NUMBER_BOX;
-  pages[wb.page].drawRectangle({
-    x: wb.x0,
-    y: PAGE_H - wb.y1,
-    width: wb.x1 - wb.x0,
-    height: wb.y1 - wb.y0,
+  const boxH = FIX.yMax - FIX.yMin;
+  // 9.4pt rendered 16px of digit ink at 150dpi vs 14px for the surrounding
+  // Noto Sans TOC numbers; scale by 14/16 to match the neighbors' optical size.
+  const size = 8.2;
+  const descent = 2.6; // measured baseline offset from the font-box bottom
+
+  page.drawRectangle({
+    x: 525.5,
+    y: PAGE_H - (FIX.yMax + 1),
+    width: 12,
+    height: boxH + 2,
     color: rgb(1, 1, 1),
   });
-
-  for (const fix of TOC_FIXES) {
-    const size = Math.round(fix.boxH / 1.02);
-    const descent = fix.boxH * 0.22;
-    pages[fix.page].drawText(fix.num, {
-      x: fix.xDotsEnd + 2.3,
-      y: PAGE_H - (fix.yMaxDots - descent),
-      size,
-      font,
-      color: rgb(0, 0, 0),
-    });
-  }
+  page.drawText(FIX.correct, {
+    x: FIX.rightEdge - font.widthOfTextAtSize(FIX.correct, size),
+    y: PAGE_H - (FIX.yMax - descent),
+    size,
+    font,
+    // Sampled from the neighboring TOC numbers: dark slate gray, not black.
+    color: rgb(82 / 255, 92 / 255, 96 / 255),
+  });
 
   // Prepend the cover as a full-bleed letter page (source art is 2550x3300,
   // exactly the letter aspect ratio, so no cropping or distortion occurs).

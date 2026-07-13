@@ -29,6 +29,7 @@ Static-first Astro site. Deploys Replit → GitHub (`Jake-McCurry/jo-equip`) →
 - `pnpm --filter @workspace/scripts run articles:build` — regenerate WordPress article PDFs (incremental; `--force`, `--slug=`, `--limit=`)
 - `pnpm --filter @workspace/scripts run bcg:pdf` — regenerate BCG article PDFs + manifest (run whenever `bcgArticles.ts` changes)
 - `pnpm --filter @workspace/scripts run bsm:pdf` — regenerate Bible-study-methods / Sermon Toolbox article PDFs
+- `pnpm --filter @workspace/scripts run covers:build` — regenerate all book cover thumbnails from PDF page 1 (uniform 900px height; run after adding/replacing any book PDF; `hearing-the-voice-of-god` excluded — hand-picked cover)
 
 **Detailed docs** (in `artifacts/discipleship-hub/docs/`):
 

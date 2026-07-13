@@ -1,0 +1,155 @@
+---
+/**
+ * Share Your Review — the review submission form linked from every Reviews
+ * category page.
+ *
+ * Submission model: the "Send Review" button composes a pre-filled email to
+ * equip@jesusonline.com in the visitor's mail app (mailto:). No review text,
+ * name, or country is ever sent to or stored by our servers or browser
+ * storage — the data goes straight into the visitor's own email draft.
+ * The optional ?category= query param (validated against the known category
+ * ids) is included in the email subject so the team knows which page the
+ * review came from.
+ */
+import Layout from "@/layouts/Layout.astro";
+import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
+import { Send } from "lucide-react";
+import { reviewCategories } from "@/data/reviews";
+
+const baseUrl = import.meta.env.BASE_URL;
+const join = (p: string) =>
+  (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
+
+const categoryIds = reviewCategories.map(c => c.id);
+---
+<Layout
+  title="Share Your Review · JO EQUIP"
+  description="Share your story to encourage others. How has JO EQUIP helped you? We'd love to hear from you."
+>
+  <Fragment slot="head">
+    <BreadcrumbsLd items={[
+      { name: "Home", url: "/" },
+      { name: "Reviews", url: "/reviews" },
+      { name: "Share Your Review", url: "/reviews/share" },
+    ]} />
+  </Fragment>
+
+  <div class="container mx-auto px-4 py-12 md:py-16">
+    <div class="max-w-xl mx-auto">
+      <div class="text-center mb-8">
+        <div class="text-xs font-semibold tracking-widest uppercase mb-3" style="color:#0083de;">Reviews</div>
+        <h1 class="text-4xl md:text-5xl mb-4" style="color:#002f55;">Share Your Review</h1>
+        <div class="h-0.5 w-12 mb-5 mx-auto" style="background-color:#de5b00;"></div>
+        <p class="leading-relaxed text-lg" style="color:var(--color-muted-foreground);">
+          Share your story to encourage others. How has JO EQUIP helped you?
+          We'd love to hear from you.
+        </p>
+      </div>
+
+      <form
+        id="review-form"
+        class="bg-white border rounded p-6 md:p-8 flex flex-col gap-5"
+        style="border-color:var(--color-border);border-top:4px solid #de5b00;"
+        data-category-ids={categoryIds.join(",")}
+      >
+        <div>
+          <label for="review-first-name" class="block text-sm font-semibold mb-1.5" style="color:#002f55;">
+            First Name
+          </label>
+          <input
+            id="review-first-name"
+            name="firstName"
+            type="text"
+            required
+            maxlength="100"
+            autocomplete="given-name"
+            class="w-full border rounded px-3.5 py-2.5 text-base focus:outline-none focus:ring-2"
+            style="border-color:var(--color-border);color:#002f55;"
+          />
+        </div>
+
+        <div>
+          <label for="review-country" class="block text-sm font-semibold mb-1.5" style="color:#002f55;">
+            Country
+          </label>
+          <input
+            id="review-country"
+            name="country"
+            type="text"
+            required
+            maxlength="100"
+            autocomplete="country-name"
+            class="w-full border rounded px-3.5 py-2.5 text-base focus:outline-none focus:ring-2"
+            style="border-color:var(--color-border);color:#002f55;"
+          />
+        </div>
+
+        <div>
+          <label for="review-text" class="block text-sm font-semibold mb-1.5" style="color:#002f55;">
+            Your Review
+          </label>
+          <textarea
+            id="review-text"
+            name="review"
+            required
+            rows="6"
+            maxlength="2000"
+            class="w-full border rounded px-3.5 py-2.5 text-base focus:outline-none focus:ring-2"
+            style="border-color:var(--color-border);color:#002f55;"
+          ></textarea>
+        </div>
+
+        <button
+          type="submit"
+          class="inline-flex items-center justify-center px-6 py-3 font-semibold rounded text-white transition-colors hover:opacity-90"
+          style="background-color:#0083de;"
+        >
+          <Send className="w-4 h-4 mr-2" />
+          Send Review
+        </button>
+
+        <p class="text-xs text-center leading-relaxed" style="color:var(--color-muted-foreground);">
+          Pressing &ldquo;Send Review&rdquo; opens your email app with your
+          review ready to send to equip@jesusonline.com.
+        </p>
+      </form>
+
+      <div class="text-center mt-8">
+        <a href={join("/reviews")} class="text-sm font-medium hover:underline" style="color:#0083de;">
+          &larr; Back to reviews
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    (function () {
+      var form = document.getElementById("review-form");
+      if (!form) return;
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var firstName = (form.elements.firstName.value || "").trim();
+        var country = (form.elements.country.value || "").trim();
+        var review = (form.elements.review.value || "").trim();
+        if (!firstName || !country || !review) return;
+
+        // Only include the category when it is one of the known ids.
+        var validIds = (form.dataset.categoryIds || "").split(",");
+        var params = new URLSearchParams(window.location.search);
+        var category = params.get("category") || "";
+        if (validIds.indexOf(category) === -1) category = "";
+
+        var subject =
+          "My JO EQUIP review" + (category ? " (" + category + ")" : "");
+        var body =
+          "First name: " + firstName + "\n" +
+          "Country: " + country + "\n\n" +
+          "Review:\n" + review + "\n";
+        window.location.href =
+          "mailto:equip@jesusonline.com" +
+          "?subject=" + encodeURIComponent(subject) +
+          "&body=" + encodeURIComponent(body);
+      });
+    })();
+  </script>
+</Layout>

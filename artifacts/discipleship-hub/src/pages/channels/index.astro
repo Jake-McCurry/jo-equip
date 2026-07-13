@@ -21,11 +21,11 @@ const join = (p: string) =>
   </Fragment>
   <div class="container mx-auto px-4 py-12 md:py-16">
     <div class="max-w-3xl mb-12">
-      <div class="text-xs font-semibold tracking-widest uppercase mb-3" style="color:#0083de;">Resource Channels</div>
-      <h1 class="text-4xl md:text-5xl mb-4" style="color:#002f55;">Channels for Your Ministry Needs</h1>
+      <div class="text-xs font-semibold tracking-widest uppercase mb-3" style="color:#0083de;">JO EQUIP</div>
+      <h1 class="text-4xl md:text-5xl mb-4" style="color:#002f55;">Ministry Channels</h1>
       <div class="h-0.5 w-12 mb-5" style="background-color:#de5b00;"></div>
       <p class="leading-relaxed text-lg" style="color:var(--color-muted-foreground);">
-        Carefully selected, free resources grouped to help you serve with greater
+        These free resources are grouped to help you serve with greater
         effectiveness and spiritual vitality in fulfilling Christ's Great Commission.
       </p>
     </div>
@@ -44,12 +44,9 @@ const join = (p: string) =>
               <h2 class="text-2xl mb-1 group-hover:text-primary transition-colors" style="color:#002f55;">{channel.name}</h2>
               <p class="text-sm font-medium mb-4" style={`color:${channel.accentColor};`}>{channel.tagline}</p>
               <p class="leading-relaxed text-sm mb-5 flex-grow" style="color:var(--color-muted-foreground);">{channel.description}</p>
-              <div class="flex items-center justify-between pt-4 border-t" style="border-color:rgba(229,231,235,0.6);">
-                <span class="text-xs font-semibold uppercase tracking-wider px-2 py-1 rounded" style={`color:${channel.accentColor};background-color:${channel.accentColor}11;`}>
-                  {subCount} Topics
-                </span>
-                <span class="inline-flex items-center text-sm font-medium" style={`color:${channel.accentColor};`}>
-                  Explore <ArrowRight className="w-4 h-4 ml-1.5" />
+              <div class="pt-4 border-t" style="border-color:rgba(229,231,235,0.6);">
+                <span class="inline-flex items-center text-sm font-semibold" style={`color:${channel.accentColor};`}>
+                  Explore {subCount} {channel.shortName} Topics <ArrowRight className="w-4 h-4 ml-1.5" />
                 </span>
               </div>
             </div>

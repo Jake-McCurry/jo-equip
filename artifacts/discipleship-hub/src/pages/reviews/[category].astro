@@ -1,0 +1,31 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
+import ReviewsCategoryPage from "@/components/ReviewsCategoryPage.astro";
+import { reviewCategories } from "@/data/reviews";
+
+export function getStaticPaths() {
+  // "general" lives at /reviews (index) — only the other categories get
+  // /reviews/<id> pages.
+  return reviewCategories
+    .filter(cat => cat.id !== "general")
+    .map(cat => ({ params: { category: cat.id }, props: { name: cat.name } }));
+}
+
+const { category } = Astro.params;
+const { name } = Astro.props;
+---
+<Layout
+  title={`${name} · Reviews · JO EQUIP`}
+  description={`${name} — what pastors and ministry leaders around the world are saying about JO EQUIP, the free Ministry Resources Hub from JesusOnline Ministries.`}
+>
+  <Fragment slot="head">
+    <BreadcrumbsLd items={[
+      { name: "Home", url: "/" },
+      { name: "Reviews", url: "/reviews" },
+      { name: name, url: `/reviews/${category}` },
+    ]} />
+  </Fragment>
+
+  <ReviewsCategoryPage activeId={category!} />
+</Layout>

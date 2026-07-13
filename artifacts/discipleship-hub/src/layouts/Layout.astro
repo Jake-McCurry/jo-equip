@@ -47,6 +47,12 @@ function isActive(linkPath: string) {
 }
 
 const navLinksWithActive = navLinks.map(l => ({ ...l, active: isActive(l.path) }));
+
+// Mobile menu adds Welcome (top) and Contact (bottom) around the primary links.
+const mobileNavLinks = [
+  { name: "Welcome", path: "/welcome", active: isActive("/welcome") },
+  ...navLinksWithActive,
+];
 const year = new Date().getFullYear();
 
 // Canonical URL — always points at the production site, base-prefix-free.
@@ -209,24 +215,34 @@ const gtmEnabled = import.meta.env.PROD;
         </div>
       </div>
 
-      {/* Mobile nav panel — hidden until trigger toggles `data-open`. */}
+      {/* Mobile nav panel — hidden until trigger toggles `data-open`.
+          Light panel with hairline separators between items (matches the
+          .org site's menu styling) so it reads friendlier than the old
+          dark-navy version. */}
       <div
         id="mobile-nav-panel"
         role="navigation"
         aria-label="Mobile"
-        class="lg:hidden absolute left-0 right-0 top-full w-full py-3 px-4 flex-col gap-1 z-40 hidden data-[open=true]:flex"
-        style="background-color:#001f3d;border-top:1px solid rgba(255,255,255,0.1);"
+        class="lg:hidden absolute left-0 right-0 top-full w-full flex-col z-40 hidden data-[open=true]:flex shadow-lg"
+        style="background-color:#ffffff;border-top:3px solid #0083de;"
       >
-        {navLinksWithActive.map(link => (
+        {mobileNavLinks.map(link => (
           <a
             href={join(link.path)}
             aria-current={link.active ? "page" : undefined}
-            class="text-base font-medium py-3 px-3 rounded transition-colors"
-            style={`color:${link.active ? "#ffffff" : "rgba(255,255,255,0.8)"};${link.active ? "background-color:rgba(255,255,255,0.08);" : ""}`}
+            class="text-base font-medium py-3.5 px-6 transition-colors"
+            style={`color:${link.active ? "#0083de" : "#002f55"};border-bottom:1px solid #e5e9ef;${link.active ? "background-color:rgba(0,131,222,0.06);border-left:3px solid #de5b00;padding-left:calc(1.5rem - 3px);" : ""}`}
           >
             {link.name}
           </a>
         ))}
+        <a
+          href="mailto:equip@jesusonline.com"
+          class="text-base font-medium py-3.5 px-6 transition-colors"
+          style="color:#002f55;"
+        >
+          Contact
+        </a>
       </div>
     </header>
 

@@ -1,0 +1,18 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
+import ReviewsCategoryPage from "@/components/ReviewsCategoryPage.astro";
+---
+<Layout
+  title="Reviews · JO EQUIP"
+  description="What pastors and ministry leaders around the world are saying about JO EQUIP — the free Ministry Resources Hub from JesusOnline Ministries."
+>
+  <Fragment slot="head">
+    <BreadcrumbsLd items={[
+      { name: "Home", url: "/" },
+      { name: "Reviews", url: "/reviews" },
+    ]} />
+  </Fragment>
+
+  <ReviewsCategoryPage activeId="general" />
+</Layout>

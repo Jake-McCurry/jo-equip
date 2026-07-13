@@ -32,10 +32,10 @@ for (const s of subTopics) {
 }
 
 const reviewLinks = [
-  { label: "General Testimonials", hash: "#general" },
-  { label: "Evidence for Faith Reviews", hash: "#evidence" },
-  { label: "Discipleship & Growth Reviews", hash: "#growth" },
-  { label: "Church Equipping Reviews", hash: "#church" },
+  { label: "General Testimonials", path: "/reviews" },
+  { label: "Evidence for Faith Reviews", path: "/reviews/evidence" },
+  { label: "Discipleship & Growth Reviews", path: "/reviews/growth" },
+  { label: "Church Equipping Reviews", path: "/reviews/church" },
 ];
 ---
 <Layout
@@ -132,7 +132,7 @@ const reviewLinks = [
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
         {reviewLinks.map(link => (
           <a
-            href={join(`/reviews${link.hash}`)}
+            href={join(link.path)}
             class="group flex items-center justify-between bg-white border rounded px-5 py-4 hover:shadow-md transition-all"
             style="border-color:var(--color-border);border-left:4px solid #de5b00;"
           >

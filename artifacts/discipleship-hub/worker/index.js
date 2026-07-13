@@ -82,6 +82,7 @@ const VALID_BOOK_IDS = new Set([
   "soul-prescription-5-steps",
   "beholding-the-majesty-of-god",
   "your-new-identity-in-christ",
+  "walking-in-the-spirit",
 ]);
 
 const JSON_HEADERS = {

@@ -11,6 +11,7 @@
     "bsm:pdf": "tsx ./src/bsmPdfBuild.ts",
     "bible-pages:check": "tsx ./src/biblePagesCheck.ts",
     "book:new-identity": "tsx ./src/newIdentityBookBuild.ts",
+    "book:walking-spirit": "tsx ./src/walkingInSpiritBookBuild.ts",
     "covers:build": "tsx ./src/bookCoversBuild.ts",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },

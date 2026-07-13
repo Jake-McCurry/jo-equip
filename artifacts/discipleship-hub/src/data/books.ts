@@ -112,4 +112,10 @@ export const books: Book[] = [
     cover: "/books/covers/your-new-identity-in-christ.png",
     pdf: "/books/your-new-identity-in-christ.pdf",
   },
+  {
+    id: "walking-in-the-spirit",
+    title: "Walking in the Spirit",
+    cover: "/books/covers/walking-in-the-spirit.png",
+    pdf: "/books/walking-in-the-spirit.pdf",
+  },
 ];

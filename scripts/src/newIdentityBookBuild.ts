@@ -4,8 +4,8 @@
  *
  * Source: attached_assets/FINAL_New_Identity_in_Christ_ebook_1783977679574.pdf
  * Cover:  attached_assets/identity_cover_jo_logo_edit.jpg
- *         (edited from final_cover_contemporary2_1783977730284.jpg — JO logo
- *         in navy replaces the gold laurel under "Christ")
+ *         (edited from final_cover_contemporary2_1783977730284.jpg — navy JO
+ *         logo added directly above "JesusOnline Ministries" at the bottom)
  *
  * Steps:
  *  1. Fix the Contents: the FINAL source has page numbers baked in and all

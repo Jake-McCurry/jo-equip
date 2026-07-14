@@ -4,9 +4,9 @@
  *
  * Source: attached_assets/FINALWalking_in_the_Spirit_1783978825795.pdf
  * Cover:  attached_assets/walking_cover_jo_logo_edit.png
- *         (edited from FINAL_cover7_copy_1783980069813.png — JO logo in navy
- *         replaces the laurel under "Spirit", ghost artifact removed, bottom
- *         text changed to "JesusOnline Ministries")
+ *         (edited from FINAL_cover7_copy_1783980069813.png — ghost artifact
+ *         removed, bottom text changed to "JesusOnline Ministries" with the
+ *         navy JO logo placed directly above it)
  *
  * The source Contents page numbers were verified against the printed page
  * footers (spot-checked chapters 1-2, Appendix A-E) — all correct, so no

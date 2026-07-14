@@ -47,8 +47,14 @@ interface BookConfig {
   coverBottomCrop: number;
   out: string;
   title: string;
+  /* Optional smaller title size (pt) so long titles fit on one line. */
+  titleFontSizePt?: number;
   subtitleHtml: string;
   tocHeading: string; // text of the docx TOC <h1>
+}
+
+function titleStyleAttr(book: BookConfig): string {
+  return book.titleFontSizePt ? ` style="font-size:${book.titleFontSizePt}pt"` : "";
 }
 
 const BOOKS: BookConfig[] = [
@@ -83,7 +89,8 @@ const BOOKS: BookConfig[] = [
     coverBottomCrop: 12,
     out: resolve(ROOT, "artifacts/discipleship-hub/public/books/beholding-the-majesty-of-god.pdf"),
     title: "Beholding the Majesty of God",
-    subtitleHtml: "Exploring His Divine Attributes",
+    titleFontSizePt: 24,
+    subtitleHtml: "Explore His Divine Attributes",
     tocHeading: "Contents",
   },
 ];
@@ -203,7 +210,7 @@ function parseBook(book: BookConfig, rawHtml: string): ParsedBook {
   const joPs = joIdx === -1 ? [] : bodyPs.slice(joIdx);
   const frontPagesHtml = `
   <section class="title-page">
-    <h1>${book.title}</h1>
+    <h1${titleStyleAttr(book)}>${book.title}</h1>
     <p class="subtitle">${book.subtitleHtml}</p>
   </section>
   <section class="front-page notices">
@@ -534,7 +541,7 @@ function parseMajestyPdf(book: BookConfig): ParsedBook {
 
   const frontPagesHtml = `
   <section class="title-page">
-    <h1>${book.title}</h1>
+    <h1${titleStyleAttr(book)}>${book.title}</h1>
     <p class="subtitle">${book.subtitleHtml}</p>
   </section>
   <section class="front-page notices">

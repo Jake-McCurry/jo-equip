@@ -13,7 +13,8 @@
     "book:new-identity": "tsx ./src/ebookDocxBuild.ts --book=identity",
     "book:walking-spirit": "tsx ./src/ebookDocxBuild.ts --book=walking",
     "covers:build": "tsx ./src/bookCoversBuild.ts",
-    "typecheck": "tsc -p tsconfig.json --noEmit"
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "book:majesty": "tsx ./src/majestyBookBuild.ts"
   },
   "devDependencies": {
     "@types/node": "catalog:",

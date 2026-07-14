@@ -240,7 +240,7 @@ const CSS = `
     font-size: 11pt;
     line-height: 1.55;
   }
-  .title-page { page-break-after: always; padding-top: 2.2in; }
+  .title-page { page-break-after: always; padding-top: 2.2in; text-align: center; }
   .title-page h1 {
     font-family: Georgia, "Times New Roman", serif;
     font-size: 30pt; line-height: 1.15; color: #002f55;
@@ -251,7 +251,7 @@ const CSS = `
   .front-page.notices { padding-top: 1in; font-size: 9.5pt; color: #4b5563; }
   .front-page.notices p { margin: 0 0 1.1em 0; }
   .toc { page-break-after: always; padding-top: 0.3in; }
-  .toc h1 { font-size: 20pt; color: #002f55; margin: 0 0 0.9em 0; }
+  .toc h1 { font-size: 20pt; color: #002f55; margin: 0 0 0.9em 0; text-align: center; }
   .toc-line { display: flex; align-items: baseline; margin: 0 0 0.55em 0; }
   .toc-line .toc-label { white-space: normal; }
   .toc-line .toc-dots { flex: 1 1 auto; min-width: 24px; border-bottom: 1px dotted #9ca3af; margin: 0 6px; transform: translateY(-3px); }
@@ -262,7 +262,7 @@ const CSS = `
   .chapter { page-break-before: always; }
   .chapter > h1 {
     font-size: 21pt; line-height: 1.25; color: #002f55;
-    margin: 0.25in 0 0.7em 0; position: relative;
+    margin: 0.25in 0 0.7em 0; position: relative; text-align: center;
   }
   h2 { font-size: 14pt; color: #002f55; margin: 1.5em 0 0.3em; page-break-after: avoid; line-height: 1.3; }
   h3 { font-size: 12pt; color: #002f55; margin: 1.25em 0 0.2em; page-break-after: avoid; line-height: 1.3; }

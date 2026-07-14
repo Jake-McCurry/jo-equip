@@ -3,7 +3,9 @@
  * One-shot builder for the "Your New Identity in Christ" ebook PDF.
  *
  * Source: attached_assets/FINAL_New_Identity_in_Christ_ebook_1783977679574.pdf
- * Cover:  attached_assets/final_cover_contemporary2_1783977730284.jpg
+ * Cover:  attached_assets/identity_cover_jo_logo_edit.jpg
+ *         (edited from final_cover_contemporary2_1783977730284.jpg — JO logo
+ *         in navy replaces the gold laurel under "Christ")
  *
  * Steps:
  *  1. Fix the Contents: the FINAL source has page numbers baked in and all
@@ -29,7 +31,7 @@ const SRC_PDF = resolve(
 );
 const SRC_COVER = resolve(
   ROOT,
-  "attached_assets/final_cover_contemporary2_1783977730284.jpg",
+  "attached_assets/identity_cover_jo_logo_edit.jpg",
 );
 const OUT_PDF = resolve(
   ROOT,

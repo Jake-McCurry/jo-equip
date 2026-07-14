@@ -3,7 +3,10 @@
  * One-shot builder for the "Walking in the Spirit" ebook PDF.
  *
  * Source: attached_assets/FINALWalking_in_the_Spirit_1783978825795.pdf
- * Cover:  attached_assets/FINAL_cover7_copy_1783980069813.png
+ * Cover:  attached_assets/walking_cover_jo_logo_edit.png
+ *         (edited from FINAL_cover7_copy_1783980069813.png — JO logo in navy
+ *         replaces the laurel under "Spirit", ghost artifact removed, bottom
+ *         text changed to "JesusOnline Ministries")
  *
  * The source Contents page numbers were verified against the printed page
  * footers (spot-checked chapters 1-2, Appendix A-E) — all correct, so no
@@ -31,7 +34,7 @@ const SRC_PDF = resolve(
 );
 const SRC_COVER = resolve(
   ROOT,
-  "attached_assets/FINAL_cover7_copy_1783980069813.png",
+  "attached_assets/walking_cover_jo_logo_edit.png",
 );
 const OUT_PDF = resolve(
   ROOT,

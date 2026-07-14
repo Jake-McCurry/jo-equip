@@ -6,7 +6,7 @@ import { getBookCover } from "@/data/bookCovers";
 import { extractAppSlug, hasArticlePdf } from "@/data/articles";
 import { hasBcgArticlePdf } from "@/data/bcgArticlePdfs";
 import { hasBsmArticlePdf } from "@/data/bsmArticlePdfs";
-import { FileText, Video, Smartphone, ArrowLeft, ArrowRight, ChevronRight } from "lucide-react";
+import { FileText, Video, Smartphone, ArrowRight, ChevronRight } from "lucide-react";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 import MakeMultiplyNewsletter from "@/components/MakeMultiplyNewsletter.astro";
 
@@ -122,22 +122,14 @@ function btnClass(enabled: boolean) {
         <span style="color:rgba(255,255,255,0.95);">{sub.name}</span>
       </nav>
 
-      <div class="text-xs uppercase tracking-widest font-semibold mb-2" style="color:rgba(255,255,255,0.7);">{channel.name}</div>
       <h1 class="text-3xl md:text-5xl mb-2" style="color:#ffffff;font-weight:500;">{sub.name}</h1>
       {sub.description && (
         <p class="text-sm md:text-base max-w-3xl" style="color:rgba(255,255,255,0.85);">{sub.description}</p>
-      )}
-      {!sub.description && !hasChildren && (
-        <p class="text-sm md:text-base" style="color:rgba(255,255,255,0.8);">PDFs, videos, and JO APP resources are linked where available.</p>
       )}
     </div>
   </div>
 
   <div class="container mx-auto px-4 py-12 md:py-16 max-w-5xl">
-    <a href={join(`/channels/${channel.id}`)} class="inline-flex items-center text-sm font-medium mb-8 transition-colors hover:text-primary" style="color:var(--color-muted-foreground);">
-      <ArrowLeft className="w-4 h-4 mr-2" /> Back to {channel.name}
-    </a>
-
     {isNewsletter ? (
       <MakeMultiplyNewsletter accent={channel.accentColor} />
     ) : hasChildren ? (
@@ -170,7 +162,7 @@ function btnClass(enabled: boolean) {
     ) : hasItems ? (
       <>
         {topicBookCover && (
-          <div class={`mb-8 flex flex-col ${channel.id === "evidence" ? "items-start" : "items-center"}`}>
+          <div class="mb-8 flex flex-col items-start">
             <div class="max-w-[240px] w-full">
               <Image
                 src={topicBookCover}
@@ -185,7 +177,7 @@ function btnClass(enabled: boolean) {
         )}
 
         {showTopicButtons && (
-          <div class={`mb-8 -mt-2 flex ${channel.id === "evidence" || !topicBookCover ? "justify-start" : "justify-center"}`}>
+          <div class="mb-8 -mt-2 flex justify-start">
             <div class="flex flex-wrap gap-2">
                 {sub.formats!.includes("book") && (
                   topicBookHref

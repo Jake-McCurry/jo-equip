@@ -5,23 +5,17 @@ description: How to read the JO EQUIP Growth-channel reorg spreadsheets and why 
 
 # Growth Channel reorg spreadsheets vs. the live site
 
-**The site's Growth channel is a curated SUBSET of the reorg spreadsheets, by design.**
-A slug set-diff of a `JO_EQUIP_Growth_Channel(*)` sheet against `artifacts/discipleship-hub/src/data/channels.ts` shows hundreds of sheet articles not on the site (e.g. entire sections: Building Blocks for Maturity, Inner Peace, most Devotionals, From Cope to Cure, Wisdom for the Trenches, Gospel of John studies).
+**The site's Growth channel is a curated SUBSET of the reorg spreadsheets, by design.** A slug set-diff of a `JO_EQUIP_Growth_Channel(*)` sheet against `channels.ts` shows hundreds of sheet articles not on the site. These sheets are the fuller ministry catalog; only selected sub-topics have been implemented. Do NOT treat the "missing" count as a bug or silently add everything — confirm scope with the user first.
 
-**Why:** these sheets are the fuller ministry catalog; only selected sub-topics have been implemented. Do NOT treat the "missing" count as a bug or silently try to add everything — confirm scope with the user first.
+**Reading the sheets:**
+- Exports arrive as **Windows-1252** CSV (Excel) — decode accordingly. CSV drops cell fill colors; rely on the trailing text column (e.g. `Move from Godly Relationships`) to identify movers.
+- Columns: A=L1 num, B=L1 title, C=L2 num, D=L2 title, E=L3 num, F=L3 title, G=leaf title, H=slug (append to `app.jesusonline.com/post/`), I=move-tag.
+- When multiple dated tabs exist, the **highest-dated tab is truth** and supersedes older ones.
+- Sections with NO item rows under an L1 header mean "unchanged/curated elsewhere", not "delete site items".
+- The sheets contain typos (misspelled headers, curly-apostrophe slugs) — normalize, don't propagate.
 
-**How to apply:**
-- These exports arrive as **Windows-1252** CSV (Excel). Decode with `iconv -f WINDOWS-1252 -t UTF-8`, or `open(path, encoding="windows-1252")` in Python.
-- CSV drops all cell fill colors (gray = no-change, yellow = move). Rely instead on the **trailing text column** the author adds (e.g. `Move from Godly Relationships`) to identify movers — it's more reliable than color anyway.
-- Sheet column layout: A=L1 num, B=L1 title, C=L2 num (e.g. 04.1), D=L2 title, E=L3 num, F=L3 title, G=leaf title, H=slug (append to `app.jesusonline.com/post/`), I=move-tag.
-- To scope-check "does the rest match", diff sheet slugs vs `post/<slug>` in channels.ts and group by the sheet's L1 topic; report gaps per section rather than a raw list.
-
-**Newest tab is truth (070626):** when multiple `JO_EQUIP_Growth_Channel(*)` tabs exist, the highest-dated tab (e.g. `070626` = `sheet1.xml`) supersedes older ones. It confirmed Marriage intro `34501` and now titles it "How To Cultivate Marriage" / slug `34501-how-to-cultivate-marriage` (was "…Your Marriage"). Building Blocks 04.2 "Growing Closer to God" is a PARENT of 5 sub-pages (majesty/relationship/barriers/habits/names); 04.3 = "Embracing Who God Says You Are"; 04.4 = "Walking in the Spirit" (flat 9). **`attributes-of-god` is a SEPARATE standalone (top-level, no parentId) Growth subtopic** — 070626 lists slugs 32211-32216 TWICE by design: as sub-page 04.2.1 "The Majesty of God" AND as top-level section 05 "Attributes of God" (marked "Unique PDF"). Keep BOTH; do not fold/remove attributes-of-god (an earlier attempt to fold it + add a redirect was reverted per user).
-
-**Renumbered slugs = ministry moved content:** 070626 renumbers many app slugs (e.g. "Our Triune God" 32211→32231). Trust the sheet slug; the WP post + generated PDF follow. New/renamed slugs need a `slug-mapping.json` entry + `articles:build` re-run before the PDF button lights up — see `wp-article-catalog-drift.md` (worklist comes from the static mapping, not channels.ts, so new slugs are silently skipped until injected).
-
-**Top-level duplicates of Building Blocks sections are by design:** 070626 lists the same slugs twice for several top-level Growth sections — 05 Attributes of God = 04.2.1 Majesty, 06 "Your Identity in Christ" = 04.3, 07 Ministry of the Holy Spirit = 04.4, 12 Seven Habits = 04.2.4. The site mirrors item lists into both places (aligned July 2026). Sections with NO item rows under an L1 header (01–03, 10, 13, 14) mean "unchanged/curated elsewhere", not "delete site items". Sheet typos to ignore: "Cultive Habits", "Condemation", "Life Happens" on slug 22210-021-life, curly-apostrophe slugs. "Encounters with Jesus" under 21.01 is a bare placeholder header with no items yet.
-
-**Match the sheet's subsection structure, don't flatten:** when the sheet splits a section into subsections (Lord's Prayer Guide 09.1–09.9, Forever Loved 20.03.01–03, KingdomNomics 21.09.01–03), the site mirrors it as parent → child sub-topics (July 2026; user explicitly rejected keeping them flat). The renderer supports nesting deeper than one level (Building Blocks → Growing Closer → Majesty proves it); an old code comment claiming otherwise was wrong. New child routes need a dev-server restart before they resolve.
-
-**Deleting on-site items the sheet omits is a content-loss decision:** ask the user, don't silently delete — even apparent duplicates (the `attributes-of-god` "duplicate" turned out to be intentional in the sheet).
+**Structural rules (user-confirmed):**
+- **Duplicate slug listings are by design**: the same slugs may appear both as a Building Blocks sub-page AND as a top-level Growth section (e.g. `attributes-of-god` is a SEPARATE standalone subtopic duplicating Majesty-of-God slugs). Keep BOTH; an earlier attempt to fold `attributes-of-god` + redirect was reverted per user.
+- **Match the sheet's subsection structure, don't flatten**: subsection splits become parent → child sub-topics; user explicitly rejected flat. The renderer supports nesting deeper than one level (an old code comment claiming otherwise was wrong). New child routes need a dev-server restart.
+- **Renumbered slugs = ministry moved content**: trust the sheet slug; the WP post + generated PDF follow. New/renamed slugs need a `slug-mapping.json` entry + `articles:build` re-run before the PDF button lights up — see `wp-article-catalog-drift.md`.
+- **Deleting on-site items the sheet omits is a content-loss decision**: ask the user, don't silently delete — even apparent duplicates have turned out intentional.

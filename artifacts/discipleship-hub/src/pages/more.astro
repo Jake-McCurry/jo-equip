@@ -1,6 +1,6 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import { Users2, BookOpen, Mail, FileText, ExternalLink, ArrowRight, Send, Languages } from "lucide-react";
+import { Users2, BookOpen, Mail, FileText, ExternalLink, ArrowRight, Send, Languages, Star, Hand } from "lucide-react";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 
 const baseUrl = import.meta.env.BASE_URL;
@@ -17,6 +17,20 @@ interface Section {
 }
 
 const SECTIONS: Section[] = [
+  {
+    title: "Welcome",
+    icon: Hand,
+    description: "New to JO EQUIP? Start here for an introduction to the Ministry Resources Hub.",
+    href: "/welcome",
+    accent: "#de5b00",
+  },
+  {
+    title: "Reviews",
+    icon: Star,
+    description: "What pastors and ministry leaders are saying about JO EQUIP.",
+    href: "/reviews",
+    accent: "#0083de",
+  },
   {
     title: "About",
     icon: Users2,

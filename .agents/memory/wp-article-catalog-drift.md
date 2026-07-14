@@ -23,11 +23,7 @@ When resolving `app.jesusonline.com/post/<slug>` links to WordPress post ids (fo
 
 **Why:** the mapping predates any renumbering; `--slug` filters an already-fixed key set. Stale mapping keys silently drop new slugs from generation.
 
-**How to apply (add new slugs before generating PDFs):**
-1. Confirm each new slug resolves in LIVE WP: `GET https://apicontent.jesusonline.com/wp-json/wp/v2/posts?slug=<slug>&_fields=id,slug` returns exactly 1 result.
-2. Inject `mapping[<channelAppSlug>] = { wp_id, wp_slug, method: "exact" }` into `scripts/data/slug-mapping.json` (only for keys not already present).
-3. Run `pnpm --filter @workspace/scripts run articles:build -- --slug=<comma,list>` with `PUPPETEER_EXECUTABLE_PATH` set to the Nix chromium (`/nix/store/*chromium*/bin/chromium`). This regenerates PDFs + the `src/data/articles.ts` manifest so `hasArticlePdf()` lights up the buttons.
-Note: a spreadsheet renumber can leave the OLD-number PDF orphaned in `public/articles/` (e.g. `32281-the-supreme-pursuit-of-the-heart.pdf` after content moved to `32211-...`); harmless but not tree-shaken into the manifest.
+**How to apply:** confirm the new slug resolves in live WP REST (exactly 1 result), inject an `exact` entry into `slug-mapping.json` for keys not already present, then run `articles:build --slug=...` to regenerate PDFs + manifest. A renumber can leave the old-number PDF orphaned in `public/articles/` — harmless, not tree-shaken into the manifest.
 
 ## Spreadsheet omissions can be deliberate
 

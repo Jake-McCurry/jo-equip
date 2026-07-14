@@ -1,12 +1,27 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import ChannelArt from "@/components/ChannelArt.astro";
+import { Picture } from "astro:assets";
 import { channels } from "@/data/channels";
-import { ArrowRight, Users2, BookOpen, Smartphone } from "lucide-react";
+import { ArrowRight, Users2, BookOpen, Smartphone, Star } from "lucide-react";
+import evidenceImg from "@/assets/channels/evidence.jpg";
+import growthImg from "@/assets/channels/growth.jpg";
+import churchImg from "@/assets/channels/church.jpg";
 
 const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
   (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
+
+const channelImages: Record<string, ImageMetadata> = {
+  evidence: evidenceImg,
+  growth: growthImg,
+  church: churchImg,
+};
+
+const channelImageAlts: Record<string, string> = {
+  evidence: "A gavel and scales of justice resting on old books",
+  growth: "Hands holding an open Bible",
+  church: "A congregation seated in church pews",
+};
 
 // JSON-LD structured data — Organization + WebSite. Helps search engines
 // build a knowledge panel and display the site name correctly in results.
@@ -50,6 +65,21 @@ const jsonLd = {
     },
   ],
 };
+
+interface QuickLink {
+  title: string;
+  subtitle: string;
+  href: string;
+  icon: any;
+  external?: boolean;
+}
+
+const quickLinks: QuickLink[] = [
+  { title: "Reviews", subtitle: "From Pastors and Leaders", href: join("/reviews"), icon: Star },
+  { title: "About", subtitle: "JesusOnline Ministries", href: join("/about"), icon: Users2 },
+  { title: "Beliefs", subtitle: "Statement of Faith", href: join("/beliefs"), icon: BookOpen },
+  { title: "JO APP", subtitle: "Growing in Christ", href: "https://app.jesusonline.com", icon: Smartphone, external: true },
+];
 ---
 <Layout
   description="A free digital library of practical discipleship tools — books, video playlists, and JO APP resources — to help pastors and ministry leaders make and multiply disciples."
@@ -57,8 +87,9 @@ const jsonLd = {
   <Fragment slot="head">
     <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
   </Fragment>
-  {/* Hero — compact padding so the call-to-action sits above the fold. */}
-  <section class="relative py-5 md:py-8 px-4 text-center overflow-hidden" style="background-color:#0083de;">
+
+  {/* Hero — eyebrow + title + tagline, per the July 2026 home refinement mockup. */}
+  <section class="relative py-8 md:py-12 px-4 text-center overflow-hidden" style="background-color:#0083de;">
     <div class="pointer-events-none absolute inset-0 overflow-hidden">
       <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-10" style="background-color:#002f55;"></div>
       <div class="absolute -bottom-32 -left-20 w-80 h-80 rounded-full opacity-10" style="background-color:#002f55;"></div>
@@ -68,119 +99,75 @@ const jsonLd = {
     </div>
 
     <div class="relative container mx-auto max-w-4xl">
-      <h1 class="text-4xl md:text-5xl mb-2 leading-tight" style="color:#ffffff;font-weight:500;">JO EQUIP</h1>
-      <div class="text-xl md:text-2xl mb-4 font-medium" style="color:rgba(255,255,255,0.92);">
-        Ministry Resources Hub
-      </div>
-      <p class="text-base md:text-lg mb-6 max-w-2xl mx-auto leading-relaxed" style="color:rgba(255,255,255,0.92);">
+      <h1 class="text-xl sm:text-4xl md:text-5xl mb-4 leading-tight whitespace-nowrap" style="color:#ffffff;font-weight:500;">Ministry Resources Hub</h1>
+      <p class="text-base md:text-lg max-w-2xl mx-auto leading-relaxed" style="color:rgba(255,255,255,0.92);">
         A free digital library of practical discipleship tools for pastors and leaders for enhanced ministry impact.
       </p>
-
-      {/* Primary CTA: Welcome */}
-      <div class="flex flex-col items-center justify-center gap-3">
-        <a
-          href={join("/welcome")}
-          class="w-full sm:w-auto inline-flex justify-center items-center px-8 py-3 font-semibold rounded transition-colors"
-          style="background-color:#ffffff;color:#0083de;"
-        >
-          Welcome to JO EQUIP
-          <ArrowRight className="w-4 h-4 ml-2" />
-        </a>
-
-      </div>
     </div>
   </section>
 
-  {/* Brand Info Strip */}
-  <section style="background-color:#002f55;">
+  {/* Three Channels — photo cards, straight after the hero per the mockup. */}
+  <section class="py-10 md:py-14" style="background-color:#f4f7fb;">
     <div class="container mx-auto px-4">
-      <div class="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-white/15">
-        <a href={join("/about")} class="group flex items-center justify-center gap-4 py-6 px-6 transition-colors hover:bg-white/5">
-          <div class="w-11 h-11 rounded shrink-0 flex items-center justify-center" style="background-color:rgba(0,131,222,0.2);">
-            <Users2 className="w-5 h-5" style={{ color: "#0083de" }} />
-          </div>
-          <div class="text-left">
-            <div class="text-lg md:text-xl font-semibold text-white leading-tight tracking-wide group-hover:underline" style='font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;'>About</div>
-            <div class="text-[11px] mt-1 font-medium tracking-widest uppercase" style="color:rgba(255,255,255,0.55);">JesusOnline Ministries</div>
-          </div>
-        </a>
-        <a href={join("/beliefs")} class="group flex items-center justify-center gap-4 py-6 px-6 transition-colors hover:bg-white/5">
-          <div class="w-11 h-11 rounded shrink-0 flex items-center justify-center" style="background-color:rgba(0,131,222,0.2);">
-            <BookOpen className="w-5 h-5" style={{ color: "#0083de" }} />
-          </div>
-          <div class="text-left">
-            <div class="text-lg md:text-xl font-semibold text-white leading-tight tracking-wide group-hover:underline" style='font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;'>Beliefs</div>
-            <div class="text-[11px] mt-1 font-medium tracking-widest uppercase" style="color:rgba(255,255,255,0.55);">Statement of Faith</div>
-          </div>
-        </a>
-        <a href="https://app.jesusonline.com" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-center gap-4 py-6 px-6 transition-colors hover:bg-white/5">
-          <div class="w-11 h-11 rounded shrink-0 flex items-center justify-center" style="background-color:rgba(0,131,222,0.2);">
-            <Smartphone className="w-5 h-5" style={{ color: "#0083de" }} />
-          </div>
-          <div class="text-left">
-            <div class="text-lg md:text-xl font-semibold text-white leading-tight tracking-wide group-hover:underline" style='font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;'>JO APP</div>
-            <div class="text-[11px] mt-1 font-medium tracking-widest uppercase" style="color:rgba(255,255,255,0.55);">Growing in Christ</div>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  {/* Welcome teaser */}
-  <section class="py-12 md:py-14 bg-white">
-    <div class="container mx-auto px-4 max-w-3xl text-center">
-      <div class="mb-6">
-        <h2 class="text-3xl md:text-4xl" style="color:#002f55;">Welcome to JO EQUIP</h2>
-        <div class="mt-2 h-0.5 w-12 mx-auto" style="background-color:#de5b00;"></div>
-      </div>
-      <p class="text-lg leading-relaxed mb-5" style="color:#374151;">
-        A free digital library of practical discipleship tools, carefully selected and grouped into <strong style="color:#002f55;">three channels</strong> to
-        help pastors and ministry leaders fulfill Christ's Great Commission with greater effectiveness.
-      </p>
-      <a href={join("/welcome")} class="inline-flex items-center text-sm font-semibold hover:underline" style="color:#0083de;">
-        Read the full welcome
-        <ArrowRight className="w-4 h-4 ml-1" />
-      </a>
-    </div>
-  </section>
-
-  {/* Three Channels */}
-  <section class="py-16 md:py-20 border-t" style="background-color:#f4f7fb;border-color:var(--color-border);">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-2">
-        <h2 class="text-3xl md:text-4xl" style="color:#002f55;">3 Channels for Your Ministry Needs</h2>
-        <div class="mt-2 h-0.5 w-12 mx-auto" style="background-color:#de5b00;"></div>
-      </div>
-      <p class="text-center text-base max-w-2xl mx-auto mb-10 mt-3" style="color:var(--color-muted-foreground);">
-        Purpose-organized resources—find what you need instantly.
-      </p>
-
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <h2 class="sr-only">Explore the three channels</h2>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-md sm:max-w-lg lg:max-w-none mx-auto">
         {channels.map(channel => (
-          <a href={join(`/channels/${channel.id}`)} class="group flex flex-col bg-white border rounded overflow-hidden hover:shadow-lg transition-all" style="border-color:var(--color-border);">
-            <div style={`height:14px;background-color:${channel.accentColor};`}></div>
-            <div class="relative aspect-[64/22] overflow-hidden" style={`background:${channel.gradient};`}>
-              <ChannelArt channel={channel.id} class="absolute inset-0" />
-            </div>
-            <div style={`height:6px;background-color:${channel.accentColor};`}></div>
-            <div class="p-7 flex flex-col flex-grow">
-              <h3 class="text-2xl mb-1 group-hover:text-primary transition-colors" style="color:#002f55;">{channel.name}</h3>
-              <p class="text-sm font-medium mb-4" style={`color:${channel.accentColor};`}>{channel.tagline}</p>
-              <p class="leading-relaxed text-sm mb-5 flex-grow" style="color:var(--color-muted-foreground);">{channel.description}</p>
-              <span class="inline-flex items-center text-sm font-medium mt-auto" style={`color:${channel.accentColor};`}>
-                Explore {channel.shortName}
-                <ArrowRight className="w-4 h-4 ml-1.5" />
-              </span>
+          <a href={join(`/channels/${channel.id}`)} class="group flex flex-col">
+            <h3 class="text-2xl font-semibold mb-2 group-hover:underline" style="color:#002f55;">{channel.name}</h3>
+            <div
+              class="flex flex-col flex-grow bg-white border rounded overflow-hidden group-hover:shadow-lg transition-all"
+              style={`border-color:var(--color-border);border-left:4px solid ${channel.accentColor};`}
+            >
+              <div style={`height:8px;background-color:${channel.accentColor};`}></div>
+              <div class="relative aspect-[5/2] overflow-hidden">
+                <Picture
+                  src={channelImages[channel.id]}
+                  alt={channelImageAlts[channel.id]}
+                  widths={[480, 800]}
+                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 512px, 100vw"
+                  formats={["avif", "webp"]}
+                  quality={75}
+                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                />
+              </div>
+              <div style={`height:4px;background-color:${channel.accentColor};`}></div>
+              <div class="p-6 md:p-7 flex flex-col flex-grow">
+                <p class="text-[15px] leading-snug mb-4 flex-grow" style="color:var(--color-muted-foreground);">{channel.tagline}</p>
+                <span class="inline-flex items-center justify-center w-full text-sm font-semibold text-white rounded px-4 py-2.5 mt-auto transition-opacity group-hover:opacity-90" style={`background-color:${channel.accentColor};`}>
+                  Explore {channel.shortName}
+                  <ArrowRight className="w-4 h-4 ml-1.5" />
+                </span>
+              </div>
             </div>
           </a>
         ))}
       </div>
+    </div>
+  </section>
 
-      <div class="text-center mt-10">
-        <a href={join("/channels")} class="inline-flex items-center text-sm font-semibold hover:underline" style="color:#0083de;">
-          View all channels & topics
-          <ArrowRight className="w-4 h-4 ml-1" />
-        </a>
+  {/* Quick links — Reviews · About · Beliefs · JO APP */}
+  <section style="background-color:#0083de;">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 divide-white/15 sm:gap-y-px lg:divide-x lg:divide-white/15">
+        {quickLinks.map(link => {
+          const Icon = link.icon;
+          return (
+            <a
+              href={link.href}
+              target={link.external ? "_blank" : undefined}
+              rel={link.external ? "noopener noreferrer" : undefined}
+              class="group flex items-center justify-start lg:justify-center gap-4 py-5 px-6 transition-colors hover:bg-white/5"
+            >
+              <div class="w-11 h-11 rounded shrink-0 flex items-center justify-center" style="background-color:rgba(255,255,255,0.18);">
+                <Icon className="w-5 h-5" style={{ color: "#ffffff" }} />
+              </div>
+              <div class="text-left">
+                <div class="text-lg md:text-xl font-semibold text-white leading-tight tracking-wide group-hover:underline" style='font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;'>{link.title}</div>
+                <div class="text-[11px] mt-1 font-medium tracking-widest uppercase" style="color:rgba(255,255,255,0.8);">{link.subtitle}</div>
+              </div>
+            </a>
+          );
+        })}
       </div>
     </div>
   </section>

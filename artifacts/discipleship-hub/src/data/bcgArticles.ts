@@ -44,7 +44,7 @@ export interface BcgArticle {
 
 const REGISTER_CTA: ArticleBlock = {
   type: "p",
-  html: '<strong>Register today to become a FREE JesusOnline EQUIPPED Church.</strong> <a href="/newsletter">Sign up for updates →</a>',
+  html: '<strong><a href="/register-church" style="color:#0083de;text-decoration:underline;">Sign up and register your church today to become a FREE JO EQUIPPED Church. →</a></strong>',
 };
 
 /* The "Free JesusOnline Watch → Learn → Live Resources" pitch repeats

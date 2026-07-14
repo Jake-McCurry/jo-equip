@@ -36,7 +36,10 @@ const ROOT = resolve(process.cwd(), "..");
 
 interface BookConfig {
   key: string;
+  /* .docx manuscript path — or, when `source` is "pdf", the final source PDF
+     whose text is re-parsed into the shared template. */
   docx: string;
+  source?: "docx" | "pdf";
   cover: string;
   coverType: "png" | "jpg";
   /* Crop this many PDF points off the bottom of the cover when it overflows
@@ -69,6 +72,18 @@ const BOOKS: BookConfig[] = [
     out: resolve(ROOT, "artifacts/discipleship-hub/public/books/your-new-identity-in-christ.pdf"),
     title: "Your New Identity in Christ",
     subtitleHtml: "<em>Embracing Who God Says You Are</em>",
+    tocHeading: "Contents",
+  },
+  {
+    key: "majesty",
+    docx: resolve(ROOT, "attached_assets/Beholding_the_Majesty_of_God_071426_1784055917121.pdf"),
+    source: "pdf",
+    cover: resolve(ROOT, "attached_assets/majesty_cover_jo_logo_edit.png"),
+    coverType: "png",
+    coverBottomCrop: 12,
+    out: resolve(ROOT, "artifacts/discipleship-hub/public/books/beholding-the-majesty-of-god.pdf"),
+    title: "Beholding the Majesty of God",
+    subtitleHtml: "Exploring His Divine Attributes",
     tocHeading: "Contents",
   },
 ];
@@ -122,7 +137,7 @@ function linkifyOutsideAnchors(html: string): string {
       m => `<a href="https://app.jesusonline.com">${m}</a>`],
     [/(?<![\w/.-])equip\.JesusOnline\.com(?![\w/-])/g,
       m => `<a href="https://equip.jesusonline.com">${m}</a>`],
-    [/(?<![\w/.-])JesusOnlineMinistries\.org(?![\w/-])/g,
+    [/(?<![\w/.-])JesusOnlineMinistries\.org(?![\w/-])/gi,
       m => `<a href="https://jesusonlineministries.org">${m}</a>`],
   ];
   return parts
@@ -230,6 +245,308 @@ function parseBook(book: BookConfig, rawHtml: string): ParsedBook {
   return { frontPagesHtml, tocEntries, chapters };
 }
 
+/* --------------------------------------------- majesty (PDF-source) book */
+
+function escapeHtml(s: string): string {
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+/* Join wrapped lines into one string, healing hyphenation ("self-\nexistent"). */
+function joinWrapped(lines: string[]): string {
+  let out = "";
+  for (const line of lines) {
+    const t = line.trim();
+    if (!t) continue;
+    if (out.endsWith("-") && /^[a-z]/.test(t)) out += t;
+    else out += (out ? " " : "") + t;
+  }
+  return out.replace(/\s+/g, " ").trim();
+}
+
+const MAJESTY_CHAPTERS: Array<{ key: string; title: string }> = [
+  { key: "1", title: "The Supreme Pursuit of the Heart" },
+  { key: "2", title: "Attributes of Self-Existence" },
+  { key: "3", title: "Attributes of Sovereignty" },
+  { key: "4", title: "Attributes of Holiness" },
+  { key: "5", title: "Attributes of Love" },
+  { key: "6", title: "Live in the Light of His Majesty" },
+  { key: "MORE", title: "More Free Resources" },
+];
+
+/* Numbered evidence item: "    1. Bold Title (Refs) body…" (+ wrapped lines). */
+function majestyItemsToHtml(items: string[][]): string {
+  const lis = items.map(itemLines => {
+    const text = joinWrapped(itemLines).replace(/^\d+\.\s*/, "");
+    const paren = text.indexOf("(");
+    let html: string;
+    if (paren > 0) {
+      const title = escapeHtml(text.slice(0, paren).trim());
+      html = `<strong>${title}</strong> ${escapeHtml(text.slice(paren))}`;
+    } else {
+      html = escapeHtml(text);
+    }
+    return `<li>${html}</li>`;
+  });
+  return `<ol>${lis.join("\n")}</ol>`;
+}
+
+/* Chapters 2–5: intro paragraphs, then repeated "God Is X" sections
+   (h2 + italic tagline + <ol> of five evidences + bold takeaway),
+   then closing summary paragraphs. */
+function majestyAttributeChapterToHtml(lines: string[]): string {
+  const blocks: string[] = [];
+  let para: string[] = [];
+  let items: string[][] = [];
+  let currentItem: string[] | null = null;
+  let taglinePending = false;
+
+  const flushPara = (cls?: string) => {
+    if (para.length) {
+      const text = joinWrapped(para);
+      if (taglinePending) {
+        blocks.push(`<p><em>${escapeHtml(text)}</em></p>`);
+        taglinePending = false;
+      } else if (/^Because God is/i.test(text)) {
+        blocks.push(`<p><strong>${escapeHtml(text)}</strong></p>`);
+      } else {
+        blocks.push(`<p${cls ? ` class="${cls}"` : ""}>${escapeHtml(text)}</p>`);
+      }
+      para = [];
+    }
+  };
+  const flushItems = () => {
+    if (currentItem) { items.push(currentItem); currentItem = null; }
+    if (items.length) { blocks.push(majestyItemsToHtml(items)); items = []; }
+  };
+
+  for (const line of lines) {
+    const t = line.trim();
+    const indented = /^\s/.test(line) && t !== "";
+    if (!t) { if (!currentItem) flushPara(); continue; }
+
+    if (!indented && /^God Is .+/.test(t)) {
+      flushPara(); flushItems();
+      blocks.push(`<h2>${escapeHtml(t)}</h2>`);
+      taglinePending = true;
+      continue;
+    }
+    const itemStart = indented && /^\d+\.\s/.test(t);
+    if (itemStart) {
+      flushPara();
+      if (currentItem) items.push(currentItem);
+      currentItem = [t];
+      continue;
+    }
+    if (indented && currentItem) { currentItem.push(t); continue; }
+    if (!indented) {
+      if (currentItem || items.length) {
+        if (/^Because God is/i.test(t)) flushItems();
+        else if (currentItem) { currentItem.push(t); continue; }
+      }
+      para.push(t);
+      continue;
+    }
+    /* stray indented line outside an item — treat as paragraph text */
+    para.push(t);
+  }
+  flushPara(); flushItems();
+  return blocks.join("\n");
+}
+
+/* Chapter 1: epigraph, endorsement quotes, category overviews with bullets. */
+function majestyChapter1ToHtml(lines: string[]): string {
+  const blocks: string[] = [];
+  let para: string[] = [];
+  let quote: string[] = [];
+  let bullets: string[] = [];
+  let epigraphDone = false;
+  let epigraph: string[] = [];
+
+  const boldAttrib = (text: string): string => {
+    const m = text.match(/^([\s\S]*?)(—\s*(?:Dr\.|A\.W\.|J\.I\.|Charles)[^—]*)$/);
+    if (m) return `${escapeHtml(m[1]!.trim())} <strong>${escapeHtml(m[2]!.trim())}</strong>`;
+    return escapeHtml(text);
+  };
+  const flushPara = () => {
+    if (para.length) { blocks.push(`<p>${escapeHtml(joinWrapped(para))}</p>`); para = []; }
+  };
+  const flushQuote = () => {
+    if (quote.length) { blocks.push(`<p class="quote">${boldAttrib(joinWrapped(quote))}</p>`); quote = []; }
+  };
+  const flushBullets = () => {
+    if (bullets.length) {
+      blocks.push(`<ul>${bullets.map(b => `<li>${escapeHtml(b)}</li>`).join("")}</ul>`);
+      bullets = [];
+    }
+  };
+
+  for (const line of lines) {
+    const t = line.trim();
+    const indented = /^\s/.test(line) && t !== "";
+    if (!t) { flushPara(); flushQuote(); continue; }
+
+    if (!epigraphDone) {
+      if (indented && (epigraph.length === 0 ? /^[“"]/.test(t) : true) && !/^[“"]What comes/.test(t)) {
+        epigraph.push(t);
+        if (/^—/.test(t)) {
+          epigraphDone = true;
+          const attrib = epigraph.pop()!;
+          blocks.push(
+            `<p class="epigraph">${epigraph.map(escapeHtml).join("<br />")}<br /><span class="attrib">${escapeHtml(attrib)}</span></p>`,
+          );
+        }
+        continue;
+      }
+      epigraphDone = true;
+    }
+
+    if (!indented && /^Attributes of /.test(t)) {
+      flushPara(); flushQuote(); flushBullets();
+      blocks.push(`<h2>${escapeHtml(t)}</h2>`);
+      continue;
+    }
+    if (indented && /^(•\s*)?God Is /.test(t)) { bullets.push(t.replace(/^•\s*/, "")); continue; }
+    if (indented && /^[“"]/.test(t)) { flushQuote(); flushBullets(); quote.push(t); continue; }
+    if (indented && quote.length) { quote.push(t); continue; }
+    flushBullets();
+    para.push(t);
+  }
+  flushPara(); flushQuote(); flushBullets();
+  return blocks.join("\n");
+}
+
+/* Chapter 6: h2 "A Vision of the Whole", bold "Attributes of X" lead-ins. */
+function majestyChapter6ToHtml(lines: string[]): string {
+  const blocks: string[] = [];
+  let para: string[] = [];
+  const flushPara = () => {
+    if (!para.length) return;
+    let text = joinWrapped(para);
+    let html = escapeHtml(text);
+    const lead = text.match(/^(Attributes of [A-Za-z-]+(?: \(Power and Authority\))?)/);
+    if (lead) html = `<strong>${escapeHtml(lead[1]!)}</strong>${escapeHtml(text.slice(lead[1]!.length))}`;
+    blocks.push(`<p>${html}</p>`);
+    para = [];
+  };
+  /* The source sets these paragraphs without blank lines between them. */
+  const PARA_START =
+    /^(Attributes of |Together, these twenty|Let this study|May the Holy Spirit|For our God is worthy|To Him be glory)/;
+  for (const line of lines) {
+    const t = line.trim();
+    if (!t) { flushPara(); continue; }
+    if (t === "A Vision of the Whole") { flushPara(); blocks.push(`<h2>${t}</h2>`); continue; }
+    if (PARA_START.test(t)) flushPara();
+    para.push(t);
+  }
+  flushPara();
+  return blocks.join("\n");
+}
+
+/* "More Free Resources" — hand-assembled to carry the live links (matches the
+   source page; Share Your Story is retargeted to the Reviews page). */
+const MAJESTY_RESOURCES_HTML = `
+<p><strong>Thank you for downloading this free resource!</strong></p>
+<p>We’re grateful you’ve taken this step in your spiritual journey. Your growth in Christ encourages us, and we pray this has been a blessing—strengthening your faith, deepening your understanding of God’s Word, and equipping you to live for His glory.</p>
+<p><strong>Share Your Thoughts</strong></p>
+<p>Your feedback helps us improve future resources and encourages others:</p>
+<p><strong>Leave a Review</strong> or <strong>Send Us a Note</strong> — If you found this helpful, please consider leaving a short review. Your honest words make a big difference! We love hearing how God is using these materials in your life.</p>
+<p>Share Your Story → jesusonline.com/review</p>
+<p><strong>Discover More Free Resources</strong></p>
+<p>Continue growing in your walk with Jesus. Here are additional tools from the <strong>JO EQUIP</strong> library and JesusOnline Ministries:</p>
+<p><strong>Explore the Free Books</strong> → equip.jesusonline.com/books</p>
+<p><strong>Download the Free JO App</strong> — Your personal discipleship hub with the NET Bible, daily devotions, interactive studies, prayer tools, more books, and videos.</p>
+<p>Explore in browser → app.jesusonline.com</p>
+<p><a href="https://play.google.com/store/apps/details?id=com.clear.joapp">Download for Android</a> &nbsp;·&nbsp; <a href="https://apps.apple.com/app/jo-app-jesusonline/id1474405483">Download for iOS</a></p>
+<p><strong>Watch Video Playlists</strong> → equip.jesusonline.com/playlists</p>
+<p><strong>Visit JesusOnline Ministries</strong> — For more about this ministry and global outreach: jesusonlineministries.org</p>
+<p><strong>Would you like to help others?</strong> Share this book (or the download link) with friends, your small group, or your church. Every copy planted can bear eternal fruit!</p>
+<p>Thank you again for partnering with us in the Great Commission. May the Lord continue to fill you with joy, peace, and purpose as you walk with Him.</p>
+<p>The JesusOnline Ministries Team<br /><em>(Apologetics • Evangelism • Discipleship • Equipping)</em></p>`;
+
+const MAJESTY_FRONT_NOTICES_HTML = `
+<p>Unless otherwise indicated, all Scripture quotations are from the NET Bible® copyright ©1996, 2019 by Biblical Studies Press, L.L.C. http://netbible.com All rights reserved.</p>
+<p>Scripture quotations marked (NLT) are taken from the Holy Bible, New Living Translation, copyright © 1996, 2004, 2015 by Tyndale House Foundation. Used by permission of Tyndale House Publishers, Carol Stream, Illinois 60188. All rights reserved.</p>
+<p>Scripture quotations marked (ESV) are from the ESV® Bible (The Holy Bible, English Standard Version®), copyright © 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved.</p>
+<p>Published by JesusOnline Ministries<br />Copyright © 2026 by JesusOnline Ministries<br />JesusOnlineMinistries.org</p>`;
+
+const MAJESTY_FRONT_JO_HTML = `
+<p><strong>JO EQUIP</strong> is a free digital library of practical discipleship tools for pastors and disciple-makers. JesusOnline offers free Watch → Learn → Live resources to strengthen engagement, depth, and retention in your ministry.</p>
+<p>You can use our resources for your Sunday message, your Bible study, or your discipleship ministry. Find out more about the simple 5-step process you can use at: <a href="https://equip.jesusonline.com/channels/church/become-growing-church/a-jesusonline-equipped-church/">A JesusOnline-Equipped Church</a></p>
+<p>Visit: equip.JesusOnline.com</p>`;
+
+function parseMajestyPdf(book: BookConfig): ParsedBook {
+  const res = spawnSync("pdftotext", ["-layout", book.docx, "-"], {
+    encoding: "utf8",
+    maxBuffer: 64 * 1024 * 1024,
+  });
+  if (res.status !== 0) throw new Error(`pdftotext failed: ${res.stderr}`);
+  /* Drop form feeds and page-number-only lines; normalize the private-use
+     bullet glyph (U+F0B7) the source PDF uses for list markers. */
+  const lines = res.stdout
+    .replace(/\f/g, "\n")
+    .replace(/\uf0b7/g, "•")
+    .split("\n")
+    .filter(l => !/^\s+\d{1,2}\s*$/.test(l));
+
+  /* Locate chapter start lines: exact title at column 0, not followed by an
+     indented "God Is …" bullet (which would be chapter 1's overview lists). */
+  const startIdx: number[] = [];
+  for (const ch of MAJESTY_CHAPTERS) {
+    let found = -1;
+    const from = startIdx.length ? startIdx[startIdx.length - 1]! + 1 : 0;
+    for (let i = from; i < lines.length; i++) {
+      if (lines[i]!.trim() !== ch.title || /^\s/.test(lines[i]!)) continue;
+      const next = lines.slice(i + 1).find(l => l.trim() !== "");
+      if (next && /^\s+(•\s*)?God Is /.test(next)) continue; // ch-1 overview label
+      found = i;
+      break;
+    }
+    if (found === -1) throw new Error(`Majesty chapter not found: ${ch.title}`);
+    startIdx.push(found);
+  }
+
+  const chapters: Chapter[] = MAJESTY_CHAPTERS.map((ch, i) => {
+    const body = lines.slice(startIdx[i]! + 1, i + 1 < startIdx.length ? startIdx[i + 1] : lines.length);
+    let bodyHtml: string;
+    if (ch.key === "1") bodyHtml = majestyChapter1ToHtml(body);
+    else if (ch.key === "6") bodyHtml = majestyChapter6ToHtml(body);
+    else if (ch.key === "MORE") bodyHtml = MAJESTY_RESOURCES_HTML;
+    else bodyHtml = majestyAttributeChapterToHtml(body);
+    return { key: ch.key, headingHtml: escapeHtml(ch.title), bodyHtml };
+  });
+
+  /* Sanity guard against silent extraction/structure drift: 4 attribute
+     chapters × 5 sections, each with an h2, a 5-item list, and a takeaway. */
+  const attrBodies = chapters.filter(c => ["2", "3", "4", "5"].includes(c.key)).map(c => c.bodyHtml);
+  const count = (re: RegExp) => attrBodies.reduce((n, b) => n + (b.match(re)?.length ?? 0), 0);
+  const sections = count(/<h2>God Is /g);
+  const takeaways = count(/<p><strong>Because God is/gi);
+  const items = count(/<li>/g);
+  if (sections !== 20 || takeaways !== 20 || items !== 100) {
+    throw new Error(`Majesty structure drift: sections=${sections}/20 takeaways=${takeaways}/20 items=${items}/100`);
+  }
+
+  const tocEntries: ParsedBook["tocEntries"] = MAJESTY_CHAPTERS.map((ch, i) => ({
+    kind: "entry" as const,
+    labelText: ch.key === "MORE" ? ch.title : `${i + 1}. ${ch.title}`,
+    key: ch.key,
+  }));
+
+  const frontPagesHtml = `
+  <section class="title-page">
+    <h1>${book.title}</h1>
+    <p class="subtitle">${book.subtitleHtml}</p>
+  </section>
+  <section class="front-page notices">
+    ${MAJESTY_FRONT_NOTICES_HTML}
+  </section>
+  <section class="front-page">
+    ${MAJESTY_FRONT_JO_HTML}
+  </section>`;
+
+  return { frontPagesHtml, tocEntries, chapters };
+}
+
 /* ------------------------------------------------------------- rendering */
 
 const CSS = `
@@ -275,6 +592,9 @@ const CSS = `
   table { border-collapse: collapse; margin: 0.8em 0; font-size: 10pt; }
   td, th { border: 1px solid #d1d5db; padding: 4px 8px; vertical-align: top; }
   .pgmark { position: absolute; left: 0; top: 0; font-size: 2px; color: #ffffff; }
+  .epigraph { text-align: center; font-style: italic; margin: 0 0 1.2em 0; }
+  .epigraph .attrib { font-style: normal; }
+  .quote { margin: 0 0 0.85em 0.4in; }
 `;
 
 const FOOTER_TEMPLATE = `
@@ -394,11 +714,15 @@ async function prependCoverAndCompress(book: BookConfig, interiorPath: string): 
 
 async function buildBook(browser: Browser, book: BookConfig): Promise<void> {
   console.log(`\n=== ${book.title} ===`);
-  const { value: rawHtml, messages } = await mammoth.convertToHtml({ path: book.docx });
-  const warnings = messages.filter(m => m.type === "warning" && !/Unrecognised (run|paragraph) style/.test(m.message));
-  if (warnings.length) console.warn("  mammoth warnings:", warnings.map(m => m.message).join("; "));
-
-  const parsed = parseBook(book, rawHtml);
+  let parsed: ParsedBook;
+  if (book.source === "pdf") {
+    parsed = parseMajestyPdf(book);
+  } else {
+    const { value: rawHtml, messages } = await mammoth.convertToHtml({ path: book.docx });
+    const warnings = messages.filter(m => m.type === "warning" && !/Unrecognised (run|paragraph) style/.test(m.message));
+    if (warnings.length) console.warn("  mammoth warnings:", warnings.map(m => m.message).join("; "));
+    parsed = parseBook(book, rawHtml);
+  }
   console.log(`  chapters: ${parsed.chapters.map(c => c.key).join(", ")}`);
 
   const pass1Path = `${book.out}.pass1.tmp.pdf`;

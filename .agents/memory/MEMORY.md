@@ -2,3 +2,4 @@
 - [Leaf script importing artifact data](leaf-script-imports-artifact-data.md) — @workspace/scripts must load artifact-local TS data via runtime `import(pathToFileURL(...))` + local type mirror, never a static cross-package import (breaks tsc rootDir).
 - [Growth reorg sheet vs site](growth-reorg-sheet-vs-site.md) — Growth channel is a curated subset of the reorg spreadsheets; slug diff shows hundreds "missing" by design; CSV is Windows-1252, movers text-tagged not colored.
 - [WP article catalog drift](wp-article-catalog-drift.md) — JOM WP catalog has numbering drift & books the JN survey skips; map slugs by CONTENT not number; for missing books attach the same-book `38xxx-overview` PDF via links.pdf.
+- [Ebook docx→PDF pipeline](ebook-docx-pipeline.md) — book PDFs build from docx via two-pass marker render; docx heading styles are inconsistent, match TOC by leading token not title text.

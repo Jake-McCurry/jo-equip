@@ -10,13 +10,14 @@
     "bcg:pdf": "tsx ./src/bcgPdfBuild.ts",
     "bsm:pdf": "tsx ./src/bsmPdfBuild.ts",
     "bible-pages:check": "tsx ./src/biblePagesCheck.ts",
-    "book:new-identity": "tsx ./src/newIdentityBookBuild.ts",
-    "book:walking-spirit": "tsx ./src/walkingInSpiritBookBuild.ts",
+    "book:new-identity": "tsx ./src/ebookDocxBuild.ts --book=identity",
+    "book:walking-spirit": "tsx ./src/ebookDocxBuild.ts --book=walking",
     "covers:build": "tsx ./src/bookCoversBuild.ts",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "devDependencies": {
     "@types/node": "catalog:",
+    "mammoth": "^1.12.0",
     "pdf-lib": "^1.17.1",
     "puppeteer": "^25.0.4",
     "tsx": "catalog:"

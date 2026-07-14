@@ -1,0 +1,233 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { Church } from "lucide-react";
+import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
+
+/* JO EQUIPPED Church registration — Mailchimp audience jesusonline.us1
+ * (same audience as the newsletter but a distinct form: f_id=00bf87e5f0).
+ * Submits via Mailchimp's JSONP endpoint so we can show the thank-you
+ * dialog inline instead of navigating to Mailchimp's response page. */
+const MC_POST_JSON =
+  "https://jesusonline.us1.list-manage.com/subscribe/post-json?u=c02949f5de137184b156da9bc&id=e06ba0649d&f_id=00bf87e5f0";
+const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
+---
+<Layout
+  title="Register Your Church · JO EQUIP"
+  description="Register today to become a FREE JO EQUIPPED Church — free, unrestricted access to the JO EQUIP library of practical, biblically grounded discipleship tools."
+>
+  <Fragment slot="head">
+    <BreadcrumbsLd items={[
+      { name: "Home", url: "/" },
+      { name: "Register Your Church", url: "/register-church" },
+    ]} />
+  </Fragment>
+
+  <section class="bg-white">
+    <div class="container mx-auto px-4 py-14 md:py-20 max-w-2xl">
+      <div class="text-center">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium mb-6" style="background-color:rgba(122,58,138,0.1);color:#7a3a8a;">
+          <Church className="w-3.5 h-3.5" />
+          JO EQUIPPED Church
+        </div>
+        <h1 class="text-3xl md:text-4xl mb-4" style="color:#002f55;">
+          Register today to become a FREE JO&nbsp;EQUIPPED Church
+        </h1>
+        <div class="h-0.5 w-12 mx-auto mb-8" style="background-color:#de5b00;"></div>
+      </div>
+
+      <div class="space-y-5 text-lg leading-relaxed mb-10" style="color:#374151;">
+        <p>
+          We are pleased to invite you and your congregation to become part of a growing community of
+          churches that are empowered to make a greater impact for Christ. By registering as a JesusOnline
+          EQUIPPED Church, you will receive free and unrestricted access to our comprehensive digital
+          JO EQUIP library of practical, biblically grounded discipleship tools. These resources are
+          carefully designed to help you clearly proclaim the gospel, nurture mature believers in their faith,
+          and multiply healthy, vibrant congregations for the glory of God.
+        </p>
+        <p>
+          Your registration is free and carries no obligation&mdash;only our sincere desire to come alongside
+          you as you shepherd God&rsquo;s people. We respect your time and privacy; your information will be
+          kept secure and used solely to provide these ministry resources.
+        </p>
+      </div>
+
+      <div
+        class="bg-white border rounded p-6 md:p-8"
+        style="border-color:var(--color-border);border-top:4px solid #7a3a8a;"
+      >
+        <form id="rc-form" class="space-y-4" novalidate>
+          <div>
+            <label for="rc-fname" class="block text-sm font-medium mb-1.5" style="color:#002f55;">
+              First Name <span style="color:#de5b00;">*</span>
+            </label>
+            <input
+              type="text"
+              name="FNAME"
+              id="rc-fname"
+              required
+              autocomplete="given-name"
+              class="w-full rounded border px-3 py-2.5 text-sm outline-none focus-visible:ring-2"
+              style="border-color:var(--color-border);color:#002f55;"
+            />
+          </div>
+
+          <div>
+            <label for="rc-lname" class="block text-sm font-medium mb-1.5" style="color:#002f55;">
+              Last Name
+            </label>
+            <input
+              type="text"
+              name="LNAME"
+              id="rc-lname"
+              autocomplete="family-name"
+              class="w-full rounded border px-3 py-2.5 text-sm outline-none focus-visible:ring-2"
+              style="border-color:var(--color-border);color:#002f55;"
+            />
+          </div>
+
+          <div>
+            <label for="rc-email" class="block text-sm font-medium mb-1.5" style="color:#002f55;">
+              Email Address <span style="color:#de5b00;">*</span>
+            </label>
+            <input
+              type="email"
+              name="EMAIL"
+              id="rc-email"
+              required
+              autocomplete="email"
+              class="w-full rounded border px-3 py-2.5 text-sm outline-none focus-visible:ring-2"
+              style="border-color:var(--color-border);color:#002f55;"
+            />
+          </div>
+
+          <div>
+            <label for="rc-church" class="block text-sm font-medium mb-1.5" style="color:#002f55;">
+              Church <span style="color:#de5b00;">*</span>
+            </label>
+            <input
+              type="text"
+              name="CHURCH"
+              id="rc-church"
+              required
+              autocomplete="organization"
+              class="w-full rounded border px-3 py-2.5 text-sm outline-none focus-visible:ring-2"
+              style="border-color:var(--color-border);color:#002f55;"
+            />
+          </div>
+
+          {/* Bot-prevention honeypot — do not remove */}
+          <div aria-hidden="true" style="position:absolute;left:-5000px;">
+            <input type="text" name={MC_HONEYPOT} tabindex="-1" value="" />
+          </div>
+
+          <p id="rc-error" class="hidden text-sm font-medium" style="color:#b91c1c;" role="alert"></p>
+
+          <button
+            type="submit"
+            id="rc-submit"
+            class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded font-semibold text-sm transition-all hover:shadow-md"
+            style="background-color:#7a3a8a;color:#ffffff;"
+          >
+            Yes, Register My Church
+          </button>
+        </form>
+
+        <p class="text-xs mt-4" style="color:var(--color-muted-foreground);">
+          Prefer email? Write to
+          <a href="mailto:equip@jesusonline.com" class="font-semibold hover:underline" style="color:#de5b00;">equip@jesusonline.com</a>
+          and we'll register you.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* Thank-you dialog */}
+  <div id="rc-thanks" class="hidden fixed inset-0 z-50 items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="rc-thanks-title">
+    <div id="rc-thanks-backdrop" class="absolute inset-0" style="background-color:rgba(0,47,85,0.6);"></div>
+    <div class="relative bg-white rounded-lg shadow-xl max-w-md w-full p-8 text-center">
+      <h2 id="rc-thanks-title" class="text-2xl mb-4" style="color:#002f55;">Thank You!</h2>
+      <div class="h-0.5 w-12 mx-auto mb-5" style="background-color:#de5b00;"></div>
+      <p class="text-base leading-relaxed mb-6" style="color:#374151;">
+        Thank you for your faithful service to the Lord and His Church. We look forward to equipping
+        you and your congregation as together we seek first the Kingdom of God.
+      </p>
+      <button
+        type="button"
+        id="rc-thanks-close"
+        class="inline-flex items-center justify-center px-6 py-2.5 rounded font-semibold text-sm transition-all hover:shadow-md"
+        style="background-color:#7a3a8a;color:#ffffff;"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+
+  <script define:vars={{ MC_POST_JSON }}>
+    const form = document.getElementById("rc-form");
+    const submitBtn = document.getElementById("rc-submit");
+    const errorEl = document.getElementById("rc-error");
+    const thanks = document.getElementById("rc-thanks");
+
+    function showThanks() {
+      thanks.classList.remove("hidden");
+      thanks.classList.add("flex");
+      document.getElementById("rc-thanks-close").focus();
+    }
+    function hideThanks() {
+      thanks.classList.add("hidden");
+      thanks.classList.remove("flex");
+    }
+    document.getElementById("rc-thanks-close").addEventListener("click", hideThanks);
+    document.getElementById("rc-thanks-backdrop").addEventListener("click", hideThanks);
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") hideThanks();
+    });
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      errorEl.classList.add("hidden");
+
+      if (!form.reportValidity()) return;
+
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = "0.6";
+
+      /* Mailchimp only accepts cross-origin signups via JSONP. */
+      const params = new URLSearchParams(new FormData(form));
+      const cb = "rcMailchimpCb" + Date.now();
+      const script = document.createElement("script");
+      let settled = false;
+
+      function finish() {
+        settled = true;
+        delete window[cb];
+        script.remove();
+        submitBtn.disabled = false;
+        submitBtn.style.opacity = "";
+      }
+
+      window[cb] = (res) => {
+        finish();
+        if (res && res.result === "success") {
+          form.reset();
+          showThanks();
+        } else {
+          const msg = (res && res.msg ? String(res.msg) : "Something went wrong. Please try again.")
+            .replace(/<[^>]*>/g, "")
+            .replace(/^\d+\s*-\s*/, "");
+          errorEl.textContent = msg;
+          errorEl.classList.remove("hidden");
+        }
+      };
+
+      script.src = MC_POST_JSON + "&" + params.toString() + "&c=" + cb;
+      script.onerror = () => {
+        if (settled) return;
+        finish();
+        errorEl.textContent = "Something went wrong. Please check your connection and try again.";
+        errorEl.classList.remove("hidden");
+      };
+      document.body.appendChild(script);
+    });
+  </script>
+</Layout>

@@ -47,7 +47,6 @@ interface Overlay {
 }
 
 const DEJAVU_SANS = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf";
-const DEJAVU_SERIF = "/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf";
 
 const OVERLAYS: Record<string, Overlay> = {
   "adventure-of-living-with-jesus": {
@@ -57,14 +56,6 @@ const OVERLAYS: Record<string, Overlay> = {
     fill: "white",
     shadow: "rgba(40,20,0,0.65)",
     bottom: 26,
-  },
-  "beholding-the-majesty-of-god": {
-    text: "JesusOnline Ministries",
-    font: DEJAVU_SERIF,
-    pointsize: 30,
-    fill: "rgb(233,220,180)",
-    shadow: "rgba(10,15,35,0.65)",
-    bottom: 24,
   },
 };
 

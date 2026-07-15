@@ -263,12 +263,15 @@ const metaDescription = plain(article.description);
     color: #002f55;
   }
   .bcg-prose p { margin-top: 1rem; }
-  .bcg-prose a {
+  /* :global() is required: anchors inside set:html content don't carry
+     Astro's scoped attribute, so a scoped `.bcg-prose a` rule never
+     matches them and the links render as plain text. */
+  .bcg-prose :global(a) {
     color: #de5b00;
     text-decoration: underline;
     text-underline-offset: 2px;
   }
-  .bcg-prose a:hover { text-decoration-thickness: 2px; }
+  .bcg-prose :global(a:hover) { text-decoration-thickness: 2px; }
   .bcg-prose ul, .bcg-prose ol {
     margin-top: 1rem;
     padding-left: 1.5rem;

@@ -259,8 +259,7 @@ function renderTemplate({ title, bodyHtml, sourceUrl }: { title: string; bodyHtm
     margin: 1.3em 0 0.2em; page-break-after: avoid;
   }
   .article p { margin: 0 0 0.85em 0; orphans: 3; widows: 3; }
-  .article a { color: #b34800; text-decoration: none; }
-  .article a:hover { text-decoration: underline; }
+  .article a { color: #b34800; text-decoration: underline; text-underline-offset: 2px; }
   .article strong { color: #002f55; }
   .article ul, .article ol { margin: 0.5em 0 1em 1.4em; padding: 0; }
   .article li { margin: 0.25em 0; }

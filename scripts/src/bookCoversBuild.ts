@@ -50,7 +50,7 @@ const DEJAVU_SANS = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf";
 
 const OVERLAYS: Record<string, Overlay> = {
   "adventure-of-living-with-jesus": {
-    text: "Mary and Friends",
+    text: "JesusOnline Ministries",
     font: DEJAVU_SANS,
     pointsize: 34,
     fill: "white",

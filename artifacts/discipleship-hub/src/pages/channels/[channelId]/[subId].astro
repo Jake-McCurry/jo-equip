@@ -1,7 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
-import { subTopics, getChannel, getSubTopic, getSubTopicChildren, getSubTopicsByChannel, getNextSubTopic } from "@/data/channels";
+import { subTopics, getChannel, getSubTopic, getSubTopicChildren, getNextSubTopic } from "@/data/channels";
 import { getBookCover } from "@/data/bookCovers";
 import { extractAppSlug, hasArticlePdf } from "@/data/articles";
 import { hasBcgArticlePdf } from "@/data/bcgArticlePdfs";
@@ -38,13 +38,15 @@ const isNewsletter = sub.id === "make-multiply-disciples-newsletter";
 /* For child sub-topics, surface the parent in the breadcrumb (Channels > Church > Share Jesus > Year 1). */
 const parent = sub.parentId ? getSubTopic(channelId!, sub.parentId) : undefined;
 
-/* Number prefix for child cards: "<parentPos>.<childPos>" e.g. "04.1".
- * parentPos is this sub-topic's 1-based index among its own siblings — the
- * channel's top-level list for a top-level parent, or its parent's children
- * for a nested parent (avoids "00.x" on grandchild cards). */
-const topLevel = getSubTopicsByChannel(channelId!);
-const siblings = sub.parentId ? getSubTopicChildren(sub.parentId) : topLevel;
-const parentPos = hasChildren ? siblings.findIndex(s => s.id === sub.id) + 1 : 0;
+/* Listed article count for a child card: its own non-unlisted items, or the
+ * sum across its children when it is itself a parent. */
+function childArticleCount(child: (typeof children)[number]): number {
+  const grandchildren = getSubTopicChildren(child.id);
+  if (grandchildren.length > 0) {
+    return grandchildren.reduce((n, g) => n + (g.items?.filter(i => !i.unlisted).length ?? 0), 0);
+  }
+  return child.items?.filter(i => !i.unlisted).length ?? 0;
+}
 
 /* JSON-LD: CollectionPage with an ItemList of the sub-topic's lesson titles.
    Note: we deliberately do NOT use FAQPage schema here — Google requires
@@ -139,24 +141,24 @@ function btnClass(enabled: boolean) {
           <div class="mt-2 h-0.5 w-12" style="background-color:#de5b00;"></div>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {children.map((child, cIdx) => (
-            <a
-              href={join(`/channels/${channel.id}/${child.id}`)}
-              class="flex flex-col bg-white border rounded p-5 hover:shadow-md transition-all"
-              style={`border-color:var(--color-border);border-left:4px solid ${channel.accentColor};`}
-            >
-              <span class="text-xs font-mono font-semibold px-2 py-0.5 rounded self-start mb-3" style={`color:${channel.accentColor};background-color:${channel.accentColor}11;`}>
-                {`${String(parentPos).padStart(2, "0")}.${cIdx + 1}`}
-              </span>
-              <h3 class="text-base font-semibold leading-snug mb-2" style="color:#002f55;">{child.name}</h3>
-              {child.description && (
-                <p class="text-sm leading-relaxed" style="color:var(--color-muted-foreground);">{child.description}</p>
-              )}
-              <span class="mt-auto pt-3 inline-flex items-center gap-1.5 text-sm font-semibold" style={`color:${channel.accentColor};`}>
-                See Menu <ArrowRight className="w-4 h-4" />
-              </span>
-            </a>
-          ))}
+          {children.map((child) => {
+            const count = childArticleCount(child);
+            return (
+              <a
+                href={join(`/channels/${channel.id}/${child.id}`)}
+                class="flex flex-col bg-white border rounded p-5 hover:shadow-md transition-all"
+                style={`border-color:var(--color-border);border-left:4px solid ${channel.accentColor};`}
+              >
+                <h3 class="text-base font-semibold leading-snug mb-2" style="color:#002f55;">{child.name}</h3>
+                {child.description && (
+                  <p class="text-sm leading-relaxed" style="color:var(--color-muted-foreground);">{child.description}</p>
+                )}
+                <span class="mt-auto pt-3 inline-flex items-center gap-1.5 text-sm font-semibold" style={`color:${channel.accentColor};`}>
+                  {count > 0 ? `Explore ${count} ${count === 1 ? "Article" : "Articles"}` : "Explore"} <ArrowRight className="w-4 h-4" />
+                </span>
+              </a>
+            );
+          })}
         </div>
       </>
     ) : hasItems ? (

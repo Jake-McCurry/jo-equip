@@ -45,6 +45,13 @@ export const books: Book[] = [
     pdf: "/books/walking-in-the-spirit.pdf",
   },
   {
+    id: "the-abiding-room",
+    title: "The Abiding Room",
+    author: "Kevin Seacat",
+    cover: "/books/covers/the-abiding-room.png",
+    pdf: "/books/the-abiding-room.pdf",
+  },
+  {
     id: "extraordinary-evangelism",
     title: "Extraordinary Evangelism",
     author: "Dave R. Chapman",

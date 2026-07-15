@@ -289,18 +289,10 @@ export const subTopics: SubTopic[] = [
     channelId: 'church',
     name: 'Sermon Toolbox',
     description: 'Develop Biblically-grounded, transformational messages for Kingdom maturity.',
-  },
-  /* Sub-level added per Church sheet v.062526; content supplied July 2026
-     from the user's "Bible Study Tools" docx. */
-  {
-    id: 'bible-study-tools',
-    channelId: 'church',
-    parentId: 'sermon-toolbox',
-    name: 'Bible Study Tools',
-    description: 'Tools and resources for studying the Bible in sermon preparation.',
     hideNumbers: true,
-    /* Content from the user's "Bible Study Tools" docx (July 2026) — a
-       single authored resource guide, rendered via bibleStudyMethods.ts. */
+    /* The "Bible Study Tools" article (from the user's July 2026 docx,
+       rendered via bibleStudyMethods.ts) lives directly under Sermon
+       Toolbox — no intermediate sub-topic (sheet correction July 2026). */
     items: [
       { number: 1, title: 'Bible Study Tools', articleId: 'essential-bible-study-tools' },
     ],
@@ -690,7 +682,7 @@ export const subTopics: SubTopic[] = [
       { number: 4, title: 'Embracing Truth (Step 2: Revise your false beliefs)', links: { app: 'https://app.jesusonline.com/post/65504-4-embracing-truth-step-2-revise-your-false-beliefs' } },
       { number: 5, title: 'Turning Around (Step 3: Repent of your sin)', links: { app: 'https://app.jesusonline.com/post/65505-5-turning-around-step-3-repent-of-your-sin' } },
       { number: 6, title: 'Defending Your Ground (Step 4: Defend against spiritual attacks)', links: { app: 'https://app.jesusonline.com/post/65506-6-defending-your-ground-step-4-defend-against-spiritual-attacks' } },
-      { number: 7, title: 'Preventing Setbacks (Step 5: Flee temptation)', links: { app: 'https://app.jesusonline.com/post/65507-preventing-setbacks-step-5-flee-temptation' } },
+      { number: 7, title: 'Preventing Setbacks (Step 5: Flee temptation)', links: { app: 'https://app.jesusonline.com/post/65507-7-preventing-setbacks-step-5-flee-temptation' } },
       { number: 8, title: 'Your Sin Diagnosis', links: { app: 'https://app.jesusonline.com/post/65508-8-your-sin-diagnosis' } },
       { number: 9, title: 'Pride: It\'s All about Me', links: { app: 'https://app.jesusonline.com/post/65509-9-pride-its-all-about-me' } },
       { number: 10, title: 'Fear: From Doubt to Dread', links: { app: 'https://app.jesusonline.com/post/65510-10-fear-from-doubt-to-dread' } },
@@ -1323,7 +1315,7 @@ export const subTopics: SubTopic[] = [
       { number: 4, title: 'Embracing Truth (Step 2: Revise your false beliefs)', links: { app: 'https://app.jesusonline.com/post/65504-4-embracing-truth-step-2-revise-your-false-beliefs' } },
       { number: 5, title: 'Turning Around (Step 3: Repent of your sin)', links: { app: 'https://app.jesusonline.com/post/65505-5-turning-around-step-3-repent-of-your-sin' } },
       { number: 6, title: 'Defending Your Ground (Step 4: Defend against spiritual attacks)', links: { app: 'https://app.jesusonline.com/post/65506-6-defending-your-ground-step-4-defend-against-spiritual-attacks' } },
-      { number: 7, title: 'Preventing Setbacks (Step 5: Flee temptation)', links: { app: 'https://app.jesusonline.com/post/65507-preventing-setbacks-step-5-flee-temptation' } },
+      { number: 7, title: 'Preventing Setbacks (Step 5: Flee temptation)', links: { app: 'https://app.jesusonline.com/post/65507-7-preventing-setbacks-step-5-flee-temptation' } },
       { number: 8, title: 'Your Sin Diagnosis', links: { app: 'https://app.jesusonline.com/post/65508-8-your-sin-diagnosis' } },
     ],
   },

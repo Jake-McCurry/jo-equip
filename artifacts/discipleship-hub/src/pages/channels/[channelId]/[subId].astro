@@ -262,7 +262,7 @@ function btnClass(enabled: boolean) {
             return (
               <>
               {sectionHeading && (
-                <li class={"list-none" + (idx > 0 ? " pt-6" : "")}>
+                <li class={"list-none" + (idx > 0 ? " pt-6" : "")} id={sectionHeading.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")}>
                   <h3 class="text-lg font-semibold" style="color:#002f55;">{sectionHeading}</h3>
                   <div class="mt-1.5 h-0.5 w-10" style={`background-color:${channel.accentColor};`}></div>
                 </li>

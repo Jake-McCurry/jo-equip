@@ -274,9 +274,9 @@ export const bcgArticles: BcgArticle[] = [
       ...WLL,
       { type: "h3", text: "Total Life Discipleship" },
       { type: "ul", items: [
-        '<a href="/channels/church/total-life-discipleship-principles">Part 1: Core Principles</a> (PDF • Video • App)',
-        "Part 2: Kingdom Perspective (PDF • Video • App)",
-        '<a href="/channels/growth/building-blocks">Part 3: Building Blocks for Maturity</a> (PDF • Video • App)',
+        '<a href="/channels/church/total-life-discipleship-principles#core-principles" style="color:#0083de;text-decoration:underline;">Part 1: Core Principles</a> (PDF • Video • App)',
+        '<a href="/channels/church/total-life-discipleship-principles#kingdom-perspective" style="color:#0083de;text-decoration:underline;">Part 2: Kingdom Perspective</a> (PDF • Video • App)',
+        '<a href="/channels/growth/building-blocks" style="color:#0083de;text-decoration:underline;">Part 3: Building Blocks for Maturity</a> (PDF • Video • App)',
       ]},
 
       REGISTER_CTA,

@@ -150,6 +150,42 @@ const metaDescription = plain(article.description);
             return <p set:html={b.html} />;
           case "ul":
             return <ul>{b.items.map(i => <li set:html={i} />)}</ul>;
+          case "resourceList":
+            /* Resource list with PDF / Video / App chips — orange + linked
+               when the URL is known, gray when not (matches topic pages). */
+            return (
+              <ul class="resource-list">
+                {b.items.map(item => {
+                  const titleHref = item.href ? (item.href.startsWith("/") ? join(item.href) : item.href) : undefined;
+                  const chips = [
+                    { label: "PDF", href: item.pdf },
+                    { label: "Video", href: item.video },
+                    { label: "App", href: item.app },
+                  ].map(c => ({
+                    label: c.label,
+                    href: c.href ? (c.href.startsWith("/") ? join(c.href) : c.href) : undefined,
+                    external: !!c.href && !c.href.startsWith("/"),
+                  }));
+                  return (
+                    <li>
+                      <span class="resource-title">
+                        {titleHref
+                          ? <a href={titleHref} style="color:#0083de;text-decoration:underline;">{item.title}</a>
+                          : item.title}
+                      </span>
+                      <span class="resource-chips">
+                        {chips.map(c => c.href
+                          ? (c.external
+                              ? <a href={c.href} target="_blank" rel="noopener noreferrer" class="chip chip-on">{c.label}</a>
+                              : <a href={c.href} class="chip chip-on">{c.label}</a>)
+                          : <span class="chip chip-off" title={`${c.label} coming soon`}>{c.label}</span>
+                        )}
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
+            );
           case "ol":
             return <ol>{b.items.map(i => <li set:html={i} />)}</ol>;
           case "quote":
@@ -238,6 +274,51 @@ const metaDescription = plain(article.description);
     padding-left: 1.5rem;
   }
   .bcg-prose ul { list-style: disc; }
+  .bcg-prose ul.resource-list {
+    list-style: none;
+    padding-left: 0;
+  }
+  .bcg-prose .resource-list li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.375rem 0.75rem;
+    margin-top: 0.65rem;
+  }
+  .bcg-prose .resource-title { color: #1f2937; }
+  .bcg-prose .resource-chips {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+  }
+  .bcg-prose .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.25rem 0.625rem;
+    border-radius: 0.25rem;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+    text-decoration: none;
+    transition: box-shadow 0.15s ease;
+  }
+  .bcg-prose a.chip-on {
+    background-color: #de5b0014;
+    color: #de5b00;
+    border: 1px solid #de5b0040;
+    text-decoration: none;
+  }
+  .bcg-prose a.chip-on:hover { box-shadow: 0 1px 2px rgba(0,0,0,0.08); text-decoration: none; }
+  .bcg-prose .chip-off {
+    background-color: rgba(0,0,0,0.04);
+    color: #9ca3af;
+    border: 1px solid rgba(0,0,0,0.06);
+    cursor: not-allowed;
+  }
   .bcg-prose ol { list-style: decimal; }
   .bcg-prose li { margin-top: 0.4rem; }
   .bcg-prose blockquote {

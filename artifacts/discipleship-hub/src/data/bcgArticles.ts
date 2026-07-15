@@ -23,7 +23,23 @@ export type ArticleBlock =
   /* Inline illustration. `src` is the basename of a file in src/assets/bcg/
      (resolved via bcgImages.ts). `alt` is required for a11y/SEO. `caption`
      is optional and renders as a muted <figcaption>. */
-  | { type: "figure"; src: string; alt: string; caption?: string };
+  | { type: "figure"; src: string; alt: string; caption?: string }
+  /* Resource list with PDF / Video / App buttons, styled like the chips on
+     channel/topic pages: orange + linked when the URL is known, gray when
+     not. `href` (optional) links the resource title itself. Internal links
+     are root-relative ("/channels/...", "/playlist/..."); the page component
+     prefixes the base path, and the PDF build rewrites them to absolute
+     equip.jesusonline.com URLs. */
+  | { type: "resourceList"; items: ResourceListItem[] };
+
+export interface ResourceListItem {
+  title: string;
+  /** Optional link for the title text itself (rendered blue + underlined). */
+  href?: string;
+  pdf?: string;
+  video?: string;
+  app?: string;
+}
 
 export interface BcgArticle {
   id: string;
@@ -273,10 +289,10 @@ export const bcgArticles: BcgArticle[] = [
 
       ...WLL,
       { type: "h3", text: "Total Life Discipleship" },
-      { type: "ul", items: [
-        '<a href="/channels/church/total-life-discipleship-principles#core-principles" style="color:#0083de;text-decoration:underline;">Part 1: Core Principles</a> (PDF • Video • App)',
-        '<a href="/channels/church/total-life-discipleship-principles#kingdom-perspective" style="color:#0083de;text-decoration:underline;">Part 2: Kingdom Perspective</a> (PDF • Video • App)',
-        '<a href="/channels/growth/building-blocks" style="color:#0083de;text-decoration:underline;">Part 3: Building Blocks for Maturity</a> (PDF • Video • App)',
+      { type: "resourceList", items: [
+        { title: "Part 1: Core Principles", href: "/channels/church/total-life-discipleship-principles#core-principles", video: "/playlist/total-life-discipleship-core-principles" },
+        { title: "Part 2: Kingdom Perspective", href: "/channels/church/total-life-discipleship-principles#kingdom-perspective", video: "/playlist/total-life-discipleship-kingdom-perspective" },
+        { title: "Part 3: Building Blocks for Maturity", href: "/channels/growth/building-blocks" },
       ]},
 
       REGISTER_CTA,
@@ -378,10 +394,10 @@ export const bcgArticles: BcgArticle[] = [
       { type: "p", html: "<strong>Drive lasting impact</strong> by sharing the app link at the end of your message. This simple tool helps your people review, remember, and apply the core essence of the sermon long after they leave the service." },
 
       { type: "h3", text: "From Building Blocks for Maturity" },
-      { type: "ul", items: [
-        '<a href="/channels/growth/building-blocks">God’s Majestic Qualities</a> (PDF • Video • App)',
-        '<a href="/channels/growth/building-blocks">Your New Identity, Overview</a> (PDF • Video • App)',
-        '<a href="/channels/growth/building-blocks">Walking by the Spirit</a> (PDF • Video • App)',
+      { type: "resourceList", items: [
+        { title: "God’s Majestic Qualities", href: "/channels/growth/building-blocks" },
+        { title: "Your New Identity, Overview", href: "/channels/growth/building-blocks" },
+        { title: "Walking by the Spirit", href: "/channels/growth/building-blocks" },
       ]},
 
       { type: "h3", text: "Recommended Resources on Amazon" },
@@ -414,13 +430,13 @@ export const bcgArticles: BcgArticle[] = [
 
       ...WLL,
       { type: "h3", text: "Holy Spirit Resources" },
-      { type: "ul", items: [
-        "Walking by the Spirit (PDF • Video • App)",
-        "Power for Supernatural Living (PDF • Video • App)",
-        "Walk in the Spirit, a video series (PDF • Video • App)",
-        "Living by the Spirit (PDF • Video • App)",
-        "How to Be Filled with the Holy Spirit (PDF • Video • App)",
-        "Holy Spirit, a New Life in Christ Bible study (PDF • Video • App)",
+      { type: "resourceList", items: [
+        { title: "Walking by the Spirit" },
+        { title: "Power for Supernatural Living" },
+        { title: "Walk in the Spirit, a video series" },
+        { title: "Living by the Spirit" },
+        { title: "How to Be Filled with the Holy Spirit" },
+        { title: "Holy Spirit, a New Life in Christ Bible study" },
       ]},
 
       REGISTER_CTA,
@@ -461,10 +477,10 @@ export const bcgArticles: BcgArticle[] = [
 
       ...WLL,
       { type: "h3", text: "Hope Resources" },
-      { type: "ul", items: [
-        '<a href="/channels/growth/hope-times-crisis">Hope in Times of Crisis</a> (PDF • Video • App)',
-        "Bible Promises for Hope (PDF • Video • App)",
-        "God Is Hope (PDF • Video • App)",
+      { type: "resourceList", items: [
+        { title: "Hope in Times of Crisis", href: "/channels/growth/hope-times-crisis", video: "/playlist/hope-in-times-of-crisis" },
+        { title: "Bible Promises for Hope", href: "/channels/growth/bible-promises-hope" },
+        { title: "God Is Hope" },
       ]},
 
       REGISTER_CTA,
@@ -509,13 +525,13 @@ export const bcgArticles: BcgArticle[] = [
 
       ...WLL,
       { type: "h3", text: "Love Focus Resources" },
-      { type: "ul", items: [
-        '<a href="/channels/growth/forever-loved">Forever Loved series</a> (PDF • Video • App)',
-        "Experience God’s Love playlist (PDF • Video • App)",
-        '<a href="/channels/growth/days-god-s-love">40 Days of God’s Love</a> (PDF • Video • App)',
-        "Timeless Love, Transforming Love (PDF • Video • App)",
-        "Love Bible studies (PDF • Video • App)",
-        "One Another series (PDF • Video • App)",
+      { type: "resourceList", items: [
+        { title: "Forever Loved series", href: "/channels/growth/forever-loved" },
+        { title: "Experience God’s Love playlist", video: "/playlist/experience-gods-love" },
+        { title: "40 Days of God’s Love", href: "/channels/growth/days-god-s-love", video: "/playlist/experience-gods-love" },
+        { title: "Timeless Love, Transforming Love" },
+        { title: "Love Bible studies" },
+        { title: "One Another series" },
       ]},
 
       REGISTER_CTA,

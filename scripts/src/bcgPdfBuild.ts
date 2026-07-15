@@ -37,7 +37,15 @@ type ArticleBlock =
   | { type: "ul"; items: string[] }
   | { type: "ol"; items: string[] }
   | { type: "quote"; html: string; cite?: string }
-  | { type: "figure"; src: string; alt: string; caption?: string };
+  | { type: "figure"; src: string; alt: string; caption?: string }
+  | { type: "resourceList"; items: ResourceListItem[] };
+interface ResourceListItem {
+  title: string;
+  href?: string;
+  pdf?: string;
+  video?: string;
+  app?: string;
+}
 interface BcgArticle {
   id: string;
   title: string;
@@ -128,6 +136,23 @@ function blockToHtml(b: ArticleBlock): string {
       if (!uri) return "";
       return `<figure><img src="${uri}" alt="${escAttr(b.alt)}" />${b.caption ? `<figcaption>${rewriteLinks(b.caption)}</figcaption>` : ""}</figure>`;
     }
+    case "resourceList":
+      return `<ul class="resource-list">${b.items.map(item => {
+        const abs = (u?: string) => (u && u.startsWith("/") ? `${SITE}${u}` : u);
+        const titleHref = abs(item.href);
+        const title = titleHref
+          ? `<a href="${escAttr(titleHref)}" style="color:#0083de;">${escText(item.title)}</a>`
+          : escText(item.title);
+        const chips = ([["PDF", item.pdf], ["Video", item.video], ["App", item.app]] as const)
+          .map(([label, url]) => {
+            const href = abs(url);
+            return href
+              ? `<a href="${escAttr(href)}" class="chip chip-on">${label}</a>`
+              : `<span class="chip chip-off">${label}</span>`;
+          })
+          .join(" ");
+        return `<li>${title} <span class="chips">${chips}</span></li>`;
+      }).join("")}</ul>`;
   }
 }
 
@@ -234,8 +259,7 @@ function renderTemplate({ title, bodyHtml, sourceUrl }: { title: string; bodyHtm
     margin: 1.3em 0 0.2em; page-break-after: avoid;
   }
   .article p { margin: 0 0 0.85em 0; orphans: 3; widows: 3; }
-  .article a { color: #b34800; text-decoration: none; }
-  .article a:hover { text-decoration: underline; }
+  .article a { color: #b34800; text-decoration: underline; text-underline-offset: 2px; }
   .article strong { color: #002f55; }
   .article ul, .article ol { margin: 0.5em 0 1em 1.4em; padding: 0; }
   .article li { margin: 0.25em 0; }
@@ -254,6 +278,21 @@ function renderTemplate({ title, bodyHtml, sourceUrl }: { title: string; bodyHtm
     page-break-inside: avoid; margin: 0.7em 0;
   }
   .article figure { margin: 0.9em 0; page-break-inside: avoid; }
+  .article ul.resource-list { list-style: none; padding-left: 0; }
+  .article .resource-list li { margin-bottom: 0.5em; }
+  .article .chips { margin-left: 0.4em; }
+  .article .chip {
+    display: inline-block; padding: 1px 7px; border-radius: 3px;
+    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+    font-size: 8pt; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.05em; text-decoration: none;
+  }
+  .article a.chip-on {
+    background-color: #de5b0014; color: #de5b00; border: 1px solid #de5b0040;
+  }
+  .article .chip-off {
+    background-color: rgba(0,0,0,0.04); color: #9ca3af; border: 1px solid rgba(0,0,0,0.06);
+  }
   .article figcaption {
     font-size: 9.5pt; color: #6b7280; text-align: center; margin-top: 0.3em;
   }

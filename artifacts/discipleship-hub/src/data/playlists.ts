@@ -89,13 +89,22 @@ export const playlists: Playlist[] = [
   },
   {
     id: "total-life-discipleship-core-principles",
-    title: "Total Life Discipleship Core Principles",
+    title: "Total Life Discipleship - Core Principles",
     playlistId: "PLyI_AdjR33H3yAO7F9M4tJoq9EwU7Afmc",
     videos: [
       { title: "What Is Total Life Discipleship?", videoId: yt("XU3PUCwaKos") },
       { title: "Total Life Discipleship: God's Vision", videoId: yt("psw_5rn9WFY") },
       { title: "Total Life Discipleship: Personal Transformation", videoId: yt("56GWpb0F2qU") },
       { title: "Total Life Discipleship: Eternal Impact", videoId: yt("Wq2g9GTgc_Q") },
+    ],
+  },
+  {
+    id: "total-life-discipleship-kingdom-perspective",
+    title: "Total Life Discipleship - Kingdom Perspective",
+    /* Same YouTube playlist as Core Principles — the split into two site
+       playlists is a JO EQUIP grouping, not two separate YouTube playlists. */
+    playlistId: "PLyI_AdjR33H3yAO7F9M4tJoq9EwU7Afmc",
+    videos: [
       { title: "Total Life Discipleship: Kingdom Maturity", videoId: yt("ysSDA-Aq_ck") },
       { title: "Total Life Discipleship: Kingdom Faith", videoId: yt("M2rPlUzj50Y") },
       { title: "Total Life Discipleship: Kingdom Power - Be Filled with the Holy Spirit", videoId: yt("E78uWvxZOOM") },

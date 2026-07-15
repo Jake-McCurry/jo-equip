@@ -28,6 +28,12 @@ export interface SubTopicItem {
    * reachable via inline links from other articles.
    */
   unlisted?: boolean;
+  /**
+   * Optional section label. When consecutive items share a section, the
+   * sub-topic list page renders a subheading above the first item of each
+   * section (e.g. "Core Principles" / "Kingdom Impact").
+   */
+  section?: string;
   /** Optional per-item external link overrides. */
   links?: {
     pdf?: string;
@@ -141,6 +147,13 @@ export const subTopics: SubTopic[] = [
     channelId: 'church',
     name: 'Total Life Discipleship',
     description: 'Disciple people with a holistic, Kingdom perspective.',
+  },
+  {
+    id: 'tld-core-principles',
+    channelId: 'church',
+    parentId: 'total-life-discipleship-principles',
+    name: 'Core Principles',
+    description: 'The foundation of Total Life Discipleship — God\'s vision, personal transformation, and eternal impact.',
     formats: ['playlist'],
     playlistId: 'total-life-discipleship-core-principles',
     items: [
@@ -148,14 +161,25 @@ export const subTopics: SubTopic[] = [
       { number: 2, title: 'God\'s Vision', videoId: 'psw_5rn9WFY', links: { app: 'https://app.jesusonline.com/post/30101-02-gods-vision-of-you' } },
       { number: 3, title: 'Personal Transformation', videoId: '56GWpb0F2qU', links: { app: 'https://app.jesusonline.com/post/30101-03-personal-transformation' } },
       { number: 4, title: 'Eternal Impact', videoId: 'Wq2g9GTgc_Q', links: { app: 'https://app.jesusonline.com/post/30101-04-created-for-eternal-impact' } },
-      { number: 5, title: 'Kingdom Maturity', videoId: 'ysSDA-Aq_ck', links: { app: 'https://app.jesusonline.com/post/30101-05-kingdom-maturity' } },
-      { number: 6, title: 'Kingdom Faith', videoId: 'M2rPlUzj50Y', links: { app: 'https://app.jesusonline.com/post/30101-06-kingdom-faith' } },
-      { number: 7, title: 'Kingdom Power (Be Filled with the Holy Spirit)', videoId: 'E78uWvxZOOM', links: { app: 'https://app.jesusonline.com/post/30101-07-kingdom-power-be-filled-with-the-holy-spirit' } },
-      { number: 8, title: 'Kingdom Power (Walk in the Spirit)', videoId: 'S-4pXuEF1FI', links: { app: 'https://app.jesusonline.com/post/30101-08-kingdom-power-walk-in-the-spirit' } },
-      { number: 9, title: 'Kingdom Prayer (Topics)', videoId: 'MtX-fFMtXG4', links: { app: 'https://app.jesusonline.com/post/30101-09-kingdom-prayer-topics' } },
-      { number: 10, title: 'Kingdom Prayer (Building Blocks)', videoId: 'E46dx0kLSRQ', links: { app: 'https://app.jesusonline.com/post/30101-10-kingdom-prayer-building-blocks' } },
-      { number: 11, title: 'Kingdom Promises', videoId: 'You5ArBCx1U', links: { app: 'https://app.jesusonline.com/post/30101-11-kingdom-promises' } },
-      { number: 12, title: 'Kingdom Authority', videoId: 'gAInNUwcbpU', links: { app: 'https://app.jesusonline.com/post/30101-12-kingdom-authority' } },
+    ],
+  },
+  {
+    id: 'tld-kingdom-perspective',
+    channelId: 'church',
+    parentId: 'total-life-discipleship-principles',
+    name: 'Kingdom Perspective',
+    description: 'Grow into Kingdom maturity — faith, power, prayer, promises, and authority.',
+    formats: ['playlist'],
+    playlistId: 'total-life-discipleship-kingdom-perspective',
+    items: [
+      { number: 1, title: 'Kingdom Maturity', videoId: 'ysSDA-Aq_ck', links: { app: 'https://app.jesusonline.com/post/30101-05-kingdom-maturity' } },
+      { number: 2, title: 'Kingdom Faith', videoId: 'M2rPlUzj50Y', links: { app: 'https://app.jesusonline.com/post/30101-06-kingdom-faith' } },
+      { number: 3, title: 'Kingdom Power (Be Filled with the Holy Spirit)', videoId: 'E78uWvxZOOM', links: { app: 'https://app.jesusonline.com/post/30101-07-kingdom-power-be-filled-with-the-holy-spirit' } },
+      { number: 4, title: 'Kingdom Power (Walk in the Spirit)', videoId: 'S-4pXuEF1FI', links: { app: 'https://app.jesusonline.com/post/30101-08-kingdom-power-walk-in-the-spirit' } },
+      { number: 5, title: 'Kingdom Prayer (Topics)', videoId: 'MtX-fFMtXG4', links: { app: 'https://app.jesusonline.com/post/30101-09-kingdom-prayer-topics' } },
+      { number: 6, title: 'Kingdom Prayer (Building Blocks)', videoId: 'E46dx0kLSRQ', links: { app: 'https://app.jesusonline.com/post/30101-10-kingdom-prayer-building-blocks' } },
+      { number: 7, title: 'Kingdom Promises', videoId: 'You5ArBCx1U', links: { app: 'https://app.jesusonline.com/post/30101-11-kingdom-promises' } },
+      { number: 8, title: 'Kingdom Authority', videoId: 'gAInNUwcbpU', links: { app: 'https://app.jesusonline.com/post/30101-12-kingdom-authority' } },
     ],
   },
   {

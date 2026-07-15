@@ -23,7 +23,23 @@ export type ArticleBlock =
   /* Inline illustration. `src` is the basename of a file in src/assets/bcg/
      (resolved via bcgImages.ts). `alt` is required for a11y/SEO. `caption`
      is optional and renders as a muted <figcaption>. */
-  | { type: "figure"; src: string; alt: string; caption?: string };
+  | { type: "figure"; src: string; alt: string; caption?: string }
+  /* Resource list with PDF / Video / App buttons, styled like the chips on
+     channel/topic pages: orange + linked when the URL is known, gray when
+     not. `href` (optional) links the resource title itself. Internal links
+     are root-relative ("/channels/...", "/playlist/..."); the page component
+     prefixes the base path, and the PDF build rewrites them to absolute
+     equip.jesusonline.com URLs. */
+  | { type: "resourceList"; items: ResourceListItem[] };
+
+export interface ResourceListItem {
+  title: string;
+  /** Optional link for the title text itself (rendered blue + underlined). */
+  href?: string;
+  pdf?: string;
+  video?: string;
+  app?: string;
+}
 
 export interface BcgArticle {
   id: string;
@@ -44,16 +60,14 @@ export interface BcgArticle {
 
 const REGISTER_CTA: ArticleBlock = {
   type: "p",
-  html: '<strong><a href="/register-church" style="color:#0083de;text-decoration:underline;">Sign up and register your church today to become a FREE JO EQUIPPED Church. →</a></strong>',
+  html: '<strong><a href="/register-church">Sign up and register your church today to become a FREE JO EQUIPPED Church. →</a></strong>',
 };
 
-/* The "Free JesusOnline Watch → Learn → Live Resources" pitch repeats
-   verbatim across several articles, so it's defined once and spread in. */
+/* The "Toolkit for Engagement" image introduces the recommended-resources
+   list on several articles, so it's defined once and spread in. (It replaced
+   the former "Free JesusOnline Watch → Learn → Live Resources" text pitch.) */
 const WLL: ArticleBlock[] = [
-  { type: "h2", text: "Free JesusOnline Watch → Learn → Live Resources" },
-  { type: "p", html: "<strong>Capture attention immediately</strong> with a powerful video clip to introduce your message. A well-chosen video sets the emotional tone, illustrates the theme, and draws people in from the very first moment." },
-  { type: "p", html: "<strong>Deepen your content</strong> by weaving key insights from the article into your teaching. Use it as rich resource material to add credibility, fresh perspectives, and biblical connections to your sermon." },
-  { type: "p", html: "<strong>Drive lasting impact</strong> by sharing the app link at the end of your message. This simple tool helps your people review, remember, and apply the core essence of the sermon long after they leave the service." },
+  { type: "figure", src: "bgc2-3", alt: "The Toolkit for Engagement: JO EQUIP Resources — Watch (capture attention immediately), Learn (deepen your content), Live (drive lasting impact)." },
 ];
 
 export const bcgArticles: BcgArticle[] = [
@@ -136,7 +150,7 @@ export const bcgArticles: BcgArticle[] = [
 
       { type: "p", html: "JesusOnline Ministries is here to come alongside you. And there are no fees or hidden costs. What we offer is totally free." },
       { type: "p", html: "We provide high-quality, free media and discipleship resources created specifically to assist you in faithfully equipping the flock God has entrusted to you." },
-      { type: "figure", src: "bgc2-3", alt: "Totally free, high-quality media and discipleship resources for the local church." },
+      { type: "figure", src: "bgc2-3", alt: "The Toolkit for Engagement: JO EQUIP Resources — Watch (capture attention immediately), Learn (deepen your content), Live (drive lasting impact)." },
 
       { type: "p", html: "<strong>JO EQUIP</strong> is a free digital library of practical discipleship tools for pastors and disciple-makers — carefully organized into three mission-driven channels so you can find exactly what you need, when you need it." },
       { type: "p", html: "JesusOnline offers free <em>Watch → Learn → Live</em> resources to strengthen engagement, depth, and retention in your ministry." },
@@ -273,10 +287,10 @@ export const bcgArticles: BcgArticle[] = [
 
       ...WLL,
       { type: "h3", text: "Total Life Discipleship" },
-      { type: "ul", items: [
-        '<a href="/channels/church/total-life-discipleship-principles">Part 1: Core Principles</a> (PDF • Video • App)',
-        "Part 2: Kingdom Perspective (PDF • Video • App)",
-        '<a href="/channels/growth/building-blocks">Part 3: Building Blocks for Maturity</a> (PDF • Video • App)',
+      { type: "resourceList", items: [
+        { title: "Part 1: Core Principles", href: "/channels/church/tld-core-principles", video: "/playlist/total-life-discipleship-core-principles" },
+        { title: "Part 2: Kingdom Perspective", href: "/channels/church/tld-kingdom-perspective", video: "/playlist/total-life-discipleship-kingdom-perspective" },
+        { title: "Part 3: Building Blocks for Maturity", href: "/channels/growth/building-blocks" },
       ]},
 
       REGISTER_CTA,
@@ -371,17 +385,13 @@ export const bcgArticles: BcgArticle[] = [
       { type: "p", html: "By holistically — head, hands, and heart — teaching God’s people about the full character of God, their new identity in Christ, and the empowering ministry of the Holy Spirit, you can help them break free from sinful habits, develop Christlike character, live in a dynamic fellowship with God, and make an eternal impact right where He has placed them." },
       { type: "p", html: "This integrated approach is the very focus of what JesusOnline exists to support." },
 
-      { type: "h2", text: "Free JesusOnline Watch → Learn → Live Resources" },
-      { type: "figure", src: "bgc4-4", alt: "Free JesusOnline Watch → Learn → Live resources — short videos, deeper articles, and practical application." },
-      { type: "p", html: "<strong>Capture attention immediately</strong> with a powerful video clip to introduce your message. A well-chosen video sets the emotional tone, illustrates the theme, and draws people in from the very first moment." },
-      { type: "p", html: "<strong>Deepen your content</strong> by weaving key insights from the article into your teaching. Use it as rich resource material to add credibility, fresh perspectives, and biblical connections to your sermon." },
-      { type: "p", html: "<strong>Drive lasting impact</strong> by sharing the app link at the end of your message. This simple tool helps your people review, remember, and apply the core essence of the sermon long after they leave the service." },
+      ...WLL,
 
       { type: "h3", text: "From Building Blocks for Maturity" },
-      { type: "ul", items: [
-        '<a href="/channels/growth/building-blocks">God’s Majestic Qualities</a> (PDF • Video • App)',
-        '<a href="/channels/growth/building-blocks">Your New Identity, Overview</a> (PDF • Video • App)',
-        '<a href="/channels/growth/building-blocks">Walking by the Spirit</a> (PDF • Video • App)',
+      { type: "resourceList", items: [
+        { title: "God’s Majestic Qualities", href: "/channels/growth/building-blocks" },
+        { title: "Your New Identity, Overview", href: "/channels/growth/building-blocks" },
+        { title: "Walking by the Spirit", href: "/channels/growth/building-blocks" },
       ]},
 
       { type: "h3", text: "Recommended Resources on Amazon" },
@@ -414,13 +424,13 @@ export const bcgArticles: BcgArticle[] = [
 
       ...WLL,
       { type: "h3", text: "Holy Spirit Resources" },
-      { type: "ul", items: [
-        "Walking by the Spirit (PDF • Video • App)",
-        "Power for Supernatural Living (PDF • Video • App)",
-        "Walk in the Spirit, a video series (PDF • Video • App)",
-        "Living by the Spirit (PDF • Video • App)",
-        "How to Be Filled with the Holy Spirit (PDF • Video • App)",
-        "Holy Spirit, a New Life in Christ Bible study (PDF • Video • App)",
+      { type: "resourceList", items: [
+        { title: "Walking by the Spirit" },
+        { title: "Power for Supernatural Living" },
+        { title: "Walk in the Spirit, a video series" },
+        { title: "Living by the Spirit" },
+        { title: "How to Be Filled with the Holy Spirit" },
+        { title: "Holy Spirit, a New Life in Christ Bible study" },
       ]},
 
       REGISTER_CTA,
@@ -461,10 +471,10 @@ export const bcgArticles: BcgArticle[] = [
 
       ...WLL,
       { type: "h3", text: "Hope Resources" },
-      { type: "ul", items: [
-        '<a href="/channels/growth/hope-times-crisis">Hope in Times of Crisis</a> (PDF • Video • App)',
-        "Bible Promises for Hope (PDF • Video • App)",
-        "God Is Hope (PDF • Video • App)",
+      { type: "resourceList", items: [
+        { title: "Hope in Times of Crisis", href: "/channels/growth/hope-times-crisis", video: "/playlist/hope-in-times-of-crisis" },
+        { title: "Bible Promises for Hope", href: "/channels/growth/bible-promises-hope" },
+        { title: "God Is Hope" },
       ]},
 
       REGISTER_CTA,
@@ -509,13 +519,13 @@ export const bcgArticles: BcgArticle[] = [
 
       ...WLL,
       { type: "h3", text: "Love Focus Resources" },
-      { type: "ul", items: [
-        '<a href="/channels/growth/forever-loved">Forever Loved series</a> (PDF • Video • App)',
-        "Experience God’s Love playlist (PDF • Video • App)",
-        '<a href="/channels/growth/days-god-s-love">40 Days of God’s Love</a> (PDF • Video • App)',
-        "Timeless Love, Transforming Love (PDF • Video • App)",
-        "Love Bible studies (PDF • Video • App)",
-        "One Another series (PDF • Video • App)",
+      { type: "resourceList", items: [
+        { title: "Forever Loved series", href: "/channels/growth/forever-loved" },
+        { title: "Experience God’s Love playlist", video: "/playlist/experience-gods-love" },
+        { title: "40 Days of God’s Love", href: "/channels/growth/days-god-s-love", video: "/playlist/experience-gods-love" },
+        { title: "Timeless Love, Transforming Love" },
+        { title: "Love Bible studies" },
+        { title: "One Another series" },
       ]},
 
       REGISTER_CTA,
@@ -684,6 +694,7 @@ export const bcgArticles: BcgArticle[] = [
       { type: "p", html: "An online outreach church is not a replacement for the gathered body of believers, but a faithful extension of it — multiplying your church’s witness for the glory of God and the advance of His Kingdom. Whether strengthening your local presence or reaching across the globe, the Lord who calls us also equips us." },
       { type: "p", html: "If your church would like assistance evaluating your current website, incorporating ready-made gospel resources, or exploring partnership in digital outreach, we would be glad to help. May the Lord grant wisdom and fruitfulness as you prayerfully consider how best to shine His light in this digital harvest field." },
 
+      ...WLL,
       { type: "h3", text: "Free JesusOnline Media Resources for Your Website" },
       { type: "ul", items: [
         '<a href="https://jesusonline.com/god-is-hope/" target="_blank" rel="noopener noreferrer">Hope-themed gospel resources</a>',

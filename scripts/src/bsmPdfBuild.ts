@@ -56,6 +56,10 @@ const MANIFEST_PATH = resolve(HUB, "src/data/bsmArticlePdfs.ts");
 /* Public-facing URLs for cover source line + internal-link rewriting. */
 const SITE = "https://equip.jesusonline.com";
 const SUB_PATH = "/channels/church/bible-study-methods";
+/* Articles that live under a different sub-topic than the default. */
+const SUB_PATH_OVERRIDES: Record<string, string> = {
+  "essential-bible-study-tools": "/channels/church/sermon-toolbox",
+};
 
 const args = process.argv.slice(2);
 const argMap: Record<string, string | boolean> = {};
@@ -278,7 +282,7 @@ async function buildOne(
     const html = renderTemplate({
       title: article.title,
       bodyHtml,
-      sourceUrl: `equip.jesusonline.com${SUB_PATH}/${article.id}`,
+      sourceUrl: `equip.jesusonline.com${SUB_PATH_OVERRIDES[article.id] ?? SUB_PATH}/${article.id}`,
     });
     const outPath = resolve(OUT_DIR, `${article.id}.pdf`);
     const page = await browser.newPage();

@@ -152,7 +152,7 @@ export const bcgArticles: BcgArticle[] = [
 
       { type: "p", html: "JesusOnline Ministries is here to come alongside you. And there are no fees or hidden costs. What we offer is totally free." },
       { type: "p", html: "We provide high-quality, free media and discipleship resources created specifically to assist you in faithfully equipping the flock God has entrusted to you." },
-      { type: "figure", src: "bgc2-3", alt: "Totally free, high-quality media and discipleship resources for the local church." },
+      { type: "figure", src: "bgc2-3", alt: "The Toolkit for Engagement: JO EQUIP Resources — Watch (capture attention immediately), Learn (deepen your content), Live (drive lasting impact)." },
 
       { type: "p", html: "<strong>JO EQUIP</strong> is a free digital library of practical discipleship tools for pastors and disciple-makers — carefully organized into three mission-driven channels so you can find exactly what you need, when you need it." },
       { type: "p", html: "JesusOnline offers free <em>Watch → Learn → Live</em> resources to strengthen engagement, depth, and retention in your ministry." },

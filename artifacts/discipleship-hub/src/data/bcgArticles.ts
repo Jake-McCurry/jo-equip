@@ -290,8 +290,8 @@ export const bcgArticles: BcgArticle[] = [
       ...WLL,
       { type: "h3", text: "Total Life Discipleship" },
       { type: "resourceList", items: [
-        { title: "Part 1: Core Principles", href: "/channels/church/total-life-discipleship-principles#core-principles", video: "/playlist/total-life-discipleship-core-principles" },
-        { title: "Part 2: Kingdom Perspective", href: "/channels/church/total-life-discipleship-principles#kingdom-perspective", video: "/playlist/total-life-discipleship-kingdom-perspective" },
+        { title: "Part 1: Core Principles", href: "/channels/church/tld-core-principles", video: "/playlist/total-life-discipleship-core-principles" },
+        { title: "Part 2: Kingdom Perspective", href: "/channels/church/tld-kingdom-perspective", video: "/playlist/total-life-discipleship-kingdom-perspective" },
         { title: "Part 3: Building Blocks for Maturity", href: "/channels/growth/building-blocks" },
       ]},
 

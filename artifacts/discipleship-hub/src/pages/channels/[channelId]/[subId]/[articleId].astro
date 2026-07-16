@@ -4,10 +4,12 @@
  *
  * Route: /channels/<channelId>/<subId>/<articleId>
  *
- * Two content sources are supported, resolved by articleId:
+ * Three content sources are supported, resolved by articleId:
  *   - "Become a Growing Church"  → bcgArticles (may include figures + PDFs)
  *   - "Bible Study Methods"      → bibleStudyMethods (text-only + PDFs)
- * Both share the ArticleBlock shape so the body renderer is source-agnostic.
+ *   - Evidence channel           → evidenceArticles (auto-generated from the
+ *     JOM WordPress by scripts evidence:build; figures + PDFs)
+ * All share the ArticleBlock shape so the body renderer is source-agnostic.
  */
 import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
@@ -15,9 +17,12 @@ import { subTopics, getChannel, getSubTopic } from "@/data/channels";
 import { bcgArticles, getBcgArticle, getNextBcgArticle } from "@/data/bcgArticles";
 import type { ArticleBlock } from "@/data/bcgArticles";
 import { bibleStudyMethods, getBibleStudyMethod, getNextBibleStudyMethod } from "@/data/bibleStudyMethods";
+import { evidenceArticles, getEvidenceArticle, getNextEvidenceArticle } from "@/data/evidenceArticles";
 import { getBcgImage } from "@/data/bcgImages";
+import { getEvidenceImage } from "@/data/evidenceImages";
 import { hasBcgArticlePdf } from "@/data/bcgArticlePdfs";
 import { hasBsmArticlePdf } from "@/data/bsmArticlePdfs";
+import { hasArticlePdf } from "@/data/articles";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 import { ArrowLeft, ArrowRight, ChevronRight, Download } from "lucide-react";
 
@@ -33,6 +38,7 @@ export function getStaticPaths() {
   const known = new Set([
     ...bcgArticles.map(a => a.id),
     ...bibleStudyMethods.map(a => a.id),
+    ...evidenceArticles.map(a => a.id),
   ]);
   const paths: { params: { channelId: string; subId: string; articleId: string } }[] = [];
   for (const s of subTopics) {
@@ -51,20 +57,27 @@ const sub = getSubTopic(channelId!, subId!);
 /* Resolve the article from whichever source owns this id. */
 const bcg = articleId ? getBcgArticle(articleId) : undefined;
 const bsm = articleId ? getBibleStudyMethod(articleId) : undefined;
-const article = bcg ?? bsm;
+const evd = articleId && !bcg && !bsm ? getEvidenceArticle(articleId) : undefined;
+const article = bcg ?? bsm ?? evd;
 if (!channel || !sub || !article) return Astro.redirect(join("/channels"));
 
 /* Next-article nav, scoped to the CURRENT sub-topic: the source arrays can
    hold articles from multiple sub-topics (e.g. bibleStudyMethods also holds
    the Sermon Toolbox tools guide), so a raw "next in array" could link into
    a different sub-topic under this subId — a path that was never emitted. */
-let nextArticle = bcg ? getNextBcgArticle(article.id) : getNextBibleStudyMethod(article.id);
+let nextArticle = bcg
+  ? getNextBcgArticle(article.id)
+  : bsm
+    ? getNextBibleStudyMethod(article.id)
+    : getNextEvidenceArticle(article.id);
 if (nextArticle && !(sub.items ?? []).some(i => i.articleId === nextArticle!.id)) {
   nextArticle = undefined;
 }
 const pdfHref = bcg
   ? (hasBcgArticlePdf(article.id) ? join(`/articles/bcg/${article.id}.pdf`) : null)
-  : (hasBsmArticlePdf(article.id) ? join(`/articles/bsm/${article.id}.pdf`) : null);
+  : bsm
+    ? (hasBsmArticlePdf(article.id) ? join(`/articles/bsm/${article.id}.pdf`) : null)
+    : (evd && hasArticlePdf(evd.appSlug) ? join(`/articles/${evd.appSlug}.pdf`) : null);
 
 const SITE = "https://equip.jesusonline.com";
 const articleUrl = `${SITE}/channels/${channel.id}/${sub.id}/${article.id}`;
@@ -73,7 +86,7 @@ const articleUrl = `${SITE}/channels/${channel.id}/${sub.id}/${article.id}`;
    date and `dateModified` stamps at build time so Google sees freshness on
    every deploy. publisher links to the JesusOnline Ministries Organization
    defined on the home page. */
-const DATE_PUBLISHED = bcg ? "2026-05-18" : "2026-07-02";
+const DATE_PUBLISHED = bcg ? "2026-05-18" : bsm ? "2026-07-02" : "2026-07-16";
 const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
@@ -196,7 +209,7 @@ const metaDescription = plain(article.description);
               </blockquote>
             );
           case "figure": {
-            const img = getBcgImage(b.src);
+            const img = getBcgImage(b.src) ?? getEvidenceImage(b.src);
             if (!img) return null;
             return (
               <figure>

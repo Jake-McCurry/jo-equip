@@ -29,6 +29,7 @@ Static-first Astro site. Deploys Replit → GitHub (`Jake-McCurry/jo-equip`) →
 - `pnpm --filter @workspace/scripts run articles:build` — regenerate WordPress article PDFs (incremental; `--force`, `--slug=`, `--limit=`)
 - `pnpm --filter @workspace/scripts run bcg:pdf` — regenerate BCG article PDFs + manifest (run whenever `bcgArticles.ts` changes)
 - `pnpm --filter @workspace/scripts run bsm:pdf` — regenerate Bible-study-methods / Sermon Toolbox article PDFs
+- `pnpm --filter @workspace/scripts run evidence:build` — regenerate Evidence channel on-site articles (`src/data/evidenceArticles.ts` + `src/assets/evidence/` figures) from the JOM WordPress API (supports `--slug=`)
 - `pnpm --filter @workspace/scripts run covers:build` — regenerate all book cover thumbnails from PDF page 1 (uniform 900px height; run after adding/replacing any book PDF; `hearing-the-voice-of-god` excluded — hand-picked cover)
 
 **Detailed docs** (in `artifacts/discipleship-hub/docs/`):
@@ -39,7 +40,7 @@ Static-first Astro site. Deploys Replit → GitHub (`Jake-McCurry/jo-equip`) →
 
 **Critical gotchas** (full context in the docs above):
 
-- `src/data/articles.ts` and `src/data/bcgArticlePdfs.ts` are **AUTO-GENERATED** — never hand-edit; regenerate via the scripts.
+- `src/data/articles.ts`, `src/data/bcgArticlePdfs.ts`, and `src/data/evidenceArticles.ts` are **AUTO-GENERATED** — never hand-edit; regenerate via the scripts.
 - Do NOT add `position:relative` to the `ChannelArt.astro` wrapper — collapses the channel art to 0×0.
 - Do NOT re-add Partytown for GTM (removed July 2026 — it hid the container from Tag Assistant/scanners).
 - `TURNSTILE_SECRET_KEY` is required in production — the subscribe flow fails closed without it (downloads work, no CRM write).

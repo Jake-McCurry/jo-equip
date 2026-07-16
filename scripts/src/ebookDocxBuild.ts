@@ -184,6 +184,21 @@ function parseBook(book: BookConfig, rawHtml: string): ParsedBook {
   let html = rawHtml;
 
   /* Book-specific heading promotions (plain paragraphs in the docx). */
+  if (book.key === "walking") {
+    /* Docx chapter-3 heading is missing the colon after "Surrender"
+       (the TOC entry has it). */
+    html = html.replace(
+      /(<h1>3\.\s*(?:<br \/>)?Surrender)(<br \/>The Pathway to Spirit-Filled Living<\/h1>)/,
+      "$1:$2",
+    );
+  }
+
+  /* Normalize the iOS App Store link wherever the docx carries the old
+     variant URL (same app id, but the canonical URL is preferred). */
+  html = html.replaceAll(
+    "https://apps.apple.com/app/jo-app-jesusonline/id1474405483",
+    "https://apps.apple.com/us/app/jo-app/id1474405483",
+  );
   if (book.key === "identity") {
     html = html.replace(
       /<p>1\s*<br \/>Embracing Your New Identity in Christ<\/p>/,

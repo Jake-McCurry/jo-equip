@@ -162,6 +162,21 @@ const metaDescription = plain(article.description);
       )}
     </div>
 
+    {/* Embedded video (site-generated articles only) — the source app posts
+        carry a video_url field; the generator normalizes it to a
+        youtube-nocookie embed URL. */}
+    {site?.videoUrl && (
+      <div class="article-video mb-10">
+        <iframe
+          src={site.videoUrl}
+          title={`Video: ${article.title}`}
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
+    )}
+
     {/* Article body. Block types are author-controlled; html strings are
         rendered with set:html — never pipe untrusted content through this. */}
     <article class="bcg-prose">
@@ -260,6 +275,23 @@ const metaDescription = plain(article.description);
 </Layout>
 
 <style>
+  .article-video {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 47, 85, 0.1);
+    background: #000;
+  }
+  .article-video iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
   /* Scoped prose styling for BCG articles. Kept narrow on purpose —
      uses brand navy for headings and orange for link accents to match
      the rest of the site. Tailwind's typography plugin isn't installed,

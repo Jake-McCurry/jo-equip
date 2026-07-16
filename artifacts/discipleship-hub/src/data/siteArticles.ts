@@ -22,6 +22,8 @@ export interface SiteArticle {
   channelId: string;
   title: string;
   description: string;
+  /** Embeddable YouTube URL (youtube-nocookie) when the source post has a video. */
+  videoUrl?: string;
   blocks: ArticleBlock[];
 }
 

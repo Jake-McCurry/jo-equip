@@ -50,7 +50,21 @@ interface SiteArticleOut {
   channelId: string;
   title: string;
   description: string;
+  videoUrl?: string;
   blocks: ArticleBlock[];
+}
+
+/** Normalize a WP video_url to an embeddable YouTube URL; returns undefined for anything else. */
+function youtubeEmbedOf(raw: unknown): string | undefined {
+  if (typeof raw !== "string" || !raw.trim()) return undefined;
+  const m = raw.trim().match(
+    /^https?:\/\/(?:www\.)?(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([A-Za-z0-9_-]{6,20})/,
+  );
+  if (!m) {
+    console.warn(`  ! unrecognized video_url skipped: ${raw}`);
+    return undefined;
+  }
+  return `https://www.youtube-nocookie.com/embed/${m[1]}`;
 }
 
 const ROOT = resolve(process.cwd(), "..");
@@ -411,12 +425,16 @@ async function main() {
     const results = new Map<string, SiteArticleOut>();
     await pool(work, CONCURRENCY, async w => {
       const entry = mapping[w.appSlug];
-      const r = await fetchT(`${API}/posts/${entry.wp_id}?_fields=id,slug,title,content`);
+      const r = await fetchT(`${API}/posts/${entry.wp_id}?_fields=id,slug,title,content,video_url`);
       if (!r.ok) {
         console.warn(`  ! fetch failed (${r.status}) for ${w.appSlug} — skipped`);
         return;
       }
-      const post = (await r.json()) as { title: { rendered: string }; content: { rendered: string } };
+      const post = (await r.json()) as {
+        title: { rendered: string };
+        content: { rendered: string };
+        video_url?: unknown;
+      };
       const title = decodeEntities(post.title.rendered).replace(/^[\d.\-]+\s+/, "").trim() || w.itemTitle;
       const blocks = await convert(sub.id, w.id, post.content.rendered, rw);
       if (!blocks.length) {
@@ -430,6 +448,7 @@ async function main() {
         channelId: sub.channelId,
         title,
         description: describeFrom(blocks),
+        videoUrl: youtubeEmbedOf(post.video_url),
         blocks,
       });
       console.log(`  ✓ ${w.appSlug} → ${w.id} (${blocks.length} blocks)`);

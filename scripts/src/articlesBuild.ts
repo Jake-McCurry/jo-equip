@@ -163,7 +163,8 @@ function renderTemplate({
   bodyHtml,
   sourceUrl,
   coverLead,
-}: { title: string; bodyHtml: string; sourceUrl: string; coverLead?: string }): string {
+  bibleProject,
+}: { title: string; bodyHtml: string; sourceUrl: string; coverLead?: string; bibleProject?: boolean }): string {
   const escTitle = title.replace(/&/g, "&amp;").replace(/</g, "&lt;");
   const escLead = coverLead ? coverLead.replace(/&/g, "&amp;").replace(/</g, "&lt;") : "";
   return `<!doctype html>
@@ -311,7 +312,10 @@ ${END_PAGE_CSS}
     <h1>${escTitle}</h1>
     <span class="rule"></span>
     <div class="meta">
-      <strong>A free resource from JesusOnline Ministries.</strong><br />
+      ${bibleProject
+        ? `<strong>Content produced and owned by BibleProject.</strong><br />
+      Explore more at <span style="color:#002f55">bibleproject.com</span>. BibleProject is not affiliated with JO&nbsp;EQUIP.<br />`
+        : `<strong>A free resource from JesusOnline Ministries.</strong><br />`}
       Read or share online: <span style="color:#002f55">${sourceUrl.replace(/^https?:\/\//, "")}</span>
     </div>
     <div class="footer-block">
@@ -321,6 +325,11 @@ ${END_PAGE_CSS}
   </section>
   <section class="article">
     <h1>${escTitle}</h1>
+    ${bibleProject
+      ? `<p style="font-family:-apple-system,'Helvetica Neue',Arial,sans-serif;font-size:9.5pt;color:#6b7280;border:1px solid #e5e7eb;border-radius:6px;padding:8px 12px;background:#f9fafb;">
+      Produced and owned by <strong style="color:#002f55;">BibleProject</strong> · bibleproject.com · Not affiliated with JO EQUIP.
+    </p>`
+      : ""}
     ${bodyHtml}
   </section>
 ${END_PAGE_HTML}
@@ -348,6 +357,12 @@ const HEADER_TEMPLATE = `<div></div>`;
    BibleProject (38601-* / 38701-*) is a different ministry and gets NO
    Joshua Nations eyebrow. Keep this list in sync when new Joshua Nations
    sub-topics are added. */
+/** BibleProject overview posts (38601–38641 OT, 38701–38732 NT). Their PDFs
+ *  carry BibleProject attribution instead of the JOM credit line. */
+function isBibleProjectSlug(appSlug: string): boolean {
+  return /^38[67]\d\d-/.test(appSlug);
+}
+
 function coverLeadFor(appSlug: string): string | undefined {
   if (/^93610-/.test(appSlug)) return "Joshua Nations";       // Rapid Church Planting
   if (/^9362[1-4]-/.test(appSlug)) return "Joshua Nations";   // Disciple Making Movement units 1–4
@@ -386,6 +401,7 @@ async function buildOne(
       bodyHtml,
       sourceUrl: `app.jesusonline.com/post/${appSlug}`,
       coverLead: coverLeadFor(appSlug),
+      bibleProject: isBibleProjectSlug(appSlug),
     });
 
     const page = await browser.newPage();

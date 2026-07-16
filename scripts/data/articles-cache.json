@@ -6062,415 +6062,415 @@
   "38608-overview-deuteronomy": {
     "wp_id": 11064,
     "modified": "2021-08-07T16:49:04",
-    "bytes": 111813,
+    "bytes": 119083,
     "title": "Overview: Deuteronomy"
   },
   "38605-overview-exodus-ch-19-40": {
     "wp_id": 11061,
     "modified": "2021-08-07T16:48:10",
-    "bytes": 177675,
+    "bytes": 121186,
     "title": "Overview: Exodus Ch. 19-40"
   },
   "38606-overview-leviticus": {
     "wp_id": 11062,
     "modified": "2021-08-07T16:48:28",
-    "bytes": 174557,
+    "bytes": 181870,
     "title": "Overview: Leviticus"
   },
   "38604-overview-exodus-ch-1-18": {
     "wp_id": 11060,
     "modified": "2021-08-07T16:47:55",
-    "bytes": 171001,
+    "bytes": 178276,
     "title": "Overview: Exodus Ch. 1 -18"
   },
   "38601-overview-tanak-old-testament": {
     "wp_id": 11055,
     "modified": "2021-08-07T16:34:07",
-    "bytes": 149441,
+    "bytes": 156773,
     "title": "Overview: TaNaK / Old Testament"
   },
   "38607-overview-numbers": {
     "wp_id": 11063,
     "modified": "2021-08-07T16:48:49",
-    "bytes": 191394,
+    "bytes": 119647,
     "title": "Overview: Numbers"
   },
   "38602-overview-genesis-ch-1-11": {
     "wp_id": 11057,
     "modified": "2021-08-07T16:46:50",
-    "bytes": 181849,
+    "bytes": 189163,
     "title": "Overview: Genesis Ch. 1-11"
   },
   "38603-overview-genesis-ch-12-50": {
     "wp_id": 11059,
     "modified": "2021-08-07T16:47:38",
-    "bytes": 199370,
+    "bytes": 122643,
     "title": "Overview: Genesis Ch. 12-50"
   },
   "38609-overview-joshua": {
     "wp_id": 11065,
     "modified": "2021-08-07T16:51:57",
-    "bytes": 110061,
+    "bytes": 148806,
     "title": "Overview: Joshua"
   },
   "38611-overview-1-samuel": {
     "wp_id": 11067,
     "modified": "2021-08-07T16:50:45",
-    "bytes": 110583,
+    "bytes": 119313,
     "title": "Overview: 1 Samuel"
   },
   "38610-overview-judges": {
     "wp_id": 11066,
     "modified": "2021-08-07T16:50:43",
-    "bytes": 163151,
+    "bytes": 170458,
     "title": "Overview: Judges"
   },
   "38616-overview-jeremiah": {
     "wp_id": 11072,
     "modified": "2021-08-07T17:08:54",
-    "bytes": 109930,
+    "bytes": 117266,
     "title": "Overview: Jeremiah"
   },
   "38615-overview-isaiah-40-66": {
     "wp_id": 11071,
     "modified": "2020-05-14T16:28:14",
-    "bytes": 108793,
+    "bytes": 116089,
     "title": "Overview: Isaiah 40-66"
   },
   "38613-overview-1-2-kings": {
     "wp_id": 11069,
     "modified": "2021-08-07T16:50:50",
-    "bytes": 163450,
+    "bytes": 121297,
     "title": "Overview: 1-2 Kings"
   },
   "38614-overview-isaiah-1-39": {
     "wp_id": 11070,
     "modified": "2021-08-07T17:03:12",
-    "bytes": 167335,
+    "bytes": 174674,
     "title": "Overview: Isaiah 1-39"
   },
   "38612-overview-2-samuel": {
     "wp_id": 11068,
     "modified": "2021-08-07T16:50:48",
-    "bytes": 169068,
+    "bytes": 119936,
     "title": "Overview: 2 Samuel"
   },
   "38618-overview-ezekiel-34-48": {
     "wp_id": 11074,
     "modified": "2020-05-14T16:29:01",
-    "bytes": 108087,
+    "bytes": 115416,
     "title": "Overview: Ezekiel 34-48"
   },
   "38617-overview-ezekiel-1-33": {
     "wp_id": 11073,
     "modified": "2021-08-07T17:09:51",
-    "bytes": 182790,
+    "bytes": 190116,
     "title": "Overview: Ezekiel 1-33"
   },
   "38619-overview-hosea": {
     "wp_id": 11075,
     "modified": "2021-08-07T17:10:29",
-    "bytes": 111915,
+    "bytes": 171626,
     "title": "Overview: Hosea"
   },
   "38620-overview-joel": {
     "wp_id": 11095,
     "modified": "2021-08-07T17:10:52",
-    "bytes": 110583,
+    "bytes": 117867,
     "title": "Overview: Joel"
   },
   "38624-overview-micah": {
     "wp_id": 11099,
     "modified": "2021-08-07T17:11:53",
-    "bytes": 111905,
+    "bytes": 176757,
     "title": "Overview: Micah"
   },
   "38623-overview-jonah": {
     "wp_id": 11098,
     "modified": "2021-08-07T17:11:41",
-    "bytes": 146042,
+    "bytes": 117287,
     "title": "Overview: Jonah"
   },
   "38622-overview-obadiah": {
     "wp_id": 11097,
     "modified": "2021-08-07T17:11:29",
-    "bytes": 170015,
+    "bytes": 177247,
     "title": "Overview: Obadiah"
   },
   "38621-overview-amos": {
     "wp_id": 11096,
     "modified": "2021-08-07T17:11:13",
-    "bytes": 154611,
+    "bytes": 161913,
     "title": "Overview: Amos"
   },
   "38628-overview-haggai": {
     "wp_id": 11103,
     "modified": "2021-08-07T17:12:55",
-    "bytes": 111534,
+    "bytes": 118873,
     "title": "Overview: Haggai"
   },
   "38627-overview-zephaniah": {
     "wp_id": 11102,
     "modified": "2021-08-07T17:12:42",
-    "bytes": 186350,
+    "bytes": 193648,
     "title": "Overview: Zephaniah"
   },
   "38626-overview-habakkuk": {
     "wp_id": 11101,
     "modified": "2021-08-07T17:12:20",
-    "bytes": 167767,
+    "bytes": 175001,
     "title": "Overview: Habakkuk"
   },
   "38625-overview-nahum": {
     "wp_id": 11100,
     "modified": "2021-08-07T17:12:07",
-    "bytes": 176754,
+    "bytes": 117234,
     "title": "Overview: Nahum"
   },
   "38631-overview-psalms": {
     "wp_id": 11116,
     "modified": "2021-08-07T17:33:30",
-    "bytes": 111904,
+    "bytes": 119189,
     "title": "Overview: Psalms"
   },
   "38630-overview-malachi": {
     "wp_id": 11115,
     "modified": "2021-08-07T17:32:24",
-    "bytes": 164426,
+    "bytes": 171726,
     "title": "Overview: Malachi"
   },
   "38629-overview-zechariah": {
     "wp_id": 11104,
     "modified": "2021-08-07T17:13:11",
-    "bytes": 171306,
+    "bytes": 119559,
     "title": "Overview: Zechariah"
   },
   "38632-overview-proverbs": {
     "wp_id": 11117,
     "modified": "2021-08-07T17:33:43",
-    "bytes": 167956,
+    "bytes": 119155,
     "title": "Overview: Proverbs"
   },
   "38637-overview-ecclesiastes": {
     "wp_id": 11122,
     "modified": "2021-08-07T17:38:22",
-    "bytes": 111904,
+    "bytes": 170243,
     "title": "Overview: Ecclesiastes"
   },
   "38634-overview-song-of-songs": {
     "wp_id": 11119,
     "modified": "2021-08-07T17:34:08",
-    "bytes": 168281,
+    "bytes": 175626,
     "title": "Overview: Song of Songs"
   },
   "38636-overview-lamentations": {
     "wp_id": 11121,
     "modified": "2021-08-07T17:34:44",
-    "bytes": 158518,
+    "bytes": 119086,
     "title": "Overview: Lamentations"
   },
   "38635-overview-ruth": {
     "wp_id": 11120,
     "modified": "2021-08-07T17:34:34",
-    "bytes": 160586,
+    "bytes": 167910,
     "title": "Overview: Ruth"
   },
   "38633-overview-job": {
     "wp_id": 11118,
     "modified": "2021-08-07T17:33:56",
-    "bytes": 150929,
+    "bytes": 119383,
     "title": "Overview: Job"
   },
   "38638-overview-esther": {
     "wp_id": 11123,
     "modified": "2021-08-07T17:38:35",
-    "bytes": 160028,
+    "bytes": 119827,
     "title": "Overview: Esther"
   },
   "38639-overview-daniel": {
     "wp_id": 11124,
     "modified": "2021-08-07T17:39:33",
-    "bytes": 150013,
+    "bytes": 157301,
     "title": "Overview: Daniel"
   },
   "38640-overview-ezra-nehemiah": {
     "wp_id": 11125,
     "modified": "2021-08-07T17:40:52",
-    "bytes": 113413,
+    "bytes": 184502,
     "title": "Overview: Ezra-Nehemiah"
   },
   "38703-overview-matthew-ch-14-28": {
     "wp_id": 8197,
     "modified": "2020-03-27T22:41:26",
-    "bytes": 107684,
+    "bytes": 115014,
     "title": "Overview Matthew Ch. 14-28"
   },
   "38704-overview-mark": {
     "wp_id": 8198,
     "modified": "2021-08-07T17:45:59",
-    "bytes": 109788,
+    "bytes": 117077,
     "title": "Overview Mark"
   },
   "38701-overview-new-testament": {
     "wp_id": 8183,
     "modified": "2021-08-07T17:43:17",
-    "bytes": 171909,
+    "bytes": 116835,
     "title": "Overview: New Testament"
   },
   "38702-overview-matthew-ch-1-13": {
     "wp_id": 8180,
     "modified": "2021-08-07T17:45:29",
-    "bytes": 135580,
+    "bytes": 142859,
     "title": "Overview: Matthew Ch. 1-13"
   },
   "38641-overview-chronicles": {
     "wp_id": 11137,
     "modified": "2021-08-07T17:40:21",
-    "bytes": 166384,
+    "bytes": 118353,
     "title": "Overview: Chronicles"
   },
   "38707-overview-luke-ch-1-9": {
     "wp_id": 8199,
     "modified": "2021-08-07T17:46:31",
-    "bytes": 107103,
+    "bytes": 170348,
     "title": "Overview: Luke Ch. 1-9"
   },
   "38706-overview-john-ch-13-21": {
     "wp_id": 8202,
     "modified": "2020-03-27T22:42:32",
-    "bytes": 108122,
+    "bytes": 115410,
     "title": "Overview: John Ch. 13-21"
   },
   "38705-overview-john-ch-1-12": {
     "wp_id": 8201,
     "modified": "2021-08-07T17:46:17",
-    "bytes": 166768,
+    "bytes": 114440,
     "title": "Overview: John Ch. 1-12"
   },
   "38708-overview-luke-ch-10-24": {
     "wp_id": 8200,
     "modified": "2020-03-27T22:46:04",
-    "bytes": 107790,
+    "bytes": 115092,
     "title": "Overview: Luke  Ch. 10-24"
   },
   "38710-overview-acts-ch-13-28": {
     "wp_id": 8204,
     "modified": "2020-03-27T22:43:41",
-    "bytes": 107746,
+    "bytes": 115042,
     "title": "Overview: Acts Ch. 13-28"
   },
   "38712-overview-romans-ch-5-16": {
     "wp_id": 8206,
     "modified": "2020-03-27T22:44:29",
-    "bytes": 108066,
+    "bytes": 115361,
     "title": "Overview: Romans Ch. 5-16"
   },
   "38709-overview-acts-ch-1-12": {
     "wp_id": 8203,
     "modified": "2021-08-07T17:46:51",
-    "bytes": 149146,
+    "bytes": 115575,
     "title": "Overview: Acts Ch. 1-12"
   },
   "38711-overview-romans-ch-1-4": {
     "wp_id": 8205,
     "modified": "2021-08-07T17:47:09",
-    "bytes": 158763,
+    "bytes": 115681,
     "title": "Overview: Romans Ch. 1-4"
   },
   "38716-overview-ephesians": {
     "wp_id": 8278,
     "modified": "2021-08-07T17:51:10",
-    "bytes": 110120,
+    "bytes": 153743,
     "title": "Overview: Ephesians"
   },
   "38715-overview-galatians": {
     "wp_id": 8276,
     "modified": "2021-08-07T17:50:53",
-    "bytes": 181453,
+    "bytes": 188754,
     "title": "Overview: Galatians"
   },
   "38713-overview-1-corinthians": {
     "wp_id": 8272,
     "modified": "2021-08-07T17:47:30",
-    "bytes": 158433,
+    "bytes": 116908,
     "title": "Overview: 1 Corinthians"
   },
   "38714-overview-2-corinthians": {
     "wp_id": 8274,
     "modified": "2021-08-07T17:47:45",
-    "bytes": 150619,
+    "bytes": 157934,
     "title": "Overview: 2 Corinthians"
   },
   "38719-overview-1-thessalonians": {
     "wp_id": 8288,
     "modified": "2021-08-07T18:06:16",
-    "bytes": 110357,
+    "bytes": 199257,
     "title": "Overview: 1 Thessalonians"
   },
   "38718-overview-colossians": {
     "wp_id": 8286,
     "modified": "2021-08-07T18:05:18",
-    "bytes": 178091,
+    "bytes": 185399,
     "title": "Overview: Colossians"
   },
   "38720-overview-2-thessalonians": {
     "wp_id": 8290,
     "modified": "2021-07-03T21:34:31",
-    "bytes": 157217,
+    "bytes": 164511,
     "title": "Overview: 2 Thessalonians"
   },
   "38717-overview-philippians": {
     "wp_id": 8280,
     "modified": "2021-08-07T17:51:23",
-    "bytes": 155161,
+    "bytes": 118745,
     "title": "Overview: Philippians"
   },
   "38725-overview-hebrews": {
     "wp_id": 8302,
     "modified": "2021-08-07T18:11:11",
-    "bytes": 109952,
+    "bytes": 117164,
     "title": "Overview: Hebrews"
   },
   "38722-overview-2-timothy": {
     "wp_id": 8295,
     "modified": "2021-08-07T18:09:43",
-    "bytes": 151869,
+    "bytes": 117753,
     "title": "Overview: 2 Timothy"
   },
   "38721-overview-1-timothy": {
     "wp_id": 8292,
     "modified": "2021-08-07T18:09:31",
-    "bytes": 147515,
+    "bytes": 117306,
     "title": "Overview: 1 Timothy"
   },
   "38723-overview-titus": {
     "wp_id": 8298,
     "modified": "2021-08-07T18:10:39",
-    "bytes": 149338,
+    "bytes": 156637,
     "title": "Overview: Titus"
   },
   "38724-overview-philemon": {
     "wp_id": 8300,
     "modified": "2021-08-07T18:11:00",
-    "bytes": 149507,
+    "bytes": 156836,
     "title": "Overview: Philemon"
   },
   "38728-overview-2-peter": {
     "wp_id": 8308,
     "modified": "2021-08-07T18:11:55",
-    "bytes": 111146,
+    "bytes": 118459,
     "title": "Overview: 2 Peter"
   },
   "38727-overview-1-peter": {
     "wp_id": 8306,
     "modified": "2021-08-07T18:11:40",
-    "bytes": 158303,
+    "bytes": 117490,
     "title": "Overview: 1 Peter"
   },
   "38726-overview-james": {
     "wp_id": 8304,
     "modified": "2021-08-07T18:11:27",
-    "bytes": 140945,
+    "bytes": 117501,
     "title": "Overview: James"
   },
   "93622-1-lesson-1-demography-cultraure-religious-beliiefs": {
@@ -6482,25 +6482,25 @@
   "38731-overview-revelation-ch-1-11": {
     "wp_id": 8314,
     "modified": "2021-08-07T18:12:51",
-    "bytes": 148897,
+    "bytes": 115652,
     "title": "Overview: Revelation Ch. 1-11"
   },
   "38732-overview-revelation-ch-12-22": {
     "wp_id": 8316,
     "modified": "2020-03-27T22:38:17",
-    "bytes": 107534,
+    "bytes": 114826,
     "title": "Overview: Revelation Ch. 12-22"
   },
   "38729-overview-1-3-john": {
     "wp_id": 8310,
     "modified": "2021-08-07T18:12:09",
-    "bytes": 186189,
+    "bytes": 118034,
     "title": "Overview: 1-3 John"
   },
   "38730-overview-jude": {
     "wp_id": 8312,
     "modified": "2021-08-07T18:12:26",
-    "bytes": 154276,
+    "bytes": 118164,
     "title": "Overview: Jude"
   },
   "93622-3-lesson-3-prayer-walking": {

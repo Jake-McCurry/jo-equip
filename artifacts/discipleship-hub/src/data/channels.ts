@@ -477,10 +477,9 @@ export const subTopics: SubTopic[] = [
       { number: 27, title: "Revelation", articleId: 'revelation', links: { app: "https://app.jesusonline.com/post/93662-7-revelation" } },
     ],
   },
-  /* ── BIBLEPROJECT — TEMPORARILY REMOVED (July 2026) pending copyright/licensing
-     resolution with BibleProject. To restore: uncomment this block, regenerate the
-     two sub JSONs (site-articles:build --sub=bibleproject-ot --sub=bibleproject-nt)
-     and the 386xx/387xx article PDFs (articles:build). Git history also has them.
+  /* BibleProject parent card stays visible (per request); its two child
+     sub-topics below are temporarily removed pending copyright/licensing
+     resolution — the page renders as an empty placeholder like bible-courses. */
   {
     id: 'bibleproject',
     channelId: 'church',
@@ -488,6 +487,10 @@ export const subTopics: SubTopic[] = [
     name: 'BibleProject',
     description: 'Animated overviews of every book and major theme of the Bible.',
   },
+  /* ── BIBLEPROJECT CONTENT — TEMPORARILY REMOVED (July 2026) pending copyright/licensing
+     resolution with BibleProject. To restore: uncomment this block, regenerate the
+     two sub JSONs (site-articles:build --sub=bibleproject-ot --sub=bibleproject-nt)
+     and the 386xx/387xx article PDFs (articles:build). Git history also has them.
   {
     id: 'bibleproject-ot',
     channelId: 'church',

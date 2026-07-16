@@ -215,7 +215,19 @@ function parseBook(book: BookConfig, rawHtml: string): ParsedBook {
   const joIdx = bodyPs.findIndex(p => /<p><strong>JO EQUIP/.test(p));
   const noticePs = joIdx === -1 ? bodyPs : bodyPs.slice(0, joIdx);
   const joPs = joIdx === -1 ? [] : bodyPs.slice(joIdx);
-  const frontPagesHtml = `
+  /* strict: mirror the docx exactly — front matter is ONE page (title +
+     notices + JO block together, single page break before the TOC).
+     classic: keep the three designed front pages. */
+  const frontPagesHtml =
+    book.typography === "strict"
+      ? `
+  <section class="front-matter">
+    <h1${titleStyleAttr(book)}>${book.title}</h1>
+    <p class="subtitle">${book.subtitleHtml}</p>
+    ${noticePs.join("\n")}
+    ${joPs.join("\n")}
+  </section>`
+      : `
   <section class="title-page">
     <h1${titleStyleAttr(book)}>${book.title}</h1>
     <p class="subtitle">${book.subtitleHtml}</p>
@@ -614,8 +626,9 @@ const CSS = `
 /* Strict manuscript-owner typography (see BookConfig.typography).
    Carlito is metric-compatible with Calibri; Caladea with Cambria.
    Carlito has no Light face — weight 300 resolves to the closest available.
-   Headings are left-aligned (no centering beyond the docx); only H3/H4 are
-   bold, matching the spec. */
+   Alignment/indent mirror the docx: H1s and the title are CENTERED (they are
+   centered in the manuscript), quotes keep their 0.5"/1" docx indents, and
+   front matter is a single page like the docx. Only H3/H4 are bold. */
 const STRICT_CSS = `
   html, body { margin: 0; padding: 0; }
   body {
@@ -624,21 +637,21 @@ const STRICT_CSS = `
     font-size: 12pt;
     line-height: 1.5;
   }
-  .title-page { page-break-after: always; padding-top: 2.2in; text-align: center; }
-  .title-page h1 {
+  .front-matter { page-break-after: always; padding-top: 0.2in; }
+  .front-matter h1 {
     font-family: Carlito, Calibri, sans-serif;
     font-weight: 300;
-    font-size: 30pt; line-height: 1.15; color: #002f55;
-    margin: 0 0 0.4em 0;
+    font-size: 28pt; line-height: 1.2; color: #002f55;
+    text-align: center;
+    margin: 0 0 0.3em 0;
   }
-  .title-page .subtitle { font-size: 14pt; line-height: 1.4; color: #0083de; margin: 0; }
-  .front-page { page-break-after: always; padding-top: 0.4in; }
-  .front-page.notices { padding-top: 1in; font-size: 10pt; color: #4b5563; }
-  .front-page.notices p { margin: 0 0 1.1em 0; }
+  .front-matter .subtitle { font-size: 13pt; line-height: 1.4; color: #0083de; text-align: center; margin: 0 0 1.6em 0; }
+  .front-matter p { margin: 0 0 0.85em 0; }
   .toc { page-break-after: always; padding-top: 0.3in; }
   .toc h1 {
     font-family: Carlito, Calibri, sans-serif;
     font-weight: 300; font-size: 28pt; color: #002f55;
+    text-align: center;
     margin: 0 0 0.9em 0;
   }
   .toc-line { display: flex; align-items: baseline; margin: 0 0 0.55em 0; }
@@ -653,6 +666,7 @@ const STRICT_CSS = `
     font-family: Carlito, Calibri, sans-serif;
     font-weight: 300;
     font-size: 28pt; line-height: 1.25; color: #002f55;
+    text-align: center;
     margin: 0.25in 0 0.7em 0; position: relative;
   }
   h2 {
@@ -674,15 +688,17 @@ const STRICT_CSS = `
     page-break-after: avoid; line-height: 1.3;
   }
   p { margin: 0 0 0.85em 0; orphans: 3; widows: 3; }
+  p.ind1 { margin-left: 0.5in; }
+  p.ind2 { margin-left: 1in; }
   a { color: #b34800; text-decoration: none; }
   strong { color: #002f55; }
-  ul, ol { margin: 0.5em 0 1em 1.5em; padding: 0; }
+  ul, ol { margin: 0.5em 0 1em 1in; padding: 0; }
   li { margin: 0.3em 0; }
   img { max-width: 100% !important; height: auto !important; page-break-inside: avoid; margin: 0.7em 0; }
   table { border-collapse: collapse; margin: 0.8em 0; font-size: 10.5pt; }
   td, th { border: 1px solid #d1d5db; padding: 4px 8px; vertical-align: top; }
   .pgmark { position: absolute; left: 0; top: 0; font-size: 2px; color: #ffffff; }
-  .quote { margin: 0 0 0.85em 0.4in; }
+  .quote { margin: 0 0 0.85em 0.5in; }
 `;
 
 function cssFor(book: BookConfig): string {
@@ -811,11 +827,32 @@ async function buildBook(browser: Browser, book: BookConfig): Promise<void> {
     parsed = parseMajestyPdf(book);
   } else {
     /* "Emphasis" is a character style Word renders as italic; without this
-       mapping mammoth drops it and italics would be silently lost. */
-    const { value: rawHtml, messages } = await mammoth.convertToHtml(
-      { path: book.docx },
-      { styleMap: ["r[style-name='Emphasis'] => em"] },
-    );
+       mapping mammoth drops it and italics would be silently lost.
+       The paragraph transform preserves docx left-indents (720 twips = 0.5",
+       1440 twips = 1") which mammoth otherwise drops — scripture quotes in
+       the manuscripts are indented paragraphs, not styled quotes. */
+    /* mammoth's type defs omit `transforms`; it exists at runtime. */
+    const indentTransform = (mammoth as any).transforms.paragraph((p: any) => {
+      if (p.numbering) return p; // real list items keep their bullets
+      const start = p.indent && p.indent.start ? parseInt(p.indent.start, 10) : 0;
+      if (start >= 1200) return { ...p, styleId: "IndentTwo", styleName: "IndentTwo" };
+      if (start >= 400) return { ...p, styleId: "IndentOne", styleName: "IndentOne" };
+      return p;
+    });
+    /* Gate the fidelity fixes to strict books so already-approved classic
+       books (identity) keep their exact existing output. */
+    const strictOpts =
+      book.typography === "strict"
+        ? {
+            styleMap: [
+              "r[style-name='Emphasis'] => em",
+              "p[style-name='IndentOne'] => p.ind1:fresh",
+              "p[style-name='IndentTwo'] => p.ind2:fresh",
+            ],
+            transformDocument: indentTransform,
+          }
+        : {};
+    const { value: rawHtml, messages } = await mammoth.convertToHtml({ path: book.docx }, strictOpts);
     const warnings = messages.filter(m => m.type === "warning" && !/Unrecognised (run|paragraph) style/.test(m.message));
     if (warnings.length) console.warn("  mammoth warnings:", warnings.map(m => m.message).join("; "));
     parsed = parseBook(book, rawHtml);

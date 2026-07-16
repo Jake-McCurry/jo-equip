@@ -8,6 +8,8 @@ Single privileged endpoint: `POST /api/subscribe` (book-download email capture �
 
 **Environment-aware crawl protection (July 2026, SEO-003/004):** staging + production Workers build from the same repo (staging branch → staging Worker; merged to main → prod Worker), so crawl policy is decided per-request from hostname. `PRODUCTION_HOSTNAME = equip.jesusonline.com`: prod serves the static `public/robots.txt` (Allow all + sitemap ref) and sitemaps untouched. ANY other hostname (staging-equip, `*.workers.dev`, previews) gets: blocking `robots.txt` (`Disallow: /`, no-store), 404 for `/sitemap*.xml`, and `X-Robots-Tag: noindex, nofollow` on every response. Automatic for future non-prod deploys. Staging is additionally behind a Cloudflare managed challenge (bots get 403), configured in the CF dashboard, not the repo.
 
+**`run_worker_first` is load-bearing (July 2026 fix):** with Worker-with-static-assets, any request matching a static asset is served directly and the Worker never runs. `wrangler.jsonc` `assets.run_worker_first` must therefore include `/robots.txt` and `/sitemap*` (alongside `/api/*`) or staging serves the production `Allow: /` robots.txt and live sitemaps, defeating the crawl protection above. Do not remove these entries.
+
 ## Secrets & Turnstile
 
 - **Required Worker secrets** (set in CF dashboard, documented in `DEPLOY.md`):

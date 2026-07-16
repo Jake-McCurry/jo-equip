@@ -13,7 +13,12 @@
        the OPPOSITE — redirect "/page" → "/page/" for directory-index assets
        — making every canonical point at a redirecting URL. */
     "html_handling": "drop-trailing-slash",
-    "run_worker_first": ["/api/*"]
+    /* robots.txt and sitemaps must hit the Worker so non-production hosts
+       (staging-equip, *.workers.dev, previews) get the blocking robots.txt
+       and 404'd sitemaps instead of the production static files. Without
+       these entries, matching static assets are served BEFORE the Worker
+       and the crawl protection in worker/index.js never runs. */
+    "run_worker_first": ["/api/*", "/robots.txt", "/sitemap*"]
   },
   "observability": {
     "enabled": true

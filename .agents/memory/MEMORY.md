@@ -5,5 +5,6 @@
 - [CF run_worker_first gotcha](cf-run-worker-first.md) — static assets are served before the Worker; paths the Worker must intercept (robots.txt, sitemaps) must be in run_worker_first.
 - [Long-running generation jobs](long-running-generation-jobs.md) — background bash jobs get reaped; run multi-minute batch jobs as a temporary console workflow, keep them resumable.
 - [Article id collisions](article-id-collisions.md) — distinct app slugs can sanitize to the same article id in one sub-topic; generator dedupes, shared articleId is correct when content matches.
+- [Cross-batch article links](cross-batch-article-links.md) — generated article JSONs keep external app links to later-batch articles; re-normalize all JSONs after each generation batch.
 - [WP article catalog drift](wp-article-catalog-drift.md) — JOM WP catalog has numbering drift & books the JN survey skips; map slugs by CONTENT not number; for missing books attach the same-book `38xxx-overview` PDF via links.pdf.
 - [Ebook docx→PDF pipeline](ebook-docx-pipeline.md) — book PDFs build from docx via two-pass marker render; docx heading styles are inconsistent, match TOC by leading token not title text.

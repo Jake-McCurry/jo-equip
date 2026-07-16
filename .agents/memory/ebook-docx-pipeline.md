@@ -18,3 +18,7 @@ The two ebook PDFs are generated from docx manuscripts (mammoth → HTML → two
 - mammoth drops paragraph indents and the "Emphasis" run style by default. Strict mode fixes both: `transforms.paragraph` mapping `indent.start` ≥400/≥1200 twips to synthetic styles → `p.ind1`/`p.ind2` classes (skip `p.numbering` paragraphs), plus styleMap `r[style-name='Emphasis'] => em` (recovered 27 italic runs).
 - These fixes are gated to `typography: "strict"` books so approved classic books (identity) keep byte-stable output. `mammoth.transforms` exists at runtime but is missing from its type defs — cast to any.
 - Calibri/Cambria aren't installable; use metric-compatible Carlito/Caladea (copy TTFs from nix-store to ~/.fonts + fc-cache). Carlito has no Light face — weight 300 renders regular.
+
+## Fonts are ephemeral
+- ~/.fonts can be wiped by environment resets; rebuilds then silently fall back to DejaVu. The build script now preflights via assertStrictFonts(). Reinstall: download Carlito + Caladea TTFs from github.com/google/fonts (ofl/carlito, ofl/caladea) into ~/.fonts, run fc-cache -f. Verify output with pdffonts.
+- All three books (walking, identity, majesty) now use strict typography; majesty (PDF-source) shares STRICT_CSS and a single .front-matter page.

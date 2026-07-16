@@ -79,6 +79,7 @@ const BOOKS: BookConfig[] = [
   {
     key: "identity",
     docx: resolve(ROOT, "attached_assets/Your_New_Identity_in_Christ_ebook_260714_1784052032853.docx"),
+    typography: "strict",
     cover: resolve(ROOT, "attached_assets/identity_cover_jo_logo_edit.jpg"),
     coverType: "jpg",
     coverBottomCrop: 0,
@@ -91,12 +92,12 @@ const BOOKS: BookConfig[] = [
     key: "majesty",
     docx: resolve(ROOT, "attached_assets/Beholding_the_Majesty_of_God_071426_1784055917121.pdf"),
     source: "pdf",
+    typography: "strict",
     cover: resolve(ROOT, "attached_assets/majesty_cover_jo_logo_edit.png"),
     coverType: "png",
     coverBottomCrop: 12,
     out: resolve(ROOT, "artifacts/discipleship-hub/public/books/beholding-the-majesty-of-god.pdf"),
     title: "Beholding the Majesty of God",
-    titleFontSizePt: 24,
     subtitleHtml: "Explore His Divine Attributes",
     tocHeading: "Contents",
   },
@@ -580,15 +581,13 @@ function parseMajestyPdf(book: BookConfig): ParsedBook {
     key: ch.key,
   }));
 
+  /* Match the walking book: single front-matter page (title + notices +
+     JO block), strict typography. */
   const frontPagesHtml = `
-  <section class="title-page">
+  <section class="front-matter">
     <h1${titleStyleAttr(book)}>${book.title}</h1>
     <p class="subtitle">${book.subtitleHtml}</p>
-  </section>
-  <section class="front-page notices">
-    ${MAJESTY_FRONT_NOTICES_HTML}
-  </section>
-  <section class="front-page">
+    <div class="notices">${MAJESTY_FRONT_NOTICES_HTML}</div>
     ${MAJESTY_FRONT_JO_HTML}
   </section>`;
 
@@ -721,6 +720,10 @@ const STRICT_CSS = `
   td, th { border: 1px solid #d1d5db; padding: 4px 8px; vertical-align: top; }
   .pgmark { position: absolute; left: 0; top: 0; font-size: 2px; color: #ffffff; }
   .quote { margin: 0 0 0.85em 0.5in; }
+  .epigraph { text-align: center; font-style: italic; margin: 0 0 1.2em 0; }
+  .epigraph .attrib { font-style: normal; }
+  .front-matter .notices { font-size: 9.5pt; color: #4b5563; }
+  .front-matter .notices p { margin: 0 0 0.85em 0; }
 `;
 
 function cssFor(book: BookConfig): string {
@@ -898,8 +901,23 @@ async function buildBook(browser: Browser, book: BookConfig): Promise<void> {
   unlinkSync(interiorPath);
 }
 
+/* The environment can lose ~/.fonts; without this check strict books would
+   silently render in DejaVu fallback. Reinstall: download the Carlito and
+   Caladea TTFs from github.com/google/fonts (ofl/carlito, ofl/caladea) into
+   ~/.fonts and run `fc-cache -f`. */
+function assertStrictFonts(): void {
+  const res = spawnSync("fc-list", [], { encoding: "utf8" });
+  const list = res.stdout ?? "";
+  for (const fam of ["Carlito", "Caladea"]) {
+    if (!list.includes(fam)) {
+      throw new Error(`Font "${fam}" is not installed — strict-typography books would fall back to DejaVu. See assertStrictFonts() in this file for reinstall steps.`);
+    }
+  }
+}
+
 async function main(): Promise<void> {
   const selected = BOOKS.filter(b => bookArg === "all" || b.key === bookArg);
+  if (selected.some(b => b.typography === "strict")) assertStrictFonts();
   if (selected.length === 0) {
     console.error(`Unknown --book=${bookArg}. Use: ${BOOKS.map(b => b.key).join(", ")}, all`);
     process.exit(1);

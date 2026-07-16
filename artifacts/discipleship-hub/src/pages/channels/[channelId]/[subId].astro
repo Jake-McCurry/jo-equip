@@ -233,10 +233,17 @@ function btnClass(enabled: boolean) {
             const bsmPdfHref = hasBsmArticlePdf(item.articleId)
               ? join(`/articles/bsm/${item.articleId}.pdf`)
               : undefined;
-            const pdfHref = item.bookId
+            // Items with an on-site article (articleId) link the PDF button
+            // straight to the article's PDF — even when a same-titled book
+            // exists (the Book chip/covers still lead to the gated book page).
+            const directPdfHref = item.links?.pdf ?? bcgPdfHref ?? bsmPdfHref ?? articlePdfHref;
+            const bookPdfHref = item.bookId
               ? join(`/books?download=${encodeURIComponent(item.bookId)}#${encodeURIComponent(item.bookId)}`)
-              : (item.links?.pdf ?? bcgPdfHref ?? bsmPdfHref ?? articlePdfHref);
-            const pdfInternal = !!item.bookId || (!item.links?.pdf && (!!bcgPdfHref || !!bsmPdfHref || !!articlePdfHref));
+              : undefined;
+            const pdfHref = item.articleId
+              ? (directPdfHref ?? bookPdfHref)
+              : (bookPdfHref ?? directPdfHref);
+            const pdfInternal = pdfHref !== item.links?.pdf;
 
             // Video: enabled only when this item has a matching video inside a
             // playlist — the sub-topic's own `playlistId`, or a per-item

@@ -371,6 +371,60 @@ function coverLeadFor(appSlug: string): string | undefined {
   return undefined;
 }
 
+/* ---------- "Watch the video based on this article" rewrite ----------
+   Some app articles open with a lone "Watch the video based on this article"
+   link pointing at the app. In PDFs that link must go to the EQUIP video
+   (playlist deep-link) when the item has one — otherwise the paragraph is
+   dropped entirely. The appSlug → EQUIP video URL map comes from the hub's
+   channels.ts (runtime import — see leaf-script pattern). */
+
+interface ChannelsModuleLite {
+  subTopics: {
+    id: string;
+    channelId: string;
+    playlistId?: string;
+    items?: {
+      videoId?: string;
+      videoPlaylistId?: string;
+      links?: { app?: string; video?: string };
+    }[];
+  }[];
+}
+
+let VIDEO_URL_BY_APP_SLUG: Map<string, string> = new Map();
+
+async function loadVideoMap(): Promise<void> {
+  const { pathToFileURL } = await import("node:url");
+  const channelsUrl = pathToFileURL(resolve(ROOT, "artifacts/discipleship-hub/src/data/channels.ts")).href;
+  const { subTopics } = (await import(channelsUrl)) as ChannelsModuleLite;
+  for (const sub of subTopics) {
+    for (const item of sub.items ?? []) {
+      const appSlug = item.links?.app?.match(/app\.jesusonline\.com\/post\/([^/?#]+)/)?.[1];
+      if (!appSlug) continue;
+      const playlistId = item.videoPlaylistId ?? sub.playlistId;
+      const href = item.videoId && playlistId
+        ? `https://equip.jesusonline.com/playlist/${encodeURIComponent(playlistId)}?play=${encodeURIComponent(item.videoId)}`
+        : item.links?.video;
+      if (href && !VIDEO_URL_BY_APP_SLUG.has(appSlug)) VIDEO_URL_BY_APP_SLUG.set(appSlug, href);
+    }
+  }
+}
+
+const WATCH_VIDEO_P_RE =
+  /<(p|h[2-4])\b[^>]*>(?:(?!<\/\1>)[\s\S])*?<a\b[^>]*>(?:(?!<\/\1>)[\s\S])*?<\/a>(?:(?!<\/\1>)[\s\S])*?<\/\1>/gi;
+
+/** Rewrite (or drop) the "Watch the video based on this article" paragraph
+    before sanitizeHtml gets a chance to rewrite its href to the app. */
+function rewriteWatchVideo(html: string, appSlug: string): string {
+  return html.replace(WATCH_VIDEO_P_RE, block => {
+    const visible = decodeEntities(block.replace(/<[^>]+>/g, "")).replace(/\s+/g, " ").trim();
+    if (!/^watch the video based on this article\.?$/i.test(visible)) return block;
+    const equipHref = VIDEO_URL_BY_APP_SLUG.get(appSlug);
+    if (!equipHref) return "";
+    return block.replace(/href=(["'])[^"']*\1/i, `href="${equipHref}"`);
+  });
+}
+
 /* Trailing "Endnotes" paragraph — a lone link to the article's endnotes post
    on apicontent. On-site Evidence articles inline that post's content; the
    PDFs must match instead of sending readers to the app. Matches a <p> (or
@@ -434,7 +488,7 @@ async function buildOne(
     }
 
     const displayTitle = stripLeadingNumber(decodeEntities(post.title.rendered));
-    const bodyHtml = sanitizeHtml(await inlineEndnotes(post.content.rendered));
+    const bodyHtml = sanitizeHtml(await inlineEndnotes(rewriteWatchVideo(post.content.rendered, appSlug)));
     const html = renderTemplate({
       title: displayTitle,
       bodyHtml,
@@ -551,6 +605,7 @@ export function getArticlePdfMeta(appSlug: string): ArticlePdfMeta | undefined {
 
 async function main() {
   if (!existsSync(OUT_DIR)) mkdirSync(OUT_DIR, { recursive: true });
+  await loadVideoMap();
 
   const mapping = JSON.parse(readFileSync(MAPPING_PATH, "utf8")) as Record<string, SlugEntry>;
   let cache: Manifest = {};

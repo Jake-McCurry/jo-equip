@@ -286,6 +286,10 @@ async function convert(
       case "hr":
         break;
       case "p": {
+        /* Drop the "Watch the video based on this article" lead-in — the
+           EQUIP sub-topic pages already expose the video via the Video
+           button, so the line is redundant on-site. */
+        if (/^watch the video based on this article\.?$/i.test(stripTags(b.inner))) break;
         const endnoteHref = b.inner.match(
           /href=["'](?:https?:)?\/\/apicontent\.jesusonline\.com\/[^"']*?([\w-]*endnotes[\w-]*)\/?["']/i,
         );

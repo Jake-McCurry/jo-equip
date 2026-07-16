@@ -30,12 +30,8 @@ export const evidenceArticles: EvidenceArticle[] = [
     "appSlug": "51001-who-is-the-real-jesus",
     "subId": "jesus-true-identity",
     "title": "Who is the Real Jesus?",
-    "description": "Watch the video based on this article",
+    "description": "Two thousand years ago a man set foot on our planet who claimed to be from another world. A world that has always existed and will never end. Although he…",
     "blocks": [
-      {
-        "type": "p",
-        "html": "<a href=\"/channels/evidence/jesus-true-identity/who-is-the-real-jesus\">Watch the video based on this article</a>"
-      },
       {
         "type": "p",
         "html": "Two thousand years ago a man set foot on our planet who claimed to be from another world. A world that has always existed and will never end. Although he was born in poverty and had no credentials or political backing, his life and words changed our world. His name is Jesus Christ."
@@ -420,12 +416,8 @@ export const evidenceArticles: EvidenceArticle[] = [
     "appSlug": "51002-was-jesus-a-real-person",
     "subId": "jesus-true-identity",
     "title": "Was Jesus a Real Person?",
-    "description": "Watch the video based on this article",
+    "description": "Did Jesus Christ really exist, or is Christianity a legend built upon a fictitious character like Harry Potter?",
     "blocks": [
-      {
-        "type": "p",
-        "html": "<a href=\"/channels/evidence/jesus-true-identity/was-jesus-a-real-person\">Watch the video based on this article</a>"
-      },
       {
         "type": "p",
         "html": "Did Jesus Christ really exist, or is Christianity a legend built upon a fictitious character like Harry Potter?"
@@ -894,12 +886,8 @@ export const evidenceArticles: EvidenceArticle[] = [
     "appSlug": "51003-did-jesus-rise-from-the-dead",
     "subId": "jesus-true-identity",
     "title": "Did Jesus Rise from the Dead?",
-    "description": "Watch the video based on this article",
+    "description": "According to eyewitnesses, a man named Jesus Christ demonstrated his power over death. They tell us that after he died on the cross and was buried, Jesus…",
     "blocks": [
-      {
-        "type": "p",
-        "html": "<a href=\"/channels/evidence/jesus-true-identity/did-jesus-rise-from-the-dead\">Watch the video based on this article</a>"
-      },
       {
         "type": "p",
         "html": "According to eyewitnesses, a man named Jesus Christ demonstrated his power over death. They tell us that after he died on the cross and was buried, Jesus suddenly appeared to them alive on the third day. Then he was seen by other followers, including 500 people on a single occasion. Soon word spread everywhere that Jesus had risen from the dead. But could Jesus’ resurrection simply be a 2000-year-old legend? Or is it based upon verifiable historical evidence?"
@@ -1358,12 +1346,8 @@ export const evidenceArticles: EvidenceArticle[] = [
     "appSlug": "51005-harvard-law-professor-puts-jesus-resurrection-on-trial",
     "subId": "jesus-true-identity",
     "title": "Harvard Law Professor Puts Jesus’ Resurrection on Trial",
-    "description": "Watch the video based on this article",
+    "description": "Legal scholar, Dr. Simon Greenleaf (1783–1853), decided to put Jesus’ resurrection on trial by examining the evidence. Greenleaf helped to put the Harvard…",
     "blocks": [
-      {
-        "type": "p",
-        "html": "<a href=\"https://app.jesusonline.com/post/75100-5-jesus-on-trial\" target=\"_blank\" rel=\"noopener noreferrer\">Watch the video based on this article</a>"
-      },
       {
         "type": "p",
         "html": "Legal scholar, Dr. Simon Greenleaf (1783–1853), decided to put Jesus’ resurrection on trial by examining the evidence. Greenleaf helped to put the Harvard Law School on the map. He also wrote the three-volume legal masterpiece, <em>A Treatise on the Law of Evidence,</em> which has been called “the greatest single authority in the entire literature of legal procedure.”<sup>1</sup> The U.S. judicial system today still relies on rules of evidence established by Greenleaf."
@@ -1611,12 +1595,8 @@ export const evidenceArticles: EvidenceArticle[] = [
     "appSlug": "51007-is-jesus-the-jewish-messiah",
     "subId": "jesus-true-identity",
     "title": "Is Jesus the Jewish Messiah?",
-    "description": "Watch the video based on this article",
+    "description": "When Jesus was born, wise men from the East traveled to Israel to find and worship the newborn King of the Jews, following a bright star in the sky. They…",
     "blocks": [
-      {
-        "type": "p",
-        "html": "<a href=\"https://app.jesusonline.com/post/74211-0-who-is-the-jewish-messiah\" target=\"_blank\" rel=\"noopener noreferrer\">Watch the video based on this article</a>"
-      },
       {
         "type": "p",
         "html": "When Jesus was born, wise men from the East traveled to Israel to find and worship the newborn King of the Jews, following a bright star in the sky. They believed this brilliant star was a sign of the birth of a great king, who had been promised by ancient Hebrew prophets."
@@ -1895,12 +1875,8 @@ export const evidenceArticles: EvidenceArticle[] = [
     "appSlug": "51008-is-jesus-god",
     "subId": "jesus-true-identity",
     "title": "Is Jesus God?",
-    "description": "Watch the video based on this article",
+    "description": "Have you ever met a man who is the focus of attention wherever he goes? Some mysterious, indefinable characteristic sets him apart from all other men.",
     "blocks": [
-      {
-        "type": "p",
-        "html": "<a href=\"/channels/evidence/jesus-true-identity/is-jesus-god\">Watch the video based on this article</a>"
-      },
       {
         "type": "p",
         "html": "Have you ever met a man who is the focus of attention wherever he goes? Some mysterious, indefinable characteristic sets him apart from all other men."
@@ -3281,12 +3257,8 @@ export const evidenceArticles: EvidenceArticle[] = [
     "appSlug": "51012-was-there-a-jesus-conspiracy",
     "subId": "jesus-true-identity",
     "title": "Was There a Jesus Conspiracy?",
-    "description": "Watch the video based on this article",
+    "description": "We have seen that leading historians unanimously accept the fact that Jesus was a real person who has significantly impacted our world.",
     "blocks": [
-      {
-        "type": "p",
-        "html": "<a href=\"/channels/evidence/jesus-true-identity/was-there-a-jesus-conspiracy\">Watch the video based on this article</a>"
-      },
       {
         "type": "p",
         "html": "We have seen that leading historians unanimously accept the fact that Jesus was a real person who has significantly impacted our world."
@@ -4329,12 +4301,8 @@ export const evidenceArticles: EvidenceArticle[] = [
     "appSlug": "51019-is-jesus-relevant-today",
     "subId": "jesus-true-identity",
     "title": "Is Jesus Relevant Today?",
-    "description": "Watch the video based on this article",
+    "description": "Many think that Jesus Christ wants us to become religious. They think Jesus came to take all the fun out of life, and give us impossible rules to live by.…",
     "blocks": [
-      {
-        "type": "p",
-        "html": "<a href=\"https://app.jesusonline.com/post/75101-9-is-jesus-relevant-to-you\" target=\"_blank\" rel=\"noopener noreferrer\">Watch the video based on this article</a>"
-      },
       {
         "type": "p",
         "html": "Many think that Jesus Christ wants us to become religious. They think Jesus came to take all the fun out of life, and give us impossible rules to live by. They are willing to call him a great leader from the past, but say he is not relevant to their lives today."

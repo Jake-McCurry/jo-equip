@@ -453,8 +453,11 @@ async function main() {
       });
       console.log(`  ✓ ${w.appSlug} → ${w.id} (${blocks.length} blocks)`);
     });
-    /* Preserve site order. */
-    const out = work.map(w => results.get(w.id)).filter((a): a is SiteArticleOut => !!a);
+    /* Preserve site order; dedupe when multiple items resolve to the same article id. */
+    const seenIds = new Set<string>();
+    const out = work
+      .map(w => results.get(w.id))
+      .filter((a): a is SiteArticleOut => !!a && !seenIds.has(a.id) && !!seenIds.add(a.id));
     if (!out.length) {
       console.warn(`  ! nothing generated for ${sub.id}`);
       continue;

@@ -415,15 +415,15 @@ export const subTopics: SubTopic[] = [
       { number: 12, title: "1 Kings", articleId: '1-kings', links: { app: "https://app.jesusonline.com/post/93652-1-1-kings" } },
       { number: 13, title: "2 Kings", articleId: '2-kings', links: { app: "https://app.jesusonline.com/post/93652-2-2-kings" } },
       { number: 14, title: "1 & 2 Chronicles", articleId: '1-and-2-chronicles', links: { app: "https://app.jesusonline.com/post/93652-3-1-&-2-chronicles" } },
-      { number: 15, title: "Ezra and Nehemiah", links: { app: "https://app.jesusonline.com/post/93652-4-ezra-and-nehemiah", pdf: "/articles/38640-overview-ezra-nehemiah.pdf" } },
+      { number: 15, title: "Ezra and Nehemiah", links: { app: "https://app.jesusonline.com/post/93652-4-ezra-and-nehemiah" } },
       { number: 16, title: "Esther", articleId: 'esther', links: { app: "https://app.jesusonline.com/post/93652-5-esther" } },
       { number: 17, title: "Job", articleId: 'job', links: { app: "https://app.jesusonline.com/post/93652-6-job" } },
       { number: 18, title: "Psalms", articleId: 'psalms', links: { app: "https://app.jesusonline.com/post/93652-7-psalms" } },
       { number: 19, title: "Proverbs", articleId: 'proverbs', links: { app: "https://app.jesusonline.com/post/93652-8-proverbs" } },
       { number: 20, title: "Ecclesiastes", articleId: 'ecclesiastes', links: { app: "https://app.jesusonline.com/post/93652-9-ecclesiastes" } },
-      { number: 21, title: "Song of Songs", links: { app: "https://app.jesusonline.com/post/93653-0-song-of-songs", pdf: "/articles/38634-overview-song-of-songs.pdf" } },
+      { number: 21, title: "Song of Songs", links: { app: "https://app.jesusonline.com/post/93653-0-song-of-songs" } },
       { number: 22, title: "Isaiah", articleId: 'isaiah', links: { app: "https://app.jesusonline.com/post/93653-1-isaiah" } },
-      { number: 23, title: "Jeremiah", links: { app: "https://app.jesusonline.com/post/93653-2-jeremiah", pdf: "/articles/38616-overview-jeremiah.pdf" } },
+      { number: 23, title: "Jeremiah", links: { app: "https://app.jesusonline.com/post/93653-2-jeremiah" } },
       { number: 24, title: "Lamentations", articleId: 'lamentation', links: { app: "https://app.jesusonline.com/post/93653-3-lamentation" } },
       { number: 25, title: "Ezekiel", articleId: 'ezekiel', links: { app: "https://app.jesusonline.com/post/93653-4-ezekiel" } },
       { number: 26, title: "Daniel", articleId: 'daniel', links: { app: "https://app.jesusonline.com/post/93653-5-daniel" } },
@@ -477,6 +477,10 @@ export const subTopics: SubTopic[] = [
       { number: 27, title: "Revelation", articleId: 'revelation', links: { app: "https://app.jesusonline.com/post/93662-7-revelation" } },
     ],
   },
+  /* ── BIBLEPROJECT — TEMPORARILY REMOVED (July 2026) pending copyright/licensing
+     resolution with BibleProject. To restore: uncomment this block, regenerate the
+     two sub JSONs (site-articles:build --sub=bibleproject-ot --sub=bibleproject-nt)
+     and the 386xx/387xx article PDFs (articles:build). Git history also has them.
   {
     id: 'bibleproject',
     channelId: 'church',
@@ -575,6 +579,7 @@ export const subTopics: SubTopic[] = [
       { number: 32, title: "Overview: Revelation Ch. 12-22", articleId: 'overview-revelation-ch-12-22', links: { app: "https://app.jesusonline.com/post/38732-overview-revelation-ch-12-22" } },
     ],
   },
+  ── END BIBLEPROJECT (temporarily removed) ── */
   /* Sub-level 06.5 added per Church sheet v.062526 — no content listed yet.
      Empty placeholder until courses are provided. */
   {

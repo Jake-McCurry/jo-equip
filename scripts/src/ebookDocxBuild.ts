@@ -281,7 +281,14 @@ function parseBook(book: BookConfig, rawHtml: string): ParsedBook {
     let headingHtml = hm[1]!.replace(/^\s*(<br \/>)+/, "").trim();
     const text = stripTags(headingHtml);
     const token = headingToken(text) ?? `X${chapters.length}`;
-    chapters.push({ key: token, headingHtml, bodyHtml: part.slice(hm[0].length) });
+    /* Drop empty paragraphs straight after the heading (the walking docx
+       has a stray "<p> </p>" after chapter 9, doubling the gap). Gated to
+       walking so the approved identity output stays byte-stable. */
+    let bodyHtml = part.slice(hm[0].length);
+    if (book.key === "walking") {
+      bodyHtml = bodyHtml.replace(/^(?:\s*<p>(?:\s|&nbsp;|<br \/>)*<\/p>)+/, "");
+    }
+    chapters.push({ key: token, headingHtml, bodyHtml });
   }
   return { frontPagesHtml, tocEntries, chapters };
 }

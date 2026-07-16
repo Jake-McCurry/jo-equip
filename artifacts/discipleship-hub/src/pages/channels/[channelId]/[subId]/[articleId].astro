@@ -9,6 +9,9 @@
  *   - "Bible Study Methods"      → bibleStudyMethods (text-only + PDFs)
  *   - Evidence channel           → evidenceArticles (auto-generated from the
  *     JOM WordPress by scripts evidence:build; figures + PDFs)
+ *   - Site-wide articles         → siteArticles (auto-generated per sub-topic
+ *     by scripts site-articles:build; keyed by (subId, articleId) because
+ *     some courses share the same articles across channels)
  * All share the ArticleBlock shape so the body renderer is source-agnostic.
  */
 import Layout from "@/layouts/Layout.astro";
@@ -18,8 +21,10 @@ import { bcgArticles, getBcgArticle, getNextBcgArticle } from "@/data/bcgArticle
 import type { ArticleBlock } from "@/data/bcgArticles";
 import { bibleStudyMethods, getBibleStudyMethod, getNextBibleStudyMethod } from "@/data/bibleStudyMethods";
 import { evidenceArticles, getEvidenceArticle, getNextEvidenceArticle } from "@/data/evidenceArticles";
+import { hasSiteArticle, getSiteArticle, getNextSiteArticle } from "@/data/siteArticles";
 import { getBcgImage } from "@/data/bcgImages";
 import { getEvidenceImage } from "@/data/evidenceImages";
+import { getSiteArticleImage } from "@/data/siteArticleImages";
 import { hasBcgArticlePdf } from "@/data/bcgArticlePdfs";
 import { hasBsmArticlePdf } from "@/data/bsmArticlePdfs";
 import { hasArticlePdf } from "@/data/articles";
@@ -44,7 +49,8 @@ export function getStaticPaths() {
   for (const s of subTopics) {
     if (!s.items) continue;
     for (const item of s.items) {
-      if (!item.articleId || !known.has(item.articleId)) continue;
+      if (!item.articleId) continue;
+      if (!known.has(item.articleId) && !hasSiteArticle(s.id, item.articleId)) continue;
       paths.push({ params: { channelId: s.channelId, subId: s.id, articleId: item.articleId } });
     }
   }
@@ -58,7 +64,9 @@ const sub = getSubTopic(channelId!, subId!);
 const bcg = articleId ? getBcgArticle(articleId) : undefined;
 const bsm = articleId ? getBibleStudyMethod(articleId) : undefined;
 const evd = articleId && !bcg && !bsm ? getEvidenceArticle(articleId) : undefined;
-const article = bcg ?? bsm ?? evd;
+const site =
+  articleId && !bcg && !bsm && !evd ? getSiteArticle(subId!, articleId) : undefined;
+const article = bcg ?? bsm ?? evd ?? site;
 if (!channel || !sub || !article) return Astro.redirect(join("/channels"));
 
 /* Next-article nav, scoped to the CURRENT sub-topic: the source arrays can
@@ -69,7 +77,9 @@ let nextArticle = bcg
   ? getNextBcgArticle(article.id)
   : bsm
     ? getNextBibleStudyMethod(article.id)
-    : getNextEvidenceArticle(article.id);
+    : evd
+      ? getNextEvidenceArticle(article.id)
+      : getNextSiteArticle(subId!, article.id);
 if (nextArticle && !(sub.items ?? []).some(i => i.articleId === nextArticle!.id)) {
   nextArticle = undefined;
 }
@@ -77,7 +87,9 @@ const pdfHref = bcg
   ? (hasBcgArticlePdf(article.id) ? join(`/articles/bcg/${article.id}.pdf`) : null)
   : bsm
     ? (hasBsmArticlePdf(article.id) ? join(`/articles/bsm/${article.id}.pdf`) : null)
-    : (evd && hasArticlePdf(evd.appSlug) ? join(`/articles/${evd.appSlug}.pdf`) : null);
+    : evd
+      ? (hasArticlePdf(evd.appSlug) ? join(`/articles/${evd.appSlug}.pdf`) : null)
+      : (site && hasArticlePdf(site.appSlug) ? join(`/articles/${site.appSlug}.pdf`) : null);
 
 const SITE = "https://equip.jesusonline.com";
 const articleUrl = `${SITE}/channels/${channel.id}/${sub.id}/${article.id}`;
@@ -209,7 +221,7 @@ const metaDescription = plain(article.description);
               </blockquote>
             );
           case "figure": {
-            const img = getBcgImage(b.src) ?? getEvidenceImage(b.src);
+            const img = getBcgImage(b.src) ?? getEvidenceImage(b.src) ?? getSiteArticleImage(b.src);
             if (!img) return null;
             return (
               <figure>

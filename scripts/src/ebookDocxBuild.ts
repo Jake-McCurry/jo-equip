@@ -482,7 +482,7 @@ const MAJESTY_RESOURCES_HTML = `
 <p><strong>Explore the Free Books</strong> → equip.jesusonline.com/books</p>
 <p><strong>Download the Free JO App</strong> — Your personal discipleship hub with the NET Bible, daily devotions, interactive studies, prayer tools, more books, and videos.</p>
 <p>Explore in browser → app.jesusonline.com</p>
-<p><a href="https://play.google.com/store/apps/details?id=com.clear.joapp">Download for Android</a> &nbsp;·&nbsp; <a href="https://apps.apple.com/app/jo-app-jesusonline/id1474405483">Download for iOS</a></p>
+<p><a href="https://play.google.com/store/apps/details?id=com.clear.joapp">Download for Android</a> &nbsp;·&nbsp; <a href="https://apps.apple.com/us/app/jo-app/id1474405483">Download for iOS</a></p>
 <p><strong>Watch Video Playlists</strong> → equip.jesusonline.com/playlists</p>
 <p><strong>Visit JesusOnline Ministries</strong> — For more about this ministry and global outreach: jesusonlineministries.org</p>
 <p><strong>Would you like to help others?</strong> Share this book (or the download link) with friends, your small group, or your church. Every copy planted can bear eternal fruit!</p>

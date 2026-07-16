@@ -81,13 +81,13 @@ export const END_PAGE_HTML = `
     <h2>Share Your Thoughts</h2>
     <p>Your feedback helps us improve future resources and encourages others:</p>
     <p><strong>Leave a Review or Send Us a Note</strong> — If you found this helpful, please consider leaving a short review. Your honest words make a big difference! We love hearing how God is using these materials in your life.<br />
-    Share Your Story → <a href="https://jesusonline.com/review">jesusonline.com/review</a></p>
+    Share Your Story → <a href="https://equip.jesusonline.com/reviews/share">equip.jesusonline.com/reviews/share</a></p>
 
     <h2>Discover More Free Resources</h2>
     <p>Continue growing in your walk with Jesus. Here are additional tools from the JO EQUIP library and JesusOnline Ministries:</p>
     <ul>
       <li><strong>Explore the Free Books</strong> → <a href="https://equip.jesusonline.com/books">equip.jesusonline.com/books</a></li>
-      <li><strong>Download the Free JO App</strong> — Your personal discipleship hub with the NET Bible, daily devotions, interactive studies, prayer tools, more books, and videos. <a href="https://app.jesusonline.com">Download for Android</a> · <a href="https://app.jesusonline.com">Download for iOS</a> · Explore in browser → <a href="https://app.jesusonline.com">app.jesusonline.com</a></li>
+      <li><strong>Download the Free JO App</strong> — Your personal discipleship hub with the NET Bible, daily devotions, interactive studies, prayer tools, more books, and videos. <a href="https://play.google.com/store/apps/details?id=com.clear.joapp">Download for Android</a> · <a href="https://apps.apple.com/us/app/jo-app/id1474405483">Download for iOS</a> · Explore in browser → <a href="https://app.jesusonline.com">app.jesusonline.com</a></li>
       <li><strong>Watch Video Playlists</strong> → <a href="https://equip.jesusonline.com/playlists">equip.jesusonline.com/playlists</a></li>
       <li><strong>Visit JesusOnline Ministries</strong> — For more about this ministry and global outreach: <a href="https://jesusonlineministries.org">jesusonlineministries.org</a></li>
     </ul>

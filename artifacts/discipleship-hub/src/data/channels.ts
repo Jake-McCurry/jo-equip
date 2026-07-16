@@ -895,7 +895,7 @@ export const subTopics: SubTopic[] = [
     id: 'bb-growing-closer-majesty',
     channelId: 'growth',
     parentId: 'bb-growing-closer',
-    name: 'The Majesty of God',
+    name: 'Attributes of God',
     items: [
       { number: 1, title: 'The Supreme Pursuit of the Heart', links: { app: 'https://app.jesusonline.com/post/32211-the-supreme-pursuit-of-the-heart' } },
       { number: 2, title: 'Attributes of Self-Existence', links: { app: 'https://app.jesusonline.com/post/32212-attributes-of-self-existence' } },
@@ -964,7 +964,7 @@ export const subTopics: SubTopic[] = [
     id: 'bb-becoming-new-you',
     channelId: 'growth',
     parentId: 'building-blocks',
-    name: 'Embracing Who God Says You Are',
+    name: 'Your Identity in Christ',
     items: [
       { number: 1, title: 'Embracing Your New Identity in Christ', links: { app: 'https://app.jesusonline.com/post/32310-embracing-your-new-identity-in-christ' } },
       { number: 2, title: 'What the Bible Says About the New You', links: { app: 'https://app.jesusonline.com/post/32311-what-the-bible-says-about-the-new-you' } },
@@ -1141,7 +1141,7 @@ export const subTopics: SubTopic[] = [
   {
     id: 'ministry-holy-spirit',
     channelId: 'growth',
-    name: 'Ministry of the Holy Spirit',
+    name: 'Walking in the Spirit',
     description: 'Train others how to follow and cooperate with the Holy Spirit.',
     items: [
       { number: 1, title: 'Who Is the Holy Spirit?', links: { app: 'https://app.jesusonline.com/post/32410-who-is-the-holy-spirit' } },

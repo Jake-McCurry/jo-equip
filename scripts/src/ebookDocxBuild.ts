@@ -51,6 +51,12 @@ interface BookConfig {
   titleFontSizePt?: number;
   subtitleHtml: string;
   tocHeading: string; // text of the docx TOC <h1>
+  /* "strict" = manuscript-owner typography spec:
+       H1 Calibri Light 28 / H2 Calibri 18 / H3 Calibri Bold 14 /
+       H4 Cambria Bold 12 / body Cambria 12 — rendered with the
+       metric-compatible Carlito (Calibri) and Caladea (Cambria) fonts.
+       No added bold/centering/italics beyond the docx markup. */
+  typography?: "classic" | "strict";
 }
 
 function titleStyleAttr(book: BookConfig): string {
@@ -60,7 +66,8 @@ function titleStyleAttr(book: BookConfig): string {
 const BOOKS: BookConfig[] = [
   {
     key: "walking",
-    docx: resolve(ROOT, "attached_assets/Walking_in_the_Spirit_ebook_260714_1784052029630.docx"),
+    docx: resolve(ROOT, "attached_assets/Walking_in_the_Spirit_ebook_260714_1784232887203.docx"),
+    typography: "strict",
     cover: resolve(ROOT, "attached_assets/walking_cover_jo_logo_edit.png"),
     coverType: "png",
     coverBottomCrop: 10,
@@ -604,6 +611,84 @@ const CSS = `
   .quote { margin: 0 0 0.85em 0.4in; }
 `;
 
+/* Strict manuscript-owner typography (see BookConfig.typography).
+   Carlito is metric-compatible with Calibri; Caladea with Cambria.
+   Carlito has no Light face — weight 300 resolves to the closest available.
+   Headings are left-aligned (no centering beyond the docx); only H3/H4 are
+   bold, matching the spec. */
+const STRICT_CSS = `
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: Caladea, Cambria, Georgia, serif;
+    color: #1f2937;
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+  .title-page { page-break-after: always; padding-top: 2.2in; text-align: center; }
+  .title-page h1 {
+    font-family: Carlito, Calibri, sans-serif;
+    font-weight: 300;
+    font-size: 30pt; line-height: 1.15; color: #002f55;
+    margin: 0 0 0.4em 0;
+  }
+  .title-page .subtitle { font-size: 14pt; line-height: 1.4; color: #0083de; margin: 0; }
+  .front-page { page-break-after: always; padding-top: 0.4in; }
+  .front-page.notices { padding-top: 1in; font-size: 10pt; color: #4b5563; }
+  .front-page.notices p { margin: 0 0 1.1em 0; }
+  .toc { page-break-after: always; padding-top: 0.3in; }
+  .toc h1 {
+    font-family: Carlito, Calibri, sans-serif;
+    font-weight: 300; font-size: 28pt; color: #002f55;
+    margin: 0 0 0.9em 0;
+  }
+  .toc-line { display: flex; align-items: baseline; margin: 0 0 0.55em 0; }
+  .toc-line .toc-label { white-space: normal; }
+  .toc-line .toc-dots { flex: 1 1 auto; min-width: 24px; border-bottom: 1px dotted #9ca3af; margin: 0 6px; transform: translateY(-3px); }
+  .toc-line .toc-pg { color: #1f2937; }
+  .toc-label-line { margin: 0.9em 0 0.4em 0; }
+  .toc ul { margin: 0.15em 0 0.7em 1.6em; padding: 0; list-style: disc; font-size: 10.5pt; color: #4b5563; }
+  .toc ul li { margin: 0.15em 0; }
+  .chapter { page-break-before: always; }
+  .chapter > h1 {
+    font-family: Carlito, Calibri, sans-serif;
+    font-weight: 300;
+    font-size: 28pt; line-height: 1.25; color: #002f55;
+    margin: 0.25in 0 0.7em 0; position: relative;
+  }
+  h2 {
+    font-family: Carlito, Calibri, sans-serif;
+    font-weight: 400;
+    font-size: 18pt; color: #002f55; margin: 1.4em 0 0.3em;
+    page-break-after: avoid; line-height: 1.3;
+  }
+  h3 {
+    font-family: Carlito, Calibri, sans-serif;
+    font-weight: 700;
+    font-size: 14pt; color: #002f55; margin: 1.25em 0 0.2em;
+    page-break-after: avoid; line-height: 1.3;
+  }
+  h4 {
+    font-family: Caladea, Cambria, Georgia, serif;
+    font-weight: 700;
+    font-size: 12pt; color: #002f55; margin: 1.1em 0 0.2em;
+    page-break-after: avoid; line-height: 1.3;
+  }
+  p { margin: 0 0 0.85em 0; orphans: 3; widows: 3; }
+  a { color: #b34800; text-decoration: none; }
+  strong { color: #002f55; }
+  ul, ol { margin: 0.5em 0 1em 1.5em; padding: 0; }
+  li { margin: 0.3em 0; }
+  img { max-width: 100% !important; height: auto !important; page-break-inside: avoid; margin: 0.7em 0; }
+  table { border-collapse: collapse; margin: 0.8em 0; font-size: 10.5pt; }
+  td, th { border: 1px solid #d1d5db; padding: 4px 8px; vertical-align: top; }
+  .pgmark { position: absolute; left: 0; top: 0; font-size: 2px; color: #ffffff; }
+  .quote { margin: 0 0 0.85em 0.4in; }
+`;
+
+function cssFor(book: BookConfig): string {
+  return book.typography === "strict" ? STRICT_CSS : CSS;
+}
+
 const FOOTER_TEMPLATE = `
   <div style="width:100%;text-align:center;font-family:'Helvetica Neue',Arial,sans-serif;font-size:8.5pt;color:#6b7280;">
     <span class="pageNumber"></span>
@@ -648,7 +733,7 @@ function buildInteriorHtml(
   ${chaptersHtml}`;
   return `<!doctype html>
 <html lang="en">
-<head><meta charset="utf-8" /><title>${book.title}</title><style>${CSS}</style></head>
+<head><meta charset="utf-8" /><title>${book.title}</title><style>${cssFor(book)}</style></head>
 <body>${linkifyOutsideAnchors(body)}</body>
 </html>`;
 }
@@ -725,7 +810,12 @@ async function buildBook(browser: Browser, book: BookConfig): Promise<void> {
   if (book.source === "pdf") {
     parsed = parseMajestyPdf(book);
   } else {
-    const { value: rawHtml, messages } = await mammoth.convertToHtml({ path: book.docx });
+    /* "Emphasis" is a character style Word renders as italic; without this
+       mapping mammoth drops it and italics would be silently lost. */
+    const { value: rawHtml, messages } = await mammoth.convertToHtml(
+      { path: book.docx },
+      { styleMap: ["r[style-name='Emphasis'] => em"] },
+    );
     const warnings = messages.filter(m => m.type === "warning" && !/Unrecognised (run|paragraph) style/.test(m.message));
     if (warnings.length) console.warn("  mammoth warnings:", warnings.map(m => m.message).join("; "));
     parsed = parseBook(book, rawHtml);

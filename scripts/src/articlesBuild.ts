@@ -371,6 +371,45 @@ function coverLeadFor(appSlug: string): string | undefined {
   return undefined;
 }
 
+/* Trailing "Endnotes" paragraph — a lone link to the article's endnotes post
+   on apicontent. On-site Evidence articles inline that post's content; the
+   PDFs must match instead of sending readers to the app. Matches a <p> (or
+   heading) whose visible text is exactly "Endnotes" and whose href points at
+   an apicontent *endnotes* slug. */
+const ENDNOTES_LINK_RE =
+  /<(p|h[2-4])\b[^>]*>(?:(?!<\/\1>)[\s\S])*?href=["'](?:https?:)?\/\/apicontent\.jesusonline\.com\/[^"']*?([\w-]*endnotes[\w-]*)\/?(?:[?#][^"']*)?["'](?:(?!<\/\1>)[\s\S])*?<\/\1>/i;
+
+async function fetchEndnotesHtml(slug: string): Promise<string | null> {
+  try {
+    const url = `https://apicontent.jesusonline.com/wp-json/wp/v2/posts?slug=${encodeURIComponent(slug)}&_fields=content`;
+    const res = await fetch(url);
+    if (!res.ok) return null;
+    const arr = (await res.json()) as { content: { rendered: string } }[];
+    if (!arr.length || typeof arr[0]?.content?.rendered !== "string") return null;
+    /* Drop the endnote post's own leading h1/h2 (duplicate of the article title). */
+    const body = arr[0].content.rendered.replace(/^\s*<h[12]\b[^>]*>[\s\S]*?<\/h[12]>/i, "");
+    return body.trim() ? `<h2>Endnotes</h2>\n${body}` : null;
+  } catch {
+    /* Network/JSON failure: fall back to the old link-to-app behavior rather
+       than failing the whole PDF build. */
+    return null;
+  }
+}
+
+/* Replace a trailing "Endnotes" link paragraph with the endnotes post content
+   inlined. Returns the html unchanged when there is no endnotes link or the
+   fetch fails (in that case the sanitizer still rewrites the link to the app,
+   the previous behavior). */
+async function inlineEndnotes(html: string): Promise<string> {
+  const m = html.match(ENDNOTES_LINK_RE);
+  if (!m) return html;
+  const visible = decodeEntities(m[0]!.replace(/<[^>]+>/g, "")).trim().toLowerCase();
+  if (visible !== "endnotes") return html;
+  const endnotesHtml = await fetchEndnotesHtml(m[2]!);
+  if (!endnotesHtml) return html;
+  return html.replace(m[0]!, endnotesHtml);
+}
+
 async function fetchPost(wpId: number): Promise<WpPost | null> {
   const url = `https://apicontent.jesusonline.com/wp-json/wp/v2/posts/${wpId}?_fields=id,slug,modified,title,content,link`;
   const res = await fetch(url);
@@ -395,7 +434,7 @@ async function buildOne(
     }
 
     const displayTitle = stripLeadingNumber(decodeEntities(post.title.rendered));
-    const bodyHtml = sanitizeHtml(post.content.rendered);
+    const bodyHtml = sanitizeHtml(await inlineEndnotes(post.content.rendered));
     const html = renderTemplate({
       title: displayTitle,
       bodyHtml,

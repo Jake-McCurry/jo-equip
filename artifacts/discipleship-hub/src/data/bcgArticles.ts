@@ -522,8 +522,8 @@ export const bcgArticles: BcgArticle[] = [
         { title: "Forever Loved series", href: "/channels/growth/forever-loved" },
         { title: "Experience God’s Love playlist", video: "/playlist/experience-gods-love" },
         { title: "40 Days of God’s Love", href: "/channels/growth/days-god-s-love", video: "/playlist/experience-gods-love" },
-        { title: "Timeless Love, Transforming Love" },
-        { title: "Love Bible studies", href: "/channels/growth/forever-loved-study" },
+        { title: "Timeless Love, Transforming Love", href: "/books/timeless-love-transforming-love" },
+        { title: "Love Bible studies", href: "https://jesusonline.com/forever-loved/bible-studies/" },
         { title: "One Another series", href: "/channels/growth/bb-living-family" },
       ]},
 

@@ -5,15 +5,11 @@
     "subId": "hope-times-crisis",
     "channelId": "growth",
     "title": "God in Times of Crisis",
-    "description": "See “Hope in Times of Crisis” main menu",
+    "description": "Watch the summary video",
     "blocks": [
       {
         "type": "p",
-        "html": "See <a href=\"https://app.jesusonline.com/series/235\" target=\"_blank\" rel=\"noopener noreferrer\">“Hope in Times of Crisis” main menu</a>"
-      },
-      {
-        "type": "p",
-        "html": "<a href=\"https://app.jesusonline.com/post/72002-01-hope-in-times-of-crisis\" target=\"_blank\" rel=\"noopener noreferrer\">Watch the summary video</a>"
+        "html": "<a href=\"/playlist/hope-in-times-of-crisis?play=cIATt88b_MM\">Watch the summary video</a>"
       },
       {
         "type": "p",
@@ -283,7 +279,7 @@
       },
       {
         "type": "p",
-        "html": "<a href=\"https://app.jesusonline.com/post/72002-01-hope-in-times-of-crisis\" target=\"_blank\" rel=\"noopener noreferrer\">Watch the summary video</a>"
+        "html": "<a href=\"/playlist/hope-in-times-of-crisis?play=cIATt88b_MM\">Watch the summary video</a>"
       }
     ]
   },

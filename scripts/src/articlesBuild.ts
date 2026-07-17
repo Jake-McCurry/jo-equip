@@ -272,7 +272,7 @@ function renderTemplate({
   .article p { margin: 0 0 0.85em 0; orphans: 3; widows: 3; }
   .article a { color: #b34800; text-decoration: underline; text-underline-offset: 2px; }
   .article strong { color: #002f55; }
-  .article ul, .article ol { margin: 0.5em 0 1em 1.4em; padding: 0; }
+  .article ul, .article ol { margin: 0.5em 0 1em 0; padding: 0 0 0 2.2em; }
   .article li { margin: 0.25em 0; }
   .article blockquote {
     margin: 1em 0; padding: 0.5em 1em;
@@ -418,7 +418,7 @@ const WATCH_VIDEO_P_RE =
 function rewriteWatchVideo(html: string, appSlug: string): string {
   return html.replace(WATCH_VIDEO_P_RE, block => {
     const visible = decodeEntities(block.replace(/<[^>]+>/g, "")).replace(/\s+/g, " ").trim();
-    if (!/^watch the video based on this article\.?$/i.test(visible)) return block;
+    if (!/^watch (?:the|a) video based on this article\.?$/i.test(visible)) return block;
     const equipHref = VIDEO_URL_BY_APP_SLUG.get(appSlug);
     if (!equipHref) return "";
     return block.replace(/href=(["'])[^"']*\1/i, `href="${equipHref}"`);
@@ -512,6 +512,22 @@ async function buildOne(
         }
       });
       await page.setContent(html, { waitUntil: "load", timeout: 30000 });
+      /* setContent's load event can fire before external images finish
+         downloading, which prints blank boxes where figures belong. Force
+         eager loading and wait for every image to settle (or error). */
+      /* (scripts package has no DOM lib — this function runs inside the page.) */
+      await page.evaluate(`(async () => {
+        const imgs = Array.from(document.images);
+        await Promise.all(imgs.map((img) => {
+          img.loading = "eager";
+          if (img.complete) return Promise.resolve();
+          return new Promise((resolve) => {
+            img.addEventListener("load", () => resolve(), { once: true });
+            img.addEventListener("error", () => resolve(), { once: true });
+            setTimeout(resolve, 15000);
+          });
+        }));
+      })()`);
       await page.pdf({
         path: outPath,
         format: "Letter",

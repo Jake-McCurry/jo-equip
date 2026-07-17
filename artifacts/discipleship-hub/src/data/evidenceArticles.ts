@@ -74,7 +74,7 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "p",
-        "html": "Martin Luther King was amazed at Jesus’ overwhelming, love even for his enemies."
+        "html": "Martin Luther King was amazed at Jesus’ overwhelming love even for his enemies."
       },
       {
         "type": "p",
@@ -170,11 +170,7 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "p",
-        "html": "Jesus had all the attributes and needs of a man. He got hungry. He felt pain. He required rest. He was tempted—yet without sin. However, Ravi Zacharias writes of Jesus Christ as more than just a man."
-      },
-      {
-        "type": "p",
-        "html": "<em>“Here, then, is the man from Nazareth, who claimed that His origin was from heaven and that His Father is none other than God Himself—a son not born out of physical consummation nor out of a need for communion, but the consummate expression of God in the flesh, in eternal communion with the Father.”</em><sup>11</sup>"
+        "html": "Jesus had all the attributes and needs of a man. He got hungry. He felt pain. He required rest. He was tempted—yet without sin. However, Jesus Christ was more than just a man."
       },
       {
         "type": "p",
@@ -186,7 +182,7 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "p",
-        "html": "On another day Jesus stunned the Jewish religious leaders by stating,"
+        "html": "On another day, Jesus stunned the Jewish religious leaders by stating,"
       },
       {
         "type": "p",
@@ -210,7 +206,7 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "p",
-        "html": "<em>“Indeed, this use of “I am” …alludes to Old Testament passages where God uses the same sort of self-referential language.”</em><sup>12</sup>"
+        "html": "<em>“Indeed, this use of “I am” …alludes to Old Testament passages where God uses the same sort of self-referential language.”</em><sup>11</sup>"
       },
       {
         "type": "p",
@@ -218,7 +214,7 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "p",
-        "html": "<em>“He says…’I am begotten of the One God, before Abraham was, I am,’ and remember what the words ‘I am’ were in Hebrew. They were the name of God, which must not be spoken by any human being, the name which it was death to utter.”</em><sup>13</sup>"
+        "html": "<em>“He says…’I am begotten of the One God, before Abraham was, I am,’ and remember what the words ‘I am’ were in Hebrew. They were the name of God, which must not be spoken by any human being, the name which it was death to utter.”</em><sup>12</sup>"
       },
       {
         "type": "p",
@@ -248,7 +244,7 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "p",
-        "html": "<em>“Then comes the real shock,’ wrote Lewis: ‘Among these Jews there suddenly turns up a man who goes about talking as if He was God. He claims to forgive sins. He says He always existed. He says He is coming to judge the world at the end of time.”</em><sup>14</sup>"
+        "html": "<em>“Then comes the real shock,’ wrote Lewis: ‘Among these Jews there suddenly turns up a man who goes about talking as if He was God. He claims to forgive sins. He says He always existed. He says He is coming to judge the world at the end of time.”</em><sup>13</sup>"
       },
       {
         "type": "p",
@@ -260,7 +256,7 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "p",
-        "html": "<em>“I am trying here to prevent anyone from saying the really foolish thing that people often say about Him: ‘I’m ready to accept Jesus as a great moral teacher, but I don’t accept his claim to be God.’ That is the one thing we must not say.”</em><sup>15</sup>"
+        "html": "<em>“I am trying here to prevent anyone from saying the really foolish thing that people often say about Him: ‘I’m ready to accept Jesus as a great moral teacher, but I don’t accept his claim to be God.’ That is the one thing we must not say.”</em><sup>14</sup>"
       },
       {
         "type": "p",
@@ -292,7 +288,7 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "p",
-        "html": "<em>“When he said He would rise again from the dead, the third day after He was crucified, He said something that only a fool would dare say if He expected the devotion of any disciples – unless He was sure He was going to rise.”</em><sup>16</sup>"
+        "html": "<em>“When he said He would rise again from the dead, the third day after He was crucified, He said something that only a fool would dare say if He expected the devotion of any disciples – unless He was sure He was going to rise.”</em><sup>15</sup>"
       },
       {
         "type": "p",
@@ -316,7 +312,7 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "p",
-        "html": "<em>“</em>Shortly after Jesus was executed, his followers were suddenly galvanized from a baffled and cowering group into people whose message about a living Jesus and a coming kingdom, preached at the risk of their lives, eventually changed an empire. Something happened…But exactly what?”<sup>17</sup>"
+        "html": "<em>“</em>Shortly after Jesus was executed, his followers were suddenly galvanized from a baffled and cowering group into people whose message about a living Jesus and a coming kingdom, preached at the risk of their lives, eventually changed an empire. Something happened…But exactly what?”<sup>16</sup>"
       },
       {
         "type": "p",
@@ -338,13 +334,13 @@ export const evidenceArticles: EvidenceArticle[] = [
         "type": "ol",
         "items": [
           "The tomb was secured by a large stone with a 24-hour trained Roman guard. It would have been impossible for the disciples to roll the stone away and remove Jesus’ body without notice.",
-          "A resurrection plot would have died out as soon as someone discovered Jesus’ body, yet that never happened. Tom Anderson, former president of the California Trial Lawyers Association, explains, <em>“With an event so well publicized, don’t you think that it’s reasonable that one historian, one eye witness, one antagonist would record for all time that he had seen Christ’s body? … The silence of history is deafening when it comes to the testimony against the resurrection.”</em><sup>18</sup>",
-          "The disciples changed from being cowards into men who were willing to be tortured and martyred by proclaiming the risen Jesus. Professor J. N. D. Anderson, author of <em>Evidence for the Resurrection </em>reasons, <em>“Think of the psychological absurdity of picturing a little band of defeated cowards cowering in an upper room one day and a few days later transformed into a company that no persecution could silence – and then attempting to attribute this dramatic change to nothing more convincing than a miserable fabrication … That simply wouldn’t make sense.”</em><sup>19</sup>"
+          "A resurrection plot would have died out as soon as someone discovered Jesus’ body, yet that never happened. Tom Anderson, former president of the California Trial Lawyers Association, explains, <em>“With an event so well publicized, don’t you think that it’s reasonable that one historian, one eye witness, one antagonist would record for all time that he had seen Christ’s body? … The silence of history is deafening when it comes to the testimony against the resurrection.”</em><sup>17</sup>",
+          "The disciples changed from being cowards into men who were willing to be tortured and martyred by proclaiming the risen Jesus. Professor J. N. D. Anderson, author of <em>Evidence for the Resurrection </em>reasons, <em>“Think of the psychological absurdity of picturing a little band of defeated cowards cowering in an upper room one day and a few days later transformed into a company that no persecution could silence – and then attempting to attribute this dramatic change to nothing more convincing than a miserable fabrication … That simply wouldn’t make sense.”</em><sup>18</sup>"
         ]
       },
       {
         "type": "p",
-        "html": "It was the dramatic change in the disciples’ behavior that convinced Morison he needed to change the theme of his book. He writes, <em>“Whoever comes to this problem has sooner or later to confront a fact that cannot be explained away … This fact is that … a profound conviction came to the little group of people – a change that attests to the fact that Jesus had risen from the grave.”</em><sup>20</sup>"
+        "html": "It was the dramatic change in the disciples’ behavior that convinced Morison he needed to change the theme of his book. He writes, <em>“Whoever comes to this problem has sooner or later to confront a fact that cannot be explained away … This fact is that … a profound conviction came to the little group of people – a change that attests to the fact that Jesus had risen from the grave.”</em><sup>19</sup>"
       },
       {
         "type": "p",
@@ -352,7 +348,7 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "p",
-        "html": "C. S. Lewis asks, “What are we to make of Jesus Christ?”<sup>21</sup> He says, “The real question is not what are we to make of Christ, but what is He to make of us?”<sup>22</sup>"
+        "html": "C. S. Lewis asks, “What are we to make of Jesus Christ?”<sup>20</sup> He says, “The real question is not what are we to make of Christ, but what is He to make of us?”<sup>21</sup>"
       },
       {
         "type": "p",
@@ -376,7 +372,7 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "p",
-        "html": "If you would like to learn more about Jesus’ offer of forgiveness and his free gift of eternal life we encourage you to read the article at the link below."
+        "html": "If you would like to learn more about Jesus’ offer of forgiveness and His gift of eternal life, we encourage you to read the article, “<a href=\"/channels/evidence/jesus-true-identity/is-jesus-relevant-today\">Is Jesus Relevant Today?</a>”"
       },
       {
         "type": "h2",
@@ -395,7 +391,6 @@ export const evidenceArticles: EvidenceArticle[] = [
           "Jaroslav Pelikan, <em>Jesus through the Centuries</em> (New York: Harper &amp; Row, 1987), 1.",
           "Quoted in Bernard Ramm, <em>Protestant Christian Evidences</em> (Chicago: Moody Press, 1957), 163.",
           "Peter Kreeft and Ronald K. Tacelli, <em>Handbook of Christian Apologetics</em> (Downers Grove, IL: InterVarsity, 1994), 150.",
-          "Ravi Zacharias, <em>Jesus Among Other Gods</em> (Nashville: Word, 2000), 39.",
           "Larry W. Hurtado, <em>Lord Jesus Christ</em> (Cambridge, UK, Eerdmans, 2003)",
           "C. S. Lewis, <em>God in the Dock</em> (Grand Rapids, MI: Eerdmans, 2,000), 157.",
           "C.S. Lewis, <em>Mere Christianity </em>(San Francisco: HarperCollins, 1972), 51.",
@@ -1173,6 +1168,40 @@ export const evidenceArticles: EvidenceArticle[] = [
       {
         "type": "p",
         "html": "“Something perfectly new in the history of the Universe had happened. Christ had defeated death. The door which had always been locked had for the very first time been forced open.”<sup>25</sup>"
+      },
+      {
+        "type": "h2",
+        "text": "Endnotes"
+      },
+      {
+        "type": "ol",
+        "items": [
+          "Josh McDowell, The New Evidence That Demands a Verdict (San Bernardino, CA: Here’s Life, 1999), ?203.",
+          "Wilbur M. Smith, A Great Certainty in This Hour of World Crises (Wheaton, ILL: Van Kampen Press, ?1951), 10, 11",
+          "The word Jesus uttered, “fulfilled” is <em>tetelestai</em> in Greek which is an accounting term meaning “debt paid in full.” It refers to the debt of our sins.",
+          "Historian Will Durant reported, “About the middle of this first century a pagan named Thallus … argued that ?the abnormal darkness alleged to have accompanied the death of Christ was a purely natural phenomenon and coincidence; the argument took the existence of Christ for granted. The denial of that existence never seems to have occurred even to the bitterest gentile or Jewish opponents of nascent Christianity.” Will Durant, “Caesar and Christ,” vol. 3 of The Story of Civilization (New York: Simon &amp; Schuster, 1972), 555.",
+          "Peter Steinfels, “Jesus Died – And Then What Happened?” New York Times, April 3, 1988, E9.",
+          "Lucian, Peregrinus Proteus. Michael J. Wilkins and J. P. Moreland, eds, Jesus Under Fire (Grand Rapids, MI: Zondervan, 1995), 2.",
+          "Josephus, Flavius, Antiquities of the Jews, 18. 63, 64. [Although portions of Josephus’ comments about ?Jesus have been disputed, this reference to Pilate condemning him to the cross is deemed authentic by ?most scholars.]",
+          "Tacitus, Annals, 15, 44. In Great Books of the Western World, ed. By Robert Maynard Hutchins, Vol. ?15, The Annals and The Histories by Cornelius Tacitus (Chicago: William Benton, 1952). “What Is a Skeptic?” editorial in Skeptic, vol 11, no. 2), 5.",
+          "Frank Morison, Who Moved the Stone? (Grand Rapids, MI: Lamplighter, 1958), “What Happened Friday Afternoon.”",
+          "Josh McDowell, The Resurrection Factor Part 3, Josh McDowell Ministries, 2009, ?http://www.bethinking.org/bible-jesus/intermediate/the-resurrection-factor-part-3.htm.",
+          "Quoted in Josh McDowell, The Resurrection Factor (San Bernardino, CA: Here’s Life, 1981), 66.",
+          "Gary Collins quoted in Gary Habermas, “Explaining Away the Resurrection,” http://www.garyhabermas.com/articles/crj_explainingaway/crj_explainingaway.htm.",
+          "Thomas James Thorburn, The Resurrection Narratives and Modern Criticism (London: Kegan Paul, ?Trench, Trubner &amp; Co., Ltd., 1910.), 158, 159.",
+          "Sherwin-White, Roman Society, 190.",
+          "Even skeptical scholars agree that the creed in 1 Corinthians 15 is not an interpolation but was a creed formulated and taught at a very early date after Jesus’ death. Gerd Lüdemann, a skeptic scholar, maintains that “the elements in the tradition are to be dated to the first two years after the crucifixion of Jesus… not later than three years…”[17] Michael Goulder, another skeptic scholar, states that it “goes back at least to what Paul was taught when he was converted, a couple of years after the crucifixion”. https://en.wikipedia.org/wiki/1_Corinthians_15",
+          "Gary R. Habermas and Michael R. Licona, The Case for the Resurrection of Jesus (Grand Rapids, MI: ?Kregel, 2004), 85.",
+          "Habermas and Licona, 87",
+          "Acts 10:39-41.",
+          "Morison, 104.",
+          "J. N. D. Anderson, “The Resurrection of Jesus Christ,” Christianity Today,12. April, 1968.",
+          "Morison, 115.",
+          "Quoted in Bernard Ramm, Protestant Christian Evidences (Chicago: Moody Press, 1957), 163.",
+          "Quoted in Bill Bright, Believing God for the Impossible (San Bernardino, CA: Here’s Life, 1979), 177-8.",
+          "Will Durant, The Story of Philosophy (New York: Pocket, 1961), 428.",
+          "C. S. Lewis, God in the Dock (Grand Rapids, MI: Eerdmans, 2000 ), 159."
+        ]
       }
     ]
   },
@@ -1338,6 +1367,28 @@ export const evidenceArticles: EvidenceArticle[] = [
       {
         "type": "p",
         "html": "Many believe that Jesus’ resurrection was simply a mythical account. Several skeptics who regarded Jesus’ resurrection as mythical decided to investigate the evidence. Read their startling conclusions in “<a href=\"/channels/evidence/jesus-true-identity/did-jesus-rise-from-the-dead\">Did Jesus Rise from the Dead?</a>”"
+      },
+      {
+        "type": "h2",
+        "text": "Endnotes"
+      },
+      {
+        "type": "ol",
+        "items": [
+          "Corinthians 15:3-6, J. B. Phillips.",
+          "Norman Geisler, <em>I Don’t Have Enough Faith to be An Atheist</em> (Wheaton IL: Crossway, 2004), 312.",
+          "Ibid.",
+          "Cited in Norman Geisler’s <em>Baker Encyclopedia of Christian Apologetics</em> pg. 490, and his quote from Y.S. Chishti, <em>What is Christianity?</em>, pg. 87.",
+          "Ronald H. Nash, “Was the New Testament Influenced by Pagan Religions,” <em>Christian Research Journal</em>, Winter 1994. www.inplainsite.org.",
+          "Cited in Maarten Jozef Vermaseren, Eugene N. Lane, <em>Cybelle, Attis and Related Cults</em>(New York: 1996), 42.",
+          "Cited in Lee Strobel, <em>The Case for the Real Jesus</em> (Grand Rapids, MI: Zondervan, 2007), 160-61. [In his interview with Strobel, Michael Licona states that Mettinger takes exception to that nearly universal scholarship by claiming that there are at least three and possibly as many as five dying and rising gods that predate Christianity. However, after combing through all these accounts and critically analyzing them Mettinger adds that “none of these serve as parallels to Jesus.” Mettinger writes, “There is, as far as I am aware, no prima facie evidence that the death and resurrection of Jesus is a mythological construct, drawing on the myths and rites of the dying and rising gods of the surrounding world.… The death and resurrection of Jesus retains its unique character in the history of religions.”",
+          "Ben Witherington, <a href=\"http://benwitherington.blogspot.com/2007/12/zeitgeist-of-zeitgeist-movie.html\" target=\"_blank\" rel=\"noopener noreferrer\">http://benwitherington.blogspot.com/2007/12/zeitgeist-of-zeitgeist-movie.html.</a>",
+          "Michael Grant, <em>Jesus: An Historian’s Review of the Gospels</em> (London: Rigel, 2004), 200.",
+          "Paul Johnson, “A Historian Looks at Jesus,” speech to Dallas Seminary, 1986.",
+          "H. G. Wells, <em>The Outline of History</em> (New York: Doubleday, 1949), 528.",
+          "Peter Steinfels, “Jesus Died – And Then What Happened?” <em>New York Times</em>, April 3, 1988, E9.",
+          "R. C. Sproul, <em>Reason to Believe</em> (Grand Rapids, MI: Lamplighter, 1982), 44."
+        ]
       }
     ]
   },
@@ -2134,8 +2185,40 @@ export const evidenceArticles: EvidenceArticle[] = [
         "html": "In the next chapter we will examine the historical and textual evidence demonstrating the overwhelming reliability of the New Testament."
       },
       {
-        "type": "p",
-        "html": "Endnotes"
+        "type": "h2",
+        "text": "Endnotes"
+      },
+      {
+        "type": "ol",
+        "items": [
+          "Quoted in Robert Elsberg, ed.,<em> A Critique of Gandhi on Christianity</em> (New York: Orbis Books, 1991), 26 &amp; 27.",
+          "Joseph Klausner, <em>Jesus of Nazareth</em> (New York: The Macmillan Co., 1946), 43, 44.",
+          "Will Durant, <em>The Story of Philosophy</em> (New York: Washington Square, 1961), 428.",
+          "inda Kulman and Jay Tolson, “The Jesus Code,” <em>U. S. News &amp; World Report</em>, December 22, 2003, 1.",
+          "Ravi Zacharias, Jesus among Other Gods (Nashville, TN: Word, 2000), 89.",
+          "Peter Kreeft and Ronald K. Tacelli, <em>Handbook of Christian Apologetics</em> (Downers Grove, IL: InterVarsity, 1994), 150.",
+          "John Piper, The Pleasures of God (Sisters, OR: Multnomah, 2000), 35.",
+          "Bono, quoted in, Timothy Keller, <em>The Reason for God</em> (New York: Penguin Group Publishers, 2008), 229.",
+          "John 17:3.",
+          "John 14:9",
+          "John 8:58.",
+          "John 11:25",
+          "John 8:12",
+          "John 14:6",
+          "Ibid.",
+          "For the meaning of “ego eimi.” See, http://www.y-jesus.com/jesus_believe_god_2.php",
+          "John 10:33",
+          "C. S. Lewis, <em>Mere Christianity</em> (San Francisco: Harper, 2001), 51.",
+          "Lewis, Ibid.",
+          "A Deist is someone who believes in a standoffish God—a deity who created the world and then lets it run according to pre-established laws. Deism was a fad among intellectuals around the time of America’s independence, and Jefferson bought into it.",
+          "Lewis, 52.",
+          "J. I. Packer, <em>Knowing God</em> (Downers Grove, IL: InterVarsity, 1993), 57.",
+          "Philip Schaff, <em>The Person of Christ: The Miracle of History</em> (1913), 94, 95.",
+          "Lewis, 52.",
+          "Schaff, 98, 99.",
+          "Bono, Ibid.",
+          "Lewis, 52."
+        ]
       }
     ]
   },
@@ -4642,15 +4725,11 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "p",
-        "html": "We continually make choices—what to wear, what to eat, our career, marriage partner, etc. It is the same when it comes to a relationship with God. Author Ravi Zacharias writes:"
-      },
-      {
-        "type": "quote",
-        "html": "“Jesus’ message reveals that every individual…comes to know God not by virtue of birth, but by a conscious choice to let Him have His rule in his or her individual life.”<sup>16</sup>"
+        "html": "We continually make choices—what to wear, what to eat, our career, marriage partner, etc. It is the same when it comes to a relationship with God. We can choose to accept Jesus, ignore him, or reject him."
       },
       {
         "type": "p",
-        "html": "Our choices are often influenced by others. But in some instances we are given the wrong advice. On September 11, 2001, 600 innocent people put their trust in the wrong advice, and innocently suffered the consequences.The true story goes like this:"
+        "html": "Our choices are often influenced by others. But in some instances we are given the wrong advice. On September 11, 2001, 600 innocent people put their trust in the wrong advice, and innocently suffered the consequences. The true story goes like this:"
       },
       {
         "type": "p",
@@ -4666,7 +4745,7 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "p",
-        "html": "Shortly after 9:00 A.M., another jet crashed into the 80th floor of the south tower. Nearly all 600 people in the top floors of the south tower perished. The failure to evacuate the building was one of the day’s great tragedies.<sup>17</sup>"
+        "html": "Shortly after 9:00 A.M., another jet crashed into the 80th floor of the south tower. Nearly all 600 people in the top floors of the south tower perished. The failure to evacuate the building was one of the day’s great tragedies.<sup>16</sup>"
       },
       {
         "type": "p",
@@ -4682,7 +4761,7 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "quote",
-        "html": "“I had been concerned with myself. I had done this and that, I had achieved, I had succeeded and I had given God none of the credit, never once thanking Him for any of His gifts to me. I had never thought of anything being ‘immeasurably superior’ to myself, or if I had in fleeting moments thought about the infinite power of God, I had not related Him to my life.”<sup>18</sup>"
+        "html": "“I had been concerned with myself. I had done this and that, I had achieved, I had succeeded and I had given God none of the credit, never once thanking Him for any of His gifts to me. I had never thought of anything being ‘immeasurably superior’ to myself, or if I had in fleeting moments thought about the infinite power of God, I had not related Him to my life.”<sup>17</sup>"
       },
       {
         "type": "p",
@@ -4698,23 +4777,15 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "p",
-        "html": "However, Zacharias, who has debated with intellectuals on hundreds of college campuses believes that the real reason most people reject God is moral. He writes:"
+        "html": "The main reason most people reject Christ is that they don’t want him interfering with their moral choices. The desire for moral freedom kept C. S. Lewis from God for most of his college years. After his quest for truth led him to God, Lewis explains how acceptance of Christ involves more than just intellectual agreement with the facts. He writes:"
       },
       {
         "type": "quote",
-        "html": "” A man rejects God neither because of intellectual demands nor because of the scarcity of evidence. A man rejects God because of moral resistance that refuses to admit his need for God.”<sup>19</sup>"
+        "html": "“Fallen man is not simply an imperfect creature who needs improvement: he is a rebel who must lay down his arms. Laying down your arms, surrendering, saying you are sorry, realizing that you have been on the wrong track and getting ready to start life over again..is what Christians call repentance.”<sup>18</sup>"
       },
       {
         "type": "p",
-        "html": "The desire for moral freedom kept C. S. Lewis from God for most of his college years. After his quest for truth led him to God, Lewis explains how acceptance of Christ involves more than just intellectual agreement with the facts. He writes:"
-      },
-      {
-        "type": "quote",
-        "html": "“Fallen man is not simply an imperfect creature who needs improvement: he is a rebel who must lay down his arms. Laying down your arms, surrendering, saying you are sorry, realizing that you have been on the wrong track and getting ready to start life over again..is what Christians call repentance.”<sup>20</sup>"
-      },
-      {
-        "type": "p",
-        "html": "Repentance is a word that means a dramatic turn-around in thinking. That’s what happened to Nixon’s former “hatchet man”. After Watergate was exposed, Colson began thinking about life differently. Sensing his own lack of purpose, he began reading Lewis’s <em>Mere Christianity</em>, given to him by a friend. Trained as a lawyer, Colson took out a yellow legal pad and began writing down Lewis’s arguments. Colson recalled:"
+        "html": "Repentance is a word that means a dramatic turnaround in thinking. That’s what happened to Nixon’s former “hatchet man”. After Watergate was exposed, Colson began thinking about life differently. Sensing his own lack of purpose, he began reading Lewis’s <em>Mere Christianity</em>, given to him by a friend. Trained as a lawyer, Colson took out a yellow legal pad and began writing down Lewis’s arguments. Colson recalled:"
       },
       {
         "type": "quote",
@@ -4726,7 +4797,7 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "quote",
-        "html": "“And so early Friday morning, while I sat alone staring at the sea I love, words I had not been certain I could understand or say fell naturally from my lips: ‘Lord Jesus, I believe You. I accept You. Please come into my life. I commit it to You.’”<sup>21</sup>"
+        "html": "“And so early Friday morning, while I sat alone staring at the sea I love, words I had not been certain I could understand or say fell naturally from my lips: ‘Lord Jesus, I believe You. I accept You. Please come into my life. I commit it to You.’”<sup>19</sup>"
       },
       {
         "type": "p",
@@ -4814,10 +4885,8 @@ export const evidenceArticles: EvidenceArticle[] = [
           "Old Testament, Isaiah 59:2",
           "New Testament, Romans 5:8",
           "Assayas, Ibid.",
-          "Ravi Zacharias, <em>Jesus among Other Gods</em> (Nashville: Word, 2000), 158.",
           "Martha T. Moore and Dennis Cauchon, “Delay Meant Death on 9/11,” <em>USA Today</em>, Sept. 3, 2002, 1A.",
           "Charles W. Colson, <em>Born Again</em> (Old Tappan, NJ: Chosen, 1976), 114.",
-          "Ravi Zacharias, <em>A Shattered Visage: The Real Face of Atheism</em> (Grand Rapids, MI: Baker, 2004), 155.",
           "Lewis, 56.",
           "Colson, 129"
         ]
@@ -4829,12 +4898,8 @@ export const evidenceArticles: EvidenceArticle[] = [
     "appSlug": "52002-does-the-universe-have-a-beginning",
     "subId": "existence-of-god",
     "title": "Does the Universe Have a Beginning?",
-    "description": "Watch a video based on this article",
+    "description": "Since the dawn of civilization man has gazed in awe at the stars, wondering what they are and how they got there. Although our unaided eyes can only see…",
     "blocks": [
-      {
-        "type": "p",
-        "html": "<a href=\"https://app.jesusonline.com/post/75200-2-did-the-universe-have-a-beginning\" target=\"_blank\" rel=\"noopener noreferrer\">Watch a video based on this article</a>"
-      },
       {
         "type": "figure",
         "src": "does-the-universe-have-a-beginning-1",

@@ -146,10 +146,23 @@ function stripTags(html: string): string {
 
 type RwTarget = { channelId: string; subId: string; id: string };
 
+/* App-post slugs whose links must point at a specific internal URL instead
+   of the default article-page rewrite (e.g. playlist deep-links). */
+const HREF_OVERRIDES: Record<string, string> = {
+  /* "Watch the summary video" on Duty, Discipline, Delight → EQUIP playlist */
+  "73227-0-7-habits-for-a-deeper-relationship-with-god":
+    "/playlist/7-habits-deeper-relationship-with-god?play=c2QgWzLjLco",
+  /* "Watch the summary video" on God in Times of Crisis → EQUIP playlist */
+  "72002-01-hope-in-times-of-crisis":
+    "/playlist/hope-in-times-of-crisis?play=cIATt88b_MM",
+};
+
 function cleanInline(html: string, rw: Map<string, RwTarget>): string {
   let s = html;
   s = s.replace(/<img[^>]*>/gi, "");
   const rewrite = (q: string, slug: string) => {
+    const override = HREF_OVERRIDES[slug];
+    if (override) return `href=${q}${override}${q}`;
     const target = rw.get(slug) ?? rw.get(articleIdOf(slug));
     if (target) return `href=${q}/channels/${target.channelId}/${target.subId}/${target.id}${q}`;
     return `href=${q}https://app.jesusonline.com/post/${slug}${q}`;
@@ -289,7 +302,10 @@ async function convert(
         /* Drop the "Watch the video based on this article" lead-in — the
            EQUIP sub-topic pages already expose the video via the Video
            button, so the line is redundant on-site. */
-        if (/^watch the video based on this article\.?$/i.test(stripTags(b.inner))) break;
+        if (/^watch (?:the|a) video based on this article\.?$/i.test(stripTags(b.inner))) break;
+        /* Drop app-menu pointer paragraphs ("See “…” main menu") — they
+           point at app series menus with no on-site equivalent. */
+        if (/^see “?[^“”]+”? main menu$/i.test(stripTags(b.inner))) break;
         const endnoteHref = b.inner.match(
           /href=["'](?:https?:)?\/\/apicontent\.jesusonline\.com\/[^"']*?([\w-]*endnotes[\w-]*)\/?["']/i,
         );
@@ -403,6 +419,19 @@ async function main() {
       if (!rw.has(appSlug)) rw.set(appSlug, target);
       if (!rw.has(id)) rw.set(id, target);
     }
+  }
+
+  /* Some WP posts reference retired app slugs whose content lives on EQUIP
+     under a different article. Alias those slugs to the on-site target. */
+  const SLUG_ALIASES: Record<string, string> = {
+    "51010-was-jesus-the-messiah": "51007-is-jesus-the-jewish-messiah",
+  };
+  for (const [from, to] of Object.entries(SLUG_ALIASES)) {
+    const target = rw.get(to);
+    if (!target) continue;
+    if (!rw.has(from)) rw.set(from, target);
+    const fromId = articleIdOf(from);
+    if (!rw.has(fromId)) rw.set(fromId, target);
   }
 
   for (const sub of selected) {

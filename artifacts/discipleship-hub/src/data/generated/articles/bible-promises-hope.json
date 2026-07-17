@@ -5,12 +5,8 @@
     "subId": "bible-promises-hope",
     "channelId": "growth",
     "title": "Hope in God’s Promises",
-    "description": "See “Bible Promises for Hope” main menu",
+    "description": "The Bible is full of promises from God that can help us find hope and strength when we need it most. By clinging to God’s promises, we demonstrate our…",
     "blocks": [
-      {
-        "type": "p",
-        "html": "See <a href=\"https://app.jesusonline.com/series/146\" target=\"_blank\" rel=\"noopener noreferrer\">“Bible Promises for Hope” main menu</a>"
-      },
       {
         "type": "p",
         "html": "The Bible is full of promises from God that can help us find hope and strength when we need it most. By clinging to God’s promises, we demonstrate our faith in His trustworthiness and loving concern for us."

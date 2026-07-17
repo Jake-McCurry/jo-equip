@@ -5,15 +5,11 @@
     "subId": "bb-growing-closer-habits",
     "channelId": "growth",
     "title": "Cultivate 7 Habits",
-    "description": "See “Habits for Greater Intimacy with God” main menu",
+    "description": "Watch the summary video",
     "blocks": [
       {
         "type": "p",
-        "html": "See <a href=\"https://app.jesusonline.com/series/97\" target=\"_blank\" rel=\"noopener noreferrer\">“Habits for Greater Intimacy with God” main menu</a>"
-      },
-      {
-        "type": "p",
-        "html": "<a href=\"https://app.jesusonline.com/post/73227-0-7-habits-for-a-deeper-relationship-with-god\" target=\"_blank\" rel=\"noopener noreferrer\">Watch the summary video</a>"
+        "html": "<a href=\"/playlist/7-habits-deeper-relationship-with-god?play=c2QgWzLjLco\">Watch the summary video</a>"
       },
       {
         "type": "p",

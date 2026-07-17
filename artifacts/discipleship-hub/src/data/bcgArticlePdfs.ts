@@ -14,7 +14,7 @@ export interface BcgArticlePdfMeta {
 
 export const bcgArticlePdfs: Record<string, BcgArticlePdfMeta> = {
   "a-great-commission-church": { bytes: 441636 },
-  "a-hope-filled-church": { bytes: 448537 },
+  "a-hope-filled-church": { bytes: 543123 },
   "a-jesusonline-equipped-church": { bytes: 647836 },
   "a-love-demonstrating-relational-church": { bytes: 597318 },
   "a-model-church": { bytes: 126229 },

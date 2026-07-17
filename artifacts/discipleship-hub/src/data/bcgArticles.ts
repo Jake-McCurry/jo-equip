@@ -477,6 +477,7 @@ export const bcgArticles: BcgArticle[] = [
       ]},
 
       REGISTER_CTA,
+      { type: "figure", src: "bgc6s2-6", alt: "5 grace-centered shifts in focus — focus on God’s majesty more than your circumstances, God’s faithfulness instead of your limited resources, today’s blessings rather than worries about tomorrow, the next step instead of attempting to predict the future, and God’s supernatural presence more than your adversity." },
     ],
   },
 

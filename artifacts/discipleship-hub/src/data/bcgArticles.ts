@@ -704,6 +704,7 @@ export const bcgArticles: BcgArticle[] = [
       ]},
 
       REGISTER_CTA,
+      { type: "figure", src: "bgc10s2-10", alt: "Equipping your website with ready gospel resources — JesusOnline offers engaging, biblically grounded presentations your church can easily incorporate: God is Hope, Forever Loved, Jesus’ Resurrection & You, and The Gift of Heaven." },
     ],
   },
 

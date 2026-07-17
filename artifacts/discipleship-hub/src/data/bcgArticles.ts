@@ -428,8 +428,8 @@ export const bcgArticles: BcgArticle[] = [
         { title: "Walking by the Spirit", href: "/channels/growth/bb-walking-spirit" },
         { title: "Power for Supernatural Living", href: "/channels/growth/kingdomnomics-son-power" },
         { title: "Walk in the Spirit, a video series", video: "/playlist/life-in-the-spirit" },
-        { title: "Living by the Spirit" },
-        { title: "How to Be Filled with the Holy Spirit" },
+        { title: "Living by the Spirit", href: "/channels/growth/new-life-christ/living-by-the-spirit" },
+        { title: "How to Be Filled with the Holy Spirit", href: "/channels/growth/bb-walking-spirit" },
         { title: "Holy Spirit, a New Life in Christ Bible study", href: "/channels/growth/new-life-christ" },
       ]},
 

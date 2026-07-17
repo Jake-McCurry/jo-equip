@@ -146,10 +146,20 @@ function stripTags(html: string): string {
 
 type RwTarget = { channelId: string; subId: string; id: string };
 
+/* App-post slugs whose links must point at a specific internal URL instead
+   of the default article-page rewrite (e.g. playlist deep-links). */
+const HREF_OVERRIDES: Record<string, string> = {
+  /* "Watch the summary video" on Duty, Discipline, Delight → EQUIP playlist */
+  "73227-0-7-habits-for-a-deeper-relationship-with-god":
+    "/playlist/7-habits-deeper-relationship-with-god?play=c2QgWzLjLco",
+};
+
 function cleanInline(html: string, rw: Map<string, RwTarget>): string {
   let s = html;
   s = s.replace(/<img[^>]*>/gi, "");
   const rewrite = (q: string, slug: string) => {
+    const override = HREF_OVERRIDES[slug];
+    if (override) return `href=${q}${override}${q}`;
     const target = rw.get(slug) ?? rw.get(articleIdOf(slug));
     if (target) return `href=${q}/channels/${target.channelId}/${target.subId}/${target.id}${q}`;
     return `href=${q}https://app.jesusonline.com/post/${slug}${q}`;
@@ -289,7 +299,9 @@ async function convert(
         /* Drop the "Watch the video based on this article" lead-in — the
            EQUIP sub-topic pages already expose the video via the Video
            button, so the line is redundant on-site. */
-        if (/^watch the video based on this article\.?$/i.test(stripTags(b.inner))) break;
+        if (/^watch (?:the|a) video based on this article\.?$/i.test(stripTags(b.inner))) break;
+        /* Drop app-menu pointer paragraphs that have no on-site equivalent. */
+        if (/^see “?habits for greater intimacy with god”? main menu$/i.test(stripTags(b.inner))) break;
         const endnoteHref = b.inner.match(
           /href=["'](?:https?:)?\/\/apicontent\.jesusonline\.com\/[^"']*?([\w-]*endnotes[\w-]*)\/?["']/i,
         );

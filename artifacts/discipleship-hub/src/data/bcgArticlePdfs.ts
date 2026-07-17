@@ -14,13 +14,13 @@ export interface BcgArticlePdfMeta {
 
 export const bcgArticlePdfs: Record<string, BcgArticlePdfMeta> = {
   "a-great-commission-church": { bytes: 1688268 },
-  "a-hope-filled-church": { bytes: 526190 },
+  "a-hope-filled-church": { bytes: 526824 },
   "a-jesusonline-equipped-church": { bytes: 647836 },
-  "a-love-demonstrating-relational-church": { bytes: 594703 },
+  "a-love-demonstrating-relational-church": { bytes: 596472 },
   "a-model-church": { bytes: 126122 },
-  "a-spirit-dependent-church": { bytes: 518537 },
+  "a-spirit-dependent-church": { bytes: 532278 },
   "a-total-life-discipleship-church": { bytes: 693521 },
-  "a-transformational-teaching-church": { bytes: 480369 },
+  "a-transformational-teaching-church": { bytes: 480385 },
   "an-attractive-and-inviting-church": { bytes: 199381 },
   "an-attractive-church": { bytes: 500113 },
   "an-intentional-worship-church": { bytes: 456667 },

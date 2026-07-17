@@ -24,9 +24,10 @@ export type ArticleBlock =
      (resolved via bcgImages.ts). `alt` is required for a11y/SEO. `caption`
      is optional and renders as a muted <figcaption>. */
   | { type: "figure"; src: string; alt: string; caption?: string }
-  /* Resource list with PDF / Video / App buttons, styled like the chips on
+  /* Resource list with Read / Video / PDF buttons, styled like the chips on
      channel/topic pages: orange + linked when the URL is known, gray when
-     not. `href` (optional) links the resource title itself. Internal links
+     not. `href` (optional) links the resource title itself and drives the
+     Read chip. Internal links
      are root-relative ("/channels/...", "/playlist/..."); the page component
      prefixes the base path, and the PDF build rewrites them to absolute
      equip.jesusonline.com URLs. */
@@ -38,7 +39,6 @@ export interface ResourceListItem {
   href?: string;
   pdf?: string;
   video?: string;
-  app?: string;
 }
 
 export interface BcgArticle {
@@ -389,9 +389,9 @@ export const bcgArticles: BcgArticle[] = [
 
       { type: "h3", text: "From Building Blocks for Maturity" },
       { type: "resourceList", items: [
-        { title: "God’s Majestic Qualities", href: "/channels/growth/building-blocks" },
-        { title: "Your New Identity, Overview", href: "/channels/growth/building-blocks" },
-        { title: "Walking by the Spirit", href: "/channels/growth/building-blocks" },
+        { title: "God’s Majestic Qualities", href: "/channels/growth/bb-growing-closer-majesty" },
+        { title: "Your New Identity, Overview", href: "/channels/growth/bb-becoming-new-you" },
+        { title: "Walking by the Spirit", href: "/channels/growth/bb-walking-spirit" },
       ]},
 
       { type: "h3", text: "Recommended Resources on Amazon" },
@@ -425,12 +425,12 @@ export const bcgArticles: BcgArticle[] = [
       ...WLL,
       { type: "h3", text: "Holy Spirit Resources" },
       { type: "resourceList", items: [
-        { title: "Walking by the Spirit" },
-        { title: "Power for Supernatural Living" },
-        { title: "Walk in the Spirit, a video series" },
+        { title: "Walking by the Spirit", href: "/channels/growth/bb-walking-spirit" },
+        { title: "Power for Supernatural Living", href: "/channels/growth/kingdomnomics-son-power" },
+        { title: "Walk in the Spirit, a video series", video: "/playlist/life-in-the-spirit" },
         { title: "Living by the Spirit" },
         { title: "How to Be Filled with the Holy Spirit" },
-        { title: "Holy Spirit, a New Life in Christ Bible study" },
+        { title: "Holy Spirit, a New Life in Christ Bible study", href: "/channels/growth/new-life-christ" },
       ]},
 
       REGISTER_CTA,
@@ -474,7 +474,7 @@ export const bcgArticles: BcgArticle[] = [
       { type: "resourceList", items: [
         { title: "Hope in Times of Crisis", href: "/channels/growth/hope-times-crisis", video: "/playlist/hope-in-times-of-crisis" },
         { title: "Bible Promises for Hope", href: "/channels/growth/bible-promises-hope" },
-        { title: "God Is Hope" },
+        { title: "God Is Hope", href: "https://jesusonline.com/god-is-hope/" },
       ]},
 
       REGISTER_CTA,
@@ -524,8 +524,8 @@ export const bcgArticles: BcgArticle[] = [
         { title: "Experience God’s Love playlist", video: "/playlist/experience-gods-love" },
         { title: "40 Days of God’s Love", href: "/channels/growth/days-god-s-love", video: "/playlist/experience-gods-love" },
         { title: "Timeless Love, Transforming Love" },
-        { title: "Love Bible studies" },
-        { title: "One Another series" },
+        { title: "Love Bible studies", href: "/channels/growth/forever-loved-study" },
+        { title: "One Another series", href: "/channels/growth/bb-living-family" },
       ]},
 
       REGISTER_CTA,

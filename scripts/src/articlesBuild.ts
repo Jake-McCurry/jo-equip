@@ -512,6 +512,22 @@ async function buildOne(
         }
       });
       await page.setContent(html, { waitUntil: "load", timeout: 30000 });
+      /* setContent's load event can fire before external images finish
+         downloading, which prints blank boxes where figures belong. Force
+         eager loading and wait for every image to settle (or error). */
+      /* (scripts package has no DOM lib — this function runs inside the page.) */
+      await page.evaluate(`(async () => {
+        const imgs = Array.from(document.images);
+        await Promise.all(imgs.map((img) => {
+          img.loading = "eager";
+          if (img.complete) return Promise.resolve();
+          return new Promise((resolve) => {
+            img.addEventListener("load", () => resolve(), { once: true });
+            img.addEventListener("error", () => resolve(), { once: true });
+            setTimeout(resolve, 15000);
+          });
+        }));
+      })()`);
       await page.pdf({
         path: outPath,
         format: "Letter",

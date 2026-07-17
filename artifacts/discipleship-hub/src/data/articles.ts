@@ -533,6 +533,7 @@ export const articlePdfs: Record<string, ArticlePdfMeta> = {
   "22830-031-echo-into-eternity": { title: "Echo into Eternity", bytes: 117754, modified: "2024-11-20T05:31:16" },
   "22830-introduction-to-kingdomnomics-converterlator": { title: "Introduction to KingdomNomics Converterlator", bytes: 138606, modified: "2024-11-20T05:31:22" },
   "22970-006-moving-on": { title: "Moving On", bytes: 116250, modified: "2022-12-07T16:59:50" },
+  "22985-fear-not": { title: "Fear Not", bytes: 119524, modified: "2022-12-11T05:22:20" },
   "23101-what-is-prayer": { title: "What is Prayer?", bytes: 126154, modified: "2023-10-27T21:42:32" },
   "23102-why-pray": { title: "Why Pray?", bytes: 123093, modified: "2025-01-08T20:41:46" },
   "23103-prayer-and-fasting": { title: "Prayer and Fasting", bytes: 122023, modified: "2026-07-17T16:15:04" },

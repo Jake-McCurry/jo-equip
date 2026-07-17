@@ -312,6 +312,92 @@
     ]
   },
   {
+    "id": "fear-not",
+    "appSlug": "22985-fear-not",
+    "subId": "new-perspectives-life-change",
+    "channelId": "growth",
+    "title": "Fear Not",
+    "description": "What is it you fear? Is it rejection? Failure? Health that may not last?",
+    "blocks": [
+      {
+        "type": "quote",
+        "html": "Be strong and courageous. Do not be afraid or terrified because of them, for the LORD your God goes with you; he will never leave you nor forsake you. (Deuteronomy 31:6, NIV)"
+      },
+      {
+        "type": "p",
+        "html": "What is it you fear? Is it rejection? Failure? Health that may not last?"
+      },
+      {
+        "type": "p",
+        "html": "We want a guarantee that everything will work out fine for us. But there are no guarantees."
+      },
+      {
+        "type": "quote",
+        "html": "“Our future may look fearfully intimidating, yet we can look up to the engineer of the universe confident nothing escapes his attention or slips out of the control of those strong hands.” —Elizabeth Elliot"
+      },
+      {
+        "type": "p",
+        "html": "Is fear holding you back from pursuing something God wants you to do? The Bible tells us, “God has not given us a spirit of fear and timidity, but of power, love, and self-discipline” (2 Timothy 1:7)."
+      },
+      {
+        "type": "p",
+        "html": "When we live with a spirit of fear, our minds are filled with every imaginable bad thing that could happen. We don’t want to move forward until we have assurance everything is safe. Only God can take away fear, he is the answer!"
+      },
+      {
+        "type": "h2",
+        "text": "Fear of Being Hurt"
+      },
+      {
+        "type": "p",
+        "html": "No one wants to experience pain, whether physically or emotionally. But we can all become more courageous as we shift our gaze to our loving, powerful heavenly Father."
+      },
+      {
+        "type": "quote",
+        "html": "The LORD is my light and my salvation—<br> so why should I be afraid?<br>The LORD is my fortress, protecting me<br> from danger,<br>so why should I tremble?<br>(Psalm 27:1)"
+      },
+      {
+        "type": "p",
+        "html": "God provides us with his light so we can become aware of real danger, instead of imagined danger, as we move forward."
+      },
+      {
+        "type": "h2",
+        "text": "Fear of Rejection"
+      },
+      {
+        "type": "p",
+        "html": "Venturing into new relationships can be unnerving because we cannot be sure of how we will be received by others. Rejection is painful. But when we keep our focus on God and his unconditional love for us, what others think becomes less important."
+      },
+      {
+        "type": "quote",
+        "html": "We can say with confidence, “The LORD is my helper, so I will have no fear. What can mere people do to me?” (Hebrews 13:6)"
+      },
+      {
+        "type": "p",
+        "html": "When you experience “rejection,” remember that what God thinks of you is what really matters."
+      },
+      {
+        "type": "h2",
+        "text": "Fear of Abandonment"
+      },
+      {
+        "type": "p",
+        "html": "We desire faithfulness and security in relationships. But, sometimes people disappoint us with their lack of commitment. However, God is still with us."
+      },
+      {
+        "type": "quote",
+        "html": "“For I hold you by your right hand—<br>I, the LORD your God.<br>And I say to you,<br>‘Don’t be afraid. I am here to help you.'”<br>(Isaiah 41:13)"
+      },
+      {
+        "type": "h2",
+        "text": "God’s commitment to you will never falter."
+      },
+      {
+        "type": "p",
+        "html": "Don’t let your fear prevent you from moving forward. Share your fears with God and ask him to replace them with confidence in his loving care for you. Psalm 34:4 assures us, “I prayed to the LORD, and he answered me. He freed me from all my fears.”<strong><br></strong>"
+      }
+    ]
+  },
+  {
     "id": "a-perseverance-mindset",
     "appSlug": "22596-a-perseverance-mindset",
     "subId": "new-perspectives-life-change",

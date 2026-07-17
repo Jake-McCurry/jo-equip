@@ -2238,7 +2238,7 @@ export const subTopics: SubTopic[] = [
       { number: 2, title: 'Voices in Your Head', articleId: 'voices-in-your-head', links: { app: 'https://app.jesusonline.com/post/22592-voices-in-your-head' } },
       { number: 3, title: 'A Thankful Heart', articleId: 'a-thankful-heart', links: { app: 'https://app.jesusonline.com/post/22593-a-thankful-heart' } },
       { number: 4, title: 'Unconditional Love', articleId: 'unconditional-love', links: { app: 'https://app.jesusonline.com/post/22594-unconditional-love' } },
-      { number: 5, title: 'Fear Not', links: { app: 'https://app.jesusonline.com/post/22595-fear-not' } },
+      { number: 5, title: 'Fear Not', articleId: 'fear-not', links: { app: 'https://app.jesusonline.com/post/22985-fear-not' } },
       { number: 6, title: 'A Perseverance Mindset', articleId: 'a-perseverance-mindset', links: { app: 'https://app.jesusonline.com/post/22596-a-perseverance-mindset' } },
       { number: 7, title: 'It’s Not Impossible!', articleId: 'its-not-impossible', links: { app: 'https://app.jesusonline.com/post/22597-its-not-impossible' } },
       { number: 8, title: 'Trusting God', articleId: 'trusting-god', links: { app: 'https://app.jesusonline.com/post/22598-trusting-god' } },

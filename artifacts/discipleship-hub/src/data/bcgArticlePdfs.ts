@@ -13,19 +13,19 @@ export interface BcgArticlePdfMeta {
 }
 
 export const bcgArticlePdfs: Record<string, BcgArticlePdfMeta> = {
-  "a-great-commission-church": { bytes: 1688268 },
-  "a-hope-filled-church": { bytes: 530235 },
+  "a-great-commission-church": { bytes: 507245 },
+  "a-hope-filled-church": { bytes: 543123 },
   "a-jesusonline-equipped-church": { bytes: 647836 },
-  "a-love-demonstrating-relational-church": { bytes: 569163 },
-  "a-model-church": { bytes: 126122 },
-  "a-spirit-dependent-church": { bytes: 518537 },
+  "a-love-demonstrating-relational-church": { bytes: 597318 },
+  "a-model-church": { bytes: 126229 },
+  "a-spirit-dependent-church": { bytes: 533057 },
   "a-total-life-discipleship-church": { bytes: 693521 },
-  "a-transformational-teaching-church": { bytes: 480369 },
+  "a-transformational-teaching-church": { bytes: 482876 },
   "an-attractive-and-inviting-church": { bytes: 199381 },
   "an-attractive-church": { bytes: 500113 },
-  "an-intentional-worship-church": { bytes: 481643 },
+  "an-intentional-worship-church": { bytes: 456667 },
   "an-inviting-church": { bytes: 503646 },
-  "an-online-outreach-church": { bytes: 729187 },
+  "an-online-outreach-church": { bytes: 816785 },
   "anatomy-of-obedience": { bytes: 410398 },
   "gods-unique-vision-for-your-church": { bytes: 643894 },
 };

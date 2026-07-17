@@ -57,9 +57,9 @@ const jsonLd = {
     {
       "@type": "WebSite",
       "@id": "https://equip.jesusonline.com/#website",
-      "name": "JO EQUIP · Ministry Resources Hub",
+      "name": "JO EQUIP | Free Discipleship & Ministry Resources",
       "url": "https://equip.jesusonline.com",
-      "description": "A free digital library of practical discipleship tools for pastors and ministry leaders.",
+      "description": "Access free discipleship resources for pastors and ministry leaders, including books, videos and playlists to help make and multiply disciples of Christ.",
       "publisher": { "@id": "https://jesusonlineministries.org/#org" },
       "inLanguage": "en-US",
     },
@@ -82,7 +82,8 @@ const quickLinks: QuickLink[] = [
 ];
 ---
 <Layout
-  description="A free digital library of practical discipleship tools — books, video playlists, and JO APP resources — to help pastors and ministry leaders make and multiply disciples."
+  title="JO EQUIP | Free Discipleship & Ministry Resources"
+  description="Access free discipleship resources for pastors and ministry leaders, including books, videos and playlists to help make and multiply disciples of Christ."
 >
   <Fragment slot="head">
     <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />

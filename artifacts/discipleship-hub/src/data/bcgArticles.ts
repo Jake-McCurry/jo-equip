@@ -24,9 +24,10 @@ export type ArticleBlock =
      (resolved via bcgImages.ts). `alt` is required for a11y/SEO. `caption`
      is optional and renders as a muted <figcaption>. */
   | { type: "figure"; src: string; alt: string; caption?: string }
-  /* Resource list with PDF / Video / App buttons, styled like the chips on
+  /* Resource list with Read / Video / PDF buttons, styled like the chips on
      channel/topic pages: orange + linked when the URL is known, gray when
-     not. `href` (optional) links the resource title itself. Internal links
+     not. `href` (optional) links the resource title itself and drives the
+     Read chip. Internal links
      are root-relative ("/channels/...", "/playlist/..."); the page component
      prefixes the base path, and the PDF build rewrites them to absolute
      equip.jesusonline.com URLs. */
@@ -38,7 +39,6 @@ export interface ResourceListItem {
   href?: string;
   pdf?: string;
   video?: string;
-  app?: string;
 }
 
 export interface BcgArticle {
@@ -389,16 +389,16 @@ export const bcgArticles: BcgArticle[] = [
 
       { type: "h3", text: "From Building Blocks for Maturity" },
       { type: "resourceList", items: [
-        { title: "God’s Majestic Qualities", href: "/channels/growth/building-blocks" },
-        { title: "Your New Identity, Overview", href: "/channels/growth/building-blocks" },
-        { title: "Walking by the Spirit", href: "/channels/growth/building-blocks" },
+        { title: "God’s Majestic Qualities", href: "/channels/growth/bb-growing-closer-majesty" },
+        { title: "Your New Identity, Overview", href: "/channels/growth/bb-becoming-new-you" },
+        { title: "Walking by the Spirit", href: "/channels/growth/bb-walking-spirit" },
       ]},
 
       { type: "h3", text: "Recommended Resources on Amazon" },
       { type: "ul", items: [
-        "<em>God: Discover His Character</em> by Bill Bright",
-        "<em>Living Supernaturally in Christ</em> by Bill Bright",
-        "<em>His Intimate Presence: Experiencing the Transforming Power of the Holy Spirit</em> by Bill Bright",
+        '<a href="https://www.amazon.com/God-Discover-Character-Bill-Bright/dp/1563991217" target="_blank" rel="noopener"><em>God: Discover His Character</em></a> by Bill Bright',
+        '<a href="https://www.amazon.com/Living-Supernaturally-Christ-Bill-Bright/dp/1563991454" target="_blank" rel="noopener"><em>Living Supernaturally in Christ</em></a> by Bill Bright',
+        '<a href="https://www.amazon.com/His-Intimate-Presence-Experiencing-Transforming/dp/1563991926" target="_blank" rel="noopener"><em>His Intimate Presence: Experiencing the Transforming Power of the Holy Spirit</em></a> by Bill Bright',
       ]},
 
       REGISTER_CTA,
@@ -425,12 +425,12 @@ export const bcgArticles: BcgArticle[] = [
       ...WLL,
       { type: "h3", text: "Holy Spirit Resources" },
       { type: "resourceList", items: [
-        { title: "Walking by the Spirit" },
-        { title: "Power for Supernatural Living" },
-        { title: "Walk in the Spirit, a video series" },
-        { title: "Living by the Spirit" },
-        { title: "How to Be Filled with the Holy Spirit" },
-        { title: "Holy Spirit, a New Life in Christ Bible study" },
+        { title: "Walking by the Spirit", href: "/channels/growth/bb-walking-spirit" },
+        { title: "Power for Supernatural Living", href: "/channels/growth/kingdomnomics-son-power" },
+        { title: "Walk in the Spirit, a video series", video: "/playlist/life-in-the-spirit" },
+        { title: "Living by the Spirit", href: "/channels/growth/new-life-christ/living-by-the-spirit" },
+        { title: "How to Be Filled with the Holy Spirit", href: "/channels/growth/bb-walking-spirit" },
+        { title: "Holy Spirit, a New Life in Christ Bible study", href: "/channels/growth/new-life-christ" },
       ]},
 
       REGISTER_CTA,
@@ -467,17 +467,17 @@ export const bcgArticles: BcgArticle[] = [
       { type: "p", html: "Through such intentional, Scripture-saturated guidance, a church not only sustains its members but equips them to walk as beacons of hope in their daily lives." },
       { type: "p", html: "JesusOnline stands ready as a faithful partner, offering a treasury of free resources to help your church fully embrace and reflect this hope-filled identity. These resources equip you not merely to teach, but to create weekly encounters where the God of hope moves powerfully among His people. Through them, both first-time visitors and longtime believers can experience the refreshing work described in Romans 15:13 — being filled with joy and peace as they trust in Him, overflowing with hope by the power of the Holy Spirit." },
       { type: "p", html: "In a world hungry for assurance, JesusOnline resources help transform your church into a vibrant wellspring of renewal: a place where burdens are lifted, perspectives are renewed, and hearts are continually pointed toward the living hope found in Christ alone." },
-      { type: "figure", src: "bgc5s-8", alt: "Free resources to enhance engagement — Watch (powerful video clips capture attention), Learn (article insights deepen content), Live (an app link helps people apply the sermon all week)." },
 
       ...WLL,
       { type: "h3", text: "Hope Resources" },
       { type: "resourceList", items: [
         { title: "Hope in Times of Crisis", href: "/channels/growth/hope-times-crisis", video: "/playlist/hope-in-times-of-crisis" },
         { title: "Bible Promises for Hope", href: "/channels/growth/bible-promises-hope" },
-        { title: "God Is Hope" },
+        { title: "God Is Hope", href: "https://jesusonline.com/god-is-hope/" },
       ]},
 
       REGISTER_CTA,
+      { type: "figure", src: "bgc6s2-6", alt: "5 grace-centered shifts in focus — focus on God’s majesty more than your circumstances, God’s faithfulness instead of your limited resources, today’s blessings rather than worries about tomorrow, the next step instead of attempting to predict the future, and God’s supernatural presence more than your adversity." },
     ],
   },
 
@@ -523,9 +523,9 @@ export const bcgArticles: BcgArticle[] = [
         { title: "Forever Loved series", href: "/channels/growth/forever-loved" },
         { title: "Experience God’s Love playlist", video: "/playlist/experience-gods-love" },
         { title: "40 Days of God’s Love", href: "/channels/growth/days-god-s-love", video: "/playlist/experience-gods-love" },
-        { title: "Timeless Love, Transforming Love" },
-        { title: "Love Bible studies" },
-        { title: "One Another series" },
+        { title: "Timeless Love, Transforming Love", href: "/books/timeless-love-transforming-love" },
+        { title: "Love Bible studies", href: "https://jesusonline.com/forever-loved/bible-studies/" },
+        { title: "One Another series", href: "/channels/growth/bb-living-family" },
       ]},
 
       REGISTER_CTA,
@@ -649,9 +649,9 @@ export const bcgArticles: BcgArticle[] = [
       ]},
       { type: "figure", src: "bgc8s-7", alt: "Practical ways a local church can participate in the Great Commission — preach it from the pulpit, support local outreach, send and host missionaries, reach immigrants, partner with missions organizations, pray, and equip members." },
       { type: "p", html: "Although Oswald J. Smith has gone to his reward in Heaven, he leaves behind a Great Commission–focused church that has not only reached millions for Christ but still follows his example of obedience to Jesus’ words: “Go into all the world and make disciples of all nations.”" },
-      { type: "figure", src: "bgc8s-8", alt: "“Go into all the world and make disciples of all nations” — a lasting legacy of obedience to Jesus’ Great Commission." },
 
       REGISTER_CTA,
+      { type: "figure", src: "bgc8s-9", alt: "The supreme task — “Go and make disciples of all nations.” (Matthew 28:19). Following Pentecost, the apostle Paul established local churches as the primary, God-ordained means of accomplishing this Great Commission. It is not an individual calling; it is a congregational mandate." },
     ],
   },
 
@@ -704,6 +704,7 @@ export const bcgArticles: BcgArticle[] = [
       ]},
 
       REGISTER_CTA,
+      { type: "figure", src: "bgc10s2-10", alt: "Equipping your website with ready gospel resources — JesusOnline offers engaging, biblically grounded presentations your church can easily incorporate: God is Hope, Forever Loved, Jesus’ Resurrection & You, and The Gift of Heaven." },
     ],
   },
 
@@ -951,19 +952,19 @@ export const bcgArticles: BcgArticle[] = [
 
       { type: "h2", text: "A Proposed Unique Church Order of Service" },
       { type: "ol", items: [
-        "<strong>Welcome</strong> (unscripted, warm, and personal). <em>Purpose:</em> To greet one another in the love of Christ and create an atmosphere of genuine belonging.",
-        "<strong>Core Identity Statement.</strong> <em>Purpose:</em> To clearly declare the church’s identity for newcomers and to reinforce it for longtime members. For example: “We are a hope-centered church devoted to transformational teaching, so that you may become all that God created you to be and fulfill all He created you to do.”",
-        "<strong>Transition to Hope Video.</strong> <em>Purpose:</em> To gently shift everyone’s focus from the cares and distractions of the week to the presence, power, and resources of God. Suggested script: “As we gather together this morning, many of us have stepped out of a week marked by various struggles, difficulties, and challenges. In the midst of these, it can be difficult to turn our minds from those distractions and fully focus on the Lord. So let us begin by turning our hearts toward Him through a short video. It will help us refocus on God and the abundant resources He provides, as we entrust our challenges to His faithful care.”",
-        "<strong>Show a Hope Video.</strong> <em>Purpose:</em> To captivate hearts and minds with one of the seventeen videos from the <a href=\"/channels/growth/hope-times-crisis\">“Hope in Times of Crisis”</a> series, reminding the congregation of God’s immediate and sufficient grace for every circumstance.",
-        "<strong>Personal Takeaway.</strong> <em>Purpose:</em> To model how to apply biblical truth personally and encourage the congregation to do the same. (The pastor or leader briefly shares, in their own words, one key insight from the video.)",
-        "<strong>Congregation Prayer Requests.</strong> <em>Purpose:</em> To invite the community to share burdens and needs openly.",
-        "<strong>Small-Group Prayer.</strong> <em>Purpose:</em> To practice relational prayer, build community, and anchor every request in the truth of who God is and who we are in Him. (The congregation breaks into small groups to pray for the shared requests. At the same time, the screen gently displays an attribute of God along with a corresponding characteristic of our new identity in Christ — serving as timely reminders and reasons for praise.)",
+        "<strong>Welcome</strong> (unscripted, warm, and personal).<br /><em>Purpose:</em> To greet one another in the love of Christ and create an atmosphere of genuine belonging.",
+        "<strong>Core Identity Statement.</strong><br /><em>Purpose:</em> To clearly declare the church’s identity for newcomers and to reinforce it for longtime members.<br />Suggested script: “We are a hope-centered church devoted to transformational teaching, so that you may become all that God created you to be and fulfill all He created you to do.”",
+        "<strong>Transition to Hope Video.</strong><br /><em>Purpose:</em> To gently shift everyone’s focus from the cares and distractions of the week to the presence, power, and resources of God.<br />Suggested script: “As we gather together this morning, many of us have stepped out of a week marked by various struggles, difficulties, and challenges. In the midst of these, it can be difficult to turn our minds from those distractions and fully focus on the Lord. So let us begin by turning our hearts toward Him through a short video. It will help us refocus on God and the abundant resources He provides, as we entrust our challenges to His faithful care.”",
+        "<strong>Show a Hope Video.</strong><br /><em>Purpose:</em> To captivate hearts and minds with one of the seventeen videos from the <a href=\"/channels/growth/hope-times-crisis\">“Hope in Times of Crisis”</a> series, reminding the congregation of God’s immediate and sufficient grace for every circumstance.",
+        "<strong>Personal Takeaway.</strong><br /><em>Purpose:</em> To model how to apply biblical truth personally and encourage the congregation to do the same.<br />(The pastor or leader briefly shares, in their own words, one key insight from the video.)",
+        "<strong>Congregation Prayer Requests.</strong><br /><em>Purpose:</em> To invite the community to share burdens and needs openly.",
+        "<strong>Small-Group Prayer.</strong><br /><em>Purpose:</em> To practice relational prayer, build community, and anchor every request in the truth of who God is and who we are in Him.<br />(The congregation breaks into small groups to pray for the shared requests. At the same time, the screen gently displays an attribute of God along with a corresponding characteristic of our new identity in Christ — serving as timely reminders and reasons for praise.)",
         "<strong>Communion or Baptisms</strong> (optional).",
-        "<strong>Worship and/or Praise Songs.</strong> <em>Purpose:</em> To respond to God’s goodness with wholehearted adoration and thanksgiving.",
-        "<strong>Transformational Sermon.</strong> <em>Purpose:</em> To equip believers with truth that renews the mind and shapes daily life. (A message rooted in Scripture that connects directly to the <a href=\"/channels/growth/building-blocks\">building blocks of Christian maturity</a>.)",
-        "<strong>Prayer and/or Devotion Songs.</strong> <em>Purpose:</em> To respond to the preached Word with surrender, commitment, and renewed devotion to Christ.",
+        "<strong>Worship and/or Praise Songs.</strong><br /><em>Purpose:</em> To respond to God’s goodness with wholehearted adoration and thanksgiving.",
+        "<strong>Transformational Sermon.</strong><br /><em>Purpose:</em> To equip believers with truth that renews the mind and shapes daily life. (A message rooted in Scripture that connects directly to the <a href=\"/channels/growth/building-blocks\">building blocks of Christian maturity</a>.)",
+        "<strong>Prayer and/or Devotion Songs.</strong><br /><em>Purpose:</em> To respond to the preached Word with surrender, commitment, and renewed devotion to Christ.",
         "<strong>Communion or Baptisms</strong> (alternate time slot).",
-        "<strong>Closing Promise.</strong> <em>Purpose:</em> To send the congregation forth with a fresh assurance of God’s faithfulness that they can carry into the week. (The congregation joins together in reciting a Bible promise, projected on the screen, that has been thoughtfully chosen to reinforce the sermon’s theme. This promise is drawn from the rich collection of “Bible Promises for Hope” available in the Jesus Online App.)",
+        "<strong>Closing Promise.</strong><br /><em>Purpose:</em> To send the congregation forth with a fresh assurance of God’s faithfulness that they can carry into the week.<br />(The congregation joins together in reciting a Bible promise, projected on the screen, that has been thoughtfully chosen to reinforce the sermon’s theme. This promise is drawn from the rich collection of “Bible Promises for Hope” available in the Jesus Online App.)",
       ]},
 
       { type: "p", html: "This model is not intended as a rigid formula, but as a flexible framework through which the Holy Spirit can work more deeply in your midst. May the Lord grant you wisdom, courage, and unity as you seek His leading for the unique calling He has placed on your church family. As you step forward in obedience, may you witness the joy of lives truly transformed for His glory." },

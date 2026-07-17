@@ -205,16 +205,18 @@ const metaDescription = plain(article.description);
           case "ul":
             return <ul>{b.items.map(i => <li set:html={i} />)}</ul>;
           case "resourceList":
-            /* Resource list with PDF / Video / App chips — orange + linked
-               when the URL is known, gray when not (matches topic pages). */
+            /* Resource list with Read / Video / PDF chips — orange + linked
+               when the URL is known, gray when not (matches topic pages).
+               "Read" points at the internal article (same target as the
+               linked title). */
             return (
               <ul class="resource-list">
                 {b.items.map(item => {
                   const titleHref = item.href ? (item.href.startsWith("/") ? join(item.href) : item.href) : undefined;
                   const chips = [
-                    { label: "PDF", href: item.pdf },
+                    { label: "Read", href: item.href },
                     { label: "Video", href: item.video },
-                    { label: "App", href: item.app },
+                    { label: "PDF", href: item.pdf },
                   ].map(c => ({
                     label: c.label,
                     href: c.href ? (c.href.startsWith("/") ? join(c.href) : c.href) : undefined,

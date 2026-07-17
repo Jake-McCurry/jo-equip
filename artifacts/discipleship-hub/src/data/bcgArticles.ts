@@ -651,6 +651,7 @@ export const bcgArticles: BcgArticle[] = [
       { type: "p", html: "Although Oswald J. Smith has gone to his reward in Heaven, he leaves behind a Great Commission–focused church that has not only reached millions for Christ but still follows his example of obedience to Jesus’ words: “Go into all the world and make disciples of all nations.”" },
 
       REGISTER_CTA,
+      { type: "figure", src: "bgc8s-9", alt: "The supreme task — “Go and make disciples of all nations.” (Matthew 28:19). Following Pentecost, the apostle Paul established local churches as the primary, God-ordained means of accomplishing this Great Commission. It is not an individual calling; it is a congregational mandate." },
     ],
   },
 

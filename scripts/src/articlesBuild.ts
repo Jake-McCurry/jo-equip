@@ -272,7 +272,7 @@ function renderTemplate({
   .article p { margin: 0 0 0.85em 0; orphans: 3; widows: 3; }
   .article a { color: #b34800; text-decoration: underline; text-underline-offset: 2px; }
   .article strong { color: #002f55; }
-  .article ul, .article ol { margin: 0.5em 0 1em 1.4em; padding: 0; }
+  .article ul, .article ol { margin: 0.5em 0 1em 0; padding: 0 0 0 2.2em; }
   .article li { margin: 0.25em 0; }
   .article blockquote {
     margin: 1em 0; padding: 0.5em 1em;

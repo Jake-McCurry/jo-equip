@@ -1173,6 +1173,40 @@ export const evidenceArticles: EvidenceArticle[] = [
       {
         "type": "p",
         "html": "“Something perfectly new in the history of the Universe had happened. Christ had defeated death. The door which had always been locked had for the very first time been forced open.”<sup>25</sup>"
+      },
+      {
+        "type": "h2",
+        "text": "Endnotes"
+      },
+      {
+        "type": "ol",
+        "items": [
+          "Josh McDowell, The New Evidence That Demands a Verdict (San Bernardino, CA: Here’s Life, 1999), ?203.",
+          "Wilbur M. Smith, A Great Certainty in This Hour of World Crises (Wheaton, ILL: Van Kampen Press, ?1951), 10, 11",
+          "The word Jesus uttered, “fulfilled” is <em>tetelestai</em> in Greek which is an accounting term meaning “debt paid in full.” It refers to the debt of our sins.",
+          "Historian Will Durant reported, “About the middle of this first century a pagan named Thallus … argued that ?the abnormal darkness alleged to have accompanied the death of Christ was a purely natural phenomenon and coincidence; the argument took the existence of Christ for granted. The denial of that existence never seems to have occurred even to the bitterest gentile or Jewish opponents of nascent Christianity.” Will Durant, “Caesar and Christ,” vol. 3 of The Story of Civilization (New York: Simon &amp; Schuster, 1972), 555.",
+          "Peter Steinfels, “Jesus Died – And Then What Happened?” New York Times, April 3, 1988, E9.",
+          "Lucian, Peregrinus Proteus. Michael J. Wilkins and J. P. Moreland, eds, Jesus Under Fire (Grand Rapids, MI: Zondervan, 1995), 2.",
+          "Josephus, Flavius, Antiquities of the Jews, 18. 63, 64. [Although portions of Josephus’ comments about ?Jesus have been disputed, this reference to Pilate condemning him to the cross is deemed authentic by ?most scholars.]",
+          "Tacitus, Annals, 15, 44. In Great Books of the Western World, ed. By Robert Maynard Hutchins, Vol. ?15, The Annals and The Histories by Cornelius Tacitus (Chicago: William Benton, 1952). “What Is a Skeptic?” editorial in Skeptic, vol 11, no. 2), 5.",
+          "Frank Morison, Who Moved the Stone? (Grand Rapids, MI: Lamplighter, 1958), “What Happened Friday Afternoon.”",
+          "Josh McDowell, The Resurrection Factor Part 3, Josh McDowell Ministries, 2009, ?http://www.bethinking.org/bible-jesus/intermediate/the-resurrection-factor-part-3.htm.",
+          "Quoted in Josh McDowell, The Resurrection Factor (San Bernardino, CA: Here’s Life, 1981), 66.",
+          "Gary Collins quoted in Gary Habermas, “Explaining Away the Resurrection,” http://www.garyhabermas.com/articles/crj_explainingaway/crj_explainingaway.htm.",
+          "Thomas James Thorburn, The Resurrection Narratives and Modern Criticism (London: Kegan Paul, ?Trench, Trubner &amp; Co., Ltd., 1910.), 158, 159.",
+          "Sherwin-White, Roman Society, 190.",
+          "Even skeptical scholars agree that the creed in 1 Corinthians 15 is not an interpolation but was a creed formulated and taught at a very early date after Jesus’ death. Gerd Lüdemann, a skeptic scholar, maintains that “the elements in the tradition are to be dated to the first two years after the crucifixion of Jesus… not later than three years…”[17] Michael Goulder, another skeptic scholar, states that it “goes back at least to what Paul was taught when he was converted, a couple of years after the crucifixion”. https://en.wikipedia.org/wiki/1_Corinthians_15",
+          "Gary R. Habermas and Michael R. Licona, The Case for the Resurrection of Jesus (Grand Rapids, MI: ?Kregel, 2004), 85.",
+          "Habermas and Licona, 87",
+          "Acts 10:39-41.",
+          "Morison, 104.",
+          "J. N. D. Anderson, “The Resurrection of Jesus Christ,” Christianity Today,12. April, 1968.",
+          "Morison, 115.",
+          "Quoted in Bernard Ramm, Protestant Christian Evidences (Chicago: Moody Press, 1957), 163.",
+          "Quoted in Bill Bright, Believing God for the Impossible (San Bernardino, CA: Here’s Life, 1979), 177-8.",
+          "Will Durant, The Story of Philosophy (New York: Pocket, 1961), 428.",
+          "C. S. Lewis, God in the Dock (Grand Rapids, MI: Eerdmans, 2000 ), 159."
+        ]
       }
     ]
   },
@@ -1338,6 +1372,28 @@ export const evidenceArticles: EvidenceArticle[] = [
       {
         "type": "p",
         "html": "Many believe that Jesus’ resurrection was simply a mythical account. Several skeptics who regarded Jesus’ resurrection as mythical decided to investigate the evidence. Read their startling conclusions in “<a href=\"/channels/evidence/jesus-true-identity/did-jesus-rise-from-the-dead\">Did Jesus Rise from the Dead?</a>”"
+      },
+      {
+        "type": "h2",
+        "text": "Endnotes"
+      },
+      {
+        "type": "ol",
+        "items": [
+          "Corinthians 15:3-6, J. B. Phillips.",
+          "Norman Geisler, <em>I Don’t Have Enough Faith to be An Atheist</em> (Wheaton IL: Crossway, 2004), 312.",
+          "Ibid.",
+          "Cited in Norman Geisler’s <em>Baker Encyclopedia of Christian Apologetics</em> pg. 490, and his quote from Y.S. Chishti, <em>What is Christianity?</em>, pg. 87.",
+          "Ronald H. Nash, “Was the New Testament Influenced by Pagan Religions,” <em>Christian Research Journal</em>, Winter 1994. www.inplainsite.org.",
+          "Cited in Maarten Jozef Vermaseren, Eugene N. Lane, <em>Cybelle, Attis and Related Cults</em>(New York: 1996), 42.",
+          "Cited in Lee Strobel, <em>The Case for the Real Jesus</em> (Grand Rapids, MI: Zondervan, 2007), 160-61. [In his interview with Strobel, Michael Licona states that Mettinger takes exception to that nearly universal scholarship by claiming that there are at least three and possibly as many as five dying and rising gods that predate Christianity. However, after combing through all these accounts and critically analyzing them Mettinger adds that “none of these serve as parallels to Jesus.” Mettinger writes, “There is, as far as I am aware, no prima facie evidence that the death and resurrection of Jesus is a mythological construct, drawing on the myths and rites of the dying and rising gods of the surrounding world.… The death and resurrection of Jesus retains its unique character in the history of religions.”",
+          "Ben Witherington, <a href=\"http://benwitherington.blogspot.com/2007/12/zeitgeist-of-zeitgeist-movie.html\" target=\"_blank\" rel=\"noopener noreferrer\">http://benwitherington.blogspot.com/2007/12/zeitgeist-of-zeitgeist-movie.html.</a>",
+          "Michael Grant, <em>Jesus: An Historian’s Review of the Gospels</em> (London: Rigel, 2004), 200.",
+          "Paul Johnson, “A Historian Looks at Jesus,” speech to Dallas Seminary, 1986.",
+          "H. G. Wells, <em>The Outline of History</em> (New York: Doubleday, 1949), 528.",
+          "Peter Steinfels, “Jesus Died – And Then What Happened?” <em>New York Times</em>, April 3, 1988, E9.",
+          "R. C. Sproul, <em>Reason to Believe</em> (Grand Rapids, MI: Lamplighter, 1982), 44."
+        ]
       }
     ]
   },
@@ -2134,8 +2190,40 @@ export const evidenceArticles: EvidenceArticle[] = [
         "html": "In the next chapter we will examine the historical and textual evidence demonstrating the overwhelming reliability of the New Testament."
       },
       {
-        "type": "p",
-        "html": "Endnotes"
+        "type": "h2",
+        "text": "Endnotes"
+      },
+      {
+        "type": "ol",
+        "items": [
+          "Quoted in Robert Elsberg, ed.,<em> A Critique of Gandhi on Christianity</em> (New York: Orbis Books, 1991), 26 &amp; 27.",
+          "Joseph Klausner, <em>Jesus of Nazareth</em> (New York: The Macmillan Co., 1946), 43, 44.",
+          "Will Durant, <em>The Story of Philosophy</em> (New York: Washington Square, 1961), 428.",
+          "inda Kulman and Jay Tolson, “The Jesus Code,” <em>U. S. News &amp; World Report</em>, December 22, 2003, 1.",
+          "Ravi Zacharias, Jesus among Other Gods (Nashville, TN: Word, 2000), 89.",
+          "Peter Kreeft and Ronald K. Tacelli, <em>Handbook of Christian Apologetics</em> (Downers Grove, IL: InterVarsity, 1994), 150.",
+          "John Piper, The Pleasures of God (Sisters, OR: Multnomah, 2000), 35.",
+          "Bono, quoted in, Timothy Keller, <em>The Reason for God</em> (New York: Penguin Group Publishers, 2008), 229.",
+          "John 17:3.",
+          "John 14:9",
+          "John 8:58.",
+          "John 11:25",
+          "John 8:12",
+          "John 14:6",
+          "Ibid.",
+          "For the meaning of “ego eimi.” See, http://www.y-jesus.com/jesus_believe_god_2.php",
+          "John 10:33",
+          "C. S. Lewis, <em>Mere Christianity</em> (San Francisco: Harper, 2001), 51.",
+          "Lewis, Ibid.",
+          "A Deist is someone who believes in a standoffish God—a deity who created the world and then lets it run according to pre-established laws. Deism was a fad among intellectuals around the time of America’s independence, and Jefferson bought into it.",
+          "Lewis, 52.",
+          "J. I. Packer, <em>Knowing God</em> (Downers Grove, IL: InterVarsity, 1993), 57.",
+          "Philip Schaff, <em>The Person of Christ: The Miracle of History</em> (1913), 94, 95.",
+          "Lewis, 52.",
+          "Schaff, 98, 99.",
+          "Bono, Ibid.",
+          "Lewis, 52."
+        ]
       }
     ]
   },

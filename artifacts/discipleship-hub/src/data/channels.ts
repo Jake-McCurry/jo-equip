@@ -670,8 +670,8 @@ export const subTopics: SubTopic[] = [
      generated article PDFs are shared automatically.
      Sheet's From Coping to Cure omits "I Hate Pain!" (65612) — verified
      July 2026: that article does NOT exist in the WP catalog (posts/pages,
-     exact + search), so the omission is deliberate and the Church copy has
-     18 items. NOTE: the Growth copy still lists it with a dead app link. */
+     exact + search), so the omission is deliberate and both copies have
+     18 items (the Growth copy's dead link was removed July 2026). */
   {
     id: 'biblical-counseling-insights',
     channelId: 'church',

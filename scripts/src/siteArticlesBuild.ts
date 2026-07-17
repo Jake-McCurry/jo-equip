@@ -365,9 +365,25 @@ async function convert(
 }
 
 function describeFrom(blocks: ArticleBlock[]): string {
-  const first = blocks.find(b => b.type === "p") as { html: string } | undefined;
+  /* Prefer the first paragraph; fall back to any text-bearing block
+     (list, quote, heading) so no article ships without a description. */
+  const first =
+    (blocks.find(b => b.type === "p") as { html: string } | undefined) ??
+    (blocks.find(b => "html" in b && stripTags((b as { html: string }).html).trim().length > 0) as
+      | { html: string }
+      | undefined) ??
+    (() => {
+      const list = blocks.find(b => "items" in b && (b as { items: string[] }).items.length > 0) as
+        | { items: string[] }
+        | undefined;
+      if (list) return { html: list.items.map(i => stripTags(i)).join(" ") };
+      const heading = blocks.find(
+        b => "text" in b && (b as { text: string }).text.trim().length > 0,
+      ) as { text: string } | undefined;
+      return heading ? { html: heading.text } : undefined;
+    })();
   if (!first) return "";
-  let text = stripTags(first.html);
+  let text = stripTags(first.html).replace(/\s+/g, " ").trim();
   if (text.length <= 158) return text;
   text = text.slice(0, 155);
   const cut = text.lastIndexOf(" ");

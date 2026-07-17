@@ -2222,7 +2222,7 @@ export const subTopics: SubTopic[] = [
       { number: 3, title: 'God\'s Timing', articleId: 'gods-timing', links: { app: 'https://app.jesusonline.com/post/22510-003-gods-timing' } },
       { number: 4, title: 'Doing Something New', articleId: 'doing-something-new', links: { app: 'https://app.jesusonline.com/post/22510-004-doing-something-new' } },
       { number: 5, title: 'Growing in Tough Times', articleId: 'growing-in-tough-times', links: { app: 'https://app.jesusonline.com/post/22510-005-growing-in-tough-times' } },
-      { number: 6, title: 'Moving On', links: { app: 'https://app.jesusonline.com/post/22510-006-moving-on' } },
+      { number: 6, title: 'Moving On', articleId: 'moving-on', links: { app: 'https://app.jesusonline.com/post/22970-006-moving-on' } },
       { number: 7, title: 'Seek Divine Guidance', articleId: 'seek-divine-guidance', links: { app: 'https://app.jesusonline.com/post/22510-007-seek-divine-guidance' } },
       { number: 8, title: 'Ask, Seek, Knock', articleId: 'ask-seek-knock', links: { app: 'https://app.jesusonline.com/post/22510-008-ask-seek-knock' } },
       { number: 9, title: 'The Next Faith Step', articleId: 'the-next-faith-step', links: { app: 'https://app.jesusonline.com/post/22510-009-the-next-faith-step' } },

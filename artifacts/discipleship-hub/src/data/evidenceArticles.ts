@@ -74,7 +74,7 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "p",
-        "html": "Martin Luther King was amazed at Jesus’ overwhelming, love even for his enemies."
+        "html": "Martin Luther King was amazed at Jesus’ overwhelming love even for his enemies."
       },
       {
         "type": "p",
@@ -170,11 +170,7 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "p",
-        "html": "Jesus had all the attributes and needs of a man. He got hungry. He felt pain. He required rest. He was tempted—yet without sin. However, Ravi Zacharias writes of Jesus Christ as more than just a man."
-      },
-      {
-        "type": "p",
-        "html": "<em>“Here, then, is the man from Nazareth, who claimed that His origin was from heaven and that His Father is none other than God Himself—a son not born out of physical consummation nor out of a need for communion, but the consummate expression of God in the flesh, in eternal communion with the Father.”</em><sup>11</sup>"
+        "html": "Jesus had all the attributes and needs of a man. He got hungry. He felt pain. He required rest. He was tempted—yet without sin. However, Jesus Christ was more than just a man."
       },
       {
         "type": "p",
@@ -186,7 +182,7 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "p",
-        "html": "On another day Jesus stunned the Jewish religious leaders by stating,"
+        "html": "On another day, Jesus stunned the Jewish religious leaders by stating,"
       },
       {
         "type": "p",
@@ -210,7 +206,7 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "p",
-        "html": "<em>“Indeed, this use of “I am” …alludes to Old Testament passages where God uses the same sort of self-referential language.”</em><sup>12</sup>"
+        "html": "<em>“Indeed, this use of “I am” …alludes to Old Testament passages where God uses the same sort of self-referential language.”</em><sup>11</sup>"
       },
       {
         "type": "p",
@@ -218,7 +214,7 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "p",
-        "html": "<em>“He says…’I am begotten of the One God, before Abraham was, I am,’ and remember what the words ‘I am’ were in Hebrew. They were the name of God, which must not be spoken by any human being, the name which it was death to utter.”</em><sup>13</sup>"
+        "html": "<em>“He says…’I am begotten of the One God, before Abraham was, I am,’ and remember what the words ‘I am’ were in Hebrew. They were the name of God, which must not be spoken by any human being, the name which it was death to utter.”</em><sup>12</sup>"
       },
       {
         "type": "p",
@@ -248,7 +244,7 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "p",
-        "html": "<em>“Then comes the real shock,’ wrote Lewis: ‘Among these Jews there suddenly turns up a man who goes about talking as if He was God. He claims to forgive sins. He says He always existed. He says He is coming to judge the world at the end of time.”</em><sup>14</sup>"
+        "html": "<em>“Then comes the real shock,’ wrote Lewis: ‘Among these Jews there suddenly turns up a man who goes about talking as if He was God. He claims to forgive sins. He says He always existed. He says He is coming to judge the world at the end of time.”</em><sup>13</sup>"
       },
       {
         "type": "p",
@@ -260,7 +256,7 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "p",
-        "html": "<em>“I am trying here to prevent anyone from saying the really foolish thing that people often say about Him: ‘I’m ready to accept Jesus as a great moral teacher, but I don’t accept his claim to be God.’ That is the one thing we must not say.”</em><sup>15</sup>"
+        "html": "<em>“I am trying here to prevent anyone from saying the really foolish thing that people often say about Him: ‘I’m ready to accept Jesus as a great moral teacher, but I don’t accept his claim to be God.’ That is the one thing we must not say.”</em><sup>14</sup>"
       },
       {
         "type": "p",
@@ -292,7 +288,7 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "p",
-        "html": "<em>“When he said He would rise again from the dead, the third day after He was crucified, He said something that only a fool would dare say if He expected the devotion of any disciples – unless He was sure He was going to rise.”</em><sup>16</sup>"
+        "html": "<em>“When he said He would rise again from the dead, the third day after He was crucified, He said something that only a fool would dare say if He expected the devotion of any disciples – unless He was sure He was going to rise.”</em><sup>15</sup>"
       },
       {
         "type": "p",
@@ -316,7 +312,7 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "p",
-        "html": "<em>“</em>Shortly after Jesus was executed, his followers were suddenly galvanized from a baffled and cowering group into people whose message about a living Jesus and a coming kingdom, preached at the risk of their lives, eventually changed an empire. Something happened…But exactly what?”<sup>17</sup>"
+        "html": "<em>“</em>Shortly after Jesus was executed, his followers were suddenly galvanized from a baffled and cowering group into people whose message about a living Jesus and a coming kingdom, preached at the risk of their lives, eventually changed an empire. Something happened…But exactly what?”<sup>16</sup>"
       },
       {
         "type": "p",
@@ -338,13 +334,13 @@ export const evidenceArticles: EvidenceArticle[] = [
         "type": "ol",
         "items": [
           "The tomb was secured by a large stone with a 24-hour trained Roman guard. It would have been impossible for the disciples to roll the stone away and remove Jesus’ body without notice.",
-          "A resurrection plot would have died out as soon as someone discovered Jesus’ body, yet that never happened. Tom Anderson, former president of the California Trial Lawyers Association, explains, <em>“With an event so well publicized, don’t you think that it’s reasonable that one historian, one eye witness, one antagonist would record for all time that he had seen Christ’s body? … The silence of history is deafening when it comes to the testimony against the resurrection.”</em><sup>18</sup>",
-          "The disciples changed from being cowards into men who were willing to be tortured and martyred by proclaiming the risen Jesus. Professor J. N. D. Anderson, author of <em>Evidence for the Resurrection </em>reasons, <em>“Think of the psychological absurdity of picturing a little band of defeated cowards cowering in an upper room one day and a few days later transformed into a company that no persecution could silence – and then attempting to attribute this dramatic change to nothing more convincing than a miserable fabrication … That simply wouldn’t make sense.”</em><sup>19</sup>"
+          "A resurrection plot would have died out as soon as someone discovered Jesus’ body, yet that never happened. Tom Anderson, former president of the California Trial Lawyers Association, explains, <em>“With an event so well publicized, don’t you think that it’s reasonable that one historian, one eye witness, one antagonist would record for all time that he had seen Christ’s body? … The silence of history is deafening when it comes to the testimony against the resurrection.”</em><sup>17</sup>",
+          "The disciples changed from being cowards into men who were willing to be tortured and martyred by proclaiming the risen Jesus. Professor J. N. D. Anderson, author of <em>Evidence for the Resurrection </em>reasons, <em>“Think of the psychological absurdity of picturing a little band of defeated cowards cowering in an upper room one day and a few days later transformed into a company that no persecution could silence – and then attempting to attribute this dramatic change to nothing more convincing than a miserable fabrication … That simply wouldn’t make sense.”</em><sup>18</sup>"
         ]
       },
       {
         "type": "p",
-        "html": "It was the dramatic change in the disciples’ behavior that convinced Morison he needed to change the theme of his book. He writes, <em>“Whoever comes to this problem has sooner or later to confront a fact that cannot be explained away … This fact is that … a profound conviction came to the little group of people – a change that attests to the fact that Jesus had risen from the grave.”</em><sup>20</sup>"
+        "html": "It was the dramatic change in the disciples’ behavior that convinced Morison he needed to change the theme of his book. He writes, <em>“Whoever comes to this problem has sooner or later to confront a fact that cannot be explained away … This fact is that … a profound conviction came to the little group of people – a change that attests to the fact that Jesus had risen from the grave.”</em><sup>19</sup>"
       },
       {
         "type": "p",
@@ -352,7 +348,7 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "p",
-        "html": "C. S. Lewis asks, “What are we to make of Jesus Christ?”<sup>21</sup> He says, “The real question is not what are we to make of Christ, but what is He to make of us?”<sup>22</sup>"
+        "html": "C. S. Lewis asks, “What are we to make of Jesus Christ?”<sup>20</sup> He says, “The real question is not what are we to make of Christ, but what is He to make of us?”<sup>21</sup>"
       },
       {
         "type": "p",
@@ -376,7 +372,7 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "p",
-        "html": "If you would like to learn more about Jesus’ offer of forgiveness and his free gift of eternal life we encourage you to read the article at the link below."
+        "html": "If you would like to learn more about Jesus’ offer of forgiveness and His gift of eternal life, we encourage you to read the article, “<a href=\"/channels/evidence/jesus-true-identity/is-jesus-relevant-today\">Is Jesus Relevant Today?</a>”"
       },
       {
         "type": "h2",
@@ -395,7 +391,6 @@ export const evidenceArticles: EvidenceArticle[] = [
           "Jaroslav Pelikan, <em>Jesus through the Centuries</em> (New York: Harper &amp; Row, 1987), 1.",
           "Quoted in Bernard Ramm, <em>Protestant Christian Evidences</em> (Chicago: Moody Press, 1957), 163.",
           "Peter Kreeft and Ronald K. Tacelli, <em>Handbook of Christian Apologetics</em> (Downers Grove, IL: InterVarsity, 1994), 150.",
-          "Ravi Zacharias, <em>Jesus Among Other Gods</em> (Nashville: Word, 2000), 39.",
           "Larry W. Hurtado, <em>Lord Jesus Christ</em> (Cambridge, UK, Eerdmans, 2003)",
           "C. S. Lewis, <em>God in the Dock</em> (Grand Rapids, MI: Eerdmans, 2,000), 157.",
           "C.S. Lewis, <em>Mere Christianity </em>(San Francisco: HarperCollins, 1972), 51.",
@@ -4730,15 +4725,11 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "p",
-        "html": "We continually make choices—what to wear, what to eat, our career, marriage partner, etc. It is the same when it comes to a relationship with God. Author Ravi Zacharias writes:"
-      },
-      {
-        "type": "quote",
-        "html": "“Jesus’ message reveals that every individual…comes to know God not by virtue of birth, but by a conscious choice to let Him have His rule in his or her individual life.”<sup>16</sup>"
+        "html": "We continually make choices—what to wear, what to eat, our career, marriage partner, etc. It is the same when it comes to a relationship with God. We can choose to accept Jesus, ignore him, or reject him."
       },
       {
         "type": "p",
-        "html": "Our choices are often influenced by others. But in some instances we are given the wrong advice. On September 11, 2001, 600 innocent people put their trust in the wrong advice, and innocently suffered the consequences.The true story goes like this:"
+        "html": "Our choices are often influenced by others. But in some instances we are given the wrong advice. On September 11, 2001, 600 innocent people put their trust in the wrong advice, and innocently suffered the consequences. The true story goes like this:"
       },
       {
         "type": "p",
@@ -4754,7 +4745,7 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "p",
-        "html": "Shortly after 9:00 A.M., another jet crashed into the 80th floor of the south tower. Nearly all 600 people in the top floors of the south tower perished. The failure to evacuate the building was one of the day’s great tragedies.<sup>17</sup>"
+        "html": "Shortly after 9:00 A.M., another jet crashed into the 80th floor of the south tower. Nearly all 600 people in the top floors of the south tower perished. The failure to evacuate the building was one of the day’s great tragedies.<sup>16</sup>"
       },
       {
         "type": "p",
@@ -4770,7 +4761,7 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "quote",
-        "html": "“I had been concerned with myself. I had done this and that, I had achieved, I had succeeded and I had given God none of the credit, never once thanking Him for any of His gifts to me. I had never thought of anything being ‘immeasurably superior’ to myself, or if I had in fleeting moments thought about the infinite power of God, I had not related Him to my life.”<sup>18</sup>"
+        "html": "“I had been concerned with myself. I had done this and that, I had achieved, I had succeeded and I had given God none of the credit, never once thanking Him for any of His gifts to me. I had never thought of anything being ‘immeasurably superior’ to myself, or if I had in fleeting moments thought about the infinite power of God, I had not related Him to my life.”<sup>17</sup>"
       },
       {
         "type": "p",
@@ -4786,23 +4777,15 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "p",
-        "html": "However, Zacharias, who has debated with intellectuals on hundreds of college campuses believes that the real reason most people reject God is moral. He writes:"
+        "html": "The main reason most people reject Christ is that they don’t want him interfering with their moral choices. The desire for moral freedom kept C. S. Lewis from God for most of his college years. After his quest for truth led him to God, Lewis explains how acceptance of Christ involves more than just intellectual agreement with the facts. He writes:"
       },
       {
         "type": "quote",
-        "html": "” A man rejects God neither because of intellectual demands nor because of the scarcity of evidence. A man rejects God because of moral resistance that refuses to admit his need for God.”<sup>19</sup>"
+        "html": "“Fallen man is not simply an imperfect creature who needs improvement: he is a rebel who must lay down his arms. Laying down your arms, surrendering, saying you are sorry, realizing that you have been on the wrong track and getting ready to start life over again..is what Christians call repentance.”<sup>18</sup>"
       },
       {
         "type": "p",
-        "html": "The desire for moral freedom kept C. S. Lewis from God for most of his college years. After his quest for truth led him to God, Lewis explains how acceptance of Christ involves more than just intellectual agreement with the facts. He writes:"
-      },
-      {
-        "type": "quote",
-        "html": "“Fallen man is not simply an imperfect creature who needs improvement: he is a rebel who must lay down his arms. Laying down your arms, surrendering, saying you are sorry, realizing that you have been on the wrong track and getting ready to start life over again..is what Christians call repentance.”<sup>20</sup>"
-      },
-      {
-        "type": "p",
-        "html": "Repentance is a word that means a dramatic turn-around in thinking. That’s what happened to Nixon’s former “hatchet man”. After Watergate was exposed, Colson began thinking about life differently. Sensing his own lack of purpose, he began reading Lewis’s <em>Mere Christianity</em>, given to him by a friend. Trained as a lawyer, Colson took out a yellow legal pad and began writing down Lewis’s arguments. Colson recalled:"
+        "html": "Repentance is a word that means a dramatic turnaround in thinking. That’s what happened to Nixon’s former “hatchet man”. After Watergate was exposed, Colson began thinking about life differently. Sensing his own lack of purpose, he began reading Lewis’s <em>Mere Christianity</em>, given to him by a friend. Trained as a lawyer, Colson took out a yellow legal pad and began writing down Lewis’s arguments. Colson recalled:"
       },
       {
         "type": "quote",
@@ -4814,7 +4797,7 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "quote",
-        "html": "“And so early Friday morning, while I sat alone staring at the sea I love, words I had not been certain I could understand or say fell naturally from my lips: ‘Lord Jesus, I believe You. I accept You. Please come into my life. I commit it to You.’”<sup>21</sup>"
+        "html": "“And so early Friday morning, while I sat alone staring at the sea I love, words I had not been certain I could understand or say fell naturally from my lips: ‘Lord Jesus, I believe You. I accept You. Please come into my life. I commit it to You.’”<sup>19</sup>"
       },
       {
         "type": "p",
@@ -4902,10 +4885,8 @@ export const evidenceArticles: EvidenceArticle[] = [
           "Old Testament, Isaiah 59:2",
           "New Testament, Romans 5:8",
           "Assayas, Ibid.",
-          "Ravi Zacharias, <em>Jesus among Other Gods</em> (Nashville: Word, 2000), 158.",
           "Martha T. Moore and Dennis Cauchon, “Delay Meant Death on 9/11,” <em>USA Today</em>, Sept. 3, 2002, 1A.",
           "Charles W. Colson, <em>Born Again</em> (Old Tappan, NJ: Chosen, 1976), 114.",
-          "Ravi Zacharias, <em>A Shattered Visage: The Real Face of Atheism</em> (Grand Rapids, MI: Baker, 2004), 155.",
           "Lewis, 56.",
           "Colson, 129"
         ]

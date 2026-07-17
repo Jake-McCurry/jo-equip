@@ -467,7 +467,6 @@ export const bcgArticles: BcgArticle[] = [
       { type: "p", html: "Through such intentional, Scripture-saturated guidance, a church not only sustains its members but equips them to walk as beacons of hope in their daily lives." },
       { type: "p", html: "JesusOnline stands ready as a faithful partner, offering a treasury of free resources to help your church fully embrace and reflect this hope-filled identity. These resources equip you not merely to teach, but to create weekly encounters where the God of hope moves powerfully among His people. Through them, both first-time visitors and longtime believers can experience the refreshing work described in Romans 15:13 — being filled with joy and peace as they trust in Him, overflowing with hope by the power of the Holy Spirit." },
       { type: "p", html: "In a world hungry for assurance, JesusOnline resources help transform your church into a vibrant wellspring of renewal: a place where burdens are lifted, perspectives are renewed, and hearts are continually pointed toward the living hope found in Christ alone." },
-      { type: "figure", src: "bgc5s-8", alt: "Free resources to enhance engagement — Watch (powerful video clips capture attention), Learn (article insights deepen content), Live (an app link helps people apply the sermon all week)." },
 
       ...WLL,
       { type: "h3", text: "Hope Resources" },
@@ -649,7 +648,6 @@ export const bcgArticles: BcgArticle[] = [
       ]},
       { type: "figure", src: "bgc8s-7", alt: "Practical ways a local church can participate in the Great Commission — preach it from the pulpit, support local outreach, send and host missionaries, reach immigrants, partner with missions organizations, pray, and equip members." },
       { type: "p", html: "Although Oswald J. Smith has gone to his reward in Heaven, he leaves behind a Great Commission–focused church that has not only reached millions for Christ but still follows his example of obedience to Jesus’ words: “Go into all the world and make disciples of all nations.”" },
-      { type: "figure", src: "bgc8s-8", alt: "“Go into all the world and make disciples of all nations” — a lasting legacy of obedience to Jesus’ Great Commission." },
 
       REGISTER_CTA,
     ],

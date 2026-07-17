@@ -998,7 +998,7 @@ export const articlePdfs: Record<string, ArticlePdfMeta> = {
   "51014-why-arent-gnostic-gospels-in-the-new-testament": { title: "Why Aren’t Gnostic Gospels in the New Testament?", bytes: 223433, modified: "2026-04-24T19:46:10" },
   "51018-is-jesus-coming-back": { title: "Is Jesus Coming Back?", bytes: 154826, modified: "2026-04-24T20:06:22" },
   "51019-is-jesus-relevant-today": { title: "Is Jesus Relevant Today?", bytes: 233741, modified: "2026-07-17T13:58:12" },
-  "52002-does-the-universe-have-a-beginning": { title: "Does the Universe Have a Beginning?", bytes: 1527131, modified: "2026-05-04T16:54:06" },
+  "52002-does-the-universe-have-a-beginning": { title: "Does the Universe Have a Beginning?", bytes: 1527143, modified: "2026-05-04T16:54:06" },
   "52003-why-is-only-earth-suitable-for-life": { title: "Why is Only Earth Suitable for Life?", bytes: 3447592, modified: "2026-04-24T21:20:08" },
   "52004-is-the-universe-a-product-of-design-or-chance": { title: "Is the Universe a Product of Design or Chance?", bytes: 1359397, modified: "2026-04-24T21:20:28" },
   "52005-did-darwin-get-it-wrong": { title: "Did Darwin Get It Wrong?", bytes: 1153988, modified: "2026-05-04T16:55:53" },

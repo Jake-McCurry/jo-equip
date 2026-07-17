@@ -405,6 +405,19 @@ async function main() {
     }
   }
 
+  /* Some WP posts reference retired app slugs whose content lives on EQUIP
+     under a different article. Alias those slugs to the on-site target. */
+  const SLUG_ALIASES: Record<string, string> = {
+    "51010-was-jesus-the-messiah": "51007-is-jesus-the-jewish-messiah",
+  };
+  for (const [from, to] of Object.entries(SLUG_ALIASES)) {
+    const target = rw.get(to);
+    if (!target) continue;
+    if (!rw.has(from)) rw.set(from, target);
+    const fromId = articleIdOf(from);
+    if (!rw.has(fromId)) rw.set(fromId, target);
+  }
+
   for (const sub of selected) {
     const outPath = resolve(OUT_DIR, `${sub.id}.json`);
     if (existsSync(outPath) && !force) {

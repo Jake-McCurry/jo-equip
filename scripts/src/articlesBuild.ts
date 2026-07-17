@@ -418,7 +418,7 @@ const WATCH_VIDEO_P_RE =
 function rewriteWatchVideo(html: string, appSlug: string): string {
   return html.replace(WATCH_VIDEO_P_RE, block => {
     const visible = decodeEntities(block.replace(/<[^>]+>/g, "")).replace(/\s+/g, " ").trim();
-    if (!/^watch the video based on this article\.?$/i.test(visible)) return block;
+    if (!/^watch (?:the|a) video based on this article\.?$/i.test(visible)) return block;
     const equipHref = VIDEO_URL_BY_APP_SLUG.get(appSlug);
     if (!equipHref) return "";
     return block.replace(/href=(["'])[^"']*\1/i, `href="${equipHref}"`);

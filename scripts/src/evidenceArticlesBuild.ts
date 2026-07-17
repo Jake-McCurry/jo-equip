@@ -269,7 +269,7 @@ async function convert(
         /* Drop the "Watch the video based on this article" lead-in — the
            EQUIP sub-topic pages already expose the video via the Video
            button, so the line is redundant on-site. */
-        if (/^watch the video based on this article\.?$/i.test(stripTags(b.inner))) break;
+        if (/^watch (?:the|a) video based on this article\.?$/i.test(stripTags(b.inner))) break;
         /* Trailing "Endnotes" link → fetch and inline the endnotes post. */
         const endnoteHref = b.inner.match(
           /href=["'](?:https?:)?\/\/apicontent\.jesusonline\.com\/[^"']*?([\w-]*endnotes[\w-]*)\/?["']/i,

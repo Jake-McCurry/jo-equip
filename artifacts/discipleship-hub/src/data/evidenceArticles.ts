@@ -4898,12 +4898,8 @@ export const evidenceArticles: EvidenceArticle[] = [
     "appSlug": "52002-does-the-universe-have-a-beginning",
     "subId": "existence-of-god",
     "title": "Does the Universe Have a Beginning?",
-    "description": "Watch a video based on this article",
+    "description": "Since the dawn of civilization man has gazed in awe at the stars, wondering what they are and how they got there. Although our unaided eyes can only see…",
     "blocks": [
-      {
-        "type": "p",
-        "html": "<a href=\"https://app.jesusonline.com/post/75200-2-did-the-universe-have-a-beginning\" target=\"_blank\" rel=\"noopener noreferrer\">Watch a video based on this article</a>"
-      },
       {
         "type": "figure",
         "src": "does-the-universe-have-a-beginning-1",

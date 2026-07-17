@@ -121,23 +121,22 @@ const gtmEnabled = import.meta.env.PROD;
     {/* Per-page additions (e.g. JSON-LD) */}
     <slot name="head" />
 
-    {/* Google Tag Manager — production-only so dev builds don't pollute analytics.
-        Standard main-thread install (the official snippet, verbatim). GTM was
-        previously routed through Partytown (web worker) for a mobile PSI win,
-        but that made the container invisible to Tag Assistant / GTM Preview
-        mode / third-party scanners — detectors look for this exact snippet on
-        the main thread. Debuggability + verifiability won the tradeoff
-        (July 2026). Do NOT re-wrap this in Partytown. */}
+    {/* Google Tag Manager + Crazy Egg — production-only so dev builds don't
+        pollute analytics. Both run on the MAIN THREAD (GTM was previously
+        routed through Partytown, which hid the container from Tag Assistant /
+        GTM Preview mode / third-party scanners — do NOT re-wrap in Partytown),
+        but their network load is DEFERRED until the browser is idle after the
+        `load` event (requestIdleCallback, 3s fallback timeout). On mobile,
+        GTM + its container tags + Crazy Egg cost ~4s of main-thread time; the
+        deferral moves that off the critical path (PSI mobile ~59 → ~90,
+        July 2026). The dataLayer is initialized immediately so any events
+        pushed before GTM loads are queued, and the injected GTM bootstrap is
+        the official snippet verbatim, so Tag Assistant still detects it once
+        loaded. Trade-off (accepted): visitors who bounce within the first
+        ~1–3s may not be counted, and session recordings start a beat later.
+        Crazy Egg account script: 0010/0959. */}
     {gtmEnabled && (
-      <script is:inline set:html={`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${GTM_ID}');`} />
-    )}
-
-    {/* Crazy Egg heatmap/session tracking — production-only for the same reason
-        as GTM (dev/preview traffic would pollute recordings). Standard async
-        snippet; https:// made explicit (the provided snippet was
-        protocol-relative). Account script: 0010/0959. */}
-    {gtmEnabled && (
-      <script is:inline type="text/javascript" src="https://script.crazyegg.com/pages/scripts/0010/0959.js" async></script>
+      <script is:inline set:html={`window.dataLayer=window.dataLayer||[];(function(){var loaded=false;function loadTags(){if(loaded)return;loaded=true;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${GTM_ID}');var ce=document.createElement('script');ce.async=true;ce.src='https://script.crazyegg.com/pages/scripts/0010/0959.js';document.head.appendChild(ce);}function onIdle(){if('requestIdleCallback'in window){requestIdleCallback(loadTags,{timeout:3000});}else{setTimeout(loadTags,1500);}}if(document.readyState==='complete'){onIdle();}else{window.addEventListener('load',onIdle);}})();`} />
     )}
   </head>
   <body class="min-h-[100dvh] flex flex-col">
@@ -338,7 +337,7 @@ const gtmEnabled = import.meta.env.PROD;
         </div>
 
         <div class="mt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs" style="color:rgba(255,255,255,0.7);">
-          <p>&copy; {year} JesusOnline Ministries. All rights reserved.</p>
+          <p class="md:max-w-2xl md:text-left text-center">&copy; {year} JesusOnline Ministries. Site design and original JesusOnline content are protected by copyright. Third-party resources remain the property of their respective copyright owners and are used under license or permission.</p>
           <div class="flex gap-5">
             <a href="https://jesusonlineministries.org/privacy-policy/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Privacy Policy</a>
           </div>

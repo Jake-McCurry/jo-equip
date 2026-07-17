@@ -163,7 +163,8 @@ function renderTemplate({
   bodyHtml,
   sourceUrl,
   coverLead,
-}: { title: string; bodyHtml: string; sourceUrl: string; coverLead?: string }): string {
+  bibleProject,
+}: { title: string; bodyHtml: string; sourceUrl: string; coverLead?: string; bibleProject?: boolean }): string {
   const escTitle = title.replace(/&/g, "&amp;").replace(/</g, "&lt;");
   const escLead = coverLead ? coverLead.replace(/&/g, "&amp;").replace(/</g, "&lt;") : "";
   return `<!doctype html>
@@ -311,7 +312,10 @@ ${END_PAGE_CSS}
     <h1>${escTitle}</h1>
     <span class="rule"></span>
     <div class="meta">
-      <strong>A free resource from JesusOnline Ministries.</strong><br />
+      ${bibleProject
+        ? `<strong>Content produced and owned by BibleProject.</strong><br />
+      Explore more at <span style="color:#002f55">bibleproject.com</span>. BibleProject is not affiliated with JO&nbsp;EQUIP.<br />`
+        : `<strong>A free resource from JesusOnline Ministries.</strong><br />`}
       Read or share online: <span style="color:#002f55">${sourceUrl.replace(/^https?:\/\//, "")}</span>
     </div>
     <div class="footer-block">
@@ -321,6 +325,11 @@ ${END_PAGE_CSS}
   </section>
   <section class="article">
     <h1>${escTitle}</h1>
+    ${bibleProject
+      ? `<p style="font-family:-apple-system,'Helvetica Neue',Arial,sans-serif;font-size:9.5pt;color:#6b7280;border:1px solid #e5e7eb;border-radius:6px;padding:8px 12px;background:#f9fafb;">
+      Produced and owned by <strong style="color:#002f55;">BibleProject</strong> · bibleproject.com · Not affiliated with JO EQUIP.
+    </p>`
+      : ""}
     ${bodyHtml}
   </section>
 ${END_PAGE_HTML}
@@ -348,12 +357,111 @@ const HEADER_TEMPLATE = `<div></div>`;
    BibleProject (38601-* / 38701-*) is a different ministry and gets NO
    Joshua Nations eyebrow. Keep this list in sync when new Joshua Nations
    sub-topics are added. */
+/** BibleProject overview posts (38601–38641 OT, 38701–38732 NT). Their PDFs
+ *  carry BibleProject attribution instead of the JOM credit line. */
+function isBibleProjectSlug(appSlug: string): boolean {
+  return /^38[67]\d\d-/.test(appSlug);
+}
+
 function coverLeadFor(appSlug: string): string | undefined {
   if (/^93610-/.test(appSlug)) return "Joshua Nations";       // Rapid Church Planting
   if (/^9362[1-4]-/.test(appSlug)) return "Joshua Nations";   // Disciple Making Movement units 1–4
   if (/^9365[1-4]-/.test(appSlug)) return "Joshua Nations";   // Survey of the Bible (OT)
   if (/^9366[0-2]-/.test(appSlug)) return "Joshua Nations";   // Survey of the Bible (NT)
   return undefined;
+}
+
+/* ---------- "Watch the video based on this article" rewrite ----------
+   Some app articles open with a lone "Watch the video based on this article"
+   link pointing at the app. In PDFs that link must go to the EQUIP video
+   (playlist deep-link) when the item has one — otherwise the paragraph is
+   dropped entirely. The appSlug → EQUIP video URL map comes from the hub's
+   channels.ts (runtime import — see leaf-script pattern). */
+
+interface ChannelsModuleLite {
+  subTopics: {
+    id: string;
+    channelId: string;
+    playlistId?: string;
+    items?: {
+      videoId?: string;
+      videoPlaylistId?: string;
+      links?: { app?: string; video?: string };
+    }[];
+  }[];
+}
+
+let VIDEO_URL_BY_APP_SLUG: Map<string, string> = new Map();
+
+async function loadVideoMap(): Promise<void> {
+  const { pathToFileURL } = await import("node:url");
+  const channelsUrl = pathToFileURL(resolve(ROOT, "artifacts/discipleship-hub/src/data/channels.ts")).href;
+  const { subTopics } = (await import(channelsUrl)) as ChannelsModuleLite;
+  for (const sub of subTopics) {
+    for (const item of sub.items ?? []) {
+      const appSlug = item.links?.app?.match(/app\.jesusonline\.com\/post\/([^/?#]+)/)?.[1];
+      if (!appSlug) continue;
+      const playlistId = item.videoPlaylistId ?? sub.playlistId;
+      const href = item.videoId && playlistId
+        ? `https://equip.jesusonline.com/playlist/${encodeURIComponent(playlistId)}?play=${encodeURIComponent(item.videoId)}`
+        : item.links?.video;
+      if (href && !VIDEO_URL_BY_APP_SLUG.has(appSlug)) VIDEO_URL_BY_APP_SLUG.set(appSlug, href);
+    }
+  }
+}
+
+const WATCH_VIDEO_P_RE =
+  /<(p|h[2-4])\b[^>]*>(?:(?!<\/\1>)[\s\S])*?<a\b[^>]*>(?:(?!<\/\1>)[\s\S])*?<\/a>(?:(?!<\/\1>)[\s\S])*?<\/\1>/gi;
+
+/** Rewrite (or drop) the "Watch the video based on this article" paragraph
+    before sanitizeHtml gets a chance to rewrite its href to the app. */
+function rewriteWatchVideo(html: string, appSlug: string): string {
+  return html.replace(WATCH_VIDEO_P_RE, block => {
+    const visible = decodeEntities(block.replace(/<[^>]+>/g, "")).replace(/\s+/g, " ").trim();
+    if (!/^watch the video based on this article\.?$/i.test(visible)) return block;
+    const equipHref = VIDEO_URL_BY_APP_SLUG.get(appSlug);
+    if (!equipHref) return "";
+    return block.replace(/href=(["'])[^"']*\1/i, `href="${equipHref}"`);
+  });
+}
+
+/* Trailing "Endnotes" paragraph — a lone link to the article's endnotes post
+   on apicontent. On-site Evidence articles inline that post's content; the
+   PDFs must match instead of sending readers to the app. Matches a <p> (or
+   heading) whose visible text is exactly "Endnotes" and whose href points at
+   an apicontent *endnotes* slug. */
+const ENDNOTES_LINK_RE =
+  /<(p|h[2-4])\b[^>]*>(?:(?!<\/\1>)[\s\S])*?href=["'](?:https?:)?\/\/apicontent\.jesusonline\.com\/[^"']*?([\w-]*endnotes[\w-]*)\/?(?:[?#][^"']*)?["'](?:(?!<\/\1>)[\s\S])*?<\/\1>/i;
+
+async function fetchEndnotesHtml(slug: string): Promise<string | null> {
+  try {
+    const url = `https://apicontent.jesusonline.com/wp-json/wp/v2/posts?slug=${encodeURIComponent(slug)}&_fields=content`;
+    const res = await fetch(url);
+    if (!res.ok) return null;
+    const arr = (await res.json()) as { content: { rendered: string } }[];
+    if (!arr.length || typeof arr[0]?.content?.rendered !== "string") return null;
+    /* Drop the endnote post's own leading h1/h2 (duplicate of the article title). */
+    const body = arr[0].content.rendered.replace(/^\s*<h[12]\b[^>]*>[\s\S]*?<\/h[12]>/i, "");
+    return body.trim() ? `<h2>Endnotes</h2>\n${body}` : null;
+  } catch {
+    /* Network/JSON failure: fall back to the old link-to-app behavior rather
+       than failing the whole PDF build. */
+    return null;
+  }
+}
+
+/* Replace a trailing "Endnotes" link paragraph with the endnotes post content
+   inlined. Returns the html unchanged when there is no endnotes link or the
+   fetch fails (in that case the sanitizer still rewrites the link to the app,
+   the previous behavior). */
+async function inlineEndnotes(html: string): Promise<string> {
+  const m = html.match(ENDNOTES_LINK_RE);
+  if (!m) return html;
+  const visible = decodeEntities(m[0]!.replace(/<[^>]+>/g, "")).trim().toLowerCase();
+  if (visible !== "endnotes") return html;
+  const endnotesHtml = await fetchEndnotesHtml(m[2]!);
+  if (!endnotesHtml) return html;
+  return html.replace(m[0]!, endnotesHtml);
 }
 
 async function fetchPost(wpId: number): Promise<WpPost | null> {
@@ -380,12 +488,13 @@ async function buildOne(
     }
 
     const displayTitle = stripLeadingNumber(decodeEntities(post.title.rendered));
-    const bodyHtml = sanitizeHtml(post.content.rendered);
+    const bodyHtml = sanitizeHtml(await inlineEndnotes(rewriteWatchVideo(post.content.rendered, appSlug)));
     const html = renderTemplate({
       title: displayTitle,
       bodyHtml,
       sourceUrl: `app.jesusonline.com/post/${appSlug}`,
       coverLead: coverLeadFor(appSlug),
+      bibleProject: isBibleProjectSlug(appSlug),
     });
 
     const page = await browser.newPage();
@@ -496,6 +605,7 @@ export function getArticlePdfMeta(appSlug: string): ArticlePdfMeta | undefined {
 
 async function main() {
   if (!existsSync(OUT_DIR)) mkdirSync(OUT_DIR, { recursive: true });
+  await loadVideoMap();
 
   const mapping = JSON.parse(readFileSync(MAPPING_PATH, "utf8")) as Record<string, SlugEntry>;
   let cache: Manifest = {};

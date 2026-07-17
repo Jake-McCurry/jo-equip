@@ -233,10 +233,17 @@ function btnClass(enabled: boolean) {
             const bsmPdfHref = hasBsmArticlePdf(item.articleId)
               ? join(`/articles/bsm/${item.articleId}.pdf`)
               : undefined;
-            const pdfHref = item.bookId
+            // Items with an on-site article (articleId) link the PDF button
+            // straight to the article's PDF — even when a same-titled book
+            // exists (the Book chip/covers still lead to the gated book page).
+            const directPdfHref = item.links?.pdf ?? bcgPdfHref ?? bsmPdfHref ?? articlePdfHref;
+            const bookPdfHref = item.bookId
               ? join(`/books?download=${encodeURIComponent(item.bookId)}#${encodeURIComponent(item.bookId)}`)
-              : (item.links?.pdf ?? bcgPdfHref ?? bsmPdfHref ?? articlePdfHref);
-            const pdfInternal = !!item.bookId || (!item.links?.pdf && (!!bcgPdfHref || !!bsmPdfHref || !!articlePdfHref));
+              : undefined;
+            const pdfHref = item.articleId
+              ? (directPdfHref ?? bookPdfHref)
+              : (bookPdfHref ?? directPdfHref);
+            const pdfInternal = pdfHref !== item.links?.pdf;
 
             // Video: enabled only when this item has a matching video inside a
             // playlist — the sub-topic's own `playlistId`, or a per-item
@@ -250,9 +257,10 @@ function btnClass(enabled: boolean) {
 
             const appHref = item.links?.app;
 
+            // Button order: Read, Video, PDF (App last when shown).
             const buttons: { label: string; icon: any; href?: string; internal?: boolean }[] = [
-              { label: "PDF", icon: FileText, href: pdfHref, internal: pdfInternal },
               { label: "Video", icon: Video, href: videoHref, internal: videoInternal },
+              { label: "PDF", icon: FileText, href: pdfHref, internal: pdfInternal },
               // App button is omitted for BCG article items (those with an articleId).
               ...(item.articleId ? [] : [{ label: "App", icon: Smartphone, href: appHref, internal: false }]),
             ];
@@ -282,6 +290,11 @@ function btnClass(enabled: boolean) {
                       : item.title}
                   </h3>
                   <div class="flex flex-wrap gap-1.5">
+                    {articleHref && (
+                      <a href={articleHref} class={btnClass(true)} style="background-color:#de5b0014;color:#de5b00;border:1px solid #de5b0040;">
+                        <FileText className="w-3 h-3" />Read
+                      </a>
+                    )}
                     {buttons.map(b => {
                       const enabled = !!b.href && b.href !== "#";
                       const Icon = b.icon;
@@ -304,11 +317,6 @@ function btnClass(enabled: boolean) {
                         </a>
                       );
                     })}
-                    {articleHref && (
-                      <a href={articleHref} class={btnClass(true)} style="background-color:#de5b0014;color:#de5b00;border:1px solid #de5b0040;">
-                        <FileText className="w-3 h-3" />Read
-                      </a>
-                    )}
                   </div>
                 </div>
               </li>

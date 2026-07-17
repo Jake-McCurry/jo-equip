@@ -51,6 +51,12 @@ interface BookConfig {
   titleFontSizePt?: number;
   subtitleHtml: string;
   tocHeading: string; // text of the docx TOC <h1>
+  /* "strict" = manuscript-owner typography spec:
+       H1 Calibri Light 28 / H2 Calibri 18 / H3 Calibri Bold 14 /
+       H4 Cambria Bold 12 / body Cambria 12 — rendered with the
+       metric-compatible Carlito (Calibri) and Caladea (Cambria) fonts.
+       No added bold/centering/italics beyond the docx markup. */
+  typography?: "classic" | "strict";
 }
 
 function titleStyleAttr(book: BookConfig): string {
@@ -60,7 +66,8 @@ function titleStyleAttr(book: BookConfig): string {
 const BOOKS: BookConfig[] = [
   {
     key: "walking",
-    docx: resolve(ROOT, "attached_assets/Walking_in_the_Spirit_ebook_260714_1784052029630.docx"),
+    docx: resolve(ROOT, "attached_assets/Walking_in_the_Spirit_ebook_260714_1784232887203.docx"),
+    typography: "strict",
     cover: resolve(ROOT, "attached_assets/walking_cover_jo_logo_edit.png"),
     coverType: "png",
     coverBottomCrop: 10,
@@ -72,6 +79,7 @@ const BOOKS: BookConfig[] = [
   {
     key: "identity",
     docx: resolve(ROOT, "attached_assets/Your_New_Identity_in_Christ_ebook_260714_1784052032853.docx"),
+    typography: "strict",
     cover: resolve(ROOT, "attached_assets/identity_cover_jo_logo_edit.jpg"),
     coverType: "jpg",
     coverBottomCrop: 0,
@@ -84,12 +92,12 @@ const BOOKS: BookConfig[] = [
     key: "majesty",
     docx: resolve(ROOT, "attached_assets/Beholding_the_Majesty_of_God_071426_1784055917121.pdf"),
     source: "pdf",
+    typography: "strict",
     cover: resolve(ROOT, "attached_assets/majesty_cover_jo_logo_edit.png"),
     coverType: "png",
     coverBottomCrop: 12,
     out: resolve(ROOT, "artifacts/discipleship-hub/public/books/beholding-the-majesty-of-god.pdf"),
     title: "Beholding the Majesty of God",
-    titleFontSizePt: 24,
     subtitleHtml: "Explore His Divine Attributes",
     tocHeading: "Contents",
   },
@@ -177,6 +185,21 @@ function parseBook(book: BookConfig, rawHtml: string): ParsedBook {
   let html = rawHtml;
 
   /* Book-specific heading promotions (plain paragraphs in the docx). */
+  if (book.key === "walking") {
+    /* Docx chapter-3 heading is missing the colon after "Surrender"
+       (the TOC entry has it). */
+    html = html.replace(
+      /(<h1>3\.\s*(?:<br \/>)?Surrender)(<br \/>The Pathway to Spirit-Filled Living<\/h1>)/,
+      "$1:$2",
+    );
+  }
+
+  /* Normalize the iOS App Store link wherever the docx carries the old
+     variant URL (same app id, but the canonical URL is preferred). */
+  html = html.replaceAll(
+    "https://apps.apple.com/app/jo-app-jesusonline/id1474405483",
+    "https://apps.apple.com/us/app/jo-app/id1474405483",
+  );
   if (book.key === "identity") {
     html = html.replace(
       /<p>1\s*<br \/>Embracing Your New Identity in Christ<\/p>/,
@@ -208,7 +231,19 @@ function parseBook(book: BookConfig, rawHtml: string): ParsedBook {
   const joIdx = bodyPs.findIndex(p => /<p><strong>JO EQUIP/.test(p));
   const noticePs = joIdx === -1 ? bodyPs : bodyPs.slice(0, joIdx);
   const joPs = joIdx === -1 ? [] : bodyPs.slice(joIdx);
-  const frontPagesHtml = `
+  /* strict: mirror the docx exactly — front matter is ONE page (title +
+     notices + JO block together, single page break before the TOC).
+     classic: keep the three designed front pages. */
+  const frontPagesHtml =
+    book.typography === "strict"
+      ? `
+  <section class="front-matter">
+    <h1${titleStyleAttr(book)}>${book.title}</h1>
+    <p class="subtitle">${book.subtitleHtml}</p>
+    ${noticePs.join("\n")}
+    ${joPs.join("\n")}
+  </section>`
+      : `
   <section class="title-page">
     <h1${titleStyleAttr(book)}>${book.title}</h1>
     <p class="subtitle">${book.subtitleHtml}</p>
@@ -247,7 +282,14 @@ function parseBook(book: BookConfig, rawHtml: string): ParsedBook {
     let headingHtml = hm[1]!.replace(/^\s*(<br \/>)+/, "").trim();
     const text = stripTags(headingHtml);
     const token = headingToken(text) ?? `X${chapters.length}`;
-    chapters.push({ key: token, headingHtml, bodyHtml: part.slice(hm[0].length) });
+    /* Drop empty paragraphs straight after the heading (the walking docx
+       has a stray "<p> </p>" after chapter 9, doubling the gap). Gated to
+       walking so the approved identity output stays byte-stable. */
+    let bodyHtml = part.slice(hm[0].length);
+    if (book.key === "walking") {
+      bodyHtml = bodyHtml.replace(/^(?:\s*<p>(?:\s|&nbsp;|<br \/>)*<\/p>)+/, "");
+    }
+    chapters.push({ key: token, headingHtml, bodyHtml });
   }
   return { frontPagesHtml, tocEntries, chapters };
 }
@@ -463,7 +505,7 @@ const MAJESTY_RESOURCES_HTML = `
 <p><strong>Explore the Free Books</strong> → equip.jesusonline.com/books</p>
 <p><strong>Download the Free JO App</strong> — Your personal discipleship hub with the NET Bible, daily devotions, interactive studies, prayer tools, more books, and videos.</p>
 <p>Explore in browser → app.jesusonline.com</p>
-<p><a href="https://play.google.com/store/apps/details?id=com.clear.joapp">Download for Android</a> &nbsp;·&nbsp; <a href="https://apps.apple.com/app/jo-app-jesusonline/id1474405483">Download for iOS</a></p>
+<p><a href="https://play.google.com/store/apps/details?id=com.clear.joapp">Download for Android</a> &nbsp;·&nbsp; <a href="https://apps.apple.com/us/app/jo-app/id1474405483">Download for iOS</a></p>
 <p><strong>Watch Video Playlists</strong> → equip.jesusonline.com/playlists</p>
 <p><strong>Visit JesusOnline Ministries</strong> — For more about this ministry and global outreach: jesusonlineministries.org</p>
 <p><strong>Would you like to help others?</strong> Share this book (or the download link) with friends, your small group, or your church. Every copy planted can bear eternal fruit!</p>
@@ -539,15 +581,13 @@ function parseMajestyPdf(book: BookConfig): ParsedBook {
     key: ch.key,
   }));
 
+  /* Match the walking book: single front-matter page (title + notices +
+     JO block), strict typography. */
   const frontPagesHtml = `
-  <section class="title-page">
+  <section class="front-matter">
     <h1${titleStyleAttr(book)}>${book.title}</h1>
     <p class="subtitle">${book.subtitleHtml}</p>
-  </section>
-  <section class="front-page notices">
-    ${MAJESTY_FRONT_NOTICES_HTML}
-  </section>
-  <section class="front-page">
+    <div class="notices">${MAJESTY_FRONT_NOTICES_HTML}</div>
     ${MAJESTY_FRONT_JO_HTML}
   </section>`;
 
@@ -604,6 +644,92 @@ const CSS = `
   .quote { margin: 0 0 0.85em 0.4in; }
 `;
 
+/* Strict manuscript-owner typography (see BookConfig.typography).
+   Carlito is metric-compatible with Calibri; Caladea with Cambria.
+   Carlito has no Light face — weight 300 resolves to the closest available.
+   Alignment/indent mirror the docx: H1s and the title are CENTERED (they are
+   centered in the manuscript), quotes keep their 0.5"/1" docx indents, and
+   front matter is a single page like the docx. Only H3/H4 are bold. */
+const STRICT_CSS = `
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: Caladea, Cambria, Georgia, serif;
+    color: #1f2937;
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+  .front-matter { page-break-after: always; padding-top: 0.2in; }
+  .front-matter h1 {
+    font-family: Carlito, Calibri, sans-serif;
+    font-weight: 300;
+    font-size: 28pt; line-height: 1.2; color: #002f55;
+    text-align: center;
+    margin: 0 0 0.3em 0;
+  }
+  .front-matter .subtitle { font-size: 13pt; line-height: 1.4; color: #0083de; text-align: center; margin: 0 0 1.6em 0; }
+  .front-matter p { margin: 0 0 0.85em 0; }
+  .toc { page-break-after: always; padding-top: 0.3in; }
+  .toc h1 {
+    font-family: Carlito, Calibri, sans-serif;
+    font-weight: 300; font-size: 28pt; color: #002f55;
+    text-align: center;
+    margin: 0 0 0.9em 0;
+  }
+  .toc-line { display: flex; align-items: baseline; margin: 0 0 0.55em 0; }
+  .toc-line .toc-label { white-space: normal; }
+  .toc-line .toc-dots { flex: 1 1 auto; min-width: 24px; border-bottom: 1px dotted #9ca3af; margin: 0 6px; transform: translateY(-3px); }
+  .toc-line .toc-pg { color: #1f2937; }
+  .toc-label-line { margin: 0.9em 0 0.4em 0; }
+  .toc ul { margin: 0.15em 0 0.7em 1.6em; padding: 0; list-style: disc; font-size: 10.5pt; color: #4b5563; }
+  .toc ul li { margin: 0.15em 0; }
+  .chapter { page-break-before: always; }
+  .chapter > h1 {
+    font-family: Carlito, Calibri, sans-serif;
+    font-weight: 300;
+    font-size: 28pt; line-height: 1.25; color: #002f55;
+    text-align: center;
+    margin: 0.25in 0 0.7em 0; position: relative;
+  }
+  h2 {
+    font-family: Carlito, Calibri, sans-serif;
+    font-weight: 400;
+    font-size: 18pt; color: #002f55; margin: 1.4em 0 0.3em;
+    page-break-after: avoid; line-height: 1.3;
+  }
+  h3 {
+    font-family: Carlito, Calibri, sans-serif;
+    font-weight: 700;
+    font-size: 14pt; color: #002f55; margin: 1.25em 0 0.2em;
+    page-break-after: avoid; line-height: 1.3;
+  }
+  h4 {
+    font-family: Caladea, Cambria, Georgia, serif;
+    font-weight: 700;
+    font-size: 12pt; color: #002f55; margin: 1.1em 0 0.2em;
+    page-break-after: avoid; line-height: 1.3;
+  }
+  p { margin: 0 0 0.85em 0; orphans: 3; widows: 3; }
+  p.ind1 { margin-left: 0.5in; }
+  p.ind2 { margin-left: 1in; }
+  a { color: #b34800; text-decoration: none; }
+  strong { color: #002f55; }
+  ul, ol { margin: 0.5em 0 1em 1in; padding: 0; }
+  li { margin: 0.3em 0; }
+  img { max-width: 100% !important; height: auto !important; page-break-inside: avoid; margin: 0.7em 0; }
+  table { border-collapse: collapse; margin: 0.8em 0; font-size: 10.5pt; }
+  td, th { border: 1px solid #d1d5db; padding: 4px 8px; vertical-align: top; }
+  .pgmark { position: absolute; left: 0; top: 0; font-size: 2px; color: #ffffff; }
+  .quote { margin: 0 0 0.85em 0.5in; }
+  .epigraph { text-align: center; font-style: italic; margin: 0 0 1.2em 0; }
+  .epigraph .attrib { font-style: normal; }
+  .front-matter .notices { font-size: 9.5pt; color: #4b5563; }
+  .front-matter .notices p { margin: 0 0 0.85em 0; }
+`;
+
+function cssFor(book: BookConfig): string {
+  return book.typography === "strict" ? STRICT_CSS : CSS;
+}
+
 const FOOTER_TEMPLATE = `
   <div style="width:100%;text-align:center;font-family:'Helvetica Neue',Arial,sans-serif;font-size:8.5pt;color:#6b7280;">
     <span class="pageNumber"></span>
@@ -648,7 +774,7 @@ function buildInteriorHtml(
   ${chaptersHtml}`;
   return `<!doctype html>
 <html lang="en">
-<head><meta charset="utf-8" /><title>${book.title}</title><style>${CSS}</style></head>
+<head><meta charset="utf-8" /><title>${book.title}</title><style>${cssFor(book)}</style></head>
 <body>${linkifyOutsideAnchors(body)}</body>
 </html>`;
 }
@@ -725,7 +851,33 @@ async function buildBook(browser: Browser, book: BookConfig): Promise<void> {
   if (book.source === "pdf") {
     parsed = parseMajestyPdf(book);
   } else {
-    const { value: rawHtml, messages } = await mammoth.convertToHtml({ path: book.docx });
+    /* "Emphasis" is a character style Word renders as italic; without this
+       mapping mammoth drops it and italics would be silently lost.
+       The paragraph transform preserves docx left-indents (720 twips = 0.5",
+       1440 twips = 1") which mammoth otherwise drops — scripture quotes in
+       the manuscripts are indented paragraphs, not styled quotes. */
+    /* mammoth's type defs omit `transforms`; it exists at runtime. */
+    const indentTransform = (mammoth as any).transforms.paragraph((p: any) => {
+      if (p.numbering) return p; // real list items keep their bullets
+      const start = p.indent && p.indent.start ? parseInt(p.indent.start, 10) : 0;
+      if (start >= 1200) return { ...p, styleId: "IndentTwo", styleName: "IndentTwo" };
+      if (start >= 400) return { ...p, styleId: "IndentOne", styleName: "IndentOne" };
+      return p;
+    });
+    /* Gate the fidelity fixes to strict books so already-approved classic
+       books (identity) keep their exact existing output. */
+    const strictOpts =
+      book.typography === "strict"
+        ? {
+            styleMap: [
+              "r[style-name='Emphasis'] => em",
+              "p[style-name='IndentOne'] => p.ind1:fresh",
+              "p[style-name='IndentTwo'] => p.ind2:fresh",
+            ],
+            transformDocument: indentTransform,
+          }
+        : {};
+    const { value: rawHtml, messages } = await mammoth.convertToHtml({ path: book.docx }, strictOpts);
     const warnings = messages.filter(m => m.type === "warning" && !/Unrecognised (run|paragraph) style/.test(m.message));
     if (warnings.length) console.warn("  mammoth warnings:", warnings.map(m => m.message).join("; "));
     parsed = parseBook(book, rawHtml);
@@ -749,8 +901,23 @@ async function buildBook(browser: Browser, book: BookConfig): Promise<void> {
   unlinkSync(interiorPath);
 }
 
+/* The environment can lose ~/.fonts; without this check strict books would
+   silently render in DejaVu fallback. Reinstall: download the Carlito and
+   Caladea TTFs from github.com/google/fonts (ofl/carlito, ofl/caladea) into
+   ~/.fonts and run `fc-cache -f`. */
+function assertStrictFonts(): void {
+  const res = spawnSync("fc-list", [], { encoding: "utf8" });
+  const list = res.stdout ?? "";
+  for (const fam of ["Carlito", "Caladea"]) {
+    if (!list.includes(fam)) {
+      throw new Error(`Font "${fam}" is not installed — strict-typography books would fall back to DejaVu. See assertStrictFonts() in this file for reinstall steps.`);
+    }
+  }
+}
+
 async function main(): Promise<void> {
   const selected = BOOKS.filter(b => bookArg === "all" || b.key === bookArg);
+  if (selected.some(b => b.typography === "strict")) assertStrictFonts();
   if (selected.length === 0) {
     console.error(`Unknown --book=${bookArg}. Use: ${BOOKS.map(b => b.key).join(", ")}, all`);
     process.exit(1);

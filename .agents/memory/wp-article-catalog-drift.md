@@ -28,3 +28,8 @@ When resolving `app.jesusonline.com/post/<slug>` links to WordPress post ids (fo
 ## Spreadsheet omissions can be deliberate
 
 When the Church/Growth content spreadsheet skips one item mid-sequence (e.g. From Coping to Cure omitting "I Hate Pain!" 65612), verify against WP REST before assuming a typo: `?slug=` exact + `?search=` on both posts AND pages. If WP has nothing, the omission is deliberate (the article was never published) — mirror the sheet and drop the item rather than adding a dead app link. The app frontend's 200-for-everything SPA behavior makes curl status checks useless for this.
+
+- Article-PDF pipeline changes that alter output without upstream `modified` changes are invisible to the incremental cache — rebuild affected slugs with `--force --slug=a,b,c` (comma list supported).
+- Some WP endnotes posts contain baked-in pagination junk from the original book text (e.g. "Endnotes 111" mid-citation). It shows on-site too; not a pipeline bug — fix upstream in WordPress if desired.
+
+- 12 article PDFs (32281-85, 32446, 32451-56) have DELETED WP source posts — cannot regenerate via articles:build. 7 (32446+) have end pages; fix links by patching URI annotations in-place with pdf-lib (already in workspace). 5 (32281-85) are old-format with no end page. Changes to pdfEndPage.ts require force-rebuild of ALL article/bcg/bsm PDFs plus manual pdf-lib patch of these legacy files.

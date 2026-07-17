@@ -152,6 +152,9 @@ const HREF_OVERRIDES: Record<string, string> = {
   /* "Watch the summary video" on Duty, Discipline, Delight → EQUIP playlist */
   "73227-0-7-habits-for-a-deeper-relationship-with-god":
     "/playlist/7-habits-deeper-relationship-with-god?play=c2QgWzLjLco",
+  /* "Watch the summary video" on God in Times of Crisis → EQUIP playlist */
+  "72002-01-hope-in-times-of-crisis":
+    "/playlist/hope-in-times-of-crisis?play=cIATt88b_MM",
 };
 
 function cleanInline(html: string, rw: Map<string, RwTarget>): string {
@@ -300,8 +303,9 @@ async function convert(
            EQUIP sub-topic pages already expose the video via the Video
            button, so the line is redundant on-site. */
         if (/^watch (?:the|a) video based on this article\.?$/i.test(stripTags(b.inner))) break;
-        /* Drop app-menu pointer paragraphs that have no on-site equivalent. */
-        if (/^see “?habits for greater intimacy with god”? main menu$/i.test(stripTags(b.inner))) break;
+        /* Drop app-menu pointer paragraphs ("See “…” main menu") — they
+           point at app series menus with no on-site equivalent. */
+        if (/^see “?[^“”]+”? main menu$/i.test(stripTags(b.inner))) break;
         const endnoteHref = b.inner.match(
           /href=["'](?:https?:)?\/\/apicontent\.jesusonline\.com\/[^"']*?([\w-]*endnotes[\w-]*)\/?["']/i,
         );

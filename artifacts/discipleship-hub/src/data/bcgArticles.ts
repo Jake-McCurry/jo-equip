@@ -396,9 +396,9 @@ export const bcgArticles: BcgArticle[] = [
 
       { type: "h3", text: "Recommended Resources on Amazon" },
       { type: "ul", items: [
-        "<em>God: Discover His Character</em> by Bill Bright",
-        "<em>Living Supernaturally in Christ</em> by Bill Bright",
-        "<em>His Intimate Presence: Experiencing the Transforming Power of the Holy Spirit</em> by Bill Bright",
+        '<a href="https://www.amazon.com/God-Discover-Character-Bill-Bright/dp/1563991217" target="_blank" rel="noopener"><em>God: Discover His Character</em></a> by Bill Bright',
+        '<a href="https://www.amazon.com/Living-Supernaturally-Christ-Bill-Bright/dp/1563991454" target="_blank" rel="noopener"><em>Living Supernaturally in Christ</em></a> by Bill Bright',
+        '<a href="https://www.amazon.com/His-Intimate-Presence-Experiencing-Transforming/dp/1563991926" target="_blank" rel="noopener"><em>His Intimate Presence: Experiencing the Transforming Power of the Holy Spirit</em></a> by Bill Bright',
       ]},
 
       REGISTER_CTA,

@@ -1,0 +1,48 @@
+---
+import ResourceLanding from "@/components/ResourceLanding.astro";
+import type { Section } from "@/components/resourceLandingTypes";
+
+const baseUrl = import.meta.env.BASE_URL;
+const join = (p: string) =>
+  (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
+
+const sections: Section[] = [
+  {
+    kind: "links",
+    heading: "Read Sermon Helps Articles",
+    items: [
+      { lead: "JesusOnline EQUIPPED Church", href: join("/channels/church/become-growing-church/a-jesusonline-equipped-church") },
+      { lead: "Transformational Teaching Church", href: join("/channels/church/become-growing-church/a-transformational-teaching-church") },
+      { lead: "Model/Example Church", href: join("/channels/church/become-growing-church/a-model-church") },
+    ],
+  },
+  {
+    kind: "links",
+    heading: "Explore Sermon Helps Topics",
+    items: [
+      { lead: "Growth Resources", href: join("/channels/growth") },
+      { lead: "Bible Mastery", href: join("/channels/church/bible-mastery") },
+      { lead: "Sermon Toolbox", href: join("/channels/church/sermon-toolbox") },
+    ],
+  },
+  {
+    kind: "cta",
+    heading: "Watch Playlists",
+    label: "See all Playlists",
+    href: join("/playlists"),
+  },
+  {
+    kind: "cta",
+    heading: "Download Books",
+    label: "See all Books",
+    href: join("/books"),
+  },
+];
+---
+<ResourceLanding
+  title="Featured Sermon Helps | JO EQUIP"
+  description="Access free sermon helps, prepared to equip pastors and teachers with biblically rich, Spirit-empowered content."
+  heroTitle="Featured Sermon Helps"
+  heroIntro="Access these sermon helps, prepared to equip pastors and teachers with biblically rich, Spirit-empowered content."
+  sections={sections}
+/>

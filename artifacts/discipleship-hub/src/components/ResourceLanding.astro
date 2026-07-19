@@ -1,0 +1,182 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { Image } from "astro:assets";
+import { ArrowRight } from "lucide-react";
+import { playlists } from "@/data/playlists";
+import { books } from "@/data/books";
+import { getBookCover } from "@/data/bookCovers";
+
+/* Shared shell for the four ad-campaign destination pages
+   (/discipleship-resources, /church-strategies, /sermon-helps,
+   /evangelism-tools) — July 2026 landing-page docs. Unlike /lp/*,
+   these are real indexable pages. */
+
+import type { Section } from "./resourceLandingTypes";
+
+interface Props {
+  title: string;
+  description: string;
+  heroTitle: string;
+  heroIntro: string;
+  sections: Section[];
+}
+
+const { title, description, heroTitle, heroIntro, sections } = Astro.props;
+
+const baseUrl = import.meta.env.BASE_URL;
+const join = (p: string) =>
+  (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
+
+function playlistCards(ids: string[]) {
+  return ids.map(id => {
+    const p = playlists.find(pl => pl.id === id);
+    if (!p) throw new Error(`ResourceLanding: unknown playlist id ${id}`);
+    const thumb = (p as { thumbnailVideoId?: string }).thumbnailVideoId ?? p.videos[0]?.videoId;
+    return { id: p.id, title: p.title, thumb };
+  });
+}
+
+/* Tailwind's JIT only sees literal class names — never interpolate
+   `grid-cols-${n}` or the class won't exist in the CSS. */
+const colClasses: Record<number, string> = {
+  1: "sm:grid-cols-1",
+  2: "sm:grid-cols-2",
+  3: "sm:grid-cols-3",
+  4: "sm:grid-cols-2 lg:grid-cols-4",
+};
+
+function bookCards(ids: string[]) {
+  return ids.map(id => {
+    const b = books.find(bk => bk.id === id);
+    if (!b) throw new Error(`ResourceLanding: unknown book id ${id}`);
+    return { id: b.id, title: b.title, cover: getBookCover(b.id) };
+  });
+}
+---
+<Layout title={title} description={description}>
+  {/* Hero */}
+  <section class="relative py-10 md:py-16 px-4 text-center overflow-hidden" style="background-color:#0083de;">
+    <div class="pointer-events-none absolute inset-0 overflow-hidden">
+      <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-10" style="background-color:#002f55;"></div>
+      <div class="absolute -bottom-32 -left-20 w-80 h-80 rounded-full opacity-10" style="background-color:#002f55;"></div>
+    </div>
+    <div class="relative container mx-auto max-w-4xl">
+      <p class="mb-3 text-sm font-semibold tracking-widest uppercase" style="color:rgba(255,255,255,0.85);">JO EQUIP</p>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl mb-4 leading-tight" style="color:#ffffff;font-weight:600;">{heroTitle}</h1>
+      <p class="text-base md:text-lg max-w-2xl mx-auto leading-relaxed" style="color:rgba(255,255,255,0.94);">{heroIntro}</p>
+    </div>
+  </section>
+
+  {sections.map((section, i) => {
+    const bg = i % 2 === 0 ? "#f4f7fb" : "#ffffff";
+
+    if (section.kind === "links") {
+      return (
+        <section class="py-10 md:py-14" style={`background-color:${bg};`}>
+          <div class="container mx-auto px-4 max-w-3xl">
+            <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-center" style="color:#002f55;">{section.heading}</h2>
+            <ul class="flex flex-col gap-3">
+              {section.items.map(n => (
+                <li>
+                  <a href={n.href} class="group flex items-center justify-between gap-4 bg-white border rounded px-5 py-4 transition-all hover:shadow-md" style="border-color:var(--color-border);border-left:4px solid #de5b00;">
+                    <span class="text-[15px] md:text-base leading-snug" style="color:#002f55;">
+                      <strong class="font-semibold group-hover:underline" style="color:#de5b00;">{n.lead}</strong>{n.rest ? ` ${n.rest}` : ""}
+                    </span>
+                    <ArrowRight className="w-5 h-5 shrink-0 transition-transform group-hover:translate-x-1" style={{ color: "#de5b00" }} />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      );
+    }
+
+    if (section.kind === "playlists") {
+      const cards = playlistCards(section.ids);
+      return (
+        <section class="py-10 md:py-14" style={`background-color:${bg};`}>
+          <div class="container mx-auto px-4">
+            <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-center" style="color:#002f55;">{section.heading}</h2>
+            <div class={`grid grid-cols-1 ${colClasses[Math.min(cards.length, 3)]} gap-6 max-w-md sm:max-w-4xl mx-auto`}>
+              {cards.map(p => (
+                <a href={join(`/playlist/${p.id}`)} class="group flex flex-col bg-white border rounded overflow-hidden hover:shadow-lg transition-all" style="border-color:var(--color-border);">
+                  <div class="relative aspect-video overflow-hidden" style="background-color:#002f55;">
+                    <img
+                      src={`https://i.ytimg.com/vi/${p.thumb}/hqdefault.jpg`}
+                      alt={`${p.title} playlist`}
+                      loading="lazy"
+                      class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                    />
+                  </div>
+                  <div class="p-4 flex items-center justify-between gap-3">
+                    <span class="text-[15px] font-semibold leading-snug group-hover:underline" style="color:#002f55;">{p.title}</span>
+                    <ArrowRight className="w-5 h-5 shrink-0" style={{ color: "#de5b00" }} />
+                  </div>
+                </a>
+              ))}
+            </div>
+            {section.seeAll && (
+              <div class="text-center mt-7">
+                <a href={join("/playlists")} class="inline-flex items-center gap-1.5 font-semibold text-white rounded px-6 py-3 transition-opacity hover:opacity-90" style="background-color:#0083de;">
+                  See all Playlists<ArrowRight className="w-4 h-4" />
+                </a>
+              </div>
+            )}
+          </div>
+        </section>
+      );
+    }
+
+    if (section.kind === "books") {
+      const cards = bookCards(section.ids);
+      const cols = colClasses[Math.min(cards.length, 4)];
+      return (
+        <section class="py-10 md:py-14" style={`background-color:${bg};`}>
+          <div class="container mx-auto px-4">
+            <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-center" style="color:#002f55;">{section.heading}</h2>
+            <div class={`grid grid-cols-1 ${cols} gap-6 max-w-md sm:max-w-5xl mx-auto`}>
+              {cards.map(b => (
+                <a href={join(`/books/${b.id}`)} class="group flex flex-col items-center bg-white border rounded p-6 hover:shadow-lg transition-all" style="border-color:var(--color-border);">
+                  {b.cover && (
+                    <Image
+                      src={b.cover}
+                      alt={`${b.title} book cover`}
+                      widths={[240, 480]}
+                      sizes="240px"
+                      format="webp"
+                      quality={80}
+                      class="h-52 w-auto rounded shadow-md transition-transform duration-300 group-hover:scale-[1.03]"
+                      loading="lazy"
+                    />
+                  )}
+                  <span class="mt-4 inline-flex items-center gap-1.5 text-[15px] font-semibold text-center leading-snug group-hover:underline" style="color:#002f55;">
+                    {b.title}<ArrowRight className="w-4 h-4 shrink-0" style={{ color: "#de5b00" }} />
+                  </span>
+                </a>
+              ))}
+            </div>
+            {section.seeAll && (
+              <div class="text-center mt-7">
+                <a href={join("/books")} class="inline-flex items-center gap-1.5 font-semibold text-white rounded px-6 py-3 transition-opacity hover:opacity-90" style="background-color:#0083de;">
+                  See all Books<ArrowRight className="w-4 h-4" />
+                </a>
+              </div>
+            )}
+          </div>
+        </section>
+      );
+    }
+
+    return (
+      <section class="py-10 md:py-14" style={`background-color:${bg};`}>
+        <div class="container mx-auto px-4 max-w-3xl text-center">
+          <h2 class="text-2xl md:text-3xl font-semibold mb-5" style="color:#002f55;">{section.heading}</h2>
+          <a href={section.href} class="inline-flex items-center gap-1.5 font-semibold text-white rounded px-6 py-3 transition-opacity hover:opacity-90" style="background-color:#0083de;">
+            {section.label}<ArrowRight className="w-4 h-4" />
+          </a>
+        </div>
+      </section>
+    );
+  })}
+</Layout>

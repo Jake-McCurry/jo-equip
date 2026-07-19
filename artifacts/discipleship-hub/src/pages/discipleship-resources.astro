@@ -1,0 +1,48 @@
+---
+import ResourceLanding from "@/components/ResourceLanding.astro";
+import type { Section } from "@/components/resourceLandingTypes";
+
+const baseUrl = import.meta.env.BASE_URL;
+const join = (p: string) =>
+  (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
+
+const sections: Section[] = [
+  {
+    kind: "links",
+    heading: "Read Key Discipleship Articles",
+    items: [
+      { lead: "Total Life Discipleship Church", href: join("/channels/church/become-growing-church/a-total-life-discipleship-church") },
+      { lead: "Transformational Teaching Church", href: join("/channels/church/become-growing-church/a-transformational-teaching-church") },
+      { lead: "Making & Multiplying Disciples Newsletter", href: join("/channels/church/make-multiply-disciples-newsletter") },
+    ],
+  },
+  {
+    kind: "links",
+    heading: "Explore Discipleship Topics",
+    items: [
+      { lead: "The Adventure of Living with Jesus", rest: "(Basic Discipleship)", href: join("/channels/growth/adventure-living-jesus") },
+      { lead: "New Life in Christ", rest: "(Intermediate Discipleship)", href: join("/channels/growth/new-life-christ") },
+      { lead: "Total Life Discipleship", rest: "(holistic, Kingdom perspective)", href: join("/channels/church/total-life-discipleship-principles") },
+    ],
+  },
+  {
+    kind: "playlists",
+    heading: "Watch Discipleship Playlists",
+    ids: ["total-life-discipleship-core-principles", "total-life-discipleship-kingdom-perspective"],
+    seeAll: true,
+  },
+  {
+    kind: "books",
+    heading: "Download Free Discipleship Books",
+    ids: ["beholding-the-majesty-of-god", "your-new-identity-in-christ", "walking-in-the-spirit"],
+    seeAll: true,
+  },
+];
+---
+<ResourceLanding
+  title="Featured Discipleship Resources | JO EQUIP"
+  description="Explore a collection of free discipleship resources to help believers deepen their walk with Christ and equip them to be fruitful followers."
+  heroTitle="Featured Discipleship Resources"
+  heroIntro="Explore a collection of discipleship resources to help believers deepen their walk with Christ and equip them to be fruitful followers."
+  sections={sections}
+/>

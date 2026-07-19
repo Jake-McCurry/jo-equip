@@ -1,0 +1,42 @@
+---
+import ResourceLanding from "@/components/ResourceLanding.astro";
+import type { Section } from "@/components/resourceLandingTypes";
+
+const baseUrl = import.meta.env.BASE_URL;
+const join = (p: string) =>
+  (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
+
+const sections: Section[] = [
+  {
+    kind: "links",
+    heading: "Read Church Growth Articles",
+    items: [
+      { lead: "God's Unique Vision for Kingdom-focused Growth", href: join("/channels/church/become-growing-church/gods-unique-vision-for-your-church") },
+      { lead: "JesusOnline EQUIPPED Church", href: join("/channels/church/become-growing-church/a-jesusonline-equipped-church") },
+      { lead: "Hope-filled Church", href: join("/channels/church/become-growing-church/a-hope-filled-church") },
+    ],
+  },
+  {
+    kind: "links",
+    heading: "Explore Church Growth Topics",
+    items: [
+      { lead: "Become a Growing Church", href: join("/channels/church/become-growing-church") },
+      { lead: "Disciple Making Movement", rest: "(Joshua Nations)", href: join("/channels/church/disciple-making-movement") },
+      { lead: "Rapid Church Planting", rest: "(Joshua Nations)", href: join("/channels/church/rapid-church-planting") },
+    ],
+  },
+  {
+    kind: "cta",
+    heading: "Sign Up for Newsletter",
+    label: "Making & Multiplying Disciples Newsletter",
+    href: join("/channels/church/make-multiply-disciples-newsletter"),
+  },
+];
+---
+<ResourceLanding
+  title="Featured Church Growth Strategies | JO EQUIP"
+  description="Explore free church growth resources, developed to help pastors and leaders build thriving, disciple-making churches."
+  heroTitle="Featured Church Growth Strategies"
+  heroIntro="Explore these church growth resources, developed to help pastors and leaders build thriving, disciple-making churches."
+  sections={sections}
+/>

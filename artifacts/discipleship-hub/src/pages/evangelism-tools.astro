@@ -1,0 +1,49 @@
+---
+import ResourceLanding from "@/components/ResourceLanding.astro";
+import type { Section } from "@/components/resourceLandingTypes";
+
+const baseUrl = import.meta.env.BASE_URL;
+const join = (p: string) =>
+  (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
+
+const sections: Section[] = [
+  {
+    kind: "links",
+    heading: "Read Key Evangelism Articles",
+    items: [
+      { lead: "Reasons Why Believers Should Witness", href: join("/channels/church/understanding-evangelism/reasons-why-believers-should-witness") },
+      { lead: "The Power", href: join("/channels/church/sharing-your-faith/the-power") },
+      { lead: "Next Steps for New Believers", href: join("/channels/church/next-steps-new-believers/next-steps-for-new-believers") },
+    ],
+  },
+  {
+    kind: "links",
+    heading: "Explore Evangelism Topics",
+    items: [
+      { lead: "Share Jesus", href: join("/channels/church/share-jesus") },
+    ],
+  },
+  {
+    kind: "playlists",
+    heading: "Watch Evangelism Playlists",
+    ids: ["meet-jesus", "who-is-the-real-jesus", "facts-for-faith"],
+  },
+  {
+    kind: "books",
+    heading: "Download Free Evangelism Books",
+    ids: [
+      "extraordinary-evangelism",
+      "extraordinary-evangelism-student-guide",
+      "who-is-the-real-jesus",
+      "has-science-discovered-god",
+    ],
+  },
+];
+---
+<ResourceLanding
+  title="Featured Evangelism Tools | JO EQUIP"
+  description="Discover free evangelism tools, prayerfully designed to equip believers with clarity, courage, and compassion to help share the gospel."
+  heroTitle="Featured Evangelism Tools"
+  heroIntro="Discover these evangelism tools, prayerfully designed to equip believers with clarity, courage, and compassion to help share the gospel."
+  sections={sections}
+/>

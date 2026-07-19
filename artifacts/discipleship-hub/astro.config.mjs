@@ -34,8 +34,9 @@ export default defineConfig({
       lastmod: new Date(),
       /* Keep utility pages out of the sitemap: /thank-you is noindex (listing a
          noindex page sends Google mixed signals) and /search is an internal
-         results page Google discourages indexing. */
-      filter: (page) => !/\/(thank-you|search)\/?$/.test(page),
+         results page Google discourages indexing. /lp/* are noindex paid-ad
+         landing pages (duplicate content on multiple campaign URLs). */
+      filter: (page) => !/\/(thank-you|search)\/?$/.test(page) && !/\/lp\//.test(page),
       /* Emit URLs WITHOUT a trailing slash so they match our self-referencing
          canonical tags (Layout.astro strips the trailing slash on every path
          except the root). When the sitemap URL ("/about/") and the page's

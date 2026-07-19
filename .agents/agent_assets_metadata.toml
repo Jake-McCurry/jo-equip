@@ -23,3 +23,9 @@ id = "lIeABZ8g4XWuKub4xLxK0"
 uri = "file://exports/jo-equip-ux-audit.csv"
 type = "table"
 title = "JO EQUIP UX Audit — 19 findings, ranked"
+
+[[outputs]]
+id = "pGkbLbUOw3PWcDUp5_lAl"
+uri = "file://exports/broken-external-links.csv"
+type = "table"
+title = "Broken External Links — JO EQUIP"

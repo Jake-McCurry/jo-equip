@@ -111,7 +111,7 @@
     "subId": "prayer",
     "channelId": "growth",
     "title": "Why Pray?",
-    "description": "",
+    "description": "Be devoted to prayer, keeping alert in it with thanksgiving. (Colossians 4:2)",
     "blocks": [
       {
         "type": "h2",
@@ -228,15 +228,15 @@
         "html": "Moses, King David, and prophets in the Old Testament fasted to come before the LORD."
       },
       {
-        "type": "p",
+        "type": "quote",
         "html": "“So he was there with the Lord forty days and forty nights; he did not eat bread, and he did not drink water. He wrote on the tablets the words of the covenant, the Ten Commandments.” (Exodus 34:28)"
       },
       {
-        "type": "p",
+        "type": "quote",
         "html": "“When I heard these things I sat down abruptly, crying and mourning for several days. I continued fasting and praying before the God of heaven.” (2 Samuel 12:16)"
       },
       {
-        "type": "p",
+        "type": "quote",
         "html": "“When I heard these things I sat down abruptly, crying and mourning for several days. I continued fasting and praying before the God of heaven.” (Nehemiah 1:4)"
       },
       {
@@ -244,7 +244,7 @@
         "html": "In the New Testament, Jesus taught about fasting:"
       },
       {
-        "type": "p",
+        "type": "quote",
         "html": "“When you fast, do not look sullen like the hypocrites, for they make their faces unattractive so that people will see them fasting. I tell you the truth, they have their reward! When you fast, anoint your head and wash your face, so that it will not be obvious to others when you are fasting, but only to your Father who is in secret. And your Father, who sees in secret, will reward you.” (Matthew 6:16–18)"
       },
       {

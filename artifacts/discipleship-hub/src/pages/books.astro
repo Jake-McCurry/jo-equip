@@ -10,15 +10,15 @@ const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
   (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
 
-/* Cloudflare Turnstile site key — public, safe to commit (appears in HTML).
-   This is the live `equip.jesusonline.com` widget in Managed mode (issued
-   May 2026). Server-side enforcement requires `TURNSTILE_SECRET_KEY` to be
-   set as a Worker secret in the CF dashboard — `verifyTurnstile()` fails
-   CLOSED if it is missing (logs an error and skips the Virtuous CRM write),
-   so submissions are never forwarded without a verified token. CF's universal test key
-   `1x00000000000000000000AA` (always passes) can be temporarily swapped in
-   for local dev if needed. */
-const TURNSTILE_SITE_KEY = "0x4AAAAAADTRH1wS2tchk8Tw";
+/* Mailchimp embedded-form endpoint for book-download signups (public, safe
+   to commit — it appears verbatim in Mailchimp's own embed code). Signups go
+   straight to the "jesusonline" us1 audience with the hidden tag below so
+   they are identifiable as book downloads. Note the f_id differs from the
+   newsletter form's — this is the dedicated book-download form. */
+const MC_ACTION =
+  "https://jesusonline.us1.list-manage.com/subscribe/post?u=c02949f5de137184b156da9bc&id=e06ba0649d&f_id=00bc87e5f0";
+const MC_TAG = "5798230";
+const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
 
 /* JSON-LD: a CollectionPage that contains an ItemList of Book entries.
    Each Book is marked free + downloadable so Google can show it in
@@ -181,15 +181,19 @@ const booksJsonLd = {
           style="border-color:var(--color-border);"
         />
         <p id="email-gate-error" class="text-sm hidden" role="alert" aria-live="polite" style="color:#c0392b;">Please enter a valid email address.</p>
-        <!-- Cloudflare Turnstile: invisible bot check. Token is populated into
-             a hidden input named `cf-turnstile-response` automatically. -->
-        <div
-          id="email-gate-turnstile"
-          class="cf-turnstile"
-          data-sitekey={TURNSTILE_SITE_KEY}
-          data-size="flexible"
-          data-theme="light"
-        ></div>
+        <label class="sr-only" for="email-gate-country">Country</label>
+        <input
+          id="email-gate-country"
+          type="text"
+          name="country"
+          required
+          autocomplete="country-name"
+          placeholder="Country"
+          aria-describedby="email-gate-country-error"
+          class="w-full px-4 py-3 border rounded text-base focus:outline-none focus:ring-2 focus:border-transparent"
+          style="border-color:var(--color-border);"
+        />
+        <p id="email-gate-country-error" class="text-sm hidden" role="alert" aria-live="polite" style="color:#c0392b;">Please enter your country.</p>
         <button
           id="email-gate-submit"
           type="submit"
@@ -205,13 +209,12 @@ const booksJsonLd = {
     </div>
   </div>
 
-  <script is:inline>
+  <script is:inline define:vars={{ MC_ACTION, MC_TAG, MC_HONEYPOT }}>
     (function () {
       // Stores a non-sensitive consent flag ("1") — never the raw email address.
       // The legacy key stored the raw email; we migrate and erase it on load.
       const STORAGE_KEY = "jo_equip_subscribed_v1";
       const LEGACY_KEY = "jo_equip_email_v1";
-      const SUBSCRIBE_ENDPOINT = "/api/subscribe";
       const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
       const gate = document.getElementById("email-gate");
@@ -219,8 +222,10 @@ const booksJsonLd = {
       const bookLabel = document.getElementById("email-gate-book");
       const errorEl = document.getElementById("email-gate-error");
       const input = document.getElementById("email-gate-input");
+      const countryInput = document.getElementById("email-gate-country");
+      const countryErrorEl = document.getElementById("email-gate-country-error");
       const submitBtn = document.getElementById("email-gate-submit");
-      if (!gate || !form || !bookLabel || !input || !submitBtn) return;
+      if (!gate || !form || !bookLabel || !input || !countryInput || !submitBtn) return;
 
       // In-memory fallback for environments where localStorage throws (private browsing, strict policies).
       let memoryConsented = false;
@@ -278,7 +283,6 @@ const booksJsonLd = {
         if (safeGet()) {
           openBook(url, !!isDeepLink);
         } else {
-          ensureTurnstileLoaded();
           openGate(url, title, id, triggerEl);
         }
       }
@@ -294,6 +298,17 @@ const booksJsonLd = {
         }
       }
 
+      function showCountryError(show) {
+        if (!countryErrorEl) return;
+        if (show) {
+          countryErrorEl.classList.remove("hidden");
+          countryInput.setAttribute("aria-invalid", "true");
+        } else {
+          countryErrorEl.classList.add("hidden");
+          countryInput.removeAttribute("aria-invalid");
+        }
+      }
+
       function openGate(url, title, id, triggerEl) {
         pendingPdf = url;
         pendingTitle = title;
@@ -301,9 +316,11 @@ const booksJsonLd = {
         lastFocusedEl = triggerEl || document.activeElement;
         bookLabel.textContent = title || "this book";
         showError(false);
+        showCountryError(false);
         isSubmitting = false;
         submitBtn.disabled = false;
         input.value = "";
+        countryInput.value = "";
         gate.classList.remove("hidden");
         gate.classList.add("flex");
         document.body.style.overflow = "hidden";
@@ -322,32 +339,28 @@ const booksJsonLd = {
         lastFocusedEl = null;
       }
 
-      function submitEmail(email, turnstileToken) {
+      // Fire-and-forget submit to Mailchimp's embedded-form endpoint.
+      // Mailchimp does not send CORS headers, so the request runs in
+      // `no-cors` mode — the response is opaque, matching the previous
+      // fire-and-forget behavior. The hidden `tags` field marks the
+      // subscriber as a book-download signup; the honeypot field is sent
+      // empty like a legitimate browser submission would.
+      function submitEmail(email, country) {
         try {
-          fetch(SUBSCRIBE_ENDPOINT, {
+          const params = new URLSearchParams();
+          params.set("EMAIL", email);
+          params.set("COUNTRY", country);
+          params.set("tags", MC_TAG);
+          params.set(MC_HONEYPOT, "");
+          params.set("subscribe", "Subscribe");
+          fetch(MC_ACTION, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              email: email,
-              source: "jo-equip-books",
-              book_id: pendingId,
-              book_title: pendingTitle,
-              turnstile_token: turnstileToken || "",
-            }),
+            mode: "no-cors",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: params.toString(),
             keepalive: true,
           }).catch(function () { /* fire-and-forget */ });
         } catch (_e) { /* ignore */ }
-      }
-
-      function getTurnstileToken() {
-        // Turnstile injects a hidden input named "cf-turnstile-response"
-        // into the widget container once the user passes the challenge.
-        try {
-          const el = document.querySelector(
-            '#email-gate-turnstile input[name="cf-turnstile-response"]'
-          );
-          return el && el.value ? el.value : "";
-        } catch (_e) { return ""; }
       }
 
       function trapFocus(e) {
@@ -364,20 +377,6 @@ const booksJsonLd = {
           e.preventDefault();
           first.focus();
         }
-      }
-
-      // Lazy-load Turnstile only when the user actually opens the gate.
-      // Avoids ~20KB of JS + a third-party request on every /books visit
-      // for visitors who never click a download.
-      let turnstileLoadStarted = false;
-      function ensureTurnstileLoaded() {
-        if (turnstileLoadStarted) return;
-        turnstileLoadStarted = true;
-        const s = document.createElement("script");
-        s.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
-        s.async = true;
-        s.defer = true;
-        document.head.appendChild(s);
       }
 
       document.querySelectorAll(".book-download-btn").forEach(function (btn) {
@@ -432,23 +431,28 @@ const booksJsonLd = {
         e.preventDefault();
         if (isSubmitting) return;
         const email = (input.value || "").trim();
+        const country = (countryInput.value || "").trim();
+        let invalid = false;
         if (!isValidEmail(email)) {
           showError(true);
-          input.focus();
+          invalid = true;
+        } else {
+          showError(false);
+        }
+        if (!country) {
+          showCountryError(true);
+          invalid = true;
+        } else {
+          showCountryError(false);
+        }
+        if (invalid) {
+          (isValidEmail(email) ? countryInput : input).focus();
           return;
         }
         isSubmitting = true;
         submitBtn.disabled = true;
         safeSet();
-        submitEmail(email, getTurnstileToken());
-        // Turnstile tokens are single-use. Reset so a re-open of the modal
-        // (e.g. different tab, cleared storage, in-memory-only session)
-        // gets a fresh token instead of one the Worker will reject.
-        try {
-          if (window.turnstile && typeof window.turnstile.reset === "function") {
-            window.turnstile.reset("#email-gate-turnstile");
-          }
-        } catch (_e) { /* ignore */ }
+        submitEmail(email, country);
         const url = pendingPdf;
         closeGate();
         // Open synchronously within the submit gesture so the new tab is not
@@ -458,8 +462,4 @@ const booksJsonLd = {
     })();
   </script>
 
-  {/* Turnstile script is loaded on-demand by ensureTurnstileLoaded() in the
-      gate handler above — only when a visitor clicks a download. This keeps
-      the third-party request off the critical path for the 99%+ of /books
-      visits that never trigger the modal (return visitors, scrapers, bots). */}
 </Layout>

@@ -44,7 +44,7 @@ Static-first Astro site. Deploys Replit → GitHub (`Jake-McCurry/jo-equip`) →
 - `src/data/articles.ts`, `src/data/bcgArticlePdfs.ts`, `src/data/evidenceArticles.ts`, and everything under `src/data/generated/articles/` are **AUTO-GENERATED** — never hand-edit; regenerate via the scripts.
 - Do NOT add `position:relative` to the `ChannelArt.astro` wrapper — collapses the channel art to 0×0.
 - Do NOT re-add Partytown for GTM (removed July 2026 — it hid the container from Tag Assistant/scanners).
-- `TURNSTILE_SECRET_KEY` is required in production — the subscribe flow fails closed without it (downloads work, no CRM write).
+- The book email gate on `/books` posts directly to Mailchimp (audience `e06ba0649d`, form `f_id=00bc87e5f0`, tag `5798230` marks book downloads) — the Worker `/api/subscribe` (Turnstile + Virtuous) path is no longer called by the site as of July 2026, though the Worker route still exists.
 - The Mailchimp signup form is shared between `/newsletter` and the Church newsletter page — edit only `MakeMultiplySignupForm.astro`.
 - Raw subscriber emails are never persisted in browser storage or logs (localStorage keeps only a boolean flag).
 - URLs are no-trailing-slash except root; canonical + sitemap + internal links must agree, and `wrangler.jsonc` `assets.html_handling: "drop-trailing-slash"` enforces it at the edge.

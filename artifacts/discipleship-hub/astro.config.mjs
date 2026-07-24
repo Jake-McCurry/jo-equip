@@ -23,9 +23,6 @@ export default defineConfig({
   base,
   trailingSlash: "ignore",
   output: "static",
-  /* /welcome was folded into the home page (July 2026 revision) — keep the
-     old URL working via a meta-refresh redirect page. */
-  redirects: { "/welcome": "/" },
   /* Prefetch in-viewport links so visitor navigation feels instant.
      Adds ~1KB of JS but eliminates next-page wait. */
   prefetch: { defaultStrategy: "viewport" },

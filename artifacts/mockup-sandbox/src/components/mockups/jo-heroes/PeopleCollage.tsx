@@ -4,7 +4,7 @@ export function PeopleCollage() {
   return (
     <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-[#002f55]">
       {/* Background Collage */}
-      <div className="absolute inset-0 z-0 opacity-40">
+      <div className="absolute inset-0 z-0 opacity-70">
         <div className="grid grid-cols-2 md:grid-cols-3 grid-rows-2 h-full w-full gap-2 p-2">
           <div className="row-span-2 relative">
             <img 
@@ -45,9 +45,8 @@ export function PeopleCollage() {
       </div>
 
       {/* Overlays to ensure text readability */}
-      <div className="absolute inset-0 z-10 bg-[#002f55]/60"></div>
-      <div className="absolute inset-0 z-10 bg-gradient-to-b from-[#002f55]/80 via-[#002f55]/40 to-[#002f55]/90"></div>
-      <div className="absolute inset-0 z-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-[#002f55]/50 to-[#002f55]/80"></div>
+      <div className="absolute inset-0 z-10 bg-[#002f55]/25"></div>
+      <div className="absolute inset-0 z-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#002f55]/60 via-[#002f55]/30 to-transparent"></div>
 
       {/* Content */}
       <div className="relative z-20 max-w-4xl mx-auto px-6 text-center flex flex-col items-center">

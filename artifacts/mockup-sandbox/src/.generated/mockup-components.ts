@@ -4,6 +4,7 @@ export const modules: ModuleMap = {
   "./components/mockups/jo-heroes/AbstractLight.tsx": () => import("../components/mockups/jo-heroes/AbstractLight.tsx"),
   "./components/mockups/jo-heroes/BibleCloseup.tsx": () => import("../components/mockups/jo-heroes/BibleCloseup.tsx"),
   "./components/mockups/jo-heroes/CoverCollage.tsx": () => import("../components/mockups/jo-heroes/CoverCollage.tsx"),
+  "./components/mockups/jo-heroes/PeopleCollage.tsx": () => import("../components/mockups/jo-heroes/PeopleCollage.tsx"),
   "./components/mockups/jo-heroes/PhotoOverlay.tsx": () => import("../components/mockups/jo-heroes/PhotoOverlay.tsx"),
   "./components/mockups/jo-shelves/ShelfConcept.tsx": () => import("../components/mockups/jo-shelves/ShelfConcept.tsx")
 };

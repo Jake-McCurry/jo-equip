@@ -1,9 +1,11 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import { Picture } from "astro:assets";
-import { channels, subTopics } from "@/data/channels";
-import { ArrowRight } from "lucide-react";
-import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
+import { Picture, Image } from "astro:assets";
+import { ArrowRight, Users2, BookOpen, Smartphone, Star } from "lucide-react";
+import { channels } from "@/data/channels";
+import { playlists } from "@/data/playlists";
+import { books } from "@/data/books";
+import { getBookCover } from "@/data/bookCovers";
 import evidenceImg from "@/assets/channels/evidence.jpg";
 import growthImg from "@/assets/channels/growth.jpg";
 import churchImg from "@/assets/channels/church.jpg";
@@ -12,101 +14,135 @@ const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
   (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
 
+/* Welcome page — July 2026 revision: reuses the ad landing-page layout
+   (/lp/ENG-1-resources) with the blue campaign banner replaced by the
+   "Welcome" heading + intro copy. Linked from the top menu ("Welcome");
+   the logo continues to link to the home page (/). */
+
+/* "What Do You Need Most Right Now?" — the four indexable destination pages. */
+const needs = [
+  { lead: "Discipleship Resources", rest: "to help believers mature in Christ", href: join("/discipleship-resources") },
+  { lead: "Church Growth", rest: "strategies to build a thriving church", href: join("/church-strategies") },
+  { lead: "Sermon Helps", rest: "with practical teaching aids and message outlines", href: join("/sermon-helps") },
+  { lead: "Evangelism Tools", rest: "to reach skeptics and seekers for Jesus", href: join("/evangelism-tools") },
+];
+
 const channelImages: Record<string, ImageMetadata> = {
   evidence: evidenceImg,
   growth: growthImg,
   church: churchImg,
 };
-
-const channelImageAlts: Record<string, string> = {
-  evidence: "A gavel and scales of justice resting on old books",
-  growth: "Hands holding an open Bible",
-  church: "A congregation seated in church pews",
+const channelBlurbs: Record<string, { lead: string; rest: string }> = {
+  evidence: { lead: "Evidence Resources", rest: "– to help you reach skeptics and seekers with solid reasons to believe" },
+  growth: { lead: "Growth Resources", rest: "– to provide you with transformational teaching content for sermons and bible studies to help your members grow" },
+  church: { lead: "Church Resources", rest: "– to equip you personally with tools and concepts that are foundational for a healthy and vibrant church life" },
 };
 
-/* Top-level topic counts per channel (children with parentId are hidden from
-   the channel index, so they don't count). */
-const topicCounts: Record<string, number> = {};
-for (const s of subTopics) {
-  if (!s.parentId) topicCounts[s.channelId] = (topicCounts[s.channelId] ?? 0) + 1;
-}
+/* Featured playlists — thumbnail = playlist's thumbnailVideoId or first video. */
+const featuredPlaylistIds = [
+  "hope-in-times-of-crisis",
+  "7-habits-deeper-relationship-with-god",
+  "experience-gods-love",
+];
+const featuredPlaylists = featuredPlaylistIds.map(id => {
+  const p = playlists.find(pl => pl.id === id);
+  if (!p) throw new Error(`Welcome: unknown playlist id ${id}`);
+  const thumb = (p as { thumbnailVideoId?: string }).thumbnailVideoId ?? p.videos[0]?.videoId;
+  return { id: p.id, title: p.title, thumb };
+});
 
-const reviewLinks = [
-  { label: "General Testimonials", path: "/reviews" },
-  { label: "Evidence for Faith Reviews", path: "/reviews/evidence" },
-  { label: "Discipleship & Growth Reviews", path: "/reviews/growth" },
-  { label: "Church Equipping Reviews", path: "/reviews/church" },
+/* Featured books — covers link to each book's detail page. */
+const featuredBookIds = [
+  "walking-in-the-spirit",
+  "5-steps-to-break-destructive-behavior",
+  "extraordinary-evangelism",
+];
+const featuredBooks = featuredBookIds.map(id => {
+  const b = books.find(bk => bk.id === id);
+  if (!b) throw new Error(`Welcome: unknown book id ${id}`);
+  return { id: b.id, title: b.title, cover: getBookCover(b.id) };
+});
+
+const quickLinks = [
+  { title: "Reviews", subtitle: "From Pastors and Leaders", href: join("/reviews"), icon: Star, external: false },
+  { title: "About", subtitle: "JesusOnline Ministries", href: join("/about"), icon: Users2, external: false },
+  { title: "Beliefs", subtitle: "Statement of Faith", href: join("/beliefs"), icon: BookOpen, external: false },
+  { title: "JO APP", subtitle: "Growing in Christ", href: "https://app.jesusonline.com", icon: Smartphone, external: true },
 ];
 ---
 <Layout
-  title="Welcome · JO EQUIP"
-  description="Welcome to JO EQUIP — a free digital library of discipleship tools across three channels: Evidence, Growth, and Church Resources."
+  title="Welcome | JO EQUIP"
+  description="Welcome to JO EQUIP — a free digital library of practical discipleship tools to equip pastors and ministry leaders for greater ministry impact."
 >
-  <Fragment slot="head">
-    <BreadcrumbsLd items={[
-      { name: "Home", url: "/" },
-      { name: "Welcome", url: "/welcome" },
-    ]} />
-  </Fragment>
-
+  {/* Welcome banner — replaces the LP's blue campaign hero. */}
   <section class="bg-white">
-    <div class="container mx-auto px-4 py-14 md:py-20 max-w-4xl">
-      <div class="text-xs font-semibold tracking-widest uppercase mb-3" style="color:#0083de;">JO EQUIP</div>
+    <div class="container mx-auto px-4 py-12 md:py-16 max-w-4xl">
       <h1 class="text-4xl md:text-5xl mb-4" style="color:#002f55;">Welcome</h1>
       <div class="h-0.5 w-12 mb-7" style="background-color:#de5b00;"></div>
-      <div class="space-y-5 text-lg leading-relaxed" style="color:#374151;">
-        <p>
-          Welcome to <strong style="color:#002f55;">JO EQUIP</strong> — a free digital library of practical
-          discipleship tools created specifically to help better equip pastors and ministry leaders for a greater
-          ministry impact and fruitful discipleship multiplication.
-        </p>
-        <p>
-          If you are a disciple-maker passionate about seeing God's Kingdom expand through spiritual multiplication,
-          JO EQUIP is your free, trusted resource to help you strengthen His Church and advance His Kingdom.
-        </p>
-        <p>
-          These carefully selected resources, grouped in the following channels, are designed to help you serve with
-          greater effectiveness and spiritual vitality in fulfilling Christ's Great Commission.
-        </p>
-      </div>
+      <p class="text-lg leading-relaxed" style="color:#374151;">
+        Welcome to <strong style="color:#002f55;">JO EQUIP</strong> — a free digital library of practical
+        discipleship tools created specifically to help better equip pastors and ministry leaders for a greater
+        ministry impact and fruitful discipleship multiplication.
+      </p>
     </div>
   </section>
 
-  <section class="py-14 md:py-20 border-t" style="background-color:#f4f7fb;border-color:var(--color-border);">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-10">
-        <h2 class="text-3xl md:text-4xl" style="color:#002f55;">3 Channels for Your Ministry Needs</h2>
-        <div class="mt-2 h-0.5 w-12 mx-auto" style="background-color:#de5b00;"></div>
-      </div>
+  {/* What Do You Need Most Right Now? */}
+  <section class="py-10 md:py-14" style="background-color:#f4f7fb;">
+    <div class="container mx-auto px-4 max-w-3xl">
+      <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-center" style="color:#002f55;">What Do You Need Most Right Now?</h2>
+      <ul class="flex flex-col gap-3">
+        {needs.map(n => (
+          <li>
+            <a href={n.href} class="group flex items-center justify-between gap-4 bg-white border rounded px-5 py-4 transition-all hover:shadow-md" style="border-color:var(--color-border);border-left:4px solid #de5b00;">
+              <span class="text-[15px] md:text-base leading-snug" style="color:#002f55;">
+                <strong class="font-semibold group-hover:underline" style="color:#de5b00;">{n.lead}</strong>{" "}{n.rest}
+              </span>
+              <ArrowRight className="w-5 h-5 shrink-0 transition-transform group-hover:translate-x-1" style={{ color: "#de5b00" }} />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
 
+  {/* Pastors & Leaders Love JO EQUIP */}
+  <section class="py-10 md:py-14 bg-white">
+    <div class="container mx-auto px-4 max-w-3xl text-center">
+      <h2 class="text-2xl md:text-3xl font-semibold mb-4" style="color:#002f55;">Pastors &amp; Leaders Love JO EQUIP</h2>
+      <p class="text-[15px] md:text-base leading-relaxed" style="color:var(--color-muted-foreground);">
+        For 20 years, JesusOnline Ministries has provided resources to pastors of evangelical Christian churches, small group leaders, and missionaries.
+        <a href={join("/reviews")} class="inline-flex items-center gap-1 font-semibold hover:underline" style="color:#de5b00;">
+          Read the reviews here<ArrowRight className="w-4 h-4" />
+        </a>
+      </p>
+    </div>
+  </section>
+
+  {/* Explore 3 Ministry Channels */}
+  <section class="py-10 md:py-14" style="background-color:#f4f7fb;">
+    <div class="container mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-center" style="color:#002f55;">Explore 3 Ministry Channels</h2>
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-md sm:max-w-lg lg:max-w-none mx-auto">
         {channels.map(channel => (
-          <a href={join(`/channels/${channel.id}`)} class="group flex flex-col">
-            <h3 class="text-2xl font-semibold mb-2 group-hover:underline" style="color:#002f55;">{channel.name}</h3>
-            <div
-              class="flex flex-col flex-grow bg-white border rounded overflow-hidden group-hover:shadow-lg transition-all"
-              style={`border-color:var(--color-border);border-left:4px solid ${channel.accentColor};`}
-            >
-              <div style={`height:8px;background-color:${channel.accentColor};`}></div>
-              <div class="relative aspect-[5/2] overflow-hidden">
-                <Picture
-                  src={channelImages[channel.id]}
-                  alt={channelImageAlts[channel.id]}
-                  widths={[480, 800]}
-                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 512px, 100vw"
-                  formats={["avif", "webp"]}
-                  quality={75}
-                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
-                />
-              </div>
-              <div style={`height:4px;background-color:${channel.accentColor};`}></div>
-              <div class="p-6 md:p-7 flex flex-col flex-grow">
-                <p class="leading-relaxed text-[15px] mb-5 flex-grow" style="color:var(--color-muted-foreground);">{channel.description}</p>
-                <span class="inline-flex items-center justify-center w-full text-sm font-semibold text-white rounded px-4 py-2.5 mt-auto transition-opacity group-hover:opacity-90" style={`background-color:${channel.accentColor};`}>
-                  Explore {topicCounts[channel.id]} {channel.shortName} Topics
-                  <ArrowRight className="w-4 h-4 ml-1.5" />
-                </span>
-              </div>
+          <a href={join(`/channels/${channel.id}`)} class="group flex flex-col bg-white border rounded overflow-hidden hover:shadow-lg transition-all" style={`border-color:var(--color-border);border-top:6px solid ${channel.accentColor};`}>
+            <div class="relative aspect-[5/2] overflow-hidden">
+              <Picture
+                src={channelImages[channel.id]}
+                alt={channel.name}
+                widths={[480, 800]}
+                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 512px, 100vw"
+                formats={["avif", "webp"]}
+                quality={75}
+                class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+              />
+            </div>
+            <div class="p-5 flex items-start justify-between gap-3 flex-grow">
+              <p class="text-[15px] leading-snug" style="color:#002f55;">
+                <strong class="font-semibold group-hover:underline" style={`color:${channel.accentColor};`}>{channelBlurbs[channel.id].lead}</strong>{" "}
+                <span style="color:var(--color-muted-foreground);">{channelBlurbs[channel.id].rest}</span>
+              </p>
+              <ArrowRight className="w-5 h-5 shrink-0 mt-0.5 transition-transform group-hover:translate-x-1" style={{ color: channel.accentColor }} />
             </div>
           </a>
         ))}
@@ -114,33 +150,92 @@ const reviewLinks = [
     </div>
   </section>
 
-  {/* Read the Reviews */}
-  <section class="py-14 md:py-20 border-t bg-white" style="border-color:var(--color-border);">
-    <div class="container mx-auto px-4 max-w-4xl">
-      <div class="text-center mb-8">
-        <h2 class="text-3xl md:text-4xl" style="color:#002f55;">Read the Reviews</h2>
-        <div class="mt-2 h-0.5 w-12 mx-auto" style="background-color:#de5b00;"></div>
-      </div>
-      <div class="space-y-5 text-lg leading-relaxed text-center max-w-3xl mx-auto mb-10" style="color:#374151;">
-        <p>
-          For many years, pastors, evangelists, and missionaries around the world have used these JesusOnline
-          articles and videos to clearly present the Gospel, answer tough questions, and disciple people into a
-          vibrant relationship with Christ.
-        </p>
-        <p>Hear what they're saying — read their reviews.</p>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
-        {reviewLinks.map(link => (
-          <a
-            href={join(link.path)}
-            class="group flex items-center justify-between bg-white border rounded px-5 py-4 hover:shadow-md transition-all"
-            style="border-color:var(--color-border);border-left:4px solid #de5b00;"
-          >
-            <span class="text-base font-semibold" style="color:#002f55;">{link.label}</span>
-            <ArrowRight className="w-4 h-4 shrink-0 ml-3 transition-transform group-hover:translate-x-0.5" style={{ color: "#de5b00" }} />
+  {/* Watch Encouraging Video Playlists */}
+  <section class="py-10 md:py-14 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-center" style="color:#002f55;">Watch Encouraging Video Playlists</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-md sm:max-w-4xl mx-auto">
+        {featuredPlaylists.map(p => (
+          <a href={join(`/playlist/${p.id}`)} class="group flex flex-col border rounded overflow-hidden hover:shadow-lg transition-all" style="border-color:var(--color-border);">
+            <div class="relative aspect-video overflow-hidden" style="background-color:#002f55;">
+              <img
+                src={`https://i.ytimg.com/vi/${p.thumb}/hqdefault.jpg`}
+                alt={`${p.title} playlist`}
+                loading="lazy"
+                class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+              />
+            </div>
+            <div class="p-4 flex items-center justify-between gap-3">
+              <span class="text-[15px] font-semibold leading-snug group-hover:underline" style="color:#002f55;">{p.title}</span>
+              <ArrowRight className="w-5 h-5 shrink-0" style={{ color: "#de5b00" }} />
+            </div>
           </a>
         ))}
+      </div>
+      <div class="text-center mt-7">
+        <a href={join("/playlists")} class="inline-flex items-center gap-1.5 font-semibold text-white rounded px-6 py-3 transition-opacity hover:opacity-90" style="background-color:#0083de;">
+          See all Playlists<ArrowRight className="w-4 h-4" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* Download Free Ministry Books */}
+  <section class="py-10 md:py-14" style="background-color:#f4f7fb;">
+    <div class="container mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-center" style="color:#002f55;">Download Free Ministry Books</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-md sm:max-w-4xl mx-auto">
+        {featuredBooks.map(b => (
+          <a href={join(`/books/${b.id}`)} class="group flex flex-col items-center bg-white border rounded p-6 hover:shadow-lg transition-all" style="border-color:var(--color-border);">
+            {b.cover && (
+              <Image
+                src={b.cover}
+                alt={`${b.title} book cover`}
+                widths={[240, 480]}
+                sizes="240px"
+                format="webp"
+                quality={80}
+                class="h-56 w-auto rounded shadow-md transition-transform duration-300 group-hover:scale-[1.03]"
+                loading="lazy"
+              />
+            )}
+            <span class="mt-4 inline-flex items-center gap-1.5 text-[15px] font-semibold text-center leading-snug group-hover:underline" style="color:#002f55;">
+              {b.title}<ArrowRight className="w-4 h-4 shrink-0" style={{ color: "#de5b00" }} />
+            </span>
+          </a>
+        ))}
+      </div>
+      <div class="text-center mt-7">
+        <a href={join("/books")} class="inline-flex items-center gap-1.5 font-semibold text-white rounded px-6 py-3 transition-opacity hover:opacity-90" style="background-color:#0083de;">
+          See all Books<ArrowRight className="w-4 h-4" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* Quick links — Reviews · About · Beliefs · JO APP */}
+  <section style="background-color:#0083de;">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 divide-white/15 sm:gap-y-px lg:divide-x lg:divide-white/15">
+        {quickLinks.map(link => {
+          const Icon = link.icon;
+          return (
+            <a
+              href={link.href}
+              target={link.external ? "_blank" : undefined}
+              rel={link.external ? "noopener noreferrer" : undefined}
+              class="group flex items-center justify-start lg:justify-center gap-4 py-5 px-6 transition-colors hover:bg-white/5"
+            >
+              <div class="w-11 h-11 rounded shrink-0 flex items-center justify-center" style="background-color:rgba(255,255,255,0.18);">
+                <Icon className="w-5 h-5" style={{ color: "#ffffff" }} />
+              </div>
+              <div class="text-left">
+                <div class="text-lg md:text-xl font-semibold text-white leading-tight tracking-wide group-hover:underline" style='font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;'>{link.title}</div>
+                <div class="text-[11px] mt-1 font-medium tracking-widest uppercase" style="color:rgba(255,255,255,0.8);">{link.subtitle}</div>
+              </div>
+            </a>
+          );
+        })}
       </div>
     </div>
   </section>

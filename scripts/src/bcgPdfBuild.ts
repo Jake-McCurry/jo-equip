@@ -141,7 +141,7 @@ function blockToHtml(b: ArticleBlock): string {
         const abs = (u?: string) => (u && u.startsWith("/") ? `${SITE}${u}` : u);
         const titleHref = abs(item.href);
         const title = titleHref
-          ? `<a href="${escAttr(titleHref)}" style="color:#ff7a00;">${escText(item.title)}</a>`
+          ? `<a href="${escAttr(titleHref)}" style="color:#de5b00;">${escText(item.title)}</a>`
           : escText(item.title);
         const chips = ([["PDF", item.pdf], ["Video", item.video], ["App", item.app]] as const)
           .map(([label, url]) => {
@@ -203,7 +203,7 @@ function renderTemplate({ title, bodyHtml, sourceUrl }: { title: string; bodyHtm
     font-family: Georgia, "Times New Roman", serif;
     font-size: 17pt;
     line-height: 1.2;
-    color: #1e6fa8;
+    color: #0083de;
     font-weight: 600;
     letter-spacing: 0.005em;
     margin: 0 0 0.25em 0;
@@ -219,7 +219,7 @@ function renderTemplate({ title, bodyHtml, sourceUrl }: { title: string; bodyHtm
   .cover .rule {
     display: block;
     width: 96px; height: 4px;
-    background: #ff7a00;
+    background: #de5b00;
     margin: 0.4in 0 0.45in 0;
   }
   .cover .meta {
@@ -265,7 +265,7 @@ function renderTemplate({ title, bodyHtml, sourceUrl }: { title: string; bodyHtm
   .article li { margin: 0.25em 0; }
   .article blockquote {
     margin: 1em 0; padding: 0.5em 1em;
-    border-left: 3px solid #1e6fa8; background: #e6f2fa;
+    border-left: 3px solid #0083de; background: #e6f2fa;
     color: #1f2937; font-style: italic;
   }
   .article blockquote p:last-child { margin-bottom: 0; }
@@ -288,7 +288,7 @@ function renderTemplate({ title, bodyHtml, sourceUrl }: { title: string; bodyHtm
     letter-spacing: 0.05em; text-decoration: none;
   }
   .article a.chip-on {
-    background-color: #ff7a0014; color: #ff7a00; border: 1px solid #ff7a0040;
+    background-color: #de5b0014; color: #de5b00; border: 1px solid #de5b0040;
   }
   .article .chip-off {
     background-color: rgba(0,0,0,0.04); color: #9ca3af; border: 1px solid rgba(0,0,0,0.06);

@@ -56,14 +56,14 @@ const quickLinks = [
 {/* Heading + intro */}
 <section class="bg-white">
   <div class="container mx-auto px-4 py-12 md:py-16 max-w-5xl">
-    <span class="text-xs font-semibold tracking-widest uppercase" style="color:#1e6fa8;">JO EQUIP</span>
+    <span class="text-xs font-semibold tracking-widest uppercase" style="color:#0083de;">JO EQUIP</span>
     <h1 class="text-2xl md:text-3xl mt-2 mb-4" style="color:#0b3c5d;">{heading}</h1>
-    <div class="h-0.5 w-12 mb-7" style="background-color:#ff7a00;"></div>
+    <div class="h-0.5 w-12 mb-7" style="background-color:#de5b00;"></div>
     {intro.map(p => (
       <p class="text-lg leading-relaxed mb-5 last:mb-0" style="color:#374151;" set:html={p} />
     ))}
     <p class="text-sm font-semibold tracking-wide uppercase mt-8" style="color:#0b3c5d;">
-      Featured Resources by Type: <span style="color:#1e6fa8;">Articles &bull; Topics &bull; Books &bull; Playlists</span>
+      Featured Resources by Type: <span style="color:#0083de;">Articles &bull; Topics &bull; Books &bull; Playlists</span>
     </p>
   </div>
 </section>
@@ -74,10 +74,10 @@ const quickLinks = [
     <h2 class="text-2xl md:text-3xl font-semibold mb-6" style="color:#0b3c5d;">Articles</h2>
     <ul class="flex flex-col gap-4">
       {articles.map(a => (
-        <li class="bg-white border rounded px-6 py-5" style="border-color:var(--color-border);border-left:4px solid #1e6fa8;">
+        <li class="bg-white border rounded px-6 py-5" style="border-color:var(--color-border);border-left:4px solid #0083de;">
           <p class="text-[15px] md:text-base leading-relaxed" style="color:#374151;">
             <strong class="font-semibold" style="color:#0b3c5d;">{a.title}:</strong>{" "}{a.text}{" "}
-            <a href={join(a.href)} class="font-semibold whitespace-nowrap hover:underline" style="color:#ff7a00;">[more]</a>
+            <a href={join(a.href)} class="font-semibold whitespace-nowrap hover:underline" style="color:#de5b00;">[more]</a>
           </p>
         </li>
       ))}
@@ -110,9 +110,9 @@ const quickLinks = [
       })}
       {/* "More" tile → all books */}
       <a href={join("/books")} class="group shrink-0 w-[calc((100vw-5rem)/3.5)] max-w-[130px] md:w-auto md:max-w-none">
-        <div class="aspect-[3/4] border-2 border-dashed rounded flex flex-col items-center justify-center gap-2 transition-colors group-hover:border-solid" style="border-color:#1e6fa8;background-color:#e6f2fa;">
-          <ArrowRight className="w-6 h-6" style={{ color: "#1e6fa8" }} />
-          <span class="text-sm font-semibold" style="color:#1e6fa8;">More</span>
+        <div class="aspect-[3/4] border-2 border-dashed rounded flex flex-col items-center justify-center gap-2 transition-colors group-hover:border-solid" style="border-color:#0083de;background-color:#e6f2fa;">
+          <ArrowRight className="w-6 h-6" style={{ color: "#0083de" }} />
+          <span class="text-sm font-semibold" style="color:#0083de;">More</span>
         </div>
         <p class="mt-2 text-xs leading-snug font-medium group-hover:underline" style="color:#0b3c5d;">All free books</p>
       </a>
@@ -155,7 +155,7 @@ const quickLinks = [
                 )}
                 <div class="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/15 transition-colors">
                   <div class="w-11 h-11 rounded-full flex items-center justify-center transition-all duration-200 scale-90 opacity-0 group-hover:opacity-100 group-hover:scale-100" style="background-color:rgba(255,255,255,0.95);">
-                    <Play className="w-5 h-5 ml-0.5" style={{ color: "#ff7a00", fill: "#ff7a00" }} />
+                    <Play className="w-5 h-5 ml-0.5" style={{ color: "#de5b00", fill: "#de5b00" }} />
                   </div>
                 </div>
               </div>
@@ -166,9 +166,9 @@ const quickLinks = [
       })}
       {/* "More" tile → all playlists */}
       <a href={join("/playlists")} class="group shrink-0 w-[calc((100vw-4rem)/2.5)] max-w-[220px] md:w-auto md:max-w-none">
-        <div class="aspect-video border-2 border-dashed rounded flex flex-col items-center justify-center gap-1.5 transition-colors group-hover:border-solid" style="border-color:#1e6fa8;background-color:#e6f2fa;">
-          <ArrowRight className="w-6 h-6" style={{ color: "#1e6fa8" }} />
-          <span class="text-sm font-semibold" style="color:#1e6fa8;">More</span>
+        <div class="aspect-video border-2 border-dashed rounded flex flex-col items-center justify-center gap-1.5 transition-colors group-hover:border-solid" style="border-color:#0083de;background-color:#e6f2fa;">
+          <ArrowRight className="w-6 h-6" style={{ color: "#0083de" }} />
+          <span class="text-sm font-semibold" style="color:#0083de;">More</span>
         </div>
         <p class="mt-2 text-xs leading-snug font-medium group-hover:underline" style="color:#0b3c5d;">All playlists</p>
       </a>
@@ -187,19 +187,19 @@ const quickLinks = [
 
 <style>
   .topic-chip {
-    border-color: #1e6fa8;
+    border-color: #0083de;
     color: #0b3c5d;
   }
   .topic-chip:hover,
   .topic-chip:focus-visible {
-    background-color: #1e6fa8;
+    background-color: #0083de;
     color: #ffffff;
     outline: none;
   }
 </style>
 
 {/* Quick links — Reviews · About · Beliefs · JO APP */}
-<section style="background-color:#1e6fa8;">
+<section style="background-color:#0083de;">
   <div class="container mx-auto px-4">
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 divide-white/15 sm:gap-y-px lg:divide-x lg:divide-white/15">
       {quickLinks.map(link => {

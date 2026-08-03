@@ -105,7 +105,7 @@ const quickLinks = [
   <section class="bg-white">
     <div class="container mx-auto px-4 py-12 md:py-16 max-w-4xl">
       <h1 class="text-4xl md:text-5xl mb-4" style="color:#0b3c5d;">Tools for Mature Disciple-Making</h1>
-      <div class="h-0.5 w-12 mb-7" style="background-color:#ff7a00;"></div>
+      <div class="h-0.5 w-12 mb-7" style="background-color:#de5b00;"></div>
       <p class="text-lg leading-relaxed mb-5" style="color:#374151;">
         <strong style="color:#0b3c5d;">JO EQUIP</strong> offers practical tools for disciple-makers,
         facilitating growth from skeptic to believer, believer to growing disciple, and disciple to disciple-maker.
@@ -122,10 +122,10 @@ const quickLinks = [
     <div class="container mx-auto px-4 max-w-4xl">
       <ul class="flex flex-col gap-4">
         {foundations.map(f => (
-          <li class="bg-white border rounded px-6 py-5" style="border-color:var(--color-border);border-left:4px solid #1e6fa8;">
+          <li class="bg-white border rounded px-6 py-5" style="border-color:var(--color-border);border-left:4px solid #0083de;">
             <p class="text-[15px] md:text-base leading-relaxed" style="color:#374151;">
               <strong class="font-semibold" style="color:#0b3c5d;">{f.lead}</strong>{" "}{f.text}{" "}
-              <a href={f.href} class="font-semibold whitespace-nowrap hover:underline" style="color:#ff7a00;">[more]</a>
+              <a href={f.href} class="font-semibold whitespace-nowrap hover:underline" style="color:#de5b00;">[more]</a>
             </p>
           </li>
         ))}
@@ -149,10 +149,10 @@ const quickLinks = [
       <ol class="flex flex-col gap-3">
         {buildingBlocks.map((b, i) => (
           <li class="flex gap-4 border rounded px-5 py-4" style="border-color:var(--color-border);background-color:#e6f2fa;">
-            <span class="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold text-white" style="background-color:#1e6fa8;">{i + 1}</span>
+            <span class="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold text-white" style="background-color:#0083de;">{i + 1}</span>
             <p class="text-[15px] leading-relaxed" style="color:#374151;">
               <strong class="font-semibold" style="color:#0b3c5d;">{b.lead}</strong>{" "}{b.text}{" "}
-              <a href={b.href} class="font-semibold whitespace-nowrap hover:underline" style="color:#ff7a00;">[more]</a>
+              <a href={b.href} class="font-semibold whitespace-nowrap hover:underline" style="color:#de5b00;">[more]</a>
             </p>
           </li>
         ))}
@@ -171,14 +171,14 @@ const quickLinks = [
       <p class="text-[15px] md:text-base font-semibold" style="color:#0b3c5d;">
         Explore Free Resources for
         {personas.map(p => (
-          <span> <span aria-hidden="true" style="color:#ff7a00;">•</span> <a href={p.href} class="hover:underline" style="color:#ff7a00;">{p.name}</a></span>
+          <span> <span aria-hidden="true" style="color:#de5b00;">•</span> <a href={p.href} class="hover:underline" style="color:#de5b00;">{p.name}</a></span>
         ))}
       </p>
     </div>
   </section>
 
   {/* Quick links — Reviews · About · Beliefs · JO APP */}
-  <section style="background-color:#1e6fa8;">
+  <section style="background-color:#0083de;">
     <div class="container mx-auto px-4">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 divide-white/15 sm:gap-y-px lg:divide-x lg:divide-white/15">
         {quickLinks.map(link => {

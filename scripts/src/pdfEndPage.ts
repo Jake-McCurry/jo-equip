@@ -13,7 +13,7 @@
  *
  * Styles are self-contained under the `.end-page` scope (they do not rely on
  * any of the per-template classes) and reuse the shared brand palette:
- *   navy #0b3c5d · blue #1e6fa8 · orange #ff7a00 · link #b34800.
+ *   navy #0b3c5d · blue #0083de · orange #de5b00 · link #b34800.
  */
 
 export const END_PAGE_CSS = `
@@ -44,7 +44,7 @@ export const END_PAGE_CSS = `
   }
   .end-page .ep-rule {
     display: block; width: 96px; height: 4px;
-    background: #ff7a00; margin: 0.3in 0 0.28in 0;
+    background: #de5b00; margin: 0.3in 0 0.28in 0;
   }
   .end-page .ep-lead { font-size: 12pt; color: #1f2937; margin: 0 0 1em 0; }
   .end-page h2 {
@@ -59,7 +59,7 @@ export const END_PAGE_CSS = `
   .end-page li { margin: 0.4em 0; }
   .end-page .ep-callout {
     margin: 1.2em 0; padding: 0.7em 1em;
-    border-left: 3px solid #1e6fa8; background: #e6f2fa;
+    border-left: 3px solid #0083de; background: #e6f2fa;
     color: #1f2937; page-break-inside: avoid;
   }
   .end-page .ep-signoff { margin-top: 1.2em; }

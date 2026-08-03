@@ -82,13 +82,13 @@ const booksJsonLd = {
   <div class="container mx-auto px-4 py-12 md:py-16">
     <div class="max-w-3xl mb-12">
       <div class="flex items-center gap-3 mb-3">
-        <div class="w-9 h-9 rounded flex items-center justify-center" style="background-color:rgba(255,122,0,0.1);">
-          <BookIcon className="w-5 h-5" style={{ color: "#ff7a00" }} />
+        <div class="w-9 h-9 rounded flex items-center justify-center" style="background-color:rgba(222,91,0,0.1);">
+          <BookIcon className="w-5 h-5" style={{ color: "#de5b00" }} />
         </div>
-        <span class="text-xs font-semibold tracking-widest uppercase" style="color:#ff7a00;">Reading Library</span>
+        <span class="text-xs font-semibold tracking-widest uppercase" style="color:#de5b00;">Reading Library</span>
       </div>
       <h1 class="text-4xl md:text-5xl mb-4" style="color:#0b3c5d;">Books</h1>
-      <div class="h-0.5 w-12 mb-5" style="background-color:#ff7a00;"></div>
+      <div class="h-0.5 w-12 mb-5" style="background-color:#de5b00;"></div>
       <p class="leading-relaxed text-lg" style="color:var(--color-muted-foreground);">
         Read these free books online — open any of them in a new tab, then download to keep or share.
       </p>
@@ -117,7 +117,7 @@ const booksJsonLd = {
             <button
               type="button"
               class="book-download-btn inline-flex items-center justify-center gap-2 font-semibold text-sm uppercase tracking-wide transition-colors hover:opacity-75"
-              style="color:#1e6fa8;"
+              style="color:#0083de;"
               data-pdf={join(book.pdf)}
               data-title={book.title}
               data-id={book.id}
@@ -163,7 +163,7 @@ const booksJsonLd = {
         </svg>
       </button>
       <h2 id="email-gate-title" class="text-2xl mb-2" style="color:#0b3c5d;">Get free ministry resources</h2>
-      <div class="h-0.5 w-10 mb-4" style="background-color:#ff7a00;"></div>
+      <div class="h-0.5 w-10 mb-4" style="background-color:#de5b00;"></div>
       <p id="email-gate-desc" class="text-sm mb-5 leading-relaxed" style="color:var(--color-muted-foreground);">
         Enter your email to read
         <span id="email-gate-book" class="font-semibold" style="color:#0b3c5d;">this book</span>.
@@ -201,7 +201,7 @@ const booksJsonLd = {
           id="email-gate-submit"
           type="submit"
           class="w-full py-3 rounded font-semibold text-white text-base transition-colors hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed"
-          style="background-color:#ff7a00;"
+          style="background-color:#de5b00;"
         >
           Read book
         </button>

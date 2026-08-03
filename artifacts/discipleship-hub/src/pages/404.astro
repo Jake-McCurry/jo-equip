@@ -11,9 +11,9 @@ const join = (p: string) =>
   description="The page you were looking for can't be found. Browse our channels, playlists, and free books from JO EQUIP — JesusOnline Ministries."
 >
   <section class="container mx-auto px-4 py-16 md:py-24 max-w-3xl text-center">
-    <div class="text-xs font-semibold tracking-widest uppercase mb-3" style="color:#1e6fa8;">Error 404</div>
+    <div class="text-xs font-semibold tracking-widest uppercase mb-3" style="color:#0083de;">Error 404</div>
     <h1 class="text-5xl md:text-6xl mb-4" style="color:#0b3c5d;">Page not found</h1>
-    <div class="h-0.5 w-12 mx-auto mb-6" style="background-color:#ff7a00;"></div>
+    <div class="h-0.5 w-12 mx-auto mb-6" style="background-color:#de5b00;"></div>
     <p class="text-lg leading-relaxed mb-10" style="color:var(--color-muted-foreground);">
       The page you were looking for can't be found. It may have moved or never existed.
       Try one of the destinations below to keep exploring JO EQUIP.
@@ -23,10 +23,10 @@ const join = (p: string) =>
       <a
         href={join("/")}
         class="group flex items-start gap-4 p-5 bg-white border rounded transition-shadow hover:shadow-md"
-        style="border-color:var(--color-border);border-left:4px solid #1e6fa8;"
+        style="border-color:var(--color-border);border-left:4px solid #0083de;"
       >
-        <div class="w-10 h-10 rounded flex items-center justify-center shrink-0" style="background-color:rgba(30,111,168,0.1);">
-          <Home className="w-5 h-5" style={{ color: "#1e6fa8" }} />
+        <div class="w-10 h-10 rounded flex items-center justify-center shrink-0" style="background-color:rgba(0,131,222,0.1);">
+          <Home className="w-5 h-5" style={{ color: "#0083de" }} />
         </div>
         <div>
           <div class="font-semibold text-base mb-0.5" style="color:#0b3c5d;">Home</div>
@@ -36,10 +36,10 @@ const join = (p: string) =>
       <a
         href={join("/channels")}
         class="group flex items-start gap-4 p-5 bg-white border rounded transition-shadow hover:shadow-md"
-        style="border-color:var(--color-border);border-left:4px solid #ff7a00;"
+        style="border-color:var(--color-border);border-left:4px solid #de5b00;"
       >
-        <div class="w-10 h-10 rounded flex items-center justify-center shrink-0" style="background-color:rgba(255,122,0,0.1);">
-          <Compass className="w-5 h-5" style={{ color: "#ff7a00" }} />
+        <div class="w-10 h-10 rounded flex items-center justify-center shrink-0" style="background-color:rgba(222,91,0,0.1);">
+          <Compass className="w-5 h-5" style={{ color: "#de5b00" }} />
         </div>
         <div>
           <div class="font-semibold text-base mb-0.5" style="color:#0b3c5d;">Browse channels</div>
@@ -49,10 +49,10 @@ const join = (p: string) =>
       <a
         href={join("/playlists")}
         class="group flex items-start gap-4 p-5 bg-white border rounded transition-shadow hover:shadow-md"
-        style="border-color:var(--color-border);border-left:4px solid #1e6fa8;"
+        style="border-color:var(--color-border);border-left:4px solid #0083de;"
       >
-        <div class="w-10 h-10 rounded flex items-center justify-center shrink-0" style="background-color:rgba(30,111,168,0.1);">
-          <ListVideo className="w-5 h-5" style={{ color: "#1e6fa8" }} />
+        <div class="w-10 h-10 rounded flex items-center justify-center shrink-0" style="background-color:rgba(0,131,222,0.1);">
+          <ListVideo className="w-5 h-5" style={{ color: "#0083de" }} />
         </div>
         <div>
           <div class="font-semibold text-base mb-0.5" style="color:#0b3c5d;">Video playlists</div>
@@ -62,10 +62,10 @@ const join = (p: string) =>
       <a
         href={join("/books")}
         class="group flex items-start gap-4 p-5 bg-white border rounded transition-shadow hover:shadow-md"
-        style="border-color:var(--color-border);border-left:4px solid #ff7a00;"
+        style="border-color:var(--color-border);border-left:4px solid #de5b00;"
       >
-        <div class="w-10 h-10 rounded flex items-center justify-center shrink-0" style="background-color:rgba(255,122,0,0.1);">
-          <BookOpen className="w-5 h-5" style={{ color: "#ff7a00" }} />
+        <div class="w-10 h-10 rounded flex items-center justify-center shrink-0" style="background-color:rgba(222,91,0,0.1);">
+          <BookOpen className="w-5 h-5" style={{ color: "#de5b00" }} />
         </div>
         <div>
           <div class="font-semibold text-base mb-0.5" style="color:#0b3c5d;">Free PDF books</div>
@@ -76,7 +76,7 @@ const join = (p: string) =>
 
     <p class="mt-12 text-sm" style="color:var(--color-muted-foreground);">
       Or use the
-      <a href={join("/search")} class="font-semibold hover:underline" style="color:#ff7a00;">search page</a>
+      <a href={join("/search")} class="font-semibold hover:underline" style="color:#de5b00;">search page</a>
       to find what you need.
     </p>
   </section>

@@ -55,7 +55,7 @@ function bookCards(ids: string[]) {
 ---
 <Layout title={title} description={description}>
   {/* Hero */}
-  <section class="relative py-10 md:py-16 px-4 text-center overflow-hidden" style="background-color:#1e6fa8;">
+  <section class="relative py-10 md:py-16 px-4 text-center overflow-hidden" style="background-color:#0083de;">
     <div class="pointer-events-none absolute inset-0 overflow-hidden">
       <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-10" style="background-color:#0b3c5d;"></div>
       <div class="absolute -bottom-32 -left-20 w-80 h-80 rounded-full opacity-10" style="background-color:#0b3c5d;"></div>
@@ -77,11 +77,11 @@ function bookCards(ids: string[]) {
             <ul class="flex flex-col gap-3">
               {section.items.map(n => (
                 <li>
-                  <a href={n.href} class="group flex items-center justify-between gap-4 bg-white border rounded px-5 py-4 transition-all hover:shadow-md" style="border-color:var(--color-border);border-left:4px solid #ff7a00;">
+                  <a href={n.href} class="group flex items-center justify-between gap-4 bg-white border rounded px-5 py-4 transition-all hover:shadow-md" style="border-color:var(--color-border);border-left:4px solid #de5b00;">
                     <span class="text-[15px] md:text-base leading-snug" style="color:#0b3c5d;">
-                      <strong class="font-semibold group-hover:underline" style="color:#ff7a00;">{n.lead}</strong>{n.rest ? ` ${n.rest}` : ""}
+                      <strong class="font-semibold group-hover:underline" style="color:#de5b00;">{n.lead}</strong>{n.rest ? ` ${n.rest}` : ""}
                     </span>
-                    <ArrowRight className="w-5 h-5 shrink-0 transition-transform group-hover:translate-x-1" style={{ color: "#ff7a00" }} />
+                    <ArrowRight className="w-5 h-5 shrink-0 transition-transform group-hover:translate-x-1" style={{ color: "#de5b00" }} />
                   </a>
                 </li>
               ))}
@@ -110,14 +110,14 @@ function bookCards(ids: string[]) {
                   </div>
                   <div class="p-4 flex items-center justify-between gap-3">
                     <span class="text-[15px] font-semibold leading-snug group-hover:underline" style="color:#0b3c5d;">{p.title}</span>
-                    <ArrowRight className="w-5 h-5 shrink-0" style={{ color: "#ff7a00" }} />
+                    <ArrowRight className="w-5 h-5 shrink-0" style={{ color: "#de5b00" }} />
                   </div>
                 </a>
               ))}
             </div>
             {section.seeAll && (
               <div class="text-center mt-7">
-                <a href={join("/playlists")} class="inline-flex items-center gap-1.5 font-semibold text-white rounded px-6 py-3 transition-opacity hover:opacity-90" style="background-color:#1e6fa8;">
+                <a href={join("/playlists")} class="inline-flex items-center gap-1.5 font-semibold text-white rounded px-6 py-3 transition-opacity hover:opacity-90" style="background-color:#0083de;">
                   See all Playlists<ArrowRight className="w-4 h-4" />
                 </a>
               </div>
@@ -150,14 +150,14 @@ function bookCards(ids: string[]) {
                     />
                   )}
                   <span class="mt-4 inline-flex items-center gap-1.5 text-[15px] font-semibold text-center leading-snug group-hover:underline" style="color:#0b3c5d;">
-                    {b.title}<ArrowRight className="w-4 h-4 shrink-0" style={{ color: "#ff7a00" }} />
+                    {b.title}<ArrowRight className="w-4 h-4 shrink-0" style={{ color: "#de5b00" }} />
                   </span>
                 </a>
               ))}
             </div>
             {section.seeAll && (
               <div class="text-center mt-7">
-                <a href={join("/books")} class="inline-flex items-center gap-1.5 font-semibold text-white rounded px-6 py-3 transition-opacity hover:opacity-90" style="background-color:#1e6fa8;">
+                <a href={join("/books")} class="inline-flex items-center gap-1.5 font-semibold text-white rounded px-6 py-3 transition-opacity hover:opacity-90" style="background-color:#0083de;">
                   See all Books<ArrowRight className="w-4 h-4" />
                 </a>
               </div>
@@ -171,7 +171,7 @@ function bookCards(ids: string[]) {
       <section class="py-10 md:py-14" style={`background-color:${bg};`}>
         <div class="container mx-auto px-4 max-w-3xl text-center">
           <h2 class="text-2xl md:text-3xl font-semibold mb-5" style="color:#0b3c5d;">{section.heading}</h2>
-          <a href={section.href} class="inline-flex items-center gap-1.5 font-semibold text-white rounded px-6 py-3 transition-opacity hover:opacity-90" style="background-color:#1e6fa8;">
+          <a href={section.href} class="inline-flex items-center gap-1.5 font-semibold text-white rounded px-6 py-3 transition-opacity hover:opacity-90" style="background-color:#0083de;">
             {section.label}<ArrowRight className="w-4 h-4" />
           </a>
         </div>

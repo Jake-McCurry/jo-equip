@@ -610,7 +610,7 @@ const CSS = `
     font-size: 30pt; line-height: 1.15; color: #0b3c5d;
     margin: 0 0 0.4em 0;
   }
-  .title-page .subtitle { font-size: 14pt; line-height: 1.4; color: #1e6fa8; margin: 0; }
+  .title-page .subtitle { font-size: 14pt; line-height: 1.4; color: #0083de; margin: 0; }
   .front-page { page-break-after: always; padding-top: 0.4in; }
   .front-page.notices { padding-top: 1in; font-size: 9.5pt; color: #4b5563; }
   .front-page.notices p { margin: 0 0 1.1em 0; }
@@ -666,7 +666,7 @@ const STRICT_CSS = `
     text-align: center;
     margin: 0 0 0.3em 0;
   }
-  .front-matter .subtitle { font-size: 13pt; line-height: 1.4; color: #1e6fa8; text-align: center; margin: 0 0 1.6em 0; }
+  .front-matter .subtitle { font-size: 13pt; line-height: 1.4; color: #0083de; text-align: center; margin: 0 0 1.6em 0; }
   .front-matter p { margin: 0 0 0.85em 0; }
   .toc { page-break-after: always; padding-top: 0.3in; }
   .toc h1 {

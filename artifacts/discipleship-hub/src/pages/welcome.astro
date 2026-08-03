@@ -78,7 +78,7 @@ const quickLinks = [
   <section class="bg-white">
     <div class="container mx-auto px-4 py-12 md:py-16 max-w-4xl">
       <h1 class="text-4xl md:text-5xl mb-4" style="color:#0b3c5d;">Welcome</h1>
-      <div class="h-0.5 w-12 mb-7" style="background-color:#ff7a00;"></div>
+      <div class="h-0.5 w-12 mb-7" style="background-color:#de5b00;"></div>
       <p class="text-lg leading-relaxed" style="color:#374151;">
         Welcome to <strong style="color:#0b3c5d;">JO EQUIP</strong> — a free digital library of practical
         discipleship tools created specifically to help better equip pastors and ministry leaders for a greater
@@ -94,11 +94,11 @@ const quickLinks = [
       <ul class="flex flex-col gap-3">
         {needs.map(n => (
           <li>
-            <a href={n.href} class="group flex items-center justify-between gap-4 bg-white border rounded px-5 py-4 transition-all hover:shadow-md" style="border-color:var(--color-border);border-left:4px solid #ff7a00;">
+            <a href={n.href} class="group flex items-center justify-between gap-4 bg-white border rounded px-5 py-4 transition-all hover:shadow-md" style="border-color:var(--color-border);border-left:4px solid #de5b00;">
               <span class="text-[15px] md:text-base leading-snug" style="color:#0b3c5d;">
-                <strong class="font-semibold group-hover:underline" style="color:#ff7a00;">{n.lead}</strong>{" "}{n.rest}
+                <strong class="font-semibold group-hover:underline" style="color:#de5b00;">{n.lead}</strong>{" "}{n.rest}
               </span>
-              <ArrowRight className="w-5 h-5 shrink-0 transition-transform group-hover:translate-x-1" style={{ color: "#ff7a00" }} />
+              <ArrowRight className="w-5 h-5 shrink-0 transition-transform group-hover:translate-x-1" style={{ color: "#de5b00" }} />
             </a>
           </li>
         ))}
@@ -112,7 +112,7 @@ const quickLinks = [
       <h2 class="text-2xl md:text-3xl font-semibold mb-4" style="color:#0b3c5d;">Pastors &amp; Leaders Love JO EQUIP</h2>
       <p class="text-[15px] md:text-base leading-relaxed" style="color:var(--color-muted-foreground);">
         For 20 years, JesusOnline Ministries has provided resources to pastors of evangelical Christian churches, small group leaders, and missionaries.
-        <a href={join("/reviews")} class="inline-flex items-center gap-1 font-semibold hover:underline" style="color:#ff7a00;">
+        <a href={join("/reviews")} class="inline-flex items-center gap-1 font-semibold hover:underline" style="color:#de5b00;">
           Read the reviews here<ArrowRight className="w-4 h-4" />
         </a>
       </p>
@@ -167,13 +167,13 @@ const quickLinks = [
             </div>
             <div class="p-4 flex items-center justify-between gap-3">
               <span class="text-[15px] font-semibold leading-snug group-hover:underline" style="color:#0b3c5d;">{p.title}</span>
-              <ArrowRight className="w-5 h-5 shrink-0" style={{ color: "#ff7a00" }} />
+              <ArrowRight className="w-5 h-5 shrink-0" style={{ color: "#de5b00" }} />
             </div>
           </a>
         ))}
       </div>
       <div class="text-center mt-7">
-        <a href={join("/playlists")} class="inline-flex items-center gap-1.5 font-semibold text-white rounded px-6 py-3 transition-opacity hover:opacity-90" style="background-color:#1e6fa8;">
+        <a href={join("/playlists")} class="inline-flex items-center gap-1.5 font-semibold text-white rounded px-6 py-3 transition-opacity hover:opacity-90" style="background-color:#0083de;">
           See all Playlists<ArrowRight className="w-4 h-4" />
         </a>
       </div>
@@ -200,13 +200,13 @@ const quickLinks = [
               />
             )}
             <span class="mt-4 inline-flex items-center gap-1.5 text-[15px] font-semibold text-center leading-snug group-hover:underline" style="color:#0b3c5d;">
-              {b.title}<ArrowRight className="w-4 h-4 shrink-0" style={{ color: "#ff7a00" }} />
+              {b.title}<ArrowRight className="w-4 h-4 shrink-0" style={{ color: "#de5b00" }} />
             </span>
           </a>
         ))}
       </div>
       <div class="text-center mt-7">
-        <a href={join("/books")} class="inline-flex items-center gap-1.5 font-semibold text-white rounded px-6 py-3 transition-opacity hover:opacity-90" style="background-color:#1e6fa8;">
+        <a href={join("/books")} class="inline-flex items-center gap-1.5 font-semibold text-white rounded px-6 py-3 transition-opacity hover:opacity-90" style="background-color:#0083de;">
           See all Books<ArrowRight className="w-4 h-4" />
         </a>
       </div>
@@ -214,7 +214,7 @@ const quickLinks = [
   </section>
 
   {/* Quick links — Reviews · About · Beliefs · JO APP */}
-  <section style="background-color:#1e6fa8;">
+  <section style="background-color:#0083de;">
     <div class="container mx-auto px-4">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 divide-white/15 sm:gap-y-px lg:divide-x lg:divide-white/15">
         {quickLinks.map(link => {

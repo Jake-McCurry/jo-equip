@@ -141,15 +141,15 @@ const metaDescription = plain(article.description);
       reader stays in the same visual context. */}
   <div class="relative overflow-hidden" style={`background:${channel.gradient};`}>
     <div class="absolute inset-0 pointer-events-none" style="background-image:repeating-linear-gradient(45deg, rgba(255,255,255,0.05) 0, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 18px);"></div>
-    <div class="container mx-auto px-4 py-12 md:py-16 relative max-w-3xl">
-      <nav class="flex items-center text-sm mb-6 flex-wrap gap-1" style="color:rgba(255,255,255,0.8);">
+    <div class="container mx-auto px-4 py-7 md:py-9 relative max-w-3xl">
+      <nav class="flex items-center text-base mb-3 flex-wrap gap-1" style="color:#ffffff;">
         <a href={join("/channels")} class="hover:text-white transition-colors">Channels</a>
         <ChevronRight className="w-3 h-3" />
         <a href={join(`/channels/${channel.id}`)} class="hover:text-white transition-colors">{channel.shortName}</a>
         <ChevronRight className="w-3 h-3" />
         <a href={join(`/channels/${channel.id}/${sub.id}`)} class="hover:text-white transition-colors">{sub.name}</a>
       </nav>
-      <div class="text-xs uppercase tracking-widest font-semibold mb-2" style="color:rgba(255,255,255,0.7);">{sub.name}</div>
+      <div class="text-sm uppercase tracking-widest font-semibold mb-2" style="color:#ffffff;">{sub.name}</div>
       <h1 class="text-3xl md:text-5xl mb-2" style="color:#ffffff;font-weight:500;">{article.title}</h1>
     </div>
   </div>

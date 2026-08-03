@@ -115,6 +115,38 @@ const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
             />
           </div>
 
+          <div>
+            <label for="rc-country" class="block text-sm font-medium mb-1.5" style="color:#0b3c5d;">
+              Country <span style="color:#ff7a00;">*</span>
+            </label>
+            <input
+              type="text"
+              name="COUNTRY"
+              id="rc-country"
+              required
+              autocomplete="country-name"
+              class="w-full rounded border px-3 py-2.5 text-sm outline-none focus-visible:ring-2"
+              style="border-color:var(--color-border);color:#0b3c5d;"
+            />
+          </div>
+
+          <div>
+            <label for="rc-gender" class="block text-sm font-medium mb-1.5" style="color:#0b3c5d;">
+              Gender <span style="color:#ff7a00;">*</span>
+            </label>
+            <select
+              name="GENDER"
+              id="rc-gender"
+              required
+              class="w-full rounded border px-3 py-2.5 text-sm outline-none focus-visible:ring-2 bg-white"
+              style="border-color:var(--color-border);color:#0b3c5d;"
+            >
+              <option value="" disabled selected>Select&hellip;</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+          </div>
+
           {/* Bot-prevention honeypot — do not remove */}
           <div aria-hidden="true" style="position:absolute;left:-5000px;">
             <input type="text" name={MC_HONEYPOT} tabindex="-1" value="" />

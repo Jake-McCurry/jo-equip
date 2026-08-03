@@ -25,7 +25,7 @@ const foundations = [
   {
     lead: "Spirit Focus:",
     text: "Am I depending on the Holy Spirit\u2019s power as essential for living the Christian life, rather than relying on my own self-effort?",
-    href: join("/channels/growth/bb-walking-spirit"),
+    href: join("/channels/growth/ministry-holy-spirit"),
   },
 ];
 
@@ -83,9 +83,12 @@ const buildingBlocks = [
   },
 ];
 
-/* Persona pages (Pastors, Home Church Leaders, Chaplains, Missionaries)
-   are planned but not built yet — shown unlinked until those pages exist. */
-const personas = ["Pastors", "Home Church Leaders", "Chaplains", "Missionaries"];
+const personas = [
+  { name: "Pastors", href: join("/pastors") },
+  { name: "Home Church Leaders", href: join("/home-church-leaders") },
+  { name: "Chaplains", href: join("/chaplains") },
+  { name: "Missionaries", href: join("/missionaries") },
+];
 
 const quickLinks = [
   { title: "Reviews", subtitle: "From Pastors and Leaders", href: join("/reviews"), icon: Star, external: false },
@@ -162,13 +165,13 @@ const quickLinks = [
     </div>
   </section>
 
-  {/* Explore Free Resources for … (persona pages coming soon — unlinked) */}
+  {/* Explore Free Resources for … (persona landing pages) */}
   <section class="py-8 md:py-10" style="background-color:#f4f7fb;">
     <div class="container mx-auto px-4 max-w-4xl text-center">
       <p class="text-[15px] md:text-base font-semibold" style="color:#002f55;">
         Explore Free Resources for
         {personas.map(p => (
-          <span> <span aria-hidden="true" style="color:#de5b00;">•</span> {p}</span>
+          <span> <span aria-hidden="true" style="color:#de5b00;">•</span> <a href={p.href} class="hover:underline" style="color:#0083de;">{p.name}</a></span>
         ))}
       </p>
     </div>

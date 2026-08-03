@@ -137,8 +137,8 @@ function btnClass(enabled: boolean) {
     ) : hasChildren ? (
       <>
         <div class="mb-6 pb-4 border-b" style="border-color:var(--color-border);">
-          <h2 class="text-2xl" style="color:#002f55;">Topics</h2>
-          <div class="mt-2 h-0.5 w-12" style="background-color:#de5b00;"></div>
+          <h2 class="text-2xl" style="color:#0b3c5d;">Topics</h2>
+          <div class="mt-2 h-0.5 w-12" style="background-color:#ff7a00;"></div>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {children.map((child) => {
@@ -149,7 +149,7 @@ function btnClass(enabled: boolean) {
                 class="flex flex-col bg-white border rounded p-5 hover:shadow-md transition-all"
                 style={`border-color:var(--color-border);border-left:4px solid ${channel.accentColor};`}
               >
-                <h3 class="text-base font-semibold leading-snug mb-2" style="color:#002f55;">{child.name}</h3>
+                <h3 class="text-base font-semibold leading-snug mb-2" style="color:#0b3c5d;">{child.name}</h3>
                 {child.description && (
                   <p class="text-sm leading-relaxed" style="color:var(--color-muted-foreground);">{child.description}</p>
                 )}
@@ -190,17 +190,17 @@ function btnClass(enabled: boolean) {
             <div class="flex flex-wrap gap-2">
                 {sub.formats!.includes("book") && (
                   topicBookHref
-                    ? <a href={topicBookHref} class={btnClass(true)} style="background-color:#de5b0014;color:#de5b00;border:1px solid #de5b0040;"><FileText className="w-3 h-3" />Book</a>
+                    ? <a href={topicBookHref} class={btnClass(true)} style="background-color:#ff7a0014;color:#ff7a00;border:1px solid #ff7a0040;"><FileText className="w-3 h-3" />Book</a>
                     : <span class={btnClass(false)} style="background-color:rgba(0,0,0,0.04);color:#9ca3af;border:1px solid rgba(0,0,0,0.06);" title="Book coming soon"><FileText className="w-3 h-3" />Book</span>
                 )}
                 {sub.formats!.includes("playlist") && (
                   topicPlaylistHref
-                    ? <a href={topicPlaylistHref} class={btnClass(true)} style="background-color:#de5b0014;color:#de5b00;border:1px solid #de5b0040;"><Video className="w-3 h-3" />Playlist</a>
+                    ? <a href={topicPlaylistHref} class={btnClass(true)} style="background-color:#ff7a0014;color:#ff7a00;border:1px solid #ff7a0040;"><Video className="w-3 h-3" />Playlist</a>
                     : <span class={btnClass(false)} style="background-color:rgba(0,0,0,0.04);color:#9ca3af;border:1px solid rgba(0,0,0,0.06);" title="Playlist coming soon"><Video className="w-3 h-3" />Playlist</span>
                 )}
                 {sub.formats!.includes("app") && (
                   topicAppHref
-                    ? <a href={topicAppHref} target="_blank" rel="noopener noreferrer" class={btnClass(true)} style="background-color:#de5b0014;color:#de5b00;border:1px solid #de5b0040;"><Smartphone className="w-3 h-3" />App</a>
+                    ? <a href={topicAppHref} target="_blank" rel="noopener noreferrer" class={btnClass(true)} style="background-color:#ff7a0014;color:#ff7a00;border:1px solid #ff7a0040;"><Smartphone className="w-3 h-3" />App</a>
                     : <span class={btnClass(false)} style="background-color:rgba(0,0,0,0.04);color:#9ca3af;border:1px solid rgba(0,0,0,0.06);" title="App coming soon"><Smartphone className="w-3 h-3" />App</span>
                 )}
             </div>
@@ -208,8 +208,8 @@ function btnClass(enabled: boolean) {
         )}
 
         <div class="mb-6 pb-4 border-b" style="border-color:var(--color-border);">
-          <h2 class="text-2xl" style="color:#002f55;">Articles</h2>
-          <div class="mt-2 h-0.5 w-12" style="background-color:#de5b00;"></div>
+          <h2 class="text-2xl" style="color:#0b3c5d;">Articles</h2>
+          <div class="mt-2 h-0.5 w-12" style="background-color:#ff7a00;"></div>
         </div>
         <ol class="space-y-2">
           {sub.items!.filter(item => !item.unlisted).map((item, idx, visible) => {
@@ -280,7 +280,7 @@ function btnClass(enabled: boolean) {
               <>
               {sectionHeading && (
                 <li class={"list-none" + (idx > 0 ? " pt-6" : "")} id={sectionHeading.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")}>
-                  <h3 class="text-lg font-semibold" style="color:#002f55;">{sectionHeading}</h3>
+                  <h3 class="text-lg font-semibold" style="color:#0b3c5d;">{sectionHeading}</h3>
                   <div class="mt-1.5 h-0.5 w-10" style={`background-color:${channel.accentColor};`}></div>
                 </li>
               )}
@@ -291,21 +291,21 @@ function btnClass(enabled: boolean) {
                   </span>
                 )}
                 <div class="flex-grow min-w-0">
-                  <h3 class="text-base leading-snug mb-2.5" style="color:#002f55;">
+                  <h3 class="text-base leading-snug mb-2.5" style="color:#0b3c5d;">
                     {articleHref
-                      ? <a href={articleHref} class="hover:underline" style="color:#002f55;">{item.title}</a>
+                      ? <a href={articleHref} class="hover:underline" style="color:#0b3c5d;">{item.title}</a>
                       : item.title}
                   </h3>
                   <div class="flex flex-wrap gap-1.5">
                     {articleHref && (
-                      <a href={articleHref} class={btnClass(true)} style="background-color:#de5b0014;color:#de5b00;border:1px solid #de5b0040;">
+                      <a href={articleHref} class={btnClass(true)} style="background-color:#ff7a0014;color:#ff7a00;border:1px solid #ff7a0040;">
                         <FileText className="w-3 h-3" />Read
                       </a>
                     )}
                     {buttons.map(b => {
                       const enabled = !!b.href && b.href !== "#";
                       const Icon = b.icon;
-                      const enabledStyle = `background-color:#de5b0014;color:#de5b00;border:1px solid #de5b0040;`;
+                      const enabledStyle = `background-color:#ff7a0014;color:#ff7a00;border:1px solid #ff7a0040;`;
                       const disabledStyle = "background-color:rgba(0,0,0,0.04);color:#9ca3af;border:1px solid rgba(0,0,0,0.06);";
                       if (!enabled) {
                         return (
@@ -345,7 +345,7 @@ function btnClass(enabled: boolean) {
         <div class="flex items-center justify-between gap-4">
           <div>
             <div class="text-xs font-semibold uppercase tracking-widest mb-1" style={`color:${channel.accentColor};`}>Up Next</div>
-            <h3 class="text-xl md:text-2xl font-semibold group-hover:underline" style="color:#002f55;">{next.name}</h3>
+            <h3 class="text-xl md:text-2xl font-semibold group-hover:underline" style="color:#0b3c5d;">{next.name}</h3>
             <p class="text-sm mt-1" style="color:var(--color-muted-foreground);">Continue exploring {channel.shortName} Resources</p>
           </div>
           <div class="shrink-0 w-12 h-12 rounded-full flex items-center justify-center transition-transform group-hover:translate-x-1" style={`background-color:${channel.accentColor};`}>

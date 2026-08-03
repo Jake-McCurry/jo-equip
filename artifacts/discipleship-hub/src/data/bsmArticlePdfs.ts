@@ -13,11 +13,11 @@ export interface BsmArticlePdfMeta {
 }
 
 export const bsmArticlePdfs: Record<string, BsmArticlePdfMeta> = {
-  "bible-recap": { bytes: 132820 },
-  "essential-bible-study-tools": { bytes: 165340 },
-  "inductive-bible-study": { bytes: 128316 },
-  "soap-method": { bytes: 123113 },
-  "topical-bible-study": { bytes: 127869 },
+  "bible-recap": { bytes: 132831 },
+  "essential-bible-study-tools": { bytes: 165357 },
+  "inductive-bible-study": { bytes: 128328 },
+  "soap-method": { bytes: 123129 },
+  "topical-bible-study": { bytes: 127882 },
 };
 
 export function hasBsmArticlePdf(id: string | undefined | null): boolean {

@@ -226,7 +226,7 @@ const metaDescription = plain(article.description);
                     <li>
                       <span class="resource-title">
                         {titleHref
-                          ? <a href={titleHref} style="color:#0083de;text-decoration:underline;">{item.title}</a>
+                          ? <a href={titleHref} style="color:#ff7a00;text-decoration:underline;">{item.title}</a>
                           : item.title}
                       </span>
                       <span class="resource-chips">
@@ -278,7 +278,7 @@ const metaDescription = plain(article.description);
         <div class="flex items-center justify-between gap-4">
           <div>
             <div class="text-xs font-semibold uppercase tracking-widest mb-1" style={`color:${channel.accentColor};`}>Next Article</div>
-            <h3 class="text-xl md:text-2xl font-semibold group-hover:underline" style="color:#002f55;">{nextArticle.title}</h3>
+            <h3 class="text-xl md:text-2xl font-semibold group-hover:underline" style="color:#0b3c5d;">{nextArticle.title}</h3>
             <p class="text-sm mt-1" style="color:var(--color-muted-foreground);">Continue exploring {sub.name}</p>
           </div>
           <div class="shrink-0 w-12 h-12 rounded-full flex items-center justify-center transition-transform group-hover:translate-x-1" style={`background-color:${channel.accentColor};`}>
@@ -297,7 +297,7 @@ const metaDescription = plain(article.description);
     aspect-ratio: 16 / 9;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 47, 85, 0.1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(11, 60, 93, 0.1);
     background: #000;
   }
   .article-video iframe {
@@ -313,9 +313,9 @@ const metaDescription = plain(article.description);
     line-height: 1.55;
     color: #6b7280;
   }
-  .video-attribution strong { color: #002f55; }
+  .video-attribution strong { color: #0b3c5d; }
   .video-attribution a {
-    color: #de5b00;
+    color: #ff7a00;
     text-decoration: underline;
     text-underline-offset: 2px;
   }
@@ -336,7 +336,7 @@ const metaDescription = plain(article.description);
     font-size: 1.5rem;
     line-height: 1.3;
     font-weight: 600;
-    color: #002f55;
+    color: #0b3c5d;
     border-bottom: 1px solid #e5e7eb;
     padding-bottom: 0.4rem;
   }
@@ -345,14 +345,14 @@ const metaDescription = plain(article.description);
     margin-bottom: 0.25rem;
     font-size: 1.15rem;
     font-weight: 600;
-    color: #002f55;
+    color: #0b3c5d;
   }
   .bcg-prose p { margin-top: 1rem; }
   /* :global() is required: anchors inside set:html content don't carry
      Astro's scoped attribute, so a scoped `.bcg-prose a` rule never
      matches them and the links render as plain text. */
   .bcg-prose :global(a) {
-    color: #de5b00;
+    color: #ff7a00;
     text-decoration: underline;
     text-underline-offset: 2px;
   }
@@ -395,9 +395,9 @@ const metaDescription = plain(article.description);
     transition: box-shadow 0.15s ease;
   }
   .bcg-prose a.chip-on {
-    background-color: #de5b0014;
-    color: #de5b00;
-    border: 1px solid #de5b0040;
+    background-color: #ff7a0014;
+    color: #ff7a00;
+    border: 1px solid #ff7a0040;
     text-decoration: none;
   }
   .bcg-prose a.chip-on:hover { box-shadow: 0 1px 2px rgba(0,0,0,0.08); text-decoration: none; }
@@ -412,8 +412,8 @@ const metaDescription = plain(article.description);
   .bcg-prose blockquote {
     margin: 1.5rem 0;
     padding: 1rem 1.25rem;
-    border-left: 4px solid #0083de;
-    background-color: #f4f7fb;
+    border-left: 4px solid #1e6fa8;
+    background-color: #e6f2fa;
     border-radius: 0 4px 4px 0;
     font-style: italic;
     color: #1f2937;
@@ -426,7 +426,7 @@ const metaDescription = plain(article.description);
     font-size: 0.875rem;
     color: #6b7280;
   }
-  .bcg-prose strong { color: #002f55; }
+  .bcg-prose strong { color: #0b3c5d; }
   .bcg-prose figure {
     margin: 2rem 0;
   }
@@ -435,7 +435,7 @@ const metaDescription = plain(article.description);
     width: 100%;
     height: auto;
     border-radius: 6px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 47, 85, 0.06);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(11, 60, 93, 0.06);
   }
   .bcg-prose figcaption {
     margin-top: 0.65rem;

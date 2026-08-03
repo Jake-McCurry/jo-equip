@@ -106,17 +106,17 @@ const personaLinks = [
   </Fragment>
 
   {/* Hero — eyebrow + title + tagline, per the July 2026 home refinement mockup. */}
-  <section class="relative py-10 md:py-16 px-4 text-center overflow-hidden" style="background-color:#002f55;">
+  <section class="relative py-10 md:py-16 px-4 text-center overflow-hidden" style="background-color:#0b3c5d;">
     <div
       class="pointer-events-none absolute inset-0"
       style={`background-image:url('${heroBg.src}');background-size:cover;background-position:center;`}
       aria-hidden="true"
     ></div>
     {/* Light navy wash so the white text stays readable while the collage shows through. */}
-    <div class="pointer-events-none absolute inset-0" style="background:linear-gradient(to bottom, rgba(0,47,85,0.45), rgba(0,47,85,0.35));"></div>
+    <div class="pointer-events-none absolute inset-0" style="background:linear-gradient(to bottom, rgba(11,60,93,0.45), rgba(11,60,93,0.35));"></div>
 
     <div class="relative container mx-auto max-w-4xl">
-      <h1 class="text-2xl sm:text-4xl md:text-5xl leading-tight" style="color:#ffffff;font-weight:500;text-shadow:0 1px 12px rgba(0,47,85,0.6);">Reach people. Grow disciples.<br />Multiply churches.</h1>
+      <h1 class="text-2xl sm:text-4xl md:text-5xl leading-tight" style="color:#ffffff;font-weight:500;text-shadow:0 1px 12px rgba(11,60,93,0.6);">Reach people. Grow disciples.<br />Multiply churches.</h1>
     </div>
   </section>
 
@@ -125,15 +125,15 @@ const personaLinks = [
     <div class="container mx-auto max-w-4xl">
       <p class="text-base md:text-lg max-w-3xl mx-auto leading-relaxed" style="color:#374151;">
         Biblically grounded resources to help answer difficult questions, develop mature believers, equip leaders, and strengthen churches.
-        <a href={join("/equip")} class="underline underline-offset-2 font-semibold hover:opacity-90" style="color:#0083de;">Find out more</a>
+        <a href={join("/equip")} class="underline underline-offset-2 font-semibold hover:opacity-90" style="color:#ff7a00;">Find out more</a>
       </p>
       {/* Persona links — the four audience landing pages, per the Aug 2026 planning note. */}
-      <p class="mt-5 text-sm md:text-base" style="color:#002f55;">
+      <p class="mt-5 text-sm md:text-base" style="color:#0b3c5d;">
         <span class="font-medium">Explore Free Resources for</span>
         {personaLinks.map(link => (
           <Fragment>
-            <span aria-hidden="true" class="mx-1.5" style="color:#de5b00;">&bull;</span>
-            <a href={link.href} class="underline underline-offset-2 whitespace-nowrap hover:opacity-90" style="color:#0083de;">{link.title}</a>
+            <span aria-hidden="true" class="mx-1.5" style="color:#ff7a00;">&bull;</span>
+            <a href={link.href} class="underline underline-offset-2 whitespace-nowrap hover:opacity-90" style="color:#ff7a00;">{link.title}</a>
           </Fragment>
         ))}
       </p>
@@ -141,13 +141,13 @@ const personaLinks = [
   </section>
 
   {/* Three Channels — photo cards, straight after the hero per the mockup. */}
-  <section class="py-10 md:py-14" style="background-color:#f4f7fb;">
+  <section class="py-10 md:py-14" style="background-color:#e6f2fa;">
     <div class="container mx-auto px-4">
       <h2 class="sr-only">Explore the three channels</h2>
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-md sm:max-w-lg lg:max-w-none mx-auto">
         {channels.map(channel => (
           <a href={join(`/channels/${channel.id}`)} class="group flex flex-col">
-            <h3 class="text-2xl font-semibold mb-2 group-hover:underline" style="color:#002f55;">{channel.name}</h3>
+            <h3 class="text-2xl font-semibold mb-2 group-hover:underline" style="color:#0b3c5d;">{channel.name}</h3>
             <div
               class="flex flex-col flex-grow bg-white border rounded overflow-hidden group-hover:shadow-lg transition-all"
               style={`border-color:var(--color-border);border-left:4px solid ${channel.accentColor};`}
@@ -180,7 +180,7 @@ const personaLinks = [
   </section>
 
   {/* Quick links — Reviews · About · Beliefs · JO APP */}
-  <section style="background-color:#0083de;">
+  <section style="background-color:#1e6fa8;">
     <div class="container mx-auto px-4">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 divide-white/15 sm:gap-y-px lg:divide-x lg:divide-white/15">
         {quickLinks.map(link => {

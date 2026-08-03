@@ -76,7 +76,7 @@ export interface Channel {
 }
 
 /* Display order: Evidence, Growth, Church
- * Channel palette (palette B — softer pastoral feel; reserves orange #de5b00 for links).
+ * Channel palette (palette B — softer pastoral feel; reserves orange #ff7a00 for links).
  * Evidence = Slate Blue, Growth = Sage, Church = Plum. */
 export const channels: Channel[] = [
   {

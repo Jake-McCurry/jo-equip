@@ -195,7 +195,7 @@ function renderTemplate({
     display: block;
     font-size: 18pt;
     font-weight: 700;
-    color: #002f55;
+    color: #0b3c5d;
     letter-spacing: -0.005em;
   }
   .cover .eyebrow .brand-tag {
@@ -210,7 +210,7 @@ function renderTemplate({
     font-family: Georgia, "Times New Roman", serif;
     font-size: 17pt;
     line-height: 1.2;
-    color: #0083de;
+    color: #1e6fa8;
     font-weight: 600;
     letter-spacing: 0.005em;
     margin: 0 0 0.25em 0;
@@ -219,14 +219,14 @@ function renderTemplate({
     font-family: Georgia, "Times New Roman", serif;
     font-size: 30pt;
     line-height: 1.18;
-    color: #002f55;
+    color: #0b3c5d;
     font-weight: normal;
     margin: 0 0 0.55em 0;
   }
   .cover .rule {
     display: block;
     width: 96px; height: 4px;
-    background: #de5b00;
+    background: #ff7a00;
     margin: 0.4in 0 0.45in 0;
   }
   .cover .meta {
@@ -235,7 +235,7 @@ function renderTemplate({
     color: #4b5563;
     line-height: 1.6;
   }
-  .cover .meta strong { color: #002f55; font-weight: 600; }
+  .cover .meta strong { color: #0b3c5d; font-weight: 600; }
   .cover .footer-block {
     margin-top: 2.4in;
     padding-top: 0.25in;
@@ -245,7 +245,7 @@ function renderTemplate({
     color: #6b7280;
   }
   .cover .footer-block .brand {
-    color: #002f55; font-weight: 700;
+    color: #0b3c5d; font-weight: 700;
   }
   .cover .footer-block .brand-tag {
     color: #6b7280; font-weight: 400;
@@ -254,29 +254,29 @@ function renderTemplate({
   /* Body content */
   .article { padding-top: 0.1in; }
   .article h1 {
-    font-size: 18pt; color: #002f55; font-weight: normal;
+    font-size: 18pt; color: #0b3c5d; font-weight: normal;
     border-bottom: 1px solid #d1d5db; padding-bottom: 0.35em; margin: 0 0 0.6em 0;
   }
   .article h2 {
-    font-size: 14pt; color: #002f55; font-weight: 600;
+    font-size: 14pt; color: #0b3c5d; font-weight: 600;
     margin: 1.6em 0 0.3em; page-break-after: avoid;
   }
   .article h3 {
-    font-size: 12pt; color: #002f55; font-weight: 600;
+    font-size: 12pt; color: #0b3c5d; font-weight: 600;
     margin: 1.3em 0 0.2em; page-break-after: avoid;
   }
   .article h4, .article h5, .article h6 {
-    font-size: 11pt; color: #002f55; font-weight: 600;
+    font-size: 11pt; color: #0b3c5d; font-weight: 600;
     margin: 1.1em 0 0.2em;
   }
   .article p { margin: 0 0 0.85em 0; orphans: 3; widows: 3; }
   .article a { color: #b34800; text-decoration: underline; text-underline-offset: 2px; }
-  .article strong { color: #002f55; }
+  .article strong { color: #0b3c5d; }
   .article ul, .article ol { margin: 0.5em 0 1em 0; padding: 0 0 0 2.2em; }
   .article li { margin: 0.25em 0; }
   .article blockquote {
     margin: 1em 0; padding: 0.5em 1em;
-    border-left: 3px solid #0083de; background: #f4f7fb;
+    border-left: 3px solid #1e6fa8; background: #e6f2fa;
     color: #1f2937; font-style: italic;
   }
   .article blockquote p:last-child { margin-bottom: 0; }
@@ -295,7 +295,7 @@ function renderTemplate({
   .article th, .article td {
     border: 1px solid #d1d5db; padding: 6px 8px; vertical-align: top;
   }
-  .article th { background: #f3f4f6; color: #002f55; }
+  .article th { background: #f3f4f6; color: #0b3c5d; }
   .article hr {
     border: 0; border-top: 1px solid #e5e7eb; margin: 1.4em 0;
   }
@@ -314,9 +314,9 @@ ${END_PAGE_CSS}
     <div class="meta">
       ${bibleProject
         ? `<strong>Content produced and owned by BibleProject.</strong><br />
-      Explore more at <span style="color:#002f55">bibleproject.com</span>. BibleProject is not affiliated with JO&nbsp;EQUIP.<br />`
+      Explore more at <span style="color:#0b3c5d">bibleproject.com</span>. BibleProject is not affiliated with JO&nbsp;EQUIP.<br />`
         : `<strong>A free resource from JesusOnline Ministries.</strong><br />`}
-      Read or share online: <span style="color:#002f55">${sourceUrl.replace(/^https?:\/\//, "")}</span>
+      Read or share online: <span style="color:#0b3c5d">${sourceUrl.replace(/^https?:\/\//, "")}</span>
     </div>
     <div class="footer-block">
       <span class="brand">JesusOnline Equip</span> <span class="brand-tag">· Ministry Resources Hub</span> · equip.jesusonline.com<br />
@@ -327,7 +327,7 @@ ${END_PAGE_CSS}
     <h1>${escTitle}</h1>
     ${bibleProject
       ? `<p style="font-family:-apple-system,'Helvetica Neue',Arial,sans-serif;font-size:9.5pt;color:#6b7280;border:1px solid #e5e7eb;border-radius:6px;padding:8px 12px;background:#f9fafb;">
-      Produced and owned by <strong style="color:#002f55;">BibleProject</strong> · bibleproject.com · Not affiliated with JO EQUIP.
+      Produced and owned by <strong style="color:#0b3c5d;">BibleProject</strong> · bibleproject.com · Not affiliated with JO EQUIP.
     </p>`
       : ""}
     ${bodyHtml}
@@ -340,7 +340,7 @@ ${END_PAGE_HTML}
 /* puppeteer header/footer templates — small JO branding + page numbers. */
 const FOOTER_TEMPLATE = `
   <div style="width:100%;font-family:'Helvetica Neue',Arial,sans-serif;font-size:8pt;color:#6b7280;padding:0 0.8in;display:flex;justify-content:space-between;align-items:center;">
-    <span><span style="color:#002f55;font-weight:700;">JesusOnline Equip</span> <span style="color:#9ca3af;">· Ministry Resources Hub</span></span>
+    <span><span style="color:#0b3c5d;font-weight:700;">JesusOnline Equip</span> <span style="color:#9ca3af;">· Ministry Resources Hub</span></span>
     <span>Page <span class="pageNumber"></span> of <span class="totalPages"></span></span>
     <span>equip.jesusonline.com</span>
   </div>`;

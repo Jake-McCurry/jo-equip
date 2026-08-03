@@ -91,6 +91,15 @@ const showTopicButtons = !!(sub.formats && sub.formats.length > 0);
 function btnClass(enabled: boolean) {
   return "inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-[11px] font-semibold uppercase tracking-wider transition-all" + (enabled ? " hover:shadow-sm" : " cursor-not-allowed");
 }
+
+/* Titles like "New Life in Christ (Intermediate Discipleship)" — render the
+   parenthetical smaller so it supplements rather than competes with the title. */
+function splitTitle(t: string): { main: string; paren: string | null } {
+  const m = t.match(/^(.*?)\s*(\([^)]*\))\s*$/);
+  return m ? { main: m[1], paren: m[2] } : { main: t, paren: null };
+}
+
+const heroTitle = splitTitle(sub.name);
 ---
 <Layout title={`${sub.name} · ${channel.shortName} · JO EQUIP`} description={`${sub.name} — ${channel.tagline}`}>
   <Fragment slot="head">
@@ -124,7 +133,7 @@ function btnClass(enabled: boolean) {
         <span style="color:rgba(255,255,255,0.95);">{sub.name}</span>
       </nav>
 
-      <h1 class="text-3xl md:text-5xl mb-2" style="color:#ffffff;font-weight:500;">{sub.name}</h1>
+      <h1 class="text-3xl md:text-5xl mb-2" style="color:#ffffff;font-weight:500;">{heroTitle.main}{heroTitle.paren && <span class="block md:inline text-xl md:text-3xl md:ml-2" style="color:rgba(255,255,255,0.9);">{heroTitle.paren}</span>}</h1>
       {sub.description && (
         <p class="text-base md:text-lg max-w-3xl" style="color:#ffffff;">{sub.description}</p>
       )}

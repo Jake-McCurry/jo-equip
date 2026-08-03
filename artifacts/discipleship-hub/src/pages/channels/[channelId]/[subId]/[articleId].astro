@@ -124,6 +124,15 @@ function plain(s: string) {
   return s.replace(/<[^>]+>/g, "").trim();
 }
 const metaDescription = plain(article.description);
+
+/* Titles like "New Life in Christ (Intermediate Discipleship)" — render the
+   parenthetical smaller so it supplements rather than competes with the title. */
+function splitTitle(t: string): { main: string; paren: string | null } {
+  const m = t.match(/^(.*?)\s*(\([^)]*\))\s*$/);
+  return m ? { main: m[1], paren: m[2] } : { main: t, paren: null };
+}
+
+const heroTitle = splitTitle(article.title);
 ---
 <Layout title={`${article.title} · ${sub.name} · JO EQUIP`} description={metaDescription}>
   <Fragment slot="head">
@@ -150,7 +159,7 @@ const metaDescription = plain(article.description);
         <a href={join(`/channels/${channel.id}/${sub.id}`)} class="hover:text-white transition-colors">{sub.name}</a>
       </nav>
       <div class="text-sm uppercase tracking-widest font-semibold mb-2" style="color:#ffffff;">{sub.name}</div>
-      <h1 class="text-3xl md:text-5xl mb-2" style="color:#ffffff;font-weight:500;">{article.title}</h1>
+      <h1 class="text-3xl md:text-5xl mb-2" style="color:#ffffff;font-weight:500;">{heroTitle.main}{heroTitle.paren && <span class="block md:inline text-xl md:text-3xl md:ml-2" style="color:rgba(255,255,255,0.9);">{heroTitle.paren}</span>}</h1>
     </div>
   </div>
 

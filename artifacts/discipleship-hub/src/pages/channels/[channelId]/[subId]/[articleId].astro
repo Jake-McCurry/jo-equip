@@ -156,10 +156,10 @@ const heroTitle = splitTitle(article.title);
         <ChevronRight className="w-3 h-3" />
         <a href={join(`/channels/${channel.id}`)} class="hover:text-white transition-colors">{channel.shortName}</a>
         <ChevronRight className="w-3 h-3" />
-        <a href={join(`/channels/${channel.id}/${sub.id}`)} class="hover:text-white transition-colors">{sub.name}</a>
+        <a href={join(`/channels/${channel.id}/${sub.id}`)} class="hover:text-white transition-colors">{splitTitle(sub.name).main}</a>
       </nav>
-      <div class="text-sm uppercase tracking-widest font-semibold mb-2" style="color:#ffffff;">{sub.name}</div>
-      <h1 class="text-3xl md:text-5xl mb-2" style="color:#ffffff;font-weight:500;">{heroTitle.main}{heroTitle.paren && <span class="block md:inline text-xl md:text-3xl md:ml-2" style="color:rgba(255,255,255,0.9);">{heroTitle.paren}</span>}</h1>
+      <div class="text-sm uppercase tracking-widest font-semibold mb-2" style="color:#ffffff;">{splitTitle(sub.name).main}</div>
+      <h1 class="text-3xl md:text-5xl mb-2" style="color:#ffffff;font-weight:500;">{heroTitle.main}</h1>
     </div>
   </div>
 

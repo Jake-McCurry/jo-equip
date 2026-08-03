@@ -161,7 +161,14 @@ function btnClass(enabled: boolean) {
           })}
         </div>
       </>
-    ) : hasItems ? (
+    ) : null}
+
+    {/* A parent topic can carry BOTH child topics and its own direct
+        articles (e.g. Sermon Toolbox: "Bible Study Tools" plus the
+        Sermon Communication Planning child) — render the item list
+        after the children grid instead of hiding it. */}
+    {!isNewsletter && hasItems ? (
+      <div class={hasChildren ? "mt-12" : ""}>
       <>
         {topicBookCover && (
           <div class="mb-8 flex flex-col items-start">
@@ -325,12 +332,13 @@ function btnClass(enabled: boolean) {
           })}
         </ol>
       </>
-    ) : (
+      </div>
+    ) : !isNewsletter && !hasChildren ? (
       <div class="py-16 text-center border border-dashed rounded bg-white" style="border-color:var(--color-border);">
         <p class="mb-2" style="color:var(--color-muted-foreground);">Resources for this topic are being prepared.</p>
         <p class="text-sm" style="color:var(--color-muted-foreground);opacity:0.7;">Check back soon for books, playlists, and app content.</p>
       </div>
-    )}
+    ) : null}
 
     {!isNewsletter && next && (
       <a href={join(`/channels/${channel.id}/${next.id}`)} class="group block mt-12 p-6 md:p-7 rounded border-2 hover:shadow-md transition-all" style={`border-color:${channel.accentColor};background-color:${channel.accentColor}06;`}>

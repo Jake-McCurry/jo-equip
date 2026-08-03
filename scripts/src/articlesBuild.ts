@@ -52,7 +52,17 @@ const OUT_DIR = resolve(ROOT, "artifacts/discipleship-hub/public/articles");
 const MANIFEST_PATH = resolve(ROOT, "artifacts/discipleship-hub/src/data/articles.ts");
 const CACHE_PATH = resolve(process.cwd(), "data/articles-cache.json");
 
-type SlugEntry = { wp_id: number; wp_slug: string; method: "exact" | "prefix" | "fuzzy" };
+type SlugEntry = {
+  wp_id: number;
+  wp_slug: string;
+  method: "exact" | "prefix" | "fuzzy";
+  /** Source post was unpublished/deleted upstream (WP returns 401/404).
+   *  Keep serving the last-good local PDF; skip fetching. `frozen` holds a
+   *  short reason for the content owner. `title` is required when the cache
+   *  has no entry for the slug (used to keep the manifest row alive). */
+  frozen?: string;
+  title?: string;
+};
 type WpPost = {
   id: number;
   slug: string;
@@ -478,6 +488,24 @@ async function buildOne(
   cache: Manifest,
 ): Promise<{ ok: boolean; skipped: boolean; bytes?: number; error?: string; title?: string }> {
   try {
+    /* Frozen entries: upstream post is gone (unpublished/private on WP).
+       Serve the existing PDF as-is and keep its manifest row; never fetch. */
+    if (entry.frozen) {
+      const outPath = resolve(OUT_DIR, `${appSlug}.pdf`);
+      if (!existsSync(outPath)) {
+        return { ok: false, skipped: false, error: `frozen (${entry.frozen}) and no local PDF to keep` };
+      }
+      const bytes = statSync(outPath).size;
+      const prior = cache[appSlug];
+      cache[appSlug] = {
+        wp_id: entry.wp_id,
+        modified: prior?.modified ?? "frozen",
+        bytes,
+        title: prior?.title ?? entry.title ?? appSlug,
+      };
+      return { ok: true, skipped: true, bytes, title: cache[appSlug]!.title };
+    }
+
     const post = await fetchPost(entry.wp_id);
     if (!post) return { ok: false, skipped: false, error: `wp post ${entry.wp_id} not found` };
 

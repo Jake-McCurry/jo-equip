@@ -4268,7 +4268,7 @@
   "32451-father-jesus-the-holy-spirit-and-you": {
     "wp_id": 547,
     "modified": "2026-06-19T15:52:53",
-    "bytes": 119061,
+    "bytes": 120026,
     "title": "Father, Jesus, the Holy Spirit and You (emphasis on unity vs three different acts)"
   },
   "32445-empowered-by-his-presence": {
@@ -4280,37 +4280,37 @@
   "32453-abide-in-jesus-christ": {
     "wp_id": 556,
     "modified": "2023-08-03T02:53:07",
-    "bytes": 117952,
+    "bytes": 118959,
     "title": "Abide in Jesus Christ"
   },
   "32446-empowered-by-supernatural-peace": {
     "wp_id": 2001,
     "modified": "2020-04-02T18:47:40",
-    "bytes": 116277,
+    "bytes": 117259,
     "title": "Empowered by Supernatural Peace"
   },
   "32452-submit-to-god-the-father": {
     "wp_id": 554,
     "modified": "2020-02-16T05:47:46",
-    "bytes": 114710,
+    "bytes": 115677,
     "title": "Submit to God the Father"
   },
   "32455-how-to-be-filled-with-the-holy-spirit": {
     "wp_id": 13877,
     "modified": "2021-09-08T23:37:23",
-    "bytes": 118831,
+    "bytes": 119845,
     "title": "How to Be Filled with the Holy Spirit"
   },
   "32454-be-filled-with-the-holy-spirit": {
     "wp_id": 558,
     "modified": "2021-07-04T00:25:17",
-    "bytes": 120523,
+    "bytes": 121536,
     "title": "Be Filled with the Holy Spirit"
   },
   "32456-live-in-harmony-with-god": {
     "wp_id": 552,
     "modified": "2021-09-08T21:59:08",
-    "bytes": 126099,
+    "bytes": 127170,
     "title": "Live in Harmony with God"
   },
   "32520-gods-word": {
@@ -5228,7 +5228,7 @@
   "51011-is-jesus-the-only-way-to-god": {
     "wp_id": 2526,
     "modified": "2024-02-28T03:05:26",
-    "bytes": 192585,
+    "bytes": 31239,
     "title": "Is Jesus the Only Way to God?"
   },
   "51010-did-the-apostles-believe-jesus-is-god": {
@@ -7036,5 +7036,35 @@
     "modified": "2022-12-11T05:22:20",
     "bytes": 119534,
     "title": "Fear Not"
+  },
+  "32281-gods-self-portrait": {
+    "wp_id": 7074,
+    "modified": "frozen",
+    "bytes": 119573,
+    "title": "God’s Self-Portrait"
+  },
+  "32282-god-is-sovereign": {
+    "wp_id": 475,
+    "modified": "frozen",
+    "bytes": 84265,
+    "title": "God is Sovereign"
+  },
+  "32283-god-is-holy": {
+    "wp_id": 477,
+    "modified": "frozen",
+    "bytes": 81341,
+    "title": "God is Holy"
+  },
+  "32284-god-is-good": {
+    "wp_id": 479,
+    "modified": "frozen",
+    "bytes": 81078,
+    "title": "God is Good"
+  },
+  "32285-god-is-incomprehensible": {
+    "wp_id": 481,
+    "modified": "frozen",
+    "bytes": 86761,
+    "title": "God is Incomprehensible"
   }
 }

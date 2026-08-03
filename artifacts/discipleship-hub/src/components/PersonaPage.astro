@@ -100,7 +100,7 @@ const quickLinks = [
           <a href={join(`/books/${b.id}`)} class="group shrink-0 w-[calc((100vw-5rem)/3.5)] max-w-[130px] md:w-auto md:max-w-none">
             <div class="border rounded overflow-hidden bg-white transition-shadow group-hover:shadow-md" style="border-color:var(--color-border);">
               {cover ? (
-                <Image src={cover} alt={b.title} width={260} class="w-full h-auto" />
+                <Image src={cover} alt={b.title} width={260} class="w-full aspect-[3/4] object-cover" />
               ) : (
                 <div class="aspect-[3/4] flex items-center justify-center" style="background-color:#e6f2fa;">
                   <BookOpen className="w-8 h-8" style={{ color: "#94a3b8" }} />

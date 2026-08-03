@@ -19,6 +19,12 @@ if (!channel) return Astro.redirect(join("/channels"));
 
 const subs = getSubTopicsByChannel(channel.id);
 
+/* Evidence accent trial: warm gold, home page + this page only (Aug 2026). Revert by removing. */
+const accent = channel.id === "evidence" ? "#b8860b" : channel.accentColor;
+const heroGradient = channel.id === "evidence"
+  ? "linear-gradient(135deg, #d4a736 0%, #b8860b 60%, #7a5807 100%)"
+  : channel.gradient;
+
 /* Channel statement shown under the hero (per user's topics-page mockup). */
 const statements: Record<string, string> = {
   evidence: "Reach skeptics with strong evidence for Christ, God, and the Bible.",
@@ -48,7 +54,7 @@ function exploreLabel(subId: string): string {
     ]} />
   </Fragment>
   {/* Channel hero */}
-  <div class="relative overflow-hidden" style={`background:${channel.gradient};`}>
+  <div class="relative overflow-hidden" style={`background:${heroGradient};`}>
     <div class="absolute inset-0 opacity-30">
       <ChannelArt channel={channel.id} class="absolute inset-0 w-full h-full" />
     </div>
@@ -75,7 +81,7 @@ function exploreLabel(subId: string): string {
         return (
           <div
             class="flex flex-col bg-white border rounded p-5 hover:shadow-md transition-all"
-            style={`border-color:var(--color-border);border-left:4px solid ${channel.accentColor};`}
+            style={`border-color:var(--color-border);border-left:4px solid ${accent};`}
           >
             <h3 class="text-base font-semibold leading-snug mb-2">
               <a href={href} class="hover:underline" style="color:#0b3c5d;">{sub.name}</a>
@@ -86,7 +92,7 @@ function exploreLabel(subId: string): string {
             <a
               href={href}
               class="group inline-flex items-center gap-1.5 mt-auto text-sm font-semibold hover:underline"
-              style={`color:${channel.accentColor};`}
+              style={`color:${accent};`}
             >
               {exploreLabel(sub.id)}
               <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />

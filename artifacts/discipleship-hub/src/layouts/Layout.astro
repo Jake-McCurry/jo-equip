@@ -166,8 +166,8 @@ const gtmEnabled = import.meta.env.PROD;
           {navLinksWithActive.map(link => (
             <a
               href={join(link.path)}
-              class="relative px-3 py-2 text-sm font-medium transition-colors rounded hover:text-white"
-              style={`color:${link.active ? "#ffffff" : "rgba(255,255,255,0.92)"};`}
+              class="relative px-3 py-2 text-base font-medium transition-colors rounded hover:text-white"
+              style="color:#ffffff;"
               aria-current={link.active ? "page" : undefined}
             >
               {link.name}

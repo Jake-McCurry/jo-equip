@@ -1,0 +1,203 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { ArrowRight, Users2, BookOpen, Smartphone, Star } from "lucide-react";
+
+const baseUrl = import.meta.env.BASE_URL;
+const join = (p: string) =>
+  (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
+
+/* Equip page — August 2026. Replaces "Welcome" in the top menu (the
+   /welcome page itself is kept, just unlinked from the nav for now).
+   Content per JO_EQUIP_Equip_Page_2 doc. */
+
+/* Three Foundational Questions — each [more] links to its topic page. */
+const foundations = [
+  {
+    lead: "God Focus:",
+    text: "Am I growing in a biblically accurate understanding of who God truly is—His attributes, character, and glory—and pursuing deeper intimacy with Him?",
+    href: join("/channels/growth/attributes-of-god"),
+  },
+  {
+    lead: "Identity Focus:",
+    text: "Do I truly know and embrace my new identity in Christ, living consistently from that reality while intentionally putting off my old self?",
+    href: join("/channels/growth/identity-in-christ"),
+  },
+  {
+    lead: "Spirit Focus:",
+    text: "Am I depending on the Holy Spirit\u2019s power as essential for living the Christian life, rather than relying on my own self-effort?",
+    href: join("/channels/growth/bb-walking-spirit"),
+  },
+];
+
+/* 10 Building Blocks for Maturity — each [more] links to its topic page. */
+const buildingBlocks = [
+  {
+    lead: "Seeing Life from God\u2019s Perspective:",
+    text: "Are they viewing circumstances through a worldly perspective instead of God\u2019s character and purposes?",
+    href: join("/channels/growth/bb-seeing-life"),
+  },
+  {
+    lead: "Growing Closer to God:",
+    text: "Do they prioritize religious activity over cultivating a living, affectionate relationship with the Lord?",
+    href: join("/channels/growth/bb-growing-closer"),
+  },
+  {
+    lead: "Becoming the New You:",
+    text: "Are they still holding onto their old self-image and past failures instead of embracing their new identity in Christ?",
+    href: join("/channels/growth/bb-becoming-new-you"),
+  },
+  {
+    lead: "Walking by the Spirit:",
+    text: "Is their life defined by self-effort, or do they demonstrate a vital reliance on the Holy Spirit\u2019s guidance and power in their daily lives?",
+    href: join("/channels/growth/bb-walking-spirit"),
+  },
+  {
+    lead: "Receiving Insights from God:",
+    text: "Are Scripture and mind renewal central, or are they more shaped by popular opinion and personal preference than by God\u2019s Word?",
+    href: join("/channels/growth/bb-receiving-insights"),
+  },
+  {
+    lead: "Obeying God Faithfully:",
+    text: "Is there a significant gap between what is known and practiced\u2014areas of compromise, selective obedience, or hesitation to fully follow Christ?",
+    href: join("/channels/growth/bb-obeying-god"),
+  },
+  {
+    lead: "Living as God\u2019s Family:",
+    text: "Do they show genuine care and support for their church family, or do they exhibit isolation and superficial connections?",
+    href: join("/channels/growth/bb-living-family"),
+  },
+  {
+    lead: "Reaching the World:",
+    text: "Are they primarily focused on themselves, or is there an emphasis on sharing the gospel and making disciples?",
+    href: join("/channels/growth/bb-reaching-world"),
+  },
+  {
+    lead: "Resisting the Enemy:",
+    text: "Are they alert to spiritual opposition, or do they seem discouraged and easily distracted by temptation and accusation?",
+    href: join("/channels/growth/bb-resisting-enemy"),
+  },
+  {
+    lead: "Pursuing God\u2019s Master Plan:",
+    text: "Do they feel their lives have a purposeful direction under God\u2019s guidance, or do they seem uncertain about their calling and how to use their gifts for His glory?",
+    href: join("/channels/growth/bb-pursuing-master-plan"),
+  },
+];
+
+/* Persona pages (Pastors, Home Church Leaders, Chaplains, Missionaries)
+   are planned but not built yet — shown unlinked until those pages exist. */
+const personas = ["Pastors", "Home Church Leaders", "Chaplains", "Missionaries"];
+
+const quickLinks = [
+  { title: "Reviews", subtitle: "From Pastors and Leaders", href: join("/reviews"), icon: Star, external: false },
+  { title: "About", subtitle: "JesusOnline Ministries", href: join("/about"), icon: Users2, external: false },
+  { title: "Beliefs", subtitle: "Statement of Faith", href: join("/beliefs"), icon: BookOpen, external: false },
+  { title: "JO APP", subtitle: "Growing in Christ", href: "https://app.jesusonline.com", icon: Smartphone, external: true },
+];
+---
+<Layout
+  title="Equip | JO EQUIP"
+  description="JO EQUIP offers practical tools for disciple-makers — facilitating growth from skeptic to believer, believer to growing disciple, and disciple to disciple-maker."
+>
+  {/* Heading + intro */}
+  <section class="bg-white">
+    <div class="container mx-auto px-4 py-12 md:py-16 max-w-4xl">
+      <h1 class="text-4xl md:text-5xl mb-4" style="color:#002f55;">Tools for Mature Disciple-Making</h1>
+      <div class="h-0.5 w-12 mb-7" style="background-color:#de5b00;"></div>
+      <p class="text-lg leading-relaxed mb-5" style="color:#374151;">
+        <strong style="color:#002f55;">JO EQUIP</strong> offers practical tools for disciple-makers,
+        facilitating growth from skeptic to believer, believer to growing disciple, and disciple to disciple-maker.
+      </p>
+      <p class="text-lg leading-relaxed" style="color:#374151;">
+        Many discipleship programs emphasize biblical knowledge, behavioral change, and spiritual disciplines.
+        JO EQUIP, however, focuses on heart transformation, illustrated by Three Foundational Questions:
+      </p>
+    </div>
+  </section>
+
+  {/* Three Foundational Questions */}
+  <section class="py-10 md:py-14" style="background-color:#f4f7fb;">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <ul class="flex flex-col gap-4">
+        {foundations.map(f => (
+          <li class="bg-white border rounded px-6 py-5" style="border-color:var(--color-border);border-left:4px solid #0083de;">
+            <p class="text-[15px] md:text-base leading-relaxed" style="color:#374151;">
+              <strong class="font-semibold" style="color:#002f55;">{f.lead}</strong>{" "}{f.text}{" "}
+              <a href={f.href} class="font-semibold whitespace-nowrap hover:underline" style="color:#de5b00;">[more]</a>
+            </p>
+          </li>
+        ))}
+      </ul>
+      <p class="text-[15px] md:text-base leading-relaxed mt-7" style="color:#374151;">
+        These interconnected foundational truths enhance traditional discipleship methods, making them more
+        effective. They empower believers to live as new creations, resulting in lasting heart change, and eternal impact.
+      </p>
+    </div>
+  </section>
+
+  {/* Give Them What They Need — 10 Building Blocks */}
+  <section class="py-10 md:py-14 bg-white">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <h2 class="text-2xl md:text-3xl font-semibold mb-4" style="color:#002f55;">Give Them What They Need</h2>
+      <p class="text-[15px] md:text-base leading-relaxed mb-7" style="color:#374151;">
+        <strong style="color:#002f55;">10 Building Blocks for Maturity</strong> are vital for balanced spiritual
+        growth. They help believers intentionally strive to become more like Jesus. These reflective questions
+        help you discern what people may need most at this time.
+      </p>
+      <ol class="flex flex-col gap-3">
+        {buildingBlocks.map((b, i) => (
+          <li class="flex gap-4 border rounded px-5 py-4" style="border-color:var(--color-border);background-color:#f4f7fb;">
+            <span class="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold text-white" style="background-color:#0083de;">{i + 1}</span>
+            <p class="text-[15px] leading-relaxed" style="color:#374151;">
+              <strong class="font-semibold" style="color:#002f55;">{b.lead}</strong>{" "}{b.text}{" "}
+              <a href={b.href} class="font-semibold whitespace-nowrap hover:underline" style="color:#de5b00;">[more]</a>
+            </p>
+          </li>
+        ))}
+      </ol>
+      <p class="text-[15px] md:text-base leading-relaxed mt-7" style="color:#374151;">
+        These questions are meant to encourage careful observation and discernment, not quick judgments.
+        As the Holy Spirit provides clarity, the foundational element that emerges can guide teaching and
+        discipleship in this season.
+      </p>
+    </div>
+  </section>
+
+  {/* Explore Free Resources for … (persona pages coming soon — unlinked) */}
+  <section class="py-8 md:py-10" style="background-color:#f4f7fb;">
+    <div class="container mx-auto px-4 max-w-4xl text-center">
+      <p class="text-[15px] md:text-base font-semibold" style="color:#002f55;">
+        Explore Free Resources for
+        {personas.map(p => (
+          <span> <span aria-hidden="true" style="color:#de5b00;">•</span> {p}</span>
+        ))}
+      </p>
+    </div>
+  </section>
+
+  {/* Quick links — Reviews · About · Beliefs · JO APP */}
+  <section style="background-color:#0083de;">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 divide-white/15 sm:gap-y-px lg:divide-x lg:divide-white/15">
+        {quickLinks.map(link => {
+          const Icon = link.icon;
+          return (
+            <a
+              href={link.href}
+              target={link.external ? "_blank" : undefined}
+              rel={link.external ? "noopener noreferrer" : undefined}
+              class="group flex items-center justify-start lg:justify-center gap-4 py-5 px-6 transition-colors hover:bg-white/5"
+            >
+              <div class="w-11 h-11 rounded shrink-0 flex items-center justify-center" style="background-color:rgba(255,255,255,0.18);">
+                <Icon className="w-5 h-5" style={{ color: "#ffffff" }} />
+              </div>
+              <div class="text-left">
+                <div class="text-lg md:text-xl font-semibold text-white leading-tight tracking-wide group-hover:underline" style='font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;'>{link.title}</div>
+                <div class="text-[11px] mt-1 font-medium tracking-widest uppercase" style="color:rgba(255,255,255,0.8);">{link.subtitle}</div>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+</Layout>

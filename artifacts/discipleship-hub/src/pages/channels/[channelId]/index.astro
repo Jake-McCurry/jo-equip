@@ -19,11 +19,8 @@ if (!channel) return Astro.redirect(join("/channels"));
 
 const subs = getSubTopicsByChannel(channel.id);
 
-/* Evidence accent trial: warm gold, home page + this page only (Aug 2026). Revert by removing. */
-const accent = channel.id === "evidence" ? "#b8860b" : channel.accentColor;
-const heroGradient = channel.id === "evidence"
-  ? "linear-gradient(135deg, #d4a736 0%, #b8860b 60%, #7a5807 100%)"
-  : channel.gradient;
+const accent = channel.accentColor;
+const heroGradient = channel.gradient;
 
 /* Channel statement shown under the hero (per user's topics-page mockup). */
 const statements: Record<string, string> = {

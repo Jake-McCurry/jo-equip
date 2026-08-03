@@ -86,8 +86,8 @@ export const channels: Channel[] = [
     tagline: "Reach skeptics with evidence about Jesus",
     description:
       "Persuade doubters with clear, compelling facts about the true identity of Christ, the existence of God, and the reliability of the Bible.",
-    accentColor: "#3b5a99",
-    gradient: "linear-gradient(135deg, #6e8ac1 0%, #3b5a99 60%, #243a66 100%)",
+    accentColor: "#b8860b",
+    gradient: "linear-gradient(135deg, #d4a736 0%, #b8860b 60%, #7a5807 100%)",
   },
   {
     id: "growth",

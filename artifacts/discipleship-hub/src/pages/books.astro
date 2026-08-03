@@ -16,7 +16,7 @@ const join = (p: string) =>
    they are identifiable as book downloads. Note the f_id differs from the
    newsletter form's — this is the dedicated book-download form. */
 const MC_ACTION =
-  "https://jesusonline.us1.list-manage.com/subscribe/post?u=c02949f5de137184b156da9bc&id=e06ba0649d&f_id=00bc87e5f0";
+  "https://jesusonline.us1.list-manage.com/subscribe/post-json?u=c02949f5de137184b156da9bc&id=e06ba0649d&f_id=00bc87e5f0";
 const MC_TAG = "5798230";
 const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
 
@@ -234,6 +234,11 @@ const booksJsonLd = {
       let pendingId = null;
       let lastFocusedEl = null;
       let isSubmitting = false;
+      // Increments each time the gate opens or closes; in-flight Mailchimp
+      // callbacks capture the value at submit time and go quiet if the gate
+      // state has moved on (visitor closed the modal / opened another book).
+      let gateGeneration = 0;
+      let jsonpCounter = 0;
 
       // Migrate visitors who have the old key (which stored their raw email).
       // Promote to the new boolean flag and erase the sensitive value.
@@ -310,6 +315,7 @@ const booksJsonLd = {
       }
 
       function openGate(url, title, id, triggerEl) {
+        gateGeneration++;
         pendingPdf = url;
         pendingTitle = title;
         pendingId = id;
@@ -329,6 +335,7 @@ const booksJsonLd = {
       }
 
       function closeGate() {
+        gateGeneration++;
         gate.classList.add("hidden");
         gate.classList.remove("flex");
         document.body.style.overflow = "";
@@ -339,28 +346,45 @@ const booksJsonLd = {
         lastFocusedEl = null;
       }
 
-      // Fire-and-forget submit to Mailchimp's embedded-form endpoint.
-      // Mailchimp does not send CORS headers, so the request runs in
-      // `no-cors` mode — the response is opaque, matching the previous
-      // fire-and-forget behavior. The hidden `tags` field marks the
-      // subscriber as a book-download signup; the honeypot field is sent
-      // empty like a legitimate browser submission would.
-      function submitEmail(email, country) {
-        try {
-          const params = new URLSearchParams();
-          params.set("EMAIL", email);
-          params.set("COUNTRY", country);
-          params.set("tags", MC_TAG);
-          params.set(MC_HONEYPOT, "");
-          params.set("subscribe", "Subscribe");
-          fetch(MC_ACTION, {
-            method: "POST",
-            mode: "no-cors",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: params.toString(),
-            keepalive: true,
-          }).catch(function () { /* fire-and-forget */ });
-        } catch (_e) { /* ignore */ }
+      // Submit to Mailchimp's JSONP endpoint and confirm the signup was
+      // accepted before we remember the visitor. Mailchimp only allows
+      // cross-origin signups via JSONP, so we inject a <script> with a
+      // callback. onSuccess/onFailure receive the outcome; on failure the
+      // consent flag is NOT set, so the visitor is asked again next time
+      // instead of their email silently going missing.
+      function submitEmail(email, country, onSuccess, onFailure) {
+        const params = new URLSearchParams();
+        params.set("EMAIL", email);
+        params.set("COUNTRY", country);
+        params.set("tags", MC_TAG);
+        params.set(MC_HONEYPOT, "");
+        params.set("subscribe", "Subscribe");
+        const cb = "joBookMailchimpCb" + Date.now() + "_" + (++jsonpCounter);
+        const script = document.createElement("script");
+        let settled = false;
+        const timer = setTimeout(function () { settle(false, ""); }, 10000);
+
+        function settle(ok, msg) {
+          if (settled) return;
+          settled = true;
+          clearTimeout(timer);
+          try { delete window[cb]; } catch (_e) { window[cb] = undefined; }
+          if (script.parentNode) script.parentNode.removeChild(script);
+          if (ok) { onSuccess(); } else { onFailure(msg); }
+        }
+
+        window[cb] = function (res) {
+          const msg = res && res.msg ? String(res.msg) : "";
+          // "already subscribed" comes back as result:"error" but means the
+          // email IS on the list — treat it as success.
+          const ok =
+            (res && res.result === "success") ||
+            /already subscribed/i.test(msg);
+          settle(ok, msg);
+        };
+        script.onerror = function () { settle(false, ""); };
+        script.src = MC_ACTION + "&" + params.toString() + "&c=" + cb;
+        document.body.appendChild(script);
       }
 
       function trapFocus(e) {
@@ -434,6 +458,7 @@ const booksJsonLd = {
         const country = (countryInput.value || "").trim();
         let invalid = false;
         if (!isValidEmail(email)) {
+          errorEl.textContent = "Please enter a valid email address.";
           showError(true);
           invalid = true;
         } else {
@@ -451,13 +476,40 @@ const booksJsonLd = {
         }
         isSubmitting = true;
         submitBtn.disabled = true;
-        safeSet();
-        submitEmail(email, country);
+        submitBtn.textContent = "Sending…";
         const url = pendingPdf;
-        closeGate();
         // Open synchronously within the submit gesture so the new tab is not
         // treated as an unsolicited popup (deferring it would get it blocked).
+        // The visitor gets their book regardless of whether the signup lands.
         if (url) { openBook(url, false); }
+        const submittedGeneration = gateGeneration;
+        submitEmail(
+          email,
+          country,
+          function onSuccess() {
+            // Only remember the visitor once Mailchimp confirms the signup.
+            // Always safe to set, even if the modal has since been closed or
+            // reopened for another book — the signup really landed.
+            safeSet();
+            if (gateGeneration !== submittedGeneration) return; // stale: don't touch the modal
+            submitBtn.textContent = "Read book";
+            closeGate();
+          },
+          function onFailure(msg) {
+            // Don't set the consent flag — they'll be asked again next time,
+            // so the email can't silently go missing.
+            if (gateGeneration !== submittedGeneration) return; // stale: don't touch the modal
+            isSubmitting = false;
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Read book";
+            const cleaned = (msg || "")
+              .replace(/<[^>]*>/g, "")
+              .replace(/^\d+\s*-\s*/, "")
+              .trim();
+            errorEl.textContent = cleaned || "The signup didn't go through. Your book has opened — please try submitting again.";
+            showError(true);
+          }
+        );
       });
     })();
   </script>

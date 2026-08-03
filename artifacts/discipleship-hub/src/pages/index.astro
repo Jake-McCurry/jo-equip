@@ -89,6 +89,13 @@ const quickLinks: QuickLink[] = [
   { title: "Beliefs", subtitle: "Statement of Faith", href: join("/beliefs"), icon: BookOpen },
   { title: "JO APP", subtitle: "Growing in Christ", href: "https://app.jesusonline.com", icon: Smartphone, external: true },
 ];
+
+const personaLinks = [
+  { title: "Pastors", href: join("/pastors") },
+  { title: "Home Church Leaders", href: join("/home-church-leaders") },
+  { title: "Chaplains", href: join("/chaplains") },
+  { title: "Missionaries", href: join("/missionaries") },
+];
 ---
 <Layout
   title="JO EQUIP | Free Discipleship & Ministry Resources"
@@ -109,9 +116,20 @@ const quickLinks: QuickLink[] = [
     <div class="pointer-events-none absolute inset-0" style="background:linear-gradient(to bottom, rgba(0,47,85,0.45), rgba(0,47,85,0.35));"></div>
 
     <div class="relative container mx-auto max-w-4xl">
-      <h1 class="text-xl sm:text-4xl md:text-5xl mb-4 leading-tight whitespace-nowrap" style="color:#ffffff;font-weight:500;text-shadow:0 1px 12px rgba(0,47,85,0.6);">Ministry Resources Hub</h1>
-      <p class="text-base md:text-lg max-w-2xl mx-auto leading-relaxed" style="color:rgba(255,255,255,0.95);text-shadow:0 1px 8px rgba(0,47,85,0.7);">
-        A free digital library of practical discipleship tools for pastors and leaders for enhanced ministry impact.
+      <h1 class="text-2xl sm:text-4xl md:text-5xl mb-4 leading-tight" style="color:#ffffff;font-weight:500;text-shadow:0 1px 12px rgba(0,47,85,0.6);">Reach people. Grow disciples. Multiply churches.</h1>
+      <p class="text-base md:text-lg max-w-3xl mx-auto leading-relaxed" style="color:rgba(255,255,255,0.95);text-shadow:0 1px 8px rgba(0,47,85,0.7);">
+        Biblically grounded resources to help answer difficult questions, develop mature believers, equip leaders, and strengthen churches.
+        <a href={join("/equip")} class="underline underline-offset-2 font-semibold hover:opacity-90" style="color:#ffffff;">Find out more</a>
+      </p>
+      {/* Persona links — the four audience landing pages, per the Aug 2026 planning note. */}
+      <p class="mt-5 text-sm md:text-base" style="color:rgba(255,255,255,0.95);text-shadow:0 1px 8px rgba(0,47,85,0.7);">
+        <span class="font-medium">Explore Free Resources for</span>
+        {personaLinks.map(link => (
+          <Fragment>
+            <span aria-hidden="true" class="mx-1.5" style="color:rgba(255,255,255,0.7);">&bull;</span>
+            <a href={link.href} class="underline underline-offset-2 whitespace-nowrap hover:opacity-90" style="color:#ffffff;">{link.title}</a>
+          </Fragment>
+        ))}
       </p>
     </div>
   </section>

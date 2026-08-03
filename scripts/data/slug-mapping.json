@@ -3442,7 +3442,9 @@
   "32281-gods-self-portrait": {
     "wp_id": 7074,
     "wp_slug": "32281-gods-self-portrait",
-    "method": "exact"
+    "method": "exact",
+    "frozen": "source post unpublished from apicontent WP (401) as of Aug 2026; no public replacement found — old Knowing God / Firmly Established series retired in catalog reorg",
+    "title": "God’s Self-Portrait"
   },
   "32281-the-supreme-pursuit-of-the-heart": {
     "wp_id": 23291,
@@ -3457,7 +3459,9 @@
   "32282-god-is-sovereign": {
     "wp_id": 475,
     "wp_slug": "32282-god-is-sovereign",
-    "method": "exact"
+    "method": "exact",
+    "frozen": "source post unpublished from apicontent WP (401) as of Aug 2026; no public replacement found — old Knowing God / Firmly Established series retired in catalog reorg",
+    "title": "God is Sovereign"
   },
   "32283-attributes-of-sovereignty": {
     "wp_id": 23293,
@@ -3467,7 +3471,9 @@
   "32283-god-is-holy": {
     "wp_id": 477,
     "wp_slug": "32283-god-is-holy",
-    "method": "exact"
+    "method": "exact",
+    "frozen": "source post unpublished from apicontent WP (401) as of Aug 2026; no public replacement found — old Knowing God / Firmly Established series retired in catalog reorg",
+    "title": "God is Holy"
   },
   "32284-attributes-of-holiness": {
     "wp_id": 23294,
@@ -3477,7 +3483,9 @@
   "32284-god-is-good": {
     "wp_id": 479,
     "wp_slug": "32284-god-is-good",
-    "method": "exact"
+    "method": "exact",
+    "frozen": "source post unpublished from apicontent WP (401) as of Aug 2026; no public replacement found — old Knowing God / Firmly Established series retired in catalog reorg",
+    "title": "God is Good"
   },
   "32285-attributes-of-love": {
     "wp_id": 23295,
@@ -3487,7 +3495,9 @@
   "32285-god-is-incomprehensible": {
     "wp_id": 481,
     "wp_slug": "32285-god-is-incomprehensible",
-    "method": "exact"
+    "method": "exact",
+    "frozen": "source post unpublished from apicontent WP (401) as of Aug 2026; no public replacement found — old Knowing God / Firmly Established series retired in catalog reorg",
+    "title": "God is Incomprehensible"
   },
   "32286-live-in-the-light-of-his-majesty": {
     "wp_id": 23296,
@@ -3587,37 +3597,51 @@
   "32446-empowered-by-supernatural-peace": {
     "wp_id": 2001,
     "wp_slug": "32446-empowered-by-supernatural-peace",
-    "method": "exact"
+    "method": "exact",
+    "frozen": "source post unpublished from apicontent WP (401) as of Aug 2026; no public replacement found — old Knowing God / Firmly Established series retired in catalog reorg",
+    "title": "Empowered by Supernatural Peace"
   },
   "32451-father-jesus-the-holy-spirit-and-you": {
     "wp_id": 547,
     "wp_slug": "32451-father-jesus-the-holy-spirit-and-you",
-    "method": "exact"
+    "method": "exact",
+    "frozen": "source post unpublished from apicontent WP (401) as of Aug 2026; no public replacement found — old Knowing God / Firmly Established series retired in catalog reorg",
+    "title": "Father, Jesus, the Holy Spirit and You (emphasis on unity vs three different acts)"
   },
   "32452-submit-to-god-the-father": {
     "wp_id": 554,
     "wp_slug": "32452-submit-to-god-the-father",
-    "method": "exact"
+    "method": "exact",
+    "frozen": "source post unpublished from apicontent WP (401) as of Aug 2026; no public replacement found — old Knowing God / Firmly Established series retired in catalog reorg",
+    "title": "Submit to God the Father"
   },
   "32453-abide-in-jesus-christ": {
     "wp_id": 556,
     "wp_slug": "32453-abide-in-jesus-christ",
-    "method": "exact"
+    "method": "exact",
+    "frozen": "source post unpublished from apicontent WP (401) as of Aug 2026; no public replacement found — old Knowing God / Firmly Established series retired in catalog reorg",
+    "title": "Abide in Jesus Christ"
   },
   "32454-be-filled-with-the-holy-spirit": {
     "wp_id": 558,
     "wp_slug": "32454-be-filled-with-the-holy-spirit",
-    "method": "exact"
+    "method": "exact",
+    "frozen": "source post unpublished from apicontent WP (401) as of Aug 2026; no public replacement found — old Knowing God / Firmly Established series retired in catalog reorg",
+    "title": "Be Filled with the Holy Spirit"
   },
   "32455-how-to-be-filled-with-the-holy-spirit": {
     "wp_id": 13877,
     "wp_slug": "32455-how-to-be-filled-with-the-holy-spirit",
-    "method": "exact"
+    "method": "exact",
+    "frozen": "source post unpublished from apicontent WP (401) as of Aug 2026; no public replacement found — old Knowing God / Firmly Established series retired in catalog reorg",
+    "title": "How to Be Filled with the Holy Spirit"
   },
   "32456-live-in-harmony-with-god": {
     "wp_id": 552,
     "wp_slug": "32456-live-in-harmony-with-god",
-    "method": "exact"
+    "method": "exact",
+    "frozen": "source post unpublished from apicontent WP (401) as of Aug 2026; no public replacement found — old Knowing God / Firmly Established series retired in catalog reorg",
+    "title": "Live in Harmony with God"
   },
   "32510-insights-from-god": {
     "wp_id": 4834,
@@ -4402,7 +4426,9 @@
   "51011-is-jesus-the-only-way-to-god": {
     "wp_id": 2526,
     "wp_slug": "51011-is-jesus-the-only-way-to-god",
-    "method": "exact"
+    "method": "exact",
+    "frozen": "source post unpublished from apicontent WP (401) as of Aug 2026; no public replacement found — old Knowing God / Firmly Established series retired in catalog reorg",
+    "title": "Is Jesus the Only Way to God?"
   },
   "51012-was-there-a-jesus-conspiracy": {
     "wp_id": 240,

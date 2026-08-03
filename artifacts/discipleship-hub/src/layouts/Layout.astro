@@ -25,7 +25,7 @@ const join = (p: string) =>
   (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
 
 const navLinks = [
-  { name: "Welcome", path: "/welcome" },
+  { name: "Equip", path: "/equip" },
   { name: "Channels", path: "/channels" },
   { name: "Playlists", path: "/playlists" },
   { name: "Books", path: "/books" },
@@ -48,8 +48,9 @@ function isActive(linkPath: string) {
 
 const navLinksWithActive = navLinks.map(l => ({ ...l, active: isActive(l.path) }));
 
-// Mobile menu mirrors the primary links (Welcome is the first primary
-// link, pointing at /welcome; the logo links home) and adds Contact at the bottom.
+// Mobile menu mirrors the primary links (Equip is the first primary
+// link, pointing at /equip; the logo links home) and adds Contact at the bottom.
+// /welcome is kept as a page but no longer linked from the nav (Aug 2026).
 const mobileNavLinks = [...navLinksWithActive];
 const year = new Date().getFullYear();
 
@@ -75,7 +76,7 @@ const gtmEnabled = import.meta.env.PROD;
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/svg+xml" href={join("/favicon.svg")} />
     <link rel="apple-touch-icon" href={join("/favicon.svg")} />
-    <meta name="theme-color" content="#002f55" />
+    <meta name="theme-color" content="#0b3c5d" />
 
     {/* Early-connection hints — get DNS+TLS done before scripts request these origins.
         These don't initiate downloads; they just warm the connection so when GTM
@@ -148,7 +149,7 @@ const gtmEnabled = import.meta.env.PROD;
     )}
 
     {/* Header */}
-    <header class="sticky top-0 z-50 w-full" style="background-color:#002f55;border-bottom:1px solid rgba(255,255,255,0.08);">
+    <header class="sticky top-0 z-50 w-full" style="background-color:#0b3c5d;border-bottom:1px solid rgba(255,255,255,0.08);">
       <div class="container mx-auto px-4 md:px-6 flex items-center justify-between py-4 md:py-5 relative">
 
         <a href={join("/")} class="flex items-center gap-3 md:gap-5 hover:opacity-90 transition-opacity">
@@ -171,7 +172,7 @@ const gtmEnabled = import.meta.env.PROD;
             >
               {link.name}
               {link.active && (
-                <span class="absolute -bottom-1 left-3 right-3 h-0.5 rounded-full" style="background-color:#de5b00;"></span>
+                <span class="absolute -bottom-1 left-3 right-3 h-0.5 rounded-full" style="background-color:#ff7a00;"></span>
               )}
             </a>
           ))}
@@ -221,14 +222,14 @@ const gtmEnabled = import.meta.env.PROD;
         role="navigation"
         aria-label="Mobile"
         class="lg:hidden absolute left-0 right-0 top-full w-full flex-col z-40 hidden data-[open=true]:flex shadow-lg"
-        style="background-color:#ffffff;border-top:3px solid #0083de;"
+        style="background-color:#ffffff;border-top:3px solid #1e6fa8;"
       >
         {mobileNavLinks.map(link => (
           <a
             href={join(link.path)}
             aria-current={link.active ? "page" : undefined}
             class="text-base font-medium py-3.5 px-6 transition-colors"
-            style={`color:${link.active ? "#0083de" : "#002f55"};border-bottom:1px solid #e5e9ef;${link.active ? "background-color:rgba(0,131,222,0.06);border-left:3px solid #de5b00;padding-left:calc(1.5rem - 3px);" : ""}`}
+            style={`color:${link.active ? "#1e6fa8" : "#0b3c5d"};border-bottom:1px solid #e5e9ef;${link.active ? "background-color:rgba(30,111,168,0.06);border-left:3px solid #ff7a00;padding-left:calc(1.5rem - 3px);" : ""}`}
           >
             {link.name}
           </a>
@@ -236,7 +237,7 @@ const gtmEnabled = import.meta.env.PROD;
         <a
           href="mailto:pastorjon@jesusonline.com"
           class="text-base font-medium py-3.5 px-6 transition-colors"
-          style="color:#002f55;"
+          style="color:#0b3c5d;"
         >
           Contact
         </a>
@@ -294,7 +295,7 @@ const gtmEnabled = import.meta.env.PROD;
     </main>
 
     {/* Footer */}
-    <footer class="pt-12 pb-8" style="background-color:#002f55;">
+    <footer class="pt-12 pb-8" style="background-color:#0b3c5d;">
       <div class="container mx-auto px-4 md:px-6">
         <div class="flex flex-col md:flex-row justify-between items-start gap-10 pb-10" style="border-bottom:1px solid rgba(255,255,255,0.12);">
           <div class="max-w-xs">

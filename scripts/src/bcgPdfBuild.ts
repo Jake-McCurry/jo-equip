@@ -141,7 +141,7 @@ function blockToHtml(b: ArticleBlock): string {
         const abs = (u?: string) => (u && u.startsWith("/") ? `${SITE}${u}` : u);
         const titleHref = abs(item.href);
         const title = titleHref
-          ? `<a href="${escAttr(titleHref)}" style="color:#0083de;">${escText(item.title)}</a>`
+          ? `<a href="${escAttr(titleHref)}" style="color:#ff7a00;">${escText(item.title)}</a>`
           : escText(item.title);
         const chips = ([["PDF", item.pdf], ["Video", item.video], ["App", item.app]] as const)
           .map(([label, url]) => {
@@ -188,7 +188,7 @@ function renderTemplate({ title, bodyHtml, sourceUrl }: { title: string; bodyHtm
     display: block;
     font-size: 18pt;
     font-weight: 700;
-    color: #002f55;
+    color: #0b3c5d;
     letter-spacing: -0.005em;
   }
   .cover .eyebrow .brand-tag {
@@ -203,7 +203,7 @@ function renderTemplate({ title, bodyHtml, sourceUrl }: { title: string; bodyHtm
     font-family: Georgia, "Times New Roman", serif;
     font-size: 17pt;
     line-height: 1.2;
-    color: #0083de;
+    color: #1e6fa8;
     font-weight: 600;
     letter-spacing: 0.005em;
     margin: 0 0 0.25em 0;
@@ -212,14 +212,14 @@ function renderTemplate({ title, bodyHtml, sourceUrl }: { title: string; bodyHtm
     font-family: Georgia, "Times New Roman", serif;
     font-size: 30pt;
     line-height: 1.18;
-    color: #002f55;
+    color: #0b3c5d;
     font-weight: normal;
     margin: 0 0 0.55em 0;
   }
   .cover .rule {
     display: block;
     width: 96px; height: 4px;
-    background: #de5b00;
+    background: #ff7a00;
     margin: 0.4in 0 0.45in 0;
   }
   .cover .meta {
@@ -228,7 +228,7 @@ function renderTemplate({ title, bodyHtml, sourceUrl }: { title: string; bodyHtm
     color: #4b5563;
     line-height: 1.6;
   }
-  .cover .meta strong { color: #002f55; font-weight: 600; }
+  .cover .meta strong { color: #0b3c5d; font-weight: 600; }
   .cover .footer-block {
     margin-top: 2.4in;
     padding-top: 0.25in;
@@ -238,7 +238,7 @@ function renderTemplate({ title, bodyHtml, sourceUrl }: { title: string; bodyHtm
     color: #6b7280;
   }
   .cover .footer-block .brand {
-    color: #002f55; font-weight: 700;
+    color: #0b3c5d; font-weight: 700;
   }
   .cover .footer-block .brand-tag {
     color: #6b7280; font-weight: 400;
@@ -247,25 +247,25 @@ function renderTemplate({ title, bodyHtml, sourceUrl }: { title: string; bodyHtm
   /* Body content */
   .article { padding-top: 0.1in; }
   .article h1 {
-    font-size: 18pt; color: #002f55; font-weight: normal;
+    font-size: 18pt; color: #0b3c5d; font-weight: normal;
     border-bottom: 1px solid #d1d5db; padding-bottom: 0.35em; margin: 0 0 0.6em 0;
   }
   .article h2 {
-    font-size: 14pt; color: #002f55; font-weight: 600;
+    font-size: 14pt; color: #0b3c5d; font-weight: 600;
     margin: 1.6em 0 0.3em; page-break-after: avoid;
   }
   .article h3 {
-    font-size: 12pt; color: #002f55; font-weight: 600;
+    font-size: 12pt; color: #0b3c5d; font-weight: 600;
     margin: 1.3em 0 0.2em; page-break-after: avoid;
   }
   .article p { margin: 0 0 0.85em 0; orphans: 3; widows: 3; }
   .article a { color: #b34800; text-decoration: underline; text-underline-offset: 2px; }
-  .article strong { color: #002f55; }
+  .article strong { color: #0b3c5d; }
   .article ul, .article ol { margin: 0.5em 0 1em 1.4em; padding: 0; }
   .article li { margin: 0.25em 0; }
   .article blockquote {
     margin: 1em 0; padding: 0.5em 1em;
-    border-left: 3px solid #0083de; background: #f4f7fb;
+    border-left: 3px solid #1e6fa8; background: #e6f2fa;
     color: #1f2937; font-style: italic;
   }
   .article blockquote p:last-child { margin-bottom: 0; }
@@ -288,7 +288,7 @@ function renderTemplate({ title, bodyHtml, sourceUrl }: { title: string; bodyHtm
     letter-spacing: 0.05em; text-decoration: none;
   }
   .article a.chip-on {
-    background-color: #de5b0014; color: #de5b00; border: 1px solid #de5b0040;
+    background-color: #ff7a0014; color: #ff7a00; border: 1px solid #ff7a0040;
   }
   .article .chip-off {
     background-color: rgba(0,0,0,0.04); color: #9ca3af; border: 1px solid rgba(0,0,0,0.06);
@@ -310,7 +310,7 @@ ${END_PAGE_CSS}
     <span class="rule"></span>
     <div class="meta">
       <strong>A free resource from JesusOnline.</strong><br />
-      Read or share online: <span style="color:#002f55">${escText(sourceUrl)}</span>
+      Read or share online: <span style="color:#0b3c5d">${escText(sourceUrl)}</span>
     </div>
     <div class="footer-block">
       <span class="brand">JesusOnline Equip</span> <span class="brand-tag">· Ministry Resources Hub</span> · equip.jesusonline.com<br />
@@ -328,7 +328,7 @@ ${END_PAGE_HTML}
 
 const FOOTER_TEMPLATE = `
   <div style="width:100%;font-family:'Helvetica Neue',Arial,sans-serif;font-size:8pt;color:#6b7280;padding:0 0.8in;display:flex;justify-content:space-between;align-items:center;">
-    <span><span style="color:#002f55;font-weight:700;">JesusOnline Equip</span> <span style="color:#9ca3af;">· Ministry Resources Hub</span></span>
+    <span><span style="color:#0b3c5d;font-weight:700;">JesusOnline Equip</span> <span style="color:#9ca3af;">· Ministry Resources Hub</span></span>
     <span>Page <span class="pageNumber"></span> of <span class="totalPages"></span></span>
     <span>equip.jesusonline.com</span>
   </div>`;

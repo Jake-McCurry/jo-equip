@@ -78,7 +78,7 @@ const bookJsonLd = {
     <a
       href={join("/books")}
       class="inline-flex items-center gap-2 text-sm font-medium mb-8 hover:opacity-75 transition-opacity"
-      style="color:#0083de;"
+      style="color:#1e6fa8;"
     >
       <ArrowLeft className="w-4 h-4" /> Back to all books
     </a>
@@ -104,16 +104,16 @@ const bookJsonLd = {
       </div>
 
       <div>
-        <span class="text-xs font-semibold tracking-widest uppercase" style="color:#de5b00;">
+        <span class="text-xs font-semibold tracking-widest uppercase" style="color:#ff7a00;">
           Free PDF · Book
         </span>
-        <h1 class="text-3xl md:text-4xl mt-3 mb-3" style="color:#002f55;">{book.title}</h1>
+        <h1 class="text-3xl md:text-4xl mt-3 mb-3" style="color:#0b3c5d;">{book.title}</h1>
         {book.author && (
           <p class="text-base mb-5" style="color:var(--color-muted-foreground);">
-            by <span class="font-medium" style="color:#002f55;">{book.author}</span>
+            by <span class="font-medium" style="color:#0b3c5d;">{book.author}</span>
           </p>
         )}
-        <div class="h-0.5 w-12 mb-6" style="background-color:#de5b00;"></div>
+        <div class="h-0.5 w-12 mb-6" style="background-color:#ff7a00;"></div>
         <p class="text-base leading-relaxed mb-8" style="color:var(--color-muted-foreground);">
           A practical discipleship resource from JesusOnline Ministries — free to download
           and share with your church, small group, or ministry team.
@@ -124,7 +124,7 @@ const bookJsonLd = {
         <a
           href={join(`/books?download=${book.id}`)}
           class="inline-flex items-center gap-2 px-6 py-3 rounded font-semibold text-white text-base transition-colors hover:opacity-90"
-          style="background-color:#de5b00;"
+          style="background-color:#ff7a00;"
         >
           <BookOpen className="w-4 h-4" /> Read PDF
         </a>

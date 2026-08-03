@@ -607,15 +607,15 @@ const CSS = `
   .title-page { page-break-after: always; padding-top: 2.2in; text-align: center; }
   .title-page h1 {
     font-family: Georgia, "Times New Roman", serif;
-    font-size: 30pt; line-height: 1.15; color: #002f55;
+    font-size: 30pt; line-height: 1.15; color: #0b3c5d;
     margin: 0 0 0.4em 0;
   }
-  .title-page .subtitle { font-size: 14pt; line-height: 1.4; color: #0083de; margin: 0; }
+  .title-page .subtitle { font-size: 14pt; line-height: 1.4; color: #1e6fa8; margin: 0; }
   .front-page { page-break-after: always; padding-top: 0.4in; }
   .front-page.notices { padding-top: 1in; font-size: 9.5pt; color: #4b5563; }
   .front-page.notices p { margin: 0 0 1.1em 0; }
   .toc { page-break-after: always; padding-top: 0.3in; }
-  .toc h1 { font-size: 20pt; color: #002f55; margin: 0 0 0.9em 0; text-align: center; }
+  .toc h1 { font-size: 20pt; color: #0b3c5d; margin: 0 0 0.9em 0; text-align: center; }
   .toc-line { display: flex; align-items: baseline; margin: 0 0 0.55em 0; }
   .toc-line .toc-label { white-space: normal; }
   .toc-line .toc-dots { flex: 1 1 auto; min-width: 24px; border-bottom: 1px dotted #9ca3af; margin: 0 6px; transform: translateY(-3px); }
@@ -625,14 +625,14 @@ const CSS = `
   .toc ul li { margin: 0.15em 0; }
   .chapter { page-break-before: always; }
   .chapter > h1 {
-    font-size: 21pt; line-height: 1.25; color: #002f55;
+    font-size: 21pt; line-height: 1.25; color: #0b3c5d;
     margin: 0.25in 0 0.7em 0; position: relative; text-align: center;
   }
-  h2 { font-size: 14pt; color: #002f55; margin: 1.5em 0 0.3em; page-break-after: avoid; line-height: 1.3; }
-  h3 { font-size: 12pt; color: #002f55; margin: 1.25em 0 0.2em; page-break-after: avoid; line-height: 1.3; }
+  h2 { font-size: 14pt; color: #0b3c5d; margin: 1.5em 0 0.3em; page-break-after: avoid; line-height: 1.3; }
+  h3 { font-size: 12pt; color: #0b3c5d; margin: 1.25em 0 0.2em; page-break-after: avoid; line-height: 1.3; }
   p { margin: 0 0 0.85em 0; orphans: 3; widows: 3; }
   a { color: #b34800; text-decoration: none; }
-  strong { color: #002f55; }
+  strong { color: #0b3c5d; }
   ul, ol { margin: 0.5em 0 1em 1.5em; padding: 0; }
   li { margin: 0.3em 0; }
   img { max-width: 100% !important; height: auto !important; page-break-inside: avoid; margin: 0.7em 0; }
@@ -662,16 +662,16 @@ const STRICT_CSS = `
   .front-matter h1 {
     font-family: Carlito, Calibri, sans-serif;
     font-weight: 300;
-    font-size: 28pt; line-height: 1.2; color: #002f55;
+    font-size: 28pt; line-height: 1.2; color: #0b3c5d;
     text-align: center;
     margin: 0 0 0.3em 0;
   }
-  .front-matter .subtitle { font-size: 13pt; line-height: 1.4; color: #0083de; text-align: center; margin: 0 0 1.6em 0; }
+  .front-matter .subtitle { font-size: 13pt; line-height: 1.4; color: #1e6fa8; text-align: center; margin: 0 0 1.6em 0; }
   .front-matter p { margin: 0 0 0.85em 0; }
   .toc { page-break-after: always; padding-top: 0.3in; }
   .toc h1 {
     font-family: Carlito, Calibri, sans-serif;
-    font-weight: 300; font-size: 28pt; color: #002f55;
+    font-weight: 300; font-size: 28pt; color: #0b3c5d;
     text-align: center;
     margin: 0 0 0.9em 0;
   }
@@ -686,33 +686,33 @@ const STRICT_CSS = `
   .chapter > h1 {
     font-family: Carlito, Calibri, sans-serif;
     font-weight: 300;
-    font-size: 28pt; line-height: 1.25; color: #002f55;
+    font-size: 28pt; line-height: 1.25; color: #0b3c5d;
     text-align: center;
     margin: 0.25in 0 0.7em 0; position: relative;
   }
   h2 {
     font-family: Carlito, Calibri, sans-serif;
     font-weight: 400;
-    font-size: 18pt; color: #002f55; margin: 1.4em 0 0.3em;
+    font-size: 18pt; color: #0b3c5d; margin: 1.4em 0 0.3em;
     page-break-after: avoid; line-height: 1.3;
   }
   h3 {
     font-family: Carlito, Calibri, sans-serif;
     font-weight: 700;
-    font-size: 14pt; color: #002f55; margin: 1.25em 0 0.2em;
+    font-size: 14pt; color: #0b3c5d; margin: 1.25em 0 0.2em;
     page-break-after: avoid; line-height: 1.3;
   }
   h4 {
     font-family: Caladea, Cambria, Georgia, serif;
     font-weight: 700;
-    font-size: 12pt; color: #002f55; margin: 1.1em 0 0.2em;
+    font-size: 12pt; color: #0b3c5d; margin: 1.1em 0 0.2em;
     page-break-after: avoid; line-height: 1.3;
   }
   p { margin: 0 0 0.85em 0; orphans: 3; widows: 3; }
   p.ind1 { margin-left: 0.5in; }
   p.ind2 { margin-left: 1in; }
   a { color: #b34800; text-decoration: none; }
-  strong { color: #002f55; }
+  strong { color: #0b3c5d; }
   ul, ol { margin: 0.5em 0 1em 1in; padding: 0; }
   li { margin: 0.3em 0; }
   img { max-width: 100% !important; height: auto !important; page-break-inside: avoid; margin: 0.7em 0; }

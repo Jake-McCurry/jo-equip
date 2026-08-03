@@ -49,38 +49,38 @@ const nextSteps = [
     <div class="container mx-auto px-4 py-16 md:py-24 max-w-3xl text-center">
       <div
         class="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full mb-6"
-        style="background-color:rgba(0,131,222,0.1);"
+        style="background-color:rgba(30,111,168,0.1);"
       >
-        <CheckCircle2 className="w-9 h-9 md:w-11 md:h-11" style={{ color: "#0083de" }} />
+        <CheckCircle2 className="w-9 h-9 md:w-11 md:h-11" style={{ color: "#1e6fa8" }} />
       </div>
 
-      <div class="text-xs font-semibold tracking-widest uppercase mb-3" style="color:#0083de;">
+      <div class="text-xs font-semibold tracking-widest uppercase mb-3" style="color:#1e6fa8;">
         You're in
       </div>
-      <h1 class="text-4xl md:text-5xl mb-4" style="color:#002f55;">Thank you!</h1>
-      <div class="h-0.5 w-12 mx-auto mb-7" style="background-color:#de5b00;"></div>
+      <h1 class="text-4xl md:text-5xl mb-4" style="color:#0b3c5d;">Thank you!</h1>
+      <div class="h-0.5 w-12 mx-auto mb-7" style="background-color:#ff7a00;"></div>
 
       <p class="text-lg leading-relaxed mb-4" style="color:#374151;">
-        Your subscription to the <strong style="color:#002f55;">Make and Multiply Disciples</strong>
+        Your subscription to the <strong style="color:#0b3c5d;">Make and Multiply Disciples</strong>
         newsletter is confirmed. We're grateful you're joining us.
       </p>
       <p class="text-base leading-relaxed" style="color:var(--color-muted-foreground);">
         Look for a welcome email in your inbox shortly. If it doesn't arrive within a few minutes,
         please check your spam or promotions folder — and feel free to add
-        <a href="mailto:equip@jesusonline.com" class="font-semibold hover:underline" style="color:#0083de;">equip@jesusonline.com</a>
+        <a href="mailto:equip@jesusonline.com" class="font-semibold hover:underline" style="color:#ff7a00;">equip@jesusonline.com</a>
         to your contacts so future issues land safely.
       </p>
     </div>
   </section>
 
   {/* Next steps */}
-  <section class="py-14 md:py-20 border-t" style="background-color:#f4f7fb;border-color:var(--color-border);">
+  <section class="py-14 md:py-20 border-t" style="background-color:#e6f2fa;border-color:var(--color-border);">
     <div class="container mx-auto px-4 max-w-5xl">
       <div class="text-center mb-10 md:mb-12">
-        <div class="text-xs font-semibold tracking-widest uppercase mb-3" style="color:#0083de;">
+        <div class="text-xs font-semibold tracking-widest uppercase mb-3" style="color:#1e6fa8;">
           While you're here
         </div>
-        <h2 class="text-3xl md:text-4xl" style="color:#002f55;">Keep exploring JO EQUIP</h2>
+        <h2 class="text-3xl md:text-4xl" style="color:#0b3c5d;">Keep exploring JO EQUIP</h2>
       </div>
 
       <div class="grid md:grid-cols-3 gap-5">
@@ -90,19 +90,19 @@ const nextSteps = [
             <a
               href={join(step.href)}
               class="group bg-white border rounded p-6 md:p-7 flex flex-col transition-shadow hover:shadow-md"
-              style="border-color:var(--color-border);border-top:4px solid #0083de;"
+              style="border-color:var(--color-border);border-top:4px solid #1e6fa8;"
             >
               <div
                 class="w-11 h-11 rounded flex items-center justify-center mb-4"
-                style="background-color:rgba(0,131,222,0.1);"
+                style="background-color:rgba(30,111,168,0.1);"
               >
-                <Icon className="w-5 h-5" style={{ color: "#0083de" }} />
+                <Icon className="w-5 h-5" style={{ color: "#1e6fa8" }} />
               </div>
-              <h3 class="text-xl mb-2" style="color:#002f55;">{step.title}</h3>
+              <h3 class="text-xl mb-2" style="color:#0b3c5d;">{step.title}</h3>
               <p class="text-sm leading-relaxed mb-5 flex-grow" style="color:var(--color-muted-foreground);">
                 {step.desc}
               </p>
-              <span class="inline-flex items-center text-sm font-semibold mt-auto group-hover:underline" style="color:#0083de;">
+              <span class="inline-flex items-center text-sm font-semibold mt-auto group-hover:underline" style="color:#ff7a00;">
                 {step.cta}
                 <ArrowRight className="w-4 h-4 ml-1" />
               </span>
@@ -114,7 +114,7 @@ const nextSteps = [
   </section>
 
   {/* Contact / CTA bar */}
-  <section class="py-12 md:py-14" style="background-color:#002f55;">
+  <section class="py-12 md:py-14" style="background-color:#0b3c5d;">
     <div class="container mx-auto px-4 max-w-3xl text-center">
       <div class="inline-flex items-center justify-center gap-2 mb-3" style="color:#ffffff;">
         <Mail className="w-4 h-4" />
@@ -128,7 +128,7 @@ const nextSteps = [
       <a
         href={join("/")}
         class="inline-flex items-center px-6 py-3 font-semibold rounded transition-colors hover:opacity-90"
-        style="background-color:#ffffff;color:#0083de;"
+        style="background-color:#ffffff;color:#1e6fa8;"
       >
         Back to JO EQUIP home
         <ArrowRight className="w-4 h-4 ml-2" />

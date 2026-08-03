@@ -1,0 +1,226 @@
+---
+import { Image } from "astro:assets";
+import { Play, ArrowRight, Users2, BookOpen, Smartphone, Star } from "lucide-react";
+import { books } from "@/data/books";
+import { getBookCover } from "@/data/bookCovers";
+import { playlists, playlistThumbnail } from "@/data/playlists";
+
+/* Shared layout for the JO EQUIP persona landing pages
+   (/pastors, /home-church-leaders, /chaplains, /missionaries).
+   Content per the JO_EQUIP_<persona>_Page docs (Aug 2026). */
+
+interface Article {
+  title: string;
+  text: string;
+  href: string; // site-relative, no trailing slash
+}
+
+interface Topic {
+  name: string;
+  href: string;
+}
+
+interface Props {
+  heading: string;
+  intro: string[]; // paragraphs
+  articles: Article[];
+  booksNote: string;
+  bookIds: string[];
+  topics: Topic[];
+  playlistsNote: string;
+  playlistIds: string[];
+  closing: string[]; // paragraphs
+}
+
+const { heading, intro, articles, booksNote, bookIds, topics, playlistsNote, playlistIds, closing } = Astro.props;
+
+const baseUrl = import.meta.env.BASE_URL;
+const join = (p: string) =>
+  (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
+
+const featuredBooks = bookIds
+  .map(id => books.find(b => b.id === id))
+  .filter((b): b is (typeof books)[number] => Boolean(b));
+
+const featuredPlaylists = playlistIds
+  .map(id => playlists.find(p => p.id === id))
+  .filter((p): p is (typeof playlists)[number] => Boolean(p));
+
+const quickLinks = [
+  { title: "Reviews", subtitle: "From Pastors and Leaders", href: join("/reviews"), icon: Star, external: false },
+  { title: "About", subtitle: "JesusOnline Ministries", href: join("/about"), icon: Users2, external: false },
+  { title: "Beliefs", subtitle: "Statement of Faith", href: join("/beliefs"), icon: BookOpen, external: false },
+  { title: "JO APP", subtitle: "Growing in Christ", href: "https://app.jesusonline.com", icon: Smartphone, external: true },
+];
+---
+{/* Heading + intro */}
+<section class="bg-white">
+  <div class="container mx-auto px-4 py-12 md:py-16 max-w-5xl">
+    <span class="text-xs font-semibold tracking-widest uppercase" style="color:#1e6fa8;">JO EQUIP</span>
+    <h1 class="text-2xl md:text-3xl mt-2 mb-4" style="color:#0b3c5d;">{heading}</h1>
+    <div class="h-0.5 w-12 mb-7" style="background-color:#ff7a00;"></div>
+    {intro.map(p => (
+      <p class="text-lg leading-relaxed mb-5 last:mb-0" style="color:#374151;" set:html={p} />
+    ))}
+    <p class="text-sm font-semibold tracking-wide uppercase mt-8" style="color:#0b3c5d;">
+      Featured Resources by Type: <span style="color:#1e6fa8;">Articles &bull; Topics &bull; Books &bull; Playlists</span>
+    </p>
+  </div>
+</section>
+
+{/* Articles */}
+<section class="py-10 md:py-14" style="background-color:#e6f2fa;">
+  <div class="container mx-auto px-4 max-w-4xl">
+    <h2 class="text-2xl md:text-3xl font-semibold mb-6" style="color:#0b3c5d;">Articles</h2>
+    <ul class="flex flex-col gap-4">
+      {articles.map(a => (
+        <li class="bg-white border rounded px-6 py-5" style="border-color:var(--color-border);border-left:4px solid #1e6fa8;">
+          <p class="text-[15px] md:text-base leading-relaxed" style="color:#374151;">
+            <strong class="font-semibold" style="color:#0b3c5d;">{a.title}:</strong>{" "}{a.text}{" "}
+            <a href={join(a.href)} class="font-semibold whitespace-nowrap hover:underline" style="color:#ff7a00;">[more]</a>
+          </p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+{/* Books */}
+<section class="py-10 md:py-14 bg-white">
+  <div class="container mx-auto px-4 max-w-5xl">
+    <h2 class="text-2xl md:text-3xl font-semibold mb-2" style="color:#0b3c5d;">Books</h2>
+    <p class="text-[15px] md:text-base leading-relaxed mb-6" style="color:#374151;">{booksNote}</p>
+    <div class="flex gap-4 md:gap-5 overflow-x-auto pb-2 md:grid md:overflow-visible md:grid-cols-4 lg:grid-cols-8">
+      {featuredBooks.map(b => {
+        const cover = getBookCover(b.id);
+        return (
+          <a href={join(`/books/${b.id}`)} class="group shrink-0 w-[calc((100vw-5rem)/3.5)] max-w-[130px] md:w-auto md:max-w-none">
+            <div class="border rounded overflow-hidden bg-white transition-shadow group-hover:shadow-md" style="border-color:var(--color-border);">
+              {cover ? (
+                <Image src={cover} alt={b.title} width={260} class="w-full h-auto" />
+              ) : (
+                <div class="aspect-[3/4] flex items-center justify-center" style="background-color:#e6f2fa;">
+                  <BookOpen className="w-8 h-8" style={{ color: "#94a3b8" }} />
+                </div>
+              )}
+            </div>
+            <p class="mt-2 text-xs leading-snug font-medium group-hover:underline" style="color:#0b3c5d;">{b.title}</p>
+          </a>
+        );
+      })}
+      {/* "More" tile → all books */}
+      <a href={join("/books")} class="group shrink-0 w-[calc((100vw-5rem)/3.5)] max-w-[130px] md:w-auto md:max-w-none">
+        <div class="aspect-[3/4] border-2 border-dashed rounded flex flex-col items-center justify-center gap-2 transition-colors group-hover:border-solid" style="border-color:#1e6fa8;background-color:#e6f2fa;">
+          <ArrowRight className="w-6 h-6" style={{ color: "#1e6fa8" }} />
+          <span class="text-sm font-semibold" style="color:#1e6fa8;">More</span>
+        </div>
+        <p class="mt-2 text-xs leading-snug font-medium group-hover:underline" style="color:#0b3c5d;">All free books</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+{/* Topics */}
+<section class="py-10 md:py-14" style="background-color:#e6f2fa;">
+  <div class="container mx-auto px-4 max-w-4xl">
+    <h2 class="text-2xl md:text-3xl font-semibold mb-2" style="color:#0b3c5d;">Topics</h2>
+    <p class="text-sm mb-6" style="color:#6b7280;">Categories &amp; Series</p>
+    <div class="flex flex-wrap gap-3">
+      {topics.map(t => (
+        <a
+          href={join(t.href)}
+          class="topic-chip inline-flex items-center gap-2 bg-white border rounded-full px-5 py-2.5 text-sm font-medium transition-colors"
+        >
+          {t.name}
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+{/* Playlists */}
+<section class="py-10 md:py-14 bg-white">
+  <div class="container mx-auto px-4 max-w-5xl">
+    <h2 class="text-2xl md:text-3xl font-semibold mb-2" style="color:#0b3c5d;">Playlists</h2>
+    <p class="text-[15px] md:text-base leading-relaxed mb-6" style="color:#374151;">{playlistsNote}</p>
+    <div class="flex gap-4 md:gap-5 overflow-x-auto pb-2 md:grid md:overflow-visible md:grid-cols-3 lg:grid-cols-4">
+      {featuredPlaylists.map(p => {
+        const thumb = playlistThumbnail(p);
+        return (
+          <a href={join(`/playlist/${p.id}`)} class="group shrink-0 w-[calc((100vw-4rem)/2.5)] max-w-[220px] md:w-auto md:max-w-none">
+            <div class="relative border rounded overflow-hidden bg-white transition-shadow group-hover:shadow-md" style="border-color:var(--color-border);">
+              <div class="relative aspect-video bg-slate-100 overflow-hidden">
+                {thumb && (
+                  <img src={thumb} alt={p.title} loading="lazy" width="320" height="180" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" />
+                )}
+                <div class="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/15 transition-colors">
+                  <div class="w-11 h-11 rounded-full flex items-center justify-center transition-all duration-200 scale-90 opacity-0 group-hover:opacity-100 group-hover:scale-100" style="background-color:rgba(255,255,255,0.95);">
+                    <Play className="w-5 h-5 ml-0.5" style={{ color: "#ff7a00", fill: "#ff7a00" }} />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="mt-2 text-xs leading-snug font-medium group-hover:underline" style="color:#0b3c5d;">{p.title}</p>
+          </a>
+        );
+      })}
+      {/* "More" tile → all playlists */}
+      <a href={join("/playlists")} class="group shrink-0 w-[calc((100vw-4rem)/2.5)] max-w-[220px] md:w-auto md:max-w-none">
+        <div class="aspect-video border-2 border-dashed rounded flex flex-col items-center justify-center gap-1.5 transition-colors group-hover:border-solid" style="border-color:#1e6fa8;background-color:#e6f2fa;">
+          <ArrowRight className="w-6 h-6" style={{ color: "#1e6fa8" }} />
+          <span class="text-sm font-semibold" style="color:#1e6fa8;">More</span>
+        </div>
+        <p class="mt-2 text-xs leading-snug font-medium group-hover:underline" style="color:#0b3c5d;">All playlists</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+{/* Closing */}
+<section class="py-10 md:py-12" style="background-color:#e6f2fa;">
+  <div class="container mx-auto px-4 max-w-4xl">
+    {closing.map(p => (
+      <p class="text-[15px] md:text-base leading-relaxed mb-5 last:mb-0" style="color:#374151;">{p}</p>
+    ))}
+  </div>
+</section>
+
+<style>
+  .topic-chip {
+    border-color: #1e6fa8;
+    color: #0b3c5d;
+  }
+  .topic-chip:hover,
+  .topic-chip:focus-visible {
+    background-color: #1e6fa8;
+    color: #ffffff;
+    outline: none;
+  }
+</style>
+
+{/* Quick links — Reviews · About · Beliefs · JO APP */}
+<section style="background-color:#1e6fa8;">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 divide-white/15 sm:gap-y-px lg:divide-x lg:divide-white/15">
+      {quickLinks.map(link => {
+        const Icon = link.icon;
+        return (
+          <a
+            href={link.href}
+            target={link.external ? "_blank" : undefined}
+            rel={link.external ? "noopener noreferrer" : undefined}
+            class="group flex items-center justify-start lg:justify-center gap-4 py-5 px-6 transition-colors hover:bg-white/5"
+          >
+            <div class="w-11 h-11 rounded shrink-0 flex items-center justify-center" style="background-color:rgba(255,255,255,0.18);">
+              <Icon className="w-5 h-5" style={{ color: "#ffffff" }} />
+            </div>
+            <div class="text-left">
+              <div class="text-lg md:text-xl font-semibold text-white leading-tight tracking-wide group-hover:underline" style='font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;'>{link.title}</div>
+              <div class="text-[11px] mt-1 font-medium tracking-widest uppercase" style="color:rgba(255,255,255,0.8);">{link.subtitle}</div>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+  </div>
+</section>

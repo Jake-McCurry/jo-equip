@@ -76,7 +76,7 @@ export interface Channel {
 }
 
 /* Display order: Evidence, Growth, Church
- * Channel palette (palette B — softer pastoral feel; reserves orange #de5b00 for links).
+ * Channel palette (palette B — softer pastoral feel; reserves orange #ff7a00 for links).
  * Evidence = Slate Blue, Growth = Sage, Church = Plum. */
 export const channels: Channel[] = [
   {
@@ -295,6 +295,25 @@ export const subTopics: SubTopic[] = [
        Toolbox — no intermediate sub-topic (sheet correction July 2026). */
     items: [
       { number: 1, title: 'Bible Study Tools', articleId: 'essential-bible-study-tools' },
+    ],
+  },
+  /* ── SERMON COMMUNICATION PLANNING (child of Sermon Toolbox) ──
+     Four equip-original articles from the user's Aug 2026 docx
+     (Sermon_Communication_Planning_Jake). Bodies live in bcgArticles.ts
+     (marked unlisted so they stay out of the BCG next-article rotation);
+     PDFs are generated via scripts bcg:pdf into /articles/bcg/. */
+  {
+    id: 'sermon-communication-planning',
+    channelId: 'church',
+    parentId: 'sermon-toolbox',
+    name: 'Sermon Communication Planning',
+    description: 'Craft messages that are retained, applied, and used by the Spirit to transform lives.',
+    hideNumbers: true,
+    items: [
+      { number: 1, title: 'What is Your Motivation for Preaching?', articleId: 'what-is-your-motivation-for-preaching' },
+      { number: 2, title: 'Retention Leads to Transformation', articleId: 'retention-leads-to-transformation' },
+      { number: 3, title: 'Give Them What They Need', articleId: 'give-them-what-they-need' },
+      { number: 4, title: 'Aids That Strengthen Lasting Retention', articleId: 'aids-that-strengthen-lasting-retention' },
     ],
   },
   /* ── BIBLE MASTERY (parent) ──

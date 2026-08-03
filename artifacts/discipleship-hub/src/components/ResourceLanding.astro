@@ -55,10 +55,10 @@ function bookCards(ids: string[]) {
 ---
 <Layout title={title} description={description}>
   {/* Hero */}
-  <section class="relative py-10 md:py-16 px-4 text-center overflow-hidden" style="background-color:#0083de;">
+  <section class="relative py-10 md:py-16 px-4 text-center overflow-hidden" style="background-color:#1e6fa8;">
     <div class="pointer-events-none absolute inset-0 overflow-hidden">
-      <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-10" style="background-color:#002f55;"></div>
-      <div class="absolute -bottom-32 -left-20 w-80 h-80 rounded-full opacity-10" style="background-color:#002f55;"></div>
+      <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-10" style="background-color:#0b3c5d;"></div>
+      <div class="absolute -bottom-32 -left-20 w-80 h-80 rounded-full opacity-10" style="background-color:#0b3c5d;"></div>
     </div>
     <div class="relative container mx-auto max-w-4xl">
       <h1 class="text-3xl sm:text-4xl md:text-5xl mb-4 leading-tight" style="color:#ffffff;font-weight:600;">{heroTitle}</h1>
@@ -67,21 +67,21 @@ function bookCards(ids: string[]) {
   </section>
 
   {sections.map((section, i) => {
-    const bg = i % 2 === 0 ? "#f4f7fb" : "#ffffff";
+    const bg = i % 2 === 0 ? "#e6f2fa" : "#ffffff";
 
     if (section.kind === "links") {
       return (
         <section class="py-10 md:py-14" style={`background-color:${bg};`}>
           <div class="container mx-auto px-4 max-w-3xl">
-            <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-center" style="color:#002f55;">{section.heading}</h2>
+            <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-center" style="color:#0b3c5d;">{section.heading}</h2>
             <ul class="flex flex-col gap-3">
               {section.items.map(n => (
                 <li>
-                  <a href={n.href} class="group flex items-center justify-between gap-4 bg-white border rounded px-5 py-4 transition-all hover:shadow-md" style="border-color:var(--color-border);border-left:4px solid #de5b00;">
-                    <span class="text-[15px] md:text-base leading-snug" style="color:#002f55;">
-                      <strong class="font-semibold group-hover:underline" style="color:#de5b00;">{n.lead}</strong>{n.rest ? ` ${n.rest}` : ""}
+                  <a href={n.href} class="group flex items-center justify-between gap-4 bg-white border rounded px-5 py-4 transition-all hover:shadow-md" style="border-color:var(--color-border);border-left:4px solid #ff7a00;">
+                    <span class="text-[15px] md:text-base leading-snug" style="color:#0b3c5d;">
+                      <strong class="font-semibold group-hover:underline" style="color:#ff7a00;">{n.lead}</strong>{n.rest ? ` ${n.rest}` : ""}
                     </span>
-                    <ArrowRight className="w-5 h-5 shrink-0 transition-transform group-hover:translate-x-1" style={{ color: "#de5b00" }} />
+                    <ArrowRight className="w-5 h-5 shrink-0 transition-transform group-hover:translate-x-1" style={{ color: "#ff7a00" }} />
                   </a>
                 </li>
               ))}
@@ -96,11 +96,11 @@ function bookCards(ids: string[]) {
       return (
         <section class="py-10 md:py-14" style={`background-color:${bg};`}>
           <div class="container mx-auto px-4">
-            <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-center" style="color:#002f55;">{section.heading}</h2>
+            <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-center" style="color:#0b3c5d;">{section.heading}</h2>
             <div class={`grid grid-cols-1 ${colClasses[Math.min(cards.length, 3)]} gap-6 max-w-md sm:max-w-4xl mx-auto`}>
               {cards.map(p => (
                 <a href={join(`/playlist/${p.id}`)} class="group flex flex-col bg-white border rounded overflow-hidden hover:shadow-lg transition-all" style="border-color:var(--color-border);">
-                  <div class="relative aspect-video overflow-hidden" style="background-color:#002f55;">
+                  <div class="relative aspect-video overflow-hidden" style="background-color:#0b3c5d;">
                     <img
                       src={`https://i.ytimg.com/vi/${p.thumb}/hqdefault.jpg`}
                       alt={`${p.title} playlist`}
@@ -109,15 +109,15 @@ function bookCards(ids: string[]) {
                     />
                   </div>
                   <div class="p-4 flex items-center justify-between gap-3">
-                    <span class="text-[15px] font-semibold leading-snug group-hover:underline" style="color:#002f55;">{p.title}</span>
-                    <ArrowRight className="w-5 h-5 shrink-0" style={{ color: "#de5b00" }} />
+                    <span class="text-[15px] font-semibold leading-snug group-hover:underline" style="color:#0b3c5d;">{p.title}</span>
+                    <ArrowRight className="w-5 h-5 shrink-0" style={{ color: "#ff7a00" }} />
                   </div>
                 </a>
               ))}
             </div>
             {section.seeAll && (
               <div class="text-center mt-7">
-                <a href={join("/playlists")} class="inline-flex items-center gap-1.5 font-semibold text-white rounded px-6 py-3 transition-opacity hover:opacity-90" style="background-color:#0083de;">
+                <a href={join("/playlists")} class="inline-flex items-center gap-1.5 font-semibold text-white rounded px-6 py-3 transition-opacity hover:opacity-90" style="background-color:#1e6fa8;">
                   See all Playlists<ArrowRight className="w-4 h-4" />
                 </a>
               </div>
@@ -133,7 +133,7 @@ function bookCards(ids: string[]) {
       return (
         <section class="py-10 md:py-14" style={`background-color:${bg};`}>
           <div class="container mx-auto px-4">
-            <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-center" style="color:#002f55;">{section.heading}</h2>
+            <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-center" style="color:#0b3c5d;">{section.heading}</h2>
             <div class={`grid grid-cols-1 ${cols} gap-6 max-w-md sm:max-w-5xl mx-auto`}>
               {cards.map(b => (
                 <a href={join(`/books/${b.id}`)} class="group flex flex-col items-center bg-white border rounded p-6 hover:shadow-lg transition-all" style="border-color:var(--color-border);">
@@ -149,15 +149,15 @@ function bookCards(ids: string[]) {
                       loading="lazy"
                     />
                   )}
-                  <span class="mt-4 inline-flex items-center gap-1.5 text-[15px] font-semibold text-center leading-snug group-hover:underline" style="color:#002f55;">
-                    {b.title}<ArrowRight className="w-4 h-4 shrink-0" style={{ color: "#de5b00" }} />
+                  <span class="mt-4 inline-flex items-center gap-1.5 text-[15px] font-semibold text-center leading-snug group-hover:underline" style="color:#0b3c5d;">
+                    {b.title}<ArrowRight className="w-4 h-4 shrink-0" style={{ color: "#ff7a00" }} />
                   </span>
                 </a>
               ))}
             </div>
             {section.seeAll && (
               <div class="text-center mt-7">
-                <a href={join("/books")} class="inline-flex items-center gap-1.5 font-semibold text-white rounded px-6 py-3 transition-opacity hover:opacity-90" style="background-color:#0083de;">
+                <a href={join("/books")} class="inline-flex items-center gap-1.5 font-semibold text-white rounded px-6 py-3 transition-opacity hover:opacity-90" style="background-color:#1e6fa8;">
                   See all Books<ArrowRight className="w-4 h-4" />
                 </a>
               </div>
@@ -170,8 +170,8 @@ function bookCards(ids: string[]) {
     return (
       <section class="py-10 md:py-14" style={`background-color:${bg};`}>
         <div class="container mx-auto px-4 max-w-3xl text-center">
-          <h2 class="text-2xl md:text-3xl font-semibold mb-5" style="color:#002f55;">{section.heading}</h2>
-          <a href={section.href} class="inline-flex items-center gap-1.5 font-semibold text-white rounded px-6 py-3 transition-opacity hover:opacity-90" style="background-color:#0083de;">
+          <h2 class="text-2xl md:text-3xl font-semibold mb-5" style="color:#0b3c5d;">{section.heading}</h2>
+          <a href={section.href} class="inline-flex items-center gap-1.5 font-semibold text-white rounded px-6 py-3 transition-opacity hover:opacity-90" style="background-color:#1e6fa8;">
             {section.label}<ArrowRight className="w-4 h-4" />
           </a>
         </div>

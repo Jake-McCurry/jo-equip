@@ -6,6 +6,48 @@ uri = "file://attached_assets/generated_images/generated_image.png"
 type = "image"
 title = "generated_image"
 
+[[generated]]
+id = "oRr4UMrMGr_m0Rx3Se9xM"
+uri = "file://artifacts/mockup-sandbox/public/images/heroes/bible-closeup.png"
+type = "image"
+title = "hands on open bible"
+
+[[generated]]
+id = "RW99n4AUGH1-U30kXM_Z8"
+uri = "file://artifacts/mockup-sandbox/public/images/heroes/discipleship-group.png"
+type = "image"
+title = "Discipleship group Bible study"
+
+[[generated]]
+id = "sTqHbvKL4T_4DBfYSFkcY"
+uri = "file://artifacts/mockup-sandbox/public/images/heroes/collage-pastor.png"
+type = "image"
+title = "Pastor preparing sermon"
+
+[[generated]]
+id = "A6xh2oFR-eKZh2meNlUDt"
+uri = "file://artifacts/mockup-sandbox/public/images/heroes/collage-group.png"
+type = "image"
+title = "Small group studying Bible"
+
+[[generated]]
+id = "sjs43cLMVgrYPgGdXMPxX"
+uri = "file://artifacts/mockup-sandbox/public/images/heroes/collage-tablet.png"
+type = "image"
+title = "Watching video on tablet"
+
+[[generated]]
+id = "RPf6SOW1PgaljGWLhuyf9"
+uri = "file://artifacts/mockup-sandbox/public/images/heroes/collage-coffee.png"
+type = "image"
+title = "1-on-1 discipleship over coffee"
+
+[[generated]]
+id = "MnAU4iWRIpcRJJJuduzjQ"
+uri = "file://artifacts/mockup-sandbox/public/images/heroes/collage-phone.png"
+type = "image"
+title = "Reading devotional on phone"
+
 [[outputs]]
 id = "yt95SH6ZvnNSC8vmX9t3T"
 uri = "file://artifacts/discipleship-hub/public/articles/20011-quiet-time-with-god.pdf"

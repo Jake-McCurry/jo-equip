@@ -32,4 +32,8 @@ When the Church/Growth content spreadsheet skips one item mid-sequence (e.g. Fro
 - Article-PDF pipeline changes that alter output without upstream `modified` changes are invisible to the incremental cache — rebuild affected slugs with `--force --slug=a,b,c` (comma list supported).
 - Some WP endnotes posts contain baked-in pagination junk from the original book text (e.g. "Endnotes 111" mid-citation). It shows on-site too; not a pipeline bug — fix upstream in WordPress if desired.
 
-- 12 article PDFs (32281-85, 32446, 32451-56) have DELETED WP source posts — cannot regenerate via articles:build. 7 (32446+) have end pages; fix links by patching URI annotations in-place with pdf-lib (already in workspace). 5 (32281-85) are old-format with no end page. Changes to pdfEndPage.ts require force-rebuild of ALL article/bcg/bsm PDFs plus manual pdf-lib patch of these legacy files.
+## Frozen entries: unpublished source posts
+
+Some article source posts get UNPUBLISHED upstream (WP REST 401 — private/draft, not 404). When that happens, do NOT re-point by catalog number: retired series get split/reorganized into new sub-series with different scope, and the old numbers get reused for DIFFERENT content. Mark the mapping entry `frozen` instead (mechanism documented in the build script); the last-good PDF keeps serving with its old branding until the content owner republishes or replaces the post.
+
+Legacy note: the frozen legacy PDFs differ in format (some pre-date the end page); changes to the shared end page require force-rebuild of ALL article/bcg/bsm PDFs plus manual pdf-lib URI-annotation patching of frozen files.

@@ -1042,6 +1042,116 @@ export const bcgArticles: BcgArticle[] = [
       REGISTER_CTA,
     ],
   },
+
+  /* ── SERMON COMMUNICATION PLANNING (Sermon Toolbox child topic) ──
+     Four equip-original articles from the Aug 2026 docx
+     (Sermon_Communication_Planning_Jake). Marked `unlisted` so they stay
+     out of the BCG next-article rotation — next-nav is not needed here.
+     Rendered at /channels/church/sermon-communication-planning/<id>. */
+  {
+    id: "what-is-your-motivation-for-preaching",
+    title: "What is Your Motivation for Preaching?",
+    description:
+      "A pastor’s deepest motivation quietly shapes the sermon. Explore what drives your preaching — and how the purest motive yields messages that transform lives.",
+    unlisted: true,
+    blocks: [
+      { type: "p", html: "Why do you preach? Pastors step into the pulpit for many reasons:" },
+      { type: "ul", items: [
+        "Institutional duty or the simple habit of filling the weekly preaching slot",
+        "Enjoyment of public speaking or the desire for affirmation and recognition",
+        "Pressure to grow attendance, giving, or outward measures of success",
+        "Personal growth—the discipline of weekly preparation that keeps the pastor in the Word",
+        "A desire to speak into cultural issues and bring clarity or courage to the moment",
+        "Genuine love for Scripture and eagerness to share what has stirred their own heart",
+        "Evangelistic burden for the lost who may be present",
+        "Simple obedience to God’s calling to preach the Word faithfully, whether results are visible or not",
+        "Deep love for the people and a desire to see believers grow and flourish in Christ",
+      ]},
+      { type: "p", html: "Some pastors preach primarily because it is their assigned responsibility. They may find satisfaction in public speaking or in the affirmation that follows a well-received message. In such cases, the underlying motive remains largely self-focused." },
+      { type: "p", html: "Other pastors approach the pulpit from a deeper place. Motivated by a genuine love for Scripture, they view the weekly preparation as a personal opportunity for spiritual growth. They trust that the truths the Lord has impressed upon their own hearts will, in turn, strengthen and instruct those who listen." },
+      { type: "p", html: "Still others are moved chiefly by concern for the spiritual condition of their people. Attuned to the needs the Holy Spirit reveals, they craft their messages to address the real struggles and longings of the congregation. Their greatest joy comes not from the act of preaching itself, but from witnessing lives transformed as believers grow in the likeness of Christ." },
+
+      { type: "h2", text: "Your Motivation Will Determine the Message" },
+      { type: "p", html: "A pastor’s deepest motivation quietly but powerfully shapes both the content and the tone of the sermon." },
+      { type: "p", html: "When the primary drive is personal—whether fulfilling a job requirement, enjoying the platform, or seeking affirmation—the message often leans toward what will be well-received. Difficult texts may be softened, challenging applications avoided, and the sermon crafted more for immediate approval than for lasting transformation. The focus tends to rest on the preacher’s performance rather than on the hearer’s encounter with God." },
+      { type: "p", html: "When the motivation rises to a genuine love for Scripture and personal growth, the sermon usually becomes richer in biblical content. The pastor speaks from truths that have first stirred his own heart. Yet even here the message can remain somewhat centered on what the preacher finds most compelling, rather than on what the congregation most urgently needs." },
+      { type: "p", html: "The highest motivation—concern for the spiritual condition of the people, guided by the Holy Spirit, and rooted in obedience to God’s call—produces a different kind of sermon. The text is still carefully handled, but the application is shaped by the real struggles, questions, and longings of the congregation. Hard truths are not avoided, yet they are delivered with pastoral care. The aim is not merely to inform or to impress, but to see lives changed as the Word, applied by the Spirit, forms Christ in the hearers." },
+      { type: "p", html: "In short, motivation determines whether the sermon serves the preacher, the text alone, or the people under the authority of the text. The purest motive consistently yields messages that are faithful to Scripture, sensitive to the Spirit’s leading, and aimed at the genuine growth of the people." },
+    ],
+  },
+
+  {
+    id: "retention-leads-to-transformation",
+    title: "Retention Leads to Transformation",
+    description:
+      "True transformation rests not on the volume of information delivered, but on the portion retained, meditated upon, and applied. Preach for lasting retention.",
+    unlisted: true,
+    blocks: [
+      { type: "p", html: "The pastor typically invests many careful hours each week in preparing the sermon—studying the text, seeking the Spirit’s guidance, and shaping the message with prayerful intent. On Sunday the congregation gathers and listens as attentively as possible for thirty or forty minutes, hoping to receive whatever the Holy Spirit chooses to highlight. Yet even the most earnest listeners soon discover how quickly the details begin to fade. By the end of the day much of the content has already slipped from memory; by the end of the week only fragments remain." },
+      { type: "p", html: "This gap between the richness of the prepared Word and the limited capacity of human memory raises a vital question: What will actually remain to shape lives? True transformation does not rest on the volume of information delivered, but on the portion that is retained, meditated upon, and applied. When the Spirit plants even a single living truth deeply in the heart—and when that truth is later recalled, discussed, and obeyed—the sermon begins to bear lasting fruit. In this way, careful retention becomes the bridge between hearing the Word and being changed by it." },
+
+      { type: "h2", text: "Avoid Mental Overload" },
+      { type: "p", html: "Cognitive Load Theory, developed by John Sweller, reveals a fundamental truth about how we learn: working memory—the mental space where we temporarily hold and process new information—is severely limited. Most people can manage only a few new ideas at once before the system becomes overloaded. Long-term memory, by contrast, has vast capacity and stores organized knowledge that later makes new learning easier." },
+      { type: "p", html: "Three kinds of mental demand compete for these limited resources. Intrinsic load comes from the inherent difficulty of the material itself. Extraneous load arises from the way information is presented—poor organization, unnecessary complexity, or too many ideas at once—and contributes nothing to genuine learning. Germane load is the productive effort of making sense of the material and forming lasting understanding." },
+      { type: "p", html: "When these demands together exceed working memory’s capacity, little is retained beyond the moment. Effective teaching therefore seeks to reduce what is unnecessary, carefully sequence what is essential, and protect the mind’s limited resources so that lasting transformation becomes possible." },
+
+      { type: "h3", text: "One Central Truth, Clearly Developed" },
+      { type: "p", html: "Protect working memory by limiting the number of new ideas presented in a single message. When too many concepts, illustrations, and applications compete for attention at once, retention suffers. Focusing on one central truth, carefully developed and clearly applied, allows the mind to process more deeply." },
+      { type: "p", html: "<strong>Practical guidance:</strong> Begin preparation by identifying the single main truth the text is pressing upon the hearer. Build the entire message around that truth—select only those illustrations and applications that serve it directly. Resist the urge to include every insight discovered in study. Ask repeatedly: “Does this point strengthen the central truth, or does it distract from it?”" },
+
+      { type: "h3", text: "Clarity and Order Free the Mind" },
+      { type: "p", html: "Reduce unnecessary mental effort by presenting the material with clarity and order. A simple structure, well-signposted transitions, and the avoidance of needless complexity free the hearer’s limited resources for what truly matters—engaging the truth itself rather than struggling to follow the delivery." },
+      { type: "p", html: "<strong>Practical guidance:</strong> Outline the sermon in three clear movements or fewer. Use simple, memorable language rather than technical terms whenever possible. Signal each transition with a brief summary of what has been said and a clear statement of what comes next. Review the manuscript or notes specifically to remove anything that does not serve clarity." },
+
+      { type: "h3", text: "Invite Active Engagement with the Truth" },
+      { type: "p", html: "Create space for productive mental work. When the message invites the listener to connect the truth to their own life, to recall related Scriptures, or to consider concrete steps of obedience, the mind moves beyond passive reception toward lasting understanding. In this way the Spirit is given room to plant the Word more firmly in the heart." },
+      { type: "p", html: "<strong>Practical guidance:</strong> Include brief moments of reflection during the sermon—pause after a key point and invite the congregation to consider how the truth speaks to their current circumstances. Pose a thoughtful question that prompts personal application. Close with one clear, specific step of obedience rather than a list of general suggestions. These small invitations help move the truth from the ear to the heart." },
+
+      { type: "h2", text: "Less Is Usually More" },
+      { type: "p", html: "In most cases, therefore, less proves to be more. A shorter sermon that centers on one clear truth, presents it with order, and invites thoughtful response protects the hearer’s cognitive resources. It creates space for the Spirit to plant the Word more deeply rather than scattering seed across ground already saturated. Length should serve transformation, not compete with it." },
+    ],
+  },
+
+  {
+    id: "give-them-what-they-need",
+    title: "Give Them What They Need",
+    description:
+      "10 Building Blocks for Maturity are vital for balanced spiritual growth. These reflective questions help you discern what your people may need most right now.",
+    unlisted: true,
+    blocks: [
+      { type: "p", html: '<strong><a href="/channels/growth/building-blocks">10 Building Blocks for Maturity</a></strong> are vital for balanced spiritual growth. They help believers intentionally strive to become more like Jesus. These reflective questions help you discern what people may need most at this time.' },
+      { type: "ol", items: [
+        '<strong>Seeing Life from God’s Perspective:</strong> Are they viewing circumstances through a worldly perspective instead of God’s character and purposes? <a href="/channels/growth/bb-seeing-life">[more]</a>',
+        '<strong>Growing Closer to God:</strong> Do they prioritize religious activity over cultivating a living, affectionate relationship with the Lord? <a href="/channels/growth/bb-growing-closer">[more]</a>',
+        '<strong>Becoming the New You:</strong> Are they still holding onto their old self-image and past failures instead of embracing their new identity in Christ? <a href="/channels/growth/bb-becoming-new-you">[more]</a>',
+        '<strong>Walking by the Spirit:</strong> Is their life defined by self-effort, or do they demonstrate a vital reliance on the Holy Spirit’s guidance and power in their daily lives? <a href="/channels/growth/bb-walking-spirit">[more]</a>',
+        '<strong>Receiving Insights from God:</strong> Are Scripture and mind renewal central, or are they more shaped by popular opinion and personal preference than by God’s Word? <a href="/channels/growth/bb-receiving-insights">[more]</a>',
+        '<strong>Obeying God Faithfully:</strong> Is there a significant gap between what is known and practiced—areas of compromise, selective obedience, or hesitation to fully follow Christ? <a href="/channels/growth/bb-obeying-god">[more]</a>',
+        '<strong>Living as God’s Family:</strong> Do they show genuine care and support for their church family, or do they exhibit isolation and superficial connections? <a href="/channels/growth/bb-living-family">[more]</a>',
+        '<strong>Reaching the World:</strong> Are they primarily focused on themselves, or is there an emphasis on sharing the gospel and making disciples? <a href="/channels/growth/bb-reaching-world">[more]</a>',
+        '<strong>Resisting the Enemy:</strong> Are they alert to spiritual opposition, or do they seem discouraged and easily distracted by temptation and accusation? <a href="/channels/growth/bb-resisting-enemy">[more]</a>',
+        '<strong>Pursuing God’s Master Plan:</strong> Do they feel their lives have a purposeful direction under God’s guidance, or do they seem uncertain about their calling and how to use their gifts for His glory? <a href="/channels/growth/bb-pursuing-master-plan">[more]</a>',
+      ]},
+      { type: "p", html: "These questions are meant to encourage careful observation and discernment, not quick judgments. As the Holy Spirit provides clarity, the foundational element that emerges can guide teaching and discipleship in this season." },
+    ],
+  },
+
+  {
+    id: "aids-that-strengthen-lasting-retention",
+    title: "Aids That Strengthen Lasting Retention",
+    description:
+      "Practical aids — one central truth, simple structure, purposeful visuals, minimal notes, and active engagement — that help sermons take deeper root and bear fruit.",
+    unlisted: true,
+    blocks: [
+      { type: "p", html: "Several practical aids can strengthen sermon retention by working with the mind’s natural limits rather than against them." },
+      { type: "p", html: "A single, clearly stated central truth remains the foundation. When the entire message orbits one main idea, the hearer has a secure place to anchor what is heard. Supporting this truth with a simple, memorable structure—perhaps three short movements or a clear progression—further reduces mental effort and makes the message easier to recall later." },
+      { type: "p", html: "Thoughtful use of visuals can help, provided they remain simple and directly supportive of the central point. A single image, a brief outline on the screen, or a key verse displayed at the right moment can engage the visual channel without creating distraction. Conversely, dense slides or decorative elements often increase cognitive load and hinder retention." },
+      { type: "p", html: "Sermon notes, when carefully designed, serve a similar purpose. Sparse notes that highlight the main truth and mirror the sermon’s clear structure act as an external support, freeing the listener from the burden of organizing everything mentally. A few open spaces for personal reflection can also encourage active processing. Yet notes that are overly detailed or crowded force constant shifts of attention between listening and writing, raising extraneous load and reducing the very retention they aim to support. The most helpful notes remain minimal and purposeful." },
+      { type: "p", html: "Active engagement further deepens memory. Brief pauses that invite personal reflection, a well-placed question, or a concrete call to a specific step of obedience move the listener from passive hearing toward thoughtful response. Concrete illustrations and real-life examples strengthen this process by linking abstract truth to lived experience." },
+      { type: "p", html: "Beyond the sermon itself, simple follow-up tools extend the work. A concise handout, small-group discussion guides, or a short memory verse for the week all give the Spirit additional opportunity to plant the Word more firmly." },
+      { type: "p", html: "In each case, the aim is the same: to protect the hearer’s limited mental resources so that the truth may take deeper root and bear lasting fruit." },
+    ],
+  },
 ];
 
 export function getBcgArticle(id: string): BcgArticle | undefined {

@@ -29,10 +29,10 @@ const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
           <Church className="w-3.5 h-3.5" />
           JO EQUIPPED Church
         </div>
-        <h1 class="text-3xl md:text-4xl mb-4" style="color:#002f55;">
+        <h1 class="text-3xl md:text-4xl mb-4" style="color:#0b3c5d;">
           Register today to become a FREE JO&nbsp;EQUIPPED Church
         </h1>
-        <div class="h-0.5 w-12 mx-auto mb-8" style="background-color:#de5b00;"></div>
+        <div class="h-0.5 w-12 mx-auto mb-8" style="background-color:#ff7a00;"></div>
       </div>
 
       <div class="space-y-5 text-lg leading-relaxed mb-10" style="color:#374151;">
@@ -57,8 +57,8 @@ const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
       >
         <form id="rc-form" class="space-y-4" novalidate>
           <div>
-            <label for="rc-fname" class="block text-sm font-medium mb-1.5" style="color:#002f55;">
-              First Name <span style="color:#de5b00;">*</span>
+            <label for="rc-fname" class="block text-sm font-medium mb-1.5" style="color:#0b3c5d;">
+              First Name <span style="color:#ff7a00;">*</span>
             </label>
             <input
               type="text"
@@ -67,12 +67,12 @@ const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
               required
               autocomplete="given-name"
               class="w-full rounded border px-3 py-2.5 text-sm outline-none focus-visible:ring-2"
-              style="border-color:var(--color-border);color:#002f55;"
+              style="border-color:var(--color-border);color:#0b3c5d;"
             />
           </div>
 
           <div>
-            <label for="rc-lname" class="block text-sm font-medium mb-1.5" style="color:#002f55;">
+            <label for="rc-lname" class="block text-sm font-medium mb-1.5" style="color:#0b3c5d;">
               Last Name
             </label>
             <input
@@ -81,13 +81,13 @@ const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
               id="rc-lname"
               autocomplete="family-name"
               class="w-full rounded border px-3 py-2.5 text-sm outline-none focus-visible:ring-2"
-              style="border-color:var(--color-border);color:#002f55;"
+              style="border-color:var(--color-border);color:#0b3c5d;"
             />
           </div>
 
           <div>
-            <label for="rc-email" class="block text-sm font-medium mb-1.5" style="color:#002f55;">
-              Email Address <span style="color:#de5b00;">*</span>
+            <label for="rc-email" class="block text-sm font-medium mb-1.5" style="color:#0b3c5d;">
+              Email Address <span style="color:#ff7a00;">*</span>
             </label>
             <input
               type="email"
@@ -96,13 +96,13 @@ const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
               required
               autocomplete="email"
               class="w-full rounded border px-3 py-2.5 text-sm outline-none focus-visible:ring-2"
-              style="border-color:var(--color-border);color:#002f55;"
+              style="border-color:var(--color-border);color:#0b3c5d;"
             />
           </div>
 
           <div>
-            <label for="rc-church" class="block text-sm font-medium mb-1.5" style="color:#002f55;">
-              Church <span style="color:#de5b00;">*</span>
+            <label for="rc-church" class="block text-sm font-medium mb-1.5" style="color:#0b3c5d;">
+              Church <span style="color:#ff7a00;">*</span>
             </label>
             <input
               type="text"
@@ -111,8 +111,40 @@ const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
               required
               autocomplete="organization"
               class="w-full rounded border px-3 py-2.5 text-sm outline-none focus-visible:ring-2"
-              style="border-color:var(--color-border);color:#002f55;"
+              style="border-color:var(--color-border);color:#0b3c5d;"
             />
+          </div>
+
+          <div>
+            <label for="rc-country" class="block text-sm font-medium mb-1.5" style="color:#0b3c5d;">
+              Country <span style="color:#ff7a00;">*</span>
+            </label>
+            <input
+              type="text"
+              name="COUNTRY"
+              id="rc-country"
+              required
+              autocomplete="country-name"
+              class="w-full rounded border px-3 py-2.5 text-sm outline-none focus-visible:ring-2"
+              style="border-color:var(--color-border);color:#0b3c5d;"
+            />
+          </div>
+
+          <div>
+            <label for="rc-gender" class="block text-sm font-medium mb-1.5" style="color:#0b3c5d;">
+              Gender <span style="color:#ff7a00;">*</span>
+            </label>
+            <select
+              name="GENDER"
+              id="rc-gender"
+              required
+              class="w-full rounded border px-3 py-2.5 text-sm outline-none focus-visible:ring-2 bg-white"
+              style="border-color:var(--color-border);color:#0b3c5d;"
+            >
+              <option value="" disabled selected>Select&hellip;</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
           </div>
 
           {/* Bot-prevention honeypot — do not remove */}
@@ -134,7 +166,7 @@ const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
 
         <p class="text-xs mt-4" style="color:var(--color-muted-foreground);">
           Prefer email? Write to
-          <a href="mailto:equip@jesusonline.com" class="font-semibold hover:underline" style="color:#de5b00;">equip@jesusonline.com</a>
+          <a href="mailto:equip@jesusonline.com" class="font-semibold hover:underline" style="color:#ff7a00;">equip@jesusonline.com</a>
           and we'll register you.
         </p>
       </div>
@@ -143,10 +175,10 @@ const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
 
   {/* Thank-you dialog */}
   <div id="rc-thanks" class="hidden fixed inset-0 z-50 items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="rc-thanks-title">
-    <div id="rc-thanks-backdrop" class="absolute inset-0" style="background-color:rgba(0,47,85,0.6);"></div>
+    <div id="rc-thanks-backdrop" class="absolute inset-0" style="background-color:rgba(11,60,93,0.6);"></div>
     <div class="relative bg-white rounded-lg shadow-xl max-w-md w-full p-8 text-center">
-      <h2 id="rc-thanks-title" class="text-2xl mb-4" style="color:#002f55;">Thank You!</h2>
-      <div class="h-0.5 w-12 mx-auto mb-5" style="background-color:#de5b00;"></div>
+      <h2 id="rc-thanks-title" class="text-2xl mb-4" style="color:#0b3c5d;">Thank You!</h2>
+      <div class="h-0.5 w-12 mx-auto mb-5" style="background-color:#ff7a00;"></div>
       <p class="text-base leading-relaxed mb-6" style="color:#374151;">
         Thank you for your faithful service to the Lord and His Church. We look forward to equipping
         you and your congregation as together we seek first the Kingdom of God.

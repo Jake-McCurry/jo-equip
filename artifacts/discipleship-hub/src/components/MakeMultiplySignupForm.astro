@@ -2,17 +2,22 @@
 /* Shared Mailchimp signup form for the Making & Multiplying Disciples
  * newsletter. Used on /newsletter and the church channel newsletter
  * sub-topic page (via MakeMultiplyNewsletter.astro) so the two forms
- * never drift apart. */
+ * never drift apart.
+ *
+ * Submits via Mailchimp's JSONP endpoint (post-json) so we can show the
+ * thank-you dialog inline instead of navigating to Mailchimp's response
+ * page — same pattern as /register-church, but this form's own
+ * f_id=00bb87e5f0. */
 interface Props {
   accent?: string;
 }
 const { accent = "#7a3a8a" } = Astro.props;
 
-// Mailchimp audience: jesusonline.us1. The form posts directly (no third-party
-// script needed). Merge fields on this audience: EMAIL, FNAME (First Name),
-// CHURCH (Church/Ministry), COUNTRY, and MMERGE8 (Gender dropdown).
-const MC_ACTION =
-  "https://jesusonline.us1.list-manage.com/subscribe/post?u=c02949f5de137184b156da9bc&id=e06ba0649d&f_id=00bb87e5f0";
+// Mailchimp audience: jesusonline.us1. Merge fields on this audience:
+// EMAIL, FNAME (First Name), CHURCH (Church/Ministry), COUNTRY, and
+// MMERGE8 (Gender dropdown).
+const MC_POST_JSON =
+  "https://jesusonline.us1.list-manage.com/subscribe/post-json?u=c02949f5de137184b156da9bc&id=e06ba0649d&f_id=00bb87e5f0";
 const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
 ---
 <div
@@ -23,12 +28,7 @@ const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
   <h2 class="text-xl mb-1" style="color:#0b3c5d;">Free Sign Up</h2>
   <p class="text-sm mb-6" style="color:var(--color-muted-foreground);">Free. No spam. Unsubscribe anytime.</p>
 
-  <form
-    action={MC_ACTION}
-    method="post"
-    target="_blank"
-    class="space-y-4"
-  >
+  <form id="mm-form" class="space-y-4" novalidate>
     <div>
       <label for="mm-email" class="block text-sm font-medium mb-1.5" style="color:#0b3c5d;">
         Email <span style="color:#ff7a00;">*</span>
@@ -61,13 +61,12 @@ const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
 
     <div>
       <label for="mm-church" class="block text-sm font-medium mb-1.5" style="color:#0b3c5d;">
-        Church/Ministry <span style="color:#ff7a00;">*</span>
+        Church/Ministry
       </label>
       <input
         type="text"
         name="CHURCH"
         id="mm-church"
-        required
         autocomplete="organization"
         class="w-full rounded border px-3 py-2.5 text-sm outline-none focus-visible:ring-2"
         style="border-color:var(--color-border);color:#0b3c5d;"
@@ -112,8 +111,11 @@ const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
       <input type="text" name={MC_HONEYPOT} tabindex="-1" value="" />
     </div>
 
+    <p id="mm-error" class="hidden text-sm font-medium" style="color:#b91c1c;" role="alert"></p>
+
     <button
       type="submit"
+      id="mm-submit"
       class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded font-semibold text-sm transition-all hover:shadow-md"
       style={`background-color:${accent};color:#ffffff;`}
     >
@@ -121,3 +123,94 @@ const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
     </button>
   </form>
 </div>
+
+{/* Thank-you dialog */}
+<div id="mm-thanks" class="hidden fixed inset-0 z-50 items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="mm-thanks-title">
+  <div id="mm-thanks-backdrop" class="absolute inset-0" style="background-color:rgba(11,60,93,0.6);"></div>
+  <div class="relative bg-white rounded-lg shadow-xl max-w-md w-full p-8 text-center">
+    <h2 id="mm-thanks-title" class="text-2xl mb-4" style="color:#0b3c5d;">Thank You!</h2>
+    <div class="h-0.5 w-12 mx-auto mb-5" style="background-color:#ff7a00;"></div>
+    <p class="text-base leading-relaxed mb-6" style="color:#374151;">
+      You&rsquo;re signed up for the Making &amp; Multiplying Disciples newsletter.
+      Keep an eye on your inbox &mdash; we look forward to encouraging you as you
+      make and multiply disciples.
+    </p>
+    <button
+      type="button"
+      id="mm-thanks-close"
+      class="inline-flex items-center justify-center px-6 py-2.5 rounded font-semibold text-sm transition-all hover:shadow-md"
+      style={`background-color:${accent};color:#ffffff;`}
+    >
+      Close
+    </button>
+  </div>
+</div>
+
+<script define:vars={{ MC_POST_JSON }}>
+  const form = document.getElementById("mm-form");
+  const submitBtn = document.getElementById("mm-submit");
+  const errorEl = document.getElementById("mm-error");
+  const thanks = document.getElementById("mm-thanks");
+
+  function showThanks() {
+    thanks.classList.remove("hidden");
+    thanks.classList.add("flex");
+    document.getElementById("mm-thanks-close").focus();
+  }
+  function hideThanks() {
+    thanks.classList.add("hidden");
+    thanks.classList.remove("flex");
+  }
+  document.getElementById("mm-thanks-close").addEventListener("click", hideThanks);
+  document.getElementById("mm-thanks-backdrop").addEventListener("click", hideThanks);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") hideThanks();
+  });
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    errorEl.classList.add("hidden");
+
+    if (!form.reportValidity()) return;
+
+    submitBtn.disabled = true;
+    submitBtn.style.opacity = "0.6";
+
+    /* Mailchimp only accepts cross-origin signups via JSONP. */
+    const params = new URLSearchParams(new FormData(form));
+    const cb = "mmMailchimpCb" + Date.now();
+    const script = document.createElement("script");
+    let settled = false;
+
+    function finish() {
+      settled = true;
+      delete window[cb];
+      script.remove();
+      submitBtn.disabled = false;
+      submitBtn.style.opacity = "";
+    }
+
+    window[cb] = (res) => {
+      finish();
+      if (res && res.result === "success") {
+        form.reset();
+        showThanks();
+      } else {
+        const msg = (res && res.msg ? String(res.msg) : "Something went wrong. Please try again.")
+          .replace(/<[^>]*>/g, "")
+          .replace(/^\d+\s*-\s*/, "");
+        errorEl.textContent = msg;
+        errorEl.classList.remove("hidden");
+      }
+    };
+
+    script.src = MC_POST_JSON + "&" + params.toString() + "&c=" + cb;
+    script.onerror = () => {
+      if (settled) return;
+      finish();
+      errorEl.textContent = "Something went wrong. Please check your connection and try again.";
+      errorEl.classList.remove("hidden");
+    };
+    document.body.appendChild(script);
+  });
+</script>

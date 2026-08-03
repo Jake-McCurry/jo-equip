@@ -63,13 +63,17 @@ const quickLinks = [
       <p class="text-lg leading-relaxed mb-5 last:mb-0" style="color:#374151;" set:html={p} />
     ))}
     <p class="text-sm font-semibold tracking-wide uppercase mt-8" style="color:#0b3c5d;">
-      Featured Resources by Type: <span style="color:#0083de;">Articles &bull; Topics &bull; Books &bull; Playlists</span>
+      Featured Resources by Type:
+      <a href="#articles" class="hover:underline" style="color:#0083de;">Articles</a> <span style="color:#0083de;">&bull;</span>
+      <a href="#topics" class="hover:underline" style="color:#0083de;">Topics</a> <span style="color:#0083de;">&bull;</span>
+      <a href="#books" class="hover:underline" style="color:#0083de;">Books</a> <span style="color:#0083de;">&bull;</span>
+      <a href="#playlists" class="hover:underline" style="color:#0083de;">Playlists</a>
     </p>
   </div>
 </section>
 
 {/* Articles */}
-<section class="py-10 md:py-14" style="background-color:#e6f2fa;">
+<section id="articles" class="py-10 md:py-14 scroll-mt-20" style="background-color:#e6f2fa;">
   <div class="container mx-auto px-4 max-w-4xl">
     <h2 class="text-2xl md:text-3xl font-semibold mb-6" style="color:#0b3c5d;">Articles</h2>
     <ul class="flex flex-col gap-4">
@@ -86,7 +90,7 @@ const quickLinks = [
 </section>
 
 {/* Books */}
-<section class="py-10 md:py-14 bg-white">
+<section id="books" class="py-10 md:py-14 bg-white scroll-mt-20">
   <div class="container mx-auto px-4 max-w-5xl">
     <h2 class="text-2xl md:text-3xl font-semibold mb-2" style="color:#0b3c5d;">Books</h2>
     <p class="text-[15px] md:text-base leading-relaxed mb-6" style="color:#374151;">{booksNote}</p>
@@ -121,7 +125,7 @@ const quickLinks = [
 </section>
 
 {/* Topics */}
-<section class="py-10 md:py-14" style="background-color:#e6f2fa;">
+<section id="topics" class="py-10 md:py-14 scroll-mt-20" style="background-color:#e6f2fa;">
   <div class="container mx-auto px-4 max-w-4xl">
     <h2 class="text-2xl md:text-3xl font-semibold mb-2" style="color:#0b3c5d;">Topics</h2>
     <p class="text-sm mb-6" style="color:#6b7280;">Categories &amp; Series</p>
@@ -139,7 +143,7 @@ const quickLinks = [
 </section>
 
 {/* Playlists */}
-<section class="py-10 md:py-14 bg-white">
+<section id="playlists" class="py-10 md:py-14 bg-white scroll-mt-20">
   <div class="container mx-auto px-4 max-w-5xl">
     <h2 class="text-2xl md:text-3xl font-semibold mb-2" style="color:#0b3c5d;">Playlists</h2>
     <p class="text-[15px] md:text-base leading-relaxed mb-6" style="color:#374151;">{playlistsNote}</p>

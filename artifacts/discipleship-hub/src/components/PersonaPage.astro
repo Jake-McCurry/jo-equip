@@ -94,7 +94,7 @@ const quickLinks = [
       {featuredBooks.map(b => {
         const cover = getBookCover(b.id);
         return (
-          <a href={join(`/books/${b.id}`)} class="group shrink-0 w-[27vw] max-w-[130px] md:w-auto md:max-w-none">
+          <a href={join(`/books/${b.id}`)} class="group shrink-0 w-[calc((100vw-5rem)/3.5)] max-w-[130px] md:w-auto md:max-w-none">
             <div class="border rounded overflow-hidden bg-white transition-shadow group-hover:shadow-md" style="border-color:var(--color-border);">
               {cover ? (
                 <Image src={cover} alt={b.title} width={260} class="w-full h-auto" />
@@ -109,7 +109,7 @@ const quickLinks = [
         );
       })}
       {/* "More" tile → all books */}
-      <a href={join("/books")} class="group shrink-0 w-[27vw] max-w-[130px] md:w-auto md:max-w-none">
+      <a href={join("/books")} class="group shrink-0 w-[calc((100vw-5rem)/3.5)] max-w-[130px] md:w-auto md:max-w-none">
         <div class="aspect-[3/4] border-2 border-dashed rounded flex flex-col items-center justify-center gap-2 transition-colors group-hover:border-solid" style="border-color:#0083de;background-color:#f4f7fb;">
           <ArrowRight className="w-6 h-6" style={{ color: "#0083de" }} />
           <span class="text-sm font-semibold" style="color:#0083de;">More</span>
@@ -147,7 +147,7 @@ const quickLinks = [
       {featuredPlaylists.map(p => {
         const thumb = playlistThumbnail(p);
         return (
-          <a href={join(`/playlist/${p.id}`)} class="group shrink-0 w-[42vw] max-w-[220px] md:w-auto md:max-w-none">
+          <a href={join(`/playlist/${p.id}`)} class="group shrink-0 w-[calc((100vw-4rem)/2.5)] max-w-[220px] md:w-auto md:max-w-none">
             <div class="relative border rounded overflow-hidden bg-white transition-shadow group-hover:shadow-md" style="border-color:var(--color-border);">
               <div class="relative aspect-video bg-slate-100 overflow-hidden">
                 {thumb && (
@@ -165,7 +165,7 @@ const quickLinks = [
         );
       })}
       {/* "More" tile → all playlists */}
-      <a href={join("/playlists")} class="group shrink-0 w-[42vw] max-w-[220px] md:w-auto md:max-w-none">
+      <a href={join("/playlists")} class="group shrink-0 w-[calc((100vw-4rem)/2.5)] max-w-[220px] md:w-auto md:max-w-none">
         <div class="aspect-video border-2 border-dashed rounded flex flex-col items-center justify-center gap-1.5 transition-colors group-hover:border-solid" style="border-color:#0083de;background-color:#f4f7fb;">
           <ArrowRight className="w-6 h-6" style={{ color: "#0083de" }} />
           <span class="text-sm font-semibold" style="color:#0083de;">More</span>

@@ -10,11 +10,13 @@ const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
   (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
 
-/* Mailchimp embedded-form endpoint for book-download signups (public, safe
-   to commit — it appears verbatim in Mailchimp's own embed code). Signups go
-   straight to the "jesusonline" us1 audience with the hidden tag below so
-   they are identifiable as book downloads. Note the f_id differs from the
-   newsletter form's — this is the dedicated book-download form. */
+/* Mailchimp JSONP (post-json) endpoint for book-download signups (public,
+   safe to commit — it appears verbatim in Mailchimp's own embed code).
+   Signups go straight to the "jesusonline" us1 audience with the hidden tag
+   below so they are identifiable as book downloads. Note the f_id differs
+   from the newsletter form's — this is the dedicated book-download form.
+   JSONP gives us a real success/error response (unlike no-cors fetch), so we
+   only mark the browser as subscribed once Mailchimp confirms. */
 const MC_ACTION =
   "https://jesusonline.us1.list-manage.com/subscribe/post-json?u=c02949f5de137184b156da9bc&id=e06ba0649d&f_id=00bc87e5f0";
 const MC_TAG = "5798230";
@@ -194,6 +196,7 @@ const booksJsonLd = {
           style="border-color:var(--color-border);"
         />
         <p id="email-gate-country-error" class="text-sm hidden" role="alert" aria-live="polite" style="color:#c0392b;">Please enter your country.</p>
+        <p id="email-gate-submit-error" class="text-sm hidden" role="alert" aria-live="polite" style="color:#c0392b;"></p>
         <button
           id="email-gate-submit"
           type="submit"
@@ -224,6 +227,7 @@ const booksJsonLd = {
       const input = document.getElementById("email-gate-input");
       const countryInput = document.getElementById("email-gate-country");
       const countryErrorEl = document.getElementById("email-gate-country-error");
+      const submitErrorEl = document.getElementById("email-gate-submit-error");
       const submitBtn = document.getElementById("email-gate-submit");
       if (!gate || !form || !bookLabel || !input || !countryInput || !submitBtn) return;
 
@@ -323,6 +327,7 @@ const booksJsonLd = {
         bookLabel.textContent = title || "this book";
         showError(false);
         showCountryError(false);
+        showSubmitError("");
         isSubmitting = false;
         submitBtn.disabled = false;
         input.value = "";
@@ -344,6 +349,17 @@ const booksJsonLd = {
           try { lastFocusedEl.focus(); } catch (_e) { /* ignore */ }
         }
         lastFocusedEl = null;
+      }
+
+      function showSubmitError(msg) {
+        if (!submitErrorEl) return;
+        if (msg) {
+          submitErrorEl.textContent = msg;
+          submitErrorEl.classList.remove("hidden");
+        } else {
+          submitErrorEl.textContent = "";
+          submitErrorEl.classList.add("hidden");
+        }
       }
 
       // Submit to Mailchimp's JSONP endpoint and confirm the signup was
@@ -474,6 +490,7 @@ const booksJsonLd = {
           (isValidEmail(email) ? countryInput : input).focus();
           return;
         }
+        showSubmitError("");
         isSubmitting = true;
         submitBtn.disabled = true;
         submitBtn.textContent = "Sending…";
@@ -506,8 +523,7 @@ const booksJsonLd = {
               .replace(/<[^>]*>/g, "")
               .replace(/^\d+\s*-\s*/, "")
               .trim();
-            errorEl.textContent = cleaned || "The signup didn't go through. Your book has opened — please try submitting again.";
-            showError(true);
+            showSubmitError(cleaned || "The signup didn't go through. Your book has opened — please try submitting again.");
           }
         );
       });

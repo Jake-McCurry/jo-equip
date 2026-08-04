@@ -98,6 +98,17 @@ function stripLeadingNumber(title: string): string {
   return title.replace(/^[\d][\d.\-]*\s+/, "").trim();
 }
 
+/* Per-slug content edits requested by the ministry (applied to the PDF body;
+   the matching on-site article JSON is edited the same way — keep in sync). */
+function perSlugContentFix(appSlug: string, html: string): string {
+  if (appSlug === "32001-building-blocks-for-maturity-introduction") {
+    /* Section titles read "1. Seeing Your Life…" instead of
+       "Building Block 1. Seeing Your Life…" (Aug 2026 request). */
+    return html.replace(/Building Block (\d+)\./g, "$1.");
+  }
+  return html;
+}
+
 /* Decode the handful of HTML entities WordPress emits in titles (apostrophes,
    ampersands, em dashes). Avoids pulling in a heavy library. */
 function decodeEntities(s: string): string {
@@ -516,7 +527,10 @@ async function buildOne(
     }
 
     const displayTitle = stripLeadingNumber(decodeEntities(post.title.rendered));
-    const bodyHtml = sanitizeHtml(await inlineEndnotes(rewriteWatchVideo(post.content.rendered, appSlug)));
+    const bodyHtml = perSlugContentFix(
+      appSlug,
+      sanitizeHtml(await inlineEndnotes(rewriteWatchVideo(post.content.rendered, appSlug))),
+    );
     const html = renderTemplate({
       title: displayTitle,
       bodyHtml,

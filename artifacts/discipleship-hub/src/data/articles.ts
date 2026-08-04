@@ -681,7 +681,7 @@ export const articlePdfs: Record<string, ArticlePdfMeta> = {
   "31057-living-by-grace": { title: "Living By Grace", bytes: 116050, modified: "2022-12-05T20:35:43" },
   "31058-born-again-as-a-new-creation": { title: "Born Again as a New Creation", bytes: 117884, modified: "2023-03-21T20:08:36" },
   "31059-you-live-in-a-world-at-war": { title: "You Live in a World at War", bytes: 121232, modified: "2022-12-09T18:39:20" },
-  "32001-building-blocks-for-maturity-introduction": { title: "Building Blocks for Maturity Introduction", bytes: 171062, modified: "2026-04-30T20:39:01" },
+  "32001-building-blocks-for-maturity-introduction": { title: "Building Blocks for Maturity Introduction", bytes: 170896, modified: "2026-04-30T20:39:01" },
   "32101-seeing-the-truth": { title: "Seeing The Truth", bytes: 120278, modified: "2026-05-04T04:31:31" },
   "32102-perspective-and-perception": { title: "Perspective and Perception", bytes: 172447, modified: "2025-10-30T18:49:50" },
   "32103-the-truth-cycle": { title: "The Truth Cycle", bytes: 135076, modified: "2025-10-30T18:53:13" },

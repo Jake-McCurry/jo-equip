@@ -908,6 +908,18 @@ export const subTopics: SubTopic[] = [
     name: 'Building Blocks for Maturity',
     description: 'Provide practical tools to help believers become fruitful disciples of Jesus.',
   },
+  /* ── BUILDING BLOCKS INTRODUCTION (child of Building Blocks) ──
+     Single-article intro card, first in the series (added Aug 2026). */
+  {
+    id: 'bb-introduction',
+    channelId: 'growth',
+    parentId: 'building-blocks',
+    name: 'Building Blocks for Maturity Introduction',
+    hideNumbers: true,
+    items: [
+      { number: 1, title: 'Building Blocks for Maturity Introduction', articleId: 'building-blocks-for-maturity-introduction', links: { app: 'https://app.jesusonline.com/post/32001-building-blocks-for-maturity-introduction' } },
+    ],
+  },
   {
     id: 'bb-seeing-life',
     channelId: 'growth',

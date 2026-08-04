@@ -2584,6 +2584,16 @@
     "wp_slug": "22830-kingdomnomics-converterlator",
     "method": "prefix"
   },
+  "22970-006-moving-on": {
+    "wp_id": 7631,
+    "wp_slug": "22970-006-moving-on",
+    "method": "exact"
+  },
+  "22985-fear-not": {
+    "wp_id": 7953,
+    "wp_slug": "22985-fear-not",
+    "method": "exact"
+  },
   "23101-what-is-prayer": {
     "wp_id": 256,
     "wp_slug": "23101-what-is-prayer",
@@ -3319,6 +3329,11 @@
     "wp_slug": "31059-you-live-in-a-world-at-war",
     "method": "exact"
   },
+  "32001-building-blocks-for-maturity-introduction": {
+    "wp_id": 23243,
+    "wp_slug": "32001-building-blocks-for-maturity-introduction",
+    "method": "exact"
+  },
   "32101-seeing-the-truth": {
     "wp_id": 517,
     "wp_slug": "32101-seeing-the-truth",
@@ -3349,9 +3364,24 @@
     "wp_slug": "32211-our-triune-god-father-son-and-holy-spirit",
     "method": "exact"
   },
+  "32211-the-supreme-pursuit-of-the-heart": {
+    "wp_id": 23291,
+    "wp_slug": "32211-the-supreme-pursuit-of-the-heart",
+    "method": "exact"
+  },
+  "32212-attributes-of-self-existence": {
+    "wp_id": 23292,
+    "wp_slug": "32212-attributes-of-self-existence",
+    "method": "exact"
+  },
   "32212-god-loves-you-forever": {
     "wp_id": 435,
     "wp_slug": "32212-god-loves-you-forever",
+    "method": "exact"
+  },
+  "32213-attributes-of-sovereignty": {
+    "wp_id": 23293,
+    "wp_slug": "32213-attributes-of-sovereignty",
     "method": "exact"
   },
   "32213-experiencing-gods-love": {
@@ -3364,9 +3394,49 @@
     "wp_slug": "32214-a-trust-relationship",
     "method": "exact"
   },
+  "32214-attributes-of-holiness": {
+    "wp_id": 23294,
+    "wp_slug": "32214-attributes-of-holiness",
+    "method": "exact"
+  },
   "32215-a-heart-for-god": {
     "wp_id": 441,
     "wp_slug": "32215-a-heart-for-god",
+    "method": "exact"
+  },
+  "32215-attributes-of-love": {
+    "wp_id": 23295,
+    "wp_slug": "32215-attributes-of-love",
+    "method": "exact"
+  },
+  "32216-live-in-the-light-of-his-majesty": {
+    "wp_id": 23296,
+    "wp_slug": "32216-live-in-the-light-of-his-majesty",
+    "method": "exact"
+  },
+  "32231-our-triune-god-father-son-and-holy-spirit": {
+    "wp_id": 433,
+    "wp_slug": "32231-our-triune-god-father-son-and-holy-spirit",
+    "method": "exact"
+  },
+  "32232-god-loves-you-forever": {
+    "wp_id": 435,
+    "wp_slug": "32232-god-loves-you-forever",
+    "method": "exact"
+  },
+  "32233-experiencing-gods-love": {
+    "wp_id": 437,
+    "wp_slug": "32233-experiencing-gods-love",
+    "method": "exact"
+  },
+  "32234-a-trust-relationship": {
+    "wp_id": 439,
+    "wp_slug": "32234-a-trust-relationship",
+    "method": "exact"
+  },
+  "32235-a-heart-for-god": {
+    "wp_id": 441,
+    "wp_slug": "32235-a-heart-for-god",
     "method": "exact"
   },
   "32261-unconfessed-sin-and-an-unrepentant-heart": {
@@ -3514,6 +3584,16 @@
     "wp_slug": "32310-embracing-your-new-identity-in-christ",
     "method": "exact"
   },
+  "32311-what-the-bible-says-about-the-new-you": {
+    "wp_id": 1831,
+    "wp_slug": "32311-what-the-bible-says-about-the-new-you",
+    "method": "exact"
+  },
+  "32320-walking-in-your-new-identity": {
+    "wp_id": 528,
+    "wp_slug": "32320-walking-in-your-new-identity",
+    "method": "exact"
+  },
   "32320-what-the-bible-says-about-the-new-you": {
     "wp_id": 1831,
     "wp_slug": "32320-what-the-bible-says-about-the-new-you",
@@ -3529,9 +3609,19 @@
     "wp_slug": "32331-a-child-of-god",
     "method": "exact"
   },
+  "32331-you-are-a-child-of-god": {
+    "wp_id": 530,
+    "wp_slug": "32331-you-are-a-child-of-god",
+    "method": "exact"
+  },
   "32332-a-saint-with-a-new-nature": {
     "wp_id": 534,
     "wp_slug": "32332-a-saint-with-a-new-nature",
+    "method": "exact"
+  },
+  "32332-you-are-a-saint-with-a-new-nature": {
+    "wp_id": 534,
+    "wp_slug": "32332-you-are-a-saint-with-a-new-nature",
     "method": "exact"
   },
   "32333-a-member-of-the-body-of-christ": {
@@ -3539,9 +3629,39 @@
     "wp_slug": "32333-a-member-of-the-body-of-christ",
     "method": "exact"
   },
+  "32333-you-are-a-member-of-the-body-of-christ": {
+    "wp_id": 537,
+    "wp_slug": "32333-you-are-a-member-of-the-body-of-christ",
+    "method": "exact"
+  },
   "32334-a-citizen-of-gods-kingdom": {
     "wp_id": 539,
     "wp_slug": "32334-a-citizen-of-gods-kingdom",
+    "method": "exact"
+  },
+  "32334-you-are-a-citizen-of-gods-kingdom": {
+    "wp_id": 539,
+    "wp_slug": "32334-you-are-a-citizen-of-gods-kingdom",
+    "method": "exact"
+  },
+  "32340-choosing-wisely-with-your-new-identity": {
+    "wp_id": 23445,
+    "wp_slug": "32340-choosing-wisely-with-your-new-identity",
+    "method": "exact"
+  },
+  "32350-living-out-your-new-identity-daily": {
+    "wp_id": 23446,
+    "wp_slug": "32350-living-out-your-new-identity-daily",
+    "method": "exact"
+  },
+  "32360-living-supernaturally-in-your-new-identity": {
+    "wp_id": 23447,
+    "wp_slug": "32360-living-supernaturally-in-your-new-identity",
+    "method": "exact"
+  },
+  "32370-identity-based-spiritual-warfare": {
+    "wp_id": 23448,
+    "wp_slug": "32370-identity-based-spiritual-warfare",
     "method": "exact"
   },
   "32410-freedom-peace-joy-victory": {
@@ -3549,14 +3669,29 @@
     "wp_slug": "32410-freedom-peace-joy-victory",
     "method": "exact"
   },
+  "32410-who-is-the-holy-spirit": {
+    "wp_id": 23491,
+    "wp_slug": "32410-who-is-the-holy-spirit",
+    "method": "exact"
+  },
   "32420-the-exchanged-life": {
     "wp_id": 549,
     "wp_slug": "32420-the-exchanged-life",
     "method": "exact"
   },
+  "32430-surrender": {
+    "wp_id": 23493,
+    "wp_slug": "32430-surrender",
+    "method": "exact"
+  },
   "32430-the-exchanged-mindset": {
     "wp_id": 1835,
     "wp_slug": "32430-the-exchanged-mindset",
+    "method": "exact"
+  },
+  "32440-how-to-be-filled-and-empowered-by-the-holy-spirit": {
+    "wp_id": 23494,
+    "wp_slug": "32440-how-to-be-filled-and-empowered-by-the-holy-spirit",
     "method": "exact"
   },
   "32441-depend-on-god-for-his-power": {
@@ -3589,6 +3724,11 @@
     "wp_slug": "32460-empowered-for-supernatural-living",
     "method": "exact"
   },
+  "32450-firmly-established": {
+    "wp_id": 23495,
+    "wp_slug": "32450-firmly-established",
+    "method": "exact"
+  },
   "32451-father-jesus-the-holy-spirit-and-you": {
     "wp_id": 23511,
     "wp_slug": "32451-you-are-indwelt-by-the-holy-spirit",
@@ -3613,10 +3753,30 @@
     "wp_id": 13877,
     "wp_slug": "32455-how-to-be-filled-with-the-holy-spirit",
     "method": "exact",
-    "frozen": "source post unpublished from apicontent WP (401) as of Aug 2026; no public replacement found — old Knowing God / Firmly Established series retired in catalog reorg",
+    "frozen": "source post unpublished from apicontent WP (401) as of Aug 2026; no public replacement found \u2014 old Knowing God / Firmly Established series retired in catalog reorg",
     "title": "How to Be Filled with the Holy Spirit"
   },
   "32456-live-in-harmony-with-god": {
+    "wp_id": 23499,
+    "wp_slug": "32490-walking-in-the-spirit",
+    "method": "exact"
+  },
+  "32460-empowered-for-supernatural-living": {
+    "wp_id": 23496,
+    "wp_slug": "32460-empowered-for-supernatural-living",
+    "method": "exact"
+  },
+  "32470-the-spirits-work-of-fruitfulness": {
+    "wp_id": 23497,
+    "wp_slug": "32470-the-spirits-work-of-fruitfulness",
+    "method": "exact"
+  },
+  "32480-the-fruit-of-the-spirit": {
+    "wp_id": 23498,
+    "wp_slug": "32480-the-fruit-of-the-spirit",
+    "method": "exact"
+  },
+  "32490-walking-in-the-spirit": {
     "wp_id": 23499,
     "wp_slug": "32490-walking-in-the-spirit",
     "method": "exact"
@@ -4046,6 +4206,11 @@
     "wp_slug": "34424-avoid-the-type-trap",
     "method": "exact"
   },
+  "34501-how-to-cultivate-marriage": {
+    "wp_id": 776,
+    "wp_slug": "34501-how-to-cultivate-marriage",
+    "method": "exact"
+  },
   "34501-how-to-cultivate-your-marriage": {
     "wp_id": 776,
     "wp_slug": "34501-how-to-cultivate-marriage",
@@ -4239,843 +4404,6 @@
   "34736-act-like-a-parent": {
     "wp_id": 6610,
     "wp_slug": "34736-act-like-a-parent",
-    "method": "exact"
-  },
-  "40101-what-is-evangelism": {
-    "wp_id": 4937,
-    "wp_slug": "40101-what-is-evangelism",
-    "method": "exact"
-  },
-  "40102-reasons-why-believers-should-witness": {
-    "wp_id": 4939,
-    "wp_slug": "40102-reasons-why-believers-should-witness",
-    "method": "exact"
-  },
-  "40103-why-christians-fail-to-witness": {
-    "wp_id": 4943,
-    "wp_slug": "40103-why-christians-fail-to-witness",
-    "method": "exact"
-  },
-  "40104-the-importance-of-scripture-in-evangelism": {
-    "wp_id": 2421,
-    "wp_slug": "40104-the-importance-of-scripture-in-evangelism",
-    "method": "exact"
-  },
-  "40106-digital-evangelism": {
-    "wp_id": 6195,
-    "wp_slug": "40106-digital-evangelism",
-    "method": "exact"
-  },
-  "40107-answering-questions": {
-    "wp_id": 2437,
-    "wp_slug": "40107-answering-questions",
-    "method": "exact"
-  },
-  "41005-the-power": {
-    "wp_id": 19422,
-    "wp_slug": "41005-the-power",
-    "method": "exact"
-  },
-  "41006-your-personal-testimony": {
-    "wp_id": 19424,
-    "wp_slug": "41006-your-personal-testimony",
-    "method": "exact"
-  },
-  "41007-attitudes-and-approaches": {
-    "wp_id": 19436,
-    "wp_slug": "41007-attitudes-and-approaches",
-    "method": "exact"
-  },
-  "41008-asking-questions-using-conversations": {
-    "wp_id": 19438,
-    "wp_slug": "41008-asking-questions-using-conversations",
-    "method": "exact"
-  },
-  "41010-articulating-the-gospel": {
-    "wp_id": 19440,
-    "wp_slug": "41010-articulating-the-gospel",
-    "method": "exact"
-  },
-  "41013-answering-objections": {
-    "wp_id": 19448,
-    "wp_slug": "41013-answering-objections",
-    "method": "exact"
-  },
-  "41014-answering-specific-objections": {
-    "wp_id": 19456,
-    "wp_slug": "41014-answering-specific-objections",
-    "method": "exact"
-  },
-  "41105-evangelism-is-a-process": {
-    "wp_id": 4941,
-    "wp_slug": "40105-evangelism-is-a-process",
-    "method": "fuzzy"
-  },
-  "43001-next-steps-for-new-believers": {
-    "wp_id": 4948,
-    "wp_slug": "43001-next-steps-for-new-believers",
-    "method": "exact"
-  },
-  "43002-your-first-step": {
-    "wp_id": 1227,
-    "wp_slug": "43002-your-first-step",
-    "method": "exact"
-  },
-  "43003-assurance-of-your-salvation": {
-    "wp_id": 2489,
-    "wp_slug": "43003-assurance-of-your-salvation",
-    "method": "exact"
-  },
-  "43004-embrace-your-new-identity": {
-    "wp_id": 1225,
-    "wp_slug": "43004-embrace-your-new-identity",
-    "method": "exact"
-  },
-  "43005-accept-gods-love": {
-    "wp_id": 2491,
-    "wp_slug": "43005-accept-gods-love",
-    "method": "exact"
-  },
-  "43006-depend-on-the-spirit": {
-    "wp_id": 2493,
-    "wp_slug": "43006-depend-on-the-spirit",
-    "method": "exact"
-  },
-  "43007-enjoy-gods-family": {
-    "wp_id": 2496,
-    "wp_slug": "43007-enjoy-gods-family",
-    "method": "exact"
-  },
-  "43008-discover-gods-plan-for-you": {
-    "wp_id": 2498,
-    "wp_slug": "43008-discover-gods-plan-for-you",
-    "method": "exact"
-  },
-  "51001-who-is-the-real-jesus": {
-    "wp_id": 2500,
-    "wp_slug": "51001-who-is-the-real-jesus",
-    "method": "exact"
-  },
-  "51002-was-jesus-a-real-person": {
-    "wp_id": 238,
-    "wp_slug": "51002-was-jesus-a-real-person",
-    "method": "exact"
-  },
-  "51003-did-jesus-rise-from-the-dead": {
-    "wp_id": 5406,
-    "wp_slug": "51003-did-jesus-rise-from-the-dead",
-    "method": "exact"
-  },
-  "51004-jesus-death-and-resurrection-copied-from-other-ancient-deities": {
-    "wp_id": 2504,
-    "wp_slug": "51004-jesus-death-and-resurrection-copied-from-other-ancient-deities",
-    "method": "exact"
-  },
-  "51005-harvard-law-professor-puts-jesus-resurrection-on-trial": {
-    "wp_id": 2518,
-    "wp_slug": "51005-harvard-law-professor-puts-jesus-resurrection-on-trial",
-    "method": "exact"
-  },
-  "51006-the-jesus-family-tomb-fact-or-fiction": {
-    "wp_id": 2514,
-    "wp_slug": "51006-the-jesus-family-tomb-fact-or-fiction",
-    "method": "exact"
-  },
-  "51007-is-jesus-the-jewish-messiah": {
-    "wp_id": 2516,
-    "wp_slug": "51007-is-jesus-the-jewish-messiah",
-    "method": "exact"
-  },
-  "51008-is-jesus-god": {
-    "wp_id": 2520,
-    "wp_slug": "51008-is-jesus-god",
-    "method": "exact"
-  },
-  "51009-did-jesus-claim-to-be-god": {
-    "wp_id": 2522,
-    "wp_slug": "51009-did-jesus-claim-to-be-god",
-    "method": "exact"
-  },
-  "51010-did-the-apostles-believe-jesus-is-god": {
-    "wp_id": 2524,
-    "wp_slug": "51010-did-the-apostles-believe-jesus-is-god",
-    "method": "exact"
-  },
-  "51011-is-jesus-the-only-way-to-god": {
-    "wp_id": 2526,
-    "wp_slug": "51011-is-jesus-the-only-way-to-god",
-    "method": "exact",
-    "frozen": "source post unpublished from apicontent WP (401) as of Aug 2026; no public replacement found — old Knowing God / Firmly Established series retired in catalog reorg",
-    "title": "Is Jesus the Only Way to God?"
-  },
-  "51012-was-there-a-jesus-conspiracy": {
-    "wp_id": 240,
-    "wp_slug": "51012-was-there-a-jesus-conspiracy",
-    "method": "exact"
-  },
-  "51014-why-arent-gnostic-gospels-in-the-new-testament": {
-    "wp_id": 2508,
-    "wp_slug": "51014-why-arent-gnostic-gospels-in-the-new-testament",
-    "method": "exact"
-  },
-  "51018-is-jesus-coming-back": {
-    "wp_id": 2528,
-    "wp_slug": "51018-is-jesus-coming-back",
-    "method": "exact"
-  },
-  "51019-is-jesus-relevant-today": {
-    "wp_id": 2545,
-    "wp_slug": "51019-is-jesus-relevant-today",
-    "method": "exact"
-  },
-  "52002-does-the-universe-have-a-beginning": {
-    "wp_id": 80,
-    "wp_slug": "52002-does-the-universe-have-a-beginning",
-    "method": "exact"
-  },
-  "52003-why-is-only-earth-suitable-for-life": {
-    "wp_id": 2668,
-    "wp_slug": "52003-why-is-only-earth-suitable-for-life",
-    "method": "exact"
-  },
-  "52004-is-the-universe-a-product-of-design-or-chance": {
-    "wp_id": 2671,
-    "wp_slug": "52004-is-the-universe-a-product-of-design-or-chance",
-    "method": "exact"
-  },
-  "52005-did-darwin-get-it-wrong": {
-    "wp_id": 2673,
-    "wp_slug": "52005-did-darwin-get-it-wrong",
-    "method": "exact"
-  },
-  "52006-how-did-life-begin": {
-    "wp_id": 2675,
-    "wp_slug": "52006-how-did-life-begin",
-    "method": "exact"
-  },
-  "52007-where-are-darwins-predicted-fossils": {
-    "wp_id": 2677,
-    "wp_slug": "52007-where-are-darwins-predicted-fossils",
-    "method": "exact"
-  },
-  "52009-is-a-designer-revealed-in-creation": {
-    "wp_id": 2681,
-    "wp_slug": "52009-is-a-designer-revealed-in-creation",
-    "method": "exact"
-  },
-  "53001-are-the-gospel-accounts-of-jesus-true": {
-    "wp_id": 248,
-    "wp_slug": "53001-are-the-gospel-accounts-of-jesus-true",
-    "method": "exact"
-  },
-  "53002-is-the-bible-true": {
-    "wp_id": 250,
-    "wp_slug": "53002-is-the-bible-true",
-    "method": "exact"
-  },
-  "53003-is-the-bible-historically-reliable": {
-    "wp_id": 2645,
-    "wp_slug": "53003-is-the-bible-historically-reliable",
-    "method": "exact"
-  },
-  "53004-did-the-old-testament-accurately-predict-jesus-as-the-messiah": {
-    "wp_id": 2652,
-    "wp_slug": "53004-did-the-old-testament-accurately-predict-jesus-as-the-messiah",
-    "method": "exact"
-  },
-  "53005-does-the-bible-foretell-future-events-accurately": {
-    "wp_id": 2654,
-    "wp_slug": "53005-does-the-bible-foretell-future-events-accurately",
-    "method": "exact"
-  },
-  "53006-is-the-bibles-portrayal-of-people-places-and-events-accurate": {
-    "wp_id": 2656,
-    "wp_slug": "53006-is-the-bibles-portrayal-of-people-places-and-events-accurate",
-    "method": "exact"
-  },
-  "53007-is-the-bible-consistent-with-science": {
-    "wp_id": 2658,
-    "wp_slug": "53007-is-the-bible-consistent-with-science",
-    "method": "exact"
-  },
-  "53008-does-the-bible-demonstrate-divine-authorship": {
-    "wp_id": 2660,
-    "wp_slug": "53008-does-the-bible-demonstrate-divine-authorship",
-    "method": "exact"
-  },
-  "60100-1-introduction": {
-    "wp_id": 6814,
-    "wp_slug": "60100-1-introduction",
-    "method": "exact"
-  },
-  "60101-1-becoming-a-new-person-in-christ": {
-    "wp_id": 6816,
-    "wp_slug": "60101-1-becoming-a-new-person-in-christ",
-    "method": "exact"
-  },
-  "60102-2-the-holy-spirit-gods-gift-to-you": {
-    "wp_id": 6825,
-    "wp_slug": "60102-2-the-holy-spirit-gods-gift-to-you",
-    "method": "exact"
-  },
-  "60103-3-faith-the-key-to-walking-in-the-spirit": {
-    "wp_id": 6834,
-    "wp_slug": "60103-3-faith-the-key-to-walking-in-the-spirit",
-    "method": "exact"
-  },
-  "60104-4-the-bible-gods-love-letter-to-you": {
-    "wp_id": 6856,
-    "wp_slug": "60104-4-the-bible-gods-love-letter-to-you",
-    "method": "exact"
-  },
-  "60105-5-prayer-talking-to-your-heavenly-father": {
-    "wp_id": 6860,
-    "wp_slug": "60105-5-prayer-talking-to-your-heavenly-father",
-    "method": "exact"
-  },
-  "60106-6-citizens-of-heaven-gods-family-and-you": {
-    "wp_id": 6861,
-    "wp_slug": "60106-6-citizens-of-heaven-gods-familyand-you",
-    "method": "prefix"
-  },
-  "60107-7-obedience-running-to-win": {
-    "wp_id": 6862,
-    "wp_slug": "60107-7-obedience-running-to-win",
-    "method": "exact"
-  },
-  "60108-8-next-steps-for-your-spiritual-growth": {
-    "wp_id": 11490,
-    "wp_slug": "60108-8-additional-resources",
-    "method": "prefix"
-  },
-  "65601-1-the-myth-of-complexity": {
-    "wp_id": 7002,
-    "wp_slug": "65601-the-myth-of-complexity",
-    "method": "fuzzy"
-  },
-  "65602-2-how-can-i-find-peace-and-satisfaction-in-this-world": {
-    "wp_id": 7005,
-    "wp_slug": "65602-how-can-i-find-peace-and-satisfaction-in-this-world",
-    "method": "fuzzy"
-  },
-  "65603-3-most-of-us-have-had-a-poor-start-in-life": {
-    "wp_id": 7012,
-    "wp_slug": "65603-most-of-us-have-had-a-poor-start-in-life",
-    "method": "fuzzy"
-  },
-  "65604-4-gods-sharpest-tools-my-biggest-problems": {
-    "wp_id": 7018,
-    "wp_slug": "65604-gods-sharpest-tools-my-biggest-problems",
-    "method": "fuzzy"
-  },
-  "65605-5-sin-has-not-been-eliminated-as-of-the-date-of-publication-of-this-course": {
-    "wp_id": 7022,
-    "wp_slug": "65605-sin-has-not-been-eliminated-as-of-the-date-of-publication-of-this-course",
-    "method": "fuzzy"
-  },
-  "65606-6-why-dont-you-just-concentrate-on-the-positive": {
-    "wp_id": 7027,
-    "wp_slug": "65606-why-dont-you-just-concentrate-on-the-positive",
-    "method": "fuzzy"
-  },
-  "65607-7-look-do-you-want-me-to-drive-this-car-or-do-you-want-to-do-it": {
-    "wp_id": 7032,
-    "wp_slug": "65607-look-do-you-want-me-to-drive-this-car-or-do-you-want-to-do-it",
-    "method": "fuzzy"
-  },
-  "65608-8-why-is-it-difficult-to-walk-by-a-mirror-without-looking-at-yourself": {
-    "wp_id": 7036,
-    "wp_slug": "65608-why-is-it-difficult-to-walk-by-a-mirror-without-looking-at-yourself",
-    "method": "fuzzy"
-  },
-  "65609-9-at-what-age-is-it-acceptable-to-sulk-when-you-cant-have-what-you-want": {
-    "wp_id": 7035,
-    "wp_slug": "65609-at-what-age-is-it-acceptable-to-sulk-when-you-cant-have-what-you-want",
-    "method": "fuzzy"
-  },
-  "65610-10-boom-the-wing-of-the-plane-smacked-me-in-the-head": {
-    "wp_id": 7041,
-    "wp_slug": "65610-boom-the-wing-of-the-plane-smacked-me-in-the-head",
-    "method": "fuzzy"
-  },
-  "65611-11-i-need-to-forgive-those-soldiers": {
-    "wp_id": 7044,
-    "wp_slug": "65611-i-need-to-forgive-those-soldiers",
-    "method": "fuzzy"
-  },
-  "65613-13-your-wife-has-inoperable-cancer": {
-    "wp_id": 7052,
-    "wp_slug": "65613-your-wife-has-inoperable-cancer",
-    "method": "fuzzy"
-  },
-  "65614-14-living-and-dying": {
-    "wp_id": 7055,
-    "wp_slug": "65614-living-and-dying",
-    "method": "fuzzy"
-  },
-  "65615-15-i-prayed-but-i-still-didnt-feel-right": {
-    "wp_id": 7058,
-    "wp_slug": "65615-i-prayed-but-i-still-didnt-feel-right",
-    "method": "fuzzy"
-  },
-  "65616-16-anyone-who-talks-about-rejoicing-always-just-doesnt-understand-the-real-situation": {
-    "wp_id": 7061,
-    "wp_slug": "65616-anyone-who-talks-about-rejoicing-always-just-doesnt-understand-the-real-situation",
-    "method": "fuzzy"
-  },
-  "65617-17-anger-is-one-letter-away-from-danger": {
-    "wp_id": 7065,
-    "wp_slug": "65617-anger-is-one-letter-away-from-danger",
-    "method": "fuzzy"
-  },
-  "65618-18-if-you-dont-want-to-you-arent-going-to": {
-    "wp_id": 7069,
-    "wp_slug": "65618-if-you-dont-want-to-you-arent-going-to",
-    "method": "fuzzy"
-  },
-  "65619-19-the-foundation": {
-    "wp_id": 7071,
-    "wp_slug": "65619-the-foundation",
-    "method": "prefix"
-  },
-  "65701-1-lifes-many-stresses": {
-    "wp_id": 11349,
-    "wp_slug": "65701-1-lifes-many-stresses",
-    "method": "exact"
-  },
-  "65702-2-self-discovery": {
-    "wp_id": 11350,
-    "wp_slug": "65702-2-self-discovery",
-    "method": "exact"
-  },
-  "65703-3-after-discoverywhat": {
-    "wp_id": 11351,
-    "wp_slug": "65703-3-after-discoverywhat",
-    "method": "exact"
-  },
-  "65704-4-the-impact-of-our-emotions": {
-    "wp_id": 11352,
-    "wp_slug": "65704-4-the-impact-of-our-emotions",
-    "method": "exact"
-  },
-  "65705-5-embracing-the-truth": {
-    "wp_id": 11353,
-    "wp_slug": "65705-5-embracing-the-truth",
-    "method": "exact"
-  },
-  "65706-6-behaviors-that-stand-in-the-way-of-your-peace": {
-    "wp_id": 11354,
-    "wp_slug": "65706-6-behaviors-that-stand-in-the-way-of-your-peace",
-    "method": "exact"
-  },
-  "65707-7-mind-and-body": {
-    "wp_id": 11355,
-    "wp_slug": "65707-7-mind-and-body",
-    "method": "exact"
-  },
-  "65708-8-there-is-hope": {
-    "wp_id": 11364,
-    "wp_slug": "65708-8-there-is-hope",
-    "method": "exact"
-  },
-  "65709-9-the-responsibility-is-yours": {
-    "wp_id": 11365,
-    "wp_slug": "65709-9-the-responsibility-is-yours",
-    "method": "exact"
-  },
-  "65710-10-help-for-a-hard-journey": {
-    "wp_id": 11366,
-    "wp_slug": "65710-10-help-for-a-hard-journey",
-    "method": "exact"
-  },
-  "93610-01-why-plant-a-church": {
-    "wp_id": 21588,
-    "wp_slug": "93610-01-why-plant-a-church",
-    "method": "exact"
-  },
-  "93610-02-definition-and-purpose-of-a-church": {
-    "wp_id": 21589,
-    "wp_slug": "93610-02-definition-and-purpose-of-a-church",
-    "method": "exact"
-  },
-  "93610-03-motivation-for-planting-a-church": {
-    "wp_id": 21590,
-    "wp_slug": "93610-03-motivation-for-planting-a-church",
-    "method": "exact"
-  },
-  "93610-04-values-vision-and-style-for-your-church": {
-    "wp_id": 21591,
-    "wp_slug": "93610-04-values-vision-and-style-for-your-church",
-    "method": "exact"
-  },
-  "93610-05-planning-and-strategy": {
-    "wp_id": 21592,
-    "wp_slug": "93610-05-planning-and-strategy",
-    "method": "exact"
-  },
-  "93610-06-the-church-planting-team": {
-    "wp_id": 21593,
-    "wp_slug": "93610-06-the-church-planting-team",
-    "method": "exact"
-  },
-  "93610-07-spiritual-warfare-and-outreach": {
-    "wp_id": 21594,
-    "wp_slug": "93610-07-spiritual-warfare-and-outreach",
-    "method": "exact"
-  },
-  "93610-08-meet-on-a-regular-basis-for-worship-prayer-and-study": {
-    "wp_id": 21595,
-    "wp_slug": "93610-08-meet-on-a-regular-basis-for-worship-prayer-and-study",
-    "method": "exact"
-  },
-  "93610-09-connect-new-believers-to-a-process-of-discipleship": {
-    "wp_id": 21596,
-    "wp_slug": "93610-09-connect-new-believers-to-a-process-of-discipleship",
-    "method": "exact"
-  },
-  "93610-10-repeat-the-process-as-often-as-possible": {
-    "wp_id": 21597,
-    "wp_slug": "93610-10-repeat-the-process-as-often-as-possible",
-    "method": "exact"
-  },
-  "93610-11-ten-key-elements-of-church-planting-movements": {
-    "wp_id": 21598,
-    "wp_slug": "93610-11-ten-key-elements-of-church-planting-movements",
-    "method": "exact"
-  },
-  "93610-12-the-church-represented-in-the-marketplace": {
-    "wp_id": 21599,
-    "wp_slug": "93610-12-the-church-represented-in-the-marketplace",
-    "method": "exact"
-  },
-  "93621-1-lesson-1-intimacy-with-god": {
-    "wp_id": 21644,
-    "wp_slug": "93621-1-lesson-1-intimacy-with-god",
-    "method": "exact"
-  },
-  "93621-2-lesson-2-prayer-and-fasting": {
-    "wp_id": 21645,
-    "wp_slug": "93621-2-lesson-2-prayer-and-fasting",
-    "method": "exact"
-  },
-  "93621-3-lesson-3-hearing-gods-voice": {
-    "wp_id": 21646,
-    "wp_slug": "93621-3-lesson-3-hearing-gods-voice",
-    "method": "exact"
-  },
-  "93621-4-lesson-4-called-and-committed": {
-    "wp_id": 21647,
-    "wp_slug": "93621-4-lesson-4-called-and-committed",
-    "method": "exact"
-  },
-  "93621-5-lesson-5-healthy-family": {
-    "wp_id": 21654,
-    "wp_slug": "93621-5-lesson-5-healthy-family",
-    "method": "exact"
-  },
-  "93621-6-lesson-6-understanding-disciple-making-movement": {
-    "wp_id": 21648,
-    "wp_slug": "93621-6-lesson-6-understanding-disciple-making-movement",
-    "method": "exact"
-  },
-  "93621-7-lesson-7-developing-culturally-relevant-disciple-making-strategy": {
-    "wp_id": 21657,
-    "wp_slug": "93621-7-lesson-7-developing-culturally-relevant-disciple-making-strategy",
-    "method": "exact"
-  },
-  "93660-1-matthew": {
-    "wp_id": 22039,
-    "wp_slug": "93660-1-matthew",
-    "method": "exact"
-  },
-  "93660-2-mark": {
-    "wp_id": 22040,
-    "wp_slug": "93660-2-mark",
-    "method": "exact"
-  },
-  "93660-3-luke": {
-    "wp_id": 22041,
-    "wp_slug": "93660-3-luke",
-    "method": "exact"
-  },
-  "93660-4-john": {
-    "wp_id": 22042,
-    "wp_slug": "93660-4-john",
-    "method": "exact"
-  },
-  "93660-5-acts": {
-    "wp_id": 22043,
-    "wp_slug": "93660-5-acts",
-    "method": "exact"
-  },
-  "93660-6-romans": {
-    "wp_id": 22044,
-    "wp_slug": "93660-6-romans",
-    "method": "exact"
-  },
-  "93660-7-1-corinthians": {
-    "wp_id": 22045,
-    "wp_slug": "93660-7-1-corinthians",
-    "method": "exact"
-  },
-  "93660-8-2-corinthians": {
-    "wp_id": 22046,
-    "wp_slug": "93660-8-2-corinthians",
-    "method": "exact"
-  },
-  "93660-9-galatians": {
-    "wp_id": 22047,
-    "wp_slug": "93660-9-galatians",
-    "method": "exact"
-  },
-  "93661-0-epehsians": {
-    "wp_id": 22048,
-    "wp_slug": "93661-0-ephesians",
-    "method": "prefix"
-  },
-  "93661-1-colossians": {
-    "wp_id": 22059,
-    "wp_slug": "93661-1-philippians",
-    "method": "prefix"
-  },
-  "93661-2-philippians": {
-    "wp_id": 22060,
-    "wp_slug": "93661-2-colossians",
-    "method": "prefix"
-  },
-  "93661-3--1-thessalonians": {
-    "wp_id": 22062,
-    "wp_slug": "93661-4-2-thessalonians",
-    "method": "fuzzy"
-  },
-  "93661-4-2-thessalonians": {
-    "wp_id": 22062,
-    "wp_slug": "93661-4-2-thessalonians",
-    "method": "exact"
-  },
-  "93661-5-1-timothy": {
-    "wp_id": 22063,
-    "wp_slug": "93661-5-1-timothy",
-    "method": "exact"
-  },
-  "93661-6-2-timothy": {
-    "wp_id": 22064,
-    "wp_slug": "93661-6-2-timothy",
-    "method": "exact"
-  },
-  "93661-7-titus": {
-    "wp_id": 22065,
-    "wp_slug": "93661-7-titus",
-    "method": "exact"
-  },
-  "93661-8-philemon": {
-    "wp_id": 22066,
-    "wp_slug": "93661-8-philemon",
-    "method": "exact"
-  },
-  "93661-9-hebrew": {
-    "wp_id": 22067,
-    "wp_slug": "93661-9-hebrews",
-    "method": "prefix"
-  },
-  "93662-0-james": {
-    "wp_id": 22077,
-    "wp_slug": "93662-0-james",
-    "method": "exact"
-  },
-  "93662-1-1-peter": {
-    "wp_id": 22078,
-    "wp_slug": "93662-1-1-peter",
-    "method": "exact"
-  },
-  "93662-2-2-peter": {
-    "wp_id": 22079,
-    "wp_slug": "93662-2-2-peter",
-    "method": "exact"
-  },
-  "93662-3-1-john": {
-    "wp_id": 22080,
-    "wp_slug": "93662-3-1-john",
-    "method": "exact"
-  },
-  "93662-4-2-john": {
-    "wp_id": 22081,
-    "wp_slug": "93662-4-2-john",
-    "method": "exact"
-  },
-  "93662-5-3-john": {
-    "wp_id": 22082,
-    "wp_slug": "93662-5-3-john",
-    "method": "exact"
-  },
-  "93662-6-jude": {
-    "wp_id": 22083,
-    "wp_slug": "93662-6-jude",
-    "method": "exact"
-  },
-  "93662-7-revelation": {
-    "wp_id": 22084,
-    "wp_slug": "93662-7-revelation",
-    "method": "exact"
-  },
-  "93651-1-genesis": {
-    "wp_id": 21934,
-    "wp_slug": "93651-1-genesis",
-    "method": "exact"
-  },
-  "93651-2-exodus": {
-    "wp_id": 21935,
-    "wp_slug": "93651-2-exodus",
-    "method": "exact"
-  },
-  "93651-3-leviticus": {
-    "wp_id": 21936,
-    "wp_slug": "93651-3-leviticus",
-    "method": "exact"
-  },
-  "93651-4-numbers": {
-    "wp_id": 21937,
-    "wp_slug": "93651-4-numbers",
-    "method": "exact"
-  },
-  "93651-5-deuteronomy": {
-    "wp_id": 21938,
-    "wp_slug": "93651-5-deuteronomy",
-    "method": "exact"
-  },
-  "93651-6-joshua": {
-    "wp_id": 21939,
-    "wp_slug": "93651-6-joshua",
-    "method": "exact"
-  },
-  "93651-7-judges": {
-    "wp_id": 21940,
-    "wp_slug": "93651-7-judges",
-    "method": "exact"
-  },
-  "93651-8-ruth": {
-    "wp_id": 21941,
-    "wp_slug": "93651-8-ruth",
-    "method": "exact"
-  },
-  "93651-9-1-samuel": {
-    "wp_id": 21942,
-    "wp_slug": "93651-9-1-samuel",
-    "method": "exact"
-  },
-  "93652-0-2-samuel": {
-    "wp_id": 21955,
-    "wp_slug": "93652-0-2-samuel",
-    "method": "exact"
-  },
-  "93652-1-1-kings": {
-    "wp_id": 21956,
-    "wp_slug": "93652-1-1-kings",
-    "method": "exact"
-  },
-  "93652-2-2-kings": {
-    "wp_id": 21957,
-    "wp_slug": "93652-2-2-kings",
-    "method": "exact"
-  },
-  "93652-3-1-&-2-chronicles": {
-    "wp_id": 21958,
-    "wp_slug": "93652-3-1-2-chronicles",
-    "method": "exact"
-  },
-  "93652-5-esther": {
-    "wp_id": 21989,
-    "wp_slug": "93652-5-esther",
-    "method": "exact"
-  },
-  "93652-6-job": {
-    "wp_id": 21960,
-    "wp_slug": "93652-6-job",
-    "method": "exact"
-  },
-  "93652-7-psalms": {
-    "wp_id": 21961,
-    "wp_slug": "93652-7-psalms",
-    "method": "exact"
-  },
-  "93652-9-ecclesiastes": {
-    "wp_id": 21963,
-    "wp_slug": "93652-9-ecclesiastes",
-    "method": "exact"
-  },
-  "93653-1-isaiah": {
-    "wp_id": 21964,
-    "wp_slug": "93653-1-isaiah",
-    "method": "exact"
-  },
-  "93653-4-ezekiel": {
-    "wp_id": 22007,
-    "wp_slug": "93653-4-ezekiel",
-    "method": "exact"
-  },
-  "93653-5-daniel": {
-    "wp_id": 22008,
-    "wp_slug": "93653-5-daniel",
-    "method": "exact"
-  },
-  "93653-6-hosea": {
-    "wp_id": 22009,
-    "wp_slug": "93653-6-hosea",
-    "method": "exact"
-  },
-  "93653-7-joel": {
-    "wp_id": 22010,
-    "wp_slug": "93653-7-joel",
-    "method": "exact"
-  },
-  "93653-8-amos": {
-    "wp_id": 22011,
-    "wp_slug": "93653-8-amos",
-    "method": "exact"
-  },
-  "93653-9-obadiah": {
-    "wp_id": 22012,
-    "wp_slug": "93653-9-obadiah",
-    "method": "exact"
-  },
-  "93654-0-jonah": {
-    "wp_id": 22013,
-    "wp_slug": "93654-0-jonah",
-    "method": "exact"
-  },
-  "93654-1-micah": {
-    "wp_id": 22017,
-    "wp_slug": "93654-1-micah",
-    "method": "exact"
-  },
-  "93654-2-nahum": {
-    "wp_id": 22018,
-    "wp_slug": "93654-2-nahum",
-    "method": "exact"
-  },
-  "93654-3-habakkuk": {
-    "wp_id": 22019,
-    "wp_slug": "93654-3-habakkuk",
-    "method": "exact"
-  },
-  "93654-4-Zephaniah": {
-    "wp_id": 22020,
-    "wp_slug": "93654-4-zephaniah",
-    "method": "exact"
-  },
-  "93654-5-haggai": {
-    "wp_id": 22021,
-    "wp_slug": "93654-5-haggai",
-    "method": "exact"
-  },
-  "93654-6-Zechariah": {
-    "wp_id": 22022,
-    "wp_slug": "93654-6-zechariah",
-    "method": "exact"
-  },
-  "93654-7-malachi": {
-    "wp_id": 22023,
-    "wp_slug": "93654-7-malachi",
     "method": "exact"
   },
   "38601-overview-tanak-old-testament": {
@@ -5443,280 +4771,312 @@
     "wp_slug": "38732-overview-revelation-ch-12-22",
     "method": "exact"
   },
-  "93622-1-lesson-1-demography-cultraure-religious-beliiefs": {
-    "wp_id": 21666,
-    "wp_slug": "93622-1-lesson-1-demography-cultraure-religious-beliiefs",
+  "40101-what-is-evangelism": {
+    "wp_id": 4937,
+    "wp_slug": "40101-what-is-evangelism",
     "method": "exact"
   },
-  "93622-2-lesson-2-spiritual-warfare": {
-    "wp_id": 21667,
-    "wp_slug": "93622-2-lesson-2-spiritual-warfare",
+  "40102-reasons-why-believers-should-witness": {
+    "wp_id": 4939,
+    "wp_slug": "40102-reasons-why-believers-should-witness",
     "method": "exact"
   },
-  "93622-3-lesson-3-prayer-walking": {
-    "wp_id": 21668,
-    "wp_slug": "93622-3-lesson-3-prayer-walking",
+  "40103-why-christians-fail-to-witness": {
+    "wp_id": 4943,
+    "wp_slug": "40103-why-christians-fail-to-witness",
     "method": "exact"
   },
-  "93622-4-lesson-4-orality-training": {
-    "wp_id": 21669,
-    "wp_slug": "93622-4-lesson-4-orality-training",
+  "40104-the-importance-of-scripture-in-evangelism": {
+    "wp_id": 2421,
+    "wp_slug": "40104-the-importance-of-scripture-in-evangelism",
     "method": "exact"
   },
-  "93623-1-lesson-1-relational-evangelism": {
-    "wp_id": 21670,
-    "wp_slug": "93623-1-lesson-1-relational-evangelism",
+  "40106-digital-evangelism": {
+    "wp_id": 6195,
+    "wp_slug": "40106-digital-evangelism",
     "method": "exact"
   },
-  "93623-2-lesson-2-person-of-peace": {
-    "wp_id": 21671,
-    "wp_slug": "93623-2-lesson-2-person-of-peace",
+  "40107-answering-questions": {
+    "wp_id": 2437,
+    "wp_slug": "40107-answering-questions",
     "method": "exact"
   },
-  "93623-3-lesson-3-call-to-repentance-belief-and-baptism": {
-    "wp_id": 21679,
-    "wp_slug": "93623-3-lesson-3-call-to-repentance-belief-and-baptism",
+  "41005-the-power": {
+    "wp_id": 19422,
+    "wp_slug": "41005-the-power",
     "method": "exact"
   },
-  "93623-4-lesson-4-the-3-3rds-group-format": {
-    "wp_id": 21680,
-    "wp_slug": "93623-4-lesson-4-the-3-3rds-group-format",
+  "41006-your-personal-testimony": {
+    "wp_id": 19424,
+    "wp_slug": "41006-your-personal-testimony",
     "method": "exact"
   },
-  "93623-5-lesson-5-gathering-as-a-church": {
-    "wp_id": 21681,
-    "wp_slug": "93623-5-lesson-5-gathering-as-a-church",
+  "41007-attitudes-and-approaches": {
+    "wp_id": 19436,
+    "wp_slug": "41007-attitudes-and-approaches",
     "method": "exact"
   },
-  "93623-6-lesson-6-freedom-ministry": {
-    "wp_id": 21682,
-    "wp_slug": "93623-6-lesson-6-freedom-ministry",
+  "41008-asking-questions-using-conversations": {
+    "wp_id": 19438,
+    "wp_slug": "41008-asking-questions-using-conversations",
     "method": "exact"
   },
-  "93623-7-lesson-7-bible-study-methods": {
-    "wp_id": 21683,
-    "wp_slug": "93623-7-lesson-7-bible-study-methods",
+  "41010-articulating-the-gospel": {
+    "wp_id": 19440,
+    "wp_slug": "41010-articulating-the-gospel",
     "method": "exact"
   },
-  "93623-8-lesson-8-prayer": {
-    "wp_id": 21684,
-    "wp_slug": "93623-8-lesson-8-prayer",
+  "41013-answering-objections": {
+    "wp_id": 19448,
+    "wp_slug": "41013-answering-objections",
     "method": "exact"
   },
-  "93623-9-lesson-9-worship-life-of-the-disciple": {
-    "wp_id": 21685,
-    "wp_slug": "93623-9-lesson-9-worship-life-of-the-disciple",
+  "41014-answering-specific-objections": {
+    "wp_id": 19456,
+    "wp_slug": "41014-answering-specific-objections",
     "method": "exact"
   },
-  "93624-1-lesson-1-call-to-give-and-serve": {
-    "wp_id": 21709,
-    "wp_slug": "93624-1-lesson-1-call-to-give-and-serve",
-    "method": "exact"
-  },
-  "93624-2-lesson-2-selecting-leaders": {
-    "wp_id": 21710,
-    "wp_slug": "93624-2-lesson-2-selecting-leaders",
-    "method": "exact"
-  },
-  "93624-3-lesson-3-modeling-to-multiply-leaders": {
-    "wp_id": 21711,
-    "wp_slug": "93624-3-lesson-3-modeling-to-multiply-leaders",
-    "method": "exact"
-  },
-  "93624-4-lesson-4-coaching-leaders-nurturing-skill-and-ability-in-others": {
-    "wp_id": 21712,
-    "wp_slug": "93624-4-lesson-4-coaching-leaders-nurturing-skill-and-ability-in-others",
-    "method": "exact"
-  },
-  "93624-5-lesson-5-four-fields-and-multiplication": {
-    "wp_id": 21713,
-    "wp_slug": "93624-5-lesson-5-four-fields-and-multiplication",
-    "method": "exact"
-  },
-  "93624-6-lesson-6-evangelism-who-list-of-100": {
-    "wp_id": 21714,
-    "wp_slug": "93624-6-lesson-6-evangelism-who-list-of-100",
-    "method": "exact"
-  },
-  "93624-7-lesson-7-how-gods-story": {
-    "wp_id": 21715,
-    "wp_slug": "93624-7-lesson-7-how-gods-story",
-    "method": "exact"
-  },
-  "93624-8-lesson-8-how-your-story": {
-    "wp_id": 21716,
-    "wp_slug": "93624-8-lesson-8-how-your-story",
-    "method": "exact"
-  },
-  "93624-9-lesson-9-commissioning": {
-    "wp_id": 21717,
-    "wp_slug": "93624-9-lesson-9-commissioning",
-    "method": "exact"
-  },
-  "93651-old-tesatament-introduction": {
-    "wp_id": 21943,
-    "wp_slug": "93651-old-testament-introduction",
+  "41105-evangelism-is-a-process": {
+    "wp_id": 4941,
+    "wp_slug": "40105-evangelism-is-a-process",
     "method": "fuzzy"
   },
-  "93652-8-proverbs": {
-    "wp_id": 21962,
-    "wp_slug": "93652-7-proverbs",
-    "method": "fuzzy"
-  },
-  "93653-3-lamentation": {
-    "wp_id": 22006,
-    "wp_slug": "93653-3-lamentations",
-    "method": "fuzzy"
-  },
-  "32211-the-supreme-pursuit-of-the-heart": {
-    "wp_id": 23291,
-    "wp_slug": "32211-the-supreme-pursuit-of-the-heart",
+  "43001-next-steps-for-new-believers": {
+    "wp_id": 4948,
+    "wp_slug": "43001-next-steps-for-new-believers",
     "method": "exact"
   },
-  "32212-attributes-of-self-existence": {
-    "wp_id": 23292,
-    "wp_slug": "32212-attributes-of-self-existence",
+  "43002-your-first-step": {
+    "wp_id": 1227,
+    "wp_slug": "43002-your-first-step",
     "method": "exact"
   },
-  "32213-attributes-of-sovereignty": {
-    "wp_id": 23293,
-    "wp_slug": "32213-attributes-of-sovereignty",
+  "43003-assurance-of-your-salvation": {
+    "wp_id": 2489,
+    "wp_slug": "43003-assurance-of-your-salvation",
     "method": "exact"
   },
-  "32214-attributes-of-holiness": {
-    "wp_id": 23294,
-    "wp_slug": "32214-attributes-of-holiness",
+  "43004-embrace-your-new-identity": {
+    "wp_id": 1225,
+    "wp_slug": "43004-embrace-your-new-identity",
     "method": "exact"
   },
-  "32215-attributes-of-love": {
-    "wp_id": 23295,
-    "wp_slug": "32215-attributes-of-love",
+  "43005-accept-gods-love": {
+    "wp_id": 2491,
+    "wp_slug": "43005-accept-gods-love",
     "method": "exact"
   },
-  "32216-live-in-the-light-of-his-majesty": {
-    "wp_id": 23296,
-    "wp_slug": "32216-live-in-the-light-of-his-majesty",
+  "43006-depend-on-the-spirit": {
+    "wp_id": 2493,
+    "wp_slug": "43006-depend-on-the-spirit",
     "method": "exact"
   },
-  "32231-our-triune-god-father-son-and-holy-spirit": {
-    "wp_id": 433,
-    "wp_slug": "32231-our-triune-god-father-son-and-holy-spirit",
+  "43007-enjoy-gods-family": {
+    "wp_id": 2496,
+    "wp_slug": "43007-enjoy-gods-family",
     "method": "exact"
   },
-  "32232-god-loves-you-forever": {
-    "wp_id": 435,
-    "wp_slug": "32232-god-loves-you-forever",
+  "43008-discover-gods-plan-for-you": {
+    "wp_id": 2498,
+    "wp_slug": "43008-discover-gods-plan-for-you",
     "method": "exact"
   },
-  "32233-experiencing-gods-love": {
-    "wp_id": 437,
-    "wp_slug": "32233-experiencing-gods-love",
+  "51001-who-is-the-real-jesus": {
+    "wp_id": 2500,
+    "wp_slug": "51001-who-is-the-real-jesus",
     "method": "exact"
   },
-  "32234-a-trust-relationship": {
-    "wp_id": 439,
-    "wp_slug": "32234-a-trust-relationship",
+  "51002-was-jesus-a-real-person": {
+    "wp_id": 238,
+    "wp_slug": "51002-was-jesus-a-real-person",
     "method": "exact"
   },
-  "32235-a-heart-for-god": {
-    "wp_id": 441,
-    "wp_slug": "32235-a-heart-for-god",
+  "51003-did-jesus-rise-from-the-dead": {
+    "wp_id": 5406,
+    "wp_slug": "51003-did-jesus-rise-from-the-dead",
     "method": "exact"
   },
-  "32311-what-the-bible-says-about-the-new-you": {
-    "wp_id": 1831,
-    "wp_slug": "32311-what-the-bible-says-about-the-new-you",
+  "51004-jesus-death-and-resurrection-copied-from-other-ancient-deities": {
+    "wp_id": 2504,
+    "wp_slug": "51004-jesus-death-and-resurrection-copied-from-other-ancient-deities",
     "method": "exact"
   },
-  "32320-walking-in-your-new-identity": {
-    "wp_id": 528,
-    "wp_slug": "32320-walking-in-your-new-identity",
+  "51005-harvard-law-professor-puts-jesus-resurrection-on-trial": {
+    "wp_id": 2518,
+    "wp_slug": "51005-harvard-law-professor-puts-jesus-resurrection-on-trial",
     "method": "exact"
   },
-  "32331-you-are-a-child-of-god": {
-    "wp_id": 530,
-    "wp_slug": "32331-you-are-a-child-of-god",
+  "51006-the-jesus-family-tomb-fact-or-fiction": {
+    "wp_id": 2514,
+    "wp_slug": "51006-the-jesus-family-tomb-fact-or-fiction",
     "method": "exact"
   },
-  "32332-you-are-a-saint-with-a-new-nature": {
-    "wp_id": 534,
-    "wp_slug": "32332-you-are-a-saint-with-a-new-nature",
+  "51007-is-jesus-the-jewish-messiah": {
+    "wp_id": 2516,
+    "wp_slug": "51007-is-jesus-the-jewish-messiah",
     "method": "exact"
   },
-  "32333-you-are-a-member-of-the-body-of-christ": {
-    "wp_id": 537,
-    "wp_slug": "32333-you-are-a-member-of-the-body-of-christ",
+  "51008-is-jesus-god": {
+    "wp_id": 2520,
+    "wp_slug": "51008-is-jesus-god",
     "method": "exact"
   },
-  "32334-you-are-a-citizen-of-gods-kingdom": {
-    "wp_id": 539,
-    "wp_slug": "32334-you-are-a-citizen-of-gods-kingdom",
+  "51009-did-jesus-claim-to-be-god": {
+    "wp_id": 2522,
+    "wp_slug": "51009-did-jesus-claim-to-be-god",
     "method": "exact"
   },
-  "32340-choosing-wisely-with-your-new-identity": {
-    "wp_id": 23445,
-    "wp_slug": "32340-choosing-wisely-with-your-new-identity",
+  "51010-did-the-apostles-believe-jesus-is-god": {
+    "wp_id": 2524,
+    "wp_slug": "51010-did-the-apostles-believe-jesus-is-god",
     "method": "exact"
   },
-  "32350-living-out-your-new-identity-daily": {
-    "wp_id": 23446,
-    "wp_slug": "32350-living-out-your-new-identity-daily",
+  "51011-is-jesus-the-only-way-to-god": {
+    "wp_id": 2526,
+    "wp_slug": "51011-is-jesus-the-only-way-to-god",
+    "method": "exact",
+    "frozen": "source post unpublished from apicontent WP (401) as of Aug 2026; no public replacement found \u2014 old Knowing God / Firmly Established series retired in catalog reorg",
+    "title": "Is Jesus the Only Way to God?"
+  },
+  "51012-was-there-a-jesus-conspiracy": {
+    "wp_id": 240,
+    "wp_slug": "51012-was-there-a-jesus-conspiracy",
     "method": "exact"
   },
-  "32360-living-supernaturally-in-your-new-identity": {
-    "wp_id": 23447,
-    "wp_slug": "32360-living-supernaturally-in-your-new-identity",
+  "51014-why-arent-gnostic-gospels-in-the-new-testament": {
+    "wp_id": 2508,
+    "wp_slug": "51014-why-arent-gnostic-gospels-in-the-new-testament",
     "method": "exact"
   },
-  "32370-identity-based-spiritual-warfare": {
-    "wp_id": 23448,
-    "wp_slug": "32370-identity-based-spiritual-warfare",
+  "51018-is-jesus-coming-back": {
+    "wp_id": 2528,
+    "wp_slug": "51018-is-jesus-coming-back",
     "method": "exact"
   },
-  "32410-who-is-the-holy-spirit": {
-    "wp_id": 23491,
-    "wp_slug": "32410-who-is-the-holy-spirit",
+  "51019-is-jesus-relevant-today": {
+    "wp_id": 2545,
+    "wp_slug": "51019-is-jesus-relevant-today",
     "method": "exact"
   },
-  "32430-surrender": {
-    "wp_id": 23493,
-    "wp_slug": "32430-surrender",
+  "52002-does-the-universe-have-a-beginning": {
+    "wp_id": 80,
+    "wp_slug": "52002-does-the-universe-have-a-beginning",
     "method": "exact"
   },
-  "32440-how-to-be-filled-and-empowered-by-the-holy-spirit": {
-    "wp_id": 23494,
-    "wp_slug": "32440-how-to-be-filled-and-empowered-by-the-holy-spirit",
+  "52003-why-is-only-earth-suitable-for-life": {
+    "wp_id": 2668,
+    "wp_slug": "52003-why-is-only-earth-suitable-for-life",
     "method": "exact"
   },
-  "32450-firmly-established": {
-    "wp_id": 23495,
-    "wp_slug": "32450-firmly-established",
+  "52004-is-the-universe-a-product-of-design-or-chance": {
+    "wp_id": 2671,
+    "wp_slug": "52004-is-the-universe-a-product-of-design-or-chance",
     "method": "exact"
   },
-  "32460-empowered-for-supernatural-living": {
-    "wp_id": 23496,
-    "wp_slug": "32460-empowered-for-supernatural-living",
+  "52005-did-darwin-get-it-wrong": {
+    "wp_id": 2673,
+    "wp_slug": "52005-did-darwin-get-it-wrong",
     "method": "exact"
   },
-  "32470-the-spirits-work-of-fruitfulness": {
-    "wp_id": 23497,
-    "wp_slug": "32470-the-spirits-work-of-fruitfulness",
+  "52006-how-did-life-begin": {
+    "wp_id": 2675,
+    "wp_slug": "52006-how-did-life-begin",
     "method": "exact"
   },
-  "32480-the-fruit-of-the-spirit": {
-    "wp_id": 23498,
-    "wp_slug": "32480-the-fruit-of-the-spirit",
+  "52007-where-are-darwins-predicted-fossils": {
+    "wp_id": 2677,
+    "wp_slug": "52007-where-are-darwins-predicted-fossils",
     "method": "exact"
   },
-  "32490-walking-in-the-spirit": {
-    "wp_id": 23499,
-    "wp_slug": "32490-walking-in-the-spirit",
+  "52009-is-a-designer-revealed-in-creation": {
+    "wp_id": 2681,
+    "wp_slug": "52009-is-a-designer-revealed-in-creation",
     "method": "exact"
   },
-  "34501-how-to-cultivate-marriage": {
-    "wp_id": 776,
-    "wp_slug": "34501-how-to-cultivate-marriage",
+  "53001-are-the-gospel-accounts-of-jesus-true": {
+    "wp_id": 248,
+    "wp_slug": "53001-are-the-gospel-accounts-of-jesus-true",
     "method": "exact"
+  },
+  "53002-is-the-bible-true": {
+    "wp_id": 250,
+    "wp_slug": "53002-is-the-bible-true",
+    "method": "exact"
+  },
+  "53003-is-the-bible-historically-reliable": {
+    "wp_id": 2645,
+    "wp_slug": "53003-is-the-bible-historically-reliable",
+    "method": "exact"
+  },
+  "53004-did-the-old-testament-accurately-predict-jesus-as-the-messiah": {
+    "wp_id": 2652,
+    "wp_slug": "53004-did-the-old-testament-accurately-predict-jesus-as-the-messiah",
+    "method": "exact"
+  },
+  "53005-does-the-bible-foretell-future-events-accurately": {
+    "wp_id": 2654,
+    "wp_slug": "53005-does-the-bible-foretell-future-events-accurately",
+    "method": "exact"
+  },
+  "53006-is-the-bibles-portrayal-of-people-places-and-events-accurate": {
+    "wp_id": 2656,
+    "wp_slug": "53006-is-the-bibles-portrayal-of-people-places-and-events-accurate",
+    "method": "exact"
+  },
+  "53007-is-the-bible-consistent-with-science": {
+    "wp_id": 2658,
+    "wp_slug": "53007-is-the-bible-consistent-with-science",
+    "method": "exact"
+  },
+  "53008-does-the-bible-demonstrate-divine-authorship": {
+    "wp_id": 2660,
+    "wp_slug": "53008-does-the-bible-demonstrate-divine-authorship",
+    "method": "exact"
+  },
+  "60100-1-introduction": {
+    "wp_id": 6814,
+    "wp_slug": "60100-1-introduction",
+    "method": "exact"
+  },
+  "60101-1-becoming-a-new-person-in-christ": {
+    "wp_id": 6816,
+    "wp_slug": "60101-1-becoming-a-new-person-in-christ",
+    "method": "exact"
+  },
+  "60102-2-the-holy-spirit-gods-gift-to-you": {
+    "wp_id": 6825,
+    "wp_slug": "60102-2-the-holy-spirit-gods-gift-to-you",
+    "method": "exact"
+  },
+  "60103-3-faith-the-key-to-walking-in-the-spirit": {
+    "wp_id": 6834,
+    "wp_slug": "60103-3-faith-the-key-to-walking-in-the-spirit",
+    "method": "exact"
+  },
+  "60104-4-the-bible-gods-love-letter-to-you": {
+    "wp_id": 6856,
+    "wp_slug": "60104-4-the-bible-gods-love-letter-to-you",
+    "method": "exact"
+  },
+  "60105-5-prayer-talking-to-your-heavenly-father": {
+    "wp_id": 6860,
+    "wp_slug": "60105-5-prayer-talking-to-your-heavenly-father",
+    "method": "exact"
+  },
+  "60106-6-citizens-of-heaven-gods-family-and-you": {
+    "wp_id": 6861,
+    "wp_slug": "60106-6-citizens-of-heaven-gods-familyand-you",
+    "method": "prefix"
+  },
+  "60107-7-obedience-running-to-win": {
+    "wp_id": 6862,
+    "wp_slug": "60107-7-obedience-running-to-win",
+    "method": "exact"
+  },
+  "60108-8-next-steps-for-your-spiritual-growth": {
+    "wp_id": 11490,
+    "wp_slug": "60108-8-additional-resources",
+    "method": "prefix"
   },
   "65501-1-the-heart-of-the-problem": {
     "wp_id": 7101,
@@ -5828,6 +5188,146 @@
     "wp_slug": "65522-appendix-c-spiritual-breathing",
     "method": "exact"
   },
+  "65601-1-the-myth-of-complexity": {
+    "wp_id": 7002,
+    "wp_slug": "65601-the-myth-of-complexity",
+    "method": "fuzzy"
+  },
+  "65602-2-how-can-i-find-peace-and-satisfaction-in-this-world": {
+    "wp_id": 7005,
+    "wp_slug": "65602-how-can-i-find-peace-and-satisfaction-in-this-world",
+    "method": "fuzzy"
+  },
+  "65603-3-most-of-us-have-had-a-poor-start-in-life": {
+    "wp_id": 7012,
+    "wp_slug": "65603-most-of-us-have-had-a-poor-start-in-life",
+    "method": "fuzzy"
+  },
+  "65604-4-gods-sharpest-tools-my-biggest-problems": {
+    "wp_id": 7018,
+    "wp_slug": "65604-gods-sharpest-tools-my-biggest-problems",
+    "method": "fuzzy"
+  },
+  "65605-5-sin-has-not-been-eliminated-as-of-the-date-of-publication-of-this-course": {
+    "wp_id": 7022,
+    "wp_slug": "65605-sin-has-not-been-eliminated-as-of-the-date-of-publication-of-this-course",
+    "method": "fuzzy"
+  },
+  "65606-6-why-dont-you-just-concentrate-on-the-positive": {
+    "wp_id": 7027,
+    "wp_slug": "65606-why-dont-you-just-concentrate-on-the-positive",
+    "method": "fuzzy"
+  },
+  "65607-7-look-do-you-want-me-to-drive-this-car-or-do-you-want-to-do-it": {
+    "wp_id": 7032,
+    "wp_slug": "65607-look-do-you-want-me-to-drive-this-car-or-do-you-want-to-do-it",
+    "method": "fuzzy"
+  },
+  "65608-8-why-is-it-difficult-to-walk-by-a-mirror-without-looking-at-yourself": {
+    "wp_id": 7036,
+    "wp_slug": "65608-why-is-it-difficult-to-walk-by-a-mirror-without-looking-at-yourself",
+    "method": "fuzzy"
+  },
+  "65609-9-at-what-age-is-it-acceptable-to-sulk-when-you-cant-have-what-you-want": {
+    "wp_id": 7035,
+    "wp_slug": "65609-at-what-age-is-it-acceptable-to-sulk-when-you-cant-have-what-you-want",
+    "method": "fuzzy"
+  },
+  "65610-10-boom-the-wing-of-the-plane-smacked-me-in-the-head": {
+    "wp_id": 7041,
+    "wp_slug": "65610-boom-the-wing-of-the-plane-smacked-me-in-the-head",
+    "method": "fuzzy"
+  },
+  "65611-11-i-need-to-forgive-those-soldiers": {
+    "wp_id": 7044,
+    "wp_slug": "65611-i-need-to-forgive-those-soldiers",
+    "method": "fuzzy"
+  },
+  "65613-13-your-wife-has-inoperable-cancer": {
+    "wp_id": 7052,
+    "wp_slug": "65613-your-wife-has-inoperable-cancer",
+    "method": "fuzzy"
+  },
+  "65614-14-living-and-dying": {
+    "wp_id": 7055,
+    "wp_slug": "65614-living-and-dying",
+    "method": "fuzzy"
+  },
+  "65615-15-i-prayed-but-i-still-didnt-feel-right": {
+    "wp_id": 7058,
+    "wp_slug": "65615-i-prayed-but-i-still-didnt-feel-right",
+    "method": "fuzzy"
+  },
+  "65616-16-anyone-who-talks-about-rejoicing-always-just-doesnt-understand-the-real-situation": {
+    "wp_id": 7061,
+    "wp_slug": "65616-anyone-who-talks-about-rejoicing-always-just-doesnt-understand-the-real-situation",
+    "method": "fuzzy"
+  },
+  "65617-17-anger-is-one-letter-away-from-danger": {
+    "wp_id": 7065,
+    "wp_slug": "65617-anger-is-one-letter-away-from-danger",
+    "method": "fuzzy"
+  },
+  "65618-18-if-you-dont-want-to-you-arent-going-to": {
+    "wp_id": 7069,
+    "wp_slug": "65618-if-you-dont-want-to-you-arent-going-to",
+    "method": "fuzzy"
+  },
+  "65619-19-the-foundation": {
+    "wp_id": 7071,
+    "wp_slug": "65619-the-foundation",
+    "method": "prefix"
+  },
+  "65701-1-lifes-many-stresses": {
+    "wp_id": 11349,
+    "wp_slug": "65701-1-lifes-many-stresses",
+    "method": "exact"
+  },
+  "65702-2-self-discovery": {
+    "wp_id": 11350,
+    "wp_slug": "65702-2-self-discovery",
+    "method": "exact"
+  },
+  "65703-3-after-discoverywhat": {
+    "wp_id": 11351,
+    "wp_slug": "65703-3-after-discoverywhat",
+    "method": "exact"
+  },
+  "65704-4-the-impact-of-our-emotions": {
+    "wp_id": 11352,
+    "wp_slug": "65704-4-the-impact-of-our-emotions",
+    "method": "exact"
+  },
+  "65705-5-embracing-the-truth": {
+    "wp_id": 11353,
+    "wp_slug": "65705-5-embracing-the-truth",
+    "method": "exact"
+  },
+  "65706-6-behaviors-that-stand-in-the-way-of-your-peace": {
+    "wp_id": 11354,
+    "wp_slug": "65706-6-behaviors-that-stand-in-the-way-of-your-peace",
+    "method": "exact"
+  },
+  "65707-7-mind-and-body": {
+    "wp_id": 11355,
+    "wp_slug": "65707-7-mind-and-body",
+    "method": "exact"
+  },
+  "65708-8-there-is-hope": {
+    "wp_id": 11364,
+    "wp_slug": "65708-8-there-is-hope",
+    "method": "exact"
+  },
+  "65709-9-the-responsibility-is-yours": {
+    "wp_id": 11365,
+    "wp_slug": "65709-9-the-responsibility-is-yours",
+    "method": "exact"
+  },
+  "65710-10-help-for-a-hard-journey": {
+    "wp_id": 11366,
+    "wp_slug": "65710-10-help-for-a-hard-journey",
+    "method": "exact"
+  },
   "65801-1-indestructible": {
     "wp_id": 11373,
     "wp_slug": "65801-1-indestructible",
@@ -5883,14 +5383,519 @@
     "wp_slug": "65811-11-happiness-its-your-choice",
     "method": "exact"
   },
-  "22970-006-moving-on": {
-    "wp_id": 7631,
-    "wp_slug": "22970-006-moving-on",
+  "93610-01-why-plant-a-church": {
+    "wp_id": 21588,
+    "wp_slug": "93610-01-why-plant-a-church",
     "method": "exact"
   },
-  "22985-fear-not": {
-    "wp_id": 7953,
-    "wp_slug": "22985-fear-not",
+  "93610-02-definition-and-purpose-of-a-church": {
+    "wp_id": 21589,
+    "wp_slug": "93610-02-definition-and-purpose-of-a-church",
+    "method": "exact"
+  },
+  "93610-03-motivation-for-planting-a-church": {
+    "wp_id": 21590,
+    "wp_slug": "93610-03-motivation-for-planting-a-church",
+    "method": "exact"
+  },
+  "93610-04-values-vision-and-style-for-your-church": {
+    "wp_id": 21591,
+    "wp_slug": "93610-04-values-vision-and-style-for-your-church",
+    "method": "exact"
+  },
+  "93610-05-planning-and-strategy": {
+    "wp_id": 21592,
+    "wp_slug": "93610-05-planning-and-strategy",
+    "method": "exact"
+  },
+  "93610-06-the-church-planting-team": {
+    "wp_id": 21593,
+    "wp_slug": "93610-06-the-church-planting-team",
+    "method": "exact"
+  },
+  "93610-07-spiritual-warfare-and-outreach": {
+    "wp_id": 21594,
+    "wp_slug": "93610-07-spiritual-warfare-and-outreach",
+    "method": "exact"
+  },
+  "93610-08-meet-on-a-regular-basis-for-worship-prayer-and-study": {
+    "wp_id": 21595,
+    "wp_slug": "93610-08-meet-on-a-regular-basis-for-worship-prayer-and-study",
+    "method": "exact"
+  },
+  "93610-09-connect-new-believers-to-a-process-of-discipleship": {
+    "wp_id": 21596,
+    "wp_slug": "93610-09-connect-new-believers-to-a-process-of-discipleship",
+    "method": "exact"
+  },
+  "93610-10-repeat-the-process-as-often-as-possible": {
+    "wp_id": 21597,
+    "wp_slug": "93610-10-repeat-the-process-as-often-as-possible",
+    "method": "exact"
+  },
+  "93610-11-ten-key-elements-of-church-planting-movements": {
+    "wp_id": 21598,
+    "wp_slug": "93610-11-ten-key-elements-of-church-planting-movements",
+    "method": "exact"
+  },
+  "93610-12-the-church-represented-in-the-marketplace": {
+    "wp_id": 21599,
+    "wp_slug": "93610-12-the-church-represented-in-the-marketplace",
+    "method": "exact"
+  },
+  "93621-1-lesson-1-intimacy-with-god": {
+    "wp_id": 21644,
+    "wp_slug": "93621-1-lesson-1-intimacy-with-god",
+    "method": "exact"
+  },
+  "93621-2-lesson-2-prayer-and-fasting": {
+    "wp_id": 21645,
+    "wp_slug": "93621-2-lesson-2-prayer-and-fasting",
+    "method": "exact"
+  },
+  "93621-3-lesson-3-hearing-gods-voice": {
+    "wp_id": 21646,
+    "wp_slug": "93621-3-lesson-3-hearing-gods-voice",
+    "method": "exact"
+  },
+  "93621-4-lesson-4-called-and-committed": {
+    "wp_id": 21647,
+    "wp_slug": "93621-4-lesson-4-called-and-committed",
+    "method": "exact"
+  },
+  "93621-5-lesson-5-healthy-family": {
+    "wp_id": 21654,
+    "wp_slug": "93621-5-lesson-5-healthy-family",
+    "method": "exact"
+  },
+  "93621-6-lesson-6-understanding-disciple-making-movement": {
+    "wp_id": 21648,
+    "wp_slug": "93621-6-lesson-6-understanding-disciple-making-movement",
+    "method": "exact"
+  },
+  "93621-7-lesson-7-developing-culturally-relevant-disciple-making-strategy": {
+    "wp_id": 21657,
+    "wp_slug": "93621-7-lesson-7-developing-culturally-relevant-disciple-making-strategy",
+    "method": "exact"
+  },
+  "93622-1-lesson-1-demography-cultraure-religious-beliiefs": {
+    "wp_id": 21666,
+    "wp_slug": "93622-1-lesson-1-demography-cultraure-religious-beliiefs",
+    "method": "exact"
+  },
+  "93622-2-lesson-2-spiritual-warfare": {
+    "wp_id": 21667,
+    "wp_slug": "93622-2-lesson-2-spiritual-warfare",
+    "method": "exact"
+  },
+  "93622-3-lesson-3-prayer-walking": {
+    "wp_id": 21668,
+    "wp_slug": "93622-3-lesson-3-prayer-walking",
+    "method": "exact"
+  },
+  "93622-4-lesson-4-orality-training": {
+    "wp_id": 21669,
+    "wp_slug": "93622-4-lesson-4-orality-training",
+    "method": "exact"
+  },
+  "93623-1-lesson-1-relational-evangelism": {
+    "wp_id": 21670,
+    "wp_slug": "93623-1-lesson-1-relational-evangelism",
+    "method": "exact"
+  },
+  "93623-2-lesson-2-person-of-peace": {
+    "wp_id": 21671,
+    "wp_slug": "93623-2-lesson-2-person-of-peace",
+    "method": "exact"
+  },
+  "93623-3-lesson-3-call-to-repentance-belief-and-baptism": {
+    "wp_id": 21679,
+    "wp_slug": "93623-3-lesson-3-call-to-repentance-belief-and-baptism",
+    "method": "exact"
+  },
+  "93623-4-lesson-4-the-3-3rds-group-format": {
+    "wp_id": 21680,
+    "wp_slug": "93623-4-lesson-4-the-3-3rds-group-format",
+    "method": "exact"
+  },
+  "93623-5-lesson-5-gathering-as-a-church": {
+    "wp_id": 21681,
+    "wp_slug": "93623-5-lesson-5-gathering-as-a-church",
+    "method": "exact"
+  },
+  "93623-6-lesson-6-freedom-ministry": {
+    "wp_id": 21682,
+    "wp_slug": "93623-6-lesson-6-freedom-ministry",
+    "method": "exact"
+  },
+  "93623-7-lesson-7-bible-study-methods": {
+    "wp_id": 21683,
+    "wp_slug": "93623-7-lesson-7-bible-study-methods",
+    "method": "exact"
+  },
+  "93623-8-lesson-8-prayer": {
+    "wp_id": 21684,
+    "wp_slug": "93623-8-lesson-8-prayer",
+    "method": "exact"
+  },
+  "93623-9-lesson-9-worship-life-of-the-disciple": {
+    "wp_id": 21685,
+    "wp_slug": "93623-9-lesson-9-worship-life-of-the-disciple",
+    "method": "exact"
+  },
+  "93624-1-lesson-1-call-to-give-and-serve": {
+    "wp_id": 21709,
+    "wp_slug": "93624-1-lesson-1-call-to-give-and-serve",
+    "method": "exact"
+  },
+  "93624-2-lesson-2-selecting-leaders": {
+    "wp_id": 21710,
+    "wp_slug": "93624-2-lesson-2-selecting-leaders",
+    "method": "exact"
+  },
+  "93624-3-lesson-3-modeling-to-multiply-leaders": {
+    "wp_id": 21711,
+    "wp_slug": "93624-3-lesson-3-modeling-to-multiply-leaders",
+    "method": "exact"
+  },
+  "93624-4-lesson-4-coaching-leaders-nurturing-skill-and-ability-in-others": {
+    "wp_id": 21712,
+    "wp_slug": "93624-4-lesson-4-coaching-leaders-nurturing-skill-and-ability-in-others",
+    "method": "exact"
+  },
+  "93624-5-lesson-5-four-fields-and-multiplication": {
+    "wp_id": 21713,
+    "wp_slug": "93624-5-lesson-5-four-fields-and-multiplication",
+    "method": "exact"
+  },
+  "93624-6-lesson-6-evangelism-who-list-of-100": {
+    "wp_id": 21714,
+    "wp_slug": "93624-6-lesson-6-evangelism-who-list-of-100",
+    "method": "exact"
+  },
+  "93624-7-lesson-7-how-gods-story": {
+    "wp_id": 21715,
+    "wp_slug": "93624-7-lesson-7-how-gods-story",
+    "method": "exact"
+  },
+  "93624-8-lesson-8-how-your-story": {
+    "wp_id": 21716,
+    "wp_slug": "93624-8-lesson-8-how-your-story",
+    "method": "exact"
+  },
+  "93624-9-lesson-9-commissioning": {
+    "wp_id": 21717,
+    "wp_slug": "93624-9-lesson-9-commissioning",
+    "method": "exact"
+  },
+  "93651-1-genesis": {
+    "wp_id": 21934,
+    "wp_slug": "93651-1-genesis",
+    "method": "exact"
+  },
+  "93651-2-exodus": {
+    "wp_id": 21935,
+    "wp_slug": "93651-2-exodus",
+    "method": "exact"
+  },
+  "93651-3-leviticus": {
+    "wp_id": 21936,
+    "wp_slug": "93651-3-leviticus",
+    "method": "exact"
+  },
+  "93651-4-numbers": {
+    "wp_id": 21937,
+    "wp_slug": "93651-4-numbers",
+    "method": "exact"
+  },
+  "93651-5-deuteronomy": {
+    "wp_id": 21938,
+    "wp_slug": "93651-5-deuteronomy",
+    "method": "exact"
+  },
+  "93651-6-joshua": {
+    "wp_id": 21939,
+    "wp_slug": "93651-6-joshua",
+    "method": "exact"
+  },
+  "93651-7-judges": {
+    "wp_id": 21940,
+    "wp_slug": "93651-7-judges",
+    "method": "exact"
+  },
+  "93651-8-ruth": {
+    "wp_id": 21941,
+    "wp_slug": "93651-8-ruth",
+    "method": "exact"
+  },
+  "93651-9-1-samuel": {
+    "wp_id": 21942,
+    "wp_slug": "93651-9-1-samuel",
+    "method": "exact"
+  },
+  "93651-old-tesatament-introduction": {
+    "wp_id": 21943,
+    "wp_slug": "93651-old-testament-introduction",
+    "method": "fuzzy"
+  },
+  "93652-0-2-samuel": {
+    "wp_id": 21955,
+    "wp_slug": "93652-0-2-samuel",
+    "method": "exact"
+  },
+  "93652-1-1-kings": {
+    "wp_id": 21956,
+    "wp_slug": "93652-1-1-kings",
+    "method": "exact"
+  },
+  "93652-2-2-kings": {
+    "wp_id": 21957,
+    "wp_slug": "93652-2-2-kings",
+    "method": "exact"
+  },
+  "93652-3-1-&-2-chronicles": {
+    "wp_id": 21958,
+    "wp_slug": "93652-3-1-2-chronicles",
+    "method": "exact"
+  },
+  "93652-5-esther": {
+    "wp_id": 21989,
+    "wp_slug": "93652-5-esther",
+    "method": "exact"
+  },
+  "93652-6-job": {
+    "wp_id": 21960,
+    "wp_slug": "93652-6-job",
+    "method": "exact"
+  },
+  "93652-7-psalms": {
+    "wp_id": 21961,
+    "wp_slug": "93652-7-psalms",
+    "method": "exact"
+  },
+  "93652-8-proverbs": {
+    "wp_id": 21962,
+    "wp_slug": "93652-7-proverbs",
+    "method": "fuzzy"
+  },
+  "93652-9-ecclesiastes": {
+    "wp_id": 21963,
+    "wp_slug": "93652-9-ecclesiastes",
+    "method": "exact"
+  },
+  "93653-1-isaiah": {
+    "wp_id": 21964,
+    "wp_slug": "93653-1-isaiah",
+    "method": "exact"
+  },
+  "93653-3-lamentation": {
+    "wp_id": 22006,
+    "wp_slug": "93653-3-lamentations",
+    "method": "fuzzy"
+  },
+  "93653-4-ezekiel": {
+    "wp_id": 22007,
+    "wp_slug": "93653-4-ezekiel",
+    "method": "exact"
+  },
+  "93653-5-daniel": {
+    "wp_id": 22008,
+    "wp_slug": "93653-5-daniel",
+    "method": "exact"
+  },
+  "93653-6-hosea": {
+    "wp_id": 22009,
+    "wp_slug": "93653-6-hosea",
+    "method": "exact"
+  },
+  "93653-7-joel": {
+    "wp_id": 22010,
+    "wp_slug": "93653-7-joel",
+    "method": "exact"
+  },
+  "93653-8-amos": {
+    "wp_id": 22011,
+    "wp_slug": "93653-8-amos",
+    "method": "exact"
+  },
+  "93653-9-obadiah": {
+    "wp_id": 22012,
+    "wp_slug": "93653-9-obadiah",
+    "method": "exact"
+  },
+  "93654-0-jonah": {
+    "wp_id": 22013,
+    "wp_slug": "93654-0-jonah",
+    "method": "exact"
+  },
+  "93654-1-micah": {
+    "wp_id": 22017,
+    "wp_slug": "93654-1-micah",
+    "method": "exact"
+  },
+  "93654-2-nahum": {
+    "wp_id": 22018,
+    "wp_slug": "93654-2-nahum",
+    "method": "exact"
+  },
+  "93654-3-habakkuk": {
+    "wp_id": 22019,
+    "wp_slug": "93654-3-habakkuk",
+    "method": "exact"
+  },
+  "93654-4-Zephaniah": {
+    "wp_id": 22020,
+    "wp_slug": "93654-4-zephaniah",
+    "method": "exact"
+  },
+  "93654-5-haggai": {
+    "wp_id": 22021,
+    "wp_slug": "93654-5-haggai",
+    "method": "exact"
+  },
+  "93654-6-Zechariah": {
+    "wp_id": 22022,
+    "wp_slug": "93654-6-zechariah",
+    "method": "exact"
+  },
+  "93654-7-malachi": {
+    "wp_id": 22023,
+    "wp_slug": "93654-7-malachi",
+    "method": "exact"
+  },
+  "93660-1-matthew": {
+    "wp_id": 22039,
+    "wp_slug": "93660-1-matthew",
+    "method": "exact"
+  },
+  "93660-2-mark": {
+    "wp_id": 22040,
+    "wp_slug": "93660-2-mark",
+    "method": "exact"
+  },
+  "93660-3-luke": {
+    "wp_id": 22041,
+    "wp_slug": "93660-3-luke",
+    "method": "exact"
+  },
+  "93660-4-john": {
+    "wp_id": 22042,
+    "wp_slug": "93660-4-john",
+    "method": "exact"
+  },
+  "93660-5-acts": {
+    "wp_id": 22043,
+    "wp_slug": "93660-5-acts",
+    "method": "exact"
+  },
+  "93660-6-romans": {
+    "wp_id": 22044,
+    "wp_slug": "93660-6-romans",
+    "method": "exact"
+  },
+  "93660-7-1-corinthians": {
+    "wp_id": 22045,
+    "wp_slug": "93660-7-1-corinthians",
+    "method": "exact"
+  },
+  "93660-8-2-corinthians": {
+    "wp_id": 22046,
+    "wp_slug": "93660-8-2-corinthians",
+    "method": "exact"
+  },
+  "93660-9-galatians": {
+    "wp_id": 22047,
+    "wp_slug": "93660-9-galatians",
+    "method": "exact"
+  },
+  "93661-0-epehsians": {
+    "wp_id": 22048,
+    "wp_slug": "93661-0-ephesians",
+    "method": "prefix"
+  },
+  "93661-1-colossians": {
+    "wp_id": 22059,
+    "wp_slug": "93661-1-philippians",
+    "method": "prefix"
+  },
+  "93661-2-philippians": {
+    "wp_id": 22060,
+    "wp_slug": "93661-2-colossians",
+    "method": "prefix"
+  },
+  "93661-3--1-thessalonians": {
+    "wp_id": 22062,
+    "wp_slug": "93661-4-2-thessalonians",
+    "method": "fuzzy"
+  },
+  "93661-4-2-thessalonians": {
+    "wp_id": 22062,
+    "wp_slug": "93661-4-2-thessalonians",
+    "method": "exact"
+  },
+  "93661-5-1-timothy": {
+    "wp_id": 22063,
+    "wp_slug": "93661-5-1-timothy",
+    "method": "exact"
+  },
+  "93661-6-2-timothy": {
+    "wp_id": 22064,
+    "wp_slug": "93661-6-2-timothy",
+    "method": "exact"
+  },
+  "93661-7-titus": {
+    "wp_id": 22065,
+    "wp_slug": "93661-7-titus",
+    "method": "exact"
+  },
+  "93661-8-philemon": {
+    "wp_id": 22066,
+    "wp_slug": "93661-8-philemon",
+    "method": "exact"
+  },
+  "93661-9-hebrew": {
+    "wp_id": 22067,
+    "wp_slug": "93661-9-hebrews",
+    "method": "prefix"
+  },
+  "93662-0-james": {
+    "wp_id": 22077,
+    "wp_slug": "93662-0-james",
+    "method": "exact"
+  },
+  "93662-1-1-peter": {
+    "wp_id": 22078,
+    "wp_slug": "93662-1-1-peter",
+    "method": "exact"
+  },
+  "93662-2-2-peter": {
+    "wp_id": 22079,
+    "wp_slug": "93662-2-2-peter",
+    "method": "exact"
+  },
+  "93662-3-1-john": {
+    "wp_id": 22080,
+    "wp_slug": "93662-3-1-john",
+    "method": "exact"
+  },
+  "93662-4-2-john": {
+    "wp_id": 22081,
+    "wp_slug": "93662-4-2-john",
+    "method": "exact"
+  },
+  "93662-5-3-john": {
+    "wp_id": 22082,
+    "wp_slug": "93662-5-3-john",
+    "method": "exact"
+  },
+  "93662-6-jude": {
+    "wp_id": 22083,
+    "wp_slug": "93662-6-jude",
+    "method": "exact"
+  },
+  "93662-7-revelation": {
+    "wp_id": 22084,
+    "wp_slug": "93662-7-revelation",
     "method": "exact"
   }
 }

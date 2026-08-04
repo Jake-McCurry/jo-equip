@@ -60,7 +60,7 @@ export interface BcgArticle {
 
 const REGISTER_CTA: ArticleBlock = {
   type: "p",
-  html: '<strong><a href="/register-church">Sign up and register your church today to become a FREE JO EQUIPPED Church. →</a></strong>',
+  html: '<strong><a href="/register-church">Sign up and register your church today to become a FREE JO Equipped Church. →</a></strong>',
 };
 
 /* The "Toolkit for Engagement" image introduces the recommended-resources
@@ -132,7 +132,7 @@ export const bcgArticles: BcgArticle[] = [
 
       { type: "p", html: "Discover practical, biblical resources created specifically to help churches like yours flourish right where God has planted you." },
       REGISTER_CTA,
-      { type: "figure", src: "bgc1-5", alt: "Become a free JesusOnline EQUIPPED Church — closing call to register and partner together." },
+      { type: "figure", src: "bgc1-5", alt: "Become a free JO Equipped Church — closing call to register and partner together." },
     ],
   },
 

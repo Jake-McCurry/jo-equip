@@ -290,9 +290,18 @@ export const subTopics: SubTopic[] = [
     name: 'Sermon Toolbox',
     description: 'Develop Biblically-grounded, transformational messages for Kingdom maturity.',
     hideNumbers: true,
-    /* The "Bible Study Tools" article (from the user's July 2026 docx,
-       rendered via bibleStudyMethods.ts) lives directly under Sermon
-       Toolbox — no intermediate sub-topic (sheet correction July 2026). */
+  },
+  /* ── BIBLE STUDY TOOLS (child of Sermon Toolbox) ──
+     Promoted from a direct Sermon Toolbox article to its own topic card
+     (Aug 2026) so it matches Sermon Communication Planning. Article body
+     renders via bibleStudyMethods.ts. */
+  {
+    id: 'bible-study-tools',
+    channelId: 'church',
+    parentId: 'sermon-toolbox',
+    name: 'Bible Study Tools',
+    description: 'A curated guide to the best free online tools for deeper Scripture study.',
+    hideNumbers: true,
     items: [
       { number: 1, title: 'Bible Study Tools', articleId: 'essential-bible-study-tools' },
     ],

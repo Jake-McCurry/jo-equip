@@ -202,7 +202,7 @@ export const subTopics: SubTopic[] = [
     hideNumbers: true,
     items: [
       { number: 1,  title: "God's Unique Vision for Kingdom-focused Growth", articleId: 'gods-unique-vision-for-your-church' },
-      { number: 2,  title: 'JesusOnline EQUIPPED Church',                    articleId: 'a-jesusonline-equipped-church' },
+      { number: 2,  title: 'JO Equipped Church',                    articleId: 'a-jesusonline-equipped-church' },
       { number: 3,  title: 'Total Life Discipleship Church',                 articleId: 'a-total-life-discipleship-church' },
       { number: 4,  title: 'Transformational Teaching Church',               articleId: 'a-transformational-teaching-church' },
       { number: 5,  title: 'Spirit-dependent Church',                        articleId: 'a-spirit-dependent-church' },

@@ -15,7 +15,7 @@ export interface BcgArticlePdfMeta {
 export const bcgArticlePdfs: Record<string, BcgArticlePdfMeta> = {
   "a-great-commission-church": { bytes: 507305 },
   "a-hope-filled-church": { bytes: 543164 },
-  "a-jesusonline-equipped-church": { bytes: 647926 },
+  "a-jesusonline-equipped-church": { bytes: 647550 },
   "a-love-demonstrating-relational-church": { bytes: 597375 },
   "a-model-church": { bytes: 126272 },
   "a-spirit-dependent-church": { bytes: 533094 },
@@ -29,7 +29,7 @@ export const bcgArticlePdfs: Record<string, BcgArticlePdfMeta> = {
   "an-online-outreach-church": { bytes: 816865 },
   "anatomy-of-obedience": { bytes: 410448 },
   "give-them-what-they-need": { bytes: 117142 },
-  "gods-unique-vision-for-your-church": { bytes: 643958 },
+  "gods-unique-vision-for-your-church": { bytes: 643615 },
   "retention-leads-to-transformation": { bytes: 111422 },
   "what-is-your-motivation-for-preaching": { bytes: 110362 },
 };

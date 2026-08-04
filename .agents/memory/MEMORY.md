@@ -8,4 +8,5 @@
 - [Cross-batch article links](cross-batch-article-links.md) — generated article JSONs keep external app links to later-batch articles; re-normalize all JSONs after each generation batch.
 - [WP article catalog drift](wp-article-catalog-drift.md) — JOM WP catalog has numbering drift & books the JN survey skips; map slugs by CONTENT not number; for missing books attach the same-book `38xxx-overview` PDF via links.pdf.
 - [Sitemap lastmod hashing](sitemap-lastmod-hashing.md) — sitemaps are post-build, content-hash driven; no build-volatile content (e.g. `new Date()` in JSON-LD) may render into page HTML.
+- [Live-site verification](live-site-verification.md) — Cloudflare bot challenge blocks curl/screenshots of the prod site from the workspace; use the webFetch callback instead (it follows 301s silently).
 - [Ebook docx→PDF pipeline](ebook-docx-pipeline.md) — book PDFs build from docx via two-pass marker render; docx heading styles are inconsistent, match TOC by leading token not title text.

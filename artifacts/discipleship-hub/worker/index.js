@@ -309,6 +309,20 @@ export default {
       }
     }
 
+    if (url.pathname === "/api/geo") {
+      /* Visitor country from Cloudflare's IP geolocation (ISO 3166-1 alpha-2).
+       * Used by newsletter forms to report COUNTRY to Mailchimp without a
+       * visible field. "XX"/missing → empty string; client falls back safely. */
+      const cc = request.cf?.country ?? request.headers.get("CF-IPCountry") ?? "";
+      return new Response(JSON.stringify({ country: cc === "XX" ? "" : cc }), {
+        headers: {
+          "Content-Type": "application/json",
+          "Cache-Control": "no-store",
+          "X-Robots-Tag": "noindex, nofollow",
+        },
+      });
+    }
+
     if (url.pathname === "/api/subscribe") {
       const response = await handleSubscribe(request, env, ctx);
       return isProd ? response : withNoIndexHeader(response);

@@ -73,35 +73,9 @@ const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
       />
     </div>
 
-    <div>
-      <label for="mm-country" class="block text-sm font-medium mb-1.5" style="color:#0b3c5d;">
-        Country
-      </label>
-      <input
-        type="text"
-        name="COUNTRY"
-        id="mm-country"
-        autocomplete="country-name"
-        class="w-full rounded border px-3 py-2.5 text-sm outline-none focus-visible:ring-2"
-        style="border-color:var(--color-border);color:#0b3c5d;"
-      />
-    </div>
-
-    <div>
-      <label for="mm-gender" class="block text-sm font-medium mb-1.5" style="color:#0b3c5d;">
-        Gender
-      </label>
-      <select
-        name="MMERGE8"
-        id="mm-gender"
-        class="w-full rounded border px-3 py-2.5 text-sm outline-none focus-visible:ring-2 bg-white"
-        style="border-color:var(--color-border);color:#0b3c5d;"
-      >
-        <option value=""></option>
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-      </select>
-    </div>
+    {/* COUNTRY is reported automatically from the visitor's IP (Cloudflare
+        geolocation via /api/geo) — no visible field. Empty if unavailable. */}
+    <input type="hidden" name="COUNTRY" id="mm-country" value="" />
 
     {/* Mailchimp audience tag */}
     <input type="hidden" name="tags" value="5798198" />
@@ -148,6 +122,23 @@ const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
 
 <script define:vars={{ MC_POST_JSON }}>
   const form = document.getElementById("mm-form");
+
+  /* Fill hidden COUNTRY from the visitor's IP (Cloudflare geolocation).
+   * Only works on the live site (the Worker serves /api/geo); anywhere
+   * else this fails silently and COUNTRY is submitted empty. */
+  (async () => {
+    try {
+      const res = await fetch("/api/geo", { signal: AbortSignal.timeout(4000) });
+      if (!res.ok) return;
+      const { country } = await res.json();
+      if (!country) return;
+      let name = country;
+      try {
+        name = new Intl.DisplayNames(["en"], { type: "region" }).of(country) || country;
+      } catch {}
+      document.getElementById("mm-country").value = name;
+    } catch {}
+  })();
   const submitBtn = document.getElementById("mm-submit");
   const errorEl = document.getElementById("mm-error");
   const thanks = document.getElementById("mm-thanks");

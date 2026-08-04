@@ -1,7 +1,6 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
-import sitemap from "@astrojs/sitemap";
 import pagefind from "astro-pagefind";
 import tailwindcss from "@tailwindcss/vite";
 import path from "node:path";
@@ -28,29 +27,10 @@ export default defineConfig({
   prefetch: { defaultStrategy: "viewport" },
   integrations: [
     react(),
-    /* Stamp every sitemap entry with the build date so Google sees fresh
-       `lastmod` values after each deploy and recrawls accordingly. */
-    sitemap({
-      lastmod: new Date(),
-      /* Keep utility pages out of the sitemap: /thank-you is noindex (listing a
-         noindex page sends Google mixed signals) and /search is an internal
-         results page Google discourages indexing. /lp/* are noindex paid-ad
-         landing pages (duplicate content on multiple campaign URLs). */
-      filter: (page) => !/\/(thank-you|search)\/?$/.test(page) && !/\/lp\//.test(page),
-      /* Emit URLs WITHOUT a trailing slash so they match our self-referencing
-         canonical tags (Layout.astro strips the trailing slash on every path
-         except the root). When the sitemap URL ("/about/") and the page's
-         canonical ("/about") disagree, Google files the sitemap URL under
-         "Alternate page with proper canonical tag" and won't index it. The
-         site root is the one exception — its canonical keeps the trailing
-         slash, so we leave it untouched. */
-      serialize: (item) => {
-        if (item.url !== "https://equip.jesusonline.com/") {
-          item.url = item.url.replace(/\/$/, "");
-        }
-        return item;
-      },
-    }),
+    /* Sitemaps: generated post-build by scripts/build-sitemaps.mjs (SEO-010) —
+       logical content-grouped sitemaps + accurate per-page lastmod values.
+       The former @astrojs/sitemap integration stamped every URL with the
+       build date and produced a single monolithic file. */
     pagefind(),
     /* NOTE: Partytown was removed (July 2026). It ran GTM in a Web Worker for
        a mobile PSI win, but made the container undetectable by Tag Assistant,

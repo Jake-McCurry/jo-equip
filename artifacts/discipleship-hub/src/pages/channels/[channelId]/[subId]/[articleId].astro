@@ -29,6 +29,7 @@ import { hasBcgArticlePdf } from "@/data/bcgArticlePdfs";
 import { hasBsmArticlePdf } from "@/data/bsmArticlePdfs";
 import { hasArticlePdf } from "@/data/articles";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
+import { gitDateOf } from "@/data/contentDates";
 import { ArrowRight, ChevronRight, Download } from "lucide-react";
 
 const baseUrl = import.meta.env.BASE_URL;
@@ -106,10 +107,19 @@ const SITE = "https://equip.jesusonline.com";
 const articleUrl = `${SITE}/channels/${channel.id}/${sub.id}/${article.id}`;
 
 /* JSON-LD Article schema. `datePublished` reflects each source's content
-   date and `dateModified` stamps at build time so Google sees freshness on
-   every deploy. publisher links to the JesusOnline Ministries Organization
-   defined on the home page. */
+   date; `dateModified` is the last git commit date of the file that owns
+   this article's content, so it only advances when the content actually
+   changes (keeps sitemap lastmod hashing stable — SEO-010). publisher links
+   to the JesusOnline Ministries Organization defined on the home page. */
 const DATE_PUBLISHED = bcg ? "2026-05-18" : bsm ? "2026-07-02" : "2026-07-16";
+const contentSourceFile = bcg
+  ? "src/data/bcgArticles.ts"
+  : bsm
+    ? "src/data/bibleStudyMethods.ts"
+    : evd
+      ? "src/data/evidenceArticles.ts"
+      : `src/data/generated/articles/${sub.id}.json`;
+const DATE_MODIFIED = gitDateOf(contentSourceFile, DATE_PUBLISHED);
 const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
@@ -121,7 +131,7 @@ const articleJsonLd = {
   "publisher": { "@id": "https://jesusonlineministries.org/#org" },
   "inLanguage": "en-US",
   "datePublished": DATE_PUBLISHED,
-  "dateModified": new Date().toISOString().slice(0, 10),
+  "dateModified": DATE_MODIFIED,
   "mainEntityOfPage": articleUrl,
 };
 
@@ -130,7 +140,11 @@ const articleJsonLd = {
 function plain(s: string) {
   return s.replace(/<[^>]+>/g, "").trim();
 }
-const metaDescription = plain(article.description);
+/* SEO-approved per-item meta overrides (SEO-009) live on the sub-topic item
+   in channels.ts and win over the derived title/description when set. */
+const seoItem = (sub.items ?? []).find(i => i.articleId === articleId);
+const metaTitle = seoItem?.seoTitle ?? `${article.title} · ${sub.name} · JO EQUIP`;
+const metaDescription = seoItem?.seoDescription ?? plain(article.description);
 
 /* Titles like "New Life in Christ (Intermediate Discipleship)" — render the
    parenthetical smaller so it supplements rather than competes with the title. */
@@ -141,7 +155,7 @@ function splitTitle(t: string): { main: string; paren: string | null } {
 
 const heroTitle = splitTitle(article.title);
 ---
-<Layout title={`${article.title} · ${sub.name} · JO EQUIP`} description={metaDescription}>
+<Layout title={metaTitle} description={metaDescription}>
   <Fragment slot="head">
     <BreadcrumbsLd items={[
       { name: "Home", url: "/" },

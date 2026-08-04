@@ -2,6 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import { BookOpen, ExternalLink, ArrowRight } from "lucide-react";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
+import { gitDateOf } from "@/data/contentDates";
 
 const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
@@ -11,7 +12,8 @@ const join = (p: string) =>
  * Source: https://www.cru.org/us/en/about/statement-of-faith.html */
 const SITE = "https://equip.jesusonline.com";
 /* `datePublished` is when the Statement of Faith page first went live on this site.
-   `dateModified` auto-updates on every build so Google sees fresh content signals.
+   `dateModified` is this file's last git commit date, so it only advances
+   when the page content actually changes (SEO-010).
    Update DATE_PUBLISHED if the page is ever materially rewritten. */
 const DATE_PUBLISHED = "2026-05-01";
 const beliefsJsonLd = {
@@ -25,7 +27,7 @@ const beliefsJsonLd = {
   "author": { "@id": "https://jesusonlineministries.org/#org" },
   "publisher": { "@id": "https://jesusonlineministries.org/#org" },
   "datePublished": DATE_PUBLISHED,
-  "dateModified": new Date().toISOString().slice(0, 10),
+  "dateModified": gitDateOf("src/pages/beliefs.astro", "2026-07-16"),
   "inLanguage": "en",
   "about": "Statement of Faith adopted from Cru (Campus Crusade for Christ, Int'l).",
   "image": `${SITE}/opengraph.jpg`,

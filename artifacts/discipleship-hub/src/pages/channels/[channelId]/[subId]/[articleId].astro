@@ -17,11 +17,11 @@
 import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
 import { subTopics, getChannel, getSubTopic } from "@/data/channels";
-import { bcgArticles, getBcgArticle, getNextBcgArticle } from "@/data/bcgArticles";
+import { bcgArticles, getBcgArticle } from "@/data/bcgArticles";
 import type { ArticleBlock } from "@/data/bcgArticles";
-import { bibleStudyMethods, getBibleStudyMethod, getNextBibleStudyMethod } from "@/data/bibleStudyMethods";
-import { evidenceArticles, getEvidenceArticle, getNextEvidenceArticle } from "@/data/evidenceArticles";
-import { hasSiteArticle, getSiteArticle, getNextSiteArticle } from "@/data/siteArticles";
+import { bibleStudyMethods, getBibleStudyMethod } from "@/data/bibleStudyMethods";
+import { evidenceArticles, getEvidenceArticle } from "@/data/evidenceArticles";
+import { hasSiteArticle, getSiteArticle } from "@/data/siteArticles";
 import { getBcgImage } from "@/data/bcgImages";
 import { getEvidenceImage } from "@/data/evidenceImages";
 import { getSiteArticleImage } from "@/data/siteArticleImages";
@@ -29,7 +29,7 @@ import { hasBcgArticlePdf } from "@/data/bcgArticlePdfs";
 import { hasBsmArticlePdf } from "@/data/bsmArticlePdfs";
 import { hasArticlePdf } from "@/data/articles";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
-import { ArrowLeft, ArrowRight, ChevronRight, Download } from "lucide-react";
+import { ArrowRight, ChevronRight, Download } from "lucide-react";
 
 const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
@@ -69,19 +69,26 @@ const site =
 const article = bcg ?? bsm ?? evd ?? site;
 if (!channel || !sub || !article) return Astro.redirect(join("/channels"));
 
-/* Next-article nav, scoped to the CURRENT sub-topic: the source arrays can
-   hold articles from multiple sub-topics (e.g. bibleStudyMethods also holds
-   the Sermon Toolbox tools guide), so a raw "next in array" could link into
-   a different sub-topic under this subId — a path that was never emitted. */
-let nextArticle = bcg
-  ? getNextBcgArticle(article.id)
-  : bsm
-    ? getNextBibleStudyMethod(article.id)
-    : evd
-      ? getNextEvidenceArticle(article.id)
-      : getNextSiteArticle(subId!, article.id);
-if (nextArticle && !(sub.items ?? []).some(i => i.articleId === nextArticle!.id)) {
-  nextArticle = undefined;
+/* Next-article nav, driven by the sub-topic's own item order (channels.ts)
+   so EVERY article series gets a "Next Article" card — including series
+   whose bodies are marked unlisted in their source array (e.g. Sermon
+   Communication Planning lives in bcgArticles as unlisted so it stays out
+   of the BCG rotation). Wraps to the first article after the last, and
+   only links items whose article body exists (a page was emitted). */
+const resolveBody = (aid: string) =>
+  getBcgArticle(aid) ?? getBibleStudyMethod(aid) ?? getEvidenceArticle(aid) ?? getSiteArticle(subId!, aid);
+const seriesItems = (sub.items ?? []).filter(i => !i.unlisted && i.articleId);
+const curIdx = seriesItems.findIndex(i => i.articleId === article.id);
+let nextArticle: { id: string; title: string } | undefined;
+if (curIdx !== -1 && seriesItems.length > 1) {
+  for (let step = 1; step < seriesItems.length; step++) {
+    const candidate = seriesItems[(curIdx + step) % seriesItems.length];
+    const body = resolveBody(candidate.articleId!);
+    if (body) {
+      nextArticle = { id: body.id, title: body.title };
+      break;
+    }
+  }
 }
 const pdfHref = bcg
   ? (hasBcgArticlePdf(article.id) ? join(`/articles/bcg/${article.id}.pdf`) : null)
@@ -151,13 +158,8 @@ const heroTitle = splitTitle(article.title);
   <div class="relative overflow-hidden" style={`background:${channel.gradient};`}>
     <div class="absolute inset-0 pointer-events-none" style="background-image:repeating-linear-gradient(45deg, rgba(255,255,255,0.05) 0, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 18px);"></div>
     <div class="container mx-auto px-4 py-7 md:py-9 relative max-w-3xl">
-      <nav class="flex items-center text-base mb-3 flex-wrap gap-1" style="color:#ffffff;">
-        <a href={join("/channels")} class="hover:text-white transition-colors">Channels</a>
-        <ChevronRight className="w-3 h-3" />
-        <a href={join(`/channels/${channel.id}`)} class="hover:text-white transition-colors">{channel.shortName}</a>
-        <ChevronRight className="w-3 h-3" />
-        <a href={join(`/channels/${channel.id}/${sub.id}`)} class="hover:text-white transition-colors">{splitTitle(sub.name).main}</a>
-      </nav>
+      {/* Hero intentionally carries only the topic kicker + article title;
+          breadcrumbs live above the article body next to the PDF button. */}
       <div class="text-sm uppercase tracking-widest font-semibold mb-2" style="color:#ffffff;">{splitTitle(sub.name).main}</div>
       <h1 class="text-3xl md:text-5xl mb-2" style="color:#ffffff;font-weight:500;">{heroTitle.main}</h1>
     </div>
@@ -165,9 +167,15 @@ const heroTitle = splitTitle(article.title);
 
   <div class="container mx-auto px-4 py-12 md:py-16 max-w-3xl">
     <div class="flex items-center justify-between gap-4 flex-wrap mb-8">
-      <a href={join(`/channels/${channel.id}/${sub.id}`)} class="inline-flex items-center text-sm font-medium transition-colors hover:text-primary" style="color:var(--color-muted-foreground);">
-        <ArrowLeft className="w-4 h-4 mr-2" /> Back to {sub.name}
-      </a>
+      {/* Breadcrumbs (replaces the old "Back to …" link) — every crumb is a
+          working link so readers can step back up the hierarchy. */}
+      <nav class="flex items-center text-sm font-medium flex-wrap gap-1" style="color:var(--color-muted-foreground);">
+        <a href={join("/channels")} class="transition-colors hover:text-primary">Channels</a>
+        <ChevronRight className="w-3 h-3" />
+        <a href={join(`/channels/${channel.id}`)} class="transition-colors hover:text-primary">{channel.shortName}</a>
+        <ChevronRight className="w-3 h-3" />
+        <a href={join(`/channels/${channel.id}/${sub.id}`)} class="transition-colors hover:text-primary">{splitTitle(sub.name).main}</a>
+      </nav>
       {pdfHref && (
         <a href={pdfHref} download class="inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-md border-2 transition-colors hover:text-white" style={`color:${channel.accentColor};border-color:${channel.accentColor};`} onmouseover={`this.style.backgroundColor='${channel.accentColor}';`} onmouseout="this.style.backgroundColor='transparent';">
           <Download className="w-4 h-4" /> Download PDF

@@ -34,6 +34,12 @@ export interface SubTopicItem {
    * section (e.g. "Core Principles" / "Kingdom Impact").
    */
   section?: string;
+  /**
+   * SEO-approved meta title/description overrides (used verbatim as the
+   * page <title> and meta description when set — SEO-009, Aug 2026).
+   */
+  seoTitle?: string;
+  seoDescription?: string;
   /** Optional per-item external link overrides. */
   links?: {
     pdf?: string;
@@ -63,6 +69,12 @@ export interface SubTopic {
    *  from the channel index grid; their parent's detail page lists them as cards.
    *  Direct child URLs still work so previously-published links don't 404. */
   parentId?: string;
+  /**
+   * SEO-approved meta title/description overrides (used verbatim as the
+   * page <title> and meta description when set — SEO-009, Aug 2026).
+   */
+  seoTitle?: string;
+  seoDescription?: string;
 }
 
 export interface Channel {
@@ -214,11 +226,11 @@ export const subTopics: SubTopic[] = [
       { number: 11, title: 'Attractive Church', articleId: 'an-attractive-church' },
       { number: 12, title: 'Inviting Church', articleId: 'an-inviting-church' },
       { number: 13, title: 'Model/Example Church', articleId: 'a-model-church' },
-      /* Former combined article — superseded by an-attractive-church /
-         an-inviting-church (July 2026) but kept unlisted so
-         /channels/church/become-growing-church/an-attractive-and-inviting-church
-         (and its PDF) stay live for link durability. */
-      { number: 98, title: 'An Attractive and Inviting Church', articleId: 'an-attractive-and-inviting-church', unlisted: true },
+      /* The former combined article an-attractive-and-inviting-church was
+         superseded by an-attractive-church / an-inviting-church (July 2026).
+         Its page no longer builds; the Worker 301s the old URL to
+         an-attractive-church (SEO-008, Aug 2026). Body stays in bcgArticles
+         for history only. */
       /* Supporting article — unlisted (see comment above): reachable only via
          the inline link inside the Total Life Discipleship article. */
       { number: 99, title: 'Anatomy of Obedience', articleId: 'anatomy-of-obedience', unlisted: true },
@@ -2316,17 +2328,19 @@ export const subTopics: SubTopic[] = [
     channelId: 'evidence',
     name: 'Existence of God',
     description: 'Help others discover compelling evidence for the existence of God.',
+    seoTitle: 'Evidence for the Existence of God | JO EQUIP',
+    seoDescription: "Explore scientific and philosophical evidence for God's existence, from the origin of the universe to the design of life on Earth.",
     formats: ['book', 'playlist'],
     playlistId: 'science-and-the-origin-of-life',
     bookId: 'has-science-discovered-god',
     items: [
-      { number: 1, title: 'Did the Universe Have a Beginning?', articleId: 'does-the-universe-have-a-beginning', videoId: '-z8D-mutYUg', links: { app: 'https://app.jesusonline.com/post/52002-does-the-universe-have-a-beginning' } },
-      { number: 2, title: 'Why Is Only Earth Suitable for Life?', articleId: 'why-is-only-earth-suitable-for-life', links: { app: 'https://app.jesusonline.com/post/52003-why-is-only-earth-suitable-for-life' } },
-      { number: 3, title: 'Is the Universe a Product of Design or Chance?', articleId: 'is-the-universe-a-product-of-design-or-chance', links: { app: 'https://app.jesusonline.com/post/52004-is-the-universe-a-product-of-design-or-chance' } },
-      { number: 4, title: 'How Did Life Begin?', articleId: 'how-did-life-begin', links: { app: 'https://app.jesusonline.com/post/52006-how-did-life-begin' } },
-      { number: 5, title: 'Did Darwin Get It Wrong?', articleId: 'did-darwin-get-it-wrong', links: { app: 'https://app.jesusonline.com/post/52005-did-darwin-get-it-wrong' } },
-      { number: 6, title: 'Where Are Darwin\'s Predicted Fossils?', articleId: 'where-are-darwins-predicted-fossils', links: { app: 'https://app.jesusonline.com/post/52007-where-are-darwins-predicted-fossils' } },
-      { number: 7, title: 'Is a Designer Revealed in Creation?', articleId: 'is-a-designer-revealed-in-creation', links: { app: 'https://app.jesusonline.com/post/52009-is-a-designer-revealed-in-creation' } },
+      { number: 1, title: 'Did the Universe Have a Beginning?', articleId: 'does-the-universe-have-a-beginning', videoId: '-z8D-mutYUg', seoTitle: 'Does the Universe Have a Beginning? | JO EQUIP', seoDescription: "From Hubble's discovery to the Big Bang, see the scientific evidence that the universe had a beginning, and what it means for the existence of a Creator.", links: { app: 'https://app.jesusonline.com/post/52002-does-the-universe-have-a-beginning' } },
+      { number: 2, title: 'Why Is Only Earth Suitable for Life?', articleId: 'why-is-only-earth-suitable-for-life', seoTitle: 'Why Is Only Earth Suitable for Life? | JO EQUIP', seoDescription: 'Discover the remarkably precise conditions that make Earth uniquely suitable for life, and why scientists call it a fine-tuned planet.', links: { app: 'https://app.jesusonline.com/post/52003-why-is-only-earth-suitable-for-life' } },
+      { number: 3, title: 'Is the Universe a Product of Design or Chance?', articleId: 'is-the-universe-a-product-of-design-or-chance', seoTitle: 'Universe: Product of Design or Chance? | JO EQUIP', seoDescription: "Weigh the evidence behind the universe's precise fine-tuning for life. Is it the result of pure chance, or does it point to intentional design?", links: { app: 'https://app.jesusonline.com/post/52004-is-the-universe-a-product-of-design-or-chance' } },
+      { number: 4, title: 'How Did Life Begin?', articleId: 'how-did-life-begin', seoTitle: 'How Did Life Begin? The Origin of Life | JO EQUIP', seoDescription: 'Examine the scientific puzzle of how life first began on Earth, and why the complexity of even the simplest cell points beyond random chance.', links: { app: 'https://app.jesusonline.com/post/52006-how-did-life-begin' } },
+      { number: 5, title: 'Did Darwin Get It Wrong?', articleId: 'did-darwin-get-it-wrong', seoTitle: 'Did Darwin Get It Wrong? Evolution Examined | JO EQUIP', seoDescription: 'Explore the scientific challenges to Darwinian evolution, including gaps in the fossil record and what they reveal about our origins.', links: { app: 'https://app.jesusonline.com/post/52005-did-darwin-get-it-wrong' } },
+      { number: 6, title: 'Where Are Darwin\'s Predicted Fossils?', articleId: 'where-are-darwins-predicted-fossils', seoTitle: "Where Are Darwin's Predicted Fossils? | JO EQUIP", seoDescription: 'Darwin predicted the fossil record would fill with transitional forms. See what over 150 years of fossil evidence actually reveals.', links: { app: 'https://app.jesusonline.com/post/52007-where-are-darwins-predicted-fossils' } },
+      { number: 7, title: 'Is a Designer Revealed in Creation?', articleId: 'is-a-designer-revealed-in-creation', seoTitle: 'Is a Designer Revealed in Creation? | JO EQUIP', seoDescription: 'Explore the evidence for intelligent design in nature, from irreducible complexity to fine-tuning, and what it suggests about a Designer behind creation.', links: { app: 'https://app.jesusonline.com/post/52009-is-a-designer-revealed-in-creation' } },
     ],
   },
   {

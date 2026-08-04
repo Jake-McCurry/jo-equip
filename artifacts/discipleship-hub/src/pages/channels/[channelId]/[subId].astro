@@ -101,7 +101,7 @@ function splitTitle(t: string): { main: string; paren: string | null } {
 
 const heroTitle = splitTitle(sub.name);
 ---
-<Layout title={`${sub.name} · ${channel.shortName} · JO EQUIP`} description={`${sub.name} — ${channel.tagline}`}>
+<Layout title={sub.seoTitle ?? `${sub.name} · ${channel.shortName} · JO EQUIP`} description={sub.seoDescription ?? `${sub.name} — ${channel.tagline}`}>
   <Fragment slot="head">
     <BreadcrumbsLd items={[
       { name: "Home", url: "/" },

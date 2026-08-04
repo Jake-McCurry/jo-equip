@@ -316,6 +316,10 @@ export default {
     const MOVED = {
       "/channels/church/sermon-toolbox/essential-bible-study-tools":
         "/channels/church/bible-study-tools/essential-bible-study-tools",
+      /* SEO-008: duplicate-content consolidation — the retired combined
+       * article 301s to the preferred split article. */
+      "/channels/church/become-growing-church/an-attractive-and-inviting-church":
+        "/channels/church/become-growing-church/an-attractive-church",
     };
     const movedTo = MOVED[url.pathname.replace(/\/+$/, "")];
     if (movedTo) {

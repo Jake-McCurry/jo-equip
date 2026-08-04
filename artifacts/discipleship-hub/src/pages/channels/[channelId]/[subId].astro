@@ -91,6 +91,15 @@ const showTopicButtons = !!(sub.formats && sub.formats.length > 0);
 function btnClass(enabled: boolean) {
   return "inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-[11px] font-semibold uppercase tracking-wider transition-all" + (enabled ? " hover:shadow-sm" : " cursor-not-allowed");
 }
+
+/* Titles like "New Life in Christ (Intermediate Discipleship)" — render the
+   parenthetical smaller so it supplements rather than competes with the title. */
+function splitTitle(t: string): { main: string; paren: string | null } {
+  const m = t.match(/^(.*?)\s*(\([^)]*\))\s*$/);
+  return m ? { main: m[1], paren: m[2] } : { main: t, paren: null };
+}
+
+const heroTitle = splitTitle(sub.name);
 ---
 <Layout title={`${sub.name} · ${channel.shortName} · JO EQUIP`} description={`${sub.name} — ${channel.tagline}`}>
   <Fragment slot="head">
@@ -109,36 +118,36 @@ function btnClass(enabled: boolean) {
   <div class="relative overflow-hidden" style={`background:${channel.gradient};`}>
     <div class="absolute inset-0 pointer-events-none" style="background-image:repeating-linear-gradient(45deg, rgba(255,255,255,0.05) 0, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 18px);"></div>
     <div class="absolute -top-20 -right-20 w-72 h-72 rounded-full pointer-events-none" style="background-color:rgba(255,255,255,0.08);filter:blur(20px);"></div>
-    <div class="container mx-auto px-4 py-12 md:py-16 relative max-w-5xl">
-      <nav class="flex items-center text-sm mb-6 flex-wrap gap-1" style="color:rgba(255,255,255,0.8);">
-        <a href={join("/channels")} class="hover:text-white transition-colors">Channels</a>
-        <ChevronRight className="w-3 h-3" />
-        <a href={join(`/channels/${channel.id}`)} class="hover:text-white transition-colors">{channel.shortName}</a>
-        {parent && (
-          <>
-            <ChevronRight className="w-3 h-3" />
-            <a href={join(`/channels/${channel.id}/${parent.id}`)} class="hover:text-white transition-colors">{parent.name}</a>
-          </>
-        )}
-        <ChevronRight className="w-3 h-3" />
-        <span style="color:rgba(255,255,255,0.95);">{sub.name}</span>
-      </nav>
-
-      <h1 class="text-3xl md:text-5xl mb-2" style="color:#ffffff;font-weight:500;">{sub.name}</h1>
+    <div class="container mx-auto px-4 py-7 md:py-9 relative max-w-5xl">
+      <h1 class="text-3xl md:text-5xl mb-2" style="color:#ffffff;font-weight:500;">{heroTitle.main}</h1>
       {sub.description && (
-        <p class="text-sm md:text-base max-w-3xl" style="color:rgba(255,255,255,0.85);">{sub.description}</p>
+        <p class="text-base md:text-lg max-w-3xl" style="color:#ffffff;">{sub.description}</p>
       )}
     </div>
   </div>
 
   <div class="container mx-auto px-4 py-12 md:py-16 max-w-5xl">
+    {/* Breadcrumbs — below the hero, matching the article-page style. */}
+    <nav class="flex items-center text-sm font-medium flex-wrap gap-1 mb-8" style="color:var(--color-muted-foreground);">
+      <a href={join("/channels")} class="transition-colors hover:text-primary">Channels</a>
+      <ChevronRight className="w-3 h-3" />
+      <a href={join(`/channels/${channel.id}`)} class="transition-colors hover:text-primary">{channel.shortName}</a>
+      {parent && (
+        <>
+          <ChevronRight className="w-3 h-3" />
+          <a href={join(`/channels/${channel.id}/${parent.id}`)} class="transition-colors hover:text-primary">{parent.name}</a>
+        </>
+      )}
+      <ChevronRight className="w-3 h-3" />
+      <span>{heroTitle.main}</span>
+    </nav>
     {isNewsletter ? (
       <MakeMultiplyNewsletter accent={channel.accentColor} />
     ) : hasChildren ? (
       <>
         <div class="mb-6 pb-4 border-b" style="border-color:var(--color-border);">
           <h2 class="text-2xl" style="color:#0b3c5d;">Topics</h2>
-          <div class="mt-2 h-0.5 w-12" style="background-color:#ff7a00;"></div>
+          <div class="mt-2 h-0.5 w-12" style="background-color:#de5b00;"></div>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {children.map((child) => {
@@ -190,17 +199,17 @@ function btnClass(enabled: boolean) {
             <div class="flex flex-wrap gap-2">
                 {sub.formats!.includes("book") && (
                   topicBookHref
-                    ? <a href={topicBookHref} class={btnClass(true)} style="background-color:#ff7a0014;color:#ff7a00;border:1px solid #ff7a0040;"><FileText className="w-3 h-3" />Book</a>
+                    ? <a href={topicBookHref} class={btnClass(true)} style="background-color:#de5b0014;color:#de5b00;border:1px solid #de5b0040;"><FileText className="w-3 h-3" />Book</a>
                     : <span class={btnClass(false)} style="background-color:rgba(0,0,0,0.04);color:#9ca3af;border:1px solid rgba(0,0,0,0.06);" title="Book coming soon"><FileText className="w-3 h-3" />Book</span>
                 )}
                 {sub.formats!.includes("playlist") && (
                   topicPlaylistHref
-                    ? <a href={topicPlaylistHref} class={btnClass(true)} style="background-color:#ff7a0014;color:#ff7a00;border:1px solid #ff7a0040;"><Video className="w-3 h-3" />Playlist</a>
+                    ? <a href={topicPlaylistHref} class={btnClass(true)} style="background-color:#de5b0014;color:#de5b00;border:1px solid #de5b0040;"><Video className="w-3 h-3" />Playlist</a>
                     : <span class={btnClass(false)} style="background-color:rgba(0,0,0,0.04);color:#9ca3af;border:1px solid rgba(0,0,0,0.06);" title="Playlist coming soon"><Video className="w-3 h-3" />Playlist</span>
                 )}
                 {sub.formats!.includes("app") && (
                   topicAppHref
-                    ? <a href={topicAppHref} target="_blank" rel="noopener noreferrer" class={btnClass(true)} style="background-color:#ff7a0014;color:#ff7a00;border:1px solid #ff7a0040;"><Smartphone className="w-3 h-3" />App</a>
+                    ? <a href={topicAppHref} target="_blank" rel="noopener noreferrer" class={btnClass(true)} style="background-color:#de5b0014;color:#de5b00;border:1px solid #de5b0040;"><Smartphone className="w-3 h-3" />App</a>
                     : <span class={btnClass(false)} style="background-color:rgba(0,0,0,0.04);color:#9ca3af;border:1px solid rgba(0,0,0,0.06);" title="App coming soon"><Smartphone className="w-3 h-3" />App</span>
                 )}
             </div>
@@ -209,7 +218,7 @@ function btnClass(enabled: boolean) {
 
         <div class="mb-6 pb-4 border-b" style="border-color:var(--color-border);">
           <h2 class="text-2xl" style="color:#0b3c5d;">Articles</h2>
-          <div class="mt-2 h-0.5 w-12" style="background-color:#ff7a00;"></div>
+          <div class="mt-2 h-0.5 w-12" style="background-color:#de5b00;"></div>
         </div>
         <ol class="space-y-2">
           {sub.items!.filter(item => !item.unlisted).map((item, idx, visible) => {
@@ -298,14 +307,14 @@ function btnClass(enabled: boolean) {
                   </h3>
                   <div class="flex flex-wrap gap-1.5">
                     {articleHref && (
-                      <a href={articleHref} class={btnClass(true)} style="background-color:#ff7a0014;color:#ff7a00;border:1px solid #ff7a0040;">
+                      <a href={articleHref} class={btnClass(true)} style="background-color:#de5b0014;color:#de5b00;border:1px solid #de5b0040;">
                         <FileText className="w-3 h-3" />Read
                       </a>
                     )}
                     {buttons.map(b => {
                       const enabled = !!b.href && b.href !== "#";
                       const Icon = b.icon;
-                      const enabledStyle = `background-color:#ff7a0014;color:#ff7a00;border:1px solid #ff7a0040;`;
+                      const enabledStyle = `background-color:#de5b0014;color:#de5b00;border:1px solid #de5b0040;`;
                       const disabledStyle = "background-color:rgba(0,0,0,0.04);color:#9ca3af;border:1px solid rgba(0,0,0,0.06);";
                       if (!enabled) {
                         return (

@@ -3,7 +3,7 @@ import Layout from "@/layouts/Layout.astro";
 import { Church } from "lucide-react";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 
-/* JO EQUIPPED Church registration — Mailchimp audience jesusonline.us1
+/* JO Equipped Church registration — Mailchimp audience jesusonline.us1
  * (same audience as the newsletter but a distinct form: f_id=00bf87e5f0).
  * Submits via Mailchimp's JSONP endpoint so we can show the thank-you
  * dialog inline instead of navigating to Mailchimp's response page. */
@@ -13,7 +13,7 @@ const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
 ---
 <Layout
   title="Register Your Church · JO EQUIP"
-  description="Register today to become a FREE JO EQUIPPED Church — free, unrestricted access to the JO EQUIP library of practical, biblically grounded discipleship tools."
+  description="Register today to become a FREE JO Equipped Church — free, unrestricted access to the JO EQUIP library of practical, biblically grounded discipleship tools."
 >
   <Fragment slot="head">
     <BreadcrumbsLd items={[
@@ -27,19 +27,19 @@ const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
       <div class="text-center">
         <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium mb-6" style="background-color:rgba(122,58,138,0.1);color:#7a3a8a;">
           <Church className="w-3.5 h-3.5" />
-          JO EQUIPPED Church
+          JO Equipped Church
         </div>
         <h1 class="text-3xl md:text-4xl mb-4" style="color:#0b3c5d;">
-          Register today to become a FREE JO&nbsp;EQUIPPED Church
+          Register today to become a FREE JO&nbsp;Equipped Church
         </h1>
-        <div class="h-0.5 w-12 mx-auto mb-8" style="background-color:#ff7a00;"></div>
+        <div class="h-0.5 w-12 mx-auto mb-8" style="background-color:#de5b00;"></div>
       </div>
 
       <div class="space-y-5 text-lg leading-relaxed mb-10" style="color:#374151;">
         <p>
           We are pleased to invite you and your congregation to become part of a growing community of
-          churches that are empowered to make a greater impact for Christ. By registering as a JesusOnline
-          EQUIPPED Church, you will receive free and unrestricted access to our comprehensive digital
+          churches that are empowered to make a greater impact for Christ. By registering as a JO
+          Equipped Church, you will receive free and unrestricted access to our comprehensive digital
           JO EQUIP library of practical, biblically grounded discipleship tools. These resources are
           carefully designed to help you clearly proclaim the gospel, nurture mature believers in their faith,
           and multiply healthy, vibrant congregations for the glory of God.
@@ -58,7 +58,7 @@ const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
         <form id="rc-form" class="space-y-4" novalidate>
           <div>
             <label for="rc-fname" class="block text-sm font-medium mb-1.5" style="color:#0b3c5d;">
-              First Name <span style="color:#ff7a00;">*</span>
+              First Name <span style="color:#de5b00;">*</span>
             </label>
             <input
               type="text"
@@ -72,22 +72,8 @@ const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
           </div>
 
           <div>
-            <label for="rc-lname" class="block text-sm font-medium mb-1.5" style="color:#0b3c5d;">
-              Last Name
-            </label>
-            <input
-              type="text"
-              name="LNAME"
-              id="rc-lname"
-              autocomplete="family-name"
-              class="w-full rounded border px-3 py-2.5 text-sm outline-none focus-visible:ring-2"
-              style="border-color:var(--color-border);color:#0b3c5d;"
-            />
-          </div>
-
-          <div>
             <label for="rc-email" class="block text-sm font-medium mb-1.5" style="color:#0b3c5d;">
-              Email Address <span style="color:#ff7a00;">*</span>
+              Email Address <span style="color:#de5b00;">*</span>
             </label>
             <input
               type="email"
@@ -102,7 +88,7 @@ const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
 
           <div>
             <label for="rc-church" class="block text-sm font-medium mb-1.5" style="color:#0b3c5d;">
-              Church <span style="color:#ff7a00;">*</span>
+              Church <span style="color:#de5b00;">*</span>
             </label>
             <input
               type="text"
@@ -115,37 +101,12 @@ const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
             />
           </div>
 
-          <div>
-            <label for="rc-country" class="block text-sm font-medium mb-1.5" style="color:#0b3c5d;">
-              Country <span style="color:#ff7a00;">*</span>
-            </label>
-            <input
-              type="text"
-              name="COUNTRY"
-              id="rc-country"
-              required
-              autocomplete="country-name"
-              class="w-full rounded border px-3 py-2.5 text-sm outline-none focus-visible:ring-2"
-              style="border-color:var(--color-border);color:#0b3c5d;"
-            />
-          </div>
+          {/* COUNTRY is reported automatically from the visitor's IP (Cloudflare
+              geolocation via /api/geo) — no visible field. Empty if unavailable. */}
+          <input type="hidden" name="COUNTRY" id="rc-country" value="" />
 
-          <div>
-            <label for="rc-gender" class="block text-sm font-medium mb-1.5" style="color:#0b3c5d;">
-              Gender <span style="color:#ff7a00;">*</span>
-            </label>
-            <select
-              name="GENDER"
-              id="rc-gender"
-              required
-              class="w-full rounded border px-3 py-2.5 text-sm outline-none focus-visible:ring-2 bg-white"
-              style="border-color:var(--color-border);color:#0b3c5d;"
-            >
-              <option value="" disabled selected>Select&hellip;</option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-            </select>
-          </div>
+          {/* Mailchimp audience tag (from the provided embed code) */}
+          <input type="hidden" name="tags" value="5798233" />
 
           {/* Bot-prevention honeypot — do not remove */}
           <div aria-hidden="true" style="position:absolute;left:-5000px;">
@@ -163,12 +124,6 @@ const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
             Yes, Register My Church
           </button>
         </form>
-
-        <p class="text-xs mt-4" style="color:var(--color-muted-foreground);">
-          Prefer email? Write to
-          <a href="mailto:equip@jesusonline.com" class="font-semibold hover:underline" style="color:#ff7a00;">equip@jesusonline.com</a>
-          and we'll register you.
-        </p>
       </div>
     </div>
   </section>
@@ -178,7 +133,7 @@ const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
     <div id="rc-thanks-backdrop" class="absolute inset-0" style="background-color:rgba(11,60,93,0.6);"></div>
     <div class="relative bg-white rounded-lg shadow-xl max-w-md w-full p-8 text-center">
       <h2 id="rc-thanks-title" class="text-2xl mb-4" style="color:#0b3c5d;">Thank You!</h2>
-      <div class="h-0.5 w-12 mx-auto mb-5" style="background-color:#ff7a00;"></div>
+      <div class="h-0.5 w-12 mx-auto mb-5" style="background-color:#de5b00;"></div>
       <p class="text-base leading-relaxed mb-6" style="color:#374151;">
         Thank you for your faithful service to the Lord and His Church. We look forward to equipping
         you and your congregation as together we seek first the Kingdom of God.
@@ -196,6 +151,23 @@ const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
 
   <script define:vars={{ MC_POST_JSON }}>
     const form = document.getElementById("rc-form");
+
+    /* Fill hidden COUNTRY from the visitor's IP (Cloudflare geolocation).
+     * Only works on the live site (the Worker serves /api/geo); anywhere
+     * else this fails silently and COUNTRY is submitted empty. */
+    (async () => {
+      try {
+        const res = await fetch("/api/geo", { signal: AbortSignal.timeout(4000) });
+        if (!res.ok) return;
+        const { country } = await res.json();
+        if (!country) return;
+        let name = country;
+        try {
+          name = new Intl.DisplayNames(["en"], { type: "region" }).of(country) || country;
+        } catch {}
+        document.getElementById("rc-country").value = name;
+      } catch {}
+    })();
     const submitBtn = document.getElementById("rc-submit");
     const errorEl = document.getElementById("rc-error");
     const thanks = document.getElementById("rc-thanks");

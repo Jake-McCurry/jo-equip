@@ -11,6 +11,8 @@ interface Props {
   image?: string;
   /** Alt text for the OG/Twitter image. Defaults to the site tagline. */
   imageAlt?: string;
+  /** Override the header/nav blue (used to trial new brand colors per-page). */
+  navColor?: string;
 }
 
 const {
@@ -18,6 +20,7 @@ const {
   description = "A free digital library of practical discipleship tools for pastors and ministry leaders.",
   image = "/opengraph.jpg",
   imageAlt = "JO EQUIP — Ministry Resources Hub",
+  navColor = "#0083de",
 } = Astro.props;
 
 const baseUrl = import.meta.env.BASE_URL;
@@ -76,7 +79,7 @@ const gtmEnabled = import.meta.env.PROD;
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/svg+xml" href={join("/favicon.svg")} />
     <link rel="apple-touch-icon" href={join("/favicon.svg")} />
-    <meta name="theme-color" content="#0b3c5d" />
+    <meta name="theme-color" content="#0083de" />
 
     {/* Early-connection hints — get DNS+TLS done before scripts request these origins.
         These don't initiate downloads; they just warm the connection so when GTM
@@ -149,7 +152,7 @@ const gtmEnabled = import.meta.env.PROD;
     )}
 
     {/* Header */}
-    <header class="sticky top-0 z-50 w-full" style="background-color:#0b3c5d;border-bottom:1px solid rgba(255,255,255,0.08);">
+    <header class="sticky top-0 z-50 w-full" style={`background-color:${navColor};border-bottom:1px solid rgba(255,255,255,0.08);`}>
       <div class="container mx-auto px-4 md:px-6 flex items-center justify-between py-4 md:py-5 relative">
 
         <a href={join("/")} class="flex items-center gap-3 md:gap-5 hover:opacity-90 transition-opacity">
@@ -166,20 +169,20 @@ const gtmEnabled = import.meta.env.PROD;
           {navLinksWithActive.map(link => (
             <a
               href={join(link.path)}
-              class="relative px-3 py-2 text-sm font-medium transition-colors rounded hover:text-white"
-              style={`color:${link.active ? "#ffffff" : "rgba(255,255,255,0.65)"};`}
+              class="relative px-3 py-2 text-base font-medium transition-colors rounded hover:text-white"
+              style="color:#ffffff;"
               aria-current={link.active ? "page" : undefined}
             >
               {link.name}
               {link.active && (
-                <span class="absolute -bottom-1 left-3 right-3 h-0.5 rounded-full" style="background-color:#ff7a00;"></span>
+                <span class="absolute -bottom-1 left-3 right-3 h-0.5 rounded-full" style="background-color:#de5b00;"></span>
               )}
             </a>
           ))}
           <a
             href={join("/search")}
             class="ml-2 inline-flex items-center justify-center w-9 h-9 rounded transition-colors hover:bg-white/10"
-            style="color:rgba(255,255,255,0.85);"
+            style="color:#ffffff;"
             aria-label="Search the library"
             title="Search"
           >
@@ -192,7 +195,7 @@ const gtmEnabled = import.meta.env.PROD;
           <a
             href={join("/search")}
             class="inline-flex items-center justify-center w-10 h-10 rounded transition-colors hover:bg-white/10"
-            style="color:rgba(255,255,255,0.85);"
+            style="color:#ffffff;"
             aria-label="Search the library"
             title="Search"
           >
@@ -222,14 +225,14 @@ const gtmEnabled = import.meta.env.PROD;
         role="navigation"
         aria-label="Mobile"
         class="lg:hidden absolute left-0 right-0 top-full w-full flex-col z-40 hidden data-[open=true]:flex shadow-lg"
-        style="background-color:#ffffff;border-top:3px solid #1e6fa8;"
+        style={`background-color:#ffffff;border-top:3px solid ${navColor};`}
       >
         {mobileNavLinks.map(link => (
           <a
             href={join(link.path)}
             aria-current={link.active ? "page" : undefined}
             class="text-base font-medium py-3.5 px-6 transition-colors"
-            style={`color:${link.active ? "#1e6fa8" : "#0b3c5d"};border-bottom:1px solid #e5e9ef;${link.active ? "background-color:rgba(30,111,168,0.06);border-left:3px solid #ff7a00;padding-left:calc(1.5rem - 3px);" : ""}`}
+            style={`color:${link.active ? navColor : "#0b3c5d"};border-bottom:1px solid #e5e9ef;${link.active ? `background-color:${navColor}0f;border-left:3px solid #de5b00;padding-left:calc(1.5rem - 3px);` : ""}`}
           >
             {link.name}
           </a>
@@ -295,7 +298,7 @@ const gtmEnabled = import.meta.env.PROD;
     </main>
 
     {/* Footer */}
-    <footer class="pt-12 pb-8" style="background-color:#0b3c5d;">
+    <footer class="pt-12 pb-8" style="background-color:#002f55;">
       <div class="container mx-auto px-4 md:px-6">
         <div class="flex flex-col md:flex-row justify-between items-start gap-10 pb-10" style="border-bottom:1px solid rgba(255,255,255,0.12);">
           <div class="max-w-xs">

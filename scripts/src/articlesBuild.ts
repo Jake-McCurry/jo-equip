@@ -98,6 +98,17 @@ function stripLeadingNumber(title: string): string {
   return title.replace(/^[\d][\d.\-]*\s+/, "").trim();
 }
 
+/* Per-slug content edits requested by the ministry (applied to the PDF body;
+   the matching on-site article JSON is edited the same way — keep in sync). */
+function perSlugContentFix(appSlug: string, html: string): string {
+  if (appSlug === "32001-building-blocks-for-maturity-introduction") {
+    /* Section titles read "1. Seeing Your Life…" instead of
+       "Building Block 1. Seeing Your Life…" (Aug 2026 request). */
+    return html.replace(/Building Block (\d+)\./g, "$1.");
+  }
+  return html;
+}
+
 /* Decode the handful of HTML entities WordPress emits in titles (apostrophes,
    ampersands, em dashes). Avoids pulling in a heavy library. */
 function decodeEntities(s: string): string {
@@ -220,7 +231,7 @@ function renderTemplate({
     font-family: Georgia, "Times New Roman", serif;
     font-size: 17pt;
     line-height: 1.2;
-    color: #1e6fa8;
+    color: #0083de;
     font-weight: 600;
     letter-spacing: 0.005em;
     margin: 0 0 0.25em 0;
@@ -236,7 +247,7 @@ function renderTemplate({
   .cover .rule {
     display: block;
     width: 96px; height: 4px;
-    background: #ff7a00;
+    background: #de5b00;
     margin: 0.4in 0 0.45in 0;
   }
   .cover .meta {
@@ -286,7 +297,7 @@ function renderTemplate({
   .article li { margin: 0.25em 0; }
   .article blockquote {
     margin: 1em 0; padding: 0.5em 1em;
-    border-left: 3px solid #1e6fa8; background: #e6f2fa;
+    border-left: 3px solid #0083de; background: #e6f2fa;
     color: #1f2937; font-style: italic;
   }
   .article blockquote p:last-child { margin-bottom: 0; }
@@ -516,7 +527,10 @@ async function buildOne(
     }
 
     const displayTitle = stripLeadingNumber(decodeEntities(post.title.rendered));
-    const bodyHtml = sanitizeHtml(await inlineEndnotes(rewriteWatchVideo(post.content.rendered, appSlug)));
+    const bodyHtml = perSlugContentFix(
+      appSlug,
+      sanitizeHtml(await inlineEndnotes(rewriteWatchVideo(post.content.rendered, appSlug))),
+    );
     const html = renderTemplate({
       title: displayTitle,
       bodyHtml,

@@ -113,7 +113,7 @@ const personaLinks = [
       aria-hidden="true"
     ></div>
     {/* Light navy wash so the white text stays readable while the collage shows through. */}
-    <div class="pointer-events-none absolute inset-0" style="background:linear-gradient(to bottom, rgba(11,60,93,0.45), rgba(11,60,93,0.35));"></div>
+    <div class="pointer-events-none absolute inset-0" style="background:linear-gradient(to bottom, rgba(11,60,93,0.35), rgba(11,60,93,0.25));"></div>
 
     <div class="relative container mx-auto max-w-4xl">
       <h1 class="text-2xl sm:text-4xl md:text-5xl leading-tight" style="color:#ffffff;font-weight:500;text-shadow:0 1px 12px rgba(11,60,93,0.6);">Reach people. Grow disciples.<br />Multiply churches.</h1>
@@ -125,15 +125,15 @@ const personaLinks = [
     <div class="container mx-auto max-w-4xl">
       <p class="text-base md:text-lg max-w-3xl mx-auto leading-relaxed" style="color:#374151;">
         Biblically grounded resources to help answer difficult questions, develop mature believers, equip leaders, and strengthen churches.
-        <a href={join("/equip")} class="underline underline-offset-2 font-semibold hover:opacity-90" style="color:#ff7a00;">Find out more</a>
+        <a href={join("/equip")} class="text-sm md:text-base underline underline-offset-2 hover:opacity-90" style="color:#de5b00;">Find out more</a>
       </p>
       {/* Persona links — the four audience landing pages, per the Aug 2026 planning note. */}
       <p class="mt-5 text-sm md:text-base" style="color:#0b3c5d;">
         <span class="font-medium">Explore Free Resources for</span>
         {personaLinks.map(link => (
           <Fragment>
-            <span aria-hidden="true" class="mx-1.5" style="color:#ff7a00;">&bull;</span>
-            <a href={link.href} class="underline underline-offset-2 whitespace-nowrap hover:opacity-90" style="color:#ff7a00;">{link.title}</a>
+            <span aria-hidden="true" class="mx-1.5" style="color:#de5b00;">&bull;</span>
+            <a href={link.href} class="underline underline-offset-2 whitespace-nowrap hover:opacity-90" style="color:#de5b00;">{link.title}</a>
           </Fragment>
         ))}
       </p>
@@ -145,14 +145,16 @@ const personaLinks = [
     <div class="container mx-auto px-4">
       <h2 class="sr-only">Explore the three channels</h2>
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-md sm:max-w-lg lg:max-w-none mx-auto">
-        {channels.map(channel => (
+        {channels.map(channel => {
+          const accent = channel.accentColor;
+          return (
           <a href={join(`/channels/${channel.id}`)} class="group flex flex-col">
             <h3 class="text-2xl font-semibold mb-2 group-hover:underline" style="color:#0b3c5d;">{channel.name}</h3>
             <div
               class="flex flex-col flex-grow bg-white border rounded overflow-hidden group-hover:shadow-lg transition-all"
-              style={`border-color:var(--color-border);border-left:4px solid ${channel.accentColor};`}
+              style={`border-color:var(--color-border);border-left:4px solid ${accent};`}
             >
-              <div style={`height:8px;background-color:${channel.accentColor};`}></div>
+              <div style={`height:8px;background-color:${accent};`}></div>
               <div class="relative aspect-[5/2] overflow-hidden">
                 <Picture
                   src={channelImages[channel.id]}
@@ -164,23 +166,24 @@ const personaLinks = [
                   class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
                 />
               </div>
-              <div style={`height:4px;background-color:${channel.accentColor};`}></div>
+              <div style={`height:4px;background-color:${accent};`}></div>
               <div class="p-6 md:p-7 flex flex-col flex-grow">
                 <p class="text-[15px] leading-snug mb-4 flex-grow" style="color:var(--color-muted-foreground);">{channel.tagline}</p>
-                <span class="inline-flex items-center justify-center w-full text-sm font-semibold text-white rounded px-4 py-2.5 mt-auto transition-opacity group-hover:opacity-90" style={`background-color:${channel.accentColor};`}>
+                <span class="inline-flex items-center justify-center w-full text-sm font-semibold text-white rounded px-4 py-2.5 mt-auto transition-opacity group-hover:opacity-90" style={`background-color:${accent};`}>
                   Explore {channel.shortName}
                   <ArrowRight className="w-4 h-4 ml-1.5" />
                 </span>
               </div>
             </div>
           </a>
-        ))}
+          );
+        })}
       </div>
     </div>
   </section>
 
   {/* Quick links — Reviews · About · Beliefs · JO APP */}
-  <section style="background-color:#1e6fa8;">
+  <section style="background-color:#0083de;">
     <div class="container mx-auto px-4">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 divide-white/15 sm:gap-y-px lg:divide-x lg:divide-white/15">
         {quickLinks.map(link => {

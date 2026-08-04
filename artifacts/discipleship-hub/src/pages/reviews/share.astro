@@ -37,9 +37,9 @@ const categoryIds = reviewCategories.map(c => c.id);
   <div class="container mx-auto px-4 py-12 md:py-16">
     <div class="max-w-xl mx-auto">
       <div class="text-center mb-8">
-        <div class="text-xs font-semibold tracking-widest uppercase mb-3" style="color:#1e6fa8;">Reviews</div>
+        <div class="text-xs font-semibold tracking-widest uppercase mb-3" style="color:#0083de;">Reviews</div>
         <h1 class="text-4xl md:text-5xl mb-4" style="color:#0b3c5d;">Share Your Review</h1>
-        <div class="h-0.5 w-12 mb-5 mx-auto" style="background-color:#ff7a00;"></div>
+        <div class="h-0.5 w-12 mb-5 mx-auto" style="background-color:#de5b00;"></div>
         <p class="leading-relaxed text-lg" style="color:var(--color-muted-foreground);">
           Share your story to encourage others. How has JO EQUIP helped you?
           We'd love to hear from you.
@@ -49,7 +49,7 @@ const categoryIds = reviewCategories.map(c => c.id);
       <form
         id="review-form"
         class="bg-white border rounded p-6 md:p-8 flex flex-col gap-5"
-        style="border-color:var(--color-border);border-top:4px solid #ff7a00;"
+        style="border-color:var(--color-border);border-top:4px solid #de5b00;"
         data-category-ids={categoryIds.join(",")}
       >
         <div>
@@ -102,7 +102,7 @@ const categoryIds = reviewCategories.map(c => c.id);
         <button
           type="submit"
           class="inline-flex items-center justify-center px-6 py-3 font-semibold rounded text-white transition-colors hover:opacity-90"
-          style="background-color:#1e6fa8;"
+          style="background-color:#0083de;"
         >
           <Send className="w-4 h-4 mr-2" />
           Send Review
@@ -115,7 +115,7 @@ const categoryIds = reviewCategories.map(c => c.id);
       </form>
 
       <div class="text-center mt-8">
-        <a href={join("/reviews")} class="text-sm font-medium hover:underline" style="color:#ff7a00;">
+        <a href={join("/reviews")} class="text-sm hover:underline" style="color:#de5b00;">
           &larr; Back to reviews
         </a>
       </div>

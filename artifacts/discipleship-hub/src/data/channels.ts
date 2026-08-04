@@ -76,7 +76,7 @@ export interface Channel {
 }
 
 /* Display order: Evidence, Growth, Church
- * Channel palette (palette B — softer pastoral feel; reserves orange #ff7a00 for links).
+ * Channel palette (palette B — softer pastoral feel; reserves orange #de5b00 for links).
  * Evidence = Slate Blue, Growth = Sage, Church = Plum. */
 export const channels: Channel[] = [
   {
@@ -86,8 +86,8 @@ export const channels: Channel[] = [
     tagline: "Reach skeptics with evidence about Jesus",
     description:
       "Persuade doubters with clear, compelling facts about the true identity of Christ, the existence of God, and the reliability of the Bible.",
-    accentColor: "#3b5a99",
-    gradient: "linear-gradient(135deg, #6e8ac1 0%, #3b5a99 60%, #243a66 100%)",
+    accentColor: "#b8860b",
+    gradient: "linear-gradient(135deg, #d4a736 0%, #b8860b 60%, #7a5807 100%)",
   },
   {
     id: "growth",
@@ -202,7 +202,7 @@ export const subTopics: SubTopic[] = [
     hideNumbers: true,
     items: [
       { number: 1,  title: "God's Unique Vision for Kingdom-focused Growth", articleId: 'gods-unique-vision-for-your-church' },
-      { number: 2,  title: 'JesusOnline EQUIPPED Church',                    articleId: 'a-jesusonline-equipped-church' },
+      { number: 2,  title: 'JO Equipped Church',                    articleId: 'a-jesusonline-equipped-church' },
       { number: 3,  title: 'Total Life Discipleship Church',                 articleId: 'a-total-life-discipleship-church' },
       { number: 4,  title: 'Transformational Teaching Church',               articleId: 'a-transformational-teaching-church' },
       { number: 5,  title: 'Spirit-dependent Church',                        articleId: 'a-spirit-dependent-church' },
@@ -290,9 +290,18 @@ export const subTopics: SubTopic[] = [
     name: 'Sermon Toolbox',
     description: 'Develop Biblically-grounded, transformational messages for Kingdom maturity.',
     hideNumbers: true,
-    /* The "Bible Study Tools" article (from the user's July 2026 docx,
-       rendered via bibleStudyMethods.ts) lives directly under Sermon
-       Toolbox — no intermediate sub-topic (sheet correction July 2026). */
+  },
+  /* ── BIBLE STUDY TOOLS (child of Sermon Toolbox) ──
+     Promoted from a direct Sermon Toolbox article to its own topic card
+     (Aug 2026) so it matches Sermon Communication Planning. Article body
+     renders via bibleStudyMethods.ts. */
+  {
+    id: 'bible-study-tools',
+    channelId: 'church',
+    parentId: 'sermon-toolbox',
+    name: 'Bible Study Tools',
+    description: 'A curated guide to the best free online tools for deeper Scripture study.',
+    hideNumbers: true,
     items: [
       { number: 1, title: 'Bible Study Tools', articleId: 'essential-bible-study-tools' },
     ],
@@ -898,6 +907,18 @@ export const subTopics: SubTopic[] = [
     channelId: 'growth',
     name: 'Building Blocks for Maturity',
     description: 'Provide practical tools to help believers become fruitful disciples of Jesus.',
+  },
+  /* ── BUILDING BLOCKS INTRODUCTION (child of Building Blocks) ──
+     Single-article intro card, first in the series (added Aug 2026). */
+  {
+    id: 'bb-introduction',
+    channelId: 'growth',
+    parentId: 'building-blocks',
+    name: 'Building Blocks for Maturity Introduction',
+    hideNumbers: true,
+    items: [
+      { number: 1, title: 'Building Blocks for Maturity Introduction', articleId: 'building-blocks-for-maturity-introduction', links: { app: 'https://app.jesusonline.com/post/32001-building-blocks-for-maturity-introduction' } },
+    ],
   },
   {
     id: 'bb-seeing-life',

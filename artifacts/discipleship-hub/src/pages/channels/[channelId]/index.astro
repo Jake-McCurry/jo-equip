@@ -2,7 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import ChannelArt from "@/components/ChannelArt.astro";
 import { channels, getChannel, getSubTopicsByChannel, subTopics } from "@/data/channels";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronRight } from "lucide-react";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 
 const baseUrl = import.meta.env.BASE_URL;
@@ -18,6 +18,9 @@ const channel = getChannel(channelId!);
 if (!channel) return Astro.redirect(join("/channels"));
 
 const subs = getSubTopicsByChannel(channel.id);
+
+const accent = channel.accentColor;
+const heroGradient = channel.gradient;
 
 /* Channel statement shown under the hero (per user's topics-page mockup). */
 const statements: Record<string, string> = {
@@ -48,25 +51,28 @@ function exploreLabel(subId: string): string {
     ]} />
   </Fragment>
   {/* Channel hero */}
-  <div class="relative overflow-hidden" style={`background:${channel.gradient};`}>
+  <div class="relative overflow-hidden" style={`background:${heroGradient};`}>
     <div class="absolute inset-0 opacity-30">
       <ChannelArt channel={channel.id} class="absolute inset-0 w-full h-full" />
     </div>
-    <div class="container mx-auto px-4 py-10 md:py-14 relative">
-      <a href={join("/channels")} class="inline-flex items-center text-sm font-medium mb-5 transition-colors" style="color:rgba(255,255,255,0.85);">← All Channels</a>
+    <div class="container mx-auto px-4 py-7 md:py-9 relative">
       <div class="max-w-3xl">
-        <h1 class="text-4xl md:text-5xl" style="color:#ffffff;font-weight:500;">{channel.name}</h1>
+        <h1 class="text-4xl md:text-5xl mb-2" style="color:#ffffff;font-weight:500;">{channel.name}</h1>
+        <p class="text-base md:text-lg" style="color:#ffffff;">{statement}</p>
       </div>
     </div>
   </div>
 
   <div class="container mx-auto px-4 pt-8 md:pt-10 pb-12 md:pb-16">
-    <div class="max-w-3xl mb-8">
-      <p class="text-lg md:text-xl leading-relaxed" style="color:#374151;">{statement}</p>
-    </div>
+    {/* Breadcrumbs — below the hero, matching the article-page style. */}
+    <nav class="flex items-center text-sm font-medium flex-wrap gap-1 mb-8" style="color:var(--color-muted-foreground);">
+      <a href={join("/channels")} class="transition-colors hover:text-primary">Channels</a>
+      <ChevronRight className="w-3 h-3" />
+      <span>{channel.shortName}</span>
+    </nav>
     <div class="mb-8 pb-4 border-b" style="border-color:var(--color-border);">
       <h2 class="text-2xl" style="color:#0b3c5d;">{subs.length} Topics in this Channel</h2>
-      <div class="mt-2 h-0.5 w-12" style="background-color:#ff7a00;"></div>
+      <div class="mt-2 h-0.5 w-12" style="background-color:#de5b00;"></div>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -75,7 +81,7 @@ function exploreLabel(subId: string): string {
         return (
           <div
             class="flex flex-col bg-white border rounded p-5 hover:shadow-md transition-all"
-            style={`border-color:var(--color-border);border-left:4px solid ${channel.accentColor};`}
+            style={`border-color:var(--color-border);border-left:4px solid ${accent};`}
           >
             <h3 class="text-base font-semibold leading-snug mb-2">
               <a href={href} class="hover:underline" style="color:#0b3c5d;">{sub.name}</a>
@@ -86,7 +92,7 @@ function exploreLabel(subId: string): string {
             <a
               href={href}
               class="group inline-flex items-center gap-1.5 mt-auto text-sm font-semibold hover:underline"
-              style={`color:${channel.accentColor};`}
+              style={`color:${accent};`}
             >
               {exploreLabel(sub.id)}
               <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />

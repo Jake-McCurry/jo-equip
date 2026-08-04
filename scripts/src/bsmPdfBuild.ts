@@ -165,7 +165,7 @@ function renderTemplate({ title, bodyHtml, sourceUrl }: { title: string; bodyHtm
     font-family: Georgia, "Times New Roman", serif;
     font-size: 17pt;
     line-height: 1.2;
-    color: #1e6fa8;
+    color: #0083de;
     font-weight: 600;
     letter-spacing: 0.005em;
     margin: 0 0 0.25em 0;
@@ -181,7 +181,7 @@ function renderTemplate({ title, bodyHtml, sourceUrl }: { title: string; bodyHtm
   .cover .rule {
     display: block;
     width: 96px; height: 4px;
-    background: #ff7a00;
+    background: #de5b00;
     margin: 0.4in 0 0.45in 0;
   }
   .cover .meta {
@@ -227,7 +227,7 @@ function renderTemplate({ title, bodyHtml, sourceUrl }: { title: string; bodyHtm
   .article li { margin: 0.25em 0; }
   .article blockquote {
     margin: 1em 0; padding: 0.5em 1em;
-    border-left: 3px solid #1e6fa8; background: #e6f2fa;
+    border-left: 3px solid #0083de; background: #e6f2fa;
     color: #1f2937; font-style: italic;
   }
   .article blockquote p:last-child { margin-bottom: 0; }

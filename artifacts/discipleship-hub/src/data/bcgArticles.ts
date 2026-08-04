@@ -60,7 +60,7 @@ export interface BcgArticle {
 
 const REGISTER_CTA: ArticleBlock = {
   type: "p",
-  html: '<strong><a href="/register-church">Sign up and register your church today to become a FREE JO EQUIPPED Church. →</a></strong>',
+  html: '<strong><a href="/register-church">Sign up and register your church today to become a FREE JO Equipped Church. →</a></strong>',
 };
 
 /* The "Toolkit for Engagement" image introduces the recommended-resources
@@ -116,7 +116,7 @@ export const bcgArticles: BcgArticle[] = [
       { type: "h2", text: "Ready to go deeper?" },
       { type: "p", html: "Explore the articles below to see how JesusOnline Ministries can help your church become:" },
       { type: "ul", items: [
-        '<a href="/channels/church/become-growing-church/a-jesusonline-equipped-church">A JesusOnline EQUIPPED Church</a>',
+        '<a href="/channels/church/become-growing-church/a-jesusonline-equipped-church">A JO Equipped Church</a>',
         '<a href="/channels/church/become-growing-church/a-total-life-discipleship-church">A Total Life Discipleship Church</a>',
         '<a href="/channels/church/become-growing-church/a-transformational-teaching-church">A Transformational Teaching Church</a>',
         '<a href="/channels/church/become-growing-church/a-spirit-dependent-church">A Spirit-dependent Church</a>',
@@ -132,17 +132,17 @@ export const bcgArticles: BcgArticle[] = [
 
       { type: "p", html: "Discover practical, biblical resources created specifically to help churches like yours flourish right where God has planted you." },
       REGISTER_CTA,
-      { type: "figure", src: "bgc1-5", alt: "Become a free JesusOnline EQUIPPED Church — closing call to register and partner together." },
+      { type: "figure", src: "bgc1-5", alt: "Become a free JO Equipped Church — closing call to register and partner together." },
     ],
   },
 
   {
     id: "a-jesusonline-equipped-church",
-    title: "A JesusOnline EQUIPPED Church",
+    title: "A JO Equipped Church",
     description:
       "Small-church pastors wear many hats with little support. JesusOnline’s free Watch → Learn → Live resources help you save prep time, engage your people, and deepen retention.",
     blocks: [
-      { type: "figure", src: "bgc2-1", alt: "Opening illustration for A JesusOnline EQUIPPED Church — the many hats a small-church pastor wears." },
+      { type: "figure", src: "bgc2-1", alt: "Opening illustration for A JO Equipped Church — the many hats a small-church pastor wears." },
 
       { type: "p", html: "If you are a pastor of a small church, you carry a unique load of responsibilities. You wear multiple hats every single week, often with limited resources and little to no support staff. You may even work at another job to make ends meet — while still being expected to preach, counsel, visit, lead, and manage the church." },
       { type: "p", html: "You’re frequently swamped with day-to-day survival tasks, leaving little time or energy for the bigger vision God has given you. On top of that, attempts to try new things are sometimes met with resistance from well-meaning members who prefer to keep doing things “the way we’ve always done them.” Reaching new generations and adapting to cultural shifts can feel nearly impossible." },

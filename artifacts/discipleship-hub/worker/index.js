@@ -309,6 +309,33 @@ export default {
       }
     }
 
+    /* Permanent redirects for moved pages. Old URLs no longer exist as
+     * static assets, so requests fall through to the Worker and land here.
+     * (Aug 2026: Bible Study Tools became its own sub-topic under Sermon
+     * Toolbox, moving its article URL.) */
+    const MOVED = {
+      "/channels/church/sermon-toolbox/essential-bible-study-tools":
+        "/channels/church/bible-study-tools/essential-bible-study-tools",
+    };
+    const movedTo = MOVED[url.pathname.replace(/\/+$/, "")];
+    if (movedTo) {
+      return Response.redirect(new URL(movedTo, url.origin), 301);
+    }
+
+    if (url.pathname === "/api/geo") {
+      /* Visitor country from Cloudflare's IP geolocation (ISO 3166-1 alpha-2).
+       * Used by newsletter forms to report COUNTRY to Mailchimp without a
+       * visible field. "XX"/missing → empty string; client falls back safely. */
+      const cc = request.cf?.country ?? request.headers.get("CF-IPCountry") ?? "";
+      return new Response(JSON.stringify({ country: cc === "XX" ? "" : cc }), {
+        headers: {
+          "Content-Type": "application/json",
+          "Cache-Control": "no-store",
+          "X-Robots-Tag": "noindex, nofollow",
+        },
+      });
+    }
+
     if (url.pathname === "/api/subscribe") {
       const response = await handleSubscribe(request, env, ctx);
       return isProd ? response : withNoIndexHeader(response);

@@ -520,7 +520,7 @@ const MAJESTY_FRONT_NOTICES_HTML = `
 
 const MAJESTY_FRONT_JO_HTML = `
 <p><strong>JO EQUIP</strong> is a free digital library of practical discipleship tools for pastors and disciple-makers. JesusOnline offers free Watch → Learn → Live resources to strengthen engagement, depth, and retention in your ministry.</p>
-<p>You can use our resources for your Sunday message, your Bible study, or your discipleship ministry. Find out more about the simple 5-step process you can use at: <a href="https://equip.jesusonline.com/channels/church/become-growing-church/a-jesusonline-equipped-church/">A JesusOnline-Equipped Church</a></p>
+<p>You can use our resources for your Sunday message, your Bible study, or your discipleship ministry. Find out more about the simple 5-step process you can use at: <a href="https://equip.jesusonline.com/categories/church/become-growing-church/a-jesusonline-equipped-church/">A JesusOnline-Equipped Church</a></p>
 <p>Visit: equip.JesusOnline.com</p>`;
 
 function parseMajestyPdf(book: BookConfig): ParsedBook {

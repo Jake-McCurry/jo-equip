@@ -1,6 +1,6 @@
 /**
  * Long-form articles for the "Become a Growing Church" sub-topic
- * (/channels/church/become-growing-church/<articleId>).
+ * (/categories/church/become-growing-church/<articleId>).
  *
  * Content is stored as a sequence of typed blocks (`p`, `h2`, `h3`, `ul`,
  * `ol`, `quote`) so the article page can render them generically without
@@ -28,7 +28,7 @@ export type ArticleBlock =
      channel/topic pages: orange + linked when the URL is known, gray when
      not. `href` (optional) links the resource title itself and drives the
      Read chip. Internal links
-     are root-relative ("/channels/...", "/playlist/..."); the page component
+     are root-relative ("/categories/...", "/playlist/..."); the page component
      prefixes the base path, and the PDF build rewrites them to absolute
      equip.jesusonline.com URLs. */
   | { type: "resourceList"; items: ResourceListItem[] };
@@ -116,18 +116,18 @@ export const bcgArticles: BcgArticle[] = [
       { type: "h2", text: "Ready to go deeper?" },
       { type: "p", html: "Explore the articles below to see how JesusOnline Ministries can help your church become:" },
       { type: "ul", items: [
-        '<a href="/channels/church/become-growing-church/a-jesusonline-equipped-church">A JO Equipped Church</a>',
-        '<a href="/channels/church/become-growing-church/a-total-life-discipleship-church">A Total Life Discipleship Church</a>',
-        '<a href="/channels/church/become-growing-church/a-transformational-teaching-church">A Transformational Teaching Church</a>',
-        '<a href="/channels/church/become-growing-church/a-spirit-dependent-church">A Spirit-dependent Church</a>',
-        '<a href="/channels/church/become-growing-church/a-hope-filled-church">A Hope-filled Church</a>',
-        '<a href="/channels/church/become-growing-church/a-love-demonstrating-relational-church">A Love-demonstrating Relational Church</a>',
-        '<a href="/channels/church/become-growing-church/an-intentional-worship-church">An Intentional Worship Church</a>',
-        '<a href="/channels/church/become-growing-church/a-great-commission-church">A Great Commission Church</a>',
-        '<a href="/channels/church/become-growing-church/an-online-outreach-church">An Online Outreach Church</a>',
-        '<a href="/channels/church/become-growing-church/an-attractive-church">An Attractive Church</a>',
-        '<a href="/channels/church/become-growing-church/an-inviting-church">An Inviting Church</a>',
-        '<a href="/channels/church/become-growing-church/a-model-church">A Model Church</a>',
+        '<a href="/categories/church/become-growing-church/a-jesusonline-equipped-church">A JO Equipped Church</a>',
+        '<a href="/categories/church/become-growing-church/a-total-life-discipleship-church">A Total Life Discipleship Church</a>',
+        '<a href="/categories/church/become-growing-church/a-transformational-teaching-church">A Transformational Teaching Church</a>',
+        '<a href="/categories/church/become-growing-church/a-spirit-dependent-church">A Spirit-dependent Church</a>',
+        '<a href="/categories/church/become-growing-church/a-hope-filled-church">A Hope-filled Church</a>',
+        '<a href="/categories/church/become-growing-church/a-love-demonstrating-relational-church">A Love-demonstrating Relational Church</a>',
+        '<a href="/categories/church/become-growing-church/an-intentional-worship-church">An Intentional Worship Church</a>',
+        '<a href="/categories/church/become-growing-church/a-great-commission-church">A Great Commission Church</a>',
+        '<a href="/categories/church/become-growing-church/an-online-outreach-church">An Online Outreach Church</a>',
+        '<a href="/categories/church/become-growing-church/an-attractive-church">An Attractive Church</a>',
+        '<a href="/categories/church/become-growing-church/an-inviting-church">An Inviting Church</a>',
+        '<a href="/categories/church/become-growing-church/a-model-church">A Model Church</a>',
       ]},
 
       { type: "p", html: "Discover practical, biblical resources created specifically to help churches like yours flourish right where God has planted you." },
@@ -197,19 +197,19 @@ export const bcgArticles: BcgArticle[] = [
       { type: "p", html: "<strong>Optional: create your own Bible studies.</strong> The JesusOnline app library offers hundreds of articles and many article series. You’ll find some of them useful as the basis for a Bible study, and you can turn any article into a stand-alone study." },
 
       { type: "h2", text: "Discipleship Ministry" },
-      { type: "p", html: "Our resource materials in the Church channel are both Spirit-led and strategically organized to help you strengthen your ministry." },
+      { type: "p", html: "Our resource materials in the Church category are both Spirit-led and strategically organized to help you strengthen your ministry." },
       { type: "p", html: 'If you’re looking to develop or improve your discipleship ministry, we offer free coaching — contact Pastor Jonathan for more information (<a href="mailto:equip@jesusonline.com">equip@jesusonline.com</a>).' },
       { type: "p", html: "All resources are completely free, mobile-friendly, and thoughtfully created with the real challenges of small-church ministry in mind." },
 
-      { type: "h2", text: "Three Dedicated Channels to Support Your Ministry" },
-      { type: "p", html: '<strong><a href="/channels/evidence">Evidence resources</a></strong> help skeptics and doubters in your congregation (or community) encounter compelling reasons for faith. Topics include:' },
+      { type: "h2", text: "Three Dedicated Categories to Support Your Ministry" },
+      { type: "p", html: '<strong><a href="/categories/evidence">Evidence resources</a></strong> help skeptics and doubters in your congregation (or community) encounter compelling reasons for faith. Topics include:' },
       { type: "ul", items: [
         "Jesus’ true identity",
         "The existence of God",
         "The reliability of the Bible",
       ]},
       { type: "p", html: "Use these for apologetics sermons, seeker-friendly services, or one-on-one conversations." },
-      { type: "p", html: '<strong><a href="/channels/growth">Growth resources</a></strong> build mature, fruitful disciples in your church. Extensive tools cover:' },
+      { type: "p", html: '<strong><a href="/categories/growth">Growth resources</a></strong> build mature, fruitful disciples in your church. Extensive tools cover:' },
       { type: "ul", items: [
         "Bible study",
         "Devotionals",
@@ -222,7 +222,7 @@ export const bcgArticles: BcgArticle[] = [
         "Godly relationships",
       ]},
       { type: "p", html: "Ideal for small groups, discipleship classes, mentoring, and personal spiritual formation." },
-      { type: "p", html: '<strong><a href="/channels/church">Church resources</a></strong> multiply disciples and strengthen your church’s health and mission. Practical materials cover:' },
+      { type: "p", html: '<strong><a href="/categories/church">Church resources</a></strong> multiply disciples and strengthen your church’s health and mission. Practical materials cover:' },
       { type: "ul", items: [
         "Making and multiplying disciples",
         "Total life discipleship core principles",
@@ -235,7 +235,7 @@ export const bcgArticles: BcgArticle[] = [
       { type: "p", html: "Great for leadership training, outreach planning, and developing a disciple-making culture." },
       { type: "p", html: "All of these resources are high-quality and designed with small-church realities in mind. Whether you’re preparing a sermon, equipping leaders, discipling new believers, or reaching your community, JO EQUIP and the JesusOnline app are here to lighten your load and multiply your impact — without adding to your budget or administrative burden." },
       { type: "p", html: "You focus on what only you can do as the shepherd of your flock. Let us help equip the saints for the work of ministry." },
-      { type: "p", html: 'Ready to get started? Visit <a href="/">JO EQUIP</a> today and explore the channels.' },
+      { type: "p", html: 'Ready to get started? Visit <a href="/">JO EQUIP</a> today and explore the categories.' },
       REGISTER_CTA,
       { type: "figure", src: "bgc2-7", alt: "Closing illustration — partnering together to build Christ’s kingdom." },
     ],
@@ -251,7 +251,7 @@ export const bcgArticles: BcgArticle[] = [
       { type: "figure", src: "bgc3-1", alt: "The Great Commission — making disciples who obey all that Jesus commanded." },
 
       { type: "p", html: "<em>Total Life Discipleship</em> refers to JesusOnline’s philosophy and approach to Christian discipleship." },
-      { type: "p", html: "Christian discipleship is a lifelong journey of becoming more like Jesus in every way, so as to expand His Kingdom on earth as it is in heaven. Jesus is our Master Teacher. This journey is faith-driven and action-oriented (cf. Matthew 25:14–30; Luke 19:11–27), and it is measured by obedience (read more in <a href=\"/channels/church/become-growing-church/anatomy-of-obedience\">Anatomy of Obedience</a>). Its goal is far loftier, and its scope far greater, than our individual spiritual growth and change." },
+      { type: "p", html: "Christian discipleship is a lifelong journey of becoming more like Jesus in every way, so as to expand His Kingdom on earth as it is in heaven. Jesus is our Master Teacher. This journey is faith-driven and action-oriented (cf. Matthew 25:14–30; Luke 19:11–27), and it is measured by obedience (read more in <a href=\"/categories/church/become-growing-church/anatomy-of-obedience\">Anatomy of Obedience</a>). Its goal is far loftier, and its scope far greater, than our individual spiritual growth and change." },
       { type: "p", html: "Total Life Discipleship begins with God’s vision of us, leads to personal transformation into the likeness of Christ, and flows outward into eternal impact for His kingdom. It is a grace-filled journey that invites every believer to align their entire existence with God’s eternal purposes. At its core, this discipleship is relationship-centered, grace-based, Spirit-dependent, love-motivated, and biblically focused — five pillars that keep our walk with the Lord both authentic and fruitful." },
 
       { type: "h2", text: "God’s Vision: Seeing Life from His Perspective" },
@@ -288,9 +288,9 @@ export const bcgArticles: BcgArticle[] = [
       ...WLL,
       { type: "h3", text: "Total Life Discipleship" },
       { type: "resourceList", items: [
-        { title: "Part 1: Core Principles", href: "/channels/church/tld-core-principles", video: "/playlist/total-life-discipleship-core-principles" },
-        { title: "Part 2: Kingdom Perspective", href: "/channels/church/tld-kingdom-perspective", video: "/playlist/total-life-discipleship-kingdom-perspective" },
-        { title: "Part 3: Building Blocks for Maturity", href: "/channels/growth/building-blocks" },
+        { title: "Part 1: Core Principles", href: "/categories/church/tld-core-principles", video: "/playlist/total-life-discipleship-core-principles" },
+        { title: "Part 2: Kingdom Perspective", href: "/categories/church/tld-kingdom-perspective", video: "/playlist/total-life-discipleship-kingdom-perspective" },
+        { title: "Part 3: Building Blocks for Maturity", href: "/categories/growth/building-blocks" },
       ]},
 
       REGISTER_CTA,
@@ -389,9 +389,9 @@ export const bcgArticles: BcgArticle[] = [
 
       { type: "h3", text: "From Building Blocks for Maturity" },
       { type: "resourceList", items: [
-        { title: "God’s Majestic Qualities", href: "/channels/growth/bb-growing-closer-majesty" },
-        { title: "Your New Identity, Overview", href: "/channels/growth/bb-becoming-new-you" },
-        { title: "Walking by the Spirit", href: "/channels/growth/bb-walking-spirit" },
+        { title: "God’s Majestic Qualities", href: "/categories/growth/bb-growing-closer-majesty" },
+        { title: "Your New Identity, Overview", href: "/categories/growth/bb-becoming-new-you" },
+        { title: "Walking by the Spirit", href: "/categories/growth/bb-walking-spirit" },
       ]},
 
       { type: "h3", text: "Recommended Resources on Amazon" },
@@ -425,12 +425,12 @@ export const bcgArticles: BcgArticle[] = [
       ...WLL,
       { type: "h3", text: "Holy Spirit Resources" },
       { type: "resourceList", items: [
-        { title: "Walking by the Spirit", href: "/channels/growth/bb-walking-spirit" },
-        { title: "Power for Supernatural Living", href: "/channels/growth/kingdomnomics-son-power" },
+        { title: "Walking by the Spirit", href: "/categories/growth/bb-walking-spirit" },
+        { title: "Power for Supernatural Living", href: "/categories/growth/kingdomnomics-son-power" },
         { title: "Walk in the Spirit, a video series", video: "/playlist/life-in-the-spirit" },
-        { title: "Living by the Spirit", href: "/channels/growth/new-life-christ/living-by-the-spirit" },
-        { title: "How to Be Filled with the Holy Spirit", href: "/channels/growth/bb-walking-spirit" },
-        { title: "Holy Spirit, a New Life in Christ Bible study", href: "/channels/growth/new-life-christ" },
+        { title: "Living by the Spirit", href: "/categories/growth/new-life-christ/living-by-the-spirit" },
+        { title: "How to Be Filled with the Holy Spirit", href: "/categories/growth/bb-walking-spirit" },
+        { title: "Holy Spirit, a New Life in Christ Bible study", href: "/categories/growth/new-life-christ" },
       ]},
 
       REGISTER_CTA,
@@ -471,8 +471,8 @@ export const bcgArticles: BcgArticle[] = [
       ...WLL,
       { type: "h3", text: "Hope Resources" },
       { type: "resourceList", items: [
-        { title: "Hope in Times of Crisis", href: "/channels/growth/hope-times-crisis", video: "/playlist/hope-in-times-of-crisis" },
-        { title: "Bible Promises for Hope", href: "/channels/growth/bible-promises-hope" },
+        { title: "Hope in Times of Crisis", href: "/categories/growth/hope-times-crisis", video: "/playlist/hope-in-times-of-crisis" },
+        { title: "Bible Promises for Hope", href: "/categories/growth/bible-promises-hope" },
         { title: "God Is Hope", href: "https://jesusonline.com/god-is-hope/" },
       ]},
 
@@ -520,12 +520,12 @@ export const bcgArticles: BcgArticle[] = [
       ...WLL,
       { type: "h3", text: "Love Focus Resources" },
       { type: "resourceList", items: [
-        { title: "Forever Loved series", href: "/channels/growth/forever-loved" },
+        { title: "Forever Loved series", href: "/categories/growth/forever-loved" },
         { title: "Experience God’s Love playlist", video: "/playlist/experience-gods-love" },
-        { title: "40 Days of God’s Love", href: "/channels/growth/days-god-s-love", video: "/playlist/experience-gods-love" },
+        { title: "40 Days of God’s Love", href: "/categories/growth/days-god-s-love", video: "/playlist/experience-gods-love" },
         { title: "Timeless Love, Transforming Love", href: "/books/timeless-love-transforming-love" },
         { title: "Love Bible studies", href: "https://jesusonline.com/forever-loved/bible-studies/" },
-        { title: "One Another series", href: "/channels/growth/bb-living-family" },
+        { title: "One Another series", href: "/categories/growth/bb-living-family" },
       ]},
 
       REGISTER_CTA,
@@ -769,7 +769,7 @@ export const bcgArticles: BcgArticle[] = [
       ...WLL,
       { type: "h3", text: "Transformational Teaching Resources" },
       { type: "ul", items: [
-        '<a href="/channels/growth">JO EQUIP Grow resources</a>',
+        '<a href="/categories/growth">JO EQUIP Grow resources</a>',
         '<a href="/playlists">JO EQUIP playlists</a>',
       ]},
 
@@ -796,18 +796,18 @@ export const bcgArticles: BcgArticle[] = [
       { type: "p", html: "Members are naturally most eager to share something when it is uniquely beneficial — something others cannot readily find elsewhere. This uniqueness, whether actual or perceived, is one of the strongest motivators for joyful invitation. What does your church offer that truly cannot be said about other congregations nearby?" },
       { type: "p", html: "Through the resources of JO EQUIP, your church can cultivate a compelling UVP:" },
       { type: "ul", items: [
-        'You can become known as a <a href="/channels/church/become-growing-church/a-hope-filled-church">hope-filled church</a>, making hope a hallmark of your identity and a beacon of gospel assurance in a despairing world.',
-        'You can be known as a <a href="/channels/church/become-growing-church/a-transformational-teaching-church">transformational, teaching church</a>, utilizing inspiring media and the JO App for sermon follow-up and ongoing discipleship — an integrated approach rare among local congregations.',
-        'You can be identified as a <a href="/channels/church/become-growing-church/a-total-life-discipleship-church">Total Life Discipleship church</a>, motivating members to become all God created them to be so they can do all He created them to do. Rather than urging greater self-effort, you lead by repeatedly sharing God’s vision for their lives, fostering authentic transformation by the power of the Holy Spirit.',
+        'You can become known as a <a href="/categories/church/become-growing-church/a-hope-filled-church">hope-filled church</a>, making hope a hallmark of your identity and a beacon of gospel assurance in a despairing world.',
+        'You can be known as a <a href="/categories/church/become-growing-church/a-transformational-teaching-church">transformational, teaching church</a>, utilizing inspiring media and the JO App for sermon follow-up and ongoing discipleship — an integrated approach rare among local congregations.',
+        'You can be identified as a <a href="/categories/church/become-growing-church/a-total-life-discipleship-church">Total Life Discipleship church</a>, motivating members to become all God created them to be so they can do all He created them to do. Rather than urging greater self-effort, you lead by repeatedly sharing God’s vision for their lives, fostering authentic transformation by the power of the Holy Spirit.',
       ]},
       { type: "figure", src: "bgc12s2-4", alt: "Uniqueness is the strongest motivator for joyful invitation — a UVP-driven church replaces guilt and obligation with genuine excitement, blending in with being distinctly beneficial, and scripted programs with natural, joyful overflow." },
       { type: "p", html: "Beyond uniqueness, how does your church stand out more than similar churches in your area? With God’s guidance, your church can thrive in other crucial areas that promote deeper relationships with Christ and His community." },
       { type: "ul", items: [
-        'Being a <a href="/channels/church/become-growing-church/a-love-demonstrating-relational-church">love-demonstrating relational church</a>, where authentic fellowship reflects the warmth of God’s family.',
-        'Being a <a href="/channels/church/become-growing-church/a-spirit-dependent-church">Spirit-dependent church</a>, relying on the Holy Spirit’s guidance in every aspect of ministry.',
-        'Being an <a href="/channels/church/become-growing-church/an-intentional-worship-church">intentional worship church</a>, where gatherings exalt Christ with reverence and joy.',
-        'Being an <a href="/channels/church/become-growing-church/an-online-outreach-church">online outreach church</a>, extending the gospel’s reach through digital means.',
-        'Being a <a href="/channels/church/become-growing-church/a-great-commission-church">Great Commission-focused church</a>, intentionally advancing Christ’s mission in your community and around the world.',
+        'Being a <a href="/categories/church/become-growing-church/a-love-demonstrating-relational-church">love-demonstrating relational church</a>, where authentic fellowship reflects the warmth of God’s family.',
+        'Being a <a href="/categories/church/become-growing-church/a-spirit-dependent-church">Spirit-dependent church</a>, relying on the Holy Spirit’s guidance in every aspect of ministry.',
+        'Being an <a href="/categories/church/become-growing-church/an-intentional-worship-church">intentional worship church</a>, where gatherings exalt Christ with reverence and joy.',
+        'Being an <a href="/categories/church/become-growing-church/an-online-outreach-church">online outreach church</a>, extending the gospel’s reach through digital means.',
+        'Being a <a href="/categories/church/become-growing-church/a-great-commission-church">Great Commission-focused church</a>, intentionally advancing Christ’s mission in your community and around the world.',
       ]},
       { type: "p", html: "When church members personally experience the transformational benefits offered in the Become a Growing Church resources, they will be excited to tell others. Through practical, biblically grounded teachings on identity in Christ, Spirit-led fellowship, purposeful discipleship, and authentic community, they discover renewed hope, clarity of calling, and the joy of belonging to God’s family. As these realities reshape their daily lives and shared life together, a natural desire emerges: they long for others to encounter the same life-changing grace." },
       { type: "p", html: "In such a church, inviting others becomes an overflow of love rather than an assigned task. It echoes the early church, devoted to teaching, fellowship, breaking bread, and prayer, so that “the Lord added to their number day by day those who were being saved” (Acts 2:42–47)." },
@@ -955,13 +955,13 @@ export const bcgArticles: BcgArticle[] = [
         "<strong>Welcome</strong> (unscripted, warm, and personal).<br /><em>Purpose:</em> To greet one another in the love of Christ and create an atmosphere of genuine belonging.",
         "<strong>Core Identity Statement.</strong><br /><em>Purpose:</em> To clearly declare the church’s identity for newcomers and to reinforce it for longtime members.<br />Suggested script: “We are a hope-centered church devoted to transformational teaching, so that you may become all that God created you to be and fulfill all He created you to do.”",
         "<strong>Transition to Hope Video.</strong><br /><em>Purpose:</em> To gently shift everyone’s focus from the cares and distractions of the week to the presence, power, and resources of God.<br />Suggested script: “As we gather together this morning, many of us have stepped out of a week marked by various struggles, difficulties, and challenges. In the midst of these, it can be difficult to turn our minds from those distractions and fully focus on the Lord. So let us begin by turning our hearts toward Him through a short video. It will help us refocus on God and the abundant resources He provides, as we entrust our challenges to His faithful care.”",
-        "<strong>Show a Hope Video.</strong><br /><em>Purpose:</em> To captivate hearts and minds with one of the seventeen videos from the <a href=\"/channels/growth/hope-times-crisis\">“Hope in Times of Crisis”</a> series, reminding the congregation of God’s immediate and sufficient grace for every circumstance.",
+        "<strong>Show a Hope Video.</strong><br /><em>Purpose:</em> To captivate hearts and minds with one of the seventeen videos from the <a href=\"/categories/growth/hope-times-crisis\">“Hope in Times of Crisis”</a> series, reminding the congregation of God’s immediate and sufficient grace for every circumstance.",
         "<strong>Personal Takeaway.</strong><br /><em>Purpose:</em> To model how to apply biblical truth personally and encourage the congregation to do the same.<br />(The pastor or leader briefly shares, in their own words, one key insight from the video.)",
         "<strong>Congregation Prayer Requests.</strong><br /><em>Purpose:</em> To invite the community to share burdens and needs openly.",
         "<strong>Small-Group Prayer.</strong><br /><em>Purpose:</em> To practice relational prayer, build community, and anchor every request in the truth of who God is and who we are in Him.<br />(The congregation breaks into small groups to pray for the shared requests. At the same time, the screen gently displays an attribute of God along with a corresponding characteristic of our new identity in Christ — serving as timely reminders and reasons for praise.)",
         "<strong>Communion or Baptisms</strong> (optional).",
         "<strong>Worship and/or Praise Songs.</strong><br /><em>Purpose:</em> To respond to God’s goodness with wholehearted adoration and thanksgiving.",
-        "<strong>Transformational Sermon.</strong><br /><em>Purpose:</em> To equip believers with truth that renews the mind and shapes daily life. (A message rooted in Scripture that connects directly to the <a href=\"/channels/growth/building-blocks\">building blocks of Christian maturity</a>.)",
+        "<strong>Transformational Sermon.</strong><br /><em>Purpose:</em> To equip believers with truth that renews the mind and shapes daily life. (A message rooted in Scripture that connects directly to the <a href=\"/categories/growth/building-blocks\">building blocks of Christian maturity</a>.)",
         "<strong>Prayer and/or Devotion Songs.</strong><br /><em>Purpose:</em> To respond to the preached Word with surrender, commitment, and renewed devotion to Christ.",
         "<strong>Communion or Baptisms</strong> (alternate time slot).",
         "<strong>Closing Promise.</strong><br /><em>Purpose:</em> To send the congregation forth with a fresh assurance of God’s faithfulness that they can carry into the week.<br />(The congregation joins together in reciting a Bible promise, projected on the screen, that has been thoughtfully chosen to reinforce the sermon’s theme. This promise is drawn from the rich collection of “Bible Promises for Hope” available in the Jesus Online App.)",
@@ -1035,7 +1035,7 @@ export const bcgArticles: BcgArticle[] = [
       ...WLL,
       { type: "h3", text: "Transformational Teaching Resources" },
       { type: "ul", items: [
-        '<a href="/channels/growth">JO EQUIP Grow resources</a>',
+        '<a href="/categories/growth">JO EQUIP Grow resources</a>',
         '<a href="/playlists">JO EQUIP playlists</a>',
       ]},
 
@@ -1047,7 +1047,7 @@ export const bcgArticles: BcgArticle[] = [
      Four equip-original articles from the Aug 2026 docx
      (Sermon_Communication_Planning_Jake). Marked `unlisted` so they stay
      out of the BCG next-article rotation — next-nav is not needed here.
-     Rendered at /channels/church/sermon-communication-planning/<id>. */
+     Rendered at /categories/church/sermon-communication-planning/<id>. */
   {
     id: "what-is-your-motivation-for-preaching",
     title: "What is Your Motivation for Preaching?",
@@ -1119,18 +1119,18 @@ export const bcgArticles: BcgArticle[] = [
       "10 Building Blocks for Maturity are vital for balanced spiritual growth. These reflective questions help you discern what your people may need most right now.",
     unlisted: true,
     blocks: [
-      { type: "p", html: '<strong><a href="/channels/growth/building-blocks">10 Building Blocks for Maturity</a></strong> are vital for balanced spiritual growth. They help believers intentionally strive to become more like Jesus. These reflective questions help you discern what people may need most at this time.' },
+      { type: "p", html: '<strong><a href="/categories/growth/building-blocks">10 Building Blocks for Maturity</a></strong> are vital for balanced spiritual growth. They help believers intentionally strive to become more like Jesus. These reflective questions help you discern what people may need most at this time.' },
       { type: "ol", items: [
-        '<strong>Seeing Life from God’s Perspective:</strong> Are they viewing circumstances through a worldly perspective instead of God’s character and purposes? <a href="/channels/growth/bb-seeing-life">[more]</a>',
-        '<strong>Growing Closer to God:</strong> Do they prioritize religious activity over cultivating a living, affectionate relationship with the Lord? <a href="/channels/growth/bb-growing-closer">[more]</a>',
-        '<strong>Becoming the New You:</strong> Are they still holding onto their old self-image and past failures instead of embracing their new identity in Christ? <a href="/channels/growth/bb-becoming-new-you">[more]</a>',
-        '<strong>Walking by the Spirit:</strong> Is their life defined by self-effort, or do they demonstrate a vital reliance on the Holy Spirit’s guidance and power in their daily lives? <a href="/channels/growth/bb-walking-spirit">[more]</a>',
-        '<strong>Receiving Insights from God:</strong> Are Scripture and mind renewal central, or are they more shaped by popular opinion and personal preference than by God’s Word? <a href="/channels/growth/bb-receiving-insights">[more]</a>',
-        '<strong>Obeying God Faithfully:</strong> Is there a significant gap between what is known and practiced—areas of compromise, selective obedience, or hesitation to fully follow Christ? <a href="/channels/growth/bb-obeying-god">[more]</a>',
-        '<strong>Living as God’s Family:</strong> Do they show genuine care and support for their church family, or do they exhibit isolation and superficial connections? <a href="/channels/growth/bb-living-family">[more]</a>',
-        '<strong>Reaching the World:</strong> Are they primarily focused on themselves, or is there an emphasis on sharing the gospel and making disciples? <a href="/channels/growth/bb-reaching-world">[more]</a>',
-        '<strong>Resisting the Enemy:</strong> Are they alert to spiritual opposition, or do they seem discouraged and easily distracted by temptation and accusation? <a href="/channels/growth/bb-resisting-enemy">[more]</a>',
-        '<strong>Pursuing God’s Master Plan:</strong> Do they feel their lives have a purposeful direction under God’s guidance, or do they seem uncertain about their calling and how to use their gifts for His glory? <a href="/channels/growth/bb-pursuing-master-plan">[more]</a>',
+        '<strong>Seeing Life from God’s Perspective:</strong> Are they viewing circumstances through a worldly perspective instead of God’s character and purposes? <a href="/categories/growth/bb-seeing-life">[more]</a>',
+        '<strong>Growing Closer to God:</strong> Do they prioritize religious activity over cultivating a living, affectionate relationship with the Lord? <a href="/categories/growth/bb-growing-closer">[more]</a>',
+        '<strong>Becoming the New You:</strong> Are they still holding onto their old self-image and past failures instead of embracing their new identity in Christ? <a href="/categories/growth/bb-becoming-new-you">[more]</a>',
+        '<strong>Walking by the Spirit:</strong> Is their life defined by self-effort, or do they demonstrate a vital reliance on the Holy Spirit’s guidance and power in their daily lives? <a href="/categories/growth/bb-walking-spirit">[more]</a>',
+        '<strong>Receiving Insights from God:</strong> Are Scripture and mind renewal central, or are they more shaped by popular opinion and personal preference than by God’s Word? <a href="/categories/growth/bb-receiving-insights">[more]</a>',
+        '<strong>Obeying God Faithfully:</strong> Is there a significant gap between what is known and practiced—areas of compromise, selective obedience, or hesitation to fully follow Christ? <a href="/categories/growth/bb-obeying-god">[more]</a>',
+        '<strong>Living as God’s Family:</strong> Do they show genuine care and support for their church family, or do they exhibit isolation and superficial connections? <a href="/categories/growth/bb-living-family">[more]</a>',
+        '<strong>Reaching the World:</strong> Are they primarily focused on themselves, or is there an emphasis on sharing the gospel and making disciples? <a href="/categories/growth/bb-reaching-world">[more]</a>',
+        '<strong>Resisting the Enemy:</strong> Are they alert to spiritual opposition, or do they seem discouraged and easily distracted by temptation and accusation? <a href="/categories/growth/bb-resisting-enemy">[more]</a>',
+        '<strong>Pursuing God’s Master Plan:</strong> Do they feel their lives have a purposeful direction under God’s guidance, or do they seem uncertain about their calling and how to use their gifts for His glory? <a href="/categories/growth/bb-pursuing-master-plan">[more]</a>',
       ]},
       { type: "p", html: "These questions are meant to encourage careful observation and discernment, not quick judgments. As the Holy Spirit provides clarity, the foundational element that emerges can guide teaching and discipleship in this season." },
     ],

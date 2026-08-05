@@ -372,7 +372,7 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "p",
-        "html": "If you would like to learn more about Jesus’ offer of forgiveness and His gift of eternal life, we encourage you to read the article, “<a href=\"/channels/evidence/jesus-true-identity/is-jesus-relevant-today\">Is Jesus Relevant Today?</a>”"
+        "html": "If you would like to learn more about Jesus’ offer of forgiveness and His gift of eternal life, we encourage you to read the article, “<a href=\"/categories/evidence/jesus-true-identity/is-jesus-relevant-today\">Is Jesus Relevant Today?</a>”"
       },
       {
         "type": "h2",
@@ -1366,7 +1366,7 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "p",
-        "html": "Many believe that Jesus’ resurrection was simply a mythical account. Several skeptics who regarded Jesus’ resurrection as mythical decided to investigate the evidence. Read their startling conclusions in “<a href=\"/channels/evidence/jesus-true-identity/did-jesus-rise-from-the-dead\">Did Jesus Rise from the Dead?</a>”"
+        "html": "Many believe that Jesus’ resurrection was simply a mythical account. Several skeptics who regarded Jesus’ resurrection as mythical decided to investigate the evidence. Read their startling conclusions in “<a href=\"/categories/evidence/jesus-true-identity/did-jesus-rise-from-the-dead\">Did Jesus Rise from the Dead?</a>”"
       },
       {
         "type": "h2",
@@ -1429,7 +1429,7 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "p",
-        "html": "<a href=\"/channels/evidence/jesus-true-identity/did-jesus-rise-from-the-dead\">Click here</a> to discover more of the evidence for Jesus’ resurrection."
+        "html": "<a href=\"/categories/evidence/jesus-true-identity/did-jesus-rise-from-the-dead\">Click here</a> to discover more of the evidence for Jesus’ resurrection."
       },
       {
         "type": "p",
@@ -1613,7 +1613,7 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "p",
-        "html": "<a href=\"/channels/evidence/jesus-true-identity/did-jesus-rise-from-the-dead\">Click here</a> to take a look at the evidence for the most fantastic claim ever made—the resurrection of Jesus Christ!"
+        "html": "<a href=\"/categories/evidence/jesus-true-identity/did-jesus-rise-from-the-dead\">Click here</a> to take a look at the evidence for the most fantastic claim ever made—the resurrection of Jesus Christ!"
       },
       {
         "type": "h3",
@@ -1625,7 +1625,7 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "p",
-        "html": "<a href=\"/channels/evidence/jesus-true-identity/is-jesus-relevant-today\">Click here</a> to read “Why Jesus?” and discover what Jesus said about life after death."
+        "html": "<a href=\"/categories/evidence/jesus-true-identity/is-jesus-relevant-today\">Click here</a> to read “Why Jesus?” and discover what Jesus said about life after death."
       },
       {
         "type": "h2",
@@ -1637,7 +1637,7 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "p",
-        "html": "<a href=\"/channels/evidence/jesus-true-identity/is-jesus-relevant-today\">Click here</a> to discover how Jesus can bring meaning to life."
+        "html": "<a href=\"/categories/evidence/jesus-true-identity/is-jesus-relevant-today\">Click here</a> to discover how Jesus can bring meaning to life."
       }
     ]
   },
@@ -2582,7 +2582,7 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "p",
-        "html": "So, what did the apostles and early church fathers believe about Jesus’ deity? To find out, read the article, “<a href=\"/channels/evidence/jesus-true-identity/did-the-apostles-believe-jesus-is-god\">Did the Apostles Believe Jesus is God?</a>”"
+        "html": "So, what did the apostles and early church fathers believe about Jesus’ deity? To find out, read the article, “<a href=\"/categories/evidence/jesus-true-identity/did-the-apostles-believe-jesus-is-god\">Did the Apostles Believe Jesus is God?</a>”"
       },
       {
         "type": "h2",
@@ -3275,7 +3275,7 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "p",
-        "html": "Several skeptics have tried to prove that Jesus’ resurrection was a legend, or a hoax plotted by his followers. Two brilliant skeptics even began writing books attempting to prove the story was fabricated. One was a brilliant journalist; the other, one of the founders of Harvard Law School. Neither of them thought the resurrection was an historical fact. However, both of these skeptics became persuaded by the evidence that Jesus actually did rise from the dead.<sup>21</sup> (See “<a href=\"/channels/evidence/jesus-true-identity/did-jesus-rise-from-the-dead\">Did Jesus Rise from the Dead?</a>“)"
+        "html": "Several skeptics have tried to prove that Jesus’ resurrection was a legend, or a hoax plotted by his followers. Two brilliant skeptics even began writing books attempting to prove the story was fabricated. One was a brilliant journalist; the other, one of the founders of Harvard Law School. Neither of them thought the resurrection was an historical fact. However, both of these skeptics became persuaded by the evidence that Jesus actually did rise from the dead.<sup>21</sup> (See “<a href=\"/categories/evidence/jesus-true-identity/did-jesus-rise-from-the-dead\">Did Jesus Rise from the Dead?</a>“)"
       },
       {
         "type": "p",
@@ -4432,7 +4432,7 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "p",
-        "html": "Although other philosophers and religious leaders have offered their answers to the meaning of life, only Jesus Christ proved his credentials by rising from the dead. Skeptics like McDowell who originally scoffed at Jesus’ resurrection (See “<a href=\"/channels/evidence/jesus-true-identity/did-jesus-rise-from-the-dead\">Did Jesus Rise from the Dead?</a>“), have discovered that there is compelling evidence that it really occurred."
+        "html": "Although other philosophers and religious leaders have offered their answers to the meaning of life, only Jesus Christ proved his credentials by rising from the dead. Skeptics like McDowell who originally scoffed at Jesus’ resurrection (See “<a href=\"/categories/evidence/jesus-true-identity/did-jesus-rise-from-the-dead\">Did Jesus Rise from the Dead?</a>“), have discovered that there is compelling evidence that it really occurred."
       },
       {
         "type": "p",
@@ -4456,7 +4456,7 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "p",
-        "html": "But if Jesus actually defeated death as eyewitnesses claim, (See “<a href=\"/channels/evidence/jesus-true-identity/did-jesus-rise-from-the-dead\">Did Jesus Rise from the Dead?</a>“) then he alone would be able to tell us what life is all about, and answer, “Where am I going?” In order to understand how Jesus’ words, life, and death can establish our identities, give us meaning in life, and provide hope for the future, we need to understand what he said about God, about us, and about himself."
+        "html": "But if Jesus actually defeated death as eyewitnesses claim, (See “<a href=\"/categories/evidence/jesus-true-identity/did-jesus-rise-from-the-dead\">Did Jesus Rise from the Dead?</a>“) then he alone would be able to tell us what life is all about, and answer, “Where am I going?” In order to understand how Jesus’ words, life, and death can establish our identities, give us meaning in life, and provide hope for the future, we need to understand what he said about God, about us, and about himself."
       },
       {
         "type": "h2",
@@ -8052,7 +8052,7 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "p",
-        "html": "If Jesus didn’t exist, then Christianity would be founded upon a myth. However, evidence for the existence of Jesus is overwhelming—far greater than for many ancient historical figures such as Alexander the Great.<sup>43</sup> (For evidence of Jesus’ existence see <a href=\"/channels/evidence/jesus-true-identity/was-jesus-a-real-person\">here</a>.)"
+        "html": "If Jesus didn’t exist, then Christianity would be founded upon a myth. However, evidence for the existence of Jesus is overwhelming—far greater than for many ancient historical figures such as Alexander the Great.<sup>43</sup> (For evidence of Jesus’ existence see <a href=\"/categories/evidence/jesus-true-identity/was-jesus-a-real-person\">here</a>.)"
       },
       {
         "type": "p",
@@ -8128,7 +8128,7 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "p",
-        "html": "English journalist Frank Morison believed Jesus’ resurrection didn’t happen, and began writing a book documenting the evidence against it. However, the evidence Morison discovered turned his skepticism into belief. Although his investigation is beyond the scope of this article, you can read <a href=\"/channels/evidence/jesus-true-identity/did-jesus-rise-from-the-dead\">what Morison discovered</a>."
+        "html": "English journalist Frank Morison believed Jesus’ resurrection didn’t happen, and began writing a book documenting the evidence against it. However, the evidence Morison discovered turned his skepticism into belief. Although his investigation is beyond the scope of this article, you can read <a href=\"/categories/evidence/jesus-true-identity/did-jesus-rise-from-the-dead\">what Morison discovered</a>."
       },
       {
         "type": "p",
@@ -8417,7 +8417,7 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "p",
-        "html": "Many Bible scholars believe we are nearing that time when Jesus Christ will return to Earth in power and glory. (Read more about <a href=\"/channels/evidence/jesus-true-identity/is-jesus-coming-back\">Jesus’ return</a>.)"
+        "html": "Many Bible scholars believe we are nearing that time when Jesus Christ will return to Earth in power and glory. (Read more about <a href=\"/categories/evidence/jesus-true-identity/is-jesus-coming-back\">Jesus’ return</a>.)"
       },
       {
         "type": "p",
@@ -8481,7 +8481,7 @@ export const evidenceArticles: EvidenceArticle[] = [
       },
       {
         "type": "p",
-        "html": "<a href=\"/channels/evidence/jesus-true-identity/is-jesus-relevant-today\">Discover</a> how you can have a personal relationship with Jesus Christ."
+        "html": "<a href=\"/categories/evidence/jesus-true-identity/is-jesus-relevant-today\">Discover</a> how you can have a personal relationship with Jesus Christ."
       },
       {
         "type": "h2",

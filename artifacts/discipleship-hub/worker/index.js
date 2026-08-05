@@ -314,16 +314,22 @@ export default {
      * (Aug 2026: Bible Study Tools became its own sub-topic under Sermon
      * Toolbox, moving its article URL.) */
     const MOVED = {
-      "/channels/church/sermon-toolbox/essential-bible-study-tools":
-        "/channels/church/bible-study-tools/essential-bible-study-tools",
+      "/categories/church/sermon-toolbox/essential-bible-study-tools":
+        "/categories/church/bible-study-tools/essential-bible-study-tools",
       /* SEO-008: duplicate-content consolidation — the retired combined
        * article 301s to the preferred split article. */
-      "/channels/church/become-growing-church/an-attractive-and-inviting-church":
-        "/channels/church/become-growing-church/an-attractive-church",
+      "/categories/church/become-growing-church/an-attractive-and-inviting-church":
+        "/categories/church/become-growing-church/an-attractive-church",
     };
-    const movedTo = MOVED[url.pathname.replace(/\/+$/, "")];
-    if (movedTo) {
-      return Response.redirect(new URL(movedTo, url.origin), 301);
+    /* Aug 2026: the whole "/channels" section was renamed to "/categories".
+     * Normalize old paths BEFORE the MOVED lookup so every legacy URL —
+     * including ones that had also moved — redirects in a single 301 hop. */
+    let target = url.pathname.replace(/\/+$/, "");
+    const renamed = /^\/channels(\/|$)/.test(target);
+    if (renamed) target = target.replace(/^\/channels/, "/categories") || "/categories";
+    target = MOVED[target] ?? target;
+    if (renamed || MOVED[url.pathname.replace(/\/+$/, "")]) {
+      return Response.redirect(new URL(target + url.search, url.origin), 301);
     }
 
     if (url.pathname === "/api/geo") {

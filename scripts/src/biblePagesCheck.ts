@@ -156,7 +156,7 @@ async function main() {
   for (const { id, children } of EXPECTED_PARENTS) {
     const parent = byId.get(id);
     if (!parent) {
-      errors.push(`Missing parent sub-topic "${id}" (route /channels/${CHANNEL}/${id} would 404).`);
+      errors.push(`Missing parent sub-topic "${id}" (route /categories/${CHANNEL}/${id} would 404).`);
       continue;
     }
     if (parent.channelId !== CHANNEL) {
@@ -178,7 +178,7 @@ async function main() {
   for (const id of EXPECTED_LEAVES_WITH_ITEMS) {
     const leaf = byId.get(id);
     if (!leaf) {
-      errors.push(`Missing leaf sub-topic "${id}" (route /channels/${CHANNEL}/${id} would 404).`);
+      errors.push(`Missing leaf sub-topic "${id}" (route /categories/${CHANNEL}/${id} would 404).`);
       continue;
     }
     if (!leaf.items || leaf.items.length === 0) {

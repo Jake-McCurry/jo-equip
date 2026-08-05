@@ -62,7 +62,7 @@ const MANIFEST_PATH = resolve(HUB, "src/data/bcgArticlePdfs.ts");
 
 /* Public-facing URLs for cover source line + internal-link rewriting. */
 const SITE = "https://equip.jesusonline.com";
-const SUB_PATH = "/channels/church/become-growing-church";
+const SUB_PATH = "/categories/church/become-growing-church";
 
 const args = process.argv.slice(2);
 const argMap: Record<string, string | boolean> = {};
@@ -95,7 +95,7 @@ function escAttr(s: string): string {
   return s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
 }
 
-/* Rewrite root-relative hrefs ("/newsletter", "/channels/...") to absolute
+/* Rewrite root-relative hrefs ("/newsletter", "/categories/...") to absolute
    equip.jesusonline.com URLs so links remain clickable in the PDF. Leaves
    mailto:, http(s):, protocol-relative (//), and anchor (#) links untouched. */
 function rewriteLinks(html: string): string {

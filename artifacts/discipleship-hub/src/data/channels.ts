@@ -17,7 +17,7 @@ export interface SubTopicItem {
   videoPlaylistId?: string;
   /**
    * ID of an article body in a per-subtopic article data file (e.g. src/data/bcgArticles.ts).
-   * When set, the item's title becomes a link to /channels/<channelId>/<subId>/<articleId>
+   * When set, the item's title becomes a link to /categories/<channelId>/<subId>/<articleId>
    * which renders the full long-form article. Items without an articleId are list-only.
    */
   articleId?: string;
@@ -210,7 +210,7 @@ export const subTopics: SubTopic[] = [
        page is still generated and reached only via an inline link inside the
        Total Life Discipleship article. Items with an articleId link to
        per-article pages under
-       /channels/church/become-growing-church/<articleId>. */
+       /categories/church/become-growing-church/<articleId>. */
     hideNumbers: true,
     items: [
       { number: 1,  title: "God's Unique Vision for Kingdom-focused Growth", articleId: 'gods-unique-vision-for-your-church' },

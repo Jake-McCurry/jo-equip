@@ -2,7 +2,7 @@
 /**
  * Per-article long-form pages for Church sub-topics with authored content.
  *
- * Route: /channels/<channelId>/<subId>/<articleId>
+ * Route: /categories/<channelId>/<subId>/<articleId>
  *
  * Three content sources are supported, resolved by articleId:
  *   - "Become a Growing Church"  → bcgArticles (may include figures + PDFs)
@@ -68,7 +68,7 @@ const evd = articleId && !bcg && !bsm ? getEvidenceArticle(articleId) : undefine
 const site =
   articleId && !bcg && !bsm && !evd ? getSiteArticle(subId!, articleId) : undefined;
 const article = bcg ?? bsm ?? evd ?? site;
-if (!channel || !sub || !article) return Astro.redirect(join("/channels"));
+if (!channel || !sub || !article) return Astro.redirect(join("/categories"));
 
 /* Next-article nav, driven by the sub-topic's own item order (channels.ts)
    so EVERY article series gets a "Next Article" card — including series
@@ -104,7 +104,7 @@ const pdfHref = bcg
 const isBibleProject = !!site && /^38[67]\d\d-/.test(site.appSlug);
 
 const SITE = "https://equip.jesusonline.com";
-const articleUrl = `${SITE}/channels/${channel.id}/${sub.id}/${article.id}`;
+const articleUrl = `${SITE}/categories/${channel.id}/${sub.id}/${article.id}`;
 
 /* JSON-LD Article schema. `datePublished` reflects each source's content
    date; `dateModified` is the last git commit date of the file that owns
@@ -159,10 +159,10 @@ const heroTitle = splitTitle(article.title);
   <Fragment slot="head">
     <BreadcrumbsLd items={[
       { name: "Home", url: "/" },
-      { name: "Channels", url: "/channels" },
-      { name: channel.shortName, url: `/channels/${channel.id}` },
-      { name: sub.name, url: `/channels/${channel.id}/${sub.id}` },
-      { name: article.title, url: `/channels/${channel.id}/${sub.id}/${article.id}` },
+      { name: "Categories", url: "/categories" },
+      { name: channel.shortName, url: `/categories/${channel.id}` },
+      { name: sub.name, url: `/categories/${channel.id}/${sub.id}` },
+      { name: article.title, url: `/categories/${channel.id}/${sub.id}/${article.id}` },
     ]} />
     <script type="application/ld+json" is:inline set:html={JSON.stringify(articleJsonLd)} />
   </Fragment>
@@ -184,11 +184,11 @@ const heroTitle = splitTitle(article.title);
       {/* Breadcrumbs (replaces the old "Back to …" link) — every crumb is a
           working link so readers can step back up the hierarchy. */}
       <nav class="flex items-center text-sm font-medium flex-wrap gap-1" style="color:var(--color-muted-foreground);">
-        <a href={join("/channels")} class="transition-colors hover:text-primary">Channels</a>
+        <a href={join("/categories")} class="transition-colors hover:text-primary">Categories</a>
         <ChevronRight className="w-3 h-3" />
-        <a href={join(`/channels/${channel.id}`)} class="transition-colors hover:text-primary">{channel.shortName}</a>
+        <a href={join(`/categories/${channel.id}`)} class="transition-colors hover:text-primary">{channel.shortName}</a>
         <ChevronRight className="w-3 h-3" />
-        <a href={join(`/channels/${channel.id}/${sub.id}`)} class="transition-colors hover:text-primary">{splitTitle(sub.name).main}</a>
+        <a href={join(`/categories/${channel.id}/${sub.id}`)} class="transition-colors hover:text-primary">{splitTitle(sub.name).main}</a>
       </nav>
       {pdfHref && (
         <a href={pdfHref} download class="inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-md border-2 transition-colors hover:text-white" style={`color:${channel.accentColor};border-color:${channel.accentColor};`} onmouseover={`this.style.backgroundColor='${channel.accentColor}';`} onmouseout="this.style.backgroundColor='transparent';">
@@ -305,7 +305,7 @@ const heroTitle = splitTitle(article.title);
     </article>
 
     {nextArticle && nextArticle.id !== article.id && (
-      <a href={join(`/channels/${channel.id}/${sub.id}/${nextArticle.id}`)} class="group block mt-12 p-6 md:p-7 rounded border-2 hover:shadow-md transition-all" style={`border-color:${channel.accentColor};background-color:${channel.accentColor}06;`}>
+      <a href={join(`/categories/${channel.id}/${sub.id}/${nextArticle.id}`)} class="group block mt-12 p-6 md:p-7 rounded border-2 hover:shadow-md transition-all" style={`border-color:${channel.accentColor};background-color:${channel.accentColor}06;`}>
         <div class="flex items-center justify-between gap-4">
           <div>
             <div class="text-xs font-semibold uppercase tracking-widest mb-1" style={`color:${channel.accentColor};`}>Next Article</div>

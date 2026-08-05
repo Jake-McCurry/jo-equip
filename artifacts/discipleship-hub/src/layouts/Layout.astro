@@ -29,7 +29,7 @@ const join = (p: string) =>
 
 const navLinks = [
   { name: "Equip", path: "/equip" },
-  { name: "Channels", path: "/channels" },
+  { name: "Categories", path: "/categories" },
   { name: "Playlists", path: "/playlists" },
   { name: "Books", path: "/books" },
   { name: "Listen", path: "/listen" },
@@ -322,7 +322,7 @@ const gtmEnabled = import.meta.env.PROD;
           <div class="flex gap-12 text-sm">
             <div class="flex flex-col gap-3">
               <h4 class="font-semibold text-sm" style="color:#ffffff;">Explore</h4>
-              <a href={join("/channels")} class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.75);">Channels</a>
+              <a href={join("/categories")} class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.75);">Categories</a>
               <a href={join("/playlists")} class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.75);">Playlists</a>
               <a href={join("/books")} class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.75);">Books</a>
               <a href={join("/listen")} class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.75);">Listen</a>

@@ -1,9 +1,9 @@
 /**
  * Long-form authored articles for Church sub-topics that aren't sourced from
  * the JOM WordPress: the "Bible Study Methods" set (Bible Mastery grouping,
- * /channels/church/bible-study-methods/<articleId>) plus the Sermon Toolbox
+ * /categories/church/bible-study-methods/<articleId>) plus the Sermon Toolbox
  * "Bible Study Tools" resource guide
- * (/channels/church/bible-study-tools/essential-bible-study-tools).
+ * (/categories/church/bible-study-tools/essential-bible-study-tools).
  *
  * Content is stored as the same typed-block sequence used by bcgArticles so
  * the shared article page can render both. Paragraph and list-item strings

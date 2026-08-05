@@ -8,7 +8,7 @@ const join = (p: string) =>
 ---
 <Layout
   title="Page Not Found · JO EQUIP"
-  description="The page you were looking for can't be found. Browse our channels, playlists, and free books from JO EQUIP — JesusOnline Ministries."
+  description="The page you were looking for can't be found. Browse our categories, playlists, and free books from JO EQUIP — JesusOnline Ministries."
 >
   <section class="container mx-auto px-4 py-16 md:py-24 max-w-3xl text-center">
     <div class="text-xs font-semibold tracking-widest uppercase mb-3" style="color:#0083de;">Error 404</div>
@@ -34,7 +34,7 @@ const join = (p: string) =>
         </div>
       </a>
       <a
-        href={join("/channels")}
+        href={join("/categories")}
         class="group flex items-start gap-4 p-5 bg-white border rounded transition-shadow hover:shadow-md"
         style="border-color:var(--color-border);border-left:4px solid #de5b00;"
       >
@@ -42,7 +42,7 @@ const join = (p: string) =>
           <Compass className="w-5 h-5" style={{ color: "#de5b00" }} />
         </div>
         <div>
-          <div class="font-semibold text-base mb-0.5" style="color:#0b3c5d;">Browse channels</div>
+          <div class="font-semibold text-base mb-0.5" style="color:#0b3c5d;">Browse categories</div>
           <div class="text-sm" style="color:var(--color-muted-foreground);">Evidence, Growth, Church.</div>
         </div>
       </a>

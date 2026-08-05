@@ -119,7 +119,7 @@ function cleanInline(html: string, articleIdBySlug: Map<string, { subId: string;
     (_m, q, path) => {
       const slug = path.replace(/\/+$/, "").split("/").pop() ?? "";
       const target = articleIdBySlug.get(slug);
-      if (target) return `href=${q}/channels/evidence/${target.subId}/${target.id}${q}`;
+      if (target) return `href=${q}/categories/evidence/${target.subId}/${target.id}${q}`;
       return `href=${q}https://app.jesusonline.com/post/${slug}${q}`;
     },
   );
@@ -130,7 +130,7 @@ function cleanInline(html: string, articleIdBySlug: Map<string, { subId: string;
       const target =
         articleIdBySlug.get(slug) ??
         articleIdBySlug.get(slug.replace(/^\d+(-\d+)?-/, ""));
-      if (target) return `href=${q}/channels/evidence/${target.subId}/${target.id}${q}`;
+      if (target) return `href=${q}/categories/evidence/${target.subId}/${target.id}${q}`;
       return `href=${q}https://app.jesusonline.com/post/${slug}${q}`;
     },
   );

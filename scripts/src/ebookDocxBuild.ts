@@ -200,6 +200,13 @@ function parseBook(book: BookConfig, rawHtml: string): ParsedBook {
     "https://apps.apple.com/app/jo-app-jesusonline/id1474405483",
     "https://apps.apple.com/us/app/jo-app/id1474405483",
   );
+
+  /* Site rename: /channels/* became /categories/* (a permanent redirect
+     covers old links, but fresh PDFs should link directly). */
+  html = html.replaceAll(
+    "https://equip.jesusonline.com/channels/",
+    "https://equip.jesusonline.com/categories/",
+  );
   if (book.key === "identity") {
     html = html.replace(
       /<p>1\s*<br \/>Embracing Your New Identity in Christ<\/p>/,

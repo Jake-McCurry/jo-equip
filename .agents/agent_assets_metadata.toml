@@ -71,3 +71,17 @@ id = "pGkbLbUOw3PWcDUp5_lAl"
 uri = "file://exports/broken-external-links.csv"
 type = "table"
 title = "Broken External Links — JO EQUIP"
+
+[[outputs]]
+id = "QzKWDF1OE9OcRpuH_mQeN"
+uri = "file://screenshots/categories-new-colors.jpg"
+type = "image"
+title = "Mockup: new category colors (Categories page)"
+description = "Warm Amber #C48A00 (Evidence), Forest Growth #2E7D32 (Growth), Deep Amethyst #6B2D7B (Church) applied to the category cards."
+
+[[outputs]]
+id = "KQ2K8tzjQ04ibX-nt54BP"
+uri = "file://screenshots/growth-new-colors.jpg"
+type = "image"
+title = "Mockup: Growth category page in Forest Growth green"
+description = "Hero gradient and card accents in the proposed #2E7D32 green."

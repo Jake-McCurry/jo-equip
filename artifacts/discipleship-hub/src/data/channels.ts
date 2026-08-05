@@ -98,8 +98,8 @@ export const channels: Channel[] = [
     tagline: "Reach skeptics with evidence about Jesus",
     description:
       "Persuade doubters with clear, compelling facts about the true identity of Christ, the existence of God, and the reliability of the Bible.",
-    accentColor: "#b8860b",
-    gradient: "linear-gradient(135deg, #d4a736 0%, #b8860b 60%, #7a5807 100%)",
+    accentColor: "#C48A00",
+    gradient: "linear-gradient(135deg, #e3ad33 0%, #C48A00 60%, #8a6100 100%)",
   },
   {
     id: "growth",
@@ -108,8 +108,8 @@ export const channels: Channel[] = [
     tagline: "Build believers into mature, fruitful disciples",
     description:
       "Disciple believers to become all that God created them to be, so they may do all that He has created them to do.",
-    accentColor: "#4c8a4c",
-    gradient: "linear-gradient(135deg, #7ab87a 0%, #4c8a4c 55%, #2d5a2d 100%)",
+    accentColor: "#2E7D32",
+    gradient: "linear-gradient(135deg, #60a865 0%, #2E7D32 55%, #1b4d1e 100%)",
   },
   {
     id: "church",
@@ -118,8 +118,8 @@ export const channels: Channel[] = [
     tagline: "Multiply disciples and build vibrant churches",
     description:
       "Develop fruitful, prayer-fueled, Spirit-led ministries that multiply disciples and build churches, all in obedience to Christ and His inspired Word.",
-    accentColor: "#7a3a8a",
-    gradient: "linear-gradient(135deg, #a675b8 0%, #7a3a8a 55%, #4d2058 100%)",
+    accentColor: "#6B2D7B",
+    gradient: "linear-gradient(135deg, #9c5cae 0%, #6B2D7B 55%, #431a4e 100%)",
   },
 ];
 

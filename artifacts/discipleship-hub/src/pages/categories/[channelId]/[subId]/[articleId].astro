@@ -263,8 +263,8 @@ const heroTitle = splitTitle(article.title);
                       <span class="resource-chips">
                         {chips.map(c => c.href
                           ? (c.external
-                              ? <a href={c.href} target="_blank" rel="noopener noreferrer" class="chip chip-on">{c.label}</a>
-                              : <a href={c.href} class="chip chip-on">{c.label}</a>)
+                              ? <a href={c.href} target="_blank" rel="noopener noreferrer" class="chip chip-on" data-track-title={item.title}>{c.label}</a>
+                              : <a href={c.href} class="chip chip-on" data-track-title={item.title}>{c.label}</a>)
                           : <span class="chip chip-off" title={`${c.label} coming soon`}>{c.label}</span>
                         )}
                       </span>

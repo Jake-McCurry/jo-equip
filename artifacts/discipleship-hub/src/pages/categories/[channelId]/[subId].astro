@@ -324,11 +324,11 @@ const heroTitle = splitTitle(sub.name);
                         );
                       }
                       return b.internal ? (
-                        <a href={b.href} class={btnClass(true)} style={enabledStyle}>
+                        <a href={b.href} class={btnClass(true)} style={enabledStyle} data-track-title={item.title}>
                           <Icon className="w-3 h-3" />{b.label}
                         </a>
                       ) : (
-                        <a href={b.href} target="_blank" rel="noopener noreferrer" class={btnClass(true)} style={enabledStyle}>
+                        <a href={b.href} target="_blank" rel="noopener noreferrer" class={btnClass(true)} style={enabledStyle} data-track-title={item.title}>
                           <Icon className="w-3 h-3" />{b.label}
                         </a>
                       );

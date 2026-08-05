@@ -346,5 +346,45 @@ const gtmEnabled = import.meta.env.PROD;
         </div>
       </div>
     </footer>
+
+    {/* PDF download tracking → GTM dataLayer. Fires a `pdf_download` event
+        with the specific file name + human title whenever a visitor clicks
+        any link to a .pdf (article PDFs, external PDFs). Book opens go
+        through the email-gate script on /books, which pushes the same event
+        via window.__trackPdfDownload when the PDF actually opens (books are
+        NOT plain .pdf links, so the click listener alone would miss them).
+        GTM: custom-event trigger `pdf_download` → GA4 event tag mapping
+        file_name / file_title / file_category / link_url. */}
+    <script is:inline set:html={`(function(){
+      function push(url, title, category){
+        try {
+          var file = (url || "").split("?")[0].split("#")[0].split("/").filter(Boolean).pop() || "";
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+            event: "pdf_download",
+            file_name: file,
+            file_title: (title || file.replace(/\\.pdf$/i, "")).trim().slice(0, 100),
+            file_category: category,
+            link_url: url
+          });
+        } catch (_e) { /* never break the click */ }
+      }
+      window.__trackPdfDownload = push;
+      document.addEventListener("click", function(e){
+        var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
+        if (!a) return;
+        var href = a.getAttribute("href") || "";
+        if (!/\\.pdf($|[?#])/i.test(href)) return;
+        var category = /\\/books\\//.test(href) ? "book" : "article";
+        var title = (a.getAttribute("data-track-title") || a.getAttribute("aria-label") || a.textContent || "").trim();
+        /* Generic labels ("PDF", "Download PDF") aren't useful — fall back to
+           the page's H1 so the event still says WHICH document it was. */
+        if (title.length < 8) {
+          var h1 = document.querySelector("h1");
+          title = (h1 && h1.textContent ? h1.textContent : title).trim();
+        }
+        push(a.href, title, category);
+      }, true);
+    })();`} />
   </body>
 </html>

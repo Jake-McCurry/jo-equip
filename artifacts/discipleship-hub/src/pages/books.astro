@@ -275,7 +275,12 @@ const booksJsonLd = {
       // where the open happens on page load (no user gesture) and may be
       // blocked by a popup blocker — in that case we navigate the current tab
       // so the visitor still reaches the book.
-      function openBook(url, allowSameTabFallback) {
+      function openBook(url, allowSameTabFallback, title) {
+        // Report the specific book to GTM/GA4 at the moment the PDF actually
+        // opens (both first-time gated opens and returning-visitor opens).
+        try {
+          if (window.__trackPdfDownload) window.__trackPdfDownload(url, title, "book");
+        } catch (_e) { /* ignore */ }
         let win = null;
         try { win = window.open(url, "_blank"); } catch (_e) { win = null; }
         if (win) {
@@ -290,7 +295,7 @@ const booksJsonLd = {
       function requestBook(url, title, id, triggerEl, isDeepLink) {
         if (!url) return;
         if (safeGet()) {
-          openBook(url, !!isDeepLink);
+          openBook(url, !!isDeepLink, title);
         } else {
           openGate(url, title, id, triggerEl);
         }
@@ -498,7 +503,7 @@ const booksJsonLd = {
         // Open synchronously within the submit gesture so the new tab is not
         // treated as an unsolicited popup (deferring it would get it blocked).
         // The visitor gets their book regardless of whether the signup lands.
-        if (url) { openBook(url, false); }
+        if (url) { openBook(url, false, pendingTitle); }
         const submittedGeneration = gateGeneration;
         submitEmail(
           email,

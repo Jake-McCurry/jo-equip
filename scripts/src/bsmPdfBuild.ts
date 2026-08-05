@@ -55,10 +55,10 @@ const MANIFEST_PATH = resolve(HUB, "src/data/bsmArticlePdfs.ts");
 
 /* Public-facing URLs for cover source line + internal-link rewriting. */
 const SITE = "https://equip.jesusonline.com";
-const SUB_PATH = "/channels/church/bible-study-methods";
+const SUB_PATH = "/categories/church/bible-study-methods";
 /* Articles that live under a different sub-topic than the default. */
 const SUB_PATH_OVERRIDES: Record<string, string> = {
-  "essential-bible-study-tools": "/channels/church/sermon-toolbox",
+  "essential-bible-study-tools": "/categories/church/sermon-toolbox",
 };
 
 const args = process.argv.slice(2);
@@ -89,7 +89,7 @@ function escText(s: string): string {
   return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 
-/* Rewrite root-relative hrefs ("/newsletter", "/channels/...") to absolute
+/* Rewrite root-relative hrefs ("/newsletter", "/categories/...") to absolute
    equip.jesusonline.com URLs so links remain clickable in the PDF. Leaves
    mailto:, http(s):, protocol-relative (//), and anchor (#) links untouched. */
 function rewriteLinks(html: string): string {

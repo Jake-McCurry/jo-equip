@@ -164,7 +164,7 @@ function cleanInline(html: string, rw: Map<string, RwTarget>): string {
     const override = HREF_OVERRIDES[slug];
     if (override) return `href=${q}${override}${q}`;
     const target = rw.get(slug) ?? rw.get(articleIdOf(slug));
-    if (target) return `href=${q}/channels/${target.channelId}/${target.subId}/${target.id}${q}`;
+    if (target) return `href=${q}/categories/${target.channelId}/${target.subId}/${target.id}${q}`;
     return `href=${q}https://app.jesusonline.com/post/${slug}${q}`;
   };
   s = s.replace(

@@ -10,19 +10,19 @@ const join = (p: string) =>
   (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
 ---
 <Layout
-  title="Resource Channels: Evidence, Growth & Church | JO EQUIP"
+  title="Resource Categories: Evidence, Growth &amp; Church | JO EQUIP"
   description="Explore three free resource channels: Evidence (apologetics), Growth (discipleship) and Church (evangelism and church planting), designed to equip pastors and ministry leaders."
 >
   <Fragment slot="head">
     <BreadcrumbsLd items={[
       { name: "Home", url: "/" },
-      { name: "Channels", url: "/channels" },
+      { name: "Categories", url: "/categories" },
     ]} />
   </Fragment>
   <div class="container mx-auto px-4 py-12 md:py-16">
     <div class="max-w-3xl mb-12">
       <div class="text-xs font-semibold tracking-widest uppercase mb-3" style="color:#0083de;">JO EQUIP</div>
-      <h1 class="text-4xl md:text-5xl mb-4" style="color:#0b3c5d;">Ministry Channels</h1>
+      <h1 class="text-4xl md:text-5xl mb-4" style="color:#0b3c5d;">Ministry Categories</h1>
       <div class="h-0.5 w-12 mb-5" style="background-color:#de5b00;"></div>
       <p class="leading-relaxed text-lg" style="color:var(--color-muted-foreground);">
         These free resources are grouped to help you serve with greater
@@ -34,7 +34,7 @@ const join = (p: string) =>
       {channels.map(channel => {
         const subCount = getSubTopicsByChannel(channel.id).length;
         return (
-          <a href={join(`/channels/${channel.id}`)} class="group flex flex-col">
+          <a href={join(`/categories/${channel.id}`)} class="group flex flex-col">
             <h2 class="text-2xl font-semibold mb-2 group-hover:underline" style="color:#0b3c5d;">{channel.name}</h2>
             <div class="flex flex-col flex-grow bg-white border rounded overflow-hidden group-hover:shadow-lg transition-all" style={`border-color:var(--color-border);border-left:4px solid ${channel.accentColor};`}>
               <div style={`height:14px;background-color:${channel.accentColor};`}></div>

@@ -8,7 +8,7 @@
  *
  *   sitemap-index.xml      → references the sitemaps below
  *   sitemap-pages.xml      → top-level pages (/, /about, /pastors, …)
- *   sitemap-channels.xml   → /channels/** (channel, topic, article pages)
+ *   sitemap-categories.xml   → /categories/** (channel, topic, article pages)
  *   sitemap-books.xml      → /books/**
  *   sitemap-playlists.xml  → /playlists + /playlist/**
  *   sitemap-videos.xml     → video sitemap for playlist pages + article pages
@@ -103,7 +103,7 @@ for (const url of Object.keys(manifest)) if (!live.has(url)) delete manifest[url
 
 const groups = { channels: [], books: [], playlists: [], pages: [] };
 for (const p of pages) {
-  if (p.path.startsWith("/channels")) groups.channels.push(p);
+  if (p.path.startsWith("/categories")) groups.channels.push(p);
   else if (p.path.startsWith("/books")) groups.books.push(p);
   else if (p.path.startsWith("/playlist")) groups.playlists.push(p);
   else groups.pages.push(p);
@@ -145,7 +145,7 @@ if (existsSync(genDir)) {
     for (const a of JSON.parse(readFileSync(join(genDir, f), "utf8"))) {
       const m = typeof a.videoUrl === "string" && a.videoUrl.match(/embed\/([\w-]+)/);
       if (!m) continue;
-      addVideo(`${SITE}/channels/${a.channelId}/${a.subId}/${a.id}`, {
+      addVideo(`${SITE}/categories/${a.channelId}/${a.subId}/${a.id}`, {
         title: a.title,
         description: (a.description || a.title).replace(/<[^>]+>/g, ""),
         videoId: m[1],
@@ -183,7 +183,7 @@ function videoXml() {
 
 const files = [
   ["sitemap-pages.xml", urlsetXml(groups.pages), groups.pages],
-  ["sitemap-channels.xml", urlsetXml(groups.channels), groups.channels],
+  ["sitemap-categories.xml", urlsetXml(groups.channels), groups.channels],
   ["sitemap-books.xml", urlsetXml(groups.books), groups.books],
   ["sitemap-playlists.xml", urlsetXml(groups.playlists), groups.playlists],
 ];

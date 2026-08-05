@@ -15,7 +15,7 @@ export function getStaticPaths() {
 
 const { channelId } = Astro.params;
 const channel = getChannel(channelId!);
-if (!channel) return Astro.redirect(join("/channels"));
+if (!channel) return Astro.redirect(join("/categories"));
 
 const subs = getSubTopicsByChannel(channel.id);
 
@@ -46,8 +46,8 @@ function exploreLabel(subId: string): string {
   <Fragment slot="head">
     <BreadcrumbsLd items={[
       { name: "Home", url: "/" },
-      { name: "Channels", url: "/channels" },
-      { name: channel.shortName, url: `/channels/${channel.id}` },
+      { name: "Categories", url: "/categories" },
+      { name: channel.shortName, url: `/categories/${channel.id}` },
     ]} />
   </Fragment>
   {/* Channel hero */}
@@ -66,7 +66,7 @@ function exploreLabel(subId: string): string {
   <div class="container mx-auto px-4 pt-8 md:pt-10 pb-12 md:pb-16">
     {/* Breadcrumbs — below the hero, matching the article-page style. */}
     <nav class="flex items-center text-sm font-medium flex-wrap gap-1 mb-8" style="color:var(--color-muted-foreground);">
-      <a href={join("/channels")} class="transition-colors hover:text-primary">Channels</a>
+      <a href={join("/categories")} class="transition-colors hover:text-primary">Categories</a>
       <ChevronRight className="w-3 h-3" />
       <span>{channel.shortName}</span>
     </nav>
@@ -77,7 +77,7 @@ function exploreLabel(subId: string): string {
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
       {subs.map(sub => {
-        const href = join(`/channels/${channel.id}/${sub.id}`);
+        const href = join(`/categories/${channel.id}/${sub.id}`);
         return (
           <div
             class="flex flex-col bg-white border rounded p-5 hover:shadow-md transition-all"

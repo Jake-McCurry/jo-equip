@@ -152,7 +152,7 @@ export const bcgArticles: BcgArticle[] = [
       { type: "p", html: "We provide high-quality, free media and discipleship resources created specifically to assist you in faithfully equipping the flock God has entrusted to you." },
       { type: "figure", src: "bgc2-3", alt: "The Toolkit for Engagement: JO EQUIP Resources — Watch (capture attention immediately), Learn (deepen your content), Live (drive lasting impact)." },
 
-      { type: "p", html: "<strong>JO EQUIP</strong> is a free digital library of practical discipleship tools for pastors and disciple-makers — carefully organized into three mission-driven channels so you can find exactly what you need, when you need it." },
+      { type: "p", html: "<strong>JO EQUIP</strong> is a free digital library of practical discipleship tools for pastors and disciple-makers — carefully organized into three mission-driven categories so you can find exactly what you need, when you need it." },
       { type: "p", html: "JesusOnline offers free <em>Watch → Learn → Live</em> resources to strengthen engagement, depth, and retention in your ministry." },
 
       { type: "h3", text: "1. Watch" },
@@ -169,7 +169,7 @@ export const bcgArticles: BcgArticle[] = [
 
       { type: "h3", text: "A Simple 5-Step Process You Can Use This Sunday" },
       { type: "ol", items: [
-        "<strong>Select a Topic.</strong> Browse the JO EQUIP library and choose a topic that fits your upcoming message (from the Evidence, Growth, or Church channels).",
+        "<strong>Select a Topic.</strong> Browse the JO EQUIP library and choose a topic that fits your upcoming message (from the Evidence, Growth, or Church categories).",
         "<strong>Build Your Message.</strong> Use the article as your skeleton outline or rich resource material. Develop the key truths with your own illustrations, personal stories, pastoral insights, and relevant examples from your congregation. The content is biblical, trustworthy, and ready to save you hours of preparation.",
         "<strong>Capture Attention Immediately.</strong> Play the summary video at the very beginning of your message. It sets the emotional tone, gives people a clear preview of where you’re going, and draws in even distracted or first-time visitors.",
         "<strong>Deliver Your Teaching.</strong> Preach with freedom and confidence, knowing the core content is solid and well-researched.",
@@ -191,7 +191,7 @@ export const bcgArticles: BcgArticle[] = [
       { type: "p", html: "You can use our Bible study series or create your own using our materials." },
       { type: "h3", text: "A Simple 2-Step Process to Create a Bible Study" },
       { type: "ol", items: [
-        "<strong>Select a Bible study series.</strong> Bible study series are found on the JO EQUIP Growth channel.",
+        "<strong>Select a Bible study series.</strong> Bible study series are found on the JO EQUIP Growth category.",
         "<strong>Develop new habits.</strong> We believe the main goal of Bible study is life transformation through practice. End each study by creating a simple action plan to apply the truths learned — then begin the next meeting by sharing how people put the plan into practice.",
       ]},
       { type: "p", html: "<strong>Optional: create your own Bible studies.</strong> The JesusOnline app library offers hundreds of articles and many article series. You’ll find some of them useful as the basis for a Bible study, and you can turn any article into a stand-alone study." },

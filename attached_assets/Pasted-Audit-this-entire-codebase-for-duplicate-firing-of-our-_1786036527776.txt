@@ -1,0 +1,247 @@
+Audit this entire codebase for duplicate firing of our custom GA4/GTM event named:
+
+pdf_download
+
+Do not modify any code yet. First complete a full investigation and report your findings.
+
+Context:
+
+- The site is equip.jesusonline.com.
+- Google Tag Manager container: GTM-PKJQNCS.
+- The application is expected to push one dataLayer event per intentional PDF download click.
+- GTM listens for the custom event name "pdf_download" and sends it to GA4 measurement ID G-EKKRM7JPR6.
+- Expected dataLayer parameters may include:
+  - file_title
+  - file_name
+  - file_category
+  - link_url
+- GA4 is showing suspicious results such as one user producing 10 pdf_download events and four users producing 64 total events.
+- The GTM configuration itself appears to fire the GA4 tag only once per custom dataLayer event.
+- Therefore, determine whether the application code can produce multiple pdf_download events from one click.
+
+Search the complete repository, including all frontend code, components, hooks, utility files, analytics modules, layouts, templates, scripts, and generated/static HTML.
+
+Search for all occurrences and related implementations of:
+
+- pdf_download
+- dataLayer.push
+- window.dataLayer
+- gtag(
+- file_title
+- file_name
+- file_category
+- link_url
+- .pdf
+- addEventListener
+- removeEventListener
+- document.addEventListener
+- window.addEventListener
+- onClick
+- onPointerDown
+- onMouseDown
+- GTM-PKJQNCS
+- G-EKKRM7JPR6
+- Google Tag Manager initialization
+- Google Analytics initialization
+
+Specifically investigate these possible causes:
+
+1. Repeated event-listener registration
+
+Look for event listeners created inside React effects, components, route handlers, layouts, or initialization functions that may run multiple times.
+
+Flag patterns such as:
+
+useEffect(() => {
+  document.addEventListener("click", handler);
+});
+
+where there is:
+
+- no dependency array
+- no cleanup function
+- an unstable handler reference
+- repeated execution on route changes
+- repeated execution during component rerenders
+
+Also inspect whether React Strict Mode could expose duplicate initialization during development, while determining whether duplication could also occur in production.
+
+2. Multiple tracking implementations
+
+Determine whether the same PDF interaction is tracked by more than one mechanism, such as:
+
+- an element onClick handler
+- a document-level delegated click listener
+- a window-level listener
+- a reusable DownloadButton component
+- a PDF-link component
+- a route-level listener
+- an analytics utility
+- a direct gtag event
+- a dataLayer.push event
+- automatic link tracking code
+- a server-side or API event
+
+Flag any situation where one click could call two or more of these.
+
+3. Event bubbling
+
+Check whether nested elements can each trigger tracking. Examples:
+
+- button inside an anchor
+- icon inside a button
+- click handler on both a child and parent
+- card-level click handler plus link-level click handler
+- event delegation plus component onClick
+
+Determine whether event bubbling could cause multiple pdf_download pushes.
+
+4. Repeated analytics initialization
+
+Check whether:
+
+- GTM-PKJQNCS is inserted more than once
+- the GTM script is present in both the HTML template and React code
+- Google Analytics is initialized directly in addition to GTM
+- the same layout or provider mounts multiple times
+- scripts are injected after each route change
+- multiple analytics providers are active
+- both production and legacy tracking code execute
+
+5. Functions called more than once
+
+Trace every function that can send pdf_download and identify all callers.
+
+For each event-sending function, document:
+
+- where it is defined
+- every place it is called
+- whether one interaction can reach it through multiple call paths
+- whether rerendering or route changes can register additional callbacks
+- whether asynchronous callbacks, promises, or retries can call it again
+
+6. PDF-link handling
+
+Review every place that renders or handles PDF links.
+
+Check for:
+
+- duplicate click handlers
+- links that call tracking before navigation and again during navigation
+- buttons that programmatically call link.click()
+- tracking called both before and after opening the PDF
+- target="_blank" logic
+- download attributes
+- router navigation
+- programmatic window.open()
+- touch and click handlers both firing
+- pointer and mouse handlers both firing
+
+7. Duplicate dataLayer pushes
+
+Locate every possible dataLayer.push that can produce:
+
+{
+  event: "pdf_download"
+}
+
+Also detect dynamically constructed event names or wrapper functions that may resolve to pdf_download.
+
+For each push, show the exact file path and line number.
+
+8. Production behavior
+
+Do not limit the audit to development behavior. Determine whether the suspected issue could occur in the deployed production build.
+
+Review:
+
+- build entry points
+- root layouts
+- providers
+- route transitions
+- hydration
+- client-side navigation
+- code splitting
+- scripts loaded from public/static folders
+- any Cloudflare-specific or deployment-specific script injection
+
+Required report format:
+
+A. Executive conclusion
+
+State one of the following:
+
+- A single click can definitely generate multiple pdf_download events.
+- A single click could generate multiple events under certain conditions.
+- No duplicate path was found in the code.
+
+B. Event flow
+
+Show the complete flow from the user click to:
+
+window.dataLayer.push({
+  event: "pdf_download",
+  ...
+});
+
+C. Findings table
+
+For every relevant implementation, provide:
+
+- severity
+- file path
+- line number
+- code or function name
+- what it does
+- whether it can duplicate the event
+- conditions required for duplication
+
+D. Count estimate
+
+Estimate how many pdf_download events one click could generate based on the current code.
+
+Explain whether counts such as 10 or 16 could plausibly result from repeated listener registration after multiple rerenders or route transitions.
+
+E. GTM and GA4 installations
+
+List every occurrence of:
+
+- GTM-PKJQNCS
+- G-EKKRM7JPR6
+- gtag.js
+- googletagmanager.com
+- google-analytics.com
+
+State whether any are installed more than once.
+
+F. Recommended fix
+
+Provide the smallest, safest fix that guarantees:
+
+- exactly one pdf_download dataLayer event per intentional PDF click
+- listener cleanup
+- no duplicate initialization
+- no duplicate tracking through both component and global handlers
+- preservation of file_title, file_name, file_category, and link_url
+
+Do not apply the fix until after presenting the audit.
+
+G. Verification plan
+
+Provide exact browser-console and testing steps to prove that one PDF click produces:
+
+- one dataLayer pdf_download push
+- one GTM custom event
+- one GA4 event request
+
+Include a temporary debugging method such as:
+
+const originalPush = window.dataLayer.push;
+window.dataLayer.push = function (...args) {
+  console.trace("dataLayer.push", ...args);
+  return originalPush.apply(this, args);
+};
+
+Also explain how to test after navigating through several client-side pages before clicking a PDF, since repeated route navigation may be what accumulates duplicate listeners.
+
+Be exact. Do not give generic analytics recommendations. Base the conclusion on the actual code in this repository.

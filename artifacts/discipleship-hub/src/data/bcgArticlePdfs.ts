@@ -29,7 +29,7 @@ export const bcgArticlePdfs: Record<string, BcgArticlePdfMeta> = {
   "an-online-outreach-church": { bytes: 816427 },
   "anatomy-of-obedience": { bytes: 410002 },
   "give-them-what-they-need": { bytes: 117171 },
-  "gods-unique-vision-for-your-church": { bytes: 641915 },
+  "gods-unique-vision-for-your-church": { bytes: 641681 },
   "retention-leads-to-transformation": { bytes: 111416 },
   "what-is-your-motivation-for-preaching": { bytes: 110358 },
 };

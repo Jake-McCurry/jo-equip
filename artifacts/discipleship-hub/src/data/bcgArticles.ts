@@ -73,11 +73,11 @@ const WLL: ArticleBlock[] = [
 export const bcgArticles: BcgArticle[] = [
   {
     id: "gods-unique-vision-for-your-church",
-    title: "A Unique Vision for Kingdom-Focused Growth",
+    title: "God's Unique Vision for Kingdom-focused Growth",
     description:
       "Faithful pastor or small-group leader not seeing growth? JesusOnline offers free media and discipleship resources to help you grow deep — and God will grow you wide.",
     blocks: [
-      { type: "figure", src: "bgc1-1", alt: "Opening illustration for A Unique Vision for Kingdom-Focused Growth — a faithful shepherd and the flock God has entrusted to him." },
+      { type: "figure", src: "bgc1-1", alt: "Opening illustration for God’s Unique Vision for Kingdom-focused Growth — a faithful shepherd and the flock God has entrusted to him." },
 
       { type: "p", html: "You are a pastor, a small-group leader, or an elder/leader of a congregation. You have been faithful to the Great Shepherd, feeding and shepherding His sheep. Yet you are not seeing growth and vitality." },
       { type: "p", html: "God has a unique vision for your church — one that fits your people perfectly and releases fresh growth, life, and Kingdom impact." },

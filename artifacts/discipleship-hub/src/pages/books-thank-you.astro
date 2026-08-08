@@ -1,0 +1,86 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { Image } from "astro:assets";
+import { CheckCircle2, Download } from "lucide-react";
+import { books } from "@/data/books";
+import { getBookCover } from "@/data/bookCovers";
+
+const baseUrl = import.meta.env.BASE_URL;
+const join = (p: string) =>
+  (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
+---
+<Layout
+  title="Thank You — Your Free Books Are Ready · JO EQUIP"
+  description="Download any of our free discipleship books — yours to keep, print, and share with others in your ministry."
+>
+  <Fragment slot="head">
+    {/* Post-signup destination, not standalone content — keep it out of Google. */}
+    <meta name="robots" content="noindex, follow" />
+  </Fragment>
+
+  <div class="container mx-auto px-4 py-14 md:py-20">
+    <div class="max-w-3xl mx-auto text-center mb-12">
+      <div
+        class="inline-flex items-center justify-center w-14 h-14 rounded-full mb-5"
+        style="background-color:rgba(0,131,222,0.1);"
+      >
+        <CheckCircle2 className="w-7 h-7" style={{ color: "#0083de" }} />
+      </div>
+      <h1 class="text-3xl md:text-4xl mb-4" style="color:#0b3c5d;">Thank You! Your Free Books Are Ready</h1>
+      <div class="h-0.5 w-12 mx-auto mb-6" style="background-color:#de5b00;"></div>
+      <p class="text-base md:text-lg leading-relaxed mb-3" style="color:#374151;">
+        You&rsquo;re all set. Download any (or all) of the free discipleship books below right now.
+        They are yours to keep, print, and share with others in your ministry.
+      </p>
+      <p class="text-base leading-relaxed" style="color:var(--color-muted-foreground);">
+        There is no limit&mdash;come back anytime and download more.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      {books.map(book => {
+        const cover = getBookCover(book.id);
+        return (
+        <article id={book.id} class="border rounded-lg bg-white overflow-hidden flex flex-col transition-shadow hover:shadow-md scroll-mt-24" style="border-color:var(--color-border);">
+          <div class="p-5 pb-4 flex items-center justify-center bg-white" style="min-height:18rem;">
+            {cover ? (
+              <Image
+                src={cover}
+                alt={`${book.title} book cover`}
+                widths={[240, 480]}
+                sizes="(min-width: 1024px) 320px, (min-width: 640px) 45vw, 90vw"
+                loading="lazy"
+                class="h-72 w-auto max-w-full object-contain"
+              />
+            ) : (
+              <div class="text-sm" style="color:var(--color-muted-foreground);">No cover available</div>
+            )}
+          </div>
+          <div class="px-5 pb-5 pt-3 border-t flex items-center justify-center" style="border-color:var(--color-border);">
+            <a
+              href={join(book.pdf)}
+              target="_blank"
+              rel="noopener"
+              data-track-title={book.title}
+              class="inline-flex items-center justify-center gap-2 font-semibold text-sm uppercase tracking-wide transition-colors hover:opacity-75"
+              style="color:#0083de;"
+              aria-label={`Download ${book.title}`}
+            >
+              <Download className="w-4 h-4" />
+              Download
+            </a>
+          </div>
+        </article>
+        );
+      })}
+    </div>
+  </div>
+
+  <script is:inline>
+    // Reaching this page means the visitor completed the signup — remember it
+    // so the Books page opens PDFs directly instead of re-asking for email.
+    (function () {
+      try { localStorage.setItem("jo_equip_subscribed_v1", "1"); } catch (_e) { /* ignore */ }
+    })();
+  </script>
+</Layout>

@@ -1,0 +1,229 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { BookOpen } from "lucide-react";
+
+const baseUrl = import.meta.env.BASE_URL;
+const join = (p: string) =>
+  (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
+
+/* Mailchimp JSONP (post-json) endpoint for book-download signups (public,
+   safe to commit — it appears verbatim in Mailchimp's own embed code).
+   Signups go to the "jesusonline" us1 audience with the hidden tag below so
+   they are identifiable as book downloads. Same form the /books email gate
+   used before it was replaced by this dedicated page (Aug 2026). JSONP gives
+   a real success/error response (unlike no-cors fetch), so we only mark the
+   browser as subscribed once Mailchimp confirms. */
+const MC_ACTION =
+  "https://jesusonline.us1.list-manage.com/subscribe/post-json?u=c02949f5de137184b156da9bc&id=e06ba0649d&f_id=00bc87e5f0";
+const MC_TAG = "5798230";
+const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
+const THANK_YOU = join("/books-thank-you");
+---
+<Layout
+  title="Free Christian Discipleship Books — Sign Up · JO EQUIP"
+  description="Sign up with your email to unlock free downloads of our discipleship books — no limits and no cost."
+>
+  <Fragment slot="head">
+    {/* Post-click signup step, not standalone content — keep it out of Google. */}
+    <meta name="robots" content="noindex, follow" />
+  </Fragment>
+
+  <div class="container mx-auto px-4 py-14 md:py-20">
+    <div class="max-w-xl mx-auto">
+      <div class="text-center mb-8">
+        <div
+          class="inline-flex items-center justify-center w-14 h-14 rounded-full mb-5"
+          style="background-color:rgba(222,91,0,0.1);"
+        >
+          <BookOpen className="w-7 h-7" style={{ color: "#de5b00" }} />
+        </div>
+        <h1 class="text-3xl md:text-4xl mb-4" style="color:#0b3c5d;">Free Christian Discipleship Books</h1>
+        <div class="h-0.5 w-12 mx-auto mb-6" style="background-color:#de5b00;"></div>
+        <p class="text-base md:text-lg leading-relaxed mb-4" style="color:#374151;">
+          Enter your email below to unlock free downloads of our discipleship books. Once you sign
+          up, you can immediately download as many books as you choose&mdash;no limits and no cost.
+        </p>
+        <p class="text-sm leading-relaxed" style="color:var(--color-muted-foreground);">
+          We respect your privacy. Your email is used only to provide access to these free resources
+          and to occasionally share additional ministry tools. You can unsubscribe at any time.
+        </p>
+      </div>
+
+      <form id="books-signup-form" class="flex flex-col gap-3" novalidate>
+        <label class="sr-only" for="books-signup-email">Email address</label>
+        <input
+          id="books-signup-email"
+          type="email"
+          name="email"
+          required
+          autocomplete="email"
+          placeholder="you@example.com"
+          aria-describedby="books-signup-error"
+          class="w-full px-4 py-3 border rounded text-base focus:outline-none focus:ring-2 focus:border-transparent"
+          style="border-color:var(--color-border);"
+        />
+        <p id="books-signup-error" class="text-sm hidden" role="alert" aria-live="polite" style="color:#c0392b;">Please enter a valid email address.</p>
+        <p id="books-signup-submit-error" class="text-sm hidden" role="alert" aria-live="polite" style="color:#c0392b;"></p>
+        <button
+          id="books-signup-submit"
+          type="submit"
+          class="w-full py-3 rounded font-semibold text-white text-base transition-colors hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed"
+          style="background-color:#de5b00;"
+        >
+          Get Free Access
+        </button>
+        <p class="text-xs text-center" style="color:var(--color-muted-foreground);">
+          Your email will not be shared. See our
+          <a
+            href="https://jesusonlineministries.org/privacy-policy/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="underline hover:opacity-75"
+            style="color:var(--color-muted-foreground);"
+          >Privacy Policy</a>.
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <script is:inline define:vars={{ MC_ACTION, MC_TAG, MC_HONEYPOT, THANK_YOU }}>
+    (function () {
+      // Same consent flag the /books page checks — set only after Mailchimp
+      // confirms the signup, so returning visitors skip this page entirely.
+      const STORAGE_KEY = "jo_equip_subscribed_v1";
+
+      const form = document.getElementById("books-signup-form");
+      const input = document.getElementById("books-signup-email");
+      const errorEl = document.getElementById("books-signup-error");
+      const submitErrorEl = document.getElementById("books-signup-submit-error");
+      const submitBtn = document.getElementById("books-signup-submit");
+      if (!form || !input || !submitBtn) return;
+
+      let isSubmitting = false;
+      let jsonpCounter = 0;
+
+      /* COUNTRY is reported automatically from the visitor's IP (Cloudflare
+       * geolocation via /api/geo) — no visible field, same as the newsletter
+       * form. Only works on the live site (the Worker serves /api/geo);
+       * anywhere else this fails silently and COUNTRY is submitted empty. */
+      let geoCountry = "";
+      (async () => {
+        try {
+          const res = await fetch("/api/geo", { signal: AbortSignal.timeout(4000) });
+          if (!res.ok) return;
+          const { country } = await res.json();
+          if (!country) return;
+          let name = country;
+          try {
+            name = new Intl.DisplayNames(["en"], { type: "region" }).of(country) || country;
+          } catch (_e) { /* keep the 2-letter code */ }
+          geoCountry = name;
+        } catch (_e) { /* ignore — COUNTRY stays empty */ }
+      })();
+
+      function safeSet() {
+        try { localStorage.setItem(STORAGE_KEY, "1"); } catch (_e) { /* ignore */ }
+      }
+
+      function isValidEmail(v) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+      }
+
+      function showError(show) {
+        if (!errorEl) return;
+        if (show) {
+          errorEl.classList.remove("hidden");
+          input.setAttribute("aria-invalid", "true");
+        } else {
+          errorEl.classList.add("hidden");
+          input.removeAttribute("aria-invalid");
+        }
+      }
+
+      function showSubmitError(msg) {
+        if (!submitErrorEl) return;
+        if (msg) {
+          submitErrorEl.textContent = msg;
+          submitErrorEl.classList.remove("hidden");
+        } else {
+          submitErrorEl.textContent = "";
+          submitErrorEl.classList.add("hidden");
+        }
+      }
+
+      // Submit to Mailchimp's JSONP endpoint and confirm the signup was
+      // accepted before redirecting. On failure the consent flag is NOT set
+      // and the visitor stays here with an error, so their email never
+      // silently goes missing.
+      function submitEmail(email, onSuccess, onFailure) {
+        const params = new URLSearchParams();
+        params.set("EMAIL", email);
+        if (geoCountry) params.set("COUNTRY", geoCountry);
+        params.set("tags", MC_TAG);
+        params.set(MC_HONEYPOT, "");
+        params.set("subscribe", "Subscribe");
+        const cb = "joBookMailchimpCb" + Date.now() + "_" + (++jsonpCounter);
+        const script = document.createElement("script");
+        let settled = false;
+        const timer = setTimeout(function () { settle(false, ""); }, 10000);
+
+        function settle(ok, msg) {
+          if (settled) return;
+          settled = true;
+          clearTimeout(timer);
+          try { delete window[cb]; } catch (_e) { window[cb] = undefined; }
+          if (script.parentNode) script.parentNode.removeChild(script);
+          if (ok) { onSuccess(); } else { onFailure(msg); }
+        }
+
+        window[cb] = function (res) {
+          const msg = res && res.msg ? String(res.msg) : "";
+          // "already subscribed" comes back as result:"error" but means the
+          // email IS on the list — treat it as success.
+          const ok =
+            (res && res.result === "success") ||
+            /already subscribed/i.test(msg);
+          settle(ok, msg);
+        };
+        script.onerror = function () { settle(false, ""); };
+        script.src = MC_ACTION + "&" + params.toString() + "&c=" + cb;
+        document.body.appendChild(script);
+      }
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (isSubmitting) return;
+        const email = (input.value || "").trim();
+        if (!isValidEmail(email)) {
+          showError(true);
+          input.focus();
+          return;
+        }
+        showError(false);
+        showSubmitError("");
+        isSubmitting = true;
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending…";
+        submitEmail(
+          email,
+          function () {
+            safeSet();
+            window.location.href = THANK_YOU;
+          },
+          function (msg) {
+            isSubmitting = false;
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Get Free Access";
+            // Mailchimp messages can contain HTML — strip to plain text.
+            const div = document.createElement("div");
+            div.innerHTML = msg || "";
+            const plain = (div.textContent || "").trim();
+            showSubmitError(
+              plain || "Something went wrong sending your signup. Please try again."
+            );
+          }
+        );
+      });
+    })();
+  </script>
+</Layout>

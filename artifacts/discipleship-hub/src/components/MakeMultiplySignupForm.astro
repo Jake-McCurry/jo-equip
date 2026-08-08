@@ -4,14 +4,19 @@
  * sub-topic page (via MakeMultiplyNewsletter.astro) so the two forms
  * never drift apart.
  *
- * Submits via Mailchimp's JSONP endpoint (post-json) so we can show the
- * thank-you dialog inline instead of navigating to Mailchimp's response
- * page — same pattern as /register-church, but this form's own
- * f_id=00bb87e5f0. */
+ * Submits via Mailchimp's JSONP endpoint (post-json) so we can confirm the
+ * signup succeeded before redirecting to the /thank-you page (instead of
+ * navigating to Mailchimp's response page) — same pattern as
+ * /register-church, but this form's own f_id=00bb87e5f0. */
 interface Props {
   accent?: string;
 }
 const { accent = "#6B2D7B" } = Astro.props;
+
+const baseUrl = import.meta.env.BASE_URL;
+const join = (p: string) =>
+  (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
+const THANK_YOU = join("/thank-you");
 
 // Mailchimp audience: jesusonline.us1. Merge fields on this audience:
 // EMAIL, FNAME (First Name), CHURCH (Church/Ministry), COUNTRY, and
@@ -26,7 +31,7 @@ const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
   style={`border-color:var(--color-border);border-top:4px solid ${accent};`}
 >
   <h2 class="text-xl mb-1" style="color:#0b3c5d;">Free Sign Up</h2>
-  <p class="text-sm mb-6" style="color:var(--color-muted-foreground);">No spam. Unsubscribe anytime.</p>
+  <p class="text-sm mb-6" style="color:var(--color-muted-foreground);">Enter your email below to start receiving the free monthly newsletter.</p>
 
   <form id="mm-form" class="space-y-4" novalidate>
     <div>
@@ -95,32 +100,14 @@ const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
     >
       Free Sign Up
     </button>
+
+    <p class="text-xs text-center" style="color:var(--color-muted-foreground);">
+      We respect your privacy. Unsubscribe anytime.
+    </p>
   </form>
 </div>
 
-{/* Thank-you dialog */}
-<div id="mm-thanks" class="hidden fixed inset-0 z-50 items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="mm-thanks-title">
-  <div id="mm-thanks-backdrop" class="absolute inset-0" style="background-color:rgba(11,60,93,0.6);"></div>
-  <div class="relative bg-white rounded-lg shadow-xl max-w-md w-full p-8 text-center">
-    <h2 id="mm-thanks-title" class="text-2xl mb-4" style="color:#0b3c5d;">Thank You!</h2>
-    <div class="h-0.5 w-12 mx-auto mb-5" style="background-color:#de5b00;"></div>
-    <p class="text-base leading-relaxed mb-6" style="color:#374151;">
-      You&rsquo;re signed up for the Making &amp; Multiplying Disciples newsletter.
-      Keep an eye on your inbox &mdash; we look forward to encouraging you as you
-      make and multiply disciples.
-    </p>
-    <button
-      type="button"
-      id="mm-thanks-close"
-      class="inline-flex items-center justify-center px-6 py-2.5 rounded font-semibold text-sm transition-all hover:shadow-md"
-      style={`background-color:${accent};color:#ffffff;`}
-    >
-      Close
-    </button>
-  </div>
-</div>
-
-<script define:vars={{ MC_POST_JSON }}>
+<script define:vars={{ MC_POST_JSON, THANK_YOU }}>
   const form = document.getElementById("mm-form");
 
   /* Fill hidden COUNTRY from the visitor's IP (Cloudflare geolocation).
@@ -141,22 +128,6 @@ const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
   })();
   const submitBtn = document.getElementById("mm-submit");
   const errorEl = document.getElementById("mm-error");
-  const thanks = document.getElementById("mm-thanks");
-
-  function showThanks() {
-    thanks.classList.remove("hidden");
-    thanks.classList.add("flex");
-    document.getElementById("mm-thanks-close").focus();
-  }
-  function hideThanks() {
-    thanks.classList.add("hidden");
-    thanks.classList.remove("flex");
-  }
-  document.getElementById("mm-thanks-close").addEventListener("click", hideThanks);
-  document.getElementById("mm-thanks-backdrop").addEventListener("click", hideThanks);
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") hideThanks();
-  });
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -185,7 +156,8 @@ const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
       finish();
       if (res && res.result === "success") {
         form.reset();
-        showThanks();
+        // Send the new subscriber to the dedicated thank-you page.
+        window.location.href = THANK_YOU;
       } else {
         const msg = (res && res.msg ? String(res.msg) : "Something went wrong. Please try again.")
           .replace(/<[^>]*>/g, "")

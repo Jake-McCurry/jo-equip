@@ -1,0 +1,41 @@
+also add a thank you page after sign up for the newsletter after implementing some of the bottom suggestions
+
+https://equip.jesusonline.com/categories/church/make-multiply-disciples-newsletter
+
+
+Evaluation of the Newsletter Sign-Up Page
+
+https://equip.jesusonline.com/categories/church/make-multiply-disciples-newsletter
+
+Overall Assessment
+
+The page has solid foundational messaging for its intended audience (disciple-makers and church leaders), but it currently functions more as a
+description page than a true conversion-oriented sign-up page. The biggest issue is the absence of a working sign-up form on the page itself.
+
+Strengths
+
+Clear audience targeting: “Subscribe to our newsletter for disciple-makers” immediately signals who this is for.
+Benefit-focused language: “hope, insight, and practical equipping” and “honor your time and multiply your ministry” align well with JO Equip’s mission.
+Specific content promises: The three bullet points (Insights from Pastor Jon, JO EQUIP Spotlight, Practical Strategies) give people a concrete idea of what they will receive.
+Concise length: The page is short and does not overwhelm the reader.
+Good closing CTA language: “Sign up today and receive encouragement and resources that honor your time and multiply your ministry!” is warm and mission-aligned.
+Weaknesses & Friction Points
+
+No visible signup form This is the most significant problem. The page describes the newsletter and says “Sign up today,” but there is no email field or button on the page. Visitors cannot complete the action without leaving or searching for another form. This creates high friction and will sharply reduce conversions.
+Vague CTA without immediate action “Sign up today” is not actionable when the form is missing. Visitors are left wondering where or how to actually subscribe.
+Limited differentiation The language is good but somewhat generic. Many ministry newsletters claim to offer hope, insight, and practical help. Stronger specificity (e.g., what makes Pastor Jon’s insights unique, or a sample topic) would increase perceived value.
+Missing trust elements
+No frequency confirmation beyond the word “monthly” in the body.
+No privacy note.
+No social proof (e.g., “Join hundreds of pastors and leaders”).
+No sample issue or preview link.
+Page feels incomplete It reads more like an internal category description than a dedicated landing page designed to convert.
+Recommendations (in priority order)
+
+Add the actual signup form directly on this page (single email field + clear button such as “Subscribe Free” or “Get the Newsletter”).
+Keep the current body text largely intact — it is already reasonably low-friction and benefit-oriented.
+Strengthen the CTA slightly for clarity, for example: “Enter your email below to start receiving the free monthly newsletter.”
+Add a short privacy line under the form: “We respect your privacy. Unsubscribe anytime.”
+Consider adding one line of social proof or a sample topic if available.
+Summary: The messaging is directionally good and appropriate for JO Equip’s audience. The page simply needs the actual form and a clearer path to action to become effective. Would you like me to
+ rewrite the page copy with the form in mind (keeping the same tone and length)?

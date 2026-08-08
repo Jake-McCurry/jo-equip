@@ -1,0 +1,612 @@
+"# SEO Task: SEO-012
+## Task Name: Fix YouTube Video Sitemap URL Generation, Validation & Automation
+
+You are acting as a Senior Technical SEO Engineer and Full-Stack Web Developer.
+
+The XML Sitemap Optimization implementation has already been completed, including the dedicated Video Sitemap.
+
+However, an issue has been identified in the Video Sitemap generation logic affecting multiple/all video URLs.
+
+The current implementation is incorrectly generating YouTube URLs in the following format:
+
+https://www.youtube-nocookie.com/embed/VIDEO_ID
+
+whereas the corresponding YouTube video URLs associated with the website content are standard YouTube URLs such as:
+
+https://www.youtube.com/watch?v=VIDEO_ID
+
+Additionally, every video included in the Video Sitemap must be validated to ensure that the actual video player works correctly and does not return:
+
+Error 153
+Video player configuration error
+
+This must be treated as a system-level issue and fixed at the underlying Video Sitemap generation level.
+
+The solution must work automatically for all existing videos and all future videos added to the website.
+
+---
+
+## Objective
+
+Fix and improve the Video Sitemap generation system so that:
+
+1. Existing YouTube videos are correctly identified and represented in the Video Sitemap.
+2. YouTube Video IDs are extracted reliably from the website's underlying video data.
+3. `youtube-nocookie.com/embed/` is not incorrectly used as the Video Sitemap URL.
+4. The website's existing video embedding implementation is not unnecessarily changed.
+5. Every video is validated before being included in the Video Sitemap.
+6. Videos producing `Error 153 – Video player configuration error` are excluded from the Video Sitemap.
+7. New videos added to the website are automatically detected and validated.
+8. Valid new videos are automatically included in the Video Sitemap.
+9. Invalid or unavailable videos are automatically excluded and logged.
+10. Removed videos are automatically removed from the Video Sitemap.
+11. No manual XML editing is required for future updates.
+12. The implementation remains scalable and compatible with future deployments.
+
+---
+
+# 1. Analyze the Existing Video Architecture
+
+Before making any changes, thoroughly analyze:
+
+- How video data is stored.
+- Where YouTube video URLs are stored.
+- Whether YouTube Video IDs are stored separately.
+- How video data is passed to individual pages.
+- How YouTube videos are rendered on the website.
+- Whether the website uses:
+  - `youtube.com/watch?v=`
+  - `youtu.be/`
+  - `youtube.com/embed/`
+  - `youtube-nocookie.com/embed/`
+- How the Video Sitemap is currently generated.
+- How the sitemap generator obtains the video URL.
+- Whether the sitemap generator is scraping the rendered iframe URL.
+- Whether the sitemap generator is reading structured data.
+- Whether the sitemap generator is reading the original content/database/CMS data.
+- How the sitemap is regenerated after new content is added.
+
+Do not assume that the iframe URL is the canonical source of the YouTube video.
+
+Trace the complete data flow:
+
+Video Source
+→ Video ID / URL
+→ Website Page
+→ Video Component
+→ Sitemap Generator
+→ Video Sitemap
+
+Identify exactly where the incorrect URL transformation is occurring.
+
+---
+
+# 2. Use YouTube Video ID as the Primary Identifier
+
+The implementation should preferably use the YouTube Video ID as the primary identifier rather than relying on the final rendered iframe URL.
+
+For example:
+
+Video ID:
+
+x5m1A7zoIcc
+
+The system should be able to generate:
+
+https://www.youtube.com/watch?v=x5m1A7zoIcc
+
+regardless of whether the website's video player uses:
+
+https://www.youtube.com/embed/x5m1A7zoIcc
+
+or:
+
+https://www.youtube-nocookie.com/embed/x5m1A7zoIcc
+
+for playback.
+
+The Video Sitemap generation layer must be independent from the website's video-player/embed implementation.
+
+---
+
+# 3. Create Reusable YouTube URL / Video ID Extraction Logic
+
+Implement a reusable function or service for extracting the YouTube Video ID.
+
+The logic should safely recognize common YouTube formats, including:
+
+https://www.youtube.com/watch?v=VIDEO_ID
+
+https://youtu.be/VIDEO_ID
+
+https://www.youtube.com/embed/VIDEO_ID
+
+https://www.youtube-nocookie.com/embed/VIDEO_ID
+
+For example:
+
+Input:
+
+https://www.youtube-nocookie.com/embed/x5m1A7zoIcc
+
+Extract:
+
+x5m1A7zoIcc
+
+Then generate the standardized Video Sitemap URL:
+
+https://www.youtube.com/watch?v=x5m1A7zoIcc
+
+Do not perform simple string replacement or hostname manipulation.
+
+Do not hardcode individual video URLs.
+
+The solution must work dynamically for all current and future YouTube videos.
+
+---
+
+# 4. Standardize Video Sitemap YouTube URLs
+
+For the Video Sitemap, standardize YouTube video URLs to:
+
+https://www.youtube.com/watch?v=VIDEO_ID
+
+Example:
+
+Correct:
+
+https://www.youtube.com/watch?v=x5m1A7zoIcc
+
+Incorrect:
+
+https://www.youtube-nocookie.com/embed/x5m1A7zoIcc
+
+Incorrect:
+
+https://www.youtube.com/embed/x5m1A7zoIcc
+
+The `youtube-nocookie.com` hostname should not be introduced into the Video Sitemap simply because the website uses privacy-enhanced YouTube embeds.
+
+---
+
+# 5. Do Not Modify Website Video Embeds
+
+Important:
+
+Do NOT change the existing video player implementation simply to fix the sitemap.
+
+If the website intentionally uses:
+
+https://www.youtube-nocookie.com/embed/VIDEO_ID
+
+for privacy-enhanced YouTube embedding, preserve that implementation.
+
+The requirement is to separate:
+
+Website Video Player URL
+
+from:
+
+Video Sitemap YouTube URL
+
+Example:
+
+Website player:
+
+https://www.youtube-nocookie.com/embed/x5m1A7zoIcc
+
+Video Sitemap:
+
+https://www.youtube.com/watch?v=x5m1A7zoIcc
+
+Both can legitimately coexist.
+
+---
+
+# 6. Validate YouTube Video Availability
+
+Before adding a video to the Video Sitemap, validate that the video is actually available.
+
+For each video:
+
+1. Extract the YouTube Video ID.
+2. Confirm that a valid Video ID exists.
+3. Verify that the YouTube video is accessible.
+4. Verify that the video is associated with the website page.
+5. Verify that the website's existing video player can load the video.
+6. Check whether the video produces any player configuration error.
+7. Specifically check for:
+
+Error 153
+Video player configuration error
+
+Only videos that pass these validations should be included in the Video Sitemap.
+
+---
+
+# 7. Validate the Actual Embedded Video Player
+
+Do not validate only the standard YouTube watch URL.
+
+A video may be accessible at:
+
+https://www.youtube.com/watch?v=VIDEO_ID
+
+while still failing when embedded on the website.
+
+Therefore, validation must consider the actual embed implementation used by the website, including:
+
+https://www.youtube.com/embed/VIDEO_ID
+
+or:
+
+https://www.youtube-nocookie.com/embed/VIDEO_ID
+
+depending on the existing website implementation.
+
+The validation must confirm that the actual embedded player can load successfully without:
+
+Error 153
+Video player configuration error
+
+Do not modify the existing embed implementation simply to bypass the error.
+
+---
+
+# 8. Error 153 Handling
+
+If a video produces:
+
+Error 153
+Video player configuration error
+
+treat the video as FAILED validation.
+
+The system must:
+
+- Exclude the video from the Video Sitemap.
+- Do NOT remove the video from the website.
+- Do NOT automatically change the website's embed configuration.
+- Log the video URL.
+- Log the YouTube Video ID.
+- Log the associated page URL.
+- Log the validation failure/error.
+- Make the failure available for developer/SEO review.
+
+Do not silently add a failed video to the Video Sitemap.
+
+One failed video must NOT prevent other valid videos from being included.
+
+For example:
+
+100 videos
+→ 97 valid
+→ 3 Error 153
+→ 97 videos included in sitemap
+→ 3 failed videos logged for review
+
+---
+
+# 9. Validate the Parent Page
+
+Before including a video in the Video Sitemap, verify that the associated page:
+
+- Returns HTTP 200.
+- Is publicly accessible.
+- Is indexable.
+- Does not contain a `noindex` directive.
+- Is not blocked by robots.txt.
+- Has a valid canonical URL.
+- Actually contains the referenced video.
+
+If the parent page fails these checks, exclude the video from the Video Sitemap.
+
+---
+
+# 10. Automatically Generate Video Sitemap Entries
+
+The Video Sitemap must be dynamically generated from the website's current video inventory.
+
+Whenever a new video is added to the website, the system should automatically:
+
+1. Detect the new video.
+2. Extract the YouTube Video ID.
+3. Validate the Video ID.
+4. Validate the YouTube video.
+5. Validate the actual embedded player.
+6. Check for Error 153.
+7. Validate the parent page.
+8. Generate the standardized YouTube Video Sitemap URL.
+9. Generate the appropriate Video Sitemap entry.
+10. Update the Video Sitemap automatically.
+
+No manual XML editing should be required.
+
+---
+
+# 11. Automatically Remove Outdated Video Entries
+
+If a video is:
+
+- Removed from the website.
+- Removed from its associated page.
+- No longer published.
+- No longer available.
+- Associated page becomes non-indexable.
+- Associated page returns a non-200 response.
+- Producing Error 153.
+
+the corresponding Video Sitemap entry should automatically be removed or excluded.
+
+Do not leave stale or invalid video entries in the sitemap.
+
+---
+
+# 12. Automatic Sitemap Regeneration
+
+Determine the existing sitemap generation architecture.
+
+Implement the most appropriate automatic update mechanism based on the existing application architecture.
+
+Preferred workflow:
+
+New video added
+→ Video data updated
+→ Video Sitemap automatically regenerated/updated
+
+Video removed
+→ Video data updated
+→ Video Sitemap automatically regenerated/updated
+
+If the website architecture supports build-time sitemap generation, ensure sitemap generation occurs automatically during the build/deployment process.
+
+If the website supports runtime/dynamic sitemap generation, ensure the Video Sitemap reflects the latest published video inventory.
+
+If neither approach is appropriate, implement a safe automated regeneration process using the existing application architecture.
+
+Do not introduce unnecessary third-party dependencies.
+
+---
+
+# 13. Avoid Deployment Timestamp Logic
+
+Do not use the sitemap generation time as the video's `<lastmod>` value.
+
+The `<lastmod>` value should reflect the actual modification date of the associated content/video where a reliable modification timestamp is available.
+
+Preferred sources:
+
+1. Content/database `updatedAt`
+2. CMS content modification timestamp
+3. Content file modification timestamp
+4. Other reliable content-level update metadata
+
+Do NOT use:
+
+- Server startup time
+- Sitemap generation timestamp
+- Build timestamp
+- Deployment timestamp
+
+unless there is no reliable content-level timestamp available.
+
+---
+
+# 14. Preserve Existing XML Sitemap Optimization
+
+Do not undo any previously implemented SEO-010 improvements.
+
+Maintain:
+
+- Sitemap Index
+- Sitemap segmentation
+- Page-specific `<lastmod>`
+- Canonical URL validation
+- HTTP 200 validation
+- Noindex exclusion
+- Redirect exclusion
+- Robots.txt exclusion
+- URL normalization
+- XML validity
+- Dedicated Video Sitemap
+
+Only modify the Video Sitemap generation and validation logic necessary to resolve this issue and improve automation.
+
+---
+
+# 15. Review All Existing Video Sitemap Entries
+
+After implementing the fix:
+
+Review the complete existing Video Sitemap.
+
+Identify and correct entries containing:
+
+- `youtube-nocookie.com/embed/`
+- `youtube.com/embed/`
+- Malformed YouTube URLs
+- Missing Video IDs
+- Invalid Video IDs
+- Duplicate video URLs
+- Duplicate page/video combinations
+- Broken video references
+- Stale video entries
+- Videos producing Error 153
+- Videos associated with non-indexable pages
+
+The fix must apply to the complete Video Sitemap.
+
+Do not fix only the example URL provided below.
+
+---
+
+# 16. Validation Example
+
+Use the following page as one validation example:
+
+Page:
+
+https://equip.jesusonline.com/categories/growth/bb-resisting-enemy/resisting-false-identity
+
+Associated YouTube Video:
+
+https://www.youtube.com/watch?v=x5m1A7zoIcc
+
+Video ID:
+
+x5m1A7zoIcc
+
+The Video Sitemap should generate the standardized YouTube reference:
+
+https://www.youtube.com/watch?v=x5m1A7zoIcc
+
+It must NOT incorrectly generate:
+
+https://www.youtube-nocookie.com/embed/x5m1A7zoIcc
+
+Do not hardcode this URL.
+
+Use it only as a validation example for the general implementation.
+
+---
+
+# 17. Future Video Automation Test
+
+After implementation, test the system using at least one newly added video.
+
+Verify the complete workflow:
+
+New video added
+→ Video ID detected
+→ Video page published
+→ Video player validated
+→ Error 153 check performed
+→ Parent page validated
+→ Video Sitemap automatically updated
+→ Correct YouTube URL generated
+→ Valid `<lastmod>` generated
+→ No manual XML editing required
+
+Also test removal of a video and verify that its sitemap entry is automatically removed or excluded.
+
+---
+
+# Validation Requirements
+
+After implementation verify:
+
+✓ All existing Video Sitemap entries were reviewed.
+
+✓ YouTube Video IDs are extracted correctly.
+
+✓ YouTube URLs are generated from the Video ID rather than incorrectly transforming iframe URLs.
+
+✓ `youtube-nocookie.com` is not incorrectly introduced into Video Sitemap URLs.
+
+✓ `/embed/` URLs are not incorrectly used as the standardized Video Sitemap URL.
+
+✓ Every video is checked for availability.
+
+✓ Every video is checked against the website's actual embedded player implementation.
+
+✓ Error 153 is detected and handled.
+
+✓ Videos producing Error 153 are excluded from the Video Sitemap.
+
+✓ Failed videos are logged with sufficient information for review.
+
+✓ One failed video does not stop other valid videos from being included.
+
+✓ Website video embeds remain unchanged unless technically required.
+
+✓ Every Video Sitemap video corresponds to an actual published video.
+
+✓ Every video belongs to a valid HTTP 200 parent page.
+
+✓ Parent pages are indexable.
+
+✓ Parent pages are not `noindex`.
+
+✓ Parent pages are not blocked by robots.txt.
+
+✓ Parent pages have valid canonical URLs.
+
+✓ Duplicate video entries are prevented.
+
+✓ Invalid video IDs are excluded and logged.
+
+✓ New videos are automatically added to the Video Sitemap after validation.
+
+✓ New videos producing Error 153 are automatically excluded and logged.
+
+✓ Removed videos are automatically removed from the Video Sitemap.
+
+✓ Video Sitemap updates occur automatically without manual XML editing.
+
+✓ The implementation works for future videos.
+
+✓ Existing XML Sitemap segmentation remains intact.
+
+✓ Existing `<lastmod>` logic remains intact.
+
+✓ Existing canonical URL validation remains intact.
+
+✓ Existing robots/noindex/redirect exclusions remain intact.
+
+✓ No unrelated SEO functionality is modified.
+
+---
+
+# Deliverables
+
+After completing the implementation provide:
+
+1. Root cause of the incorrect YouTube URL generation.
+
+2. Explanation of how the website currently stores and retrieves YouTube video information.
+
+3. Explanation of how the Video Sitemap previously extracted video URLs.
+
+4. Explanation of how the new Video ID extraction and normalization logic works.
+
+5. Explanation of how video availability and Error 153 validation works.
+
+6. Files modified.
+
+7. Confirmation that the solution works for all existing YouTube videos.
+
+8. Confirmation that `youtube-nocookie.com/embed/` is no longer incorrectly generated in the Video Sitemap.
+
+9. Confirmation that the website's existing YouTube embed implementation has not been unnecessarily changed.
+
+10. Confirmation that videos producing Error 153 are excluded from the Video Sitemap.
+
+11. Confirmation that failed videos are logged for review.
+
+12. Confirmation that new videos are automatically detected, validated, and added to the Video Sitemap.
+
+13. Confirmation that removed videos are automatically removed from the Video Sitemap.
+
+14. Confirmation that no manual XML Sitemap editing is required.
+
+15. Examples of several corrected Video Sitemap URLs.
+
+16. Results of testing existing videos.
+
+17. Results of testing at least one newly added video.
+
+18. Results of testing a video that fails validation, including Error 153 if reproducible.
+
+19. Results of testing removal of a video.
+
+20. Confirmation that existing SEO-010 XML Sitemap optimizations remain intact.
+
+21. Any additional sitemap/video SEO issues discovered during implementation without modifying them unless explicitly instructed.
+
+Do not make assumptions.
+
+First trace the complete video data flow and identify the root cause of the incorrect URL transformation.
+
+Implement a reusable Video ID extraction and normalization system rather than a one-off URL correction.
+
+The final architecture should use the underlying YouTube Video ID as the reliable identifier, validate that the video can actually be used by the website's video player without Error 153, generate the appropriate standardized YouTube URL for the Video Sitemap, preserve the existing website video-player implementation, and automatically keep the Video Sitemap synchronized whenever videos are added, updated, become invalid, or are removed."

@@ -350,7 +350,7 @@ const gtmEnabled = import.meta.env.PROD;
     {/* PDF download tracking → GTM dataLayer. Fires a `pdf_download` event
         with the specific file name + human title whenever a visitor clicks
         any link to a .pdf (article PDFs, external PDFs). Book opens go
-        through the email-gate script on /books, which pushes the same event
+        through the book-open script on /books, which pushes the same event
         via window.__trackPdfDownload when the PDF actually opens (books are
         NOT plain .pdf links, so the click listener alone would miss them).
         GTM: custom-event trigger `pdf_download` → GA4 event tag mapping
@@ -379,7 +379,7 @@ const gtmEnabled = import.meta.env.PROD;
         var title = (a.getAttribute("data-track-title") || a.getAttribute("aria-label") || a.textContent || "").trim();
         /* Generic labels ("PDF", "Download PDF") aren't useful — fall back to
            the page's H1 so the event still says WHICH document it was. */
-        if (title.length < 8) {
+        if (title.length < 8 || /^(download|view|open|get)?\\s*(the\\s*)?pdf$/i.test(title)) {
           var h1 = document.querySelector("h1");
           title = (h1 && h1.textContent ? h1.textContent : title).trim();
         }

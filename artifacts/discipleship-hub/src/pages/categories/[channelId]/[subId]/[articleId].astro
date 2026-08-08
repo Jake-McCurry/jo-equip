@@ -191,7 +191,7 @@ const heroTitle = splitTitle(article.title);
         <a href={join(`/categories/${channel.id}/${sub.id}`)} class="transition-colors hover:text-primary">{splitTitle(sub.name).main}</a>
       </nav>
       {pdfHref && (
-        <a href={pdfHref} download class="inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-md border-2 transition-colors hover:text-white" style={`color:${channel.accentColor};border-color:${channel.accentColor};`} onmouseover={`this.style.backgroundColor='${channel.accentColor}';`} onmouseout="this.style.backgroundColor='transparent';">
+        <a href={pdfHref} download data-track-title={article.title} class="inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-md border-2 transition-colors hover:text-white" style={`color:${channel.accentColor};border-color:${channel.accentColor};`} onmouseover={`this.style.backgroundColor='${channel.accentColor}';`} onmouseout="this.style.backgroundColor='transparent';">
           <Download className="w-4 h-4" /> Download PDF
         </a>
       )}

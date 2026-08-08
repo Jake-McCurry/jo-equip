@@ -10,17 +10,6 @@ const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
   (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
 
-/* Mailchimp JSONP (post-json) endpoint for book-download signups (public,
-   safe to commit — it appears verbatim in Mailchimp's own embed code).
-   Signups go straight to the "jesusonline" us1 audience with the hidden tag
-   below so they are identifiable as book downloads. Note the f_id differs
-   from the newsletter form's — this is the dedicated book-download form.
-   JSONP gives us a real success/error response (unlike no-cors fetch), so we
-   only mark the browser as subscribed once Mailchimp confirms. */
-const MC_ACTION =
-  "https://jesusonline.us1.list-manage.com/subscribe/post-json?u=c02949f5de137184b156da9bc&id=e06ba0649d&f_id=00bc87e5f0";
-const MC_TAG = "5798230";
-const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
 
 /* JSON-LD: a CollectionPage that contains an ItemList of Book entries.
    Each Book is marked free + downloadable so Google can show it in
@@ -141,143 +130,36 @@ const booksJsonLd = {
     </div>
   </div>
 
-  <!-- Email gate modal -->
-  <div
-    id="email-gate"
-    class="fixed inset-0 z-50 hidden items-center justify-center p-4"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="email-gate-title"
-    aria-describedby="email-gate-desc"
-  >
-    <div class="absolute inset-0 bg-black/60" data-gate-close></div>
-    <div class="relative bg-white rounded-lg shadow-xl max-w-md w-full p-6 md:p-8">
-      <button
-        type="button"
-        class="absolute top-3 right-3 p-1 rounded text-gray-400 hover:text-gray-700 transition-colors"
-        aria-label="Close"
-        data-gate-close
-      >
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
-        </svg>
-      </button>
-      <h2 id="email-gate-title" class="text-2xl mb-2" style="color:#0b3c5d;">Get free ministry resources</h2>
-      <div class="h-0.5 w-10 mb-4" style="background-color:#de5b00;"></div>
-      <p id="email-gate-desc" class="text-sm mb-5 leading-relaxed" style="color:var(--color-muted-foreground);">
-        Enter your email to read
-        <span id="email-gate-book" class="font-semibold" style="color:#0b3c5d;">this book</span>.
-        We'll occasionally share new resources — unsubscribe anytime.
-      </p>
-      <form id="email-gate-form" class="flex flex-col gap-3" novalidate>
-        <label class="sr-only" for="email-gate-input">Email address</label>
-        <input
-          id="email-gate-input"
-          type="email"
-          name="email"
-          required
-          autocomplete="email"
-          placeholder="you@example.com"
-          aria-describedby="email-gate-error"
-          class="w-full px-4 py-3 border rounded text-base focus:outline-none focus:ring-2 focus:border-transparent"
-          style="border-color:var(--color-border);"
-        />
-        <p id="email-gate-error" class="text-sm hidden" role="alert" aria-live="polite" style="color:#c0392b;">Please enter a valid email address.</p>
-        <label class="sr-only" for="email-gate-country">Country</label>
-        <input
-          id="email-gate-country"
-          type="text"
-          name="country"
-          required
-          autocomplete="country-name"
-          placeholder="Country"
-          aria-describedby="email-gate-country-error"
-          class="w-full px-4 py-3 border rounded text-base focus:outline-none focus:ring-2 focus:border-transparent"
-          style="border-color:var(--color-border);"
-        />
-        <p id="email-gate-country-error" class="text-sm hidden" role="alert" aria-live="polite" style="color:#c0392b;">Please enter your country.</p>
-        <p id="email-gate-submit-error" class="text-sm hidden" role="alert" aria-live="polite" style="color:#c0392b;"></p>
-        <button
-          id="email-gate-submit"
-          type="submit"
-          class="w-full py-3 rounded font-semibold text-white text-base transition-colors hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed"
-          style="background-color:#de5b00;"
-        >
-          Read book
-        </button>
-        <p class="text-xs text-center" style="color:var(--color-muted-foreground);">
-          Your email is only used for ministry resource updates.
-        </p>
-      </form>
-    </div>
-  </div>
-
-  <script is:inline define:vars={{ MC_ACTION, MC_TAG, MC_HONEYPOT }}>
+  <script is:inline define:vars={{ signupHref: join("/books-sign-up") }}>
     (function () {
-      // Stores a non-sensitive consent flag ("1") — never the raw email address.
-      // The legacy key stored the raw email; we migrate and erase it on load.
+      // Consent flag set by the /books-sign-up page after Mailchimp confirms
+      // the signup (also by /books-thank-you). Never stores the email itself.
       const STORAGE_KEY = "jo_equip_subscribed_v1";
       const LEGACY_KEY = "jo_equip_email_v1";
-      const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])';
-
-      const gate = document.getElementById("email-gate");
-      const form = document.getElementById("email-gate-form");
-      const bookLabel = document.getElementById("email-gate-book");
-      const errorEl = document.getElementById("email-gate-error");
-      const input = document.getElementById("email-gate-input");
-      const countryInput = document.getElementById("email-gate-country");
-      const countryErrorEl = document.getElementById("email-gate-country-error");
-      const submitErrorEl = document.getElementById("email-gate-submit-error");
-      const submitBtn = document.getElementById("email-gate-submit");
-      if (!gate || !form || !bookLabel || !input || !countryInput || !submitBtn) return;
-
-      // In-memory fallback for environments where localStorage throws (private browsing, strict policies).
-      let memoryConsented = false;
-      let pendingPdf = null;
-      let pendingTitle = null;
-      let pendingId = null;
-      let lastFocusedEl = null;
-      let isSubmitting = false;
-      // Increments each time the gate opens or closes; in-flight Mailchimp
-      // callbacks capture the value at submit time and go quiet if the gate
-      // state has moved on (visitor closed the modal / opened another book).
-      let gateGeneration = 0;
-      let jsonpCounter = 0;
 
       // Migrate visitors who have the old key (which stored their raw email).
       // Promote to the new boolean flag and erase the sensitive value.
-      function migrateLegacyStorage() {
-        try {
-          if (localStorage.getItem(LEGACY_KEY)) {
-            localStorage.setItem(STORAGE_KEY, "1");
-            localStorage.removeItem(LEGACY_KEY);
-          }
-        } catch (_e) { /* ignore */ }
-      }
-      migrateLegacyStorage();
+      try {
+        if (localStorage.getItem(LEGACY_KEY)) {
+          localStorage.setItem(STORAGE_KEY, "1");
+          localStorage.removeItem(LEGACY_KEY);
+        }
+      } catch (_e) { /* ignore */ }
 
-      function safeGet() {
-        try { return localStorage.getItem(STORAGE_KEY) === "1" || memoryConsented; }
-        catch (_e) { return memoryConsented; }
-      }
-      function safeSet() {
-        memoryConsented = true;
-        try { localStorage.setItem(STORAGE_KEY, "1"); } catch (_e) { /* ignore */ }
-      }
-
-      function isValidEmail(value) {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+      function hasConsent() {
+        try { return localStorage.getItem(STORAGE_KEY) === "1"; }
+        catch (_e) { return false; }
       }
 
       // Open the book PDF in a new tab so visitors can read it in the browser
-      // and download it themselves if they want (matching how article PDFs
-      // behave). `allowSameTabFallback` is used for the deep-link auto-trigger,
-      // where the open happens on page load (no user gesture) and may be
-      // blocked by a popup blocker — in that case we navigate the current tab
-      // so the visitor still reaches the book.
+      // and download it themselves if they want. `allowSameTabFallback` is
+      // used for the deep-link auto-trigger, where the open happens on page
+      // load (no user gesture) and may be blocked by a popup blocker — in
+      // that case we navigate the current tab so the visitor still reaches
+      // the book.
       function openBook(url, allowSameTabFallback, title) {
         // Report the specific book to GTM/GA4 at the moment the PDF actually
-        // opens (both first-time gated opens and returning-visitor opens).
+        // opens (both first-time and returning-visitor opens).
         try {
           if (window.__trackPdfDownload) window.__trackPdfDownload(url, title, "book");
         } catch (_e) { /* ignore */ }
@@ -290,154 +172,26 @@ const booksJsonLd = {
         }
       }
 
-      // Shared entry point for opening a book: gated on first use (email
-      // capture), then opens directly on subsequent visits.
-      function requestBook(url, title, id, triggerEl, isDeepLink) {
+      // Shared entry point: subscribed visitors open the PDF directly; new
+      // visitors go to the sign-up page (replaces the old email-gate modal).
+      function requestBook(url, title, isDeepLink) {
         if (!url) return;
-        if (safeGet()) {
+        if (hasConsent()) {
           openBook(url, !!isDeepLink, title);
         } else {
-          openGate(url, title, id, triggerEl);
-        }
-      }
-
-      function showError(show) {
-        if (!errorEl) return;
-        if (show) {
-          errorEl.classList.remove("hidden");
-          input.setAttribute("aria-invalid", "true");
-        } else {
-          errorEl.classList.add("hidden");
-          input.removeAttribute("aria-invalid");
-        }
-      }
-
-      function showCountryError(show) {
-        if (!countryErrorEl) return;
-        if (show) {
-          countryErrorEl.classList.remove("hidden");
-          countryInput.setAttribute("aria-invalid", "true");
-        } else {
-          countryErrorEl.classList.add("hidden");
-          countryInput.removeAttribute("aria-invalid");
-        }
-      }
-
-      function openGate(url, title, id, triggerEl) {
-        gateGeneration++;
-        pendingPdf = url;
-        pendingTitle = title;
-        pendingId = id;
-        lastFocusedEl = triggerEl || document.activeElement;
-        bookLabel.textContent = title || "this book";
-        showError(false);
-        showCountryError(false);
-        showSubmitError("");
-        isSubmitting = false;
-        submitBtn.disabled = false;
-        input.value = "";
-        countryInput.value = "";
-        gate.classList.remove("hidden");
-        gate.classList.add("flex");
-        document.body.style.overflow = "hidden";
-        // Move focus into the dialog after it becomes visible.
-        setTimeout(function () { input.focus(); }, 50);
-      }
-
-      function closeGate() {
-        gateGeneration++;
-        gate.classList.add("hidden");
-        gate.classList.remove("flex");
-        document.body.style.overflow = "";
-        // Restore focus to the element that opened the dialog.
-        if (lastFocusedEl && typeof lastFocusedEl.focus === "function") {
-          try { lastFocusedEl.focus(); } catch (_e) { /* ignore */ }
-        }
-        lastFocusedEl = null;
-      }
-
-      function showSubmitError(msg) {
-        if (!submitErrorEl) return;
-        if (msg) {
-          submitErrorEl.textContent = msg;
-          submitErrorEl.classList.remove("hidden");
-        } else {
-          submitErrorEl.textContent = "";
-          submitErrorEl.classList.add("hidden");
-        }
-      }
-
-      // Submit to Mailchimp's JSONP endpoint and confirm the signup was
-      // accepted before we remember the visitor. Mailchimp only allows
-      // cross-origin signups via JSONP, so we inject a <script> with a
-      // callback. onSuccess/onFailure receive the outcome; on failure the
-      // consent flag is NOT set, so the visitor is asked again next time
-      // instead of their email silently going missing.
-      function submitEmail(email, country, onSuccess, onFailure) {
-        const params = new URLSearchParams();
-        params.set("EMAIL", email);
-        params.set("COUNTRY", country);
-        params.set("tags", MC_TAG);
-        params.set(MC_HONEYPOT, "");
-        params.set("subscribe", "Subscribe");
-        const cb = "joBookMailchimpCb" + Date.now() + "_" + (++jsonpCounter);
-        const script = document.createElement("script");
-        let settled = false;
-        const timer = setTimeout(function () { settle(false, ""); }, 10000);
-
-        function settle(ok, msg) {
-          if (settled) return;
-          settled = true;
-          clearTimeout(timer);
-          try { delete window[cb]; } catch (_e) { window[cb] = undefined; }
-          if (script.parentNode) script.parentNode.removeChild(script);
-          if (ok) { onSuccess(); } else { onFailure(msg); }
-        }
-
-        window[cb] = function (res) {
-          const msg = res && res.msg ? String(res.msg) : "";
-          // "already subscribed" comes back as result:"error" but means the
-          // email IS on the list — treat it as success.
-          const ok =
-            (res && res.result === "success") ||
-            /already subscribed/i.test(msg);
-          settle(ok, msg);
-        };
-        script.onerror = function () { settle(false, ""); };
-        script.src = MC_ACTION + "&" + params.toString() + "&c=" + cb;
-        document.body.appendChild(script);
-      }
-
-      function trapFocus(e) {
-        if (gate.classList.contains("hidden")) return;
-        if (e.key !== "Tab") return;
-        const nodes = gate.querySelectorAll(FOCUSABLE);
-        if (!nodes.length) return;
-        const first = nodes[0];
-        const last = nodes[nodes.length - 1];
-        if (e.shiftKey && document.activeElement === first) {
-          e.preventDefault();
-          last.focus();
-        } else if (!e.shiftKey && document.activeElement === last) {
-          e.preventDefault();
-          first.focus();
+          window.location.href = signupHref;
         }
       }
 
       document.querySelectorAll(".book-download-btn").forEach(function (btn) {
         btn.addEventListener("click", function () {
-          requestBook(
-            btn.getAttribute("data-pdf"),
-            btn.getAttribute("data-title"),
-            btn.getAttribute("data-id"),
-            btn,
-            false
-          );
+          requestBook(btn.getAttribute("data-pdf"), btn.getAttribute("data-title"), false);
         });
       });
 
       // Deep-link: /books?download=<book-id> auto-scrolls to the matching card
-      // and triggers its open flow (gate, or open directly per stored email).
+      // and triggers its open flow (sign-up page, or open directly per stored
+      // consent).
       try {
         const params = new URLSearchParams(window.location.search);
         const wanted = params.get("download");
@@ -448,90 +202,13 @@ const booksJsonLd = {
             try { card.scrollIntoView({ behavior: "smooth", block: "center" }); } catch (_e) { /* ignore */ }
           }
           if (targetBtn) {
-            // Defer so any pending paint / smooth-scroll begins before the modal opens.
+            // Defer so any pending paint / smooth-scroll begins first.
             setTimeout(function () {
-              requestBook(
-                targetBtn.getAttribute("data-pdf"),
-                targetBtn.getAttribute("data-title"),
-                targetBtn.getAttribute("data-id"),
-                targetBtn,
-                true
-              );
+              requestBook(targetBtn.getAttribute("data-pdf"), targetBtn.getAttribute("data-title"), true);
             }, 250);
           }
         }
       } catch (_e) { /* ignore */ }
-
-      gate.querySelectorAll("[data-gate-close]").forEach(function (el) {
-        el.addEventListener("click", closeGate);
-      });
-
-      document.addEventListener("keydown", function (e) {
-        if (gate.classList.contains("hidden")) return;
-        if (e.key === "Escape") { closeGate(); return; }
-        trapFocus(e);
-      });
-
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        if (isSubmitting) return;
-        const email = (input.value || "").trim();
-        const country = (countryInput.value || "").trim();
-        let invalid = false;
-        if (!isValidEmail(email)) {
-          errorEl.textContent = "Please enter a valid email address.";
-          showError(true);
-          invalid = true;
-        } else {
-          showError(false);
-        }
-        if (!country) {
-          showCountryError(true);
-          invalid = true;
-        } else {
-          showCountryError(false);
-        }
-        if (invalid) {
-          (isValidEmail(email) ? countryInput : input).focus();
-          return;
-        }
-        showSubmitError("");
-        isSubmitting = true;
-        submitBtn.disabled = true;
-        submitBtn.textContent = "Sending…";
-        const url = pendingPdf;
-        // Open synchronously within the submit gesture so the new tab is not
-        // treated as an unsolicited popup (deferring it would get it blocked).
-        // The visitor gets their book regardless of whether the signup lands.
-        if (url) { openBook(url, false, pendingTitle); }
-        const submittedGeneration = gateGeneration;
-        submitEmail(
-          email,
-          country,
-          function onSuccess() {
-            // Only remember the visitor once Mailchimp confirms the signup.
-            // Always safe to set, even if the modal has since been closed or
-            // reopened for another book — the signup really landed.
-            safeSet();
-            if (gateGeneration !== submittedGeneration) return; // stale: don't touch the modal
-            submitBtn.textContent = "Read book";
-            closeGate();
-          },
-          function onFailure(msg) {
-            // Don't set the consent flag — they'll be asked again next time,
-            // so the email can't silently go missing.
-            if (gateGeneration !== submittedGeneration) return; // stale: don't touch the modal
-            isSubmitting = false;
-            submitBtn.disabled = false;
-            submitBtn.textContent = "Read book";
-            const cleaned = (msg || "")
-              .replace(/<[^>]*>/g, "")
-              .replace(/^\d+\s*-\s*/, "")
-              .trim();
-            showSubmitError(cleaned || "The signup didn't go through. Your book has opened — please try submitting again.");
-          }
-        );
-      });
     })();
   </script>
 

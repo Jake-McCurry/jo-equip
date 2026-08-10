@@ -5,11 +5,16 @@ import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 
 /* JO Equipped Church registration — Mailchimp audience jesusonline.us1
  * (same audience as the newsletter but a distinct form: f_id=00bf87e5f0).
- * Submits via Mailchimp's JSONP endpoint so we can show the thank-you
- * dialog inline instead of navigating to Mailchimp's response page. */
+ * Submits via Mailchimp's JSONP endpoint so we can confirm the signup
+ * succeeded before redirecting to the dedicated thank-you page. */
 const MC_POST_JSON =
   "https://jesusonline.us1.list-manage.com/subscribe/post-json?u=c02949f5de137184b156da9bc&id=e06ba0649d&f_id=00bf87e5f0";
 const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
+
+const baseUrl = import.meta.env.BASE_URL;
+const join = (p: string) =>
+  (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
+const THANK_YOU = join("/register-church-thank-you");
 ---
 <Layout
   title="Register Your Church · JO EQUIP"
@@ -30,24 +35,19 @@ const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
           JO Equipped Church
         </div>
         <h1 class="text-3xl md:text-4xl mb-4" style="color:#0b3c5d;">
-          Register today to become a FREE JO&nbsp;Equipped Church
+          Become a Free JO&nbsp;Equipped Church
         </h1>
         <div class="h-0.5 w-12 mx-auto mb-8" style="background-color:#de5b00;"></div>
       </div>
 
       <div class="space-y-5 text-lg leading-relaxed mb-10" style="color:#374151;">
         <p>
-          We are pleased to invite you and your congregation to become part of a growing community of
-          churches that are empowered to make a greater impact for Christ. By registering as a JO
-          Equipped Church, you will receive free and unrestricted access to our comprehensive digital
-          JO EQUIP library of practical, biblically grounded discipleship tools. These resources are
-          carefully designed to help you clearly proclaim the gospel, nurture mature believers in their faith,
-          and multiply healthy, vibrant congregations for the glory of God.
+          Register your church for free, unrestricted access to the full JO EQUIP library of
+          practical discipleship tools.
         </p>
-        <p>
-          Your registration is free and carries no obligation&mdash;only our sincere desire to come alongside
-          you as you shepherd God&rsquo;s people. We respect your time and privacy; your information will be
-          kept secure and used solely to provide these ministry resources.
+        <p class="text-base" style="color:var(--color-muted-foreground);">
+          Completely free. No obligation. We respect your privacy and will only use your
+          information to provide these resources.
         </p>
       </div>
 
@@ -56,6 +56,22 @@ const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
         style="border-color:var(--color-border);border-top:4px solid #6B2D7B;"
       >
         <form id="rc-form" class="space-y-4" novalidate>
+
+          <div>
+            <label for="rc-email" class="block text-sm font-medium mb-1.5" style="color:#0b3c5d;">
+              Email <span style="color:#de5b00;">*</span>
+            </label>
+            <input
+              type="email"
+              name="EMAIL"
+              id="rc-email"
+              required
+              autocomplete="email"
+              class="w-full rounded border px-3 py-2.5 text-sm outline-none focus-visible:ring-2"
+              style="border-color:var(--color-border);color:#0b3c5d;"
+            />
+          </div>
+
           <div>
             <label for="rc-fname" class="block text-sm font-medium mb-1.5" style="color:#0b3c5d;">
               First Name <span style="color:#de5b00;">*</span>
@@ -66,21 +82,6 @@ const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
               id="rc-fname"
               required
               autocomplete="given-name"
-              class="w-full rounded border px-3 py-2.5 text-sm outline-none focus-visible:ring-2"
-              style="border-color:var(--color-border);color:#0b3c5d;"
-            />
-          </div>
-
-          <div>
-            <label for="rc-email" class="block text-sm font-medium mb-1.5" style="color:#0b3c5d;">
-              Email Address <span style="color:#de5b00;">*</span>
-            </label>
-            <input
-              type="email"
-              name="EMAIL"
-              id="rc-email"
-              required
-              autocomplete="email"
               class="w-full rounded border px-3 py-2.5 text-sm outline-none focus-visible:ring-2"
               style="border-color:var(--color-border);color:#0b3c5d;"
             />
@@ -121,35 +122,14 @@ const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
             class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded font-semibold text-sm transition-all hover:shadow-md"
             style="background-color:#6B2D7B;color:#ffffff;"
           >
-            Yes, Register My Church
+            Register My Church Free
           </button>
         </form>
       </div>
     </div>
   </section>
 
-  {/* Thank-you dialog */}
-  <div id="rc-thanks" class="hidden fixed inset-0 z-50 items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="rc-thanks-title">
-    <div id="rc-thanks-backdrop" class="absolute inset-0" style="background-color:rgba(11,60,93,0.6);"></div>
-    <div class="relative bg-white rounded-lg shadow-xl max-w-md w-full p-8 text-center">
-      <h2 id="rc-thanks-title" class="text-2xl mb-4" style="color:#0b3c5d;">Thank You!</h2>
-      <div class="h-0.5 w-12 mx-auto mb-5" style="background-color:#de5b00;"></div>
-      <p class="text-base leading-relaxed mb-6" style="color:#374151;">
-        Thank you for your faithful service to the Lord and His Church. We look forward to equipping
-        you and your congregation as together we seek first the Kingdom of God.
-      </p>
-      <button
-        type="button"
-        id="rc-thanks-close"
-        class="inline-flex items-center justify-center px-6 py-2.5 rounded font-semibold text-sm transition-all hover:shadow-md"
-        style="background-color:#6B2D7B;color:#ffffff;"
-      >
-        Close
-      </button>
-    </div>
-  </div>
-
-  <script define:vars={{ MC_POST_JSON }}>
+  <script define:vars={{ MC_POST_JSON, THANK_YOU }}>
     const form = document.getElementById("rc-form");
 
     /* Fill hidden COUNTRY from the visitor's IP (Cloudflare geolocation).
@@ -170,23 +150,6 @@ const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
     })();
     const submitBtn = document.getElementById("rc-submit");
     const errorEl = document.getElementById("rc-error");
-    const thanks = document.getElementById("rc-thanks");
-
-    function showThanks() {
-      thanks.classList.remove("hidden");
-      thanks.classList.add("flex");
-      document.getElementById("rc-thanks-close").focus();
-    }
-    function hideThanks() {
-      thanks.classList.add("hidden");
-      thanks.classList.remove("flex");
-    }
-    document.getElementById("rc-thanks-close").addEventListener("click", hideThanks);
-    document.getElementById("rc-thanks-backdrop").addEventListener("click", hideThanks);
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") hideThanks();
-    });
-
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       errorEl.classList.add("hidden");
@@ -214,7 +177,8 @@ const MC_HONEYPOT = "b_c02949f5de137184b156da9bc_e06ba0649d";
         finish();
         if (res && res.result === "success") {
           form.reset();
-          showThanks();
+          // Send the newly registered church to the dedicated thank-you page.
+          window.location.href = THANK_YOU;
         } else {
           const msg = (res && res.msg ? String(res.msg) : "Something went wrong. Please try again.")
             .replace(/<[^>]*>/g, "")

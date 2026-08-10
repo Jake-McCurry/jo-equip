@@ -101,6 +101,20 @@ const BOOKS: BookConfig[] = [
     subtitleHtml: "Explore His Divine Attributes",
     tocHeading: "Contents",
   },
+  {
+    key: "adventure",
+    docx: resolve(ROOT, "attached_assets/adventure_of_living_with_jesus_source_2016.pdf"),
+    source: "pdf",
+    typography: "strict",
+    cover: resolve(ROOT, "artifacts/discipleship-hub/src/assets/books/covers/adventure-of-living-with-jesus.jpg"),
+    coverType: "jpg",
+    coverBottomCrop: 0,
+    out: resolve(ROOT, "artifacts/discipleship-hub/public/books/adventure-of-living-with-jesus.pdf"),
+    title: "The Adventure of Living with Jesus",
+    titleFontSizePt: 26,
+    subtitleHtml: "Series One • Beginning with Christ",
+    tocHeading: "Contents",
+  },
 ];
 
 const args = process.argv.slice(2);
@@ -601,6 +615,417 @@ function parseMajestyPdf(book: BookConfig): ParsedBook {
   return { frontPagesHtml, tocEntries, chapters };
 }
 
+/* ------------------------------------------- adventure (PDF-source) book */
+
+/* The 2016 InDesign PDF drops fi/fl/ff/ffi ligature glyphs (mutool emits
+   U+FFFD). Every distinct broken word in the book, mapped to its repair.
+   Lookup is on the lowercased word with the ligature as "\uFFFD". */
+const ADVENTURE_LIG_WORDS: string[] = [
+  "specific", "specifically", "affects", "battlefield", "benefit", "briefly",
+  "butterfly", "confidence", "confident", "definitely", "difficult",
+  "difficulty", "difference", "differences", "different", "effective",
+  "fulfilled", "fulfilling", "fulfillment", "identified", "insignificant",
+  "infinitely", "influenced", "off", "offering", "offers", "sacrifice",
+  "satisfied", "self-fulfillment", "self-gratification", "selfish",
+  "selfishness", "stuff", "suffer", "suffering", "gratification", "flashy", "fled", "fiery",
+  "flesh", "fleshly", "fifty", "fight", "fill", "filled", "filth",
+  "filthiness", "final", "finally", "find", "findings", "finds", "finest",
+  "finger", "finish", "flooded", "flowing", "fire", "fired", "first",
+  "fluctuate", "five", "nonprofit", "non-profit", "profit",
+];
+
+function repairLigatures(text: string): string {
+  if (!text.includes("\uFFFD")) return text;
+  const wordSet = new Set(ADVENTURE_LIG_WORDS);
+  /* Hyphens are excluded so compounds ("finger-work") repair per-segment. */
+  return text.replace(/[A-Za-z'’]*\uFFFD[A-Za-z'’\uFFFD]*/g, word => {
+    const tryFill = (w: string): string | null => {
+      const i = w.indexOf("\uFFFD");
+      if (i === -1) return wordSet.has(w.toLowerCase()) ? w : null;
+      for (const lig of ["fi", "fl", "ff", "ffi", "ffl"]) {
+        const fixed = tryFill(w.slice(0, i) + lig + w.slice(i + 1));
+        if (fixed) return fixed;
+      }
+      return null;
+    };
+    const fixed = tryFill(word);
+    if (!fixed) throw new Error(`Unrepairable ligature word: "${word}"`);
+    return fixed;
+  });
+}
+
+function decodeXmlEntities(s: string): string {
+  return s
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, h) => String.fromCodePoint(parseInt(h, 16)))
+    .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(parseInt(d, 10)))
+    .replace(/&quot;/g, '"')
+    .replace(/&apos;/g, "'")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&amp;/g, "&");
+}
+
+/* Chapter-end "Go Deeper" links (from the owner's Go Deeper doc, Aug 2026). */
+const ADVENTURE_GO_DEEPER: Record<string, { title: string; url: string }> = {
+  "1": { title: "Embracing Your New Identity in Christ", url: "https://app.jesusonline.com/post/32310-who-are-you-really" },
+  "2": { title: "Who Is the Holy Spirit", url: "https://app.jesusonline.com/post/32410-who-is-the-holy-spirit" },
+  "3": { title: "Walking in the Spirit", url: "https://app.jesusonline.com/post/32490-walking-in-the-spirit" },
+  "4": { title: "Renewing the Mind for Transformation", url: "https://app.jesusonline.com/post/32510-renewing-the-mind-for-transformation" },
+  "5": { title: "The Lord’s Prayer Guide Overview", url: "https://app.jesusonline.com/post/23300-the-lords-prayer-guide-overview" },
+  "6": { title: "Connecting with God’s Family", url: "https://app.jesusonline.com/post/32611-connecting-with-gods-family" },
+  "7": { title: "The Heart of True Obedience", url: "https://app.jesusonline.com/post/32581-the-heart-of-true-obedience" },
+};
+
+function adventureGoDeeperHtml(key: string): string {
+  const gd = ADVENTURE_GO_DEEPER[key];
+  if (!gd) return "";
+  return `
+<div class="go-deeper">
+  <h2>Go Deeper</h2>
+  <p>Continue growing with this article in the JO&nbsp;App:<br />
+  <a href="${gd.url}">${gd.title}</a></p>
+</div>`;
+}
+
+/* End-of-book resources (from the owner's Go Deeper doc, Aug 2026). */
+const ADVENTURE_RESOURCES_HTML = `
+<p><em>Next steps for your spiritual growth — all free in the JO&nbsp;App.</em></p>
+<h2>New Life in Christ</h2>
+<p>As a new believer, you need a basic understanding about your new life in Christ. These Bible study lessons will help you grow in your relationship with God. You will discover how faith, prayer, the Bible, and the Holy Spirit will help you live an adventurous and purposeful Christian life.</p>
+<p><a href="https://app.jesusonline.com/series/120">New Life in Christ series</a></p>
+<h2>Read the Bible</h2>
+<p>Want to study the Bible, but don’t have one of your own? Read the NET Bible in the JO&nbsp;App.</p>
+<p><a href="https://app.jesusonline.com">Open the JO App</a></p>
+<h2>Devotionals</h2>
+<p>These insightful devotionals will help make your daily Bible study personal and meaningful.</p>
+<p><a href="https://app.jesusonline.com/category/2/21">Devotionals</a></p>
+<h2>Bible Study Tools</h2>
+<p>Could you benefit from the ability to search in the Bible for specific passages or phrases as you study the Bible?</p>
+<p><a href="https://app.jesusonline.com/post/26000-bible-study-tools">Bible Study Tools</a></p>
+<h2>Facts for Faith</h2>
+<p>Strengthen your faith with reasons to believe.</p>
+<ul>
+  <li><a href="https://app.jesusonline.com/series/73">Evidence for Jesus’ True Identity</a></li>
+  <li><a href="https://app.jesusonline.com/series/71">Evidence for the Existence of God</a></li>
+  <li><a href="https://app.jesusonline.com/series/72">Evidence for the Reliability of the Bible</a></li>
+</ul>
+<h2>About Us</h2>
+<p>Find out more about JesusOnline Ministries at <a href="https://jesusonlineministries.org">JesusOnlineMinistries.org</a>.</p>`;
+
+const ADVENTURE_FRONT_NOTICES_HTML = `
+<p>© 2016 by JesusOnline Ministries. All rights reserved. Publisher grants permission to reproduce and distribute this material without written approval, but only in its entirety and only for non-profit use. Not for sale. No part of this material may be altered or used out of context without publisher’s written permission.</p>
+<p>Unless otherwise indicated, all Scripture quotations marked NIV are taken from the Holy Bible, New International Version®. Copyright © 1973, 1978, 1984 Biblica. Used by permission of Zondervan. All rights reserved.</p>
+<p>Scripture quotations marked NLT are taken from the Holy Bible, New Living Translation, copyright © 1996, 2004, 2007 by Tyndale House Foundation. Used by permission of Tyndale House Publishers, Inc., Carol Stream, Illinois 60188. All rights reserved.</p>
+<p>Scripture quotations marked Phillips are taken from The New Testament in Modern English, trans. J.B. Phillips (New York: Macmillan, 1959).</p>
+<p>Scripture quotations taken from the New American Standard Bible® (NASB). Copyright © 1960, 1962, 1963, 1968, 1971, 1972, 1973, 1975, 1977, 1995 by The Lockman Foundation. Used by permission. www.Lockman.org</p>
+<p>Scripture taken from the New Century Version®. Copyright © 2005 by Thomas Nelson. Used by permission. All rights reserved.</p>`;
+
+/* Extra CSS only for the adventure book (Go Deeper callouts, answer blanks). */
+const ADVENTURE_EXTRA_CSS = `
+  .go-deeper {
+    margin: 1.6em 0 0 0; padding: 0.7em 1em 0.8em 1em;
+    border: 1px solid #cfe3f2; border-left: 4px solid #0083de;
+    background: #f2f8fd; page-break-inside: avoid;
+  }
+  .go-deeper h2 { margin: 0 0 0.35em 0; font-size: 14pt; }
+  .go-deeper p { margin: 0; }
+  p.blank { color: #9ca3af; margin: 0.15em 0 0.85em 0; letter-spacing: 1px; }
+  p.q { margin: 1em 0 0.3em 0; }
+  p.q .qmark { font-family: Carlito, Calibri, sans-serif; font-weight: 700; color: #0083de; }
+`;
+
+interface AdvLine {
+  x: number;
+  y: number;
+  /* html with <em>/<strong> applied, entities escaped */
+  html: string;
+  text: string;
+  maxSize: number;
+  fonts: Set<string>;
+  colors: Set<string>;
+}
+
+/* Parse mutool stext XML into positioned lines with inline styling. */
+function adventureParseStext(xml: string): AdvLine[][] {
+  const pages: AdvLine[][] = [];
+  let lines: AdvLine[] = [];
+  let cur: AdvLine | null = null;
+  let curFont = "";
+  let curSize = 0;
+  const flushRun = () => {};
+  for (const raw of xml.split("\n")) {
+    const s = raw.trim();
+    if (s.startsWith("<page ")) {
+      lines = [];
+      pages.push(lines);
+    } else if (s.startsWith("<line ")) {
+      const bb = /bbox="([\d.-]+) ([\d.-]+)/.exec(s);
+      cur = {
+        x: bb ? parseFloat(bb[1]!) : 0,
+        y: bb ? parseFloat(bb[2]!) : 0,
+        html: "",
+        text: "",
+        maxSize: 0,
+        fonts: new Set(),
+        colors: new Set(),
+      };
+    } else if (s.startsWith("</line>")) {
+      if (cur && cur.text.trim()) lines.push(cur);
+      cur = null;
+    } else if (s.startsWith("<font ")) {
+      const m = /name="([^"]*)" size="([\d.]+)"/.exec(s);
+      curFont = m ? m[1]! : "";
+      curSize = m ? parseFloat(m[2]!) : 0;
+      flushRun();
+    } else if (s.startsWith("<char ") && cur) {
+      /* Skip decorative chapter digits (72pt) that share a line with the
+         banner text — keep the rest of the line. */
+      if (curSize >= 60) continue;
+      const cm = / c="((?:[^"\\]|\\.)*)"/.exec(s);
+      const col = /color="(#[0-9a-f]+)"/.exec(s);
+      if (col) cur.colors.add(col[1]!);
+      if (!cm) continue;
+      cur.fonts.add(curFont);
+      cur.maxSize = Math.max(cur.maxSize, curSize);
+      const ch = decodeXmlEntities(cm[1]!);
+      cur.text += ch;
+      const it = /Italic|Oblique/i.test(curFont);
+      const bd = /Bold/i.test(curFont) && !/TrajanPro/i.test(curFont);
+      let h = escapeHtml(ch);
+      if (it) h = `\u0001${h}\u0002`; // em markers, merged later
+      if (bd) h = `\u0003${h}\u0004`; // strong markers
+      cur.html += h;
+    }
+  }
+  return pages;
+}
+
+/* Collapse adjacent per-char style markers into single <em>/<strong> tags. */
+function advFinalizeHtml(html: string): string {
+  return html
+    .replace(/\u0002(\s*)\u0001/g, "$1")
+    .replace(/\u0004(\s*)\u0003/g, "$1")
+    .replace(/\u0001/g, "<em>")
+    .replace(/\u0002/g, "</em>")
+    .replace(/\u0003/g, "<strong>")
+    .replace(/\u0004/g, "</strong>");
+}
+
+/* Chapter order; start pages are detected from the h1-size chapter banners.
+   titleStart guards against mis-segmentation: the extracted banner text must
+   begin with it or the build fails. */
+const ADVENTURE_CHAPTERS: Array<{ key: string; num?: string; titleStart: string }> = [
+  { key: "INTRO", titleStart: "Introduction" },
+  { key: "1", num: "1", titleStart: "Becoming a New Person" },
+  { key: "2", num: "2", titleStart: "The Holy Spirit" },
+  { key: "3", num: "3", titleStart: "Faith:" },
+  { key: "4", num: "4", titleStart: "The Bible:" },
+  { key: "5", num: "5", titleStart: "Prayer:" },
+  { key: "6", num: "6", titleStart: "Citizens of Heaven" },
+  { key: "7", num: "7", titleStart: "Obedience:" },
+];
+
+function parseAdventurePdf(book: BookConfig): ParsedBook {
+  /* Interior content lives on PDF pages 4–63 (1–3 are the original series
+     page / copyright / TOC; 64–65 the old resources pages we replace). */
+  const res = spawnSync("mutool", ["draw", "-F", "stext", "-o", "-", book.docx, "4-63"], {
+    encoding: "utf8",
+    maxBuffer: 512 * 1024 * 1024,
+  });
+  if (res.status !== 0) throw new Error(`mutool failed: ${res.stderr}`);
+  const pages = adventureParseStext(res.stdout);
+  if (pages.length !== 60) throw new Error(`Expected 60 stext pages, got ${pages.length}`);
+
+  type Piece =
+    | { kind: "h1" | "h2" | "h3"; html: string }
+    | { kind: "para"; lines: AdvLine[]; cls: string };
+
+  const chapters: Chapter[] = [];
+  let curKey = "";
+  let curNum: string | undefined;
+  let curTitleParts: string[] = [];
+  let pieces: Piece[] = [];
+
+  const finishChapter = () => {
+    if (!curKey) return;
+    const bodyHtml = piecesToHtml(pieces) + adventureGoDeeperHtml(curKey);
+    const title = repairLigatures(curTitleParts.join(" ").replace(/\s+/g, " ").trim());
+    const expected = ADVENTURE_CHAPTERS.find(c => c.key === curKey);
+    if (!expected || !title.startsWith(expected.titleStart)) {
+      throw new Error(`Chapter ${curKey}: banner "${title}" does not start with expected "${expected?.titleStart}"`);
+    }
+    chapters.push({ key: curKey, headingHtml: escapeHtml(title), bodyHtml });
+    pieces = [];
+    curTitleParts = [];
+  };
+
+  const piecesToHtml = (ps: Piece[]): string => {
+    const out: string[] = [];
+    let listItems: string[] | null = null;
+    const closeList = () => {
+      if (listItems) {
+        out.push(`<ul>${listItems.map(i => `<li>${i}</li>`).join("")}</ul>`);
+        listItems = null;
+      }
+    };
+    for (const p of ps) {
+      if (p.kind === "h2" || p.kind === "h3") {
+        closeList();
+        out.push(`<${p.kind}>${p.html}</${p.kind}>`);
+        continue;
+      }
+      if (p.kind !== "para") continue;
+      /* Join wrapped lines, healing soft hyphenation. */
+      let html = "";
+      let text = "";
+      for (const ln of p.lines) {
+        const t = ln.html.trimEnd();
+        if (html && html.endsWith("-") && /^[a-z]/.test(ln.text.trimStart())) {
+          html = html.slice(0, -1) + t.trimStart();
+          text = text.replace(/-\s*$/, "") + ln.text.trimStart();
+        } else {
+          html += (html ? " " : "") + t.trim();
+          text += (text ? " " : "") + ln.text.trim();
+        }
+      }
+      html = advFinalizeHtml(repairLigatures(html)).replace(/\s+/g, " ").trim();
+      text = repairLigatures(text).replace(/\s+/g, " ").trim();
+      if (!text) continue;
+      if (text.startsWith("•")) {
+        const item = html.replace(/^\s*•\s*/, "");
+        (listItems ??= []).push(item);
+        continue;
+      }
+      closeList();
+      if (/^_+$/.test(text.replace(/\s+/g, ""))) {
+        out.push(`<p class="blank">_______________________________________________</p>`);
+      } else if (/^Q\s/.test(text)) {
+        /* Some source lines carry both the decorative margin "Q" glyph and a
+           literal "Q" — collapse them into a single styled Q marker. */
+        const rest = html.replace(/^Q\s*(Q\s+)?/, " ");
+        out.push(`<p class="q"><span class="qmark">Q</span>${rest}</p>`);
+      } else if (p.cls) {
+        out.push(`<p class="${p.cls}">${html}</p>`);
+      } else {
+        out.push(`<p>${html}</p>`);
+      }
+    }
+    closeList();
+    return out.join("\n");
+  };
+
+  let chapterIdx = -1;
+  pages.forEach((pageLines, pi) => {
+    const pdfPage = pi + 4;
+    /* Filter margins/footers/decorative digits, then sort into reading order. */
+    const kept = pageLines
+      .filter(l => l.y < 720)
+      .filter(l => l.x >= 150 || l.maxSize >= 20)
+      .sort((a, b) => a.y - b.y || a.x - b.x);
+    /* A chapter banner (h1-size line) starts the next chapter — unless it is
+       a continuation line of the same chapter's banner (same page handled
+       below; cross-page continuations don't occur in this book). */
+    if (kept.some(l => l.maxSize >= 20)) {
+      chapterIdx += 1;
+      const ch = ADVENTURE_CHAPTERS[chapterIdx];
+      if (!ch) throw new Error(`More chapter banners than expected (page ${pdfPage})`);
+      finishChapter();
+      curKey = ch.key;
+      curNum = ch.num;
+    }
+    /* Merge fragments that share a baseline (bullet glyph + text, split
+       heading runs) into single logical lines. */
+    const merged: AdvLine[] = [];
+    for (const l of kept) {
+      const prev = merged[merged.length - 1];
+      if (prev && Math.abs(prev.y - l.y) < 3.5) {
+        prev.html += (l.text.startsWith(" ") || prev.text.endsWith(" ") ? "" : " ") + l.html;
+        prev.text += (l.text.startsWith(" ") || prev.text.endsWith(" ") ? "" : " ") + l.text;
+        prev.maxSize = Math.max(prev.maxSize, l.maxSize);
+        for (const f of l.fonts) prev.fonts.add(f);
+        for (const c of l.colors) prev.colors.add(c);
+      } else {
+        merged.push({ ...l, fonts: new Set(l.fonts), colors: new Set(l.colors) });
+      }
+    }
+
+    /* Body-column left edge for indent (quote) detection. */
+    const bodyXs = merged.filter(l => l.maxSize < 13 && l.x >= 150).map(l => l.x);
+    const bodyX = bodyXs.length ? Math.min(...bodyXs) : 170;
+
+    let prevLine: AdvLine | null = null;
+    for (const l of merged) {
+      const isTrajan = [...l.fonts].some(f => /TrajanPro/i.test(f));
+      const isOrange = [...l.colors].some(c => c === "#f48018");
+      if (l.maxSize >= 20) {
+        curTitleParts.push(l.text.trim());
+        prevLine = null;
+        continue;
+      }
+      const level = isTrajan ? "h2" : l.maxSize >= 13.5 || (isOrange && l.maxSize >= 11.5) ? "h3" : null;
+      if (level) {
+        const html = advFinalizeHtml(repairLigatures(l.html)).replace(/\s+/g, " ").trim();
+        const prev = pieces[pieces.length - 1];
+        if (prev && prev.kind === level && prevLine && Math.abs(prevLine.y - l.y) < 30 && prevLine.maxSize >= 13) {
+          (prev as { html: string }).html += " " + html; // multi-line heading
+        } else {
+          pieces.push({ kind: level, html });
+        }
+        prevLine = l;
+        continue;
+      }
+      /* Body line: start a new paragraph on vertical gaps or indent shifts. */
+      const cls = l.x > bodyX + 6 ? "quote" : "";
+      const last = pieces[pieces.length - 1];
+      const gap = prevLine ? l.y - prevLine.y : 999;
+      const sameKind = last && last.kind === "para" && prevLine !== null && prevLine.maxSize < 13;
+      const lastCls = last && last.kind === "para" ? last.cls : null;
+      if (sameKind && gap < 16 && gap > -50 && lastCls === cls && !l.text.trim().startsWith("•")) {
+        (last as { lines: AdvLine[] }).lines.push(l);
+      } else {
+        pieces.push({ kind: "para", lines: [l], cls });
+      }
+      prevLine = l;
+    }
+  });
+  finishChapter();
+
+  if (chapters.length !== ADVENTURE_CHAPTERS.length) {
+    throw new Error(`Expected ${ADVENTURE_CHAPTERS.length} chapters, got ${chapters.length}: ${chapters.map(c => c.key).join(", ")}`);
+  }
+  for (const c of chapters) {
+    if (c.key !== "INTRO" && !c.bodyHtml.includes("go-deeper")) {
+      throw new Error(`Chapter ${c.key} is missing its Go Deeper section`);
+    }
+    if (c.bodyHtml.includes("\uFFFD")) throw new Error(`Unrepaired ligature in chapter ${c.key}`);
+  }
+
+  chapters.push({ key: "MORE", headingHtml: "Additional Resources", bodyHtml: ADVENTURE_RESOURCES_HTML });
+
+  /* Numbered chapter headings render as "1. Title" like the original TOC. */
+  const numFor = new Map(ADVENTURE_CHAPTERS.map(c => [c.key, c.num]));
+  for (const c of chapters) {
+    const num = numFor.get(c.key);
+    if (num) c.headingHtml = `${num}. ${c.headingHtml}`;
+  }
+
+  const tocEntries: ParsedBook["tocEntries"] = chapters.map(c => ({
+    kind: "entry" as const,
+    labelText: stripTags(c.headingHtml),
+    key: c.key,
+  }));
+
+  const frontPagesHtml = `
+  <section class="front-matter">
+    <h1${titleStyleAttr(book)}>${book.title}</h1>
+    <p class="subtitle">${book.subtitleHtml}</p>
+    <div class="notices">${ADVENTURE_FRONT_NOTICES_HTML}</div>
+    ${MAJESTY_FRONT_JO_HTML}
+  </section>`;
+
+  return { frontPagesHtml, tocEntries, chapters };
+}
+
 /* ------------------------------------------------------------- rendering */
 
 const CSS = `
@@ -734,7 +1159,8 @@ const STRICT_CSS = `
 `;
 
 function cssFor(book: BookConfig): string {
-  return book.typography === "strict" ? STRICT_CSS : CSS;
+  const base = book.typography === "strict" ? STRICT_CSS : CSS;
+  return book.key === "adventure" ? base + ADVENTURE_EXTRA_CSS : base;
 }
 
 const FOOTER_TEMPLATE = `
@@ -856,7 +1282,7 @@ async function buildBook(browser: Browser, book: BookConfig): Promise<void> {
   console.log(`\n=== ${book.title} ===`);
   let parsed: ParsedBook;
   if (book.source === "pdf") {
-    parsed = parseMajestyPdf(book);
+    parsed = book.key === "adventure" ? parseAdventurePdf(book) : parseMajestyPdf(book);
   } else {
     /* "Emphasis" is a character style Word renders as italic; without this
        mapping mammoth drops it and italics would be silently lost.

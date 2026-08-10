@@ -16,7 +16,8 @@
     "book:walking-spirit": "tsx ./src/ebookDocxBuild.ts --book=walking",
     "covers:build": "tsx ./src/bookCoversBuild.ts",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "book:majesty": "tsx ./src/ebookDocxBuild.ts --book=majesty"
+    "book:majesty": "tsx ./src/ebookDocxBuild.ts --book=majesty",
+    "book:adventure": "tsx ./src/ebookDocxBuild.ts --book=adventure"
   },
   "devDependencies": {
     "@types/node": "catalog:",

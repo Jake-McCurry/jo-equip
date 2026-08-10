@@ -1,0 +1,107 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { Church, ArrowRight, BookOpen, Tv, Compass } from "lucide-react";
+
+const baseUrl = import.meta.env.BASE_URL;
+const join = (p: string) =>
+  (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
+
+const nextSteps = [
+  {
+    icon: Compass,
+    title: "Browse the categories",
+    desc: "Evidence, Growth, and Church resources organized for ministry impact.",
+    href: "/categories",
+    cta: "Explore categories",
+  },
+  {
+    icon: BookOpen,
+    title: "Download free books",
+    desc: "Practical discipleship PDFs — free to download and share with your congregation.",
+    href: "/books",
+    cta: "View the library",
+  },
+  {
+    icon: Tv,
+    title: "Watch the playlists",
+    desc: "Curated video teaching on evidence for Christ and Christian growth.",
+    href: "/playlists",
+    cta: "Open playlists",
+  },
+];
+---
+<Layout
+  title="Thank You — JO Equipped Church · JO EQUIP"
+  description="Thank you for registering as a JO Equipped Church. Explore the full JO EQUIP library of free discipleship resources."
+>
+  <Fragment slot="head">
+    {/* Post-submit destination, not standalone content — keep it out of Google. */}
+    <meta name="robots" content="noindex, follow" />
+  </Fragment>
+
+  <section class="bg-white">
+    <div class="container mx-auto px-4 py-16 md:py-24 max-w-3xl text-center">
+      <div
+        class="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full mb-6"
+        style="background-color:rgba(107,45,123,0.1);"
+      >
+        <Church className="w-9 h-9 md:w-11 md:h-11" style={{ color: "#6B2D7B" }} />
+      </div>
+
+      <div class="text-xs font-semibold tracking-widest uppercase mb-3" style="color:#6B2D7B;">
+        You're a JO Equipped Church
+      </div>
+      <h1 class="text-4xl md:text-5xl mb-4" style="color:#0b3c5d;">Thank you!</h1>
+      <div class="h-0.5 w-12 mx-auto mb-7" style="background-color:#de5b00;"></div>
+
+      <p class="text-lg leading-relaxed mb-4" style="color:#374151;">
+        Thank you for your faithful service to the Lord and His Church. We look forward to equipping
+        you and your congregation as together we seek first the Kingdom of God.
+      </p>
+      <p class="text-base leading-relaxed" style="color:var(--color-muted-foreground);">
+        The full JO EQUIP library is open to you right now — every article, book, video, and PDF is
+        free to use and share in your ministry.
+      </p>
+    </div>
+  </section>
+
+  {/* Next steps */}
+  <section class="py-14 md:py-20 border-t" style="background-color:#e6f2fa;border-color:var(--color-border);">
+    <div class="container mx-auto px-4 max-w-5xl">
+      <div class="text-center mb-10 md:mb-12">
+        <div class="text-xs font-semibold tracking-widest uppercase mb-3" style="color:#6B2D7B;">
+          Start here
+        </div>
+        <h2 class="text-3xl md:text-4xl" style="color:#0b3c5d;">Put the library to work</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-5">
+        {nextSteps.map((step) => {
+          const Icon = step.icon;
+          return (
+            <a
+              href={join(step.href)}
+              class="group bg-white border rounded p-6 md:p-7 flex flex-col transition-shadow hover:shadow-md"
+              style="border-color:var(--color-border);border-top:4px solid #6B2D7B;"
+            >
+              <div
+                class="w-11 h-11 rounded flex items-center justify-center mb-4"
+                style="background-color:rgba(107,45,123,0.1);"
+              >
+                <Icon className="w-5 h-5" style={{ color: "#6B2D7B" }} />
+              </div>
+              <h3 class="text-xl mb-2" style="color:#0b3c5d;">{step.title}</h3>
+              <p class="text-sm leading-relaxed mb-5 flex-grow" style="color:var(--color-muted-foreground);">
+                {step.desc}
+              </p>
+              <span class="inline-flex items-center text-sm font-semibold mt-auto group-hover:underline" style="color:#de5b00;">
+                {step.cta}
+                <ArrowRight className="w-4 h-4 ml-1" />
+              </span>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,102 @@
+Audit the current custom pdf_download tracking implementation on equip.jesusonline.com.
+
+Do not modify any code yet. First inspect the implementation and give me a written audit with exact file paths, line numbers, trigger logic, and any issues you find.
+
+Goal
+
+We need reliable GA4 reporting for:
+
+each individual PDF
+the number of unique users who initiated a download of that PDF
+total download events as a secondary metric
+
+Google Analytics Enhanced Measurement already generates the native file_download event. We also created a custom pdf_download event for this Replit-built SPA.
+
+In manual Tag Assistant testing, one normal PDF click currently produces:
+
+pdf_download × 1
+file_download × 1
+
+However, historical GA4 data shows that pdf_download sometimes records materially fewer users/events than file_download, while some PDFs match almost exactly. I want to determine whether the custom implementation is missing legitimate PDF clicks.
+
+Audit the following
+Find every place in the codebase that can generate or influence pdf_download, including:
+dataLayer.push
+direct gtag() calls
+click listeners
+React/Astro/SPA route handlers
+delegated document listeners
+PDF-link components
+GTM-related code
+Show me the exact current logic that decides whether a click qualifies as a PDF download.
+Determine whether pdf_download fires for all possible PDF-link patterns, including:
+relative URLs
+absolute URLs
+same-domain PDFs
+PDFs hosted on another JOM domain/CDN
+links containing query strings
+links containing fragments
+uppercase .PDF
+buttons wrapping links
+clicks on child elements inside <a> tags, such as icons, spans, or images
+dynamically rendered links after SPA navigation
+links inserted after initial page load
+links using target="_blank"
+Specifically check whether SPA navigation causes event listeners to:
+disappear
+fail to attach to newly rendered content
+attach more than once
+Determine whether any PDF links on Equip bypass the custom pdf_download logic while still being captured by GA4's native file_download.
+Crawl/search the codebase for all PDF-link implementations and identify any templates/components/pages that use a different linking method.
+
+Review the parameters sent with pdf_download. Ideally the event should reliably include:
+
+file_name
+file_url
+link_url
+page_location
+page_path if available
+link_text if useful
+
+Tell me exactly which parameters are currently sent and whether their values are consistent.
+
+Check for possible duplicate firing, but do not add arbitrary debounce logic unless there is evidence of duplicate firing. A legitimate user should still be able to download multiple different PDFs.
+Compare the custom logic conceptually with GA4 Enhanced Measurement's file_download behavior and explain why there could be cases where file_download fires but pdf_download does not.
+Validation
+
+After the audit, propose a test matrix that verifies one user click produces exactly one pdf_download for each of these cases:
+
+normal PDF link
+dynamically loaded PDF link
+SPA navigation followed by PDF click
+click on link text
+click on an icon/image inside the link
+absolute PDF URL
+relative PDF URL
+PDF URL with query string
+PDF opened in new tab
+Output format
+
+Give me:
+
+A. Current implementation
+
+file path
+line numbers
+exact code
+
+B. Problems found
+
+severity
+whether it could cause undercounting, overcounting, or inconsistent parameters
+
+C. Why pdf_download may differ from GA4 file_download
+
+D. Recommended implementation
+
+minimal changes needed
+preferred architecture for an SPA
+
+E. Test plan
+
+Do not make any changes until I approve the audit.

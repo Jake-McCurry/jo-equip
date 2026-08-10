@@ -627,7 +627,7 @@ const ADVENTURE_LIG_WORDS: string[] = [
   "fulfilled", "fulfilling", "fulfillment", "identified", "insignificant",
   "infinitely", "influenced", "off", "offering", "offers", "sacrifice",
   "satisfied", "self-fulfillment", "self-gratification", "selfish",
-  "selfishness", "stuff", "suffer", "suffering", "gratification", "flashy", "fled", "fiery",
+  "selfishness", "stuff", "suffer", "suffering", "gratification", "qualified", "flashy", "fled", "fiery",
   "flesh", "fleshly", "fifty", "fight", "fill", "filled", "filth",
   "filthiness", "final", "finally", "find", "findings", "finds", "finest",
   "finger", "finish", "flooded", "flowing", "fire", "fired", "first",
@@ -729,7 +729,7 @@ const ADVENTURE_EXTRA_CSS = `
   }
   .go-deeper h2 { margin: 0 0 0.35em 0; font-size: 14pt; }
   .go-deeper p { margin: 0; }
-  p.blank { color: #9ca3af; margin: 0.15em 0 0.85em 0; letter-spacing: 1px; }
+  p.blank { border-bottom: 1px solid #b0b7c3; height: 1.2em; margin: 0.15em 0 1em 0; }
   p.q { margin: 1em 0 0.3em 0; }
   p.q .qmark { font-family: Carlito, Calibri, sans-serif; font-weight: 700; color: #0083de; }
 `;
@@ -846,8 +846,31 @@ function parseAdventurePdf(book: BookConfig): ParsedBook {
   let curTitleParts: string[] = [];
   let pieces: Piece[] = [];
 
+  const mergeSplitParas = (ps: Piece[]): Piece[] => {
+    /* Source paragraphs that continue across a page break arrive as two
+       pieces; rejoin when the first ends mid-sentence and the second starts
+       lowercase. */
+    const out: Piece[] = [];
+    for (const p of ps) {
+      const prev = out[out.length - 1];
+      if (
+        p.kind === "para" && prev && prev.kind === "para" && prev.cls === p.cls &&
+        prev.lines.length > 0 && p.lines.length > 0 &&
+        !/[.!?:”"’)\]_]\s*$/.test(prev.lines[prev.lines.length - 1]!.text.trim()) &&
+        /^[a-z\uFFFD]/.test(p.lines[0]!.text.trim()) &&
+        !p.lines[0]!.text.trim().startsWith("•")
+      ) {
+        prev.lines.push(...p.lines);
+      } else {
+        out.push(p);
+      }
+    }
+    return out;
+  };
+
   const finishChapter = () => {
     if (!curKey) return;
+    pieces = mergeSplitParas(pieces);
     const bodyHtml = piecesToHtml(pieces) + adventureGoDeeperHtml(curKey);
     const title = repairLigatures(curTitleParts.join(" ").replace(/\s+/g, " ").trim());
     const expected = ADVENTURE_CHAPTERS.find(c => c.key === curKey);
@@ -880,7 +903,7 @@ function parseAdventurePdf(book: BookConfig): ParsedBook {
       let text = "";
       for (const ln of p.lines) {
         const t = ln.html.trimEnd();
-        if (html && html.endsWith("-") && /^[a-z]/.test(ln.text.trimStart())) {
+        if (html && html.endsWith("-") && /^[a-z\uFFFD]/.test(ln.text.trimStart())) {
           html = html.slice(0, -1) + t.trimStart();
           text = text.replace(/-\s*$/, "") + ln.text.trimStart();
         } else {
@@ -898,12 +921,14 @@ function parseAdventurePdf(book: BookConfig): ParsedBook {
       }
       closeList();
       if (/^_+$/.test(text.replace(/\s+/g, ""))) {
-        out.push(`<p class="blank">_______________________________________________</p>`);
-      } else if (/^Q\s/.test(text)) {
+        out.push(`<p class="blank"></p>`);
+      } else if (/^Q[\sQ]/.test(text)) {
         /* Some source lines carry both the decorative margin "Q" glyph and a
-           literal "Q" — collapse them into a single styled Q marker. */
-        const rest = html.replace(/^Q\s*(Q\s+)?/, " ");
-        out.push(`<p class="q"><span class="qmark">Q</span>${rest}</p>`);
+           literal "Q" (sometimes with no space between them) — collapse them
+           into a single styled "Q:" marker. Tolerate <em>/<strong> tags that
+           may wrap the Q glyphs. */
+        const rest = html.replace(/^(?:<[^>]+>)*Q(?:<\/[^>]+>)*\s*(?:(?:<[^>]+>)*Q(?:<\/[^>]+>)*\s*)?/, " ");
+        out.push(`<p class="q"><span class="qmark">Q:</span>${rest}</p>`);
       } else if (p.cls) {
         out.push(`<p class="${p.cls}">${html}</p>`);
       } else {

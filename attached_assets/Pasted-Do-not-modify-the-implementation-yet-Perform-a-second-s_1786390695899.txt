@@ -1,0 +1,73 @@
+Do not modify the implementation yet. Perform a second-stage forensic audit specifically to explain the historical discrepancy between pdf_download and GA4 native file_download.
+
+We have confirmed in Tag Assistant today that one ordinary PDF click sends exactly:
+
+pdf_download ×1
+file_download ×1
+
+However, for the same Equip hostname, same date range, and same specific article PDF, GA4 showed approximately:
+
+pdf_download: 163 events / 28 users
+file_download: 457 events / 58 users
+
+Your first audit concluded that all normal <a href=".pdf"> links on Equip should trigger both events. Therefore the current audit does not yet explain this discrepancy.
+
+Investigate these specific possibilities:
+
+1. Git/deployment history
+
+Determine exactly when the current pdf_download implementation was introduced and list every subsequent modification to:
+
+the global PDF click listener
+__trackPdfDownload
+GTM loading
+article PDF links
+topic PDF links
+book PDF links
+
+Give commit hashes/dates and explain whether the historical GA4 date range could contain an older implementation that did not have today's coverage.
+
+2. GTM dependency
+
+The source-code audit only proves that dataLayer.push({event:"pdf_download"}) occurs. It does not prove that the GA4 pdf_download tag always sends a hit.
+
+Document what the GTM configuration must be checked for, including:
+
+trigger for GA4 – pdf_download (Equip DL)
+trigger filters
+trigger exceptions
+tag firing option
+consent requirements/additional consent checks
+Google tag/config dependency
+event-parameter mappings
+tag sequencing
+
+Explain any GTM configuration that could allow native file_download to be sent while the custom pdf_download dataLayer event exists but its GA4 Event tag does not send.
+
+3. Canonical PDF identity
+
+Audit whether duplicate PDF basenames exist anywhere in the project. The current custom file_name strips the URL to only the final filename, which could combine two distinct PDFs with the same filename.
+
+Recommend a canonical pdf_path value based on the normalized URL pathname, for example:
+
+/articles/bcg/a-total-life-discipleship-church.pdf
+
+Keep file_name separately as the basename.
+
+4. Historical coverage
+
+Determine whether there have ever been PDF-opening mechanisms that native GA4 Enhanced Measurement could detect but the custom listener did not, including older versions of components/templates.
+
+5. Reassess your previous explanations
+
+Do not use other hostnames, non-PDF file extensions, or the special /books button implementation to explain the observed discrepancy for an individual ARTICLE PDF when the GA4 report is already restricted to equip.jesusonline.com.
+
+Output:
+
+A. Most likely explanation for the observed article-PDF discrepancy
+B. Git/deployment evidence
+C. GTM checks I need to perform manually
+D. Duplicate-filename audit
+E. Revised implementation recommendation
+
+Do not change code yet.

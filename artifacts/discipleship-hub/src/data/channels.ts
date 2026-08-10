@@ -1079,7 +1079,7 @@ export const subTopics: SubTopic[] = [
     parentId: 'building-blocks',
     name: 'Receiving Insights from God',
     items: [
-      { number: 1, title: 'Insights from God', articleId: 'insights-from-god', links: { app: 'https://app.jesusonline.com/post/32510-insights-from-god' } },
+      { number: 1, title: 'Renewing the Mind for Transformation', articleId: 'insights-from-god', links: { app: 'https://app.jesusonline.com/post/32510-insights-from-god' } },
       { number: 2, title: 'God’s Word', articleId: 'gods-word', links: { app: 'https://app.jesusonline.com/post/32520-gods-word' } },
       { number: 3, title: 'Renewing Your Mind', articleId: 'renewing-your-mind', links: { app: 'https://app.jesusonline.com/post/32521-renewing-your-mind' } },
       { number: 4, title: 'Filling Your Mind with God\'s Truth', articleId: 'filling-your-mind-with-gods-truth', links: { app: 'https://app.jesusonline.com/post/32522-filling-your-mind-with-gods-truth' } },
@@ -1102,7 +1102,7 @@ export const subTopics: SubTopic[] = [
     parentId: 'building-blocks',
     name: 'Obeying God Faithfully',
     items: [
-      { number: 1, title: 'Obeying God Faithfully', articleId: 'obeying-god-faithfully', links: { app: 'https://app.jesusonline.com/post/32581-obeying-god-faithfully' } },
+      { number: 1, title: 'The Heart of True Obedience', articleId: 'obeying-god-faithfully', links: { app: 'https://app.jesusonline.com/post/32581-obeying-god-faithfully' } },
       { number: 2, title: 'Obeying to Get a Blessing', articleId: 'obeying-to-get-a-blessing', links: { app: 'https://app.jesusonline.com/post/32582-obeying-to-get-a-blessing' } },
       { number: 3, title: 'Obeying to Fulfill Duty', articleId: 'obeying-to-fulfill-duty', links: { app: 'https://app.jesusonline.com/post/32583-obeying-to-fulfill-duty' } },
       { number: 4, title: 'Obeying to Avoid Punishment', articleId: 'obeying-to-avoid-punishment', links: { app: 'https://app.jesusonline.com/post/32584-obeying-to-avoid-punishment' } },

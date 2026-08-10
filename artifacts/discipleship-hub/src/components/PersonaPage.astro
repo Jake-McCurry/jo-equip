@@ -1,5 +1,8 @@
 ---
 import { Image } from "astro:assets";
+import leadResurrectionImg from "@/assets/lead-them/jesus-resurrection-and-you.jpg";
+import leadGiftHeavenImg from "@/assets/lead-them/the-gift-of-heaven.jpg";
+import leadRelevantImg from "@/assets/lead-them/is-jesus-relevant-to-you.jpg";
 import { Play, ArrowRight, Users2, BookOpen, Smartphone, Star } from "lucide-react";
 import { books } from "@/data/books";
 import { getBookCover } from "@/data/bookCovers";
@@ -55,18 +58,21 @@ const leadThemVideos = [
     watch: "https://jesusonline.com/receive-jesus/jesus-resurrection-and-you/",
     read: join("/categories/church/lead-them-to-christ/share-christ-jesus-resurrection-and-you"),
     external: true,
+    image: leadResurrectionImg,
   },
   {
     title: "The Gift of Heaven",
     watch: "https://jesusonline.com/receive-jesus/the-gift-of-heaven/",
     read: join("/categories/church/lead-them-to-christ/share-christ-the-gift-of-heaven"),
     external: true,
+    image: leadGiftHeavenImg,
   },
   {
     title: "Is Jesus Relevant To You?",
     watch: join("/playlist/meet-jesus6"),
     read: join("/categories/church/lead-them-to-christ/share-christ-is-jesus-relevant-to-you"),
     external: false,
+    image: leadRelevantImg,
   },
 ];
 
@@ -221,22 +227,38 @@ const quickLinks = [
       with finding the right words when sharing the good news. These clear, approximately
       10-minute videos explain the gospel and end with a prayer of salvation.
     </p>
-    <ul class="flex flex-col gap-4 mb-6">
+    <ul class="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5 mb-6">
       {leadThemVideos.map(v => (
-        <li class="bg-white border rounded px-6 py-5" style="border-color:var(--color-border);border-left:4px solid #0083de;">
-          <p class="text-[15px] md:text-base leading-relaxed" style="color:#374151;">
-            <strong class="font-semibold" style="color:#0b3c5d;">{v.title}</strong>{" "}
-            <span class="whitespace-nowrap">
-              <a
-                href={v.watch}
-                target={v.external ? "_blank" : undefined}
-                rel={v.external ? "noopener noreferrer" : undefined}
-                class="hover:underline"
-                style="color:#de5b00;"
-              >Watch video</a>
-              {" "}<span style="color:#9ca3af;">&middot;</span>{" "}
-              <a href={v.read} class="hover:underline" style="color:#de5b00;">Read instructions</a>
-            </span>
+        <li class="bg-white border rounded flex flex-col overflow-hidden" style="border-color:var(--color-border);border-top:4px solid #0083de;">
+          <p class="font-semibold text-[15px] md:text-base leading-snug px-4 pt-4 pb-3" style="color:#0b3c5d;">{v.title}</p>
+          <a
+            href={v.watch}
+            target={v.external ? "_blank" : undefined}
+            rel={v.external ? "noopener noreferrer" : undefined}
+            aria-label={`Watch video: ${v.title}`}
+            class="block transition-opacity hover:opacity-85"
+          >
+            <Image
+              src={v.image}
+              alt={`${v.title} video`}
+              widths={[320, 640]}
+              sizes="(min-width: 640px) 300px, 90vw"
+              format="webp"
+              quality={80}
+              class="w-full aspect-video object-cover"
+              loading="lazy"
+            />
+          </a>
+          <p class="text-sm md:text-[15px] px-4 py-3.5 mt-auto">
+            <a
+              href={v.watch}
+              target={v.external ? "_blank" : undefined}
+              rel={v.external ? "noopener noreferrer" : undefined}
+              class="hover:underline whitespace-nowrap"
+              style="color:#de5b00;"
+            >Watch video</a>
+            {" "}<span style="color:#9ca3af;">&middot;</span>{" "}
+            <a href={v.read} class="hover:underline whitespace-nowrap" style="color:#de5b00;">Read instructions</a>
           </p>
         </li>
       ))}

@@ -100,8 +100,8 @@
     "lastmod": "2026-08-07"
   },
   "https://equip.jesusonline.com/equip": {
-    "hash": "0bef3d947bb11a33",
-    "lastmod": "2026-08-08"
+    "hash": "32a3653d199d212f",
+    "lastmod": "2026-08-10"
   },
   "https://equip.jesusonline.com/evangelism-tools": {
     "hash": "64bb6eb35f03bf4e",
@@ -112,8 +112,8 @@
     "lastmod": "2026-08-07"
   },
   "https://equip.jesusonline.com/": {
-    "hash": "8683bc4d3131b278",
-    "lastmod": "2026-08-08"
+    "hash": "2cd6703024925cbd",
+    "lastmod": "2026-08-10"
   },
   "https://equip.jesusonline.com/listen": {
     "hash": "ba31caec0d8408eb",
@@ -584,8 +584,8 @@
     "lastmod": "2026-08-07"
   },
   "https://equip.jesusonline.com/categories/church": {
-    "hash": "ba69858e3f4dd861",
-    "lastmod": "2026-08-07"
+    "hash": "085aa25a13bda20c",
+    "lastmod": "2026-08-10"
   },
   "https://equip.jesusonline.com/categories/church/joshua-nations-online-bible-training": {
     "hash": "a87b0a3d96e2c6c2",
@@ -620,8 +620,8 @@
     "lastmod": "2026-08-07"
   },
   "https://equip.jesusonline.com/categories/church/next-steps-new-believers": {
-    "hash": "1442f294ce271f97",
-    "lastmod": "2026-08-07"
+    "hash": "d683b02784afa596",
+    "lastmod": "2026-08-10"
   },
   "https://equip.jesusonline.com/categories/church/next-steps-new-believers/next-steps-for-new-believers": {
     "hash": "afbbbaeef327e383",
@@ -716,8 +716,8 @@
     "lastmod": "2026-08-07"
   },
   "https://equip.jesusonline.com/categories/church/share-jesus": {
-    "hash": "f177419c94cc19f9",
-    "lastmod": "2026-08-07"
+    "hash": "c59c0c94adf713c7",
+    "lastmod": "2026-08-10"
   },
   "https://equip.jesusonline.com/categories/church/sharing-your-faith/answering-objections": {
     "hash": "f838285d10f9eb9d",
@@ -5302,5 +5302,21 @@
   "https://equip.jesusonline.com/categories": {
     "hash": "71a06d68f83b2366",
     "lastmod": "2026-08-07"
+  },
+  "https://equip.jesusonline.com/categories/church/lead-them-to-christ": {
+    "hash": "59dc79cf8d070fbe",
+    "lastmod": "2026-08-10"
+  },
+  "https://equip.jesusonline.com/categories/church/lead-them-to-christ/share-christ-is-jesus-relevant-to-you": {
+    "hash": "866e9fdc3bfc674f",
+    "lastmod": "2026-08-10"
+  },
+  "https://equip.jesusonline.com/categories/church/lead-them-to-christ/share-christ-jesus-resurrection-and-you": {
+    "hash": "8ad4bf46cda9c262",
+    "lastmod": "2026-08-10"
+  },
+  "https://equip.jesusonline.com/categories/church/lead-them-to-christ/share-christ-the-gift-of-heaven": {
+    "hash": "ec8197d39d9c64a3",
+    "lastmod": "2026-08-10"
   }
 }

@@ -31,6 +31,9 @@ export const bcgArticlePdfs: Record<string, BcgArticlePdfMeta> = {
   "give-them-what-they-need": { bytes: 117171 },
   "gods-unique-vision-for-your-church": { bytes: 641681 },
   "retention-leads-to-transformation": { bytes: 111416 },
+  "share-christ-is-jesus-relevant-to-you": { bytes: 118503 },
+  "share-christ-jesus-resurrection-and-you": { bytes: 121933 },
+  "share-christ-the-gift-of-heaven": { bytes: 115078 },
   "what-is-your-motivation-for-preaching": { bytes: 110358 },
 };
 

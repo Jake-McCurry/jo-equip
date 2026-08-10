@@ -1152,6 +1152,117 @@ export const bcgArticles: BcgArticle[] = [
       { type: "p", html: "In each case, the aim is the same: to protect the hearer’s limited mental resources so that the truth may take deeper root and bear lasting fruit." },
     ],
   },
+
+  /* ── LEAD THEM TO CHRIST (Share Jesus → lead-them-to-christ) ──
+     Three how-to-use-the-video instruction articles from the user's Aug 2026
+     docx (Lead_Them_to_Christ). Marked `unlisted` so they stay out of the
+     BCG next-article rotation; they are reached from the Lead Them to Christ
+     topic page. */
+  {
+    id: "share-christ-jesus-resurrection-and-you",
+    title: "How to Use the “Jesus’ Resurrection and You” Video to Share Christ",
+    description:
+      "A simple, proven way to share the gospel: watch the 10-minute “Jesus’ Resurrection and You” video together, then invite a response with step-by-step directions.",
+    unlisted: true,
+    blocks: [
+      { type: "p", html: 'Video link: <a href="https://jesusonline.com/receive-jesus/jesus-resurrection-and-you/" target="_blank" rel="noopener noreferrer">Jesus’ Resurrection and You</a>' },
+      { type: "p", html: "Many believers struggle with finding the right words when sharing the gospel. This simple, proven approach uses a clear 10-minute video that explains the good news and ends with a prayer of salvation." },
+      { type: "h2", text: "Step-by-Step Directions" },
+      { type: "ol", items: [
+        "<strong>Recognize the opportunity and offer the video.</strong> When you sense someone is open but you don’t know how to introduce the gospel into the conversation or are having trouble explaining the gospel clearly, simply ask: “Would you be willing to watch a short 9-minute video with me that explains how Jesus’ death and resurrection can give us eternal life?” Most people will say yes when the invitation is low-pressure and personal.",
+        "<strong>Watch the video together.</strong> Sit side-by-side (in a living room, coffee shop, or over a shared screen). Do not interrupt. Let the video do the heavy lifting. Pay attention to moments that seem to land—such as the powerful courtroom scene where the judge offers to pay the penalty for his own son. These visual stories often open hearts in ways words alone cannot.",
+        "<strong>Check for understanding right after the video ends.</strong> Ask a simple, non-threatening question: “Did that make sense to you?” Wait for their response. A nod or “yes” is enough to move forward.",
+        "<strong>Invite a response.</strong> Follow with a clear invitation: “Would you like to pray the prayer that was offered in the video and receive Christ?” If they say yes but feel unsure about the words, you can back up the video and pause it on the prayer. You can offer to help: “I can help you with the words if you’d like.” Then pray with them, allowing them to repeat after you or speak in their own words.",
+      ] },
+      { type: "h3", text: "Immediately begin follow-up" },
+      { type: "p", html: "Right after the prayer:" },
+      { type: "ul", items: [
+        "Talk briefly about what it means that Jesus has entered their life. Affirm that they now belong to Christ and have begun a new life of meaning, purpose, and relationship with God.",
+        "Introduce them to practical next steps available through JesusOnline Ministries. Encourage them to download the free JO App (available on the App Store and Google Play). The app serves as a personal discipleship companion, providing the NET Bible, daily devotionals, prayer tools, and foundational growth resources they can begin using immediately.",
+        "Point them especially to <em>The Adventure of Living with Jesus</em>, a free basic discipleship resource designed specifically for new believers. It is available both as a downloadable PDF and within the JO App under the Books section. This simple curriculum walks through essential truths of new life in Christ—including their new identity, the gift of the Holy Spirit, growing in faith, reading Scripture, prayer, belonging to God’s family, and walking in obedience. It can be completed at their own pace or with gentle guidance.",
+        "Additional free resources on JO EQUIP (equip.jesusonline.com) further support early growth, such as materials on Your New Identity in Christ and Walking in the Spirit.",
+        "Emphasize the importance of connecting with a Bible-believing church where they can be nurtured in community, worship, and ongoing discipleship.",
+        "Arrange practical next steps together—such as texting or meeting again, helping them download the JO App, beginning the first lesson of <em>The Adventure of Living with Jesus</em>, and introducing them to a pastor or mature believer who can walk with them in the days ahead.",
+      ] },
+      { type: "p", html: "<strong>Stay involved.</strong> Continue the relationship through texts, meetings, and encouragement. Help them take the next steps of growth and church involvement." },
+      { type: "h2", text: "Why This Works" },
+      { type: "p", html: "The video presents the gospel clearly and personally. It removes common barriers of confusion and helps the listener see that eternal life is a free gift received by faith in Jesus’ finished work." },
+      { type: "p", html: "You do not have to carry the full explanation yourself. You simply create the space, ask gentle questions, and walk with the person afterward as they begin the journey of following Christ." },
+      { type: "h2", text: "Larry’s Example" },
+      { type: "p", html: "Have you ever struggled with what to say when sharing Christ with someone? Most people do." },
+      { type: "p", html: "I was attempting to share the gospel with a family friend named Alberto but was having difficulty in helping him understand how Jesus’ death on the cross was sufficient to pay for our sins, giving us eternal life." },
+      { type: "p", html: "I asked Alberto if he would like to watch the 9-minute video, “Jesus’ Resurrection and You,” which clearly explains the gospel and ends with a prayer to receive Christ. He agreed." },
+      { type: "p", html: "Sitting together in my living room, we watched the video together. I could tell that the video about Jesus’ death and resurrection captured his attention, especially the scene where the judge offers to pay the penalty for his son who had committed murder." },
+      { type: "p", html: "After the video ended, I asked Alberto if it made sense to him, to which he nodded yes in agreement. Then I asked him if he would like to pray the prayer offered in the video for salvation. He said “yes,” and asked me if I could help him with the words." },
+      { type: "p", html: "With my help, Alberto then asked Jesus into his heart. After he prayed, we talked about what it means to have Jesus enter our lives. We then gave him a Bible and a discipleship booklet and talked with him about the importance of going to a Bible-believing church." },
+      { type: "p", html: "Since then, we have been texting and meeting to discuss his growth in Christ. I arranged for him to meet with a pastor who is focused on discipleship, and Alberto has begun attending his church." },
+      { type: "p", html: 'I heartily recommend using this video in helping others understand the gospel. The link is: <a href="https://jesusonline.com/receive-jesus/jesus-resurrection-and-you/" target="_blank" rel="noopener noreferrer">https://jesusonline.com/receive-jesus/jesus-resurrection-and-you/</a>' },
+    ],
+  },
+  {
+    id: "share-christ-the-gift-of-heaven",
+    title: "How to Use “The Gift of Heaven” Video to Share Christ",
+    description:
+      "A simple, proven way to share the gospel: watch “The Gift of Heaven” video together, then invite a response — with step-by-step directions and follow-up.",
+    unlisted: true,
+    blocks: [
+      { type: "p", html: 'Video link: <a href="https://jesusonline.com/receive-jesus/the-gift-of-heaven/" target="_blank" rel="noopener noreferrer">The Gift of Heaven</a>' },
+      { type: "p", html: "Many believers struggle with finding the right words when sharing the gospel. This simple, proven approach uses a clear video that presents the free gift of heaven through Jesus Christ and ends with a prayer of salvation." },
+      { type: "h2", text: "Step-by-Step Directions" },
+      { type: "ol", items: [
+        "<strong>Recognize the opportunity and offer the video.</strong> When you sense someone is open but you do not know how to introduce the gospel into the conversation, or when you are having difficulty explaining it clearly, simply ask: “Would you be willing to watch a short video with me that explains how we can receive the free gift of heaven through Jesus Christ?” Most people will say yes when the invitation is low-pressure and personal.",
+        "<strong>Watch the video together.</strong> Sit side-by-side (in a living room, coffee shop, or over a shared screen). Do not interrupt. Let the video do the heavy lifting. Pay attention to moments that seem to land—such as the teaching on the narrow gate that leads to life, or the powerful illustration of a criminal who is offered a full pardon yet must choose to accept it. These visual and biblical pictures often open hearts in ways words alone cannot.",
+        "<strong>Check for understanding right after the video ends.</strong> Ask a simple, non-threatening question: “Did that make sense to you?” Wait for their response. A nod or “yes” is enough to move forward.",
+        "<strong>Invite a response.</strong> Follow with a clear invitation: “Would you like to pray the prayer that was offered in the video and receive Christ—and the gift of eternal life?” If they say yes but feel unsure about the words, you can return to the prayer portion of the video and pause it. Offer to help: “I can help you with the words if you’d like.” Then pray with them, allowing them to repeat after you or speak in their own words from the heart.",
+      ] },
+      { type: "h3", text: "Immediately begin follow-up" },
+      { type: "p", html: "Right after the prayer:" },
+      { type: "ul", items: [
+        "Talk briefly about what it means that Jesus has entered their life. Affirm that they now belong to Christ and have begun a new life of meaning, purpose, and relationship with God.",
+        "Introduce them to practical next steps available through JesusOnline Ministries. Encourage them to download the free JO App (available on the App Store and Google Play). The app serves as a personal discipleship companion, providing the NET Bible, daily devotionals, prayer tools, and foundational growth resources they can begin using immediately.",
+        "Point them especially to <em>The Adventure of Living with Jesus</em>, a free basic discipleship resource designed specifically for new believers. It is available both as a downloadable PDF and within the JO App under the Books section. This simple curriculum walks through essential truths of new life in Christ—including their new identity, the gift of the Holy Spirit, growing in faith, reading Scripture, prayer, belonging to God’s family, and walking in obedience. It can be completed at their own pace or with gentle guidance.",
+        "Additional free resources on JO EQUIP (equip.jesusonline.com) further support early growth, such as materials on Your New Identity in Christ and Walking in the Spirit.",
+        "Emphasize the importance of connecting with a Bible-believing church where they can be nurtured in community, worship, and ongoing discipleship.",
+        "Arrange practical next steps together—such as texting or meeting again, helping them download the JO App, beginning the first lesson of <em>The Adventure of Living with Jesus</em>, and introducing them to a pastor or mature believer who can walk with them in the days ahead.",
+      ] },
+      { type: "p", html: "<strong>Stay involved.</strong> Continue the relationship through texts, meetings, and encouragement. Help them take the next steps of growth and church involvement." },
+      { type: "h2", text: "Why This Works" },
+      { type: "p", html: "The video presents the gospel clearly and personally. It removes common barriers of confusion and helps the listener see that eternal life is a free gift received by faith in Jesus’ finished work." },
+      { type: "p", html: "You do not have to carry the full explanation yourself. You simply create the space, ask gentle questions, and walk with the person afterward as they begin the journey of following Christ." },
+    ],
+  },
+  {
+    id: "share-christ-is-jesus-relevant-to-you",
+    title: "How to Use the “Is Jesus Relevant To You?” Video to Share Christ",
+    description:
+      "A simple, proven way to share the gospel: watch the “Is Jesus Relevant To You?” video together, then invite a response — with step-by-step directions.",
+    unlisted: true,
+    blocks: [
+      { type: "p", html: 'Video link: <a href="/playlist/meet-jesus6">Is Jesus Relevant To You?</a>' },
+      { type: "p", html: "Many believers struggle with finding the right words when sharing the gospel. This simple, proven approach uses a clear video that addresses life’s deepest questions—Who am I? Why am I here? Where am I going?—and shows how Jesus alone brings true meaning, purpose, and eternal life. The video ends with a prayer of invitation to receive Him." },
+      { type: "h2", text: "Step-by-Step Directions" },
+      { type: "ol", items: [
+        "<strong>Recognize the opportunity and offer the video.</strong> When you sense someone is open but you do not know how to introduce the gospel into the conversation, or when you are having difficulty explaining it clearly, simply ask: “Would you be willing to watch a short video with me that explores whether Jesus is still relevant to the deepest questions of life—and how He can give us true meaning and purpose?” Most people will say yes when the invitation is low-pressure and personal.",
+        "<strong>Watch the video together.</strong> Sit side-by-side (in a living room, coffee shop, or over a shared screen). Do not interrupt. Let the video do the heavy lifting. Pay attention to moments that seem to land—such as the search for meaning that fame, fortune, or success cannot satisfy, or the story of the father’s joyful welcome of his returning son. These biblical pictures of God’s love and Jesus’ answers to life’s greatest questions often open hearts in ways words alone cannot.",
+        "<strong>Check for understanding right after the video ends.</strong> Ask a simple, non-threatening question: “Did that make sense to you?” Wait for their response. A nod or “yes” is enough to move forward.",
+        "<strong>Invite a response.</strong> Follow with a clear invitation: “Would you like to pray the prayer that was offered in the video and receive Christ—opening the door of your life to Him as Savior and Lord?” If they say yes but feel unsure about the words, you can return to the prayer portion of the video and pause it. Offer to help: “I can help you with the words if you’d like.” Then pray with them, allowing them to repeat after you or speak in their own words from the heart.",
+      ] },
+      { type: "h3", text: "Immediately begin follow-up" },
+      { type: "p", html: "Right after the prayer:" },
+      { type: "ul", items: [
+        "Talk briefly about what it means that Jesus has entered their life. Affirm that they now belong to Christ and have begun a new life of meaning, purpose, and relationship with God.",
+        "Introduce them to practical next steps available through JesusOnline Ministries. Encourage them to download the free JO App (available on the App Store and Google Play). The app serves as a personal discipleship companion, providing the NET Bible, daily devotionals, prayer tools, and foundational growth resources they can begin using immediately.",
+        "Point them especially to <em>The Adventure of Living with Jesus</em>, a free basic discipleship resource designed specifically for new believers. It is available both as a downloadable PDF and within the JO App under the Books section. This simple curriculum walks through essential truths of new life in Christ—including their new identity, the gift of the Holy Spirit, growing in faith, reading Scripture, prayer, belonging to God’s family, and walking in obedience. It can be completed at their own pace or with gentle guidance.",
+        "Additional free resources on JO EQUIP (equip.jesusonline.com) further support early growth, such as materials on Your New Identity in Christ and Walking in the Spirit.",
+        "Emphasize the importance of connecting with a Bible-believing church where they can be nurtured in community, worship, and ongoing discipleship.",
+        "Arrange practical next steps together—such as texting or meeting again, helping them download the JO App, beginning the first lesson of <em>The Adventure of Living with Jesus</em>, and introducing them to a pastor or mature believer who can walk with them in the days ahead.",
+      ] },
+      { type: "p", html: "<strong>Stay involved.</strong> Continue the relationship through texts, meetings, and encouragement. Help them take the next steps of growth and church involvement." },
+      { type: "h2", text: "Why This Works" },
+      { type: "p", html: "The video presents the gospel clearly and personally. It removes common barriers of confusion and helps the listener see that eternal life is a free gift received by faith in Jesus’ finished work." },
+      { type: "p", html: "You do not have to carry the full explanation yourself. You simply create the space, ask gentle questions, and walk with the person afterward as they begin the journey of following Christ." },
+    ],
+  },
 ];
 
 export function getBcgArticle(id: string): BcgArticle | undefined {

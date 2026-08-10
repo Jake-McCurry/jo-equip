@@ -292,6 +292,23 @@ export const subTopics: SubTopic[] = [
       { number: 8, title: 'Discover God’s Plan for You', articleId: 'discover-gods-plan-for-you', links: { app: 'https://app.jesusonline.com/post/43008-discover-gods-plan-for-you' } },
     ],
   },
+  /* ── LEAD THEM TO CHRIST (4th Share Jesus card) ──
+     From the user's Aug 2026 docx (Lead_Them_to_Christ): three gospel videos,
+     each with a how-to-use instruction article. Bodies live in bcgArticles.ts
+     (unlisted so they stay out of the BCG next-article rotation). */
+  {
+    id: 'lead-them-to-christ',
+    channelId: 'church',
+    parentId: 'share-jesus',
+    name: 'Lead Them to Christ',
+    description: 'Share the gospel with someone using one of these JO EQUIP videos.',
+    hideNumbers: true,
+    items: [
+      { number: 1, title: 'How to Use the "Jesus\u2019 Resurrection and You" Video to Share Christ', articleId: 'share-christ-jesus-resurrection-and-you', links: { video: 'https://jesusonline.com/receive-jesus/jesus-resurrection-and-you/' } },
+      { number: 2, title: 'How to Use "The Gift of Heaven" Video to Share Christ', articleId: 'share-christ-the-gift-of-heaven', links: { video: 'https://jesusonline.com/receive-jesus/the-gift-of-heaven/' } },
+      { number: 3, title: 'How to Use the "Is Jesus Relevant To You?" Video to Share Christ', articleId: 'share-christ-is-jesus-relevant-to-you', links: { video: 'https://equip.jesusonline.com/playlist/meet-jesus6' } },
+    ],
+  },
   /* ── SERMON TOOLBOX ──
      Intro-only placeholder added to match the Church spreadsheet; content list
      pending. With no items/children it renders the "resources being prepared"

@@ -46,6 +46,30 @@ const featuredPlaylists = playlistIds
   .map(id => playlists.find(p => p.id === id))
   .filter((p): p is (typeof playlists)[number] => Boolean(p));
 
+/* "Lead Them to Christ" — shared bottom section on all four persona pages,
+   per the Lead_Them_to_Christ docx (Aug 2026). Mirrors the Share Jesus →
+   Lead Them to Christ topic (channels.ts). */
+const leadThemVideos = [
+  {
+    title: "Jesus\u2019 Resurrection and You",
+    watch: "https://jesusonline.com/receive-jesus/jesus-resurrection-and-you/",
+    read: join("/categories/church/lead-them-to-christ/share-christ-jesus-resurrection-and-you"),
+    external: true,
+  },
+  {
+    title: "The Gift of Heaven",
+    watch: "https://jesusonline.com/receive-jesus/the-gift-of-heaven/",
+    read: join("/categories/church/lead-them-to-christ/share-christ-the-gift-of-heaven"),
+    external: true,
+  },
+  {
+    title: "Is Jesus Relevant To You?",
+    watch: join("/playlist/meet-jesus6"),
+    read: join("/categories/church/lead-them-to-christ/share-christ-is-jesus-relevant-to-you"),
+    external: false,
+  },
+];
+
 const quickLinks = [
   { title: "Reviews", subtitle: "From Pastors and Leaders", href: join("/reviews"), icon: Star, external: false },
   { title: "About", subtitle: "JesusOnline Ministries", href: join("/about"), icon: Users2, external: false },
@@ -185,6 +209,45 @@ const quickLinks = [
     {closing.map(p => (
       <p class="text-[15px] md:text-base leading-relaxed mb-5 last:mb-0" style="color:#374151;">{p}</p>
     ))}
+  </div>
+</section>
+
+{/* Lead Them to Christ */}
+<section id="lead-them-to-christ" class="py-10 md:py-14 bg-white scroll-mt-20">
+  <div class="container mx-auto px-4 max-w-4xl">
+    <h2 class="text-2xl md:text-3xl font-semibold mb-4" style="color:#0b3c5d;">Lead Them to Christ</h2>
+    <p class="text-[15px] md:text-base leading-relaxed mb-6" style="color:#374151;">
+      Share the gospel with someone using one of these JO EQUIP videos. Many believers struggle
+      with finding the right words when sharing the good news. These clear, approximately
+      10-minute videos explain the gospel and end with a prayer of salvation.
+    </p>
+    <ul class="flex flex-col gap-4 mb-6">
+      {leadThemVideos.map(v => (
+        <li class="bg-white border rounded px-6 py-5" style="border-color:var(--color-border);border-left:4px solid #0083de;">
+          <p class="text-[15px] md:text-base leading-relaxed" style="color:#374151;">
+            <strong class="font-semibold" style="color:#0b3c5d;">{v.title}</strong>{" "}
+            <span class="whitespace-nowrap">
+              <a
+                href={v.watch}
+                target={v.external ? "_blank" : undefined}
+                rel={v.external ? "noopener noreferrer" : undefined}
+                class="hover:underline"
+                style="color:#de5b00;"
+              >Watch video</a>
+              {" "}<span style="color:#9ca3af;">&middot;</span>{" "}
+              <a href={v.read} class="hover:underline" style="color:#de5b00;">Read instructions</a>
+            </span>
+          </p>
+        </li>
+      ))}
+    </ul>
+    <p class="text-[15px] md:text-base leading-relaxed" style="color:#374151;">
+      Each video can be watched together with a friend, family member, or neighbor. Afterward,
+      simply ask if it made sense and whether they would like to respond to the invitation.
+      Then walk with them in the first steps of their new life in Christ using the free
+      <a href="https://app.jesusonline.com" target="_blank" rel="noopener noreferrer" class="hover:underline" style="color:#de5b00;">JO App</a>
+      and <a href={join("/books/adventure-of-living-with-jesus")} class="italic hover:underline" style="color:#de5b00;">The Adventure of Living with Jesus</a>.
+    </p>
   </div>
 </section>
 

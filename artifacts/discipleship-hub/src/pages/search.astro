@@ -40,6 +40,56 @@ import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
     </div>
   </div>
 
+  <script>
+    // Keep Pagefind, but mirror the search term into the URL (?q=...) so
+    // GA4 Enhanced Measurement "Site search" records what people search for.
+    // Also push a dataLayer event as a GTM-friendly backup signal.
+    (function () {
+      const findInput = () =>
+        document.querySelector<HTMLInputElement>(".pagefind-ui__search-input");
+
+      let lastSent = "";
+
+      function syncUrl(q: string) {
+        const url = new URL(window.location.href);
+        if (q) url.searchParams.set("q", q);
+        else url.searchParams.delete("q");
+        history.replaceState(history.state, "", url);
+        if (q && q !== lastSent) {
+          lastSent = q;
+          (window as any).dataLayer = (window as any).dataLayer || [];
+          (window as any).dataLayer.push({ event: "site_search", search_term: q });
+        }
+      }
+
+      function init() {
+        const input = findInput();
+        if (!input) {
+          // Pagefind UI renders asynchronously; retry until the input exists.
+          setTimeout(init, 100);
+          return;
+        }
+
+        // If the page was opened with ?q=..., pre-fill and run the search.
+        const initial = new URLSearchParams(window.location.search).get("q");
+        if (initial) {
+          input.value = initial;
+          lastSent = initial.trim();
+          input.dispatchEvent(new Event("input", { bubbles: true }));
+        }
+
+        // After the visitor pauses typing, record the final term.
+        let timer: ReturnType<typeof setTimeout>;
+        input.addEventListener("input", () => {
+          clearTimeout(timer);
+          timer = setTimeout(() => syncUrl(input.value.trim()), 1500);
+        });
+      }
+
+      init();
+    })();
+  </script>
+
   <style is:global>
     /* Tone Pagefind UI to the JO EQUIP brand. */
     .pagefind-ui {

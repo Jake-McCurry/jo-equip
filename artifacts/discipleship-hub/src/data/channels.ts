@@ -871,6 +871,8 @@ export const subTopics: SubTopic[] = [
     channelId: 'growth',
     name: 'New Life in Christ (Intermediate Discipleship)',
     description: 'Help believers live out their new life in Christ more fully.',
+    formats: ['book'],
+    bookId: 'new-life-in-christ',
     items: [
       { number: 1, title: 'Four Immediate Benefits', articleId: 'four-immediate-benefits', links: { app: 'https://app.jesusonline.com/post/22010-008-four-immediate-benefits' } },
       { number: 2, title: 'How Can You Be Sure of Your Relationship with Christ', articleId: 'how-can-you-be-sure-of-your-relationship-with-christ', links: { app: 'https://app.jesusonline.com/post/22010-015-how-can-you-be-sure-of-your-relationship-with-christ' } },

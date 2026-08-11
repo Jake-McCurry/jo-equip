@@ -10,4 +10,5 @@
 - [Sitemap lastmod hashing](sitemap-lastmod-hashing.md) — sitemaps are post-build, content-hash driven; no build-volatile content (e.g. `new Date()` in JSON-LD) may render into page HTML.
 - [Live-site verification](live-site-verification.md) — Cloudflare bot challenge blocks curl/screenshots of the prod site from the workspace; use the webFetch callback instead (it follows 301s silently).
 - [Adventure PDF extraction](adventure-pdf-extraction.md) — legacy InDesign PDFs: use `mutool stext` not pdftotext (silent glyph loss); U+FFFD ligatures repair via word whitelist; margin quotes are body duplicates.
+- [Book cover OG images](book-cover-og-images.md) — books.ts cover path feeds OG/JSON-LD; legacy books 404 there, new books need a real public/books/covers PNG plus the src/assets thumbnail.
 - [Ebook docx→PDF pipeline](ebook-docx-pipeline.md) — book PDFs build from docx via two-pass marker render; docx heading styles are inconsistent, match TOC by leading token not title text.

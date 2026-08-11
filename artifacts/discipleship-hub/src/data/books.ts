@@ -131,6 +131,12 @@ export const books: Book[] = [
     pdf: "/books/eight-great-ways-to-honor-your-husband.pdf",
   },
   {
+    id: "new-life-in-christ",
+    title: "New Life in Christ",
+    cover: "/books/covers/new-life-in-christ.png",
+    pdf: "/books/new-life-in-christ.pdf",
+  },
+  {
     id: "eight-great-ways-to-honor-your-wife",
     title: "Eight Great Ways to Honor Your Wife",
     author: "David Chadwick",

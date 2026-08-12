@@ -17,7 +17,8 @@
     "covers:build": "tsx ./src/bookCoversBuild.ts",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "book:majesty": "tsx ./src/ebookDocxBuild.ts --book=majesty",
-    "book:adventure": "tsx ./src/ebookDocxBuild.ts --book=adventure"
+    "book:adventure": "tsx ./src/ebookDocxBuild.ts --book=adventure",
+    "book:new-life": "tsx ./src/nlicBookBuild.ts"
   },
   "devDependencies": {
     "@types/node": "catalog:",

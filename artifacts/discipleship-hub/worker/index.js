@@ -78,6 +78,7 @@ const VALID_BOOK_IDS = new Set([
   "struggle-for-inner-peace",
   "extraordinary-evangelism-student-guide",
   "eight-great-ways-to-honor-your-husband",
+  "new-life-in-christ",
   "eight-great-ways-to-honor-your-wife",
   "5-steps-to-break-destructive-behavior",
   "i-want-happiness-now",

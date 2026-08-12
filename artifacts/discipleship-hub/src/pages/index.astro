@@ -1,6 +1,36 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import HomeContent from "@/components/HomeContent.astro";
+import { Picture, getImage } from "astro:assets";
+import { channels } from "@/data/channels";
+import { ArrowRight, Users2, BookOpen, Smartphone, Star } from "lucide-react";
+import evidenceImg from "@/assets/channels/evidence.jpg";
+import heroCollage from "@/assets/home-hero-collage.png";
+
+// Hero background — optimized once at build time, used as a CSS background.
+const heroBg = await getImage({
+  src: heroCollage,
+  format: "webp",
+  quality: 70,
+  width: 2172,
+});
+import growthImg from "@/assets/channels/growth.jpg";
+import churchImg from "@/assets/channels/church.jpg";
+
+const baseUrl = import.meta.env.BASE_URL;
+const join = (p: string) =>
+  (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
+
+const channelImages: Record<string, ImageMetadata> = {
+  evidence: evidenceImg,
+  growth: growthImg,
+  church: churchImg,
+};
+
+const channelImageAlts: Record<string, string> = {
+  evidence: "A gavel and scales of justice resting on old books",
+  growth: "Hands holding an open Bible",
+  church: "A congregation seated in church pews",
+};
 
 // JSON-LD structured data — Organization + WebSite. Helps search engines
 // build a knowledge panel and display the site name correctly in results.
@@ -44,6 +74,28 @@ const jsonLd = {
     },
   ],
 };
+
+interface QuickLink {
+  title: string;
+  subtitle: string;
+  href: string;
+  icon: any;
+  external?: boolean;
+}
+
+const quickLinks: QuickLink[] = [
+  { title: "Reviews", subtitle: "From Pastors and Leaders", href: join("/reviews"), icon: Star },
+  { title: "About", subtitle: "JesusOnline Ministries", href: join("/about"), icon: Users2 },
+  { title: "Beliefs", subtitle: "Statement of Faith", href: join("/beliefs"), icon: BookOpen },
+  { title: "JO APP", subtitle: "Growing in Christ", href: "https://app.jesusonline.com", icon: Smartphone, external: true },
+];
+
+const personaLinks = [
+  { title: "Pastors", href: join("/pastors") },
+  { title: "Home Church Leaders", href: join("/home-church-leaders") },
+  { title: "Chaplains", href: join("/chaplains") },
+  { title: "Missionaries", href: join("/missionaries") },
+];
 ---
 <Layout
   title="JO EQUIP | Free Discipleship & Ministry Resources"
@@ -53,5 +105,107 @@ const jsonLd = {
     <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
   </Fragment>
 
-  <HomeContent />
+  {/* Hero — eyebrow + title + tagline, per the July 2026 home refinement mockup. */}
+  <section class="relative py-10 md:py-16 px-4 text-center overflow-hidden" style="background-color:#0b3c5d;">
+    <div
+      class="pointer-events-none absolute inset-0"
+      style={`background-image:url('${heroBg.src}');background-size:cover;background-position:center;`}
+      aria-hidden="true"
+    ></div>
+    {/* Light navy wash so the white text stays readable while the collage shows through. */}
+    <div class="pointer-events-none absolute inset-0" style="background:linear-gradient(to bottom, rgba(11,60,93,0.35), rgba(11,60,93,0.25));"></div>
+
+    <div class="relative container mx-auto max-w-4xl">
+      <h1 class="text-2xl sm:text-4xl md:text-5xl leading-tight" style="color:#ffffff;font-weight:500;text-shadow:0 1px 12px rgba(11,60,93,0.6);">Reach people. Grow disciples.<br />Multiply churches.</h1>
+    </div>
+  </section>
+
+  {/* Tagline + persona links — moved below the hero image for readability (Aug 2026). */}
+  <section class="py-8 md:py-10 px-4 text-center bg-white">
+    <div class="container mx-auto max-w-4xl">
+      <p class="text-base md:text-lg max-w-3xl mx-auto leading-relaxed" style="color:#374151;">
+        Apologetics, identity-centered discipleship, and church vibrancy&mdash;united in one accessible free resource hub.
+        <a href="/equip" class="text-sm md:text-base whitespace-nowrap font-medium underline underline-offset-2" style="color:#de5b00;">Find out more</a>
+      </p>
+      {/* Persona links — the four audience landing pages, per the Aug 2026 planning note. */}
+      <p class="mt-5 text-sm md:text-base" style="color:#0b3c5d;">
+        <span class="font-medium">Explore Free Resources for</span>
+        {personaLinks.map(link => (
+          <Fragment>
+            <span aria-hidden="true" class="mx-1.5" style="color:#de5b00;">&bull;</span>
+            <a href={link.href} class="underline underline-offset-2 whitespace-nowrap hover:opacity-90" style="color:#de5b00;">{link.title}</a>
+          </Fragment>
+        ))}
+      </p>
+    </div>
+  </section>
+
+  {/* Three Categories — photo cards, straight after the hero per the mockup. */}
+  <section class="py-10 md:py-14" style="background-color:#e6f2fa;">
+    <div class="container mx-auto px-4">
+      <h2 class="sr-only">Explore the three categories</h2>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-md sm:max-w-lg lg:max-w-none mx-auto">
+        {channels.map(channel => {
+          const accent = channel.accentColor;
+          return (
+          <a href={join(`/categories/${channel.id}`)} class="group flex flex-col">
+            <h3 class="text-2xl font-semibold mb-2 group-hover:underline" style="color:#0b3c5d;">{channel.name}</h3>
+            <div
+              class="flex flex-col flex-grow bg-white border rounded overflow-hidden group-hover:shadow-lg transition-all"
+              style={`border-color:var(--color-border);border-left:4px solid ${accent};`}
+            >
+              <div style={`height:8px;background-color:${accent};`}></div>
+              <div class="relative aspect-[5/2] overflow-hidden">
+                <Picture
+                  src={channelImages[channel.id]}
+                  alt={channelImageAlts[channel.id]}
+                  widths={[480, 800]}
+                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 512px, 100vw"
+                  formats={["avif", "webp"]}
+                  quality={75}
+                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                />
+              </div>
+              <div style={`height:4px;background-color:${accent};`}></div>
+              <div class="p-6 md:p-7 flex flex-col flex-grow">
+                <p class="text-[15px] leading-snug mb-4 flex-grow" style="color:var(--color-muted-foreground);">{channel.tagline}</p>
+                <span class="inline-flex items-center justify-center w-full text-sm font-semibold text-white rounded px-4 py-2.5 mt-auto transition-opacity group-hover:opacity-90" style={`background-color:${accent};`}>
+                  Explore {channel.shortName}
+                  <ArrowRight className="w-4 h-4 ml-1.5" />
+                </span>
+              </div>
+            </div>
+          </a>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  {/* Quick links — Reviews · About · Beliefs · JO APP */}
+  <section style="background-color:#0083de;">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 divide-white/15 sm:gap-y-px lg:divide-x lg:divide-white/15">
+        {quickLinks.map(link => {
+          const Icon = link.icon;
+          return (
+            <a
+              href={link.href}
+              target={link.external ? "_blank" : undefined}
+              rel={link.external ? "noopener noreferrer" : undefined}
+              class="group flex items-center justify-start lg:justify-center gap-4 py-5 px-6 transition-colors hover:bg-white/5"
+            >
+              <div class="w-11 h-11 rounded shrink-0 flex items-center justify-center" style="background-color:rgba(255,255,255,0.18);">
+                <Icon className="w-5 h-5" style={{ color: "#ffffff" }} />
+              </div>
+              <div class="text-left">
+                <div class="text-lg md:text-xl font-semibold text-white leading-tight tracking-wide group-hover:underline" style='font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;'>{link.title}</div>
+                <div class="text-[11px] mt-1 font-medium tracking-widest uppercase" style="color:rgba(255,255,255,0.8);">{link.subtitle}</div>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </section>
 </Layout>

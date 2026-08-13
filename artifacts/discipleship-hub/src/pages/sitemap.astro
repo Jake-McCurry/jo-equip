@@ -1,0 +1,204 @@
+---
+/**
+ * HTML sitemap (SEO-014, Aug 2026) — /sitemap
+ *
+ * Built from the SAME data sources that generate the pages themselves
+ * (channels.ts, books.ts, playlists.ts, reviews.ts and the src/pages file
+ * tree), so new articles/books/playlists/pages appear here automatically on
+ * the next build and removed ones disappear — no manual list to maintain.
+ *
+ * Eligibility mirrors scripts/build-sitemaps.mjs (the XML sitemap filter):
+ *   - top-level utility pages (/search, /404, /thank-you*, /lp/*) excluded
+ *   - any page whose source carries a robots noindex meta excluded
+ *   - URLs use the canonical no-trailing-slash form
+ * build-sitemaps.mjs cross-checks every link on this page against the XML
+ * sitemap inventory after each build and fails the build on drift.
+ */
+import Layout from "@/layouts/Layout.astro";
+import { channels, subTopics } from "@/data/channels";
+import { books } from "@/data/books";
+import { playlists } from "@/data/playlists";
+import { reviewCategories } from "@/data/reviews";
+import { bcgArticles } from "@/data/bcgArticles";
+import { bibleStudyMethods } from "@/data/bibleStudyMethods";
+import { evidenceArticles } from "@/data/evidenceArticles";
+import { hasSiteArticle } from "@/data/siteArticles";
+
+const baseUrl = import.meta.env.BASE_URL;
+const join = (p: string) =>
+  p === "/" ? baseUrl : (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
+
+/* ---------- Top-level static pages, discovered from the file tree ----------
+   Raw-source glob lets us (a) skip pages that declare a robots noindex meta
+   and (b) reuse each page's own <Layout title="..."> as its link label. */
+const pageSources = import.meta.glob<string>("./*.astro", {
+  query: "?raw",
+  import: "default",
+  eager: true,
+});
+
+/* Utility routes excluded by path, mirroring build-sitemaps.mjs EXCLUDE. */
+const UTILITY = new Set(["404", "search", "sitemap"]);
+/* Audience hub pages get their own section below. */
+const AUDIENCE_SLUGS = ["pastors", "home-church-leaders", "chaplains", "missionaries", "equip"];
+
+function labelFrom(src: string, slug: string): string {
+  const m = src.match(/\btitle="([^"]+)"/);
+  const t = m?.[1]?.replace(/\s*[|·]\s*JO EQUIP\s*$/i, "").trim();
+  return t && t.length <= 60 ? t : slug.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+}
+
+const topLevel: { slug: string; label: string }[] = [];
+for (const [file, src] of Object.entries(pageSources)) {
+  const slug = file.replace(/^\.\//, "").replace(/\.astro$/, "");
+  if (slug === "index" || UTILITY.has(slug)) continue;
+  /* Skip pages that declare a robots noindex meta. Comments are stripped
+     first so an example/commented-out tag can't cause a false positive;
+     the meta match tolerates attribute order and quote style. */
+  const code = src.replace(/\{\/\*[\s\S]*?\*\/\}/g, "").replace(/<!--[\s\S]*?-->/g, "");
+  const robotsMeta = code.match(/<meta\s+[^>]*name=["']robots["'][^>]*>/i)?.[0];
+  if (robotsMeta && /content=["'][^"']*noindex/i.test(robotsMeta)) continue;
+  if (robotsMeta && !/content=/i.test(robotsMeta)) continue; // malformed → treat as ineligible, cross-check will flag
+  topLevel.push({ slug, label: labelFrom(src, slug) });
+}
+topLevel.sort((a, b) => a.label.localeCompare(b.label));
+
+const mainPages = [
+  { href: join("/"), label: "Home" },
+  { href: join("/categories"), label: "All Categories" },
+  ...topLevel.filter(p => !AUDIENCE_SLUGS.includes(p.slug)).map(p => ({ href: join(`/${p.slug}`), label: p.label })),
+];
+const audiencePages = AUDIENCE_SLUGS
+  .map(slug => topLevel.find(p => p.slug === slug))
+  .filter((p): p is { slug: string; label: string } => !!p)
+  .map(p => ({ href: join(`/${p.slug}`), label: p.label }));
+
+/* ---------- Categories → topics → articles ----------
+   Article eligibility replicates categories/[channelId]/[subId]/[articleId]
+   getStaticPaths exactly: only items whose articleId has an authored body. */
+const knownArticles = new Set([
+  ...bcgArticles.map(a => a.id),
+  ...bibleStudyMethods.map(a => a.id),
+  ...evidenceArticles.map(a => a.id),
+]);
+
+const categorySections = channels.map(channel => ({
+  name: channel.name,
+  href: join(`/categories/${channel.id}`),
+  subs: subTopics
+    .filter(s => s.channelId === channel.id)
+    .map(s => ({
+      name: s.name,
+      href: join(`/categories/${channel.id}/${s.id}`),
+      articles: (s.items ?? [])
+        .filter(item => item.articleId && (knownArticles.has(item.articleId) || hasSiteArticle(s.id, item.articleId)))
+        .map(item => ({
+          title: item.title,
+          href: join(`/categories/${channel.id}/${s.id}/${item.articleId}`),
+        })),
+    })),
+}));
+
+const bookLinks = books.map(b => ({ title: b.title, href: join(`/books/${b.id}`) }));
+const playlistLinks = playlists.map(p => ({ title: p.title, href: join(`/playlist/${p.id}`) }));
+const reviewLinks = [
+  ...reviewCategories
+    .filter(c => c.id !== "general")
+    .map(c => ({ title: c.name, href: join(`/reviews/${c.id}`) })),
+  { title: "Share a Review", href: join("/reviews/share") },
+];
+
+const totalLinks =
+  mainPages.length + audiencePages.length + bookLinks.length + playlistLinks.length + reviewLinks.length +
+  categorySections.reduce((n, c) => n + 1 + c.subs.reduce((m, s) => m + 1 + s.articles.length, 0), 0);
+---
+<Layout
+  title="HTML Sitemap | JO EQUIP"
+  description="A complete overview of JO EQUIP's free ministry resources — every category, topic, article, book, and video playlist on one page."
+>
+  <section class="py-10 md:py-14 px-4" style="background-color:#e6f2fa;">
+    <div class="container mx-auto max-w-5xl">
+      <h1 class="text-3xl md:text-4xl font-semibold" style="color:#0b3c5d;">JO EQUIP Sitemap</h1>
+      <p class="mt-3 text-[15px] md:text-base" style="color:var(--color-muted-foreground);">
+        Every page on JO EQUIP — {totalLinks} in all — organized the way the site is organized.
+      </p>
+    </div>
+  </section>
+
+  <div class="container mx-auto max-w-5xl px-4 py-10 md:py-12 flex flex-col gap-10">
+    <section>
+      <h2 class="text-xl md:text-2xl font-semibold mb-3 pb-2" style="color:#0b3c5d;border-bottom:2px solid #de5b00;">Main Pages</h2>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-1.5">
+        {mainPages.map(p => (
+          <li><a href={p.href} class="text-[15px] underline underline-offset-2 hover:opacity-80" style="color:#0b3c5d;">{p.label}</a></li>
+        ))}
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="text-xl md:text-2xl font-semibold mb-3 pb-2" style="color:#0b3c5d;border-bottom:2px solid #de5b00;">Audience Resources</h2>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-1.5">
+        {audiencePages.map(p => (
+          <li><a href={p.href} class="text-[15px] underline underline-offset-2 hover:opacity-80" style="color:#0b3c5d;">{p.label}</a></li>
+        ))}
+      </ul>
+    </section>
+
+    {categorySections.map(channel => (
+      <section>
+        <h2 class="text-xl md:text-2xl font-semibold mb-4 pb-2" style="color:#0b3c5d;border-bottom:2px solid #de5b00;">
+          <a href={channel.href} class="hover:underline">{channel.name}</a>
+        </h2>
+        <div class="flex flex-col gap-6">
+          {channel.subs.map(sub => (
+            <div>
+              <h3 class="text-base md:text-lg font-semibold mb-2" style="color:#0083de;">
+                <a href={sub.href} class="hover:underline">{sub.name}</a>
+              </h3>
+              {sub.articles.length > 0 && (
+                <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-1">
+                  {sub.articles.map(a => (
+                    <li><a href={a.href} class="text-sm underline underline-offset-2 hover:opacity-80" style="color:#374151;">{a.title}</a></li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+    ))}
+
+    <section>
+      <h2 class="text-xl md:text-2xl font-semibold mb-3 pb-2" style="color:#0b3c5d;border-bottom:2px solid #de5b00;">
+        <a href={join("/books")} class="hover:underline">Books</a>
+      </h2>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-1.5">
+        {bookLinks.map(b => (
+          <li><a href={b.href} class="text-[15px] underline underline-offset-2 hover:opacity-80" style="color:#0b3c5d;">{b.title}</a></li>
+        ))}
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="text-xl md:text-2xl font-semibold mb-3 pb-2" style="color:#0b3c5d;border-bottom:2px solid #de5b00;">
+        <a href={join("/playlists")} class="hover:underline">Video Playlists</a>
+      </h2>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-1.5">
+        {playlistLinks.map(p => (
+          <li><a href={p.href} class="text-[15px] underline underline-offset-2 hover:opacity-80" style="color:#0b3c5d;">{p.title}</a></li>
+        ))}
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="text-xl md:text-2xl font-semibold mb-3 pb-2" style="color:#0b3c5d;border-bottom:2px solid #de5b00;">
+        <a href={join("/reviews")} class="hover:underline">Reviews</a>
+      </h2>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-1.5">
+        {reviewLinks.map(r => (
+          <li><a href={r.href} class="text-[15px] underline underline-offset-2 hover:opacity-80" style="color:#0b3c5d;">{r.title}</a></li>
+        ))}
+      </ul>
+    </section>
+  </div>
+</Layout>

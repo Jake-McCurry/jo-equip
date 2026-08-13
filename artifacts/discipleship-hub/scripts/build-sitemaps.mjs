@@ -337,6 +337,44 @@ for (const stale of ["sitemap-0.xml"]) {
 
 writeFileSync(MANIFEST_PATH, JSON.stringify(manifest, null, 2) + "\n");
 
+/* ---------- HTML sitemap cross-check (SEO-014) ----------
+   /sitemap is generated from the app's content data (src/pages/sitemap.astro).
+   Verify every link it emits is part of the XML sitemap inventory — if the
+   two drift (e.g. /sitemap lists a page that is noindex, redirected, or
+   canonicalized elsewhere), fail the build so it gets fixed, never shipped. */
+const htmlSitemapFile = join(DIST, "sitemap", "index.html");
+if (existsSync(htmlSitemapFile)) {
+  const doc = readFileSync(htmlSitemapFile, "utf8");
+  const main = doc.match(/<main[\s\S]*<\/main>/i)?.[0] ?? doc;
+  /* Strip the configured base prefix (BASE_PATH builds serve under e.g.
+     /artifacts/discipleship-hub) so hrefs compare against base-free XML
+     inventory paths regardless of deployment target. */
+  const BASE = (process.env.BASE_PATH ?? "/").replace(/\/$/, "");
+  const stripBase = h => {
+    if (BASE && h.startsWith(BASE)) h = h.slice(BASE.length) || "/";
+    return h;
+  };
+  const links = new Set(
+    [...main.matchAll(/<a[^>]+href="(\/[^"]*)"/g)]
+      .map(m => stripBase(m[1]))
+      .filter(h => !h.startsWith("/_") && !h.startsWith("/articles/") && !h.startsWith("/books/covers/")),
+  );
+  const inventory = new Set(pages.map(p => (p.path === "/" ? "/" : p.path)));
+  const bad = [...links].filter(h => !inventory.has(h === "/" ? "/" : h.replace(/\/$/, "")));
+  if (bad.length) {
+    console.error(`HTML sitemap drift: ${bad.length} link(s) on /sitemap are not in the XML sitemap inventory:\n  ${bad.slice(0, 20).join("\n  ")}`);
+    process.exit(1);
+  }
+  const missing = [...inventory].filter(p => p !== "/sitemap" && !links.has(p) && !(p === "/" && links.has("/")));
+  if (missing.length) {
+    console.error(`HTML sitemap incomplete: ${missing.length} indexable URL(s) not listed on /sitemap:\n  ${missing.slice(0, 20).join("\n  ")}`);
+    process.exit(1);
+  }
+  console.log(`HTML sitemap check: ${links.size} links on /sitemap, all present in XML inventory${missing.length ? `; ${missing.length} XML URL(s) unlisted` : ""}`);
+} else {
+  console.warn("HTML sitemap check: dist/sitemap/index.html not found — skipped");
+}
+
 console.log(
   `sitemaps: pages=${groups.pages.length} channels=${groups.channels.length} books=${groups.books.length} playlists=${groups.playlists.length} videoPages=${videosByUrl.size} (total URLs ${pages.length})`,
 );

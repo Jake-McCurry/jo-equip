@@ -3753,7 +3753,7 @@
     "wp_id": 13877,
     "wp_slug": "32455-how-to-be-filled-with-the-holy-spirit",
     "method": "exact",
-    "frozen": "source post unpublished from apicontent WP (401) as of Aug 2026; no public replacement found \u2014 old Knowing God / Firmly Established series retired in catalog reorg",
+    "frozen": "source post unpublished from apicontent WP (401) as of Aug 2026; no public replacement found — old Knowing God / Firmly Established series retired in catalog reorg",
     "title": "How to Be Filled with the Holy Spirit"
   },
   "32456-live-in-harmony-with-god": {
@@ -3824,7 +3824,9 @@
   "32527-memorizing-gods-word": {
     "wp_id": 7540,
     "wp_slug": "32527-memorizing-gods-word",
-    "method": "exact"
+    "method": "exact",
+    "localHtml": "local-articles/32527-memorizing-gods-word.html",
+    "title": "Memorizing God’s Word"
   },
   "32528-meditating-on-gods-word": {
     "wp_id": 7543,
@@ -4935,7 +4937,7 @@
     "wp_id": 2526,
     "wp_slug": "51011-is-jesus-the-only-way-to-god",
     "method": "exact",
-    "frozen": "source post unpublished from apicontent WP (401) as of Aug 2026; no public replacement found \u2014 old Knowing God / Firmly Established series retired in catalog reorg",
+    "frozen": "source post unpublished from apicontent WP (401) as of Aug 2026; no public replacement found — old Knowing God / Firmly Established series retired in catalog reorg",
     "title": "Is Jesus the Only Way to God?"
   },
   "51012-was-there-a-jesus-conspiracy": {

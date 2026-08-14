@@ -62,6 +62,11 @@ type SlugEntry = {
    *  has no entry for the slug (used to keep the manifest row alive). */
   frozen?: string;
   title?: string;
+  /** Ministry-supplied replacement content (path under scripts/data/,
+   *  HTML fragment). When set, the PDF renders from this file instead of
+   *  fetching WP — used when JOM hands us an updated doc directly and the
+   *  WP source is stale. `title` is required alongside. */
+  localHtml?: string;
 };
 type WpPost = {
   id: number;
@@ -500,8 +505,10 @@ async function buildOne(
 ): Promise<{ ok: boolean; skipped: boolean; bytes?: number; error?: string; title?: string }> {
   try {
     /* Frozen entries: upstream post is gone (unpublished/private on WP).
-       Serve the existing PDF as-is and keep its manifest row; never fetch. */
-    if (entry.frozen) {
+       Serve the existing PDF as-is and keep its manifest row; never fetch.
+       Exception: a `localHtml` replacement supersedes `frozen` — ministry
+       handed us new content directly, so render from it (branch below). */
+    if (entry.frozen && !entry.localHtml) {
       const outPath = resolve(OUT_DIR, `${appSlug}.pdf`);
       if (!existsSync(outPath)) {
         return { ok: false, skipped: false, error: `frozen (${entry.frozen}) and no local PDF to keep` };
@@ -517,20 +524,39 @@ async function buildOne(
       return { ok: true, skipped: true, bytes, title: cache[appSlug]!.title };
     }
 
-    const post = await fetchPost(entry.wp_id);
-    if (!post) return { ok: false, skipped: false, error: `wp post ${entry.wp_id} not found` };
-
+    let displayTitle: string;
+    let bodyHtml: string;
+    let modified: string;
     const outPath = resolve(OUT_DIR, `${appSlug}.pdf`);
     const cached = cache[appSlug];
-    if (!FORCE && cached && cached.modified === post.modified && cached.wp_id === entry.wp_id && existsSync(outPath)) {
-      return { ok: true, skipped: true, bytes: cached.bytes, title: cached.title };
-    }
 
-    const displayTitle = stripLeadingNumber(decodeEntities(post.title.rendered));
-    const bodyHtml = perSlugContentFix(
-      appSlug,
-      sanitizeHtml(await inlineEndnotes(rewriteWatchVideo(post.content.rendered, appSlug))),
-    );
+    if (entry.localHtml) {
+      /* Local replacement content (ministry-supplied doc, WP source stale). */
+      const localPath = resolve(process.cwd(), "data", entry.localHtml);
+      if (!existsSync(localPath)) {
+        return { ok: false, skipped: false, error: `localHtml file missing: ${entry.localHtml}` };
+      }
+      modified = `local:${statSync(localPath).mtime.toISOString()}`;
+      if (!FORCE && cached && cached.modified === modified && existsSync(outPath)) {
+        return { ok: true, skipped: true, bytes: cached.bytes, title: cached.title };
+      }
+      displayTitle = entry.title ?? appSlug;
+      bodyHtml = sanitizeHtml(readFileSync(localPath, "utf8"));
+    } else {
+      const post = await fetchPost(entry.wp_id);
+      if (!post) return { ok: false, skipped: false, error: `wp post ${entry.wp_id} not found` };
+
+      if (!FORCE && cached && cached.modified === post.modified && cached.wp_id === entry.wp_id && existsSync(outPath)) {
+        return { ok: true, skipped: true, bytes: cached.bytes, title: cached.title };
+      }
+
+      modified = post.modified;
+      displayTitle = stripLeadingNumber(decodeEntities(post.title.rendered));
+      bodyHtml = perSlugContentFix(
+        appSlug,
+        sanitizeHtml(await inlineEndnotes(rewriteWatchVideo(post.content.rendered, appSlug))),
+      );
+    }
     const html = renderTemplate({
       title: displayTitle,
       bodyHtml,
@@ -584,7 +610,7 @@ async function buildOne(
     }
 
     const bytes = statSync(outPath).size;
-    cache[appSlug] = { wp_id: entry.wp_id, modified: post.modified, bytes, title: displayTitle };
+    cache[appSlug] = { wp_id: entry.wp_id, modified, bytes, title: displayTitle };
     return { ok: true, skipped: false, bytes, title: displayTitle };
   } catch (e) {
     return { ok: false, skipped: false, error: (e as Error).message };

@@ -6,6 +6,7 @@
 - [Long-running generation jobs](long-running-generation-jobs.md) — background bash jobs get reaped; run multi-minute batch jobs as a temporary console workflow, keep them resumable.
 - [Article id collisions](article-id-collisions.md) — distinct app slugs can sanitize to the same article id in one sub-topic; generator dedupes, shared articleId is correct when content matches.
 - [Cross-batch article links](cross-batch-article-links.md) — generated article JSONs keep external app links to later-batch articles; re-normalize all JSONs after each generation batch.
+- [Local article overrides](local-article-overrides.md) — ministry-supplied docx replaces an article: update sub-topic JSON blocks AND set `localHtml` in slug-mapping (supersedes frozen, blocks WP refetch).
 - [WP article catalog drift](wp-article-catalog-drift.md) — JOM WP catalog has numbering drift & books the JN survey skips; map slugs by CONTENT not number; for missing books attach the same-book `38xxx-overview` PDF via links.pdf.
 - [Sitemap lastmod hashing](sitemap-lastmod-hashing.md) — sitemaps are post-build, content-hash driven; no build-volatile content (e.g. `new Date()` in JSON-LD) may render into page HTML.
 - [Live-site verification](live-site-verification.md) — Cloudflare bot challenge blocks curl/screenshots of the prod site from the workspace; use the webFetch callback instead (it follows 301s silently).

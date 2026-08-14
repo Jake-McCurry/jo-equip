@@ -1,0 +1,194 @@
+"# SEO Task: SEO-015
+## Task Name: Update Meta Titles & Meta Descriptions for Audience Resource Hub Pages
+
+You are acting as a Senior Technical SEO Engineer and Full-Stack Web Developer.
+
+Before making any changes, thoroughly analyze the website architecture, metadata generation system, routing structure, layout components, page-level metadata implementation, structured data implementation, and framework-specific SEO configuration.
+
+Do not assume the framework being used. First identify how the application generates page metadata (Title, Meta Description, Canonical, Open Graph, Twitter Metadata, Structured Data, etc.) and determine the appropriate implementation approach based on the existing project architecture.
+
+---
+
+## Objective
+
+Update the Meta Title and Meta Description for the identified audience resource hub pages using the SEO-approved metadata provided below.
+
+Replace the existing Meta Title and Meta Description only for the specified pages while preserving the existing metadata architecture.
+
+If the application automatically derives Open Graph metadata, Twitter metadata, or Structured Data from the page metadata, allow those values to update naturally through the existing implementation.
+
+Do not introduce duplicate, conflicting, or independently managed metadata.
+
+The implementation should remain scalable, maintainable, and compatible with future deployments.
+
+---
+
+## Requirements
+
+### 1. Analyze Existing Metadata Architecture
+
+Before making any changes:
+
+- Determine how page metadata is generated.
+- Identify whether metadata is managed:
+  - Globally
+  - Per page
+  - Through a metadata configuration
+  - Through framework metadata APIs
+  - Dynamically from a CMS or database
+- Identify how Open Graph metadata is generated.
+- Identify how Twitter metadata is generated.
+- Identify how Structured Data is generated.
+- Determine whether these components inherit values from the page metadata or are independently configured.
+- Review the current metadata implementation for each target page.
+- Identify any shared metadata components that may affect multiple pages.
+
+Document the existing implementation before making any modifications.
+
+---
+
+### 2. Update Meta Titles & Meta Descriptions
+
+Replace the existing Meta Title and Meta Description for the following pages using the approved SEO copy.
+
+| URL | New Meta Title | New Meta Description |
+|------|----------------|----------------------|
+| https://equip.jesusonline.com/pastors | **Pastor Resources - Free Church Discipleship Resources \| JO EQUIP** | **Explore free pastor resources for sermon preparation, Bible study, pastoral care, counseling, leadership development, and discipleship ministry.** |
+| https://equip.jesusonline.com/home-church-leaders | **Home Church Resources - Free Discipleship & Leadership Resources \| JO EQUIP** | **Explore free home church resources for discipleship, leadership, ministry, training, and growth, helping home church leaders form mature, Christlike disciples.** |
+| https://equip.jesusonline.com/chaplains | **Chaplain Resources - Free Spiritual Care & Ministry Resources \| JO EQUIP** | **Explore free chaplain resources for spiritual care, ministry, discipleship, and support in hospitals, military settings, hospice, prisons, and other care settings.** |
+| https://equip.jesusonline.com/missionaries | **Missionary Resources - Free Training, Discipleship & Ministry Resources \| JO EQUIP** | **Explore free missionary resources for training, discipleship, Bible study, leadership, church planting, and disciple making across cultures and among the unreached.** |
+
+Use the approved metadata exactly as provided unless a technical limitation requires a minor formatting adjustment.
+
+If any adjustment is required, document the reason before implementation.
+
+---
+
+### 3. Preserve Metadata Architecture
+
+Update only the Meta Title and Meta Description for the specified pages.
+
+Do not modify unrelated SEO components, including:
+
+- Canonical URLs
+- Robots directives
+- Alternate language tags (if implemented)
+- Verification tags
+- Other unrelated SEO metadata
+
+If the application automatically generates any of the following from the page metadata:
+
+- Open Graph metadata
+- Twitter metadata
+- Structured Data
+
+allow those values to update naturally using the existing metadata architecture.
+
+Do not create duplicate metadata.
+
+Do not create conflicting metadata.
+
+Do not introduce separate manually managed Open Graph, Twitter, or Structured Data values unless the existing architecture explicitly requires them.
+
+If any Structured Data contains hardcoded page titles or descriptions, update those values only when necessary to maintain consistency with the new page metadata.
+
+Preserve the existing metadata generation architecture.
+
+---
+
+### 4. Metadata Quality Validation
+
+Before publishing the changes verify that:
+
+- Every page has exactly one Meta Title.
+- Every page has exactly one Meta Description.
+- Titles accurately represent page intent.
+- Descriptions accurately summarize page content.
+- No duplicate Meta Titles exist across the updated pages.
+- No duplicate Meta Descriptions exist across the updated pages.
+- Metadata is correctly rendered within the HTML `<head>`.
+
+---
+
+### 5. Code Quality
+
+Follow the existing project architecture.
+
+Implement the metadata using the existing metadata management system.
+
+Avoid hardcoding values where centralized metadata configuration already exists.
+
+Keep the implementation:
+
+- Modular
+- Scalable
+- Maintainable
+- Compatible with future deployments
+
+Do not modify unrelated functionality.
+
+---
+
+## Validation Requirements
+
+After implementation verify that:
+
+✓ Every specified page displays the updated Meta Title.
+
+✓ Every specified page displays the updated Meta Description.
+
+✓ The updated metadata is correctly rendered within the HTML `<head>`.
+
+✓ If Open Graph metadata is automatically generated, it remains consistent with the updated page metadata.
+
+✓ If Twitter metadata is automatically generated, it remains consistent with the updated page metadata.
+
+✓ Structured Data remains valid and, where applicable, reflects the updated page title and description.
+
+✓ No duplicate Meta Titles exist.
+
+✓ No duplicate Meta Descriptions exist.
+
+✓ No duplicate Open Graph metadata exists.
+
+✓ No duplicate Twitter metadata exists.
+
+✓ No duplicate Structured Data is introduced.
+
+✓ Canonical URLs remain unchanged.
+
+✓ Robots directives remain unchanged.
+
+✓ Verification tags remain unchanged.
+
+✓ The implementation is compatible with the existing framework.
+
+✓ The implementation remains compatible with future deployments.
+
+---
+
+## Deliverables
+
+After completing the implementation provide:
+
+1. Summary of the metadata architecture analysis.
+
+2. The implementation approach used.
+
+3. The files modified.
+
+4. Confirmation that all specified pages have been updated with the approved Meta Titles and Meta Descriptions.
+
+5. Confirmation that the existing metadata architecture has been preserved.
+
+6. Confirmation that any Open Graph, Twitter, or Structured Data updates occurred only through the application's existing metadata generation system or were updated solely to maintain metadata consistency.
+
+7. Confirmation that Canonical URLs, Robots directives, Verification tags, and other unrelated SEO metadata remain unchanged.
+
+8. Confirmation that the implementation is compatible with future deployments.
+
+9. Report any metadata inconsistencies or additional SEO opportunities discovered during the implementation without modifying them unless explicitly instructed.
+
+Do not make assumptions.
+
+Analyze the existing metadata architecture first, identify how page metadata is generated, determine how Open Graph, Twitter, and Structured Data inherit metadata values, and then implement the approved Meta Titles and Meta Descriptions while preserving the existing metadata architecture and maintaining a clean, scalable, and future-proof SEO implementation."

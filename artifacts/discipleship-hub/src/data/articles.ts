@@ -779,7 +779,7 @@ export const articlePdfs: Record<string, ArticlePdfMeta> = {
   "32524-reading-gods-word": { title: "Reading God’s Word", bytes: 135763, modified: "2020-01-31T20:52:46" },
   "32525-hearing-gods-word": { title: "Hearing God’s Word", bytes: 116580, modified: "2020-01-31T20:52:46" },
   "32526-studying-gods-word": { title: "Studying God’s Word", bytes: 145987, modified: "2020-02-25T20:46:09" },
-  "32527-memorizing-gods-word": { title: "Memorizing God’s Word", bytes: 127436, modified: "2020-02-26T23:52:21" },
+  "32527-memorizing-gods-word": { title: "Memorizing God’s Word", bytes: 128598, modified: "local:2026-08-13T22:48:21.352Z" },
   "32528-meditating-on-gods-word": { title: "Meditating on God’s Word", bytes: 125053, modified: "2020-03-20T19:08:42" },
   "32530-christs-visitation": { title: "Christ’s Incarnation", bytes: 110920, modified: "2020-02-06T02:59:42" },
   "32540-divine-flashes-of-insight": { title: "Divine Flashes of Insight", bytes: 110823, modified: "2020-01-31T23:10:01" },

@@ -1,0 +1,369 @@
+"# SEO Task: SEO-014
+## Task Name: Create Dynamic HTML Sitemap for JO EQUIP
+
+You are acting as a Senior Technical SEO Engineer and Full-Stack Web Developer.
+
+Create a dedicated, crawlable HTML sitemap for the JO EQUIP website:
+
+https://equip.jesusonline.com/
+
+The HTML sitemap must provide users and search-engine crawlers with a clear, organized overview of the website's important publicly accessible pages.
+
+The implementation must be dynamic.
+
+If a new indexable page is added to the website in the future, the page should automatically become eligible for inclusion in the HTML sitemap without requiring manual modification of the sitemap page.
+
+Do not create a manually maintained static list of URLs.
+
+---
+
+# Objective
+
+Create a dedicated HTML sitemap page at:
+
+https://equip.jesusonline.com/sitemap
+
+The page should:
+
+- Provide a clear overview of the website's important indexable pages.
+- Help users discover website content.
+- Improve internal linking and crawlability.
+- Reflect the site's actual URL hierarchy.
+- Automatically include newly published eligible pages.
+- Automatically remove pages that are no longer eligible.
+- Avoid listing URLs that should not be indexed.
+- Use the website's existing routing/content architecture wherever possible.
+- Remain scalable as the website grows.
+
+---
+
+# 1. Analyze Existing Website Architecture
+
+Before making changes, thoroughly inspect:
+
+- Application framework.
+- Routing structure.
+- Content/data architecture.
+- Static pages.
+- Dynamic pages.
+- Category pages.
+- Channel pages.
+- Article/content pages.
+- Book pages.
+- Playlist pages.
+- Audience-specific resource pages.
+- Review pages.
+- Any other publicly accessible content types.
+- Existing XML Sitemap architecture.
+- Existing sitemap generation logic.
+- Canonical URL implementation.
+- Robots directives.
+- Noindex implementation.
+- Internal navigation structure.
+
+Determine how the application knows which pages currently exist.
+
+Do not assume that URLs should be collected by crawling the rendered website.
+
+Prefer using the application's existing route/content data source or sitemap-generation source of truth.
+
+---
+
+# 2. Create the HTML Sitemap Page
+
+Create:
+
+https://equip.jesusonline.com/sitemap
+
+The page should be accessible through normal HTTP navigation and return:
+
+HTTP 200
+
+The page should contain a clear H1 such as:
+
+HTML Sitemap
+
+or:
+
+JO EQUIP Sitemap
+
+Use the wording that best fits the existing website's content and UI style.
+
+---
+
+# 3. Organize URLs by Website Hierarchy
+
+Do not display one giant unstructured list of URLs.
+
+Organize the HTML sitemap logically based on the actual website architecture.
+
+Potential sections may include:
+
+## Main Pages
+
+- Home
+- About
+- Beliefs
+- Newsletter
+- Reviews
+- Listen
+- etc.
+
+## Audience Resources
+
+- Pastors
+- Home Church Leaders
+- Chaplains
+- Missionaries
+- JO EQUIP
+
+## Channels / Categories
+
+- Evidence
+- Growth
+- Church
+
+## Articles / Resources
+
+Organize relevant content under the appropriate channel/category hierarchy.
+
+## Books
+
+List available book/resource pages.
+
+## Playlists
+
+List available playlist pages.
+
+## Other Public Resources
+
+Include additional important indexable page types discovered during the architecture analysis.
+
+Do not blindly use these categories if the actual site structure differs.
+
+First analyze the existing architecture and then organize the HTML sitemap accordingly.
+
+---
+
+# 4. Use Dynamic Data
+
+The HTML sitemap must NOT contain manually hardcoded URLs.
+
+Use the existing application's source of truth wherever possible.
+
+Preferred data sources:
+
+1. Existing route/content configuration
+2. CMS/database/content collections
+3. Existing XML Sitemap generation data
+4. Existing page/resource data structures
+
+Avoid scraping the live website to generate the sitemap if the application already knows its own routes and content.
+
+Preferred architecture:
+
+Application Content / Route Data
+        ↓
+Eligibility Filter
+        ↓
+URL Normalization
+        ↓
+Hierarchy / Categorization
+        ↓
+Dynamic HTML Sitemap
+        ↓
+/sitemap
+
+---
+
+# 5. Automatic New Page Discovery
+
+The most important requirement is future automation.
+
+When a new page is added to the website, the HTML sitemap should automatically identify and include it if it meets all sitemap eligibility requirements.
+
+Example:
+
+New article added:
+
+/channels/growth/new-article
+
+The system should automatically make it available in the appropriate HTML sitemap section.
+
+No developer should need to manually edit:
+
+/sitemap
+
+to add:
+
+/channels/growth/new-article
+
+The same principle must apply to:
+
+- New articles
+- New books
+- New playlists
+- New channel/category pages
+- New audience resource pages
+- Other eligible public content types
+
+---
+
+# 6. Automatically Remove Ineligible Pages
+
+The HTML sitemap must automatically exclude or remove pages that become ineligible.
+
+For example, do not include pages that:
+
+- Return HTTP 3xx
+- Return HTTP 4xx
+- Return HTTP 5xx
+- Are deleted
+- Are unpublished
+- Have `noindex`
+- Are blocked by robots.txt
+- Have an invalid canonical
+- Canonicalize to a different URL
+- Are duplicate URLs
+- Are private/internal application routes
+
+The sitemap should always reflect the current eligible URL inventory.
+
+---
+
+# 7. Canonical URL Validation
+
+Before including a URL, validate that:
+
+- The page returns HTTP 200.
+- The page is publicly accessible.
+- The page is indexable.
+- The page is not `noindex`.
+- The page is not blocked by robots.txt.
+- The page has a valid canonical URL.
+- The canonical URL represents the same page.
+- The URL follows the website's established canonical format.
+
+Important:
+
+Only include the preferred canonical URL in the HTML sitemap.
+
+For example, if the site's canonical convention is:
+
+https://equip.jesusonline.com/channels
+
+do not generate:
+
+https://equip.jesusonline.com/channels/
+
+unless that is the actual canonical version.
+
+Do not create URL variations.
+
+---
+
+# 8. URL Normalization
+
+The HTML sitemap must prevent duplicate URLs caused by:
+
+- Trailing slash differences
+- Query parameters
+- URL fragments
+- Duplicate paths
+- Alternate URL formats
+- HTTP vs HTTPS
+- Hostname variations
+- Tracking parameters
+
+For example, these should not become separate HTML sitemap entries:
+
+https://equip.jesusonline.com/channels
+
+https://equip.jesusonline.com/channels/
+
+https://equip.jesusonline.com/channels?utm_source=test
+
+Use the site's canonical URL as the single sitemap URL.
+
+---
+
+# 9. Exclude Non-SEO / Utility URLs
+
+Do not include private, utility, backend, or user-specific URLs such as:
+
+- /admin/
+- /dashboard/
+- /account/
+- /settings/
+- /api/
+- /config/
+- /utils/
+- /checkout/
+- /cart/
+- /login/
+- /register/
+
+Also exclude:
+
+- API endpoints
+- Internal application routes
+- Authentication pages where inappropriate
+- Search-result URLs
+- Filter URLs
+- Tracking URLs
+- Session-specific URLs
+- Other non-indexable utility URLs
+
+Analyze the actual application architecture and exclude any additional routes that are not intended for organic search.
+
+---
+
+# 10. Exclude Noindex Pages
+
+The HTML sitemap must not include pages containing:
+
+<meta name=""robots"" content=""noindex"">
+
+or equivalent framework-level noindex directives.
+
+If a page is changed to `noindex` in the future, it should automatically disappear from the HTML sitemap.
+
+Do not maintain a separate manual noindex exclusion list unless required by the architecture.
+
+---
+
+# 11. Exclude Redirected URLs
+
+Do not include URLs that redirect to another page.
+
+For example:
+
+Old URL
+→ 301
+→ Active URL
+
+Only the final active/canonical URL should appear in the HTML sitemap.
+
+The HTML sitemap must always point directly to the final destination.
+
+---
+
+# 12. HTML Sitemap Internal Linking
+
+Every URL included in the HTML sitemap must be represented as a standard crawlable HTML `<a href="""">` link.
+
+Do not rely on:
+
+- JavaScript-only navigation
+- Buttons
+- Click handlers
+- Form submissions
+- Hidden links
+- Dynamically generated non-crawlable elements
+
+Preferred structure:
+
+```html
+<a href=""/channels/growth/example-page"">
+    Example Page
+</a>"

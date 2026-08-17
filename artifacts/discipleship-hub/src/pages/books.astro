@@ -130,26 +130,11 @@ const booksJsonLd = {
     </div>
   </div>
 
-  <script is:inline define:vars={{ signupHref: join("/books-sign-up") }}>
+  <script is:inline>
     (function () {
-      // Consent flag set by the /books-sign-up page after Mailchimp confirms
-      // the signup (also by /books-thank-you). Never stores the email itself.
-      const STORAGE_KEY = "jo_equip_subscribed_v1";
-      const LEGACY_KEY = "jo_equip_email_v1";
-
-      // Migrate visitors who have the old key (which stored their raw email).
-      // Promote to the new boolean flag and erase the sensitive value.
-      try {
-        if (localStorage.getItem(LEGACY_KEY)) {
-          localStorage.setItem(STORAGE_KEY, "1");
-          localStorage.removeItem(LEGACY_KEY);
-        }
-      } catch (_e) { /* ignore */ }
-
-      function hasConsent() {
-        try { return localStorage.getItem(STORAGE_KEY) === "1"; }
-        catch (_e) { return false; }
-      }
+      /* Email capture removed (Aug 2026): books are free to download with no
+         sign-up. The capture system is preserved in src/retired-pages/ in
+         case it comes back. */
 
       // Open the book PDF in a new tab so visitors can read it in the browser
       // and download it themselves if they want. `allowSameTabFallback` is
@@ -172,15 +157,10 @@ const booksJsonLd = {
         }
       }
 
-      // Shared entry point: subscribed visitors open the PDF directly; new
-      // visitors go to the sign-up page (replaces the old email-gate modal).
+      // Shared entry point: every visitor opens the PDF directly.
       function requestBook(url, title, isDeepLink) {
         if (!url) return;
-        if (hasConsent()) {
-          openBook(url, !!isDeepLink, title);
-        } else {
-          window.location.href = signupHref;
-        }
+        openBook(url, !!isDeepLink, title);
       }
 
       document.querySelectorAll(".book-download-btn").forEach(function (btn) {

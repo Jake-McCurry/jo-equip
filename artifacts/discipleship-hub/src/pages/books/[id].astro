@@ -14,7 +14,7 @@ import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
    2. Provide a clean per-book Book JSON-LD entity that Google can index
       independently (in addition to the ItemList on /books).
    The download button on this page is just an anchor that links to
-   /books?download=<id>, reusing the existing sign-up/consent JS on the books
+   /books?download=<id>, reusing the shared open/tracking JS on the books
    index page — no JS duplication. */
 export function getStaticPaths() {
   return books.map(book => ({ params: { id: book.id }, props: { book } }));
@@ -119,9 +119,8 @@ const bookJsonLd = {
           and share with your church, small group, or ministry team.
         </p>
 
-        {/* Read CTA — links to /books?download=<id>, which the existing
-            consent JS on /books picks up and auto-opens the PDF in a new tab
-            (or sends new visitors to /books-sign-up). */}
+        {/* Read CTA — links to /books?download=<id>, which the shared JS on
+            /books picks up and auto-opens the PDF in a new tab. */}
         <a
           href={join(`/books?download=${book.id}`)}
           class="inline-flex items-center gap-2 px-6 py-3 rounded font-semibold text-white text-base transition-colors hover:opacity-90"

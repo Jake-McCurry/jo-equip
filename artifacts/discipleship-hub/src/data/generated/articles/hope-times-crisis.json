@@ -9,7 +9,7 @@
     "blocks": [
       {
         "type": "p",
-        "html": "<a href=\"/playlist/hope-in-times-of-crisis?play=cIATt88b_MM\">Watch the summary video</a>"
+        "html": "<a href=\"/video/cIATt88b_MM\">Watch the summary video</a>"
       },
       {
         "type": "p",
@@ -279,7 +279,7 @@
       },
       {
         "type": "p",
-        "html": "<a href=\"/playlist/hope-in-times-of-crisis?play=cIATt88b_MM\">Watch the summary video</a>"
+        "html": "<a href=\"/video/cIATt88b_MM\">Watch the summary video</a>"
       }
     ]
   },

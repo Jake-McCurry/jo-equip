@@ -1,0 +1,248 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { ListVideo, ChevronLeft, Play, Share2, Copy, Check } from "lucide-react";
+import { getAllCanonicalVideos, getVideoSlug } from "@/data/playlists";
+import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
+
+export function getStaticPaths() {
+  const videos = getAllCanonicalVideos();
+  return videos.map(v => ({ params: { slug: v.slug }, props: { video: v } }));
+}
+
+const { video } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
+const join = (p: string) =>
+  (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
+
+const SITE = "https://equip.jesusonline.com";
+const canonicalUrl = `${SITE}/video/${video.slug}`;
+
+const pageTitle = `${video.title} · JO EQUIP`;
+const pageDesc = `Watch "${video.title}" on JO EQUIP. Part of the ${video.primaryPlaylist.title} series from JesusOnline Ministries.`;
+const ogImage = `https://i.ytimg.com/vi/${video.videoId}/hqdefault.jpg`;
+
+const videoJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "@id": `${canonicalUrl}#video`,
+  "url": canonicalUrl,
+  "name": video.title,
+  "description": pageDesc,
+  "thumbnailUrl": [
+    `https://i.ytimg.com/vi/${video.videoId}/hqdefault.jpg`,
+    `https://i.ytimg.com/vi/${video.videoId}/maxresdefault.jpg`,
+  ],
+  "contentUrl": `https://www.youtube.com/watch?v=${video.videoId}`,
+  "embedUrl": `https://www.youtube-nocookie.com/embed/${video.videoId}`,
+  "publisher": { "@id": "https://jesusonlineministries.org/#org" },
+  "inLanguage": "en",
+  "isFamilyFriendly": true,
+};
+
+const otherVideos = video.primaryPlaylist.videos.filter(v => v.videoId !== video.videoId);
+
+// Helper for share
+const shareText = `Watch "${video.title}" on JO EQUIP`;
+---
+<Layout title={pageTitle} description={pageDesc} image={ogImage} imageAlt={video.title} ogType="video.other">
+  <Fragment slot="head">
+    <BreadcrumbsLd items={[
+      { name: "Home", url: "/" },
+      { name: "Playlists", url: "/playlists" },
+      { name: video.primaryPlaylist.title, url: `/playlist/${video.primaryPlaylist.id}` },
+      { name: video.title, url: `/video/${video.slug}` },
+    ]} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(videoJsonLd)} />
+  </Fragment>
+
+  <div class="container mx-auto px-4 py-8 md:py-10 max-w-6xl">
+    <a
+      href={join(`/playlist/${video.primaryPlaylist.id}`)}
+      class="inline-flex items-center gap-1.5 text-sm font-medium mb-6 transition-colors hover:underline focus:outline-none focus-visible:underline"
+      style="color:#0083de;"
+    >
+      <ChevronLeft className="w-4 h-4" />
+      Part of: {video.primaryPlaylist.title}
+    </a>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 xl:gap-12 items-start">
+      {/* Main Video Section */}
+      <div class="lg:col-span-2">
+        <div class="bg-black w-full aspect-video rounded-lg overflow-hidden shadow-md mb-6 relative">
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${video.videoId}?rel=0&modestbranding=1&playsinline=1`}
+            title={video.title}
+            class="absolute inset-0 w-full h-full border-0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+            referrerpolicy="strict-origin-when-cross-origin"
+          ></iframe>
+        </div>
+
+        <h1 class="text-2xl md:text-3xl font-semibold mb-4 leading-tight" style="color:#0b3c5d;">
+          {video.title}
+        </h1>
+
+        <div class="flex flex-wrap items-center justify-between gap-4 py-4 border-t border-b" style="border-color:var(--color-border);">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full flex items-center justify-center bg-slate-100" style="background-color:rgba(0,131,222,0.1);">
+              <ListVideo className="w-5 h-5" style={{ color: "#0083de" }} />
+            </div>
+            <div>
+              <p class="text-xs font-semibold tracking-wider uppercase" style="color:var(--color-muted-foreground);">Series</p>
+              <a href={join(`/playlist/${video.primaryPlaylist.id}`)} class="text-sm font-medium hover:underline focus:outline-none" style="color:#0083de;">
+                {video.primaryPlaylist.title}
+              </a>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <button
+              id="share-btn"
+              type="button"
+              class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded border transition-colors hover:bg-slate-50 focus:outline-none focus-visible:ring-2"
+              style="border-color:var(--color-border); color:#0b3c5d;"
+              data-url={canonicalUrl}
+              data-title={shareText}
+            >
+              <Share2 className="w-4 h-4" />
+              <span>Share</span>
+            </button>
+            <button
+              id="copy-btn"
+              type="button"
+              class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded border transition-colors hover:bg-slate-50 focus:outline-none focus-visible:ring-2"
+              style="border-color:var(--color-border); color:#0b3c5d;"
+              data-url={canonicalUrl}
+               aria-describedby="copy-status"
+            >
+              <Copy className="w-4 h-4 default-icon" />
+              <Check className="w-4 h-4 success-icon hidden" style={{ color: "#10b981" }} />
+              <span class="btn-text">Copy Link</span>
+            </button>
+             <span id="copy-status" class="sr-only" role="status" aria-live="polite"></span>
+          </div>
+        </div>
+
+        {video.nextVideo && (
+          <div class="mt-8 p-6 rounded-lg border bg-slate-50/50" style="border-color:var(--color-border);">
+            <p class="text-xs font-semibold tracking-widest uppercase mb-3" style="color:var(--color-muted-foreground);">Up Next</p>
+            <a href={join(`/video/${getVideoSlug(video.nextVideo)}`)} class="group flex gap-4 items-center focus:outline-none focus-visible:ring-2 rounded p-1 -m-1">
+              <div class="relative w-32 aspect-video bg-black rounded overflow-hidden shrink-0">
+                <img
+                  src={`https://i.ytimg.com/vi/${video.nextVideo.videoId}/mqdefault.jpg`}
+                  alt=""
+                  loading="lazy"
+                  class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
+                />
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <div class="w-8 h-8 rounded-full bg-white/90 flex items-center justify-center shadow-sm">
+                    <Play className="w-4 h-4 ml-0.5" style={{ color: "#de5b00", fill: "#de5b00" }} />
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h3 class="font-medium text-lg group-hover:underline leading-snug" style="color:#0b3c5d;">
+                  {video.nextVideo.title}
+                </h3>
+              </div>
+            </a>
+          </div>
+        )}
+      </div>
+
+      {/* Sidebar: More from playlist */}
+      <div class="lg:col-span-1">
+        <h2 class="text-lg font-semibold mb-4 flex items-center gap-2" style="color:#0b3c5d;">
+          More in this series
+        </h2>
+        <div class="flex flex-col gap-4">
+          {otherVideos.map(v => (
+            <a href={join(`/video/${getVideoSlug(v)}`)} class="group flex gap-3 items-start focus:outline-none focus-visible:ring-2 rounded p-1 -m-1">
+              <div class="relative w-28 aspect-video bg-black rounded overflow-hidden shrink-0">
+                <img
+                  src={`https://i.ytimg.com/vi/${v.videoId}/mqdefault.jpg`}
+                  alt=""
+                  loading="lazy"
+                  class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
+                />
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div class="w-8 h-8 rounded-full bg-white/90 flex items-center justify-center shadow-sm">
+                    <Play className="w-4 h-4 ml-0.5" style={{ color: "#de5b00", fill: "#de5b00" }} />
+                  </div>
+                </div>
+              </div>
+              <h3 class="text-sm font-medium leading-tight group-hover:underline" style="color:#0b3c5d; line-height: 1.3;">
+                {v.title}
+              </h3>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    (function() {
+      // Share API
+      var shareBtn = document.getElementById("share-btn");
+      if (shareBtn) {
+        if (!navigator.share) {
+          shareBtn.style.display = "none";
+        } else {
+          shareBtn.addEventListener("click", function() {
+            var url = this.getAttribute("data-url");
+            var title = this.getAttribute("data-title");
+            navigator.share({ title: title, url: url }).catch(function(){});
+          });
+        }
+      }
+
+      function showCopied() {
+        var defaultIcon = copyBtn.querySelector(".default-icon");
+        var successIcon = copyBtn.querySelector(".success-icon");
+        var text = copyBtn.querySelector(".btn-text");
+        var status = document.getElementById("copy-status");
+        if (defaultIcon) defaultIcon.classList.add("hidden");
+        if (successIcon) successIcon.classList.remove("hidden");
+        if (text) text.textContent = "Copied!";
+        if (status) status.textContent = "Video link copied to clipboard.";
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(function() {
+          if (defaultIcon) defaultIcon.classList.remove("hidden");
+          if (successIcon) successIcon.classList.add("hidden");
+          if (text) text.textContent = "Copy Link";
+          if (status) status.textContent = "";
+        }, 2000);
+      }
+
+      function fallbackCopy(url) {
+        var input = document.createElement("textarea");
+        input.value = url;
+        input.setAttribute("readonly", "");
+        input.style.position = "fixed";
+        input.style.opacity = "0";
+        document.body.appendChild(input);
+        input.select();
+        var copied = false;
+        try { copied = document.execCommand("copy"); } catch (_e) {}
+        input.remove();
+        if (copied) showCopied();
+      }
+
+      // Copy Link — Clipboard API first, with a fallback for older browsers.
+      var copyBtn = document.getElementById("copy-btn");
+      var timeoutId;
+      if (copyBtn) {
+        copyBtn.addEventListener("click", function() {
+          var url = this.getAttribute("data-url");
+          if (!url) return;
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(url).then(showCopied).catch(function() { fallbackCopy(url); });
+          } else {
+            fallbackCopy(url);
+          }
+        });
+      }
+    })();
+  </script>
+</Layout>

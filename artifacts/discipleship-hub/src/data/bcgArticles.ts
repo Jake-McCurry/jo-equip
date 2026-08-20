@@ -1238,7 +1238,7 @@ export const bcgArticles: BcgArticle[] = [
       "A simple, proven way to share the gospel: watch the “Is Jesus Relevant To You?” video together, then invite a response — with step-by-step directions.",
     unlisted: true,
     blocks: [
-      { type: "p", html: 'Video link: <a href="/playlist/meet-jesus6">Is Jesus Relevant To You?</a>' },
+      { type: "p", html: 'Video link: <a href="/video/e0jMauxD1Y0">Is Jesus Relevant To You?</a>' },
       { type: "p", html: "Many believers struggle with finding the right words when sharing the gospel. This simple, proven approach uses a clear video that addresses life’s deepest questions—Who am I? Why am I here? Where am I going?—and shows how Jesus alone brings true meaning, purpose, and eternal life. The video ends with a prayer of invitation to receive Him." },
       { type: "h2", text: "Step-by-Step Directions" },
       { type: "ol", items: [

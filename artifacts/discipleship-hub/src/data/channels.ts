@@ -306,7 +306,7 @@ export const subTopics: SubTopic[] = [
     items: [
       { number: 1, title: 'How to Use the "Jesus\u2019 Resurrection and You" Video to Share Christ', articleId: 'share-christ-jesus-resurrection-and-you', links: { video: 'https://jesusonline.com/receive-jesus/jesus-resurrection-and-you/' } },
       { number: 2, title: 'How to Use "The Gift of Heaven" Video to Share Christ', articleId: 'share-christ-the-gift-of-heaven', links: { video: 'https://jesusonline.com/receive-jesus/the-gift-of-heaven/' } },
-      { number: 3, title: 'How to Use the "Is Jesus Relevant To You?" Video to Share Christ', articleId: 'share-christ-is-jesus-relevant-to-you', links: { video: 'https://equip.jesusonline.com/playlist/meet-jesus6' } },
+      { number: 3, title: 'How to Use the "Is Jesus Relevant To You?" Video to Share Christ', articleId: 'share-christ-is-jesus-relevant-to-you', videoId: 'e0jMauxD1Y0', videoPlaylistId: 'meet-jesus' },
     ],
   },
   /* ── SERMON TOOLBOX ──

@@ -9,6 +9,7 @@ import { hasBsmArticlePdf } from "@/data/bsmArticlePdfs";
 import { FileText, Video, Smartphone, ArrowRight, ChevronRight } from "lucide-react";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 import MakeMultiplyNewsletter from "@/components/MakeMultiplyNewsletter.astro";
+import { getCanonicalVideo } from "@/data/playlists";
 
 const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
@@ -266,10 +267,13 @@ const heroTitle = splitTitle(sub.name);
             // `videoPlaylistId` override when the video lives in another playlist.
             // Falls back to an explicit external `links.video` override.
             const videoPlaylistId = item.videoPlaylistId ?? sub.playlistId;
-            const videoHref = item.videoId && videoPlaylistId
-              ? join(`/playlist/${encodeURIComponent(videoPlaylistId)}?play=${encodeURIComponent(item.videoId)}`)
+            const canonicalVideo = item.videoId ? getCanonicalVideo(item.videoId) : undefined;
+            const videoHref = canonicalVideo
+              ? join(`/video/${canonicalVideo.slug}`)
+              : item.videoId && videoPlaylistId
+                ? join(`/playlist/${encodeURIComponent(videoPlaylistId)}?play=${encodeURIComponent(item.videoId)}`)
               : item.links?.video;
-            const videoInternal = !!(item.videoId && videoPlaylistId);
+            const videoInternal = !!(canonicalVideo || (item.videoId && videoPlaylistId));
 
             const appHref = item.links?.app;
 

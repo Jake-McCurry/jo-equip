@@ -17,7 +17,7 @@
 import Layout from "@/layouts/Layout.astro";
 import { channels, subTopics } from "@/data/channels";
 import { books } from "@/data/books";
-import { playlists } from "@/data/playlists";
+import { playlists, getAllCanonicalVideos } from "@/data/playlists";
 import { reviewCategories } from "@/data/reviews";
 import { bcgArticles } from "@/data/bcgArticles";
 import { bibleStudyMethods } from "@/data/bibleStudyMethods";
@@ -101,6 +101,13 @@ const categorySections = channels.map(channel => ({
 
 const bookLinks = books.map(b => ({ title: b.title, href: join(`/books/${b.id}`) }));
 const playlistLinks = playlists.map(p => ({ title: p.title, href: join(`/playlist/${p.id}`) }));
+const canonicalVideos = getAllCanonicalVideos();
+const videoGroups = playlists
+  .map(playlist => ({
+    playlist,
+    videos: canonicalVideos.filter(video => video.primaryPlaylist.id === playlist.id),
+  }))
+  .filter(group => group.videos.length > 0);
 const reviewLinks = [
   ...reviewCategories
     .filter(c => c.id !== "general")
@@ -109,12 +116,12 @@ const reviewLinks = [
 ];
 
 const totalLinks =
-  mainPages.length + audiencePages.length + bookLinks.length + playlistLinks.length + reviewLinks.length +
+  mainPages.length + audiencePages.length + bookLinks.length + playlistLinks.length + canonicalVideos.length + reviewLinks.length +
   categorySections.reduce((n, c) => n + 1 + c.subs.reduce((m, s) => m + 1 + s.articles.length, 0), 0);
 ---
 <Layout
   title="HTML Sitemap | JO EQUIP"
-  description="A complete overview of JO EQUIP's free ministry resources — every category, topic, article, book, and video playlist on one page."
+  description="A complete overview of JO EQUIP's free ministry resources — every category, topic, article, book, playlist, and individual video on one page."
 >
   <section class="py-10 md:py-14 px-4" style="background-color:#e6f2fa;">
     <div class="container mx-auto max-w-5xl">
@@ -133,6 +140,28 @@ const totalLinks =
           <li><a href={p.href} class="text-[15px] underline underline-offset-2 hover:opacity-80" style="color:#0b3c5d;">{p.label}</a></li>
         ))}
       </ul>
+    </section>
+
+    <section>
+      <h2 class="text-xl md:text-2xl font-semibold mb-3 pb-2" style="color:#0b3c5d;border-bottom:2px solid #de5b00;">Individual Videos</h2>
+      <div class="flex flex-col gap-5">
+        {videoGroups.map(group => (
+          <div>
+            <h3 class="text-base md:text-lg font-semibold mb-2" style="color:#0083de;">
+              <a href={join(`/playlist/${group.playlist.id}`)} class="hover:underline">{group.playlist.title}</a>
+            </h3>
+            <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-1">
+              {group.videos.map(video => (
+                <li>
+                  <a href={join(`/video/${video.slug}`)} class="text-sm underline underline-offset-2 hover:opacity-80" style="color:#374151;">
+                    {video.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
     </section>
 
     <section>

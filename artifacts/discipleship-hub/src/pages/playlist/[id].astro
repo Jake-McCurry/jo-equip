@@ -1,7 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { ListVideo, ChevronLeft, Play } from "lucide-react";
-import { playlists } from "@/data/playlists";
+import { playlists, getVideoSlug } from "@/data/playlists";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 
 export function getStaticPaths() {
@@ -34,7 +34,8 @@ const playlistJsonLd = {
     "position": i + 1,
     "item": {
       "@type": "VideoObject",
-      "@id": `https://www.youtube.com/watch?v=${v.videoId}`,
+      "@id": `${SITE}/video/${getVideoSlug(v)}#video`,
+      "url": `${SITE}/video/${getVideoSlug(v)}`,
       "name": v.title,
       "description": `${v.title} — part of "${playlist.title}" on JO EQUIP.`,
       "thumbnailUrl": [
@@ -42,7 +43,7 @@ const playlistJsonLd = {
         `https://i.ytimg.com/vi/${v.videoId}/maxresdefault.jpg`,
       ],
       "contentUrl": `https://www.youtube.com/watch?v=${v.videoId}`,
-      "embedUrl": `https://www.youtube.com/embed/${v.videoId}`,
+      "embedUrl": `https://www.youtube-nocookie.com/embed/${v.videoId}`,
       "publisher": { "@id": "https://jesusonlineministries.org/#org" },
       "inLanguage": "en",
       "isFamilyFriendly": true,
@@ -84,40 +85,45 @@ const playlistJsonLd = {
     </div>
 
     <ol class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 list-none p-0">
-      {playlist.videos.map((video, idx) => (
-        <li id={`video-${video.videoId}`} class="bg-white border rounded overflow-hidden scroll-mt-24" style="border-color:var(--color-border);">
-          <button
-            type="button"
-            class="yt-facade group relative block w-full aspect-video bg-slate-900 overflow-hidden cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
-            style="--tw-ring-color:#0083de;"
-            data-yt-id={video.videoId}
-            data-yt-title={video.title}
-            aria-label={`Play video: ${video.title}`}
-          >
-            <img
-              src={`https://i.ytimg.com/vi/${video.videoId}/hqdefault.jpg`}
-              alt=""
-              loading="lazy"
-              width="480"
-              height="360"
-              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-            />
-            <div class="absolute inset-0 flex items-center justify-center bg-black/10 group-hover:bg-black/25 transition-colors">
-              <div class="w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center transition-transform duration-200 group-hover:scale-110 shadow-lg" style="background-color:rgba(255,255,255,0.95);">
-                <Play className="w-7 h-7 md:w-8 md:h-8 ml-1" style={{ color: "#de5b00", fill: "#de5b00" }} />
+      {playlist.videos.map((video, idx) => {
+        const slug = getVideoSlug(video);
+        return (
+          <li id={`video-${video.videoId}`} class="bg-white border rounded overflow-hidden scroll-mt-24" style="border-color:var(--color-border);">
+            <a
+              href={join(`/video/${slug}`)}
+              class="yt-facade group relative block w-full aspect-video bg-slate-900 overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+              style="--tw-ring-color:#0083de;"
+              data-yt-id={video.videoId}
+              data-yt-title={video.title}
+              aria-label={`Watch video: ${video.title}`}
+            >
+              <img
+                src={`https://i.ytimg.com/vi/${video.videoId}/hqdefault.jpg`}
+                alt=""
+                loading="lazy"
+                width="480"
+                height="360"
+                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+              />
+              <div class="absolute inset-0 flex items-center justify-center bg-black/10 group-hover:bg-black/25 transition-colors">
+                <div class="w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center transition-transform duration-200 group-hover:scale-110 shadow-lg" style="background-color:rgba(255,255,255,0.95);">
+                  <Play className="w-7 h-7 md:w-8 md:h-8 ml-1" style={{ color: "#de5b00", fill: "#de5b00" }} />
+                </div>
               </div>
+            </a>
+            <div class="p-4 md:p-5 flex items-start gap-3">
+              <span class="shrink-0 w-7 h-7 rounded text-xs font-semibold flex items-center justify-center" style="background-color:rgba(11,60,93,0.08);color:#0b3c5d;">
+                {idx + 1}
+              </span>
+              <a href={join(`/video/${slug}`)} class="hover:underline focus:outline-none rounded">
+                <h3 class="font-semibold leading-snug" style='color:#0b3c5d;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;'>
+                  {video.title}
+                </h3>
+              </a>
             </div>
-          </button>
-          <div class="p-4 md:p-5 flex items-start gap-3">
-            <span class="shrink-0 w-7 h-7 rounded text-xs font-semibold flex items-center justify-center" style="background-color:rgba(11,60,93,0.08);color:#0b3c5d;">
-              {idx + 1}
-            </span>
-            <h3 class="font-semibold leading-snug" style='color:#0b3c5d;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;'>
-              {video.title}
-            </h3>
-          </div>
-        </li>
-      ))}
+          </li>
+        );
+      })}
     </ol>
 
   </div>
@@ -129,7 +135,7 @@ const playlistJsonLd = {
       if (!id) return;
       var iframe = document.createElement("iframe");
       iframe.src =
-        "https://www.youtube.com/embed/" +
+        "https://www.youtube-nocookie.com/embed/" +
         encodeURIComponent(id) +
         "?rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&autoplay=1";
       iframe.title = title;
@@ -139,7 +145,6 @@ const playlistJsonLd = {
         "allow",
         "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
       );
-      iframe.setAttribute("allowfullscreen", "");
       iframe.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
       iframe.className = "absolute inset-0 w-full h-full border-0";
       var wrapper = document.createElement("div");
@@ -149,11 +154,7 @@ const playlistJsonLd = {
       try { iframe.focus({ preventScroll: true }); } catch (e) {}
     }
 
-    document.querySelectorAll(".yt-facade").forEach(function (btn) {
-      btn.addEventListener("click", function () { joEquipOpenVideo(btn); });
-    });
-
-    // Deep-link: /playlist/<id>?play=<videoId> auto-scrolls to and opens that video.
+    // Deep-link: /playlist/<id>?play=<videoId> auto-scrolls to and opens that video inline.
     try {
       var params = new URLSearchParams(window.location.search);
       var wanted = params.get("play");

@@ -186,3 +186,43 @@ export function playlistThumbnail(p: Playlist): string {
   if (!id) return "";
   return `https://i.ytimg.com/vi/${id}/mqdefault.jpg`;
 }
+
+/** Permanent site slug: YouTube's immutable ID keeps shared links stable
+ * even if an editor later changes the display title. */
+export function getVideoSlug(video: PlaylistVideo): string {
+  return video.videoId;
+}
+
+export interface CanonicalVideo extends PlaylistVideo {
+  slug: string;
+  primaryPlaylist: Playlist;
+  nextVideo?: PlaylistVideo;
+}
+
+export function getAllCanonicalVideos(): CanonicalVideo[] {
+  const seen = new Set<string>();
+  const canonicalVideos: CanonicalVideo[] = [];
+
+  for (const playlist of playlists) {
+    for (let i = 0; i < playlist.videos.length; i++) {
+      const video = playlist.videos[i];
+      if (!seen.has(video.videoId)) {
+        seen.add(video.videoId);
+        canonicalVideos.push({
+          ...video,
+          slug: getVideoSlug(video),
+          primaryPlaylist: playlist,
+          nextVideo: playlist.videos[i + 1]
+        });
+      }
+    }
+  }
+
+  return canonicalVideos;
+}
+
+/** Canonical first-listed playlist context for a video. A single video may
+ * appear in more than one playlist, but it gets exactly one watch page. */
+export function getCanonicalVideo(videoId: string): CanonicalVideo | undefined {
+  return getAllCanonicalVideos().find(video => video.videoId === videoId);
+}

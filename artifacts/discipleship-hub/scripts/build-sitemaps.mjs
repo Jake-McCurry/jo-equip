@@ -10,7 +10,7 @@
  *   sitemap-pages.xml      → top-level pages (/, /about, /pastors, …)
  *   sitemap-categories.xml   → /categories/** (channel, topic, article pages)
  *   sitemap-books.xml      → /books/**
- *   sitemap-playlists.xml  → /playlists + /playlist/**
+ *   sitemap-playlists.xml  → /playlists + /playlist/** + /video/**
  *   sitemap-videos.xml     → video sitemap for playlist pages + article pages
  *                            with embedded videos
  *
@@ -105,7 +105,7 @@ const groups = { channels: [], books: [], playlists: [], pages: [] };
 for (const p of pages) {
   if (p.path.startsWith("/categories")) groups.channels.push(p);
   else if (p.path.startsWith("/books")) groups.books.push(p);
-  else if (p.path.startsWith("/playlist")) groups.playlists.push(p);
+  else if (p.path.startsWith("/playlist") || p.path.startsWith("/video")) groups.playlists.push(p);
   else groups.pages.push(p);
 }
 
@@ -158,12 +158,14 @@ function addVideo(url, v) {
   if (!list.some(x => x.videoId === v.videoId)) list.push(v);
 }
 
-/* 1. Playlist pages — parse src/data/playlists.ts (regular structure). */
+/* 1. Individual watch pages — parse src/data/playlists.ts (regular structure).
+      A repeated YouTube ID maps to the same /video/<id> page; addVideo's
+      per-page dedupe preserves the first-listed playlist as canonical context. */
 const playlistsSrc = readFileSync(resolve(ROOT, "src/data/playlists.ts"), "utf8");
 for (const pm of playlistsSrc.matchAll(/id:\s*"([^"]+)",\s*title:\s*"((?:[^"\\]|\\.)*)",[\s\S]*?videos:\s*\[([\s\S]*?)\]/g)) {
-  const [, id, plTitle, body] = pm;
-  const url = `${SITE}/playlist/${id}`;
+  const [, , plTitle, body] = pm;
   for (const vm of body.matchAll(/title:\s*"((?:[^"\\]|\\.)*)",\s*videoId:\s*yt\("([\w-]+)"\)/g)) {
+    const url = `${SITE}/video/${vm[2]}`;
     addVideo(url, {
       title: vm[1].replace(/\\"/g, '"'),
       description: `${vm[1].replace(/\\"/g, '"')} — from the "${plTitle}" playlist on JO EQUIP.`,

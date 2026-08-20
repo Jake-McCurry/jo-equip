@@ -7,12 +7,14 @@ import { Search as SearchIcon } from "lucide-react";
 interface Props {
   title?: string;
   description?: string;
-  /** Override the OG/Twitter image. Path relative to site root, e.g. "/opengraph.jpg" */
+  /** Override the OG/Twitter image. May be site-relative or an absolute URL. */
   image?: string;
   /** Alt text for the OG/Twitter image. Defaults to the site tagline. */
   imageAlt?: string;
   /** Override the header/nav blue (used to trial new brand colors per-page). */
   navColor?: string;
+  /** Open Graph content type; video watch pages use "video.other". */
+  ogType?: "website" | "article" | "video.other";
 }
 
 const {
@@ -21,6 +23,7 @@ const {
   image = "/opengraph.jpg",
   imageAlt = "JO EQUIP — Ministry Resources Hub",
   navColor = "#0083de",
+  ogType = "website",
 } = Astro.props;
 
 const baseUrl = import.meta.env.BASE_URL;
@@ -62,7 +65,7 @@ const year = new Date().getFullYear();
 const SITE = "https://equip.jesusonline.com";
 const canonicalPath = currentPath === "/" ? "/" : currentPath.replace(/\/$/, "");
 const canonicalUrl = SITE + canonicalPath;
-const absoluteImage = SITE + image;
+const absoluteImage = /^https?:\/\//i.test(image) ? image : SITE + image;
 
 // GTM container ID — public identifier, safe to commit.
 // Gated on PROD so dev/preview builds don't pollute analytics.
@@ -97,7 +100,7 @@ const gtmEnabled = import.meta.env.PROD;
     {/* Open Graph */}
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:site_name" content="JO EQUIP · Ministry Resources Hub" />
     <meta property="og:locale" content="en_US" />

@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev --host 0.0.0.0",
-    "build": "node scripts/check-book-gate-parity.mjs && astro build && node scripts/build-sitemaps.mjs",
+    "build": "node scripts/check-book-gate-parity.mjs && astro build && node scripts/apply-external-link-nofollow.mjs && node scripts/build-sitemaps.mjs",
     "serve": "astro preview --host 0.0.0.0",
-    "typecheck": "astro check"
+    "typecheck": "astro check",
+    "test:nofollow": "node --test scripts/external-link-policy.test.mjs"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
@@ -25,6 +26,7 @@
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",
     "astro-pagefind": "^1.8.6",
+    "entities": "6.0.1",
     "pagefind": "^1.5.2",
     "sharp": "^0.34.5"
   }

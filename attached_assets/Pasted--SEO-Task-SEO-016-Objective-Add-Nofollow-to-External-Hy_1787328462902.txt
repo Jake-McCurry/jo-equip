@@ -1,0 +1,435 @@
+"# SEO Task: SEO-016
+Objective: Add Nofollow to External Hyperlinks
+Update the website so that all qualifying external HTML hyperlinks use rel=""nofollow"", while internal website links remain dofollow.
+Do not use Cloudflare Workers or Cloudflare HTML rewriting unless there is a specific technical limitation that makes source-code implementation impossible.
+The implementation must work site-wide, including statically rendered, server-rendered, client-rendered, component-generated, CMS-generated, Markdown-generated, and rich-text-generated hyperlinks.
+________________________________________
+1. External Links — Add nofollow
+Identify all HTML anchor elements:
+<a href=""..."">
+where the href points to an external HTTP/HTTPS domain.
+For every qualifying external hyperlink, ensure that the rendered HTML contains:
+rel=""nofollow""
+Example:
+<a href=""https://externaldomain.com"" rel=""nofollow"">External Website</a>
+If the external link already has other rel values, preserve them and add nofollow.
+Example:
+<a href=""https://externaldomain.com"" rel=""noopener noreferrer nofollow"">External Website</a>
+Do not remove or replace existing rel values.
+________________________________________
+2. Internal Links — Keep Dofollow
+Do not add nofollow to internal website links.
+The following must remain dofollow:
+•        Relative URLs
+•        Internal navigation links
+•        Internal breadcrumbs
+•        Internal contextual/content links
+•        Internal footer links
+•        Internal header links
+•        Internal category links
+•        Internal author/profile links
+•        Internal pagination links
+•        Internal search/navigation links
+•        Internal cards/components
+•        Absolute URLs pointing to the website’s own domain
+Examples:
+<a href=""/about"">About Us</a>
+<a href=""/channels/church"">Church Resources</a>
+<a href=""https://www.example.com/about"">About Us</a>
+The final example must remain without nofollow when example.com is the website’s own domain.
+________________________________________
+3. Determine the Actual Internal Domain
+Before implementing the logic:
+1.        Inspect the existing Replit project.
+2.        Identify the production website hostname/domain from the application’s configuration, environment variables, deployment configuration, or existing canonical/metadata configuration.
+3.        Do not assume or invent the domain.
+4.        Use the actual production domain as the authoritative internal domain.
+The internal-domain logic should be centralized so it can be maintained easily.
+________________________________________
+4. External vs Internal URL Detection
+Use proper URL parsing and hostname comparison.
+Do not use simple string matching such as:
+href.includes(""example.com"")
+because this can incorrectly classify unrelated domains.
+For example, these must not automatically be considered internal:
+https://example.com.externaldomain.com
+https://external-example.com
+https://example.com.evil-site.com
+The hostname must actually belong to the configured internal domain.
+Normalize hostname comparison appropriately for:
+•        Uppercase/lowercase hostnames
+•        www vs non-www
+•        http vs https
+•        Trailing dot in a hostname where applicable
+Example:
+https://example.com
+https://www.example.com
+should be treated as internal when both represent the website’s configured primary domain.
+________________________________________
+5. Subdomain Handling
+Do not automatically classify every subdomain as internal without checking the site’s architecture.
+Determine whether subdomains such as:
+www.example.com
+blog.example.com
+app.example.com
+are legitimate first-party website domains.
+Only treat approved first-party domains/subdomains as internal.
+Do not classify an unrelated external domain as internal merely because its URL contains the primary domain as a string.
+Maintain the approved internal hostname/domain configuration in one centralized location.
+________________________________________
+6. Relative URLs
+Relative URLs must remain internal/dofollow.
+Examples:
+<a href=""/about"">About</a>
+<a href=""/channels/church"">Church</a>
+<a href=""../about"">About</a>
+<a href=""./contact"">Contact</a>
+<a href=""/about#contact"">Contact</a>
+Do not add nofollow.
+________________________________________
+7. Query Parameters and Fragments
+Correctly classify URLs containing query parameters or fragments.
+Examples:
+<a href=""/search?q=church"">Search</a>
+<a href=""/about#contact"">Contact</a>
+These remain internal when their underlying URL is internal.
+For absolute URLs, determine internal/external status from the hostname rather than the query string or fragment.
+________________________________________
+8. Protocol-Relative URLs
+Correctly handle protocol-relative URLs.
+Example:
+<a href=""//externaldomain.com/page"">External Website</a>
+If the hostname is external, add:
+rel=""nofollow""
+If the hostname belongs to the approved internal domain, do not add nofollow.
+________________________________________
+9. Special URL Schemes
+Only process external HTTP/HTTPS hyperlinks.
+Do not add nofollow to non-HTTP/HTTPS schemes such as:
+<a href=""mailto:user@example.com"">Email</a>
+<a href=""tel:+1234567890"">Call</a>
+<a href=""javascript:void(0)"">Action</a>
+Do not modify:
+•        mailto:
+•        tel:
+•        javascript:
+•        Other non-HTTP application-specific schemes
+unless an existing application requirement specifically requires it.
+________________________________________
+10. Only Modify <a href=""""> Elements
+The implementation must specifically target external HTML anchor hyperlinks.
+Do not add nofollow to unrelated URL references.
+Do not modify:
+•        <form action="""">
+•        <script src="""">
+•        <img src="""">
+•        <iframe src="""">
+•        <link href="""">
+•        CSS URLs
+•        API endpoints
+•        fetch() requests
+•        AJAX requests
+•        Server-side HTTP requests
+•        Canonical URLs
+•        Sitemap URLs
+•        Open Graph URLs
+•        JSON-LD URLs
+•        JavaScript configuration URLs
+•        Authentication endpoints
+•        Checkout/payment endpoints
+•        Other non-anchor URL references
+The scope is:
+<a href=""EXTERNAL_HTTP_OR_HTTPS_URL"">
+________________________________________
+11. Existing rel Attributes
+Never overwrite an existing rel attribute.
+If an external link has:
+<a href=""https://externaldomain.com"" rel=""noopener noreferrer"">
+update it to:
+<a href=""https://externaldomain.com"" rel=""noopener noreferrer nofollow"">
+If it has:
+<a href=""https://externaldomain.com"" rel=""sponsored"">
+update it to:
+<a href=""https://externaldomain.com"" rel=""sponsored nofollow"">
+If it has:
+<a href=""https://externaldomain.com"" rel=""ugc"">
+update it to:
+<a href=""https://externaldomain.com"" rel=""ugc nofollow"">
+If it already contains:
+rel=""nofollow""
+do not modify it unnecessarily.
+________________________________________
+12. Prevent Duplicate nofollow
+Treat rel values as individual tokens.
+Do not use simple string concatenation that could produce:
+rel=""nofollow nofollow""
+or:
+rel=""noopener noreferrer nofollow nofollow""
+Before adding nofollow, check whether the existing rel value already contains the nofollow token.
+Add it only once.
+________________________________________
+13. Preserve All Existing rel Values
+The implementation must preserve existing values such as:
+noopener
+noreferrer
+sponsored
+ugc
+nofollow
+For example:
+<a href=""https://externaldomain.com"" rel=""noopener sponsored"">
+must become:
+<a href=""https://externaldomain.com"" rel=""noopener sponsored nofollow"">
+It must not become:
+<a href=""https://externaldomain.com"" rel=""nofollow"">
+because that would remove existing information.
+________________________________________
+14. Dynamic Links
+Audit the entire application for dynamically generated hyperlinks.
+The implementation must cover, where applicable:
+•        Header
+•        Navigation
+•        Footer
+•        Main content
+•        Blog/content pages
+•        Author/profile sections
+•        Cards
+•        Related content
+•        CMS-driven content
+•        Rich-text content
+•        Markdown content
+•        Markdown-to-HTML rendering
+•        WYSIWYG-generated content
+•        Reusable link components
+•        Shared UI components
+•        Server-side rendering
+•        Client-side rendering
+•        Dynamically injected HTML
+•        Any reusable hyperlink helper/function
+Do not limit the implementation to links visible on the homepage.
+________________________________________
+15. Centralized Implementation
+Where the application architecture allows it, implement the logic through a centralized mechanism.
+Preferred approach:
+URL → determine internal/external → if external HTTP/HTTPS → preserve rel → add nofollow if missing → render HTML
+Examples of suitable centralized implementation points include:
+•        Shared Link component
+•        Shared anchor component
+•        HTML/rich-text renderer
+•        Markdown renderer
+•        CMS content renderer
+•        Server-side HTML transformation
+•        Central hyperlink utility
+Do not create multiple independent implementations that can behave differently.
+Do not manually modify hundreds of individual pages when the same result can be achieved safely through the shared rendering architecture.
+________________________________________
+16. Do Not Break Existing Functionality
+The implementation must not change:
+•        Link destinations
+•        Query parameters
+•        URL fragments
+•        Navigation behavior
+•        JavaScript click handlers
+•        Tracking functionality
+•        Authentication
+•        Checkout
+•        Payment functionality
+•        Form functionality
+•        Existing application behavior
+Only the appropriate rel attribute should be modified.
+________________________________________
+17. Do Not Implement Through Cloudflare Unless Necessary
+The preferred implementation is:
+Replit source code → application renders correct HTML → Cloudflare serves the result
+Do not implement this using:
+•        Cloudflare Workers
+•        Cloudflare HTML rewriting
+•        Edge HTML manipulation
+unless the application architecture makes source-code implementation technically impossible.
+If Cloudflare configuration must be changed for any reason, document exactly why.
+________________________________________
+18. Development/Preview Testing
+Before production deployment, test the implementation in the Replit development/preview environment.
+Create test cases covering at least:
+Internal Relative URL
+<a href=""/about"">About</a>
+Expected:
+<a href=""/about"">About</a>
+Internal Absolute URL
+<a href=""https://www.example.com/about"">About</a>
+Expected:
+<a href=""https://www.example.com/about"">About</a>
+when example.com is the configured internal domain.
+External URL
+<a href=""https://externaldomain.com"">External</a>
+Expected:
+<a href=""https://externaldomain.com"" rel=""nofollow"">External</a>
+Existing rel
+Input:
+<a href=""https://externaldomain.com"" rel=""noopener noreferrer"">External</a>
+Expected:
+<a href=""https://externaldomain.com"" rel=""noopener noreferrer nofollow"">External</a>
+Existing nofollow
+Input:
+<a href=""https://externaldomain.com"" rel=""nofollow"">External</a>
+Expected:
+<a href=""https://externaldomain.com"" rel=""nofollow"">External</a>
+Existing sponsored
+Input:
+<a href=""https://externaldomain.com"" rel=""sponsored"">External</a>
+Expected:
+<a href=""https://externaldomain.com"" rel=""sponsored nofollow"">External</a>
+Existing ugc
+Input:
+<a href=""https://externaldomain.com"" rel=""ugc"">External</a>
+Expected:
+<a href=""https://externaldomain.com"" rel=""ugc nofollow"">External</a>
+Mail Link
+Input:
+<a href=""mailto:user@example.com"">Email</a>
+Expected:
+No nofollow added.
+Telephone Link
+Input:
+<a href=""tel:+1234567890"">Call</a>
+Expected:
+No nofollow added.
+Protocol-Relative External URL
+Input:
+<a href=""//externaldomain.com/page"">External</a>
+Expected:
+<a href=""//externaldomain.com/page"" rel=""nofollow"">External</a>
+False Domain Match
+Input:
+<a href=""https://example.com.externaldomain.com/page"">External</a>
+Expected:
+The link must be treated as external.
+________________________________________
+19. Production HTML Validation
+After deployment, validate the actual rendered production HTML.
+Do not consider source-code inspection alone sufficient.
+Crawl representative production URLs and verify:
+External Links
+Every qualifying external HTTP/HTTPS <a> element contains:
+rel=""nofollow""
+Internal Links
+Internal links do not contain nofollow unless they already had an intentional, pre-existing nofollow requirement.
+Existing Rel Values
+Existing values remain intact.
+Duplicate Values
+No link contains:
+nofollow nofollow
+Link Destinations
+No href values were changed.
+Broken Links
+No broken links were introduced.
+Dynamic Content
+External links generated by CMS, Markdown, rich-text, or reusable components are also correctly processed.
+________________________________________
+20. Production Crawl Checks
+After deployment, crawl the production website and generate a validation report containing:
+1.        Total HTML <a> elements crawled
+2.        Total internal links
+3.        Total external HTTP/HTTPS links
+4.        External links with nofollow
+5.        External links missing nofollow
+6.        Internal links incorrectly containing nofollow
+7.        Links with duplicate nofollow
+8.        Links where existing rel values changed unexpectedly
+9.        Broken links introduced after deployment
+10.        Representative examples of any failures
+The expected result for qualifying external links is:
+External links missing nofollow = 0
+Any exceptions must be documented and reviewed.
+________________________________________
+21. Regression Testing
+Confirm that the implementation does not introduce regressions in:
+•        Navigation
+•        Header
+•        Footer
+•        Breadcrumbs
+•        Blog content
+•        CMS content
+•        Rich-text content
+•        Markdown content
+•        Author pages
+•        Cards
+•        Related content
+•        Authentication
+•        Forms
+•        Checkout/payment flows
+•        JavaScript interactions
+•        Tracking
+•        Internal linking
+•        Page rendering
+________________________________________
+22. Deployment Process
+Follow this sequence:
+1.        Inspect the Replit project architecture.
+2.        Identify the actual production domain.
+3.        Identify all hyperlink rendering mechanisms.
+4.        Identify shared link components/utilities.
+5.        Identify CMS/rich-text/Markdown rendering.
+6.        Implement centralized external-link detection.
+7.        Add nofollow only to qualifying external HTTP/HTTPS <a> elements.
+8.        Preserve all existing rel values.
+9.        Prevent duplicate nofollow.
+10.        Test internal links.
+11.        Test external links.
+12.        Test dynamic/CMS/rich-text/Markdown links.
+13.        Test special URL schemes.
+14.        Crawl representative Replit preview pages.
+15.        Confirm no functionality is affected.
+16.        Deploy through the existing Cloudflare deployment process.
+17.        Crawl production.
+18.        Validate the rendered production HTML.
+19.        Fix any classification or implementation issues.
+20.        Confirm final acceptance criteria.
+________________________________________
+23. Acceptance Criteria
+1.        All qualifying external HTTP/HTTPS HTML <a href> hyperlinks contain rel=""nofollow"".
+2.        Internal relative links remain dofollow.
+3.        Internal absolute URLs remain dofollow.
+4.        The actual production domain is identified from the project configuration rather than assumed.
+5.        www and non-www versions of the approved primary domain are handled correctly.
+6.        Approved first-party subdomains are handled correctly.
+7.        External domains are identified using proper URL/hostname parsing.
+8.        False domain matches are not incorrectly classified as internal.
+9.        Protocol-relative URLs are handled correctly.
+10.        Query parameters and fragments are handled correctly.
+11.        mailto: links are not incorrectly modified.
+12.        tel: links are not incorrectly modified.
+13.        JavaScript/application links are not incorrectly modified.
+14.        Non-anchor URL references are not modified.
+15.        Existing rel attributes are preserved.
+16.        noopener is preserved.
+17.        noreferrer is preserved.
+18.        sponsored is preserved.
+19.        ugc is preserved.
+20.        Existing nofollow is preserved.
+21.        nofollow is never duplicated.
+22.        Dynamic links are covered.
+23.        CMS-generated links are covered.
+24.        Rich-text-generated links are covered.
+25.        Markdown-generated links are covered.
+26.        Header/footer links are covered.
+27.        Reusable link components are covered.
+28.        Link destinations are unchanged.
+29.        Existing application functionality is unaffected.
+30.        No unnecessary Cloudflare Worker or edge-rewriting solution is introduced.
+31.        Production HTML has been crawled after deployment.
+32.        External hyperlinks missing nofollow = 0, except documented/approved exceptions.
+33.        Internal links are not incorrectly marked nofollow.
+34.        No duplicate nofollow values exist.
+35.        No existing rel values were unintentionally removed.
+36.        No broken links were introduced.
+________________________________________
+Final Requirement
+Do not mark this task as complete merely because the nofollow logic exists in the Replit source code.
+The task is complete only when the deployed production HTML has been crawled and validated and confirms that:
+External qualifying HTTP/HTTPS hyperlinks → nofollow
+Internal hyperlinks → dofollow
+Existing rel values → preserved
+Duplicate nofollow → none
+Dynamic/CMS/rich-text/Markdown links → covered
+Website functionality → unaffected
+"

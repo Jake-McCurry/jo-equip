@@ -1,9 +1,27 @@
+export interface BookDownload {
+  label: string;
+  format: string;
+  details: string;
+  size: string;
+  pdf: string;
+}
+
+export interface BookEdition {
+  coverId: string;
+  language: string;
+  languageCode: string;
+  title: string;
+  cover: string;
+  downloads: BookDownload[];
+}
+
 export interface Book {
   id: string;
   title: string;
   author?: string;
   cover: string;
   pdf: string;
+  editions?: BookEdition[];
 }
 
 /* Display order matches the "JO EQUIP BOOKS" reference document (July 2026). */
@@ -64,6 +82,45 @@ export const books: Book[] = [
     author: "Dave R. Chapman",
     cover: "/books/covers/extraordinary-evangelism-student-guide.jpg",
     pdf: "/books/extraordinary-evangelism-student-guide.pdf",
+    editions: [
+      {
+        coverId: "extraordinary-evangelism-student-guide-es",
+        language: "Spanish",
+        languageCode: "es",
+        title: "Equipándote para alcanzar a otros con el evangelio de Jesucristo — Guía del estudiante",
+        cover: "/books/covers/extraordinary-evangelism-student-guide-es.jpg",
+        downloads: [
+          {
+            label: "Interior PDF",
+            format: "U.S. Letter (8.5 × 11 in)",
+            details: "45 pages",
+            size: "5.9 MB",
+            pdf: "/books/extraordinary-evangelism-student-guide-es-us-letter-interior.pdf",
+          },
+          {
+            label: "Print cover spread PDF",
+            format: "U.S. Letter (8.5 × 11 in)",
+            details: "1 page",
+            size: "38.4 MB",
+            pdf: "/books/extraordinary-evangelism-student-guide-es-us-letter-cover.pdf",
+          },
+          {
+            label: "Interior PDF",
+            format: "A4",
+            details: "45 pages",
+            size: "5.8 MB",
+            pdf: "/books/extraordinary-evangelism-student-guide-es-a4-interior.pdf",
+          },
+          {
+            label: "Print cover spread PDF",
+            format: "A4",
+            details: "1 page",
+            size: "37.0 MB",
+            pdf: "/books/extraordinary-evangelism-student-guide-es-a4-cover.pdf",
+          },
+        ],
+      },
+    ],
   },
   {
     id: "soul-prescription",

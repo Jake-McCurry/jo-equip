@@ -27,7 +27,8 @@
  *   - URLs are emitted without a trailing slash (matches canonicals), except
  *     the site root.
  *
- * Runs automatically as part of `pnpm run build` (see package.json).
+ * Runs automatically as part of `pnpm run build` (see package.json), after
+ * the external-link nofollow transform so hashes reflect deployed HTML.
  */
 import { readFileSync, writeFileSync, readdirSync, statSync, existsSync, unlinkSync } from "node:fs";
 import { resolve, join } from "node:path";

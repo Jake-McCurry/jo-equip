@@ -16,3 +16,4 @@
 - [Book cover OG images](book-cover-og-images.md) — books.ts cover path feeds OG/JSON-LD; legacy books 404 there, new books need a real public/books/covers PNG plus the src/assets thumbnail.
 - [Ebook docx→PDF pipeline](ebook-docx-pipeline.md) — book PDFs build from docx via two-pass marker render; docx heading styles are inconsistent, match TOC by leading token not title text.
 - [Rendered HTML link transforms](rendered-html-link-transforms.md) — classify decoded browser semantics and safely re-escape attributes; partial decoding or JS trim can silently misclassify links.
+- [PDF asset optimization tools](pdf-asset-optimization-tools.md) — Prefer installed Ghostscript/MuPDF; managed PyMuPDF conflicts with this workspace's legacy `.pythonlibs`.

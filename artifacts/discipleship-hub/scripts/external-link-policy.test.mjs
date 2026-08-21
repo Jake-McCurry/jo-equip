@@ -27,6 +27,9 @@ test("classifies approved first-party, relative, and fragment links as internal"
 
 test("uses exact hostnames and rejects lookalike or unapproved subdomains", () => {
   for (const href of [
+    "https://www.equip.jesusonline.com/page",
+    "http://www.equip.jesusonline.com/page",
+    "//www.equip.jesusonline.com/page",
     "https://equip.jesusonline.com.external.example/page",
     "https://external-equip.jesusonline.com/page",
     "https://evil-jesusonline.com/page",

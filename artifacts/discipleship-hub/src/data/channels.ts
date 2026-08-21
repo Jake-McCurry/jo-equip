@@ -251,6 +251,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'church',
     parentId: 'share-jesus',
     name: 'Understanding Evangelism',
+    description: 'Teach disciples the fundamentals of evangelism.',
     items: [
       { number: 1, title: 'What Is Evangelism?', articleId: 'what-is-evangelism', links: { app: 'https://app.jesusonline.com/post/40101-what-is-evangelism' } },
       { number: 2, title: 'Reasons Why Believers Should Witness', articleId: 'reasons-why-believers-should-witness', links: { app: 'https://app.jesusonline.com/post/40102-reasons-why-believers-should-witness' } },
@@ -266,6 +267,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'church',
     parentId: 'share-jesus',
     name: 'Sharing Your Faith',
+    description: 'Train people to share the Gospel more effectively.',
     items: [
       { number: 1, title: 'The Power', articleId: 'the-power', links: { app: 'https://app.jesusonline.com/post/41005-the-power' } },
       { number: 2, title: 'Your Personal Testimony', articleId: 'your-personal-testimony', links: { app: 'https://app.jesusonline.com/post/41006-your-personal-testimony' } },
@@ -281,6 +283,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'church',
     parentId: 'share-jesus',
     name: 'Next Steps for New Believers',
+    description: 'Equip disciples to help new believers begin their lives in Christ.',
     items: [
       { number: 1, title: 'Next Steps for New Believers', articleId: 'next-steps-for-new-believers', links: { app: 'https://app.jesusonline.com/post/43001-next-steps-for-new-believers' } },
       { number: 2, title: 'Your First Step', articleId: 'your-first-step', links: { app: 'https://app.jesusonline.com/post/43002-your-first-step' } },
@@ -450,6 +453,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'church',
     parentId: 'bible-mastery',
     name: 'Survey of the Bible (Joshua Nations)',
+    description: 'An overview of the books of the Bible by Joshua Nations.',
   },
   {
     id: 'survey-of-the-bible-ot',
@@ -542,7 +546,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'church',
     parentId: 'bible-mastery',
     name: 'BibleProject',
-    description: 'Animated overviews of every book and major theme of the Bible.',
+    description: 'Overviews of every book of the Bible.',
   },
   /* ── BIBLEPROJECT CONTENT — TEMPORARILY REMOVED (July 2026) pending copyright/licensing
      resolution with BibleProject. To restore: uncomment this block, regenerate the
@@ -553,7 +557,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'church',
     parentId: 'bibleproject',
     name: 'Old Testament Overviews',
-    description: 'Book and theme overviews across the Old Testament.',
+    description: 'Overview of the Old Testament books.',
     items: [
       { number: 1, title: "Overview: TaNaK / Old Testament", articleId: 'overview-tanak-old-testament', links: { app: "https://app.jesusonline.com/post/38601-overview-tanak-old-testament" } },
       { number: 2, title: "Overview: Genesis Ch. 1-11", articleId: 'overview-genesis-ch-1-11', links: { app: "https://app.jesusonline.com/post/38602-overview-genesis-ch-1-11" } },
@@ -603,7 +607,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'church',
     parentId: 'bibleproject',
     name: 'New Testament Overviews',
-    description: 'Book and theme overviews across the New Testament.',
+    description: 'Overview of the New Testament books.',
     items: [
       { number: 1, title: "Overview: New Testament", articleId: 'overview-new-testament', links: { app: "https://app.jesusonline.com/post/38701-overview-new-testament" } },
       { number: 2, title: "Overview: Matthew Ch. 1-13", articleId: 'overview-matthew-ch-1-13', links: { app: "https://app.jesusonline.com/post/38702-overview-matthew-ch-1-13" } },
@@ -740,6 +744,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'church',
     parentId: 'biblical-counseling-insights',
     name: 'Soul Prescription',
+    description: 'Teach others to experience God\'s healing and freedom.',
     items: [
       { number: 1, title: 'The Heart of the Problem', articleId: 'the-heart-of-the-problem', links: { app: 'https://app.jesusonline.com/post/65501-1-the-heart-of-the-problem' } },
       { number: 2, title: 'The Secret to Lasting Health', articleId: 'the-secret-to-lasting-health', links: { app: 'https://app.jesusonline.com/post/65502-2-the-secret-to-lasting-health' } },
@@ -770,6 +775,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'church',
     parentId: 'biblical-counseling-insights',
     name: 'From Coping to Cure',
+    description: 'Make lasting change possible for people.',
     items: [
       { number: 1, title: 'The Myth of Complexity', articleId: 'the-myth-of-complexity', links: { app: 'https://app.jesusonline.com/post/65601-the-myth-of-complexity' } },
       { number: 2, title: 'How Can I Find Peace and Satisfaction in This World?', articleId: 'how-can-i-find-peace-and-satisfaction-in-this-world', links: { app: 'https://app.jesusonline.com/post/65602-how-can-i-find-peace-and-satisfaction-in-this-world' } },
@@ -796,6 +802,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'church',
     parentId: 'biblical-counseling-insights',
     name: 'Struggle for Inner Peace',
+    description: 'Equip people to overcome the stresses of life.',
     items: [
       { number: 1, title: 'Life\'s Many Stresses', articleId: 'lifes-many-stresses', links: { app: 'https://app.jesusonline.com/post/65701-1-lifes-many-stresses' } },
       { number: 2, title: 'Self-Discovery', articleId: 'self-discovery', links: { app: 'https://app.jesusonline.com/post/65702-2-self-discovery' } },
@@ -814,6 +821,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'church',
     parentId: 'biblical-counseling-insights',
     name: 'I Want Happiness Now',
+    description: 'Train disciples to manage their inner lives.',
     items: [
       { number: 1, title: 'Indestructible', articleId: 'indestructible', links: { app: 'https://app.jesusonline.com/post/65801-1-indestructible' } },
       { number: 2, title: 'Contentment', articleId: 'contentment', links: { app: 'https://app.jesusonline.com/post/65802-2-contentment' } },
@@ -946,6 +954,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'growth',
     parentId: 'building-blocks',
     name: 'Building Blocks for Maturity Introduction',
+    description: 'An overview of key growth areas to focus your discipleship ministry on.',
     hideNumbers: true,
     items: [
       { number: 1, title: 'Building Blocks for Maturity Introduction', articleId: 'building-blocks-for-maturity-introduction', links: { app: 'https://app.jesusonline.com/post/32001-building-blocks-for-maturity-introduction' } },
@@ -956,6 +965,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'growth',
     parentId: 'building-blocks',
     name: 'Seeing Your Life from God\'s Perspective',
+    description: 'Help believers see everything from God\'s perspective.',
     items: [
       { number: 1, title: 'Seeing the Truth', articleId: 'seeing-the-truth', links: { app: 'https://app.jesusonline.com/post/32101-seeing-the-truth' } },
       { number: 2, title: 'Perspective and Perception', articleId: 'perspective-and-perception', links: { app: 'https://app.jesusonline.com/post/32102-perspective-and-perception' } },
@@ -969,6 +979,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'growth',
     parentId: 'building-blocks',
     name: 'Growing Closer to God',
+    description: 'Train disciples to pursue God intentionally.',
   },
   {
     id: 'bb-growing-closer-majesty',
@@ -1044,6 +1055,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'growth',
     parentId: 'building-blocks',
     name: 'Your Identity in Christ',
+    description: 'Teach others to embrace their true identity in Christ.',
     items: [
       { number: 1, title: 'Embracing Your New Identity in Christ', articleId: 'embracing-your-new-identity-in-christ', links: { app: 'https://app.jesusonline.com/post/32310-embracing-your-new-identity-in-christ' } },
       { number: 2, title: 'What the Bible Says About the New You', articleId: 'what-the-bible-says-about-the-new-you', links: { app: 'https://app.jesusonline.com/post/32311-what-the-bible-says-about-the-new-you' } },
@@ -1063,6 +1075,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'growth',
     parentId: 'building-blocks',
     name: 'Walking in the Spirit',
+    description: 'Disciple believers to live in reliance on the Holy Spirit.',
     items: [
       { number: 1, title: 'Who Is the Holy Spirit?', articleId: 'who-is-the-holy-spirit', links: { app: 'https://app.jesusonline.com/post/32410-who-is-the-holy-spirit' } },
       { number: 2, title: 'The Exchanged Life: Christ Living in You Through the Holy Spirit', articleId: 'the-exchanged-life', links: { app: 'https://app.jesusonline.com/post/32420-the-exchanged-life' } },
@@ -1080,6 +1093,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'growth',
     parentId: 'building-blocks',
     name: 'Receiving Insights from God',
+    description: 'Teach disciples to develop a consistent Bible-reading habit.',
     items: [
       { number: 1, title: 'Renewing the Mind for Transformation', articleId: 'insights-from-god', links: { app: 'https://app.jesusonline.com/post/32510-insights-from-god' } },
       { number: 2, title: 'God’s Word', articleId: 'gods-word', links: { app: 'https://app.jesusonline.com/post/32520-gods-word' } },
@@ -1103,6 +1117,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'growth',
     parentId: 'building-blocks',
     name: 'Obeying God Faithfully',
+    description: 'Help others deepen their relationship with God through obedience.',
     items: [
       { number: 1, title: 'The Heart of True Obedience', articleId: 'obeying-god-faithfully', links: { app: 'https://app.jesusonline.com/post/32581-obeying-god-faithfully' } },
       { number: 2, title: 'Obeying to Get a Blessing', articleId: 'obeying-to-get-a-blessing', links: { app: 'https://app.jesusonline.com/post/32582-obeying-to-get-a-blessing' } },
@@ -1118,6 +1133,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'growth',
     parentId: 'building-blocks',
     name: 'Living as God\'s Family',
+    description: 'Help disciples become active members of a healthy community.',
     items: [
       { number: 1, title: 'Connecting with God\'s Family', articleId: 'connecting-with-gods-family', links: { app: 'https://app.jesusonline.com/post/32611-connecting-with-gods-family' } },
       { number: 2, title: 'Why Church?', articleId: 'why-church', links: { app: 'https://app.jesusonline.com/post/32612-why-church' } },
@@ -1137,6 +1153,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'growth',
     parentId: 'building-blocks',
     name: 'Reaching the World',
+    description: 'Equip believers to share their faith and help fulfill the Great Commission.',
     items: [
       { number: 1, title: 'Advancing Christ\'s Kingdom', articleId: 'advancing-christs-kingdom', links: { app: 'https://app.jesusonline.com/post/32711-advancing-christs-kingdom' } },
       { number: 2, title: 'The Kingdom of God', articleId: 'the-kingdom-of-god', links: { app: 'https://app.jesusonline.com/post/32712-the-kingdom-of-god' } },
@@ -1155,6 +1172,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'growth',
     parentId: 'building-blocks',
     name: 'Resisting the Enemy',
+    description: 'Train disciples to battle effectively in spiritual warfare.',
     items: [
       { number: 1, title: 'Standing Firm in Christ', articleId: 'standing-firm-in-christ', links: { app: 'https://app.jesusonline.com/post/32811-standing-firm-in-christ' } },
       { number: 2, title: 'Resisting False Identity', articleId: 'resisting-false-identity', links: { app: 'https://app.jesusonline.com/post/32812-resisting-false-identity' } },
@@ -1175,6 +1193,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'growth',
     parentId: 'building-blocks',
     name: 'Pursuing God\'s Master Plan',
+    description: 'Disciple believers to manage their lives well for His unique plan.',
     items: [
       { number: 1, title: 'God\'s Plan for You', articleId: 'gods-plan-for-you', links: { app: 'https://app.jesusonline.com/post/32901-gods-plan-for-you' } },
       { number: 2, title: 'Understanding God’s Eternal Plan', articleId: 'understanding-gods-eternal-plan', links: { app: 'https://app.jesusonline.com/post/32905-understanding-gods-eternal-plan' } },
@@ -1262,6 +1281,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'growth',
     parentId: 'prayer-guides',
     name: 'Introduction',
+    description: 'An overview of the power of the Lord\'s Prayer.',
     items: [
       { number: 1, title: 'The Lord\'s Prayer Guide Overview', articleId: 'the-lords-prayer-guide-overview', links: { app: 'https://app.jesusonline.com/post/23300-the-lords-prayer-guide-overview' } },
       { number: 2, title: 'How to Use this Prayer Guide', articleId: 'how-to-use-this-prayer-guide', links: { app: 'https://app.jesusonline.com/post/23301-how-to-use-this-prayer-guide' } },
@@ -1272,6 +1292,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'growth',
     parentId: 'prayer-guides',
     name: 'Relationship',
+    description: 'Prayer is founded on a believer\'s relationship with God the Father.',
     items: [
       { number: 1, title: 'Relationship Overview', articleId: 'relationship-overview', links: { app: 'https://app.jesusonline.com/post/23311-relationship-overview' } },
       { number: 2, title: 'Heavenly Father', articleId: 'heavenly-father', links: { app: 'https://app.jesusonline.com/post/23312-heavenly-father' } },
@@ -1285,6 +1306,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'growth',
     parentId: 'prayer-guides',
     name: 'Worship',
+    description: 'Prayer is worship that affirms the attributes of God the Creator.',
     items: [
       { number: 1, title: 'Worship Overview', articleId: 'worship-overview', links: { app: 'https://app.jesusonline.com/post/23321-worship-overview' } },
       { number: 2, title: 'Almighty Creator of Everything', articleId: 'almighty-creator-of-everything', links: { app: 'https://app.jesusonline.com/post/23322-almighty-creator-of-everything' } },
@@ -1298,6 +1320,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'growth',
     parentId: 'prayer-guides',
     name: 'Dedication',
+    description: 'Prayer rededicates disciples to God the Sovereign Ruler.',
     items: [
       { number: 1, title: 'Dedication Overview', articleId: 'dedication-overview', links: { app: 'https://app.jesusonline.com/post/23331-dedication-overview' } },
       { number: 2, title: 'Sovereign Ruler of the Universe', articleId: 'sovereign-ruler-of-the-universe', links: { app: 'https://app.jesusonline.com/post/23332-sovereign-ruler-of-the-universe' } },
@@ -1311,6 +1334,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'growth',
     parentId: 'prayer-guides',
     name: 'Guidance',
+    description: 'Prayer is seeking direction from God the Gracious Revealer.',
     items: [
       { number: 1, title: 'Guidance Overview', articleId: 'guidance-overview', links: { app: 'https://app.jesusonline.com/post/23341-guidance-overview' } },
       { number: 2, title: 'Gracious Revealer of Truth', articleId: 'gracious-revealer-of-truth', links: { app: 'https://app.jesusonline.com/post/23342-gracious-revealer-of-truth' } },
@@ -1327,6 +1351,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'growth',
     parentId: 'prayer-guides',
     name: 'Provision',
+    description: 'Prayer is requesting provision from God the Faithful Sustainer.',
     items: [
       { number: 1, title: 'Provision Overview', articleId: 'provision-overview', links: { app: 'https://app.jesusonline.com/post/23351-provision-overview' } },
       { number: 2, title: 'Faithful Sustainer of Creation', articleId: 'faithful-sustainer-of-creation', links: { app: 'https://app.jesusonline.com/post/23352-faithful-sustainer-of-creation' } },
@@ -1340,6 +1365,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'growth',
     parentId: 'prayer-guides',
     name: 'Forgiveness',
+    description: 'Prayer is receiving forgiveness from God the Righteous Judge.',
     items: [
       { number: 1, title: 'Forgiveness Overview', articleId: 'forgiveness-overview', links: { app: 'https://app.jesusonline.com/post/23361-forgiveness-overview' } },
       { number: 2, title: 'Righteous Judge of Evil', articleId: 'righteous-judge-of-evil', links: { app: 'https://app.jesusonline.com/post/23362-righteous-judge-of-evil' } },
@@ -1354,6 +1380,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'growth',
     parentId: 'prayer-guides',
     name: 'Deliverance',
+    description: 'Prayer is relying on the protection of God the Merciful Deliverer.',
     items: [
       { number: 1, title: 'Deliverance Overview', articleId: 'deliverance-overview', links: { app: 'https://app.jesusonline.com/post/23371-deliverance-overview' } },
       { number: 2, title: 'Merciful Deliverer', articleId: 'merciful-deliverer', links: { app: 'https://app.jesusonline.com/post/23372-merciful-deliverer' } },
@@ -1367,6 +1394,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'growth',
     parentId: 'prayer-guides',
     name: 'Intercession',
+    description: 'Prayer is standing in the gap for others.',
     items: [
       { number: 1, title: 'Intercession Overview', articleId: 'intercession-overview', links: { app: 'https://app.jesusonline.com/post/23401-intercession-overview' } },
       { number: 2, title: 'Guidelines for Intercession', articleId: 'guidelines-for-intercession', links: { app: 'https://app.jesusonline.com/post/23402-guidelines-for-intercession' } },
@@ -1385,6 +1413,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'growth',
     parentId: 'church-life',
     name: '5 Steps to Break Destructive Behavior',
+    description: 'Equip people with timeless principles for true freedom.',
     playlistId: '5-steps-to-break-destructive-behavior',
     formats: ['playlist'],
     items: [
@@ -1519,6 +1548,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'growth',
     parentId: 'successful-marriage',
     name: 'Keys to Happy Family Living',
+    description: 'Equip parents with biblically based parenting principles.',
     items: [
       { number: 1, title: 'Keys to Happy Family Living Overview', articleId: 'keys-to-happy-family-living-overview', links: { app: 'https://app.jesusonline.com/post/25401-keys-to-happy-family-living-overview' } },
       { number: 2, title: 'Instructions', articleId: 'instructions', links: { app: 'https://app.jesusonline.com/post/25402-instructions' } },
@@ -1542,6 +1572,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'growth',
     parentId: 'successful-marriage',
     name: 'Marriage God\'s Way',
+    description: 'Teach couples biblical principles for a healthy marriage.',
     items: [
       { number: 1, title: 'How To Cultivate Marriage', articleId: 'how-to-cultivate-marriage', links: { app: 'https://app.jesusonline.com/post/34501-how-to-cultivate-marriage' } },
       { number: 2, title: 'Building Harmony in Marriage', articleId: 'building-harmony-in-marriage', links: { app: 'https://app.jesusonline.com/post/34502-building-harmony-in-marriage' } },
@@ -1632,6 +1663,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'growth',
     parentId: 'bible-study',
     name: 'Abiding in Christ',
+    description: 'Show others how to experience the Spirit-filled life.',
     items: [
       { number: 1, title: 'The 3 Levels of Life', articleId: '1-the-3-levels-of-life', links: { app: 'https://app.jesusonline.com/post/25120-001-1-the-3-levels-of-life' } },
       { number: 2, title: 'The Battle of the Spirit and the Flesh', articleId: '2-the-battle-of-the-spirit-and-the-flesh', links: { app: 'https://app.jesusonline.com/post/25120-002-2-the-battle-of-the-spirit-and-the-flesh' } },
@@ -1652,6 +1684,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'growth',
     parentId: 'bible-study',
     name: 'Seeing God\'s Sovereignty',
+    description: 'Equip disciples with principles for discerning God\'s will for their lives.',
     items: [
       { number: 1, title: 'Overview', articleId: 'overview', links: { app: 'https://app.jesusonline.com/post/25181-overview' } },
       { number: 2, title: 'Five Characteristics of God\'s Sovereignty', articleId: 'five-characteristics-of-gods-sovereignty', links: { app: 'https://app.jesusonline.com/post/25182-five-characteristics-of-gods-sovereignty' } },
@@ -1668,12 +1701,14 @@ export const subTopics: SubTopic[] = [
     channelId: 'growth',
     parentId: 'bible-study',
     name: 'Forever Loved',
+    description: 'Experience the transformational love of God.',
   },
   {
     id: 'forever-loved-fathers-love',
     channelId: 'growth',
     parentId: 'forever-loved-study',
     name: 'The Father\'s Love',
+    description: 'Teach about God\'s fatherly love through the parable of the lost son.',
     items: [
       { number: 1, title: 'Introduction', articleId: 'introduction', links: { app: 'https://app.jesusonline.com/post/25211-introduction' } },
       { number: 2, title: 'Parable of the Lost Son', articleId: 'parable-of-the-lost-son', links: { app: 'https://app.jesusonline.com/post/25212-parable-of-the-lost-son' } },
@@ -1688,6 +1723,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'growth',
     parentId: 'forever-loved-study',
     name: 'Jesus\' Life of Love',
+    description: 'Teach how God\'s love is supremely expressed through Jesus.',
     items: [
       { number: 1, title: 'Introduction', articleId: 'introduction', links: { app: 'https://app.jesusonline.com/post/25221-introduction' } },
       { number: 2, title: 'Lesson 1 Jesus: God\'s Beloved Son', articleId: 'lesson-1-jesus-gods-beloved-son', links: { app: 'https://app.jesusonline.com/post/25222-lesson-1-jesus-gods-beloved-son' } },
@@ -1708,6 +1744,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'growth',
     parentId: 'forever-loved-study',
     name: 'The Power of Love',
+    description: 'Teach God\'s unconditional, unfailing love from Paul\'s letters.',
     items: [
       { number: 1, title: 'Introduction', articleId: 'introduction', links: { app: 'https://app.jesusonline.com/post/25241-introduction' } },
       { number: 2, title: 'Lesson 1 Nothing Without Love', articleId: 'nothing-without-love', links: { app: 'https://app.jesusonline.com/post/25242-nothing-without-love' } },
@@ -1724,6 +1761,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'growth',
     parentId: 'bible-study',
     name: 'From Coping to Cure',
+    description: 'Teach how Jesus provides true healing for your life.',
     items: [
       { number: 1, title: 'The Myth of Complexity', articleId: 'the-myth-of-complexity', links: { app: 'https://app.jesusonline.com/post/65601-the-myth-of-complexity' } },
       { number: 2, title: 'How Can I Find Peace and Satisfaction in This World?', articleId: 'how-can-i-find-peace-and-satisfaction-in-this-world', links: { app: 'https://app.jesusonline.com/post/65602-how-can-i-find-peace-and-satisfaction-in-this-world' } },
@@ -1756,6 +1794,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'growth',
     parentId: 'devotionals',
     name: 'Discover Jesus in the Gospels',
+    description: 'Explore a fresh perspective on Jesus\' teachings and life events.',
     items: [
       { number: 1, title: 'The Humility of Jesus', articleId: 'the-humility-of-jesus', links: { app: 'https://app.jesusonline.com/post/22010-032-the-humility-of-jesus' } },
       { number: 2, title: 'Finding Security and Comfort', articleId: 'finding-security-and-comfort', links: { app: 'https://app.jesusonline.com/post/22010-033-finding-security-and-comfort' } },
@@ -1794,6 +1833,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'growth',
     parentId: 'devotionals',
     name: 'Timeless Wisdom from Proverbs',
+    description: 'Discover insights from Proverbs for various aspects of life.',
     items: [
       { number: 1, title: 'Overview of Timeless Wisdom from Proverbs', articleId: 'overview-of-timeless-wisdom-from-proverbs', links: { app: 'https://app.jesusonline.com/post/22210-overview-of-timeless-wisdom-from-proverbs' } },
       { number: 2, title: 'Life Happens', articleId: 'life-happens', links: { app: 'https://app.jesusonline.com/post/22210-001-life-happens' } },
@@ -1833,6 +1873,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'growth',
     parentId: 'devotionals',
     name: 'Wisdom for the Trenches',
+    description: 'Learn practical principles for a world at war.',
     items: [
       { number: 1, title: 'Introduction', articleId: 'introduction', links: { app: 'https://app.jesusonline.com/post/22220-000-introduction' } },
       { number: 2, title: 'How to Recognize a Fool', articleId: 'how-to-recognize-a-fool', links: { app: 'https://app.jesusonline.com/post/22220-001-how-to-recognize-a-fool' } },
@@ -1904,6 +1945,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'growth',
     parentId: 'devotionals',
     name: '40 Days of God\'s Love',
+    description: 'Take a journey of transformation through God\'s heart of love.',
     playlistId: 'experience-gods-love',
     items: [
       { number: 1, title: 'Welcome to the Journey', articleId: 'welcome-to-the-journey', links: { app: 'https://app.jesusonline.com/post/22300-000-welcome-to-the-journey' } },
@@ -1954,6 +1996,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'growth',
     parentId: 'devotionals',
     name: 'Hearing the Voice of God',
+    description: 'Experience the transforming power of hearing God\'s voice.',
     items: [
       { number: 1, title: 'Hearing What God Has to Say to You', articleId: 'hearing-what-god-has-to-say-to-you', links: { app: 'https://app.jesusonline.com/post/22400-0-hearing-what-god-has-to-say-to-you' } },
       { number: 2, title: 'The Gifts of Light and Life', articleId: 'the-gifts-of-light-and-life', links: { app: 'https://app.jesusonline.com/post/22400-1-the-gifts-of-light-and-life' } },
@@ -2086,6 +2129,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'growth',
     parentId: 'devotionals',
     name: 'Courage Under Fire',
+    description: 'Build courage through wise and powerful truths.',
     items: [
       { number: 1, title: 'Love Makes Us Brave', articleId: 'love-makes-us-brave', links: { app: 'https://app.jesusonline.com/post/22420-1-love-makes-us-brave' } },
       { number: 2, title: 'Mighty Man of Valor', articleId: 'mighty-man-of-valor', links: { app: 'https://app.jesusonline.com/post/22420-2-mighty-man-of-valor' } },
@@ -2104,6 +2148,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'growth',
     parentId: 'devotionals',
     name: 'Thankfulness',
+    description: 'Practice the power of gratitude.',
     items: [
       { number: 1, title: 'Try Giving Thanks', articleId: 'try-giving-thanks', links: { app: 'https://app.jesusonline.com/post/22423-1-try-giving-thanks' } },
       { number: 2, title: 'The Thank You Habit', articleId: 'the-thank-you-habit', links: { app: 'https://app.jesusonline.com/post/22423-2-the-thank-you-habit' } },
@@ -2122,6 +2167,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'growth',
     parentId: 'devotionals',
     name: 'Heart of the Problem',
+    description: 'Uncover the heart of all relational problems.',
     items: [
       { number: 1, title: 'What Is Your Measuring Stick?', articleId: 'what-is-your-measuring-stick', links: { app: 'https://app.jesusonline.com/post/22750-1-what-is-your-measuring-stick' } },
       { number: 2, title: 'Help! What Should I Do?', articleId: 'help-what-should-i-do', links: { app: 'https://app.jesusonline.com/post/22750-2-help-what-should-i-do' } },
@@ -2161,6 +2207,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'growth',
     parentId: 'devotionals',
     name: 'KingdomNomics for Eternal Impact',
+    description: 'Understand how to use time, talent, and treasure for an impact.',
   },
   {
     id: 'kingdomnomics-store-up-treasure',
@@ -2287,6 +2334,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'growth',
     parentId: 'devotionals',
     name: 'Understanding God\'s Will',
+    description: 'Learn how to know God\'s will for you.',
     items: [
       { number: 1, title: 'Sovereignly Unique', articleId: 'sovereignly-unique', links: { app: 'https://app.jesusonline.com/post/22510-001-sovereignly-unique' } },
       { number: 2, title: 'Father Knows Best', articleId: 'father-knows-best', links: { app: 'https://app.jesusonline.com/post/22510-002-father-knows-best' } },
@@ -2304,6 +2352,7 @@ export const subTopics: SubTopic[] = [
     channelId: 'growth',
     parentId: 'devotionals',
     name: 'New Perspective on Life Change',
+    description: 'Change your life with a new perspective.',
     items: [
       { number: 1, title: 'Character Matters', articleId: 'character-matters', links: { app: 'https://app.jesusonline.com/post/22591-character-matters' } },
       { number: 2, title: 'Voices in Your Head', articleId: 'voices-in-your-head', links: { app: 'https://app.jesusonline.com/post/22592-voices-in-your-head' } },

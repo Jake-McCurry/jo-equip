@@ -1,7 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
-import { BookOpen, ArrowLeft } from "lucide-react";
+import { BookOpen, ArrowLeft, Download, Languages } from "lucide-react";
 import { books } from "@/data/books";
 import { getBookCover } from "@/data/bookCovers";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
@@ -22,6 +22,7 @@ export function getStaticPaths() {
 
 const { book } = Astro.props;
 const cover = getBookCover(book.id);
+const alternateEditions = book.editions ?? [];
 
 const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
@@ -29,7 +30,10 @@ const join = (p: string) =>
 
 const byline = book.author ? ` by ${book.author}` : "";
 const pageTitle = `${book.title} · Free Download · JO EQUIP`;
-const pageDesc = `Free PDF download — ${book.title}${byline}. A practical discipleship resource from JesusOnline Ministries Equip.`;
+const languageNote = alternateEditions.length > 0
+  ? ` Available in English and ${alternateEditions.map(edition => edition.language).join(", ")}.`
+  : "";
+const pageDesc = `Free PDF download — ${book.title}${byline}. A practical discipleship resource from JesusOnline Ministries Equip.${languageNote}`;
 
 const SITE = "https://equip.jesusonline.com";
 const bookJsonLd = {
@@ -134,5 +138,90 @@ const bookJsonLd = {
         </p>
       </div>
     </div>
+
+    {alternateEditions.length > 0 && (
+      <div class="mt-14 md:mt-18 pt-10 border-t" style="border-color:var(--color-border);">
+        <div class="flex items-center gap-3 mb-7">
+          <div class="w-9 h-9 rounded flex items-center justify-center" style="background-color:rgba(0,131,222,0.1);">
+            <Languages className="w-5 h-5" style={{ color: "#0083de" }} />
+          </div>
+          <div>
+            <span class="text-xs font-semibold tracking-widest uppercase" style="color:#0083de;">
+              Additional language
+            </span>
+            <h2 class="text-2xl md:text-3xl mt-1" style="color:#0b3c5d;">Spanish Edition</h2>
+          </div>
+        </div>
+
+        {alternateEditions.map(edition => {
+          const editionCover = getBookCover(edition.coverId);
+          return (
+            <section
+              class="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-7 md:gap-10 items-start rounded-lg border p-5 md:p-7 bg-white"
+              style="border-color:var(--color-border);"
+              lang={edition.languageCode}
+            >
+              <div class="flex justify-center md:justify-start">
+                {editionCover ? (
+                  <Image
+                    src={editionCover}
+                    alt={`${edition.title} — portada del libro`}
+                    widths={[220, 440]}
+                    sizes="(min-width: 768px) 220px, 80vw"
+                    loading="lazy"
+                    class="w-full max-w-[220px] h-auto rounded shadow-md"
+                  />
+                ) : (
+                  <div
+                    class="w-full max-w-[220px] aspect-[3/4] rounded bg-gray-100 flex items-center justify-center text-sm"
+                    style="color:var(--color-muted-foreground);"
+                  >
+                    Cover unavailable
+                  </div>
+                )}
+              </div>
+
+              <div>
+                <span class="text-xs font-semibold tracking-widest uppercase" style="color:#de5b00;">
+                  Edición en español
+                </span>
+                <h3 class="text-xl md:text-2xl mt-2 mb-3 leading-snug" style="color:#0b3c5d;">
+                  {edition.title}
+                </h3>
+                <p class="text-sm leading-relaxed mb-5" style="color:var(--color-muted-foreground);">
+                  Cada tamaño incluye un PDF interior de 45 páginas y el PDF correspondiente
+                  de la cubierta completa para impresión.
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" role="list" aria-label={`${edition.language} PDF downloads`}>
+                  {edition.downloads.map(download => (
+                    <a
+                      href={join(download.pdf)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="group flex items-center justify-between gap-4 rounded-md border p-4 transition-shadow hover:shadow-sm"
+                      style="border-color:var(--color-border);"
+                      role="listitem"
+                    >
+                      <span class="min-w-0">
+                        <span class="block font-semibold text-sm" style="color:#0b3c5d;">{download.label}</span>
+                        <span class="block text-sm mt-1" style="color:var(--color-muted-foreground);">{download.format}</span>
+                        <span class="block text-xs mt-1" style="color:var(--color-muted-foreground);">
+                          {download.details} · {download.size}
+                        </span>
+                      </span>
+                      <span class="shrink-0 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide" style="color:#0083de;">
+                        <Download className="w-4 h-4" />
+                        Open PDF
+                      </span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </section>
+          );
+        })}
+      </div>
+    )}
   </div>
 </Layout>

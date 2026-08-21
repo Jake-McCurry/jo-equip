@@ -1,0 +1,39 @@
+{
+  "validatedAt": "2026-08-21",
+  "productionUrl": "https://equip.jesusonline.com",
+  "release": {
+    "pullRequest": "https://github.com/Jake-McCurry/jo-equip/pull/58",
+    "mergeCommit": "9b57a34d33d58c7e867ca34e223f3c3766de8daa"
+  },
+  "liveReportUrl": "https://equip.jesusonline.com/nofollow-report.json",
+  "crawl": {
+    "htmlFilesScanned": 1414,
+    "totalAnchors": 53787,
+    "internalLinks": 50675,
+    "externalHttpLinks": 280,
+    "externalLinksWithNofollow": 280,
+    "externalLinksMissingNofollow": 0,
+    "internalLinksIncorrectlyGivenNofollow": 0,
+    "duplicateNofollowTokens": 0,
+    "linkDestinationsChanged": 0,
+    "existingRelValuesLost": 0,
+    "unexpectedRelValuesAdded": 0,
+    "invalidLinks": 0,
+    "failures": 0
+  },
+  "representativePages": [
+    "https://equip.jesusonline.com/",
+    "https://equip.jesusonline.com/categories",
+    "https://equip.jesusonline.com/categories/church/bible-study-tools/essential-bible-study-tools",
+    "https://equip.jesusonline.com/books",
+    "https://equip.jesusonline.com/playlists",
+    "https://equip.jesusonline.com/listen"
+  ],
+  "hostnameVerification": {
+    "www.equip.jesusonline.com": {
+      "dnsResolved": false,
+      "classification": "external",
+      "reason": "The acceptance criterion treats www/non-www as first-party only when both represent the same site. This hostname returned NXDOMAIN during production validation, so it is not an approved alias."
+    }
+  }
+}

@@ -101,7 +101,7 @@ export const books: Book[] = [
             label: "Print cover spread PDF",
             format: "U.S. Letter (8.5 × 11 in)",
             details: "1 page",
-            size: "38.4 MB",
+            size: "3.4 MB",
             pdf: "/books/extraordinary-evangelism-student-guide-es-us-letter-cover.pdf",
           },
           {
@@ -115,7 +115,7 @@ export const books: Book[] = [
             label: "Print cover spread PDF",
             format: "A4",
             details: "1 page",
-            size: "37.0 MB",
+            size: "3.1 MB",
             pdf: "/books/extraordinary-evangelism-student-guide-es-a4-cover.pdf",
           },
         ],

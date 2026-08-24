@@ -101,6 +101,9 @@ function splitTitle(t: string): { main: string; paren: string | null } {
 }
 
 const heroTitle = splitTitle(sub.name);
+const showFullHeroTitle =
+  sub.id === "disciple-making-movement" ||
+  sub.id === "rapid-church-planting";
 ---
 <Layout title={sub.seoTitle ?? `${sub.name} · ${channel.shortName} · JO EQUIP`} description={sub.seoDescription ?? `${sub.name} — ${channel.tagline}`}>
   <Fragment slot="head">
@@ -120,7 +123,7 @@ const heroTitle = splitTitle(sub.name);
     <div class="absolute inset-0 pointer-events-none" style="background-image:repeating-linear-gradient(45deg, rgba(255,255,255,0.05) 0, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 18px);"></div>
     <div class="absolute -top-20 -right-20 w-72 h-72 rounded-full pointer-events-none" style="background-color:rgba(255,255,255,0.08);filter:blur(20px);"></div>
     <div class="container mx-auto px-4 py-7 md:py-9 relative max-w-5xl">
-      <h1 class="text-3xl md:text-5xl mb-2" style="color:#ffffff;font-weight:500;">{heroTitle.main}</h1>
+      <h1 class="text-3xl md:text-5xl mb-2" style="color:#ffffff;font-weight:500;">{showFullHeroTitle ? sub.name : heroTitle.main}</h1>
       {sub.description && (
         <p class="text-base md:text-lg max-w-3xl" style="color:#ffffff;">{sub.description}</p>
       )}

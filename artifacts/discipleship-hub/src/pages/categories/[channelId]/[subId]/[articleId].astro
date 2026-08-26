@@ -28,6 +28,7 @@ import { getSiteArticleImage } from "@/data/siteArticleImages";
 import { hasBcgArticlePdf } from "@/data/bcgArticlePdfs";
 import { hasBsmArticlePdf } from "@/data/bsmArticlePdfs";
 import { hasArticlePdf } from "@/data/articles";
+import { getVerifiedJoAppArticleUrl } from "@/data/articleAppLinks";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 import { gitDateOf } from "@/data/contentDates";
 import { ArrowRight, ChevronRight, Download } from "lucide-react";
@@ -98,6 +99,13 @@ const pdfHref = bcg
     : evd
       ? (hasArticlePdf(evd.appSlug) ? join(`/articles/${evd.appSlug}.pdf`) : null)
       : (site && hasArticlePdf(site.appSlug) ? join(`/articles/${site.appSlug}.pdf`) : null);
+/* A read-page link is rendered only for a direct source post or an explicitly
+   mapped JO App post. Never infer a destination from this site's article ID. */
+const articleItem = (sub.items ?? []).find(i => i.articleId === article.id);
+const joAppArticleUrl = getVerifiedJoAppArticleUrl({
+  sourceAppSlug: evd?.appSlug ?? site?.appSlug,
+  explicitAppUrl: articleItem?.links?.app,
+});
 
 /* BibleProject content requires visible attribution wherever their videos
    are embedded. Their source posts use the 386xx/387xx catalog prefixes. */
@@ -142,7 +150,7 @@ function plain(s: string) {
 }
 /* SEO-approved per-item meta overrides (SEO-009) live on the sub-topic item
    in channels.ts and win over the derived title/description when set. */
-const seoItem = (sub.items ?? []).find(i => i.articleId === articleId);
+const seoItem = articleItem;
 const metaTitle = seoItem?.seoTitle ?? `${article.title} · ${sub.name} · JO EQUIP`;
 const metaDescription = seoItem?.seoDescription ?? plain(article.description);
 
@@ -317,6 +325,22 @@ const heroTitle = splitTitle(article.title);
           </div>
         </div>
       </a>
+    )}
+    {joAppArticleUrl && (
+      <div class="mt-8 text-center">
+        <a
+          href={joAppArticleUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Find this article on the JO App (opens in a new tab)"
+          class="inline-flex items-center justify-center rounded-md border-2 px-5 py-3 text-sm font-semibold transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+          style={`color:${channel.accentColor};border-color:${channel.accentColor};outline-color:${channel.accentColor};`}
+          onmouseover={`this.style.backgroundColor='${channel.accentColor}';`}
+          onmouseout="this.style.backgroundColor='transparent';"
+        >
+          Find this article on the JO App
+        </a>
+      </div>
     )}
   </div>
 </Layout>

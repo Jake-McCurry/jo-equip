@@ -284,8 +284,8 @@
     "lastmod": "2026-08-13"
   },
   "https://equip.jesusonline.com/categories/church/bible-mastery": {
-    "hash": "89a4f393a0d385e3",
-    "lastmod": "2026-08-21"
+    "hash": "c3190535034466ba",
+    "lastmod": "2026-08-26"
   },
   "https://equip.jesusonline.com/categories/church/bible-study-methods/bible-recap": {
     "hash": "39b0def672f8934a",
@@ -316,8 +316,8 @@
     "lastmod": "2026-08-13"
   },
   "https://equip.jesusonline.com/categories/church/bibleproject": {
-    "hash": "b9f20d47bb28540e",
-    "lastmod": "2026-08-21"
+    "hash": "878d301bc254dd82",
+    "lastmod": "2026-08-26"
   },
   "https://equip.jesusonline.com/categories/church/biblical-counseling-insights": {
     "hash": "855718510b8ad4c5",
@@ -5324,8 +5324,8 @@
     "lastmod": "2026-08-13"
   },
   "https://equip.jesusonline.com/sitemap": {
-    "hash": "296e99f6847bb568",
-    "lastmod": "2026-08-20"
+    "hash": "0539a91119d903b5",
+    "lastmod": "2026-08-26"
   },
   "https://equip.jesusonline.com/video/-z8D-mutYUg": {
     "hash": "065d0338b81cb36a",
@@ -5630,5 +5630,13 @@
   "https://equip.jesusonline.com/video/zDl4o8tdHRE": {
     "hash": "818a68f7bbbc5357",
     "lastmod": "2026-08-20"
+  },
+  "https://equip.jesusonline.com/categories/church/bibleproject-nt": {
+    "hash": "d62c203d4cf47685",
+    "lastmod": "2026-08-26"
+  },
+  "https://equip.jesusonline.com/categories/church/bibleproject-ot": {
+    "hash": "168b18a768402926",
+    "lastmod": "2026-08-26"
   }
 }

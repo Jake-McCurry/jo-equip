@@ -1,0 +1,39 @@
+---
+import "@/styles/global.css";
+import { ConcordancePrototype } from "@/components/knowing-god/ConcordancePrototype";
+
+const baseUrl = import.meta.env.BASE_URL;
+const join = (path: string) =>
+  (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + path;
+
+const title = "Knowing God Concordance | JO EQUIP";
+const description =
+  "Search and study topical Bible passages about the nature and character of God in this interactive Knowing God concordance preview.";
+const canonicalUrl = "https://equip.jesusonline.com/knowing-god";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" type="image/svg+xml" href={join("/favicon.svg")} />
+    <link rel="apple-touch-icon" href={join("/favicon.svg")} />
+    <meta name="theme-color" content="#123f50" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content="https://equip.jesusonline.com/opengraph.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://equip.jesusonline.com/opengraph.jpg" />
+  </head>
+  <body>
+    <ConcordancePrototype client:load />
+  </body>
+</html>

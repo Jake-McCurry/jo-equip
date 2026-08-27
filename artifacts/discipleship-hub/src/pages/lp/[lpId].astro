@@ -1,8 +1,11 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import { Picture, getImage } from "astro:assets";
+import { Image, Picture, getImage } from "astro:assets";
 import { channels } from "@/data/channels";
-import { ArrowRight, Users2, BookOpen, Smartphone, Star } from "lucide-react";
+import { ArrowRight, Users2, BookOpen, Play, Smartphone, Star } from "lucide-react";
+import { books } from "@/data/books";
+import { getBookCover } from "@/data/bookCovers";
+import { playlists, playlistThumbnail } from "@/data/playlists";
 import evidenceImg from "@/assets/channels/evidence.jpg";
 import heroCollage from "@/assets/home-hero-collage.png";
 import growthImg from "@/assets/channels/growth.jpg";
@@ -66,6 +69,30 @@ const personaLinks = [
   { title: "Chaplains", href: join("/chaplains") },
   { title: "Missionaries", href: join("/missionaries") },
 ];
+
+// Match the featured Books and Playlists used on the Pastors landing page.
+const featuredBooks = [
+  "adventure-of-living-with-jesus",
+  "who-is-the-real-jesus",
+  "walking-in-the-spirit",
+  "extraordinary-evangelism",
+  "extraordinary-evangelism-student-guide",
+  "your-new-identity-in-christ",
+  "5-steps-to-break-destructive-behavior",
+]
+  .map(id => books.find(book => book.id === id))
+  .filter((book): book is (typeof books)[number] => Boolean(book));
+
+const featuredPlaylists = [
+  "who-is-the-real-jesus",
+  "total-life-discipleship-core-principles",
+  "total-life-discipleship-kingdom-perspective",
+  "life-in-the-spirit",
+  "7-habits-deeper-relationship-with-god",
+  "hope-in-times-of-crisis",
+]
+  .map(id => playlists.find(playlist => playlist.id === id))
+  .filter((playlist): playlist is (typeof playlists)[number] => Boolean(playlist));
 ---
 <Layout
   title="JO EQUIP | Free Discipleship & Ministry Resources"
@@ -98,15 +125,92 @@ const personaLinks = [
         Apologetics, identity-centered discipleship, and church vibrancy&mdash;united in one accessible free resource hub.
         <a href={join("/equip")} class="text-sm md:text-base whitespace-nowrap font-medium underline underline-offset-2" style="color:#de5b00;">Find out more</a>
       </p>
-      <p class="mt-5 text-sm md:text-base" style="color:#0b3c5d;">
+      <div class="mt-5 text-sm md:text-base flex flex-col items-center justify-center gap-1.5 sm:flex-row sm:flex-wrap sm:gap-0" style="color:#0b3c5d;">
         <span class="font-medium">Explore Free Resources for</span>
-        {personaLinks.map(link => (
-          <Fragment>
-            <span aria-hidden="true" class="mx-1.5" style="color:#de5b00;">&bull;</span>
-            <a href={link.href} class="underline underline-offset-2 whitespace-nowrap hover:opacity-90" style="color:#de5b00;">{link.title}</a>
-          </Fragment>
-        ))}
+        <span class="flex flex-wrap items-center justify-center">
+          {personaLinks.map(link => (
+            <Fragment>
+              <span aria-hidden="true" class="mx-1.5" style="color:#de5b00;">&bull;</span>
+              <a href={link.href} class="underline underline-offset-2 whitespace-nowrap hover:opacity-90" style="color:#de5b00;">{link.title}</a>
+            </Fragment>
+          ))}
+        </span>
+      </div>
+    </div>
+  </section>
+
+  {/* Featured books — same collection and mobile carousel as the Pastors page. */}
+  <section class="py-10 md:py-14 bg-white border-t" style="border-color:var(--color-border);">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <h2 class="text-2xl md:text-3xl font-semibold mb-2" style="color:#0b3c5d;">Books</h2>
+      <p class="text-[15px] md:text-base leading-relaxed mb-6" style="color:#374151;">
+        Free PDF downloads suitable for personal reading, leadership teams, or distribution.
       </p>
+      <div class="flex gap-4 md:gap-5 overflow-x-auto pb-2 md:grid md:overflow-visible md:grid-cols-4 lg:grid-cols-8">
+        {featuredBooks.map(book => {
+          const cover = getBookCover(book.id);
+          return (
+            <a href={join(`/books/${book.id}`)} class="group shrink-0 w-[calc((100vw-5rem)/3.5)] max-w-[130px] md:w-auto md:max-w-none">
+              <div class="border rounded overflow-hidden bg-white transition-shadow group-hover:shadow-md" style="border-color:var(--color-border);">
+                {cover ? (
+                  <Image src={cover} alt={book.title} width={260} class="w-full aspect-[3/4] object-cover" />
+                ) : (
+                  <div class="aspect-[3/4] flex items-center justify-center" style="background-color:#e6f2fa;">
+                    <BookOpen className="w-8 h-8" style={{ color: "#94a3b8" }} />
+                  </div>
+                )}
+              </div>
+              <p class="mt-2 text-xs leading-snug font-medium group-hover:underline" style="color:#0b3c5d;">{book.title}</p>
+            </a>
+          );
+        })}
+        <a href={join("/books")} class="group shrink-0 w-[calc((100vw-5rem)/3.5)] max-w-[130px] md:w-auto md:max-w-none">
+          <div class="aspect-[3/4] border-2 border-dashed rounded flex flex-col items-center justify-center gap-2 transition-colors group-hover:border-solid" style="border-color:#0083de;background-color:#e6f2fa;">
+            <ArrowRight className="w-6 h-6" style={{ color: "#0083de" }} />
+            <span class="text-sm font-semibold" style="color:#0083de;">More</span>
+          </div>
+          <p class="mt-2 text-xs leading-snug font-medium group-hover:underline" style="color:#0b3c5d;">All free books</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* Featured playlists — same collection and mobile carousel as the Pastors page. */}
+  <section class="py-10 md:py-14 bg-white border-t" style="border-color:var(--color-border);">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <h2 class="text-2xl md:text-3xl font-semibold mb-2" style="color:#0b3c5d;">Playlists</h2>
+      <p class="text-[15px] md:text-base leading-relaxed mb-6" style="color:#374151;">
+        Sermon resources for pastors: video series for sermon starters, small groups, or personal equipping.
+      </p>
+      <div class="flex gap-4 md:gap-5 overflow-x-auto pb-2 md:grid md:overflow-visible md:grid-cols-3 lg:grid-cols-4">
+        {featuredPlaylists.map(playlist => {
+          const thumb = playlistThumbnail(playlist);
+          return (
+            <a href={join(`/playlist/${playlist.id}`)} class="group shrink-0 w-[calc((100vw-4rem)/2.5)] max-w-[220px] md:w-auto md:max-w-none">
+              <div class="relative border rounded overflow-hidden bg-white transition-shadow group-hover:shadow-md" style="border-color:var(--color-border);">
+                <div class="relative aspect-video bg-slate-100 overflow-hidden">
+                  {thumb && (
+                    <img src={thumb} alt={playlist.title} loading="lazy" width="320" height="180" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" />
+                  )}
+                  <div class="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/15 transition-colors">
+                    <div class="w-11 h-11 rounded-full flex items-center justify-center transition-all duration-200 scale-90 opacity-0 group-hover:opacity-100 group-hover:scale-100" style="background-color:rgba(255,255,255,0.95);">
+                      <Play className="w-5 h-5 ml-0.5" style={{ color: "#de5b00", fill: "#de5b00" }} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p class="mt-2 text-xs leading-snug font-medium group-hover:underline" style="color:#0b3c5d;">{playlist.title}</p>
+            </a>
+          );
+        })}
+        <a href={join("/playlists")} class="group shrink-0 w-[calc((100vw-4rem)/2.5)] max-w-[220px] md:w-auto md:max-w-none">
+          <div class="aspect-video border-2 border-dashed rounded flex flex-col items-center justify-center gap-1.5 transition-colors group-hover:border-solid" style="border-color:#0083de;background-color:#e6f2fa;">
+            <ArrowRight className="w-6 h-6" style={{ color: "#0083de" }} />
+            <span class="text-sm font-semibold" style="color:#0083de;">More</span>
+          </div>
+          <p class="mt-2 text-xs leading-snug font-medium group-hover:underline" style="color:#0b3c5d;">All playlists</p>
+        </a>
+      </div>
     </div>
   </section>
 

@@ -21,3 +21,4 @@
 - [Knowing God publication rights](knowing-god-publication-rights.md) — Written permission to publish the concordance is confirmed; do not treat general publication rights as an open blocker.
 - [Hydration and browser instrumentation](hydration-browser-instrumentation.md) — Test tools may mutate inputs before React hydration; distinguish injected attribute drift from application state mismatches.
 - [Concordance PDF extraction](concordance-pdf-extraction.md) — Use raw column order, normalize discretionary hyphens, and overlap sample boundaries before assembling topics.
+- [NET Bible concordance source](net-bible-concordance-source.md) — Use Bible.org’s official NET API on demand; retain required linked attribution and an explicit KJV fallback.

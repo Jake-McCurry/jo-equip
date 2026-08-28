@@ -20,3 +20,4 @@
 - [JO App slug opacity](jo-app-slug-opacity.md) — preserve source article slugs exactly; valid catalog paths can contain uppercase, doubled hyphens, or ampersands.
 - [Knowing God publication rights](knowing-god-publication-rights.md) — Written permission to publish the concordance is confirmed; do not treat general publication rights as an open blocker.
 - [Hydration and browser instrumentation](hydration-browser-instrumentation.md) — Test tools may mutate inputs before React hydration; distinguish injected attribute drift from application state mismatches.
+- [Concordance PDF extraction](concordance-pdf-extraction.md) — Use raw column order, normalize discretionary hyphens, and overlap sample boundaries before assembling topics.

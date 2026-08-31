@@ -7,4 +7,4 @@ For one-off PDF inspection and compression, prefer the workspace's installed MuP
 
 **Why:** The legacy `.pythonlibs` directory is not a valid virtual environment, so the managed PyMuPDF installer fails and may leave unrelated scaffolding or `.replit` package changes that require cleanup.
 
-**How to apply:** Render review images with MuPDF and optimize binary PDFs with Ghostscript, then verify page geometry, resolution, visual output, MIME type, and the deployment size limit.
+**How to apply:** Render review images with MuPDF and optimize binary PDFs with Ghostscript, then verify page geometry, resolution, visual output, MIME type, and the deployment size limit. For contact sheets, ImageMagick `montage` may fail because no default font is available; assemble unlabeled rows with `+append` and stack them with `-append`.

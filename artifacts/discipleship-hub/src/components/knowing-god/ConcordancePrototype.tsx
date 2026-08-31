@@ -283,6 +283,14 @@ export function ConcordancePrototype() {
               <p>
                 The guiding emphasis of this work is that the purpose of reading Scripture is not merely to know the Bible, but to <em>know God</em>. Let the repeated witness of Scripture shape your study, not merely confirm it.
               </p>
+              <p>
+                <a
+                  href={`${import.meta.env.BASE_URL.replace(/\/$/, "")}/knowing-god/introduction`}
+                  className="kg-focus kg-sans inline-flex items-center gap-1 font-bold text-[#a4532b] underline decoration-[#d2a05b] decoration-2 underline-offset-4 hover:text-[#123f50]"
+                >
+                  See introductory articles. <ChevronRight size={16} aria-hidden="true" />
+                </a>
+              </p>
 
               <div className="mt-10 border-t border-[#b7c2bb] pt-8">
                 <h3 className="text-2xl text-[#123f50] mb-5">Using the Digital Topical Bible</h3>

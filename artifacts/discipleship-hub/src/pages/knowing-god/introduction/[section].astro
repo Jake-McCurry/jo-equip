@@ -1,0 +1,163 @@
+---
+import KnowingGodIntroductionLayout from "@/layouts/KnowingGodIntroductionLayout.astro";
+import {
+  knowingGodIntroductions,
+  type KnowingGodIntroduction,
+} from "@/data/knowingGodIntroductions";
+
+export function getStaticPaths() {
+  return knowingGodIntroductions.map((article, index) => ({
+    params: { section: article.slug },
+    props: {
+      article,
+      previous: knowingGodIntroductions[index - 1] ?? null,
+      next: knowingGodIntroductions[index + 1] ?? null,
+    },
+  }));
+}
+
+interface Props {
+  article: KnowingGodIntroduction;
+  previous: KnowingGodIntroduction | null;
+  next: KnowingGodIntroduction | null;
+}
+
+const { article, previous, next } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
+const join = (path: string) =>
+  (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + path;
+const pageImage = (page: number) =>
+  join(`/knowing-god/introduction/source-pages/page-${String(page).padStart(2, "0")}.jpg`);
+---
+
+<KnowingGodIntroductionLayout title={article.title} description={article.description}>
+  <main class="kg-intro-main">
+    <nav class="kg-intro-breadcrumbs" aria-label="Breadcrumb">
+      <a href={join("/knowing-god")}>Knowing God</a>
+      <span aria-hidden="true">/</span>
+      <a href={join("/knowing-god/introduction")}>Introductory Articles</a>
+      <span aria-hidden="true">/</span>
+      {article.title}
+    </nav>
+
+    <p class="kg-intro-eyebrow">{article.eyebrow}</p>
+    <h1 class="kg-intro-title">{article.title}</h1>
+    <p class="kg-intro-lede">{article.description}</p>
+
+    <section class="source-pages" aria-label={`Original pages for ${article.title}`}>
+      <p class="mobile-reading-note">Swipe sideways across a source page to read it at full size.</p>
+      {article.pdfPages.map((page, index) => (
+        <figure>
+          <img
+            src={pageImage(page)}
+            alt={`${article.title}, original source page ${index + 1} of ${article.pdfPages.length}`}
+            width="1020"
+            height="1320"
+            loading={index === 0 ? "eager" : "lazy"}
+            decoding="async"
+          />
+          <figcaption>
+            Original source page {page}
+          </figcaption>
+        </figure>
+      ))}
+    </section>
+
+    <nav class="article-navigation" aria-label="Introductory article navigation">
+      {previous ? (
+        <a href={join(`/knowing-god/introduction/${previous.slug}`)}>
+          <small>Previous</small>
+          <span>← {previous.title}</span>
+        </a>
+      ) : <span />}
+      {next ? (
+        <a class="next" href={join(`/knowing-god/introduction/${next.slug}`)}>
+          <small>Next</small>
+          <span>{next.title} →</span>
+        </a>
+      ) : (
+        <a class="next" href={join("/knowing-god")}>
+          <small>Continue</small>
+          <span>Browse the topics →</span>
+        </a>
+      )}
+    </nav>
+  </main>
+</KnowingGodIntroductionLayout>
+
+<style>
+  .source-pages {
+    display: grid;
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  .mobile-reading-note {
+    display: none;
+    margin: 0;
+    color: #61736f;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: .78rem;
+    font-style: italic;
+  }
+  .source-pages figure {
+    margin: 0;
+    padding: clamp(.5rem, 2vw, 1rem);
+    border: 1px solid #b7c2bb;
+    background: #dfe1d9;
+    box-shadow: 0 16px 42px rgba(18,63,80,.1);
+  }
+  .source-pages img {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: white;
+  }
+  .source-pages figcaption {
+    padding: .75rem .25rem .1rem;
+    color: #71827c;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .article-navigation {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #b7c2bb;
+  }
+  .article-navigation a {
+    color: #123f50;
+    text-decoration: none;
+  }
+  .article-navigation small {
+    display: block;
+    margin-bottom: .3rem;
+    color: #b15d2b;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: .65rem;
+    font-weight: 800;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+  }
+  .article-navigation span { font-size: 1.08rem; }
+  .article-navigation .next { text-align: right; }
+  @media (max-width: 560px) {
+    .source-pages { gap: 1.2rem; margin-top: 2rem; }
+    .mobile-reading-note { display: block; }
+    .source-pages figure { overflow-x: auto; }
+    .source-pages img { width: 700px; max-width: none; }
+    .source-pages figcaption {
+      position: sticky;
+      left: 0;
+      width: calc(100vw - 3.8rem);
+    }
+    .article-navigation { grid-template-columns: 1fr; }
+    .article-navigation > span { display: none; }
+    .article-navigation .next { text-align: left; }
+  }
+</style>

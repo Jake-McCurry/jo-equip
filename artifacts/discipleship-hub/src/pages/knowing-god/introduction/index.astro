@@ -1,0 +1,94 @@
+---
+import KnowingGodIntroductionLayout from "@/layouts/KnowingGodIntroductionLayout.astro";
+import { knowingGodIntroductions } from "@/data/knowingGodIntroductions";
+
+const baseUrl = import.meta.env.BASE_URL;
+const join = (path: string) =>
+  (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + path;
+---
+
+<KnowingGodIntroductionLayout
+  title="Introductory Articles"
+  description="Read the complete introductory material from Knowing God before exploring the Topical Bible."
+>
+  <main class="kg-intro-main">
+    <nav class="kg-intro-breadcrumbs" aria-label="Breadcrumb">
+      <a href={join("/knowing-god")}>Knowing God</a> <span aria-hidden="true">/</span> Introductory Articles
+    </nav>
+
+    <p class="kg-intro-eyebrow">Begin Here</p>
+    <h1 class="kg-intro-title">Introductory Articles</h1>
+    <p class="kg-intro-lede">
+      Read the original material that precedes the Table of Contents, then continue into the Topical Bible.
+    </p>
+
+    <section class="intro-grid" aria-label="Knowing God introductory articles">
+      {knowingGodIntroductions.map((article, index) => (
+        <a class="intro-card" href={join(`/knowing-god/introduction/${article.slug}`)}>
+          <span class="intro-number">{String(index + 1).padStart(2, "0")}</span>
+          <div>
+            <p>{article.eyebrow}</p>
+            <h2>{article.title}</h2>
+            <span>{article.description}</span>
+          </div>
+          <strong aria-hidden="true">→</strong>
+        </a>
+      ))}
+    </section>
+  </main>
+</KnowingGodIntroductionLayout>
+
+<style>
+  .intro-grid {
+    display: grid;
+    gap: 1px;
+    margin-top: 3rem;
+    border: 1px solid #b7c2bb;
+    background: #b7c2bb;
+  }
+  .intro-card {
+    display: grid;
+    grid-template-columns: 3rem 1fr auto;
+    gap: 1.25rem;
+    align-items: start;
+    padding: 1.5rem;
+    background: #f8f7f2;
+    color: inherit;
+    text-decoration: none;
+    transition: background .18s ease, transform .18s ease;
+  }
+  .intro-card:hover { background: #fffdf7; }
+  .intro-number {
+    color: #b15d2b;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: .72rem;
+    font-weight: 800;
+    letter-spacing: .12em;
+  }
+  .intro-card p {
+    margin: 0 0 .35rem;
+    color: #71827c;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: .66rem;
+    font-weight: 800;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+  }
+  .intro-card h2 {
+    margin: 0 0 .55rem;
+    color: #123f50;
+    font-size: clamp(1.35rem, 3vw, 1.8rem);
+    font-weight: 400;
+  }
+  .intro-card div > span {
+    display: block;
+    max-width: 680px;
+    color: #61736f;
+    font-size: .96rem;
+    line-height: 1.55;
+  }
+  .intro-card strong { color: #b15d2b; font-size: 1.4rem; font-weight: 400; }
+  @media (max-width: 560px) {
+    .intro-card { grid-template-columns: 2rem 1fr auto; gap: .65rem; padding: 1.2rem .9rem; }
+  }
+</style>

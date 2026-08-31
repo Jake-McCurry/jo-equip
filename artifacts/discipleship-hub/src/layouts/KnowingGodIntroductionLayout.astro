@@ -1,0 +1,153 @@
+---
+import "@/styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
+const join = (path: string) =>
+  (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + path;
+const pageTitle = `${title} | Knowing God Topical Bible | JO EQUIP`;
+const canonicalUrl = `https://equip.jesusonline.com${Astro.url.pathname}`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" type="image/svg+xml" href={join("/favicon.svg")} />
+    <link rel="apple-touch-icon" href={join("/favicon.svg")} />
+    <meta name="theme-color" content="#123f50" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content="https://equip.jesusonline.com/opengraph.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body class="kg-intro-body">
+    <header class="kg-intro-header">
+      <div class="kg-intro-header-inner">
+        <a class="kg-intro-brand" href={join("/knowing-god")}>
+          <span class="kg-intro-mark" aria-hidden="true">K</span>
+          <span>
+            <small>JO EQUIP · Zinzendorf Mission</small>
+            <strong>Knowing God <i>/</i> Topical Bible</strong>
+          </span>
+        </a>
+        <a class="kg-intro-return" href={join("/knowing-god")}>Return to topics</a>
+      </div>
+    </header>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  .kg-intro-body {
+    margin: 0;
+    background: #e8e9e1;
+    color: #30494f;
+    font-family: Georgia, "Times New Roman", serif;
+  }
+  .kg-intro-header {
+    border-bottom: 1px solid rgba(255,255,255,.14);
+    background: #123f50;
+    color: #f8f5ed;
+  }
+  .kg-intro-header-inner {
+    display: flex;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: .9rem 1.25rem;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .kg-intro-brand {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    color: inherit;
+    text-decoration: none;
+  }
+  .kg-intro-brand small,
+  .kg-intro-eyebrow {
+    display: block;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: .64rem;
+    font-weight: 700;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+  }
+  .kg-intro-brand small { color: #bdd0cc; }
+  .kg-intro-brand strong {
+    display: block;
+    margin-top: .16rem;
+    font-size: 1.2rem;
+    font-weight: 400;
+  }
+  .kg-intro-brand i { color: #e4b16d; font-style: normal; }
+  .kg-intro-mark {
+    display: grid;
+    width: 2.2rem;
+    height: 2.2rem;
+    place-items: center;
+    border: 1px solid rgba(228,177,109,.75);
+    color: #e4b16d;
+    font-style: italic;
+  }
+  .kg-intro-return {
+    border: 1px solid rgba(255,255,255,.28);
+    padding: .58rem .8rem;
+    color: #f8f5ed;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: .75rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .kg-intro-return:hover { background: rgba(255,255,255,.09); }
+  .kg-intro-main {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 3rem 1.25rem 5rem;
+  }
+  .kg-intro-breadcrumbs {
+    margin-bottom: 2.2rem;
+    color: #667c78;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: .78rem;
+  }
+  .kg-intro-breadcrumbs a { color: #285c68; }
+  .kg-intro-eyebrow { color: #b15d2b; }
+  .kg-intro-title {
+    max-width: 850px;
+    margin: .6rem 0 1rem;
+    color: #123f50;
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    font-weight: 400;
+    letter-spacing: -.035em;
+    line-height: .98;
+  }
+  .kg-intro-lede {
+    max-width: 760px;
+    margin: 0;
+    color: #61736f;
+    font-size: clamp(1.1rem, 2.3vw, 1.35rem);
+    font-style: italic;
+    line-height: 1.6;
+  }
+  @media (max-width: 620px) {
+    .kg-intro-header-inner { align-items: flex-start; }
+    .kg-intro-brand small { font-size: .52rem; }
+    .kg-intro-brand strong { font-size: 1rem; }
+    .kg-intro-return { padding: .45rem .6rem; font-size: .65rem; }
+    .kg-intro-main { padding-top: 2rem; }
+  }
+</style>

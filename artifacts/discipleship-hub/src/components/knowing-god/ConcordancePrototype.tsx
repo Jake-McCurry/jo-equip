@@ -161,7 +161,7 @@ export function ConcordancePrototype() {
         <div className="mx-auto flex max-w-[1500px] items-center justify-between px-4 py-3 md:px-8">
           <div className="flex items-center gap-3">
             <div className="flex h-9 w-9 items-center justify-center border border-[#d9a458]/70 text-[#e5b66f]"><Feather size={18}/></div>
-            <div><p className="kg-sans text-[10px] font-semibold uppercase tracking-[.25em] text-[#bdd0cc]">JO EQUIP · Zinzendorf Mission</p><h1 className="text-xl tracking-tight text-[#f8f5ed] md:text-2xl">Knowing God <span className="text-[#e4b16d]">/</span> Concordance</h1></div>
+            <div><p className="kg-sans text-[10px] font-semibold uppercase tracking-[.25em] text-[#bdd0cc]">JO EQUIP · Zinzendorf Mission</p><h1 className="text-xl tracking-tight text-[#f8f5ed] md:text-2xl">Knowing God <span className="text-[#e4b16d]">/</span> Topical Bible</h1></div>
           </div>
           <div className="flex items-center gap-2">
             <span className="kg-sans hidden text-xs text-[#c2d1cf] sm:inline">Pages 29–50 sample</span>
@@ -207,7 +207,7 @@ export function ConcordancePrototype() {
             </div>
             
             <label className="kg-sans sr-only" htmlFor="topic-search">Search topics and verses</label>
-            <div className="relative mb-4"><Search className="absolute left-3 top-3 text-[#6c7f7d]" size={16}/><input suppressHydrationWarning id="topic-search" value={query} onChange={e => setQuery(e.target.value)} placeholder="Search the concordance" className="kg-focus w-full border border-[#aebcb8] bg-[#f8f7f2] py-2.5 pl-9 pr-3 text-sm text-[#20394a] placeholder:text-[#80908d]"/></div>
+            <div className="relative mb-4"><Search className="absolute left-3 top-3 text-[#6c7f7d]" size={16}/><input suppressHydrationWarning id="topic-search" value={query} onChange={e => setQuery(e.target.value)} placeholder="Search the Topical Bible" className="kg-focus w-full border border-[#aebcb8] bg-[#f8f7f2] py-2.5 pl-9 pr-3 text-sm text-[#20394a] placeholder:text-[#80908d]"/></div>
             <button onClick={() => setFilterOpen(v => !v)} className="kg-focus kg-sans mb-5 flex w-full items-center justify-between border-y border-[#c1cbc5] py-2 text-left text-xs font-semibold uppercase tracking-widest text-[#54706f]"><span className="flex items-center gap-2"><SlidersHorizontal size={14}/> Refine results</span><ChevronDown size={14} className={filterOpen ? "rotate-180" : ""}/></button>
             {filterOpen && <div className="kg-sans mb-5 space-y-3 border-b border-[#c1cbc5] pb-4">
               <label className="block text-xs font-semibold text-[#52706d]">Testament<select value={testament} onChange={e => setTestament(e.target.value)} className="kg-focus mt-1 w-full border border-[#b6c2bd] bg-[#f8f7f2] p-2 text-sm font-normal"><option>All Testaments</option><option>Old Testament</option><option>New Testament</option></select></label>
@@ -215,7 +215,7 @@ export function ConcordancePrototype() {
               {(testament !== "All Testaments" || book !== "All books") && <button onClick={() => {setTestament("All Testaments");setBook("All books")}} className="text-xs text-[#b15d2b] underline">Clear filters</button>}
             </div>}
 
-            <nav aria-label="Concordance topics">
+            <nav aria-label="Topical Bible topics">
               {!isFiltering && (
                 <div className="mb-5 grid grid-cols-6 gap-1">
                   {alphabet.map(letter => {
@@ -285,12 +285,12 @@ export function ConcordancePrototype() {
               </p>
 
               <div className="mt-10 border-t border-[#b7c2bb] pt-8">
-                <h3 className="text-2xl text-[#123f50] mb-5">Using the Digital Concordance</h3>
+                <h3 className="text-2xl text-[#123f50] mb-5">Using the Digital Topical Bible</h3>
                 <ul className="list-disc pl-5 space-y-3 marker:text-[#b15d2b]">
                   <li><strong>Browse A–Z:</strong> Use the letter grid in the sidebar to explore topics alphabetically.</li>
                   <li><strong>Search & Filter:</strong> Find specific themes or limit passages to a particular Testament or book.</li>
                   <li><strong>See Also:</strong> Follow related themes to deepen your study.</li>
-                  <li><strong>Translations:</strong> The source book uses KJV unless otherwise indicated (indicated AMPC quotations are used by permission). This digital concordance adds the authorized NET Bible API option. Changing the translation changes the wording, not the curated topics or Scripture references.</li>
+                  <li><strong>Translations:</strong> The source book uses KJV unless otherwise indicated (indicated AMPC quotations are used by permission). This digital Topical Bible adds the authorized NET Bible API option. Changing the translation changes the wording, not the curated topics or Scripture references.</li>
                   <li><strong>Save & Export:</strong> Save studies locally to your device, and easily copy or print them. (Saved studies remain in this browser without an account, but will be lost if browser data is cleared.)</li>
                 </ul>
               </div>
@@ -377,7 +377,7 @@ export function ConcordancePrototype() {
           {view === "topic" && (
             <div className="border-t border-[#c3cbc4] pt-6"><p className="kg-sans text-[10px] font-bold uppercase tracking-[.18em] text-[#71827c]">See also</p><div className="mt-3 flex flex-wrap gap-2">{selected.seeAlso.map(title => { const exists = topics.some(t => t.title === title); return <button key={title} disabled={!exists} onClick={() => { if(exists) { setView("topic"); setSelectedTitle(title); } }} className={`kg-focus border px-2.5 py-1.5 text-left text-sm ${exists ? "border-[#b2c2bb] text-[#315d64] hover:border-[#a4532b] hover:text-[#a4532b]" : "cursor-not-allowed border-[#d0d3cc] text-[#9ba49e]"}`}>{title}</button>; })}</div></div>
           )}
-          <div className="mt-10 border-t border-[#c3cbc4] pt-6"><p className="kg-sans text-[10px] font-bold uppercase tracking-[.18em] text-[#71827c]">About this sample</p><p className="mt-2 text-sm leading-relaxed text-[#687974]">Knowing God is a 1,134-page topical Scripture concordance published by Zinzendorf Mission. This interactive sample contains extracted pages 29–50.</p></div>
+          <div className="mt-10 border-t border-[#c3cbc4] pt-6"><p className="kg-sans text-[10px] font-bold uppercase tracking-[.18em] text-[#71827c]">About this sample</p><p className="mt-2 text-sm leading-relaxed text-[#687974]">Knowing God is a 1,134-page Topical Bible published by Zinzendorf Mission. This interactive sample contains extracted pages 29–50.</p></div>
         </aside>
       </main>
       {copied && <div role="status" className="kg-sans fixed bottom-5 left-1/2 z-50 flex -translate-x-1/2 items-center gap-2 bg-[#123f50] px-4 py-3 text-sm text-white shadow-lg"><Check size={15} className="text-[#e4b16d]"/> {copied === "topic" ? "Topic references copied" : "Passages copied"}</div>}

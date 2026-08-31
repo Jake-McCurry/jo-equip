@@ -23,3 +23,4 @@
 - [Concordance PDF extraction](concordance-pdf-extraction.md) — Use raw column order, normalize discretionary hyphens, and overlap sample boundaries before assembling topics.
 - [NET Bible concordance source](net-bible-concordance-source.md) — Use Bible.org’s official NET API on demand; retain required linked attribution and an explicit KJV fallback.
 - [Astro nested template rendering](astro-nested-template-rendering.md) — Complex nested map callbacks can trigger cryptic compiler syntax errors; prepare data up front and keep template branches declarative.
+- [Knowing God source pages](knowing-god-source-pages.md) — Source-derived introductions must be exact, semantic, mobile-first HTML; use PDF renders only for verification.

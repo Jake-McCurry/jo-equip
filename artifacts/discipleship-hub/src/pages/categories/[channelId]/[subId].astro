@@ -30,6 +30,13 @@ const next = getNextSubTopic(channelId!, subId!);
 const children = getSubTopicChildren(sub.id);
 const hasChildren = children.length > 0;
 const hasItems = (sub.items?.length ?? 0) > 0;
+const featuredChildArticle = sub.id === "total-life-discipleship-principles"
+  ? {
+      title: "Identity-Centered Heart Transformation",
+      description: "God transforms the heart through identity in Christ, a true view of God, and Spirit dependence.",
+      href: `/categories/church/tld-core-principles/identity-centered-heart-transformation`,
+    }
+  : null;
 
 /* The Make & Multiply Disciples Newsletter sub-topic renders a dedicated
  * landing page (intro + "each issue features" + Mailchimp signup form)
@@ -154,6 +161,19 @@ const showFullHeroTitle =
           <div class="mt-2 h-0.5 w-12" style="background-color:#de5b00;"></div>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {featuredChildArticle && (
+            <a
+              href={join(featuredChildArticle.href)}
+              class="flex flex-col bg-white border rounded p-5 hover:shadow-md transition-all"
+              style={`border-color:var(--color-border);border-left:4px solid ${channel.accentColor};`}
+            >
+              <h3 class="text-base font-semibold leading-snug mb-2" style="color:#0b3c5d;">{featuredChildArticle.title}</h3>
+              <p class="text-sm leading-relaxed" style="color:var(--color-muted-foreground);">{featuredChildArticle.description}</p>
+              <span class="mt-auto pt-3 inline-flex items-center gap-1.5 text-sm font-semibold" style={`color:${channel.accentColor};`}>
+                Read Article <ArrowRight className="w-4 h-4" />
+              </span>
+            </a>
+          )}
           {children.map((child) => {
             const count = childArticleCount(child);
             return (

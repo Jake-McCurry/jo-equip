@@ -169,10 +169,17 @@ export const subTopics: SubTopic[] = [
     formats: ['playlist'],
     playlistId: 'total-life-discipleship-core-principles',
     items: [
-      { number: 1, title: 'What Is Total Life Discipleship', articleId: 'what-is-total-life-discipleship', videoId: 'XU3PUCwaKos', links: { app: 'https://app.jesusonline.com/post/30101-01-what-is-total-life-discipleship' } },
-      { number: 2, title: 'God\'s Vision', articleId: 'gods-vision-of-you', videoId: 'psw_5rn9WFY', links: { app: 'https://app.jesusonline.com/post/30101-02-gods-vision-of-you' } },
-      { number: 3, title: 'Personal Transformation', articleId: 'personal-transformation', videoId: '56GWpb0F2qU', links: { app: 'https://app.jesusonline.com/post/30101-03-personal-transformation' } },
-      { number: 4, title: 'Eternal Impact', articleId: 'created-for-eternal-impact', videoId: 'Wq2g9GTgc_Q', links: { app: 'https://app.jesusonline.com/post/30101-04-created-for-eternal-impact' } },
+      {
+        number: 1,
+        title: 'Identity-Centered Heart Transformation',
+        articleId: 'identity-centered-heart-transformation',
+        seoTitle: 'Identity-Centered Heart Transformation | JO EQUIP',
+        seoDescription: 'God transforms the heart through identity in Christ, a true view of God, and Spirit dependence.',
+      },
+      { number: 2, title: 'What Is Total Life Discipleship', articleId: 'what-is-total-life-discipleship', videoId: 'XU3PUCwaKos', links: { app: 'https://app.jesusonline.com/post/30101-01-what-is-total-life-discipleship' } },
+      { number: 3, title: 'God\'s Vision', articleId: 'gods-vision-of-you', videoId: 'psw_5rn9WFY', links: { app: 'https://app.jesusonline.com/post/30101-02-gods-vision-of-you' } },
+      { number: 4, title: 'Personal Transformation', articleId: 'personal-transformation', videoId: '56GWpb0F2qU', links: { app: 'https://app.jesusonline.com/post/30101-03-personal-transformation' } },
+      { number: 5, title: 'Eternal Impact', articleId: 'created-for-eternal-impact', videoId: 'Wq2g9GTgc_Q', links: { app: 'https://app.jesusonline.com/post/30101-04-created-for-eternal-impact' } },
     ],
   },
   {

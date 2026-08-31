@@ -6,7 +6,7 @@ import { getBookCover } from "@/data/bookCovers";
 import { extractAppSlug, hasArticlePdf } from "@/data/articles";
 import { hasBcgArticlePdf } from "@/data/bcgArticlePdfs";
 import { hasBsmArticlePdf } from "@/data/bsmArticlePdfs";
-import { FileText, Video, Smartphone, ArrowRight, ChevronRight } from "lucide-react";
+import { FileText, Video, Smartphone, ArrowRight, ChevronRight, BookOpen } from "lucide-react";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 import MakeMultiplyNewsletter from "@/components/MakeMultiplyNewsletter.astro";
 import { getCanonicalVideo } from "@/data/playlists";
@@ -42,6 +42,7 @@ const featuredChildArticle = sub.id === "total-life-discipleship-principles"
  * landing page (intro + "each issue features" + Mailchimp signup form)
  * instead of the standard items/empty layout. */
 const isNewsletter = sub.id === "make-multiply-disciples-newsletter";
+const showKnowingGod = channel.id === "church" && sub.id === "bible-study-tools";
 
 /* For child sub-topics, surface the parent in the breadcrumb (Channels > Church > Share Jesus > Year 1). */
 const parent = sub.parentId ? getSubTopic(channelId!, sub.parentId) : undefined;
@@ -152,6 +153,26 @@ const showFullHeroTitle =
       <ChevronRight className="w-3 h-3" />
       <span>{heroTitle.main}</span>
     </nav>
+    {showKnowingGod && (
+      <a
+        href={join("/knowing-god")}
+        class="group mb-8 flex items-center gap-4 rounded border bg-white p-5 transition-all hover:shadow-md"
+        style="border-color:var(--color-border);border-left:4px solid #0f4c5c;"
+      >
+        <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded" style="background-color:#0f4c5c12;color:#0f4c5c;">
+          <BookOpen className="h-5 w-5" />
+        </span>
+        <span class="min-w-0 flex-1">
+          <strong class="block text-lg leading-tight" style="color:#0b3c5d;">Knowing God</strong>
+          <span class="mt-1 block text-sm leading-relaxed" style="color:var(--color-muted-foreground);">
+            Explore the Knowing God Topical Bible and its biblical guide to the nature and character of God.
+          </span>
+        </span>
+        <span class="inline-flex shrink-0 items-center gap-1 text-sm font-semibold" style="color:#0f4c5c;">
+          Open <ArrowRight className="h-4 w-4" />
+        </span>
+      </a>
+    )}
     {isNewsletter ? (
       <MakeMultiplyNewsletter accent={channel.accentColor} />
     ) : hasChildren ? (

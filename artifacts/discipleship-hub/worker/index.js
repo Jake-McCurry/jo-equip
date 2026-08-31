@@ -67,6 +67,7 @@ const TURNSTILE_VERIFY_URL =
 const VALID_SOURCES = new Set(["jo-equip-books"]);
 
 const VALID_BOOK_IDS = new Set([
+  "knowing-god",
   "adventure-of-living-with-jesus",
   "who-is-the-real-jesus",
   "has-science-discovered-god",

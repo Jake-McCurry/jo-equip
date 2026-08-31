@@ -30,6 +30,7 @@ import { hasBsmArticlePdf } from "@/data/bsmArticlePdfs";
 import { hasArticlePdf } from "@/data/articles";
 import { getVerifiedJoAppArticleUrl } from "@/data/articleAppLinks";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
+import IdentityCenteredHeartTransformation from "@/components/articles/IdentityCenteredHeartTransformation.astro";
 import { gitDateOf } from "@/data/contentDates";
 import { ArrowRight, ChevronRight, Download } from "lucide-react";
 
@@ -163,6 +164,20 @@ function splitTitle(t: string): { main: string; paren: string | null } {
 
 const heroTitle = splitTitle(article.title);
 ---
+{article.id === 'identity-centered-heart-transformation' ? (
+  <IdentityCenteredHeartTransformation
+    article={article}
+    sub={sub}
+    channel={channel}
+    heroTitle={heroTitle}
+    nextArticle={nextArticle}
+    pdfHref={pdfHref}
+    joAppArticleUrl={joAppArticleUrl}
+    articleJsonLd={articleJsonLd}
+    metaTitle={metaTitle}
+    metaDescription={metaDescription}
+  />
+) : (
 <Layout title={metaTitle} description={metaDescription}>
   <Fragment slot="head">
     <BreadcrumbsLd items={[
@@ -344,6 +359,7 @@ const heroTitle = splitTitle(article.title);
     )}
   </div>
 </Layout>
+)}
 
 <style>
   .article-video {

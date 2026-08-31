@@ -352,19 +352,17 @@ const gtmEnabled = import.meta.env.PROD;
       </div>
     </footer>
 
-    {/* PDF download tracking → GTM dataLayer. Fires a `pdf_download` event
-        whenever a visitor clicks any link to a .pdf (article PDFs, external
-        PDFs), including middle-clicks. Book opens go through the book-open
-        script on /books, which pushes the SAME event via
-        window.__trackPdfDownload when the PDF actually opens (books are NOT
-        plain .pdf links, so the click listener alone would miss them). Both
+    {/* PDF action tracking → GTM dataLayer. PDF links default to a
+        `pdf_download` event, while links explicitly marked as opens use
+        `pdf_open`. The /books Open button calls window.__trackPdfOpen because
+        it opens the PDF through JavaScript rather than a plain anchor. Both
         paths share one normalization function so parameters are identical.
         Canonical per-file key: pdf_path (resolved pathname, no query/hash,
-        casing preserved). GTM: custom-event trigger `pdf_download` → GA4
-        event tag mapping pdf_path / file_name / file_extension / file_title /
-        file_category / link_url. */}
+        casing preserved). GTM can trigger separate GA4 events for `pdf_open`
+        and `pdf_download`, mapping pdf_path / file_name / file_extension /
+        file_title / file_category / link_url. */}
     <script is:inline set:html={`(function(){
-      function push(url, title, category){
+      function push(eventName, url, title, category){
         try {
           /* Resolve to an absolute URL so relative hrefs, query strings and
              fragments all normalize the same way. Path casing is preserved. */
@@ -374,7 +372,7 @@ const gtmEnabled = import.meta.env.PROD;
           var extMatch = file.match(/\\.([a-z0-9]+)$/i);
           window.dataLayer = window.dataLayer || [];
           window.dataLayer.push({
-            event: "pdf_download",
+            event: eventName,
             pdf_path: path,
             file_name: file,
             file_extension: extMatch ? extMatch[1].toLowerCase() : "",
@@ -384,7 +382,12 @@ const gtmEnabled = import.meta.env.PROD;
           });
         } catch (_e) { /* never break the click */ }
       }
-      window.__trackPdfDownload = push;
+      window.__trackPdfDownload = function(url, title, category){
+        push("pdf_download", url, title, category);
+      };
+      window.__trackPdfOpen = function(url, title, category){
+        push("pdf_open", url, title, category);
+      };
       function onClick(e){
         /* Keep the two listeners strictly disjoint so no interaction can
            push twice: "click" handles primary button only; "auxclick"
@@ -407,7 +410,8 @@ const gtmEnabled = import.meta.env.PROD;
           var h1 = document.querySelector("h1");
           title = (h1 && h1.textContent ? h1.textContent : title).trim();
         }
-        push(a.href, title, category);
+        var action = a.getAttribute("data-pdf-action") === "open" ? "pdf_open" : "pdf_download";
+        push(action, a.href, title, category);
       }
       document.addEventListener("click", onClick, true);
       document.addEventListener("auxclick", onClick, true);

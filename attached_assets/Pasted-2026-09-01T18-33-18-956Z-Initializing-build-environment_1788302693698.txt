@@ -1,0 +1,57 @@
+2026-09-01T18:33:18.956Z	Initializing build environment...
+2026-09-01T18:33:26.722Z	Success: Finished initializing build environment
+2026-09-01T18:33:28.057Z	Cloning repository...
+2026-09-01T18:34:15.093Z	Restoring from dependencies cache
+2026-09-01T18:34:15.094Z	Restoring from build output cache
+2026-09-01T18:34:17.963Z	Detected the following tools from environment: pnpm@10.26.1, nodejs@24.18.0
+2026-09-01T18:34:26.595Z	Success: Dependencies restored from build cache.
+2026-09-01T18:34:26.597Z	Installing project dependencies: pnpm install --frozen-lockfile
+2026-09-01T18:34:27.273Z	Scope: all 10 workspace projects
+2026-09-01T18:34:27.385Z	Lockfile is up to date, resolution step is skipped
+2026-09-01T18:34:27.440Z	Progress: resolved 1, reused 0, downloaded 0, added 0
+2026-09-01T18:34:27.533Z	Packages: +840
+2026-09-01T18:34:27.534Z	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2026-09-01T18:34:28.446Z	Progress: resolved 840, reused 626, downloaded 0, added 0
+2026-09-01T18:34:29.450Z	Progress: resolved 840, reused 840, downloaded 0, added 436
+2026-09-01T18:34:30.451Z	Progress: resolved 840, reused 840, downloaded 0, added 622
+2026-09-01T18:34:31.346Z	Progress: resolved 840, reused 840, downloaded 0, added 840, done
+2026-09-01T18:34:33.131Z	
+2026-09-01T18:34:33.133Z	devDependencies:
+2026-09-01T18:34:33.133Z	+ prettier 3.8.1
+2026-09-01T18:34:33.134Z	+ typescript 5.9.3
+2026-09-01T18:34:33.134Z	
+2026-09-01T18:34:33.229Z	. preinstall$ sh -c 'rm -f package-lock.json yarn.lock; case "$npm_config_user_agent" in pnpm/*) ;; *) echo "Use pnpm instead" >&2; exit 1 ;; esac'
+2026-09-01T18:34:33.258Z	. preinstall: Done
+2026-09-01T18:34:33.410Z	╭ Warning ─────────────────────────────────────────────────────────────────────╮
+2026-09-01T18:34:33.411Z	│                                                                              │
+2026-09-01T18:34:33.411Z	│   Ignored build scripts: puppeteer@25.0.4, sharp@0.34.5.                     │
+2026-09-01T18:34:33.411Z	│   Run "pnpm approve-builds" to pick which dependencies should be allowed     │
+2026-09-01T18:34:33.411Z	│   to run scripts.                                                            │
+2026-09-01T18:34:33.411Z	│                                                                              │
+2026-09-01T18:34:33.411Z	╰──────────────────────────────────────────────────────────────────────────────╯
+2026-09-01T18:34:33.421Z	Done in 6.6s using pnpm v10.26.1
+2026-09-01T18:34:33.666Z	Executing user build command: pnpm --filter @workspace/discipleship-hub run build
+2026-09-01T18:34:34.366Z	
+2026-09-01T18:34:34.373Z	> @workspace/discipleship-hub@0.0.0 build /opt/buildhome/repo/artifacts/discipleship-hub
+2026-09-01T18:34:34.374Z	> pnpm run validate:knowing-god && node scripts/check-book-gate-parity.mjs && astro build && node scripts/apply-external-link-nofollow.mjs && node scripts/build-sitemaps.mjs
+2026-09-01T18:34:34.374Z	
+2026-09-01T18:34:34.865Z	
+2026-09-01T18:34:34.866Z	> @workspace/discipleship-hub@0.0.0 validate:knowing-god /opt/buildhome/repo/artifacts/discipleship-hub
+2026-09-01T18:34:34.866Z	> python3 scripts/generate-knowing-god.py --validate-only && pnpm run test:knowing-god
+2026-09-01T18:34:34.867Z	
+2026-09-01T18:34:36.176Z	Traceback (most recent call last):
+2026-09-01T18:34:36.182Z	  File "/opt/buildhome/repo/artifacts/discipleship-hub/scripts/generate-knowing-god.py", line 1101, in <module>
+2026-09-01T18:34:36.184Z	    main()
+2026-09-01T18:34:36.184Z	    ~~~~^^
+2026-09-01T18:34:36.184Z	  File "/opt/buildhome/repo/artifacts/discipleship-hub/scripts/generate-knowing-god.py", line 1077, in main
+2026-09-01T18:34:36.185Z	    report = validate_generated()
+2026-09-01T18:34:36.185Z	  File "/opt/buildhome/repo/artifacts/discipleship-hub/scripts/generate-knowing-god.py", line 1054, in validate_generated
+2026-09-01T18:34:36.185Z	    pages = extract_pages(PDF)
+2026-09-01T18:34:36.185Z	  File "/opt/buildhome/repo/artifacts/discipleship-hub/scripts/generate-knowing-god.py", line 390, in extract_pages
+2026-09-01T18:34:36.185Z	    raise RuntimeError("MuPDF's mutool executable is required")
+2026-09-01T18:34:36.185Z	RuntimeError: MuPDF's mutool executable is required
+2026-09-01T18:34:36.269Z	 ELIFECYCLE  Command failed with exit code 1.
+2026-09-01T18:34:36.355Z	/opt/buildhome/repo/artifacts/discipleship-hub:
+2026-09-01T18:34:36.356Z	 ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @workspace/discipleship-hub@0.0.0 build: `pnpm run validate:knowing-god && node scripts/check-book-gate-parity.mjs && astro build && node scripts/apply-external-link-nofollow.mjs && node scripts/build-sitemaps.mjs`
+2026-09-01T18:34:36.357Z	Exit status 1
+2026-09-01T18:34:36.392Z	Failed: error occurred while running build command

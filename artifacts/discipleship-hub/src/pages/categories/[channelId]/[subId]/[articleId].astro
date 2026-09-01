@@ -71,6 +71,7 @@ const site =
   articleId && !bcg && !bsm && !evd ? getSiteArticle(subId!, articleId) : undefined;
 const article = bcg ?? bsm ?? evd ?? site;
 if (!channel || !sub || !article) return Astro.redirect(join("/categories"));
+const noindex = channel.id === "growth" && sub.id === "ministry-holy-spirit";
 
 /* Next-article nav, driven by the sub-topic's own item order (channels.ts)
    so EVERY article series gets a "Next Article" card — including series
@@ -180,6 +181,7 @@ const heroTitle = splitTitle(article.title);
 ) : (
 <Layout title={metaTitle} description={metaDescription}>
   <Fragment slot="head">
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <BreadcrumbsLd items={[
       { name: "Home", url: "/" },
       { name: "Categories", url: "/categories" },

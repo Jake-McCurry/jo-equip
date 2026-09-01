@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { AlertCircle, BookOpen, Bookmark, BookmarkCheck, Check, ChevronDown, ChevronRight, Clipboard, Copy, Feather, Menu, Printer, Search, SlidersHorizontal, X } from "lucide-react";
 import { fetchNetPassages, netCache } from "./bible-api";
+import { pushTopicHash, subscribeToTopicHistory, topicIdFromHash } from "./topic-history.mjs";
 
 type Passage = { reference: string; text: string };
 
@@ -52,7 +53,7 @@ export function ConcordancePrototype() {
       return;
     }
     applyTopic(item);
-    window.history.pushState(null, "", `#topic=${encodeURIComponent(item.id)}`);
+    pushTopicHash(window, item.id);
   };
 
   useEffect(() => {
@@ -61,7 +62,7 @@ export function ConcordancePrototype() {
       return res.json() as Promise<Index>;
     }).then(data => {
       setIndex(data);
-      const hashId = new URLSearchParams(window.location.hash.slice(1)).get("topic");
+      const hashId = topicIdFromHash(window.location.hash);
       const initial = data.topics.find(topic => topic.id === hashId) || data.topics.find(topic => topic.id === "abiding") || data.topics[0];
       if (initial) { setSelectedId(initial.id); setExpandedLetter(initial.letter); loadLetter(initial.letter).catch(() => undefined); }
     }).catch(error => setIndexError(error instanceof Error ? error.message : "Unable to load the topical index."));
@@ -71,17 +72,12 @@ export function ConcordancePrototype() {
   useEffect(() => {
     if (!index) return;
     const restoreTopicFromHash = () => {
-      const hashId = new URLSearchParams(window.location.hash.slice(1)).get("topic");
+      const hashId = topicIdFromHash(window.location.hash);
       const fallback = index.topics.find(topic => topic.id === "abiding") || index.topics[0];
       const target = (hashId ? index.topics.find(topic => topic.id === hashId) : fallback);
       if (target) applyTopic(target);
     };
-    window.addEventListener("popstate", restoreTopicFromHash);
-    window.addEventListener("hashchange", restoreTopicFromHash);
-    return () => {
-      window.removeEventListener("popstate", restoreTopicFromHash);
-      window.removeEventListener("hashchange", restoreTopicFromHash);
-    };
+    return subscribeToTopicHistory(window, restoreTopicFromHash);
   }, [index, payloads]);
   useEffect(() => { if (studyLoaded) localStorage.setItem("knowing-god-study", JSON.stringify(study)); }, [study, studyLoaded]);
 

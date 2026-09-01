@@ -93,10 +93,11 @@ export function ConcordancePrototype() {
   const visiblePassages = selected?.passages.filter(p => (testament === "All Testaments" || testamentFor(p.reference) === testament) && (book === "All books" || p.reference.startsWith(book)) && (!query || `${p.reference} ${p.text} ${selected.title}`.toLocaleLowerCase().includes(normalized(query)))) || [];
   useEffect(() => {
     if (!translationLoaded || translation !== "NET" || !selected) return;
+    const controller = new AbortController();
     let current = true; const missing = visiblePassages.map(p => p.reference).filter(ref => !netCache.has(ref));
     if (!missing.length) { setNetLoading(false); return; }
-    setNetLoading(true); setNetError(false); fetchNetPassages(missing).then(ok => { if (current) { setNetLoading(false); setNetError(!ok); setNetTick(x => x + 1); } });
-    return () => { current = false; };
+    setNetLoading(true); setNetError(false); fetchNetPassages(missing, 3, controller.signal).then(ok => { if (current) { setNetLoading(false); setNetError(!ok); setNetTick(x => x + 1); } });
+    return () => { current = false; controller.abort(); };
   }, [selectedId, selected, translation, translationLoaded, testament, book, query, visiblePassages.length]);
   const copy = async (what: "topic" | "passages") => {
     if (!selected) return;

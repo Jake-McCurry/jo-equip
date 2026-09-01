@@ -8,7 +8,9 @@
     "build": "node scripts/check-book-gate-parity.mjs && astro build && node scripts/apply-external-link-nofollow.mjs && node scripts/build-sitemaps.mjs",
     "serve": "astro preview --host 0.0.0.0",
     "typecheck": "astro check",
-    "test:nofollow": "node --test scripts/external-link-policy.test.mjs"
+    "test:nofollow": "node --test scripts/external-link-policy.test.mjs",
+    "generate:knowing-god": "python3 scripts/generate-knowing-god.py",
+    "validate:knowing-god": "python3 scripts/generate-knowing-god.py --validate-only"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",

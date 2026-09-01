@@ -1,0 +1,912 @@
+{
+  "valid": true,
+  "sourceSha256": "c01fe503d25a6f6a4a954fd51c4511d9a04316bbf2b912f69aad6e474e929823",
+  "counts": {
+    "topicCount": 773,
+    "crossReferenceCount": 124,
+    "passageCount": 13535,
+    "additionalScriptureCount": 625,
+    "seeAlsoLinkCount": 9431,
+    "sourceMarkerCount": 2
+  },
+  "letterDistribution": {
+    "A": 50,
+    "B": 29,
+    "C": 68,
+    "D": 43,
+    "E": 33,
+    "F": 36,
+    "G": 33,
+    "H": 25,
+    "I": 46,
+    "J": 8,
+    "K": 8,
+    "L": 25,
+    "M": 32,
+    "N": 9,
+    "O": 22,
+    "P": 68,
+    "Q": 4,
+    "R": 53,
+    "S": 81,
+    "T": 38,
+    "U": 24,
+    "V": 9,
+    "W": 27,
+    "Z": 2
+  },
+  "pageCoverage": {
+    "firstPhysicalPage": 29,
+    "lastPhysicalPage": 1126,
+    "firstPrintedPage": 1,
+    "lastPrintedPage": 1098,
+    "coveredPhysicalPages": 1086
+  },
+  "ambiguityCount": 1,
+  "ambiguities": [
+    {
+      "topicId": null,
+      "type": "toc-body-mismatch",
+      "detail": "NON-IMPOSSIBILITATION OF THE LORD appears in the Table of Contents and related-topic lists but has no body heading."
+    }
+  ],
+  "seeAlsoResolution": {
+    "resolvedLinkCount": 9614,
+    "unresolvedCount": 0,
+    "editorialResolutions": [
+      {
+        "sourceLabel": "ADORING, BLESSING, DEVOTION TO, EXALTING, EXTOLLING, GLORIFYING",
+        "targetIds": [
+          "adoring-the-lord",
+          "blessing-the-lord",
+          "devotion-to-the-lord",
+          "exalting-the-lord",
+          "extolling-the-lord",
+          "glorifying-the-lord"
+        ]
+      },
+      {
+        "sourceLabel": "ADORING, BLESSING, DEVOTION TO, EXALTING, EXTOLLING, GLORIFYING, HONORING, MAGNIFYING, PRAISING, RENOWN OF, THANKING, AND WORSHIPPING . . . THE LORD",
+        "targetIds": [
+          "adoring-the-lord",
+          "blessing-the-lord",
+          "devotion-to-the-lord",
+          "exalting-the-lord",
+          "extolling-the-lord",
+          "glorifying-the-lord",
+          "honoring-the-lord",
+          "magnifying-the-lord",
+          "praising-the-lord",
+          "renown-of-the-lord",
+          "thanking-the-lord",
+          "worshipping-the-lord"
+        ]
+      },
+      {
+        "sourceLabel": "ADORING, BLESSING, ENJOYING, EXALTING, EXTOLLING, GLORIFYING, HONORING, INQUIRING OF, LIFTING UP HANDS TO, LOVING, MAGNIFYING, RENOWN OF, THANKING, AND WORSHIPPING . . . THE LORD",
+        "targetIds": [
+          "adoring-the-lord",
+          "blessing-the-lord",
+          "enjoying-the-lord",
+          "exalting-the-lord",
+          "extolling-the-lord",
+          "glorifying-the-lord",
+          "honoring-the-lord",
+          "inquiring-of-the-lord",
+          "lifting-up-hands-to-the-lord",
+          "loving-the-lord",
+          "magnifying-the-lord",
+          "renown-of-the-lord",
+          "thanking-the-lord",
+          "worshipping-the-lord"
+        ]
+      },
+      {
+        "sourceLabel": "ADORING, BLESSING, EXALTING",
+        "targetIds": [
+          "adoring-the-lord",
+          "blessing-the-lord",
+          "exalting-the-lord"
+        ]
+      },
+      {
+        "sourceLabel": "ADORING, BLESSING, EXALTING, EXTOLLING, GLORIFYING, HONORING, LIFTING UP HANDS TO, LOVING, MAGNIFYING, PRAISING, THANKING, AND WORSHIPPING . . . THE LORD",
+        "targetIds": [
+          "adoring-the-lord",
+          "blessing-the-lord",
+          "exalting-the-lord",
+          "extolling-the-lord",
+          "glorifying-the-lord",
+          "honoring-the-lord",
+          "lifting-up-hands-to-the-lord",
+          "loving-the-lord",
+          "magnifying-the-lord",
+          "praising-the-lord",
+          "thanking-the-lord",
+          "worshipping-the-lord"
+        ]
+      },
+      {
+        "sourceLabel": "ADORING, BLESSING, EXALTING, EXTOLLING, GLORIFYING, HONORING, LIFTING UP HANDS TO, MAGNIFYING, PRAISING, RENOWN OF, THANKING, AND WORSHIPPING.THE LORD",
+        "targetIds": [
+          "adoring-the-lord",
+          "blessing-the-lord",
+          "exalting-the-lord",
+          "extolling-the-lord",
+          "glorifying-the-lord",
+          "honoring-the-lord",
+          "lifting-up-hands-to-the-lord",
+          "magnifying-the-lord",
+          "praising-the-lord",
+          "renown-of-the-lord",
+          "thanking-the-lord",
+          "worshipping-the-lord"
+        ]
+      },
+      {
+        "sourceLabel": "ADORING, BLESSING, EXALTING, EXTOLLING, GLORIFYING, HONORING, LIFTING UP HANDS TO, PRAISING, RENOWN OF, THANKING, AND WORSHIPPING…THE LORD",
+        "targetIds": [
+          "adoring-the-lord",
+          "blessing-the-lord",
+          "exalting-the-lord",
+          "extolling-the-lord",
+          "glorifying-the-lord",
+          "honoring-the-lord",
+          "lifting-up-hands-to-the-lord",
+          "praising-the-lord",
+          "renown-of-the-lord",
+          "thanking-the-lord",
+          "worshipping-the-lord"
+        ]
+      },
+      {
+        "sourceLabel": "ADORING, BLESSING, EXALTING, EXTOLLING, GLORIFYING, LIFTING UP HANDS TO, MAGNIFYING, PRAISING, RENOWN OF, THANKING, AND WORSHIPPING . . . THE LORD",
+        "targetIds": [
+          "adoring-the-lord",
+          "blessing-the-lord",
+          "exalting-the-lord",
+          "extolling-the-lord",
+          "glorifying-the-lord",
+          "lifting-up-hands-to-the-lord",
+          "magnifying-the-lord",
+          "praising-the-lord",
+          "renown-of-the-lord",
+          "thanking-the-lord",
+          "worshipping-the-lord"
+        ]
+      },
+      {
+        "sourceLabel": "ADORING, BLESSING, EXALTING, EXTOLLING, HONORING, LIFTING UP HANDS TO, MAGNIFYING, PRAISING, RENOWN OF, THANKING, AND WORSHIPPING . . . THE LORD",
+        "targetIds": [
+          "adoring-the-lord",
+          "blessing-the-lord",
+          "exalting-the-lord",
+          "extolling-the-lord",
+          "honoring-the-lord",
+          "lifting-up-hands-to-the-lord",
+          "magnifying-the-lord",
+          "praising-the-lord",
+          "renown-of-the-lord",
+          "thanking-the-lord",
+          "worshipping-the-lord"
+        ]
+      },
+      {
+        "sourceLabel": "ADORING, BLESSING, EXALTING, GLORIFYING, HONORING, LIFTING UP HANDS TO, MAGNIFYING, MEMORIALS TO, NAME OF, PRAISING, THANKING, AND WORSHIPPING…THE LORD",
+        "targetIds": [
+          "adoring-the-lord",
+          "blessing-the-lord",
+          "exalting-the-lord",
+          "glorifying-the-lord",
+          "honoring-the-lord",
+          "lifting-up-hands-to-the-lord",
+          "magnifying-the-lord",
+          "memorials-to-the-lord",
+          "name-of-the-lord",
+          "praising-the-lord",
+          "thanking-the-lord",
+          "worshipping-the-lord"
+        ]
+      },
+      {
+        "sourceLabel": "ADORING, BLESSING, EXALTING, GLORIFYING, HONORING, LIFTING UP HANDS TO, MAGNIFYING, PRAISING, RENOWN OF, THANKING, AND WORSHIPPING . . . THE LORD",
+        "targetIds": [
+          "adoring-the-lord",
+          "blessing-the-lord",
+          "exalting-the-lord",
+          "glorifying-the-lord",
+          "honoring-the-lord",
+          "lifting-up-hands-to-the-lord",
+          "magnifying-the-lord",
+          "praising-the-lord",
+          "renown-of-the-lord",
+          "thanking-the-lord",
+          "worshipping-the-lord"
+        ]
+      },
+      {
+        "sourceLabel": "ADORING, BLESSING, EXTOLLING, GLORIFYING, HONORING, LIFTING UP HANDS TO, MAGNIFYING, PRAISING, RENOWN OF, THANKING, AND WORSHIPPING . . . THE LORD",
+        "targetIds": [
+          "adoring-the-lord",
+          "blessing-the-lord",
+          "extolling-the-lord",
+          "glorifying-the-lord",
+          "honoring-the-lord",
+          "lifting-up-hands-to-the-lord",
+          "magnifying-the-lord",
+          "praising-the-lord",
+          "renown-of-the-lord",
+          "thanking-the-lord",
+          "worshipping-the-lord"
+        ]
+      },
+      {
+        "sourceLabel": "ADORING, EXALTING, EXTOLLING, GLORIFYING, HONORING, LIFTING UP HANDS TO, MAGNIFYING, PRAISING, RENOWN OF, THANKING, AND WORSHIPPING…THE LORD",
+        "targetIds": [
+          "adoring-the-lord",
+          "exalting-the-lord",
+          "extolling-the-lord",
+          "glorifying-the-lord",
+          "honoring-the-lord",
+          "lifting-up-hands-to-the-lord",
+          "magnifying-the-lord",
+          "praising-the-lord",
+          "renown-of-the-lord",
+          "thanking-the-lord",
+          "worshipping-the-lord"
+        ]
+      },
+      {
+        "sourceLabel": "ANGER, DAY, AND DISPLEASURE . . . OF THE LORD",
+        "targetIds": [
+          "anger-of-the-lord",
+          "day-of-the-lord",
+          "displeasure-of-the-lord"
+        ]
+      },
+      {
+        "sourceLabel": "ANGER, DAY, DISPLEASURE AND VENGEANCE . . . OF THE LORD",
+        "targetIds": [
+          "anger-of-the-lord",
+          "day-of-the-lord",
+          "displeasure-of-the-lord",
+          "vengeance-of-the-lord"
+        ]
+      },
+      {
+        "sourceLabel": "ANGER, DAY, DISPLEASURE, AND VENGEANCE . . . OF THE LORD",
+        "targetIds": [
+          "anger-of-the-lord",
+          "day-of-the-lord",
+          "displeasure-of-the-lord",
+          "vengeance-of-the-lord"
+        ]
+      },
+      {
+        "sourceLabel": "ANGER, DISPLEASURE, AND WEARINESS . . . OF THE LORD",
+        "targetIds": [
+          "anger-of-the-lord",
+          "displeasure-of-the-lord",
+          "weariness-of-the-lord"
+        ]
+      },
+      {
+        "sourceLabel": "ASSURANCE: ATONEMENT",
+        "targetIds": [
+          "assurance",
+          "atonement"
+        ]
+      },
+      {
+        "sourceLabel": "ASSURANCE: CERTAIN",
+        "targetIds": [
+          "assurance",
+          "certain"
+        ]
+      },
+      {
+        "sourceLabel": "AWESOME, BOWING DOWN TO THE LORD IN WORSHIP",
+        "targetIds": [
+          "awesome",
+          "bowing-down-to-the-lord-in-worship"
+        ]
+      },
+      {
+        "sourceLabel": "BLESSEDNESSs",
+        "targetIds": [
+          "blessedness"
+        ]
+      },
+      {
+        "sourceLabel": "BLESSING, EXALTING, EXTOLLING, GLORIFYING, HONORING, LIFTING UP HANDS TO, LOVING, MAGNIFYING, PRAISING, RENOWN OF, THANKING, AND WORSHIPPING . . . THE LORD",
+        "targetIds": [
+          "blessing-the-lord",
+          "exalting-the-lord",
+          "extolling-the-lord",
+          "glorifying-the-lord",
+          "honoring-the-lord",
+          "lifting-up-hands-to-the-lord",
+          "loving-the-lord",
+          "magnifying-the-lord",
+          "praising-the-lord",
+          "renown-of-the-lord",
+          "thanking-the-lord",
+          "worshipping-the-lord"
+        ]
+      },
+      {
+        "sourceLabel": "COVENANT, THE",
+        "targetIds": [
+          "covenant-new"
+        ]
+      },
+      {
+        "sourceLabel": "CREATORSHIP OF THE LORD",
+        "targetIds": [
+          "creatorship"
+        ]
+      },
+      {
+        "sourceLabel": "DISCIPLEMAKING",
+        "targetIds": [
+          "disciple-making"
+        ]
+      },
+      {
+        "sourceLabel": "ENRICHING",
+        "targetIds": [
+          "enriching-spiritually",
+          "enriching-materially"
+        ]
+      },
+      {
+        "sourceLabel": "ENRICHING MATERIALY",
+        "targetIds": [
+          "enriching-materially"
+        ]
+      },
+      {
+        "sourceLabel": "EVERY ATTRIBUTE, QUALITY, AND CHARACTERISTIC OF GOD LISTED IN THIS BOOK!",
+        "targetIds": [
+          "*"
+        ]
+      },
+      {
+        "sourceLabel": "EXECUTING JUDGMENT, JUSTICE AND RIGHTEOUSNESS",
+        "targetIds": [
+          "executing-judgment-justice-and-righteousness"
+        ]
+      },
+      {
+        "sourceLabel": "EXTOLLING",
+        "targetIds": [
+          "extolling-the-lord"
+        ]
+      },
+      {
+        "sourceLabel": "GLORIFYING",
+        "targetIds": [
+          "glorifying-the-lord"
+        ]
+      },
+      {
+        "sourceLabel": "GLORIOUS",
+        "targetIds": [
+          "glory-of-the-lord"
+        ]
+      },
+      {
+        "sourceLabel": "GLORY OF GOD",
+        "targetIds": [
+          "glory-of-the-lord"
+        ]
+      },
+      {
+        "sourceLabel": "GOD THE SPIRIT, INCARNATION OF CHRIST",
+        "targetIds": [
+          "god-the-spirit",
+          "incarnation-of-christ"
+        ]
+      },
+      {
+        "sourceLabel": "GOSPEL OF CHRIST",
+        "targetIds": [
+          "gospel-the"
+        ]
+      },
+      {
+        "sourceLabel": "GRACE",
+        "targetIds": [
+          "grace-of-the-lord"
+        ]
+      },
+      {
+        "sourceLabel": "HONORING, LIFTING UP HANDS TO",
+        "targetIds": [
+          "honoring-the-lord",
+          "lifting-up-hands-to-the-lord"
+        ]
+      },
+      {
+        "sourceLabel": "HONORING, LIFTING UP HANDS TO, LOVING, MAGNIFYING, PRAISING, RENOWN OF, AND THANKING . . . THE LORD",
+        "targetIds": [
+          "honoring-the-lord",
+          "lifting-up-hands-to-the-lord",
+          "loving-the-lord",
+          "magnifying-the-lord",
+          "praising-the-lord",
+          "renown-of-the-lord",
+          "thanking-the-lord"
+        ]
+      },
+      {
+        "sourceLabel": "IMMANENCE OF THE LORD",
+        "targetIds": [
+          "immanence"
+        ]
+      },
+      {
+        "sourceLabel": "IMPARTING GROWTH",
+        "targetIds": [
+          "giving-growth",
+          "spiritual-growth"
+        ]
+      },
+      {
+        "sourceLabel": "INCOMPRE-HENSIBLE",
+        "targetIds": [
+          "incomprehensible"
+        ]
+      },
+      {
+        "sourceLabel": "JOY",
+        "targetIds": [
+          "joy"
+        ]
+      },
+      {
+        "sourceLabel": "JOY OF THE LORD",
+        "targetIds": [
+          "joy"
+        ]
+      },
+      {
+        "sourceLabel": "KINDNESS OF THE LORD",
+        "targetIds": [
+          "kindness"
+        ]
+      },
+      {
+        "sourceLabel": "LAWGIVING",
+        "targetIds": [
+          "law-giving"
+        ]
+      },
+      {
+        "sourceLabel": "LORD CHRIST",
+        "targetIds": [
+          "lordship-of-christ",
+          "jesus-christ"
+        ]
+      },
+      {
+        "sourceLabel": "LOVING, MAGNIFYING, PRAISING, RENOWN OF, AND WORSHIPPING . . . THE LORD",
+        "targetIds": [
+          "loving-the-lord",
+          "magnifying-the-lord",
+          "praising-the-lord",
+          "renown-of-the-lord",
+          "worshipping-the-lord"
+        ]
+      },
+      {
+        "sourceLabel": "MARVELOUS, MIGHTY",
+        "targetIds": [
+          "marvelous",
+          "mighty"
+        ]
+      },
+      {
+        "sourceLabel": "MOCKING",
+        "targetIds": [
+          "deriding"
+        ]
+      },
+      {
+        "sourceLabel": "NON-IMPOSSIBILITATION OF THE LORD",
+        "targetIds": [
+          "nonimpossibilitation-of-the-lord"
+        ]
+      },
+      {
+        "sourceLabel": "PLENTIFUL, PROPAGATION OF THE WORD OF THE LORD",
+        "targetIds": [
+          "plentiful",
+          "propagation-of-the-word-of-the-lord"
+        ]
+      },
+      {
+        "sourceLabel": "PRAYERANSWERING",
+        "targetIds": [
+          "prayer-answering",
+          "answering-prayers"
+        ]
+      },
+      {
+        "sourceLabel": "PROVIDING: REPENTANCE",
+        "targetIds": [
+          "providing",
+          "repentance"
+        ]
+      },
+      {
+        "sourceLabel": "SPIRITUALLY",
+        "targetIds": [
+          "spiritual-life",
+          "spiritual-growth"
+        ]
+      },
+      {
+        "sourceLabel": "SPLENDOR OF THE LORD",
+        "targetIds": [
+          "splendor"
+        ]
+      },
+      {
+        "sourceLabel": "SUPER-ABUNDANT",
+        "targetIds": [
+          "superabundant"
+        ]
+      },
+      {
+        "sourceLabel": "WISDOM OF THE LORD",
+        "targetIds": [
+          "wisdom"
+        ]
+      },
+      {
+        "sourceLabel": "WRATH OF THE LORD",
+        "targetIds": [
+          "wrath"
+        ]
+      },
+      {
+        "sourceLabel": "‘I AM’ STATEMENTS",
+        "targetIds": [
+          "i-am-declarations"
+        ]
+      }
+    ]
+  },
+  "additionalScriptureResolution": {
+    "sourceFieldCount": 627,
+    "resolvedLinkCount": 12088,
+    "unresolvedCount": 0,
+    "editorialResolutions": [
+      {
+        "topicId": "angels",
+        "sourceLabel": "Luke12:8",
+        "queries": [
+          "Luke 12:8"
+        ]
+      },
+      {
+        "topicId": "imparting-faith",
+        "sourceLabel": "Hebrew 4:2",
+        "queries": [
+          "Hebrews 4:2"
+        ]
+      },
+      {
+        "topicId": "submitting-to-god",
+        "sourceLabel": "Philemon14",
+        "queries": [
+          "Philemon 14"
+        ]
+      },
+      {
+        "topicId": "destroying",
+        "sourceLabel": "Luke 4:34, Acts 13:19",
+        "queries": [
+          "Luke 4:34",
+          "Acts 13:19"
+        ]
+      },
+      {
+        "topicId": "giving-an-inheritance",
+        "sourceLabel": "Galatians 3:26, Colossians 1:12",
+        "queries": [
+          "Galatians 3:26",
+          "Colossians 1:12"
+        ]
+      },
+      {
+        "topicId": "joy",
+        "sourceLabel": "1 John 1:4 2 John 12.",
+        "queries": [
+          "1 John 1:4",
+          "2 John 12"
+        ]
+      },
+      {
+        "topicId": "judging",
+        "sourceLabel": "Ezekiel 5:8-10 3",
+        "queries": [
+          "Ezekiel 5:8-10",
+          "Ezekiel 3"
+        ]
+      },
+      {
+        "topicId": "love-of-the-lord",
+        "sourceLabel": "Luke 15:4, John 13:23",
+        "queries": [
+          "Luke 15:4",
+          "John 13:23"
+        ]
+      },
+      {
+        "topicId": "providence",
+        "sourceLabel": "Genesis 1:1 through Revelation 22:21—all 31, 173 verses of the Bible!",
+        "queries": [
+          "Genesis 1:1",
+          "Revelation 22:21"
+        ]
+      },
+      {
+        "topicId": "submitting-to-god",
+        "sourceLabel": "2 Samuel 3:18:1-4",
+        "queries": [
+          "2 Samuel 3:18",
+          "2 Samuel 4:1-4"
+        ]
+      },
+      {
+        "topicId": "sufferings-of-christ",
+        "sourceLabel": "2: 1-9, 13",
+        "queries": [
+          "Job 2:1-9, 13"
+        ]
+      },
+      {
+        "topicId": "treading",
+        "sourceLabel": "Amos 4:13 Micah 1:3",
+        "queries": [
+          "Amos 4:13",
+          "Micah 1:3"
+        ]
+      },
+      {
+        "topicId": "breaking-in-pieces",
+        "sourceLabel": "51, 58",
+        "queries": [
+          "Jeremiah 51:58"
+        ]
+      },
+      {
+        "topicId": "calling-of-the-lord",
+        "sourceLabel": "51:2",
+        "queries": [
+          "Isaiah 51:2"
+        ]
+      },
+      {
+        "topicId": "charitable",
+        "sourceLabel": "6:11",
+        "queries": [
+          "1 Timothy 6:11"
+        ]
+      },
+      {
+        "topicId": "commending",
+        "sourceLabel": "2 Kings 22:19-25",
+        "queries": [
+          "2 Kings 22:19-20"
+        ]
+      },
+      {
+        "topicId": "cutting-off",
+        "sourceLabel": "1 Chronicles 32:21",
+        "queries": [
+          "2 Chronicles 32:21"
+        ]
+      },
+      {
+        "topicId": "giving-blessings",
+        "sourceLabel": "17:25",
+        "queries": [
+          "Romans 16:25"
+        ]
+      },
+      {
+        "topicId": "gold",
+        "sourceLabel": "Ezekiel 2:8-11",
+        "queries": [
+          "Ezekiel 2:8-3:1"
+        ]
+      },
+      {
+        "topicId": "granting",
+        "sourceLabel": "Nehemiah 1:12",
+        "queries": [
+          "Nehemiah 2:1-8"
+        ]
+      },
+      {
+        "topicId": "heralding",
+        "sourceLabel": "6:20",
+        "queries": [
+          "2 Corinthians 5:20"
+        ]
+      },
+      {
+        "topicId": "infinite",
+        "sourceLabel": "Job 40:28",
+        "queries": [
+          "Job 40"
+        ]
+      },
+      {
+        "topicId": "joy",
+        "sourceLabel": "1 Thessalonians 1:16",
+        "queries": [
+          "1 Thessalonians 1:6"
+        ]
+      },
+      {
+        "topicId": "judging",
+        "sourceLabel": "15:1,5-8",
+        "queries": [
+          "Revelation 15:1, 5-8"
+        ]
+      },
+      {
+        "topicId": "law-giving",
+        "sourceLabel": "8:34-35",
+        "queries": [
+          "Deuteronomy 4:34-35"
+        ]
+      },
+      {
+        "topicId": "name-of-the-lord",
+        "sourceLabel": "1 Thessalonians 1:12",
+        "queries": [
+          "2 Thessalonians 1:12"
+        ]
+      },
+      {
+        "topicId": "obedience-of-christ",
+        "sourceLabel": "46",
+        "queries": [
+          "John 6:46"
+        ]
+      },
+      {
+        "topicId": "pure",
+        "sourceLabel": "4:20",
+        "queries": [
+          "1 Timothy 4:12"
+        ]
+      },
+      {
+        "topicId": "quickening",
+        "sourceLabel": "119:25,37,40,88,149",
+        "queries": [
+          "Psalm 119:25, 37, 40, 88, 149"
+        ]
+      },
+      {
+        "topicId": "slaying",
+        "sourceLabel": "19:15",
+        "queries": [
+          "Revelation 19:15"
+        ]
+      },
+      {
+        "topicId": "strengthening",
+        "sourceLabel": "1 Peter 14:11",
+        "queries": [
+          "1 Peter 4:11"
+        ]
+      },
+      {
+        "topicId": "testing",
+        "sourceLabel": "Genesis 22:39",
+        "queries": [
+          "Genesis 22:3-9"
+        ]
+      },
+      {
+        "topicId": "unaccepting",
+        "sourceLabel": "16:35",
+        "queries": [
+          "Numbers 16:35"
+        ]
+      },
+      {
+        "topicId": "warning",
+        "sourceLabel": "52",
+        "queries": [
+          "Luke 11:52"
+        ]
+      },
+      {
+        "topicId": "warring",
+        "sourceLabel": "37",
+        "queries": [
+          "Numbers 26:37"
+        ]
+      },
+      {
+        "topicId": "will-of-god",
+        "sourceLabel": "13:21",
+        "queries": [
+          "Colossians 3:13",
+          "Colossians 3:21"
+        ]
+      },
+      {
+        "topicId": "withholding-rain",
+        "sourceLabel": "Jeremiah 14:1-3,5-9",
+        "queries": [
+          "Jeremiah 14:1-3, 5-9"
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "minimumTopicCount": 600,
+    "tocTopicCount": 628,
+    "checks": [
+      "missing Table of Contents topics",
+      "duplicate titles and ids",
+      "alphabetical source order",
+      "physical page range bounds and nonblank page-gap provenance",
+      "cross-reference noncontiguous page jumps",
+      "standalone section-letter leakage in every structured field",
+      "See Also targets ending in standalone section letters",
+      "WRATH end-page invariant",
+      "empty accidental records and passages",
+      "Additional Scripture complete reference grammar and KJV chapter/verse bounds",
+      "Additional Scripture field boundaries and embedded headings",
+      "sample-sized output",
+      "running header leakage"
+    ]
+  },
+  "outputBytes": {
+    "index": 115690,
+    "topicPayloads": {
+      "A": 633372,
+      "B": 273622,
+      "C": 741020,
+      "D": 546887,
+      "E": 302058,
+      "F": 438771,
+      "G": 516435,
+      "H": 250360,
+      "I": 481301,
+      "J": 162059,
+      "K": 109733,
+      "L": 291886,
+      "M": 387702,
+      "N": 113312,
+      "O": 233926,
+      "P": 945433,
+      "Q": 63593,
+      "R": 706213,
+      "S": 901716,
+      "T": 549097,
+      "U": 304752,
+      "V": 111007,
+      "W": 443926,
+      "Z": 31469
+    },
+    "topicPayloadsTotal": 9539650,
+    "qualityReport": 23464,
+    "generatedTotal": 9678804
+  },
+  "fidelityNotes": [
+    "Discretionary line-wrap hyphens are removed; other source wording and punctuation are preserved.",
+    "AMPC source markers are retained in definitions and exposed in sourceMarkers.",
+    "Cross-reference-only headings omitted from the Table of Contents are retained."
+  ]
+}

@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/knowing-god-concordance/"
+title = "Knowing God Concordance Prototype"
+description = "A standalone research prototype for browsing and searching a representative extracted sample from the Knowing God concordance, with filters, copy and print tools, and a browser-saved study list."
+version = "1.0.0"
+id = "artifacts/knowing-god-concordance"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/knowing-god-concordance/" ]
+localPort = 18311
+
+[services.development]
+run = "pnpm --filter @workspace/knowing-god-concordance run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/knowing-god-concordance", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/knowing-god-concordance/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "18311"
+BASE_PATH = "/knowing-god-concordance/"

@@ -1,7 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
-import { Book as BookIcon, BookOpen } from "lucide-react";
+import { Book as BookIcon, BookOpen, Download } from "lucide-react";
 import { books } from "@/data/books";
 import { getBookCover } from "@/data/bookCovers";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
@@ -90,14 +90,25 @@ const booksJsonLd = {
         <article id={book.id} class="border rounded-lg bg-white overflow-hidden flex flex-col transition-shadow hover:shadow-md scroll-mt-24" style="border-color:var(--color-border);">
           <div class="p-5 pb-4 flex items-center justify-center bg-white" style="min-height:18rem;">
             {cover ? (
-              <Image
-                src={cover}
-                alt={`${book.title} book cover`}
-                widths={[240, 480]}
-                sizes="(min-width: 1024px) 320px, (min-width: 640px) 45vw, 90vw"
-                loading="lazy"
-                class="h-72 w-auto max-w-full object-contain"
-              />
+              <a
+                href={join(book.pdf)}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-track-title={book.title}
+                data-pdf-action="open"
+                aria-label={`Open ${book.title} PDF`}
+                class="block rounded transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
+                style="outline-color:#0083de;"
+              >
+                <Image
+                  src={cover}
+                  alt={`${book.title} book cover`}
+                  widths={[240, 480]}
+                  sizes="(min-width: 1024px) 320px, (min-width: 640px) 45vw, 90vw"
+                  loading="lazy"
+                  class="h-72 w-auto max-w-full object-contain"
+                />
+              </a>
             ) : (
               <div class="text-sm" style="color:var(--color-muted-foreground);">No cover available</div>
             )}
@@ -110,10 +121,10 @@ const booksJsonLd = {
               data-pdf={join(book.pdf)}
               data-title={book.title}
               data-id={book.id}
-              aria-label={`Read ${book.title}`}
+              aria-label={`Open ${book.title}`}
             >
               <BookOpen className="w-4 h-4" />
-              Read
+              Open
             </button>
             <a
               href={join(`/books/${book.id}`)}
@@ -122,6 +133,18 @@ const booksJsonLd = {
               aria-label={`View details for ${book.title}`}
             >
               Details
+            </a>
+            <a
+              href={join(book.pdf)}
+              download
+              data-track-title={book.title}
+              data-pdf-action="download"
+              class="inline-flex items-center justify-center gap-2 font-semibold text-sm uppercase tracking-wide transition-colors hover:opacity-75"
+              style="color:#0083de;"
+              aria-label={`Download ${book.title}`}
+            >
+              <Download className="w-4 h-4" />
+              Download
             </a>
           </div>
         </article>
@@ -143,10 +166,9 @@ const booksJsonLd = {
       // that case we navigate the current tab so the visitor still reaches
       // the book.
       function openBook(url, allowSameTabFallback, title) {
-        // Report the specific book to GTM/GA4 at the moment the PDF actually
-        // opens (both first-time and returning-visitor opens).
+        // Report this as an open—not a download—when the PDF viewer launches.
         try {
-          if (window.__trackPdfDownload) window.__trackPdfDownload(url, title, "book");
+          if (window.__trackPdfOpen) window.__trackPdfOpen(url, title, "book");
         } catch (_e) { /* ignore */ }
         let win = null;
         try { win = window.open(url, "_blank"); } catch (_e) { win = null; }

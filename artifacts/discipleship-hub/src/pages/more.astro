@@ -18,6 +18,13 @@ interface Section {
 
 const SECTIONS: Section[] = [
   {
+    title: "Knowing God",
+    icon: BookOpen,
+    description: "Explore the Knowing God Topical Bible and its biblical guide to the nature and character of God.",
+    href: "/knowing-god",
+    accent: "#0f4c5c",
+  },
+  {
     title: "Welcome",
     icon: Hand,
     description: "New to JO EQUIP? Start here for an introduction to the Ministry Resources Hub.",
@@ -95,17 +102,17 @@ const SECTIONS: Section[] = [
       { name: "More", url: "/more" },
     ]} />
   </Fragment>
-  <div class="container mx-auto px-4 py-12 md:py-16">
-    <div class="max-w-3xl mb-12">
-      <div class="text-xs font-semibold tracking-widest uppercase mb-3" style="color:#0083de;">More</div>
-      <h1 class="text-4xl md:text-5xl mb-4" style="color:#0b3c5d;">About and More</h1>
-      <div class="h-0.5 w-12 mb-5" style="background-color:#de5b00;"></div>
-      <p class="leading-relaxed text-lg" style="color:var(--color-muted-foreground);">
+  <div class="container mx-auto px-4 py-7 md:py-10">
+    <div class="max-w-3xl mb-7 md:mb-8">
+      <div class="text-xs font-semibold tracking-widest uppercase mb-1.5" style="color:#0083de;">More</div>
+      <h1 class="text-3xl md:text-4xl mb-2" style="color:#0b3c5d;">About and More</h1>
+      <div class="h-0.5 w-12 mb-3" style="background-color:#de5b00;"></div>
+      <p class="leading-snug text-base" style="color:var(--color-muted-foreground);">
         Information about JesusOnline Ministries, our beliefs, and how to get in touch.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5 md:gap-3">
       {SECTIONS.map(s => {
         const Icon = s.icon;
         const href = s.external ? s.href : join(s.href);
@@ -114,17 +121,14 @@ const SECTIONS: Section[] = [
             href={href}
             target={s.external ? "_blank" : undefined}
             rel={s.external ? "noopener noreferrer" : undefined}
-            class="group block bg-white border rounded p-6 hover:shadow-md transition-all"
+            class="group flex min-h-16 items-center gap-3 bg-white border rounded px-4 py-3 hover:shadow-md transition-all"
             style={`border-color:var(--color-border);border-left:4px solid ${s.accent};`}
           >
-            <div class="flex items-start gap-4 mb-3">
-              <div class="w-10 h-10 rounded flex items-center justify-center shrink-0" style={`background-color:${s.accent}15;`}>
-                <Icon className="w-5 h-5" style={{ color: s.accent }} />
-              </div>
-              <h2 class="text-lg pt-1.5 group-hover:text-primary transition-colors" style="color:#0b3c5d;">{s.title}</h2>
+            <div class="w-9 h-9 rounded flex items-center justify-center shrink-0" style={`background-color:${s.accent}15;`}>
+              <Icon className="w-4.5 h-4.5" style={{ color: s.accent }} />
             </div>
-            <p class="text-sm leading-relaxed mb-4" style="color:var(--color-muted-foreground);">{s.description}</p>
-            <span class="inline-flex items-center text-sm font-medium" style={`color:${s.accent};`}>
+            <h2 class="flex-1 text-base font-semibold leading-tight group-hover:text-primary transition-colors" style="color:#0b3c5d;">{s.title}</h2>
+            <span class="inline-flex shrink-0 items-center text-sm font-medium" style={`color:${s.accent};`}>
               {s.external ? (<>Open <ExternalLink className="w-4 h-4 ml-1" /></>) : (<>Open <ArrowRight className="w-4 h-4 ml-1" /></>)}
             </span>
           </a>

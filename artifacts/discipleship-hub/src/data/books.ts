@@ -27,6 +27,12 @@ export interface Book {
 /* Display order matches the "JO EQUIP BOOKS" reference document (July 2026). */
 export const books: Book[] = [
   {
+    id: "knowing-god",
+    title: "Knowing God",
+    cover: "/books/covers/knowing-god.jpg",
+    pdf: "/books/knowing-god.pdf",
+  },
+  {
     id: "adventure-of-living-with-jesus",
     title: "The Adventure of Living with Jesus",
     cover: "/books/covers/adventure-of-living-with-jesus.jpg",

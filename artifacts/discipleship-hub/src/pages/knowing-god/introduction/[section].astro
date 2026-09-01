@@ -1,0 +1,671 @@
+---
+import KnowingGodIntroductionLayout from "@/layouts/KnowingGodIntroductionLayout.astro";
+import {
+  knowingGodIntroductions,
+  type KnowingGodIntroduction,
+} from "@/data/knowingGodIntroductions";
+import { aboutAndDedication } from "@/data/knowing-god/introduction/about-and-dedication";
+import { foundationalScriptures } from "@/data/knowing-god/introduction/foundational-scriptures";
+import {
+  devotionalGuideCategories,
+  devotionalGuideIntroduction,
+} from "@/data/knowing-god/introduction/devotional-guide";
+import { notableQuotations } from "@/data/knowing-god/introduction/notable-quotations";
+
+export function getStaticPaths() {
+  return knowingGodIntroductions.map((article, index) => ({
+    params: { section: article.slug },
+    props: {
+      article,
+      previous: knowingGodIntroductions[index - 1] ?? null,
+      next: knowingGodIntroductions[index + 1] ?? null,
+    },
+  }));
+}
+
+interface Props {
+  article: KnowingGodIntroduction;
+  previous: KnowingGodIntroduction | null;
+  next: KnowingGodIntroduction | null;
+}
+
+const { article, previous, next } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
+const join = (path: string) =>
+  (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + path;
+const devotionalEntryCount = devotionalGuideCategories.reduce(
+  (total, category) => total + category.entries.length,
+  0,
+);
+const hymnEmphasis = [
+  [
+    ["worship the King", "all-glorious"],
+    ["sing", "pow’r", "love"],
+    ["Shield", "Defender"],
+    ["splendor", "praise"],
+  ],
+  [
+    ["His might", "His grace"],
+    ["light"],
+    ["wrath"],
+    [],
+  ],
+  [
+    ["wonders untold"],
+    ["Almighty", "power has founded"],
+    ["'stablished", "changeless decree"],
+    [],
+  ],
+  [
+    ["bountiful care"],
+    ["light"],
+    ["streams"],
+    ["distills"],
+  ],
+  [
+    [],
+    ["trust"],
+    ["mercies", "tender", "firm"],
+    ["Maker", "Defender", "Redeemer", "Friend"],
+  ],
+  [
+    ["measureless Might", "Ineffable Love"],
+    ["angels delight"],
+    ["creation"],
+    ["adoration", "praise"],
+  ],
+] as const;
+
+const markHymnLine = (line: string, stanzaIndex: number, lineIndex: number) => {
+  const phrases = [...(hymnEmphasis[stanzaIndex]?.[lineIndex] ?? [])]
+    .map((phrase) => ({ phrase, index: line.indexOf(phrase) }))
+    .filter(({ index }) => index >= 0)
+    .sort((a, b) => a.index - b.index);
+  const segments: Array<{ text: string; emphasized: boolean }> = [];
+  let cursor = 0;
+  for (const { phrase, index } of phrases) {
+    if (index > cursor) segments.push({ text: line.slice(cursor, index), emphasized: false });
+    segments.push({ text: phrase, emphasized: true });
+    cursor = index + phrase.length;
+  }
+  if (cursor < line.length) segments.push({ text: line.slice(cursor), emphasized: false });
+  return segments;
+};
+---
+
+<KnowingGodIntroductionLayout title={article.title} description={article.description}>
+  <main class="kg-intro-main">
+    <nav class="kg-intro-breadcrumbs" aria-label="Breadcrumb">
+      <a href={join("/knowing-god")}>Knowing God</a>
+      <span aria-hidden="true">/</span>
+      <a href={join("/knowing-god/introduction")}>Introductory Articles</a>
+      <span aria-hidden="true">/</span>
+      {article.title}
+    </nav>
+
+    <p class="kg-intro-eyebrow">{article.eyebrow}</p>
+    <h1 class="kg-intro-title">{article.title}</h1>
+    <p class="kg-intro-lede">{article.description}</p>
+
+    {article.slug === "about-this-edition" && (
+      <article class="content-section about-edition">
+        <section class="book-title-card" aria-label="Original title page">
+          <p>{aboutAndDedication.titlePage.title[0]}</p>
+          <h2>{aboutAndDedication.titlePage.title[1]}</h2>
+          <div>{aboutAndDedication.titlePage.subtitle.map((line) => <span>{line}</span>)}</div>
+          <strong>{aboutAndDedication.titlePage.motto}</strong>
+        </section>
+
+        <section class="publication-grid" aria-label="Publication information">
+          <div class="publication-contact">
+            <p class="section-label">Publisher</p>
+            <h2>{aboutAndDedication.publication.publisher}</h2>
+            <address>
+              {aboutAndDedication.publication.address.map((line) => <span>{line}</span>)}
+            </address>
+            <div class="publisher-mark">
+              {aboutAndDedication.publication.publisherMark.map((line) => <span>{line}</span>)}
+            </div>
+          </div>
+          <div class="publication-details">
+            <p class="copyright">{aboutAndDedication.publication.copyright}</p>
+            <p>{aboutAndDedication.publication.rights.join(" ")}</p>
+            <p>{aboutAndDedication.publication.internetNotice.join(" ")}</p>
+            <h3>{aboutAndDedication.publication.orderingHeading}</h3>
+            <p>{aboutAndDedication.publication.orderingInformation.join(" ")}</p>
+            {aboutAndDedication.publication.scriptureNotes.map((note) => (
+              <p>{note.join(" ")}</p>
+            ))}
+            <p class="isbn">{aboutAndDedication.publication.isbn}</p>
+          </div>
+        </section>
+      </article>
+    )}
+
+    {article.slug === "dedication" && (
+      <article class="content-section dedication-content">
+        <div class="hymn-heading">
+          <p class="section-label">{aboutAndDedication.dedication.heading}</p>
+          <h2>{aboutAndDedication.dedication.title}</h2>
+        </div>
+        <div class="hymn-stanzas">
+          {aboutAndDedication.dedication.stanzas.map((stanza, index) => (
+            <section class="hymn-stanza" aria-label={`Stanza ${index + 1}`}>
+              <span class="stanza-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+              <p>
+                {stanza.map((line, lineIndex) => (
+                  <span>
+                    {markHymnLine(line, index, lineIndex).map((segment) =>
+                      segment.emphasized
+                        ? <u>{segment.text}</u>
+                        : segment.text
+                    )}
+                  </span>
+                ))}
+              </p>
+            </section>
+          ))}
+        </div>
+        <p class="hymn-author">{aboutAndDedication.dedication.author}</p>
+        <p class="source-footnote">{aboutAndDedication.dedication.footnote}</p>
+      </article>
+    )}
+
+    {article.slug === "foundational-scriptures" && (
+      <article class="content-section scripture-list">
+        {foundationalScriptures.map((passage, index) => (
+          <section class="scripture-card" aria-labelledby={`scripture-reference-${index}`}>
+            <div class="scripture-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</div>
+            <blockquote>{passage.text}</blockquote>
+            <h2 id={`scripture-reference-${index}`}>{passage.reference}</h2>
+          </section>
+        ))}
+      </article>
+    )}
+
+    {article.slug === "devotional-guide" && (
+      <article class="content-section guide-content">
+        <p class="guide-introduction">{devotionalGuideIntroduction}</p>
+        <div class="guide-tools">
+          <label for="guide-filter">Find a category or topic</label>
+          <input id="guide-filter" type="search" placeholder="Try “faithful” or “prayer”" autocomplete="off" />
+          <p id="guide-results" aria-live="polite">
+            {devotionalGuideCategories.length} categories · {devotionalEntryCount} topics
+          </p>
+        </div>
+        <div class="guide-categories" id="guide-categories">
+          {devotionalGuideCategories.map((category) => (
+            <section
+              class="guide-category"
+              data-guide-search={`${category.heading} ${category.entries.map((entry) => entry.topic).join(" ")}`.toLowerCase()}
+            >
+              <h2>{category.heading}</h2>
+              <ul>
+                {category.entries.map((entry) => (
+                  <li>
+                    <span>{entry.topic}</span>
+                    <i aria-hidden="true"></i>
+                    <strong>{entry.page}</strong>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))}
+        </div>
+      </article>
+    )}
+
+    {article.slug === "notable-quotations" && (
+      <article class="content-section quotations-grid">
+        {notableQuotations.map((quotation, index) => (
+          <figure class:list={["quotation-card", { featured: quotation.text.length > 500 }]}>
+            <span class="quote-mark" aria-hidden="true">“</span>
+            <blockquote>
+              {quotation.text}
+              {quotation.footnoteMarkers?.map((marker) => <sup>{marker}</sup>)}
+            </blockquote>
+            <figcaption>
+              <span aria-hidden="true"></span>
+              {quotation.attribution}
+            </figcaption>
+          </figure>
+        ))}
+      </article>
+    )}
+
+    <nav class="article-navigation" aria-label="Introductory article navigation">
+      {previous ? (
+        <a href={join(`/knowing-god/introduction/${previous.slug}`)}>
+          <small>Previous</small>
+          <span>← {previous.title}</span>
+        </a>
+      ) : <span />}
+      {next ? (
+        <a class="next" href={join(`/knowing-god/introduction/${next.slug}`)}>
+          <small>Next</small>
+          <span>{next.title} →</span>
+        </a>
+      ) : (
+        <a class="next" href={join("/knowing-god")}>
+          <small>Continue</small>
+          <span>Browse the topics →</span>
+        </a>
+      )}
+    </nav>
+  </main>
+</KnowingGodIntroductionLayout>
+
+<script>
+  const guideFilter = document.querySelector<HTMLInputElement>("#guide-filter");
+  const guideCards = Array.from(document.querySelectorAll<HTMLElement>(".guide-category"));
+  const guideResults = document.querySelector<HTMLElement>("#guide-results");
+
+  if (guideFilter && guideResults) {
+    guideFilter.addEventListener("input", () => {
+      const query = guideFilter.value.trim().toLowerCase();
+      let visibleCategories = 0;
+      let visibleTopics = 0;
+
+      guideCards.forEach((card) => {
+        const matches = !query || card.dataset.guideSearch?.includes(query);
+        card.hidden = !matches;
+        if (matches) {
+          visibleCategories += 1;
+          visibleTopics += card.querySelectorAll("li").length;
+        }
+      });
+
+      guideResults.textContent = query
+        ? `${visibleCategories} ${visibleCategories === 1 ? "category" : "categories"} · ${visibleTopics} topics`
+        : `${guideCards.length} categories · ${guideCards.reduce((total, card) => total + card.querySelectorAll("li").length, 0)} topics`;
+    });
+  }
+</script>
+
+<style>
+  .content-section {
+    margin-top: clamp(2.25rem, 6vw, 4rem);
+  }
+  .section-label {
+    margin: 0 0 .55rem;
+    color: #b15d2b;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: .68rem;
+    font-weight: 800;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+  }
+  .book-title-card {
+    display: grid;
+    min-height: 30rem;
+    padding: clamp(2rem, 8vw, 5rem);
+    place-content: center;
+    border: 1px solid #b7c2bb;
+    background:
+      linear-gradient(rgba(248,247,242,.96), rgba(248,247,242,.96)),
+      repeating-linear-gradient(45deg, #123f50 0 1px, transparent 1px 12px);
+    text-align: center;
+    box-shadow: 0 22px 60px rgba(18,63,80,.1);
+  }
+  .book-title-card p {
+    margin: 0;
+    color: #123f50;
+    font-size: clamp(1.4rem, 4vw, 2.4rem);
+    letter-spacing: .08em;
+  }
+  .book-title-card h2 {
+    margin: -.15em 0 .35em;
+    color: #123f50;
+    font-size: clamp(5rem, 15vw, 10rem);
+    font-weight: 400;
+    letter-spacing: -.07em;
+    line-height: .9;
+  }
+  .book-title-card div span {
+    display: block;
+    color: #61736f;
+    font-size: clamp(1rem, 2.4vw, 1.35rem);
+    line-height: 1.45;
+  }
+  .book-title-card strong {
+    margin-top: 2.5rem;
+    color: #b15d2b;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: .68rem;
+    letter-spacing: .3em;
+  }
+  .publication-grid {
+    display: grid;
+    grid-template-columns: minmax(15rem, .7fr) minmax(0, 1.3fr);
+    gap: clamp(2rem, 6vw, 5rem);
+    margin-top: 3.5rem;
+    padding-top: 3.5rem;
+    border-top: 1px solid #b7c2bb;
+  }
+  .publication-contact h2 {
+    margin: 0 0 1.25rem;
+    color: #123f50;
+    font-size: 2rem;
+    font-weight: 400;
+  }
+  .publication-contact address {
+    display: grid;
+    gap: .32rem;
+    color: #526b6a;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: .93rem;
+    font-style: normal;
+    line-height: 1.5;
+  }
+  .publisher-mark {
+    display: inline-grid;
+    margin-top: 1.5rem;
+    padding: .85rem 1rem;
+    border: 1px solid #c2aaa0;
+    color: #a4532b;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: .62rem;
+    font-weight: 800;
+    letter-spacing: .16em;
+    text-align: center;
+  }
+  .publisher-mark span { display: block; }
+  .publication-details {
+    display: grid;
+    gap: 1.15rem;
+  }
+  .publication-details p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+  .publication-details .copyright,
+  .publication-details .isbn {
+    color: #123f50;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-weight: 750;
+  }
+  .publication-details h3 {
+    margin: .5rem 0 -.5rem;
+    color: #123f50;
+    font-size: 1.25rem;
+    font-weight: 400;
+  }
+  .dedication-content {
+    max-width: 800px;
+    margin-inline: auto;
+  }
+  .hymn-heading {
+    padding: clamp(1.6rem, 5vw, 3rem);
+    border-block: 1px solid #b7c2bb;
+    text-align: center;
+  }
+  .hymn-heading h2 {
+    margin: 0;
+    color: #123f50;
+    font-size: clamp(2.2rem, 7vw, 4.2rem);
+    font-weight: 400;
+  }
+  .hymn-stanzas { margin-top: 1rem; }
+  .hymn-stanza {
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    gap: clamp(.75rem, 3vw, 1.5rem);
+    padding: clamp(1.2rem, 4vw, 2rem) 0;
+    border-bottom: 1px solid #c8cfca;
+  }
+  .stanza-number,
+  .scripture-number {
+    color: #b15d2b;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: .68rem;
+    font-weight: 800;
+    letter-spacing: .14em;
+  }
+  .hymn-stanza p { margin: 0; }
+  .hymn-stanza p span {
+    display: block;
+    font-size: clamp(1.06rem, 2.5vw, 1.28rem);
+    line-height: 1.75;
+  }
+  .hymn-author {
+    margin: 2rem 0 0;
+    color: #123f50;
+    font-size: 1.25rem;
+    font-style: italic;
+    text-align: right;
+  }
+  .source-footnote {
+    margin-top: 2.5rem;
+    padding: 1rem 1.2rem;
+    border-left: 3px solid #d2a05b;
+    background: rgba(248,247,242,.75);
+    color: #61736f;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: .78rem;
+    line-height: 1.6;
+  }
+  .scripture-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    align-items: start;
+  }
+  .scripture-card {
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    padding: clamp(1.2rem, 3vw, 1.7rem);
+    border: 1px solid #b9c4c0;
+    background: #f8f7f2;
+  }
+  .scripture-card blockquote {
+    margin: 0;
+    color: #30494f;
+    font-size: clamp(1rem, 1.8vw, 1.13rem);
+    line-height: 1.72;
+  }
+  .scripture-card h2 {
+    grid-column: 2;
+    margin: 1rem 0 0;
+    color: #a4532b;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: .76rem;
+    font-weight: 800;
+    letter-spacing: .07em;
+  }
+  .hymn-stanza u {
+    text-decoration-color: #b15d2b;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: .16em;
+  }
+  .guide-introduction {
+    max-width: 850px;
+    margin: 0;
+    padding: clamp(1.3rem, 4vw, 2.2rem);
+    border-left: 4px solid #d2a05b;
+    background: #f8f7f2;
+    color: #30494f;
+    font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+    font-style: italic;
+    line-height: 1.65;
+  }
+  .guide-tools {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: .5rem 1rem;
+    margin: 2.5rem 0 1rem;
+    padding: 1rem;
+    border: 1px solid #b7c2bb;
+    background: rgba(232,233,225,.96);
+    backdrop-filter: blur(10px);
+  }
+  .guide-tools label {
+    grid-column: 1 / -1;
+    color: #123f50;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: .75rem;
+    font-weight: 800;
+  }
+  .guide-tools input {
+    min-width: 0;
+    border: 1px solid #aebcb8;
+    border-radius: 0;
+    background: #fffdf7;
+    padding: .8rem .9rem;
+    color: #20394a;
+    font: 1rem ui-sans-serif, system-ui, sans-serif;
+  }
+  .guide-tools input:focus-visible { outline: 3px solid #de5b00; outline-offset: 2px; }
+  .guide-tools p {
+    align-self: center;
+    margin: 0;
+    color: #61736f;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: .72rem;
+  }
+  .guide-categories {
+    columns: 2 25rem;
+    column-gap: 1rem;
+  }
+  .guide-category {
+    break-inside: avoid;
+    margin: 0 0 1rem;
+    padding: 1.25rem;
+    border: 1px solid #b9c4c0;
+    background: #f8f7f2;
+  }
+  .guide-category[hidden] { display: none; }
+  .guide-category h2 {
+    margin: 0 0 .85rem;
+    padding-bottom: .65rem;
+    border-bottom: 2px solid #d2a05b;
+    color: #123f50;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: .83rem;
+    letter-spacing: .1em;
+  }
+  .guide-category ul {
+    display: grid;
+    gap: .42rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .guide-category li {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: .4rem;
+    align-items: baseline;
+    color: #40585a;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: .74rem;
+    line-height: 1.35;
+  }
+  .guide-category li i {
+    min-width: .6rem;
+    border-bottom: 1px dotted #9aa9a5;
+  }
+  .guide-category li strong {
+    color: #a4532b;
+    font-size: .7rem;
+  }
+  .quotations-grid {
+    columns: 2 24rem;
+    column-gap: 1rem;
+  }
+  .quotation-card {
+    position: relative;
+    break-inside: avoid;
+    margin: 0;
+    margin-bottom: 1rem;
+    padding: clamp(1.3rem, 4vw, 2rem);
+    border: 1px solid #b9c4c0;
+    background: #f8f7f2;
+  }
+  .quotation-card.featured {
+    border-color: #123f50;
+    background: #123f50;
+    color: #f8f5ed;
+  }
+  .quote-mark {
+    display: block;
+    height: 2.2rem;
+    color: #d2a05b;
+    font-size: 4rem;
+    line-height: 1;
+  }
+  .quotation-card blockquote {
+    margin: .5rem 0 1.4rem;
+    font-size: clamp(1.03rem, 2vw, 1.2rem);
+    line-height: 1.65;
+  }
+  .quotation-card sup {
+    margin-left: .15em;
+    color: #b15d2b;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: .65em;
+  }
+  .quotation-card figcaption {
+    display: flex;
+    gap: .65rem;
+    align-items: center;
+    color: #a4532b;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: .7rem;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .quotation-card.featured figcaption { color: #e4b16d; }
+  .quotation-card figcaption span {
+    width: 1.5rem;
+    border-top: 1px solid currentColor;
+  }
+  .article-navigation {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #b7c2bb;
+  }
+  .article-navigation a {
+    color: #123f50;
+    text-decoration: none;
+  }
+  .article-navigation small {
+    display: block;
+    margin-bottom: .3rem;
+    color: #b15d2b;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: .65rem;
+    font-weight: 800;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+  }
+  .article-navigation span { font-size: 1.08rem; }
+  .article-navigation .next { text-align: right; }
+  @media (max-width: 760px) {
+    .publication-grid,
+    .scripture-list { grid-template-columns: 1fr; }
+    .guide-categories,
+    .quotations-grid { columns: 1; }
+    .guide-tools { position: static; }
+  }
+  @media (max-width: 560px) {
+    .book-title-card { min-height: 23rem; padding-inline: 1.2rem; }
+    .hymn-stanza { grid-template-columns: 1.5rem 1fr; }
+    .hymn-stanza p span { line-height: 1.65; }
+    .scripture-card { grid-template-columns: 1.5rem 1fr; padding-inline: .9rem; }
+    .guide-tools { grid-template-columns: 1fr; }
+    .guide-tools label { grid-column: auto; }
+    .guide-category { padding: 1rem .85rem; }
+    .guide-category li { font-size: .7rem; }
+    .article-navigation { grid-template-columns: 1fr; }
+    .article-navigation > span { display: none; }
+    .article-navigation .next { text-align: left; }
+  }
+</style>

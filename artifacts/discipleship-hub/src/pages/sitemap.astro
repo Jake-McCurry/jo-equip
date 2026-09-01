@@ -86,7 +86,7 @@ const categorySections = channels.map(channel => ({
   name: channel.name,
   href: join(`/categories/${channel.id}`),
   subs: subTopics
-    .filter(s => s.channelId === channel.id)
+    .filter(s => s.channelId === channel.id && !(s.channelId === "growth" && s.id === "ministry-holy-spirit"))
     .map(s => ({
       name: s.name,
       href: join(`/categories/${channel.id}/${s.id}`),

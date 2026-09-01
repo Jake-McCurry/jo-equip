@@ -740,7 +740,9 @@ def toc_titles(pdf: Path) -> list[str]:
 
 
 def validate_topics(
-    topics: list[dict], expected_toc_titles: list[str], blank_pages: set[int]
+    topics: list[dict],
+    expected_toc_titles: list[str],
+    blank_pages: set[int] | None,
 ) -> dict:
     errors: list[str] = []
     titles = [topic["title"].upper() for topic in topics]
@@ -776,12 +778,13 @@ def validate_topics(
             for page in range(pages[0], pages[-1] + 1)
             if page not in pages
         ]
-        unexplained_pages = [page for page in omitted_pages if page not in blank_pages]
-        if unexplained_pages:
-            errors.append(
-                f"{topic['title']}: unexplained noncontiguous source pages {pages}; "
-                f"nonblank gaps {unexplained_pages}"
-            )
+        if blank_pages is not None:
+            unexplained_pages = [page for page in omitted_pages if page not in blank_pages]
+            if unexplained_pages:
+                errors.append(
+                    f"{topic['title']}: unexplained noncontiguous source pages {pages}; "
+                    f"nonblank gaps {unexplained_pages}"
+                )
         if topic["recordType"] == "topic" and not (
             topic["definition"] or topic["passages"] or topic["additionalScripture"]
         ):
@@ -1034,7 +1037,7 @@ def write_outputs(topics: list[dict], source_sha256: str, counts: dict) -> dict:
     return report
 
 
-def validate_generated() -> dict:
+def validate_generated(source_check: bool = False) -> dict:
     index_path = OUTPUT / "index.json"
     report_path = OUTPUT / "quality-report.json"
     if not index_path.exists() or not report_path.exists():
@@ -1051,15 +1054,20 @@ def validate_generated() -> dict:
     actual_sha = hashlib.sha256(PDF.read_bytes()).hexdigest()
     if index["sourceSha256"] != actual_sha:
         raise ValueError("Generated corpus source SHA-256 does not match the current PDF")
-    pages = extract_pages(PDF)
-    blank_pages = {
-        physical_page
-        for physical_page, page_records in zip(
-            range(FIRST_BODY_PAGE, LAST_BODY_PAGE + 1), pages
-        )
-        if not page_records
-    }
-    counts = validate_topics(topics, toc_titles(PDF), blank_pages)
+    if source_check:
+        pages = extract_pages(PDF)
+        blank_pages = {
+            physical_page
+            for physical_page, page_records in zip(
+                range(FIRST_BODY_PAGE, LAST_BODY_PAGE + 1), pages
+            )
+            if not page_records
+        }
+        expected_toc = toc_titles(PDF)
+    else:
+        blank_pages = None
+        expected_toc = []
+    counts = validate_topics(topics, expected_toc, blank_pages)
     if counts != index["counts"]:
         raise ValueError("Generated index counts do not match topic payloads")
     return json.loads(report_path.read_text(encoding="utf-8"))
@@ -1093,7 +1101,7 @@ def main() -> None:
         counts = validate_topics(topics, expected_toc, blank_pages)
         source_sha256 = hashlib.sha256(PDF.read_bytes()).hexdigest()
         report = write_outputs(topics, source_sha256, counts)
-        validate_generated()
+        validate_generated(source_check=True)
     print(json.dumps(report, ensure_ascii=False, indent=2))
 
 

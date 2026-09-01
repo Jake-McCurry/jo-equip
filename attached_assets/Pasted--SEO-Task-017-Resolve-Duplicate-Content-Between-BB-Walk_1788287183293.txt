@@ -1,0 +1,495 @@
+"# SEO Task 017: Resolve Duplicate Content Between BB Walking Spirit & Ministry Holy Spirit
+
+## Background
+
+During the SEO audit, duplicate or substantially similar content was identified under the following two URL paths:
+
+### BB Walking Spirit
+
+/categories/growth/bb-walking-spirit/
+
+### Ministry Holy Spirit
+
+/categories/growth/ministry-holy-spirit/
+
+
+The review has confirmed that **BB Walking Spirit should be retained as the preferred SEO version**.
+
+The objective is to consolidate duplicate URLs where the same resource exists under both folders, while ensuring that unique Ministry Holy Spirit content is not unnecessarily removed.
+
+---
+
+# Example of the Duplicate URL Issue
+
+The following URLs represent the same page/topic:
+
+### Preferred URL — BB Walking Spirit
+
+
+https://equip.jesusonline.com/categories/growth/bb-walking-spirit/empowered-for-supernatural-living
+
+
+### Duplicate URL — Ministry Holy Spirit
+
+
+https://equip.jesusonline.com/categories/growth/ministry-holy-spirit/empowered-for-supernatural-living
+
+
+For pages with this type of clear one-to-one relationship, implement a **301 permanent redirect** from:
+
+
+/categories/growth/ministry-holy-spirit/empowered-for-supernatural-living
+
+
+to:
+
+
+/categories/growth/bb-walking-spirit/empowered-for-supernatural-living
+
+
+---
+
+# Objective
+
+Implement the following SEO approach for all affected URLs:
+
+1. Retain **BB Walking Spirit** as the preferred and indexable SEO version.
+2. Identify URLs where the same page/resource exists under both:
+
+   * `/categories/growth/bb-walking-spirit/`
+   * `/categories/growth/ministry-holy-spirit/`
+3. Implement a **301 permanent redirect** from the duplicate Ministry Holy Spirit URL to the corresponding BB Walking Spirit URL.
+4. Where a Ministry Holy Spirit page has no direct BB Walking Spirit equivalent and must remain available, retain the page and review its indexation status separately.
+5. Remove redirected and non-indexable URLs from XML sitemaps.
+6. Update internal links to point directly to the preferred BB Walking Spirit URLs where an equivalent exists.
+
+---
+
+# Required Implementation
+
+## 1. Retain BB Walking Spirit as the Preferred SEO Version
+
+All approved URLs under:
+
+
+/categories/growth/bb-walking-spirit/
+
+
+should remain the preferred SEO versions.
+
+For these URLs:
+
+* Keep the existing URL unchanged.
+* Keep the existing content unchanged unless separately instructed.
+* Allow search engines to crawl and index the page.
+* Do not add a `noindex` directive.
+* Use a self-referencing canonical URL.
+* Keep the URL in the XML sitemap if it is intended to be indexed.
+* Ensure the URL is not blocked by `robots.txt`.
+
+### Example
+
+For:
+
+
+https://equip.jesusonline.com/categories/growth/bb-walking-spirit/empowered-for-supernatural-living
+
+
+the canonical should reference itself:
+
+
+<link rel=""canonical"" href=""https://equip.jesusonline.com/categories/growth/bb-walking-spirit/empowered-for-supernatural-living"">
+
+
+---
+
+## 2. Implement 301 Redirects for Duplicate Ministry Holy Spirit URLs
+
+Where a Ministry Holy Spirit URL has a clear one-to-one equivalent under BB Walking Spirit, implement a **server-side 301 permanent redirect**.
+
+### Example
+
+#### Source URL
+
+
+https://equip.jesusonline.com/categories/growth/ministry-holy-spirit/empowered-for-supernatural-living
+
+
+#### 301 Redirect
+
+↓
+
+#### Destination URL
+
+
+https://equip.jesusonline.com/categories/growth/bb-walking-spirit/empowered-for-supernatural-living
+
+
+The final implementation should ensure that:
+
+
+Ministry Holy Spirit URL
+        ↓
+       301
+        ↓
+BB Walking Spirit URL
+        ↓
+       200
+
+
+### Important
+
+Apply a 301 redirect only when:
+
+* The page under Ministry Holy Spirit and BB Walking Spirit represents the same resource.
+* The page content is duplicate or substantially identical.
+* There is a clear one-to-one equivalent.
+* BB Walking Spirit is the approved preferred version.
+
+Do not redirect Ministry Holy Spirit URLs to unrelated BB Walking Spirit pages.
+
+---
+
+# 3. Ministry Holy Spirit URLs Without a Direct Equivalent
+
+Before implementing redirects, review the affected Ministry Holy Spirit URLs.
+
+If a Ministry Holy Spirit URL does **not** have a corresponding BB Walking Spirit URL, do not automatically redirect it.
+
+For such URLs, determine whether:
+
+### Scenario A: The Page Is Unique and Should Continue Ranking
+
+If the content is unique and provides distinct value:
+
+* Keep the page indexable.
+* Use a self-referencing canonical.
+* Keep it in the XML sitemap if appropriate.
+
+### Scenario B: The Page Must Remain Available but Should Not Be Indexed
+
+If the page must remain accessible to users but should not compete in search results:
+
+
+<meta name=""robots"" content=""noindex, follow"">
+
+
+For these pages:
+
+* Keep the page accessible to users.
+* Do not block the page in `robots.txt`.
+* Remove the URL from XML sitemaps.
+* Use an appropriate canonical strategy based on the actual page relationship.
+
+### Important
+
+Do not apply `noindex` automatically to every Ministry Holy Spirit URL.
+
+The appropriate treatment should depend on whether the page:
+
+* Is a duplicate.
+* Has a direct equivalent.
+* Is unique.
+* Needs to remain indexable.
+
+---
+
+# 4. Do Not Use 301 and `noindex` Together
+
+For a duplicate Ministry Holy Spirit URL that is being permanently redirected:
+
+
+301 → Corresponding BB Walking Spirit URL
+
+
+Do not also implement:
+
+
+<meta name=""robots"" content=""noindex, follow"">
+
+
+on the redirected URL.
+
+The 301 redirect is the primary consolidation mechanism.
+
+Use one appropriate strategy per URL.
+
+---
+
+# 5. Canonicalization
+
+## BB Walking Spirit URLs
+
+All preferred and indexable BB Walking Spirit URLs should use a self-referencing canonical.
+
+Example:
+
+
+<link rel=""canonical"" href=""https://equip.jesusonline.com/categories/growth/bb-walking-spirit/page-slug"">
+
+
+## Ministry Holy Spirit URLs That Are 301 Redirected
+
+Do not rely on canonical tags as a replacement for the 301 redirect.
+
+The URL should permanently redirect directly to the corresponding BB Walking Spirit URL.
+
+## Ministry Holy Spirit URLs That Remain Live
+
+If a Ministry Holy Spirit URL remains accessible:
+
+* Use a self-referencing canonical if it is a unique and indexable page.
+* Consider canonicalization to the BB Walking Spirit equivalent only where there is a valid page relationship.
+* Do not force canonicalization to an unrelated page.
+
+---
+
+# 6. XML Sitemap
+
+The XML sitemap should contain only URLs intended to be indexed.
+
+## BB Walking Spirit
+
+Keep indexable BB Walking Spirit URLs in the XML sitemap.
+
+## Ministry Holy Spirit
+
+Remove from XML sitemaps:
+
+* URLs that return a 301 redirect.
+* URLs with a `noindex` directive.
+
+Do not include redirected or `noindex` URLs in the XML sitemap.
+
+---
+
+# 7. Internal Linking
+
+Where internal links currently point to a Ministry Holy Spirit URL that has a corresponding BB Walking Spirit equivalent:
+
+Update the internal link to point directly to the BB Walking Spirit URL.
+
+### Example
+
+Instead of linking to:
+
+
+https://equip.jesusonline.com/categories/growth/ministry-holy-spirit/empowered-for-supernatural-living
+
+
+link directly to:
+
+
+https://equip.jesusonline.com/categories/growth/bb-walking-spirit/empowered-for-supernatural-living
+
+
+This helps ensure that:
+
+* Users are directed to the preferred URL.
+* Search engines consistently discover the preferred version.
+* Internal links do not unnecessarily pass through redirects.
+
+Do not change internal links where there is no appropriate BB Walking Spirit equivalent.
+
+---
+
+# 8. Preserve Content
+
+The purpose of this task is to consolidate duplicate URLs, not unnecessarily remove content.
+
+Where a Ministry Holy Spirit page has an equivalent BB Walking Spirit page:
+
+* Retain the content on the BB Walking Spirit page.
+* 301 redirect the Ministry Holy Spirit URL to the corresponding BB Walking Spirit URL.
+
+Where a Ministry Holy Spirit page is unique:
+
+* Do not delete the page solely because it belongs to the Ministry Holy Spirit folder.
+* Review the appropriate indexation treatment based on its content and purpose.
+
+---
+
+# 9. robots.txt
+
+Do not block the following folder solely for the purpose of resolving duplicate content:
+
+
+/categories/growth/ministry-holy-spirit/
+
+
+Do not implement:
+
+
+Disallow: /categories/growth/ministry-holy-spirit/
+
+
+The URLs should remain accessible to search engines where necessary for proper processing of redirects or `noindex` directives.
+
+---
+
+# 10. URL-Level Decision Framework
+
+Apply the following logic to every affected Ministry Holy Spirit URL.
+
+| URL Situation                                                                  | Required Action                                                          |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| Exact or substantially duplicate BB Walking Spirit equivalent exists           | **301 redirect to corresponding BB Walking Spirit URL**                  |
+| Clear one-to-one equivalent exists but URL is intentionally required for users | Review before implementation; avoid maintaining duplicate indexable URLs |
+| No equivalent exists and content is unique                                     | Keep indexable if the page provides unique search value                  |
+| No equivalent exists but page must remain accessible without ranking           | Keep live + `noindex, follow`                                            |
+
+---
+
+# 11. Implementation Rules
+
+Please ensure the following requirements are followed:
+
+1. **BB Walking Spirit remains the preferred SEO version for duplicate resources.**
+2. Existing BB Walking Spirit URLs must not be changed.
+3. BB Walking Spirit pages should remain indexable unless separately identified otherwise.
+4. BB Walking Spirit pages should use self-referencing canonical URLs.
+5. Duplicate Ministry Holy Spirit URLs with clear one-to-one equivalents should permanently 301 redirect to BB Walking Spirit URLs.
+6. Redirect each URL to the most relevant corresponding page.
+7. Do not redirect all Ministry Holy Spirit URLs to a single category or homepage.
+8. Do not create irrelevant redirects.
+9. Do not create redirect chains.
+10. Do not apply `noindex` to URLs that are permanently redirected.
+11. Ministry Holy Spirit URLs without equivalents should be reviewed individually.
+12. Unique Ministry Holy Spirit content should not be unnecessarily removed.
+13. Remove redirected URLs from XML sitemaps.
+14. Remove `noindex` URLs from XML sitemaps.
+15. Update internal links to point directly to the preferred BB Walking Spirit URLs where an equivalent exists.
+16. Do not block the affected URLs through `robots.txt`.
+17. Ensure there are no conflicts between redirects, canonical tags, meta robots directives, XML sitemaps, `robots.txt`, and internal linking.
+
+---
+
+# 12. Validation Checklist
+
+After implementation, crawl all affected URLs and verify the following.
+
+## BB Walking Spirit URLs
+
+Verify:
+
+* HTTP status code = `200`
+* Page is indexable
+* No `noindex` directive
+* Self-referencing canonical is present
+* Included in XML sitemap where applicable
+* Not blocked by `robots.txt`
+
+---
+
+## Ministry Holy Spirit URLs With 301 Redirects
+
+Verify:
+
+* HTTP status code = `301`
+* Redirect points directly to the correct corresponding BB Walking Spirit URL
+* No redirect chain exists
+* No redirect loop exists
+* Final BB Walking Spirit destination returns HTTP `200`
+* Final destination is indexable
+* Source URL is removed from XML sitemaps
+* Internal links are updated to the final preferred URL where applicable
+
+### Example validation
+
+
+https://equip.jesusonline.com/categories/growth/ministry-holy-spirit/empowered-for-supernatural-living
+
+Status: 301
+
+↓
+
+https://equip.jesusonline.com/categories/growth/bb-walking-spirit/empowered-for-supernatural-living
+
+Status: 200
+Canonical: Self-referencing
+Indexation: Allowed
+
+
+---
+
+## Ministry Holy Spirit URLs That Remain Live
+
+Verify:
+
+### If indexable
+
+* HTTP status code = `200`
+* Self-referencing canonical
+* No `noindex`
+* Included in sitemap where appropriate
+
+### If intentionally non-indexable
+
+* HTTP status code = `200`
+* `noindex, follow` is present
+* Page remains accessible to users
+* URL is not blocked by `robots.txt`
+* URL is removed from XML sitemap
+* Canonical configuration is appropriate
+
+---
+
+# 13. Final Expected Outcome
+
+The final implementation should establish the following structure:
+
+## Preferred Version
+
+
+/categories/growth/bb-walking-spirit/
+
+
+For duplicate resources:
+
+* Preferred URL
+* Indexable
+* Self-canonical
+* Included in XML sitemap
+* Preferred internal linking destination
+
+---
+
+## Duplicate Ministry Holy Spirit URLs
+
+
+/categories/growth/ministry-holy-spirit/
+
+
+Where an equivalent BB Walking Spirit page exists:
+
+
+Ministry Holy Spirit URL
+        ↓
+       301
+        ↓
+Corresponding BB Walking Spirit URL
+
+
+---
+
+## Unique Ministry Holy Spirit URLs
+
+URLs without a corresponding BB Walking Spirit equivalent should not be automatically redirected.
+
+These URLs should be reviewed individually to determine whether they should:
+
+* Remain indexable, or
+* Remain accessible with `noindex, follow`.
+
+---
+
+## Primary SEO Principle
+
+**Use a 301 redirect for true duplicate pages where there is a clear one-to-one replacement.**
+
+**Do not redirect pages where there is no relevant equivalent.**
+
+**Use `noindex, follow` only for pages that genuinely need to remain accessible but should not appear in search results.**
+
+The goal is to consolidate duplicate URLs and SEO signals into the preferred **BB Walking Spirit** versions while avoiding unnecessary removal of unique content.
+"

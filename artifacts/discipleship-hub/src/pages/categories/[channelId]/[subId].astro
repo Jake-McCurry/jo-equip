@@ -43,6 +43,7 @@ const featuredChildArticle = sub.id === "total-life-discipleship-principles"
  * instead of the standard items/empty layout. */
 const isNewsletter = sub.id === "make-multiply-disciples-newsletter";
 const showKnowingGod = channel.id === "church" && sub.id === "bible-study-tools";
+const noindex = channel.id === "growth" && sub.id === "ministry-holy-spirit";
 
 /* For child sub-topics, surface the parent in the breadcrumb (Channels > Church > Share Jesus > Year 1). */
 const parent = sub.parentId ? getSubTopic(channelId!, sub.parentId) : undefined;
@@ -115,6 +116,7 @@ const showFullHeroTitle =
 ---
 <Layout title={sub.seoTitle ?? `${sub.name} · ${channel.shortName} · JO EQUIP`} description={sub.seoDescription ?? `${sub.name} — ${channel.tagline}`}>
   <Fragment slot="head">
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <BreadcrumbsLd items={[
       { name: "Home", url: "/" },
       { name: "Categories", url: "/categories" },

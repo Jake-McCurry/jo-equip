@@ -5,12 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev --host 0.0.0.0",
-    "build": "node scripts/check-book-gate-parity.mjs && astro build && node scripts/apply-external-link-nofollow.mjs && node scripts/build-sitemaps.mjs",
+    "build": "pnpm run validate:knowing-god && node scripts/check-book-gate-parity.mjs && astro build && node scripts/apply-external-link-nofollow.mjs && node scripts/build-sitemaps.mjs",
     "serve": "astro preview --host 0.0.0.0",
     "typecheck": "astro check",
     "test:nofollow": "node --test scripts/external-link-policy.test.mjs",
+    "test:knowing-god": "node --test scripts/knowing-god-regressions.test.mjs",
     "generate:knowing-god": "python3 scripts/generate-knowing-god.py",
-    "validate:knowing-god": "python3 scripts/generate-knowing-god.py --validate-only"
+    "validate:knowing-god": "python3 scripts/generate-knowing-god.py --validate-only && pnpm run test:knowing-god"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",

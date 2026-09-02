@@ -53,24 +53,28 @@ id = "yt95SH6ZvnNSC8vmX9t3T"
 uri = "file://artifacts/discipleship-hub/public/articles/20011-quiet-time-with-god.pdf"
 type = "pdf"
 title = "Updated branding sample"
+logical_id = "95f8921b-999b-4ea8-b90b-b5928c07e989"
 
 [[outputs]]
 id = "odZSPunTOsUebMkSkfuda"
 uri = "file://.local/video-content-matches.md"
 type = "text"
 title = "Video → Written Content — Match Proof List"
+logical_id = "0851e03a-cb4c-4105-a44b-26c8124a4a65"
 
 [[outputs]]
 id = "lIeABZ8g4XWuKub4xLxK0"
 uri = "file://exports/jo-equip-ux-audit.csv"
 type = "table"
 title = "JO EQUIP UX Audit — 19 findings, ranked"
+logical_id = "ae723bc5-f32d-4777-b26b-35918fadc9d0"
 
 [[outputs]]
 id = "pGkbLbUOw3PWcDUp5_lAl"
 uri = "file://exports/broken-external-links.csv"
 type = "table"
 title = "Broken External Links — JO EQUIP"
+logical_id = "0cff2775-cd21-4170-a7ea-1aa969ff1808"
 
 [[outputs]]
 id = "QzKWDF1OE9OcRpuH_mQeN"
@@ -78,6 +82,7 @@ uri = "file://screenshots/categories-new-colors.jpg"
 type = "image"
 title = "Mockup: new category colors (Categories page)"
 description = "Warm Amber #C48A00 (Evidence), Forest Growth #2E7D32 (Growth), Deep Amethyst #6B2D7B (Church) applied to the category cards."
+logical_id = "08f933a0-108b-4a9e-8d41-de4636775ea1"
 
 [[outputs]]
 id = "KQ2K8tzjQ04ibX-nt54BP"
@@ -85,3 +90,18 @@ uri = "file://screenshots/growth-new-colors.jpg"
 type = "image"
 title = "Mockup: Growth category page in Forest Growth green"
 description = "Hero gradient and card accents in the proposed #2E7D32 green."
+logical_id = "5b31330d-7d45-42f7-a988-0bab1d90a451"
+
+[[outputs]]
+id = "ktEmmMjlful3tDyhSKaIa"
+uri = "file://artifacts/discipleship-hub/public/books/adventure-of-living-with-jesus.pdf"
+type = "pdf"
+title = "The Adventure of Living with Jesus"
+description = "Restyled JO EQUIP edition with exact source text and all 11 original links preserved."
+logical_id = "6bec4a13-7a2d-484e-82dd-ffaed4b3f9c2"
+content_hash = "sha256:d6567b9ba0f2da5e956b60ed49f84add4a965f9fda320a9a044611dc96e5fc8e"
+size = 296492
+mtime_ms = 1788372650327
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/6bec4a13-7a2d-484e-82dd-ffaed4b3f9c2/6b110452-e41f-4601-9643-5bf0aed1f40f"
+storage_version_token = "1788372673505324"
+content_type = "application/pdf"

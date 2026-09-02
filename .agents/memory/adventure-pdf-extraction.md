@@ -16,4 +16,7 @@ description: Lessons from rebuilding the 2016 InDesign "Adventure of Living with
 - Owner-supplied visual supplements add four legacy teaching graphics (spiritual breathing, fruit, trust inventory, and mind viewpoints) plus a new Fruit of the Spirit passage before the Holy Spirit Go Deeper card.
 - **Why:** These additions were supplied after the 2026 manuscript and are intentional exceptions to strict source-text parity.
 - **How to apply:** Preserve the supplement wording and placement; validate the rest against the 2026 source and treat only these additions plus the approved question mark as expected differences.
+- All generated replacement concepts for the six teaching graphics were rejected; retain the currently approved source graphics unless the user supplies or explicitly approves professional replacements.
+- **Why:** The generated concepts did not meet the required visual quality, and the user explicitly rejected the complete set.
+- **How to apply:** Never substitute any review concept into the book automatically. Require explicit approval of each future replacement before integration.
 - Chromium print-to-PDF link annotations exist but are stored via indirect refs; `mutool show pages/N/Annots` won't show them — grep the raw PDF for `/URI` to count links.

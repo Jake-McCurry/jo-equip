@@ -245,3 +245,17 @@ mtime_ms = 1788391707012
 storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/2fc0b8af-0245-47f9-bd90-d1981b5cc67d/6bea1f4b-0ef3-4984-92b2-b5ebc73601f4"
 storage_version_token = "1788391718959288"
 content_type = "application/pdf"
+
+[[outputs]]
+id = "yYfer_vIYZ9DjC6xXRnzS"
+uri = "file://.agents/outputs/adventure-visual-proof-v4-viewing-copy.pdf"
+type = "pdf"
+title = "Adventure Visual Proof — Refined Editorial Layout"
+description = "46-page viewing proof with smaller chapter icons, individually downsized visuals, improved content flow, preserved response areas, and all applicable Go Deeper blocks after their visuals. Not published to the website."
+logical_id = "3ee595f3-121f-4fb4-9ff4-2f3fc9d84fe1"
+content_hash = "sha256:074ec6237d685301049dfbe02db53d9d23cc39381039cbafdd429e2e8f41d3ca"
+size = 1102989
+mtime_ms = 1788392155916
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/3ee595f3-121f-4fb4-9ff4-2f3fc9d84fe1/d3e6a660-8e1a-4854-888c-4ef2df488dc2"
+storage_version_token = "1788392167750801"
+content_type = "application/pdf"

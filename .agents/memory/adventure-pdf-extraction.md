@@ -25,4 +25,7 @@ description: Lessons from rebuilding the 2016 InDesign "Adventure of Living with
 - In designed Adventure proofs, every section visual must precede its applicable Go Deeper block, and response-writing areas must never be used as image space.
 - **Why:** The first proof treated whitespace mechanically and placed artwork after Go Deeper or over response areas, breaking the workbook’s reading hierarchy.
 - **How to apply:** Recompose the page or add a visual page before Go Deeper; size each asset individually and verify all changed pages as a full-document contact sheet.
+- Adventure visuals should support the teaching rather than dominate the page; chapter icons are small navigational accents, not co-equal title elements.
+- **Why:** Oversized art and 35-point chapter icons crowded headings and made the proof feel mechanically assembled.
+- **How to apply:** Let placement follow editorial flow rather than requested page numbers; target roughly 25–40% page area for supporting art and about 20–24 points for chapter icons.
 - Chromium print-to-PDF link annotations exist but are stored via indirect refs; `mutool show pages/N/Annots` won't show them — grep the raw PDF for `/URI` to count links.

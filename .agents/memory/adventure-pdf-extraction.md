@@ -10,4 +10,7 @@ description: Lessons from rebuilding the 2016 InDesign "Adventure of Living with
 - Decorative 72pt chapter digits share stext *lines* with 24pt banner text; filter oversized glyphs at the char level, never drop whole lines by max size.
 - Chapter banners are detected by size (≥20pt after 1/1.5 mutool scaling vs pdftohtml) and validated against expected title prefixes; pages are not hardcoded (chapter 5 starts a page earlier than the original TOC implies).
 - Carlito/Caladea fonts in ~/.fonts get wiped between sessions; the strict-typography build fails loudly — reinstall from google/fonts ofl + `fc-cache -f`.
+- The 2026 Adventure PDF is a wholly new manuscript and its embedded mountain-path page-one cover is authoritative; never merge in 2016 text or the older hiking-silhouette cover.
+- **Why:** The owner explicitly requires the new wording, link targets, and supplied cover to remain intact while permitting visual-only layout improvements.
+- **How to apply:** Validate normalized text and exact URI parity against the 2026 PDF after every render; story cards, response areas, banners, and graphics must not introduce or replace wording.
 - Chromium print-to-PDF link annotations exist but are stored via indirect refs; `mutool show pages/N/Annots` won't show them — grep the raw PDF for `/URI` to count links.

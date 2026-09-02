@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="1200" height="1200">
+  
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E2C08D"/>
+      <stop offset="50%" stop-color="#C69C6D"/>
+      <stop offset="100%" stop-color="#9A7446"/>
+    </linearGradient>
+    <linearGradient id="silver" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDFBF7"/>
+      <stop offset="100%" stop-color="#E8E4DB"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#1C2A39" flood-opacity="0.15"/>
+    </filter>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="20" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    
+    <g id="ornate-throne">
+      <!-- Base -->
+      <path d="M-70,80 L70,80 L60,110 L-60,110 Z" fill="url(#gold)" filter="url(#shadow)"/>
+      <rect x="-60" y="70" width="120" height="10" fill="#1C2A39"/>
+      <!-- Seat -->
+      <path d="M-80,50 L80,50 L70,70 L-70,70 Z" fill="url(#gold)"/>
+      <rect x="-70" y="40" width="140" height="10" fill="#265C59"/>
+      <!-- Backrest -->
+      <path d="M-60,40 L-50,-70 C-50,-110 50,-110 50,-70 L60,40 Z" fill="#265C59" stroke="url(#gold)" stroke-width="6"/>
+      <path d="M-45,40 L-35,-65 C-35,-90 35,-90 35,-65 L45,40 Z" fill="#1C2A39"/>
+      <!-- Arms -->
+      <path d="M-80,50 C-100,10 -50,-10 -50,30" fill="none" stroke="url(#gold)" stroke-width="12" stroke-linecap="round"/>
+      <path d="M80,50 C100,10 50,-10 50,30" fill="none" stroke="url(#gold)" stroke-width="12" stroke-linecap="round"/>
+      <!-- Cushion -->
+      <path d="M-50,30 L50,30 C60,45 -60,45 -50,30 Z" fill="#A74B39"/>
+    </g>
+
+    <g id="radiant-cross">
+      <circle r="70" fill="#E2C08D" opacity="0.3" filter="url(#glow)"/>
+      <rect x="-8" y="-45" width="16" height="110" fill="#FDFBF7" stroke="url(#gold)" stroke-width="2"/>
+      <rect x="-35" y="-15" width="70" height="16" fill="#FDFBF7" stroke="url(#gold)" stroke-width="2"/>
+    </g>
+
+    <g id="self-symbol">
+      <circle r="30" fill="#1C2A39" stroke="url(#gold)" stroke-width="4" filter="url(#shadow)"/>
+      <text y="12" font-family="'Cormorant Garamond', serif" font-size="36" font-weight="700" fill="#FDFBF7" text-anchor="middle">S</text>
+    </g>
+
+    <g id="leaf-gold">
+      <path d="M 0,0 C -30,-20 -50,20 -70,40 C -30,60 -10,20 0,0 Z" fill="url(#gold)" filter="url(#shadow)"/>
+    </g>
+    <g id="leaf-teal">
+      <path d="M 0,0 C 30,-20 50,20 70,40 C 30,60 10,20 0,0 Z" fill="#265C59" filter="url(#shadow)"/>
+    </g>
+    <g id="grape">
+      <circle cx="0" cy="15" r="8" fill="#1C2A39" stroke="url(#gold)" stroke-width="1.5"/>
+      <circle cx="-8" cy="28" r="8" fill="#1C2A39" stroke="url(#gold)" stroke-width="1.5"/>
+      <circle cx="8" cy="28" r="8" fill="#1C2A39" stroke="url(#gold)" stroke-width="1.5"/>
+      <circle cx="0" cy="41" r="8" fill="#1C2A39" stroke="url(#gold)" stroke-width="1.5"/>
+    </g>
+
+    <g id="stone-spout">
+      <path d="M -40,-30 C -20,0 20,0 40,-30 L 25,30 C 10,40 -10,40 -25,30 Z" fill="url(#gold)" filter="url(#shadow)"/>
+      <ellipse cx="0" cy="-30" rx="40" ry="15" fill="#1C2A39"/>
+      <rect x="-10" y="30" width="20" height="20" fill="url(#gold)"/>
+      <path d="M -30,50 L 30,50 L 20,60 L -20,60 Z" fill="#9A7446"/>
+    </g>
+  </defs>
+
+  <style>
+    
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&amp;family=Proza+Libre:wght@400;500;600&amp;display=swap');
+  text { font-family: 'Proza Libre', sans-serif; fill: #1C2A39; }
+  .title { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 48px; fill: #1C2A39; letter-spacing: 2px; text-anchor: middle; }
+  .ref { font-family: 'Proza Libre', sans-serif; font-weight: 400; font-size: 22px; fill: #A74B39; }
+
+    .step-text { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 38px; fill: #1C2A39; }
+    .step-ref { font-family: 'Proza Libre', sans-serif; font-weight: 500; font-size: 24px; fill: #A74B39; }
+  </style>
+  
+  <rect width="1200" height="1200" fill="#FDFBF7"/>
+  <rect x="30" y="30" width="1140" height="1140" fill="none" stroke="url(#gold)" stroke-width="2" opacity="0.5"/>
+  <rect x="40" y="40" width="1120" height="1120" fill="none" stroke="#265C59" stroke-width="1" opacity="0.3"/>
+
+  
+  <text x="600" y="140" class="title" style="font-size: 56px;">Restoring Fellowship</text>
+
+  <path d="M 400,1050 C 900,1000 900,700 500,600 C 100,500 400,250 600,200" fill="none" stroke="url(#silver)" stroke-width="80" stroke-linecap="round" filter="url(#shadow)"/>
+  <path d="M 400,1050 C 900,1000 900,700 500,600 C 100,500 400,250 600,200" fill="none" stroke="#E8E4DB" stroke-width="76" stroke-linecap="round"/>
+  <path d="M 400,1050 C 900,1000 900,700 500,600 C 100,500 400,250 600,200" fill="none" stroke="url(#gold)" stroke-width="4" stroke-dasharray="15 15"/>
+  
+  <circle cx="600" cy="200" r="100" fill="#E2C08D" opacity="0.3" filter="url(#glow)"/>
+  <path d="M 600,100 L 600,300 M 500,200 L 700,200 M 530,130 L 670,270 M 530,270 L 670,130" stroke="url(#gold)" stroke-width="3" opacity="0.6"/>
+
+  <g id="step-node">
+    <circle r="30" fill="#FFFFFF" stroke="url(#gold)" stroke-width="6" filter="url(#shadow)"/>
+    <circle r="12" fill="#265C59"/>
+  </g>
+
+  <g transform="translate(680, 930)">
+    <use href="#step-node" x="0" y="0"/>
+    <text x="0" y="9" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="#265C59" text-anchor="middle">1</text>
+    <text x="-60" y="10" class="step-text" text-anchor="end">Choose to yield to God.</text>
+    <text x="-60" y="50" class="step-ref" text-anchor="end">(Romans 12:2)</text>
+  </g>
+
+  <g transform="translate(320, 600)">
+    <use href="#step-node" x="0" y="0"/>
+    <text x="0" y="9" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="#265C59" text-anchor="middle">2</text>
+    <text x="60" y="10" class="step-text" text-anchor="start">Confess your sins.</text>
+    <text x="60" y="50" class="step-ref" text-anchor="start">(1 John 1:9)</text>
+  </g>
+
+  <g transform="translate(560, 310)">
+    <use href="#step-node" x="0" y="0"/>
+    <text x="0" y="9" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="#265C59" text-anchor="middle">3</text>
+    <text x="-60" y="-10" class="step-text" text-anchor="end">Trust God that</text>
+    <text x="-60" y="35" class="step-text" text-anchor="end">He is in control.</text>
+    <text x="-60" y="75" class="step-ref" text-anchor="end">(Romans 12:2)</text>
+  </g>
+</svg>

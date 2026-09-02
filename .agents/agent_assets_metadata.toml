@@ -105,3 +105,101 @@ mtime_ms = 1788376429652
 storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/6bec4a13-7a2d-484e-82dd-ffaed4b3f9c2/092f0aeb-9a99-4fd9-b95d-5fcbd9d8f7af"
 storage_version_token = "1788376446807685"
 content_type = "application/pdf"
+
+[[outputs]]
+id = "gmsOojm9jD1uMIMPc7fkt"
+uri = "file://design-reviews/adventure-graphics-premium/png/all-six-concepts.png"
+type = "image"
+title = "Adventure Graphics — All Six Concepts"
+description = "Overview of the complete Premium Illustrated replacement family. Review only; none are in the book."
+logical_id = "39573dae-9d58-431a-bc89-004631b6aae2"
+content_hash = "sha256:81c1f3395f844e8813b2c61b8a2b9baa2f361b97fe4615fcb1fad4cbad447afa"
+size = 3756509
+mtime_ms = 1788378389878
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/39573dae-9d58-431a-bc89-004631b6aae2/8d408eba-eb8f-473c-bc0e-09cf1b1863f9"
+storage_version_token = "1788378411458476"
+content_type = "image/png"
+
+[[outputs]]
+id = "_aGHnQAegwQc0DgX7fW9f"
+uri = "file://design-reviews/adventure-graphics-premium/png/01-directed-life.png"
+type = "image"
+title = "Concept 1 — Directed Life"
+description = "Self-Directed Life versus Christ-Directed Life, preserving the throne, Christ, self, and life-point teaching structure."
+logical_id = "4b141b49-77f1-47a3-b61f-f294dea3de7f"
+content_hash = "sha256:a2c359a08abc877e27aaaa425b31153f02e3fa6195ffbddb4caf0fff24bf6bb7"
+size = 168052
+mtime_ms = 1788378385226
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/4b141b49-77f1-47a3-b61f-f294dea3de7f/6a231eaf-478c-4b32-a3dd-4d1f0c9f02e2"
+storage_version_token = "1788378412085190"
+content_type = "image/png"
+
+[[outputs]]
+id = "V3Tp0d888c4tNZY0wCAfi"
+uri = "file://design-reviews/adventure-graphics-premium/png/02-restoring-fellowship.png"
+type = "image"
+title = "Concept 2 — Restoring Fellowship"
+description = "A numbered three-step path: yield to God, confess your sins, and trust God is in control."
+logical_id = "28d57076-148d-4539-99b1-38c75d801de8"
+content_hash = "sha256:dc83e44a557bf03ad46e16f693952c48dcf23afc1b6c857aa48a04a4956bc671"
+size = 176830
+mtime_ms = 1788378385570
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/28d57076-148d-4539-99b1-38c75d801de8/1253093e-8571-4b9f-b9d3-e3195939095c"
+storage_version_token = "1788378412721097"
+content_type = "image/png"
+
+[[outputs]]
+id = "7VEFln4ucKjfcbZFLi1xT"
+uri = "file://design-reviews/adventure-graphics-premium/png/03-spiritual-breathing.png"
+type = "image"
+title = "Concept 3 — Spiritual Breathing"
+description = "A continuous exhale/inhale rhythm with the original wording and scripture references."
+logical_id = "fb5d59ea-bf21-4341-a665-e8a9a21234a0"
+content_hash = "sha256:ab0dbef898f8faeca85e203c4384b1410d5eecd53ce3d877bc1dfe87dd0aab73"
+size = 173760
+mtime_ms = 1788378385874
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/fb5d59ea-bf21-4341-a665-e8a9a21234a0/57f60ae1-36bb-4c55-8c9f-903e985cb0d9"
+storage_version_token = "1788378413374852"
+content_type = "image/png"
+
+[[outputs]]
+id = "H5pCXevNnTdpBuI8vmKN0"
+uri = "file://design-reviews/adventure-graphics-premium/png/04-fruit-of-the-spirit.png"
+type = "image"
+title = "Concept 4 — Fruit of the Spirit"
+description = "A contemporary grapevine illustration containing all nine listed qualities."
+logical_id = "63b3d94e-b136-4675-bd4b-face0bcad58c"
+content_hash = "sha256:142587b8479d9a3f6db2ab43ea5bc2b4cf1b2665229ca1f73778d002c09567a3"
+size = 168571
+mtime_ms = 1788378386266
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/63b3d94e-b136-4675-bd4b-face0bcad58c/778a9f6f-a078-4f1c-b0ca-6576c81c6fca"
+storage_version_token = "1788378414074922"
+content_type = "image/png"
+
+[[outputs]]
+id = "XavGO8h3GidpAb4MTjIpF"
+uri = "file://design-reviews/adventure-graphics-premium/png/05-examining-your-trust.png"
+type = "image"
+title = "Concept 5 — Examining Your Trust"
+description = "A print-friendly Helping/Hurting ledger with markable checkboxes."
+logical_id = "9e72055e-b877-4304-9c39-4557bb7018c2"
+content_hash = "sha256:8c8ceec5d795b2d6365f75be379ca92df51f352960779a545996e2b752efc091"
+size = 66928
+mtime_ms = 1788378386630
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/9e72055e-b877-4304-9c39-4557bb7018c2/e21201f6-444e-43ca-bd38-e0e698b43fda"
+storage_version_token = "1788378414643425"
+content_type = "image/png"
+
+[[outputs]]
+id = "KaTGGdstV-e6ANgTn22lZ"
+uri = "file://design-reviews/adventure-graphics-premium/png/06-what-fills-your-mind.png"
+type = "image"
+title = "Concept 6 — What Fills Your Mind"
+description = "God’s and the world’s viewpoints flowing into the mind, with the mind’s contents flowing outward."
+logical_id = "190a9ca6-9ef8-45f4-ba16-6e4883ad515d"
+content_hash = "sha256:39b98e989a0927a87e8fc92547ac80a88674fc9d73b77a6ff5c014eece2fb2d8"
+size = 175392
+mtime_ms = 1788378387206
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/190a9ca6-9ef8-45f4-ba16-6e4883ad515d/65459d75-8aa7-48b3-a1c9-98aa66c2139d"
+storage_version_token = "1788378415308194"
+content_type = "image/png"

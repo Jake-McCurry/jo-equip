@@ -45,13 +45,6 @@ def image_data(path):
 
 def block_html(page,b):
     if b.get('type') == 1 and b.get('image'):
-        diagram_path = {
-            12: 'artifacts/discipleship-hub/src/assets/books/adventure/directed-life-diagram.png',
-            13: 'artifacts/discipleship-hub/src/assets/books/adventure/restoring-fellowship-diagram.png',
-        }.get(page.number)
-        if diagram_path:
-            diagram = image_data(diagram_path)
-            return f'<figure class="source-graphic vector-graphic"><img src="data:image/png;base64,{diagram}" /></figure>'
         mime = 'image/jpeg' if b.get('ext') in ('jpg', 'jpeg') else f"image/{b.get('ext', 'png')}"
         data = base64.b64encode(b['image']).decode()
         return f'<figure class="source-graphic"><img src="data:{mime};base64,{data}" /></figure>'
@@ -111,6 +104,7 @@ for pi,page in enumerate(doc):
   elif pi==2: sections.append(f'<section class="toc">{body}</section>')
   else: sections.append(body)
 content='\n'.join(sections)
+content=content.replace('Who Is the Holy Spirit</a>', 'Who Is the Holy Spirit?</a>')
 # Wrap each Go Deeper heading plus its immediately following linked paragraph in a card.
 content=re.sub(r'<h2><strong>Go Deeper</strong></h2>\s*(<p[^>]*>.*?</p>)',r'<aside class="go-deeper"><h1>Go Deeper</h1>\1</aside>',content,flags=re.S)
 # Give each prompt and its writing lines a distinct response area.
@@ -177,7 +171,7 @@ ul,ol{margin:.45em 0 .9em .55in}li{margin:.25em 0}.quote{margin-left:.5in;font-s
 .toc .chapter-banner,.resources .chapter-banner{page-break-before:auto;color:#fff}
 .story-card{break-inside:avoid;margin:1.1em 0;padding:1em 1.05em;background:#f7f3e9;border:1px solid #e1d4b8;border-left:5px solid #d6a548;border-radius:5px}
 .story-card h2,.story-card p:last-child{margin-bottom:0}.story-card .quote{margin-left:.25in}
-.source-graphic{break-inside:avoid;margin:1em auto;padding:.18em;text-align:center;background:#fff;border:0}
+.source-graphic{break-inside:avoid;margin:1em auto;padding:.5em;text-align:center;background:#fff;border:1px solid #cfdbe4;border-radius:7px}
 .source-graphic img{display:block;max-width:100%;height:auto;margin:auto}
 .resources{page-break-before:always}.resources .chapter-banner{page-break-before:auto}
 .resource-card{display:flex;align-items:stretch;gap:.22in;break-inside:avoid;margin:.62em 0;padding:.14in;background:#eef6fb;border:1px solid #cfe3f2;border-radius:9px;min-height:1.7in}

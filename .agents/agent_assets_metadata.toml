@@ -217,3 +217,17 @@ mtime_ms = 1788387591865
 storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/62eb3d2f-e79b-48ac-b21e-4750f3b59a77/3da15e45-4849-4839-9598-b480c5fe7a1c"
 storage_version_token = "1788387632432600"
 content_type = "application/pdf"
+
+[[outputs]]
+id = "3EZmfFtHuzxkcyAKAVWvs"
+uri = "file://.agents/outputs/adventure-visual-proof-viewing-copy.pdf"
+type = "pdf"
+title = "Adventure Visual Proof — Viewing Copy"
+description = "Optimized 1.5 MB copy for reliable browser viewing. The full-resolution 20 MB proof remains available separately."
+logical_id = "c1256003-948c-42aa-a2f2-52eedea77645"
+content_hash = "sha256:3a3e44a34dd89c4b0139fead913e29ad3f0c6fc9c23783be8e59d808f7db9b27"
+size = 1563976
+mtime_ms = 1788390339516
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/c1256003-948c-42aa-a2f2-52eedea77645/c31b4f9c-921a-43df-a155-671b1a34ccd6"
+storage_version_token = "1788390351228054"
+content_type = "application/pdf"

@@ -13,4 +13,7 @@ description: Lessons from rebuilding the 2016 InDesign "Adventure of Living with
 - The 2026 Adventure PDF is a wholly new manuscript and its embedded mountain-path page-one cover is authoritative; never merge in 2016 text or the older hiking-silhouette cover.
 - **Why:** The owner explicitly requires the new wording, link targets, and supplied cover to remain intact while permitting visual-only layout improvements.
 - **How to apply:** Validate normalized text and exact URI parity against the 2026 PDF after every render; story cards, response areas, banners, and graphics must not introduce or replace wording.
+- Owner-supplied visual supplements add four legacy teaching graphics (spiritual breathing, fruit, trust inventory, and mind viewpoints) plus a new Fruit of the Spirit passage before the Holy Spirit Go Deeper card.
+- **Why:** These additions were supplied after the 2026 manuscript and are intentional exceptions to strict source-text parity.
+- **How to apply:** Preserve the supplement wording and placement; validate the rest against the 2026 source and treat only these additions plus the approved question mark as expected differences.
 - Chromium print-to-PDF link annotations exist but are stored via indirect refs; `mutool show pages/N/Annots` won't show them — grep the raw PDF for `/URI` to count links.

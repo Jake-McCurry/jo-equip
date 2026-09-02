@@ -43,6 +43,10 @@ def image_data(path):
     with open(path, 'rb') as asset:
         return base64.b64encode(asset.read()).decode()
 
+def lesson_visual(path, alt, extra_class=''):
+    data = image_data(path)
+    return f'<figure class="lesson-visual {extra_class}"><img src="data:image/png;base64,{data}" alt="{html.escape(alt, quote=True)}" /></figure>'
+
 def block_html(page,b):
     if b.get('type') == 1 and b.get('image'):
         mime = 'image/jpeg' if b.get('ext') in ('jpg', 'jpeg') else f"image/{b.get('ext', 'png')}"
@@ -105,6 +109,51 @@ for pi,page in enumerate(doc):
   else: sections.append(body)
 content='\n'.join(sections)
 content=content.replace('Who Is the Holy Spirit</a>', 'Who Is the Holy Spirit?</a>')
+breathing_visual = lesson_visual(
+    'artifacts/discipleship-hub/src/assets/books/adventure/spiritual-breathing.png',
+    'Spiritual breathing: exhale by confessing your sins and inhale by asking the Holy Spirit to control you.',
+)
+fruit_visual = lesson_visual(
+    'artifacts/discipleship-hub/src/assets/books/adventure/fruit-of-the-spirit.png',
+    'Fruit of the Spirit: love, joy, peace, patience, kindness, goodness, faithfulness, gentleness, and self-control.',
+)
+trust_visual = lesson_visual(
+    'artifacts/discipleship-hub/src/assets/books/adventure/examining-your-trust.png',
+    'Checklist for whether friends, recreations, habits, time in God’s Word, and thoughts are helping or hurting.',
+)
+mind_visual = lesson_visual(
+    'artifacts/discipleship-hub/src/assets/books/adventure/what-fills-your-mind.png',
+    'Your mind filled by God’s viewpoint and the world’s viewpoint.',
+    'mind-visual',
+)
+content=content.replace(
+    '<p class="">Whenever you become aware of sin or self-centeredness, you can turn quickly: confess it, and by faith entrust yourself again to the Spirit’s leadership. He is always ready to restore and empower you.</p>',
+    '<p class="">Whenever you become aware of sin or self-centeredness, you can turn quickly: confess it, and by faith entrust yourself again to the Spirit’s leadership. He is always ready to restore and empower you.</p>'
+    + breathing_visual
+    + '<section class="fruit-section"><h2><strong>Bearing Fruit</strong></h2>'
+      '<h3>Fruit of the Spirit</h3>'
+      '<p>Jesus compared your life to a branch that is totally dependent on the grapevine. The purpose of the vine is to produce big juicy grapes. The more fruit ... the more the farmer is pleased. The Holy Spirit wants to produce the fruit of the Spirit in your life, which is identified as:</p>'
+    + fruit_visual
+    + '<p>The Fruit of the Spirit results in a heart that God uses to reach others for Christ. (Read John chapter 15.)</p></section>'
+)
+content=content.replace(
+    '<p class="">What in your life keeps you from trusting God fully— Relationships, finances, plans, habits, past failures, thought life, fear, or the desire for control?</p>',
+    '<p class="">What in your life keeps you from trusting God fully— Relationships, finances, plans, habits, past failures, thought life, fear, or the desire for control?</p>'
+    + trust_visual
+)
+content=content.replace(
+    '<h2><strong>Examining Your Trust</strong></h2>\n'
+    '<p class="">What in your life keeps you from trusting God fully— Relationships, finances, plans, habits, past failures, thought life, fear, or the desire for control?</p>'
+    + trust_visual,
+    '<section class="visual-topic"><h2><strong>Examining Your Trust</strong></h2>'
+    '<p class="">What in your life keeps you from trusting God fully— Relationships, finances, plans, habits, past failures, thought life, fear, or the desire for control?</p>'
+    + trust_visual + '</section>'
+)
+content=content.replace(
+    '<p class="">Every day your mind is flooded with the voices and messages around you—most of them reflecting the world’s perspective. What you allow to fill your mind will influence your decisions, attitudes, actions, and direction.</p>',
+    '<p class="">Every day your mind is flooded with the voices and messages around you—most of them reflecting the world’s perspective. What you allow to fill your mind will influence your decisions, attitudes, actions, and direction.</p>'
+    + mind_visual
+)
 # Wrap each Go Deeper heading plus its immediately following linked paragraph in a card.
 content=re.sub(r'<h2><strong>Go Deeper</strong></h2>\s*(<p[^>]*>.*?</p>)',r'<aside class="go-deeper"><h1>Go Deeper</h1>\1</aside>',content,flags=re.S)
 # Give each prompt and its writing lines a distinct response area.
@@ -146,7 +195,7 @@ content = re.sub(
     flags=re.S,
 )
 content = re.sub(
-    r'<section class="chapter-start">(?=<h1 class="chapter-banner">(?:<strong>)?(?:1\.\s+Citizen of Heaven|4\.\s+Walking by Faith, Not by Feelings|7\.\s+Belonging to God’s Family|8\.\s+Living a Life of Purpose))',
+    r'<section class="chapter-start">(?=<h1 class="chapter-banner">(?:<strong>)?(?:1\.\s+Citizen of Heaven|4\.\s+Walking by Faith, Not by Feelings|5\.\s+God’s Word – Your Road Map|7\.\s+Belonging to God’s Family|8\.\s+Living a Life of Purpose))',
     r'<section class="chapter-start chapter-start-new-page">',
     content,
 )
@@ -158,10 +207,11 @@ css='''
 .toc{page-break-after:always;padding-top:.25in}.toc h1{font:300 28pt Carlito,Calibri,sans-serif;color:#0b3c5d;margin:0 0 .8em}.toc p{padding:.18em .5em;border-bottom:1px dotted #d4dde5;margin:0}
 h1{font:300 28pt/1.2 Carlito,Calibri,sans-serif;color:#0b3c5d;text-align:center;margin:.25in 0 .7em}
 h2{font:700 14pt/1.3 Caladea,Cambria,serif;color:#0b3c5d;margin:1.2em 0 .25em;page-break-after:avoid}
+h3{font:700 13pt/1.3 Caladea,Cambria,serif;color:#0b3c5d;margin:.7em 0 .25em;page-break-after:avoid}
 p{margin:0 0 .8em;orphans:3;widows:3} strong{color:#0b3c5d} a{color:#b34800;text-decoration:none}
 ul,ol{margin:.45em 0 .9em .55in}li{margin:.25em 0}.quote{margin-left:.5in;font-style:italic}.question{font-weight:400;margin-top:1em;color:#243b53}
 .blank{height:1.35em;border-bottom:2px solid #718096;color:transparent;overflow:hidden;margin:.1em 0 .7em}
-.response-card{break-inside:avoid;margin:1em 0;padding:.8em 1em .55em;background:#f8fafc;border:1px solid #d4dde7;border-radius:6px}
+.response-card{break-inside:avoid;margin:1em 0;padding:.8em 1em .55em;background:#fff;border:1.5px solid #c5d1dc;border-radius:6px}
 .response-card .question{margin-top:0;font-family:Carlito,Calibri,sans-serif;font-weight:700;color:#173f5f}
 .go-deeper{page-break-inside:avoid;margin:1.4em 0;padding:.8em 1em .9em;border:1px solid #cfe3f2;border-left:5px solid #0083de;background:#f2f8fd;border-radius:3px}
 .go-deeper h1{page-break-before:auto;text-align:left;font:700 14pt Carlito,Calibri,sans-serif;margin:0 0 .3em;color:#0b3c5d}.go-deeper p,.go-deeper h2{margin:0;font:400 12pt Carlito,Calibri,sans-serif}
@@ -173,6 +223,9 @@ ul,ol{margin:.45em 0 .9em .55in}li{margin:.25em 0}.quote{margin-left:.5in;font-s
 .story-card h2,.story-card p:last-child{margin-bottom:0}.story-card .quote{margin-left:.25in}
 .source-graphic{break-inside:avoid;margin:1em auto;padding:.5em;text-align:center;background:#fff;border:1px solid #cfdbe4;border-radius:7px}
 .source-graphic img{display:block;max-width:100%;height:auto;margin:auto}
+.lesson-visual{break-inside:avoid;margin:.9em auto;padding:.42em;text-align:center;background:#fff;border:1px solid #cfdbe4;border-radius:7px}
+.lesson-visual img{display:block;max-width:100%;max-height:4.3in;width:auto;height:auto;margin:auto}.lesson-visual.mind-visual img{max-height:5.5in}
+.fruit-section,.visual-topic{break-inside:avoid}.fruit-section h2{margin-top:1.1em}
 .resources{page-break-before:always}.resources .chapter-banner{page-break-before:auto}
 .resource-card{display:flex;align-items:stretch;gap:.22in;break-inside:avoid;margin:.62em 0;padding:.14in;background:#eef6fb;border:1px solid #cfe3f2;border-radius:9px;min-height:1.7in}
 .site-shot{width:1.12in;height:1.48in;object-fit:cover;object-position:top;border-radius:5px;border:1px solid #b9d4e5;box-shadow:0 2px 5px #9fb3c466}

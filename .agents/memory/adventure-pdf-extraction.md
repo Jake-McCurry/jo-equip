@@ -19,4 +19,7 @@ description: Lessons from rebuilding the 2016 InDesign "Adventure of Living with
 - All generated replacement concepts for the six teaching graphics were rejected; retain the currently approved source graphics unless the user supplies or explicitly approves professional replacements.
 - **Why:** The generated concepts did not meet the required visual quality, and the user explicitly rejected the complete set.
 - **How to apply:** Never substitute any review concept into the book automatically. Require explicit approval of each future replacement before integration.
+- A later set of user-supplied visuals is proof-only until explicitly approved; assemble review PDFs separately and do not replace the website download during proofreading.
+- **Why:** The user wants to proofread every placement before publication.
+- **How to apply:** Treat approval to integrate or publish as a separate explicit step after the user reviews the returned proof PDF.
 - Chromium print-to-PDF link annotations exist but are stored via indirect refs; `mutool show pages/N/Annots` won't show them — grep the raw PDF for `/URI` to count links.

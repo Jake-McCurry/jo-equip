@@ -203,3 +203,17 @@ mtime_ms = 1788378387206
 storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/190a9ca6-9ef8-45f4-ba16-6e4883ad515d/65459d75-8aa7-48b3-a1c9-98aa66c2139d"
 storage_version_token = "1788378415308194"
 content_type = "image/png"
+
+[[outputs]]
+id = "aIjeeLCyFPMOt6WZkUiFJ"
+uri = "file://.agents/outputs/adventure-visual-proof.pdf"
+type = "pdf"
+title = "The Adventure of Living with Jesus — Visual Proof"
+description = "Proofreading copy with the supplied visuals, eight chapter icons, and manually added diagram labels. This file has not been placed on the website."
+logical_id = "62eb3d2f-e79b-48ac-b21e-4750f3b59a77"
+content_hash = "sha256:196059b65109a5a0e888280307f0bc0ce2595c7ab773536a4c6083cd62e7780f"
+size = 20730082
+mtime_ms = 1788387591865
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/62eb3d2f-e79b-48ac-b21e-4750f3b59a77/3da15e45-4849-4839-9598-b480c5fe7a1c"
+storage_version_token = "1788387632432600"
+content_type = "application/pdf"

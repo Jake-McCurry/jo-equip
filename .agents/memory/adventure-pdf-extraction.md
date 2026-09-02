@@ -22,4 +22,7 @@ description: Lessons from rebuilding the 2016 InDesign "Adventure of Living with
 - A later set of user-supplied visuals is proof-only until explicitly approved; assemble review PDFs separately and do not replace the website download during proofreading.
 - **Why:** The user wants to proofread every placement before publication.
 - **How to apply:** Treat approval to integrate or publish as a separate explicit step after the user reviews the returned proof PDF.
+- In designed Adventure proofs, every section visual must precede its applicable Go Deeper block, and response-writing areas must never be used as image space.
+- **Why:** The first proof treated whitespace mechanically and placed artwork after Go Deeper or over response areas, breaking the workbook’s reading hierarchy.
+- **How to apply:** Recompose the page or add a visual page before Go Deeper; size each asset individually and verify all changed pages as a full-document contact sheet.
 - Chromium print-to-PDF link annotations exist but are stored via indirect refs; `mutool show pages/N/Annots` won't show them — grep the raw PDF for `/URI` to count links.

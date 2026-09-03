@@ -28,4 +28,7 @@ description: Lessons from rebuilding the 2016 InDesign "Adventure of Living with
 - Adventure visuals should support the teaching rather than dominate the page; chapter icons are small navigational accents, not co-equal title elements.
 - **Why:** Oversized art and 35-point chapter icons crowded headings and made the proof feel mechanically assembled.
 - **How to apply:** Let placement follow editorial flow rather than requested page numbers; target roughly 25–40% page area for supporting art and about 20–24 points for chapter icons.
+- Image filenames and requested page numbers are hints, not layout instructions; each visual must be placed with the exact sentence or paragraph whose idea it depicts.
+- **Why:** A butterfly was incorrectly placed among response questions instead of beside the caterpillar-to-butterfly paragraph.
+- **How to apply:** Read and map the full text first; use small edge-aligned floats with re-typeset text wrapping when an image illustrates a specific paragraph.
 - Chromium print-to-PDF link annotations exist but are stored via indirect refs; `mutool show pages/N/Annots` won't show them — grep the raw PDF for `/URI` to count links.

@@ -259,3 +259,17 @@ mtime_ms = 1788392155916
 storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/3ee595f3-121f-4fb4-9ff4-2f3fc9d84fe1/d3e6a660-8e1a-4854-888c-4ef2df488dc2"
 storage_version_token = "1788392167750801"
 content_type = "application/pdf"
+
+[[outputs]]
+id = "KiOFRrs2XRt0vOpzLsxXi"
+uri = "file://.agents/outputs/adventure-visual-proof-v5-viewing-copy.pdf"
+type = "pdf"
+title = "Adventure Visual Proof — Contextual Layout"
+description = "44-page proof with each visual composed beside the exact teaching it illustrates, including wrapped climber, caterpillar/butterfly, and ambassador paragraphs. Exact source wording and links preserved. Not published to the website."
+logical_id = "a619efbc-c2f9-46b8-b7fd-0ad19e2a326d"
+content_hash = "sha256:1ff7ab17cc6c65e532f8600bbec4b092fbe97c6d7f8ddc2043d9fd98224a7d80"
+size = 961748
+mtime_ms = 1788394009703
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/a619efbc-c2f9-46b8-b7fd-0ad19e2a326d/93febee9-c657-407c-a4fe-1d7124e33e9d"
+storage_version_token = "1788394026547155"
+content_type = "application/pdf"

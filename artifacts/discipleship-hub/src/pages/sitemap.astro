@@ -147,7 +147,7 @@ const totalLinks =
       <div class="flex flex-col gap-5">
         {videoGroups.map(group => (
           <div>
-            <h3 class="text-base md:text-lg font-semibold mb-2" style="color:#0083de;">
+            <h3 class="text-base md:text-lg font-semibold mb-2" style="color:#0095ff;">
               <a href={join(`/playlist/${group.playlist.id}`)} class="hover:underline">{group.playlist.title}</a>
             </h3>
             <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-1">
@@ -181,7 +181,7 @@ const totalLinks =
         <div class="flex flex-col gap-6">
           {channel.subs.map(sub => (
             <div>
-              <h3 class="text-base md:text-lg font-semibold mb-2" style="color:#0083de;">
+              <h3 class="text-base md:text-lg font-semibold mb-2" style="color:#0095ff;">
                 <a href={sub.href} class="hover:underline">{sub.name}</a>
               </h3>
               {sub.articles.length > 0 && (

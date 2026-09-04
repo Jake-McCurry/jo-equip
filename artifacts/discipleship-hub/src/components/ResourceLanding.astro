@@ -55,7 +55,7 @@ function bookCards(ids: string[]) {
 ---
 <Layout title={title} description={description}>
   {/* Hero */}
-  <section class="relative py-10 md:py-16 px-4 text-center overflow-hidden" style="background-color:#0083de;">
+  <section class="relative py-10 md:py-16 px-4 text-center overflow-hidden" style="background-color:#0095ff;">
     <div class="pointer-events-none absolute inset-0 overflow-hidden">
       <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-10" style="background-color:#0b3c5d;"></div>
       <div class="absolute -bottom-32 -left-20 w-80 h-80 rounded-full opacity-10" style="background-color:#0b3c5d;"></div>
@@ -117,7 +117,7 @@ function bookCards(ids: string[]) {
             </div>
             {section.seeAll && (
               <div class="text-center mt-7">
-                <a href={join("/playlists")} class="inline-flex items-center gap-1.5 font-semibold text-white rounded px-6 py-3 transition-opacity hover:opacity-90" style="background-color:#0083de;">
+                <a href={join("/playlists")} class="inline-flex items-center gap-1.5 font-semibold text-white rounded px-6 py-3 transition-opacity hover:opacity-90" style="background-color:#0095ff;">
                   See all Playlists<ArrowRight className="w-4 h-4" />
                 </a>
               </div>
@@ -157,7 +157,7 @@ function bookCards(ids: string[]) {
             </div>
             {section.seeAll && (
               <div class="text-center mt-7">
-                <a href={join("/books")} class="inline-flex items-center gap-1.5 font-semibold text-white rounded px-6 py-3 transition-opacity hover:opacity-90" style="background-color:#0083de;">
+                <a href={join("/books")} class="inline-flex items-center gap-1.5 font-semibold text-white rounded px-6 py-3 transition-opacity hover:opacity-90" style="background-color:#0095ff;">
                   See all Books<ArrowRight className="w-4 h-4" />
                 </a>
               </div>
@@ -171,7 +171,7 @@ function bookCards(ids: string[]) {
       <section class="py-10 md:py-14" style={`background-color:${bg};`}>
         <div class="container mx-auto px-4 max-w-3xl text-center">
           <h2 class="text-2xl md:text-3xl font-semibold mb-5" style="color:#0b3c5d;">{section.heading}</h2>
-          <a href={section.href} class="inline-flex items-center gap-1.5 font-semibold text-white rounded px-6 py-3 transition-opacity hover:opacity-90" style="background-color:#0083de;">
+          <a href={section.href} class="inline-flex items-center gap-1.5 font-semibold text-white rounded px-6 py-3 transition-opacity hover:opacity-90" style="background-color:#0095ff;">
             {section.label}<ArrowRight className="w-4 h-4" />
           </a>
         </div>

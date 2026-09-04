@@ -8,12 +8,10 @@ SOURCE = ROOT / "attached_assets/Adventure-0920226_1788387073638.pdf"
 OUTPUT = ROOT / ".agents/outputs/adventure-visual-proof-v5.pdf"
 WORK = Path("/tmp/adventure-visual-proof-assets")
 
-NAVY = (0, 149 / 255, 1)
+NAVY = (0.035, 0.255, 0.373)
 GOLD = (0.902, 0.596, 0.035)
 WHITE = (1, 1, 1)
 WRAP_FONT = "/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf"
-SOURCE_NAVY = b"0.0430908 0.235352 0.364746"
-TARGET_BLUE = b"0 0.584314 1"
 
 ASSETS = {
     "journey": ROOT / "attached_assets/page_5_8_milestones_1788387066808.png",
@@ -91,29 +89,6 @@ def prepare_assets():
 def insert_contain(page, rect, image_path):
     page.insert_image(fitz.Rect(rect), filename=str(image_path), keep_proportion=True, overlay=True)
 
-def recolor_nav_blue(document):
-    updated_streams = set()
-    updated_images = set()
-    for page in document:
-        for xref in page.get_contents():
-            if xref in updated_streams:
-                continue
-            stream = document.xref_stream(xref)
-            recolored = stream.replace(SOURCE_NAVY + b" rg", TARGET_BLUE + b" rg")
-            recolored = recolored.replace(SOURCE_NAVY + b" RG", TARGET_BLUE + b" RG")
-            if recolored != stream:
-                document.update_stream(xref, recolored)
-            updated_streams.add(xref)
-
-        for image in page.get_images(full=True):
-            xref, width, height = image[0], image[2], image[3]
-            if xref in updated_images or width != 486 or height not in (57, 58):
-                continue
-            replacement = bytes((0, 149, 255)) * width * height
-            document.xref_set_key(xref, "DecodeParms", "null")
-            document.update_stream(xref, replacement, compress=True)
-            updated_images.add(xref)
-
 def label(page, rect, text, size=10):
     page.insert_textbox(
         fitz.Rect(rect),
@@ -177,7 +152,6 @@ def recompose_page_multi(output, source, clips_and_shifts, images=None, labels=N
 def main():
     prepared, icons = prepare_assets()
     source = fitz.open(SOURCE)
-    recolor_nav_blue(source)
     output = fitz.open()
 
     chapter_icons_by_source = {6: 0, 10: 1, 13: 2, 19: 3, 22: 4, 27: 5, 31: 6, 36: 7}

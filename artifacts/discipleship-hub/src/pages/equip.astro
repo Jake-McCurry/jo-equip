@@ -135,8 +135,8 @@ const quickLinks = [
       <h2 class="text-2xl md:text-3xl font-semibold mb-6" style="color:#0b3c5d;">Three Foundational Questions</h2>
       <ol class="flex flex-col gap-4">
         {foundations.map((f, i) => (
-          <li class="flex gap-4 bg-white border rounded px-6 py-5" style="border-color:var(--color-border);border-left:4px solid #0083de;">
-            <span class="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold text-white" style="background-color:#0083de;">{i + 1}</span>
+          <li class="flex gap-4 bg-white border rounded px-6 py-5" style="border-color:var(--color-border);border-left:4px solid #0095ff;">
+            <span class="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold text-white" style="background-color:#0095ff;">{i + 1}</span>
             <p class="text-[15px] md:text-base leading-relaxed" style="color:#374151;">
               <strong class="font-semibold" style="color:#0b3c5d;">{f.lead}</strong>{" "}{f.text}{" "}
               <a href={f.href} class="whitespace-nowrap hover:underline" style="color:#de5b00;">[more]</a>
@@ -163,7 +163,7 @@ const quickLinks = [
       <ol class="flex flex-col gap-3">
         {buildingBlocks.map((b, i) => (
           <li class="flex gap-4 border rounded px-5 py-4" style="border-color:var(--color-border);background-color:#e6f2fa;">
-            <span class="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold text-white" style="background-color:#0083de;">{i + 1}</span>
+            <span class="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold text-white" style="background-color:#0095ff;">{i + 1}</span>
             <p class="text-[15px] leading-relaxed" style="color:#374151;">
               <strong class="font-semibold" style="color:#0b3c5d;">{b.lead}</strong>{" "}{b.text}{" "}
               <a href={b.href} class="whitespace-nowrap hover:underline" style="color:#de5b00;">[more]</a>
@@ -192,7 +192,7 @@ const quickLinks = [
   </section>
 
   {/* Quick links — Reviews · About · Beliefs · JO APP */}
-  <section style="background-color:#0083de;">
+  <section style="background-color:#0095ff;">
     <div class="container mx-auto px-4">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 divide-white/15 sm:gap-y-px lg:divide-x lg:divide-white/15">
         {quickLinks.map(link => {

@@ -98,7 +98,7 @@ const booksJsonLd = {
                 data-pdf-action="open"
                 aria-label={`Open ${book.title} PDF`}
                 class="block rounded transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
-                style="outline-color:#0083de;"
+                style="outline-color:#0095ff;"
               >
                 <Image
                   src={cover}
@@ -117,7 +117,7 @@ const booksJsonLd = {
             <button
               type="button"
               class="book-download-btn inline-flex items-center justify-center gap-2 font-semibold text-sm uppercase tracking-wide transition-colors hover:opacity-75"
-              style="color:#0083de;"
+              style="color:#0095ff;"
               data-pdf={join(book.pdf)}
               data-title={book.title}
               data-id={book.id}
@@ -140,7 +140,7 @@ const booksJsonLd = {
               data-track-title={book.title}
               data-pdf-action="download"
               class="inline-flex items-center justify-center gap-2 font-semibold text-sm uppercase tracking-wide transition-colors hover:opacity-75"
-              style="color:#0083de;"
+              style="color:#0095ff;"
               aria-label={`Download ${book.title}`}
             >
               <Download className="w-4 h-4" />

@@ -65,7 +65,7 @@ const playlistJsonLd = {
     <a
       href={join("/playlists")}
       class="inline-flex items-center gap-1.5 text-sm font-medium mb-6 transition-colors hover:underline focus:outline-none focus-visible:underline"
-      style="color:#0083de;"
+      style="color:#0095ff;"
     >
       <ChevronLeft className="w-4 h-4" />
       All playlists
@@ -73,10 +73,10 @@ const playlistJsonLd = {
 
     <div class="max-w-3xl mb-10 md:mb-12">
       <div class="flex items-center gap-3 mb-3">
-        <div class="w-9 h-9 rounded flex items-center justify-center" style="background-color:rgba(0,131,222,0.1);">
-          <ListVideo className="w-5 h-5" style={{ color: "#0083de" }} />
+        <div class="w-9 h-9 rounded flex items-center justify-center" style="background-color:rgba(0,149,255,0.1);">
+          <ListVideo className="w-5 h-5" style={{ color: "#0095ff" }} />
         </div>
-        <span class="text-xs font-semibold tracking-widest uppercase" style="color:#0083de;">
+        <span class="text-xs font-semibold tracking-widest uppercase" style="color:#0095ff;">
           Playlist · {count} {count === 1 ? "video" : "videos"}
         </span>
       </div>
@@ -92,7 +92,7 @@ const playlistJsonLd = {
             <a
               href={join(`/video/${slug}`)}
               class="yt-facade group relative block w-full aspect-video bg-slate-900 overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
-              style="--tw-ring-color:#0083de;"
+              style="--tw-ring-color:#0095ff;"
               data-yt-id={video.videoId}
               data-yt-title={video.title}
               aria-label={`Watch video: ${video.title}`}

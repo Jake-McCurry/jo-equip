@@ -137,7 +137,7 @@ const articleUrl = `${SITE}/categories/${channel.id}/${sub.id}/${article.id}`;
    this article's content, so it only advances when the content actually
    changes (keeps sitemap lastmod hashing stable — SEO-010). publisher links
    to the JesusOnline Ministries Organization defined on the home page. */
-const DATE_PUBLISHED = bcg ? "2026-05-18" : bsm ? "2026-07-02" : "2026-07-16";
+const DATE_PUBLISHED = site?.contentDate ?? (bcg ? "2026-05-18" : bsm ? "2026-07-02" : "2026-07-16");
 const contentSourceFile = bcg
   ? "src/data/bcgArticles.ts"
   : bsm
@@ -326,6 +326,21 @@ const heroTitle = splitTitle(article.title);
             );
           case "ol":
             return <ol>{b.items.map(i => <li set:html={withBaseLinks(i)} />)}</ol>;
+          case "table":
+            return (
+              <div class="overflow-x-auto">
+                <table>
+                  <thead>
+                    <tr>{b.headers.map(header => <th scope="col" set:html={withBaseLinks(header)} />)}</tr>
+                  </thead>
+                  <tbody>
+                    {b.rows.map(row => (
+                      <tr>{row.map(cell => <td set:html={withBaseLinks(cell)} />)}</tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            );
           case "quote":
             return (
               <blockquote>

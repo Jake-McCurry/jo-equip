@@ -20,6 +20,9 @@ export type ArticleBlock =
   | { type: "ul"; items: string[] }
   | { type: "ol"; items: string[] }
   | { type: "quote"; html: string; cite?: string }
+  /** Semantic tabular content. Header and cell strings may contain the same
+      author-controlled inline HTML supported by paragraphs and list items. */
+  | { type: "table"; headers: string[]; rows: string[][] }
   /* Inline illustration. `src` is the basename of a file in src/assets/bcg/
      (resolved via bcgImages.ts). `alt` is required for a11y/SEO. `caption`
      is optional and renders as a muted <figcaption>. */

@@ -6,25 +6,27 @@ const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
   (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
 
-/* Equip page — August 2026. Replaces "Welcome" in the top menu (the
-   /welcome page itself is kept, just unlinked from the nav for now).
-   Content per JO_EQUIP_Equip_Page_2 doc. */
+/* Equip page. The introduction follows the September 2026 ministry manuscript;
+   the existing building blocks and resource sections remain unchanged. */
 
-/* Three Foundational Questions — each [more] links to its topic page. */
+/* Identity-Centered Discipleship — each [more] links to its topic page. */
 const foundations = [
   {
     lead: "Identity Focus:",
-    text: "Do I truly know and embrace my new identity in Christ, living consistently from that reality while intentionally putting off my old self?",
+    summary: "How you view your redeemed identity shapes how you live.",
+    text: "When you received Christ, you were not improved; you were made new. “If anyone is in Christ, the new creation has come: The old has gone, the new is here!” (2 Cor. 5:17, NIV). God already sees you in Christ. Growth is learning to live as the person He has already made you. A weak view of that identity turns the Christian life into striving. A clear view turns it into alignment.",
     href: join("/categories/growth/identity-in-christ"),
   },
   {
     lead: "God Focus:",
-    text: "Am I growing in a biblically balanced understanding of who God truly is—His attributes, character, and glory—and pursuing deeper intimacy with Him?",
+    summary: "How you view God’s divine identity shapes how you live.",
+    text: "A distorted view of His character produces a life different from what God envisioned for you; a true and balanced view does the opposite. You become like what you behold: “beholding the glory of the Lord, [we] are being transformed into the same image” (2 Cor. 3:18, ESV). Seeing only part of who God is warps the heart. Seeing Him as He is—holy and loving, just and merciful—forms worship, humility, and trust.",
     href: join("/categories/growth/attributes-of-god"),
   },
   {
     lead: "Spirit Focus:",
-    text: "Am I depending on the Holy Spirit\u2019s power as essential for living the Christian life, rather than relying on my own self-effort?",
+    summary: "How you view the Holy Spirit’s functional identity shapes how you live.",
+    text: "If the Christian life is “me plus some help from God,” the reflex will be self-effort—try harder, white-knuckle holiness. That is Galatians 3:3: After beginning by the Spirit, are you now finishing by the flesh? Full dependence on the Spirit is not passivity, but active trust. You still choose, confess, obey, and put off the old self as a new person empowered by the Spirit who already lives in you.",
     href: join("/categories/growth/ministry-holy-spirit"),
   },
 ];
@@ -104,7 +106,7 @@ const quickLinks = [
   {/* Heading + intro */}
   <section class="bg-white">
     <div class="container mx-auto px-4 py-12 md:py-16 max-w-4xl">
-      <h1 class="text-4xl md:text-5xl mb-4" style="color:#0b3c5d;">Tools for Mature Disciple-Making</h1>
+      <h1 class="text-4xl md:text-5xl mb-4" style="color:#0b3c5d;">Tools for Mature Disciple Making</h1>
       <div class="h-0.5 w-12 mb-7" style="background-color:#de5b00;"></div>
       <p class="text-lg leading-relaxed mb-5" style="color:#374151;">
         <strong style="color:#0b3c5d;">JO EQUIP</strong> offers free, practical, biblically grounded tools that equip
@@ -112,42 +114,48 @@ const quickLinks = [
       </p>
       <p class="text-lg leading-relaxed mb-5" style="color:#374151;">
         Many discipleship programs emphasize biblical knowledge, behavioral change, and spiritual disciplines.
-        JO EQUIP acknowledges these essentials but <strong>starts with heart transformation based on the believer&rsquo;s
-        new identity in Christ, which serves as the foundation for genuine growth.</strong>{" "}
+        JO EQUIP acknowledges these essentials but <strong>starts with heart transformation through identity-centered discipleship.</strong>{" "}
         <a
           href={join("/categories/church/tld-core-principles/identity-centered-heart-transformation")}
           class="whitespace-nowrap hover:underline"
           style="color:#de5b00;"
         >[more]</a>
       </p>
+      <p class="text-lg leading-relaxed mb-5" style="color:#374151;">
+        Identity-centered heart transformation starts in the inner person, not with trying harder on the outside.
+        The biblical heart is the control center of beliefs, loves, trust, and choices. From it flow words, desires,
+        and actions. God renews that heart as three realities are embraced together: who you now are in Christ,
+        who God actually is, and how the Holy Spirit functions in daily life.
+      </p>
       <p class="text-lg leading-relaxed" style="color:#374151;">
-        When someone receives Christ, they become a new creation&mdash;the old has passed away&mdash;and in that same
-        moment the Holy Spirit indwells and empowers them as He begins to reveal more of who God truly is in His
-        character, attributes, and glory. This identity-centered approach is illustrated by
-        <strong style="color:#0b3c5d;">Three Foundational Questions</strong>.
+        How you view each of those identities is not extra theology. It is what either frees a new life or keeps an old pattern running.
       </p>
     </div>
   </section>
 
-  {/* Three Foundational Questions */}
+  {/* Identity-Centered Discipleship */}
   <section class="py-10 md:py-14" style="background-color:#e6f2fa;">
     <div class="container mx-auto px-4 max-w-4xl">
-      <h2 class="text-2xl md:text-3xl font-semibold mb-6" style="color:#0b3c5d;">Three Foundational Questions</h2>
+      <h2 class="text-2xl md:text-3xl font-semibold mb-6" style="color:#0b3c5d;">Identity-Centered Discipleship</h2>
       <ol class="flex flex-col gap-4">
         {foundations.map((f, i) => (
           <li class="flex gap-4 bg-white border rounded px-6 py-5" style="border-color:var(--color-border);border-left:4px solid #0095ff;">
             <span class="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold text-white" style="background-color:#0095ff;">{i + 1}</span>
-            <p class="text-[15px] md:text-base leading-relaxed" style="color:#374151;">
-              <strong class="font-semibold" style="color:#0b3c5d;">{f.lead}</strong>{" "}{f.text}{" "}
-              <a href={f.href} class="whitespace-nowrap hover:underline" style="color:#de5b00;">[more]</a>
-            </p>
+            <div class="min-w-0 text-[15px] md:text-base leading-relaxed" style="color:#374151;">
+              <h3 class="text-base md:text-lg font-semibold mb-3" style="color:#0b3c5d;">{f.lead} {f.summary}</h3>
+              <p>{f.text}</p>
+              <a href={f.href} class="inline-block mt-3 whitespace-nowrap hover:underline" style="color:#de5b00;">[more]</a>
+            </div>
           </li>
         ))}
       </ol>
       <p class="text-[15px] md:text-base leading-relaxed mt-7" style="color:#374151;">
-        These interconnected foundational truths enhance traditional discipleship methods, making them more
-        effective. Beginning with the believer&rsquo;s new identity in Christ, they empower people to live as the
-        new creations they already are, resulting in lasting heart change and eternal impact.
+        Identity-centered heart transformation is not “change your behavior so you can feel like a new person.”
+        It is “embrace who you already are, know the God who said so, and depend on the Spirit who lives in you — then behavior follows a changed heart.”
+      </p>
+      <p class="text-[15px] md:text-base leading-relaxed mt-5" style="color:#374151;">
+        Identity precedes behavior. Transformation flows from what God has already done in Christ. A new kind of living becomes possible
+        not by becoming someone else, but by living as the person God has already made you to be in Christ.
       </p>
     </div>
   </section>

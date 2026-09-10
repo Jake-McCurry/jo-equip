@@ -28,6 +28,8 @@ export interface SiteArticle {
   pdf?: string;
   /** True when this article is maintained in the local overlay. */
   localSource?: boolean;
+  /** Authored manuscript date (YYYY-MM-DD), used for article metadata. */
+  contentDate?: string;
   /** Main overview article that owns this supporting detail article. */
   parentArticleId?: string;
   blocks: ArticleBlock[];

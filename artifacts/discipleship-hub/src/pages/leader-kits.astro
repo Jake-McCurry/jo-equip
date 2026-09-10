@@ -1,0 +1,168 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { Image } from "astro:assets";
+import { Users } from "lucide-react";
+import { getBookCover } from "@/data/bookCovers";
+import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
+
+const SITE = "https://equip.jesusonline.com";
+
+const leaderKitsJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": `${SITE}/leader-kits#collection`,
+  "name": "Leader Kits | JO EQUIP",
+  "url": `${SITE}/leader-kits`,
+  "isPartOf": { "@id": `${SITE}/#website` },
+  "description": "Ready-to-lead tools: one five-minute Moment, one assignment, and a next step into identity-centered heart transformation."
+};
+
+const leaderKits = [
+  {
+    id: "adventure-of-living-with-jesus",
+    title: "The Adventure of Living with Jesus",
+    subtitle: "A Guide to Discovering Your New Life",
+    description: "Eight essential truths that help believers walk with Jesus each day with confidence and clarity.",
+    momentsCount: 10,
+    weeksCountText: "Ten",
+    prompt: "Churchgoers or disciples?",
+    buttonState: "pending",
+  },
+  {
+    id: "a-heart-after-god",
+    title: "A Heart After God",
+    subtitle: "Seven Reflections on the Inner Life",
+    description: "Learn to want what God wants, in the hidden places no one else sees.",
+    momentsCount: 9,
+    weeksCountText: "Nine",
+    prompt: "Behavior modification or heart transformation?",
+    buttonState: "pending",
+  },
+  {
+    id: "your-new-identity-in-christ",
+    title: "Your New Identity in Christ",
+    subtitle: "Embracing Who God Says You Are",
+    description: "Settle the question of who you are now, so the old names lose their hold.",
+    momentsCount: 10,
+    weeksCountText: "Ten",
+    prompt: "Old habits or a new creation?",
+    buttonState: "future",
+  },
+  {
+    id: "beholding-the-majesty-of-god",
+    title: "Beholding the Majesty of God",
+    subtitle: "Explore His Divine Attributes",
+    description: "Lift your eyes from your own story long enough to see the God who holds it.",
+    momentsCount: 6,
+    weeksCountText: "Six",
+    prompt: "Your own story or His eternal glory?",
+    buttonState: "future",
+  },
+  {
+    id: "walking-in-the-spirit",
+    title: "Walking in the Spirit",
+    subtitle: "A Guide to the Holy Spirit's Presence and Power",
+    description: "Discover how the Spirit who lives in you shapes ordinary decisions, not only high moments.",
+    momentsCount: 15,
+    weeksCountText: "Fifteen",
+    prompt: "Human effort or Spirit-led living?",
+    buttonState: "future",
+  }
+];
+---
+
+<Layout
+  title="Leader Kits | JO EQUIP"
+  description="Ready-to-lead tools for identity-centered heart transformation. Begin to walk as disciples this Sunday."
+>
+  <Fragment slot="head">
+    <BreadcrumbsLd items={[
+      { name: "Home", url: "/" },
+      { name: "Leader Kits", url: "/leader-kits" },
+    ]} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(leaderKitsJsonLd)} />
+  </Fragment>
+
+  <div class="container mx-auto px-4 py-12 md:py-16">
+    <div class="max-w-4xl mb-16">
+      <div class="flex items-center gap-3 mb-3">
+        <div class="w-9 h-9 rounded flex items-center justify-center" style="background-color:rgba(11,60,93,0.1);">
+          <Users className="w-5 h-5" style={{ color: "#0b3c5d" }} />
+        </div>
+        <span class="text-xs font-semibold tracking-widest uppercase" style="color:#0b3c5d;">Ministry Library</span>
+      </div>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl mb-6 font-bold" style="color:#0b3c5d;">This Sunday Leader Kits</h1>
+      <div class="h-0.5 w-12 mb-6" style="background-color:#de5b00;"></div>
+      <p class="leading-relaxed text-xl md:text-2xl" style="color:var(--color-muted-foreground);">
+        This Sunday Leader Kits are ready-to-lead tools: one five-minute Moment, one assignment, and a next step into identity-centered heart transformation. They are a spoken doorway into training already written, so churchgoers can begin to walk as disciples this Sunday.
+      </p>
+    </div>
+
+    <div class="flex flex-col gap-16 md:gap-24">
+      {leaderKits.map((kit) => {
+        const cover = getBookCover(kit.id);
+        return (
+          <article class="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
+            {/* Visual Preview Side (Semantic Header + Cover) */}
+            <div class="w-full max-w-[340px] shrink-0 flex flex-col">
+              <div class="w-full flex flex-col">
+                <div class="bg-[#0b3c5d] px-5 py-8 flex flex-col items-center text-center">
+                  <span class="text-[#d69e2e] text-[0.65rem] font-bold tracking-widest uppercase mb-4">JO Equip &middot; JesusOnline Ministries</span>
+                  <p class="text-white text-3xl font-bold leading-none tracking-wide uppercase mb-5">This Sunday<br />Leader Kit</p>
+                  <p class="text-white text-lg font-serif italic opacity-95" style="font-family: 'Playfair Display', Georgia, serif;">{kit.prompt}</p>
+                </div>
+                <div class="h-[3px] w-full bg-[#d69e2e]"></div>
+                <div class="bg-[#f9f6f0] px-4 py-4 flex flex-col items-center text-center text-[#0b3c5d]">
+                  <p class="font-semibold text-base mb-1.5">Lead Week 1 Discipleship Moment this Sunday.</p>
+                  <p class="opacity-80 font-medium text-sm">{kit.weeksCountText} weeks. One path toward a changed heart.</p>
+                </div>
+              </div>
+              
+                {cover ? (
+                    <Image
+                      src={cover}
+                      alt={`${kit.title} book cover`}
+                      widths={[340, 680]}
+                      sizes="(max-width: 372px) calc(100vw - 32px), 340px"
+                      class="block w-full h-auto object-contain"
+                    />
+                ) : (
+                  <div class="w-full aspect-[2/3] bg-slate-200 flex items-center justify-center text-slate-500 text-sm">
+                    Cover not found
+                  </div>
+                )}
+            </div>
+            
+            {/* Content Side */}
+            <div class="w-full max-w-2xl flex flex-col">
+              <div class="mb-6">
+                <div class="inline-flex items-center gap-2 mb-4">
+                  <div class="w-1.5 h-1.5 rounded-full bg-[#de5b00]"></div>
+                  <span class="text-[#de5b00] text-sm font-bold tracking-widest uppercase">{kit.momentsCount} Discipleship Moments</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 tracking-tight" style="color:#0b3c5d; line-height: 1.1;">{kit.title}</h2>
+                <h3 class="text-xl md:text-2xl text-slate-500 font-medium leading-snug">{kit.subtitle}</h3>
+              </div>
+              <p class="text-lg md:text-xl text-slate-700 leading-relaxed mb-10 md:mb-14">
+                {kit.description}
+              </p>
+              
+              <div>
+                {kit.buttonState === 'pending' ? (
+                  <button disabled class="inline-flex items-center justify-center bg-slate-100 text-slate-400 font-bold tracking-wide uppercase px-8 py-4 rounded cursor-not-allowed w-full sm:w-auto border border-slate-200 transition-colors">
+                    Download Free Kit 
+                    <span class="ml-3 normal-case text-sm font-semibold opacity-75 bg-slate-200 px-2 py-0.5 rounded text-slate-500">Pending</span>
+                  </button>
+                ) : (
+                  <p class="inline-block bg-slate-50 text-slate-600 font-semibold px-8 py-4 rounded border border-slate-200">
+                    Available <time datetime="2026-10-01">October 1, 2026</time>
+                  </p>
+                )}
+              </div>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  </div>
+</Layout>

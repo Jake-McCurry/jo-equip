@@ -21,4 +21,16 @@ The two ebook PDFs are generated from docx manuscripts (mammoth → HTML → two
 
 ## Fonts are ephemeral
 - ~/.fonts can be wiped by environment resets; rebuilds then silently fall back to DejaVu. The build script now preflights via assertStrictFonts(). Reinstall: download Carlito + Caladea TTFs from github.com/google/fonts (ofl/carlito, ofl/caladea) into ~/.fonts, run fc-cache -f. Verify output with pdffonts.
-- All three books (walking, identity, majesty) now use strict typography; majesty (PDF-source) shares STRICT_CSS and a single .front-matter page.
+- Manuscript revisions should retain the established ebook-series typography and cover rather than trigger a redesign.
+
+**Why:** The owner explicitly reaffirmed series consistency when approving the Majesty manuscript update on 2026-09-10.
+
+**How to apply:** Treat supplied heading-hierarchy corrections as overrides to inconsistent Word styles, while preserving the rest of the source content and the series' visual treatment.
+
+## Illustrated Adventure background treatment
+
+Remove unwanted outer illustration backgrounds and shading in Q&A response areas, but retain intentional colored teaching panels and testimony callouts.
+
+**Why:** The user explicitly requested keeping the testimony blocks, then approved the illustrated blue/gold styling and lighter screen-optimized PDF for website publication.
+
+**How to apply:** Do not interpret “transparent backgrounds” as removing every colored fill. When a reference PDF is supplied for styling, use its visual treatment while retaining the revised manuscript as the content authority.

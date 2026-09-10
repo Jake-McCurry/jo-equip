@@ -1,0 +1,978 @@
+2026-09-10T21:42:12.373Z	Initializing build environment...
+2026-09-10T21:44:07.355Z	Success: Finished initializing build environment
+2026-09-10T21:44:07.986Z	Cloning repository...
+2026-09-10T21:45:11.014Z	Restoring from dependencies cache
+2026-09-10T21:45:11.016Z	Restoring from build output cache
+2026-09-10T21:45:13.018Z	Detected the following tools from environment: pnpm@10.26.1, nodejs@24.18.0
+2026-09-10T21:45:32.046Z	Success: Dependencies restored from build cache.
+2026-09-10T21:45:32.048Z	Installing project dependencies: pnpm install --frozen-lockfile
+2026-09-10T21:45:32.764Z	Scope: all 10 workspace projects
+2026-09-10T21:45:32.871Z	Lockfile is up to date, resolution step is skipped
+2026-09-10T21:45:32.929Z	Progress: resolved 1, reused 0, downloaded 0, added 0
+2026-09-10T21:45:33.027Z	Packages: +840
+2026-09-10T21:45:33.028Z	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2026-09-10T21:45:33.931Z	Progress: resolved 840, reused 613, downloaded 0, added 0
+2026-09-10T21:45:34.932Z	Progress: resolved 840, reused 840, downloaded 0, added 139
+2026-09-10T21:45:35.933Z	Progress: resolved 840, reused 840, downloaded 0, added 526
+2026-09-10T21:45:36.934Z	Progress: resolved 840, reused 840, downloaded 0, added 640
+2026-09-10T21:45:37.410Z	Progress: resolved 840, reused 840, downloaded 0, added 840, done
+2026-09-10T21:45:39.295Z	
+2026-09-10T21:45:39.296Z	devDependencies:
+2026-09-10T21:45:39.299Z	+ prettier 3.8.1
+2026-09-10T21:45:39.299Z	+ typescript 5.9.3
+2026-09-10T21:45:39.303Z	
+2026-09-10T21:45:39.443Z	. preinstall$ sh -c 'rm -f package-lock.json yarn.lock; case "$npm_config_user_agent" in pnpm/*) ;; *) echo "Use pnpm instead" >&2; exit 1 ;; esac'
+2026-09-10T21:45:39.465Z	. preinstall: Done
+2026-09-10T21:45:39.618Z	╭ Warning ─────────────────────────────────────────────────────────────────────╮
+2026-09-10T21:45:39.618Z	│                                                                              │
+2026-09-10T21:45:39.618Z	│   Ignored build scripts: puppeteer@25.0.4, sharp@0.34.5.                     │
+2026-09-10T21:45:39.618Z	│   Run "pnpm approve-builds" to pick which dependencies should be allowed     │
+2026-09-10T21:45:39.618Z	│   to run scripts.                                                            │
+2026-09-10T21:45:39.618Z	│                                                                              │
+2026-09-10T21:45:39.618Z	╰──────────────────────────────────────────────────────────────────────────────╯
+2026-09-10T21:45:39.629Z	Done in 7.4s using pnpm v10.26.1
+2026-09-10T21:45:39.849Z	Executing user build command: pnpm --filter @workspace/discipleship-hub run build
+2026-09-10T21:45:40.481Z	
+2026-09-10T21:45:40.482Z	> @workspace/discipleship-hub@0.0.0 build /opt/buildhome/repo/artifacts/discipleship-hub
+2026-09-10T21:45:40.483Z	> pnpm run validate:knowing-god && node scripts/check-book-gate-parity.mjs && astro build && node scripts/apply-external-link-nofollow.mjs && node scripts/build-sitemaps.mjs
+2026-09-10T21:45:40.485Z	
+2026-09-10T21:45:40.974Z	
+2026-09-10T21:45:40.974Z	> @workspace/discipleship-hub@0.0.0 validate:knowing-god /opt/buildhome/repo/artifacts/discipleship-hub
+2026-09-10T21:45:40.974Z	> python3 scripts/generate-knowing-god.py --validate-only && pnpm run test:knowing-god
+2026-09-10T21:45:40.974Z	
+2026-09-10T21:45:42.066Z	{
+2026-09-10T21:45:42.066Z	  "valid": true,
+2026-09-10T21:45:42.066Z	  "sourceSha256": "c01fe503d25a6f6a4a954fd51c4511d9a04316bbf2b912f69aad6e474e929823",
+2026-09-10T21:45:42.067Z	  "counts": {
+2026-09-10T21:45:42.067Z	    "topicCount": 773,
+2026-09-10T21:45:42.067Z	    "crossReferenceCount": 124,
+2026-09-10T21:45:42.067Z	    "passageCount": 13535,
+2026-09-10T21:45:42.067Z	    "additionalScriptureCount": 625,
+2026-09-10T21:45:42.067Z	    "seeAlsoLinkCount": 9431,
+2026-09-10T21:45:42.067Z	    "sourceMarkerCount": 2
+2026-09-10T21:45:42.067Z	  },
+2026-09-10T21:45:42.067Z	  "letterDistribution": {
+2026-09-10T21:45:42.067Z	    "A": 50,
+2026-09-10T21:45:42.067Z	    "B": 29,
+2026-09-10T21:45:42.067Z	    "C": 68,
+2026-09-10T21:45:42.067Z	    "D": 43,
+2026-09-10T21:45:42.067Z	    "E": 33,
+2026-09-10T21:45:42.067Z	    "F": 36,
+2026-09-10T21:45:42.067Z	    "G": 33,
+2026-09-10T21:45:42.068Z	    "H": 25,
+2026-09-10T21:45:42.068Z	    "I": 46,
+2026-09-10T21:45:42.068Z	    "J": 8,
+2026-09-10T21:45:42.068Z	    "K": 8,
+2026-09-10T21:45:42.068Z	    "L": 25,
+2026-09-10T21:45:42.068Z	    "M": 32,
+2026-09-10T21:45:42.068Z	    "N": 9,
+2026-09-10T21:45:42.068Z	    "O": 22,
+2026-09-10T21:45:42.068Z	    "P": 68,
+2026-09-10T21:45:42.068Z	    "Q": 4,
+2026-09-10T21:45:42.068Z	    "R": 53,
+2026-09-10T21:45:42.068Z	    "S": 81,
+2026-09-10T21:45:42.068Z	    "T": 38,
+2026-09-10T21:45:42.068Z	    "U": 24,
+2026-09-10T21:45:42.068Z	    "V": 9,
+2026-09-10T21:45:42.069Z	    "W": 27,
+2026-09-10T21:45:42.069Z	    "Z": 2
+2026-09-10T21:45:42.069Z	  },
+2026-09-10T21:45:42.069Z	  "pageCoverage": {
+2026-09-10T21:45:42.069Z	    "firstPhysicalPage": 29,
+2026-09-10T21:45:42.069Z	    "lastPhysicalPage": 1126,
+2026-09-10T21:45:42.069Z	    "firstPrintedPage": 1,
+2026-09-10T21:45:42.069Z	    "lastPrintedPage": 1098,
+2026-09-10T21:45:42.069Z	    "coveredPhysicalPages": 1086
+2026-09-10T21:45:42.070Z	  },
+2026-09-10T21:45:42.070Z	  "ambiguityCount": 1,
+2026-09-10T21:45:42.070Z	  "ambiguities": [
+2026-09-10T21:45:42.070Z	    {
+2026-09-10T21:45:42.070Z	      "topicId": null,
+2026-09-10T21:45:42.070Z	      "type": "toc-body-mismatch",
+2026-09-10T21:45:42.070Z	      "detail": "NON-IMPOSSIBILITATION OF THE LORD appears in the Table of Contents and related-topic lists but has no body heading."
+2026-09-10T21:45:42.070Z	    }
+2026-09-10T21:45:42.070Z	  ],
+2026-09-10T21:45:42.070Z	  "seeAlsoResolution": {
+2026-09-10T21:45:42.070Z	    "resolvedLinkCount": 9614,
+2026-09-10T21:45:42.070Z	    "unresolvedCount": 0,
+2026-09-10T21:45:42.070Z	    "editorialResolutions": [
+2026-09-10T21:45:42.070Z	      {
+2026-09-10T21:45:42.070Z	        "sourceLabel": "ADORING, BLESSING, DEVOTION TO, EXALTING, EXTOLLING, GLORIFYING",
+2026-09-10T21:45:42.070Z	        "targetIds": [
+2026-09-10T21:45:42.070Z	          "adoring-the-lord",
+2026-09-10T21:45:42.070Z	          "blessing-the-lord",
+2026-09-10T21:45:42.070Z	          "devotion-to-the-lord",
+2026-09-10T21:45:42.070Z	          "exalting-the-lord",
+2026-09-10T21:45:42.071Z	          "extolling-the-lord",
+2026-09-10T21:45:42.071Z	          "glorifying-the-lord"
+2026-09-10T21:45:42.071Z	        ]
+2026-09-10T21:45:42.071Z	      },
+2026-09-10T21:45:42.071Z	      {
+2026-09-10T21:45:42.099Z	        "sourceLabel": "ADORING, BLESSING, DEVOTION TO, EXALTING, EXTOLLING, GLORIFYING, HONORING, MAGNIFYING, PRAISING, RENOWN OF, THANKING, AND WORSHIPPING . . . THE LORD",
+2026-09-10T21:45:42.099Z	        "targetIds": [
+2026-09-10T21:45:42.100Z	          "adoring-the-lord",
+2026-09-10T21:45:42.100Z	          "blessing-the-lord",
+2026-09-10T21:45:42.100Z	          "devotion-to-the-lord",
+2026-09-10T21:45:42.100Z	          "exalting-the-lord",
+2026-09-10T21:45:42.100Z	          "extolling-the-lord",
+2026-09-10T21:45:42.100Z	          "glorifying-the-lord",
+2026-09-10T21:45:42.100Z	          "honoring-the-lord",
+2026-09-10T21:45:42.100Z	          "magnifying-the-lord",
+2026-09-10T21:45:42.100Z	          "praising-the-lord",
+2026-09-10T21:45:42.100Z	          "renown-of-the-lord",
+2026-09-10T21:45:42.101Z	          "thanking-the-lord",
+2026-09-10T21:45:42.101Z	          "worshipping-the-lord"
+2026-09-10T21:45:42.101Z	        ]
+2026-09-10T21:45:42.101Z	      },
+2026-09-10T21:45:42.101Z	      {
+2026-09-10T21:45:42.101Z	        "sourceLabel": "ADORING, BLESSING, ENJOYING, EXALTING, EXTOLLING, GLORIFYING, HONORING, INQUIRING OF, LIFTING UP HANDS TO, LOVING, MAGNIFYING, RENOWN OF, THANKING, AND WORSHIPPING . . . THE LORD",
+2026-09-10T21:45:42.101Z	        "targetIds": [
+2026-09-10T21:45:42.102Z	          "adoring-the-lord",
+2026-09-10T21:45:42.102Z	          "blessing-the-lord",
+2026-09-10T21:45:42.102Z	          "enjoying-the-lord",
+2026-09-10T21:45:42.102Z	          "exalting-the-lord",
+2026-09-10T21:45:42.102Z	          "extolling-the-lord",
+2026-09-10T21:45:42.102Z	          "glorifying-the-lord",
+2026-09-10T21:45:42.102Z	          "honoring-the-lord",
+2026-09-10T21:45:42.102Z	          "inquiring-of-the-lord",
+2026-09-10T21:45:42.102Z	          "lifting-up-hands-to-the-lord",
+2026-09-10T21:45:42.103Z	          "loving-the-lord",
+2026-09-10T21:45:42.103Z	          "magnifying-the-lord",
+2026-09-10T21:45:42.103Z	          "renown-of-the-lord",
+2026-09-10T21:45:42.114Z	          "thanking-the-lord",
+2026-09-10T21:45:42.114Z	          "worshipping-the-lord"
+2026-09-10T21:45:42.114Z	        ]
+2026-09-10T21:45:42.114Z	      },
+2026-09-10T21:45:42.114Z	      {
+2026-09-10T21:45:42.114Z	        "sourceLabel": "ADORING, BLESSING, EXALTING",
+2026-09-10T21:45:42.114Z	        "targetIds": [
+2026-09-10T21:45:42.115Z	          "adoring-the-lord",
+2026-09-10T21:45:42.115Z	          "blessing-the-lord",
+2026-09-10T21:45:42.115Z	          "exalting-the-lord"
+2026-09-10T21:45:42.115Z	        ]
+2026-09-10T21:45:42.115Z	      },
+2026-09-10T21:45:42.118Z	      {
+2026-09-10T21:45:42.118Z	        "sourceLabel": "ADORING, BLESSING, EXALTING, EXTOLLING, GLORIFYING, HONORING, LIFTING UP HANDS TO, LOVING, MAGNIFYING, PRAISING, THANKING, AND WORSHIPPING . . . THE LORD",
+2026-09-10T21:45:42.119Z	        "targetIds": [
+2026-09-10T21:45:42.119Z	          "adoring-the-lord",
+2026-09-10T21:45:42.119Z	          "blessing-the-lord",
+2026-09-10T21:45:42.119Z	          "exalting-the-lord",
+2026-09-10T21:45:42.119Z	          "extolling-the-lord",
+2026-09-10T21:45:42.119Z	          "glorifying-the-lord",
+2026-09-10T21:45:42.119Z	          "honoring-the-lord",
+2026-09-10T21:45:42.119Z	          "lifting-up-hands-to-the-lord",
+2026-09-10T21:45:42.120Z	          "loving-the-lord",
+2026-09-10T21:45:42.120Z	          "magnifying-the-lord",
+2026-09-10T21:45:42.120Z	          "praising-the-lord",
+2026-09-10T21:45:42.120Z	          "thanking-the-lord",
+2026-09-10T21:45:42.120Z	          "worshipping-the-lord"
+2026-09-10T21:45:42.120Z	        ]
+2026-09-10T21:45:42.120Z	      },
+2026-09-10T21:45:42.120Z	      {
+2026-09-10T21:45:42.120Z	        "sourceLabel": "ADORING, BLESSING, EXALTING, EXTOLLING, GLORIFYING, HONORING, LIFTING UP HANDS TO, MAGNIFYING, PRAISING, RENOWN OF, THANKING, AND WORSHIPPING.THE LORD",
+2026-09-10T21:45:42.120Z	        "targetIds": [
+2026-09-10T21:45:42.120Z	          "adoring-the-lord",
+2026-09-10T21:45:42.120Z	          "blessing-the-lord",
+2026-09-10T21:45:42.120Z	          "exalting-the-lord",
+2026-09-10T21:45:42.120Z	          "extolling-the-lord",
+2026-09-10T21:45:42.120Z	          "glorifying-the-lord",
+2026-09-10T21:45:42.120Z	          "honoring-the-lord",
+2026-09-10T21:45:42.121Z	          "lifting-up-hands-to-the-lord",
+2026-09-10T21:45:42.121Z	          "magnifying-the-lord",
+2026-09-10T21:45:42.121Z	          "praising-the-lord",
+2026-09-10T21:45:42.121Z	          "renown-of-the-lord",
+2026-09-10T21:45:42.121Z	          "thanking-the-lord",
+2026-09-10T21:45:42.121Z	          "worshipping-the-lord"
+2026-09-10T21:45:42.121Z	        ]
+2026-09-10T21:45:42.121Z	      },
+2026-09-10T21:45:42.121Z	      {
+2026-09-10T21:45:42.121Z	        "sourceLabel": "ADORING, BLESSING, EXALTING, EXTOLLING, GLORIFYING, HONORING, LIFTING UP HANDS TO, PRAISING, RENOWN OF, THANKING, AND WORSHIPPING…THE LORD",
+2026-09-10T21:45:42.122Z	        "targetIds": [
+2026-09-10T21:45:42.122Z	          "adoring-the-lord",
+2026-09-10T21:45:42.122Z	          "blessing-the-lord",
+2026-09-10T21:45:42.122Z	          "exalting-the-lord",
+2026-09-10T21:45:42.122Z	          "extolling-the-lord",
+2026-09-10T21:45:42.122Z	          "glorifying-the-lord",
+2026-09-10T21:45:42.122Z	          "honoring-the-lord",
+2026-09-10T21:45:42.122Z	          "lifting-up-hands-to-the-lord",
+2026-09-10T21:45:42.122Z	          "praising-the-lord",
+2026-09-10T21:45:42.122Z	          "renown-of-the-lord",
+2026-09-10T21:45:42.122Z	          "thanking-the-lord",
+2026-09-10T21:45:42.122Z	          "worshipping-the-lord"
+2026-09-10T21:45:42.122Z	        ]
+2026-09-10T21:45:42.122Z	      },
+2026-09-10T21:45:42.122Z	      {
+2026-09-10T21:45:42.123Z	        "sourceLabel": "ADORING, BLESSING, EXALTING, EXTOLLING, GLORIFYING, LIFTING UP HANDS TO, MAGNIFYING, PRAISING, RENOWN OF, THANKING, AND WORSHIPPING . . . THE LORD",
+2026-09-10T21:45:42.123Z	        "targetIds": [
+2026-09-10T21:45:42.123Z	          "adoring-the-lord",
+2026-09-10T21:45:42.123Z	          "blessing-the-lord",
+2026-09-10T21:45:42.123Z	          "exalting-the-lord",
+2026-09-10T21:45:42.123Z	          "extolling-the-lord",
+2026-09-10T21:45:42.124Z	          "glorifying-the-lord",
+2026-09-10T21:45:42.124Z	          "lifting-up-hands-to-the-lord",
+2026-09-10T21:45:42.124Z	          "magnifying-the-lord",
+2026-09-10T21:45:42.124Z	          "praising-the-lord",
+2026-09-10T21:45:42.124Z	          "renown-of-the-lord",
+2026-09-10T21:45:42.124Z	          "thanking-the-lord",
+2026-09-10T21:45:42.124Z	          "worshipping-the-lord"
+2026-09-10T21:45:42.124Z	        ]
+2026-09-10T21:45:42.124Z	      },
+2026-09-10T21:45:42.124Z	      {
+2026-09-10T21:45:42.124Z	        "sourceLabel": "ADORING, BLESSING, EXALTING, EXTOLLING, HONORING, LIFTING UP HANDS TO, MAGNIFYING, PRAISING, RENOWN OF, THANKING, AND WORSHIPPING . . . THE LORD",
+2026-09-10T21:45:42.125Z	        "targetIds": [
+2026-09-10T21:45:42.125Z	          "adoring-the-lord",
+2026-09-10T21:45:42.125Z	          "blessing-the-lord",
+2026-09-10T21:45:42.125Z	          "exalting-the-lord",
+2026-09-10T21:45:42.125Z	          "extolling-the-lord",
+2026-09-10T21:45:42.125Z	          "honoring-the-lord",
+2026-09-10T21:45:42.125Z	          "lifting-up-hands-to-the-lord",
+2026-09-10T21:45:42.125Z	          "magnifying-the-lord",
+2026-09-10T21:45:42.125Z	          "praising-the-lord",
+2026-09-10T21:45:42.125Z	          "renown-of-the-lord",
+2026-09-10T21:45:42.125Z	          "thanking-the-lord",
+2026-09-10T21:45:42.125Z	          "worshipping-the-lord"
+2026-09-10T21:45:42.126Z	        ]
+2026-09-10T21:45:42.126Z	      },
+2026-09-10T21:45:42.126Z	      {
+2026-09-10T21:45:42.126Z	        "sourceLabel": "ADORING, BLESSING, EXALTING, GLORIFYING, HONORING, LIFTING UP HANDS TO, MAGNIFYING, MEMORIALS TO, NAME OF, PRAISING, THANKING, AND WORSHIPPING…THE LORD",
+2026-09-10T21:45:42.126Z	        "targetIds": [
+2026-09-10T21:45:42.126Z	          "adoring-the-lord",
+2026-09-10T21:45:42.126Z	          "blessing-the-lord",
+2026-09-10T21:45:42.126Z	          "exalting-the-lord",
+2026-09-10T21:45:42.126Z	          "glorifying-the-lord",
+2026-09-10T21:45:42.126Z	          "honoring-the-lord",
+2026-09-10T21:45:42.126Z	          "lifting-up-hands-to-the-lord",
+2026-09-10T21:45:42.127Z	          "magnifying-the-lord",
+2026-09-10T21:45:42.127Z	          "memorials-to-the-lord",
+2026-09-10T21:45:42.127Z	          "name-of-the-lord",
+2026-09-10T21:45:42.127Z	          "praising-the-lord",
+2026-09-10T21:45:42.128Z	          "thanking-the-lord",
+2026-09-10T21:45:42.128Z	          "worshipping-the-lord"
+2026-09-10T21:45:42.128Z	        ]
+2026-09-10T21:45:42.128Z	      },
+2026-09-10T21:45:42.128Z	      {
+2026-09-10T21:45:42.128Z	        "sourceLabel": "ADORING, BLESSING, EXALTING, GLORIFYING, HONORING, LIFTING UP HANDS TO, MAGNIFYING, PRAISING, RENOWN OF, THANKING, AND WORSHIPPING . . . THE LORD",
+2026-09-10T21:45:42.128Z	        "targetIds": [
+2026-09-10T21:45:42.128Z	          "adoring-the-lord",
+2026-09-10T21:45:42.128Z	          "blessing-the-lord",
+2026-09-10T21:45:42.128Z	          "exalting-the-lord",
+2026-09-10T21:45:42.128Z	          "glorifying-the-lord",
+2026-09-10T21:45:42.128Z	          "honoring-the-lord",
+2026-09-10T21:45:42.128Z	          "lifting-up-hands-to-the-lord",
+2026-09-10T21:45:42.129Z	          "magnifying-the-lord",
+2026-09-10T21:45:42.129Z	          "praising-the-lord",
+2026-09-10T21:45:42.129Z	          "renown-of-the-lord",
+2026-09-10T21:45:42.129Z	          "thanking-the-lord",
+2026-09-10T21:45:42.129Z	          "worshipping-the-lord"
+2026-09-10T21:45:42.129Z	        ]
+2026-09-10T21:45:42.129Z	      },
+2026-09-10T21:45:42.129Z	      {
+2026-09-10T21:45:42.129Z	        "sourceLabel": "ADORING, BLESSING, EXTOLLING, GLORIFYING, HONORING, LIFTING UP HANDS TO, MAGNIFYING, PRAISING, RENOWN OF, THANKING, AND WORSHIPPING . . . THE LORD",
+2026-09-10T21:45:42.129Z	        "targetIds": [
+2026-09-10T21:45:42.129Z	          "adoring-the-lord",
+2026-09-10T21:45:42.130Z	          "blessing-the-lord",
+2026-09-10T21:45:42.130Z	          "extolling-the-lord",
+2026-09-10T21:45:42.130Z	          "glorifying-the-lord",
+2026-09-10T21:45:42.130Z	          "honoring-the-lord",
+2026-09-10T21:45:42.130Z	          "lifting-up-hands-to-the-lord",
+2026-09-10T21:45:42.130Z	          "magnifying-the-lord",
+2026-09-10T21:45:42.130Z	          "praising-the-lord",
+2026-09-10T21:45:42.130Z	          "renown-of-the-lord",
+2026-09-10T21:45:42.130Z	          "thanking-the-lord",
+2026-09-10T21:45:42.130Z	          "worshipping-the-lord"
+2026-09-10T21:45:42.130Z	        ]
+2026-09-10T21:45:42.130Z	      },
+2026-09-10T21:45:42.130Z	      {
+2026-09-10T21:45:42.130Z	        "sourceLabel": "ADORING, EXALTING, EXTOLLING, GLORIFYING, HONORING, LIFTING UP HANDS TO, MAGNIFYING, PRAISING, RENOWN OF, THANKING, AND WORSHIPPING…THE LORD",
+2026-09-10T21:45:42.130Z	        "targetIds": [
+2026-09-10T21:45:42.130Z	          "adoring-the-lord",
+2026-09-10T21:45:42.130Z	          "exalting-the-lord",
+2026-09-10T21:45:42.131Z	          "extolling-the-lord",
+2026-09-10T21:45:42.131Z	          "glorifying-the-lord",
+2026-09-10T21:45:42.131Z	          "honoring-the-lord",
+2026-09-10T21:45:42.131Z	          "lifting-up-hands-to-the-lord",
+2026-09-10T21:45:42.131Z	          "magnifying-the-lord",
+2026-09-10T21:45:42.135Z	          "praising-the-lord",
+2026-09-10T21:45:42.135Z	          "renown-of-the-lord",
+2026-09-10T21:45:42.135Z	          "thanking-the-lord",
+2026-09-10T21:45:42.135Z	          "worshipping-the-lord"
+2026-09-10T21:45:42.135Z	        ]
+2026-09-10T21:45:42.135Z	      },
+2026-09-10T21:45:42.135Z	      {
+2026-09-10T21:45:42.136Z	        "sourceLabel": "ANGER, DAY, AND DISPLEASURE . . . OF THE LORD",
+2026-09-10T21:45:42.136Z	        "targetIds": [
+2026-09-10T21:45:42.136Z	          "anger-of-the-lord",
+2026-09-10T21:45:42.136Z	          "day-of-the-lord",
+2026-09-10T21:45:42.136Z	          "displeasure-of-the-lord"
+2026-09-10T21:45:42.136Z	        ]
+2026-09-10T21:45:42.136Z	      },
+2026-09-10T21:45:42.136Z	      {
+2026-09-10T21:45:42.136Z	        "sourceLabel": "ANGER, DAY, DISPLEASURE AND VENGEANCE . . . OF THE LORD",
+2026-09-10T21:45:42.137Z	        "targetIds": [
+2026-09-10T21:45:42.137Z	          "anger-of-the-lord",
+2026-09-10T21:45:42.137Z	          "day-of-the-lord",
+2026-09-10T21:45:42.137Z	          "displeasure-of-the-lord",
+2026-09-10T21:45:42.137Z	          "vengeance-of-the-lord"
+2026-09-10T21:45:42.137Z	        ]
+2026-09-10T21:45:42.137Z	      },
+2026-09-10T21:45:42.137Z	      {
+2026-09-10T21:45:42.137Z	        "sourceLabel": "ANGER, DAY, DISPLEASURE, AND VENGEANCE . . . OF THE LORD",
+2026-09-10T21:45:42.137Z	        "targetIds": [
+2026-09-10T21:45:42.137Z	          "anger-of-the-lord",
+2026-09-10T21:45:42.137Z	          "day-of-the-lord",
+2026-09-10T21:45:42.137Z	          "displeasure-of-the-lord",
+2026-09-10T21:45:42.137Z	          "vengeance-of-the-lord"
+2026-09-10T21:45:42.137Z	        ]
+2026-09-10T21:45:42.137Z	      },
+2026-09-10T21:45:42.138Z	      {
+2026-09-10T21:45:42.138Z	        "sourceLabel": "ANGER, DISPLEASURE, AND WEARINESS . . . OF THE LORD",
+2026-09-10T21:45:42.138Z	        "targetIds": [
+2026-09-10T21:45:42.138Z	          "anger-of-the-lord",
+2026-09-10T21:45:42.138Z	          "displeasure-of-the-lord",
+2026-09-10T21:45:42.138Z	          "weariness-of-the-lord"
+2026-09-10T21:45:42.138Z	        ]
+2026-09-10T21:45:42.138Z	      },
+2026-09-10T21:45:42.138Z	      {
+2026-09-10T21:45:42.138Z	        "sourceLabel": "ASSURANCE: ATONEMENT",
+2026-09-10T21:45:42.138Z	        "targetIds": [
+2026-09-10T21:45:42.138Z	          "assurance",
+2026-09-10T21:45:42.138Z	          "atonement"
+2026-09-10T21:45:42.138Z	        ]
+2026-09-10T21:45:42.138Z	      },
+2026-09-10T21:45:42.138Z	      {
+2026-09-10T21:45:42.138Z	        "sourceLabel": "ASSURANCE: CERTAIN",
+2026-09-10T21:45:42.139Z	        "targetIds": [
+2026-09-10T21:45:42.139Z	          "assurance",
+2026-09-10T21:45:42.139Z	          "certain"
+2026-09-10T21:45:42.139Z	        ]
+2026-09-10T21:45:42.140Z	      },
+2026-09-10T21:45:42.140Z	      {
+2026-09-10T21:45:42.141Z	        "sourceLabel": "AWESOME, BOWING DOWN TO THE LORD IN WORSHIP",
+2026-09-10T21:45:42.142Z	        "targetIds": [
+2026-09-10T21:45:42.143Z	          "awesome",
+2026-09-10T21:45:42.143Z	          "bowing-down-to-the-lord-in-worship"
+2026-09-10T21:45:42.143Z	        ]
+2026-09-10T21:45:42.144Z	      },
+2026-09-10T21:45:42.144Z	      {
+2026-09-10T21:45:42.144Z	        "sourceLabel": "BLESSEDNESSs",
+2026-09-10T21:45:42.155Z	        "targetIds": [
+2026-09-10T21:45:42.155Z	          "blessedness"
+2026-09-10T21:45:42.155Z	        ]
+2026-09-10T21:45:42.155Z	      },
+2026-09-10T21:45:42.155Z	      {
+2026-09-10T21:45:42.155Z	        "sourceLabel": "BLESSING, EXALTING, EXTOLLING, GLORIFYING, HONORING, LIFTING UP HANDS TO, LOVING, MAGNIFYING, PRAISING, RENOWN OF, THANKING, AND WORSHIPPING . . . THE LORD",
+2026-09-10T21:45:42.155Z	        "targetIds": [
+2026-09-10T21:45:42.155Z	          "blessing-the-lord",
+2026-09-10T21:45:42.155Z	          "exalting-the-lord",
+2026-09-10T21:45:42.156Z	          "extolling-the-lord",
+2026-09-10T21:45:42.156Z	          "glorifying-the-lord",
+2026-09-10T21:45:42.156Z	          "honoring-the-lord",
+2026-09-10T21:45:42.156Z	          "lifting-up-hands-to-the-lord",
+2026-09-10T21:45:42.156Z	          "loving-the-lord",
+2026-09-10T21:45:42.156Z	          "magnifying-the-lord",
+2026-09-10T21:45:42.156Z	          "praising-the-lord",
+2026-09-10T21:45:42.156Z	          "renown-of-the-lord",
+2026-09-10T21:45:42.156Z	          "thanking-the-lord",
+2026-09-10T21:45:42.156Z	          "worshipping-the-lord"
+2026-09-10T21:45:42.156Z	        ]
+2026-09-10T21:45:42.156Z	      },
+2026-09-10T21:45:42.156Z	      {
+2026-09-10T21:45:42.157Z	        "sourceLabel": "COVENANT, THE",
+2026-09-10T21:45:42.157Z	        "targetIds": [
+2026-09-10T21:45:42.157Z	          "covenant-new"
+2026-09-10T21:45:42.157Z	        ]
+2026-09-10T21:45:42.157Z	      },
+2026-09-10T21:45:42.157Z	      {
+2026-09-10T21:45:42.157Z	        "sourceLabel": "CREATORSHIP OF THE LORD",
+2026-09-10T21:45:42.157Z	        "targetIds": [
+2026-09-10T21:45:42.157Z	          "creatorship"
+2026-09-10T21:45:42.157Z	        ]
+2026-09-10T21:45:42.157Z	      },
+2026-09-10T21:45:42.157Z	      {
+2026-09-10T21:45:42.157Z	        "sourceLabel": "DISCIPLEMAKING",
+2026-09-10T21:45:42.157Z	        "targetIds": [
+2026-09-10T21:45:42.158Z	          "disciple-making"
+2026-09-10T21:45:42.158Z	        ]
+2026-09-10T21:45:42.158Z	      },
+2026-09-10T21:45:42.158Z	      {
+2026-09-10T21:45:42.158Z	        "sourceLabel": "ENRICHING",
+2026-09-10T21:45:42.158Z	        "targetIds": [
+2026-09-10T21:45:42.158Z	          "enriching-spiritually",
+2026-09-10T21:45:42.158Z	          "enriching-materially"
+2026-09-10T21:45:42.158Z	        ]
+2026-09-10T21:45:42.158Z	      },
+2026-09-10T21:45:42.158Z	      {
+2026-09-10T21:45:42.158Z	        "sourceLabel": "ENRICHING MATERIALY",
+2026-09-10T21:45:42.159Z	        "targetIds": [
+2026-09-10T21:45:42.159Z	          "enriching-materially"
+2026-09-10T21:45:42.159Z	        ]
+2026-09-10T21:45:42.159Z	      },
+2026-09-10T21:45:42.159Z	      {
+2026-09-10T21:45:42.159Z	        "sourceLabel": "EVERY ATTRIBUTE, QUALITY, AND CHARACTERISTIC OF GOD LISTED IN THIS BOOK!",
+2026-09-10T21:45:42.159Z	        "targetIds": [
+2026-09-10T21:45:42.159Z	          "*"
+2026-09-10T21:45:42.159Z	        ]
+2026-09-10T21:45:42.160Z	      },
+2026-09-10T21:45:42.160Z	      {
+2026-09-10T21:45:42.160Z	        "sourceLabel": "EXECUTING JUDGMENT, JUSTICE AND RIGHTEOUSNESS",
+2026-09-10T21:45:42.160Z	        "targetIds": [
+2026-09-10T21:45:42.160Z	          "executing-judgment-justice-and-righteousness"
+2026-09-10T21:45:42.160Z	        ]
+2026-09-10T21:45:42.160Z	      },
+2026-09-10T21:45:42.160Z	      {
+2026-09-10T21:45:42.160Z	        "sourceLabel": "EXTOLLING",
+2026-09-10T21:45:42.161Z	        "targetIds": [
+2026-09-10T21:45:42.167Z	          "extolling-the-lord"
+2026-09-10T21:45:42.167Z	        ]
+2026-09-10T21:45:42.167Z	      },
+2026-09-10T21:45:42.167Z	      {
+2026-09-10T21:45:42.167Z	        "sourceLabel": "GLORIFYING",
+2026-09-10T21:45:42.167Z	        "targetIds": [
+2026-09-10T21:45:42.168Z	          "glorifying-the-lord"
+2026-09-10T21:45:42.168Z	        ]
+2026-09-10T21:45:42.168Z	      },
+2026-09-10T21:45:42.168Z	      {
+2026-09-10T21:45:42.168Z	        "sourceLabel": "GLORIOUS",
+2026-09-10T21:45:42.168Z	        "targetIds": [
+2026-09-10T21:45:42.168Z	          "glory-of-the-lord"
+2026-09-10T21:45:42.169Z	        ]
+2026-09-10T21:45:42.169Z	      },
+2026-09-10T21:45:42.169Z	      {
+2026-09-10T21:45:42.169Z	        "sourceLabel": "GLORY OF GOD",
+2026-09-10T21:45:42.169Z	        "targetIds": [
+2026-09-10T21:45:42.169Z	          "glory-of-the-lord"
+2026-09-10T21:45:42.169Z	        ]
+2026-09-10T21:45:42.169Z	      },
+2026-09-10T21:45:42.169Z	      {
+2026-09-10T21:45:42.169Z	        "sourceLabel": "GOD THE SPIRIT, INCARNATION OF CHRIST",
+2026-09-10T21:45:42.170Z	        "targetIds": [
+2026-09-10T21:45:42.170Z	          "god-the-spirit",
+2026-09-10T21:45:42.170Z	          "incarnation-of-christ"
+2026-09-10T21:45:42.170Z	        ]
+2026-09-10T21:45:42.170Z	      },
+2026-09-10T21:45:42.170Z	      {
+2026-09-10T21:45:42.170Z	        "sourceLabel": "GOSPEL OF CHRIST",
+2026-09-10T21:45:42.170Z	        "targetIds": [
+2026-09-10T21:45:42.171Z	          "gospel-the"
+2026-09-10T21:45:42.171Z	        ]
+2026-09-10T21:45:42.171Z	      },
+2026-09-10T21:45:42.171Z	      {
+2026-09-10T21:45:42.172Z	        "sourceLabel": "GRACE",
+2026-09-10T21:45:42.172Z	        "targetIds": [
+2026-09-10T21:45:42.172Z	          "grace-of-the-lord"
+2026-09-10T21:45:42.172Z	        ]
+2026-09-10T21:45:42.172Z	      },
+2026-09-10T21:45:42.172Z	      {
+2026-09-10T21:45:42.172Z	        "sourceLabel": "HONORING, LIFTING UP HANDS TO",
+2026-09-10T21:45:42.172Z	        "targetIds": [
+2026-09-10T21:45:42.173Z	          "honoring-the-lord",
+2026-09-10T21:45:42.173Z	          "lifting-up-hands-to-the-lord"
+2026-09-10T21:45:42.173Z	        ]
+2026-09-10T21:45:42.173Z	      },
+2026-09-10T21:45:42.173Z	      {
+2026-09-10T21:45:42.173Z	        "sourceLabel": "HONORING, LIFTING UP HANDS TO, LOVING, MAGNIFYING, PRAISING, RENOWN OF, AND THANKING . . . THE LORD",
+2026-09-10T21:45:42.173Z	        "targetIds": [
+2026-09-10T21:45:42.173Z	          "honoring-the-lord",
+2026-09-10T21:45:42.173Z	          "lifting-up-hands-to-the-lord",
+2026-09-10T21:45:42.173Z	          "loving-the-lord",
+2026-09-10T21:45:42.174Z	          "magnifying-the-lord",
+2026-09-10T21:45:42.174Z	          "praising-the-lord",
+2026-09-10T21:45:42.174Z	          "renown-of-the-lord",
+2026-09-10T21:45:42.174Z	          "thanking-the-lord"
+2026-09-10T21:45:42.174Z	        ]
+2026-09-10T21:45:42.174Z	      },
+2026-09-10T21:45:42.174Z	      {
+2026-09-10T21:45:42.174Z	        "sourceLabel": "IMMANENCE OF THE LORD",
+2026-09-10T21:45:42.174Z	        "targetIds": [
+2026-09-10T21:45:42.174Z	          "immanence"
+2026-09-10T21:45:42.174Z	        ]
+2026-09-10T21:45:42.174Z	      },
+2026-09-10T21:45:42.174Z	      {
+2026-09-10T21:45:42.175Z	        "sourceLabel": "IMPARTING GROWTH",
+2026-09-10T21:45:42.175Z	        "targetIds": [
+2026-09-10T21:45:42.175Z	          "giving-growth",
+2026-09-10T21:45:42.175Z	          "spiritual-growth"
+2026-09-10T21:45:42.180Z	        ]
+2026-09-10T21:45:42.180Z	      },
+2026-09-10T21:45:42.180Z	      {
+2026-09-10T21:45:42.180Z	        "sourceLabel": "INCOMPRE-HENSIBLE",
+2026-09-10T21:45:42.180Z	        "targetIds": [
+2026-09-10T21:45:42.180Z	          "incomprehensible"
+2026-09-10T21:45:42.180Z	        ]
+2026-09-10T21:45:42.180Z	      },
+2026-09-10T21:45:42.180Z	      {
+2026-09-10T21:45:42.180Z	        "sourceLabel": "JOY",
+2026-09-10T21:45:42.180Z	        "targetIds": [
+2026-09-10T21:45:42.180Z	          "joy"
+2026-09-10T21:45:42.180Z	        ]
+2026-09-10T21:45:42.180Z	      },
+2026-09-10T21:45:42.180Z	      {
+2026-09-10T21:45:42.181Z	        "sourceLabel": "JOY OF THE LORD",
+2026-09-10T21:45:42.181Z	        "targetIds": [
+2026-09-10T21:45:42.181Z	          "joy"
+2026-09-10T21:45:42.181Z	        ]
+2026-09-10T21:45:42.181Z	      },
+2026-09-10T21:45:42.181Z	      {
+2026-09-10T21:45:42.181Z	        "sourceLabel": "KINDNESS OF THE LORD",
+2026-09-10T21:45:42.181Z	        "targetIds": [
+2026-09-10T21:45:42.181Z	          "kindness"
+2026-09-10T21:45:42.181Z	        ]
+2026-09-10T21:45:42.182Z	      },
+2026-09-10T21:45:42.182Z	      {
+2026-09-10T21:45:42.182Z	        "sourceLabel": "LAWGIVING",
+2026-09-10T21:45:42.182Z	        "targetIds": [
+2026-09-10T21:45:42.182Z	          "law-giving"
+2026-09-10T21:45:42.182Z	        ]
+2026-09-10T21:45:42.183Z	      },
+2026-09-10T21:45:42.183Z	      {
+2026-09-10T21:45:42.183Z	        "sourceLabel": "LORD CHRIST",
+2026-09-10T21:45:42.183Z	        "targetIds": [
+2026-09-10T21:45:42.183Z	          "lordship-of-christ",
+2026-09-10T21:45:42.183Z	          "jesus-christ"
+2026-09-10T21:45:42.183Z	        ]
+2026-09-10T21:45:42.183Z	      },
+2026-09-10T21:45:42.183Z	      {
+2026-09-10T21:45:42.184Z	        "sourceLabel": "LOVING, MAGNIFYING, PRAISING, RENOWN OF, AND WORSHIPPING . . . THE LORD",
+2026-09-10T21:45:42.184Z	        "targetIds": [
+2026-09-10T21:45:42.184Z	          "loving-the-lord",
+2026-09-10T21:45:42.184Z	          "magnifying-the-lord",
+2026-09-10T21:45:42.184Z	          "praising-the-lord",
+2026-09-10T21:45:42.184Z	          "renown-of-the-lord",
+2026-09-10T21:45:42.185Z	          "worshipping-the-lord"
+2026-09-10T21:45:42.185Z	        ]
+2026-09-10T21:45:42.185Z	      },
+2026-09-10T21:45:42.185Z	      {
+2026-09-10T21:45:42.185Z	        "sourceLabel": "MARVELOUS, MIGHTY",
+2026-09-10T21:45:42.185Z	        "targetIds": [
+2026-09-10T21:45:42.186Z	          "marvelous",
+2026-09-10T21:45:42.186Z	          "mighty"
+2026-09-10T21:45:42.186Z	        ]
+2026-09-10T21:45:42.186Z	      },
+2026-09-10T21:45:42.186Z	      {
+2026-09-10T21:45:42.186Z	        "sourceLabel": "MOCKING",
+2026-09-10T21:45:42.186Z	        "targetIds": [
+2026-09-10T21:45:42.188Z	          "deriding"
+2026-09-10T21:45:42.188Z	        ]
+2026-09-10T21:45:42.190Z	      },
+2026-09-10T21:45:42.190Z	      {
+2026-09-10T21:45:42.191Z	        "sourceLabel": "NON-IMPOSSIBILITATION OF THE LORD",
+2026-09-10T21:45:42.191Z	        "targetIds": [
+2026-09-10T21:45:42.191Z	          "nonimpossibilitation-of-the-lord"
+2026-09-10T21:45:42.191Z	        ]
+2026-09-10T21:45:42.192Z	      },
+2026-09-10T21:45:42.192Z	      {
+2026-09-10T21:45:42.192Z	        "sourceLabel": "PLENTIFUL, PROPAGATION OF THE WORD OF THE LORD",
+2026-09-10T21:45:42.193Z	        "targetIds": [
+2026-09-10T21:45:42.193Z	          "plentiful",
+2026-09-10T21:45:42.193Z	          "propagation-of-the-word-of-the-lord"
+2026-09-10T21:45:42.193Z	        ]
+2026-09-10T21:45:42.193Z	      },
+2026-09-10T21:45:42.193Z	      {
+2026-09-10T21:45:42.193Z	        "sourceLabel": "PRAYERANSWERING",
+2026-09-10T21:45:42.193Z	        "targetIds": [
+2026-09-10T21:45:42.193Z	          "prayer-answering",
+2026-09-10T21:45:42.193Z	          "answering-prayers"
+2026-09-10T21:45:42.194Z	        ]
+2026-09-10T21:45:42.194Z	      },
+2026-09-10T21:45:42.194Z	      {
+2026-09-10T21:45:42.194Z	        "sourceLabel": "PROVIDING: REPENTANCE",
+2026-09-10T21:45:42.194Z	        "targetIds": [
+2026-09-10T21:45:42.194Z	          "providing",
+2026-09-10T21:45:42.194Z	          "repentance"
+2026-09-10T21:45:42.194Z	        ]
+2026-09-10T21:45:42.194Z	      },
+2026-09-10T21:45:42.194Z	      {
+2026-09-10T21:45:42.194Z	        "sourceLabel": "SPIRITUALLY",
+2026-09-10T21:45:42.194Z	        "targetIds": [
+2026-09-10T21:45:42.194Z	          "spiritual-life",
+2026-09-10T21:45:42.194Z	          "spiritual-growth"
+2026-09-10T21:45:42.194Z	        ]
+2026-09-10T21:45:42.195Z	      },
+2026-09-10T21:45:42.195Z	      {
+2026-09-10T21:45:42.195Z	        "sourceLabel": "SPLENDOR OF THE LORD",
+2026-09-10T21:45:42.195Z	        "targetIds": [
+2026-09-10T21:45:42.195Z	          "splendor"
+2026-09-10T21:45:42.195Z	        ]
+2026-09-10T21:45:42.195Z	      },
+2026-09-10T21:45:42.195Z	      {
+2026-09-10T21:45:42.195Z	        "sourceLabel": "SUPER-ABUNDANT",
+2026-09-10T21:45:42.195Z	        "targetIds": [
+2026-09-10T21:45:42.195Z	          "superabundant"
+2026-09-10T21:45:42.196Z	        ]
+2026-09-10T21:45:42.196Z	      },
+2026-09-10T21:45:42.196Z	      {
+2026-09-10T21:45:42.196Z	        "sourceLabel": "WISDOM OF THE LORD",
+2026-09-10T21:45:42.196Z	        "targetIds": [
+2026-09-10T21:45:42.196Z	          "wisdom"
+2026-09-10T21:45:42.196Z	        ]
+2026-09-10T21:45:42.196Z	      },
+2026-09-10T21:45:42.196Z	      {
+2026-09-10T21:45:42.196Z	        "sourceLabel": "WRATH OF THE LORD",
+2026-09-10T21:45:42.196Z	        "targetIds": [
+2026-09-10T21:45:42.197Z	          "wrath"
+2026-09-10T21:45:42.197Z	        ]
+2026-09-10T21:45:42.197Z	      },
+2026-09-10T21:45:42.197Z	      {
+2026-09-10T21:45:42.197Z	        "sourceLabel": "‘I AM’ STATEMENTS",
+2026-09-10T21:45:42.197Z	        "targetIds": [
+2026-09-10T21:45:42.197Z	          "i-am-declarations"
+2026-09-10T21:45:42.197Z	        ]
+2026-09-10T21:45:42.197Z	      }
+2026-09-10T21:45:42.197Z	    ]
+2026-09-10T21:45:42.197Z	  },
+2026-09-10T21:45:42.197Z	  "additionalScriptureResolution": {
+2026-09-10T21:45:42.197Z	    "sourceFieldCount": 627,
+2026-09-10T21:45:42.197Z	    "resolvedLinkCount": 12088,
+2026-09-10T21:45:42.197Z	    "unresolvedCount": 0,
+2026-09-10T21:45:42.197Z	    "editorialResolutions": [
+2026-09-10T21:45:42.198Z	      {
+2026-09-10T21:45:42.198Z	        "topicId": "angels",
+2026-09-10T21:45:42.198Z	        "sourceLabel": "Luke12:8",
+2026-09-10T21:45:42.199Z	        "queries": [
+2026-09-10T21:45:42.199Z	          "Luke 12:8"
+2026-09-10T21:45:42.199Z	        ]
+2026-09-10T21:45:42.199Z	      },
+2026-09-10T21:45:42.199Z	      {
+2026-09-10T21:45:42.199Z	        "topicId": "imparting-faith",
+2026-09-10T21:45:42.199Z	        "sourceLabel": "Hebrew 4:2",
+2026-09-10T21:45:42.203Z	        "queries": [
+2026-09-10T21:45:42.203Z	          "Hebrews 4:2"
+2026-09-10T21:45:42.203Z	        ]
+2026-09-10T21:45:42.203Z	      },
+2026-09-10T21:45:42.203Z	      {
+2026-09-10T21:45:42.203Z	        "topicId": "submitting-to-god",
+2026-09-10T21:45:42.203Z	        "sourceLabel": "Philemon14",
+2026-09-10T21:45:42.203Z	        "queries": [
+2026-09-10T21:45:42.204Z	          "Philemon 14"
+2026-09-10T21:45:42.204Z	        ]
+2026-09-10T21:45:42.204Z	      },
+2026-09-10T21:45:42.205Z	      {
+2026-09-10T21:45:42.205Z	        "topicId": "destroying",
+2026-09-10T21:45:42.205Z	        "sourceLabel": "Luke 4:34, Acts 13:19",
+2026-09-10T21:45:42.207Z	        "queries": [
+2026-09-10T21:45:42.208Z	          "Luke 4:34",
+2026-09-10T21:45:42.209Z	          "Acts 13:19"
+2026-09-10T21:45:42.209Z	        ]
+2026-09-10T21:45:42.211Z	      },
+2026-09-10T21:45:42.211Z	      {
+2026-09-10T21:45:42.211Z	        "topicId": "giving-an-inheritance",
+2026-09-10T21:45:42.211Z	        "sourceLabel": "Galatians 3:26, Colossians 1:12",
+2026-09-10T21:45:42.211Z	        "queries": [
+2026-09-10T21:45:42.211Z	          "Galatians 3:26",
+2026-09-10T21:45:42.211Z	          "Colossians 1:12"
+2026-09-10T21:45:42.211Z	        ]
+2026-09-10T21:45:42.211Z	      },
+2026-09-10T21:45:42.212Z	      {
+2026-09-10T21:45:42.212Z	        "topicId": "joy",
+2026-09-10T21:45:42.212Z	        "sourceLabel": "1 John 1:4 2 John 12.",
+2026-09-10T21:45:42.213Z	        "queries": [
+2026-09-10T21:45:42.213Z	          "1 John 1:4",
+2026-09-10T21:45:42.213Z	          "2 John 12"
+2026-09-10T21:45:42.214Z	        ]
+2026-09-10T21:45:42.215Z	      },
+2026-09-10T21:45:42.215Z	      {
+2026-09-10T21:45:42.215Z	        "topicId": "judging",
+2026-09-10T21:45:42.216Z	        "sourceLabel": "Ezekiel 5:8-10 3",
+2026-09-10T21:45:42.217Z	        "queries": [
+2026-09-10T21:45:42.217Z	          "Ezekiel 5:8-10",
+2026-09-10T21:45:42.217Z	          "Ezekiel 3"
+2026-09-10T21:45:42.217Z	        ]
+2026-09-10T21:45:42.217Z	      },
+2026-09-10T21:45:42.217Z	      {
+2026-09-10T21:45:42.217Z	        "topicId": "love-of-the-lord",
+2026-09-10T21:45:42.217Z	        "sourceLabel": "Luke 15:4, John 13:23",
+2026-09-10T21:45:42.217Z	        "queries": [
+2026-09-10T21:45:42.218Z	          "Luke 15:4",
+2026-09-10T21:45:42.219Z	          "John 13:23"
+2026-09-10T21:45:42.220Z	        ]
+2026-09-10T21:45:42.220Z	      },
+2026-09-10T21:45:42.220Z	      {
+2026-09-10T21:45:42.220Z	        "topicId": "providence",
+2026-09-10T21:45:42.220Z	        "sourceLabel": "Genesis 1:1 through Revelation 22:21—all 31, 173 verses of the Bible!",
+2026-09-10T21:45:42.221Z	        "queries": [
+2026-09-10T21:45:42.221Z	          "Genesis 1:1",
+2026-09-10T21:45:42.221Z	          "Revelation 22:21"
+2026-09-10T21:45:42.221Z	        ]
+2026-09-10T21:45:42.221Z	      },
+2026-09-10T21:45:42.221Z	      {
+2026-09-10T21:45:42.221Z	        "topicId": "submitting-to-god",
+2026-09-10T21:45:42.221Z	        "sourceLabel": "2 Samuel 3:18:1-4",
+2026-09-10T21:45:42.222Z	        "queries": [
+2026-09-10T21:45:42.222Z	          "2 Samuel 3:18",
+2026-09-10T21:45:42.222Z	          "2 Samuel 4:1-4"
+2026-09-10T21:45:42.222Z	        ]
+2026-09-10T21:45:42.222Z	      },
+2026-09-10T21:45:42.222Z	      {
+2026-09-10T21:45:42.222Z	        "topicId": "sufferings-of-christ",
+2026-09-10T21:45:42.222Z	        "sourceLabel": "2: 1-9, 13",
+2026-09-10T21:45:42.222Z	        "queries": [
+2026-09-10T21:45:42.223Z	          "Job 2:1-9, 13"
+2026-09-10T21:45:42.223Z	        ]
+2026-09-10T21:45:42.223Z	      },
+2026-09-10T21:45:42.223Z	      {
+2026-09-10T21:45:42.223Z	        "topicId": "treading",
+2026-09-10T21:45:42.223Z	        "sourceLabel": "Amos 4:13 Micah 1:3",
+2026-09-10T21:45:42.223Z	        "queries": [
+2026-09-10T21:45:42.223Z	          "Amos 4:13",
+2026-09-10T21:45:42.223Z	          "Micah 1:3"
+2026-09-10T21:45:42.224Z	        ]
+2026-09-10T21:45:42.224Z	      },
+2026-09-10T21:45:42.224Z	      {
+2026-09-10T21:45:42.224Z	        "topicId": "breaking-in-pieces",
+2026-09-10T21:45:42.224Z	        "sourceLabel": "51, 58",
+2026-09-10T21:45:42.224Z	        "queries": [
+2026-09-10T21:45:42.224Z	          "Jeremiah 51:58"
+2026-09-10T21:45:42.224Z	        ]
+2026-09-10T21:45:42.224Z	      },
+2026-09-10T21:45:42.225Z	      {
+2026-09-10T21:45:42.225Z	        "topicId": "calling-of-the-lord",
+2026-09-10T21:45:42.225Z	        "sourceLabel": "51:2",
+2026-09-10T21:45:42.225Z	        "queries": [
+2026-09-10T21:45:42.225Z	          "Isaiah 51:2"
+2026-09-10T21:45:42.225Z	        ]
+2026-09-10T21:45:42.226Z	      },
+2026-09-10T21:45:42.226Z	      {
+2026-09-10T21:45:42.226Z	        "topicId": "charitable",
+2026-09-10T21:45:42.226Z	        "sourceLabel": "6:11",
+2026-09-10T21:45:42.226Z	        "queries": [
+2026-09-10T21:45:42.226Z	          "1 Timothy 6:11"
+2026-09-10T21:45:42.226Z	        ]
+2026-09-10T21:45:42.226Z	      },
+2026-09-10T21:45:42.226Z	      {
+2026-09-10T21:45:42.226Z	        "topicId": "commending",
+2026-09-10T21:45:42.227Z	        "sourceLabel": "2 Kings 22:19-25",
+2026-09-10T21:45:42.227Z	        "queries": [
+2026-09-10T21:45:42.227Z	          "2 Kings 22:19-20"
+2026-09-10T21:45:42.227Z	        ]
+2026-09-10T21:45:42.227Z	      },
+2026-09-10T21:45:42.227Z	      {
+2026-09-10T21:45:42.227Z	        "topicId": "cutting-off",
+2026-09-10T21:45:42.227Z	        "sourceLabel": "1 Chronicles 32:21",
+2026-09-10T21:45:42.227Z	        "queries": [
+2026-09-10T21:45:42.227Z	          "2 Chronicles 32:21"
+2026-09-10T21:45:42.228Z	        ]
+2026-09-10T21:45:42.228Z	      },
+2026-09-10T21:45:42.228Z	      {
+2026-09-10T21:45:42.228Z	        "topicId": "giving-blessings",
+2026-09-10T21:45:42.228Z	        "sourceLabel": "17:25",
+2026-09-10T21:45:42.229Z	        "queries": [
+2026-09-10T21:45:42.229Z	          "Romans 16:25"
+2026-09-10T21:45:42.229Z	        ]
+2026-09-10T21:45:42.229Z	      },
+2026-09-10T21:45:42.229Z	      {
+2026-09-10T21:45:42.229Z	        "topicId": "gold",
+2026-09-10T21:45:42.229Z	        "sourceLabel": "Ezekiel 2:8-11",
+2026-09-10T21:45:42.229Z	        "queries": [
+2026-09-10T21:45:42.229Z	          "Ezekiel 2:8-3:1"
+2026-09-10T21:45:42.230Z	        ]
+2026-09-10T21:45:42.230Z	      },
+2026-09-10T21:45:42.230Z	      {
+2026-09-10T21:45:42.230Z	        "topicId": "granting",
+2026-09-10T21:45:42.230Z	        "sourceLabel": "Nehemiah 1:12",
+2026-09-10T21:45:42.230Z	        "queries": [
+2026-09-10T21:45:42.230Z	          "Nehemiah 2:1-8"
+2026-09-10T21:45:42.231Z	        ]
+2026-09-10T21:45:42.231Z	      },
+2026-09-10T21:45:42.231Z	      {
+2026-09-10T21:45:42.238Z	        "topicId": "heralding",
+2026-09-10T21:45:42.238Z	        "sourceLabel": "6:20",
+2026-09-10T21:45:42.238Z	        "queries": [
+2026-09-10T21:45:42.238Z	          "2 Corinthians 5:20"
+2026-09-10T21:45:42.239Z	        ]
+2026-09-10T21:45:42.239Z	      },
+2026-09-10T21:45:42.239Z	      {
+2026-09-10T21:45:42.239Z	        "topicId": "infinite",
+2026-09-10T21:45:42.239Z	        "sourceLabel": "Job 40:28",
+2026-09-10T21:45:42.239Z	        "queries": [
+2026-09-10T21:45:42.240Z	          "Job 40"
+2026-09-10T21:45:42.242Z	        ]
+2026-09-10T21:45:42.242Z	      },
+2026-09-10T21:45:42.242Z	      {
+2026-09-10T21:45:42.243Z	        "topicId": "joy",
+2026-09-10T21:45:42.243Z	        "sourceLabel": "1 Thessalonians 1:16",
+2026-09-10T21:45:42.243Z	        "queries": [
+2026-09-10T21:45:42.243Z	          "1 Thessalonians 1:6"
+2026-09-10T21:45:42.243Z	        ]
+2026-09-10T21:45:42.243Z	      },
+2026-09-10T21:45:42.243Z	      {
+2026-09-10T21:45:42.243Z	        "topicId": "judging",
+2026-09-10T21:45:42.244Z	        "sourceLabel": "15:1,5-8",
+2026-09-10T21:45:42.244Z	        "queries": [
+2026-09-10T21:45:42.244Z	          "Revelation 15:1, 5-8"
+2026-09-10T21:45:42.244Z	        ]
+2026-09-10T21:45:42.245Z	      },
+2026-09-10T21:45:42.245Z	      {
+2026-09-10T21:45:42.245Z	        "topicId": "law-giving",
+2026-09-10T21:45:42.245Z	        "sourceLabel": "8:34-35",
+2026-09-10T21:45:42.245Z	        "queries": [
+2026-09-10T21:45:42.245Z	          "Deuteronomy 4:34-35"
+2026-09-10T21:45:42.245Z	        ]
+2026-09-10T21:45:42.245Z	      },
+2026-09-10T21:45:42.245Z	      {
+2026-09-10T21:45:42.246Z	        "topicId": "name-of-the-lord",
+2026-09-10T21:45:42.246Z	        "sourceLabel": "1 Thessalonians 1:12",
+2026-09-10T21:45:42.246Z	        "queries": [
+2026-09-10T21:45:42.246Z	          "2 Thessalonians 1:12"
+2026-09-10T21:45:42.246Z	        ]
+2026-09-10T21:45:42.247Z	      },
+2026-09-10T21:45:42.247Z	      {
+2026-09-10T21:45:42.247Z	        "topicId": "obedience-of-christ",
+2026-09-10T21:45:42.247Z	        "sourceLabel": "46",
+2026-09-10T21:45:42.248Z	        "queries": [
+2026-09-10T21:45:42.248Z	          "John 6:46"
+2026-09-10T21:45:42.248Z	        ]
+2026-09-10T21:45:42.248Z	      },
+2026-09-10T21:45:42.249Z	      {
+2026-09-10T21:45:42.249Z	        "topicId": "pure",
+2026-09-10T21:45:42.249Z	        "sourceLabel": "4:20",
+2026-09-10T21:45:42.249Z	        "queries": [
+2026-09-10T21:45:42.249Z	          "1 Timothy 4:12"
+2026-09-10T21:45:42.249Z	        ]
+2026-09-10T21:45:42.249Z	      },
+2026-09-10T21:45:42.250Z	      {
+2026-09-10T21:45:42.252Z	        "topicId": "quickening",
+2026-09-10T21:45:42.252Z	        "sourceLabel": "119:25,37,40,88,149",
+2026-09-10T21:45:42.252Z	        "queries": [
+2026-09-10T21:45:42.252Z	          "Psalm 119:25, 37, 40, 88, 149"
+2026-09-10T21:45:42.252Z	        ]
+2026-09-10T21:45:42.253Z	      },
+2026-09-10T21:45:42.253Z	      {
+2026-09-10T21:45:42.254Z	        "topicId": "slaying",
+2026-09-10T21:45:42.254Z	        "sourceLabel": "19:15",
+2026-09-10T21:45:42.254Z	        "queries": [
+2026-09-10T21:45:42.254Z	          "Revelation 19:15"
+2026-09-10T21:45:42.255Z	        ]
+2026-09-10T21:45:42.255Z	      },
+2026-09-10T21:45:42.255Z	      {
+2026-09-10T21:45:42.256Z	        "topicId": "strengthening",
+2026-09-10T21:45:42.256Z	        "sourceLabel": "1 Peter 14:11",
+2026-09-10T21:45:42.256Z	        "queries": [
+2026-09-10T21:45:42.256Z	          "1 Peter 4:11"
+2026-09-10T21:45:42.256Z	        ]
+2026-09-10T21:45:42.257Z	      },
+2026-09-10T21:45:42.258Z	      {
+2026-09-10T21:45:42.258Z	        "topicId": "testing",
+2026-09-10T21:45:42.259Z	        "sourceLabel": "Genesis 22:39",
+2026-09-10T21:45:42.260Z	        "queries": [
+2026-09-10T21:45:42.260Z	          "Genesis 22:3-9"
+2026-09-10T21:45:42.260Z	        ]
+2026-09-10T21:45:42.260Z	      },
+2026-09-10T21:45:42.260Z	      {
+2026-09-10T21:45:42.261Z	        "topicId": "unaccepting",
+2026-09-10T21:45:42.262Z	        "sourceLabel": "16:35",
+2026-09-10T21:45:42.262Z	        "queries": [
+2026-09-10T21:45:42.262Z	          "Numbers 16:35"
+2026-09-10T21:45:42.262Z	        ]
+2026-09-10T21:45:42.262Z	      },
+2026-09-10T21:45:42.263Z	      {
+2026-09-10T21:45:42.263Z	        "topicId": "warning",
+2026-09-10T21:45:42.263Z	        "sourceLabel": "52",
+2026-09-10T21:45:42.263Z	        "queries": [
+2026-09-10T21:45:42.264Z	          "Luke 11:52"
+2026-09-10T21:45:42.264Z	        ]
+2026-09-10T21:45:42.264Z	      },
+2026-09-10T21:45:42.264Z	      {
+2026-09-10T21:45:42.264Z	        "topicId": "warring",
+2026-09-10T21:45:42.264Z	        "sourceLabel": "37",
+2026-09-10T21:45:42.264Z	        "queries": [
+2026-09-10T21:45:42.264Z	          "Numbers 26:37"
+2026-09-10T21:45:42.264Z	        ]
+2026-09-10T21:45:42.265Z	      },
+2026-09-10T21:45:42.265Z	      {
+2026-09-10T21:45:42.266Z	        "topicId": "will-of-god",
+2026-09-10T21:45:42.266Z	        "sourceLabel": "13:21",
+2026-09-10T21:45:42.266Z	        "queries": [
+2026-09-10T21:45:42.266Z	          "Colossians 3:13",
+2026-09-10T21:45:42.266Z	          "Colossians 3:21"
+2026-09-10T21:45:42.268Z	        ]
+2026-09-10T21:45:42.268Z	      },
+2026-09-10T21:45:42.268Z	      {
+2026-09-10T21:45:42.268Z	        "topicId": "withholding-rain",
+2026-09-10T21:45:42.268Z	        "sourceLabel": "Jeremiah 14:1-3,5-9",
+2026-09-10T21:45:42.268Z	        "queries": [
+2026-09-10T21:45:42.268Z	          "Jeremiah 14:1-3, 5-9"
+2026-09-10T21:45:42.269Z	        ]
+2026-09-10T21:45:42.270Z	      }
+2026-09-10T21:45:42.270Z	    ]
+2026-09-10T21:45:42.270Z	  },
+2026-09-10T21:45:42.270Z	  "validation": {
+2026-09-10T21:45:42.270Z	    "minimumTopicCount": 600,
+2026-09-10T21:45:42.271Z	    "tocTopicCount": 628,
+2026-09-10T21:45:42.272Z	    "checks": [
+2026-09-10T21:45:42.272Z	      "missing Table of Contents topics",
+2026-09-10T21:45:42.272Z	      "duplicate titles and ids",
+2026-09-10T21:45:42.272Z	      "alphabetical source order",
+2026-09-10T21:45:42.272Z	      "physical page range bounds and nonblank page-gap provenance",
+2026-09-10T21:45:42.272Z	      "cross-reference noncontiguous page jumps",
+2026-09-10T21:45:42.272Z	      "standalone section-letter leakage in every structured field",
+2026-09-10T21:45:42.273Z	      "See Also targets ending in standalone section letters",
+2026-09-10T21:45:42.273Z	      "WRATH end-page invariant",
+2026-09-10T21:45:42.274Z	      "empty accidental records and passages",
+2026-09-10T21:45:42.275Z	      "Additional Scripture complete reference grammar and KJV chapter/verse bounds",
+2026-09-10T21:45:42.275Z	      "Additional Scripture field boundaries and embedded headings",
+2026-09-10T21:45:42.275Z	      "sample-sized output",
+2026-09-10T21:45:42.275Z	      "running header leakage"
+2026-09-10T21:45:42.275Z	    ]
+2026-09-10T21:45:42.278Z	  },
+2026-09-10T21:45:42.278Z	  "outputBytes": {
+2026-09-10T21:45:42.279Z	    "index": 115690,
+2026-09-10T21:45:42.279Z	    "topicPayloads": {
+2026-09-10T21:45:42.279Z	      "A": 633372,
+2026-09-10T21:45:42.280Z	      "B": 273622,
+2026-09-10T21:45:42.280Z	      "C": 741020,
+2026-09-10T21:45:42.280Z	      "D": 546887,
+2026-09-10T21:45:42.280Z	      "E": 302058,
+2026-09-10T21:45:42.280Z	      "F": 438771,
+2026-09-10T21:45:42.281Z	      "G": 516435,
+2026-09-10T21:45:42.281Z	      "H": 250360,
+2026-09-10T21:45:42.281Z	      "I": 481301,
+2026-09-10T21:45:42.281Z	      "J": 162059,
+2026-09-10T21:45:42.281Z	      "K": 109733,
+2026-09-10T21:45:42.281Z	      "L": 291886,
+2026-09-10T21:45:42.281Z	      "M": 387702,
+2026-09-10T21:45:42.281Z	      "N": 113312,
+2026-09-10T21:45:42.281Z	      "O": 233926,
+2026-09-10T21:45:42.281Z	      "P": 945433,
+2026-09-10T21:45:42.281Z	      "Q": 63593,
+2026-09-10T21:45:42.281Z	      "R": 706213,
+2026-09-10T21:45:42.282Z	      "S": 901716,
+2026-09-10T21:45:42.284Z	      "T": 549097,
+2026-09-10T21:45:42.285Z	      "U": 304752,
+2026-09-10T21:45:42.285Z	      "V": 111007,
+2026-09-10T21:45:42.285Z	      "W": 443926,
+2026-09-10T21:45:42.285Z	      "Z": 31469
+2026-09-10T21:45:42.286Z	    },
+2026-09-10T21:45:42.286Z	    "topicPayloadsTotal": 9539650,
+2026-09-10T21:45:42.286Z	    "qualityReport": 23464,
+2026-09-10T21:45:42.286Z	    "generatedTotal": 9678804
+2026-09-10T21:45:42.287Z	  },
+2026-09-10T21:45:42.287Z	  "fidelityNotes": [
+2026-09-10T21:45:42.287Z	    "Discretionary line-wrap hyphens are removed; other source wording and punctuation are preserved.",
+2026-09-10T21:45:42.287Z	    "AMPC source markers are retained in definitions and exposed in sourceMarkers.",
+2026-09-10T21:45:42.288Z	    "Cross-reference-only headings omitted from the Table of Contents are retained."
+2026-09-10T21:45:42.288Z	  ]
+2026-09-10T21:45:42.290Z	}
+2026-09-10T21:45:42.873Z	
+2026-09-10T21:45:42.873Z	> @workspace/discipleship-hub@0.0.0 test:knowing-god /opt/buildhome/repo/artifacts/discipleship-hub
+2026-09-10T21:45:42.873Z	> node --test scripts/knowing-god-regressions.test.mjs
+2026-09-10T21:45:42.874Z	
+2026-09-10T21:45:43.143Z	✔ compound related-topic labels retain their label and resolve every destination (42.777879ms)
+2026-09-10T21:45:43.171Z	✔ a preserved printed typo resolves to its canonical topic (28.25171ms)
+2026-09-10T21:45:43.174Z	✔ browser Back restores the previous topic hash (2.890748ms)
+2026-09-10T21:45:43.195Z	✔ Additional Scripture inherits the most recent explicit book (25.606297ms)
+2026-09-10T21:45:43.245Z	✔ documented printed citation corrections link to canonical passages (48.8369ms)
+2026-09-10T21:45:43.271Z	✔ Prayer Life of Christ keeps 44 passages and three citation-only supplements (24.012706ms)
+2026-09-10T21:45:43.304Z	ℹ tests 6
+2026-09-10T21:45:43.306Z	ℹ suites 0
+2026-09-10T21:45:43.306Z	ℹ pass 6
+2026-09-10T21:45:43.307Z	ℹ fail 0
+2026-09-10T21:45:43.307Z	ℹ cancelled 0
+2026-09-10T21:45:43.307Z	ℹ skipped 0
+2026-09-10T21:45:43.307Z	ℹ todo 0
+2026-09-10T21:45:43.307Z	ℹ duration_ms 353.412939
+2026-09-10T21:45:43.414Z	check-book-gate-parity FAILED:
+2026-09-10T21:45:43.414Z	  - Book "a-heart-after-god" is in src/data/books.ts but missing from VALID_BOOK_IDS in worker/index.js — its email signups would be rejected with 400.
+2026-09-10T21:45:43.432Z	/opt/buildhome/repo/artifacts/discipleship-hub:
+2026-09-10T21:45:43.432Z	 ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @workspace/discipleship-hub@0.0.0 build: `pnpm run validate:knowing-god && node scripts/check-book-gate-parity.mjs && astro build && node scripts/apply-external-link-nofollow.mjs && node scripts/build-sitemaps.mjs`
+2026-09-10T21:45:43.433Z	Exit status 1
+2026-09-10T21:45:43.469Z	Failed: error occurred while running build command

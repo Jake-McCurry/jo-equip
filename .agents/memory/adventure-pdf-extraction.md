@@ -10,4 +10,25 @@ description: Lessons from rebuilding the 2016 InDesign "Adventure of Living with
 - Decorative 72pt chapter digits share stext *lines* with 24pt banner text; filter oversized glyphs at the char level, never drop whole lines by max size.
 - Chapter banners are detected by size (≥20pt after 1/1.5 mutool scaling vs pdftohtml) and validated against expected title prefixes; pages are not hardcoded (chapter 5 starts a page earlier than the original TOC implies).
 - Carlito/Caladea fonts in ~/.fonts get wiped between sessions; the strict-typography build fails loudly — reinstall from google/fonts ofl + `fc-cache -f`.
+- The 2026 Adventure PDF is a wholly new manuscript and its embedded mountain-path page-one cover is authoritative; never merge in 2016 text or the older hiking-silhouette cover.
+- **Why:** The owner explicitly requires the new wording, link targets, and supplied cover to remain intact while permitting visual-only layout improvements.
+- **How to apply:** Validate normalized text and exact URI parity against the 2026 PDF after every render; story cards, response areas, banners, and graphics must not introduce or replace wording.
+- Owner-supplied visual supplements add four legacy teaching graphics (spiritual breathing, fruit, trust inventory, and mind viewpoints) plus a new Fruit of the Spirit passage before the Holy Spirit Go Deeper card.
+- **Why:** These additions were supplied after the 2026 manuscript and are intentional exceptions to strict source-text parity.
+- **How to apply:** Preserve the supplement wording and placement; validate the rest against the 2026 source and treat only these additions plus the approved question mark as expected differences.
+- All generated replacement concepts for the six teaching graphics were rejected; retain the currently approved source graphics unless the user supplies or explicitly approves professional replacements.
+- **Why:** The generated concepts did not meet the required visual quality, and the user explicitly rejected the complete set.
+- **How to apply:** Never substitute any review concept into the book automatically. Require explicit approval of each future replacement before integration.
+- A later set of user-supplied visuals is proof-only until explicitly approved; assemble review PDFs separately and do not replace the website download during proofreading.
+- **Why:** The user wants to proofread every placement before publication.
+- **How to apply:** Treat approval to integrate or publish as a separate explicit step after the user reviews the returned proof PDF.
+- In designed Adventure proofs, every section visual must precede its applicable Go Deeper block, and response-writing areas must never be used as image space.
+- **Why:** The first proof treated whitespace mechanically and placed artwork after Go Deeper or over response areas, breaking the workbook’s reading hierarchy.
+- **How to apply:** Recompose the page or add a visual page before Go Deeper; size each asset individually and verify all changed pages as a full-document contact sheet.
+- Adventure visuals should support the teaching rather than dominate the page; chapter icons are small navigational accents, not co-equal title elements.
+- **Why:** Oversized art and 35-point chapter icons crowded headings and made the proof feel mechanically assembled.
+- **How to apply:** Let placement follow editorial flow rather than requested page numbers; target roughly 25–40% page area for supporting art and about 20–24 points for chapter icons.
+- Image filenames and requested page numbers are hints, not layout instructions; each visual must be placed with the exact sentence or paragraph whose idea it depicts.
+- **Why:** A butterfly was incorrectly placed among response questions instead of beside the caterpillar-to-butterfly paragraph.
+- **How to apply:** Read and map the full text first; use small edge-aligned floats with re-typeset text wrapping when an image illustrates a specific paragraph.
 - Chromium print-to-PDF link annotations exist but are stored via indirect refs; `mutool show pages/N/Annots` won't show them — grep the raw PDF for `/URI` to count links.

@@ -1,0 +1,14 @@
+Review status: review-draft
+DOCX: /home/runner/workspace/outputs/adventure-review/The_Adventure_of_Living_with_Jesus_review_edition.docx (8317932 bytes)
+PDF: /home/runner/workspace/outputs/adventure-review/The_Adventure_of_Living_with_Jesus_review_edition.pdf (9704884 bytes, 39 pages)
+Source tables/cells/drawings/media: 80/129/10/10
+Final tables/cells/drawings/media: 80/129/11/11
+Source text nodes unchanged: true
+QA tables: 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 17, 18, 19, 21, 22, 23, 24, 25, 26, 28, 30, 32, 33, 35, 36, 37, 39, 41, 42, 43, 44, 45, 46, 47, 48, 50, 51, 52, 53, 55, 56, 57, 58, 59, 60, 62, 63, 64, 65, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 78, 79
+Remaining QA light shading elements: 0
+Response grid light-fill cells (must be 0): 29:0, 38:0
+Narrative shading preserved: true
+PDF substantive paragraph audit: 606 checked, 0 missing
+Print layout: 677.75px content, 677.75px max image, 0 image overflows, horizontal overflow=false
+PDF cover has no extracted text/page number: true
+Rendered representative pages: cover=1, toc=3, first-writing=5, ashley-story=9, lineart=5

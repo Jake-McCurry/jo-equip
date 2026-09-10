@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800" width="1400" height="800">
+  
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E2C08D"/>
+      <stop offset="50%" stop-color="#C69C6D"/>
+      <stop offset="100%" stop-color="#9A7446"/>
+    </linearGradient>
+    <linearGradient id="silver" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDFBF7"/>
+      <stop offset="100%" stop-color="#E8E4DB"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#1C2A39" flood-opacity="0.15"/>
+    </filter>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="20" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    
+    <g id="ornate-throne">
+      <!-- Base -->
+      <path d="M-70,80 L70,80 L60,110 L-60,110 Z" fill="url(#gold)" filter="url(#shadow)"/>
+      <rect x="-60" y="70" width="120" height="10" fill="#1C2A39"/>
+      <!-- Seat -->
+      <path d="M-80,50 L80,50 L70,70 L-70,70 Z" fill="url(#gold)"/>
+      <rect x="-70" y="40" width="140" height="10" fill="#265C59"/>
+      <!-- Backrest -->
+      <path d="M-60,40 L-50,-70 C-50,-110 50,-110 50,-70 L60,40 Z" fill="#265C59" stroke="url(#gold)" stroke-width="6"/>
+      <path d="M-45,40 L-35,-65 C-35,-90 35,-90 35,-65 L45,40 Z" fill="#1C2A39"/>
+      <!-- Arms -->
+      <path d="M-80,50 C-100,10 -50,-10 -50,30" fill="none" stroke="url(#gold)" stroke-width="12" stroke-linecap="round"/>
+      <path d="M80,50 C100,10 50,-10 50,30" fill="none" stroke="url(#gold)" stroke-width="12" stroke-linecap="round"/>
+      <!-- Cushion -->
+      <path d="M-50,30 L50,30 C60,45 -60,45 -50,30 Z" fill="#A74B39"/>
+    </g>
+
+    <g id="radiant-cross">
+      <circle r="70" fill="#E2C08D" opacity="0.3" filter="url(#glow)"/>
+      <rect x="-8" y="-45" width="16" height="110" fill="#FDFBF7" stroke="url(#gold)" stroke-width="2"/>
+      <rect x="-35" y="-15" width="70" height="16" fill="#FDFBF7" stroke="url(#gold)" stroke-width="2"/>
+    </g>
+
+    <g id="self-symbol">
+      <circle r="30" fill="#1C2A39" stroke="url(#gold)" stroke-width="4" filter="url(#shadow)"/>
+      <text y="12" font-family="'Cormorant Garamond', serif" font-size="36" font-weight="700" fill="#FDFBF7" text-anchor="middle">S</text>
+    </g>
+
+    <g id="leaf-gold">
+      <path d="M 0,0 C -30,-20 -50,20 -70,40 C -30,60 -10,20 0,0 Z" fill="url(#gold)" filter="url(#shadow)"/>
+    </g>
+    <g id="leaf-teal">
+      <path d="M 0,0 C 30,-20 50,20 70,40 C 30,60 10,20 0,0 Z" fill="#265C59" filter="url(#shadow)"/>
+    </g>
+    <g id="grape">
+      <circle cx="0" cy="15" r="8" fill="#1C2A39" stroke="url(#gold)" stroke-width="1.5"/>
+      <circle cx="-8" cy="28" r="8" fill="#1C2A39" stroke="url(#gold)" stroke-width="1.5"/>
+      <circle cx="8" cy="28" r="8" fill="#1C2A39" stroke="url(#gold)" stroke-width="1.5"/>
+      <circle cx="0" cy="41" r="8" fill="#1C2A39" stroke="url(#gold)" stroke-width="1.5"/>
+    </g>
+
+    <g id="stone-spout">
+      <path d="M -40,-30 C -20,0 20,0 40,-30 L 25,30 C 10,40 -10,40 -25,30 Z" fill="url(#gold)" filter="url(#shadow)"/>
+      <ellipse cx="0" cy="-30" rx="40" ry="15" fill="#1C2A39"/>
+      <rect x="-10" y="30" width="20" height="20" fill="url(#gold)"/>
+      <path d="M -30,50 L 30,50 L 20,60 L -20,60 Z" fill="#9A7446"/>
+    </g>
+  </defs>
+
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&amp;family=Proza+Libre:wght@400;500;600&amp;display=swap');
+  text { font-family: 'Proza Libre', sans-serif; fill: #1C2A39; }
+  .title { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 48px; fill: #1C2A39; letter-spacing: 2px; text-anchor: middle; }
+  .ref { font-family: 'Proza Libre', sans-serif; font-weight: 400; font-size: 22px; fill: #A74B39; }
+</style>
+  
+  <rect width="1400" height="800" fill="#FDFBF7"/>
+  <rect x="30" y="30" width="1340" height="740" fill="none" stroke="url(#gold)" stroke-width="2" opacity="0.5"/>
+  <rect x="40" y="40" width="1320" height="720" fill="none" stroke="#265C59" stroke-width="1" opacity="0.3"/>
+
+  
+  <g transform="translate(400, 400)">
+    <circle r="260" fill="#FFFFFF" stroke="url(#gold)" stroke-width="6" filter="url(#shadow)"/>
+    <circle r="240" fill="none" stroke="#E8E4DB" stroke-width="2"/>
+    
+    <use href="#ornate-throne" x="0" y="20"/>
+    <use href="#self-symbol" x="0" y="-10"/>
+    <text x="0" y="2" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#FDFBF7" text-anchor="middle">S</text>
+    <use href="#radiant-cross" x="-120" y="140" transform="rotate(-25, -120, 140)"/>
+    
+    <g id="chaotic-dots">
+      <circle cx="-160" cy="50" r="14" fill="#265C59"/>
+      <circle cx="120" cy="160" r="10" fill="url(#gold)"/>
+      <circle cx="140" cy="-100" r="18" fill="#1C2A39"/>
+      <circle cx="-100" cy="-160" r="12" fill="#265C59"/>
+      <circle cx="180" cy="30" r="14" fill="url(#gold)"/>
+      <circle cx="-40" cy="180" r="16" fill="#1C2A39"/>
+      <circle cx="-180" cy="-80" r="10" fill="url(#gold)"/>
+      <circle cx="60" cy="-180" r="12" fill="#265C59"/>
+    </g>
+    
+    <text x="0" y="340" class="title">Self-Directed Life</text>
+  </g>
+  
+  <g transform="translate(1000, 400)">
+    <circle r="260" fill="#FFFFFF" stroke="url(#gold)" stroke-width="6" filter="url(#shadow)"/>
+    <circle r="240" fill="none" stroke="#E8E4DB" stroke-width="2"/>
+    
+    <use href="#ornate-throne" x="0" y="20"/>
+    <use href="#radiant-cross" x="0" y="0"/>
+    <use href="#self-symbol" x="0" y="150"/>
+    <text x="0" y="162" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#FDFBF7" text-anchor="middle">S</text>
+    
+    <g id="ordered-dots">
+      <circle cx="0" cy="-170" r="14" fill="#265C59"/>
+      <circle cx="120" cy="-120" r="14" fill="url(#gold)"/>
+      <circle cx="170" cy="0" r="14" fill="#1C2A39"/>
+      <circle cx="120" cy="120" r="14" fill="#265C59"/>
+      <circle cx="-120" cy="120" r="14" fill="#1C2A39"/>
+      <circle cx="-170" cy="0" r="14" fill="#265C59"/>
+      <circle cx="-120" cy="-120" r="14" fill="url(#gold)"/>
+    </g>
+    
+    <text x="0" y="340" class="title">Christ-Directed Life</text>
+  </g>
+</svg>

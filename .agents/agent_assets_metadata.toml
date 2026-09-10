@@ -53,24 +53,28 @@ id = "yt95SH6ZvnNSC8vmX9t3T"
 uri = "file://artifacts/discipleship-hub/public/articles/20011-quiet-time-with-god.pdf"
 type = "pdf"
 title = "Updated branding sample"
+logical_id = "95f8921b-999b-4ea8-b90b-b5928c07e989"
 
 [[outputs]]
 id = "odZSPunTOsUebMkSkfuda"
 uri = "file://.local/video-content-matches.md"
 type = "text"
 title = "Video → Written Content — Match Proof List"
+logical_id = "0851e03a-cb4c-4105-a44b-26c8124a4a65"
 
 [[outputs]]
 id = "lIeABZ8g4XWuKub4xLxK0"
 uri = "file://exports/jo-equip-ux-audit.csv"
 type = "table"
 title = "JO EQUIP UX Audit — 19 findings, ranked"
+logical_id = "ae723bc5-f32d-4777-b26b-35918fadc9d0"
 
 [[outputs]]
 id = "pGkbLbUOw3PWcDUp5_lAl"
 uri = "file://exports/broken-external-links.csv"
 type = "table"
 title = "Broken External Links — JO EQUIP"
+logical_id = "0cff2775-cd21-4170-a7ea-1aa969ff1808"
 
 [[outputs]]
 id = "QzKWDF1OE9OcRpuH_mQeN"
@@ -78,6 +82,7 @@ uri = "file://screenshots/categories-new-colors.jpg"
 type = "image"
 title = "Mockup: new category colors (Categories page)"
 description = "Warm Amber #C48A00 (Evidence), Forest Growth #2E7D32 (Growth), Deep Amethyst #6B2D7B (Church) applied to the category cards."
+logical_id = "08f933a0-108b-4a9e-8d41-de4636775ea1"
 
 [[outputs]]
 id = "KQ2K8tzjQ04ibX-nt54BP"
@@ -85,3 +90,270 @@ uri = "file://screenshots/growth-new-colors.jpg"
 type = "image"
 title = "Mockup: Growth category page in Forest Growth green"
 description = "Hero gradient and card accents in the proposed #2E7D32 green."
+logical_id = "5b31330d-7d45-42f7-a988-0bab1d90a451"
+
+[[outputs]]
+id = "ktEmmMjlful3tDyhSKaIa"
+uri = "file://artifacts/discipleship-hub/public/books/adventure-of-living-with-jesus.pdf"
+type = "pdf"
+title = "The Adventure of Living with Jesus — White Response Cards"
+description = "Question and answer areas now use white backgrounds, defined card borders, and dark writing lines without shading."
+logical_id = "6bec4a13-7a2d-484e-82dd-ffaed4b3f9c2"
+content_hash = "sha256:94791093d144a55951ed7d5ce202045f7d238a10a04f350bdd7b2ad72039f302"
+size = 761679
+mtime_ms = 1788376429652
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/6bec4a13-7a2d-484e-82dd-ffaed4b3f9c2/092f0aeb-9a99-4fd9-b95d-5fcbd9d8f7af"
+storage_version_token = "1788376446807685"
+content_type = "application/pdf"
+
+[[outputs]]
+id = "gmsOojm9jD1uMIMPc7fkt"
+uri = "file://design-reviews/adventure-graphics-premium/png/all-six-concepts.png"
+type = "image"
+title = "Adventure Graphics — All Six Concepts"
+description = "Overview of the complete Premium Illustrated replacement family. Review only; none are in the book."
+logical_id = "39573dae-9d58-431a-bc89-004631b6aae2"
+content_hash = "sha256:81c1f3395f844e8813b2c61b8a2b9baa2f361b97fe4615fcb1fad4cbad447afa"
+size = 3756509
+mtime_ms = 1788378389878
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/39573dae-9d58-431a-bc89-004631b6aae2/8d408eba-eb8f-473c-bc0e-09cf1b1863f9"
+storage_version_token = "1788378411458476"
+content_type = "image/png"
+
+[[outputs]]
+id = "_aGHnQAegwQc0DgX7fW9f"
+uri = "file://design-reviews/adventure-graphics-premium/png/01-directed-life.png"
+type = "image"
+title = "Concept 1 — Directed Life"
+description = "Self-Directed Life versus Christ-Directed Life, preserving the throne, Christ, self, and life-point teaching structure."
+logical_id = "4b141b49-77f1-47a3-b61f-f294dea3de7f"
+content_hash = "sha256:a2c359a08abc877e27aaaa425b31153f02e3fa6195ffbddb4caf0fff24bf6bb7"
+size = 168052
+mtime_ms = 1788378385226
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/4b141b49-77f1-47a3-b61f-f294dea3de7f/6a231eaf-478c-4b32-a3dd-4d1f0c9f02e2"
+storage_version_token = "1788378412085190"
+content_type = "image/png"
+
+[[outputs]]
+id = "V3Tp0d888c4tNZY0wCAfi"
+uri = "file://design-reviews/adventure-graphics-premium/png/02-restoring-fellowship.png"
+type = "image"
+title = "Concept 2 — Restoring Fellowship"
+description = "A numbered three-step path: yield to God, confess your sins, and trust God is in control."
+logical_id = "28d57076-148d-4539-99b1-38c75d801de8"
+content_hash = "sha256:dc83e44a557bf03ad46e16f693952c48dcf23afc1b6c857aa48a04a4956bc671"
+size = 176830
+mtime_ms = 1788378385570
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/28d57076-148d-4539-99b1-38c75d801de8/1253093e-8571-4b9f-b9d3-e3195939095c"
+storage_version_token = "1788378412721097"
+content_type = "image/png"
+
+[[outputs]]
+id = "7VEFln4ucKjfcbZFLi1xT"
+uri = "file://design-reviews/adventure-graphics-premium/png/03-spiritual-breathing.png"
+type = "image"
+title = "Concept 3 — Spiritual Breathing"
+description = "A continuous exhale/inhale rhythm with the original wording and scripture references."
+logical_id = "fb5d59ea-bf21-4341-a665-e8a9a21234a0"
+content_hash = "sha256:ab0dbef898f8faeca85e203c4384b1410d5eecd53ce3d877bc1dfe87dd0aab73"
+size = 173760
+mtime_ms = 1788378385874
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/fb5d59ea-bf21-4341-a665-e8a9a21234a0/57f60ae1-36bb-4c55-8c9f-903e985cb0d9"
+storage_version_token = "1788378413374852"
+content_type = "image/png"
+
+[[outputs]]
+id = "H5pCXevNnTdpBuI8vmKN0"
+uri = "file://design-reviews/adventure-graphics-premium/png/04-fruit-of-the-spirit.png"
+type = "image"
+title = "Concept 4 — Fruit of the Spirit"
+description = "A contemporary grapevine illustration containing all nine listed qualities."
+logical_id = "63b3d94e-b136-4675-bd4b-face0bcad58c"
+content_hash = "sha256:142587b8479d9a3f6db2ab43ea5bc2b4cf1b2665229ca1f73778d002c09567a3"
+size = 168571
+mtime_ms = 1788378386266
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/63b3d94e-b136-4675-bd4b-face0bcad58c/778a9f6f-a078-4f1c-b0ca-6576c81c6fca"
+storage_version_token = "1788378414074922"
+content_type = "image/png"
+
+[[outputs]]
+id = "XavGO8h3GidpAb4MTjIpF"
+uri = "file://design-reviews/adventure-graphics-premium/png/05-examining-your-trust.png"
+type = "image"
+title = "Concept 5 — Examining Your Trust"
+description = "A print-friendly Helping/Hurting ledger with markable checkboxes."
+logical_id = "9e72055e-b877-4304-9c39-4557bb7018c2"
+content_hash = "sha256:8c8ceec5d795b2d6365f75be379ca92df51f352960779a545996e2b752efc091"
+size = 66928
+mtime_ms = 1788378386630
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/9e72055e-b877-4304-9c39-4557bb7018c2/e21201f6-444e-43ca-bd38-e0e698b43fda"
+storage_version_token = "1788378414643425"
+content_type = "image/png"
+
+[[outputs]]
+id = "KaTGGdstV-e6ANgTn22lZ"
+uri = "file://design-reviews/adventure-graphics-premium/png/06-what-fills-your-mind.png"
+type = "image"
+title = "Concept 6 — What Fills Your Mind"
+description = "God’s and the world’s viewpoints flowing into the mind, with the mind’s contents flowing outward."
+logical_id = "190a9ca6-9ef8-45f4-ba16-6e4883ad515d"
+content_hash = "sha256:39b98e989a0927a87e8fc92547ac80a88674fc9d73b77a6ff5c014eece2fb2d8"
+size = 175392
+mtime_ms = 1788378387206
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/190a9ca6-9ef8-45f4-ba16-6e4883ad515d/65459d75-8aa7-48b3-a1c9-98aa66c2139d"
+storage_version_token = "1788378415308194"
+content_type = "image/png"
+
+[[outputs]]
+id = "aIjeeLCyFPMOt6WZkUiFJ"
+uri = "file://.agents/outputs/adventure-visual-proof.pdf"
+type = "pdf"
+title = "The Adventure of Living with Jesus — Visual Proof"
+description = "Proofreading copy with the supplied visuals, eight chapter icons, and manually added diagram labels. This file has not been placed on the website."
+logical_id = "62eb3d2f-e79b-48ac-b21e-4750f3b59a77"
+content_hash = "sha256:196059b65109a5a0e888280307f0bc0ce2595c7ab773536a4c6083cd62e7780f"
+size = 20730082
+mtime_ms = 1788387591865
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/62eb3d2f-e79b-48ac-b21e-4750f3b59a77/3da15e45-4849-4839-9598-b480c5fe7a1c"
+storage_version_token = "1788387632432600"
+content_type = "application/pdf"
+
+[[outputs]]
+id = "3EZmfFtHuzxkcyAKAVWvs"
+uri = "file://.agents/outputs/adventure-visual-proof-viewing-copy.pdf"
+type = "pdf"
+title = "Adventure Visual Proof — Viewing Copy"
+description = "Optimized 1.5 MB copy for reliable browser viewing. The full-resolution 20 MB proof remains available separately."
+logical_id = "c1256003-948c-42aa-a2f2-52eedea77645"
+content_hash = "sha256:3a3e44a34dd89c4b0139fead913e29ad3f0c6fc9c23783be8e59d808f7db9b27"
+size = 1563976
+mtime_ms = 1788390339516
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/c1256003-948c-42aa-a2f2-52eedea77645/c31b4f9c-921a-43df-a155-671b1a34ccd6"
+storage_version_token = "1788390351228054"
+content_type = "application/pdf"
+
+[[outputs]]
+id = "Zx1MJFRv8isDM5RatfO0F"
+uri = "file://.agents/outputs/adventure-visual-proof-v3-viewing-copy.pdf"
+type = "pdf"
+title = "Adventure Visual Proof — Redesigned Viewing Copy"
+description = "Rebuilt 46-page proof with individually sized visuals, transparent illustration backgrounds, preserved response areas, and each applicable Go Deeper block placed after its visual. Not published to the website."
+logical_id = "2fc0b8af-0245-47f9-bd90-d1981b5cc67d"
+content_hash = "sha256:82c110f55e91ad84405257b3d54338be67932ddd673bbf7d271910ed152a32de"
+size = 1507150
+mtime_ms = 1788391707012
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/2fc0b8af-0245-47f9-bd90-d1981b5cc67d/6bea1f4b-0ef3-4984-92b2-b5ebc73601f4"
+storage_version_token = "1788391718959288"
+content_type = "application/pdf"
+
+[[outputs]]
+id = "yYfer_vIYZ9DjC6xXRnzS"
+uri = "file://.agents/outputs/adventure-visual-proof-v4-viewing-copy.pdf"
+type = "pdf"
+title = "Adventure Visual Proof — Refined Editorial Layout"
+description = "46-page viewing proof with smaller chapter icons, individually downsized visuals, improved content flow, preserved response areas, and all applicable Go Deeper blocks after their visuals. Not published to the website."
+logical_id = "3ee595f3-121f-4fb4-9ff4-2f3fc9d84fe1"
+content_hash = "sha256:074ec6237d685301049dfbe02db53d9d23cc39381039cbafdd429e2e8f41d3ca"
+size = 1102989
+mtime_ms = 1788392155916
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/3ee595f3-121f-4fb4-9ff4-2f3fc9d84fe1/d3e6a660-8e1a-4854-888c-4ef2df488dc2"
+storage_version_token = "1788392167750801"
+content_type = "application/pdf"
+
+[[outputs]]
+id = "KiOFRrs2XRt0vOpzLsxXi"
+uri = "file://.agents/outputs/adventure-visual-proof-v5-viewing-copy.pdf"
+type = "pdf"
+title = "Adventure Visual Proof — #0095FF Navigation"
+description = "Updated 44-page proof using #0095FF everywhere the former navigation blue appeared, including chapter bars, headings, and matching labels. The website PDF remains unchanged."
+logical_id = "a619efbc-c2f9-46b8-b7fd-0ad19e2a326d"
+content_hash = "sha256:a39c87ad0094f93209a40a82ae9e021a9f7087f25b4695f991e6634357163d89"
+size = 911642
+mtime_ms = 1788551607252
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/a619efbc-c2f9-46b8-b7fd-0ad19e2a326d/87dab1d6-b8de-4cc1-b908-724b8eb77755"
+storage_version_token = "1788551618957970"
+content_type = "application/pdf"
+
+[[outputs]]
+id = "DNXvkqRP_pSfJVZEdnBjQ"
+uri = "file://artifacts/discipleship-hub/public/books/beholding-the-majesty-of-god.pdf"
+type = "pdf"
+title = "Beholding the Majesty of God — Updated PDF"
+description = "Revised 97-page ebook in the existing series styling, with the updated manuscript, corrected Jeremiah 9:24 opening reference, and consistent attribute-section headings."
+logical_id = "e251d2be-91a2-43c8-8937-b4b7691f23d0"
+content_hash = "sha256:5139c493366d182dea06772cf429e71c444ce3440a88337eff0aa2f8ce5bb24b"
+size = 997931
+mtime_ms = 1789064656216
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/e251d2be-91a2-43c8-8937-b4b7691f23d0/de2e6475-6e8f-400c-801a-23219db8cbca"
+storage_version_token = "1789064714082794"
+content_type = "application/pdf"
+
+[[outputs]]
+id = "4ExnNAzT0kajrMsfs9vUy"
+uri = "file://artifacts/discipleship-hub/public/books/a-heart-after-god.pdf"
+type = "pdf"
+title = "A Heart After God — Complete PDF"
+description = "30-page ebook with the supplied cover, series-matched formatting, numbered contents, all seven reflections, illustrations, and tables. Approximately 2 MB."
+logical_id = "e3a31e7e-156c-4197-9c4a-a5cc1e57aaaf"
+content_hash = "sha256:9f2881581a6b8b000f7fe1ac3fd53877af78f3b26f05c56a883e75970d33954f"
+size = 2001572
+mtime_ms = 1789074565404
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/e3a31e7e-156c-4197-9c4a-a5cc1e57aaaf/bf1147e1-0c32-4bc3-aabb-6257c8ba162d"
+storage_version_token = "1789074880495971"
+content_type = "application/pdf"
+
+[[outputs]]
+id = "yZs2bzhTpm70JLKmgAmQG"
+uri = "file://outputs/adventure-review/The_Adventure_of_Living_with_Jesus_review_edition.pdf"
+type = "pdf"
+title = "The Adventure of Living with Jesus — Review Draft"
+description = "39-page review PDF with the new cover, full manuscript, cleaned illustration backgrounds, white Q&A writing areas, and retained colored testimony blocks. Not installed on the website."
+logical_id = "7ef04fc3-94e5-4cc2-a895-60cac179a365"
+content_hash = "sha256:18f7ded69ddb0cd1868b61cd989e19668684d9969d7d46ec48fee7b3d6348793"
+size = 9704884
+mtime_ms = 1789077755185
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/7ef04fc3-94e5-4cc2-a895-60cac179a365/b2a2b490-e118-42af-84a7-1092b4a47869"
+storage_version_token = "1789077818803471"
+content_type = "application/pdf"
+
+[[outputs]]
+id = "WPC2lmmE5PdKOc_axjJ7s"
+uri = "file://outputs/adventure-review/The_Adventure_of_Living_with_Jesus_review_edition.docx"
+type = "word_document"
+title = "The Adventure of Living with Jesus — Editable Review Copy"
+description = "Editable Word manuscript with the new cover, transparent artwork, and white response areas. Source wording and table structure preserved."
+logical_id = "9d608c58-76f5-44a6-b23c-c815c7ca5e33"
+content_hash = "sha256:54b723a8e17587e13eedb4bb4a7b631e2c88a8bb83e3676b92f6ea6cba4d6399"
+size = 8317932
+mtime_ms = 1789077748589
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/9d608c58-76f5-44a6-b23c-c815c7ca5e33/1d3b3ce4-71de-49e5-a394-39bdfba69802"
+storage_version_token = "1789077819703610"
+content_type = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+
+[[outputs]]
+id = "aeW-B7EhtyupMgorav_Bk"
+uri = "file://outputs/adventure-review/The_Adventure_of_Living_with_Jesus_styled_review.pdf"
+type = "pdf"
+title = "Download the Adventure Book — Styled Review PDF"
+description = "40-page A4 PDF styled to match your illustrated reference, with blue-and-gold chapter banners, cream testimony blocks, white writing areas, cleaned artwork, the complete revised manuscript, and your new cover."
+logical_id = "f9f9fdce-757c-463a-a9c6-7504818bd262"
+content_hash = "sha256:6a93e6943805a9a6a9285adc3c2284b24caef850e9030aa51d69a9806d0cda1c"
+size = 9782866
+mtime_ms = 1789078316864
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/f9f9fdce-757c-463a-a9c6-7504818bd262/fa5ba911-9af0-4a18-b7b4-c82e5312c573"
+storage_version_token = "1789078373466721"
+content_type = "application/pdf"
+
+[[outputs]]
+id = "7_MGNtR5fCfYyfhLbeP4i"
+uri = "file://outputs/adventure-review/Adventure-Review.pdf"
+type = "pdf"
+title = "Adventure Book — Optimized Review PDF"
+description = "40-page styled review PDF, reduced to 1.4 MB and optimized for faster opening. All text and pages retained; images compressed for screen viewing. Website book remains unchanged."
+logical_id = "121c1a12-0e7b-4a96-87d3-06f5deaff2b3"
+content_hash = "sha256:23c2fff035ef3e3cbe2aa6ff3f3e9666670776c41993883c20317c31de221bd6"
+size = 1408648
+mtime_ms = 1789078471365
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/121c1a12-0e7b-4a96-87d3-06f5deaff2b3/629dbc9a-db76-4b95-ae15-13aa2a6ff38f"
+storage_version_token = "1789078488855255"
+content_type = "application/pdf"

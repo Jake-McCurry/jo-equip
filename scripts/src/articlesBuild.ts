@@ -26,7 +26,8 @@
  * Performance: ~1.5s per PDF, 4-way parallel → ~4 min for the full 596.
  */
 import { readFileSync, writeFileSync, existsSync, mkdirSync, statSync } from "node:fs";
-import { resolve } from "node:path";
+import { extname, resolve } from "node:path";
+import { pathToFileURL } from "node:url";
 import { spawnSync } from "node:child_process";
 import puppeteer, { type Browser } from "puppeteer";
 import { END_PAGE_CSS, END_PAGE_HTML } from "./pdfEndPage";
@@ -36,7 +37,7 @@ import { END_PAGE_CSS, END_PAGE_HTML } from "./pdfEndPage";
    Nix-installed system Chromium. The exact Nix store path changes across
    reinstalls, so fall back to `which chromium`. Override with
    PUPPETEER_EXECUTABLE_PATH when running in CI / other environments. */
-function resolveChromiumPath(): string {
+export function resolveChromiumPath(): string {
   if (process.env.PUPPETEER_EXECUTABLE_PATH) return process.env.PUPPETEER_EXECUTABLE_PATH;
   const which = spawnSync("which", ["chromium"], { encoding: "utf8" });
   const path = which.stdout?.trim();
@@ -140,7 +141,7 @@ function decodeEntities(s: string): string {
    - rewrite relative image src to absolute apicontent URLs so puppeteer can
      load them
    - kill WP's "continue reading" link-more paragraph if present */
-function sanitizeHtml(html: string): string {
+export function sanitizeHtml(html: string): string {
   return html
     .replace(/<script[\s\S]*?<\/script>/gi, "")
     .replace(/<iframe[\s\S]*?<\/iframe>/gi, "")
@@ -181,16 +182,59 @@ function sanitizeHtml(html: string): string {
     );
 }
 
+const LOCAL_IMAGE_MIME: Record<string, string> = {
+  ".gif": "image/gif",
+  ".jpeg": "image/jpeg",
+  ".jpg": "image/jpeg",
+  ".png": "image/png",
+  ".svg": "image/svg+xml",
+  ".webp": "image/webp",
+};
+
+/** Prepare an importer-owned Attributes of God fragment for offline PDF
+ * rendering. This is shared by the dedicated 27-PDF build and the six
+ * slug-mapped articles rebuilt through the generic articles:build command. */
+export function prepareAttributesLocalHtml(rawHtml: string): string {
+  const withImages = rawHtml.replace(
+    /src=(["'])(\/images\/articles\/attributes-of-god\/[^"']+)\1/gi,
+    (_match, quote: string, publicPath: string) => {
+      const imagePath = resolve(
+        ROOT,
+        "artifacts/discipleship-hub/public",
+        publicPath.replace(/^\/+/, ""),
+      );
+      if (!existsSync(imagePath)) throw new Error(`Local article image missing: ${publicPath}`);
+      const mime = LOCAL_IMAGE_MIME[extname(imagePath).toLowerCase()];
+      if (!mime) throw new Error(`Unsupported local article image type: ${publicPath}`);
+      return `src=${quote}data:${mime};base64,${readFileSync(imagePath).toString("base64")}${quote}`;
+    },
+  );
+  const withAbsoluteLinks = withImages.replace(
+    /href=(["'])\/(?!\/)([^"']*)\1/gi,
+    (_match, quote: string, path: string) =>
+      `href=${quote}https://equip.jesusonline.com/${path}${quote}`,
+  );
+  return sanitizeHtml(withAbsoluteLinks);
+}
+
 /* Branded HTML template. Inline CSS keeps puppeteer fast (no external font
    fetches). Cover: navy block with title + orange divider + JO branding.
    Body: classic serif print typography, brand-navy headings, orange links. */
-function renderTemplate({
+export function renderTemplate({
   title,
   bodyHtml,
   sourceUrl,
   coverLead,
   bibleProject,
-}: { title: string; bodyHtml: string; sourceUrl: string; coverLead?: string; bibleProject?: boolean }): string {
+  disableLigatures = false,
+}: {
+  title: string;
+  bodyHtml: string;
+  sourceUrl: string;
+  coverLead?: string;
+  bibleProject?: boolean;
+  disableLigatures?: boolean;
+}): string {
   const escTitle = title.replace(/&/g, "&amp;").replace(/</g, "&lt;");
   const escLead = coverLead ? coverLead.replace(/&/g, "&amp;").replace(/</g, "&lt;") : "";
   return `<!doctype html>
@@ -203,6 +247,7 @@ function renderTemplate({
   html, body { margin: 0; padding: 0; }
   body {
     font-family: Georgia, "Times New Roman", serif;
+    ${disableLigatures ? "font-variant-ligatures: none;" : ""}
     color: #1f2937;
     font-size: 11.5pt;
     line-height: 1.55;
@@ -371,6 +416,72 @@ const FOOTER_TEMPLATE = `
     <span>equip.jesusonline.com</span>
   </div>`;
 const HEADER_TEMPLATE = `<div></div>`;
+
+export async function renderArticlePdf(
+  browser: Browser,
+  {
+    title,
+    bodyHtml,
+    sourceUrl,
+    outPath,
+    coverLead,
+    bibleProject,
+    disableLigatures,
+  }: {
+    title: string;
+    bodyHtml: string;
+    sourceUrl: string;
+    outPath: string;
+    coverLead?: string;
+    bibleProject?: boolean;
+    disableLigatures?: boolean;
+  },
+): Promise<void> {
+  const html = renderTemplate({
+    title,
+    bodyHtml,
+    sourceUrl,
+    coverLead,
+    bibleProject,
+    disableLigatures,
+  });
+  const page = await browser.newPage();
+  try {
+    await page.setRequestInterception(true);
+    page.on("request", req => {
+      const url = req.url();
+      if (url.startsWith("data:") || url.startsWith("https://apicontent.jesusonline.com/")) {
+        req.continue();
+      } else {
+        req.abort();
+      }
+    });
+    await page.setContent(html, { waitUntil: "load", timeout: 30000 });
+    await page.evaluate(`(async () => {
+      const imgs = Array.from(document.images);
+      await Promise.all(imgs.map((img) => {
+        img.loading = "eager";
+        if (img.complete) return Promise.resolve();
+        return new Promise((resolve) => {
+          img.addEventListener("load", () => resolve(), { once: true });
+          img.addEventListener("error", () => resolve(), { once: true });
+          setTimeout(resolve, 15000);
+        });
+      }));
+    })()`);
+    await page.pdf({
+      path: outPath,
+      format: "Letter",
+      printBackground: true,
+      displayHeaderFooter: true,
+      headerTemplate: HEADER_TEMPLATE,
+      footerTemplate: FOOTER_TEMPLATE,
+      margin: { top: "0.6in", bottom: "0.7in", left: "0.8in", right: "0.8in" },
+    });
+  } finally {
+    await page.close();
+  }
+}
 
 /* Optional cover-page lead line shown above the article title.
    Used to brand a series (e.g. all Joshua Nations sub-topic articles get a
@@ -541,7 +652,10 @@ async function buildOne(
         return { ok: true, skipped: true, bytes: cached.bytes, title: cached.title };
       }
       displayTitle = entry.title ?? appSlug;
-      bodyHtml = sanitizeHtml(readFileSync(localPath, "utf8"));
+      const localHtml = readFileSync(localPath, "utf8");
+      bodyHtml = entry.localHtml.startsWith("local-articles/attributes-of-god/")
+        ? prepareAttributesLocalHtml(localHtml)
+        : sanitizeHtml(localHtml);
     } else {
       const post = await fetchPost(entry.wp_id);
       if (!post) return { ok: false, skipped: false, error: `wp post ${entry.wp_id} not found` };
@@ -557,57 +671,20 @@ async function buildOne(
         sanitizeHtml(await inlineEndnotes(rewriteWatchVideo(post.content.rendered, appSlug))),
       );
     }
-    const html = renderTemplate({
+    const localAttributeId = entry.localHtml?.match(
+      /^local-articles\/attributes-of-god\/([^/]+)\.html$/,
+    )?.[1];
+    await renderArticlePdf(browser, {
       title: displayTitle,
       bodyHtml,
-      sourceUrl: `app.jesusonline.com/post/${appSlug}`,
+      sourceUrl: localAttributeId
+        ? `equip.jesusonline.com/categories/growth/attributes-of-god/${localAttributeId}`
+        : `app.jesusonline.com/post/${appSlug}`,
+      outPath,
       coverLead: coverLeadFor(appSlug),
       bibleProject: isBibleProjectSlug(appSlug),
+      disableLigatures: !!localAttributeId,
     });
-
-    const page = await browser.newPage();
-    try {
-      /* Defense-in-depth: only allow requests to apicontent (for images) and
-         data: URIs. Blocks any exfiltration attempt if upstream HTML is ever
-         compromised. */
-      await page.setRequestInterception(true);
-      page.on("request", req => {
-        const url = req.url();
-        if (url.startsWith("data:") || url.startsWith("https://apicontent.jesusonline.com/")) {
-          req.continue();
-        } else {
-          req.abort();
-        }
-      });
-      await page.setContent(html, { waitUntil: "load", timeout: 30000 });
-      /* setContent's load event can fire before external images finish
-         downloading, which prints blank boxes where figures belong. Force
-         eager loading and wait for every image to settle (or error). */
-      /* (scripts package has no DOM lib — this function runs inside the page.) */
-      await page.evaluate(`(async () => {
-        const imgs = Array.from(document.images);
-        await Promise.all(imgs.map((img) => {
-          img.loading = "eager";
-          if (img.complete) return Promise.resolve();
-          return new Promise((resolve) => {
-            img.addEventListener("load", () => resolve(), { once: true });
-            img.addEventListener("error", () => resolve(), { once: true });
-            setTimeout(resolve, 15000);
-          });
-        }));
-      })()`);
-      await page.pdf({
-        path: outPath,
-        format: "Letter",
-        printBackground: true,
-        displayHeaderFooter: true,
-        headerTemplate: HEADER_TEMPLATE,
-        footerTemplate: FOOTER_TEMPLATE,
-        margin: { top: "0.6in", bottom: "0.7in", left: "0.8in", right: "0.8in" },
-      });
-    } finally {
-      await page.close();
-    }
 
     const bytes = statSync(outPath).size;
     cache[appSlug] = { wp_id: entry.wp_id, modified, bytes, title: displayTitle };
@@ -762,7 +839,9 @@ async function main() {
   }
 }
 
-main().catch(e => {
-  console.error("FATAL:", e);
-  process.exit(1);
-});
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  main().catch(e => {
+    console.error("FATAL:", e);
+    process.exit(1);
+  });
+}

@@ -1,0 +1,94 @@
+Prompts
+1. Chapter icon set
+
+Use small chapter icons throughout the book. This would add visual interest without consuming much space.
+
+Create a coordinated set of eight minimal Christian discipleship icons in a refined monoline vector style: a heavenly citizenship gateway, a butterfly for new identity, a gentle flame or flowing wind for the Holy Spirit, secure footsteps for faith, an open Bible with a path, open hands in conversation for prayer, a circle of diverse people for God’s family, and a compass pointing forward for purpose. Dark navy lines with restrained warm-gold accents, consistent stroke weight, clean cream background, contemporary Christian nonfiction design, appropriate for an international audience ages 20–40. No words, letters, numbers, gradients, shadows, logos, or decorative clutter.
+
+Add the chapter names in the document afterward rather than asking the image generator to produce text.
+
+2. Page 5: The eight-stage journey
+
+This would turn the chapter list into a memorable overview.
+
+Create a clean horizontal illustrated journey map for a Christian discipleship workbook. Show one continuous trail moving through eight distinct but connected milestones: belonging to a new kingdom, discovering a new identity, receiving inner strength, walking with trust, following Scripture, speaking with God, joining a community, and living with purpose. Use symbolic landmarks rather than written labels. Warm cream background, dark navy linework, subtle amber-gold highlights, restrained editorial illustration, hopeful and mature, internationally inclusive, no literal depiction of Jesus, no text or numbers, wide 16:9 composition with generous negative space.
+
+3. Page 7: Faith versus feelings
+
+The rock-climbing comparison is strong enough to deserve a visual.
+
+Create an emotionally authentic editorial photograph of a diverse young adult rock climber securely connected to a strong climbing rope anchored deep into solid rock. Changing clouds, wind, and mist surround the climber, but the person remains steady and secure. The image should communicate trust in something reliable despite changing feelings and circumstances. Natural outdoor light, subtle warm-gold highlights, realistic skin and clothing, documentary quality, not posed, not dramatic advertising, no text, no logos, horizontal 3:2 composition.
+
+4. Page 12: A new creation
+
+This page has enough open space for a strong chapter-closing image.
+
+Create a sophisticated macro photograph of a butterfly newly emerged from its chrysalis, resting with its wings beginning to open as warm morning light enters the scene. The image should communicate genuine transformation, new identity, hope, and the beginning of life rather than fragility. Natural botanical setting, realistic detail, restrained cream, navy-shadow, and warm-gold palette, subtle photographic grain, mature Christian nonfiction aesthetic, no text, no watermark, wide horizontal composition with calm negative space.
+
+This echoes the butterfly on the cover without repeating the exact cover imagery.
+
+5. Page 16: Self-directed and Christ-directed lives
+
+The current diagram communicates the idea, but its handmade appearance and resolution are noticeably weaker than the rest of the booklet.
+
+Create two clean circular vector diagrams side by side on a cream-white background. In the left circle, place a simple human silhouette prominently at the center, a small cross near the outer edge, and several scattered dots representing a disordered life. In the right circle, place the cross prominently at the center, move the human silhouette to a secondary position, and arrange the surrounding dots in a calm, ordered pattern. Use dark navy linework with one warm amber accent, consistent geometry, contemporary Christian workbook style, no words, no letters, no labels, no gradients, no shadows.
+
+Add “Self-Directed” and “Christ-Directed” manually beneath the finished artwork.
+
+6. Page 17: Yield–Confess–Trust
+
+Replace the existing three-card graphic with a version matching the booklet.
+
+Create a three-step horizontal Christian discipleship infographic with three connected rounded panels. Panel one shows open hands releasing control. Panel two shows a dark burden being honestly brought into light. Panel three shows steady footprints continuing along a clear path illuminated by warm light. Use a cream background, navy line art, restrained amber-gold accents, consistent icon style, generous white space, professional Christian nonfiction design, no text, no numbers, no logos, wide horizontal composition.
+
+Manually add:
+
+Yield yourself to God
+Confess your sins
+Trust God to be in control
+7. Page 18: Spiritual breathing
+
+This is probably the single most important new instructional visual.
+
+Create a simple two-part circular infographic illustrating spiritual breathing. Show a human figure in the center. One curved arrow moves outward, carrying away dark fragmented particles to represent confession and releasing sin. A second curved arrow moves inward as clean warm light enters the person to represent trusting the Holy Spirit by faith. Cream background, dark navy lines, warm amber-gold light, clear directional arrows, contemporary editorial vector design, peaceful rather than mystical, no words, letters, or religious clichés.
+
+Add the labels “Exhale: Confess” and “Inhale: Trust” afterward.
+
+8. Pages 24–26: Five ways to receive God’s Word
+
+This material currently reads like a long list. A diagram would make the five practices memorable.
+
+Create a five-part radial Christian growth infographic. Place an open Bible at the center and arrange five clear icons around it: an ear for hearing, attentive eyes for reading, a magnifying glass for studying, a heart or memory symbol for memorizing, and a rooted tree beside water for meditating. Connect each icon subtly to the central Bible. Dark navy line art, restrained amber highlights, cream background, clean contemporary workbook design, strong visual hierarchy, no text, no numbers, no decorative religious symbols, square composition with generous spacing.
+
+9. Page 30: A daily rhythm of prayer
+
+Keep this smaller—approximately a 1.5-inch-high horizontal strip.
+
+Create a five-icon horizontal sequence representing a natural daily rhythm of prayer: sunrise and open hands, a small Scripture card carried through the day, a restored connection after confession, gratitude expressed through an uplifted heart, and open hands bringing personal requests to God. Consistent minimal line icons, navy and warm amber on cream, contemporary Christian workbook style, calm and relational rather than ceremonial, no text, numbers, logos, or complex backgrounds.
+
+10. Page 35: Belonging to God’s family
+
+A genuine community image will humanize a chapter currently dominated by questions.
+
+Create an authentic documentary-style photograph of five or six culturally diverse young adults, approximately ages 20–35, sharing a simple meal and relaxed conversation in an ordinary home. Their interaction should feel sincere, welcoming, and unposed, with attentive listening, natural laughter, and a clear sense of belonging. Modest everyday clothing, warm natural window light, realistic skin texture, economically neutral surroundings, international appeal, no stage, no megachurch setting, no exaggerated emotion, no text or logos, horizontal 3:2 composition.
+
+11. Page 39: Ambassadors for Christ
+
+Use a diagram rather than a generic volunteering photograph.
+
+Create a refined editorial illustration showing one ordinary young adult at the center with gentle expanding circles of influence. Within the surrounding circles, show simple scenes of friendship, family, workplace or school, service to a neighbor, and the wider community. Communicate that a transformed life quietly influences others through both actions and words. Cream background, navy line art, warm amber highlights, diverse international people, understated Christian nonfiction style, no text, labels, logos, flags, or heroic poses.
+
+12. Page 42: Closing visual
+
+This would visually return the reader to the adventure theme without duplicating the cover.
+
+Create a cinematic but realistic landscape photograph of a clear walking trail continuing through a broad valley toward warm light on the horizon. A few subtle footprints are visible in the foreground, but no people are shown. The scene should communicate that the journey is continuing, that the traveler is being led forward, and that hope lies ahead. Natural golden-hour light, realistic terrain, gentle navy shadows, warm amber highlights, restrained and contemplative, no text, no cross in the sky, no fantasy effects, wide 16:9 composition.
+
+What I would avoid
+Don’t add generic praying-hands, open-Bible, or sunset photos simply to decorate pages.
+Don’t generate fake portraits of Ashley or Joni and present them as the actual people. Use a properly licensed photograph of Joni if desired; Ashley’s story works better as a designed testimony box.
+Don’t put important wording inside generated images. Generate the artwork without words and add clean, editable labels afterward.
+Don’t use small floating images. Full-width visuals or clearly defined half-page panels will perform better on phones.
+Keep response areas spacious. The writing experience is one of this version’s strengths.
+
+If prioritizing only five additions, I would choose pages 5, 12, 18, 24–26, and 35, plus replace the existing diagrams on pages 16–17.

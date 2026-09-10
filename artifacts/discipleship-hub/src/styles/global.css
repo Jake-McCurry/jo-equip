@@ -5,7 +5,7 @@
   --color-foreground: hsl(207, 60%, 12%);
   --color-border: hsl(210, 15%, 88%);
   --color-muted-foreground: hsl(210, 15%, 42%);
-  --color-primary: hsl(205, 100%, 44%);
+  --color-primary: #0095ff;
 
   --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }

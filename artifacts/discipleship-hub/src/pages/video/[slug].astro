@@ -59,7 +59,7 @@ const shareText = `Watch "${video.title}" on JO EQUIP`;
     <a
       href={join(`/playlist/${video.primaryPlaylist.id}`)}
       class="inline-flex items-center gap-1.5 text-sm font-medium mb-6 transition-colors hover:underline focus:outline-none focus-visible:underline"
-      style="color:#0083de;"
+      style="color:#0095ff;"
     >
       <ChevronLeft className="w-4 h-4" />
       Part of: {video.primaryPlaylist.title}
@@ -84,12 +84,12 @@ const shareText = `Watch "${video.title}" on JO EQUIP`;
 
         <div class="flex flex-wrap items-center justify-between gap-4 py-4 border-t border-b" style="border-color:var(--color-border);">
           <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full flex items-center justify-center bg-slate-100" style="background-color:rgba(0,131,222,0.1);">
-              <ListVideo className="w-5 h-5" style={{ color: "#0083de" }} />
+            <div class="w-10 h-10 rounded-full flex items-center justify-center bg-slate-100" style="background-color:rgba(0,149,255,0.1);">
+              <ListVideo className="w-5 h-5" style={{ color: "#0095ff" }} />
             </div>
             <div>
               <p class="text-xs font-semibold tracking-wider uppercase" style="color:var(--color-muted-foreground);">Series</p>
-              <a href={join(`/playlist/${video.primaryPlaylist.id}`)} class="text-sm font-medium hover:underline focus:outline-none" style="color:#0083de;">
+              <a href={join(`/playlist/${video.primaryPlaylist.id}`)} class="text-sm font-medium hover:underline focus:outline-none" style="color:#0095ff;">
                 {video.primaryPlaylist.title}
               </a>
             </div>

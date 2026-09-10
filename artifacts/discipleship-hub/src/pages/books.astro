@@ -2,13 +2,16 @@
 import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
 import { Book as BookIcon, BookOpen, Download } from "lucide-react";
-import { books } from "@/data/books";
+import { books, listedBooks } from "@/data/books";
 import { getBookCover } from "@/data/bookCovers";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 
 const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
   (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
+const bookDeepLinks = Object.fromEntries(
+  books.map(book => [book.id, { pdf: join(book.pdf), title: book.title }]),
+);
 
 
 /* JSON-LD: a CollectionPage that contains an ItemList of Book entries.
@@ -24,14 +27,16 @@ const booksJsonLd = {
   "isPartOf": { "@id": `${SITE}/#website` },
   "mainEntity": {
     "@type": "ItemList",
-    "numberOfItems": books.length,
-    "itemListElement": books.map((b, i) => ({
+    "numberOfItems": listedBooks.length,
+    "itemListElement": listedBooks.map((b, i) => ({
       "@type": "ListItem",
       "position": i + 1,
       "item": {
         "@type": "Book",
         "@id": `${SITE}/books/${b.id}#book`,
         "name": b.title,
+        ...(b.description ? { "description": b.description } : {}),
+        ...(b.subtitle ? { "alternativeHeadline": b.subtitle } : {}),
         ...(b.author ? { "author": { "@type": "Person", "name": b.author } } : {}),
         "publisher": { "@id": "https://jesusonlineministries.org/#org" },
         "image": `${SITE}${b.cover}`,
@@ -84,7 +89,7 @@ const booksJsonLd = {
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-      {books.map(book => {
+      {listedBooks.map(book => {
         const cover = getBookCover(book.id);
         return (
         <article id={book.id} class="border rounded-lg bg-white overflow-hidden flex flex-col transition-shadow hover:shadow-md scroll-mt-24" style="border-color:var(--color-border);">
@@ -98,7 +103,7 @@ const booksJsonLd = {
                 data-pdf-action="open"
                 aria-label={`Open ${book.title} PDF`}
                 class="block rounded transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
-                style="outline-color:#0083de;"
+                style="outline-color:#0095ff;"
               >
                 <Image
                   src={cover}
@@ -117,7 +122,7 @@ const booksJsonLd = {
             <button
               type="button"
               class="book-download-btn inline-flex items-center justify-center gap-2 font-semibold text-sm uppercase tracking-wide transition-colors hover:opacity-75"
-              style="color:#0083de;"
+              style="color:#0095ff;"
               data-pdf={join(book.pdf)}
               data-title={book.title}
               data-id={book.id}
@@ -140,7 +145,7 @@ const booksJsonLd = {
               data-track-title={book.title}
               data-pdf-action="download"
               class="inline-flex items-center justify-center gap-2 font-semibold text-sm uppercase tracking-wide transition-colors hover:opacity-75"
-              style="color:#0083de;"
+              style="color:#0095ff;"
               aria-label={`Download ${book.title}`}
             >
               <Download className="w-4 h-4" />
@@ -153,7 +158,7 @@ const booksJsonLd = {
     </div>
   </div>
 
-  <script is:inline>
+  <script define:vars={{ bookDeepLinks }}>
     (function () {
       /* Email capture removed (Aug 2026): books are free to download with no
          sign-up. The capture system is preserved in src/retired-pages/ in
@@ -200,6 +205,9 @@ const booksJsonLd = {
         if (wanted) {
           const card = document.getElementById(wanted);
           const targetBtn = card ? card.querySelector(".book-download-btn") : null;
+            const catalogBook = Object.prototype.hasOwnProperty.call(bookDeepLinks, wanted)
+              ? bookDeepLinks[wanted]
+              : null;
           if (card) {
             try { card.scrollIntoView({ behavior: "smooth", block: "center" }); } catch (_e) { /* ignore */ }
           }
@@ -208,6 +216,12 @@ const booksJsonLd = {
             setTimeout(function () {
               requestBook(targetBtn.getAttribute("data-pdf"), targetBtn.getAttribute("data-title"), true);
             }, 250);
+            } else if (catalogBook) {
+              // Preserve direct links for catalog books that are intentionally
+              // unlisted (for example, The Abiding Room).
+              setTimeout(function () {
+                requestBook(catalogBook.pdf, catalogBook.title, true);
+              }, 250);
           }
         }
       } catch (_e) { /* ignore */ }

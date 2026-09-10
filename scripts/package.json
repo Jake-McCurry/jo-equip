@@ -7,6 +7,7 @@
     "hello": "tsx ./src/hello.ts",
     "compress-pdfs": "tsx ./src/compressPdfs.ts",
     "articles:build": "tsx ./src/articlesBuild.ts",
+    "attributes:pdf": "tsx ./src/attributesArticlesPdfBuild.ts",
     "bcg:pdf": "tsx ./src/bcgPdfBuild.ts",
     "bsm:pdf": "tsx ./src/bsmPdfBuild.ts",
     "evidence:build": "tsx ./src/evidenceArticlesBuild.ts",
@@ -17,6 +18,7 @@
     "covers:build": "tsx ./src/bookCoversBuild.ts",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "book:majesty": "tsx ./src/ebookDocxBuild.ts --book=majesty",
+    "book:heart": "tsx ./src/ebookDocxBuild.ts --book=heart",
     "book:adventure": "tsx ./src/ebookDocxBuild.ts --book=adventure",
     "book:new-life": "tsx ./src/nlicBookBuild.ts"
   },

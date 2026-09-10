@@ -29,11 +29,14 @@ const join = (p: string) =>
   (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
 
 const byline = book.author ? ` by ${book.author}` : "";
-const pageTitle = `${book.title} · Free Download · JO EQUIP`;
+const fullTitle = book.subtitle ? `${book.title}: ${book.subtitle}` : book.title;
+const pageTitle = `${fullTitle} · Free Download · JO EQUIP`;
 const languageNote = alternateEditions.length > 0
   ? ` Available in English and ${alternateEditions.map(edition => edition.language).join(", ")}.`
   : "";
-const pageDesc = `Free PDF download — ${book.title}${byline}. A practical discipleship resource from JesusOnline Ministries Equip.${languageNote}`;
+const pageDesc = book.description
+  ? `${book.description} Free PDF download from JesusOnline Ministries Equip.${languageNote}`
+  : `Free PDF download — ${fullTitle}${byline}. A practical discipleship resource from JesusOnline Ministries Equip.${languageNote}`;
 
 const SITE = "https://equip.jesusonline.com";
 const bookJsonLd = {
@@ -41,6 +44,8 @@ const bookJsonLd = {
   "@type": "Book",
   "@id": `${SITE}/books/${book.id}#book`,
   "name": book.title,
+  ...(book.description ? { "description": book.description } : {}),
+  ...(book.subtitle ? { "alternativeHeadline": book.subtitle } : {}),
   ...(book.author ? { "author": { "@type": "Person", "name": book.author } } : {}),
   "publisher": { "@id": "https://jesusonlineministries.org/#org" },
   "image": `${SITE}${book.cover}`,
@@ -82,7 +87,7 @@ const bookJsonLd = {
     <a
       href={join("/books")}
       class="inline-flex items-center gap-2 text-sm font-medium mb-8 hover:opacity-75 transition-opacity"
-      style="color:#0083de;"
+      style="color:#0095ff;"
     >
       <ArrowLeft className="w-4 h-4" /> Back to all books
     </a>
@@ -112,6 +117,11 @@ const bookJsonLd = {
           Free PDF · Book
         </span>
         <h1 class="text-3xl md:text-4xl mt-3 mb-3" style="color:#0b3c5d;">{book.title}</h1>
+        {book.subtitle && (
+          <p class="text-lg md:text-xl -mt-1 mb-4" style="color:#0b3c5d;">
+            {book.subtitle}
+          </p>
+        )}
         {book.author && (
           <p class="text-base mb-5" style="color:var(--color-muted-foreground);">
             by <span class="font-medium" style="color:#0b3c5d;">{book.author}</span>
@@ -119,8 +129,7 @@ const bookJsonLd = {
         )}
         <div class="h-0.5 w-12 mb-6" style="background-color:#de5b00;"></div>
         <p class="text-base leading-relaxed mb-8" style="color:var(--color-muted-foreground);">
-          A practical discipleship resource from JesusOnline Ministries — free to download
-          and share with your church, small group, or ministry team.
+          {book.description ?? "A practical discipleship resource from JesusOnline Ministries — free to download and share with your church, small group, or ministry team."}
         </p>
 
         {/* Read CTA — links to /books?download=<id>, which the shared JS on
@@ -133,8 +142,8 @@ const bookJsonLd = {
           <BookOpen className="w-4 h-4" /> Read PDF
         </a>
         <p class="text-xs mt-3" style="color:var(--color-muted-foreground);">
-          Opens in a new tab to read online — download it from there to keep or share.
-          We'll ask for your email on the next step so we can share new resources occasionally.
+           Opens in a new tab to read online — download it from there to keep or share.
+           No signup is required.
         </p>
       </div>
     </div>
@@ -142,11 +151,11 @@ const bookJsonLd = {
     {alternateEditions.length > 0 && (
       <div class="mt-14 md:mt-18 pt-10 border-t" style="border-color:var(--color-border);">
         <div class="flex items-center gap-3 mb-7">
-          <div class="w-9 h-9 rounded flex items-center justify-center" style="background-color:rgba(0,131,222,0.1);">
-            <Languages className="w-5 h-5" style={{ color: "#0083de" }} />
+          <div class="w-9 h-9 rounded flex items-center justify-center" style="background-color:rgba(0,149,255,0.1);">
+            <Languages className="w-5 h-5" style={{ color: "#0095ff" }} />
           </div>
           <div>
-            <span class="text-xs font-semibold tracking-widest uppercase" style="color:#0083de;">
+            <span class="text-xs font-semibold tracking-widest uppercase" style="color:#0095ff;">
               Additional language
             </span>
             <h2 class="text-2xl md:text-3xl mt-1" style="color:#0b3c5d;">Spanish Edition</h2>
@@ -210,7 +219,7 @@ const bookJsonLd = {
                           {download.details} · {download.size}
                         </span>
                       </span>
-                      <span class="shrink-0 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide" style="color:#0083de;">
+                      <span class="shrink-0 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide" style="color:#0095ff;">
                         <Download className="w-4 h-4" />
                         Open PDF
                       </span>

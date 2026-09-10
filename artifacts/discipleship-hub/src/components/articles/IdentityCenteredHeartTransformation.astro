@@ -1,6 +1,6 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import { ArrowRight, Download, Heart, Sparkles, Shield } from "lucide-react";
+import { ArrowRight, Download, Sparkles } from "lucide-react";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 import type { SubTopic, Channel } from "@/data/channels";
 
@@ -55,35 +55,11 @@ const preparedGroups = groups.map((group) => {
   const title = group.title;
   const isIntro = title === "Intro";
   const isFourComponents = title === "Four Key Components";
-  const isId = title.includes("Identity Focus");
-  const isGd = title.includes("God Focus");
-  const isSp = title.includes("Spirit Focus");
-  const isFocus = isId || isGd || isSp;
-  const isTogether = title.includes("How the Three Work Together");
-  const isEnhances = title.includes("How This Enhances");
-
-  let themeClasses = "bg-white border-slate-200";
-  let iconKind = "";
-  if (isId) {
-     themeClasses = "bg-blue-50/30 border-blue-100";
-     iconKind = "identity";
-  } else if (isGd) {
-     themeClasses = "bg-purple-50/30 border-purple-100";
-     iconKind = "god";
-  } else if (isSp) {
-     themeClasses = "bg-emerald-50/30 border-emerald-100";
-     iconKind = "spirit";
-  }
 
   return {
     ...group,
     isIntro,
     isFourComponents,
-    isFocus,
-    isTogether,
-    isEnhances,
-    themeClasses,
-    iconKind
   };
 });
 
@@ -141,7 +117,7 @@ const preparedGroups = groups.map((group) => {
         )}
       </div>
 
-      <article class="space-y-24 pb-20 mt-12">
+      <article class="space-y-20 pb-20 mt-12">
         {preparedGroups.map((group) => (
           <Fragment>
             {group.isIntro && (
@@ -154,21 +130,15 @@ const preparedGroups = groups.map((group) => {
                       <div class="grid sm:grid-cols-2 gap-4 my-10 not-prose">
                         {b.items.map((item: string, idx: number) => (
                           <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm relative overflow-hidden group">
-                            <div class={`absolute top-0 left-0 w-1 h-full ${idx === 0 ? 'bg-slate-300' : 'bg-[#0083de]'}`}></div>
+                            <div class={`absolute top-0 left-0 w-1 h-full ${idx === 0 ? 'bg-slate-300' : 'bg-[#0095ff]'}`}></div>
                             <p class="text-slate-700 font-medium leading-relaxed" set:html={item}></p>
                           </div>
                         ))}
                       </div>
                     ) : b.type === "p" ? (
                       <p set:html={b.html} />
-                    ) : b.type === "h2" ? (
-                      <h2>{b.text}</h2>
-                    ) : b.type === "h3" ? (
-                      <h3>{b.text}</h3>
                     ) : b.type === "ol" ? (
                       <ol class="list-decimal pl-6 space-y-2">{b.items.map((item: string) => <li set:html={item} />)}</ol>
-                    ) : b.type === "quote" ? (
-                      <blockquote><p set:html={b.html} />{b.cite && <cite>— {b.cite}</cite>}</blockquote>
                     ) : null}
                   </Fragment>
                 ))}
@@ -177,7 +147,7 @@ const preparedGroups = groups.map((group) => {
 
             {group.isFourComponents && (
               <section class="max-w-4xl mx-auto bg-slate-900 rounded-3xl p-8 md:p-12 shadow-xl text-white my-16">
-                <h2 class="text-3xl md:text-4xl font-semibold mb-10 text-center">{group.title}</h2>
+                <h2 class="text-3xl md:text-4xl font-semibold mb-10 text-center" style="color:#ffffff;">{group.title}</h2>
                 {group.blocks.map((b: any) => (
                   <Fragment>
                     {b.type === "ol" ? (
@@ -192,73 +162,56 @@ const preparedGroups = groups.map((group) => {
                                   <div class="flex items-center justify-center w-8 h-8 rounded-full bg-white/20 text-white font-bold text-sm">
                                     {idx + 1}
                                   </div>
-                                  <h3 class="text-xl font-semibold" set:html={title}></h3>
+                                   <h3 class="text-xl font-semibold" style="color:#ffffff;" set:html={title}></h3>
                                </div>
-                               <p class="text-white/80 leading-relaxed text-sm md:text-base" set:html={body}></p>
+                                <p class="leading-relaxed text-sm md:text-base" style="color:#f8fafc;" set:html={body}></p>
                              </div>
                            );
                         })}
                       </div>
                     ) : b.type === "p" ? (
-                      <p class="text-center text-white/80 max-w-2xl mx-auto text-lg leading-relaxed mb-6" set:html={b.html} />
+                       <p class="text-center text-white/90 max-w-2xl mx-auto text-lg leading-relaxed mb-6" set:html={b.html} />
                     ) : null}
                   </Fragment>
                 ))}
               </section>
             )}
 
-            {group.isFocus && (
-              <section class={`max-w-3xl mx-auto border rounded-3xl p-8 md:p-12 ${group.themeClasses} relative overflow-hidden`}>
-                <div class="flex items-center gap-4 mb-8">
-                  {group.iconKind && (
-                    <div class="p-3 bg-white rounded-xl shadow-sm border border-slate-100">
-                      {group.iconKind === "identity" && <Shield className="w-6 h-6 text-blue-600" />}
-                      {group.iconKind === "god" && <Sparkles className="w-6 h-6 text-purple-600" />}
-                      {group.iconKind === "spirit" && <Heart className="w-6 h-6 text-emerald-600" />}
-                    </div>
-                  )}
-                  <h2 class="text-3xl font-semibold text-slate-900">{group.title}</h2>
-                </div>
-                
+            {!group.isIntro && !group.isFourComponents && (
+              <section class="max-w-3xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-semibold text-slate-900 mb-8 pb-3 border-b-2 border-slate-200">{group.title}</h2>
                 <div class="space-y-6 text-slate-700 text-lg leading-relaxed">
-                  {group.blocks.map((b: any, idx: number) => (
-                    <Fragment>
-                      {idx === 0 && b.type === "p" ? (
-                        <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 mb-8 -mx-2 md:mx-0 transform -rotate-1 hover:rotate-0 transition-transform duration-300">
-                          <p class="text-xl md:text-2xl text-slate-900 font-medium leading-snug" set:html={b.html} />
-                        </div>
-                      ) : b.type === "ul" ? (
-                        <ul class="space-y-4 my-8 not-prose bg-white/50 rounded-2xl p-6 border border-slate-200/50">
-                          {b.items.map((item: string) => (
-                            <li class="flex gap-4 items-start">
-                              <div class="mt-1.5 w-2 h-2 rounded-full bg-slate-400 shrink-0"></div>
-                              <div class="text-slate-800 leading-relaxed font-medium" set:html={item} />
-                            </li>
-                          ))}
-                        </ul>
-                      ) : b.type === "p" ? (
-                        <p set:html={b.html} />
-                      ) : null}
-                    </Fragment>
-                  ))}
-                </div>
-              </section>
-            )}
-
-            {(group.isTogether || group.isEnhances) && (
-              <section class="max-w-3xl mx-auto space-y-6">
-                <h2 class="text-2xl md:text-3xl font-semibold text-slate-900 mb-6 pb-2 border-b-2 border-slate-200 inline-block">{group.title}</h2>
-                <div class="prose-p:text-lg prose-p:leading-relaxed prose-p:text-slate-700 space-y-6">
                   {group.blocks.map((b: any) => (
                     <Fragment>
                       {b.type === "p" ? (
                         <p set:html={b.html} />
+                      ) : b.type === "h3" ? (
+                        <h3 class={`text-2xl font-semibold text-slate-900 pt-8 ${/^\d+\./.test(b.text) ? "mt-12 border-t border-slate-200" : "mt-8"}`}>{b.text}</h3>
                       ) : b.type === "ul" ? (
-                        <ul class="space-y-3 my-8 pl-6 border-l-4 border-slate-200">
-                          {b.items.map((item: string) => (
-                            <li class="text-slate-700 text-lg leading-relaxed pl-2" set:html={item} />
-                          ))}
+                        <ul class="space-y-3 my-7 pl-6 border-l-4 border-slate-200">
+                          {b.items.map((item: string) => <li class="pl-2" set:html={item} />)}
                         </ul>
+                      ) : b.type === "ol" ? (
+                        <ol class="space-y-3 my-7 pl-8 list-decimal marker:font-semibold">
+                          {b.items.map((item: string) => <li class="pl-2" set:html={item} />)}
+                        </ol>
+                      ) : b.type === "table" ? (
+                        <div class="overflow-x-auto my-8 rounded-2xl border border-slate-200 bg-white shadow-sm">
+                          <table class="w-full border-collapse text-left text-base">
+                            <thead class="bg-slate-900 text-white">
+                              <tr>
+                                {b.headers.map((header: string) => <th scope="col" class="px-5 py-4 font-semibold" style="color:#ffffff;" set:html={header} />)}
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {b.rows.map((row: string[], rowIndex: number) => (
+                                <tr class={rowIndex % 2 ? "bg-slate-50" : "bg-white"}>
+                                  {row.map((cell: string) => <td class="px-5 py-4 align-top border-t border-slate-200" set:html={cell} />)}
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
                       ) : null}
                     </Fragment>
                   ))}

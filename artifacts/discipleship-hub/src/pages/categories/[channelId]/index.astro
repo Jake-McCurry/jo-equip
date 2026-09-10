@@ -37,7 +37,10 @@ function exploreLabel(subId: string): string {
   const children = subTopics.filter(s => s.parentId === subId);
   const sub = subTopics.find(s => s.id === subId);
   const listed = (sub?.items ?? []).filter((i: { unlisted?: boolean }) => !i.unlisted);
-  const count = children.length > 0 ? children.length : listed.length;
+  // Total Life Discipleship also presents the featured Identity-Centered
+  // Heart Transformation card alongside its two child-topic cards.
+  const featuredCount = subId === "total-life-discipleship-principles" ? 1 : 0;
+  const count = children.length > 0 ? children.length + featuredCount : listed.length;
   if (count > 0) return `Explore ${count} ${count === 1 ? "Topic" : "Topics"}`;
   return "Explore";
 }

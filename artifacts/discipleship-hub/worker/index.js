@@ -69,6 +69,7 @@ const VALID_SOURCES = new Set(["jo-equip-books"]);
 const VALID_BOOK_IDS = new Set([
   "knowing-god",
   "adventure-of-living-with-jesus",
+  "a-heart-after-god",
   "who-is-the-real-jesus",
   "has-science-discovered-god",
   "extraordinary-evangelism",

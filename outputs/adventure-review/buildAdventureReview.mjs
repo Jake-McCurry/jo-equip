@@ -46,11 +46,11 @@ const SOURCE_COVER = resolve(
   "attached_assets/Adventure-of-Living-with-Jesus-illustrated-revised_1789076924927.jpeg",
 );
 const OUTPUT_DOCX = join(OUT_DIR, "The_Adventure_of_Living_with_Jesus_review_edition.docx");
-const OUTPUT_PDF = join(OUT_DIR, "The_Adventure_of_Living_with_Jesus_review_edition.pdf");
-const OUTPUT_HTML = join(OUT_DIR, "The_Adventure_of_Living_with_Jesus_review_proof.html");
-const OUTPUT_AUDIT_JSON = join(OUT_DIR, "adventure-review-audit.json");
-const OUTPUT_AUDIT_TXT = join(OUT_DIR, "adventure-review-audit.txt");
-const RENDER_DIR = join(OUT_DIR, "rendered");
+const OUTPUT_PDF = join(OUT_DIR, "The_Adventure_of_Living_with_Jesus_styled_review.pdf");
+const OUTPUT_HTML = join(OUT_DIR, "The_Adventure_of_Living_with_Jesus_styled_review_proof.html");
+const OUTPUT_AUDIT_JSON = join(OUT_DIR, "adventure-review-styled-audit.json");
+const OUTPUT_AUDIT_TXT = join(OUT_DIR, "adventure-review-styled-audit.txt");
+const RENDER_DIR = join(OUT_DIR, "styled-rendered");
 
 const puppeteer = require(require.resolve("puppeteer", { paths: [resolve(ROOT, "scripts")] }));
 const mammoth = require(require.resolve("mammoth", { paths: [resolve(ROOT, "scripts")] }));
@@ -443,68 +443,136 @@ function addHeadingIdsAndToc(body) {
 }
 
 const PROOF_CSS = `
-@page { size: Letter; margin: 0.68in 0.72in 0.72in; }
+@page { size: A4; margin: 0.62in 0.66in 0.65in; }
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
 body {
   color: #2C2C2C;
   font-family: Caladea, "Caladea Regular", Georgia, serif;
   font-size: 11.2pt;
-  line-height: 1.28;
+  line-height: 1.42;
   font-variant-ligatures: none;
   font-feature-settings: "liga" 0, "clig" 0;
-  max-width: 7.06in;
+  max-width: 6.95in;
   margin: 0 auto;
 }
 img { display: block; max-width: 100%; height: auto; }
-p { margin: 0 0 0.12in; orphans: 3; widows: 3; }
+p { margin: 0 0 0.15in; orphans: 3; widows: 3; }
 a { color: #1B4F72; text-decoration: underline; }
-strong { font-family: Carlito, Arial, sans-serif; }
+strong { font-family: Caladea, Georgia, serif; font-weight: 700; }
 em { font-style: italic; }
 h1, h2, h3, h4 {
   color: #1B4F72;
-  font-family: Carlito, Arial, sans-serif;
-  line-height: 1.12;
+  font-family: Caladea, Georgia, serif;
+  line-height: 1.18;
   break-after: avoid-page;
 }
-h1 { font-size: 23pt; margin: 0 0 0.22in; break-before: page; }
-h2 { font-size: 16pt; margin: 0.2in 0 0.1in; }
-h3 { font-size: 13pt; margin: 0.16in 0 0.08in; }
+h1 {
+  color: #FFFFFF;
+  font-family: Carlito, Arial, sans-serif;
+  font-size: 22pt;
+  font-weight: 400;
+  text-align: center;
+  background: linear-gradient(105deg, #0D4266 0%, #287FA9 100%);
+  border-bottom: 3px solid #D3A242;
+  border-radius: 5px;
+  padding: 0.22in 0.16in 0.18in;
+  margin: 0 0 0.27in;
+  break-before: page;
+}
+h2 { font-size: 15pt; font-weight: 700; margin: 0.23in 0 0.1in; }
+h3 { font-size: 13pt; font-weight: 700; margin: 0.18in 0 0.09in; }
 .cover {
-  min-height: 9.92in;
+  min-height: 10.1in;
   display: flex;
   justify-content: center;
   align-items: center;
   break-after: page;
   page-break-after: always;
 }
-.cover img { display: block; width: min(100%, 6.82in); max-height: 9.92in; object-fit: contain; }
+.cover img { display: block; width: min(100%, 6.82in); max-height: 10.1in; object-fit: contain; }
 .source-toc { break-before: page; page-break-before: always; }
-.source-toc h2 { margin-top: 0; }
-.source-toc ol { list-style: none; margin: 0.05in 0 0; padding-left: 0; }
-.source-toc li { margin: 0 0 0.06in; padding-left: 0; }
+.source-toc h2 {
+  color: #FFFFFF;
+  font-family: Carlito, Arial, sans-serif;
+  font-size: 21pt;
+  font-weight: 400;
+  text-align: center;
+  background: linear-gradient(105deg, #0D4266 0%, #287FA9 100%);
+  border-bottom: 3px solid #D3A242;
+  border-radius: 5px;
+  padding: 0.2in 0.14in 0.15in;
+  margin: 0 0 0.22in;
+}
+.source-toc ol { list-style: none; margin: 0; padding: 0; }
+.source-toc li {
+  margin: 0;
+  padding: 0.08in 0.05in;
+  border-bottom: 1px solid #E1E4E7;
+}
 .source-table {
   width: 100%;
   border-collapse: collapse;
-  margin: 0.13in 0 0.16in;
-  font-size: 10.3pt;
-  line-height: 1.2;
+  margin: 0.16in 0 0.2in;
+  font-size: 10.9pt;
+  line-height: 1.36;
   break-inside: avoid;
   page-break-inside: avoid;
 }
 .source-table td, .source-table th {
-  border: 1px solid #D0D7DE;
-  padding: 0.10in 0.12in;
+  border: 1px solid #D6DDE4;
+  padding: 0.13in 0.14in;
   vertical-align: top;
 }
-.source-table p { margin: 0 0 0.07in; }
+.source-table p { margin: 0 0 0.1in; }
 .source-table p:last-child { margin-bottom: 0; }
 .source-table img { max-width: 100%; height: auto; }
-.qa-writing-table { break-inside: avoid; page-break-inside: avoid; }
-.qa-writing-table td { background: #FFFFFF; }
+.qa-writing-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid #D6DDE4;
+  border-radius: 6px;
+  background: #FFFFFF;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.qa-writing-table td { background: #FFFFFF !important; border: 0; }
+.qa-writing-table p:first-child {
+  color: #153E59;
+  font-family: Carlito, Arial, sans-serif;
+  font-weight: 700;
+}
+.qa-writing-table .writing-line {
+  color: transparent;
+  font-size: 1px;
+  line-height: 0.18in;
+  min-height: 0.2in;
+  border-bottom: 1.5px solid #7E8B99;
+  margin: 0.02in 0.04in 0.05in;
+}
 .response-grid { font-size: 8.2pt; line-height: 1.1; }
 .response-grid td { padding: 0.04in 0.045in; text-align: center; }
 .response-grid td:first-child { text-align: left; }
+.source-table-13,
+.source-table-27,
+.source-table-34 {
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid #E2DED2;
+  border-left: 4px solid #D3A242;
+  border-radius: 4px;
+  background: #F8F3E7;
+}
+.source-table-13 td,
+.source-table-27 td,
+.source-table-34 td {
+  background: #F8F3E7 !important;
+  border: 0;
+  padding: 0.16in 0.17in;
+}
+.source-table-13 strong,
+.source-table-27 strong,
+.source-table-34 strong { color: #153E59; }
 `;
 
 async function renderProof(sourceTableMeta) {
@@ -523,6 +591,9 @@ async function renderProof(sourceTableMeta) {
   let body = converted.value;
   body = body.replace(/^<p>(\s*<img\b[\s\S]*?\/?>\s*)<\/p>/, '<div class="cover">$1</div>');
   body = addHeadingIdsAndToc(body);
+  // Keep every underscore character in the HTML/PDF text stream, but render
+  // the source writing space as a clean ruled line like the reference edition.
+  body = body.replace(/<p>(\s*_{5,}\s*)<\/p>/g, '<p class="writing-line">$1</p>');
   body = decorateTables(body, sourceTableMeta);
   const html = `<!doctype html><html><head><meta charset="utf-8"><title>The Adventure of Living with Jesus — Review Proof</title><style>${PROOF_CSS}</style></head><body>${body}</body></html>`;
   writeFileSync(OUTPUT_HTML, html);
@@ -559,7 +630,7 @@ async function renderProof(sourceTableMeta) {
     await page.evaluate(() => document.fonts?.ready);
     await page.pdf({
       path: OUTPUT_PDF,
-      format: "Letter",
+      format: "A4",
       printBackground: true,
       preferCSSPageSize: true,
       displayHeaderFooter: false,
@@ -573,7 +644,7 @@ async function renderProof(sourceTableMeta) {
   // prepending the exact supplied JPEG as a contained, unnumbered cover.
   const interiorPdf = await PDFDocument.load(readFileSync(OUTPUT_PDF));
   const reviewPdf = await PDFDocument.create();
-  const coverPage = reviewPdf.addPage([612, 792]);
+  const coverPage = reviewPdf.addPage([595.28, 841.89]);
   const coverImage = await reviewPdf.embedJpg(readFileSync(SOURCE_COVER));
   const coverScale = Math.min(
     coverPage.getWidth() / coverImage.width,
@@ -620,8 +691,10 @@ function pageSelections(pdfPath, pageCount) {
   return [
     { label: "cover", page: 1 },
     { label: "toc", page: findPage("Contents", Math.min(2, pageCount || 1)) },
+    { label: "chapter-banner", page: findPage("Something real has begun in your life.", Math.min(4, pageCount || 1)) },
     { label: "first-writing", page: findPage("What do you hope Jesus", Math.min(3, pageCount || 1)) },
     { label: "ashley-story", page: findPage("Ashley’s Story", Math.min(4, pageCount || 1)) },
+    { label: "qa", page: findPage("What does Galatians 5:16", Math.min(6, pageCount || 1)) },
     { label: "lineart", page: findPage(["The path ahead:", "How to Walk This Path"], Math.min(4, pageCount || 1)) },
   ];
 }
@@ -715,6 +788,7 @@ function buildAudit(sourceXml, finalXml, docxInfo, sourceTableMeta, html, pageCo
       pdfPages: pageCount,
       proofHtml: OUTPUT_HTML,
       proofHtmlBytes: statSync(OUTPUT_HTML).size,
+      pageGeometry: "A4 (595.28 × 841.89 pt)",
       renderedPages: renderedPages.map((selection) => selection.page),
       renderedRepresentativePages: renderedPages,
       coverPageTextEmpty: !extractedPdfText.split("\f")[0].trim(),
@@ -756,7 +830,8 @@ function buildAudit(sourceXml, finalXml, docxInfo, sourceTableMeta, html, pageCo
       htmlTables: countMatches(html, /<table\b/g),
       htmlImages: countMatches(html, /<img\b/g),
       htmlLinks: countMatches(html, /<a\b/g),
-      tocLinks: countMatches(html, /class="source-toc"[\s\S]*?<\/nav>/g),
+      tocLinks: countMatches((html.match(/<nav class="source-toc"[\s\S]*?<\/nav>/) || [""])[0], /<a\b/g),
+      tocEntries: countMatches((html.match(/<nav class="source-toc"[\s\S]*?<\/nav>/) || [""])[0], /<li\b/g),
       layout: layoutAudit,
     },
   };
@@ -783,6 +858,7 @@ async function main() {
       `Review status: ${audit.reviewStatus}`,
       `DOCX: ${OUTPUT_DOCX} (${audit.output.docxBytes} bytes)`,
       `PDF: ${OUTPUT_PDF} (${audit.output.pdfBytes} bytes, ${audit.output.pdfPages} pages)`,
+      `Page geometry: ${audit.output.pageGeometry}`,
       `Source tables/cells/drawings/media: ${audit.source.tables}/${audit.source.cells}/${audit.source.inlineDrawings}/${audit.source.media}`,
       `Final tables/cells/drawings/media: ${audit.contentVerification.finalTables}/${audit.contentVerification.finalCells}/${audit.contentVerification.finalInlineDrawings}/${docxInfo.finalMediaNames.length}`,
       `Source text nodes unchanged: ${audit.contentVerification.sourceTextNodesUnchanged}`,
@@ -792,6 +868,7 @@ async function main() {
       `Narrative shading preserved: ${audit.shading.narrativeTablesPreserved}`,
       `PDF substantive paragraph audit: ${audit.contentVerification.pdfText.checked} checked, ${audit.contentVerification.pdfText.missing} missing`,
       `Print layout: ${audit.proof.layout.contentWidthPx}px content, ${audit.proof.layout.maxImageWidthPx}px max image, ${audit.proof.layout.imageOverflowCount} image overflows, horizontal overflow=${audit.proof.layout.documentHorizontalOverflow}`,
+      `TOC entries/links: ${audit.proof.tocEntries}/${audit.proof.tocLinks}`,
       `PDF cover has no extracted text/page number: ${audit.output.coverPageTextEmpty}`,
       `Rendered representative pages: ${renderedPages.map((selection) => `${selection.label}=${selection.page}`).join(", ")}`,
     ].join("\n") + "\n",

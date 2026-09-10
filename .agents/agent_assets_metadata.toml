@@ -329,3 +329,17 @@ mtime_ms = 1789077748589
 storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/9d608c58-76f5-44a6-b23c-c815c7ca5e33/1d3b3ce4-71de-49e5-a394-39bdfba69802"
 storage_version_token = "1789077819703610"
 content_type = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+
+[[outputs]]
+id = "aeW-B7EhtyupMgorav_Bk"
+uri = "file://outputs/adventure-review/The_Adventure_of_Living_with_Jesus_styled_review.pdf"
+type = "pdf"
+title = "Download the Adventure Book — Styled Review PDF"
+description = "40-page A4 PDF styled to match your illustrated reference, with blue-and-gold chapter banners, cream testimony blocks, white writing areas, cleaned artwork, the complete revised manuscript, and your new cover."
+logical_id = "f9f9fdce-757c-463a-a9c6-7504818bd262"
+content_hash = "sha256:6a93e6943805a9a6a9285adc3c2284b24caef850e9030aa51d69a9806d0cda1c"
+size = 9782866
+mtime_ms = 1789078316864
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/f9f9fdce-757c-463a-a9c6-7504818bd262/fa5ba911-9af0-4a18-b7b4-c82e5312c573"
+storage_version_token = "1789078373466721"
+content_type = "application/pdf"

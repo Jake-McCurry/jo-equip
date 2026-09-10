@@ -287,3 +287,17 @@ mtime_ms = 1789064656216
 storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/e251d2be-91a2-43c8-8937-b4b7691f23d0/de2e6475-6e8f-400c-801a-23219db8cbca"
 storage_version_token = "1789064714082794"
 content_type = "application/pdf"
+
+[[outputs]]
+id = "4ExnNAzT0kajrMsfs9vUy"
+uri = "file://artifacts/discipleship-hub/public/books/a-heart-after-god.pdf"
+type = "pdf"
+title = "A Heart After God — Complete PDF"
+description = "30-page ebook with the supplied cover, series-matched formatting, numbered contents, all seven reflections, illustrations, and tables. Approximately 2 MB."
+logical_id = "e3a31e7e-156c-4197-9c4a-a5cc1e57aaaf"
+content_hash = "sha256:9f2881581a6b8b000f7fe1ac3fd53877af78f3b26f05c56a883e75970d33954f"
+size = 2001572
+mtime_ms = 1789074565404
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/e3a31e7e-156c-4197-9c4a-a5cc1e57aaaf/bf1147e1-0c32-4bc3-aabb-6257c8ba162d"
+storage_version_token = "1789074880495971"
+content_type = "application/pdf"

@@ -20,13 +20,16 @@ export interface Book {
   title: string;
   subtitle?: string;
   author?: string;
+  description?: string;
   cover: string;
   pdf: string;
   editions?: BookEdition[];
+  /** Keep the book available at its direct URL without showing it in the library. */
+  unlisted?: boolean;
 }
 
-/* Display order matches the "JO EQUIP BOOKS" reference document (July 2026). */
-export const books: Book[] = [
+/* The catalog retains every book so direct URLs and retired download pages keep working. */
+const bookCatalog: Book[] = [
   {
     id: "knowing-god",
     title: "Knowing God",
@@ -38,6 +41,15 @@ export const books: Book[] = [
     title: "The Adventure of Living with Jesus",
     cover: "/books/covers/adventure-of-living-with-jesus.jpg",
     pdf: "/books/adventure-of-living-with-jesus.pdf",
+  },
+  {
+    id: "a-heart-after-god",
+    title: "A Heart After God",
+    subtitle: "Seven Reflections on the Inner Life",
+    description:
+      "Seven reflections on the inner life, including the importance of guarding your heart, living from your new identity in Christ, and depending on the Holy Spirit.",
+    cover: "/books/covers/a-heart-after-god.jpg",
+    pdf: "/books/a-heart-after-god.pdf",
   },
   {
     id: "who-is-the-real-jesus",
@@ -76,6 +88,7 @@ export const books: Book[] = [
     author: "Kevin Seacat",
     cover: "/books/covers/the-abiding-room.jpg",
     pdf: "/books/the-abiding-room.pdf",
+    unlisted: true,
   },
   {
     id: "extraordinary-evangelism",
@@ -209,3 +222,40 @@ export const books: Book[] = [
     pdf: "/books/eight-great-ways-to-honor-your-wife.pdf",
   },
 ];
+
+/* Display order for the public library. The Abiding Room remains in the
+   catalog for its direct page and PDF, but is intentionally not listed. */
+const listedBookIds = [
+  "adventure-of-living-with-jesus",
+  "a-heart-after-god",
+  "your-new-identity-in-christ",
+  "beholding-the-majesty-of-god",
+  "walking-in-the-spirit",
+  "who-is-the-real-jesus",
+  "has-science-discovered-god",
+  "extraordinary-evangelism",
+  "extraordinary-evangelism-student-guide",
+  "knowing-god",
+  "soul-prescription",
+  "5-steps-to-break-destructive-behavior",
+  "new-life-in-christ",
+  "hearing-the-voice-of-god",
+  "40-days-of-gods-love",
+  "timeless-love-transforming-love",
+  "eight-great-ways-to-honor-your-husband",
+  "eight-great-ways-to-honor-your-wife",
+  "from-coping-to-cure",
+  "struggle-for-inner-peace",
+  "i-want-happiness-now",
+] as const;
+
+const booksById = new Map(bookCatalog.map(book => [book.id, book]));
+
+/* `books` includes unlisted catalog entries for direct/static routes. */
+export const books: Book[] = [
+  ...listedBookIds.map(id => booksById.get(id)!),
+  ...bookCatalog.filter(book => book.unlisted),
+];
+
+/** Books shown on the public /books listing and its CollectionPage JSON-LD. */
+export const listedBooks = books.filter(book => !book.unlisted);

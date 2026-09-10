@@ -32,6 +32,7 @@ import puppeteer, { type Browser } from "puppeteer";
 import mammoth from "mammoth";
 import { PDFDocument } from "pdf-lib";
 import { parseMajestyDocx, MAJESTY_DOCX_CSS } from "./majestyDocx.js";
+import { parseHeartDocx, HEART_DOCX_CSS } from "./heartDocx.js";
 
 const ROOT = resolve(process.cwd(), "..");
 
@@ -46,6 +47,8 @@ interface BookConfig {
   /* Crop this many PDF points off the bottom of the cover when it overflows
      the letter page (rest is cropped from the top). */
   coverBottomCrop: number;
+  /* Preserve the complete supplied artwork rather than filling/cropping. */
+  coverFit?: "fill-width" | "contain";
   out: string;
   title: string;
   /* Optional smaller title size (pt) so long titles fit on one line. */
@@ -100,6 +103,20 @@ const BOOKS: BookConfig[] = [
     out: resolve(ROOT, "artifacts/discipleship-hub/public/books/beholding-the-majesty-of-god.pdf"),
     title: "Beholding the Majesty of God",
     subtitleHtml: "<em>Exploring His Divine Attributes</em>",
+    tocHeading: "Contents",
+  },
+  {
+    key: "heart",
+    docx: resolve(ROOT, "attached_assets/A_Heart_After_God_final_version_(v.090926J)_1789074228131.docx"),
+    source: "docx",
+    typography: "strict",
+    cover: resolve(ROOT, "attached_assets/a-heart-after-god-cover.jpg"),
+    coverType: "jpg",
+    coverBottomCrop: 0,
+    coverFit: "contain",
+    out: resolve(ROOT, "artifacts/discipleship-hub/public/books/a-heart-after-god.pdf"),
+    title: "A Heart After God",
+    subtitleHtml: "<em>Seven Reflections on the Inner Life</em>",
     tocHeading: "Contents",
   },
   {
@@ -1187,6 +1204,7 @@ const STRICT_CSS = `
 function cssFor(book: BookConfig): string {
   const base = book.typography === "strict" ? STRICT_CSS : CSS;
   if (book.key === "majesty" && book.source === "docx") return base + MAJESTY_DOCX_CSS;
+  if (book.key === "heart") return base + HEART_DOCX_CSS;
   return book.key === "adventure" ? base + ADVENTURE_EXTRA_CSS : base;
 }
 
@@ -1281,12 +1299,25 @@ async function prependCoverAndCompress(book: BookConfig, interiorPath: string): 
   const doc = await PDFDocument.load(readFileSync(interiorPath));
   const coverBytes = readFileSync(book.cover);
   const coverImage = book.coverType === "png" ? await doc.embedPng(coverBytes) : await doc.embedJpg(coverBytes);
+  if (book.coverFit === "contain") {
+    const scale = Math.min(PAGE_W / coverImage.width, PAGE_H / coverImage.height);
+    const width = coverImage.width * scale;
+    const height = coverImage.height * scale;
+    const coverPage = doc.insertPage(0, [PAGE_W, PAGE_H]);
+    coverPage.drawImage(coverImage, {
+      x: (PAGE_W - width) / 2,
+      y: (PAGE_H - height) / 2,
+      width,
+      height,
+    });
+  } else {
   const scale = PAGE_W / coverImage.width;
   const drawnH = coverImage.height * scale;
   const overflow = Math.max(0, drawnH - PAGE_H);
   const bottomCrop = Math.min(book.coverBottomCrop, overflow);
   const coverPage = doc.insertPage(0, [PAGE_W, PAGE_H]);
   coverPage.drawImage(coverImage, { x: 0, y: -bottomCrop, width: PAGE_W, height: drawnH });
+  }
 
   const tmp = `${book.out}.uncompressed.tmp.pdf`;
   writeFileSync(tmp, await doc.save());
@@ -1340,7 +1371,12 @@ async function buildBook(browser: Browser, book: BookConfig): Promise<void> {
     const { value: rawHtml, messages } = await mammoth.convertToHtml({ path: book.docx }, strictOpts);
     const warnings = messages.filter(m => m.type === "warning" && !/Unrecognised (run|paragraph) style/.test(m.message));
     if (warnings.length) console.warn("  mammoth warnings:", warnings.map(m => m.message).join("; "));
-    parsed = book.key === "majesty" ? await parseMajestyDocx(browser, rawHtml) : parseBook(book, rawHtml);
+    parsed =
+      book.key === "majesty"
+        ? await parseMajestyDocx(browser, rawHtml)
+        : book.key === "heart"
+          ? await parseHeartDocx(browser, rawHtml)
+          : parseBook(book, rawHtml);
   }
   console.log(`  chapters: ${parsed.chapters.map(c => c.key).join(", ")}`);
 

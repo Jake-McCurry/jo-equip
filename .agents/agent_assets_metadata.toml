@@ -301,3 +301,31 @@ mtime_ms = 1789074565404
 storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/e3a31e7e-156c-4197-9c4a-a5cc1e57aaaf/bf1147e1-0c32-4bc3-aabb-6257c8ba162d"
 storage_version_token = "1789074880495971"
 content_type = "application/pdf"
+
+[[outputs]]
+id = "yZs2bzhTpm70JLKmgAmQG"
+uri = "file://outputs/adventure-review/The_Adventure_of_Living_with_Jesus_review_edition.pdf"
+type = "pdf"
+title = "The Adventure of Living with Jesus — Review Draft"
+description = "39-page review PDF with the new cover, full manuscript, cleaned illustration backgrounds, white Q&A writing areas, and retained colored testimony blocks. Not installed on the website."
+logical_id = "7ef04fc3-94e5-4cc2-a895-60cac179a365"
+content_hash = "sha256:18f7ded69ddb0cd1868b61cd989e19668684d9969d7d46ec48fee7b3d6348793"
+size = 9704884
+mtime_ms = 1789077755185
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/7ef04fc3-94e5-4cc2-a895-60cac179a365/b2a2b490-e118-42af-84a7-1092b4a47869"
+storage_version_token = "1789077818803471"
+content_type = "application/pdf"
+
+[[outputs]]
+id = "WPC2lmmE5PdKOc_axjJ7s"
+uri = "file://outputs/adventure-review/The_Adventure_of_Living_with_Jesus_review_edition.docx"
+type = "word_document"
+title = "The Adventure of Living with Jesus — Editable Review Copy"
+description = "Editable Word manuscript with the new cover, transparent artwork, and white response areas. Source wording and table structure preserved."
+logical_id = "9d608c58-76f5-44a6-b23c-c815c7ca5e33"
+content_hash = "sha256:54b723a8e17587e13eedb4bb4a7b631e2c88a8bb83e3676b92f6ea6cba4d6399"
+size = 8317932
+mtime_ms = 1789077748589
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/9d608c58-76f5-44a6-b23c-c815c7ca5e33/1d3b3ce4-71de-49e5-a394-39bdfba69802"
+storage_version_token = "1789077819703610"
+content_type = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"

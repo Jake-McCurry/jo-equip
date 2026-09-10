@@ -1,0 +1,233 @@
+{
+  "generatedAt": "2026-09-10T22:02:35.970Z",
+  "reviewStatus": "review-draft",
+  "source": {
+    "file": "/home/runner/workspace/attached_assets/The_Adventure_of_Living_with_Jesus_(The_Guide)_Final_Editoria_1789076575854.docx",
+    "sha256": "bf47dbf14bcc9b204b27f04d05d72fa8ee93753c8641106e7e8408428e981390",
+    "documentXmlSha256": "a231f0ce56b00fab271fc4d772aa4896cfcdc096d6b546ff7ae904a9127e9407",
+    "textNodes": 1135,
+    "substantiveParagraphs": 606,
+    "tables": 80,
+    "cells": 129,
+    "inlineDrawings": 10,
+    "media": 10,
+    "fills": {
+      "FBF6F1": 2,
+      "F4F7FA": 87,
+      "1B4F72": 16,
+      "FFFBF6": 3
+    }
+  },
+  "output": {
+    "docx": "/home/runner/workspace/outputs/adventure-review/The_Adventure_of_Living_with_Jesus_review_edition.docx",
+    "docxBytes": 8317932,
+    "pdf": "/home/runner/workspace/outputs/adventure-review/The_Adventure_of_Living_with_Jesus_review_edition.pdf",
+    "pdfBytes": 9704884,
+    "pdfPages": 39,
+    "proofHtml": "/home/runner/workspace/outputs/adventure-review/The_Adventure_of_Living_with_Jesus_review_proof.html",
+    "proofHtmlBytes": 11127015,
+    "renderedPages": [
+      1,
+      3,
+      5,
+      9,
+      5
+    ],
+    "renderedRepresentativePages": [
+      {
+        "label": "cover",
+        "page": 1
+      },
+      {
+        "label": "toc",
+        "page": 3
+      },
+      {
+        "label": "first-writing",
+        "page": 5
+      },
+      {
+        "label": "ashley-story",
+        "page": 9
+      },
+      {
+        "label": "lineart",
+        "page": 5
+      }
+    ],
+    "coverPageTextEmpty": true
+  },
+  "contentVerification": {
+    "sourceTextNodesUnchanged": true,
+    "textMismatches": [],
+    "sourceTables": 80,
+    "finalTables": 80,
+    "sourceCells": 129,
+    "finalCells": 129,
+    "sourceInlineDrawings": 10,
+    "finalInlineDrawings": 11,
+    "pdfText": {
+      "checked": 606,
+      "missing": 0,
+      "missingExamples": [],
+      "allCheckedFound": true
+    }
+  },
+  "artwork": {
+    "manifest": "/home/runner/workspace/outputs/adventure-review/images/manifest.json",
+    "cleanedManifestPresent": true,
+    "sourceArtworkEmbedded": true,
+    "finalArtworkEmbeddedPlusCover": true,
+    "finalMediaNames": [
+      "image1.png",
+      "image10.png",
+      "image11.jpeg",
+      "image2.png",
+      "image3.png",
+      "image4.png",
+      "image5.png",
+      "image6.png",
+      "image7.png",
+      "image8.png",
+      "image9.png"
+    ],
+    "coverPrepended": true,
+    "coverHasNoText": true
+  },
+  "shading": {
+    "qaTables": [
+      2,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14,
+      16,
+      17,
+      18,
+      19,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      28,
+      30,
+      32,
+      33,
+      35,
+      36,
+      37,
+      39,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      50,
+      51,
+      52,
+      53,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      62,
+      63,
+      64,
+      65,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      78,
+      79
+    ],
+    "responseGridTables": [
+      29,
+      38
+    ],
+    "sourceFills": {
+      "FBF6F1": 2,
+      "F4F7FA": 87,
+      "1B4F72": 16,
+      "FFFBF6": 3
+    },
+    "finalFills": {
+      "FBF6F1": 2,
+      "F4F7FA": 9,
+      "1B4F72": 16,
+      "FFFBF6": 3
+    },
+    "qaFinalLightFillCount": 0,
+    "responseFinalLightCells": [
+      {
+        "table": 29,
+        "lightFillCells": 0,
+        "navyCells": 3
+      },
+      {
+        "table": 38,
+        "lightFillCells": 0,
+        "navyCells": 3
+      }
+    ],
+    "narrativeTablesPreserved": true,
+    "narrativeFills": {
+      "13": {
+        "source": [
+          "FFFBF6"
+        ],
+        "final": [
+          "FFFBF6"
+        ]
+      },
+      "27": {
+        "source": [
+          "FFFBF6"
+        ],
+        "final": [
+          "FFFBF6"
+        ]
+      },
+      "34": {
+        "source": [
+          "FFFBF6"
+        ],
+        "final": [
+          "FFFBF6"
+        ]
+      }
+    }
+  },
+  "proof": {
+    "htmlTables": 80,
+    "htmlImages": 11,
+    "htmlLinks": 14,
+    "tocLinks": 1,
+    "layout": {
+      "contentWidthPx": 677.75,
+      "maxImageWidthPx": 677.75,
+      "maxImageNaturalWidthPx": 3252,
+      "imageOverflowCount": 0,
+      "documentHorizontalOverflow": false
+    }
+  }
+}

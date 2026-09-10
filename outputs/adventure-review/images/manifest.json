@@ -1,0 +1,132 @@
+{
+  "source_directory": "/tmp/adventure-review-inspect/adventure/word/media",
+  "output_directory": "/home/runner/workspace/outputs/adventure-review/images",
+  "purpose": "Adventure review image cleanup; alpha-only edits, no content regeneration",
+  "naming_note": "The extracted basenames place the cream line illustration at image1, the app screenshot at image9, and the website screenshot at image10; processing follows those actual source files.",
+  "coverage_limitations": [
+    "Opaque source RGB pixels are preserved exactly; transparent edges use hard, deterministic edge-connected masks and may retain a small source-colored matte on anti-aliased artwork.",
+    "Intentional white interiors of cards and device screens are protected with barriers, so some interior white remains opaque by design.",
+    "image4 and image5 are intentionally unchanged because their navy/orange teaching-panel fills reach the image edges."
+  ],
+  "images": {
+    "image1.png": {
+      "output": "image1.png",
+      "disposition": "cleaned_edge_connected_cream_margin",
+      "pixel_dimensions": {
+        "width": 1672,
+        "height": 742
+      },
+      "mode": "RGBA",
+      "method": "edge-connected warm-cream flood fill; artwork pixels retained",
+      "transparent_pixels_added": 1028009,
+      "notes": "Cream outside the illustrated navy/orange linework is transparent."
+    },
+    "image2.jpg": {
+      "output": "image2.png",
+      "disposition": "cleaned_edge_connected_white_margin",
+      "pixel_dimensions": {
+        "width": 1472,
+        "height": 704
+      },
+      "mode": "RGBA",
+      "method": "edge-connected near-white flood fill; original JPEG pixels retained",
+      "transparent_pixels_added": 725343,
+      "notes": "Output is PNG so the white page around both colored diagrams can be transparent."
+    },
+    "image3.png": {
+      "output": "image3.png",
+      "disposition": "cleaned_edge_connected_white_margin",
+      "pixel_dimensions": {
+        "width": 3252,
+        "height": 1031
+      },
+      "mode": "RGBA",
+      "method": "edge-connected near-white flood fill with three card-interior barriers",
+      "transparent_pixels_added": 294808,
+      "notes": "White card interiors remain opaque so lettering and panel backgrounds are preserved."
+    },
+    "image4.png": {
+      "output": "image4.png",
+      "disposition": "intentionally_unchanged",
+      "pixel_dimensions": {
+        "width": 1872,
+        "height": 1061
+      },
+      "mode": "RGBA",
+      "method": "copied as RGBA with fully opaque alpha",
+      "notes": "Intentional Exhale/Inhale navy and orange teaching panel reaches the image edges."
+    },
+    "image5.png": {
+      "output": "image5.png",
+      "disposition": "intentionally_unchanged",
+      "pixel_dimensions": {
+        "width": 1872,
+        "height": 632
+      },
+      "mode": "RGBA",
+      "method": "copied as RGBA with fully opaque alpha",
+      "notes": "Intentional navy fruit-of-the-Spirit teaching panel reaches the image edges."
+    },
+    "image6.png": {
+      "output": "image6.png",
+      "disposition": "cleaned_edge_connected_white_margin",
+      "pixel_dimensions": {
+        "width": 1516,
+        "height": 1785
+      },
+      "mode": "RGBA",
+      "method": "edge-connected near-white flood fill around the faucet diagram",
+      "transparent_pixels_added": 1565370,
+      "notes": "Black labels, faucet imagery, water, and sink remain untouched."
+    },
+    "image7.png": {
+      "output": "image7.png",
+      "disposition": "cleaned_edge_connected_white_margin",
+      "pixel_dimensions": {
+        "width": 1542,
+        "height": 640
+      },
+      "mode": "RGBA",
+      "method": "edge-connected near-white flood fill with diagram-panel barrier",
+      "transparent_pixels_added": 89288,
+      "notes": "The white interior of the five-ways diagram remains opaque."
+    },
+    "image8.png": {
+      "output": "image8.png",
+      "disposition": "cleaned_edge_connected_checkerboard",
+      "pixel_dimensions": {
+        "width": 1326,
+        "height": 899
+      },
+      "mode": "RGBA",
+      "method": "edge-connected neutral checkerboard flood fill",
+      "transparent_pixels_added": 945359,
+      "notes": "Navy/orange people, connection lines, and enclosed light interiors are retained."
+    },
+    "image9.png": {
+      "output": "image9.png",
+      "disposition": "cleaned_edge_connected_white_grid_margin",
+      "pixel_dimensions": {
+        "width": 648,
+        "height": 268
+      },
+      "mode": "RGBA",
+      "method": "edge-connected near-white/gray flood fill with five phone-screen barriers",
+      "transparent_pixels_added": 49667,
+      "notes": "Phone screens and their lettering stay opaque; outer white/grid page becomes transparent."
+    },
+    "image10.png": {
+      "output": "image10.png",
+      "disposition": "cleaned_outer_white_margin_only",
+      "pixel_dimensions": {
+        "width": 772,
+        "height": 326
+      },
+      "mode": "RGBA",
+      "method": "edge-connected near-white flood fill outside screenshot bounds",
+      "transparent_pixels_added": 16301,
+      "notes": "Website screenshot and reflection are preserved; only safely isolated outer white is transparent."
+    }
+  },
+  "comparison": "comparison.png"
+}

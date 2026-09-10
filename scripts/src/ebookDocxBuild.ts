@@ -31,6 +31,7 @@ import { spawnSync } from "node:child_process";
 import puppeteer, { type Browser } from "puppeteer";
 import mammoth from "mammoth";
 import { PDFDocument } from "pdf-lib";
+import { parseMajestyDocx, MAJESTY_DOCX_CSS } from "./majestyDocx.js";
 
 const ROOT = resolve(process.cwd(), "..");
 
@@ -90,15 +91,15 @@ const BOOKS: BookConfig[] = [
   },
   {
     key: "majesty",
-    docx: resolve(ROOT, "attached_assets/Beholding_the_Majesty_of_God_071426_1784055917121.pdf"),
-    source: "pdf",
+    docx: resolve(ROOT, "attached_assets/Beholding_the_Majesty_of_God_updated_ebook_260905_1789063973152.docx"),
+    source: "docx",
     typography: "strict",
     cover: resolve(ROOT, "attached_assets/majesty_cover_jo_logo_edit.png"),
     coverType: "png",
     coverBottomCrop: 12,
     out: resolve(ROOT, "artifacts/discipleship-hub/public/books/beholding-the-majesty-of-god.pdf"),
     title: "Beholding the Majesty of God",
-    subtitleHtml: "Explore His Divine Attributes",
+    subtitleHtml: "<em>Exploring His Divine Attributes</em>",
     tocHeading: "Contents",
   },
   {
@@ -185,7 +186,7 @@ interface Chapter {
   bodyHtml: string;
 }
 
-interface ParsedBook {
+export interface ParsedBook {
   frontPagesHtml: string;
   tocEntries: Array<
     | { kind: "entry"; labelText: string; key: string | null }
@@ -1185,6 +1186,7 @@ const STRICT_CSS = `
 
 function cssFor(book: BookConfig): string {
   const base = book.typography === "strict" ? STRICT_CSS : CSS;
+  if (book.key === "majesty" && book.source === "docx") return base + MAJESTY_DOCX_CSS;
   return book.key === "adventure" ? base + ADVENTURE_EXTRA_CSS : base;
 }
 
@@ -1338,13 +1340,14 @@ async function buildBook(browser: Browser, book: BookConfig): Promise<void> {
     const { value: rawHtml, messages } = await mammoth.convertToHtml({ path: book.docx }, strictOpts);
     const warnings = messages.filter(m => m.type === "warning" && !/Unrecognised (run|paragraph) style/.test(m.message));
     if (warnings.length) console.warn("  mammoth warnings:", warnings.map(m => m.message).join("; "));
-    parsed = parseBook(book, rawHtml);
+    parsed = book.key === "majesty" ? await parseMajestyDocx(browser, rawHtml) : parseBook(book, rawHtml);
   }
   console.log(`  chapters: ${parsed.chapters.map(c => c.key).join(", ")}`);
 
   const pass1Path = `${book.out}.pass1.tmp.pdf`;
   await renderPdf(browser, buildInteriorHtml(book, parsed, null, true), pass1Path);
   const pageNums = extractMarkerPages(pass1Path);
+  if (book.key === "majesty" && book.source === "docx") pageNums.set("FRONT", 1);
   unlinkSync(pass1Path);
   console.log(`  page map: ${[...pageNums.entries()].map(([k, v]) => `${k}→${v}`).join(" ")}`);
 
@@ -1354,7 +1357,9 @@ async function buildBook(browser: Browser, book: BookConfig): Promise<void> {
   }
 
   const interiorPath = `${book.out}.interior.tmp.pdf`;
-  await renderPdf(browser, buildInteriorHtml(book, parsed, pageNums, false), interiorPath);
+  const finalHtml = buildInteriorHtml(book, parsed, pageNums, false);
+  if (process.env.BOOK_PROOF_HTML) writeFileSync(process.env.BOOK_PROOF_HTML, finalHtml);
+  await renderPdf(browser, finalHtml, interiorPath);
   await prependCoverAndCompress(book, interiorPath);
   unlinkSync(interiorPath);
 }

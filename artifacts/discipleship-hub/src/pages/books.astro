@@ -32,6 +32,7 @@ const booksJsonLd = {
         "@type": "Book",
         "@id": `${SITE}/books/${b.id}#book`,
         "name": b.title,
+        ...(b.subtitle ? { "alternativeHeadline": b.subtitle } : {}),
         ...(b.author ? { "author": { "@type": "Person", "name": b.author } } : {}),
         "publisher": { "@id": "https://jesusonlineministries.org/#org" },
         "image": `${SITE}${b.cover}`,

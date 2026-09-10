@@ -18,6 +18,7 @@ export interface BookEdition {
 export interface Book {
   id: string;
   title: string;
+  subtitle?: string;
   author?: string;
   cover: string;
   pdf: string;
@@ -53,6 +54,7 @@ export const books: Book[] = [
   {
     id: "beholding-the-majesty-of-god",
     title: "Beholding the Majesty of God",
+    subtitle: "Exploring His Divine Attributes",
     cover: "/books/covers/beholding-the-majesty-of-god.jpg",
     pdf: "/books/beholding-the-majesty-of-god.pdf",
   },

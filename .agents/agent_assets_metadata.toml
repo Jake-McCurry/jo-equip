@@ -273,3 +273,17 @@ mtime_ms = 1788551607252
 storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/a619efbc-c2f9-46b8-b7fd-0ad19e2a326d/87dab1d6-b8de-4cc1-b908-724b8eb77755"
 storage_version_token = "1788551618957970"
 content_type = "application/pdf"
+
+[[outputs]]
+id = "DNXvkqRP_pSfJVZEdnBjQ"
+uri = "file://artifacts/discipleship-hub/public/books/beholding-the-majesty-of-god.pdf"
+type = "pdf"
+title = "Beholding the Majesty of God — Updated PDF"
+description = "Revised 97-page ebook in the existing series styling, with the updated manuscript, corrected Jeremiah 9:24 opening reference, and consistent attribute-section headings."
+logical_id = "e251d2be-91a2-43c8-8937-b4b7691f23d0"
+content_hash = "sha256:5139c493366d182dea06772cf429e71c444ce3440a88337eff0aa2f8ce5bb24b"
+size = 997931
+mtime_ms = 1789064656216
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/e251d2be-91a2-43c8-8937-b4b7691f23d0/de2e6475-6e8f-400c-801a-23219db8cbca"
+storage_version_token = "1789064714082794"
+content_type = "application/pdf"

@@ -29,11 +29,12 @@ const join = (p: string) =>
   (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
 
 const byline = book.author ? ` by ${book.author}` : "";
-const pageTitle = `${book.title} · Free Download · JO EQUIP`;
+const fullTitle = book.subtitle ? `${book.title}: ${book.subtitle}` : book.title;
+const pageTitle = `${fullTitle} · Free Download · JO EQUIP`;
 const languageNote = alternateEditions.length > 0
   ? ` Available in English and ${alternateEditions.map(edition => edition.language).join(", ")}.`
   : "";
-const pageDesc = `Free PDF download — ${book.title}${byline}. A practical discipleship resource from JesusOnline Ministries Equip.${languageNote}`;
+const pageDesc = `Free PDF download — ${fullTitle}${byline}. A practical discipleship resource from JesusOnline Ministries Equip.${languageNote}`;
 
 const SITE = "https://equip.jesusonline.com";
 const bookJsonLd = {
@@ -41,6 +42,7 @@ const bookJsonLd = {
   "@type": "Book",
   "@id": `${SITE}/books/${book.id}#book`,
   "name": book.title,
+  ...(book.subtitle ? { "alternativeHeadline": book.subtitle } : {}),
   ...(book.author ? { "author": { "@type": "Person", "name": book.author } } : {}),
   "publisher": { "@id": "https://jesusonlineministries.org/#org" },
   "image": `${SITE}${book.cover}`,
@@ -112,6 +114,11 @@ const bookJsonLd = {
           Free PDF · Book
         </span>
         <h1 class="text-3xl md:text-4xl mt-3 mb-3" style="color:#0b3c5d;">{book.title}</h1>
+        {book.subtitle && (
+          <p class="text-lg md:text-xl -mt-1 mb-4" style="color:#0b3c5d;">
+            {book.subtitle}
+          </p>
+        )}
         {book.author && (
           <p class="text-base mb-5" style="color:var(--color-muted-foreground);">
             by <span class="font-medium" style="color:#0b3c5d;">{book.author}</span>

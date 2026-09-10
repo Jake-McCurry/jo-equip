@@ -88,7 +88,6 @@ const bookCatalog: Book[] = [
     author: "Kevin Seacat",
     cover: "/books/covers/the-abiding-room.jpg",
     pdf: "/books/the-abiding-room.pdf",
-    unlisted: true,
   },
   {
     id: "extraordinary-evangelism",
@@ -223,8 +222,7 @@ const bookCatalog: Book[] = [
   },
 ];
 
-/* Display order for the public library. The Abiding Room remains in the
-   catalog for its direct page and PDF, but is intentionally not listed. */
+/* Display order for the public library. */
 const listedBookIds = [
   "adventure-of-living-with-jesus",
   "a-heart-after-god",
@@ -240,6 +238,7 @@ const listedBookIds = [
   "5-steps-to-break-destructive-behavior",
   "new-life-in-christ",
   "hearing-the-voice-of-god",
+  "the-abiding-room",
   "40-days-of-gods-love",
   "timeless-love-transforming-love",
   "eight-great-ways-to-honor-your-husband",

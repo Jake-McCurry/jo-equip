@@ -343,3 +343,17 @@ mtime_ms = 1789078316864
 storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/f9f9fdce-757c-463a-a9c6-7504818bd262/fa5ba911-9af0-4a18-b7b4-c82e5312c573"
 storage_version_token = "1789078373466721"
 content_type = "application/pdf"
+
+[[outputs]]
+id = "7_MGNtR5fCfYyfhLbeP4i"
+uri = "file://outputs/adventure-review/Adventure-Review.pdf"
+type = "pdf"
+title = "Adventure Book — Optimized Review PDF"
+description = "40-page styled review PDF, reduced to 1.4 MB and optimized for faster opening. All text and pages retained; images compressed for screen viewing. Website book remains unchanged."
+logical_id = "121c1a12-0e7b-4a96-87d3-06f5deaff2b3"
+content_hash = "sha256:23c2fff035ef3e3cbe2aa6ff3f3e9666670776c41993883c20317c31de221bd6"
+size = 1408648
+mtime_ms = 1789078471365
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/121c1a12-0e7b-4a96-87d3-06f5deaff2b3/629dbc9a-db76-4b95-ae15-13aa2a6ff38f"
+storage_version_token = "1789078488855255"
+content_type = "application/pdf"

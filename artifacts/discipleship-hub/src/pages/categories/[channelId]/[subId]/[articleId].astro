@@ -21,7 +21,7 @@ import { bcgArticles, getBcgArticle } from "@/data/bcgArticles";
 import type { ArticleBlock } from "@/data/bcgArticles";
 import { bibleStudyMethods, getBibleStudyMethod } from "@/data/bibleStudyMethods";
 import { evidenceArticles, getEvidenceArticle } from "@/data/evidenceArticles";
-import { hasSiteArticle, getSiteArticle } from "@/data/siteArticles";
+import { hasSiteArticle, getSiteArticle, siteArticles } from "@/data/siteArticles";
 import { getBcgImage } from "@/data/bcgImages";
 import { getEvidenceImage } from "@/data/evidenceImages";
 import { getSiteArticleImage } from "@/data/siteArticleImages";
@@ -94,13 +94,29 @@ if (curIdx !== -1 && seriesItems.length > 1) {
     }
   }
 }
+/* Supporting attribute details are deliberately absent from the main series
+   rotation. Within a detail group, offer the next sibling without changing
+   navigation behavior for any other article series. */
+const parentArticle = site?.parentArticleId
+  ? getSiteArticle(subId!, site.parentArticleId)
+  : undefined;
+const detailSiblings = site?.parentArticleId
+  ? siteArticles.filter(a => a.subId === subId && a.parentArticleId === site.parentArticleId)
+  : [];
+const detailIdx = detailSiblings.findIndex(a => a.id === article.id);
+if (!nextArticle && detailIdx >= 0 && detailIdx + 1 < detailSiblings.length) {
+  const sibling = detailSiblings[detailIdx + 1];
+  nextArticle = { id: sibling.id, title: sibling.title };
+}
 const pdfHref = bcg
   ? (hasBcgArticlePdf(article.id) ? join(`/articles/bcg/${article.id}.pdf`) : null)
   : bsm
     ? (hasBsmArticlePdf(article.id) ? join(`/articles/bsm/${article.id}.pdf`) : null)
     : evd
       ? (hasArticlePdf(evd.appSlug) ? join(`/articles/${evd.appSlug}.pdf`) : null)
-      : (site && hasArticlePdf(site.appSlug) ? join(`/articles/${site.appSlug}.pdf`) : null);
+      : site?.pdf
+        ? (site.pdf.startsWith("/") ? join(site.pdf) : site.pdf)
+        : (site?.appSlug && hasArticlePdf(site.appSlug) ? join(`/articles/${site.appSlug}.pdf`) : null);
 /* A read-page link is rendered only for a direct source post or an explicitly
    mapped JO App post. Never infer a destination from this site's article ID. */
 const articleItem = (sub.items ?? []).find(i => i.articleId === article.id);
@@ -111,7 +127,7 @@ const joAppArticleUrl = getVerifiedJoAppArticleUrl({
 
 /* BibleProject content requires visible attribution wherever their videos
    are embedded. Their source posts use the 386xx/387xx catalog prefixes. */
-const isBibleProject = !!site && /^38[67]\d\d-/.test(site.appSlug);
+const isBibleProject = !!site?.appSlug && /^38[67]\d\d-/.test(site.appSlug);
 
 const SITE = "https://equip.jesusonline.com";
 const articleUrl = `${SITE}/categories/${channel.id}/${sub.id}/${article.id}`;
@@ -128,7 +144,9 @@ const contentSourceFile = bcg
     ? "src/data/bibleStudyMethods.ts"
     : evd
       ? "src/data/evidenceArticles.ts"
-      : `src/data/generated/articles/${sub.id}.json`;
+      : site?.localSource
+        ? `src/data/local/articles/${sub.id}.json`
+        : `src/data/generated/articles/${sub.id}.json`;
 const DATE_MODIFIED = gitDateOf(contentSourceFile, DATE_PUBLISHED);
 const articleJsonLd = {
   "@context": "https://schema.org",
@@ -149,6 +167,14 @@ const articleJsonLd = {
    data, but defensive in case future authors add tags). */
 function plain(s: string) {
   return s.replace(/<[^>]+>/g, "").trim();
+}
+/* HTML blocks can contain authored site-relative links. Prefix those links for
+   deployments mounted below `/`, just as component-rendered links are. */
+function withBaseLinks(html: string) {
+  return html.replace(
+    /href=(["'])(\/(?!\/)[^"']*)\1/g,
+    (_match, quote: string, path: string) => `href=${quote}${join(path)}${quote}`,
+  );
 }
 /* SEO-approved per-item meta overrides (SEO-009) live on the sub-topic item
    in channels.ts and win over the derived title/description when set. */
@@ -257,9 +283,9 @@ const heroTitle = splitTitle(article.title);
           case "h3":
             return <h3>{b.text}</h3>;
           case "p":
-            return <p set:html={b.html} />;
+            return <p set:html={withBaseLinks(b.html)} />;
           case "ul":
-            return <ul>{b.items.map(i => <li set:html={i} />)}</ul>;
+            return <ul>{b.items.map(i => <li set:html={withBaseLinks(i)} />)}</ul>;
           case "resourceList":
             /* Resource list with Read / Video / PDF chips — orange + linked
                when the URL is known, gray when not (matches topic pages).
@@ -299,28 +325,31 @@ const heroTitle = splitTitle(article.title);
               </ul>
             );
           case "ol":
-            return <ol>{b.items.map(i => <li set:html={i} />)}</ol>;
+            return <ol>{b.items.map(i => <li set:html={withBaseLinks(i)} />)}</ol>;
           case "quote":
             return (
               <blockquote>
-                <p set:html={b.html} />
+                <p set:html={withBaseLinks(b.html)} />
                 {b.cite && <cite>— {b.cite}</cite>}
               </blockquote>
             );
           case "figure": {
             const img = getBcgImage(b.src) ?? getEvidenceImage(b.src) ?? getSiteArticleImage(b.src);
-            if (!img) return null;
+            const publicSrc = b.src.startsWith("/") ? join(b.src) : undefined;
+            if (!img && !publicSrc) return null;
             return (
               <figure>
-                <Image
-                  src={img}
-                  alt={b.alt}
-                  widths={[480, 800, 1200]}
-                  sizes="(min-width: 768px) 720px, 100vw"
-                  format="webp"
-                  quality={80}
-                  loading="lazy"
-                />
+                {img
+                  ? <Image
+                      src={img}
+                      alt={b.alt}
+                      widths={[480, 800, 1200]}
+                      sizes="(min-width: 768px) 720px, 100vw"
+                      format="webp"
+                      quality={80}
+                      loading="lazy"
+                    />
+                  : <img src={publicSrc} alt={b.alt} loading="lazy" decoding="async" />}
                 {b.caption && <figcaption set:html={b.caption} />}
               </figure>
             );
@@ -328,6 +357,13 @@ const heroTitle = splitTitle(article.title);
         }
       })}
     </article>
+
+    {parentArticle && (
+      <a href={join(`/categories/${channel.id}/${sub.id}/${parentArticle.id}`)} class="inline-flex items-center gap-2 mt-10 font-semibold hover:underline" style={`color:${channel.accentColor};`}>
+        <ArrowRight className="w-4 h-4 rotate-180" />
+        Return to {parentArticle.title}
+      </a>
+    )}
 
     {nextArticle && nextArticle.id !== article.id && (
       <a href={join(`/categories/${channel.id}/${sub.id}/${nextArticle.id}`)} class="group block mt-12 p-6 md:p-7 rounded border-2 hover:shadow-md transition-all" style={`border-color:${channel.accentColor};background-color:${channel.accentColor}06;`}>

@@ -6,6 +6,7 @@ import { getBookCover } from "@/data/bookCovers";
 import { extractAppSlug, hasArticlePdf } from "@/data/articles";
 import { hasBcgArticlePdf } from "@/data/bcgArticlePdfs";
 import { hasBsmArticlePdf } from "@/data/bsmArticlePdfs";
+import { getSiteArticle } from "@/data/siteArticles";
 import { FileText, Video, Smartphone, ArrowRight, ChevronRight, BookOpen } from "lucide-react";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 import MakeMultiplyNewsletter from "@/components/MakeMultiplyNewsletter.astro";
@@ -286,6 +287,15 @@ const showFullHeroTitle =
             const articlePdfHref = hasArticlePdf(appArticleSlug)
               ? join(`/articles/${appArticleSlug}.pdf`)
               : undefined;
+            const sitePdf = item.articleId
+              ? getSiteArticle(sub.id, item.articleId)?.pdf
+              : undefined;
+            const sitePdfHref = sitePdf
+              ? (sitePdf.startsWith("/") ? join(sitePdf) : sitePdf)
+              : undefined;
+            const explicitPdfHref = item.links?.pdf
+              ? (item.links.pdf.startsWith("/") ? join(item.links.pdf) : item.links.pdf)
+              : undefined;
             // BCG article items link to their locally generated PDF at
             // /articles/bcg/<articleId>.pdf (see scripts bcg:pdf).
             const bcgPdfHref = hasBcgArticlePdf(item.articleId)
@@ -299,14 +309,14 @@ const showFullHeroTitle =
             // Items with an on-site article (articleId) link the PDF button
             // straight to the article's PDF — even when a same-titled book
             // exists (the Book chip/covers still lead to the gated book page).
-            const directPdfHref = item.links?.pdf ?? bcgPdfHref ?? bsmPdfHref ?? articlePdfHref;
+            const directPdfHref = explicitPdfHref ?? sitePdfHref ?? bcgPdfHref ?? bsmPdfHref ?? articlePdfHref;
             const bookPdfHref = item.bookId
               ? join(`/books?download=${encodeURIComponent(item.bookId)}#${encodeURIComponent(item.bookId)}`)
               : undefined;
             const pdfHref = item.articleId
               ? (directPdfHref ?? bookPdfHref)
               : (bookPdfHref ?? directPdfHref);
-            const pdfInternal = pdfHref !== item.links?.pdf;
+            const pdfInternal = !!pdfHref && (!item.links?.pdf || item.links.pdf.startsWith("/"));
 
             // Video: enabled only when this item has a matching video inside a
             // playlist — the sub-topic's own `playlistId`, or a per-item

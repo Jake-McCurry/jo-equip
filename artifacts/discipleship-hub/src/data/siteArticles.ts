@@ -15,7 +15,7 @@ import type { ArticleBlock } from "./bcgArticles";
 export interface SiteArticle {
   id: string;
   /** Source app.jesusonline.com post slug (keys articles.ts PDF manifest). */
-  appSlug: string;
+  appSlug?: string;
   /** Owning sub-topic id. */
   subId: string;
   /** Owning channel id. */
@@ -24,16 +24,41 @@ export interface SiteArticle {
   description: string;
   /** Embeddable YouTube URL (youtube-nocookie) when the source post has a video. */
   videoUrl?: string;
+  /** Explicit site-relative PDF path for locally maintained articles. */
+  pdf?: string;
+  /** True when this article is maintained in the local overlay. */
+  localSource?: boolean;
+  /** Main overview article that owns this supporting detail article. */
+  parentArticleId?: string;
   blocks: ArticleBlock[];
 }
 
-const modules = import.meta.glob<{ default: SiteArticle[] }>("./generated/articles/*.json", {
+const generatedModules = import.meta.glob<{ default: SiteArticle[] }>("./generated/articles/*.json", {
+  eager: true,
+});
+const localModules = import.meta.glob<{ default: SiteArticle[] }>("./local/articles/*.json", {
   eager: true,
 });
 
-export const siteArticles: SiteArticle[] = Object.keys(modules)
+const generatedArticles = Object.keys(generatedModules)
   .sort()
-  .flatMap(k => modules[k].default);
+  .flatMap(k => generatedModules[k].default);
+const localArticles = Object.keys(localModules)
+  .sort()
+  .flatMap(k => localModules[k].default);
+
+/* Local manuscripts are an intentional, persistent overlay on the generated
+   catalog. Merge them last so an upstream rebuild (including --force) cannot
+   displace locally owned content, while retaining declaration order. */
+const merged = new Map<string, SiteArticle>();
+for (const article of generatedArticles) {
+  merged.set(`${article.subId}/${article.id}`, article);
+}
+for (const article of localArticles) {
+  merged.set(`${article.subId}/${article.id}`, article);
+}
+
+export const siteArticles: SiteArticle[] = [...merged.values()];
 
 const byKey = new Map(siteArticles.map(a => [`${a.subId}/${a.id}`, a]));
 

@@ -689,7 +689,7 @@ export const articlePdfs: Record<string, ArticlePdfMeta> = {
   "32105-your-situation-from-gods-perspective": { title: "Your Situation from God’s Perspective", bytes: 120868, modified: "2025-10-30T18:55:00" },
   "32211-our-triune-god-father-son-and-holy-spirit": { title: "Our Triune God: Father, Son, and Holy Spirit", bytes: 121142, modified: "2026-07-03T18:53:19" },
   "32211-the-supreme-pursuit-of-the-heart": { title: "The Supreme Pursuit of the Heart", bytes: 129047, modified: "2026-07-06T20:05:38" },
-  "32212-attributes-of-self-existence": { title: "Attributes of Self-Existence", bytes: 126582, modified: "2026-07-06T20:12:13" },
+  "32212-attributes-of-self-existence": { title: "Attributes of Self-Existence", bytes: 135045, modified: "local:2026-09-10T19:03:26.899Z" },
   "32212-god-loves-you-forever": { title: "God Loves You Forever", bytes: 126202, modified: "2026-07-03T18:53:36" },
   "32213-attributes-of-sovereignty": { title: "Attributes of Sovereignty", bytes: 127227, modified: "2026-07-06T20:23:58" },
   "32213-experiencing-gods-love": { title: "Experiencing God’s Love", bytes: 124596, modified: "2026-07-03T18:53:48" },

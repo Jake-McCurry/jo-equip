@@ -4,8 +4,12 @@ description: Replacing a JO app article + PDF with ministry-supplied content (do
 ---
 When JOM hands us updated article content directly (docx), the WP source is stale — do NOT let the article PDF builder refetch it.
 
-**How to apply:** two artifacts must be updated together for a replaced article:
-1. On-site page: blocks in `src/data/generated/articles/<sub-topic>.json` (p/quote use `html`, ol/ul use `items`).
-2. PDF: put an HTML fragment in `scripts/data/local-articles/<appSlug>.html` and set `localHtml` + `title` on the slug's entry in `scripts/data/slug-mapping.json`, then run `articles:build --slug=<appSlug>`. `localHtml` supersedes `frozen` and skips the WP fetch; cache key is `local:<mtime>`.
+**How to apply:** update the on-site article and its linked PDF together, using the current local-override mechanism rather than editing generated upstream content. Verify both the dedicated local build and an ordinary targeted article rebuild retain local content and EQUIP links. Locally authored articles must not receive invented upstream post identities.
 
 **Why:** the article PDF pipeline otherwise fetches WordPress and would overwrite the ministry's replacement on the next full build.
+
+Source corrections are literal: a corrected Bible citation changes the reference, not the surrounding quotation, unless the owner explicitly supplies revised wording.
+
+**Why:** shortening a quotation to fit a corrected verse reference can silently remove approved source text.
+
+**How to apply:** compare every source paragraph against the imported content after only the explicitly approved transformations.

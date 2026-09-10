@@ -7,6 +7,7 @@
     "hello": "tsx ./src/hello.ts",
     "compress-pdfs": "tsx ./src/compressPdfs.ts",
     "articles:build": "tsx ./src/articlesBuild.ts",
+    "attributes:pdf": "tsx ./src/attributesArticlesPdfBuild.ts",
     "bcg:pdf": "tsx ./src/bcgPdfBuild.ts",
     "bsm:pdf": "tsx ./src/bsmPdfBuild.ts",
     "evidence:build": "tsx ./src/evidenceArticlesBuild.ts",

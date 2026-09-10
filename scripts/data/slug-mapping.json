@@ -3367,12 +3367,16 @@
   "32211-the-supreme-pursuit-of-the-heart": {
     "wp_id": 23291,
     "wp_slug": "32211-the-supreme-pursuit-of-the-heart",
-    "method": "exact"
+    "method": "exact",
+    "title": "The Supreme Pursuit of the Heart",
+    "localHtml": "local-articles/attributes-of-god/the-supreme-pursuit-of-the-heart.html"
   },
   "32212-attributes-of-self-existence": {
     "wp_id": 23292,
     "wp_slug": "32212-attributes-of-self-existence",
-    "method": "exact"
+    "method": "exact",
+    "title": "Attributes of Self-Existence",
+    "localHtml": "local-articles/attributes-of-god/attributes-of-self-existence.html"
   },
   "32212-god-loves-you-forever": {
     "wp_id": 435,
@@ -3382,7 +3386,9 @@
   "32213-attributes-of-sovereignty": {
     "wp_id": 23293,
     "wp_slug": "32213-attributes-of-sovereignty",
-    "method": "exact"
+    "method": "exact",
+    "title": "Attributes of Sovereignty",
+    "localHtml": "local-articles/attributes-of-god/attributes-of-sovereignty.html"
   },
   "32213-experiencing-gods-love": {
     "wp_id": 437,
@@ -3397,7 +3403,9 @@
   "32214-attributes-of-holiness": {
     "wp_id": 23294,
     "wp_slug": "32214-attributes-of-holiness",
-    "method": "exact"
+    "method": "exact",
+    "title": "Attributes of Holiness",
+    "localHtml": "local-articles/attributes-of-god/attributes-of-holiness.html"
   },
   "32215-a-heart-for-god": {
     "wp_id": 441,
@@ -3407,12 +3415,16 @@
   "32215-attributes-of-love": {
     "wp_id": 23295,
     "wp_slug": "32215-attributes-of-love",
-    "method": "exact"
+    "method": "exact",
+    "title": "Attributes of Love",
+    "localHtml": "local-articles/attributes-of-god/attributes-of-love.html"
   },
   "32216-live-in-the-light-of-his-majesty": {
     "wp_id": 23296,
     "wp_slug": "32216-live-in-the-light-of-his-majesty",
-    "method": "exact"
+    "method": "exact",
+    "title": "Live in the Light of His Majesty",
+    "localHtml": "local-articles/attributes-of-god/live-in-the-light-of-his-majesty.html"
   },
   "32231-our-triune-god-father-son-and-holy-spirit": {
     "wp_id": 433,

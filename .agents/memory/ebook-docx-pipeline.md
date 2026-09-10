@@ -31,6 +31,6 @@ The two ebook PDFs are generated from docx manuscripts (mammoth → HTML → two
 
 Remove unwanted outer illustration backgrounds and shading in Q&A response areas, but retain intentional colored teaching panels and testimony callouts.
 
-**Why:** The user explicitly requested keeping the testimony blocks and accepted the cleaned review rendition before requesting a separate style adjustment.
+**Why:** The user explicitly requested keeping the testimony blocks, then approved the illustrated blue/gold styling and lighter screen-optimized PDF for website publication.
 
 **How to apply:** Do not interpret “transparent backgrounds” as removing every colored fill. When a reference PDF is supplied for styling, use its visual treatment while retaining the revised manuscript as the content authority.

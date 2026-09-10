@@ -41,7 +41,7 @@ interface BookConfig {
   /* .docx manuscript path — or, when `source` is "pdf", the final source PDF
      whose text is re-parsed into the shared template. */
   docx: string;
-  source?: "docx" | "pdf";
+  source?: "docx" | "pdf" | "approved-pdf";
   cover: string;
   coverType: "png" | "jpg";
   /* Crop this many PDF points off the bottom of the cover when it overflows
@@ -121,8 +121,9 @@ const BOOKS: BookConfig[] = [
   },
   {
     key: "adventure",
-    docx: resolve(ROOT, "attached_assets/adventure_of_living_with_jesus_source_2016.pdf"),
-    source: "pdf",
+    // Preserve the approved illustrated edition rather than reparse the legacy manuscript.
+    docx: resolve(ROOT, "outputs/adventure-review/Adventure-Review.pdf"),
+    source: "approved-pdf",
     typography: "strict",
     cover: resolve(ROOT, "artifacts/discipleship-hub/src/assets/books/covers/adventure-of-living-with-jesus.jpg"),
     coverType: "jpg",
@@ -1338,6 +1339,14 @@ async function prependCoverAndCompress(book: BookConfig, interiorPath: string): 
 
 async function buildBook(browser: Browser, book: BookConfig): Promise<void> {
   console.log(`\n=== ${book.title} ===`);
+  if (book.source === "approved-pdf") {
+    const approvedBytes = readFileSync(book.docx);
+    const approvedPdf = await PDFDocument.load(approvedBytes);
+    if (approvedPdf.getPageCount() === 0) throw new Error(`Approved PDF is empty: ${book.docx}`);
+    writeFileSync(book.out, approvedBytes);
+    console.log(`Installed approved PDF unchanged: ${approvedPdf.getPageCount()} pages → ${book.out}`);
+    return;
+  }
   let parsed: ParsedBook;
   if (book.source === "pdf") {
     parsed = book.key === "adventure" ? parseAdventurePdf(book) : parseMajestyPdf(book);

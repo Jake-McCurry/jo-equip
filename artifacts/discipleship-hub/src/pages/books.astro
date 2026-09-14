@@ -1,9 +1,9 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import { Image } from "astro:assets";
-import { Book as BookIcon, BookOpen, Download } from "lucide-react";
-import { books, listedBooks } from "@/data/books";
-import { getBookCover } from "@/data/bookCovers";
+import { Book as BookIcon } from "lucide-react";
+import { books } from "@/data/books";
+import { bookCategories } from "@/data/bookCategories";
+import BooksCarousel from "@/components/BooksCarousel.astro";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 
 const baseUrl = import.meta.env.BASE_URL;
@@ -13,6 +13,7 @@ const bookDeepLinks = Object.fromEntries(
   books.map(book => [book.id, { pdf: join(book.pdf), title: book.title }]),
 );
 
+const categoryOrderedBooks = bookCategories.flatMap(c => c.books);
 
 /* JSON-LD: a CollectionPage that contains an ItemList of Book entries.
    Each Book is marked free + downloadable so Google can show it in
@@ -27,8 +28,8 @@ const booksJsonLd = {
   "isPartOf": { "@id": `${SITE}/#website` },
   "mainEntity": {
     "@type": "ItemList",
-    "numberOfItems": listedBooks.length,
-    "itemListElement": listedBooks.map((b, i) => ({
+    "numberOfItems": categoryOrderedBooks.length,
+    "itemListElement": categoryOrderedBooks.map((b, i) => ({
       "@type": "ListItem",
       "position": i + 1,
       "item": {
@@ -88,73 +89,10 @@ const booksJsonLd = {
       </p>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-      {listedBooks.map(book => {
-        const cover = getBookCover(book.id);
-        return (
-        <article id={book.id} class="border rounded-lg bg-white overflow-hidden flex flex-col transition-shadow hover:shadow-md scroll-mt-24" style="border-color:var(--color-border);">
-          <div class="p-5 pb-4 flex items-center justify-center bg-white" style="min-height:18rem;">
-            {cover ? (
-              <a
-                href={join(book.pdf)}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-track-title={book.title}
-                data-pdf-action="open"
-                aria-label={`Open ${book.title} PDF`}
-                class="block rounded transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
-                style="outline-color:#0095ff;"
-              >
-                <Image
-                  src={cover}
-                  alt={`${book.title} book cover`}
-                  widths={[240, 480]}
-                  sizes="(min-width: 1024px) 320px, (min-width: 640px) 45vw, 90vw"
-                  loading="lazy"
-                  class="h-72 w-auto max-w-full object-contain"
-                />
-              </a>
-            ) : (
-              <div class="text-sm" style="color:var(--color-muted-foreground);">No cover available</div>
-            )}
-          </div>
-          <div class="px-5 pb-5 pt-3 border-t flex items-center justify-center gap-5" style="border-color:var(--color-border);">
-            <button
-              type="button"
-              class="book-download-btn inline-flex items-center justify-center gap-2 font-semibold text-sm uppercase tracking-wide transition-colors hover:opacity-75"
-              style="color:#0095ff;"
-              data-pdf={join(book.pdf)}
-              data-title={book.title}
-              data-id={book.id}
-              aria-label={`Open ${book.title}`}
-            >
-              <BookOpen className="w-4 h-4" />
-              Open
-            </button>
-            <a
-              href={join(`/books/${book.id}`)}
-              class="text-sm font-medium transition-colors hover:opacity-75"
-              style="color:var(--color-muted-foreground);"
-              aria-label={`View details for ${book.title}`}
-            >
-              Details
-            </a>
-            <a
-              href={join(book.pdf)}
-              download
-              data-track-title={book.title}
-              data-pdf-action="download"
-              class="inline-flex items-center justify-center gap-2 font-semibold text-sm uppercase tracking-wide transition-colors hover:opacity-75"
-              style="color:#0095ff;"
-              aria-label={`Download ${book.title}`}
-            >
-              <Download className="w-4 h-4" />
-              Download
-            </a>
-          </div>
-        </article>
-        );
-      })}
+    <div class="flex flex-col gap-6 md:gap-8">
+      {bookCategories.map(category => (
+        <BooksCarousel title={category.title} books={category.books} />
+      ))}
     </div>
   </div>
 
@@ -205,27 +143,26 @@ const booksJsonLd = {
         if (wanted) {
           const card = document.getElementById(wanted);
           const targetBtn = card ? card.querySelector(".book-download-btn") : null;
-            const catalogBook = Object.prototype.hasOwnProperty.call(bookDeepLinks, wanted)
-              ? bookDeepLinks[wanted]
-              : null;
+          const catalogBook = Object.prototype.hasOwnProperty.call(bookDeepLinks, wanted)
+            ? bookDeepLinks[wanted]
+            : null;
           if (card) {
-            try { card.scrollIntoView({ behavior: "smooth", block: "center" }); } catch (_e) { /* ignore */ }
+            try { card.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" }); } catch (_e) { /* ignore */ }
           }
           if (targetBtn) {
             // Defer so any pending paint / smooth-scroll begins first.
             setTimeout(function () {
               requestBook(targetBtn.getAttribute("data-pdf"), targetBtn.getAttribute("data-title"), true);
             }, 250);
-            } else if (catalogBook) {
-              // Preserve direct links for catalog books that are intentionally
-              // unlisted (for example, The Abiding Room).
-              setTimeout(function () {
-                requestBook(catalogBook.pdf, catalogBook.title, true);
-              }, 250);
+          } else if (catalogBook) {
+            // Preserve direct links for catalog books that are intentionally
+            // unlisted (for example, The Abiding Room).
+            setTimeout(function () {
+              requestBook(catalogBook.pdf, catalogBook.title, true);
+            }, 250);
           }
         }
       } catch (_e) { /* ignore */ }
     })();
   </script>
-
 </Layout>

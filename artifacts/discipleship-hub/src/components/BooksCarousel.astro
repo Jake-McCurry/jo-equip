@@ -1,0 +1,167 @@
+---
+import { Image } from "astro:assets";
+import { BookOpen, Download, ChevronLeft, ChevronRight } from "lucide-react";
+import { getBookCover } from "@/data/bookCovers";
+import type { Book } from "@/data/books";
+
+interface Props {
+  title: string;
+  books: Book[];
+}
+
+const { title, books } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
+const join = (p: string) =>
+  (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
+---
+<div class="book-carousel-section mb-6 md:mb-8">
+  <div class="flex items-end justify-between mb-4 md:mb-5">
+    <h2 class="text-2xl md:text-3xl font-semibold" style="color:#0b3c5d;">{title}</h2>
+    <div class="hidden sm:flex items-center gap-2">
+      <button type="button" class="carousel-prev w-9 h-9 flex items-center justify-center rounded border bg-white transition-colors hover:bg-slate-50 disabled:opacity-30 disabled:cursor-not-allowed" style="border-color:var(--color-border); color:#0b3c5d;" aria-label={`Scroll ${title} left`}>
+        <ChevronLeft className="w-5 h-5" />
+      </button>
+      <button type="button" class="carousel-next w-9 h-9 flex items-center justify-center rounded border bg-white transition-colors hover:bg-slate-50 disabled:opacity-30 disabled:cursor-not-allowed" style="border-color:var(--color-border); color:#0b3c5d;" aria-label={`Scroll ${title} right`}>
+        <ChevronRight className="w-5 h-5" />
+      </button>
+    </div>
+  </div>
+  
+  <div class="relative">
+    <div class="carousel-track flex gap-4 md:gap-5 overflow-x-auto pb-4 snap-x snap-mandatory focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0095ff]" tabindex="0" role="region" aria-label={`${title} books`}>
+      {books.map(book => {
+        const cover = getBookCover(book.id);
+        return (
+          <article id={book.id} class="shrink-0 w-[220px] md:w-[240px] snap-start flex flex-col border rounded-lg bg-white overflow-hidden transition-shadow hover:shadow-md scroll-mt-24" style="border-color:var(--color-border);">
+            <div class="p-4 pb-3 flex items-center justify-center bg-white h-[260px] md:h-[280px]">
+              {cover ? (
+                <a
+                  href={join(book.pdf)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-track-title={book.title}
+                  data-pdf-action="open"
+                  aria-label={`Open ${book.title} PDF`}
+                  class="block rounded transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
+                  style="outline-color:#0095ff;"
+                >
+                  <Image
+                    src={cover}
+                    alt={`${book.title} book cover`}
+                    widths={[240, 480]}
+                    sizes="240px"
+                    loading="lazy"
+                    class="h-full w-auto max-h-[230px] md:max-h-[250px] object-contain"
+                  />
+                </a>
+              ) : (
+                <div class="text-sm" style="color:var(--color-muted-foreground);">No cover available</div>
+              )}
+            </div>
+            <div class="px-4 py-3 border-t flex flex-col grow bg-white" style="border-color:var(--color-border);">
+              <h3 class="font-semibold text-[15px] leading-snug mb-4 grow" style="color:#0b3c5d;" title={book.title}>{book.title}</h3>
+              <div class="flex flex-wrap items-center justify-between gap-x-1 gap-y-3 mt-auto">
+                <button
+                  type="button"
+                  class="book-download-btn inline-flex items-center justify-center gap-1.5 font-bold text-[11px] md:text-xs uppercase tracking-wide transition-colors hover:opacity-75"
+                  style="color:#0095ff;"
+                  data-pdf={join(book.pdf)}
+                  data-title={book.title}
+                  data-id={book.id}
+                  aria-label={`Open ${book.title}`}
+                >
+                  <BookOpen className="w-3.5 h-3.5" />
+                  Open
+                </button>
+                <a
+                  href={join(book.pdf)}
+                  download
+                  data-track-title={book.title}
+                  data-pdf-action="download"
+                  class="inline-flex items-center justify-center gap-1.5 font-bold text-[11px] md:text-xs uppercase tracking-wide transition-colors hover:opacity-75"
+                  style="color:#0095ff;"
+                  aria-label={`Download ${book.title}`}
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  Save
+                </a>
+                <a
+                  href={join(`/books/${book.id}`)}
+                  class="text-xs font-medium transition-colors hover:opacity-75 w-full pt-2 border-t text-center mt-1"
+                  style="color:var(--color-muted-foreground); border-color:var(--color-border);"
+                  aria-label={`View details for ${book.title}`}
+                >
+                  Details
+                </a>
+              </div>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  </div>
+</div>
+
+<script>
+  function setupCarousels() {
+    const carousels = document.querySelectorAll('.book-carousel-section');
+    carousels.forEach(section => {
+      const track = section.querySelector('.carousel-track') as HTMLElement;
+      const prevBtn = section.querySelector('.carousel-prev') as HTMLButtonElement;
+      const nextBtn = section.querySelector('.carousel-next') as HTMLButtonElement;
+      
+      if (!track || track.dataset.carouselReady === 'true') return;
+      track.dataset.carouselReady = 'true';
+      
+      const updateButtons = () => {
+        if (prevBtn) {
+          prevBtn.disabled = track.scrollLeft <= 5;
+        }
+        if (nextBtn) {
+          // Allow 5px margin of error
+          nextBtn.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 5;
+        }
+      };
+
+      track.addEventListener('scroll', () => {
+        window.requestAnimationFrame(updateButtons);
+      });
+      
+      setTimeout(updateButtons, 100);
+      window.addEventListener('resize', updateButtons);
+
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+          const scrollAmount = track.clientWidth * 0.75;
+          track.scrollBy({ left: -scrollAmount, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+        });
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+          const scrollAmount = track.clientWidth * 0.75;
+          track.scrollBy({ left: scrollAmount, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+        });
+      }
+    });
+  }
+
+  document.addEventListener('astro:page-load', setupCarousels);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupCarousels);
+  } else {
+    setupCarousels();
+  }
+</script>
+
+<style>
+  .carousel-track::-webkit-scrollbar {
+    display: none;
+  }
+  .carousel-track {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>

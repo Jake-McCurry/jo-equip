@@ -26,3 +26,4 @@
 - [Knowing God source pages](knowing-god-source-pages.md) — Source-derived introductions must be exact, semantic, mobile-first HTML; use PDF renders only for verification.
 - [Holy Spirit duplicate review](holy-spirit-duplicate-review.md) — Keep Ministry Holy Spirit live but noindex pending manual comparison; BB Walking Spirit remains preferred and indexable.
 - [Chromium PDF print overflow](chromium-pdf-print-overflow.md) — Unconstrained images can silently shrink all PDF text; check print-width overflow and actual rendered font sizes.
+- [Word layout references](docx-layout-references.md) — Inspect editable shape fills and text styles alongside embedded screenshots; plain extraction misses visual hierarchy.

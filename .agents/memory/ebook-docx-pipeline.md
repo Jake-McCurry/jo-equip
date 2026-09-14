@@ -34,3 +34,11 @@ Remove unwanted outer illustration backgrounds and shading in Q&A response areas
 **Why:** The user explicitly requested keeping the testimony blocks, then approved the illustrated blue/gold styling and lighter screen-optimized PDF for website publication.
 
 **How to apply:** Do not interpret “transparent backgrounds” as removing every colored fill. When a reference PDF is supplied for styling, use its visual treatment while retaining the revised manuscript as the content authority.
+
+## Adventure Guide closing CTA intent
+
+The closing “GO FURTHER — A Heart After God” box intentionally links to the supplied “Your Journey Continues” resource despite the different visible label.
+
+**Why:** The user explicitly confirmed this destination after the mismatch was pointed out; the link-only correction must not alter the printed wording.
+
+**How to apply:** Do not infer a replacement destination from this box’s book title alone or change its label without a separate request.

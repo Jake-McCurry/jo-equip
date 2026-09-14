@@ -1,4 +1,5 @@
 - [Workspace-only Git policy](workspace-only-git-policy.md) — Keep commits, pushes, PRs, merges, and branch changes manual; edit only the Replit workspace.
+- [Leader Kit page separation](leader-kit-page-separation.md) — Keep the original kit library intact; campaign signup updates belong on the separate landing page.
 - [JO EQUIP build side effects](jo-equip-build-side-effects.md) — Content builds refresh tracked sitemap/video metadata; separate requested edits from generated churn.
 - [URL trailing-slash convention](url-trailing-slash-convention.md) — discipleship-hub URLs are no-slash except root; canonical + sitemap + internal links must agree or Google flags "alternate page with proper canonical tag".
 - [Leaf script importing artifact data](leaf-script-imports-artifact-data.md) — @workspace/scripts must load artifact-local TS data via runtime `import(pathToFileURL(...))` + local type mirror, never a static cross-package import (breaks tsc rootDir).

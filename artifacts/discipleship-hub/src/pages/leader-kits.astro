@@ -1,9 +1,9 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
+import { Users } from "lucide-react";
+import { getBookCover } from "@/data/bookCovers";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
-import LeaderKitSignup from "@/components/LeaderKitSignup.astro";
-import adventureCover from "@/assets/adventure-cover.png";
 
 const SITE = "https://equip.jesusonline.com";
 
@@ -16,11 +16,64 @@ const leaderKitsJsonLd = {
   "isPartOf": { "@id": `${SITE}/#website` },
   "description": "Ready-to-lead tools: one five-minute Moment, one assignment, and a next step into identity-centered heart transformation."
 };
+
+const leaderKits = [
+  {
+    id: "adventure-of-living-with-jesus",
+    title: "The Adventure of Living with Jesus",
+    subtitle: "A Guide to Discovering Your New Life",
+    description: "Eight essential truths that help believers walk with Jesus each day with confidence and clarity.",
+    momentsCount: 10,
+    weeksCountText: "Ten",
+    prompt: "Churchgoers or disciples?",
+    buttonState: "pending",
+  },
+  {
+    id: "a-heart-after-god",
+    title: "A Heart After God",
+    subtitle: "Seven Reflections on the Inner Life",
+    description: "Learn to want what God wants, in the hidden places no one else sees.",
+    momentsCount: 9,
+    weeksCountText: "Nine",
+    prompt: "Behavior modification or heart transformation?",
+    buttonState: "pending",
+  },
+  {
+    id: "your-new-identity-in-christ",
+    title: "Your New Identity in Christ",
+    subtitle: "Embracing Who God Says You Are",
+    description: "Settle the question of who you are now, so the old names lose their hold.",
+    momentsCount: 10,
+    weeksCountText: "Ten",
+    prompt: "Old habits or a new creation?",
+    buttonState: "future",
+  },
+  {
+    id: "beholding-the-majesty-of-god",
+    title: "Beholding the Majesty of God",
+    subtitle: "Explore His Divine Attributes",
+    description: "Lift your eyes from your own story long enough to see the God who holds it.",
+    momentsCount: 6,
+    weeksCountText: "Six",
+    prompt: "Your own story or His eternal glory?",
+    buttonState: "future",
+  },
+  {
+    id: "walking-in-the-spirit",
+    title: "Walking in the Spirit",
+    subtitle: "A Guide to the Holy Spirit's Presence and Power",
+    description: "Discover how the Spirit who lives in you shapes ordinary decisions, not only high moments.",
+    momentsCount: 15,
+    weeksCountText: "Fifteen",
+    prompt: "Human effort or Spirit-led living?",
+    buttonState: "future",
+  }
+];
 ---
 
 <Layout
-  title="The Adventure of Living with Jesus Leader Kit | JO EQUIP"
-  description="A free Leader Kit for pastors and home church leaders. Ten Discipleship Moments. One assignment. Heart transformation that starts with who they already are in Christ."
+  title="Leader Kits | JO EQUIP"
+  description="Ready-to-lead tools for identity-centered heart transformation. Begin to walk as disciples this Sunday."
 >
   <Fragment slot="head">
     <BreadcrumbsLd items={[
@@ -30,354 +83,86 @@ const leaderKitsJsonLd = {
     <script type="application/ld+json" is:inline set:html={JSON.stringify(leaderKitsJsonLd)} />
   </Fragment>
 
-  <!-- Hero Section -->
-  <section class="bg-[#0e2f60] relative">
-    <!-- Desktop Split Background -->
-    <div class="hidden lg:block absolute inset-y-0 right-0 w-1/2 bg-slate-50"></div>
-
-    <div class="container mx-auto max-w-6xl relative z-10">
-      <div class="flex flex-col lg:flex-row">
-
-        <!-- Left: Copy (Navy Background) -->
-        <div class="w-full lg:w-1/2 px-5 py-12 md:py-20 lg:pr-16">
-          <div class="mb-4 text-xs font-bold tracking-widest uppercase text-white">
-            Free Ministry Resources
-          </div>
-
-          <h1 class="text-4xl md:text-5xl font-bold mb-4 text-white leading-tight">
-            Churchgoers or Disciples?
-          </h1>
-
-          <h2 class="text-xl md:text-2xl font-normal mb-2 text-white leading-snug">
-            This Sunday: One Discipleship Moment
-          </h2>
-          <p class="text-lg md:text-xl text-white mb-10">
-            Five minutes. One assignment. Free.
-          </p>
-
-          <h3 class="text-sm md:text-base font-bold text-[#e8d7a8] tracking-widest mb-4 uppercase">
-            THE ADVENTURE OF LIVING WITH JESUS
-          </h3>
-
-          <p class="text-[17px] text-[#d6e4f5] leading-relaxed mb-8">
-            A free Leader Kit for pastors and home church leaders who have attenders—but no manual they can preach, print, or hand to a group leader this week. Ten Discipleship Moments. One assignment. Heart transformation that starts with who they already are in Christ.
-          </p>
-
-          <ul class="space-y-4">
-            <li class="flex items-start">
-              <span class="text-[#c4a35a] shrink-0 mr-3 mt-0.5 text-lg">✓</span>
-              <span class="text-[#e8f0fa] text-[17px]">Week 1 is this Sunday—service, small group, chapel, or one conversation</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-[#c4a35a] shrink-0 mr-3 mt-0.5 text-lg">✓</span>
-              <span class="text-[#e8f0fa] text-[17px]">A 5-minute flow: verse, summary, take-away, close, then one assignment</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-[#c4a35a] shrink-0 mr-3 mt-0.5 text-lg">✓</span>
-              <span class="text-[#e8f0fa] text-[17px]">Identity-centered discipleship—plus a door for the doubter before Week 1</span>
-            </li>
-          </ul>
+  <div class="container mx-auto px-4 py-12 md:py-16">
+    <div class="max-w-4xl mb-16">
+      <div class="flex items-center gap-3 mb-3">
+        <div class="w-9 h-9 rounded flex items-center justify-center" style="background-color:rgba(11,60,93,0.1);">
+          <Users className="w-5 h-5" style={{ color: "#0b3c5d" }} />
         </div>
+        <span class="text-xs font-semibold tracking-widest uppercase" style="color:#0b3c5d;">Ministry Library</span>
+      </div>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl mb-6 font-bold" style="color:#0b3c5d;">This Sunday Leader Kits</h1>
+      <div class="h-0.5 w-12 mb-6" style="background-color:#de5b00;"></div>
+      <p class="leading-relaxed text-xl md:text-2xl" style="color:var(--color-muted-foreground);">
+        This Sunday Leader Kits are ready-to-lead tools: one five-minute Moment, one assignment, and a next step into identity-centered heart transformation. They are a spoken doorway into training already written, so churchgoers can begin to walk as disciples this Sunday.
+      </p>
+    </div>
 
-        <!-- Right: Form (Light Gray Background) -->
-        <div class="w-full lg:w-1/2 bg-slate-50 px-5 py-12 md:py-20 lg:pl-16 border-t lg:border-t-0 border-slate-200 flex flex-col justify-center">
-          <div class="max-w-md mx-auto w-full">
-            <div class="bg-white mb-4">
-              <LeaderKitSignup />
+    <div class="flex flex-col gap-16 md:gap-24">
+      {leaderKits.map((kit) => {
+        const cover = getBookCover(kit.id);
+        return (
+          <article class="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
+            {/* Visual Preview Side (Semantic Header + Cover) */}
+            <div class="w-full max-w-[340px] shrink-0 flex flex-col">
+              <div class="w-full flex flex-col">
+                <div class="bg-[#0b3c5d] px-4 py-3 flex flex-col items-center text-center gap-1">
+                  <span class="text-[#e3bd70] text-[0.625rem] leading-tight font-medium tracking-wide uppercase">JO Equip &middot; JesusOnline Ministries</span>
+                  <p class="text-white text-sm font-semibold leading-5 tracking-wide uppercase">This Sunday Leader Kit</p>
+                  <p class="text-white text-xs leading-4 font-serif italic opacity-95" style="font-family: 'Playfair Display', Georgia, serif;">{kit.prompt}</p>
+                </div>
+                <div class="h-px w-full bg-[#d69e2e]"></div>
+                <div class="bg-[#f9f6f0] px-3 py-2 flex flex-col items-center text-center text-[#0b3c5d]">
+                  <p class="font-medium text-xs leading-4">Lead Week 1 Discipleship Moment this Sunday.</p>
+                  <p class="opacity-80 text-xs leading-4">{kit.weeksCountText} weeks. One path toward a changed heart.</p>
+                </div>
+              </div>
+              
+                {cover ? (
+                    <Image
+                      src={cover}
+                      alt={`${kit.title} book cover`}
+                      widths={[340, 680]}
+                      sizes="(max-width: 372px) calc(100vw - 32px), 340px"
+                      class="block w-full h-auto object-contain"
+                    />
+                ) : (
+                  <div class="w-full aspect-[2/3] bg-slate-200 flex items-center justify-center text-slate-500 text-sm">
+                    Cover not found
+                  </div>
+                )}
             </div>
-            <p class="text-[14px] text-[#5b6675] text-center px-4">
-              No cost. No curriculum to buy. You can unsubscribe anytime. We will never sell your information.
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Stat Cards -->
-  <section class="bg-white border-b border-slate-200">
-    <div class="container mx-auto px-5 py-8 max-w-5xl">
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 divide-x divide-slate-100">
-        <div class="text-center px-4 py-2">
-          <div class="text-xl md:text-2xl font-bold text-[#0b3c5d] mb-1">10 weeks</div>
-          <div class="text-xs text-[#5b6675] font-normal uppercase tracking-wide">Week 1 is this Sunday</div>
-        </div>
-        <div class="text-center px-4 py-2">
-          <div class="text-xl md:text-2xl font-bold text-[#0b3c5d] mb-1">5 minutes</div>
-          <div class="text-xs text-[#5b6675] font-normal uppercase tracking-wide">A spoken doorway into the Guide</div>
-        </div>
-        <div class="text-center px-4 py-2">
-          <div class="text-xl md:text-2xl font-bold text-[#0b3c5d] mb-1">1 assignment</div>
-          <div class="text-xs text-[#5b6675] font-normal uppercase tracking-wide">Send them out with one practice</div>
-        </div>
-        <div class="text-center px-4 py-2">
-          <div class="text-xl md:text-2xl font-bold text-[#0b3c5d] mb-1">$0</div>
-          <div class="text-xs text-[#5b6675] font-normal uppercase tracking-wide">Free to preach, print, or hand off</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Why This Kit Exists -->
-  <section class="py-16 md:py-24 bg-white">
-    <div class="container mx-auto px-5 max-w-4xl">
-      <h2 class="text-sm font-bold tracking-widest uppercase text-[#8a6d2e] mb-6 text-center">WHY THIS KIT EXISTS</h2>
-      <div class="space-y-6 text-[17px] md:text-lg text-slate-700 leading-relaxed max-w-3xl mx-auto">
-        <p class="font-bold text-2xl md:text-3xl text-[#0b2548] text-center mb-10">
-          Pastors tell us they have attenders who are not yet disciples.
-        </p>
-        <p>
-          Especially in small churches, they lack a manual they can preach, print, or hand to a group leader this week. Many programs start with knowledge, behavior, and disciplines. JO EQUIP honors those essentials—but starts with heart transformation through identity-centered discipleship.
-        </p>
-        <p>
-          This kit is ten weeks. Week 1 is this Sunday. It does not replace the full free Adventure Guide. It gives you one message to lead, one assignment to send people out with, and a clear next step. After the gathering, the Guide and the JO App carry the journey.
-        </p>
-      </div>
-
-      <!-- Testimonial -->
-      <div class="mt-16 max-w-3xl mx-auto">
-        <blockquote class="text-center">
-          <p class="text-lg md:text-xl font-medium italic text-slate-800 leading-relaxed mb-6">
-            “I pastored a church full of churchgoers, not disciples. ... The Adventure of Living with Jesus discipleship booklet has transformed my life and my understanding about what it is to live for Christ. People are touched and amazed when I am teaching it to them.”
-          </p>
-          <footer class="text-sm font-bold text-[#5b6675]">
-            — Pastor Assah, Togo
-          </footer>
-        </blockquote>
-      </div>
-    </div>
-  </section>
-
-  <!-- Identity-Centered Discipleship -->
-  <section class="py-16 md:py-24 bg-slate-50 border-t border-slate-200">
-    <div class="container mx-auto px-5 max-w-5xl">
-      <div class="text-center mb-16 max-w-3xl mx-auto">
-        <h2 class="text-3xl md:text-4xl font-bold text-[#0b2548] mb-4">A changed life follows a changed heart.</h2>
-        <p class="text-lg text-slate-700 leading-relaxed mb-10">
-          Identity-centered heart transformation starts in the inner person, not with trying harder on the outside.
-        </p>
-        <h3 class="text-xl text-[#0b2548] font-bold mb-6">Identity-Centered Discipleship</h3>
-        <p class="text-lg text-[#5b6675] leading-relaxed">
-          Heart transformation is not “change your behavior so you can feel like a new person.” It is “embrace who you already are, know the God who said so, and depend on the Spirit who lives in you—then behavior follows a changed heart.”
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-        <div class="bg-white p-8 rounded border border-slate-200">
-          <div class="text-sm font-bold text-[#8a6d2e] uppercase mb-4 tracking-wider">01 - IDENTITY FOCUS</div>
-          <h4 class="text-lg font-bold text-[#0b2548] mb-4 leading-snug">How you view your redeemed identity shapes how you live.</h4>
-          <p class="text-[#5b6675] leading-relaxed">
-            When you received Christ, you were not improved; you were made new. God already sees you in Christ. Growth is learning to live as the person He has already made you.
-          </p>
-        </div>
-        <div class="bg-white p-8 rounded border border-slate-200">
-          <div class="text-sm font-bold text-[#8a6d2e] uppercase mb-4 tracking-wider">02 - GOD FOCUS</div>
-          <h4 class="text-lg font-bold text-[#0b2548] mb-4 leading-snug">How you view God's divine identity shapes how you live.</h4>
-          <p class="text-[#5b6675] leading-relaxed">
-            You become like what you behold. Seeing Him as He is—holy and loving, just and merciful—forms worship, humility, and trust. A thin view of God produces a thin life.
-          </p>
-        </div>
-        <div class="bg-white p-8 rounded border border-slate-200">
-          <div class="text-sm font-bold text-[#8a6d2e] uppercase mb-4 tracking-wider">03 - SPIRIT FOCUS</div>
-          <h4 class="text-lg font-bold text-[#0b2548] mb-4 leading-snug">How you view the Spirit's functional identity shapes how you live.</h4>
-          <p class="text-[#5b6675] leading-relaxed">
-            If the Christian life is “me plus some help from God,” the reflex is self-effort. This is not passivity. It is a new person depending on the Spirit who already lives in you.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 5-Minute Flow -->
-  <section class="py-16 md:py-24 bg-white border-t border-slate-200">
-    <div class="container mx-auto px-5 max-w-4xl">
-      <div class="text-center mb-16 max-w-3xl mx-auto">
-        <h2 class="text-3xl md:text-4xl font-bold text-[#0b2548] mb-6">A simple 5-minute flow.</h2>
-        <p class="text-lg text-[#5b6675] leading-relaxed">
-          Slip a Discipleship Moment into almost any gathering. Read it almost as written, or put it in your own words. These moments do not replace the Adventure Guide. They are a spoken doorway into it.
-        </p>
-      </div>
-
-      <div class="max-w-xl mx-auto space-y-8">
-        <div>
-          <div class="flex items-baseline gap-2 mb-1">
-            <h3 class="text-xl font-bold text-[#0b2548]">Verse</h3>
-            <span class="text-[#1b7fe0] font-bold mx-1">|</span>
-            <span class="text-sm font-bold text-[#1b7fe0] tracking-widest uppercase">45 SEC</span>
-          </div>
-          <p class="text-[#5b6675] text-lg">One Scripture the whole room can hear and hold.</p>
-        </div>
-
-        <div>
-          <div class="flex items-baseline gap-2 mb-1">
-            <h3 class="text-xl font-bold text-[#0b2548]">Summary</h3>
-            <span class="text-[#1b7fe0] font-bold mx-1">|</span>
-            <span class="text-sm font-bold text-[#1b7fe0] tracking-widest uppercase">2 MIN</span>
-          </div>
-          <p class="text-[#5b6675] text-lg">Pastoral teaching you can read almost word for word</p>
-        </div>
-
-        <div>
-          <div class="flex items-baseline gap-2 mb-1">
-            <h3 class="text-xl font-bold text-[#0b2548]">Take-away</h3>
-            <span class="text-[#1b7fe0] font-bold mx-1">|</span>
-            <span class="text-sm font-bold text-[#1b7fe0] tracking-widest uppercase">30 SEC</span>
-          </div>
-          <p class="text-[#5b6675] text-lg">One sentence they can remember on an ordinary Tuesday.</p>
-        </div>
-
-        <div>
-          <div class="flex items-baseline gap-2 mb-1">
-            <h3 class="text-xl font-bold text-[#0b2548]">Close</h3>
-            <span class="text-[#1b7fe0] font-bold mx-1">|</span>
-            <span class="text-sm font-bold text-[#1b7fe0] tracking-widest uppercase">60–90 SEC</span>
-          </div>
-          <p class="text-[#5b6675] text-lg">A verse, a question, and a simple prayer of response.</p>
-        </div>
-
-        <div>
-          <div class="flex items-baseline gap-2 mb-1">
-            <h3 class="text-xl font-bold text-[#0b2548]">Assignment</h3>
-            <span class="text-[#1b7fe0] font-bold mx-1">|</span>
-            <span class="text-sm font-bold text-[#1b7fe0] tracking-widest uppercase">THEN</span>
-          </div>
-          <p class="text-[#5b6675] text-lg">One practice. Come ready to share what happened.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 10 Weeks -->
-  <section class="py-16 md:py-24 bg-slate-50 border-t border-slate-200">
-    <div class="container mx-auto px-5 max-w-4xl">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-bold text-[#0b2548] mb-6">Ten weeks. One adventure.</h2>
-        <p class="text-lg md:text-xl text-[#5b6675] max-w-2xl mx-auto">
-          The path God has already marked: assurance, identity, the Spirit, faith, Scripture, prayer, His family, and purpose.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-        {[
-          { w: 1, t: "Begin the Adventure", d: "Jesus has already come in. The adventure is learning to let Him lead every room of your life." },
-          { w: 2, t: "Citizen of Heaven", d: "If you have Jesus, you can know you have eternal life—because He finished the work." },
-          { w: 3, t: "Your New Identity in Christ", d: "You are not becoming a new creation by trying harder. In Christ, you already are one." },
-          { w: 4, t: "The Holy Spirit", d: "The Christian life is Jesus living His life in you by His Spirit as you yield control." },
-          { w: 5, t: "Walking by Faith", d: "Faith is taking God at His Word and moving forward when feelings lag behind." },
-          { w: 6, t: "God's Word", d: "God's Word is not extra information. It is the map, the food, and the voice that forms you." },
-          { w: 7, t: "Prayer", d: "Not performing for God. A child talking with the Father who already wants to hear you." },
-          { w: 8, t: "God's Family", d: "You were saved into a family. You cannot become all God designed while remaining a disconnected coal." },
-          { w: 9, t: "A Life of Purpose", d: "You were not saved only to be safe. You were saved to represent Jesus and invest this brief life." },
-          { w: 10, t: "Continuing with Jesus", d: "The Christian life is not a booklet you finish. It is a race you keep running with your eyes on Jesus." }
-        ].map((week) => (
-          <div class="bg-white p-6 border border-slate-200 rounded">
-            <div class="flex items-baseline gap-3 mb-2">
-              <span class="text-sm font-bold text-[#8a6d2e] tracking-widest uppercase">WEEK {week.w}</span>
-              <h4 class="text-lg font-bold text-[#0b2548]">{week.t}</h4>
+            
+            {/* Content Side */}
+            <div class="w-full max-w-2xl flex flex-col">
+              <div class="mb-6">
+                <div class="inline-flex items-center gap-2 mb-4">
+                  <div class="w-1.5 h-1.5 rounded-full bg-[#de5b00]"></div>
+                  <span class="text-[#de5b00] text-sm font-bold tracking-widest uppercase">{kit.momentsCount} Discipleship Moments</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 tracking-tight" style="color:#0b3c5d; line-height: 1.1;">{kit.title}</h2>
+                <h3 class="text-xl md:text-2xl text-slate-500 font-medium leading-snug">{kit.subtitle}</h3>
+              </div>
+              <p class="text-lg md:text-xl text-slate-700 leading-relaxed mb-10 md:mb-14">
+                {kit.description}
+              </p>
+              
+              <div>
+                {kit.buttonState === 'pending' ? (
+                  <button disabled class="inline-flex items-center justify-center bg-slate-100 text-slate-400 font-bold tracking-wide uppercase px-8 py-4 rounded cursor-not-allowed w-full sm:w-auto border border-slate-200 transition-colors">
+                    Download Free Kit 
+                    <span class="ml-3 normal-case text-sm font-semibold opacity-75 bg-slate-200 px-2 py-0.5 rounded text-slate-500">Pending</span>
+                  </button>
+                ) : (
+                  <p class="inline-block bg-slate-50 text-slate-600 font-semibold px-8 py-4 rounded border border-slate-200">
+                    Available <time datetime="2026-10-01">October 1, 2026</time>
+                  </p>
+                )}
+              </div>
             </div>
-            <p class="text-[#5b6675] leading-relaxed">{week.d}</p>
-          </div>
-        ))}
-      </div>
+          </article>
+        );
+      })}
     </div>
-  </section>
-
-  <!-- Slip a Moment -->
-  <section class="py-16 md:py-24 bg-[#0e2f60] text-white">
-    <div class="container mx-auto px-5 max-w-4xl">
-      <div class="text-center mb-16 max-w-3xl mx-auto">
-        <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">Slip a Moment into the gathering you already have.</h2>
-        <p class="text-lg text-[#c5d4e8]">Stay near five minutes. A video is extra time only.</p>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-12">
-        <div class="text-center sm:text-left">
-          <h3 class="text-xl font-bold text-white mb-2">Church service</h3>
-          <p class="text-[#c5d4e8] leading-relaxed">Preach it, read it, or place it after the message. One Moment. One assignment. Then dismiss.</p>
-        </div>
-
-        <div class="text-center sm:text-left">
-          <h3 class="text-xl font-bold text-white mb-2">Small group</h3>
-          <p class="text-[#c5d4e8] leading-relaxed">Read the summary, sit with the question, pray the close. No extra curriculum stack required.</p>
-        </div>
-
-        <div class="text-center sm:text-left">
-          <h3 class="text-xl font-bold text-white mb-2">One-to-one</h3>
-          <p class="text-[#c5d4e8] leading-relaxed">A pastor, mentor, or mature believer can walk a single person through one Moment a week.</p>
-        </div>
-
-        <div class="text-center sm:text-left">
-          <h3 class="text-xl font-bold text-white mb-2">After they trust Christ</h3>
-          <p class="text-[#c5d4e8] leading-relaxed">A 10-week on-ramp—assurance first, purpose last, Jesus at the center.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- What You Receive -->
-  <section class="py-16 md:py-24 bg-white">
-    <div class="container mx-auto px-5 max-w-5xl">
-      <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-
-        <div class="order-2 lg:order-1 w-full max-w-[340px] shrink-0 border-[8px] border-white shadow-xl rounded">
-          <Image
-            src={adventureCover}
-            alt="The Adventure of Living with Jesus book cover"
-            class="w-full h-auto block"
-            width={704}
-            height={945}
-          />
-        </div>
-
-        <div class="order-1 lg:order-2 w-full min-w-0 max-w-2xl">
-          <h2 class="text-sm font-bold text-[#8a6d2e] tracking-widest uppercase mb-4">WHAT YOU RECEIVE</h2>
-          <p class="text-2xl md:text-3xl font-bold text-[#0b2548] mb-6 leading-tight">
-            One message to lead. One assignment to send them out with.
-          </p>
-          <p class="text-[17px] text-slate-700 mb-8 leading-relaxed">
-            This kit does not replace the Adventure Guide or the JO EQUIP library. It gives you a spoken doorway you can use this Sunday—then the Guide and the JO App carry the journey.
-          </p>
-
-          <ul class="space-y-4 mb-10 text-[17px]">
-            <li class="flex items-start">
-              <span class="text-[#0b2548] shrink-0 mr-3 mt-0.5">✓</span>
-              <span class="text-slate-700">Why this kit exists, and the three heart-focuses (identity, God, Spirit)</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-[#0b2548] shrink-0 mr-3 mt-0.5">✓</span>
-              <span class="text-slate-700">How to use it: church service, small group, one-to-one, after they trust Christ</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-[#0b2548] shrink-0 mr-3 mt-0.5">✓</span>
-              <span class="text-slate-700">Five steps for this week and the 5-minute flow</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-[#0b2548] shrink-0 mr-3 mt-0.5">✓</span>
-              <span class="text-slate-700">Do Not Skip the Doubter—a door before Week 1, not a debate</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-[#0b2548] shrink-0 mr-3 mt-0.5">✓</span>
-              <span class="text-slate-700">10 Discipleship Moments with verse, summary, take-away, assignment, and close</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-[#0b2548] shrink-0 mr-3 mt-0.5">✓</span>
-              <span class="text-slate-700">Optional Video Moments plus a Go Further map into free JO EQUIP series</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-[#0b2548] shrink-0 mr-3 mt-0.5">✓</span>
-              <span class="text-slate-700">
-                Full Guide PDF: <a href="/books/adventure-of-living-with-jesus.pdf" class="text-[#1b7fe0] hover:underline break-all" target="_blank" rel="noopener">equip.jesusonline.com/books/adventure-of-living-with-jesus.pdf</a>
-              </span>
-            </li>
-          </ul>
-
-          <a href="#leader-kit-signup" class="inline-flex items-center justify-center bg-[#1b7fe0] hover:bg-[#1565c0] text-white font-bold tracking-wide uppercase px-8 py-4 rounded transition-colors w-full sm:w-auto text-center">
-            Download the free kit
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
+  </div>
 </Layout>

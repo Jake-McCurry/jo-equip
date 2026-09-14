@@ -3,8 +3,8 @@ name: Workspace-only Git policy
 description: The user’s required boundary between agent workspace edits and manual Git operations.
 ---
 
-Make requested changes in the Replit workspace, but never commit, push, create or merge pull requests, or change branches.
+By default, make changes only in the Replit workspace. Do not commit, push, create or merge pull requests, or change branches unless the user explicitly authorizes those operations for the current request.
 
-**Why:** The user explicitly reserves all Git history and GitHub workflow actions for manual handling through Replit/GitHub.
+**Why:** The user normally reserves Git operations for manual handling, but can explicitly authorize narrowly scoped branch updates. Such an exception is not standing permission for later work.
 
-**How to apply:** Use read-only Git inspection only when necessary to verify scope. Leave every commit, push, PR, merge, and branch operation to the user.
+**How to apply:** Without current authorization, use read-only Git inspection only. With authorization, verify each destination branch's exact file diff and exclude unrelated workspace changes. Do not assume a workspace checkpoint is a feature-scoped commit.

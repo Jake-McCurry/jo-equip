@@ -122,7 +122,7 @@ const BOOKS: BookConfig[] = [
   {
     key: "adventure",
     // Preserve the approved illustrated edition rather than reparse the legacy manuscript.
-    docx: resolve(ROOT, "outputs/adventure-review/Adventure-Review.pdf"),
+    docx: resolve(ROOT, "outputs/adventure-link-corrections/Adventure-Guide-Updated-Visible-Links.pdf"),
     source: "approved-pdf",
     typography: "strict",
     cover: resolve(ROOT, "artifacts/discipleship-hub/src/assets/books/covers/adventure-of-living-with-jesus.jpg"),

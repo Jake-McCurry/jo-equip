@@ -6,52 +6,42 @@ const action = "https://jesusonline.us1.list-manage.com/subscribe/post?u=c02949f
 ---
 
 <section class="leader-signup" id="leader-kit-signup" aria-labelledby="leader-signup-heading">
-  <h2 id="leader-signup-heading">Get the This Sunday Leader Kit</h2>
-  <p class="intro">We’ll email the kit immediately. Lead Week 1 this Sunday.</p>
-  <form action={action} method="post" target="_blank" {...{ rel: "noopener noreferrer" }} aria-label="Free Leader Kit signup">
+  <h2 id="leader-signup-heading">Get This Free Leader Kit</h2>
+  <!-- Matches the supplied Mailchimp embed's action, fields and honeypot.
+       Native validation replaces its unused phone/SMS scripts and fixed-width CSS. -->
+  <form action={action} method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" {...{ rel: "noopener noreferrer" }} aria-label="Free Leader Kit signup">
     <div class="field">
-      <label for="leader-FNAME">First name</label>
-      <input id="leader-FNAME" name="FNAME" type="text" autocomplete="given-name" placeholder="James" required />
+      <label for="mce-EMAIL">Email address</label>
+      <input id="mce-EMAIL" name="EMAIL" type="email" autocomplete="email" placeholder="you@yourchurch.org" required />
     </div>
     <div class="field">
-      <label for="leader-EMAIL">Email</label>
-      <input id="leader-EMAIL" name="EMAIL" type="email" autocomplete="email" placeholder="you@yourchurch.org" required />
+      <label for="mce-FNAME">First name</label>
+      <input id="mce-FNAME" name="FNAME" type="text" autocomplete="given-name" placeholder="James" required />
     </div>
     <div class="field">
-      <label for="leader-MMERGE25">I serve as a</label>
-      <select id="leader-MMERGE25" name="MMERGE25" required>
-        <option value="" disabled selected>Pastor / Home church leader / Other</option>
-        <option value="Pastor">Pastor</option>
-        <option value="Home Church Leader">Home church leader</option>
-        <option value="Other">Other</option>
-      </select>
-    </div>
-    <div class="field">
-      <label for="leader-CHURCH">Church or ministry name <span>(optional)</span></label>
-      <input id="leader-CHURCH" name="CHURCH" type="text" autocomplete="organization" placeholder="Hope Fellowship" />
+      <label for="mce-CHURCH">Church or ministry name <span>(optional)</span></label>
+      <input id="mce-CHURCH" name="CHURCH" type="text" autocomplete="organization" placeholder="Hope Fellowship" />
     </div>
     <div class="honeypot" aria-hidden="true">
       <input type="text" name="b_c02949f5de137184b156da9bc_e06ba0649d" tabindex="-1" autocomplete="off" value="" aria-label="Leave this field empty" />
     </div>
-    <button type="submit" name="subscribe">Send Me the Free Leader Kit</button>
+    <button type="submit" id="mc-embedded-subscribe" name="subscribe" value="Subscribe">Subscribe</button>
     <p class="confirmation-note">Mailchimp opens in a new tab to confirm your request.</p>
   </form>
 </section>
 
 <style>
-  .leader-signup { background: #fff; border: 1px solid #d9dfe5; padding: 22px 16px; scroll-margin-top: 100px; color: #132b45; }
-  .leader-signup h2 { margin: 0 0 8px; font-size: clamp(1.4rem, 3vw, 1.85rem); font-weight: 700; line-height: 1.2; color: #19212b; }
-  .intro { margin: 0 0 22px; color: #5d6673; font-size: 1rem; line-height: 1.45; }
-  .field { margin-top: 16px; }
-  label { display: block; font-size: 1rem; font-weight: 700; line-height: 1.4; margin-bottom: 6px; }
+  .leader-signup { background: #fff; border: 1px solid #d9dfe5; padding: 16px; scroll-margin-top: 100px; color: #132b45; text-align: left; }
+  .leader-signup h2 { margin: 0 0 12px; font-size: clamp(1.125rem, 5vw, 1.625rem); white-space: nowrap; font-weight: 700; line-height: 1.2; letter-spacing: -.02em; color: #19212b; }
+  .field { margin-top: 12px; }
+  label { display: block; font-size: 1rem; font-weight: 700; line-height: 1.4; margin-bottom: 4px; }
   label span { font-weight: 600; }
-  input, select { box-sizing: border-box; width: 100%; min-width: 0; min-height: 48px; padding: 11px 10px; border: 1px solid #cbd2d9; border-radius: 0; background: white; color: #19212b; font: inherit; font-size: 16px; }
+  input { box-sizing: border-box; width: 100%; min-width: 0; min-height: 44px; padding: 9px 10px; border: 1px solid #cbd2d9; border-radius: 0; background: white; color: #19212b; font: inherit; font-size: 16px; }
   input::placeholder { color: #727c88; opacity: 1; }
-  select:invalid { color: #727c88; }
-  input:focus-visible, select:focus-visible, button:focus-visible { outline: 3px solid var(--color-structure); outline-offset: 3px; }
-  button { display: block; width: 100%; min-height: 48px; margin-top: 30px; padding: 13px 10px; border: 0; background: #147bd1; color: #fff; font: inherit; font-weight: 700; font-size: 1rem; cursor: pointer; transition: background .15s; }
+  input:focus-visible, button:focus-visible { outline: 3px solid var(--color-structure); outline-offset: 3px; }
+  button { display: block; width: 100%; min-height: 44px; margin-top: 16px; padding: 11px 10px; border: 0; background: #147bd1; color: #fff; font: inherit; font-weight: 700; font-size: 1rem; text-align: left; cursor: pointer; transition: background .15s; }
   button:hover { background: #0964af; }
-  .confirmation-note { margin: 10px 0 0; color: #5d6673; font-size: .75rem; line-height: 1.4; }
+  .confirmation-note { margin: 6px 0 0; color: #5d6673; font-size: .75rem; line-height: 1.4; }
   .honeypot { position: absolute; left: -5000px; width: 1px; height: 1px; overflow: hidden; }
-  @media (min-width: 640px) { .leader-signup { padding: 28px; } }
+  @media (min-width: 640px) { .leader-signup { padding: 20px; } }
 </style>

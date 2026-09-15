@@ -1,6 +1,8 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
+import { devotionalGuideCategories } from "../src/data/knowing-god/introduction/devotional-guide.ts";
+import { devotionalTopicKey, isDevotionalTopic } from "../src/components/knowing-god/devotional-topics.ts";
 import {
   pushTopicHash,
   subscribeToTopicHistory,
@@ -8,6 +10,20 @@ import {
 } from "../src/components/knowing-god/topic-history.mjs";
 
 const dataDirectory = new URL("../public/knowing-god/data/", import.meta.url);
+
+test("devotional selection includes exactly the guide's unique topics", async () => {
+  const { topics } = JSON.parse(await readFile(new URL("index.json", dataDirectory), "utf8"));
+  const expected = new Set(devotionalGuideCategories.flatMap(category =>
+    category.entries.map(entry => devotionalTopicKey(entry.topic))));
+  const selected = topics.filter(isDevotionalTopic);
+  assert.deepEqual(new Set(selected.map(topic => devotionalTopicKey(topic.title))), expected);
+  assert.equal(selected.length, expected.size, "Each guide topic resolves to exactly one index topic");
+  for (const id of ["joy", "nonimpossibilitation-of-the-lord", "i-am-declarations"]) {
+    assert.ok(selected.some(topic => topic.id === id), `Typography variant ${id} must match`);
+  }
+  assert.equal(isDevotionalTopic({ title: "Not a source topic" }), false);
+  assert.ok(topics.length > selected.length);
+});
 
 const loadTopic = async id => {
   const index = JSON.parse(await readFile(new URL("index.json", dataDirectory), "utf8"));

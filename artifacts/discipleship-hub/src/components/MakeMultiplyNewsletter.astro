@@ -22,14 +22,14 @@ const features = [
 ];
 ---
 <div class="max-w-3xl mx-auto">
-  <p class="text-base leading-relaxed" style="color:#374151;">
-    Subscribe to the free <strong style="color:#0b3c5d;">Making and Multiplying Disciples Newsletter</strong> —
+  <p class="text-base leading-relaxed" style="color:var(--color-text-muted);">
+    Subscribe to the free <strong style="color:var(--color-text);">Making and Multiplying Disciples Newsletter</strong> —
     your monthly source of hope, insight, and practical equipping. Each issue features:
   </p>
-  <ul class="mt-4 space-y-2 pl-5 list-disc" style="color:#374151;">
+  <ul class="mt-4 space-y-2 pl-5 list-disc" style="color:var(--color-text-muted);">
     {features.map((f) => (
       <li class="text-base leading-relaxed">
-        <strong style="color:#0b3c5d;">{f.title}</strong> — {f.body}
+        <strong style="color:var(--color-text);">{f.title}</strong> — {f.body}
       </li>
     ))}
   </ul>

@@ -104,34 +104,34 @@ const featuredPlaylists = [
   </Fragment>
 
   {/* Hero — same as the home page at time of copy. */}
-  <section class="relative py-10 md:py-16 px-4 text-center overflow-hidden" style="background-color:#0b3c5d;">
+  <section class="relative py-10 md:py-16 px-4 text-center overflow-hidden" style="background-color:var(--color-hero);">
     <div
       class="pointer-events-none absolute inset-0"
       style={`background-image:url('${heroBg.src}');background-size:cover;background-position:center;`}
       aria-hidden="true"
     ></div>
     {/* Light navy wash so the white text stays readable while the collage shows through. */}
-    <div class="pointer-events-none absolute inset-0" style="background:linear-gradient(to bottom, rgba(11,60,93,0.35), rgba(11,60,93,0.25));"></div>
+    <div class="pointer-events-none absolute inset-0" style="background:linear-gradient(to bottom, rgba(0,107,179,0.35), rgba(0,107,179,0.25));"></div>
 
     <div class="relative container mx-auto max-w-4xl">
-      <h1 class="text-2xl sm:text-4xl md:text-5xl leading-tight" style="color:#ffffff;font-weight:500;text-shadow:0 1px 12px rgba(11,60,93,0.6);">Reach people. Grow disciples.<br />Multiply churches.</h1>
+      <h1 class="text-2xl sm:text-4xl md:text-5xl leading-tight" style="color:#ffffff;font-weight:600;text-shadow:0 1px 12px rgba(0,107,179,0.6);">Reach people. Grow disciples.<br />Multiply churches.</h1>
     </div>
   </section>
 
   {/* Tagline + persona links */}
   <section class="py-8 md:py-10 px-4 text-center bg-white">
     <div class="container mx-auto max-w-4xl">
-      <p class="text-base md:text-lg max-w-3xl mx-auto leading-relaxed" style="color:#374151;">
+      <p class="text-base md:text-lg max-w-3xl mx-auto leading-relaxed" style="color:var(--color-text-muted);">
         Apologetics, identity-centered discipleship, and church vibrancy&mdash;united in one accessible free resource hub.
-        <a href={join("/equip")} class="text-sm md:text-base whitespace-nowrap font-medium underline underline-offset-2" style="color:#de5b00;">Find out more</a>
+        <a href={join("/equip")} class="text-sm md:text-base whitespace-nowrap font-medium underline underline-offset-2" style="color:var(--color-accent);">Find out more</a>
       </p>
-      <div class="mt-5 text-sm md:text-base flex flex-col items-center justify-center gap-1.5 sm:flex-row sm:flex-wrap sm:gap-0" style="color:#0b3c5d;">
+      <div class="mt-5 text-sm md:text-base flex flex-col items-center justify-center gap-1.5 sm:flex-row sm:flex-wrap sm:gap-0" style="color:var(--color-text);">
         <span class="font-medium">Explore Free Resources for</span>
         <span class="flex flex-wrap items-center justify-center">
           {personaLinks.map(link => (
             <Fragment>
-              <span aria-hidden="true" class="mx-1.5" style="color:#de5b00;">&bull;</span>
-              <a href={link.href} class="underline underline-offset-2 whitespace-nowrap hover:opacity-90" style="color:#de5b00;">{link.title}</a>
+              <span aria-hidden="true" class="mx-1.5" style="color:var(--color-accent);">&bull;</span>
+              <a href={link.href} class="underline underline-offset-2 whitespace-nowrap hover:opacity-90" style="color:var(--color-action-warm);">{link.title}</a>
             </Fragment>
           ))}
         </span>
@@ -142,8 +142,8 @@ const featuredPlaylists = [
   {/* Featured books — same collection and mobile carousel as the Pastors page. */}
   <section class="py-10 md:py-14 bg-white border-t" style="border-color:var(--color-border);">
     <div class="container mx-auto px-4 max-w-4xl">
-      <h2 class="text-2xl md:text-3xl font-semibold mb-2" style="color:#0b3c5d;">Books</h2>
-      <p class="text-[15px] md:text-base leading-relaxed mb-6" style="color:#374151;">
+      <h2 class="text-2xl md:text-3xl font-semibold mb-2" style="color:var(--color-structure);">Books</h2>
+      <p class="text-[15px] md:text-base leading-relaxed mb-6" style="color:var(--color-text-muted);">
         Free PDF downloads suitable for personal reading, leadership teams, or distribution.
       </p>
       <div class="flex gap-4 md:gap-5 overflow-x-auto pb-2 md:grid md:overflow-visible md:grid-cols-4 lg:grid-cols-8">
@@ -155,21 +155,21 @@ const featuredPlaylists = [
                 {cover ? (
                   <Image src={cover} alt={book.title} width={260} class="w-full aspect-[3/4] object-cover" />
                 ) : (
-                  <div class="aspect-[3/4] flex items-center justify-center" style="background-color:#e6f2fa;">
+                  <div class="aspect-[3/4] flex items-center justify-center" style="background-color:var(--color-surface-soft);">
                     <BookOpen className="w-8 h-8" style={{ color: "#94a3b8" }} />
                   </div>
                 )}
               </div>
-              <p class="mt-2 text-xs leading-snug font-medium group-hover:underline" style="color:#0b3c5d;">{book.title}</p>
+              <p class="mt-2 text-xs leading-snug font-medium group-hover:underline" style="color:var(--color-text);">{book.title}</p>
             </a>
           );
         })}
         <a href={join("/books")} class="group shrink-0 w-[calc((100vw-5rem)/3.5)] max-w-[130px] md:w-auto md:max-w-none">
-          <div class="aspect-[3/4] border-2 border-dashed rounded flex flex-col items-center justify-center gap-2 transition-colors group-hover:border-solid" style="border-color:#0095ff;background-color:#e6f2fa;">
-            <ArrowRight className="w-6 h-6" style={{ color: "#0095ff" }} />
-            <span class="text-sm font-semibold" style="color:#0095ff;">More</span>
+          <div class="aspect-[3/4] border-2 border-dashed rounded flex flex-col items-center justify-center gap-2 transition-colors group-hover:border-solid" style="border-color:var(--color-brand);background-color:var(--color-surface-soft);">
+            <ArrowRight className="w-6 h-6" style={{ color: "var(--color-brand)" }} />
+            <span class="text-sm font-semibold" style="color:var(--color-hero);">More</span>
           </div>
-          <p class="mt-2 text-xs leading-snug font-medium group-hover:underline" style="color:#0b3c5d;">All free books</p>
+          <p class="mt-2 text-xs leading-snug font-medium group-hover:underline" style="color:var(--color-text);">All free books</p>
         </a>
       </div>
     </div>
@@ -178,8 +178,8 @@ const featuredPlaylists = [
   {/* Featured playlists — same collection and mobile carousel as the Pastors page. */}
   <section class="py-10 md:py-14 bg-white border-t" style="border-color:var(--color-border);">
     <div class="container mx-auto px-4 max-w-4xl">
-      <h2 class="text-2xl md:text-3xl font-semibold mb-2" style="color:#0b3c5d;">Playlists</h2>
-      <p class="text-[15px] md:text-base leading-relaxed mb-6" style="color:#374151;">
+      <h2 class="text-2xl md:text-3xl font-semibold mb-2" style="color:var(--color-structure);">Playlists</h2>
+      <p class="text-[15px] md:text-base leading-relaxed mb-6" style="color:var(--color-text-muted);">
         Sermon resources for pastors: video series for sermon starters, small groups, or personal equipping.
       </p>
       <div class="flex gap-4 md:gap-5 overflow-x-auto pb-2 md:grid md:overflow-visible md:grid-cols-3 lg:grid-cols-4">
@@ -194,28 +194,28 @@ const featuredPlaylists = [
                   )}
                   <div class="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/15 transition-colors">
                     <div class="w-11 h-11 rounded-full flex items-center justify-center transition-all duration-200 scale-90 opacity-0 group-hover:opacity-100 group-hover:scale-100" style="background-color:rgba(255,255,255,0.95);">
-                      <Play className="w-5 h-5 ml-0.5" style={{ color: "#de5b00", fill: "#de5b00" }} />
+                      <Play className="w-5 h-5 ml-0.5" style={{ color: "var(--color-accent)", fill: "var(--color-accent)" }} />
                     </div>
                   </div>
                 </div>
               </div>
-              <p class="mt-2 text-xs leading-snug font-medium group-hover:underline" style="color:#0b3c5d;">{playlist.title}</p>
+              <p class="mt-2 text-xs leading-snug font-medium group-hover:underline" style="color:var(--color-text);">{playlist.title}</p>
             </a>
           );
         })}
         <a href={join("/playlists")} class="group shrink-0 w-[calc((100vw-4rem)/2.5)] max-w-[220px] md:w-auto md:max-w-none">
-          <div class="aspect-video border-2 border-dashed rounded flex flex-col items-center justify-center gap-1.5 transition-colors group-hover:border-solid" style="border-color:#0095ff;background-color:#e6f2fa;">
-            <ArrowRight className="w-6 h-6" style={{ color: "#0095ff" }} />
-            <span class="text-sm font-semibold" style="color:#0095ff;">More</span>
+          <div class="aspect-video border-2 border-dashed rounded flex flex-col items-center justify-center gap-1.5 transition-colors group-hover:border-solid" style="border-color:var(--color-brand);background-color:var(--color-surface-soft);">
+            <ArrowRight className="w-6 h-6" style={{ color: "var(--color-brand)" }} />
+            <span class="text-sm font-semibold" style="color:var(--color-hero);">More</span>
           </div>
-          <p class="mt-2 text-xs leading-snug font-medium group-hover:underline" style="color:#0b3c5d;">All playlists</p>
+          <p class="mt-2 text-xs leading-snug font-medium group-hover:underline" style="color:var(--color-text);">All playlists</p>
         </a>
       </div>
     </div>
   </section>
 
   {/* Three Categories — photo cards */}
-  <section class="py-10 md:py-14" style="background-color:#e6f2fa;">
+  <section class="py-10 md:py-14" style="background-color:var(--color-surface-soft);">
     <div class="container mx-auto px-4">
       <h2 class="sr-only">Explore the three categories</h2>
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-md sm:max-w-lg lg:max-w-none mx-auto">
@@ -223,7 +223,7 @@ const featuredPlaylists = [
           const accent = channel.accentColor;
           return (
           <a href={join(`/categories/${channel.id}`)} class="group flex flex-col">
-            <h3 class="text-2xl font-semibold mb-2 group-hover:underline" style="color:#0b3c5d;">{channel.name}</h3>
+            <h3 class="text-2xl font-semibold mb-2 group-hover:underline" style="color:var(--color-structure);">{channel.name}</h3>
             <div
               class="flex flex-col flex-grow bg-white border rounded overflow-hidden group-hover:shadow-lg transition-all"
               style={`border-color:var(--color-border);border-left:4px solid ${accent};`}
@@ -257,7 +257,7 @@ const featuredPlaylists = [
   </section>
 
   {/* Quick links — Reviews · About · Beliefs · JO APP */}
-  <section style="background-color:#0095ff;">
+  <section style="background-color:var(--color-hero);">
     <div class="container mx-auto px-4">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 divide-white/15 sm:gap-y-px lg:divide-x lg:divide-white/15">
         {quickLinks.map(link => {
@@ -273,8 +273,8 @@ const featuredPlaylists = [
                 <Icon className="w-5 h-5" style={{ color: "#ffffff" }} />
               </div>
               <div class="text-left">
-                <div class="text-lg md:text-xl font-semibold text-white leading-tight tracking-wide group-hover:underline" style='font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;'>{link.title}</div>
-                <div class="text-[11px] mt-1 font-medium tracking-widest uppercase" style="color:rgba(255,255,255,0.8);">{link.subtitle}</div>
+                <div class="text-lg md:text-xl font-semibold text-white leading-tight tracking-wide group-hover:underline" style='font-family:var(--font-sans);'>{link.title}</div>
+                <div class="text-[12px] mt-1 font-medium tracking-widest uppercase" style="color:rgba(255,255,255,0.8);">{link.subtitle}</div>
               </div>
             </a>
           );

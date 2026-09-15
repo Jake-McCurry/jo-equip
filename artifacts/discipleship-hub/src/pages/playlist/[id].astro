@@ -64,8 +64,7 @@ const playlistJsonLd = {
 
     <a
       href={join("/playlists")}
-      class="inline-flex items-center gap-1.5 text-sm font-medium mb-6 transition-colors hover:underline focus:outline-none focus-visible:underline"
-      style="color:#0095ff;"
+      class="inline-flex items-center gap-1.5 text-sm font-medium mb-6 transition-colors hover:underline focus:outline-none focus-visible:underline" style="color:var(--color-hero);"
     >
       <ChevronLeft className="w-4 h-4" />
       All playlists
@@ -74,14 +73,14 @@ const playlistJsonLd = {
     <div class="max-w-3xl mb-10 md:mb-12">
       <div class="flex items-center gap-3 mb-3">
         <div class="w-9 h-9 rounded flex items-center justify-center" style="background-color:rgba(0,149,255,0.1);">
-          <ListVideo className="w-5 h-5" style={{ color: "#0095ff" }} />
+          <ListVideo className="w-5 h-5" style={{ color: "var(--color-brand)" }} />
         </div>
-        <span class="text-xs font-semibold tracking-widest uppercase" style="color:#0095ff;">
+        <span class="text-xs font-semibold tracking-widest uppercase" style="color:var(--color-hero);">
           Playlist · {count} {count === 1 ? "video" : "videos"}
         </span>
       </div>
-      <h1 class="text-3xl md:text-4xl mb-4" style="color:#0b3c5d;">{playlist.title}</h1>
-      <div class="h-0.5 w-12" style="background-color:#de5b00;"></div>
+      <h1 class="text-3xl md:text-4xl mb-4" style="color:var(--color-structure);">{playlist.title}</h1>
+      <div class="h-0.5 w-12" style="background-color:var(--color-accent);"></div>
     </div>
 
     <ol class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 list-none p-0">
@@ -92,7 +91,7 @@ const playlistJsonLd = {
             <a
               href={join(`/video/${slug}`)}
               class="yt-facade group relative block w-full aspect-video bg-slate-900 overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
-              style="--tw-ring-color:#0095ff;"
+              style="--tw-ring-color:var(--color-brand);"
               data-yt-id={video.videoId}
               data-yt-title={video.title}
               aria-label={`Watch video: ${video.title}`}
@@ -107,16 +106,16 @@ const playlistJsonLd = {
               />
               <div class="absolute inset-0 flex items-center justify-center bg-black/10 group-hover:bg-black/25 transition-colors">
                 <div class="w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center transition-transform duration-200 group-hover:scale-110 shadow-lg" style="background-color:rgba(255,255,255,0.95);">
-                  <Play className="w-7 h-7 md:w-8 md:h-8 ml-1" style={{ color: "#de5b00", fill: "#de5b00" }} />
+                  <Play className="w-7 h-7 md:w-8 md:h-8 ml-1" style={{ color: "var(--color-accent)", fill: "var(--color-accent)" }} />
                 </div>
               </div>
             </a>
             <div class="p-4 md:p-5 flex items-start gap-3">
-              <span class="shrink-0 w-7 h-7 rounded text-xs font-semibold flex items-center justify-center" style="background-color:rgba(11,60,93,0.08);color:#0b3c5d;">
+              <span class="shrink-0 w-7 h-7 rounded text-xs font-semibold flex items-center justify-center" style="background-color:rgba(0,107,179,0.08);color:var(--color-text);">
                 {idx + 1}
               </span>
               <a href={join(`/video/${slug}`)} class="hover:underline focus:outline-none rounded">
-                <h3 class="font-semibold leading-snug" style='color:#0b3c5d;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;'>
+                <h3 class="font-semibold leading-snug" style='color:var(--color-structure);font-family: var(--font-sans);'>
                   {video.title}
                 </h3>
               </a>

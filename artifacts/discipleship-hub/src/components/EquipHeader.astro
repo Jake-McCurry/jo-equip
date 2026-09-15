@@ -37,14 +37,14 @@ const navLinksWithActive = navLinks.map(l => ({ ...l, active: isActive(l.path) }
 // /welcome is kept as a page but no longer linked from the nav (Aug 2026).
 const mobileNavLinks = [...navLinksWithActive];
 ---
-    <header class="sticky top-0 z-50 w-full" style={`background-color:${navColor};border-bottom:1px solid rgba(255,255,255,0.08);`}>
+    <header class="equip-header sticky top-0 z-50 w-full" style={`background-color:${navColor};border-bottom:1px solid rgba(255,255,255,0.08);`}>
       <div class="container mx-auto px-4 md:px-6 flex items-center justify-between py-4 md:py-5 relative">
 
         <a href={join("/")} class="flex items-center gap-3 md:gap-5 hover:opacity-90 transition-opacity">
           {/* fetchpriority=high tells the browser this is the LCP candidate
               and to prioritize it over the in-viewport channel art photos. */}
           <Image src={logoSrc} alt="JesusOnline" widths={[200, 400]} sizes="200px" format="webp" quality={85} class="h-8 md:h-10 w-auto" loading="eager" fetchpriority="high" />
-          <span class="text-white font-semibold text-lg md:text-xl tracking-wide" style='font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;'>
+          <span class="text-white font-bold text-xl tracking-wide" style="font-family:var(--font-sans);">
             JO EQUIP
           </span>
         </a>
@@ -54,13 +54,13 @@ const mobileNavLinks = [...navLinksWithActive];
           {navLinksWithActive.map(link => (
             <a
               href={join(link.path)}
-              class="relative px-3 py-2 text-base font-medium transition-colors rounded hover:text-white"
+              class="relative px-3 py-2 text-[19px] font-bold transition-colors rounded hover:underline underline-offset-4"
               style="color:#ffffff;"
               aria-current={link.active ? "page" : undefined}
             >
               {link.name}
               {link.active && (
-                <span class="absolute -bottom-1 left-3 right-3 h-0.5 rounded-full" style="background-color:#de5b00;"></span>
+                <span class="absolute -bottom-1 left-3 right-3 h-0.5 rounded-full" style="background-color:var(--color-accent);"></span>
               )}
             </a>
           ))}
@@ -117,7 +117,7 @@ const mobileNavLinks = [...navLinksWithActive];
             href={join(link.path)}
             aria-current={link.active ? "page" : undefined}
             class="text-base font-medium py-3.5 px-6 transition-colors"
-            style={`color:${link.active ? navColor : "#0b3c5d"};border-bottom:1px solid #e5e9ef;${link.active ? `background-color:${navColor}0f;border-left:3px solid #de5b00;padding-left:calc(1.5rem - 3px);` : ""}`}
+            style={`color:var(--color-text);border-bottom:1px solid var(--color-border-soft);${link.active ? "background-color:var(--color-surface-soft);border-left:3px solid var(--color-accent);padding-left:calc(1.5rem - 3px);font-weight:700;" : ""}`}
           >
             {link.name}
           </a>
@@ -125,12 +125,18 @@ const mobileNavLinks = [...navLinksWithActive];
         <a
           href="mailto:pastorjon@jesusonline.com"
           class="text-base font-medium py-3.5 px-6 transition-colors"
-          style="color:#0b3c5d;"
+          style="color:var(--color-text);"
         >
           Contact
         </a>
       </div>
     </header>
+    <style>
+      /* White/Blue500 meets the kit's large-bold text threshold at 19px/700.
+         Focus must contrast with the blue surface, not disappear into it. */
+      .equip-header :is(a, button):focus-visible { outline-color: #fff; }
+      #mobile-nav-panel a:focus-visible { outline-color: var(--color-focus); }
+    </style>
 
     <script is:inline>
       (function () {

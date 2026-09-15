@@ -123,9 +123,9 @@ const totalLinks =
   title="HTML Sitemap | JO EQUIP"
   description="A complete overview of JO EQUIP's free ministry resources — every category, topic, article, book, playlist, and individual video on one page."
 >
-  <section class="py-10 md:py-14 px-4" style="background-color:#e6f2fa;">
+  <section class="py-10 md:py-14 px-4" style="background-color:var(--color-surface-soft);">
     <div class="container mx-auto max-w-5xl">
-      <h1 class="text-3xl md:text-4xl font-semibold" style="color:#0b3c5d;">JO EQUIP Sitemap</h1>
+      <h1 class="text-3xl md:text-4xl font-semibold" style="color:var(--color-structure);">JO EQUIP Sitemap</h1>
       <p class="mt-3 text-[15px] md:text-base" style="color:var(--color-muted-foreground);">
         Every page on JO EQUIP — {totalLinks} in all — organized the way the site is organized.
       </p>
@@ -134,26 +134,26 @@ const totalLinks =
 
   <div class="container mx-auto max-w-5xl px-4 py-10 md:py-12 flex flex-col gap-10">
     <section>
-      <h2 class="text-xl md:text-2xl font-semibold mb-3 pb-2" style="color:#0b3c5d;border-bottom:2px solid #de5b00;">Main Pages</h2>
+      <h2 class="text-xl md:text-2xl font-semibold mb-3 pb-2" style="color:var(--color-structure);border-bottom:2px solid var(--color-accent);">Main Pages</h2>
       <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-1.5">
         {mainPages.map(p => (
-          <li><a href={p.href} class="text-[15px] underline underline-offset-2 hover:opacity-80" style="color:#0b3c5d;">{p.label}</a></li>
+          <li><a href={p.href} class="text-[15px] underline underline-offset-2 hover:opacity-80" style="color:var(--color-text);">{p.label}</a></li>
         ))}
       </ul>
     </section>
 
     <section>
-      <h2 class="text-xl md:text-2xl font-semibold mb-3 pb-2" style="color:#0b3c5d;border-bottom:2px solid #de5b00;">Individual Videos</h2>
+      <h2 class="text-xl md:text-2xl font-semibold mb-3 pb-2" style="color:var(--color-structure);border-bottom:2px solid var(--color-accent);">Individual Videos</h2>
       <div class="flex flex-col gap-5">
         {videoGroups.map(group => (
           <div>
-            <h3 class="text-base md:text-lg font-semibold mb-2" style="color:#0095ff;">
+            <h3 class="text-base md:text-lg font-semibold mb-2" style="color:var(--color-hero);">
               <a href={join(`/playlist/${group.playlist.id}`)} class="hover:underline">{group.playlist.title}</a>
             </h3>
             <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-1">
               {group.videos.map(video => (
                 <li>
-                  <a href={join(`/video/${video.slug}`)} class="text-sm underline underline-offset-2 hover:opacity-80" style="color:#374151;">
+                  <a href={join(`/video/${video.slug}`)} class="text-sm underline underline-offset-2 hover:opacity-80" style="color:var(--color-text-muted);">
                     {video.title}
                   </a>
                 </li>
@@ -165,29 +165,29 @@ const totalLinks =
     </section>
 
     <section>
-      <h2 class="text-xl md:text-2xl font-semibold mb-3 pb-2" style="color:#0b3c5d;border-bottom:2px solid #de5b00;">Audience Resources</h2>
+      <h2 class="text-xl md:text-2xl font-semibold mb-3 pb-2" style="color:var(--color-structure);border-bottom:2px solid var(--color-accent);">Audience Resources</h2>
       <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-1.5">
         {audiencePages.map(p => (
-          <li><a href={p.href} class="text-[15px] underline underline-offset-2 hover:opacity-80" style="color:#0b3c5d;">{p.label}</a></li>
+          <li><a href={p.href} class="text-[15px] underline underline-offset-2 hover:opacity-80" style="color:var(--color-text);">{p.label}</a></li>
         ))}
       </ul>
     </section>
 
     {categorySections.map(channel => (
       <section>
-        <h2 class="text-xl md:text-2xl font-semibold mb-4 pb-2" style="color:#0b3c5d;border-bottom:2px solid #de5b00;">
+        <h2 class="text-xl md:text-2xl font-semibold mb-4 pb-2" style="color:var(--color-structure);border-bottom:2px solid var(--color-accent);">
           <a href={channel.href} class="hover:underline">{channel.name}</a>
         </h2>
         <div class="flex flex-col gap-6">
           {channel.subs.map(sub => (
             <div>
-              <h3 class="text-base md:text-lg font-semibold mb-2" style="color:#0095ff;">
+              <h3 class="text-base md:text-lg font-semibold mb-2" style="color:var(--color-hero);">
                 <a href={sub.href} class="hover:underline">{sub.name}</a>
               </h3>
               {sub.articles.length > 0 && (
                 <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-1">
                   {sub.articles.map(a => (
-                    <li><a href={a.href} class="text-sm underline underline-offset-2 hover:opacity-80" style="color:#374151;">{a.title}</a></li>
+                    <li><a href={a.href} class="text-sm underline underline-offset-2 hover:opacity-80" style="color:var(--color-text-muted);">{a.title}</a></li>
                   ))}
                 </ul>
               )}
@@ -198,34 +198,34 @@ const totalLinks =
     ))}
 
     <section>
-      <h2 class="text-xl md:text-2xl font-semibold mb-3 pb-2" style="color:#0b3c5d;border-bottom:2px solid #de5b00;">
+      <h2 class="text-xl md:text-2xl font-semibold mb-3 pb-2" style="color:var(--color-structure);border-bottom:2px solid var(--color-accent);">
         <a href={join("/books")} class="hover:underline">Books</a>
       </h2>
       <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-1.5">
         {bookLinks.map(b => (
-          <li><a href={b.href} class="text-[15px] underline underline-offset-2 hover:opacity-80" style="color:#0b3c5d;">{b.title}</a></li>
+          <li><a href={b.href} class="text-[15px] underline underline-offset-2 hover:opacity-80" style="color:var(--color-text);">{b.title}</a></li>
         ))}
       </ul>
     </section>
 
     <section>
-      <h2 class="text-xl md:text-2xl font-semibold mb-3 pb-2" style="color:#0b3c5d;border-bottom:2px solid #de5b00;">
+      <h2 class="text-xl md:text-2xl font-semibold mb-3 pb-2" style="color:var(--color-structure);border-bottom:2px solid var(--color-accent);">
         <a href={join("/playlists")} class="hover:underline">Video Playlists</a>
       </h2>
       <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-1.5">
         {playlistLinks.map(p => (
-          <li><a href={p.href} class="text-[15px] underline underline-offset-2 hover:opacity-80" style="color:#0b3c5d;">{p.title}</a></li>
+          <li><a href={p.href} class="text-[15px] underline underline-offset-2 hover:opacity-80" style="color:var(--color-text);">{p.title}</a></li>
         ))}
       </ul>
     </section>
 
     <section>
-      <h2 class="text-xl md:text-2xl font-semibold mb-3 pb-2" style="color:#0b3c5d;border-bottom:2px solid #de5b00;">
+      <h2 class="text-xl md:text-2xl font-semibold mb-3 pb-2" style="color:var(--color-structure);border-bottom:2px solid var(--color-accent);">
         <a href={join("/reviews")} class="hover:underline">Reviews</a>
       </h2>
       <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-1.5">
         {reviewLinks.map(r => (
-          <li><a href={r.href} class="text-[15px] underline underline-offset-2 hover:opacity-80" style="color:#0b3c5d;">{r.title}</a></li>
+          <li><a href={r.href} class="text-[15px] underline underline-offset-2 hover:opacity-80" style="color:var(--color-text);">{r.title}</a></li>
         ))}
       </ul>
     </section>

@@ -21,7 +21,7 @@ pnpm workspace monorepo using TypeScript. Each package manages its own dependenc
 
 Static-first Astro site. Deploys Replit → GitHub (`Jake-McCurry/jo-equip`) → Cloudflare Worker-with-static-assets (NOT classic Pages). No DB / auth / per-user server state.
 
-**Brand**: navy `#002f55`, blue `#0083de`, orange `#de5b00` (orange reserved for links/accents). Channel accents: Evidence slate-blue `#3b5a99`, Growth sage `#4c8a4c`, Church plum `#7a3a8a`. Contact: `equip@jesusonline.com`.
+**Brand**: Use the supplied JO family kit documented in `artifacts/discipleship-hub/docs/brand-kit.md`. Bright-blue navigation stays `#0095FF`; large page titles use Playfair Display 600–700 and body/interface text uses Source Sans 3 400–700. Knowing God alone uses Georgia Bold for reading-area titles/headlines (the book's interior heading typeface), plus its approved warm, comforting reading theme; keep its navigation and body fonts unchanged. Contact: `equip@jesusonline.com`.
 
 **Site commands** (run in `artifacts/discipleship-hub` or via `--filter @workspace/discipleship-hub`):
 
@@ -32,12 +32,14 @@ Static-first Astro site. Deploys Replit → GitHub (`Jake-McCurry/jo-equip`) →
 - `pnpm --filter @workspace/scripts run evidence:build` — regenerate Evidence channel on-site articles (`src/data/evidenceArticles.ts` + `src/assets/evidence/` figures) from the JOM WordPress API (supports `--slug=`)
 - `pnpm --filter @workspace/scripts run site-articles:build -- --channel=X | --sub=Y [--force]` — regenerate site-wide on-EQUIP articles (per-sub-topic JSON in `src/data/generated/articles/`, figures in `src/assets/articles/<subId>/`); existing sub-topic files are skipped without `--force`. Lookups are keyed by (subId, articleId) — ids collide across sub-topics that share content.
 - `pnpm --filter @workspace/scripts run covers:build` — regenerate all book cover thumbnails from PDF page 1 (uniform 900px height; run after adding/replacing any book PDF; `hearing-the-voice-of-god` excluded — hand-picked cover)
+- `pnpm --filter @workspace/discipleship-hub run validate:books` — verify uniform library thumbnail dimensions, cover availability, compact carousel spacing, and the approved Devotional Studies order. Runs automatically in the site build.
 
 **Detailed docs** (in `artifacts/discipleship-hub/docs/`):
 
 - `worker-and-deploy.md` — Cloudflare Worker (`POST /api/subscribe` → Virtuous CRM), required secrets (`VIRTUOUS_API_KEY`, `TURNSTILE_SECRET_KEY` — Turnstile fails CLOSED if missing), staging crawl protection, deploy pipeline.
 - `site-structure.md` — Books page + email gate, Newsletter (shared Mailchimp form), Home/Welcome/Reviews/Listen/More pages, footer, SEO / JSON-LD / cache headers / tracking (GTM, Crazy Egg) / accessibility.
 - `channels-and-content.md` — Channels data model (`src/data/channels.ts`), channel index + sub-topic page conventions, per-item resource linking (bookId/videoId/links), WordPress article-PDF pipeline, BCG long-form articles + figures + PDFs.
+- `book-thumbnails.md` — Shared 3:4 library thumbnail rule; equal displayed width AND height, not merely equal outer frames. Preserve full cover content and originals. Includes carousel spacing, ordering, and build validation.
 
 **Critical gotchas** (full context in the docs above):
 

@@ -8,7 +8,7 @@ const action = "https://jesusonline.us1.list-manage.com/subscribe/post?u=c02949f
 <section class="leader-signup" id="leader-kit-signup" aria-labelledby="leader-signup-heading">
   <h2 id="leader-signup-heading">Get the This Sunday Leader Kit</h2>
   <p class="intro">We’ll email the kit immediately. Lead Week 1 this Sunday.</p>
-  <form action={action} method="post" target="_blank" rel="noopener noreferrer" aria-label="Free Leader Kit signup">
+  <form action={action} method="post" target="_blank" {...{ rel: "noopener noreferrer" }} aria-label="Free Leader Kit signup">
     <div class="field">
       <label for="leader-FNAME">First name</label>
       <input id="leader-FNAME" name="FNAME" type="text" autocomplete="given-name" placeholder="James" required />
@@ -40,16 +40,16 @@ const action = "https://jesusonline.us1.list-manage.com/subscribe/post?u=c02949f
 
 <style>
   .leader-signup { background: #fff; border: 1px solid #d9dfe5; padding: 22px 16px; scroll-margin-top: 100px; color: #132b45; }
-  .leader-signup h2 { margin: 0 0 8px; font-size: clamp(1.4rem, 3vw, 1.85rem); font-weight: 750; line-height: 1.2; color: #19212b; }
+  .leader-signup h2 { margin: 0 0 8px; font-size: clamp(1.4rem, 3vw, 1.85rem); font-weight: 700; line-height: 1.2; color: #19212b; }
   .intro { margin: 0 0 22px; color: #5d6673; font-size: 1rem; line-height: 1.45; }
   .field { margin-top: 16px; }
   label { display: block; font-size: 1rem; font-weight: 700; line-height: 1.4; margin-bottom: 6px; }
-  label span { font-weight: 500; }
+  label span { font-weight: 600; }
   input, select { box-sizing: border-box; width: 100%; min-width: 0; min-height: 48px; padding: 11px 10px; border: 1px solid #cbd2d9; border-radius: 0; background: white; color: #19212b; font: inherit; font-size: 16px; }
   input::placeholder { color: #727c88; opacity: 1; }
   select:invalid { color: #727c88; }
-  input:focus-visible, select:focus-visible, button:focus-visible { outline: 3px solid #0b3c5d; outline-offset: 3px; }
-  button { display: block; width: 100%; min-height: 48px; margin-top: 30px; padding: 13px 10px; border: 0; background: #147bd1; color: #fff; font: inherit; font-weight: 750; font-size: 1rem; cursor: pointer; transition: background .15s; }
+  input:focus-visible, select:focus-visible, button:focus-visible { outline: 3px solid var(--color-structure); outline-offset: 3px; }
+  button { display: block; width: 100%; min-height: 48px; margin-top: 30px; padding: 13px 10px; border: 0; background: #147bd1; color: #fff; font: inherit; font-weight: 700; font-size: 1rem; cursor: pointer; transition: background .15s; }
   button:hover { background: #0964af; }
   .confirmation-note { margin: 10px 0 0; color: #5d6673; font-size: .75rem; line-height: 1.4; }
   .honeypot { position: absolute; left: -5000px; width: 1px; height: 1px; overflow: hidden; }

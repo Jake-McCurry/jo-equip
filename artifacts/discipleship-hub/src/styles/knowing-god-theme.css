@@ -1,0 +1,61 @@
+/* 
+  Knowing God Warm Theme Override 
+  Applied only to the reading surfaces/body via .kg-warm-theme wrapper.
+  This preserves the main site brand styles on navigation headers while 
+  giving Knowing God readers a more comforting, quiet, and reflective experience.
+*/
+
+.kg-warm-theme {
+  /* The book's interior headlines use Georgia Bold (verified in the PDF).
+     This exception stays inside the reading area, never the shared navigation. */
+  --font-knowing-god-heading: Georgia, "Times New Roman", serif;
+  --font-display: var(--font-knowing-god-heading);
+  /* Warm paper/ivory reading background */
+  --color-surface: #fffaf2;
+  
+  /* Softly tinted warm neutral sidebars/panels */
+  --color-surface-soft: #f3ede2;
+  
+  /* Warm muted borders */
+  --color-border-soft: #d9cdb9;
+  /* Interactive boundaries remain darker than decorative panel separators. */
+  --color-border-control: #9a866d;
+  
+  /* Less clinical blue-heavy reading text */
+  --color-text: #394b4b;
+  
+  /* Warm muted text */
+  --color-text-muted: #655f55;
+  
+  /* Dark reading headings */
+  --color-hero: #29474b;
+
+  /* Note: 
+     Navy structure (--color-structure), 
+     Warm 500 orange (--color-accent), 
+     Warm 700 orange (--color-action-warm),
+     and Warm 100 orange (--color-selected-warm) 
+     remain unchanged and inherit naturally. 
+  */
+}
+
+/* Scoped override wins over individual article and React heading styles.
+   Body text, captions, forms, and navigation retain Source Sans 3. */
+.kg-warm-theme :is(h1, h2, h3, h4, h5, h6),
+.kg-warm-theme .book-title-card div b {
+  font-family: var(--font-knowing-god-heading) !important;
+  font-weight: 700 !important;
+}
+
+.kg-warm-theme .kg-copyright-link {
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 1.125rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--color-action-warm);
+  text-underline-offset: 4px;
+}
+.kg-warm-theme .kg-copyright-link:hover {
+  color: var(--color-action-warm);
+}

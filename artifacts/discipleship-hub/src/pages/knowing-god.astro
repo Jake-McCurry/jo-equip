@@ -1,5 +1,6 @@
 ---
 import "@/styles/global.css";
+import "@/styles/knowing-god-theme.css";
 import { ConcordancePrototype } from "@/components/knowing-god/ConcordancePrototype";
 import EquipHeader from "@/components/EquipHeader.astro";
 
@@ -23,7 +24,7 @@ const canonicalUrl = "https://equip.jesusonline.com/knowing-god";
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/svg+xml" href={join("/favicon.svg")} />
     <link rel="apple-touch-icon" href={join("/favicon.svg")} />
-    <meta name="theme-color" content="#123f50" />
+    <meta name="theme-color" content="#003A66" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -43,6 +44,5 @@ const canonicalUrl = "https://equip.jesusonline.com/knowing-god";
 </html>
 <style is:global>
   .kg-equip-navigation { display: contents; }
-  html[data-knowing-god-view="topic"] .kg-equip-navigation { display: none; }
   @media print { .kg-equip-navigation { display: none; } }
 </style>

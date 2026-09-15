@@ -87,9 +87,9 @@ export interface Channel {
   gradient: string;
 }
 
-/* Display order: Evidence, Growth, Church
- * Channel palette (palette B — softer pastoral feel; reserves orange #de5b00 for links).
- * Evidence = Slate Blue, Growth = Sage, Church = Plum. */
+/* Display order: Evidence, Growth, Church.
+ * JO family kit: Blue 800, Navy, Warm 700. These accents also carry white
+ * button text, so each must meet normal-text contrast (not decorative Warm 500). */
 export const channels: Channel[] = [
   {
     id: "evidence",
@@ -98,8 +98,8 @@ export const channels: Channel[] = [
     tagline: "Reach skeptics with evidence about Jesus",
     description:
       "Persuade doubters with clear, compelling facts about the true identity of Christ, the existence of God, and the reliability of the Bible.",
-    accentColor: "#C48A00",
-    gradient: "linear-gradient(135deg, #e3ad33 0%, #C48A00 60%, #8a6100 100%)",
+    accentColor: "#006BB3",
+    gradient: "linear-gradient(135deg, #006BB3 0%, #004E8A 60%, #003A66 100%)",
   },
   {
     id: "growth",
@@ -108,8 +108,8 @@ export const channels: Channel[] = [
     tagline: "Build believers into mature, fruitful disciples",
     description:
       "Disciple believers to become all that God created them to be, so they may do all that He has created them to do.",
-    accentColor: "#2E7D32",
-    gradient: "linear-gradient(135deg, #60a865 0%, #2E7D32 55%, #1b4d1e 100%)",
+    accentColor: "#003A66",
+    gradient: "linear-gradient(135deg, #004E8A 0%, #003A66 100%)",
   },
   {
     id: "church",
@@ -118,8 +118,8 @@ export const channels: Channel[] = [
     tagline: "Multiply disciples and build vibrant churches",
     description:
       "Develop fruitful, prayer-fueled, Spirit-led ministries that multiply disciples and build churches, all in obedience to Christ and His inspired Word.",
-    accentColor: "#6B2D7B",
-    gradient: "linear-gradient(135deg, #9c5cae 0%, #6B2D7B 55%, #431a4e 100%)",
+    accentColor: "#C45100",
+    gradient: "linear-gradient(135deg, #C45100 0%, #994000 55%, #662B00 100%)",
   },
 ];
 

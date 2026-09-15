@@ -1,0 +1,39 @@
+/* JO family Color Standards · 2026. Hex values are authoritative. */
+:root {
+  --blue-50: #e6f5ff;
+  --blue-100: #ccebff;
+  --blue-200: #99d6ff;
+  --blue-300: #66c2ff;
+  --blue-400: #33adff;
+  --blue-500: #0095ff;
+  --blue-600: #0084e6;
+  --blue-700: #007ae0;
+  --blue-800: #006bb3;
+  --blue-900: #004e8a;
+  --blue-950: #003a66;
+  --warm-50: #fff6f0;
+  --warm-100: #ffeadb;
+  --warm-200: #ffd2b3;
+  --warm-300: #ffb580;
+  --warm-400: #ee9c5d;
+  --warm-500: #e87722;
+  --warm-600: #e66000;
+  --warm-700: #c45100;
+  --warm-800: #994000;
+  --warm-900: #662b00;
+
+  --color-brand: var(--blue-500);
+  --color-hero: var(--blue-800);
+  --color-structure: var(--blue-950);
+  --color-text: var(--blue-950);
+  --color-text-muted: #2e5a7a;
+  --color-surface: #fffdfb;
+  --color-surface-soft: var(--blue-50);
+  --color-border-soft: var(--blue-100);
+  --color-border-control: #5b9bc4;
+  --color-focus: var(--blue-500);
+  --color-accent: var(--warm-500);
+  --color-action-warm: var(--warm-700);
+  /* Approved exception: Knowing God segmented controls use light orange. */
+  --color-selected-warm: var(--warm-100);
+}

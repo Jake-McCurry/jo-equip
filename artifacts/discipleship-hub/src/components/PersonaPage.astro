@@ -92,31 +92,31 @@ const quickLinks = [
 {/* Heading + intro */}
 <section class="bg-white">
   <div class="container mx-auto px-4 py-12 md:py-16 max-w-4xl">
-    <h1 class="text-2xl md:text-3xl mb-4" style="color:#0b3c5d;">{heading}</h1>
-    <div class="h-0.5 w-12 mb-7" style="background-color:#de5b00;"></div>
+    <h1 class="text-2xl md:text-3xl mb-4" style="color:var(--color-structure);">{heading}</h1>
+    <div class="h-0.5 w-12 mb-7" style="background-color:var(--color-accent);"></div>
     {intro.map(p => (
-      <p class="text-lg leading-relaxed mb-5 last:mb-0" style="color:#374151;" set:html={p} />
+      <p class="text-lg leading-relaxed mb-5 last:mb-0" style="color:var(--color-text-muted);" set:html={p} />
     ))}
-    <p class="text-sm font-semibold tracking-wide uppercase mt-8" style="color:#0b3c5d;">
+    <p class="text-sm font-semibold tracking-wide uppercase mt-8" style="color:var(--color-text);">
       Featured Resources by Type:
-      <a href="#articles" class="font-normal hover:underline" style="color:#de5b00;">Articles</a> <span style="color:#de5b00;">&bull;</span>
-      <a href="#topics" class="font-normal hover:underline" style="color:#de5b00;">Topics</a> <span style="color:#de5b00;">&bull;</span>
-      <a href="#books" class="font-normal hover:underline" style="color:#de5b00;">Books</a> <span style="color:#de5b00;">&bull;</span>
-      <a href="#playlists" class="font-normal hover:underline" style="color:#de5b00;">Playlists</a>
+      <a href="#articles" class="font-normal hover:underline" style="color:var(--color-action-warm);">Articles</a> <span style="color:var(--color-accent);">&bull;</span>
+      <a href="#topics" class="font-normal hover:underline" style="color:var(--color-action-warm);">Topics</a> <span style="color:var(--color-accent);">&bull;</span>
+      <a href="#books" class="font-normal hover:underline" style="color:var(--color-action-warm);">Books</a> <span style="color:var(--color-accent);">&bull;</span>
+      <a href="#playlists" class="font-normal hover:underline" style="color:var(--color-action-warm);">Playlists</a>
     </p>
   </div>
 </section>
 
 {/* Articles */}
-<section id="articles" class="py-10 md:py-14 scroll-mt-20" style="background-color:#e6f2fa;">
+<section id="articles" class="py-10 md:py-14 scroll-mt-20" style="background-color:var(--color-surface-soft);">
   <div class="container mx-auto px-4 max-w-4xl">
-    <h2 class="text-2xl md:text-3xl font-semibold mb-6" style="color:#0b3c5d;">Articles</h2>
+    <h2 class="text-2xl md:text-3xl font-semibold mb-6" style="color:var(--color-structure);">Articles</h2>
     <ul class="flex flex-col gap-4">
       {articles.map(a => (
-        <li class="bg-white border rounded px-6 py-5" style="border-color:var(--color-border);border-left:4px solid #0095ff;">
-          <p class="text-[15px] md:text-base leading-relaxed" style="color:#374151;">
-            <strong class="font-semibold" style="color:#0b3c5d;">{a.title}:</strong>{" "}{a.text}{" "}
-            <a href={join(a.href)} class="whitespace-nowrap hover:underline" style="color:#de5b00;">[more]</a>
+        <li class="bg-white border rounded px-6 py-5" style="border-color:var(--color-border);border-left:4px solid var(--color-brand);">
+          <p class="text-[15px] md:text-base leading-relaxed" style="color:var(--color-text-muted);">
+            <strong class="font-semibold" style="color:var(--color-structure);">{a.title}:</strong>{" "}{a.text}{" "}
+            <a href={join(a.href)} class="whitespace-nowrap hover:underline" style="color:var(--color-action-warm);">[more]</a>
           </p>
         </li>
       ))}
@@ -127,8 +127,8 @@ const quickLinks = [
 {/* Books */}
 <section id="books" class="py-10 md:py-14 bg-white scroll-mt-20">
   <div class="container mx-auto px-4 max-w-4xl">
-    <h2 class="text-2xl md:text-3xl font-semibold mb-2" style="color:#0b3c5d;">Books</h2>
-    <p class="text-[15px] md:text-base leading-relaxed mb-6" style="color:#374151;">{booksNote}</p>
+    <h2 class="text-2xl md:text-3xl font-semibold mb-2" style="color:var(--color-structure);">Books</h2>
+    <p class="text-[15px] md:text-base leading-relaxed mb-6" style="color:var(--color-text-muted);">{booksNote}</p>
     <div class="flex gap-4 md:gap-5 overflow-x-auto pb-2 md:grid md:overflow-visible md:grid-cols-4 lg:grid-cols-8">
       {featuredBooks.map(b => {
         const cover = getBookCover(b.id);
@@ -138,31 +138,31 @@ const quickLinks = [
               {cover ? (
                 <Image src={cover} alt={b.title} width={260} class="w-full aspect-[3/4] object-cover" />
               ) : (
-                <div class="aspect-[3/4] flex items-center justify-center" style="background-color:#e6f2fa;">
+                <div class="aspect-[3/4] flex items-center justify-center" style="background-color:var(--color-surface-soft);">
                   <BookOpen className="w-8 h-8" style={{ color: "#94a3b8" }} />
                 </div>
               )}
             </div>
-            <p class="mt-2 text-xs leading-snug font-medium group-hover:underline" style="color:#0b3c5d;">{b.title}</p>
+            <p class="mt-2 text-xs leading-snug font-medium group-hover:underline" style="color:var(--color-text);">{b.title}</p>
           </a>
         );
       })}
       {/* "More" tile → all books */}
       <a href={join("/books")} class="group shrink-0 w-[calc((100vw-5rem)/3.5)] max-w-[130px] md:w-auto md:max-w-none">
-        <div class="aspect-[3/4] border-2 border-dashed rounded flex flex-col items-center justify-center gap-2 transition-colors group-hover:border-solid" style="border-color:#0095ff;background-color:#e6f2fa;">
-          <ArrowRight className="w-6 h-6" style={{ color: "#0095ff" }} />
-          <span class="text-sm font-semibold" style="color:#0095ff;">More</span>
+        <div class="aspect-[3/4] border-2 border-dashed rounded flex flex-col items-center justify-center gap-2 transition-colors group-hover:border-solid" style="border-color:var(--color-brand);background-color:var(--color-surface-soft);">
+          <ArrowRight className="w-6 h-6" style={{ color: "var(--color-brand)" }} />
+          <span class="text-sm font-semibold" style="color:var(--color-hero);">More</span>
         </div>
-        <p class="mt-2 text-xs leading-snug font-medium group-hover:underline" style="color:#0b3c5d;">All free books</p>
+        <p class="mt-2 text-xs leading-snug font-medium group-hover:underline" style="color:var(--color-text);">All free books</p>
       </a>
     </div>
   </div>
 </section>
 
 {/* Topics */}
-<section id="topics" class="py-10 md:py-14 scroll-mt-20" style="background-color:#e6f2fa;">
+<section id="topics" class="py-10 md:py-14 scroll-mt-20" style="background-color:var(--color-surface-soft);">
   <div class="container mx-auto px-4 max-w-4xl">
-    <h2 class="text-2xl md:text-3xl font-semibold mb-2" style="color:#0b3c5d;">Topics</h2>
+    <h2 class="text-2xl md:text-3xl font-semibold mb-2" style="color:var(--color-structure);">Topics</h2>
     <p class="text-sm mb-6" style="color:#6b7280;">Categories &amp; Series</p>
     <div class="flex flex-wrap gap-3">
       {topics.map(t => (
@@ -180,8 +180,8 @@ const quickLinks = [
 {/* Playlists */}
 <section id="playlists" class="py-10 md:py-14 bg-white scroll-mt-20">
   <div class="container mx-auto px-4 max-w-4xl">
-    <h2 class="text-2xl md:text-3xl font-semibold mb-2" style="color:#0b3c5d;">Playlists</h2>
-    <p class="text-[15px] md:text-base leading-relaxed mb-6" style="color:#374151;">{playlistsNote}</p>
+    <h2 class="text-2xl md:text-3xl font-semibold mb-2" style="color:var(--color-structure);">Playlists</h2>
+    <p class="text-[15px] md:text-base leading-relaxed mb-6" style="color:var(--color-text-muted);">{playlistsNote}</p>
     <div class="flex gap-4 md:gap-5 overflow-x-auto pb-2 md:grid md:overflow-visible md:grid-cols-3 lg:grid-cols-4">
       {featuredPlaylists.map(p => {
         const thumb = playlistThumbnail(p);
@@ -194,32 +194,32 @@ const quickLinks = [
                 )}
                 <div class="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/15 transition-colors">
                   <div class="w-11 h-11 rounded-full flex items-center justify-center transition-all duration-200 scale-90 opacity-0 group-hover:opacity-100 group-hover:scale-100" style="background-color:rgba(255,255,255,0.95);">
-                    <Play className="w-5 h-5 ml-0.5" style={{ color: "#de5b00", fill: "#de5b00" }} />
+                    <Play className="w-5 h-5 ml-0.5" style={{ color: "var(--color-accent)", fill: "var(--color-accent)" }} />
                   </div>
                 </div>
               </div>
             </div>
-            <p class="mt-2 text-xs leading-snug font-medium group-hover:underline" style="color:#0b3c5d;">{p.title}</p>
+            <p class="mt-2 text-xs leading-snug font-medium group-hover:underline" style="color:var(--color-text);">{p.title}</p>
           </a>
         );
       })}
       {/* "More" tile → all playlists */}
       <a href={join("/playlists")} class="group shrink-0 w-[calc((100vw-4rem)/2.5)] max-w-[220px] md:w-auto md:max-w-none">
-        <div class="aspect-video border-2 border-dashed rounded flex flex-col items-center justify-center gap-1.5 transition-colors group-hover:border-solid" style="border-color:#0095ff;background-color:#e6f2fa;">
-          <ArrowRight className="w-6 h-6" style={{ color: "#0095ff" }} />
-          <span class="text-sm font-semibold" style="color:#0095ff;">More</span>
+        <div class="aspect-video border-2 border-dashed rounded flex flex-col items-center justify-center gap-1.5 transition-colors group-hover:border-solid" style="border-color:var(--color-brand);background-color:var(--color-surface-soft);">
+          <ArrowRight className="w-6 h-6" style={{ color: "var(--color-brand)" }} />
+          <span class="text-sm font-semibold" style="color:var(--color-hero);">More</span>
         </div>
-        <p class="mt-2 text-xs leading-snug font-medium group-hover:underline" style="color:#0b3c5d;">All playlists</p>
+        <p class="mt-2 text-xs leading-snug font-medium group-hover:underline" style="color:var(--color-text);">All playlists</p>
       </a>
     </div>
   </div>
 </section>
 
 {/* Closing */}
-<section class="py-10 md:py-12" style="background-color:#e6f2fa;">
+<section class="py-10 md:py-12" style="background-color:var(--color-surface-soft);">
   <div class="container mx-auto px-4 max-w-4xl">
     {closing.map(p => (
-      <p class="text-[15px] md:text-base leading-relaxed mb-5 last:mb-0" style="color:#374151;">{p}</p>
+      <p class="text-[15px] md:text-base leading-relaxed mb-5 last:mb-0" style="color:var(--color-text-muted);">{p}</p>
     ))}
   </div>
 </section>
@@ -228,20 +228,20 @@ const quickLinks = [
 {faqs.length > 0 && (
   <section id="faqs" class="py-10 md:py-14 bg-white scroll-mt-20">
     <div class="container mx-auto px-4 max-w-4xl">
-      <h2 class="text-2xl md:text-3xl font-semibold mb-2" style="color:#0b3c5d;">Frequently Asked Questions</h2>
-      <p class="text-[15px] md:text-base leading-relaxed mb-6" style="color:#374151;">
+      <h2 class="text-2xl md:text-3xl font-semibold mb-2" style="color:var(--color-structure);">Frequently Asked Questions</h2>
+      <p class="text-[15px] md:text-base leading-relaxed mb-6" style="color:var(--color-text-muted);">
         Answers to common questions about free discipleship resources for pastors.
       </p>
       <div class="border-t" style="border-color:var(--color-border);">
         {faqs.map(faq => (
           <details class="group border-b" style="border-color:var(--color-border);">
-            <summary class="flex items-center justify-between gap-5 cursor-pointer py-4 text-[15px] md:text-base font-semibold list-none" style="color:#0b3c5d;">
+            <summary class="flex items-center justify-between gap-5 cursor-pointer py-4 text-[15px] md:text-base font-semibold list-none" style="color:var(--color-structure);">
               <span>{faq.question}</span>
-              <span aria-hidden="true" class="shrink-0 text-2xl leading-none transition-transform duration-200 group-open:rotate-45" style="color:#de5b00;">+</span>
+              <span aria-hidden="true" class="shrink-0 text-2xl leading-none transition-transform duration-200 group-open:rotate-45" style="color:var(--color-accent);">+</span>
             </summary>
             <div class="pb-5 pr-8">
               {faq.answer.map(answer => (
-                <p class="text-[15px] md:text-base leading-relaxed mb-3 last:mb-0" style="color:#374151;">{answer}</p>
+                <p class="text-[15px] md:text-base leading-relaxed mb-3 last:mb-0" style="color:var(--color-text-muted);">{answer}</p>
               ))}
             </div>
           </details>
@@ -254,16 +254,16 @@ const quickLinks = [
 {/* Lead Them to Christ */}
 <section id="lead-them-to-christ" class="py-10 md:py-14 bg-white scroll-mt-20">
   <div class="container mx-auto px-4 max-w-4xl">
-    <h2 class="text-2xl md:text-3xl font-semibold mb-4" style="color:#0b3c5d;">Lead Them to Christ</h2>
-    <p class="text-[15px] md:text-base leading-relaxed mb-6" style="color:#374151;">
+    <h2 class="text-2xl md:text-3xl font-semibold mb-4" style="color:var(--color-structure);">Lead Them to Christ</h2>
+    <p class="text-[15px] md:text-base leading-relaxed mb-6" style="color:var(--color-text-muted);">
       Share the gospel with someone using one of these JO EQUIP videos. Many believers struggle
       with finding the right words when sharing the good news. These clear, approximately
       10-minute videos explain the gospel and end with a prayer of salvation.
     </p>
     <ul class="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5 mb-6">
       {leadThemVideos.map(v => (
-        <li class="bg-white border rounded flex flex-col overflow-hidden" style="border-color:var(--color-border);border-top:4px solid #0095ff;">
-          <p class="font-semibold text-[15px] md:text-base leading-snug px-4 pt-4 pb-3" style="color:#0b3c5d;">{v.title}</p>
+        <li class="bg-white border rounded flex flex-col overflow-hidden" style="border-color:var(--color-border);border-top:4px solid var(--color-brand);">
+          <p class="font-semibold text-[15px] md:text-base leading-snug px-4 pt-4 pb-3" style="color:var(--color-text);">{v.title}</p>
           <a
             href={v.watch}
             target={v.external ? "_blank" : undefined}
@@ -282,45 +282,45 @@ const quickLinks = [
               loading="lazy"
             />
           </a>
-          <p class="text-sm md:text-[15px] px-4 py-3.5 mt-auto">
+          <p class="text-base px-4 py-3.5 mt-auto">
             <a
               href={v.watch}
               target={v.external ? "_blank" : undefined}
               rel={v.external ? "noopener noreferrer" : undefined}
               class="hover:underline whitespace-nowrap"
-              style="color:#de5b00;"
+              style="color:var(--color-accent);"
             >Watch video</a>
             {" "}<span style="color:#9ca3af;">&middot;</span>{" "}
-            <a href={v.read} class="hover:underline whitespace-nowrap" style="color:#de5b00;">Read instructions</a>
+            <a href={v.read} class="hover:underline whitespace-nowrap" style="color:var(--color-action-warm);">Read instructions</a>
           </p>
         </li>
       ))}
     </ul>
-    <p class="text-[15px] md:text-base leading-relaxed" style="color:#374151;">
+    <p class="text-[15px] md:text-base leading-relaxed" style="color:var(--color-text-muted);">
       Each video can be watched together with a friend, family member, or neighbor. Afterward,
       simply ask if it made sense and whether they would like to respond to the invitation.
       Then walk with them in the first steps of their new life in Christ using the free
-      <a href="https://app.jesusonline.com" target="_blank" rel="noopener noreferrer" class="hover:underline" style="color:#de5b00;">JO App</a>
-      and <a href={join("/books/adventure-of-living-with-jesus")} class="italic hover:underline" style="color:#de5b00;">The Adventure of Living with Jesus</a>.
+      <a href="https://app.jesusonline.com" target="_blank" rel="noopener noreferrer" class="hover:underline" style="color:var(--color-action-warm);">JO App</a>
+      and <a href={join("/books/adventure-of-living-with-jesus")} class="italic hover:underline" style="color:var(--color-action-warm);">The Adventure of Living with Jesus</a>.
     </p>
   </div>
 </section>
 
 <style>
   .topic-chip {
-    border-color: #0095ff;
-    color: #0b3c5d;
+    border-color:var(--color-brand);
+    color:var(--color-text);
   }
   .topic-chip:hover,
   .topic-chip:focus-visible {
-    background-color: #0095ff;
+    background-color:var(--color-hero);
     color: #ffffff;
     outline: none;
   }
 </style>
 
 {/* Quick links — Reviews · About · Beliefs · JO APP */}
-<section style="background-color:#0095ff;">
+<section style="background-color:var(--color-hero);">
   <div class="container mx-auto px-4">
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 divide-white/15 sm:gap-y-px lg:divide-x lg:divide-white/15">
       {quickLinks.map(link => {
@@ -336,8 +336,8 @@ const quickLinks = [
               <Icon className="w-5 h-5" style={{ color: "#ffffff" }} />
             </div>
             <div class="text-left">
-              <div class="text-lg md:text-xl font-semibold text-white leading-tight tracking-wide group-hover:underline" style='font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;'>{link.title}</div>
-              <div class="text-[11px] mt-1 font-medium tracking-widest uppercase" style="color:rgba(255,255,255,0.8);">{link.subtitle}</div>
+              <div class="text-lg md:text-xl font-semibold text-white leading-tight tracking-wide group-hover:underline" style='font-family:var(--font-sans);'>{link.title}</div>
+              <div class="text-[12px] mt-1 font-medium tracking-widest uppercase" style="color:rgba(255,255,255,0.8);">{link.subtitle}</div>
             </div>
           </a>
         );

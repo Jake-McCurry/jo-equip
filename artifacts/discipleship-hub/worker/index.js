@@ -317,6 +317,7 @@ export default {
      * (Aug 2026: Bible Study Tools became its own sub-topic under Sermon
      * Toolbox, moving its article URL.) */
     const MOVED = {
+      "/lp/leader-kits": "/lp/leader-kits-1",
       "/categories/church/sermon-toolbox/essential-bible-study-tools":
         "/categories/church/bible-study-tools/essential-bible-study-tools",
       /* SEO-008: duplicate-content consolidation — the retired combined

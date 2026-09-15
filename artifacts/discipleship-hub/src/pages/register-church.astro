@@ -34,13 +34,13 @@ const THANK_YOU = join("/register-church-thank-you");
           <Church className="w-3.5 h-3.5" />
           JO Equipped Church
         </div>
-        <h1 class="text-3xl md:text-4xl mb-4" style="color:#0b3c5d;">
+        <h1 class="text-3xl md:text-4xl mb-4" style="color:var(--color-structure);">
           Become a Free JO&nbsp;Equipped Church
         </h1>
-        <div class="h-0.5 w-12 mx-auto mb-8" style="background-color:#de5b00;"></div>
+        <div class="h-0.5 w-12 mx-auto mb-8" style="background-color:var(--color-accent);"></div>
       </div>
 
-      <div class="space-y-5 text-lg leading-relaxed mb-10" style="color:#374151;">
+      <div class="space-y-5 text-lg leading-relaxed mb-10" style="color:var(--color-text-muted);">
         <p>
           Register your church for free, unrestricted access to the full JO EQUIP library of
           practical discipleship tools.
@@ -58,8 +58,8 @@ const THANK_YOU = join("/register-church-thank-you");
         <form id="rc-form" class="space-y-4" novalidate>
 
           <div>
-            <label for="rc-email" class="block text-sm font-medium mb-1.5" style="color:#0b3c5d;">
-              Email <span style="color:#de5b00;">*</span>
+            <label for="rc-email" class="block text-sm font-medium mb-1.5" style="color:var(--color-text);">
+              Email <span style="color:var(--color-accent);">*</span>
             </label>
             <input
               type="email"
@@ -68,13 +68,13 @@ const THANK_YOU = join("/register-church-thank-you");
               required
               autocomplete="email"
               class="w-full rounded border px-3 py-2.5 text-sm outline-none focus-visible:ring-2"
-              style="border-color:var(--color-border);color:#0b3c5d;"
+              style="border-color:var(--color-border);color:var(--color-text);"
             />
           </div>
 
           <div>
-            <label for="rc-fname" class="block text-sm font-medium mb-1.5" style="color:#0b3c5d;">
-              First Name <span style="color:#de5b00;">*</span>
+            <label for="rc-fname" class="block text-sm font-medium mb-1.5" style="color:var(--color-text);">
+              First Name <span style="color:var(--color-accent);">*</span>
             </label>
             <input
               type="text"
@@ -83,13 +83,13 @@ const THANK_YOU = join("/register-church-thank-you");
               required
               autocomplete="given-name"
               class="w-full rounded border px-3 py-2.5 text-sm outline-none focus-visible:ring-2"
-              style="border-color:var(--color-border);color:#0b3c5d;"
+              style="border-color:var(--color-border);color:var(--color-text);"
             />
           </div>
 
           <div>
-            <label for="rc-church" class="block text-sm font-medium mb-1.5" style="color:#0b3c5d;">
-              Church <span style="color:#de5b00;">*</span>
+            <label for="rc-church" class="block text-sm font-medium mb-1.5" style="color:var(--color-text);">
+              Church <span style="color:var(--color-accent);">*</span>
             </label>
             <input
               type="text"
@@ -98,7 +98,7 @@ const THANK_YOU = join("/register-church-thank-you");
               required
               autocomplete="organization"
               class="w-full rounded border px-3 py-2.5 text-sm outline-none focus-visible:ring-2"
-              style="border-color:var(--color-border);color:#0b3c5d;"
+              style="border-color:var(--color-border);color:var(--color-text);"
             />
           </div>
 

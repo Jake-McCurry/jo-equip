@@ -86,8 +86,7 @@ const bookJsonLd = {
   <div class="container mx-auto px-4 py-10 md:py-14 max-w-5xl">
     <a
       href={join("/books")}
-      class="inline-flex items-center gap-2 text-sm font-medium mb-8 hover:opacity-75 transition-opacity"
-      style="color:#0095ff;"
+      class="inline-flex items-center gap-2 text-sm font-medium mb-8 hover:opacity-75 transition-opacity" style="color:var(--color-hero);"
     >
       <ArrowLeft className="w-4 h-4" /> Back to all books
     </a>
@@ -113,21 +112,21 @@ const bookJsonLd = {
       </div>
 
       <div>
-        <span class="text-xs font-semibold tracking-widest uppercase" style="color:#de5b00;">
+        <span class="text-xs font-semibold tracking-widest uppercase" style="color:var(--color-accent);">
           Free PDF · Book
         </span>
-        <h1 class="text-3xl md:text-4xl mt-3 mb-3" style="color:#0b3c5d;">{book.title}</h1>
+        <h1 class="text-3xl md:text-4xl mt-3 mb-3" style="color:var(--color-structure);">{book.title}</h1>
         {book.subtitle && (
-          <p class="text-lg md:text-xl -mt-1 mb-4" style="color:#0b3c5d;">
+          <p class="text-lg md:text-xl -mt-1 mb-4" style="color:var(--color-text);">
             {book.subtitle}
           </p>
         )}
         {book.author && (
           <p class="text-base mb-5" style="color:var(--color-muted-foreground);">
-            by <span class="font-medium" style="color:#0b3c5d;">{book.author}</span>
+            by <span class="font-medium" style="color:var(--color-text);">{book.author}</span>
           </p>
         )}
-        <div class="h-0.5 w-12 mb-6" style="background-color:#de5b00;"></div>
+        <div class="h-0.5 w-12 mb-6" style="background-color:var(--color-accent);"></div>
         <p class="text-base leading-relaxed mb-8" style="color:var(--color-muted-foreground);">
           {book.description ?? "A practical discipleship resource from JesusOnline Ministries — free to download and share with your church, small group, or ministry team."}
         </p>
@@ -137,7 +136,7 @@ const bookJsonLd = {
         <a
           href={join(`/books?download=${book.id}`)}
           class="inline-flex items-center gap-2 px-6 py-3 rounded font-semibold text-white text-base transition-colors hover:opacity-90"
-          style="background-color:#de5b00;"
+          style="background-color:var(--color-action-warm);"
         >
           <BookOpen className="w-4 h-4" /> Read PDF
         </a>
@@ -152,13 +151,13 @@ const bookJsonLd = {
       <div class="mt-14 md:mt-18 pt-10 border-t" style="border-color:var(--color-border);">
         <div class="flex items-center gap-3 mb-7">
           <div class="w-9 h-9 rounded flex items-center justify-center" style="background-color:rgba(0,149,255,0.1);">
-            <Languages className="w-5 h-5" style={{ color: "#0095ff" }} />
+            <Languages className="w-5 h-5" style={{ color: "var(--color-brand)" }} />
           </div>
           <div>
-            <span class="text-xs font-semibold tracking-widest uppercase" style="color:#0095ff;">
+            <span class="text-xs font-semibold tracking-widest uppercase" style="color:var(--color-hero);">
               Additional language
             </span>
-            <h2 class="text-2xl md:text-3xl mt-1" style="color:#0b3c5d;">Spanish Edition</h2>
+            <h2 class="text-2xl md:text-3xl mt-1" style="color:var(--color-structure);">Spanish Edition</h2>
           </div>
         </div>
 
@@ -191,13 +190,13 @@ const bookJsonLd = {
               </div>
 
               <div>
-                <span class="text-xs font-semibold tracking-widest uppercase" style="color:#de5b00;">
+                <span class="text-xs font-semibold tracking-widest uppercase" style="color:var(--color-accent);">
                   Edición en español
                 </span>
-                <h3 class="text-xl md:text-2xl mt-2 mb-3 leading-snug" style="color:#0b3c5d;">
+                <h3 class="text-xl md:text-2xl mt-2 mb-3 leading-snug" style="color:var(--color-text);">
                   {edition.title}
                 </h3>
-                <p class="text-sm leading-relaxed mb-5" style="color:var(--color-muted-foreground);">
+                <p class="text-base leading-relaxed mb-5" style="color:var(--color-muted-foreground);">
                   Cada tamaño incluye un PDF interior de 45 páginas y el PDF correspondiente
                   de la cubierta completa para impresión.
                 </p>
@@ -213,13 +212,13 @@ const bookJsonLd = {
                       role="listitem"
                     >
                       <span class="min-w-0">
-                        <span class="block font-semibold text-sm" style="color:#0b3c5d;">{download.label}</span>
+                        <span class="block font-semibold text-sm" style="color:var(--color-structure);">{download.label}</span>
                         <span class="block text-sm mt-1" style="color:var(--color-muted-foreground);">{download.format}</span>
                         <span class="block text-xs mt-1" style="color:var(--color-muted-foreground);">
                           {download.details} · {download.size}
                         </span>
                       </span>
-                      <span class="shrink-0 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide" style="color:#0095ff;">
+                      <span class="shrink-0 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide" style="color:var(--color-hero);">
                         <Download className="w-4 h-4" />
                         Open PDF
                       </span>

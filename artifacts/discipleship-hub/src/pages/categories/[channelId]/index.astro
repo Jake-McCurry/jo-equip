@@ -60,7 +60,7 @@ function exploreLabel(subId: string): string {
     </div>
     <div class="container mx-auto px-4 py-7 md:py-9 relative">
       <div class="max-w-3xl">
-        <h1 class="text-4xl md:text-5xl mb-2" style="color:#ffffff;font-weight:500;">{channel.name}</h1>
+        <h1 class="text-4xl md:text-5xl mb-2" style="color:#ffffff;font-weight:600;">{channel.name}</h1>
         <p class="text-base md:text-lg" style="color:#ffffff;">{statement}</p>
       </div>
     </div>
@@ -74,8 +74,8 @@ function exploreLabel(subId: string): string {
       <span>{channel.shortName}</span>
     </nav>
     <div class="mb-8 pb-4 border-b" style="border-color:var(--color-border);">
-      <h2 class="text-2xl" style="color:#0b3c5d;">{subs.length} Topics in this Category</h2>
-      <div class="mt-2 h-0.5 w-12" style="background-color:#de5b00;"></div>
+      <h2 class="text-2xl" style="color:var(--color-structure);">{subs.length} Topics in this Category</h2>
+      <div class="mt-2 h-0.5 w-12" style="background-color:var(--color-accent);"></div>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -87,10 +87,10 @@ function exploreLabel(subId: string): string {
             style={`border-color:var(--color-border);border-left:4px solid ${accent};`}
           >
             <h3 class="text-base font-semibold leading-snug mb-2">
-              <a href={href} class="hover:underline" style="color:#0b3c5d;">{sub.name}</a>
+              <a href={href} class="hover:underline" style="color:var(--color-text);">{sub.name}</a>
             </h3>
             {sub.description && (
-              <p class="text-sm leading-relaxed mb-4" style="color:var(--color-muted-foreground);">{sub.description}</p>
+              <p class="text-base leading-relaxed mb-4" style="color:var(--color-muted-foreground);">{sub.description}</p>
             )}
             <a
               href={href}

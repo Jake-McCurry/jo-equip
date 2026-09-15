@@ -1,12 +1,14 @@
 ---
 import "@/styles/global.css";
+import "@/styles/knowing-god-theme.css";
 import { ConcordancePrototype } from "@/components/knowing-god/ConcordancePrototype";
+import EquipHeader from "@/components/EquipHeader.astro";
 
 const baseUrl = import.meta.env.BASE_URL;
 const join = (path: string) =>
   (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + path;
 
-const title = "Knowing God Topical Bible | JO EQUIP";
+const title = "Knowing God / Topical Bible Verses | JO EQUIP";
 const description =
   "Search and study topical Bible passages about the nature and character of God in this interactive Knowing God Topical Bible preview.";
 const canonicalUrl = "https://equip.jesusonline.com/knowing-god";
@@ -22,7 +24,7 @@ const canonicalUrl = "https://equip.jesusonline.com/knowing-god";
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/svg+xml" href={join("/favicon.svg")} />
     <link rel="apple-touch-icon" href={join("/favicon.svg")} />
-    <meta name="theme-color" content="#123f50" />
+    <meta name="theme-color" content="#003A66" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -34,6 +36,13 @@ const canonicalUrl = "https://equip.jesusonline.com/knowing-god";
     <meta name="twitter:image" content="https://equip.jesusonline.com/opengraph.jpg" />
   </head>
   <body>
+    <div class="kg-equip-navigation">
+      <EquipHeader />
+    </div>
     <ConcordancePrototype client:load />
   </body>
 </html>
+<style is:global>
+  .kg-equip-navigation { display: contents; }
+  @media print { .kg-equip-navigation { display: none; } }
+</style>

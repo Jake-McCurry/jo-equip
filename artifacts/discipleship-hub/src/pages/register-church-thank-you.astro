@@ -51,10 +51,10 @@ const nextSteps = [
       <div class="text-xs font-semibold tracking-widest uppercase mb-3" style="color:#6B2D7B;">
         You're a JO Equipped Church
       </div>
-      <h1 class="text-4xl md:text-5xl mb-4" style="color:#0b3c5d;">Thank you!</h1>
-      <div class="h-0.5 w-12 mx-auto mb-7" style="background-color:#de5b00;"></div>
+      <h1 class="text-4xl md:text-5xl mb-4" style="color:var(--color-structure);">Thank you!</h1>
+      <div class="h-0.5 w-12 mx-auto mb-7" style="background-color:var(--color-accent);"></div>
 
-      <p class="text-lg leading-relaxed mb-4" style="color:#374151;">
+      <p class="text-lg leading-relaxed mb-4" style="color:var(--color-text-muted);">
         Thank you for your faithful service to the Lord and His Church. We look forward to equipping
         you and your congregation as together we seek first the Kingdom of God.
       </p>
@@ -66,13 +66,13 @@ const nextSteps = [
   </section>
 
   {/* Next steps */}
-  <section class="py-14 md:py-20 border-t" style="background-color:#e6f2fa;border-color:var(--color-border);">
+  <section class="py-14 md:py-20 border-t" style="background-color:var(--color-surface-soft);border-color:var(--color-border);">
     <div class="container mx-auto px-4 max-w-5xl">
       <div class="text-center mb-10 md:mb-12">
         <div class="text-xs font-semibold tracking-widest uppercase mb-3" style="color:#6B2D7B;">
           Start here
         </div>
-        <h2 class="text-3xl md:text-4xl" style="color:#0b3c5d;">Put the library to work</h2>
+        <h2 class="text-3xl md:text-4xl" style="color:var(--color-structure);">Put the library to work</h2>
       </div>
 
       <div class="grid md:grid-cols-3 gap-5">
@@ -90,11 +90,11 @@ const nextSteps = [
               >
                 <Icon className="w-5 h-5" style={{ color: "#6B2D7B" }} />
               </div>
-              <h3 class="text-xl mb-2" style="color:#0b3c5d;">{step.title}</h3>
-              <p class="text-sm leading-relaxed mb-5 flex-grow" style="color:var(--color-muted-foreground);">
+              <h3 class="text-xl mb-2" style="color:var(--color-structure);">{step.title}</h3>
+              <p class="text-base leading-relaxed mb-5 flex-grow" style="color:var(--color-muted-foreground);">
                 {step.desc}
               </p>
-              <span class="inline-flex items-center text-sm font-semibold mt-auto group-hover:underline" style="color:#de5b00;">
+              <span class="inline-flex items-center text-sm font-semibold mt-auto group-hover:underline" style="color:var(--color-action-warm);">
                 {step.cta}
                 <ArrowRight className="w-4 h-4 ml-1" />
               </span>

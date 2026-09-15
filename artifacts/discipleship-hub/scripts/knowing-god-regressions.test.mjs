@@ -1,6 +1,8 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
+import { devotionalGuideCategories } from "../src/data/knowing-god/introduction/devotional-guide.ts";
+import { devotionalTopicKey, isDevotionalTopic } from "../src/components/knowing-god/devotional-topics.ts";
 import {
   pushTopicHash,
   subscribeToTopicHistory,
@@ -8,6 +10,20 @@ import {
 } from "../src/components/knowing-god/topic-history.mjs";
 
 const dataDirectory = new URL("../public/knowing-god/data/", import.meta.url);
+
+test("devotional selection includes exactly the guide's unique topics", async () => {
+  const { topics } = JSON.parse(await readFile(new URL("index.json", dataDirectory), "utf8"));
+  const expected = new Set(devotionalGuideCategories.flatMap(category =>
+    category.entries.map(entry => devotionalTopicKey(entry.topic))));
+  const selected = topics.filter(isDevotionalTopic);
+  assert.deepEqual(new Set(selected.map(topic => devotionalTopicKey(topic.title))), expected);
+  assert.equal(selected.length, expected.size, "Each guide topic resolves to exactly one index topic");
+  for (const id of ["joy", "nonimpossibilitation-of-the-lord", "i-am-declarations"]) {
+    assert.ok(selected.some(topic => topic.id === id), `Typography variant ${id} must match`);
+  }
+  assert.equal(isDevotionalTopic({ title: "Not a source topic" }), false);
+  assert.ok(topics.length > selected.length);
+});
 
 const loadTopic = async id => {
   const index = JSON.parse(await readFile(new URL("index.json", dataDirectory), "utf8"));
@@ -24,6 +40,46 @@ const findRelated = (topic, sourceLabel) => {
   assert.ok(related, `Missing related label ${sourceLabel}`);
   return related;
 };
+
+test("Abstinence matches the printed See FASTING; SOBRIETY; TEMPERANCE entry", async () => {
+  const topic = await loadTopic("abstinence");
+  assert.equal(topic.passages.length, 0);
+  assert.deepEqual(topic.seeAlso, [
+    { sourceLabel: "FASTING", targetIds: ["fasting"] },
+    { sourceLabel: "SOBRIETY", targetIds: ["sobriety"] },
+    { sourceLabel: "TEMPERANCE", targetIds: ["temperance"] },
+  ]);
+});
+
+test("every zero-passage topic has resolvable source cross-references", async () => {
+  const index = JSON.parse(await readFile(new URL("index.json", dataDirectory), "utf8"));
+  const ids = new Set(index.topics.map(topic => topic.id));
+  const files = new Set(index.topics.map(topic => topic.payload));
+  let checked = 0;
+  for (const file of files) {
+    const { topics } = JSON.parse(await readFile(new URL(file, dataDirectory), "utf8"));
+    for (const topic of topics.filter(topic => topic.passages.length === 0)) {
+      checked++;
+      assert.ok(topic.seeAlso.length > 0, `${topic.id} has no source links`);
+      for (const related of topic.seeAlso) {
+        assert.ok(related.sourceLabel && related.targetIds.length, topic.id);
+        for (const id of related.targetIds) assert.ok(id === "*" || ids.has(id), `${topic.id} links to missing ${id}`);
+      }
+    }
+  }
+  assert.ok(checked > 0);
+});
+
+test("zero-passage links appear in the reader and topic navigation stays shared", async () => {
+  const reader = await readFile(new URL("../src/components/knowing-god/ConcordancePrototype.tsx", import.meta.url), "utf8");
+  const page = await readFile(new URL("../src/pages/knowing-god.astro", import.meta.url), "utf8");
+  assert.match(reader, /selected\.passages\.length > 0 \? <>/);
+  assert.match(reader, /<TopicCrossReferences onNavigate=\{followCrossReference\} related=\{selected\.seeAlso\}/);
+  assert.doesNotMatch(reader, /view === "topic" && <header/);
+  assert.doesNotMatch(reader, /view === "start" && <div className="kg-no-print/);
+  assert.match(page, /<EquipHeader \/>/);
+  assert.doesNotMatch(page, /html\[data-knowing-god-view="topic"\]/);
+});
 
 const findAdditional = (topic, sourceLabel) => {
   const link = topic.additionalScripture

@@ -1,13 +1,16 @@
 @import "tailwindcss";
+@import "./fonts.css";
+@import "./brand-tokens.css";
 
 @theme {
-  --color-background: hsl(0, 0%, 100%);
-  --color-foreground: hsl(207, 60%, 12%);
-  --color-border: hsl(210, 15%, 88%);
-  --color-muted-foreground: hsl(210, 15%, 42%);
+  --color-background: #fffdfb;
+  --color-foreground: #003a66;
+  --color-border: #ccebff;
+  --color-muted-foreground: #2e5a7a;
   --color-primary: #0095ff;
 
-  --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-sans: "Source Sans 3", Arial, sans-serif;
+  --font-display: "Playfair Display", Georgia, serif;
 }
 
 @layer base {
@@ -24,19 +27,30 @@
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-sans);
-    font-weight: 500;
+    font-weight: 600;
     line-height: 1.2;
-    color: #0b3c5d;
-    /* Fallback fonts (when Helvetica Neue is unavailable) kern pairs like
-       "ry" too tightly at this synthesized weight — disable pair kerning. */
-    font-kerning: none;
+    color: var(--color-text);
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+  }
+  input, select, textarea, button {
+    font-family: var(--font-sans);
+  }
+  input, select, textarea {
+    font-size: 1rem;
+    border-color: var(--color-border-control);
+  }
+  small, figcaption {
+    font-size: 0.75rem;
   }
 
   /* Brand-colored visible focus ring for keyboard users.
      :focus-visible only triggers on keyboard nav, not on mouse clicks,
      so it doesn't add noise for pointer users. */
   *:focus-visible {
-    outline: 2px solid #de5b00;
+    outline: 2px solid var(--color-focus);
     outline-offset: 2px;
     border-radius: 2px;
   }
@@ -48,7 +62,7 @@
     top: -100px;
     z-index: 100;
     padding: 0.75rem 1.25rem;
-    background-color: #0b3c5d;
+    background-color: var(--color-structure);
     color: #ffffff;
     text-decoration: none;
     font-weight: 600;

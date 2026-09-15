@@ -106,34 +106,34 @@ const personaLinks = [
   </Fragment>
 
   {/* Hero — eyebrow + title + tagline, per the July 2026 home refinement mockup. */}
-  <section class="relative py-10 md:py-16 px-4 text-center overflow-hidden" style="background-color:#0b3c5d;">
+  <section class="relative py-10 md:py-16 px-4 text-center overflow-hidden" style="background-color:var(--color-hero);">
     <div
       class="pointer-events-none absolute inset-0"
       style={`background-image:url('${heroBg.src}');background-size:cover;background-position:center;`}
       aria-hidden="true"
     ></div>
-    {/* Light navy wash so the white text stays readable while the collage shows through. */}
-    <div class="pointer-events-none absolute inset-0" style="background:linear-gradient(to bottom, rgba(11,60,93,0.35), rgba(11,60,93,0.25));"></div>
+    {/* Navy overlay keeps white titles readable even over the lightest photo areas. */}
+    <div class="pointer-events-none absolute inset-0" style="background:linear-gradient(to bottom, rgba(0,58,102,0.62), rgba(0,58,102,0.58));"></div>
 
     <div class="relative container mx-auto max-w-4xl">
-      <h1 class="text-2xl sm:text-4xl md:text-5xl leading-tight" style="color:#ffffff;font-weight:500;text-shadow:0 1px 12px rgba(11,60,93,0.6);">Reach people. Grow disciples.<br />Multiply churches.</h1>
+      <h1 class="text-2xl sm:text-4xl md:text-5xl leading-tight" style="color:#ffffff;font-weight:600;text-shadow:0 1px 12px rgba(0,107,179,0.6);">Reach people. Grow disciples.<br />Multiply churches.</h1>
     </div>
   </section>
 
   {/* Tagline + persona links — moved below the hero image for readability (Aug 2026). */}
   <section class="py-8 md:py-10 px-4 text-center bg-white">
     <div class="container mx-auto max-w-4xl">
-      <p class="text-base md:text-lg max-w-3xl mx-auto leading-relaxed" style="color:#374151;">
+      <p class="text-base md:text-lg max-w-3xl mx-auto leading-relaxed" style="color:var(--color-text-muted);">
         Apologetics, identity-centered discipleship, and church vibrancy&mdash;united in one accessible free resource hub.
-        <a href="/equip" class="text-sm md:text-base whitespace-nowrap font-medium underline underline-offset-2" style="color:#de5b00;">Find out more</a>
+        <a href="/equip" class="text-base md:text-lg whitespace-nowrap font-medium underline underline-offset-2" style="color:var(--color-action-warm);">Find out more</a>
       </p>
       {/* Persona links — the four audience landing pages, per the Aug 2026 planning note. */}
-      <p class="mt-5 text-sm md:text-base" style="color:#0b3c5d;">
+      <p class="mt-5 text-base" style="color:var(--color-text);">
         <span class="font-medium">Explore Free Resources for</span>
         {personaLinks.map(link => (
           <Fragment>
-            <span aria-hidden="true" class="mx-1.5" style="color:#de5b00;">&bull;</span>
-            <a href={link.href} class="underline underline-offset-2 whitespace-nowrap hover:opacity-90" style="color:#de5b00;">{link.title}</a>
+            <span aria-hidden="true" class="mx-1.5" style="color:var(--color-accent);">&bull;</span>
+            <a href={link.href} class="underline underline-offset-2 whitespace-nowrap hover:opacity-90" style="color:var(--color-action-warm);">{link.title}</a>
           </Fragment>
         ))}
       </p>
@@ -141,7 +141,7 @@ const personaLinks = [
   </section>
 
   {/* Three Categories — photo cards, straight after the hero per the mockup. */}
-  <section class="py-10 md:py-14" style="background-color:#e6f2fa;">
+  <section class="py-10 md:py-14" style="background-color:var(--color-surface-soft);">
     <div class="container mx-auto px-4">
       <h2 class="sr-only">Explore the three categories</h2>
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-md sm:max-w-lg lg:max-w-none mx-auto">
@@ -149,7 +149,7 @@ const personaLinks = [
           const accent = channel.accentColor;
           return (
           <a href={join(`/categories/${channel.id}`)} class="group flex flex-col">
-            <h3 class="text-2xl font-semibold mb-2 group-hover:underline" style="color:#0b3c5d;">{channel.name}</h3>
+            <h3 class="text-2xl font-semibold mb-2 group-hover:underline" style="color:var(--color-structure);">{channel.name}</h3>
             <div
               class="flex flex-col flex-grow bg-white border rounded overflow-hidden group-hover:shadow-lg transition-all"
               style={`border-color:var(--color-border);border-left:4px solid ${accent};`}
@@ -168,7 +168,7 @@ const personaLinks = [
               </div>
               <div style={`height:4px;background-color:${accent};`}></div>
               <div class="p-6 md:p-7 flex flex-col flex-grow">
-                <p class="text-[15px] leading-snug mb-4 flex-grow" style="color:var(--color-muted-foreground);">{channel.tagline}</p>
+                <p class="text-base leading-snug mb-4 flex-grow" style="color:var(--color-muted-foreground);">{channel.tagline}</p>
                 <span class="inline-flex items-center justify-center w-full text-sm font-semibold text-white rounded px-4 py-2.5 mt-auto transition-opacity group-hover:opacity-90" style={`background-color:${accent};`}>
                   Explore {channel.shortName}
                   <ArrowRight className="w-4 h-4 ml-1.5" />
@@ -183,7 +183,7 @@ const personaLinks = [
   </section>
 
   {/* Quick links — Reviews · About · Beliefs · JO APP */}
-  <section style="background-color:#0095ff;">
+  <section style="background-color:var(--color-hero);">
     <div class="container mx-auto px-4">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 divide-white/15 sm:gap-y-px lg:divide-x lg:divide-white/15">
         {quickLinks.map(link => {
@@ -199,8 +199,8 @@ const personaLinks = [
                 <Icon className="w-5 h-5" style={{ color: "#ffffff" }} />
               </div>
               <div class="text-left">
-                <div class="text-lg md:text-xl font-semibold text-white leading-tight tracking-wide group-hover:underline" style='font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;'>{link.title}</div>
-                <div class="text-[11px] mt-1 font-medium tracking-widest uppercase" style="color:rgba(255,255,255,0.8);">{link.subtitle}</div>
+                <div class="text-lg md:text-xl font-semibold text-white leading-tight tracking-wide group-hover:underline" style='font-family:var(--font-sans);'>{link.title}</div>
+                <div class="text-[12px] mt-1 font-medium tracking-widest uppercase" style="color:rgba(255,255,255,0.8);">{link.subtitle}</div>
               </div>
             </a>
           );

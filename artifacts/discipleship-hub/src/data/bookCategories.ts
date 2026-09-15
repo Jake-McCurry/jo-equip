@@ -38,9 +38,9 @@ export const bookCategories: BookCategory[] = [
     title: "Devotional Studies",
     books: [
       "new-life-in-christ",
+      "knowing-god",
       "hearing-the-voice-of-god",
       "the-abiding-room",
-      "knowing-god",
       "40-days-of-gods-love",
       "timeless-love-transforming-love",
     ].map(id => {

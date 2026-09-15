@@ -78,18 +78,19 @@ const booksJsonLd = {
     <div class="max-w-3xl mb-12">
       <div class="flex items-center gap-3 mb-3">
         <div class="w-9 h-9 rounded flex items-center justify-center" style="background-color:rgba(222,91,0,0.1);">
-          <BookIcon className="w-5 h-5" style={{ color: "#de5b00" }} />
+          <BookIcon className="w-5 h-5" style={{ color: "var(--color-accent)" }} />
         </div>
-        <span class="text-xs font-semibold tracking-widest uppercase" style="color:#de5b00;">Reading Library</span>
+        <span class="text-xs font-semibold tracking-widest uppercase" style="color:var(--color-accent);">Reading Library</span>
       </div>
-      <h1 class="text-4xl md:text-5xl mb-4" style="color:#0b3c5d;">Books</h1>
-      <div class="h-0.5 w-12 mb-5" style="background-color:#de5b00;"></div>
+      <h1 class="text-4xl md:text-5xl mb-4" style="color:var(--color-structure);">Books</h1>
+      <div class="h-0.5 w-12 mb-5" style="background-color:var(--color-accent);"></div>
       <p class="leading-relaxed text-lg" style="color:var(--color-muted-foreground);">
         Read these free books online — open any of them in a new tab, then download to keep or share.
       </p>
     </div>
 
-    <div class="flex flex-col gap-6 md:gap-8">
+    {/* Spacing belongs to this stack, not to individual carousel margins. */}
+    <div class="book-carousel-stack flex flex-col gap-4 md:gap-5">
       {bookCategories.map(category => (
         <BooksCarousel title={category.title} books={category.books} />
       ))}
@@ -128,35 +129,22 @@ const booksJsonLd = {
         openBook(url, !!isDeepLink, title);
       }
 
-      document.querySelectorAll(".book-download-btn").forEach(function (btn) {
-        btn.addEventListener("click", function () {
-          requestBook(btn.getAttribute("data-pdf"), btn.getAttribute("data-title"), false);
-        });
-      });
-
       // Deep-link: /books?download=<book-id> auto-scrolls to the matching card
-      // and triggers its open flow (sign-up page, or open directly per stored
-      // consent).
+      // and opens its PDF. Title and cover links work natively without JavaScript.
       try {
         const params = new URLSearchParams(window.location.search);
         const wanted = params.get("download");
         if (wanted) {
           const card = document.getElementById(wanted);
-          const targetBtn = card ? card.querySelector(".book-download-btn") : null;
           const catalogBook = Object.prototype.hasOwnProperty.call(bookDeepLinks, wanted)
             ? bookDeepLinks[wanted]
             : null;
           if (card) {
             try { card.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" }); } catch (_e) { /* ignore */ }
           }
-          if (targetBtn) {
-            // Defer so any pending paint / smooth-scroll begins first.
-            setTimeout(function () {
-              requestBook(targetBtn.getAttribute("data-pdf"), targetBtn.getAttribute("data-title"), true);
-            }, 250);
-          } else if (catalogBook) {
-            // Preserve direct links for catalog books that are intentionally
-            // unlisted (for example, The Abiding Room).
+          if (catalogBook) {
+            // Defer until the scroll begins. Catalog lookup also preserves
+            // deep links to intentionally unlisted books.
             setTimeout(function () {
               requestBook(catalogBook.pdf, catalogBook.title, true);
             }, 250);

@@ -1,5 +1,6 @@
 ---
 import "@/styles/global.css";
+import "@/styles/knowing-god-theme.css";
 
 interface Props {
   title: string;
@@ -24,7 +25,7 @@ const canonicalUrl = `https://equip.jesusonline.com${Astro.url.pathname}`;
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/svg+xml" href={join("/favicon.svg")} />
     <link rel="apple-touch-icon" href={join("/favicon.svg")} />
-    <meta name="theme-color" content="#123f50" />
+    <meta name="theme-color" content="#003A66" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
@@ -32,7 +33,7 @@ const canonicalUrl = `https://equip.jesusonline.com${Astro.url.pathname}`;
     <meta property="og:image" content="https://equip.jesusonline.com/opengraph.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
   </head>
-  <body class="kg-intro-body">
+  <body class="kg-intro-body flex flex-col min-h-screen">
     <header class="kg-intro-header">
       <div class="kg-intro-header-inner">
         <a class="kg-intro-brand" href={join("/knowing-god")}>
@@ -45,21 +46,34 @@ const canonicalUrl = `https://equip.jesusonline.com${Astro.url.pathname}`;
         <a class="kg-intro-return" href={join("/knowing-god")}>Return to topics</a>
       </div>
     </header>
-    <slot />
+    <div class="kg-warm-theme kg-intro-theme-wrapper flex-1">
+      <slot />
+    </div>
   </body>
 </html>
 
 <style is:global>
+  .kg-intro-theme-wrapper {
+    background: var(--color-surface, #FFFDFB);
+    color: var(--color-text, #003A66);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
   .kg-intro-body {
     margin: 0;
-    background: #e8e9e1;
-    color: #30494f;
-    font-family: Georgia, "Times New Roman", serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--color-surface, #FFFDFB);
+    color: var(--color-text, #003A66);
+    font-family: var(--font-sans, 'Source Sans 3', system-ui, sans-serif);
+    font-size: 16px;
   }
   .kg-intro-header {
-    border-bottom: 1px solid rgba(255,255,255,.14);
-    background: #123f50;
-    color: #f8f5ed;
+    border-bottom: 1px solid var(--color-border-soft, #CCEBFF);
+    background: var(--color-structure, #003A66);
+    color: #FFFFFF;
   }
   .kg-intro-header-inner {
     display: flex;
@@ -80,35 +94,37 @@ const canonicalUrl = `https://equip.jesusonline.com${Astro.url.pathname}`;
   .kg-intro-brand small,
   .kg-intro-eyebrow {
     display: block;
-    font-family: ui-sans-serif, system-ui, sans-serif;
-    font-size: .64rem;
+    font-family: var(--font-sans, 'Source Sans 3', system-ui, sans-serif);
+    font-size: .75rem; /* ~12px */
     font-weight: 700;
     letter-spacing: .2em;
     text-transform: uppercase;
   }
-  .kg-intro-brand small { color: #bdd0cc; }
+  .kg-intro-brand small { color: var(--color-surface-soft, #E6F5FF); }
   .kg-intro-brand strong {
     display: block;
     margin-top: .16rem;
     font-size: 1.2rem;
     font-weight: 400;
+    font-family: var(--font-display, 'Playfair Display', serif);
   }
-  .kg-intro-brand i { color: #e4b16d; font-style: normal; }
+  .kg-intro-brand i { color: var(--color-accent, #E87722); font-style: normal; }
   .kg-intro-mark {
     display: grid;
     width: 2.2rem;
     height: 2.2rem;
     place-items: center;
-    border: 1px solid rgba(228,177,109,.75);
-    color: #e4b16d;
+    border: 1px solid var(--color-accent, #E87722);
+    color: var(--color-accent, #E87722);
     font-style: italic;
+    font-family: var(--font-display, 'Playfair Display', serif);
   }
   .kg-intro-return {
-    border: 1px solid rgba(255,255,255,.28);
+    border: 1px solid var(--color-border-control, #5B9BC4);
     padding: .58rem .8rem;
-    color: #f8f5ed;
-    font-family: ui-sans-serif, system-ui, sans-serif;
-    font-size: .75rem;
+    color: #FFFFFF;
+    font-family: var(--font-sans, 'Source Sans 3', system-ui, sans-serif);
+    font-size: 1rem; /* 16px */
     font-weight: 700;
     text-decoration: none;
   }
@@ -120,34 +136,36 @@ const canonicalUrl = `https://equip.jesusonline.com${Astro.url.pathname}`;
   }
   .kg-intro-breadcrumbs {
     margin-bottom: 2.2rem;
-    color: #667c78;
-    font-family: ui-sans-serif, system-ui, sans-serif;
-    font-size: .78rem;
+    color: var(--color-text-muted, #2E5A7A);
+    font-family: var(--font-sans, 'Source Sans 3', system-ui, sans-serif);
+    font-size: .75rem;
   }
-  .kg-intro-breadcrumbs a { color: #285c68; }
-  .kg-intro-eyebrow { color: #b15d2b; }
+  .kg-intro-breadcrumbs a { color: var(--color-hero, #006BB3); }
+  .kg-intro-eyebrow { color: var(--color-action-warm, #C45100); }
   .kg-intro-title {
     max-width: 850px;
     margin: .6rem 0 1rem;
-    color: #123f50;
+    color: var(--color-hero, #006BB3);
+    font-family: var(--font-display, 'Playfair Display', serif);
     font-size: clamp(2.5rem, 7vw, 5rem);
-    font-weight: 400;
+    font-weight: 600;
     letter-spacing: -.035em;
     line-height: .98;
   }
   .kg-intro-lede {
     max-width: 760px;
     margin: 0;
-    color: #61736f;
+    color: var(--color-text-muted, #2E5A7A);
+    font-family: var(--font-sans, 'Source Sans 3', system-ui, sans-serif);
     font-size: clamp(1.1rem, 2.3vw, 1.35rem);
     font-style: italic;
     line-height: 1.6;
   }
   @media (max-width: 620px) {
     .kg-intro-header-inner { align-items: flex-start; }
-    .kg-intro-brand small { font-size: .52rem; }
+    .kg-intro-brand small { font-size: .75rem; }
     .kg-intro-brand strong { font-size: 1rem; }
-    .kg-intro-return { padding: .45rem .6rem; font-size: .65rem; }
+    .kg-intro-return { padding: .45rem .6rem; font-size: 1rem; }
     .kg-intro-main { padding-top: 2rem; }
   }
 </style>

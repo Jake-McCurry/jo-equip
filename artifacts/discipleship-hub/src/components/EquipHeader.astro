@@ -1,0 +1,185 @@
+---
+import { Image } from "astro:assets";
+import logoSrc from "@/assets/jol-logo-white.png";
+import { Search as SearchIcon } from "lucide-react";
+interface Props { navColor?: string; }
+const { navColor = "#0095ff" } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
+const join = (p: string) =>
+  (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
+
+const navLinks = [
+  { name: "Equip", path: "/equip" },
+  { name: "Categories", path: "/categories" },
+  { name: "Playlists", path: "/playlists" },
+  { name: "Books", path: "/books" },
+  { name: "Listen", path: "/listen" },
+  { name: "More", path: "/more" },
+];
+
+// Active-state detection — strip the base prefix from current path first
+const rawPath = Astro.url.pathname;
+const stripBase = (p: string) => {
+  const b = baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl;
+  if (b && p.startsWith(b)) return p.slice(b.length) || "/";
+  return p;
+};
+const currentPath = stripBase(rawPath);
+
+function isActive(linkPath: string) {
+  return linkPath === "/" ? currentPath === "/" : currentPath.startsWith(linkPath);
+}
+
+const navLinksWithActive = navLinks.map(l => ({ ...l, active: isActive(l.path) }));
+
+// Mobile menu mirrors the primary links (Equip is the first primary
+// link, pointing at /equip; the logo links home) and adds Contact at the bottom.
+// /welcome is kept as a page but no longer linked from the nav (Aug 2026).
+const mobileNavLinks = [...navLinksWithActive];
+---
+    <header class="equip-header sticky top-0 z-50 w-full" style={`background-color:${navColor};border-bottom:1px solid rgba(255,255,255,0.08);`}>
+      <div class="container mx-auto px-4 md:px-6 flex items-center justify-between py-4 md:py-5 relative">
+
+        <a href={join("/")} class="flex items-center gap-3 md:gap-5 hover:opacity-90 transition-opacity">
+          {/* fetchpriority=high tells the browser this is the LCP candidate
+              and to prioritize it over the in-viewport channel art photos. */}
+          <Image src={logoSrc} alt="JesusOnline" widths={[200, 400]} sizes="200px" format="webp" quality={85} class="h-8 md:h-10 w-auto" loading="eager" fetchpriority="high" />
+          <span class="text-white font-bold text-xl tracking-wide" style="font-family:var(--font-sans);">
+            JO EQUIP
+          </span>
+        </a>
+
+        {/* Desktop Nav */}
+        <nav class="hidden lg:flex items-center gap-0.5" aria-label="Primary">
+          {navLinksWithActive.map(link => (
+            <a
+              href={join(link.path)}
+              class="relative px-3 py-2 text-[19px] font-bold transition-colors rounded hover:underline underline-offset-4"
+              style="color:#ffffff;"
+              aria-current={link.active ? "page" : undefined}
+            >
+              {link.name}
+              {link.active && (
+                <span class="absolute -bottom-1 left-3 right-3 h-0.5 rounded-full" style="background-color:var(--color-accent);"></span>
+              )}
+            </a>
+          ))}
+          <a
+            href={join("/search")}
+            class="ml-2 inline-flex items-center justify-center w-9 h-9 rounded transition-colors hover:bg-white/10"
+            style="color:#ffffff;"
+            aria-label="Search the library"
+            title="Search"
+          >
+            <SearchIcon className="w-4 h-4" />
+          </a>
+        </nav>
+
+        {/* Mobile: search icon + menu */}
+        <div class="lg:hidden flex items-center gap-1">
+          <a
+            href={join("/search")}
+            class="inline-flex items-center justify-center w-10 h-10 rounded transition-colors hover:bg-white/10"
+            style="color:#ffffff;"
+            aria-label="Search the library"
+            title="Search"
+          >
+            <SearchIcon className="w-5 h-5" />
+          </a>
+          {/* Mobile hamburger — vanilla HTML + tiny inline script (no React shipped). */}
+          <button
+            id="mobile-nav-trigger"
+            type="button"
+            class="p-2 text-white"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="mobile-nav-panel"
+          >
+            <svg id="mobile-nav-icon-open" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+            <svg id="mobile-nav-icon-close" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none;"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile nav panel — hidden until trigger toggles `data-open`.
+          Light panel with hairline separators between items (matches the
+          .org site's menu styling) so it reads friendlier than the old
+          dark-navy version. */}
+      <div
+        id="mobile-nav-panel"
+        role="navigation"
+        aria-label="Mobile"
+        class="lg:hidden absolute left-0 right-0 top-full w-full flex-col z-40 hidden data-[open=true]:flex shadow-lg"
+        style={`background-color:#ffffff;border-top:3px solid ${navColor};`}
+      >
+        {mobileNavLinks.map(link => (
+          <a
+            href={join(link.path)}
+            aria-current={link.active ? "page" : undefined}
+            class="text-base font-medium py-3.5 px-6 transition-colors"
+            style={`color:var(--color-text);border-bottom:1px solid var(--color-border-soft);${link.active ? "background-color:var(--color-surface-soft);border-left:3px solid var(--color-accent);padding-left:calc(1.5rem - 3px);font-weight:700;" : ""}`}
+          >
+            {link.name}
+          </a>
+        ))}
+        <a
+          href="mailto:pastorjon@jesusonline.com"
+          class="text-base font-medium py-3.5 px-6 transition-colors"
+          style="color:var(--color-text);"
+        >
+          Contact
+        </a>
+      </div>
+    </header>
+    <style>
+      /* White/Blue500 meets the kit's large-bold text threshold at 19px/700.
+         Focus must contrast with the blue surface, not disappear into it. */
+      .equip-header :is(a, button):focus-visible { outline-color: #fff; }
+      #mobile-nav-panel a:focus-visible { outline-color: var(--color-focus); }
+    </style>
+
+    <script is:inline>
+      (function () {
+        var trigger = document.getElementById("mobile-nav-trigger");
+        var panel = document.getElementById("mobile-nav-panel");
+        var iconOpen = document.getElementById("mobile-nav-icon-open");
+        var iconClose = document.getElementById("mobile-nav-icon-close");
+        if (!trigger || !panel) return;
+        var prevOverflow = "";
+        function setOpen(open) {
+          panel.dataset.open = open ? "true" : "false";
+          trigger.setAttribute("aria-expanded", open ? "true" : "false");
+          trigger.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+          if (iconOpen && iconClose) {
+            iconOpen.style.display = open ? "none" : "";
+            iconClose.style.display = open ? "" : "none";
+          }
+          if (open) {
+            prevOverflow = document.body.style.overflow;
+            document.body.style.overflow = "hidden";
+            var firstLink = panel.querySelector("a[href]");
+            if (firstLink) firstLink.focus();
+          } else {
+            document.body.style.overflow = prevOverflow;
+          }
+        }
+        trigger.addEventListener("click", function () {
+          setOpen(panel.dataset.open !== "true");
+        });
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && panel.dataset.open === "true") {
+            e.preventDefault();
+            setOpen(false);
+            trigger.focus();
+          }
+        });
+        // Close panel on link click (delegate inside panel).
+        panel.addEventListener("click", function (e) {
+          var t = e.target;
+          while (t && t !== panel) {
+            if (t.tagName === "A") { setOpen(false); return; }
+            t = t.parentNode;
+          }
+        });
+      })();
+    </script>

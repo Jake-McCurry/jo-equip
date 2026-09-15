@@ -1,0 +1,62 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+interface Props {
+  cover: ImageMetadata | undefined;
+  title: string;
+  loading?: "eager" | "lazy";
+}
+
+const { cover, title, loading = "lazy" } = Astro.props;
+---
+
+{/* Library thumbnails deliberately have identical dimensions, not merely equal
+    outer containers around differently sized covers. Resize the complete cover
+    into a 3:4 thumbnail without cropping titles/authors or editing originals. */}
+<div class="book-thumbnail" data-book-thumbnail>
+  {cover ? (
+    <Image
+      src={cover}
+      alt={`${title} book cover`}
+      width={360}
+      height={480}
+      fit="fill"
+      widths={[120, 180, 240, 360, 540]}
+      sizes="(max-width: 479px) 30vw, 180px"
+      format="webp"
+      quality={85}
+      loading={loading}
+    />
+  ) : (
+    <span class="book-thumbnail-placeholder" role="img" aria-label={`${title} — no cover available`}>
+      No cover available
+    </span>
+  )}
+</div>
+
+<style>
+  .book-thumbnail {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    background: #fff;
+  }
+  .book-thumbnail img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+  }
+  .book-thumbnail-placeholder {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    padding: 0.75rem;
+    place-items: center;
+    background: var(--color-surface-soft);
+    color: var(--color-text-muted);
+    text-align: center;
+    font-size: 0.875rem;
+  }
+</style>

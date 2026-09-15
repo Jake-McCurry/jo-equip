@@ -18,20 +18,20 @@ import MakeMultiplySignupForm from "@/components/MakeMultiplySignupForm.astro";
 
   <section class="bg-white">
     <div class="container mx-auto px-4 py-14 md:py-20 max-w-2xl text-center">
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium mb-6" style="background-color:rgba(0,149,255,0.1);color:#0095ff;">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium mb-6" style="background-color:rgba(0,149,255,0.1);color:var(--color-hero);">
         <Globe className="w-3.5 h-3.5" />
         Make and Multiply Disciples
       </div>
-      <h1 class="text-4xl md:text-5xl mb-4" style="color:#0b3c5d;">Newsletter</h1>
-      <div class="h-0.5 w-12 mx-auto mb-6" style="background-color:#de5b00;"></div>
-      <p class="text-lg leading-relaxed mb-10" style="color:#374151;">
-        Subscribe to the <strong style="color:#0b3c5d;">Make and Multiply Disciples</strong> newsletter from
+      <h1 class="text-4xl md:text-5xl mb-4" style="color:var(--color-structure);">Newsletter</h1>
+      <div class="h-0.5 w-12 mx-auto mb-6" style="background-color:var(--color-accent);"></div>
+      <p class="text-lg leading-relaxed mb-10" style="color:var(--color-text-muted);">
+        Subscribe to the <strong style="color:var(--color-text);">Make and Multiply Disciples</strong> newsletter from
         JesusOnline Ministries — fresh discipleship resources, ministry encouragement, and updates from JO EQUIP, delivered to your inbox.
       </p>
 
       {/* Shared Mailchimp signup form — identical to the one on
           /categories/church/make-multiply-disciples-newsletter */}
-      <MakeMultiplySignupForm accent="#0095ff" />
+      <MakeMultiplySignupForm accent="var(--color-brand)" />
 
     </div>
   </section>

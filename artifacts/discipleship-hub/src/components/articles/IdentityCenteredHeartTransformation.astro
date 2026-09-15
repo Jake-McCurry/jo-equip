@@ -93,7 +93,7 @@ const preparedGroups = groups.map((group) => {
       </h1>
       
       {heroTitle.paren && (
-        <p class="text-xl md:text-2xl text-white/80 font-light mb-8">
+        <p class="text-xl md:text-2xl text-white/80 font-normal mb-8">
           {heroTitle.paren}
         </p>
       )}
@@ -130,7 +130,7 @@ const preparedGroups = groups.map((group) => {
                       <div class="grid sm:grid-cols-2 gap-4 my-10 not-prose">
                         {b.items.map((item: string, idx: number) => (
                           <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm relative overflow-hidden group">
-                            <div class={`absolute top-0 left-0 w-1 h-full ${idx === 0 ? 'bg-slate-300' : 'bg-[#0095ff]'}`}></div>
+                            <div class={`absolute top-0 left-0 w-1 h-full ${idx === 0 ? 'bg-slate-300' : 'bg-[var(--color-brand)]'}`}></div>
                             <p class="text-slate-700 font-medium leading-relaxed" set:html={item}></p>
                           </div>
                         ))}
@@ -164,7 +164,7 @@ const preparedGroups = groups.map((group) => {
                                   </div>
                                    <h3 class="text-xl font-semibold" style="color:#ffffff;" set:html={title}></h3>
                                </div>
-                                <p class="leading-relaxed text-sm md:text-base" style="color:#f8fafc;" set:html={body}></p>
+                                <p class="leading-relaxed text-base" style="color:#f8fafc;" set:html={body}></p>
                              </div>
                            );
                         })}

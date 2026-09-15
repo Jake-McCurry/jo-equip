@@ -1,8 +1,8 @@
 ---
-import { Image } from "astro:assets";
-import { BookOpen, Download, ChevronLeft, ChevronRight } from "lucide-react";
+import { Download, ChevronLeft, ChevronRight } from "lucide-react";
 import { getBookCover } from "@/data/bookCovers";
 import type { Book } from "@/data/books";
+import BookThumbnail from "@/components/BookThumbnail.astro";
 
 interface Props {
   title: string;
@@ -14,27 +14,30 @@ const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
   (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
 ---
-<div class="book-carousel-section mb-6 md:mb-8">
+<div class="book-carousel-section">
   <div class="flex items-end justify-between mb-4 md:mb-5">
-    <h2 class="text-2xl md:text-3xl font-semibold" style="color:#0b3c5d;">{title}</h2>
+    <h2 class="text-2xl md:text-3xl font-semibold" style="color:var(--color-structure);">{title}</h2>
     <div class="hidden sm:flex items-center gap-2">
-      <button type="button" class="carousel-prev w-9 h-9 flex items-center justify-center rounded border bg-white transition-colors hover:bg-slate-50 disabled:opacity-30 disabled:cursor-not-allowed" style="border-color:var(--color-border); color:#0b3c5d;" aria-label={`Scroll ${title} left`}>
+      <button type="button" class="carousel-prev w-9 h-9 flex items-center justify-center rounded border bg-white transition-colors hover:bg-slate-50 disabled:opacity-30 disabled:cursor-not-allowed" style="border-color:var(--color-border); color:var(--color-text);" aria-label={`Scroll ${title} left`}>
         <ChevronLeft className="w-5 h-5" />
       </button>
-      <button type="button" class="carousel-next w-9 h-9 flex items-center justify-center rounded border bg-white transition-colors hover:bg-slate-50 disabled:opacity-30 disabled:cursor-not-allowed" style="border-color:var(--color-border); color:#0b3c5d;" aria-label={`Scroll ${title} right`}>
+      <button type="button" class="carousel-next w-9 h-9 flex items-center justify-center rounded border bg-white transition-colors hover:bg-slate-50 disabled:opacity-30 disabled:cursor-not-allowed" style="border-color:var(--color-border); color:var(--color-text);" aria-label={`Scroll ${title} right`}>
         <ChevronRight className="w-5 h-5" />
       </button>
     </div>
   </div>
   
   <div class="relative">
-    <div class="carousel-track flex gap-4 md:gap-5 overflow-x-auto pb-4 snap-x snap-mandatory focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0095ff]" tabindex="0" role="region" aria-label={`${title} books`}>
+    <div class="carousel-track flex gap-4 md:gap-5 overflow-x-auto pb-2 snap-x snap-mandatory focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-brand)]" tabindex="0" role="region" aria-label={`${title} books`}>
       {books.map(book => {
         const cover = getBookCover(book.id);
+        const isConcordance = book.id === "knowing-god";
+        const cardTitle = isConcordance ? "Knowing God / Concordance" : book.title;
+        const detailsHref = isConcordance ? "/knowing-god" : `/books/${book.id}`;
+        const detailsLabel = isConcordance ? "View Digital Version" : "Details";
         return (
           <article id={book.id} class="book-card shrink-0 w-[220px] md:w-[240px] snap-start flex flex-col border rounded-lg bg-white overflow-hidden transition-shadow hover:shadow-md scroll-mt-24" style="border-color:var(--color-border);">
-            <div class="book-cover-area p-4 pb-3 flex items-center justify-center bg-white h-[260px] md:h-[280px]">
-              {cover ? (
+            <div class="book-cover-area">
                 <a
                   href={join(book.pdf)}
                   target="_blank"
@@ -42,56 +45,36 @@ const join = (p: string) =>
                   data-track-title={book.title}
                   data-pdf-action="open"
                   aria-label={`Open ${book.title} PDF`}
-                  class="block rounded transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
-                  style="outline-color:#0095ff;"
+                   class="book-thumbnail-link rounded transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
+                  style="outline-color:var(--color-brand);"
                 >
-                  <Image
-                    src={cover}
-                    alt={`${book.title} book cover`}
-                    widths={[160, 240, 480]}
-                    sizes="(max-width: 767px) 40vw, 240px"
-                    loading="lazy"
-                    class="h-full w-auto max-h-[230px] md:max-h-[250px] object-contain"
-                  />
+                  <BookThumbnail cover={cover} title={book.title} />
                 </a>
-              ) : (
-                <div class="text-sm" style="color:var(--color-muted-foreground);">No cover available</div>
-              )}
             </div>
             <div class="book-card-info px-4 py-3 border-t flex flex-col grow bg-white" style="border-color:var(--color-border);">
-              <h3 class="font-semibold text-[15px] leading-snug mb-4 grow" style="color:#0b3c5d;" title={book.title}>{book.title}</h3>
-              <div class="flex flex-wrap items-center justify-between gap-x-1 gap-y-3 mt-auto">
-                <button
-                  type="button"
-                  class="book-download-btn inline-flex items-center justify-center gap-1.5 font-bold text-[11px] md:text-xs uppercase tracking-wide transition-colors hover:opacity-75"
-                  style="color:#0095ff;"
-                  data-pdf={join(book.pdf)}
-                  data-title={book.title}
-                  data-id={book.id}
-                  aria-label={`Open ${book.title}`}
-                >
-                  <BookOpen className="w-3.5 h-3.5" />
-                  Open
-                </button>
+              <h3 class="font-semibold text-[15px] leading-snug mb-3 grow text-center" title={cardTitle}>
                 <a
+                  class="book-title-link inline-flex w-full items-center justify-center gap-1.5 rounded underline underline-offset-2 hover:opacity-80"
                   href={join(book.pdf)}
-                  download
+                  target="_blank"
+                  rel="noopener noreferrer"
                   data-track-title={book.title}
-                  data-pdf-action="download"
-                  class="inline-flex items-center justify-center gap-1.5 font-bold text-[11px] md:text-xs uppercase tracking-wide transition-colors hover:opacity-75"
-                  style="color:#0095ff;"
-                  aria-label={`Download ${book.title}`}
+                  data-pdf-action="open"
+                  aria-label={`${cardTitle} — open PDF in a new tab`}
+                  style="color:var(--color-hero);"
                 >
-                  <Download className="w-3.5 h-3.5" />
-                  Save
+                  <span class="min-w-0">{cardTitle}</span>
+                  <Download className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
                 </a>
+              </h3>
+              <div class="flex mt-auto">
                 <a
-                  href={join(`/books/${book.id}`)}
+                  href={join(detailsHref)}
                   class="text-xs font-medium transition-colors hover:opacity-75 w-full pt-2 border-t text-center mt-1"
                   style="color:var(--color-muted-foreground); border-color:var(--color-border);"
-                  aria-label={`View details for ${book.title}`}
+                  aria-label={isConcordance ? `View digital version of ${cardTitle}` : `View details for ${book.title}`}
                 >
-                  Details
+                  {detailsLabel}
                 </a>
               </div>
             </div>
@@ -164,25 +147,24 @@ const join = (p: string) =>
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+  .book-cover-area {
+    display: grid;
+    place-items: center;
+    padding: 0.75rem;
+    background: #fff;
+  }
+  .book-thumbnail-link {
+    display: block;
+    width: 100%;
+    max-width: 180px;
+  }
   @media (max-width: 767px) {
     /* Two full cards + two 1rem gaps + half of the next card. */
     .book-card {
       width: calc(40% - 0.8rem);
     }
     .book-cover-area {
-      height: auto;
-      aspect-ratio: 11 / 13;
       padding: 0.5rem;
-    }
-    .book-cover-area > a {
-      width: 100%;
-      height: 100%;
-    }
-    .book-cover-area img {
-      width: 100%;
-      height: 100%;
-      max-height: 100%;
-      object-fit: contain;
     }
     .book-card-info {
       padding: 0.625rem;

@@ -58,8 +58,7 @@ const shareText = `Watch "${video.title}" on JO EQUIP`;
   <div class="container mx-auto px-4 py-8 md:py-10 max-w-6xl">
     <a
       href={join(`/playlist/${video.primaryPlaylist.id}`)}
-      class="inline-flex items-center gap-1.5 text-sm font-medium mb-6 transition-colors hover:underline focus:outline-none focus-visible:underline"
-      style="color:#0095ff;"
+      class="inline-flex items-center gap-1.5 text-sm font-medium mb-6 transition-colors hover:underline focus:outline-none focus-visible:underline" style="color:var(--color-hero);"
     >
       <ChevronLeft className="w-4 h-4" />
       Part of: {video.primaryPlaylist.title}
@@ -78,18 +77,18 @@ const shareText = `Watch "${video.title}" on JO EQUIP`;
           ></iframe>
         </div>
 
-        <h1 class="text-2xl md:text-3xl font-semibold mb-4 leading-tight" style="color:#0b3c5d;">
+        <h1 class="text-2xl md:text-3xl font-semibold mb-4 leading-tight" style="color:var(--color-structure);">
           {video.title}
         </h1>
 
         <div class="flex flex-wrap items-center justify-between gap-4 py-4 border-t border-b" style="border-color:var(--color-border);">
           <div class="flex items-center gap-3">
             <div class="w-10 h-10 rounded-full flex items-center justify-center bg-slate-100" style="background-color:rgba(0,149,255,0.1);">
-              <ListVideo className="w-5 h-5" style={{ color: "#0095ff" }} />
+              <ListVideo className="w-5 h-5" style={{ color: "var(--color-brand)" }} />
             </div>
             <div>
               <p class="text-xs font-semibold tracking-wider uppercase" style="color:var(--color-muted-foreground);">Series</p>
-              <a href={join(`/playlist/${video.primaryPlaylist.id}`)} class="text-sm font-medium hover:underline focus:outline-none" style="color:#0095ff;">
+              <a href={join(`/playlist/${video.primaryPlaylist.id}`)} class="text-sm font-medium hover:underline focus:outline-none" style="color:var(--color-hero);">
                 {video.primaryPlaylist.title}
               </a>
             </div>
@@ -100,7 +99,7 @@ const shareText = `Watch "${video.title}" on JO EQUIP`;
               id="share-btn"
               type="button"
               class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded border transition-colors hover:bg-slate-50 focus:outline-none focus-visible:ring-2"
-              style="border-color:var(--color-border); color:#0b3c5d;"
+              style="border-color:var(--color-border); color:var(--color-text);"
               data-url={canonicalUrl}
               data-title={shareText}
             >
@@ -111,7 +110,7 @@ const shareText = `Watch "${video.title}" on JO EQUIP`;
               id="copy-btn"
               type="button"
               class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded border transition-colors hover:bg-slate-50 focus:outline-none focus-visible:ring-2"
-              style="border-color:var(--color-border); color:#0b3c5d;"
+              style="border-color:var(--color-border); color:var(--color-text);"
               data-url={canonicalUrl}
                aria-describedby="copy-status"
             >
@@ -136,12 +135,12 @@ const shareText = `Watch "${video.title}" on JO EQUIP`;
                 />
                 <div class="absolute inset-0 flex items-center justify-center">
                   <div class="w-8 h-8 rounded-full bg-white/90 flex items-center justify-center shadow-sm">
-                    <Play className="w-4 h-4 ml-0.5" style={{ color: "#de5b00", fill: "#de5b00" }} />
+                    <Play className="w-4 h-4 ml-0.5" style={{ color: "var(--color-accent)", fill: "var(--color-accent)" }} />
                   </div>
                 </div>
               </div>
               <div>
-                <h3 class="font-medium text-lg group-hover:underline leading-snug" style="color:#0b3c5d;">
+                <h3 class="font-medium text-lg group-hover:underline leading-snug" style="color:var(--color-text);">
                   {video.nextVideo.title}
                 </h3>
               </div>
@@ -152,7 +151,7 @@ const shareText = `Watch "${video.title}" on JO EQUIP`;
 
       {/* Sidebar: More from playlist */}
       <div class="lg:col-span-1">
-        <h2 class="text-lg font-semibold mb-4 flex items-center gap-2" style="color:#0b3c5d;">
+        <h2 class="text-lg font-semibold mb-4 flex items-center gap-2" style="color:var(--color-text);">
           More in this series
         </h2>
         <div class="flex flex-col gap-4">
@@ -167,11 +166,11 @@ const shareText = `Watch "${video.title}" on JO EQUIP`;
                 />
                 <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                   <div class="w-8 h-8 rounded-full bg-white/90 flex items-center justify-center shadow-sm">
-                    <Play className="w-4 h-4 ml-0.5" style={{ color: "#de5b00", fill: "#de5b00" }} />
+                    <Play className="w-4 h-4 ml-0.5" style={{ color: "var(--color-accent)", fill: "var(--color-accent)" }} />
                   </div>
                 </div>
               </div>
-              <h3 class="text-sm font-medium leading-tight group-hover:underline" style="color:#0b3c5d; line-height: 1.3;">
+              <h3 class="text-sm font-medium leading-tight group-hover:underline" style="color:var(--color-text); line-height: 1.3;">
                 {v.title}
               </h3>
             </a>

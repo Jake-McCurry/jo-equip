@@ -30,11 +30,27 @@ import { resolve } from "node:path";
 import { spawnSync } from "node:child_process";
 import puppeteer, { type Browser } from "puppeteer";
 import mammoth from "mammoth";
-import { PDFDocument } from "pdf-lib";
+import {
+  PDFDocument,
+  PDFArray,
+  PDFName,
+  PDFRef,
+  PDFRawStream,
+  PDFString,
+  StandardFonts,
+  decodePDFRawStream,
+  rgb,
+} from "pdf-lib";
 import { parseMajestyDocx, MAJESTY_DOCX_CSS } from "./majestyDocx.js";
 import { parseHeartDocx, HEART_DOCX_CSS } from "./heartDocx.js";
+import { parseAdventureDocx, ADVENTURE_DOCX_CSS } from "./adventureDocx.js";
+import { loadAdditionalResourcesHtml } from "./additionalResourcesDocx.js";
 
 const ROOT = resolve(process.cwd(), "..");
+const ADDITIONAL_RESOURCES_DOCX = resolve(
+  ROOT,
+  "attached_assets/JOM_Additional_Resources_page_1789514210420.docx",
+);
 
 interface BookConfig {
   key: string;
@@ -121,7 +137,8 @@ const BOOKS: BookConfig[] = [
   },
   {
     key: "adventure",
-    // Preserve the approved illustrated edition rather than reparse the legacy manuscript.
+    // Preserve the approved illustrated Guide edition; only its front
+    // permission block and final resources leaf are replaced below.
     docx: resolve(ROOT, "outputs/adventure-link-corrections/Adventure-Guide-Updated-Visible-Links.pdf"),
     source: "approved-pdf",
     typography: "strict",
@@ -332,6 +349,72 @@ function parseBook(book: BookConfig, rawHtml: string): ParsedBook {
     chapters.push({ key: token, headingHtml, bodyHtml });
   }
   return { frontPagesHtml, tocEntries, chapters };
+}
+
+const PERMISSION_BOX_HTML = `
+  <div class="permission-box">
+    <p class="permission-title">Permission to reproduce this material</p>
+    <p>The publisher grants permission to reproduce this material without written approval, provided it is used without charge and only for non-profit ministry purposes.</p>
+    <p>Please email us and let us know how you are using it in your ministry:<br />
+      <a href="https://equip.jesusonline.com/reviews/share">equip.jesusonline.com/reviews/share</a>
+    </p>
+  </div>`;
+
+/*
+ * Remove the old invitation/permission block from every source variant before
+ * adding the one canonical box.  Scripture copyright paragraphs also contain
+ * the word "permission", so matching the complete old block is intentional.
+ */
+function withCanonicalPermissionBox(frontPagesHtml: string): string {
+  const html = frontPagesHtml.replace(
+    /<(p|h[1-6])\b[^>]*>[\s\S]*?<\/\1>\s*/gi,
+    element => {
+      const content = stripTags(element);
+      return /^(?:Permission to reproduce this material|The publisher grants permission to reproduce this material|If you are walking someone through these pages|Please email us and let us know how you are using it in your ministry|To request permission)\b/i.test(
+        content,
+      )
+        ? ""
+        : element;
+    },
+  );
+  const sectionEnd = html.lastIndexOf("</section>");
+  if (sectionEnd < 0) throw new Error("Front matter section missing while adding permission box");
+  return `${html.slice(0, sectionEnd)}${PERMISSION_BOX_HTML}\n${html.slice(sectionEnd)}`;
+}
+
+function replaceAdditionalResources(parsed: ParsedBook, resourceHtml: string): void {
+  const chapter = parsed.chapters.find(c =>
+    c.key === "MORE" ||
+    /^E\.\s*More Free Resources$/i.test(stripTags(c.headingHtml)) ||
+    /^More Free Resources$/i.test(stripTags(c.headingHtml)) ||
+    /^Additional Resources$/i.test(stripTags(c.headingHtml)),
+  );
+  if (!chapter) throw new Error("Additional Resources chapter not found");
+  chapter.key = "MORE";
+  chapter.headingHtml = "Additional Resources";
+  chapter.bodyHtml = resourceHtml;
+
+  parsed.tocEntries = parsed.tocEntries.filter(
+    entry => !(entry.kind === "entry" && /Permission to Reproduce/i.test(entry.labelText)),
+  );
+  for (const entry of parsed.tocEntries) {
+    if (
+      entry.kind === "entry" &&
+      (entry.key === "E" ||
+        entry.key === "MORE" ||
+        /More Free Resources|Additional Resources/i.test(entry.labelText))
+    ) {
+      entry.key = "MORE";
+      entry.labelText = "Additional Resources";
+    }
+    if (entry.kind === "sub") {
+      entry.itemsHtml = entry.itemsHtml.map(item =>
+        item
+          .replace(/The JO Discipleship App/i, "The JO APP Growth Resources for Believers")
+          .replace(/(?:The )?JO EQUIP Resources for Discipleship/i, "The JO EQUIP Resources for Pastors and Disciplers"),
+      );
+    }
+  }
 }
 
 /* --------------------------------------------- majesty (PDF-source) book */
@@ -732,7 +815,7 @@ const ADVENTURE_RESOURCES_HTML = `
 <p>Find out more about JesusOnline Ministries at <a href="https://jesusonlineministries.org">JesusOnlineMinistries.org</a>.</p>`;
 
 const ADVENTURE_FRONT_NOTICES_HTML = `
-<p>© 2016 by JesusOnline Ministries. All rights reserved. Publisher grants permission to reproduce and distribute this material without written approval, but only in its entirety and only for non-profit use. Not for sale. No part of this material may be altered or used out of context without publisher’s written permission.</p>
+<p>© 2026 by JesusOnline Ministries. All rights reserved.</p>
 <p>Unless otherwise indicated, all Scripture quotations marked NIV are taken from the Holy Bible, New International Version®. Copyright © 1973, 1978, 1984 Biblica. Used by permission of Zondervan. All rights reserved.</p>
 <p>Scripture quotations marked NLT are taken from the Holy Bible, New Living Translation, copyright © 1996, 2004, 2007 by Tyndale House Foundation. Used by permission of Tyndale House Publishers, Inc., Carol Stream, Illinois 60188. All rights reserved.</p>
 <p>Scripture quotations marked Phillips are taken from The New Testament in Modern English, trans. J.B. Phillips (New York: Macmillan, 1959).</p>
@@ -1200,13 +1283,44 @@ const STRICT_CSS = `
   .epigraph .attrib { font-style: normal; }
   .front-matter .notices { font-size: 9.5pt; color: #4b5563; }
   .front-matter .notices p { margin: 0 0 0.85em 0; }
+  .front-matter { display: flex; flex-direction: column; min-height: 8.85in; }
+  .permission-box {
+    margin-top: auto; border: 1.5px solid #0b3c5d; padding: 0.65em 0.8em;
+    color: #1f2937; page-break-inside: avoid; break-inside: avoid;
+  }
+  .permission-box p { margin: 0 0 0.45em 0; }
+  .permission-box p:last-child { margin-bottom: 0; }
+  .permission-box .permission-title {
+    color: #0b3c5d; font-family: Carlito, Calibri, sans-serif;
+    font-size: 13pt; font-weight: 700;
+  }
+  .permission-box a { color: #b34800; text-decoration: underline; }
+`;
+
+const ADDITIONAL_RESOURCES_CSS = `
+  .resources-page > h1 { margin-bottom: 0.35em; }
+  .resources-page h2 {
+    font-size: 16pt; margin: 0.65em 0 0.2em;
+  }
+  .resources-page p { margin-bottom: 0.45em; }
+  .resources-page img {
+    display: block; width: auto !important; max-width: 100% !important;
+    max-height: 1.85in; margin: 0.35em auto 0.6em;
+    object-fit: contain;
+  }
+  .resources-page img[src^="data:image"] { page-break-inside: avoid; }
 `;
 
 function cssFor(book: BookConfig): string {
   const base = book.typography === "strict" ? STRICT_CSS : CSS;
-  if (book.key === "majesty" && book.source === "docx") return base + MAJESTY_DOCX_CSS;
-  if (book.key === "heart") return base + HEART_DOCX_CSS;
-  return book.key === "adventure" ? base + ADVENTURE_EXTRA_CSS : base;
+  if (book.key === "majesty" && book.source === "docx") {
+    return base + MAJESTY_DOCX_CSS + ADDITIONAL_RESOURCES_CSS;
+  }
+  if (book.key === "heart") return base + HEART_DOCX_CSS + ADDITIONAL_RESOURCES_CSS;
+  if (book.key === "adventure") {
+    return base + ADVENTURE_EXTRA_CSS + ADVENTURE_DOCX_CSS + ADDITIONAL_RESOURCES_CSS;
+  }
+  return base + ADDITIONAL_RESOURCES_CSS;
 }
 
 const FOOTER_TEMPLATE = `
@@ -1241,7 +1355,8 @@ function buildInteriorHtml(
   const chaptersHtml = parsed.chapters
     .map(c => {
       const marker = withMarkers ? `<span class="pgmark">[[MK-${c.key}-KM]]</span>` : "";
-      return `<section class="chapter"><h1>${marker}${c.headingHtml}</h1>\n${c.bodyHtml}</section>`;
+      const resourcesClass = c.key === "MORE" ? " resources-page" : "";
+      return `<section class="chapter${resourcesClass}"><h1>${marker}${c.headingHtml}</h1>\n${c.bodyHtml}</section>`;
     })
     .join("\n");
   const body = `
@@ -1337,9 +1452,222 @@ async function prependCoverAndCompress(book: BookConfig, interiorPath: string): 
   console.log(`Wrote ${book.out}\n  uncompressed: ${(before / 1024).toFixed(0)} KB → compressed: ${(after / 1024).toFixed(0)} KB`);
 }
 
-async function buildBook(browser: Browser, book: BookConfig): Promise<void> {
+function drawWrappedPdfText(
+  page: ReturnType<PDFDocument["getPage"]>,
+  text: string,
+  options: {
+    x: number;
+    y: number;
+    maxWidth: number;
+    size: number;
+    lineHeight: number;
+    font: Awaited<ReturnType<PDFDocument["embedFont"]>>;
+    color: ReturnType<typeof rgb>;
+  },
+): number {
+  const words = text.split(/\s+/);
+  const lines: string[] = [];
+  let line = "";
+  for (const word of words) {
+    const candidate = line ? `${line} ${word}` : word;
+    if (line && options.font.widthOfTextAtSize(candidate, options.size) > options.maxWidth) {
+      lines.push(line);
+      line = word;
+    } else {
+      line = candidate;
+    }
+  }
+  if (line) lines.push(line);
+  lines.forEach((value, index) => {
+    page.drawText(value, {
+      x: options.x,
+      y: options.y - index * options.lineHeight,
+      size: options.size,
+      font: options.font,
+      color: options.color,
+    });
+  });
+  return options.y - lines.length * options.lineHeight;
+}
+
+function addPdfUriAnnotation(
+  doc: PDFDocument,
+  page: ReturnType<PDFDocument["getPage"]>,
+  rect: [number, number, number, number],
+  url: string,
+): void {
+  const annotation = doc.context.register(
+    doc.context.obj({
+      Type: "Annot",
+      Subtype: "Link",
+      Rect: rect,
+      Border: [0, 0, 0],
+      H: "N",
+      A: { Type: "Action", S: "URI", URI: PDFString.of(url) },
+    }),
+  );
+  page.node.addAnnot(annotation);
+}
+
+async function renderAdventureResourcesPage(
+  browser: Browser,
+  resourceHtml: string,
+  outPath: string,
+): Promise<void> {
+  const page = await browser.newPage();
+  try {
+    await page.setRequestInterception(true);
+    page.on("request", request => {
+      if (/^(data:|about:)/.test(request.url())) request.continue();
+      else request.abort();
+    });
+    const html = `<!doctype html>
+      <html lang="en"><head><meta charset="utf-8" />
+      <style>${STRICT_CSS}${ADDITIONAL_RESOURCES_CSS}</style></head>
+      <body><section class="chapter resources-page">
+        <h1>Additional Resources</h1>${linkifyOutsideAnchors(resourceHtml)}
+      </section></body></html>`;
+    await page.setContent(html, { waitUntil: "load", timeout: 60000 });
+    await page.pdf({
+      path: outPath,
+      format: "Letter",
+      printBackground: true,
+      displayHeaderFooter: true,
+      headerTemplate: HEADER_TEMPLATE,
+      footerTemplate: `
+        <div style="width:100%;text-align:center;font-family:'Helvetica Neue',Arial,sans-serif;font-size:8.5pt;color:#6b7280;">
+          JesusOnline Ministries&nbsp;&nbsp;·&nbsp;&nbsp;Page 33
+        </div>`,
+      margin: { top: "0.8in", bottom: "0.85in", left: "0.9in", right: "0.9in" },
+    });
+  } finally {
+    await page.close();
+  }
+}
+
+/**
+ * Adventure is an already-approved illustrated PDF edition.  Re-rendering
+ * its manuscript would silently replace the artwork and the approved closing
+ * CTA, so update only the two explicitly requested leaf areas in-place.
+ */
+async function buildApprovedAdventure(
+  browser: Browser,
+  book: BookConfig,
+  resourceHtml: string,
+): Promise<void> {
+  const doc = await PDFDocument.load(readFileSync(book.docx), { updateMetadata: false });
+  if (doc.getPageCount() < 3) throw new Error(`Approved Adventure PDF is unexpectedly short: ${book.docx}`);
+
+  const font = await doc.embedFont(StandardFonts.Helvetica);
+  const boldFont = await doc.embedFont(StandardFonts.HelveticaBold);
+  const navy = rgb(0.043, 0.235, 0.365);
+  const page = doc.getPage(1); // title/copyright page (cover is page 1)
+
+  // Remove the source permission/invitation text operators rather than merely
+  // painting over them; this keeps text extraction free of duplicate blocks.
+  const contents = page.node.get(PDFName.of("Contents"));
+  const contentRefs = contents instanceof PDFArray ? contents.asArray() : [contents];
+  for (const ref of contentRefs) {
+    if (!(ref instanceof PDFRef)) throw new Error("Expected an indirect Adventure content stream");
+    const stream = doc.context.lookup(ref);
+    if (!(stream instanceof PDFRawStream)) throw new Error("Expected an Adventure PDF raw stream");
+    const source = Buffer.from(decodePDFRawStream(stream).decode()).toString("latin1");
+    const edited = source.replace(/BT[\s\S]*?ET/g, block => {
+      const tm = block.match(/[-\d.]+\s+[-\d.]+\s+[-\d.]+\s+[-\d.]+\s+[-\d.]+\s+(-?[\d.]+)\s+Tm/);
+      if (!tm) return block;
+      // The approved PDF uses this transform for its title page:
+      // effectiveY = 601.92 + .24 * text-matrix-Y.  The old permission
+      // block occupies effective Y ≈ 400–510; the TOC starts below it.
+      const effectiveY = 601.92 + 0.24 * Number(tm[1]);
+      if (effectiveY >= 390 && effectiveY <= 510) return "";
+      // Move the existing Contents text into the vacated permission area,
+      // leaving the bottom of the title page for the requested boxed notice.
+      if (effectiveY >= 80 && effectiveY < 390) {
+        return block.replace(tm[0], tm[0].replace(/(-?[\d.]+)(\s+Tm)$/, `${Number(tm[1]) + 550}$2`));
+      }
+      return block;
+    });
+    if (edited !== source) {
+      doc.context.assign(ref, doc.context.flateStream(Buffer.from(edited, "latin1")));
+    }
+  }
+
+  /*
+   * This page intentionally also carries the approved Contents list.  The
+   * existing Contents list is translated upward without reflowing its text,
+   * keeping the permission box at the bottom of the title page.
+   */
+  const boxX = 42;
+  const boxY = 65;
+  const boxW = 528;
+  const boxH = 108;
+  page.drawRectangle({
+    x: boxX,
+    y: boxY,
+    width: boxW,
+    height: boxH,
+    color: rgb(1, 1, 1),
+    borderColor: navy,
+    borderWidth: 1,
+  });
+  page.drawText("Permission to reproduce this material", {
+    x: boxX + 10,
+    y: boxY + boxH - 19,
+    size: 11.5,
+    font: boldFont,
+    color: navy,
+  });
+  let y = boxY + boxH - 39;
+  y = drawWrappedPdfText(page,
+    "The publisher grants permission to reproduce this material without written approval, provided it is used without charge and only for non-profit ministry purposes.",
+    { x: boxX + 10, y, maxWidth: boxW - 20, size: 9.5, lineHeight: 12, font, color: rgb(0.12, 0.16, 0.22) });
+  y -= 7;
+  y = drawWrappedPdfText(page,
+    "Please email us and let us know how you are using it in your ministry:",
+    { x: boxX + 10, y, maxWidth: boxW - 20, size: 9.5, lineHeight: 12, font, color: rgb(0.12, 0.16, 0.22) });
+  const url = "equip.jesusonline.com/reviews/share";
+  const urlY = y - 1;
+  page.drawText(url, {
+    x: boxX + 10,
+    y: urlY,
+    size: 9.5,
+    font,
+    color: rgb(0.70, 0.28, 0.02),
+  });
+  page.drawLine({
+    start: { x: boxX + 10, y: urlY - 1.5 },
+    end: { x: boxX + 10 + font.widthOfTextAtSize(url, 9.5), y: urlY - 1.5 },
+    thickness: 0.5,
+    color: rgb(0.70, 0.28, 0.02),
+  });
+  page.node.delete(PDFName.of("Annots"));
+  page.node.set(PDFName.of("Annots"), PDFArray.withContext(doc.context));
+  addPdfUriAnnotation(doc, page, [
+    boxX + 9,
+    urlY - 2,
+    boxX + 11 + font.widthOfTextAtSize(url, 9.5),
+    urlY + 10,
+  ], `https://${url}`);
+
+  const resourcePdfPath = `${book.out}.resources.tmp.pdf`;
+  await renderAdventureResourcesPage(browser, resourceHtml, resourcePdfPath);
+  const resourceDoc = await PDFDocument.load(readFileSync(resourcePdfPath));
+  const [resourcePage] = await doc.copyPages(resourceDoc, [0]);
+  doc.removePage(doc.getPageCount() - 1);
+  doc.addPage(resourcePage);
+  unlinkSync(resourcePdfPath);
+
+  writeFileSync(book.out, await doc.save({ useObjectStreams: false }));
+  console.log(`Installed approved Adventure body unchanged; replaced permission/resources leaves → ${book.out}`);
+}
+
+async function buildBook(browser: Browser, book: BookConfig, resourceHtml: string): Promise<void> {
   console.log(`\n=== ${book.title} ===`);
   if (book.source === "approved-pdf") {
+    if (book.key === "adventure") {
+      await buildApprovedAdventure(browser, book, resourceHtml);
+      return;
+    }
     const approvedBytes = readFileSync(book.docx);
     const approvedPdf = await PDFDocument.load(approvedBytes);
     if (approvedPdf.getPageCount() === 0) throw new Error(`Approved PDF is empty: ${book.docx}`);
@@ -1381,12 +1709,16 @@ async function buildBook(browser: Browser, book: BookConfig): Promise<void> {
     const warnings = messages.filter(m => m.type === "warning" && !/Unrecognised (run|paragraph) style/.test(m.message));
     if (warnings.length) console.warn("  mammoth warnings:", warnings.map(m => m.message).join("; "));
     parsed =
-      book.key === "majesty"
+      book.key === "adventure"
+        ? await parseAdventureDocx(browser, rawHtml, book.title, book.subtitleHtml)
+        : book.key === "majesty"
         ? await parseMajestyDocx(browser, rawHtml)
         : book.key === "heart"
           ? await parseHeartDocx(browser, rawHtml)
           : parseBook(book, rawHtml);
   }
+  replaceAdditionalResources(parsed, resourceHtml);
+  parsed.frontPagesHtml = withCanonicalPermissionBox(parsed.frontPagesHtml);
   console.log(`  chapters: ${parsed.chapters.map(c => c.key).join(", ")}`);
 
   const pass1Path = `${book.out}.pass1.tmp.pdf`;
@@ -1435,8 +1767,9 @@ async function main(): Promise<void> {
     executablePath: resolveChromiumPath(),
     args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"],
   });
+  const resourceHtml = await loadAdditionalResourcesHtml(ADDITIONAL_RESOURCES_DOCX);
   try {
-    for (const book of selected) await buildBook(browser, book);
+    for (const book of selected) await buildBook(browser, book, resourceHtml);
   } finally {
     await browser.close();
   }

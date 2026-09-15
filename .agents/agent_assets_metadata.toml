@@ -371,3 +371,59 @@ mtime_ms = 1789423315083
 storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/d8208828-4833-42d5-9fbe-b08c1ff10147/1fd54ea0-c72a-4f76-a13e-384ecad373e0"
 storage_version_token = "1789423341843401"
 content_type = "application/pdf"
+
+[[outputs]]
+id = "TzsiJYAi4lbLP6krWqAqD"
+uri = "file://exports/updated-discipleship-books/adventure-of-living-with-jesus.pdf"
+type = "pdf"
+title = "The Adventure of Living with Jesus"
+description = "Updated PDF with the boxed reproduction permission and revised Additional Resources page."
+logical_id = "443a556a-4212-49fe-afb1-9b3969ae550f"
+content_hash = "sha256:e2a0070548606337870a7ec7ad6cc62653fcb44e055328c5937da0dc7a66741d"
+size = 16834779
+mtime_ms = 1789516539923
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/443a556a-4212-49fe-afb1-9b3969ae550f/4bcab5fa-f497-4886-86ea-b28eddf4edf4"
+storage_version_token = "1789516545863041"
+content_type = "application/pdf"
+
+[[outputs]]
+id = "es_1O8X-KIF5of3ke0Zsq"
+uri = "file://exports/updated-discipleship-books/your-new-identity-in-christ.pdf"
+type = "pdf"
+title = "Your New Identity in Christ"
+description = "Updated PDF with the boxed reproduction permission and revised Additional Resources page."
+logical_id = "e5a27a7d-cc85-4ff2-9592-06197b30ecba"
+content_hash = "sha256:e97399e8165cd0ecfe82e887932e1d08a905cdd8a37c35916dd526c004460b81"
+size = 1164710
+mtime_ms = 1789516539931
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/e5a27a7d-cc85-4ff2-9592-06197b30ecba/3f141756-2476-43ed-bb3a-a61d31fe0948"
+storage_version_token = "1789516546674615"
+content_type = "application/pdf"
+
+[[outputs]]
+id = "C8--fZguWlEcwwO9kbgwc"
+uri = "file://exports/updated-discipleship-books/beholding-the-majesty-of-god.pdf"
+type = "pdf"
+title = "Beholding the Majesty of God"
+description = "Updated PDF with the boxed reproduction permission and revised Additional Resources page."
+logical_id = "8f1e7f3e-9595-47fb-82a7-c1242a6bc931"
+content_hash = "sha256:c131ab7c46c5ef1b5d7e61c34b8cb28d32312977b4e9e467865668d3d829c704"
+size = 956111
+mtime_ms = 1789516539939
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/8f1e7f3e-9595-47fb-82a7-c1242a6bc931/c292cc80-0f3d-48b9-a3f6-702a4cbe5436"
+storage_version_token = "1789516547473933"
+content_type = "application/pdf"
+
+[[outputs]]
+id = "1WfdY1RX1Tz-qURS5noAi"
+uri = "file://exports/updated-discipleship-books/walking-in-the-spirit.pdf"
+type = "pdf"
+title = "Walking in the Spirit"
+description = "Updated PDF with the boxed reproduction permission and revised Additional Resources page."
+logical_id = "817b7a58-67fd-4544-9022-0d50f25abdb8"
+content_hash = "sha256:748bb1ceefeb60d03463de964fc60f8c54c70f3505e1d5574096c1837dbe6e6e"
+size = 680759
+mtime_ms = 1789516539943
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/817b7a58-67fd-4544-9022-0d50f25abdb8/7bff7ad4-5152-4ea6-8692-5b2f14afe9b0"
+storage_version_token = "1789516548168543"
+content_type = "application/pdf"

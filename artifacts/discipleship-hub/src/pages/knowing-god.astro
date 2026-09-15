@@ -1,6 +1,7 @@
 ---
 import "@/styles/global.css";
 import { ConcordancePrototype } from "@/components/knowing-god/ConcordancePrototype";
+import EquipHeader from "@/components/EquipHeader.astro";
 
 const baseUrl = import.meta.env.BASE_URL;
 const join = (path: string) =>
@@ -34,6 +35,14 @@ const canonicalUrl = "https://equip.jesusonline.com/knowing-god";
     <meta name="twitter:image" content="https://equip.jesusonline.com/opengraph.jpg" />
   </head>
   <body>
+    <div class="kg-equip-navigation">
+      <EquipHeader />
+    </div>
     <ConcordancePrototype client:load />
   </body>
 </html>
+<style is:global>
+  .kg-equip-navigation { display: contents; }
+  html[data-knowing-god-view="topic"] .kg-equip-navigation { display: none; }
+  @media print { .kg-equip-navigation { display: none; } }
+</style>

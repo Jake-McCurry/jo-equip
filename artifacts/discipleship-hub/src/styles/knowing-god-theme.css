@@ -97,3 +97,6 @@
   line-height: 1.5;
 }
 .kg-cover-subtitle strong { font-weight: 700; }
+
+/* Disjoint Scripture ranges remain separate in NET and source KJV text. */
+.kg-reading article > p:last-child { white-space: pre-line; }

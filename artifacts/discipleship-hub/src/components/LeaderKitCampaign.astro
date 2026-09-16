@@ -66,7 +66,6 @@ const heartFocuses = [
   <div class="container mx-auto max-w-6xl relative z-10">
     <div class="flex flex-col lg:flex-row">
       <div class="w-full lg:w-1/2 px-5 py-5 md:py-6 lg:pr-16">
-        <p class="inline-block bg-[#0095ff] text-white text-sm font-bold px-3 py-2 mb-4">Free Ministry Resources</p>
         <h1 class="text-4xl md:text-5xl font-bold mb-4 text-white leading-tight">
           Churchgoers or Disciples?
         </h1>
@@ -79,7 +78,7 @@ const heartFocuses = [
           A free Leader Kit for pastors and home church leaders with Ten Discipleship Moments — all ready to teach. Encourage heart transformation.
         </p>
 
-        <ul class="space-y-3">
+        <ul class="hero-benefits space-y-3">
           <li class="flex items-start">
             <span class="text-[#c4a35a] shrink-0 mr-3 mt-0.5 text-lg">✓</span>
             <span class="text-[#e8f0fa] text-[17px]"><strong>Week 1</strong> This Sunday—whether in service, small group, or chapel</span>
@@ -144,10 +143,9 @@ const heartFocuses = [
 </section>
 
 <!-- The Adventure and five-minute flow -->
-<section class="py-6 md:py-8 bg-slate-50 border-t border-slate-200">
+<section class="adventure-flow py-6 md:py-8 bg-white border-t border-slate-200">
   <div class="container mx-auto px-5 max-w-4xl">
-    <div class="flex flex-col sm:flex-row items-start gap-6 md:gap-8 mb-7">
-      <div class="w-full max-w-[340px] sm:max-w-[220px] shrink-0 border-[6px] border-white shadow-xl rounded">
+      <div class="w-full max-w-[340px] mx-auto mb-8 border-[6px] border-white shadow-xl rounded">
         <Image
           src={adventureCover}
           alt="The Adventure of Living with Jesus book cover"
@@ -156,27 +154,24 @@ const heartFocuses = [
           height={945}
         />
       </div>
-      <div class="max-w-2xl text-left">
-        <h2 class="text-3xl md:text-4xl font-bold text-[#0b2548] mb-4">The Adventure of Living with Jesus</h2>
-        <h3 class="text-sm font-bold tracking-widest text-[#8a6d2e] mb-4">A Simple 5-minute flow</h3>
-        <p class="text-[17px] md:text-lg text-[#5b6675] leading-relaxed">
+      <div class="flow-copy">
+        <h2 class="adventure-title">The Adventure of Living with Jesus</h2>
+        <h3 class="flow-title">A Simple 5-minute flow</h3>
+        <p class="flow-intro">
           Slip a Discipleship Moment into almost any gathering. Read it as written, or put it in your own words.
         </p>
-      </div>
-    </div>
-
-    <div class="max-w-xl space-y-4">
+    <div class="flow-steps">
       {flow.map((item) => (
         <div>
-          <div class="flex items-baseline gap-2 mb-1">
-            <h3 class="text-xl font-bold text-[#0b2548]">{item.title}</h3>
-            <span class="text-[#1b7fe0] font-bold mx-1">|</span>
-            <span class="text-sm font-bold text-[#1b7fe0] tracking-widest">{item.duration}</span>
+          <div class="flow-step-heading">
+            <h4>{item.title}</h4>
+            <span class="flow-duration">| {item.duration}</span>
           </div>
-          <p class="text-[#5b6675] text-[17px] md:text-lg">{item.description}</p>
+          <p class="flow-description">{item.description}</p>
         </div>
       ))}
     </div>
+      </div>
   </div>
 </section>
 
@@ -184,7 +179,7 @@ const heartFocuses = [
 <section class="py-6 md:py-8 bg-white border-t border-slate-200">
   <div class="container mx-auto px-5 max-w-4xl">
     <div class="text-left mb-5">
-      <h2 class="text-3xl md:text-4xl font-bold text-[#0b2548] mb-4">Ten weeks. One adventure.</h2>
+      <h2 class="ten-weeks-title font-bold text-[#0b2548] mb-4">Ten weeks. One adventure.</h2>
       <p class="text-[17px] md:text-xl text-[#5b6675] max-w-2xl">
         The path God has already marked: assurance, identity, the Spirit, faith, Scripture, prayer, His family, and purpose.
       </p>
@@ -203,6 +198,29 @@ const heartFocuses = [
     </div>
   </div>
 </section>
+
+<style>
+  .hero-benefits strong,
+  .hero-benefits li > span:first-child { color: #e8d7a8; font-weight: 700; }
+  .flow-copy { max-width: 640px; margin-inline: auto; font-family: Arial, sans-serif; }
+  .flow-copy h2, .flow-copy h3, .flow-copy h4 { font-family: inherit; }
+  .adventure-title {
+    margin: 0 0 30px; color: #0b2548; text-align: center;
+    font-size: clamp(20px, 3.6vw, 28px); line-height: 1.2; font-weight: 700;
+  }
+  .flow-title {
+    margin: 0 0 32px; color: #8a6d2e; text-align: center;
+    font-size: clamp(19px, 3.6vw, 28px); line-height: 1.25;
+    font-weight: 700; letter-spacing: .075em; text-transform: uppercase;
+  }
+  .flow-intro { margin: 0; color: #5b6675; font-size: clamp(18px, 3.6vw, 28px); line-height: 1.15; }
+  .flow-steps { margin: 0; }
+  .flow-step-heading { display: flex; align-items: baseline; gap: 5px; line-height: 1.1; font-size: clamp(20px, 3.6vw, 28px); }
+  .flow-step-heading h4 { margin: 0; color: #0b2548; font-size: inherit; line-height: inherit; font-weight: 700; }
+  .flow-duration { color: #2783c5; font-weight: 400; }
+  .flow-description { margin: 0; color: #5b6675; font-size: clamp(16px, 3vw, 22px); line-height: 1.2; }
+  .ten-weeks-title { font-size: clamp(20px, 5.6vw, 36px); line-height: 1.2; white-space: nowrap; }
+</style>
 
 <!-- Heart transformation -->
 <section class="py-6 md:py-8 bg-slate-50 border-t border-slate-200">

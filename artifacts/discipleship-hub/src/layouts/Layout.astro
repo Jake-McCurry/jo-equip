@@ -13,6 +13,8 @@ interface Props {
   imageAlt?: string;
   /** Override the header/nav blue (used to trial new brand colors per-page). */
   navColor?: string;
+  /** Optional landing-page descriptor beside the logo. */
+  navTagline?: string;
   /** Open Graph content type; video watch pages use "video.other". */
   ogType?: "website" | "article" | "video.other";
 }
@@ -23,6 +25,7 @@ const {
   image = "/opengraph.jpg",
   imageAlt = "JO EQUIP — Ministry Resources Hub",
   navColor = "#0095ff",
+  navTagline,
   ogType = "website",
 } = Astro.props;
 
@@ -136,7 +139,7 @@ const gtmEnabled = import.meta.env.PROD;
     )}
 
     {/* Header */}
-    <EquipHeader navColor={navColor} />
+    <EquipHeader navColor={navColor} tagline={navTagline} />
 
     <main id="main-content" class="flex-grow">
       <slot />

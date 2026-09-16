@@ -2,8 +2,8 @@
 import { Image } from "astro:assets";
 import logoSrc from "@/assets/jol-logo-white.png";
 import { Search as SearchIcon } from "lucide-react";
-interface Props { navColor?: string; }
-const { navColor = "#0095ff" } = Astro.props;
+interface Props { navColor?: string; tagline?: string; }
+const { navColor = "#0095ff", tagline } = Astro.props;
 const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
   (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
@@ -44,8 +44,11 @@ const mobileNavLinks = [...navLinksWithActive];
           {/* fetchpriority=high tells the browser this is the LCP candidate
               and to prioritize it over the in-viewport channel art photos. */}
           <Image src={logoSrc} alt="JesusOnline" widths={[200, 400]} sizes="200px" format="webp" quality={85} class="h-8 md:h-10 w-auto" loading="eager" fetchpriority="high" />
-          <span class="text-white font-bold text-xl tracking-wide" style="font-family:var(--font-sans);">
-            JO EQUIP
+          <span class:list={[tagline && "flex flex-col xl:flex-row xl:items-center xl:gap-5"]}>
+            <span class="text-white font-bold text-xl tracking-wide" style="font-family:var(--font-sans);">
+              JO EQUIP
+            </span>
+            {tagline && <span class="text-white text-xs sm:text-sm xl:text-base font-medium leading-snug">{tagline}</span>}
           </span>
         </a>
 

@@ -23,7 +23,7 @@
 - [Knowing God publication rights](knowing-god-publication-rights.md) — Written permission to publish the concordance is confirmed; do not treat general publication rights as an open blocker.
 - [Hydration and browser instrumentation](hydration-browser-instrumentation.md) — Test tools may mutate inputs before React hydration; distinguish injected attribute drift from application state mismatches.
 - [Concordance PDF extraction](concordance-pdf-extraction.md) — Use raw column order, normalize discretionary hyphens, and overlap sample boundaries before assembling topics.
-- [NET Bible concordance source](net-bible-concordance-source.md) — Use Bible.org’s official NET API on demand; retain required linked attribution and an explicit KJV fallback.
+- [NET Bible concordance source](net-bible-concordance-source.md) — NET is locally hosted with confirmed permission; validate official text and distinguish translation differences from source errors.
 - [Astro nested template rendering](astro-nested-template-rendering.md) — Complex nested map callbacks can trigger cryptic compiler syntax errors; prepare data up front and keep template branches declarative.
 - [Knowing God source pages](knowing-god-source-pages.md) — Source-derived introductions must be exact, semantic, mobile-first HTML; use PDF renders only for verification.
 - [Holy Spirit duplicate review](holy-spirit-duplicate-review.md) — Keep Ministry Holy Spirit live but noindex pending manual comparison; BB Walking Spirit remains preferred and indexable.

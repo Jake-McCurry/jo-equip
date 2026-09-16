@@ -8,3 +8,11 @@ When a Word document is the visual specification for a page, inspect its drawing
 **Why:** Plain-text extraction and an image contact sheet can omit the hero background and reverse the apparent heading hierarchy. Some reference sections are editable shapes, not screenshots.
 
 **How to apply:** Confirm shape colors, heading emphasis, paragraph alignment, and image order before implementation. Render the result as accessible HTML; do not substitute generic site styling for the supplied reference.
+
+## Editable DOCX validation
+
+Validate the XML inside generated Word files, not just the ZIP container or extracted text.
+
+**Why:** A publication edit passed ZIP and text comparisons while a missing table-cell opening tag made the editable document invalid. Plain-text checks also failed to reveal lost section properties.
+
+**How to apply:** Parse `word/document.xml` with an XML parser, resolve image/link relationships, preserve section properties, and compare unchanged manuscript text when replacing publication pages.

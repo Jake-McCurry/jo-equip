@@ -20,6 +20,7 @@
     "book:majesty": "tsx ./src/ebookDocxBuild.ts --book=majesty",
     "book:heart": "tsx ./src/ebookDocxBuild.ts --book=heart",
     "book:adventure": "tsx ./src/ebookDocxBuild.ts --book=adventure",
+    "books:update-publication-sources": "tsx ./src/updateBookPublicationSources.ts",
     "book:new-life": "tsx ./src/nlicBookBuild.ts"
   },
   "devDependencies": {

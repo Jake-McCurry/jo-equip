@@ -72,7 +72,7 @@ export function initializeLeaderKitSignup() {
   const restoreButton = () => {
     pending = false;
     submitButton.disabled = false;
-    submitButton.textContent = "Receive the Kit";
+    submitButton.textContent = "Get the Kit";
     form.removeAttribute("aria-busy");
   };
   window.addEventListener("pageshow", event => {

@@ -47,13 +47,28 @@ export function ConcordancePrototype() {
   const [expandedLetter, setExpandedLetter] = useState("A");
   const topicResults = useRef<HTMLDivElement>(null);
   const browseLetter = (letter: string) => {
+    if (expandedLetter === letter) {
+      setExpandedLetter("");
+      return;
+    }
     setExpandedLetter(letter);
     loadLetter(letter).catch(() => undefined);
     requestAnimationFrame(() => {
-      const buttons = topicResults.current?.querySelectorAll("button");
-      if (buttons?.length) {
-        buttons[Math.min(2, buttons.length - 1)].scrollIntoView({ behavior: "smooth", block: "nearest" });
-      }
+      const alphabetGrid = topicResults.current?.closest("nav")?.querySelector<HTMLElement>(".grid");
+      const scrollArea = alphabetGrid?.closest<HTMLElement>(".kg-scroll");
+      if (!alphabetGrid || !scrollArea) return;
+      const areaTop = scrollArea.getBoundingClientRect().top;
+      const headerHeight = document.querySelector(".equip-header")?.getBoundingClientRect().height ?? 0;
+      // Align the alphabet within its own scrolling panel, then bring that
+      // panel beneath the sticky header without hiding the first letter row.
+      scrollArea.scrollTo({
+        top: scrollArea.scrollTop + alphabetGrid.getBoundingClientRect().top - areaTop,
+        behavior: "smooth",
+      });
+      window.scrollTo({
+        top: window.scrollY + areaTop - headerHeight - 8,
+        behavior: "smooth",
+      });
     });
   };
   const [topicScope, setTopicScope] = useState<"all" | "devotional">("all");
@@ -209,9 +224,9 @@ export function ConcordancePrototype() {
         <button onClick={() => setFilterOpen(v => !v)} className="kg-focus kg-sans mb-3 flex w-full items-center justify-between border-y border-[var(--color-border-soft,#CCEBFF)] py-3 text-left text-xs font-semibold uppercase tracking-widest text-[var(--color-text,#003A66)]"><span className="flex gap-2"><SlidersHorizontal size={14}/>Passage filters</span><ChevronDown size={14}/></button>
         {filterOpen && <div className="kg-sans mb-4 space-y-3 border-b border-[var(--color-border-soft,#CCEBFF)] pb-4"><p className="text-xs text-[var(--color-text-muted,#2E5A7A)]">Filters apply to the open topic without loading other letters.</p><label className="block text-sm font-semibold">Testament<select value={testament} onChange={e => setTestament(e.target.value)} className="mt-1 w-full border border-[var(--color-border-control,#5B9BC4)] bg-[var(--color-surface,#FFFDFB)] p-2 text-base"><option>All Testaments</option><option>Old Testament</option><option>New Testament</option></select></label><label className="block text-sm font-semibold">Bible book<select value={book} onChange={e => setBook(e.target.value)} className="mt-1 w-full border border-[var(--color-border-control,#5B9BC4)] bg-[var(--color-surface,#FFFDFB)] p-2 text-base">{books.map(value => <option key={value}>{value}</option>)}</select></label></div>}
         {indexError && <div role="alert" className="kg-sans py-6 text-base text-[var(--color-action-warm,#C45100)]">{indexError}</div>}{!index && !indexError && <div role="status" className="kg-sans py-6 text-base text-[var(--color-text-muted,#2E5A7A)]">Loading complete topical index…</div>}
-        {index && <nav aria-label="Topical Bible topics">{!isFiltering && <div className="mb-5 grid grid-cols-6 gap-1">{alphabet.map(letter => <button key={letter} disabled={!scopedTopics.some(topic => topic.letter === letter)} onClick={() => browseLetter(letter)} aria-expanded={expandedLetter === letter} className={`kg-focus kg-sans h-10 rounded text-sm font-bold ${!scopedTopics.some(topic => topic.letter === letter) ? "cursor-not-allowed text-[var(--color-border-control,#5B9BC4)] border border-transparent" : expandedLetter === letter ? "bg-[var(--color-selected-warm,#FFEADB)] text-[var(--color-text,#003A66)] shadow-[inset_0_0_0_1px_var(--color-action-warm,#C45100)]" : "border border-[var(--color-border-control,#5B9BC4)] bg-[var(--color-surface,#FFFDFB)] text-[var(--color-text,#003A66)]"}`}>{letter}</button>)}</div>}
+        {index && <nav aria-label="Topical Bible topics">{!isFiltering && <div className="mb-3 grid grid-cols-9 gap-1">{alphabet.map(letter => <button key={letter} disabled={!scopedTopics.some(topic => topic.letter === letter)} onClick={() => browseLetter(letter)} aria-expanded={expandedLetter === letter} aria-controls="topic-letter-results" className={`kg-focus kg-sans h-7 min-w-0 rounded text-xs font-bold ${!scopedTopics.some(topic => topic.letter === letter) ? "cursor-not-allowed text-[var(--color-border-control,#5B9BC4)] border border-transparent" : expandedLetter === letter ? "bg-[var(--color-selected-warm,#FFEADB)] text-[var(--color-text,#003A66)] shadow-[inset_0_0_0_1px_var(--color-action-warm,#C45100)]" : "border border-[var(--color-border-control,#5B9BC4)] bg-[var(--color-surface,#FFFDFB)] text-[var(--color-text,#003A66)]"}`}>{letter}</button>)}</div>}
           {filtered.length === 0 && <p className="kg-sans py-6 text-center text-sm text-[var(--color-text-muted,#2E5A7A)]">No topics match that search.</p>}
-          <div ref={topicResults} data-topic-results>
+          <div id="topic-letter-results" ref={topicResults} data-topic-results>
             {(isFiltering ? filtered : filtered.filter(item => item.letter === expandedLetter)).map(item => <button key={item.id} aria-pressed={selectedId === item.id} onClick={() => openTopic(item)} className={`kg-focus flex w-full items-center justify-between border-l-4 px-3 py-2.5 text-left text-base ${selectedId === item.id ? "border-[var(--color-action-warm,#C45100)] bg-[var(--color-selected-warm,#FFEADB)] text-[var(--color-text,#003A66)]" : "border-transparent text-[var(--color-text,#003A66)] hover:bg-[var(--color-surface-soft,#E6F5FF)]"}`}><span>{item.title}</span><span className="kg-sans text-xs text-[var(--color-text-muted,#2E5A7A)]">{item.passageCount}</span></button>)}
           </div>
         </nav>}</div></aside>

@@ -10,7 +10,7 @@
     "typecheck": "astro check",
     "validate:books": "node --test scripts/book-library.test.mjs",
     "test:nofollow": "node --test scripts/external-link-policy.test.mjs",
-    "test:knowing-god": "node --test scripts/knowing-god-regressions.test.mjs",
+    "test:knowing-god": "node --experimental-strip-types --test scripts/knowing-god-regressions.test.mjs scripts/knowing-god-passages.test.mjs",
     "generate:knowing-god": "python3 scripts/generate-knowing-god.py",
     "validate:knowing-god": "python3 scripts/generate-knowing-god.py --validate-only && pnpm run test:knowing-god"
   },

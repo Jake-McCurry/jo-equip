@@ -1,0 +1,68 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { CheckCircle2, Download, ArrowRight } from "lucide-react";
+
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, "");
+const homeHref = `${baseUrl}/`;
+const pdfHref = `${baseUrl}/books/adventure-of-living-with-jesus.pdf`;
+---
+
+<Layout
+  title="Thank You for Subscribing | Leader Kit | JO EQUIP"
+  description="Thank you for subscribing. Download The Adventure of Living with Jesus PDF and explore free ministry resources from JO EQUIP."
+>
+  <Fragment slot="head">
+    <meta name="robots" content="noindex, nofollow" />
+  </Fragment>
+  <section class="thank-you-surface">
+    <div class="thank-you-card">
+      <p class="eyebrow">JO EQUIP · LEADER RESOURCES</p>
+      <CheckCircle2 className="confirmation-check" size={48} aria-hidden="true" />
+      <h1>Thank you for subscribing!</h1>
+      <p class="welcome-copy">We’re glad you’re here. Look out for news and updates to help you make and multiply disciples.</p>
+
+      <div class="download-panel">
+        <h2>Your free PDF is ready</h2>
+        <p>The Adventure of Living with Jesus</p>
+        <a class="download-button" href={pdfHref} download="The-Adventure-of-Living-with-Jesus.pdf">
+          <Download size={18} aria-hidden="true" />
+          Download the Adventure Guide PDF
+        </a>
+        <p class="download-note">Save a copy to read, print, or share with your ministry.</p>
+      </div>
+
+      <a class="home-button" href={homeHref}>
+        Continue to JO EQUIP
+        <ArrowRight size={18} aria-hidden="true" />
+      </a>
+      <p class="footer-note">Free, biblically grounded resources for pastors and disciple-makers.</p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .thank-you-surface { background: #e8f3fc; padding: 44px 20px 64px; }
+  .thank-you-card { max-width: 690px; margin: 0 auto; padding: 38px 40px; background: #fff; border: 1px solid #d9e6f1; border-radius: 12px; box-shadow: 0 8px 28px rgba(14, 47, 96, .07); text-align: center; color: #29415b; }
+  .eyebrow { margin: 0 0 24px; color: #147bd1; font-size: 12px; font-weight: 700; letter-spacing: .15em; }
+  .thank-you-card :global(.confirmation-check) { display: block; margin: 0 auto 18px; color: #298143; }
+  h1 { margin: 0 0 16px; color: #0e2f60; font-size: clamp(28px, 5vw, 38px); line-height: 1.15; }
+  .welcome-copy { max-width: 490px; margin: 0 auto; font-size: 18px; line-height: 1.65; }
+  .download-panel { margin: 30px 0; padding: 24px 20px; border: 1px solid #d9e6f1; border-radius: 8px; background: #f6faff; }
+  h2 { margin: 0 0 6px; font-size: 24px; color: #0e2f60; }
+  .download-panel > p { margin: 0 0 18px; }
+  .download-button, .home-button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 12px 20px; border-radius: 6px; font-weight: 700; text-decoration: none; line-height: 1.4; }
+  .download-button { background: #147bd1; color: #fff; }
+  .download-button:hover { background: #0964af; }
+  .home-button { background: #0e2f60; color: #fff; }
+  .home-button:hover { background: #19437d; }
+  a:focus-visible { outline: 3px solid #c4a35a; outline-offset: 4px; }
+  a :global(svg) { flex-shrink: 0; }
+  .download-panel .download-note { margin: 12px 0 0; font-size: 13px; color: #566c81; }
+  .footer-note { margin: 22px 0 0; font-size: 14px; color: #566c81; }
+  @media (max-width: 480px) {
+    .thank-you-surface { padding: 24px 14px 36px; }
+    .thank-you-card { padding: 28px 18px; }
+    .download-panel { padding: 20px 14px; }
+    .download-button, .home-button { width: 100%; font-size: 15px; }
+  }
+</style>

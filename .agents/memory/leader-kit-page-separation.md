@@ -7,4 +7,4 @@ Keep the original Leader Kits library page separate from the new signup-focused 
 
 **Why:** The user explicitly clarified that campaign work must not replace the original library. They subsequently requested a preserved version 1 and an initially identical version 2 for further edits.
 
-**How to apply:** `/leader-kits` remains the original library. Preserve `/lp/leader-kits-1` as the campaign baseline; upcoming campaign edits belong to `/lp/leader-kits-2`, including its separate signup form. Do not propagate version 2 changes to version 1 unless explicitly requested.
+**How to apply:** `/leader-kits` remains the original library. Treat `/lp/leader-kits-1` and `/lp/leader-kits-2` as independent campaign variants: edit only the version named in the current request, and apply shared changes only when explicitly authorized for both.

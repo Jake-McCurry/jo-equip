@@ -1,13 +1,21 @@
 ---
 name: NET Bible concordance source
-description: Provider, licensing, and fallback rules for NET text in the Knowing God concordance.
+description: NET hosting permission, local-first delivery, and translation-integrity constraints.
 ---
 
-Use Bible.org’s official NET Bible web service for the concordance’s NET option. NET is the default translation preference, while the source book’s local wording remains the KJV option.
+Serve the concordance's NET passages from the site's own static assets. Use Bible.org's official source only for controlled corpus updates, not reader-time requests. NET remains the default; the source book's local wording remains the KJV option.
 
-**Why:** The official service supports browser CORS without an API key, and its terms permit free Internet applications when quotations are designated NET and the required copyright acknowledgement is shown. This preserves the no-account, no-database product constraint.
+**Why:** After encountering a live API failure, the user explicitly requested local NET availability like KJV. On 2026-09-16, the user confirmed written permission from NET to use its Bible anywhere. Do not reopen publication permission as a blocker.
 
-**How to apply:** Fetch selected-topic passages on demand with bounded concurrency and session-memory caching. Link NET designations to netbible.org, retain the required acknowledgement, persist only the user’s translation choice, and label KJV fallback explicitly if NET is unavailable.
+**How to apply:** Keep NET independent of Bible.org at runtime and during normal builds. Preserve linked NET labels and copyright acknowledgement. Validate local text against retained official source data, and version asset filenames by content. Local file failures may offer retry and an explicitly labeled KJV fallback, not a claim that Bible.org is unreachable.
+
+## Genuine translation differences
+
+NET omissions and verse-numbering differences must be distinguished from incomplete downloads and erroneous source citations.
+
+**Why:** Strict validation revealed both legitimate differences (including 2 Corinthians 13 numbering) and source ranges extending beyond chapter ends. Treating every absent verse as an API failure or a NET omission misleads readers.
+
+**How to apply:** Allow only individually reviewed missing coordinates, reject extra discrepancies, and show concise editorial notes separately from Scripture. Preserve original source references unless a separate editorial correction is authorized. Compare every generated passage against the official source during build validation.
 
 ## Disjoint verse ranges
 

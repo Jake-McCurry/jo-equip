@@ -1,4 +1,11 @@
-<a href="#leader-kit-signup" id="return-to-leader-kit-form" hidden aria-label="Return to the free Leader Kit signup form">
+---
+interface Props {
+  targetHref?: string;
+  targetSelector?: string;
+}
+const { targetHref = "#leader-kit-signup", targetSelector = "#leader-kit-signup" } = Astro.props;
+---
+<a href={targetHref} data-target-selector={targetSelector} id="return-to-leader-kit-form" hidden aria-label="Go to the free Leader Kit signup form">
   <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
     <path d="m6 12 6-6 6 6M12 6v14" />
   </svg>
@@ -6,8 +13,8 @@
 </a>
 
 <script>
-  const formSection = document.getElementById("leader-kit-signup");
   const returnLink = document.getElementById("return-to-leader-kit-form");
+  const formSection = document.querySelector(returnLink?.dataset.targetSelector ?? "#leader-kit-signup");
   if (formSection && returnLink) {
     let scheduled = false;
     const updateVisibility = () => {
@@ -25,6 +32,7 @@
     window.addEventListener("resize", scheduleUpdate);
     updateVisibility();
     returnLink.addEventListener("click", event => {
+      if (!returnLink.getAttribute("href")?.startsWith("#")) return;
       event.preventDefault();
       const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       formSection.scrollIntoView({ behavior: reduceMotion ? "instant" : "smooth", block: "start" });

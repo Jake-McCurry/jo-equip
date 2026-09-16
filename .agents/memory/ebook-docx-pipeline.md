@@ -37,6 +37,12 @@ Remove unwanted outer illustration backgrounds and shading in Q&A response areas
 
 ## Adventure Guide closing CTA intent
 
+For permission-notice and closing-resources-only updates, preserve the approved illustrated Adventure PDF's body rather than rebuilding that body from a different Word manuscript.
+
+**Why:** The Word rebuild changed the approved edition's pagination, subtitle, artwork treatment, and closing CTA. These are outside the scope of a front/back-matter correction.
+
+**How to apply:** Update the affected title/closing pages while retaining the approved interior; confirm the reproduction box is physically at the bottom, not merely below the copyright text.
+
 The closing “GO FURTHER — A Heart After God” box intentionally links to the supplied “Your Journey Continues” resource despite the different visible label.
 
 **Why:** The user explicitly confirmed this destination after the mismatch was pointed out. A later correction clarified that URL replacements must update the visible URL as well as the clickable destination, without changing other wording.

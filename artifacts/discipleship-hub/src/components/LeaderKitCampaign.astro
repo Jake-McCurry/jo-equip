@@ -1,0 +1,297 @@
+---
+import { Image } from "astro:assets";
+import LeaderKitSignup from "@/components/LeaderKitSignup.astro";
+import adventureCover from "@/assets/adventure-cover.png";
+
+interface Props {
+  includeInlineForm?: boolean;
+  showHeroSignup?: boolean;
+  ctaHref?: string;
+  ctaPanelId?: string;
+}
+
+const {
+  includeInlineForm = false,
+  showHeroSignup = true,
+  ctaHref = "#leader-kit-signup",
+  ctaPanelId = "leader-kit-cta-panel",
+} = Astro.props;
+const pdfHref = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/books/adventure-of-living-with-jesus.pdf`;
+
+const flow = [
+  { title: "Verse", duration: "45 sec", description: "The main Scripture passage" },
+  { title: "Summary", duration: "2 min", description: "Teaching you can read almost word for word" },
+  { title: "Take-away", duration: "30 sec", description: "One sentence they can remember" },
+  { title: "Close", duration: "60-90 sec", description: "A verse, a question, and simple prayer of response." },
+  { title: "Assignment", duration: "Then", description: "Something to apply" },
+];
+
+const weeks = [
+  { number: 1, title: "Begin the Adventure", description: "Jesus has already come in. The adventure is learning to let Him lead every room of your life." },
+  { number: 2, title: "Citizen of Heaven", description: "If you have Jesus, you can know you have eternal life—because He finished the work." },
+  { number: 3, title: "Your New Identity in Christ", description: "You are not becoming a new creation by trying harder. In Christ, you already are one." },
+  { number: 4, title: "The Holy Spirit", description: "The Christian life is Jesus living His life in you by His Spirit as you yield control." },
+  { number: 5, title: "Walking by Faith", description: "Faith is taking God at His Word and moving forward when feelings lag behind." },
+  { number: 6, title: "God’s Word", description: "God’s Word is not extra information. It is the map, the food, and the voice that forms you." },
+  { number: 7, title: "Prayer", description: "Not performing for God. A child talking with the Father who already wants to hear you." },
+  { number: 8, title: "God’s Family", description: "You were saved into a family. You cannot become all God designed while remaining a disconnected coal." },
+  { number: 9, title: "A Life of Purpose", description: "You were not saved only to be safe. You were saved to represent Jesus and invest this brief life." },
+  { number: 10, title: "Continuing with Jesus", description: "The Christian life is not a booklet you finish. It is a race you keep running with your eyes on Jesus." },
+];
+
+const heartFocuses = [
+  {
+    number: "01",
+    label: "IDENTITY FOCUS",
+    title: "How you view your redeemed identity shapes how you live.",
+    description: "When you received Christ, you were not improved; you were made new. God already sees you in Christ. Growth is learning to live as the person He has already made you.",
+  },
+  {
+    number: "02",
+    label: "GOD FOCUS",
+    title: "How you view God’s divine identity shapes how you live.",
+    description: "You become like what you behold. Seeing Him as He is—holy and loving, just and merciful—forms worship, humility, and trust. A thin view of God produces a thin life.",
+  },
+  {
+    number: "03",
+    label: "SPIRIT FOCUS",
+    title: "How you view the Spirit’s functional identity shapes how you live.",
+    description: "If the Christian life is “me plus some help from God,” the reflex is self-effort. This is not passivity. It is a new person depending on the Spirit who already lives in you.",
+  },
+];
+---
+
+<!-- Hero -->
+<section id="leader-kit-hero" class="bg-[#0e2f60] relative">
+  {showHeroSignup && <div class="hidden lg:block absolute inset-y-0 right-0 w-1/2 bg-slate-50"></div>}
+
+  <div class="container mx-auto max-w-6xl relative z-10">
+    <div class="flex flex-col lg:flex-row">
+      <div class:list={["w-full px-5 py-5 md:py-6", showHeroSignup ? "lg:w-1/2 lg:pr-16" : "max-w-4xl mx-auto"]}>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 text-white leading-tight">
+          Churchgoers or Disciples?
+        </h1>
+
+        <h2 class="text-xl md:text-2xl font-normal mb-3 text-[#e8d7a8] leading-snug">
+          This Sunday: One Discipleship Moment
+        </h2>
+
+        <p class="text-[17px] text-[#d6e4f5] leading-relaxed mb-4">
+          A free Leader Kit for pastors and home church leaders with Ten Discipleship Moments — all ready to teach. Encourage heart transformation.
+        </p>
+
+        <ul class="hero-benefits space-y-3">
+          <li class="flex items-start">
+            <span class="text-[#c4a35a] shrink-0 mr-3 mt-0.5 text-lg">✓</span>
+            <span class="text-[#e8f0fa] text-[17px]"><strong>Week 1</strong> This Sunday—whether in service, small group, or chapel</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-[#c4a35a] shrink-0 mr-3 mt-0.5 text-lg">✓</span>
+            <span class="text-[#e8f0fa] text-[17px]"><strong>Each Moment</strong> A 5-minute flow: verse, summary, take-away, close, one assignment</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-[#c4a35a] shrink-0 mr-3 mt-0.5 text-lg">✓</span>
+            <span class="text-[#e8f0fa] text-[17px]"><strong>Focus</strong> Identity-centered discipleship, along with evidence for those who may doubt.</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-[#c4a35a] shrink-0 mr-3 mt-0.5 text-lg">✓</span>
+            <span class="text-[#e8f0fa] text-[17px]"><strong>Cost</strong> $0 — free to preach, print, and hand out</span>
+          </li>
+        </ul>
+      </div>
+
+      {showHeroSignup && <div class="w-full lg:w-1/2 bg-slate-50 px-5 py-5 md:py-6 lg:pl-16 border-t lg:border-t-0 border-slate-200 flex flex-col justify-start">
+        <div class="max-w-md mx-auto w-full">
+          {includeInlineForm ? (
+            <div class="bg-white mb-4">
+              <LeaderKitSignup />
+            </div>
+          ) : (
+            <div id={ctaPanelId} class="bg-white border border-[#d9dfe5] p-4 sm:p-5 mb-4 min-h-[300px] flex flex-col justify-center text-left">
+              <h2 class="text-2xl md:text-[26px] font-bold leading-tight text-[#19212b] mb-6">Get This Free Leader Kit</h2>
+              <a href={ctaHref} class="inline-flex items-center justify-start bg-[#147bd1] hover:bg-[#0964af] text-white font-bold px-3 py-3 transition-colors w-full text-left">
+                Receive the Kit
+              </a>
+            </div>
+          )}
+          <p class="text-[12px] text-[#5b6675] text-left px-4">
+            No cost. No curriculum to buy. You can unsubscribe anytime. We will never sell your information.
+          </p>
+        </div>
+      </div>}
+    </div>
+  </div>
+</section>
+
+<!-- Why This Kit Exists -->
+<section class="py-6 md:py-8 bg-white">
+  <div class="container mx-auto px-5 max-w-4xl">
+    <h2 class="text-sm font-bold tracking-widest uppercase text-[#8a6d2e] mb-4 text-left">WHY THIS KIT EXISTS</h2>
+    <p class="font-bold text-[clamp(1rem,5.2vw,1.375rem)] sm:text-2xl md:text-3xl text-[#0b2548] text-left leading-snug max-w-3xl mb-5">
+      Pastors tell us they have attendees who are not yet disciples.
+    </p>
+
+    <div class="mt-4 max-w-3xl">
+      <blockquote class="text-left">
+        <p class="text-lg md:text-xl font-medium italic text-slate-800 leading-relaxed mb-4">
+          “I pastored a church full of churchgoers, not disciples. ... The Adventure of Living with Jesus discipleship booklet has transformed my life and my understanding about what it is to live for Christ. People are touched and amazed when I am teaching it to them.”
+        </p>
+        <footer class="text-sm font-bold text-[#5b6675]">
+          — Pastor Assah, Togo
+        </footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- The Adventure and five-minute flow -->
+<section class="adventure-flow py-6 md:py-8 bg-white border-t border-slate-200">
+  <div class="container mx-auto px-5 max-w-4xl">
+      <div class="w-full max-w-[340px] mx-auto mb-8 border-[6px] border-white shadow-xl rounded">
+        <Image
+          src={adventureCover}
+          alt="The Adventure of Living with Jesus book cover"
+          class="w-full h-auto block"
+          width={704}
+          height={945}
+        />
+      </div>
+      <div class="flow-copy">
+        <h2 class="adventure-title">The Adventure of Living with Jesus</h2>
+        <h3 class="flow-title">A Simple 5-minute flow</h3>
+        <p class="flow-intro">
+          Slip a Discipleship Moment into almost any gathering. Read it as written, or put it in your own words.
+        </p>
+    <div class="flow-steps">
+      {flow.map((item) => (
+        <div>
+          <div class="flow-step-heading">
+            <h4>{item.title}</h4>
+            <span class="flow-duration">| {item.duration}</span>
+          </div>
+          <p class="flow-description">{item.description}</p>
+        </div>
+      ))}
+    </div>
+      </div>
+  </div>
+</section>
+
+<!-- Ten weeks -->
+<section class="py-6 md:py-8 bg-white border-t border-slate-200">
+  <div class="container mx-auto px-5 max-w-4xl">
+    <div class="text-left mb-5">
+      <h2 class="ten-weeks-title font-bold text-[#0b2548] mb-4">Ten weeks. One adventure.</h2>
+      <p class="text-[17px] md:text-xl text-[#5b6675] max-w-2xl">
+        The path God has already marked: assurance, identity, the Spirit, faith, Scripture, prayer, His family, and purpose.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {weeks.map((week) => (
+        <div class="bg-slate-50 p-5 border border-slate-200 rounded text-left">
+          <div class="flex items-baseline gap-3 mb-1">
+            <span class="text-sm font-bold text-[#8a6d2e] tracking-widest uppercase">WEEK {week.number}</span>
+            <h3 class="text-[17px] font-bold text-[#0b2548]">{week.title}</h3>
+          </div>
+          <p class="text-[#5b6675] text-sm md:text-base leading-relaxed">{week.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-benefits strong,
+  .hero-benefits li > span:first-child { color: #e8d7a8; font-weight: 700; }
+  .flow-copy { max-width: 640px; margin-inline: auto; }
+  .adventure-title {
+    margin: 0 0 16px; color: #0b2548; text-align: center;
+    font-size: clamp(20px, 3.6vw, 28px); line-height: 1.2; font-weight: 700;
+  }
+  .flow-title {
+    margin: 0 0 24px; color: #8a6d2e; text-align: center;
+    font-size: clamp(18px, 2.6vw, 22px); line-height: 1.3;
+    font-weight: 700; letter-spacing: .075em; text-transform: uppercase;
+  }
+  .flow-intro { margin: 0 0 24px; color: #5b6675; font-size: clamp(17px, 2.3vw, 20px); line-height: 1.55; }
+  .flow-steps { margin: 0; display: grid; gap: 16px; }
+  .flow-step-heading { display: flex; align-items: baseline; gap: 7px; line-height: 1.3; font-size: clamp(19px, 2.5vw, 22px); }
+  .flow-step-heading h4 { margin: 0; color: #0b2548; font-size: inherit; line-height: inherit; font-weight: 700; }
+  .flow-duration { color: #2783c5; font-weight: 400; }
+  .flow-description { margin: 4px 0 0; color: #5b6675; font-size: clamp(17px, 2.2vw, 18px); line-height: 1.5; }
+  .ten-weeks-title { font-size: clamp(20px, 5.6vw, 36px); line-height: 1.2; white-space: nowrap; }
+</style>
+
+<!-- Heart transformation -->
+<section class="py-6 md:py-8 bg-slate-50 border-t border-slate-200">
+  <div class="container mx-auto px-5 max-w-5xl">
+    <div class="mb-5 max-w-3xl text-left">
+      <h2 class="text-3xl md:text-4xl font-bold text-[#0b2548] mb-4">A changed life follows a changed heart.</h2>
+      <p class="text-[17px] md:text-lg text-slate-700 leading-relaxed">
+        Identity-centered heart transformation starts in the inner person, not with trying harder on the outside.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+      {heartFocuses.map((focus) => (
+        <div class="bg-white p-4 md:p-5 rounded border border-slate-200 text-left">
+          <div class="text-sm font-bold text-[#8a6d2e] uppercase mb-4 tracking-wider">{focus.number} · {focus.label}</div>
+          <h3 class="text-lg font-bold text-[#0b2548] mb-4 leading-snug">{focus.title}</h3>
+          <p class="text-[#5b6675] leading-relaxed">{focus.description}</p>
+        </div>
+      ))}
+    </div>
+
+    <p class="mt-6 text-[17px] md:text-lg text-[#5b6675] leading-relaxed max-w-3xl">
+      Heart transformation is not “change your behavior so you can feel like a new person.” It is “embrace who you already are, know the God who said so, and depend on the Spirit who lives in you—then behavior follows a changed heart.”
+    </p>
+  </div>
+</section>
+
+<!-- What You Receive -->
+<section class="py-6 md:py-8 bg-white">
+  <div class="container mx-auto px-5 max-w-4xl">
+    <div class="max-w-3xl text-left">
+      <h2 class="text-sm font-bold text-[#8a6d2e] tracking-widest uppercase mb-4">WHAT YOU RECEIVE</h2>
+      <p class="text-2xl md:text-3xl font-bold text-[#0b2548] mb-5 leading-tight">
+        This Sunday Leader Kit includes:
+      </p>
+
+      <ul class="space-y-3 mb-8 text-[17px]">
+        <li class="flex items-start">
+          <span class="text-[#0b2548] shrink-0 mr-3 mt-0.5">✓</span>
+          <span class="text-slate-700">Why this kit exists, and the three heart-focuses (identity, God, Spirit)</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-[#0b2548] shrink-0 mr-3 mt-0.5">✓</span>
+          <span class="text-slate-700">How to use it: church service, small group, one-to-one, after they trust Christ</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-[#0b2548] shrink-0 mr-3 mt-0.5">✓</span>
+          <span class="text-slate-700">Five steps for this week and the 5-minute flow</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-[#0b2548] shrink-0 mr-3 mt-0.5">✓</span>
+          <span class="text-slate-700">Do Not Skip the Doubter—evidence for faith</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-[#0b2548] shrink-0 mr-3 mt-0.5">✓</span>
+          <span class="text-slate-700">10 Discipleship Moments with verse, summary, take-away, assignment, and close</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-[#0b2548] shrink-0 mr-3 mt-0.5">✓</span>
+          <span class="text-slate-700">Optional Video Moments plus a Go Further map into free JO EQUIP series</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-[#0b2548] shrink-0 mr-3 mt-0.5">✓</span>
+          <a href={pdfHref} class="text-[#1b7fe0] hover:underline" target="_blank" rel="noopener">The Adventure of Living with Jesus book PDF</a>
+        </li>
+      </ul>
+
+      <a href={ctaHref} class="inline-flex items-center justify-start bg-[#1b7fe0] hover:bg-[#1565c0] text-white font-bold tracking-wide uppercase px-8 py-4 rounded transition-colors w-full sm:w-auto text-left">
+        Download the free kit
+      </a>
+    </div>
+  </div>
+</section>

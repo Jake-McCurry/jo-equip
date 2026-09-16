@@ -1,0 +1,68 @@
+---
+interface Props {
+  targetHref?: string;
+  targetSelector?: string;
+}
+const { targetHref = "#leader-kit-signup", targetSelector = "#leader-kit-signup" } = Astro.props;
+---
+<a href={targetHref} data-target-selector={targetSelector} id="return-to-leader-kit-form" hidden aria-label="Go to the free Leader Kit signup form">
+  <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="m6 12 6-6 6 6M12 6v14" />
+  </svg>
+  Get the free kit
+</a>
+
+<script>
+  const returnLink = document.getElementById("return-to-leader-kit-form");
+  const formSection = document.querySelector(returnLink?.dataset.targetSelector ?? "#leader-kit-signup");
+  if (formSection && returnLink) {
+    let scheduled = false;
+    const updateVisibility = () => {
+      const headerBottom = document.querySelector(".equip-header")?.getBoundingClientRect().bottom ?? 0;
+      returnLink.hidden = formSection.getBoundingClientRect().bottom > Math.max(0, headerBottom);
+      scheduled = false;
+    };
+    const scheduleUpdate = () => {
+      if (!scheduled) {
+        scheduled = true;
+        requestAnimationFrame(updateVisibility);
+      }
+    };
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+    updateVisibility();
+    returnLink.addEventListener("click", event => {
+      if (!returnLink.getAttribute("href")?.startsWith("#")) return;
+      event.preventDefault();
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      formSection.scrollIntoView({ behavior: reduceMotion ? "instant" : "smooth", block: "start" });
+      formSection.querySelector<HTMLInputElement>('input[type="email"]')?.focus({ preventScroll: true });
+    });
+  }
+</script>
+
+<style>
+  #return-to-leader-kit-form {
+    position: fixed;
+    right: max(16px, env(safe-area-inset-right));
+    bottom: max(16px, env(safe-area-inset-bottom));
+    z-index: 40;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 44px;
+    padding: 9px 14px;
+    border: 1px solid rgba(255, 255, 255, .4);
+    border-radius: 999px;
+    background: #0e2f60;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 3px 12px rgba(14, 47, 96, .18);
+  }
+  #return-to-leader-kit-form[hidden] { display: none; }
+  #return-to-leader-kit-form:hover { background: #147bd1; }
+  #return-to-leader-kit-form:focus-visible { outline: 3px solid #c4a35a; outline-offset: 3px; }
+  @media print { #return-to-leader-kit-form { display: none; } }
+</style>

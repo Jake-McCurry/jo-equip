@@ -1,15 +1,16 @@
 ---
 // Preserve the audience, form ID, merge fields, and honeypot from the supplied
-// Mailchimp embed. Native POST keeps validation/confirmation with Mailchimp,
-// without a local success state that could claim an unconfirmed subscription.
+// Mailchimp embed. The client uses Mailchimp's embedded-form JSONP endpoint
+// and redirects only on result: "success". Native POST remains the fallback.
 const action = "https://jesusonline.us1.list-manage.com/subscribe/post?u=c02949f5de137184b156da9bc&id=e06ba0649d&f_id=00a687e5f0";
+const thankYouUrl = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/lp/leader-kits-1/thank-you`;
 ---
 
 <section class="leader-signup" id="leader-kit-signup" aria-labelledby="leader-signup-heading">
   <h2 id="leader-signup-heading">Get This Free Leader Kit</h2>
   <!-- Matches the supplied Mailchimp embed's action, fields and honeypot.
        Native validation replaces its unused phone/SMS scripts and fixed-width CSS. -->
-  <form action={action} method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" {...{ rel: "noopener noreferrer" }} aria-label="Free Leader Kit signup">
+  <form action={action} method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" {...{ rel: "noopener noreferrer" }} data-thank-you-url={thankYouUrl} aria-label="Free Leader Kit signup">
     <div class="field">
       <label for="mce-EMAIL">Email address</label>
       <input id="mce-EMAIL" name="EMAIL" type="email" autocomplete="email" placeholder="you@yourchurch.org" required />
@@ -25,10 +26,17 @@ const action = "https://jesusonline.us1.list-manage.com/subscribe/post?u=c02949f
     <div class="honeypot" aria-hidden="true">
       <input type="text" name="b_c02949f5de137184b156da9bc_e06ba0649d" tabindex="-1" autocomplete="off" value="" aria-label="Leave this field empty" />
     </div>
-    <button type="submit" id="mc-embedded-subscribe" name="subscribe" value="Subscribe">Subscribe</button>
-    <p class="confirmation-note">Mailchimp opens in a new tab to confirm your request.</p>
+    <button type="submit" id="mc-embedded-subscribe" name="subscribe" value="Subscribe">Receive the Kit</button>
+    <p class="confirmation-note" data-signup-note>Mailchimp opens in a new tab to confirm your request.</p>
+    <p class="signup-feedback" id="leader-kit-feedback" role="alert" tabindex="-1" hidden></p>
+    <button class="fallback-button" type="button" data-mailchimp-fallback hidden>Continue with Mailchimp in a new tab</button>
   </form>
 </section>
+
+<script>
+  import { initializeLeaderKitSignup } from "./leader-kit-signup-client";
+  initializeLeaderKitSignup();
+</script>
 
 <style>
   .leader-signup { background: #fff; border: 1px solid #d9dfe5; padding: 16px; scroll-margin-top: 100px; color: #132b45; text-align: left; }
@@ -41,6 +49,11 @@ const action = "https://jesusonline.us1.list-manage.com/subscribe/post?u=c02949f
   input:focus-visible, button:focus-visible { outline: 3px solid var(--color-structure); outline-offset: 3px; }
   button { display: block; width: 100%; min-height: 44px; margin-top: 16px; padding: 11px 10px; border: 0; background: #147bd1; color: #fff; font: inherit; font-weight: 700; font-size: 1rem; text-align: left; cursor: pointer; transition: background .15s; }
   button:hover { background: #0964af; }
+  button:disabled { opacity: .65; cursor: wait; }
+  .signup-feedback { margin-top: 12px; font-size: .875rem; line-height: 1.5; color: #9b2424; }
+  .fallback-button { background: transparent; color: #0964af; font-size: .875rem; text-decoration: underline; padding: 8px 0; margin-top: 4px; }
+  .fallback-button:hover { background: transparent; color: #0e2f60; }
+  [hidden] { display: none; }
   .confirmation-note { margin: 6px 0 0; color: #5d6673; font-size: .75rem; line-height: 1.4; }
   .honeypot { position: absolute; left: -5000px; width: 1px; height: 1px; overflow: hidden; }
   @media (min-width: 640px) { .leader-signup { padding: 20px; } }

@@ -9,6 +9,14 @@ When a Word document is the visual specification for a page, inspect its drawing
 
 **How to apply:** Confirm shape colors, heading emphasis, paragraph alignment, and image order before implementation. Render the result as accessible HTML; do not substitute generic site styling for the supplied reference.
 
+## Leader Kit landing-page exception
+
+Keep the five-minute-flow section in the site's brand typography, with moderate spacing rather than literal Word spacing.
+
+**Why:** The user explicitly corrected the earlier request to copy the reference font and rejected the resulting cramped steps and oversized heading gaps.
+
+**How to apply:** Treat the document as a content and emphasis reference for this section, not a requirement to reproduce Arial or its paragraph spacing. Keep both campaign variants visually consistent.
+
 ## Editable DOCX validation
 
 Validate the XML inside generated Word files, not just the ZIP container or extracted text.

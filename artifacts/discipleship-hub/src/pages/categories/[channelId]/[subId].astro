@@ -198,6 +198,19 @@ const showFullHeroTitle =
               </span>
             </a>
           )}
+          {channel.id === "church" && sub.id === "sermon-toolbox" && (
+            <a
+              href={join("/knowing-god")}
+              class="flex flex-col bg-white border rounded p-5 hover:shadow-md transition-all"
+              style={`border-color:var(--color-border);border-left:4px solid ${channel.accentColor};`}
+            >
+              <h3 class="text-base font-semibold leading-snug mb-2" style="color:var(--color-structure);">Knowing God / Concordance</h3>
+              <p class="text-base leading-relaxed" style="color:var(--color-muted-foreground);">Explore Bible topics and Scripture passages for sermon preparation and a deeper understanding of God.</p>
+              <span class="mt-auto pt-3 inline-flex items-center gap-1.5 text-sm font-semibold" style={`color:${channel.accentColor};`}>
+                Explore Concordance <ArrowRight className="w-4 h-4" />
+              </span>
+            </a>
+          )}
           {children.map((child) => {
             const count = childArticleCount(child);
             return (

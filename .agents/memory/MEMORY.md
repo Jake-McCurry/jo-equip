@@ -30,3 +30,4 @@
 - [Chromium PDF print overflow](chromium-pdf-print-overflow.md) — Unconstrained images can silently shrink all PDF text; check print-width overflow and actual rendered font sizes.
 - [Word layout references](docx-layout-references.md) — Inspect editable shape fills and text styles alongside embedded screenshots; plain extraction misses visual hierarchy.
 - [Shell output fidelity](shell-output-file-fidelity.md) — For exact reconstruction, export command output to a temp file and read it; shell output strings can alter or truncate contents.
+- [Cloudflare build checks](cloudflare-build-checks.md) — A jo-equip check can be a staging preview; verify commit and preview alias before calling it a production deployment.

@@ -35,9 +35,9 @@ const leaderKitsJsonLd = {
     <script type="application/ld+json" is:inline set:html={JSON.stringify(leaderKitsJsonLd)} />
   </Fragment>
 
-  <LeaderKitCampaign ctaHref={signupHref} />
+  <LeaderKitCampaign ctaHref={signupHref} showHeroSignup={false} />
   <ReturnToLeaderKitForm
     targetHref={signupHref}
-    targetSelector="#leader-kit-cta-panel"
+    targetSelector="#leader-kit-hero"
   />
 </Layout>

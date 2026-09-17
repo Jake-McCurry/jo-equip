@@ -97,7 +97,7 @@ test("book titles are centered native PDF links with a trailing download icon", 
 test("only Knowing God has a concordance title and digital-version destination", async () => {
   const carousel = await read("src/components/BooksCarousel.astro");
   assert.match(carousel, /const isConcordance = book\.id === "knowing-god"/);
-  assert.match(carousel, /const cardTitle = isConcordance \? "Knowing God \/ Concordance" : book\.title/);
+  assert.match(carousel, /const cardTitle = isConcordance \? "Knowing God \/ Topical Concordance" : book\.title/);
   assert.match(carousel, /const detailsHref = isConcordance \? "\/knowing-god" : `\/books\/\$\{book\.id\}`/);
   assert.match(carousel, /const detailsLabel = isConcordance \? "View Digital Version" : "Details"/);
   assert.match(carousel, /href=\{join\(detailsHref\)\}/);

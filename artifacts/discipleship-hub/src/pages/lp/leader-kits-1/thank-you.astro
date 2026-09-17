@@ -3,7 +3,7 @@ import Layout from "@/layouts/Layout.astro";
 import { CheckCircle2, Download } from "lucide-react";
 
 const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, "");
-const pdfHref = `${baseUrl}/books/adventure-of-living-with-jesus.pdf`;
+const pdfHref = `${baseUrl}/leader-kits/adventure-of-living-with-jesus-leader-kit.pdf`;
 ---
 
 <Layout
@@ -24,7 +24,7 @@ const pdfHref = `${baseUrl}/books/adventure-of-living-with-jesus.pdf`;
       <div class="download-panel">
         <h2>Your free PDF is ready</h2>
         <p>The Adventure of Living with Jesus</p>
-        <a class="download-button" href={pdfHref} download="The-Adventure-of-Living-with-Jesus.pdf">
+        <a class="download-button" href={pdfHref} download="The-Adventure-of-Living-with-Jesus-Leader-Kit.pdf">
           <Download size={18} aria-hidden="true" />
           Download the Leader Kit
         </a>

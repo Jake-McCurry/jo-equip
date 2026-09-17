@@ -1,11 +1,10 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import { Image } from "astro:assets";
 import { Users } from "lucide-react";
-import { getBookCover } from "@/data/bookCovers";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 
 const SITE = "https://equip.jesusonline.com";
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 const leaderKitsJsonLd = {
   "@context": "https://schema.org",
@@ -26,7 +25,8 @@ const leaderKits = [
     momentsCount: 10,
     weeksCountText: "Ten",
     prompt: "Churchgoers or disciples?",
-    buttonState: "pending",
+    buttonState: "available",
+    pdf: "/leader-kits/adventure-of-living-with-jesus-leader-kit.pdf",
   },
   {
     id: "a-heart-after-god",
@@ -36,7 +36,8 @@ const leaderKits = [
     momentsCount: 9,
     weeksCountText: "Nine",
     prompt: "Behavior modification or heart transformation?",
-    buttonState: "pending",
+    buttonState: "available",
+    pdf: "/leader-kits/a-heart-after-god-leader-kit.pdf",
   },
   {
     id: "your-new-identity-in-christ",
@@ -100,37 +101,16 @@ const leaderKits = [
 
     <div class="flex flex-col gap-16 md:gap-24">
       {leaderKits.map((kit) => {
-        const cover = getBookCover(kit.id);
         return (
-          <article class="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
-            {/* Visual Preview Side (Semantic Header + Cover) */}
+          <article id={kit.id} class="flex flex-col lg:flex-row items-center gap-8 lg:gap-16 scroll-mt-24">
+            {/* Shared book mockup, also used in the kits' Go Further pages. */}
             <div class="w-full max-w-[340px] shrink-0 flex flex-col">
-              <div class="w-full flex flex-col">
-                <div class="bg-[var(--color-structure)] px-4 py-3 flex flex-col items-center text-center gap-1">
-                  <span class="text-[#e3bd70] text-[0.625rem] leading-tight font-medium tracking-wide uppercase">JO Equip &middot; JesusOnline Ministries</span>
-                  <p class="text-white text-sm font-semibold leading-5 tracking-wide uppercase">This Sunday Leader Kit</p>
-                  <p class="text-white text-xs leading-4 font-serif italic opacity-95" style="font-family: var(--font-display);">{kit.prompt}</p>
-                </div>
-                <div class="h-px w-full bg-[#d69e2e]"></div>
-                <div class="bg-[#f9f6f0] px-3 py-2 flex flex-col items-center text-center text-[var(--color-structure)]">
-                  <p class="font-medium text-xs leading-4">Lead Week 1 Discipleship Moment this Sunday.</p>
-                  <p class="opacity-80 text-xs leading-4">{kit.weeksCountText} weeks. One path toward a changed heart.</p>
-                </div>
-              </div>
-              
-                {cover ? (
-                    <Image
-                      src={cover}
-                      alt={`${kit.title} book cover`}
-                      widths={[340, 680]}
-                      sizes="(max-width: 372px) calc(100vw - 32px), 340px"
-                      class="block w-full h-auto object-contain"
-                    />
-                ) : (
-                  <div class="w-full aspect-[2/3] bg-slate-200 flex items-center justify-center text-slate-500 text-sm">
-                    Cover not found
-                  </div>
-                )}
+              <img
+                src={`${baseUrl}/leader-kits/covers/${kit.id}.png`}
+                alt={`${kit.title} — This Sunday Leader Kit book mockup`}
+                loading={kit.id === "adventure-of-living-with-jesus" ? "eager" : "lazy"}
+                class="block w-full h-auto object-contain"
+              />
             </div>
             
             {/* Content Side */}
@@ -148,7 +128,11 @@ const leaderKits = [
               </p>
               
               <div>
-                {kit.buttonState === 'pending' ? (
+                {kit.buttonState === 'available' && kit.pdf ? (
+                  <a href={`${baseUrl}${kit.pdf}`} download={`${kit.id}-leader-kit.pdf`} aria-label={`Download the ${kit.title} Leader Kit`} class="inline-flex items-center justify-center bg-[var(--color-brand)] text-white font-bold tracking-wide uppercase px-8 py-4 rounded w-full sm:w-auto transition-colors hover:brightness-90 focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-brand)]">
+                    Download Free Kit
+                  </a>
+                ) : kit.buttonState === 'pending' ? (
                   <button disabled class="inline-flex items-center justify-center bg-slate-100 text-slate-400 font-bold tracking-wide uppercase px-8 py-4 rounded cursor-not-allowed w-full sm:w-auto border border-slate-200 transition-colors">
                     Download Free Kit 
                     <span class="ml-3 normal-case text-sm font-semibold opacity-75 bg-slate-200 px-2 py-0.5 rounded text-slate-500">Pending</span>

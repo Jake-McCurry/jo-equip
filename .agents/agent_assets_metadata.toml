@@ -292,14 +292,14 @@ content_type = "application/pdf"
 id = "4ExnNAzT0kajrMsfs9vUy"
 uri = "file://artifacts/discipleship-hub/public/books/a-heart-after-god.pdf"
 type = "pdf"
-title = "A Heart After God — Complete PDF"
-description = "30-page ebook with the supplied cover, series-matched formatting, numbered contents, all seven reflections, illustrations, and tables. Approximately 2 MB."
+title = "A Heart After God — Updated Full Book"
+description = "Updated manuscript with the existing cover, branding, illustrations, and series formatting."
 logical_id = "e3a31e7e-156c-4197-9c4a-a5cc1e57aaaf"
-content_hash = "sha256:9f2881581a6b8b000f7fe1ac3fd53877af78f3b26f05c56a883e75970d33954f"
-size = 2001572
-mtime_ms = 1789074565404
-storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/e3a31e7e-156c-4197-9c4a-a5cc1e57aaaf/bf1147e1-0c32-4bc3-aabb-6257c8ba162d"
-storage_version_token = "1789074880495971"
+content_hash = "sha256:a59f66f46ed75b2489bc44ce8559a377afc868de4d4d24804a9445e385743945"
+size = 2019018
+mtime_ms = 1789678390256
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/e3a31e7e-156c-4197-9c4a-a5cc1e57aaaf/d015b3b2-6162-46dd-8c21-1dc67b71500b"
+storage_version_token = "1789679099801912"
 content_type = "application/pdf"
 
 [[outputs]]
@@ -427,3 +427,45 @@ mtime_ms = 1789516539943
 storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/817b7a58-67fd-4544-9022-0d50f25abdb8/7bff7ad4-5152-4ea6-8692-5b2f14afe9b0"
 storage_version_token = "1789516548168543"
 content_type = "application/pdf"
+
+[[outputs]]
+id = "FTjv8PnDCLzBY3rUncYWu"
+uri = "file://artifacts/discipleship-hub/public/leader-kits/a-heart-after-god-leader-kit.pdf"
+type = "pdf"
+title = "A Heart After God — Leader Kit"
+description = "Complete nine-Moment Leader Kit with illustrated Go Further pages and clickable resource links."
+logical_id = "ab7bfb34-d131-4f47-a637-ab51f723d150"
+content_hash = "sha256:d4c09134294ac5af3959bedf43e3e7a2e6e8ecd53996f53458b68a7046889543"
+size = 701693
+mtime_ms = 1789678988695
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/ab7bfb34-d131-4f47-a637-ab51f723d150/cfbf5875-0a45-4590-bb6c-9202d6c39fd4"
+storage_version_token = "1789679098883166"
+content_type = "application/pdf"
+
+[[outputs]]
+id = "bwVvOXvmMAO5C3tayT0qp"
+uri = "file://outputs/leader-kits/adventure/adventure-of-living-with-jesus-leader-kit-updated.docx"
+type = "word_document"
+title = "Adventure Leader Kit — Editable Word Copy"
+description = "Complete 10-week kit with matching Go Further book mockups."
+logical_id = "c4e237f2-926a-414e-88f4-041fa76b0405"
+content_hash = "sha256:dc4fa5b21b7da5427b41a818318dd8b04702e3e8d09d8e271bdead605985fbe0"
+size = 14959977
+mtime_ms = 1789680872879
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/c4e237f2-926a-414e-88f4-041fa76b0405/966140ab-aadf-4842-bab5-a1968d279357"
+storage_version_token = "1789680940823009"
+content_type = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+
+[[outputs]]
+id = "1Cnm-XUxh8BrAQqF-qD5M"
+uri = "file://outputs/leader-kits/heart/a-heart-after-god-leader-kit-updated.docx"
+type = "word_document"
+title = "A Heart After God Leader Kit — Editable Word Copy"
+description = "Complete 9-week kit refreshed with matching Go Further book mockups."
+logical_id = "02b15bec-734d-4816-bf3c-32f904c51c3c"
+content_hash = "sha256:05c9ee7ce4ffa468171cd212557b5f4db0ebac1f75c530cce0dcf1ca27b61298"
+size = 13780710
+mtime_ms = 1789680866611
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/02b15bec-734d-4816-bf3c-32f904c51c3c/9a47a36a-ebd2-4f09-ae78-56e8181e8a7c"
+storage_version_token = "1789680941822074"
+content_type = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"

@@ -24,3 +24,11 @@ Validate the XML inside generated Word files, not just the ZIP container or extr
 **Why:** A publication edit passed ZIP and text comparisons while a missing table-cell opening tag made the editable document invalid. Plain-text checks also failed to reveal lost section properties.
 
 **How to apply:** Parse `word/document.xml` with an XML parser, resolve image/link relationships, preserve section properties, and compare unchanged manuscript text when replacing publication pages.
+
+## Leader Kit mockup artwork
+
+Preserve complete cover titles and subtitles when applying the shared book-mockup treatment; natural artwork proportions take precedence over identical mockup heights.
+
+**Why:** Fixed-height, top-aligned cover crops cut off titles positioned lower in the Identity, Majesty, and Walking artwork. Heart's supplied image also includes its own header and cream band, which can duplicate the shared treatment.
+
+**How to apply:** Inspect the rendered images, not only output dimensions. Remove only baked-in framing when reusing an already-composed cover, and keep the original document front cover distinct from the promotional mockup.

@@ -295,7 +295,7 @@ def valid_scripture_query(query: str, grammar: re.Pattern[str]) -> bool:
             and (verse is None or 1 <= verse <= counts[chapter - 1])
         )
 
-    for token in rest.split(", "):
+    for token in re.split(r",\s*", rest):
         match = re.fullmatch(r"(\d+)(?::(\d+))?(?:-(\d+)(?::(\d+))?)?", token)
         if not match:
             return False
@@ -315,7 +315,8 @@ def valid_scripture_query(query: str, grammar: re.Pattern[str]) -> bool:
             if not valid_point(*start) or not valid_point(*end) or end < start:
                 return False
         elif verse_context:
-            assert current_chapter is not None
+            if current_chapter is None:
+                return False
             start = (current_chapter, first)
             end = (current_chapter, last if last is not None else first)
             if not valid_point(*start) or not valid_point(*end) or end < start:
@@ -325,6 +326,24 @@ def valid_scripture_query(query: str, grammar: re.Pattern[str]) -> bool:
             if not valid_point(first) or not valid_point(end_chapter) or end_chapter < first:
                 return False
     return True
+
+
+def valid_primary_reference(reference: str) -> bool:
+    """Check source syntax and KJV bounds, never NET omissions/numbering."""
+    if not REFERENCE_ONLY_RE.fullmatch(reference):
+        return False
+    match = re.fullmatch(rf"({BOOKS})\s+(.+)", reference)
+    assert match
+    book, coordinates = match.groups()
+    # Interpret the same source spelling quirks as the NET loader, but validate
+    # against KJV counts. Never replace the stored manuscript reference.
+    if book == "Kings":
+        book = "1 Kings"  # Existing reviewed extractor alias, not a new erratum.
+    elif book.startswith("II "):
+        book = "2 " + book[3:]
+    elif book.startswith("I "):
+        book = "1 " + book[2:]
+    return valid_scripture_query(f"{book} {coordinates}", REFERENCE_ONLY_RE)
 
 
 def resolve_additional_scripture(topics: list[dict]) -> list[dict]:
@@ -847,6 +866,12 @@ def validate_topics(
             if not REFERENCE_ONLY_RE.fullmatch(passage["reference"]):
                 errors.append(
                     f"{topic['title']}: malformed reference {passage['reference']!r}"
+                )
+            elif not valid_primary_reference(passage["reference"]):
+                errors.append(
+                    f"{topic['title']} ({topic['id']}): primary reference "
+                    f"{passage['reference']!r} outside canonical KJV chapter/verse "
+                    "bounds or has an invalid range; requires editorial review"
                 )
             if not passage["text"]:
                 errors.append(f"{topic['title']}: empty passage {passage['reference']}")

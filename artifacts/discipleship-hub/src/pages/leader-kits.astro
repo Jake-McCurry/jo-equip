@@ -104,18 +104,12 @@ const leaderKits = [
         return (
           <article id={kit.id} class="flex flex-col lg:flex-row items-center gap-8 lg:gap-16 scroll-mt-24">
             {/* Shared book mockup, also used in the kits' Go Further pages. */}
-            <div class:list={[
-              "w-full max-w-[340px] shrink-0 flex flex-col",
-              kit.id === "adventure-of-living-with-jesus" && "relative aspect-[1280/2246]",
-            ]}>
+            <div class="w-full max-w-[340px] shrink-0 flex flex-col">
               <img
                 src={`${baseUrl}/leader-kits/covers/${kit.id}.png`}
                 alt={`${kit.title} — This Sunday Leader Kit book mockup`}
                 loading={kit.id === "adventure-of-living-with-jesus" ? "eager" : "lazy"}
-                class:list={[
-                  "block w-full object-contain",
-                  kit.id === "adventure-of-living-with-jesus" ? "absolute inset-0 h-full" : "h-auto",
-                ]}
+                class="block w-full h-auto object-contain"
               />
             </div>
             

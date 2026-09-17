@@ -43,6 +43,14 @@ try {
       // heartFlatCoverBuffer is already just the artwork now
       const b64 = heartFlatCoverBuffer.toString("base64");
       cover = `data:image/png;base64,${b64}`;
+    } else if (card.id === "adventure-of-living-with-jesus") {
+      // The approved mockup omits the lower photo strip, icons, and publisher
+      // band. Stop above the strip's highest (right-hand) edge.
+      const artwork = execFileSync("magick", [
+        path.join(books, `${card.id}.jpg`),
+        "-crop", "1051x1030+0+0", "+repage", "png:-",
+      ], { maxBuffer: 10 * 1024 * 1024 });
+      cover = `data:image/png;base64,${artwork.toString("base64")}`;
     } else if (!card.textCover) {
       cover = `data:image/jpeg;base64,${(await fs.readFile(path.join(books, `${card.id}.jpg`))).toString("base64")}`;
     }

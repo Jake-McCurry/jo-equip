@@ -32,3 +32,9 @@ Preserve complete cover titles and subtitles when applying the shared book-mocku
 **Why:** Fixed-height, top-aligned cover crops cut off titles positioned lower in the Identity, Majesty, and Walking artwork. Heart's supplied image also includes its own header and cream band, which can duplicate the shared treatment.
 
 **How to apply:** Inspect the rendered images, not only output dimensions. Remove only baked-in framing when reusing an already-composed cover, and keep the original document front cover distinct from the promotional mockup.
+
+Adventure is an explicit exception: omit its lower photo montage and five-icon strip from the promotional mockup, while preserving the main scene and title.
+
+**Why:** On 2026-09-17 the user clarified with a cropped screenshot that shortening this cover means removing that section, not scaling the full cover down.
+
+**How to apply:** Retain this crop in shared mockups on the library and Go Further pages; it does not authorize altering the original book or kit front cover.

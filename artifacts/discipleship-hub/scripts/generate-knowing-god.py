@@ -167,6 +167,12 @@ BIBLE_BOOK_NAMES = [
     "John", "Acts", "Romans", "Titus", "Philemon", "James", "Jude",
 ]
 
+SCRIPTURE_REFERENCE_TOKEN = r"\d+(?::\d+)?(?:-\d+(?::\d+)?)?"
+ADDITIONAL_SCRIPTURE_QUERY_RE = re.compile(
+    rf"^(?:{'|'.join(re.escape(book) for book in BIBLE_BOOK_NAMES)})\s+"
+    rf"{SCRIPTURE_REFERENCE_TOKEN}(?:,\s*{SCRIPTURE_REFERENCE_TOKEN})*$"
+)
+
 # Per-chapter KJV verse counts, derived from the MIT-licensed machine-readable
 # corpus at https://github.com/aruljohn/Bible-kjv and embedded so corpus
 # generation remains deterministic and offline.
@@ -348,11 +354,6 @@ def valid_primary_reference(reference: str) -> bool:
 
 def resolve_additional_scripture(topics: list[dict]) -> list[dict]:
     """Resolve every printed supplemental citation to a canonical search query."""
-    book_pattern = "|".join(re.escape(book) for book in BIBLE_BOOK_NAMES)
-    reference_token = r"\d+(?::\d+)?(?:-\d+(?::\d+)?)?"
-    valid_query = re.compile(
-        rf"^(?:{book_pattern})\s+{reference_token}(?:,\s*{reference_token})*$"
-    )
     unresolved: list[str] = []
     for topic in topics:
         sections = []
@@ -397,7 +398,7 @@ def resolve_additional_scripture(topics: list[dict]) -> list[dict]:
                         else f"{current_book} {canonical}"
                     ]
                 for query in queries:
-                    if not valid_scripture_query(query, valid_query):
+                    if not valid_scripture_query(query, ADDITIONAL_SCRIPTURE_QUERY_RE):
                         unresolved.append(
                             f"{topic['title']}: {source_label!r} -> {query!r}"
                         )
@@ -851,9 +852,8 @@ def validate_topics(
                 errors.append(
                     f"{topic['title']}: {field_name} leaked standalone section heading"
                 )
-        for additional in (
-            section["sourceValue"] for section in topic["additionalScripture"]
-        ):
+        for section in topic["additionalScripture"]:
+            additional = section["sourceValue"]
             if (
                 len(additional) > 1000
                 or "Additional Scripture:" in additional
@@ -862,6 +862,17 @@ def validate_topics(
                 errors.append(
                     f"{topic['title']}: malformed Additional Scripture field"
                 )
+            # Check saved targets, not printed labels or regenerated aliases.
+            # Validation must report errors without rewriting manuscript content.
+            for link in section["links"]:
+                for query in link["queries"]:
+                    if not valid_scripture_query(query, ADDITIONAL_SCRIPTURE_QUERY_RE):
+                        errors.append(
+                            f"{topic['title']} ({topic['id']}): Additional Scripture "
+                            f"{link['sourceLabel']!r} -> {query!r}: invalid syntax, "
+                            "outside canonical KJV chapter/verse bounds, or invalid "
+                            "range; requires editorial review"
+                        )
         for passage in topic["passages"]:
             if not REFERENCE_ONLY_RE.fullmatch(passage["reference"]):
                 errors.append(

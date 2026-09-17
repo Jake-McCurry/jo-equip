@@ -1,13 +1,18 @@
 #!/usr/bin/env python3
-"""Offline boundary and integration checks for primary source KJV citations."""
+"""Offline boundary and integration checks for primary and supplemental KJV citations."""
 
 from __future__ import annotations
 
 import copy
 import importlib.util
+import io
 import json
+import shutil
+import tempfile
 import unittest
+from contextlib import redirect_stdout
 from pathlib import Path
+from unittest.mock import patch
 
 
 SCRIPT = Path(__file__).with_name("generate-knowing-god.py")
@@ -110,6 +115,62 @@ class CorpusValidationTests(unittest.TestCase):
                 for detail in (topic["title"], topic["id"], reference, "canonical KJV", "editorial review"):
                     self.assertIn(detail, message)
                 self.assertEqual(topics, before)
+
+    def test_reviewed_supplemental_aliases_pass_without_mutation(self) -> None:
+        stored_links = {
+            (topic["id"], link["sourceLabel"]): link["queries"]
+            for topic in self.topics
+            for section in topic["additionalScripture"]
+            for link in section["links"]
+        }
+        for key, queries in GENERATOR.ADDITIONAL_SCRIPTURE_ALIASES.items():
+            with self.subTest(alias=key):
+                self.assertEqual(stored_links[key], queries)
+        before = copy.deepcopy(self.topics)
+        GENERATOR.validate_topics(self.topics, [], None)
+        self.assertEqual(self.topics, before)
+
+    def test_validate_only_checks_saved_supplemental_queries_read_only(self) -> None:
+        # Exercise the CLI dispatch on disk copies, including the second query
+        # of a split reviewed alias. Never mutate the published corpus fixtures.
+        for query in (None, "Colossians 5:1", "Colossians 3:26"):
+            with self.subTest(query=query), tempfile.TemporaryDirectory() as temporary:
+                output = Path(temporary)
+                for filename in ("index.json", "quality-report.json"):
+                    shutil.copyfile(GENERATOR.OUTPUT / filename, output / filename)
+                for path in GENERATOR.OUTPUT.glob("topics-*.json"):
+                    shutil.copyfile(path, output / path.name)
+                path = output / "topics-w.json"
+                payload = json.loads(path.read_text(encoding="utf-8"))
+                topic = next(t for t in payload["topics"] if t["id"] == "will-of-god")
+                link = next(
+                    link
+                    for section in topic["additionalScripture"]
+                    for link in section["links"]
+                    if link["sourceLabel"] == "13:21"
+                )
+                if query is not None:
+                    link["queries"][1] = query
+                    path.write_text(json.dumps(payload), encoding="utf-8")
+                before = {p.name: p.read_bytes() for p in output.iterdir()}
+                with (
+                    patch.object(GENERATOR, "OUTPUT", output),
+                    patch("sys.argv", [str(SCRIPT), "--validate-only"]),
+                    redirect_stdout(io.StringIO()),
+                ):
+                    if query is None:
+                        GENERATOR.main()
+                    else:
+                        with self.assertRaises(ValueError) as caught:
+                            GENERATOR.main()
+                        for detail in (
+                            topic["title"], topic["id"], link["sourceLabel"],
+                            query, "Additional Scripture", "canonical KJV",
+                        ):
+                            self.assertIn(detail, str(caught.exception))
+                self.assertEqual(
+                    {p.name: p.read_bytes() for p in output.iterdir()}, before
+                )
 
 
 if __name__ == "__main__":

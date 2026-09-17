@@ -1,0 +1,256 @@
+2026-09-17T16:49:58.398Z	Initializing build environment...
+2026-09-17T16:50:01.255Z	Success: Finished initializing build environment
+2026-09-17T16:50:05.039Z	Cloning repository...
+2026-09-17T16:51:04.951Z	Restoring from dependencies cache
+2026-09-17T16:51:04.952Z	Restoring from build output cache
+2026-09-17T16:51:08.466Z	Detected the following tools from environment: pnpm@10.26.1, nodejs@24.18.0
+2026-09-17T16:51:17.429Z	Success: Dependencies restored from build cache.
+2026-09-17T16:51:17.431Z	Installing project dependencies: pnpm install --frozen-lockfile
+2026-09-17T16:51:18.168Z	Scope: all 10 workspace projects
+2026-09-17T16:51:18.276Z	Lockfile is up to date, resolution step is skipped
+2026-09-17T16:51:18.348Z	Progress: resolved 1, reused 0, downloaded 0, added 0
+2026-09-17T16:51:18.473Z	Packages: +840
+2026-09-17T16:51:18.474Z	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2026-09-17T16:51:19.349Z	Progress: resolved 840, reused 492, downloaded 0, added 0
+2026-09-17T16:51:20.349Z	Progress: resolved 840, reused 840, downloaded 0, added 49
+2026-09-17T16:51:21.351Z	Progress: resolved 840, reused 840, downloaded 0, added 498
+2026-09-17T16:51:22.351Z	Progress: resolved 840, reused 840, downloaded 0, added 819
+2026-09-17T16:51:22.406Z	Progress: resolved 840, reused 840, downloaded 0, added 840, done
+2026-09-17T16:51:24.028Z	
+2026-09-17T16:51:24.029Z	devDependencies:
+2026-09-17T16:51:24.029Z	+ prettier 3.8.1
+2026-09-17T16:51:24.029Z	+ typescript 5.9.3
+2026-09-17T16:51:24.029Z	
+2026-09-17T16:51:24.092Z	. preinstall$ sh -c 'rm -f package-lock.json yarn.lock; case "$npm_config_user_agent" in pnpm/*) ;; *) echo "Use pnpm instead" >&2; exit 1 ;; esac'
+2026-09-17T16:51:24.106Z	. preinstall: Done
+2026-09-17T16:51:24.234Z	╭ Warning ─────────────────────────────────────────────────────────────────────╮
+2026-09-17T16:51:24.234Z	│                                                                              │
+2026-09-17T16:51:24.234Z	│   Ignored build scripts: puppeteer@25.0.4, sharp@0.34.5.                     │
+2026-09-17T16:51:24.234Z	│   Run "pnpm approve-builds" to pick which dependencies should be allowed     │
+2026-09-17T16:51:24.234Z	│   to run scripts.                                                            │
+2026-09-17T16:51:24.234Z	│                                                                              │
+2026-09-17T16:51:24.234Z	╰──────────────────────────────────────────────────────────────────────────────╯
+2026-09-17T16:51:24.242Z	Done in 6.6s using pnpm v10.26.1
+2026-09-17T16:51:24.437Z	Executing user build command: pnpm --filter @workspace/discipleship-hub run build
+2026-09-17T16:51:25.044Z	
+2026-09-17T16:51:25.044Z	> @workspace/discipleship-hub@0.0.0 build /opt/buildhome/repo/artifacts/discipleship-hub
+2026-09-17T16:51:25.044Z	> pnpm run validate:books && pnpm run validate:knowing-god && node scripts/check-book-gate-parity.mjs && astro build && node scripts/apply-external-link-nofollow.mjs && node scripts/build-sitemaps.mjs
+2026-09-17T16:51:25.044Z	
+2026-09-17T16:51:25.463Z	
+2026-09-17T16:51:25.463Z	> @workspace/discipleship-hub@0.0.0 validate:books /opt/buildhome/repo/artifacts/discipleship-hub
+2026-09-17T16:51:25.463Z	> node --test scripts/book-library.test.mjs
+2026-09-17T16:51:25.463Z	
+2026-09-17T16:51:26.743Z	✔ all carousel books have exactly one readable cover that supports the canonical thumbnail size (1105.422426ms)
+2026-09-17T16:51:26.755Z	✔ the shared thumbnail component fixes both dimensions without cropping cover text (8.169259ms)
+2026-09-17T16:51:26.763Z	✔ carousel spacing has a single owner rather than stacked margins and gaps (7.638834ms)
+2026-09-17T16:51:26.763Z	✔ Devotional Studies lists Knowing God immediately before Hearing the Voice of God (5.338534ms)
+2026-09-17T16:51:26.766Z	✔ book titles are centered native PDF links with a trailing download icon (3.092707ms)
+2026-09-17T16:51:26.777Z	✖ only Knowing God has a concordance title and digital-version destination (5.987286ms)
+2026-09-17T16:51:26.797Z	ℹ tests 6
+2026-09-17T16:51:26.797Z	ℹ suites 0
+2026-09-17T16:51:26.797Z	ℹ pass 5
+2026-09-17T16:51:26.798Z	ℹ fail 1
+2026-09-17T16:51:26.798Z	ℹ cancelled 0
+2026-09-17T16:51:26.798Z	ℹ skipped 0
+2026-09-17T16:51:26.798Z	ℹ todo 0
+2026-09-17T16:51:26.802Z	ℹ duration_ms 1291.088011
+2026-09-17T16:51:26.812Z	
+2026-09-17T16:51:26.812Z	✖ failing tests:
+2026-09-17T16:51:26.813Z	
+2026-09-17T16:51:26.813Z	test at scripts/book-library.test.mjs:97:1
+2026-09-17T16:51:26.813Z	✖ only Knowing God has a concordance title and digital-version destination (5.987286ms)
+2026-09-17T16:51:26.813Z	  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /const cardTitle = isConcordance \? "Knowing God \/ Concordance" : book\.title/. Input:
+2026-09-17T16:51:26.813Z	  
+2026-09-17T16:51:26.813Z	  '---\n' +
+2026-09-17T16:51:26.813Z	    'import { Download, ChevronLeft, ChevronRight } from "lucide-react";\n' +
+2026-09-17T16:51:26.813Z	    'import { getBookCover } from "@/data/bookCovers";\n' +
+2026-09-17T16:51:26.813Z	    'import type { Book } from "@/data/books";\n' +
+2026-09-17T16:51:26.813Z	    'import BookThumbnail from "@/components/BookThumbnail.astro";\n' +
+2026-09-17T16:51:26.813Z	    '\n' +
+2026-09-17T16:51:26.813Z	    'interface Props {\n' +
+2026-09-17T16:51:26.813Z	    '  title: string;\n' +
+2026-09-17T16:51:26.813Z	    '  books: Book[];\n' +
+2026-09-17T16:51:26.814Z	    '}\n' +
+2026-09-17T16:51:26.814Z	    '\n' +
+2026-09-17T16:51:26.819Z	    'const { title, books } = Astro.props;\n' +
+2026-09-17T16:51:26.819Z	    'const baseUrl = import.meta.env.BASE_URL;\n' +
+2026-09-17T16:51:26.819Z	    'const join = (p: string) =>\n' +
+2026-09-17T16:51:26.819Z	    '  (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;\n' +
+2026-09-17T16:51:26.819Z	    '---\n' +
+2026-09-17T16:51:26.819Z	    '<div class="book-carousel-section">\n' +
+2026-09-17T16:51:26.819Z	    '  <div class="flex items-end justify-between mb-4 md:mb-5">\n' +
+2026-09-17T16:51:26.819Z	    '    <h2 class="text-2xl md:text-3xl font-semibold" style="color:var(--color-structure);">{title}</h2>\n' +
+2026-09-17T16:51:26.819Z	    '    <div class="hidden sm:flex items-center gap-2">\n' +
+2026-09-17T16:51:26.820Z	    '      <button type="button" class="carousel-prev w-9 h-9 flex items-center justify-center rounded border bg-white transition-colors hover:bg-slate-50 disabled:opacity-30 disabled:cursor-not-allowed" style="border-color:var(--color-border); color:var(--color-text);" aria-label={`Scroll ${title} left`}>\n' +
+2026-09-17T16:51:26.820Z	    '        <ChevronLeft className="w-5 h-5" />\n' +
+2026-09-17T16:51:26.820Z	    '      </button>\n' +
+2026-09-17T16:51:26.820Z	    '      <button type="button" class="carousel-next w-9 h-9 flex items-center justify-center rounded border bg-white transition-colors hover:bg-slate-50 disabled:opacity-30 disabled:cursor-not-allowed" style="border-color:var(--color-border); color:var(--color-text);" aria-label={`Scroll ${title} right`}>\n' +
+2026-09-17T16:51:26.820Z	    '        <ChevronRight className="w-5 h-5" />\n' +
+2026-09-17T16:51:26.820Z	    '      </button>\n' +
+2026-09-17T16:51:26.820Z	    '    </div>\n' +
+2026-09-17T16:51:26.820Z	    '  </div>\n' +
+2026-09-17T16:51:26.820Z	    '  \n' +
+2026-09-17T16:51:26.820Z	    '  <div class="relative">\n' +
+2026-09-17T16:51:26.820Z	    '    <div class="carousel-track flex gap-4 md:gap-5 overflow-x-auto pb-2 snap-x snap-mandatory focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-brand)]" tabindex="0" role="region" aria-label={`${title} books`}>\n' +
+2026-09-17T16:51:26.820Z	    '      {books.map(book => {\n' +
+2026-09-17T16:51:26.820Z	    '        const cover = getBookCover(book.id);\n' +
+2026-09-17T16:51:26.820Z	    '        const isConcordance = book.id === "knowing-god";\n' +
+2026-09-17T16:51:26.820Z	    '        const cardTitle = isConcordance ? "Knowing God / Topical Concordance" : book.title;\n' +
+2026-09-17T16:51:26.821Z	    '        const detailsHref = isConcordance ? "/knowing-god" : `/books/${book.id}`;\n' +
+2026-09-17T16:51:26.821Z	    '        const detailsLabel = isConcordance ? "View Digital Version" : "Details";\n' +
+2026-09-17T16:51:26.821Z	    '        return (\n' +
+2026-09-17T16:51:26.822Z	    '          <article id={book.id} class="book-card shrink-0 w-[220px] md:w-[240px] snap-start flex flex-col border rounded-lg bg-white overflow-hidden transition-shadow hover:shadow-md scroll-mt-24" style="border-color:var(--color-border);">\n' +
+2026-09-17T16:51:26.822Z	    '            <div class="book-cover-area">\n' +
+2026-09-17T16:51:26.822Z	    '                <a\n' +
+2026-09-17T16:51:26.822Z	    '                  href={join(book.pdf)}\n' +
+2026-09-17T16:51:26.822Z	    '                  target="_blank"\n' +
+2026-09-17T16:51:26.822Z	    '                  rel="noopener noreferrer"\n' +
+2026-09-17T16:51:26.822Z	    '                  data-track-title={book.title}\n' +
+2026-09-17T16:51:26.822Z	    '                  data-pdf-action="open"\n' +
+2026-09-17T16:51:26.822Z	    '                  aria-label={`Open ${book.title} PDF`}\n' +
+2026-09-17T16:51:26.822Z	    '                   class="book-thumbnail-link rounded transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"\n' +
+2026-09-17T16:51:26.822Z	    '                  style="outline-color:var(--color-brand);"\n' +
+2026-09-17T16:51:26.822Z	    '                >\n' +
+2026-09-17T16:51:26.822Z	    '                  <BookThumbnail cover={cover} title={book.title} />\n' +
+2026-09-17T16:51:26.822Z	    '                </a>\n' +
+2026-09-17T16:51:26.822Z	    '            </div>\n' +
+2026-09-17T16:51:26.823Z	    '            <div class="book-card-info px-4 py-3 border-t flex flex-col grow bg-white" style="border-color:var(--color-border);">\n' +
+2026-09-17T16:51:26.823Z	    '              <h3 class="font-semibold text-[15px] leading-snug mb-3 grow text-center" title={cardTitle}>\n' +
+2026-09-17T16:51:26.823Z	    '                <a\n' +
+2026-09-17T16:51:26.823Z	    '                  class="book-title-link inline-flex w-full items-center justify-center gap-1.5 rounded underline underline-offset-2 hover:opacity-80"\n' +
+2026-09-17T16:51:26.823Z	    '                  href={join(book.pdf)}\n' +
+2026-09-17T16:51:26.823Z	    '                  target="_blank"\n' +
+2026-09-17T16:51:26.823Z	    '                  rel="noopener noreferrer"\n' +
+2026-09-17T16:51:26.823Z	    '                  data-track-title={book.title}\n' +
+2026-09-17T16:51:26.823Z	    '                  data-pdf-action="open"\n' +
+2026-09-17T16:51:26.823Z	    '                  aria-label={`${cardTitle} — open PDF in a new tab`}\n' +
+2026-09-17T16:51:26.823Z	    '                  style="color:var(--color-hero);"\n' +
+2026-09-17T16:51:26.823Z	    '                >\n' +
+2026-09-17T16:51:26.823Z	    '                  <span class="min-w-0">{cardTitle}</span>\n' +
+2026-09-17T16:51:26.823Z	    '                  <Download className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />\n' +
+2026-09-17T16:51:26.823Z	    '                </a>\n' +
+2026-09-17T16:51:26.823Z	    '              </h3>\n' +
+2026-09-17T16:51:26.823Z	    '              <div class="flex mt-auto">\n' +
+2026-09-17T16:51:26.823Z	    '                <a\n' +
+2026-09-17T16:51:26.823Z	    '                  href={join(detailsHref)}\n' +
+2026-09-17T16:51:26.823Z	    '                  class="text-xs font-medium transition-colors hover:opacity-75 w-full pt-2 border-t text-center mt-1"\n' +
+2026-09-17T16:51:26.823Z	    '                  style="color:var(--color-muted-foreground); border-color:var(--color-border);"\n' +
+2026-09-17T16:51:26.823Z	    '                  aria-label={isConcordance ? `View digital version of ${cardTitle}` : `View details for ${book.title}`}\n' +
+2026-09-17T16:51:26.823Z	    '                >\n' +
+2026-09-17T16:51:26.824Z	    '                  {detailsLabel}\n' +
+2026-09-17T16:51:26.824Z	    '                </a>\n' +
+2026-09-17T16:51:26.824Z	    '              </div>\n' +
+2026-09-17T16:51:26.824Z	    '            </div>\n' +
+2026-09-17T16:51:26.830Z	    '          </article>\n' +
+2026-09-17T16:51:26.830Z	    '        );\n' +
+2026-09-17T16:51:26.830Z	    '      })}\n' +
+2026-09-17T16:51:26.831Z	    '    </div>\n' +
+2026-09-17T16:51:26.831Z	    '  </div>\n' +
+2026-09-17T16:51:26.831Z	    '</div>\n' +
+2026-09-17T16:51:26.831Z	    '\n' +
+2026-09-17T16:51:26.831Z	    '<script>\n' +
+2026-09-17T16:51:26.831Z	    '  function setupCarousels() {\n' +
+2026-09-17T16:51:26.831Z	    "    const carousels = document.querySelectorAll('.book-carousel-section');\n" +
+2026-09-17T16:51:26.831Z	    '    carousels.forEach(section => {\n' +
+2026-09-17T16:51:26.831Z	    "      const track = section.querySelector('.carousel-track') as HTMLElement;\n" +
+2026-09-17T16:51:26.831Z	    "      const prevBtn = section.querySelector('.carousel-prev') as HTMLButtonElement;\n" +
+2026-09-17T16:51:26.831Z	    "      const nextBtn = section.querySelector('.carousel-next') as HTMLButtonElement;\n" +
+2026-09-17T16:51:26.831Z	    '      \n' +
+2026-09-17T16:51:26.831Z	    "      if (!track || track.dataset.carouselReady === 'true') return;\n" +
+2026-09-17T16:51:26.832Z	    "      track.dataset.carouselReady = 'true';\n" +
+2026-09-17T16:51:26.832Z	    '      \n' +
+2026-09-17T16:51:26.832Z	    '      const updateButtons = () => {\n' +
+2026-09-17T16:51:26.832Z	    '        if (prevBtn) {\n' +
+2026-09-17T16:51:26.832Z	    '          prevBtn.disabled = track.scrollLeft <= 5;\n' +
+2026-09-17T16:51:26.832Z	    '        }\n' +
+2026-09-17T16:51:26.832Z	    '        if (nextBtn) {\n' +
+2026-09-17T16:51:26.832Z	    '          // Allow 5px margin of error\n' +
+2026-09-17T16:51:26.832Z	    '          nextBtn.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 5;\n' +
+2026-09-17T16:51:26.832Z	    '        }\n' +
+2026-09-17T16:51:26.832Z	    '      };\n' +
+2026-09-17T16:51:26.832Z	    '\n' +
+2026-09-17T16:51:26.832Z	    "      track.addEventListener('scroll', () => {\n" +
+2026-09-17T16:51:26.832Z	    '        window.requestAnimationFrame(updateButtons);\n' +
+2026-09-17T16:51:26.832Z	    '      });\n' +
+2026-09-17T16:51:26.832Z	    '      \n' +
+2026-09-17T16:51:26.832Z	    '      setTimeout(updateButtons, 100);\n' +
+2026-09-17T16:51:26.832Z	    "      window.addEventListener('resize', updateButtons);\n" +
+2026-09-17T16:51:26.832Z	    '\n' +
+2026-09-17T16:51:26.833Z	    "      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;\n" +
+2026-09-17T16:51:26.833Z	    '\n' +
+2026-09-17T16:51:26.833Z	    '      if (prevBtn) {\n' +
+2026-09-17T16:51:26.833Z	    "        prevBtn.addEventListener('click', () => {\n" +
+2026-09-17T16:51:26.833Z	    '          const scrollAmount = track.clientWidth * 0.75;\n' +
+2026-09-17T16:51:26.833Z	    "          track.scrollBy({ left: -scrollAmount, behavior: prefersReducedMotion ? 'auto' : 'smooth' });\n" +
+2026-09-17T16:51:26.833Z	    '        });\n' +
+2026-09-17T16:51:26.833Z	    '      }\n' +
+2026-09-17T16:51:26.833Z	    '\n' +
+2026-09-17T16:51:26.833Z	    '      if (nextBtn) {\n' +
+2026-09-17T16:51:26.833Z	    "        nextBtn.addEventListener('click', () => {\n" +
+2026-09-17T16:51:26.833Z	    '          const scrollAmount = track.clientWidth * 0.75;\n' +
+2026-09-17T16:51:26.833Z	    "          track.scrollBy({ left: scrollAmount, behavior: prefersReducedMotion ? 'auto' : 'smooth' });\n" +
+2026-09-17T16:51:26.833Z	    '        });\n' +
+2026-09-17T16:51:26.833Z	    '      }\n' +
+2026-09-17T16:51:26.833Z	    '    });\n' +
+2026-09-17T16:51:26.833Z	    '  }\n' +
+2026-09-17T16:51:26.833Z	    '\n' +
+2026-09-17T16:51:26.833Z	    "  document.addEventListener('astro:page-load', setupCarousels);\n" +
+2026-09-17T16:51:26.834Z	    "  if (document.readyState === 'loading') {\n" +
+2026-09-17T16:51:26.834Z	    "    document.addEventListener('DOMContentLoaded', setupCarousels);\n" +
+2026-09-17T16:51:26.834Z	    '  } else {\n' +
+2026-09-17T16:51:26.834Z	    '    setupCarousels();\n' +
+2026-09-17T16:51:26.837Z	    '  }\n' +
+2026-09-17T16:51:26.837Z	    '</script>\n' +
+2026-09-17T16:51:26.837Z	    '\n' +
+2026-09-17T16:51:26.837Z	    '<style>\n' +
+2026-09-17T16:51:26.837Z	    '  .carousel-track::-webkit-scrollbar {\n' +
+2026-09-17T16:51:26.837Z	    '    display: none;\n' +
+2026-09-17T16:51:26.838Z	    '  }\n' +
+2026-09-17T16:51:26.838Z	    '  .carousel-track {\n' +
+2026-09-17T16:51:26.838Z	    '    -ms-overflow-style: none;\n' +
+2026-09-17T16:51:26.838Z	    '    scrollbar-width: none;\n' +
+2026-09-17T16:51:26.838Z	    '  }\n' +
+2026-09-17T16:51:26.838Z	    '  .book-cover-area {\n' +
+2026-09-17T16:51:26.838Z	    '    display: grid;\n' +
+2026-09-17T16:51:26.838Z	    '    place-items: center;\n' +
+2026-09-17T16:51:26.838Z	    '    padding: 0.75rem;\n' +
+2026-09-17T16:51:26.838Z	    '    background: #fff;\n' +
+2026-09-17T16:51:26.838Z	    '  }\n' +
+2026-09-17T16:51:26.838Z	    '  .book-thumbnail-link {\n' +
+2026-09-17T16:51:26.838Z	    '    display: block;\n' +
+2026-09-17T16:51:26.838Z	    '    width: 100%;\n' +
+2026-09-17T16:51:26.838Z	    '    max-width: 180px;\n' +
+2026-09-17T16:51:26.838Z	    '  }\n' +
+2026-09-17T16:51:26.838Z	    '  @media (max-width: 767px) {\n' +
+2026-09-17T16:51:26.838Z	    '    /* Two full cards + two 1rem gaps + half of the next card. */\n' +
+2026-09-17T16:51:26.839Z	    '    .book-card {\n' +
+2026-09-17T16:51:26.839Z	    '      width: calc(40% - 0.8rem);\n' +
+2026-09-17T16:51:26.839Z	    '    }\n' +
+2026-09-17T16:51:26.839Z	    '    .book-cover-area {\n' +
+2026-09-17T16:51:26.839Z	    '      padding: 0.5rem;\n' +
+2026-09-17T16:51:26.839Z	    '    }\n' +
+2026-09-17T16:51:26.839Z	    '    .book-card-info {\n' +
+2026-09-17T16:51:26.839Z	    '      padding: 0.625rem;\n' +
+2026-09-17T16:51:26.839Z	    '    }\n' +
+2026-09-17T16:51:26.839Z	    '    .book-card-info h3 {\n' +
+2026-09-17T16:51:26.839Z	    '      font-size: 13px;\n' +
+2026-09-17T16:51:26.839Z	    '      margin-bottom: 0.75rem;\n' +
+2026-09-17T16:51:26.839Z	    '    }\n' +
+2026-09-17T16:51:26.839Z	    '  }\n' +
+2026-09-17T16:51:26.839Z	    '</style>\n'
+2026-09-17T16:51:26.839Z	  
+2026-09-17T16:51:26.839Z	      at TestContext.<anonymous> (file:///opt/buildhome/repo/artifacts/discipleship-hub/scripts/book-library.test.mjs:100:10)
+2026-09-17T16:51:26.839Z	      at async Test.run (node:internal/test_runner/test:1332:7)
+2026-09-17T16:51:26.839Z	      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+2026-09-17T16:51:26.840Z	    generatedMessage: true,
+2026-09-17T16:51:26.844Z	    code: 'ERR_ASSERTION',
+2026-09-17T16:51:26.845Z	    actual: '---\nimport { Download, ChevronLeft, ChevronRight } from "lucide-react";\nimport { getBookCover } from "@/data/bookCovers";\nimport type { Book } from "@/data/books";\nimport BookThumbnail from "@/components/BookThumbnail.astro";\n\ninterface Props {\n  title: string;\n  books: Book[];\n}\n\nconst { title, books } = Astro.props;\nconst baseUrl = import.meta.env.BASE_URL;\nconst join = (p: string) =>\n  (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;\n---\n<div class="book-carousel-section">\n  <div class="flex items-end justify-between mb-4 md:mb-5">\n    <h2 class="text-2xl md:text-3xl font-semibold" style="color:var(--color-structure);">{title}</h2>\n    <div class="hidden sm:flex items-center gap-2">\n      <button type="button" class="carousel-prev w-9 h-9 flex items-center justify-center rounded border bg-white transition-colors hover:bg-slate-50 disabled:opacity-30 disabled:cursor-not-allowed" style="border-color:var(--color-border); color:var(--color-text);" aria-label={`Scroll ${title} left`}>\n        <ChevronLeft className="w-5 h-5" />\n      </button>\n      <button type="button" class="carousel-next w-9 h-9 flex items-center justify-center rounded border bg-white transition-colors hover:bg-slate-50 disabled:opacity-30 disabled:cursor-not-allowed" style="border-color:var(--color-border); color:var(--color-text);" aria-label={`Scroll ${title} right`}>\n        <ChevronRight className="w-5 h-5" />\n      </button>\n    </div>\n  </div>\n  \n  <div class="relative">\n    <div class="carousel-track flex gap-4 md:gap-5 overflow-x-auto pb-2 snap-x snap-mandatory focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-brand)]" tabindex="0" role="region" aria-label={`${title} books`}>\n      {books.map(book => {\n        const cover = getBookCover(book.id);\n        const isConcordance = book.id === "knowing-god";\n        const cardTitle = isConcordance ? "Knowing God / Topical Concordance" : book.title;\n        const detailsHref = isConcordance ? "/knowing-god" : `/books/${book.id}`;\n        const detailsLabel = isConcordance ? "View Digital Version" : "Details";\n        return (\n          <article id={book.id} class="book-card shrink-0 w-[220px] md:w-[240px] snap-start flex flex-col border rounded-lg bg-white overflow-hidden transition-shadow hover:shadow-md scroll-mt-24" style="border-color:var(--color-border);">\n            <div class="book-cover-area">\n                <a\n                  href={join(book.pdf)}\n                  target="_blank"\n                  rel="noopener noreferrer"\n                  data-track-title={book.title}\n                  data-pdf-action="open"\n                  aria-label={`Open ${book.title} PDF`}\n                   class="book-thumbnail-link rounded transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"\n                  style="outline-color:var(--color-brand);"\n                >\n                  <BookThumbnail cover={cover} title={book.title} />\n                </a>\n            </div>\n            <div class="book-card-info px-4 py-3 border-t flex flex-col grow bg-white" style="border-color:var(--color-border);">\n              <h3 class="font-semibold text-[15px] leading-snug mb-3 grow text-center" title={cardTitle}>\n                <a\n                  class="book-title-link inline-flex w-full items-center justify-center gap-1.5 rounded underline underline-offset-2 hover:opacity-80"\n                  href={join(book.pdf)}\n                  target="_blank"\n                  rel="noopener noreferrer"\n                  data-track-title={book.title}\n                  data-pdf-action="open"\n                  aria-label={`${cardTitle} — open PDF in a new tab`}\n                  style="color:var(--color-hero);"\n                >\n                  <span class="min-w-0">{cardTitle}</span>\n                  <Download className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />\n                </a>\n              </h3>\n              <div class="flex mt-auto">\n                <a\n                  href={join(detailsHref)}\n                  class="text-xs font-medium transition-colors hover:opacity-75 w-full pt-2 border-t text-center mt-1"\n                  style="color:var(--color-muted-foreground); border-color:var(--color-border);"\n                  aria-label={isConcordance ? `View digital version of ${cardTitle}` : `View details for ${book.title}`}\n                >\n                  {detailsLabel}\n                </a>\n              </div>\n            </div>\n          </article>\n        );\n      })}\n    </div>\n  </div>\n</div>\n\n<script>\n  function setupCarousels() {\n    const carousels = document.querySelectorAll(\'.book-carousel-section\');\n    carousels.forEach(section => {\n      const track = section.querySelector(\'.carousel-track\') as HTMLElement;\n      const prevBtn = section.querySelector(\'.carousel-prev\') as HTMLButtonElement;\n      const nextBtn = section.querySelector(\'.carousel-next\') as HTMLButtonElement;\n      \n      if (!track || track.dataset.carouselReady === \'true\') return;\n      track.dataset.carouselReady = \'true\';\n      \n      const updateButtons = () => {\n        if (prevBtn) {\n          prevBtn.disabled = track.scrollLeft <= 5;\n        }\n        if (nextBtn) {\n          // Allow 5px margin of error\n          nextBtn.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 5;\n        }\n      };\n\n      track.addEventListener(\'scroll\', () => {\n        window.requestAnimationFrame(updateButtons);\n      });\n      \n      setTimeout(updateButtons, 100);\n      window.addEventListener(\'resize\', updateButtons);\n\n      const prefersReducedMotion = window.matchMedia(\'(prefers-reduced-motion: reduce)\').matches;\n\n      if (prevBtn) {\n        prevBtn.addEventListener(\'click\', () => {\n          const scrollAmount = track.clientWidth * 0.75;\n          track.scrollBy({ left: -scrollAmount, behavior: prefersReducedMotion ? \'auto\' : \'smooth\' });\n        });\n      }\n\n      if (nextBtn) {\n        nextBtn.addEventListener(\'click\', () => {\n          const scrollAmount = track.clientWidth * 0.75;\n          track.scrollBy({ left: scrollAmount, behavior: prefersReducedMotion ? \'auto\' : \'smooth\' });\n        });\n      }\n    });\n  }\n\n  document.addEventListener(\'astro:page-load\', setupCarousels);\n  if (document.readyState === \'loading\') {\n    document.addEventListener(\'DOMContentLoaded\', setupCarousels);\n  } else {\n    setupCarousels();\n  }\n</script>\n\n<style>\n  .carousel-track::-webkit-scrollbar {\n    display: none;\n  }\n  .carousel-track {\n    -ms-overflow-style: none;\n    scrollbar-width: none;\n  }\n  .book-cover-area {\n    display: grid;\n    place-items: center;\n    padding: 0.75rem;\n    background: #fff;\n  }\n  .book-thumbnail-link {\n    display: block;\n    width: 100%;\n    max-width: 180px;\n  }\n  @media (max-width: 767px) {\n    /* Two full cards + two 1rem gaps + half of the next card. */\n    .book-card {\n      width: calc(40% - 0.8rem);\n    }\n    .book-cover-area {\n      padding: 0.5rem;\n    }\n    .book-card-info {\n      padding: 0.625rem;\n    }\n    .book-card-info h3 {\n      font-size: 13px;\n      margin-bottom: 0.75rem;\n    }\n  }\n</style>\n',
+2026-09-17T16:51:26.845Z	    expected: /const cardTitle = isConcordance \? "Knowing God \/ Concordance" : book\.title/,
+2026-09-17T16:51:26.845Z	    operator: 'match',
+2026-09-17T16:51:26.845Z	    diff: 'simple'
+2026-09-17T16:51:26.846Z	  }
+2026-09-17T16:51:26.850Z	 ELIFECYCLE  Command failed with exit code 1.
+2026-09-17T16:51:26.913Z	/opt/buildhome/repo/artifacts/discipleship-hub:
+2026-09-17T16:51:26.913Z	 ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @workspace/discipleship-hub@0.0.0 build: `pnpm run validate:books && pnpm run validate:knowing-god && node scripts/check-book-gate-parity.mjs && astro build && node scripts/apply-external-link-nofollow.mjs && node scripts/build-sitemaps.mjs`
+2026-09-17T16:51:26.913Z	Exit status 1
+2026-09-17T16:51:26.954Z	Failed: error occurred while running build command

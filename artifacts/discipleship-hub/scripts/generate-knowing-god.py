@@ -167,6 +167,12 @@ BIBLE_BOOK_NAMES = [
     "John", "Acts", "Romans", "Titus", "Philemon", "James", "Jude",
 ]
 
+SCRIPTURE_REFERENCE_TOKEN = r"\d+(?::\d+)?(?:-\d+(?::\d+)?)?"
+ADDITIONAL_SCRIPTURE_QUERY_RE = re.compile(
+    rf"^(?:{'|'.join(re.escape(book) for book in BIBLE_BOOK_NAMES)})\s+"
+    rf"{SCRIPTURE_REFERENCE_TOKEN}(?:,\s*{SCRIPTURE_REFERENCE_TOKEN})*$"
+)
+
 # Per-chapter KJV verse counts, derived from the MIT-licensed machine-readable
 # corpus at https://github.com/aruljohn/Bible-kjv and embedded so corpus
 # generation remains deterministic and offline.
@@ -295,7 +301,7 @@ def valid_scripture_query(query: str, grammar: re.Pattern[str]) -> bool:
             and (verse is None or 1 <= verse <= counts[chapter - 1])
         )
 
-    for token in rest.split(", "):
+    for token in re.split(r",\s*", rest):
         match = re.fullmatch(r"(\d+)(?::(\d+))?(?:-(\d+)(?::(\d+))?)?", token)
         if not match:
             return False
@@ -315,7 +321,8 @@ def valid_scripture_query(query: str, grammar: re.Pattern[str]) -> bool:
             if not valid_point(*start) or not valid_point(*end) or end < start:
                 return False
         elif verse_context:
-            assert current_chapter is not None
+            if current_chapter is None:
+                return False
             start = (current_chapter, first)
             end = (current_chapter, last if last is not None else first)
             if not valid_point(*start) or not valid_point(*end) or end < start:
@@ -327,13 +334,26 @@ def valid_scripture_query(query: str, grammar: re.Pattern[str]) -> bool:
     return True
 
 
+def valid_primary_reference(reference: str) -> bool:
+    """Check source syntax and KJV bounds, never NET omissions/numbering."""
+    if not REFERENCE_ONLY_RE.fullmatch(reference):
+        return False
+    match = re.fullmatch(rf"({BOOKS})\s+(.+)", reference)
+    assert match
+    book, coordinates = match.groups()
+    # Interpret the same source spelling quirks as the NET loader, but validate
+    # against KJV counts. Never replace the stored manuscript reference.
+    if book == "Kings":
+        book = "1 Kings"  # Existing reviewed extractor alias, not a new erratum.
+    elif book.startswith("II "):
+        book = "2 " + book[3:]
+    elif book.startswith("I "):
+        book = "1 " + book[2:]
+    return valid_scripture_query(f"{book} {coordinates}", REFERENCE_ONLY_RE)
+
+
 def resolve_additional_scripture(topics: list[dict]) -> list[dict]:
     """Resolve every printed supplemental citation to a canonical search query."""
-    book_pattern = "|".join(re.escape(book) for book in BIBLE_BOOK_NAMES)
-    reference_token = r"\d+(?::\d+)?(?:-\d+(?::\d+)?)?"
-    valid_query = re.compile(
-        rf"^(?:{book_pattern})\s+{reference_token}(?:,\s*{reference_token})*$"
-    )
     unresolved: list[str] = []
     for topic in topics:
         sections = []
@@ -378,7 +398,7 @@ def resolve_additional_scripture(topics: list[dict]) -> list[dict]:
                         else f"{current_book} {canonical}"
                     ]
                 for query in queries:
-                    if not valid_scripture_query(query, valid_query):
+                    if not valid_scripture_query(query, ADDITIONAL_SCRIPTURE_QUERY_RE):
                         unresolved.append(
                             f"{topic['title']}: {source_label!r} -> {query!r}"
                         )
@@ -832,9 +852,8 @@ def validate_topics(
                 errors.append(
                     f"{topic['title']}: {field_name} leaked standalone section heading"
                 )
-        for additional in (
-            section["sourceValue"] for section in topic["additionalScripture"]
-        ):
+        for section in topic["additionalScripture"]:
+            additional = section["sourceValue"]
             if (
                 len(additional) > 1000
                 or "Additional Scripture:" in additional
@@ -843,10 +862,64 @@ def validate_topics(
                 errors.append(
                     f"{topic['title']}: malformed Additional Scripture field"
                 )
+            # Check saved targets, not printed labels or regenerated aliases.
+            # Validation must report errors without rewriting manuscript content.
+            context = (
+                f"{topic['title']} ({topic['id']}): Additional Scripture "
+                f"{additional!r}"
+            )
+            links = section.get("links")
+            if not isinstance(links, list) or not links:
+                if additional.strip() or links:
+                    errors.append(
+                        f"{context}: missing or invalid links destination list; "
+                        "requires editorial review"
+                    )
+                continue
+            for link_index, link in enumerate(links, 1):
+                if not isinstance(link, dict):
+                    errors.append(
+                        f"{context}: link {link_index} is not a citation object; "
+                        "requires editorial review"
+                    )
+                    continue
+                source_label = link.get("sourceLabel")
+                link_context = f"{context}, link {link_index} ({source_label!r})"
+                if not isinstance(source_label, str) or not source_label.strip():
+                    errors.append(
+                        f"{link_context}: missing or empty sourceLabel; "
+                        "requires editorial review"
+                    )
+                queries = link.get("queries")
+                if not isinstance(queries, list) or not queries:
+                    errors.append(
+                        f"{link_context}: missing or invalid queries destination list; "
+                        "requires at least one nonempty query and editorial review"
+                    )
+                    continue
+                for query in queries:
+                    if not isinstance(query, str) or not query.strip():
+                        errors.append(
+                            f"{link_context} -> {query!r}: expected a nonempty query; "
+                            "requires editorial review"
+                        )
+                    elif not valid_scripture_query(query, ADDITIONAL_SCRIPTURE_QUERY_RE):
+                        errors.append(
+                            f"{topic['title']} ({topic['id']}): Additional Scripture "
+                            f"{source_label!r} -> {query!r}: invalid syntax, "
+                            "outside canonical KJV chapter/verse bounds, or invalid "
+                            "range; requires editorial review"
+                        )
         for passage in topic["passages"]:
             if not REFERENCE_ONLY_RE.fullmatch(passage["reference"]):
                 errors.append(
                     f"{topic['title']}: malformed reference {passage['reference']!r}"
+                )
+            elif not valid_primary_reference(passage["reference"]):
+                errors.append(
+                    f"{topic['title']} ({topic['id']}): primary reference "
+                    f"{passage['reference']!r} outside canonical KJV chapter/verse "
+                    "bounds or has an invalid range; requires editorial review"
                 )
             if not passage["text"]:
                 errors.append(f"{topic['title']}: empty passage {passage['reference']}")

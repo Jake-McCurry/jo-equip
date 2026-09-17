@@ -32,7 +32,7 @@ const join = (p: string) =>
       {books.map(book => {
         const cover = getBookCover(book.id);
         const isConcordance = book.id === "knowing-god";
-        const cardTitle = isConcordance ? "Knowing God / Concordance" : book.title;
+        const cardTitle = isConcordance ? "Knowing God / Topical Concordance" : book.title;
         const detailsHref = isConcordance ? "/knowing-god" : `/books/${book.id}`;
         const detailsLabel = isConcordance ? "View Digital Version" : "Details";
         return (

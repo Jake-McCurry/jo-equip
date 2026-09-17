@@ -35,6 +35,6 @@ Preserve complete cover titles and subtitles when applying the shared book-mocku
 
 Adventure is an explicit exception: omit its lower photo montage and five-icon strip from the promotional mockup, while preserving the main scene and title.
 
-**Why:** On 2026-09-17 the user clarified with a cropped screenshot that shortening this cover means removing that section, not scaling the full cover down.
+**Why:** On 2026-09-17 the user clarified with a cropped screenshot that shortening this cover means removing that section, not scaling the full cover down, and explicitly approved the resulting crop.
 
 **How to apply:** Retain this crop in shared mockups on the library and Go Further pages; it does not authorize altering the original book or kit front cover.

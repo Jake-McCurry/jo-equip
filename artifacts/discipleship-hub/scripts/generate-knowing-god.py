@@ -864,12 +864,49 @@ def validate_topics(
                 )
             # Check saved targets, not printed labels or regenerated aliases.
             # Validation must report errors without rewriting manuscript content.
-            for link in section["links"]:
-                for query in link["queries"]:
-                    if not valid_scripture_query(query, ADDITIONAL_SCRIPTURE_QUERY_RE):
+            context = (
+                f"{topic['title']} ({topic['id']}): Additional Scripture "
+                f"{additional!r}"
+            )
+            links = section.get("links")
+            if not isinstance(links, list) or not links:
+                if additional.strip() or links:
+                    errors.append(
+                        f"{context}: missing or invalid links destination list; "
+                        "requires editorial review"
+                    )
+                continue
+            for link_index, link in enumerate(links, 1):
+                if not isinstance(link, dict):
+                    errors.append(
+                        f"{context}: link {link_index} is not a citation object; "
+                        "requires editorial review"
+                    )
+                    continue
+                source_label = link.get("sourceLabel")
+                link_context = f"{context}, link {link_index} ({source_label!r})"
+                if not isinstance(source_label, str) or not source_label.strip():
+                    errors.append(
+                        f"{link_context}: missing or empty sourceLabel; "
+                        "requires editorial review"
+                    )
+                queries = link.get("queries")
+                if not isinstance(queries, list) or not queries:
+                    errors.append(
+                        f"{link_context}: missing or invalid queries destination list; "
+                        "requires at least one nonempty query and editorial review"
+                    )
+                    continue
+                for query in queries:
+                    if not isinstance(query, str) or not query.strip():
+                        errors.append(
+                            f"{link_context} -> {query!r}: expected a nonempty query; "
+                            "requires editorial review"
+                        )
+                    elif not valid_scripture_query(query, ADDITIONAL_SCRIPTURE_QUERY_RE):
                         errors.append(
                             f"{topic['title']} ({topic['id']}): Additional Scripture "
-                            f"{link['sourceLabel']!r} -> {query!r}: invalid syntax, "
+                            f"{source_label!r} -> {query!r}: invalid syntax, "
                             "outside canonical KJV chapter/verse bounds, or invalid "
                             "range; requires editorial review"
                         )

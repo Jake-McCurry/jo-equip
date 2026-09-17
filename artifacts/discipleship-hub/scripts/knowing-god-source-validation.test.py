@@ -130,6 +130,73 @@ class CorpusValidationTests(unittest.TestCase):
         GENERATOR.validate_topics(self.topics, [], None)
         self.assertEqual(self.topics, before)
 
+    def test_validate_only_rejects_missing_supplemental_destinations_read_only(self) -> None:
+        missing = object()
+        cases = (
+            ("empty links", "section", "links", [], "links destination list"),
+            ("missing links", "section", "links", missing, "links destination list"),
+            ("null links", "section", "links", None, "links destination list"),
+            ("non-list links", "section", "links", {}, "links destination list"),
+            ("invalid link", "section", "links", [None], "citation object"),
+            ("empty queries", "link", "queries", [], "queries destination list"),
+            ("missing queries", "link", "queries", missing, "queries destination list"),
+            ("null queries", "link", "queries", None, "queries destination list"),
+            ("non-list queries", "link", "queries", "Colossians 3:21", "queries destination list"),
+            ("empty query", "link", "queries", [""], "nonempty query"),
+            ("blank query", "link", "queries", [" \t\n"], "nonempty query"),
+            ("null query", "link", "queries", [None], "nonempty query"),
+            ("empty second query", "link", "queries", ["Colossians 3:21", ""], "nonempty query"),
+            ("missing label", "link", "sourceLabel", missing, "sourceLabel"),
+            ("empty label", "link", "sourceLabel", "", "sourceLabel"),
+            ("blank label", "link", "sourceLabel", " \t\n", "sourceLabel"),
+            ("null label", "link", "sourceLabel", None, "sourceLabel"),
+        )
+        aliases_before = copy.deepcopy(GENERATOR.ADDITIONAL_SCRIPTURE_ALIASES)
+        for name, target, field, replacement, diagnostic in cases:
+            with self.subTest(case=name), tempfile.TemporaryDirectory() as temporary:
+                output = Path(temporary)
+                for filename in ("index.json", "quality-report.json"):
+                    shutil.copyfile(GENERATOR.OUTPUT / filename, output / filename)
+                for path in GENERATOR.OUTPUT.glob("topics-*.json"):
+                    shutil.copyfile(path, output / path.name)
+                path = output / "topics-w.json"
+                payload = json.loads(path.read_text(encoding="utf-8"))
+                topic = next(t for t in payload["topics"] if t["id"] == "will-of-god")
+                section, link = next(
+                    (section, link)
+                    for section in topic["additionalScripture"]
+                    for link in section["links"]
+                    if link["sourceLabel"] == "13:21"
+                )
+                original_label = link["sourceLabel"]
+                record = section if target == "section" else link
+                if replacement is missing:
+                    del record[field]
+                else:
+                    record[field] = replacement
+                path.write_text(json.dumps(payload), encoding="utf-8")
+                before = {p.name: p.read_bytes() for p in output.iterdir()}
+                with (
+                    patch.object(GENERATOR, "OUTPUT", output),
+                    patch.object(
+                        GENERATOR, "resolve_additional_scripture",
+                        side_effect=AssertionError("Validation must not regenerate aliases"),
+                    ),
+                    patch("sys.argv", [str(SCRIPT), "--validate-only"]),
+                    redirect_stdout(io.StringIO()),
+                    self.assertRaises(ValueError) as caught,
+                ):
+                    GENERATOR.main()
+                for detail in (
+                    topic["title"], topic["id"], section["sourceValue"],
+                    original_label, "Additional Scripture", diagnostic, "editorial review",
+                ):
+                    self.assertIn(detail, str(caught.exception))
+                self.assertEqual(
+                    {p.name: p.read_bytes() for p in output.iterdir()}, before
+                )
+                self.assertEqual(GENERATOR.ADDITIONAL_SCRIPTURE_ALIASES, aliases_before)
+
     def test_validate_only_checks_saved_supplemental_queries_read_only(self) -> None:
         # Exercise the CLI dispatch on disk copies, including the second query
         # of a split reviewed alias. Never mutate the published corpus fixtures.

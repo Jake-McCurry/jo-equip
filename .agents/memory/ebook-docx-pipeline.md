@@ -48,3 +48,11 @@ The closing “GO FURTHER — A Heart After God” box intentionally links to th
 **Why:** The user explicitly confirmed this destination after the mismatch was pointed out. A later correction clarified that URL replacements must update the visible URL as well as the clickable destination, without changing other wording.
 
 **How to apply:** Keep the box’s title and narrative intact, but make its displayed URL and clickable target agree. Do not infer a replacement destination from the book title alone.
+
+## Manuscript-authored closing material
+
+Treat a manuscript's authored “Go Further” section as book content, not as an interchangeable generic resources appendix.
+
+**Why:** The shared ebook resources replacement can silently remove authored closing material even when the chapter and image counts pass. A complete manuscript revision must retain that material.
+
+**How to apply:** Inspect the closing section before applying a shared appendix template. Preserve its wording and illustrations unless replacement is explicitly requested; verify full source-text coverage, not just headings or a high match percentage.

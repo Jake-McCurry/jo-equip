@@ -130,7 +130,7 @@ const BOOKS: BookConfig[] = [
   },
   {
     key: "heart",
-    docx: resolve(ROOT, "attached_assets/A_Heart_After_God_final_version_(v.090926J)_1789074228131.docx"),
+    docx: resolve(ROOT, "attached_assets/A_Heart_After_God_(v.091326J_Final)_1789677322495.docx"),
     source: "docx",
     typography: "strict",
     cover: resolve(ROOT, "attached_assets/a-heart-after-god-cover.jpg"),
@@ -1739,7 +1739,8 @@ async function buildBook(browser: Browser, book: BookConfig, resourceHtml: strin
   }
   if (["walking", "identity", "majesty"].includes(book.key)) {
     applyBookPublicationPages(parsed, publicationPages);
-  } else {
+  } else if (book.key !== "heart") {
+    /* Heart's manuscript-authored "Go Further" chapter is part of the book. */
     replaceAdditionalResources(parsed, resourceHtml);
     parsed.frontPagesHtml = withCanonicalPermissionBox(parsed.frontPagesHtml);
   }

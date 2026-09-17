@@ -15,7 +15,11 @@ export async function parseHeartDocx(browser: Browser, rawHtml: string): Promise
       if (/^(data:|about:)/.test(request.url())) request.continue();
       else request.abort();
     });
-    await page.setContent(rawHtml, { waitUntil: "load" });
+    const html = rawHtml.replace(
+      /<a href="https:\/\/equip\.jesusonline\.com\/leaders-kit">equip\.jesusonline\.com\/books<\/a>/g,
+      '<a href="https://equip.jesusonline.com/leader-kits">equip.jesusonline.com/leader-kits</a>',
+    );
+    await page.setContent(html, { waitUntil: "load" });
     return await page.evaluate(`(() => {
       const text = el => el.textContent.replace(/\\s+/g, " ").trim();
       const elements = [...document.body.children];

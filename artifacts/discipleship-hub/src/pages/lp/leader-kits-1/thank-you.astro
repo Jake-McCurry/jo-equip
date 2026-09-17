@@ -1,10 +1,9 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import { CheckCircle2, Download, ArrowRight } from "lucide-react";
+import { CheckCircle2, Download } from "lucide-react";
 
 const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, "");
-const homeHref = `${baseUrl}/`;
-const pdfHref = `${baseUrl}/books/adventure-of-living-with-jesus.pdf`;
+const pdfHref = `${baseUrl}/leader-kits/adventure-of-living-with-jesus-leader-kit.pdf`;
 ---
 
 <Layout
@@ -25,17 +24,13 @@ const pdfHref = `${baseUrl}/books/adventure-of-living-with-jesus.pdf`;
       <div class="download-panel">
         <h2>Your free PDF is ready</h2>
         <p>The Adventure of Living with Jesus</p>
-        <a class="download-button" href={pdfHref} download="The-Adventure-of-Living-with-Jesus.pdf">
+        <a class="download-button" href={pdfHref} download="The-Adventure-of-Living-with-Jesus-Leader-Kit.pdf">
           <Download size={18} aria-hidden="true" />
-          Download the Adventure Guide PDF
+          Download the Leader Kit
         </a>
         <p class="download-note">Save a copy to read, print, or share with your ministry.</p>
       </div>
 
-      <a class="home-button" href={homeHref}>
-        Continue to JO EQUIP
-        <ArrowRight size={18} aria-hidden="true" />
-      </a>
       <p class="footer-note">Free, biblically grounded resources for pastors and disciple-makers.</p>
     </div>
   </section>
@@ -51,11 +46,9 @@ const pdfHref = `${baseUrl}/books/adventure-of-living-with-jesus.pdf`;
   .download-panel { margin: 30px 0; padding: 24px 20px; border: 1px solid #d9e6f1; border-radius: 8px; background: #f6faff; }
   h2 { margin: 0 0 6px; font-size: 24px; color: #0e2f60; }
   .download-panel > p { margin: 0 0 18px; }
-  .download-button, .home-button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 12px 20px; border-radius: 6px; font-weight: 700; text-decoration: none; line-height: 1.4; }
+  .download-button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 12px 20px; border-radius: 6px; font-weight: 700; text-decoration: none; line-height: 1.4; }
   .download-button { background: #147bd1; color: #fff; }
   .download-button:hover { background: #0964af; }
-  .home-button { background: #0e2f60; color: #fff; }
-  .home-button:hover { background: #19437d; }
   a:focus-visible { outline: 3px solid #c4a35a; outline-offset: 4px; }
   a :global(svg) { flex-shrink: 0; }
   .download-panel .download-note { margin: 12px 0 0; font-size: 13px; color: #566c81; }
@@ -64,6 +57,6 @@ const pdfHref = `${baseUrl}/books/adventure-of-living-with-jesus.pdf`;
     .thank-you-surface { padding: 24px 14px 36px; }
     .thank-you-card { padding: 28px 18px; }
     .download-panel { padding: 20px 14px; }
-    .download-button, .home-button { width: 100%; font-size: 15px; }
+    .download-button { width: 100%; font-size: 15px; }
   }
 </style>

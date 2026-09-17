@@ -53,6 +53,15 @@ SOURCE_MARKER_RE = re.compile(
 SEE_RE = re.compile(r"^See(?:\s+[Aa]lso:|\s+[A-Z‘“]|[A-Z])")
 KNOWN_TOC_ONLY = {"NON-IMPOSSIBILITATION OF THE LORD"}
 
+# Verified against the printed citations AND the complete quoted KJV text.
+# Physical PDF pages 553 (printed 525), 656 (628), and 732–733 (704–705).
+# These are citation-only errata: never truncate or rewrite manuscript prose.
+PASSAGE_REFERENCE_CORRECTIONS = {
+    ("listening", "Mark 4:21-24, 35-43"): "Mark 4:21-24, 35-41",
+    ("overwhelming", "Mark 4:35-43"): "Mark 4:35-41",
+    ("prospering", "Daniel 6:25-29"): "Daniel 6:25-28",
+}
+
 # Editorial resolutions for printed See/See Also labels that are not exact
 # catalog headings. Generated records keep each key verbatim as sourceLabel.
 SEE_ALSO_ALIASES = {
@@ -680,6 +689,11 @@ def parse_topic(
     if see_end < len(values):
         definition = join_wrapped([definition, *values[see_end:]])
     markers = list(dict.fromkeys(SOURCE_MARKER_RE.findall(definition)))
+
+    for passage in passages:
+        passage["reference"] = PASSAGE_REFERENCE_CORRECTIONS.get(
+            (slugify(title), passage["reference"]), passage["reference"]
+        )
 
     return {
         "id": slugify(title),

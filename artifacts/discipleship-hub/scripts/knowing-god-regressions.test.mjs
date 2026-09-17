@@ -41,6 +41,28 @@ const findRelated = (topic, sourceLabel) => {
   return related;
 };
 
+test("reviewed chapter-end errata match the printed quotations in both translations", async () => {
+  const netDirectory = new URL("../public/knowing-god/net/", import.meta.url);
+  const manifest = JSON.parse(await readFile(new URL("manifest.json", netDirectory), "utf8"));
+  for (const [id, original, corrected, markers, ending] of [
+    ["prospering", "Daniel 6:25-29", "Daniel 6:25-28", [26, 27, 28], "in the reign of Cyrus the Persian."],
+    ["overwhelming", "Mark 4:35-43", "Mark 4:35-41", [36, 37, 38, 39, 40, 41], "even the wind and the sea obey him?"],
+    ["listening", "Mark 4:21-24, 35-43", "Mark 4:21-24, 35-41", [22, 23, 24, 35, 36, 37, 38, 39, 40, 41], "even the wind and the sea obey him?"],
+  ]) {
+    const topic = await loadTopic(id);
+    assert.ok(!topic.passages.some(passage => passage.reference === original));
+    const passage = topic.passages.find(passage => passage.reference === corrected);
+    assert.ok(passage);
+    assert.deepEqual([...passage.text.matchAll(/\b\d+\b/g)].map(match => Number(match[0])), markers);
+    assert.ok(passage.text.endsWith(ending));
+    assert.equal(manifest.passages[original], undefined);
+    assert.equal(manifest.notes[original], undefined);
+    assert.equal(manifest.notes[corrected], undefined);
+    const net = JSON.parse(await readFile(new URL(manifest.passages[corrected], netDirectory), "utf8"));
+    assert.ok(net[corrected].trim());
+  }
+});
+
 test("Abstinence matches the printed See FASTING; SOBRIETY; TEMPERANCE entry", async () => {
   const topic = await loadTopic("abstinence");
   assert.equal(topic.passages.length, 0);

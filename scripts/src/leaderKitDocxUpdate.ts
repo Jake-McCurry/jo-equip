@@ -33,7 +33,7 @@ const KITS = {
     ],
   },
   adventure: {
-    source: resolve(ROOT, "attached_assets/1_Adventure_Leader_Kit_(ALJ_-_The_Guide)_v.091226J_1789677856643.docx"),
+    source: resolve(ROOT, "attached_assets/1_This_Sunday_Leader_Kit_(ALJ_-_The_Guide)_v.091726_1789753947981.docx"),
     output: resolve(ROOT, "outputs/leader-kits/adventure/adventure-of-living-with-jesus-leader-kit-updated.docx"),
     covers: [
       ["A Heart After God", "a-heart-after-god.png"],

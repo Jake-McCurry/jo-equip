@@ -1,10 +1,10 @@
 {
-  "source": "/home/runner/workspace/attached_assets/1_Adventure_Leader_Kit_(ALJ_-_The_Guide)_v.091226J_1789677856643.docx",
+  "source": "/home/runner/workspace/attached_assets/1_This_Sunday_Leader_Kit_(ALJ_-_The_Guide)_v.091726_1789753947981.docx",
   "output": "/home/runner/workspace/artifacts/discipleship-hub/public/leader-kits/adventure-of-living-with-jesus-leader-kit.pdf",
   "proofHtml": "/home/runner/workspace/outputs/leader-kits/adventure/proofs/adventure-leader-kit.html",
-  "generatedAt": "2026-09-17T21:31:08.470Z",
+  "generatedAt": "2026-09-18T17:55:40.467Z",
   "pages": 22,
-  "sourceParagraphsSeen": 409,
+  "sourceParagraphsSeen": 411,
   "sourceTables": 69,
   "sourceEmbeddedImages": 11,
   "renderedImages": 16,
@@ -18,10 +18,10 @@
   "normalizedLeaderKitUrl": true,
   "accidentalLeaderKitUrl": false,
   "requiredSectionsPresent": true,
-  "sourceTextBlocks": 291,
-  "sourceTextBlocksMatched": 291,
+  "sourceTextBlocks": 294,
+  "sourceTextBlocksMatched": 294,
   "sourceTextMatchPercent": 100,
   "unmatchedTextBlocks": [],
-  "outputBytes": 751136,
+  "outputBytes": 745620,
   "under20MiB": true
 }

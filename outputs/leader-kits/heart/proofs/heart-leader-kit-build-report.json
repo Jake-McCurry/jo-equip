@@ -2,7 +2,7 @@
   "source": "/home/runner/workspace/attached_assets/2_Heart_After_God_Leader_Kit_v.091226J_1789677319902.docx",
   "output": "/home/runner/workspace/artifacts/discipleship-hub/public/leader-kits/a-heart-after-god-leader-kit.pdf",
   "proofHtml": "/home/runner/workspace/outputs/leader-kits/heart/proofs/heart-leader-kit.html",
-  "generatedAt": "2026-09-17T21:40:06.946Z",
+  "generatedAt": "2026-09-18T17:56:04.594Z",
   "pages": 21,
   "sourceParagraphsSeen": 403,
   "sourceTables": 65,
@@ -22,6 +22,6 @@
   "sourceTextBlocksMatched": 282,
   "sourceTextMatchPercent": 100,
   "unmatchedTextBlocks": [],
-  "outputBytes": 697773,
+  "outputBytes": 696964,
   "under20MiB": true
 }

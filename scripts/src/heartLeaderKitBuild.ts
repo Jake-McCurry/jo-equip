@@ -41,7 +41,7 @@ const KITS = {
   },
   adventure: {
     title: "The Adventure of Living with Jesus Leader Kit",
-    source: "attached_assets/1_Adventure_Leader_Kit_(ALJ_-_The_Guide)_v.091226J_1789677856643.docx",
+    source: "attached_assets/1_This_Sunday_Leader_Kit_(ALJ_-_The_Guide)_v.091726_1789753947981.docx",
     output: "adventure-of-living-with-jesus-leader-kit.pdf",
     proofName: "adventure",
     weeks: 10,

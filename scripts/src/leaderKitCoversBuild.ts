@@ -27,6 +27,8 @@ const rawHeart = execFileSync("unzip", ["-p", manuscript, "word/media/image1.png
 await fs.writeFile("/tmp/heart_original.png", rawHeart);
 execFileSync("convert", ["/tmp/heart_original.png", "-crop", "2550x2096+0+1054", "+repage", "/tmp/heart_artwork.png"]);
 const heartFlatCoverBuffer = await fs.readFile("/tmp/heart_artwork.png");
+const adventureManuscript = path.join(root, "attached_assets/1_This_Sunday_Leader_Kit_(ALJ_-_The_Guide)_v.091726_1789753947981.docx");
+const adventureFront = execFileSync("unzip", ["-p", adventureManuscript, "word/media/image1.png"], { maxBuffer: 10 * 1024 * 1024 });
 
 const browser = await puppeteer.launch({
   executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || execFileSync("which", ["chromium"], { encoding: "utf8" }).trim(),
@@ -44,18 +46,16 @@ try {
       const b64 = heartFlatCoverBuffer.toString("base64");
       cover = `data:image/png;base64,${b64}`;
     } else if (card.id === "adventure-of-living-with-jesus") {
-      // The approved mockup omits the lower photo strip, icons, and publisher
-      // band. Stop above the strip's highest (right-hand) edge.
-      const artwork = execFileSync("magick", [
-        path.join(books, `${card.id}.jpg`),
-        "-crop", "1051x1030+0+0", "+repage", "png:-",
-      ], { maxBuffer: 10 * 1024 * 1024 });
-      cover = `data:image/png;base64,${artwork.toString("base64")}`;
+      // Use the complete supplied cover, including its exact typography and
+      // artwork crop, rather than approximating it from the full book artwork.
+      cover = `data:image/png;base64,${adventureFront.toString("base64")}`;
     } else if (!card.textCover) {
       cover = `data:image/jpeg;base64,${(await fs.readFile(path.join(books, `${card.id}.jpg`))).toString("base64")}`;
     }
 
-    const htmlContent = `
+    const htmlContent = card.id === "adventure-of-living-with-jesus"
+      ? `<div class="book-front"><div class="art-wrapper"><img alt="${card.title}" src="${cover}"></div></div>`
+      : `
       <div class="book-front">
         <header>
           <small>JO EQUIP &middot; JESUSONLINE MINISTRIES</small>

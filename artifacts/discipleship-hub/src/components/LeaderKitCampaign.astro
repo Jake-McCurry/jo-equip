@@ -1,7 +1,5 @@
 ---
-import { Image } from "astro:assets";
 import LeaderKitSignup from "@/components/LeaderKitSignup.astro";
-import adventureCover from "@/assets/adventure-cover.png";
 
 interface Props {
   includeInlineForm?: boolean;
@@ -19,6 +17,7 @@ const {
   ctaPanelId = "leader-kit-cta-panel",
 } = Astro.props;
 const pdfHref = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/books/adventure-of-living-with-jesus.pdf`;
+const kitCoverHref = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/leader-kits/covers/adventure-of-living-with-jesus.png`;
 
 const flow = [
   { title: "Verse", duration: "45 sec", description: "The main Scripture passage" },
@@ -163,12 +162,12 @@ const heartFocuses = [
 <section class="adventure-flow py-6 md:py-8 bg-white border-t border-slate-200">
   <div class="container mx-auto px-5 max-w-4xl">
       <div class="w-full max-w-[340px] mx-auto mb-8 border-[6px] border-white shadow-xl rounded">
-        <Image
-          src={adventureCover}
-          alt="The Adventure of Living with Jesus book cover"
+        <img
+          src={kitCoverHref}
+          alt="The Adventure of Living with Jesus — This Sunday Leader Kit cover"
           class="w-full h-auto block"
-          width={704}
-          height={945}
+          width={1280}
+          height={1614}
         />
       </div>
       <div class="flow-copy">

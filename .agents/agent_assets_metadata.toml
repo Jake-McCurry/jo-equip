@@ -446,14 +446,14 @@ content_type = "application/pdf"
 id = "bwVvOXvmMAO5C3tayT0qp"
 uri = "file://outputs/leader-kits/adventure/adventure-of-living-with-jesus-leader-kit-updated.docx"
 type = "word_document"
-title = "Adventure Leader Kit — Editable Word Copy"
-description = "Complete 10-week kit with matching Go Further book mockups."
+title = "Adventure Leader Kit — Updated Word Copy"
+description = "Revised manuscript with matching Go Further cover images."
 logical_id = "c4e237f2-926a-414e-88f4-041fa76b0405"
-content_hash = "sha256:dc4fa5b21b7da5427b41a818318dd8b04702e3e8d09d8e271bdead605985fbe0"
-size = 14959977
-mtime_ms = 1789680872879
-storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/c4e237f2-926a-414e-88f4-041fa76b0405/966140ab-aadf-4842-bab5-a1968d279357"
-storage_version_token = "1789680940823009"
+content_hash = "sha256:0dbf3b344df866578d17a0cb201c6900614b17a71a975cf489981c349d8ec9fe"
+size = 14958703
+mtime_ms = 1789754182603
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/c4e237f2-926a-414e-88f4-041fa76b0405/17fb8328-3796-49c2-8b5b-0d162a868404"
+storage_version_token = "1789754280138304"
 content_type = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
 
 [[outputs]]

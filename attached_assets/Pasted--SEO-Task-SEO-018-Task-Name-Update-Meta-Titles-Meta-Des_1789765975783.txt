@@ -1,0 +1,272 @@
+	
+	"# SEO Task: SEO-018
+
+## Task Name: Update Meta Titles & Meta Descriptions
+
+You are acting as a Senior Technical SEO Engineer and Full-Stack Web Developer.
+
+Before making any changes, thoroughly analyze the website architecture, metadata generation system, routing structure, layout components, page-level metadata implementation, structured data implementation, and framework-specific SEO configuration.
+
+Do not assume the framework being used. First identify how the application generates page metadata (Title, Meta Description, Canonical, Open Graph, Twitter Metadata, Structured Data, etc.) and determine the appropriate implementation approach based on the existing project architecture.
+
+---
+
+## Objective
+
+**Update the Meta Title and Meta Description for the identified pages using the SEO-approved metadata provided below.**
+
+Replace the existing Meta Title and Meta Description only for the specified pages while preserving the existing metadata architecture.
+
+If the application automatically derives Open Graph metadata, Twitter metadata, or Structured Data from the page metadata, allow those values to update naturally through the existing implementation.
+
+Do not introduce duplicate, conflicting, or independently managed metadata.
+
+The implementation should remain scalable, maintainable, and compatible with future deployments.
+
+---
+
+## Requirements
+
+### 1. Analyze Existing Metadata Architecture
+
+Before making any changes:
+
+* Determine how page metadata is generated.
+* Identify whether metadata is managed:
+
+  * Globally
+  * Per page
+  * Through a metadata configuration
+  * Through framework metadata APIs
+  * Dynamically from a CMS or database
+* Identify how Open Graph metadata is generated.
+* Identify how Twitter metadata is generated.
+* Identify how Structured Data is generated.
+* Determine whether these components inherit values from the page metadata or are independently configured.
+* Review the current metadata implementation for each target page.
+* Identify any shared metadata components that may affect multiple pages.
+* Determine whether any of the target URLs use a shared template, category template, role-based page template, or centralized metadata configuration.
+* Check whether changing metadata at a shared/template level could unintentionally modify non-target pages.
+* Confirm the safest page-level or configuration-level implementation approach before making changes.
+
+Document the existing implementation before making any modifications.
+
+---
+
+### 2. Update Meta Titles & Meta Descriptions
+
+Replace the existing Meta Title and Meta Description for the following pages using the approved SEO copy.
+
+| URL                                                  | New Meta Title                                                    | New Meta Description                                                                                                                                                     |
+| ---------------------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| https://equip.jesusonline.com/home-church-leaders    | **Home Church Resources for Leaders & Discipleship | JO EQUIP**   | **Equip your home church with free Bible studies, discipleship tools and small group ministry resources designed to help leaders grow and multiply mature disciples.**   |
+| https://equip.jesusonline.com/pastors                | **Pastor Resources for Discipleship & Church Leaders | JO EQUIP** | **Access free pastor resources, sermon resources and church discipleship tools created to support church leaders in ministry and develop mature disciples.**             |
+| https://equip.jesusonline.com/missionaries           | **Missionary Resources for Discipleship & Training | JO EQUIP**   | **Explore free missionary resources for discipleship, training and church planting, with practical books, videos and ministry tools to equip and multiply disciples.**   |
+| https://equip.jesusonline.com/chaplains              | **Chaplain Resources for Spiritual & Pastoral Care | JO EQUIP**   | **Find free chaplain resources for spiritual care, including practical tools for hospital, military and hospice chaplains to support people through faith and care.**    |
+| https://equip.jesusonline.com/categories/church      | **Church Resources for Ministry & Disciple-Making | JO EQUIP**    | **Explore free church ministry resources, including practical tools and training to help pastors and leaders make disciples, share Jesus, and grow healthy churches.**            |
+| https://equip.jesusonline.com/equip                  | **Discipleship Tools for Growing Mature Disciples | JO EQUIP**    | **Build mature disciples with practical discipleship tools designed to strengthen faith, encourage spiritual growth and equip believers to disciple others.**            |
+| https://equip.jesusonline.com/discipleship-resources | **Discipleship Training & Resources for Christians | JO EQUIP**   | **Access free discipleship resources and practical training to strengthen faith, grow mature disciples and equip Christians to disciple others.**                        |
+| https://equip.jesusonline.com                        | **Free Christian Discipleship & Ministry Resources | JO EQUIP**   | **Explore free Christian ministry and discipleship resources, including books, videos and practical tools to equip pastors and leaders to make and multiply disciples.** |
+| https://equip.jesusonline.com/church-strategies      | **Church Growth Strategies & Ideas for Ministry | JO EQUIP**      | **Find practical church growth strategies and ideas to strengthen your ministry, reach more people, develop mature disciples and build a growing church.**               |
+
+Use the approved metadata **exactly as provided** unless a technical limitation requires a minor formatting adjustment.
+
+If any adjustment is required, document the reason before implementation.
+
+Do not rewrite, shorten, expand, or otherwise optimize the approved copy without explicit approval.
+
+---
+
+### 3. Preserve Metadata Architecture
+
+**Update only the Meta Title and Meta Description for the specified pages.**
+
+Do not modify unrelated SEO components, including:
+
+* Canonical URLs
+* Robots directives
+* Alternate language tags, if implemented
+* Verification tags
+* Other unrelated SEO metadata
+* URL structure
+* Page routing
+* Existing page content
+* Internal linking
+* Breadcrumb implementation
+* Existing structured data types
+
+**If the application automatically generates any of the following from the page metadata:**
+
+* Open Graph metadata
+* Twitter metadata
+* Structured Data
+
+allow those values to update naturally using the existing metadata architecture.
+
+Do not create duplicate metadata.
+
+Do not create conflicting metadata.
+
+Do not introduce separate manually managed Open Graph, Twitter, or Structured Data values unless the existing architecture explicitly requires them.
+
+If any Structured Data contains hardcoded page titles or descriptions, update those values only when necessary to maintain consistency with the new page metadata.
+
+Preserve the existing metadata generation architecture.
+
+---
+
+### 4. Check for Shared Templates and Metadata Inheritance
+
+Because several target pages may use common role, category, resource, or landing-page templates, verify whether the metadata is inherited from a shared component or configuration.
+
+Specifically confirm that:
+
+* Updating `/pastors` does not unintentionally change metadata for other role pages.
+* Updating `/missionaries` does not unintentionally change metadata for other audience pages.
+* Updating `/chaplains` does not unintentionally change metadata for other audience pages.
+* Updating `/home-church-leaders` does not unintentionally change metadata for other leadership pages.
+* Updating `/categories/church` does not unintentionally change metadata for other category pages.
+* Updating `/equip` does not unintentionally change metadata for other resource or hub pages.
+* Updating `/discipleship-resources` does not unintentionally change metadata for other resource pages.
+* Updating the homepage does not modify metadata for internal pages.
+* Updating `/church-strategies` does not modify metadata for other strategy or category pages.
+
+If a shared component or configuration is responsible for metadata generation, implement page-specific overrides through the existing architecture rather than creating a separate metadata system.
+
+---
+
+### 5. Metadata Quality Validation
+
+Before publishing the changes verify that:
+
+* Every page has exactly one Meta Title.
+* Every page has exactly one Meta Description.
+* Titles accurately represent the corresponding page intent.
+* Descriptions accurately summarize the corresponding page content.
+* No duplicate Meta Titles exist across the updated pages.
+* No duplicate Meta Descriptions exist across the updated pages.
+* Metadata is correctly rendered within the HTML `<head>`.
+* Metadata is rendered server-side or through the framework's supported SEO mechanism where applicable.
+* No unintended fallback metadata is overriding the approved values.
+* No global metadata is taking precedence over the page-specific metadata.
+
+---
+
+### 6. Code Quality
+
+Follow the existing project architecture.
+
+Implement the metadata using the existing metadata management system.
+
+Avoid hardcoding values where centralized metadata configuration already exists.
+
+Keep the implementation:
+
+* Modular
+* Scalable
+* Maintainable
+* Compatible with future deployments
+
+Do not modify unrelated functionality.
+
+Do not introduce a new SEO or metadata library if the project already has an established metadata implementation.
+
+Do not duplicate metadata logic across multiple components when an existing reusable pattern can be extended.
+
+---
+
+## Validation Requirements
+
+After implementation verify that:
+
+✓ Every specified page displays the updated Meta Title.
+
+✓ Every specified page displays the updated Meta Description.
+
+✓ The updated metadata is correctly rendered within the HTML `<head>`.
+
+✓ The Meta Title displayed in the rendered HTML exactly matches the approved title for each page.
+
+✓ The Meta Description displayed in the rendered HTML exactly matches the approved description for each page.
+
+✓ If Open Graph metadata is automatically generated, it remains consistent with the updated page metadata.
+
+✓ If Twitter metadata is automatically generated, it remains consistent with the updated page metadata.
+
+✓ Structured Data remains valid and, where applicable, reflects the updated page title and description.
+
+✓ No duplicate Meta Titles exist.
+
+✓ No duplicate Meta Descriptions exist.
+
+✓ No duplicate Open Graph metadata exists.
+
+✓ No duplicate Twitter metadata exists.
+
+✓ No duplicate Structured Data is introduced.
+
+✓ Canonical URLs remain unchanged.
+
+✓ Robots directives remain unchanged.
+
+✓ Verification tags remain unchanged.
+
+✓ Alternate language metadata remains unchanged, if applicable.
+
+✓ Existing URL structures remain unchanged.
+
+✓ Existing page content remains unchanged.
+
+✓ Shared metadata templates do not unintentionally modify non-target pages.
+
+✓ No unintended metadata changes are introduced to other pages using the same templates or components.
+
+✓ The implementation is compatible with the existing framework.
+
+✓ The implementation remains compatible with future deployments.
+
+✓ The approved metadata is preserved exactly, except where a documented technical limitation requires a minor formatting adjustment.
+
+---
+
+## Deliverables
+
+After completing the implementation provide:
+
+1. **Summary of the metadata architecture analysis.**
+
+   Explain how the application currently generates:
+
+   * Meta Titles
+   * Meta Descriptions
+   * Canonical URLs
+   * Open Graph metadata
+   * Twitter metadata
+   * Structured Data
+
+2. **The implementation approach used.**
+
+   Explain how the approved metadata was incorporated into the existing architecture and why the approach avoids duplication or conflicts.
+
+3. **The files modified.**
+
+   Provide the exact file paths that were changed.
+
+4. **Confirmation that all specified pages have been updated with the approved Meta Titles and Meta Descriptions.**
+
+5. **Confirmation that the existing metadata architecture has been preserved.**
+
+6. **Confirmation that any Open Graph, Twitter, or Structured Data updates occurred only through the application's existing metadata generation system or were updated solely to maintain metadata consistency.**
+
+7. **Confirmation that Canonical URLs, Robots directives, Verification tags, Alternate Language Tags, URL structures, and other unrelated SEO metadata remain unchanged.**
+
+8. **Confirmation that shared templates or metadata configurations were reviewed and that no unintended metadata changes were introduced to non-target pages.**
+
+9. **Confirmation that the implementation is compatible with future deployments.**
+
+10. **Report any metadata inconsistencies or additional SEO opportunities discovered during the implementation without modifying them unless explicitly instructed.**
+
+Do not make assumptions.
+
+Analyze the existing metadata architecture first, identify how page metadata is generated, determine how Open Graph, Twitter, and Structured Data inherit metadata values, review any shared templates or metadata configurations that may affect the target URLs, and then implement the approved Meta Titles and Meta Descriptions while preserving the existing metadata architecture and maintaining a clean, scalable, and future-proof SEO implementation.
+"

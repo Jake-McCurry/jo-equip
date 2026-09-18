@@ -17,7 +17,21 @@ const { channelId } = Astro.params;
 const channel = getChannel(channelId!);
 if (!channel) return Astro.redirect(join("/categories"));
 
-const subs = getSubTopicsByChannel(channel.id);
+const subs = getSubTopicsByChannel(channel.id).map(sub => ({
+  ...sub,
+  href: `/categories/${channel.id}/${sub.id}`,
+}));
+// Link to the existing library without generating a duplicate sub-topic page.
+if (channel.id === "church") {
+  const newsletterIndex = subs.findIndex(sub => sub.id === "make-multiply-disciples-newsletter");
+  subs.splice(newsletterIndex + 1, 0, {
+    id: "this-sunday-leader-kit",
+    channelId: "church",
+    name: "This Sunday Leader Kit",
+    description: "Ready-to-use guides for leading five-minute discipleship lessons each week.",
+    href: "/leader-kits",
+  });
+}
 
 const accent = channel.accentColor;
 const heroGradient = channel.gradient;
@@ -80,7 +94,7 @@ function exploreLabel(subId: string): string {
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
       {subs.map(sub => {
-        const href = join(`/categories/${channel.id}/${sub.id}`);
+        const href = join(sub.href);
         return (
           <div
             class="flex flex-col bg-white border rounded p-5 hover:shadow-md transition-all"

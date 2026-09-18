@@ -28,7 +28,7 @@ if (channel.id === "church") {
     id: "this-sunday-leader-kit",
     channelId: "church",
     name: "This Sunday Leader Kit",
-    description: "Ready-to-use guides for leading five-minute discipleship lessons each week.",
+    description: "5-minute ready-to-use Discipleship Moments for heart transformation",
     href: "/leader-kits",
   });
 }
@@ -105,6 +105,20 @@ function exploreLabel(subId: string): string {
             </h3>
             {sub.description && (
               <p class="text-base leading-relaxed mb-4" style="color:var(--color-muted-foreground);">{sub.description}</p>
+            )}
+            {sub.id === "this-sunday-leader-kit" && (
+              <ul class="space-y-3 mb-4 text-sm" style={`color:${accent};`}>
+                <li>
+                  <a href={join("/leader-kits/adventure-of-living-with-jesus-leader-kit.pdf")} class="font-semibold underline underline-offset-2">
+                    The Adventure of Living with Jesus <span class="whitespace-nowrap">(PDF)</span>
+                  </a>
+                </li>
+                <li>
+                  <a href={join("/leader-kits/a-heart-after-god-leader-kit.pdf")} class="font-semibold underline underline-offset-2">
+                    A Heart After God <span class="whitespace-nowrap">(PDF)</span>
+                  </a>
+                </li>
+              </ul>
             )}
             <a
               href={href}

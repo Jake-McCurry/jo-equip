@@ -74,6 +74,16 @@
   }
 }
 
+/* Shared site-wide section rhythm; do not combine with page-specific py/pt/pb. */
+.site-section {
+  padding-block: var(--section-space-mobile);
+}
+@media (min-width: 768px) {
+  .site-section {
+    padding-block: var(--section-space-desktop);
+  }
+}
+
 /* Respect users who prefer reduced motion. */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

@@ -19,6 +19,21 @@ website styling work.
   alternate font stacks. Do not restyle original manuscript typography in
   downloadable publications.
 
+## Section spacing
+
+Standard full-width content blocks use the shared `.site-section` class from
+`src/styles/global.css`. It sets equal top and bottom padding: **32px on mobile**
+and **40px at 768px and wider**, controlled by `--section-space-mobile` and
+`--section-space-desktop` in `src/styles/brand-tokens.css`.
+
+Use this rule for new and revised standard content sections throughout the site.
+Do not combine it with independent `py-*`, `pt-*`, or `pb-*` utilities. Change the
+shared tokens when revising the standard, rather than tuning individual blocks.
+The homepage hero, introduction, Leader Kit feature, and category block use it.
+Equal spacing does not mean equal section heights: text and images determine
+content height. Compact navigation strips, headers, footers, cards, and reading
+layouts are separate components, not standard content sections.
+
 ## Colors and roles
 
 The complete palette and semantic roles are in `src/styles/brand-tokens.css`.

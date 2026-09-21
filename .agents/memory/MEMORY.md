@@ -25,6 +25,7 @@
 - [Concordance PDF extraction](concordance-pdf-extraction.md) — Use raw column order, normalize discretionary hyphens, and overlap sample boundaries before assembling topics.
 - [NET Bible concordance source](net-bible-concordance-source.md) — NET is locally hosted with confirmed permission; validate official text and distinguish translation differences from source errors.
 - [Astro nested template rendering](astro-nested-template-rendering.md) — Complex nested map callbacks can trigger cryptic compiler syntax errors; prepare data up front and keep template branches declarative.
+- [Astro development daemon](astro-dev-daemon.md) — A detached dev daemon can survive workflow restarts after upgrades; inspect startup errors before changing ports.
 - [Knowing God source pages](knowing-god-source-pages.md) — Source-derived introductions must be exact, semantic, mobile-first HTML; use PDF renders only for verification.
 - [Holy Spirit duplicate review](holy-spirit-duplicate-review.md) — Keep Ministry Holy Spirit live but noindex pending manual comparison; BB Walking Spirit remains preferred and indexable.
 - [Chromium PDF print overflow](chromium-pdf-print-overflow.md) — Unconstrained images can silently shrink all PDF text; check print-width overflow and actual rendered font sizes.

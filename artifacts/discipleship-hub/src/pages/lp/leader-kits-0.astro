@@ -1,0 +1,39 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
+import LeaderKitCampaign from "@/components/LeaderKitCampaign.astro";
+import ReturnToLeaderKitForm from "@/components/ReturnToLeaderKitForm.astro";
+
+const SITE = "https://equip.jesusonline.com";
+const campaignDescription =
+  "A free Leader Kit for pastors and home church leaders with Ten Discipleship Moments — all ready to teach. Encourage heart transformation.";
+
+const leaderKitsJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": `${SITE}/lp/leader-kits-0#collection`,
+  "name": "Free Ministry Resources | JO EQUIP",
+  "url": `${SITE}/lp/leader-kits-0`,
+  "isPartOf": { "@id": `${SITE}/#website` },
+  "description": campaignDescription
+};
+---
+
+<Layout
+  navTagline="Free Ministry Resources"
+  title="Free Ministry Resources | The Adventure of Living with Jesus Leader Kit | JO EQUIP"
+  description={campaignDescription}
+>
+  <Fragment slot="head">
+    <meta name="robots" content="noindex, follow" />
+    <BreadcrumbsLd items={[
+      { name: "Home", url: "/" },
+      { name: "Leader Kits", url: "/leader-kits" },
+      { name: "This Sunday Leader Kit", url: "/lp/leader-kits-0" },
+    ]} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(leaderKitsJsonLd)} />
+  </Fragment>
+
+  <LeaderKitCampaign includeInlineForm={true} />
+  <ReturnToLeaderKitForm />
+</Layout>

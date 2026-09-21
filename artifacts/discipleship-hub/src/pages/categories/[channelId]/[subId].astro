@@ -11,6 +11,7 @@ import { FileText, Video, Smartphone, ArrowRight, ChevronRight, BookOpen } from 
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 import MakeMultiplyNewsletter from "@/components/MakeMultiplyNewsletter.astro";
 import { getCanonicalVideo } from "@/data/playlists";
+import { getCategorySeo } from "@/data/categorySeo";
 
 const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
@@ -114,8 +115,9 @@ const heroTitle = splitTitle(sub.name);
 const showFullHeroTitle =
   sub.id === "disciple-making-movement" ||
   sub.id === "rapid-church-planting";
+const seo = getCategorySeo(`/categories/${channel.id}/${sub.id}`);
 ---
-<Layout title={sub.seoTitle ?? `${sub.name} · ${channel.shortName} · JO EQUIP`} description={sub.seoDescription ?? `${sub.name} — ${channel.tagline}`}>
+<Layout title={seo?.title ?? sub.seoTitle ?? `${sub.name} · ${channel.shortName} · JO EQUIP`} description={seo?.description ?? sub.seoDescription ?? `${sub.name} — ${channel.tagline}`}>
   <Fragment slot="head">
     {noindex && <meta name="robots" content="noindex, follow" />}
     <BreadcrumbsLd items={[

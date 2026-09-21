@@ -4,6 +4,7 @@ import ChannelArt from "@/components/ChannelArt.astro";
 import { channels, getChannel, getSubTopicsByChannel, subTopics } from "@/data/channels";
 import { ArrowRight, ChevronRight } from "lucide-react";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
+import { getCategorySeo } from "@/data/categorySeo";
 
 const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
@@ -45,6 +46,7 @@ const statements: Record<string, string> = {
     "Build fruitful, Spirit-led ministries that multiply disciples and plant churches in obedience to Christ and His Word.",
 };
 const statement = statements[channel.id] ?? channel.description;
+const seo = getCategorySeo(`/categories/${channel.id}`);
 
 /* "Explore N Topics" line per sub-topic (uniform "Topics" wording per user). */
 function exploreLabel(subId: string): string {
@@ -59,7 +61,7 @@ function exploreLabel(subId: string): string {
   return "Explore";
 }
 ---
-<Layout title={`${channel.name} · JO EQUIP`} description={channel.description}>
+<Layout title={seo?.title ?? `${channel.name} · JO EQUIP`} description={seo?.description ?? channel.description}>
   <Fragment slot="head">
     <BreadcrumbsLd items={[
       { name: "Home", url: "/" },

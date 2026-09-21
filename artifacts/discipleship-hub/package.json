@@ -11,6 +11,7 @@
     "validate:books": "node --test scripts/book-library.test.mjs",
     "validate:worker": "node --test scripts/worker-subscribe.test.mjs",
     "test:nofollow": "node --test scripts/external-link-policy.test.mjs",
+    "validate:category-seo": "python3 scripts/import-category-seo.py --check && node --experimental-strip-types scripts/validate-category-seo.mjs",
     "test:knowing-god": "python3 scripts/knowing-god-source-validation.test.py && python3 scripts/knowing-god-net-validation.test.py && node --experimental-strip-types --test scripts/knowing-god-regressions.test.mjs scripts/knowing-god-passages.test.mjs scripts/knowing-god-net.test.mjs scripts/knowing-god-net-loader.test.mjs",
     "generate:knowing-god": "python3 scripts/generate-knowing-god.py",
     "validate:knowing-god": "python3 scripts/generate-knowing-god.py --validate-only && python3 scripts/generate-knowing-god-net.py --validate-only && pnpm run test:knowing-god"

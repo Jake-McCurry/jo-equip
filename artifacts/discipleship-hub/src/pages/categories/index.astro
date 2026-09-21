@@ -4,14 +4,16 @@ import ChannelArt from "@/components/ChannelArt.astro";
 import { channels, getSubTopicsByChannel } from "@/data/channels";
 import { ArrowRight } from "lucide-react";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
+import { getCategorySeo } from "@/data/categorySeo";
 
 const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
   (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
+const seo = getCategorySeo("/categories");
 ---
 <Layout
-  title="Resource Categories: Evidence, Growth &amp; Church | JO EQUIP"
-  description="Explore three free resource categories: Evidence (apologetics), Growth (discipleship) and Church (evangelism and church planting), designed to equip pastors and ministry leaders."
+  title={seo?.title ?? "Resource Categories: Evidence, Growth & Church | JO EQUIP"}
+  description={seo?.description ?? "Explore three free resource categories: Evidence (apologetics), Growth (discipleship) and Church (evangelism and church planting), designed to equip pastors and ministry leaders."}
 >
   <Fragment slot="head">
     <BreadcrumbsLd items={[

@@ -1,6 +1,7 @@
 - [Workspace-only Git policy](workspace-only-git-policy.md) — Keep commits, pushes, PRs, merges, and branch changes manual; edit only the Replit workspace.
 - [Leader Kit page separation](leader-kit-page-separation.md) — Keep the original kit library intact; campaign signup updates belong on the separate landing page.
 - [Category brand separation](category-brand-separation.md) — Preserve pre-rebrand category identities while keeping the current global site branding.
+- [Approved section spacing](section-spacing-approval.md) — User approved the brand kit’s balanced, shared section spacing; avoid one-off promotional block padding.
 - [Leader Kit Mailchimp redirect](leader-kit-mailchimp-redirect.md) — Hosted redirect unavailable in the user's account; only provider-accepted submissions may trigger the site redirect.
 - [JO EQUIP build side effects](jo-equip-build-side-effects.md) — Content builds refresh tracked sitemap/video metadata; separate requested edits from generated churn.
 - [URL trailing-slash convention](url-trailing-slash-convention.md) — discipleship-hub URLs are no-slash except root; canonical + sitemap + internal links must agree or Google flags "alternate page with proper canonical tag".

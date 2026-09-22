@@ -33,6 +33,7 @@ import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 import IdentityCenteredHeartTransformation from "@/components/articles/IdentityCenteredHeartTransformation.astro";
 import { gitDateOf } from "@/data/contentDates";
 import { ArrowRight, ChevronRight, Download } from "lucide-react";
+import { getCategorySeo } from "@/data/categorySeo";
 
 const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
@@ -176,11 +177,12 @@ function withBaseLinks(html: string) {
     (_match, quote: string, path: string) => `href=${quote}${join(path)}${quote}`,
   );
 }
-/* SEO-approved per-item meta overrides (SEO-009) live on the sub-topic item
-   in channels.ts and win over the derived title/description when set. */
+/* Spreadsheet metadata is scoped to this exact URL. Existing per-item
+   overrides remain the fallback for routes intentionally absent from it. */
 const seoItem = articleItem;
-const metaTitle = seoItem?.seoTitle ?? `${article.title} · ${sub.name} · JO EQUIP`;
-const metaDescription = seoItem?.seoDescription ?? plain(article.description);
+const seo = getCategorySeo(`/categories/${channel.id}/${sub.id}/${article.id}`);
+const metaTitle = seo?.title ?? seoItem?.seoTitle ?? `${article.title} · ${sub.name} · JO EQUIP`;
+const metaDescription = seo?.description ?? seoItem?.seoDescription ?? plain(article.description);
 
 /* Titles like "New Life in Christ (Intermediate Discipleship)" — render the
    parenthetical smaller so it supplements rather than competes with the title. */

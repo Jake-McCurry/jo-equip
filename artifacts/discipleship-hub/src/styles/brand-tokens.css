@@ -1,5 +1,8 @@
 /* JO family Color Standards · 2026. Hex values are authoritative. */
 :root {
+  /* Equal block padding for standard full-width content sections. */
+  --section-space-mobile: 2rem;
+  --section-space-desktop: 2.5rem;
   --blue-50: #e6f5ff;
   --blue-100: #ccebff;
   --blue-200: #99d6ff;

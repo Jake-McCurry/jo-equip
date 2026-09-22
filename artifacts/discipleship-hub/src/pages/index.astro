@@ -106,7 +106,7 @@ const personaLinks = [
   </Fragment>
 
   {/* Hero — eyebrow + title + tagline, per the July 2026 home refinement mockup. */}
-  <section class="relative py-10 md:py-16 px-4 text-center overflow-hidden" style="background-color:var(--color-hero);">
+  <section class="site-section relative px-4 text-center overflow-hidden" style="background-color:var(--color-hero);">
     <div
       class="pointer-events-none absolute inset-0"
       style={`background-image:url('${heroBg.src}');background-size:cover;background-position:center;`}
@@ -121,46 +121,63 @@ const personaLinks = [
   </section>
 
   {/* Tagline + persona links — moved below the hero image for readability (Aug 2026). */}
-  <section class="py-8 md:py-10 px-4 text-center bg-white">
+  <section class="site-section px-4 text-center bg-white">
     <div class="container mx-auto max-w-4xl">
       <p class="text-base md:text-lg max-w-3xl mx-auto leading-relaxed" style="color:var(--color-text-muted);">
         Apologetics, identity-centered discipleship, and church vibrancy&mdash;united in one accessible free resource hub.
         <a href="/equip" class="text-base md:text-lg whitespace-nowrap font-medium underline underline-offset-2" style="color:var(--color-action-warm);">Find out more</a>
       </p>
       {/* Persona links — the four audience landing pages, per the Aug 2026 planning note. */}
-      <p class="mt-5 text-base" style="color:var(--color-text);">
+      <div class="mt-5 text-base flex flex-wrap justify-center items-center gap-x-3 gap-y-2" style="color:var(--color-text);">
         <span class="font-medium">Explore Free Resources for</span>
         {personaLinks.map(link => (
-          <Fragment>
-            <span aria-hidden="true" class="mx-1.5" style="color:var(--color-accent);">&bull;</span>
-            <a href={link.href} class="underline underline-offset-2 whitespace-nowrap hover:opacity-90" style="color:var(--color-action-warm);">{link.title}</a>
-          </Fragment>
+          <span class="inline-flex min-w-0 max-w-full items-baseline gap-2">
+            <span aria-hidden="true" style="color:var(--color-accent);">&bull;</span>
+            <a href={link.href} class="underline underline-offset-2 hover:opacity-90" style="color:var(--color-action-warm);overflow-wrap:anywhere;">{link.title}</a>
+          </span>
         ))}
-      </p>
+      </div>
     </div>
   </section>
 
   {/* Leader Kit Feature Panel */}
-  <section class="py-12 md:py-16 px-4 text-center" style="background-color:var(--color-structure);">
-    <div class="container mx-auto max-w-3xl">
-      <p class="mb-3 text-sm md:text-base font-bold tracking-widest uppercase" style="color:rgba(255,255,255,0.8);">
-        This Sunday Leader Kit
-      </p>
-      <h2 class="text-3xl md:text-4xl font-semibold mb-4" style="color:#ffffff;">
-        Churchgoers or Disciples?
-      </h2>
+  <section class="site-section text-center" style="background-color:var(--color-structure);">
+    <div class="container mx-auto px-4">
+    <div class="max-w-5xl grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_16rem] items-center gap-x-10 gap-y-6">
+      <div class="min-w-0 md:col-start-1 md:row-start-1 md:self-end md:text-left">
+        <p class="mb-3 text-sm md:text-base font-bold tracking-widest uppercase" style="color:rgba(255,255,255,0.8);">
+          This Sunday Leader Kit
+        </p>
+        <h2 class="text-3xl md:text-4xl font-semibold" style="color:#ffffff;overflow-wrap:break-word;">
+          Churchgoers or Disciples?
+        </h2>
+      </div>
+      <a href={join('/lp/leader-kits-0')} class="block w-56 max-w-full md:w-64 justify-self-center md:col-start-2 md:row-start-1 md:row-span-2" aria-label="Explore The Adventure of Living with Jesus Leader Kit">
+        <img
+          src={join('/leader-kits/covers/adventure-of-living-with-jesus.png')}
+          alt="The Adventure of Living with Jesus — This Sunday Leader Kit book"
+          width="1280"
+          height="1614"
+          loading="lazy"
+          class="block w-full h-auto"
+          style="filter:drop-shadow(0 0 2px rgba(255,255,255,0.95)) drop-shadow(0 0 12px rgba(190,225,255,0.45)) drop-shadow(12px 20px 9px rgba(0,0,0,0.95));"
+        />
+      </a>
+      <div class="min-w-0 md:col-start-1 md:row-start-2 md:self-start md:text-left">
       <p class="text-lg md:text-xl mb-8 leading-relaxed" style="color:rgba(255,255,255,0.9);">
         A free Leader Kit for pastors and home church leaders with 5-minute Discipleship Moments—all ready to teach and encourage heart transformation
       </p>
-      <a href={join('/leader-kits')} class="inline-flex items-center justify-center text-base font-semibold rounded px-6 py-3 transition-opacity hover:opacity-90" style="background-color:var(--color-action-warm); color:#ffffff;">
-        Explore the Leader Kits
+      <a href={join('/lp/leader-kits-0')} class="inline-flex items-center justify-center text-base font-semibold rounded px-6 py-3 transition-opacity hover:opacity-90" style="background-color:var(--color-action-warm); color:#ffffff;">
+        Learn More
         <ArrowRight className="w-5 h-5 ml-2" />
       </a>
+      </div>
     </div>
+  </div>
   </section>
 
   {/* Three Categories — photo cards, straight after the hero per the mockup. */}
-  <section class="py-10 md:py-14" style="background-color:var(--color-surface-soft);">
+  <section class="site-section" style="background-color:var(--color-surface-soft);">
     <div class="container mx-auto px-4">
       <h2 class="sr-only">Explore the three categories</h2>
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-md sm:max-w-lg lg:max-w-none mx-auto">

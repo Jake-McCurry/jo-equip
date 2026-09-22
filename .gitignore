@@ -47,3 +47,6 @@ Thumbs.db
 # Replit
 .cache/
 .local/
+
+# Astro dev-server process metadata
+artifacts/discipleship-hub/.astro/dev.json

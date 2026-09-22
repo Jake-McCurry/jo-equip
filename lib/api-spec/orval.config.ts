@@ -29,6 +29,7 @@ export default defineConfig({
       baseUrl: "/api",
       clean: true,
       prettier: true,
+      packageJson: path.resolve(root, "lib", "api-client-react", "package.json"),
       override: {
         fetch: {
           includeHttpResponseReturnType: false,

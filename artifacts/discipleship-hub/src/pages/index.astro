@@ -108,34 +108,38 @@ const personaLinks = [
   {/* Hero — eyebrow + title + tagline, per the July 2026 home refinement mockup. */}
   <section class="site-section relative px-4 text-center overflow-hidden" style="background-color:var(--color-hero);">
     <div
-      class="pointer-events-none absolute inset-0"
-      style={`background-image:url('${heroBg.src}');background-size:cover;background-position:center;`}
+      class="hero-image pointer-events-none absolute inset-0"
+      style={`background-image:url('${heroBg.src}');background-size:cover;`}
       aria-hidden="true"
     ></div>
-    {/* Navy overlay keeps white titles readable even over the lightest photo areas. */}
-    <div class="pointer-events-none absolute inset-0" style="background:linear-gradient(to bottom, rgba(0,58,102,0.62), rgba(0,58,102,0.58));"></div>
+    <div
+      class="pointer-events-none absolute inset-0"
+      style="background:linear-gradient(to bottom, rgba(0,58,102,0.22), rgba(0,58,102,0.18));"
+      aria-hidden="true"
+    ></div>
 
-    <div class="relative container mx-auto max-w-4xl">
-      <h1 class="text-2xl sm:text-4xl md:text-5xl leading-tight" style="color:#ffffff;font-weight:600;text-shadow:0 1px 12px rgba(0,107,179,0.6);">Reach people. Grow disciples.<br />Multiply churches.</h1>
+    <div class="relative container mx-auto max-w-7xl">
+      <h1 class="text-2xl sm:text-4xl md:text-5xl leading-tight" style="color:#ffffff;font-weight:600;text-shadow:0 1px 2px #000, 0 2px 5px rgba(0,0,0,0.95), 0 4px 12px rgba(0,0,0,0.9), 0 0 20px rgba(0,0,0,0.65);">Reach people. Grow disciples.<br />Multiply churches.</h1>
+      <p class="hero-subtitle mt-5 inline-block max-w-full px-4 py-2 text-base md:text-lg font-medium leading-snug md:leading-relaxed" style="color:#ffffff;text-shadow:0 1px 3px rgba(0,0,0,0.7);">
+        Apologetics, identity-centered discipleship, and church vibrancy&mdash;united in one accessible free resource hub.
+      </p>
     </div>
   </section>
 
-  {/* Tagline + persona links — moved below the hero image for readability (Aug 2026). */}
-  <section class="site-section px-4 text-center bg-white">
+  {/* Compact audience navigation uses half the standard section spacing. */}
+  <section class="site-section px-4 text-center bg-white" style="--section-space-mobile:1rem;--section-space-desktop:1.25rem;">
     <div class="container mx-auto max-w-4xl">
-      <p class="text-base md:text-lg max-w-3xl mx-auto leading-relaxed" style="color:var(--color-text-muted);">
-        Apologetics, identity-centered discipleship, and church vibrancy&mdash;united in one accessible free resource hub.
-        <a href="/equip" class="text-base md:text-lg whitespace-nowrap font-medium underline underline-offset-2" style="color:var(--color-action-warm);">Find out more</a>
-      </p>
       {/* Persona links — the four audience landing pages, per the Aug 2026 planning note. */}
-      <div class="mt-5 text-base flex flex-wrap justify-center items-center gap-x-3 gap-y-2" style="color:var(--color-text);">
-        <span class="font-medium">Explore Free Resources for</span>
-        {personaLinks.map(link => (
-          <span class="inline-flex min-w-0 max-w-full items-baseline gap-2">
-            <span aria-hidden="true" style="color:var(--color-accent);">&bull;</span>
-            <a href={link.href} class="underline underline-offset-2 hover:opacity-90" style="color:var(--color-action-warm);overflow-wrap:anywhere;">{link.title}</a>
+      <div class="text-base flex flex-col sm:flex-row sm:flex-wrap justify-center items-center gap-x-3 gap-y-2" style="color:var(--color-text);">
+        <span class="font-medium whitespace-nowrap">Explore Free Resources for</span>
+        <div class="flex flex-nowrap items-baseline gap-x-1.5 sm:gap-x-3 text-xs sm:text-base whitespace-nowrap max-w-full overflow-x-auto">
+        {personaLinks.map((link, index) => (
+          <span class="inline-flex shrink-0 items-baseline gap-1.5 sm:gap-2">
+            <span aria-hidden="true" class={index === 0 ? "hidden sm:inline" : ""} style="color:var(--color-accent);">&bull;</span>
+            <a href={link.href} class="underline underline-offset-2 hover:opacity-90" style="color:var(--color-action-warm);">{link.title}</a>
           </span>
         ))}
+        </div>
       </div>
     </div>
   </section>
@@ -143,7 +147,7 @@ const personaLinks = [
   {/* Leader Kit Feature Panel */}
   <section class="site-section text-center" style="background-color:var(--color-structure);">
     <div class="container mx-auto px-4">
-    <div class="max-w-5xl grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_16rem] items-center gap-x-10 gap-y-6">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_14rem] items-center gap-x-10 gap-y-6">
       <div class="min-w-0 md:col-start-1 md:row-start-1 md:self-end md:text-left">
         <p class="mb-3 text-sm md:text-base font-bold tracking-widest uppercase" style="color:rgba(255,255,255,0.8);">
           This Sunday Leader Kit
@@ -152,7 +156,7 @@ const personaLinks = [
           Churchgoers or Disciples?
         </h2>
       </div>
-      <a href={join('/lp/leader-kits-0')} class="block w-56 max-w-full md:w-64 justify-self-center md:col-start-2 md:row-start-1 md:row-span-2" aria-label="Explore The Adventure of Living with Jesus Leader Kit">
+      <a href={join('/lp/leader-kits-0')} class="block w-48 max-w-full md:w-56 justify-self-center md:col-start-2 md:row-start-1 md:row-span-2" aria-label="Explore The Adventure of Living with Jesus Leader Kit">
         <img
           src={join('/leader-kits/covers/adventure-of-living-with-jesus.png')}
           alt="The Adventure of Living with Jesus — This Sunday Leader Kit book"
@@ -245,3 +249,31 @@ const personaLinks = [
     </div>
   </section>
 </Layout>
+
+<style>
+  .hero-image {
+    background-position: center;
+  }
+
+  @media (max-width: 767px) {
+    .hero-image {
+      background-position: 25% center;
+    }
+  }
+
+  .hero-subtitle {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .hero-subtitle::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    border-radius: 2rem;
+    background: rgba(0, 58, 102, 0.48);
+    filter: blur(12px);
+  }
+</style>

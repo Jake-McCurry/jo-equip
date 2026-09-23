@@ -112,12 +112,10 @@ const personaLinks = [
       style={`background-image:url('${heroBg.src}');background-size:cover;background-position:center;`}
       aria-hidden="true"
     ></div>
-    {/* Navy overlay keeps white titles readable even over the lightest photo areas. */}
-    <div class="pointer-events-none absolute inset-0" style="background:linear-gradient(to bottom, rgba(0,58,102,0.44), rgba(0,58,102,0.40));"></div>
 
     <div class="relative container mx-auto max-w-7xl">
       <h1 class="text-2xl sm:text-4xl md:text-5xl leading-tight" style="color:#ffffff;font-weight:600;text-shadow:0 1px 12px rgba(0,107,179,0.6);">Reach people. Grow disciples.<br />Multiply churches.</h1>
-      <p class="mt-5 text-base md:text-lg leading-relaxed text-white" style="text-shadow:0 1px 6px rgba(0,0,0,0.65);">
+      <p class="mt-5 text-base md:text-lg leading-relaxed" style="color:#000000;">
         Apologetics, identity-centered discipleship, and church vibrancy&mdash;united in one accessible free resource hub.
       </p>
     </div>
@@ -127,14 +125,16 @@ const personaLinks = [
   <section class="site-section px-4 text-center bg-white" style="--section-space-mobile:1rem;--section-space-desktop:1.25rem;">
     <div class="container mx-auto max-w-4xl">
       {/* Persona links — the four audience landing pages, per the Aug 2026 planning note. */}
-      <div class="text-base flex flex-wrap justify-center items-center gap-x-3 gap-y-2" style="color:var(--color-text);">
-        <span class="font-medium">Explore Free Resources for</span>
-        {personaLinks.map(link => (
-          <span class="inline-flex min-w-0 max-w-full items-baseline gap-2">
-            <span aria-hidden="true" style="color:var(--color-accent);">&bull;</span>
-            <a href={link.href} class="underline underline-offset-2 hover:opacity-90" style="color:var(--color-action-warm);overflow-wrap:anywhere;">{link.title}</a>
+      <div class="text-base flex flex-col sm:flex-row sm:flex-wrap justify-center items-center gap-x-3 gap-y-2" style="color:var(--color-text);">
+        <span class="font-medium whitespace-nowrap">Explore Free Resources for</span>
+        <div class="flex flex-nowrap items-baseline gap-x-1.5 sm:gap-x-3 text-xs sm:text-base whitespace-nowrap max-w-full overflow-x-auto">
+        {personaLinks.map((link, index) => (
+          <span class="inline-flex shrink-0 items-baseline gap-1.5 sm:gap-2">
+            <span aria-hidden="true" class={index === 0 ? "hidden sm:inline" : ""} style="color:var(--color-accent);">&bull;</span>
+            <a href={link.href} class="underline underline-offset-2 hover:opacity-90" style="color:var(--color-action-warm);">{link.title}</a>
           </span>
         ))}
+        </div>
       </div>
     </div>
   </section>

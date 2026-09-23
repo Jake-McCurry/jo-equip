@@ -115,20 +115,19 @@ const personaLinks = [
     {/* Navy overlay keeps white titles readable even over the lightest photo areas. */}
     <div class="pointer-events-none absolute inset-0" style="background:linear-gradient(to bottom, rgba(0,58,102,0.62), rgba(0,58,102,0.58));"></div>
 
-    <div class="relative container mx-auto max-w-4xl">
+    <div class="relative container mx-auto max-w-7xl">
       <h1 class="text-2xl sm:text-4xl md:text-5xl leading-tight" style="color:#ffffff;font-weight:600;text-shadow:0 1px 12px rgba(0,107,179,0.6);">Reach people. Grow disciples.<br />Multiply churches.</h1>
+      <p class="mt-5 text-base md:text-lg leading-relaxed text-white" style="text-shadow:0 1px 6px rgba(0,0,0,0.65);">
+        Apologetics, identity-centered discipleship, and church vibrancy&mdash;united in one accessible free resource hub.
+      </p>
     </div>
   </section>
 
-  {/* Tagline + persona links — moved below the hero image for readability (Aug 2026). */}
+  {/* Audience links retain the shared section spacing, not a thin navigation strip. */}
   <section class="site-section px-4 text-center bg-white">
     <div class="container mx-auto max-w-4xl">
-      <p class="text-base md:text-lg max-w-3xl mx-auto leading-relaxed" style="color:var(--color-text-muted);">
-        Apologetics, identity-centered discipleship, and church vibrancy&mdash;united in one accessible free resource hub.
-        <a href="/equip" class="text-base md:text-lg whitespace-nowrap font-medium underline underline-offset-2" style="color:var(--color-action-warm);">Find out more</a>
-      </p>
       {/* Persona links — the four audience landing pages, per the Aug 2026 planning note. */}
-      <div class="mt-5 text-base flex flex-wrap justify-center items-center gap-x-3 gap-y-2" style="color:var(--color-text);">
+      <div class="text-base flex flex-wrap justify-center items-center gap-x-3 gap-y-2" style="color:var(--color-text);">
         <span class="font-medium">Explore Free Resources for</span>
         {personaLinks.map(link => (
           <span class="inline-flex min-w-0 max-w-full items-baseline gap-2">
@@ -143,7 +142,7 @@ const personaLinks = [
   {/* Leader Kit Feature Panel */}
   <section class="site-section text-center" style="background-color:var(--color-structure);">
     <div class="container mx-auto px-4">
-    <div class="max-w-5xl grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_16rem] items-center gap-x-10 gap-y-6">
+    <div class="max-w-5xl grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_14rem] items-center gap-x-10 gap-y-6">
       <div class="min-w-0 md:col-start-1 md:row-start-1 md:self-end md:text-left">
         <p class="mb-3 text-sm md:text-base font-bold tracking-widest uppercase" style="color:rgba(255,255,255,0.8);">
           This Sunday Leader Kit
@@ -152,7 +151,7 @@ const personaLinks = [
           Churchgoers or Disciples?
         </h2>
       </div>
-      <a href={join('/lp/leader-kits-0')} class="block w-56 max-w-full md:w-64 justify-self-center md:col-start-2 md:row-start-1 md:row-span-2" aria-label="Explore The Adventure of Living with Jesus Leader Kit">
+      <a href={join('/lp/leader-kits-0')} class="block w-48 max-w-full md:w-56 justify-self-center md:col-start-2 md:row-start-1 md:row-span-2" aria-label="Explore The Adventure of Living with Jesus Leader Kit">
         <img
           src={join('/leader-kits/covers/adventure-of-living-with-jesus.png')}
           alt="The Adventure of Living with Jesus — This Sunday Leader Kit book"

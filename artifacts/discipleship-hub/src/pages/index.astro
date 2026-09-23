@@ -113,7 +113,7 @@ const personaLinks = [
       aria-hidden="true"
     ></div>
     {/* Navy overlay keeps white titles readable even over the lightest photo areas. */}
-    <div class="pointer-events-none absolute inset-0" style="background:linear-gradient(to bottom, rgba(0,58,102,0.62), rgba(0,58,102,0.58));"></div>
+    <div class="pointer-events-none absolute inset-0" style="background:linear-gradient(to bottom, rgba(0,58,102,0.44), rgba(0,58,102,0.40));"></div>
 
     <div class="relative container mx-auto max-w-7xl">
       <h1 class="text-2xl sm:text-4xl md:text-5xl leading-tight" style="color:#ffffff;font-weight:600;text-shadow:0 1px 12px rgba(0,107,179,0.6);">Reach people. Grow disciples.<br />Multiply churches.</h1>
@@ -123,8 +123,8 @@ const personaLinks = [
     </div>
   </section>
 
-  {/* Audience links retain the shared section spacing, not a thin navigation strip. */}
-  <section class="site-section px-4 text-center bg-white">
+  {/* Compact audience navigation uses half the standard section spacing. */}
+  <section class="site-section px-4 text-center bg-white" style="--section-space-mobile:1rem;--section-space-desktop:1.25rem;">
     <div class="container mx-auto max-w-4xl">
       {/* Persona links — the four audience landing pages, per the Aug 2026 planning note. */}
       <div class="text-base flex flex-wrap justify-center items-center gap-x-3 gap-y-2" style="color:var(--color-text);">

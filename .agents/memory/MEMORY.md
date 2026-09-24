@@ -1,3 +1,4 @@
+- [OpenAI ad crawler access](openai-ad-crawler-access.md) — Rotating crawler IPs need a narrow public-page exception, not individual IP additions; user confirmed this worked.
 - [Hero subtitle treatment](hero-subtitle-treatment.md) — User approved a feathered contrast background blending into the photo, not a defined panel.
 - [Workspace-only Git policy](workspace-only-git-policy.md) — Keep commits, pushes, PRs, merges, and branch changes manual; edit only the Replit workspace.
 - [Leader Kit page separation](leader-kit-page-separation.md) — Keep the original kit library intact; campaign signup updates belong on the separate landing page.

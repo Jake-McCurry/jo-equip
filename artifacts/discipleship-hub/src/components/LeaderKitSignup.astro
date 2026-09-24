@@ -3,7 +3,11 @@
 // Mailchimp embed. The client uses Mailchimp's embedded-form JSONP endpoint
 // and redirects only on result: "success". Native POST remains the fallback.
 const action = "https://jesusonline.us1.list-manage.com/subscribe/post?u=c02949f5de137184b156da9bc&id=e06ba0649d&f_id=00a687e5f0";
-const thankYouUrl = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/lp/leader-kits-1/thank-you`;
+interface Props {
+  thankYouPath?: string;
+}
+const { thankYouPath = "/lp/leader-kits-1/thank-you" } = Astro.props;
+const thankYouUrl = `${import.meta.env.BASE_URL.replace(/\/$/, "")}${thankYouPath}`;
 ---
 
 <section class="leader-signup" id="leader-kit-signup" aria-labelledby="leader-signup-heading">

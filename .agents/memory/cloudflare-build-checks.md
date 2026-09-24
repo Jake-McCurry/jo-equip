@@ -8,3 +8,9 @@ A successful `Workers Builds: jo-equip` check does not by itself establish a pro
 **Why:** GitHub reported successful jo-equip builds with staging preview URLs while main merge commits had no checks. Even the Cloudflare build details URL contained `/production/`, so its path was not proof of a production deployment.
 
 **How to apply:** Compare current GitHub main merge checks with staging commit checks. Non-production versions do not imply live promotion. Ask for Cloudflare branch-control and build configuration when production triggers are absent; do not infer those settings from Wrangler or a successful preview check.
+
+Cloudflare's “Success: Deploy command completed” can describe `wrangler versions upload`, which only uploads a version and does not direct production traffic to it.
+
+**Why:** A supplied build log reported success while explicitly instructing a separate version deployment and showing a staging preview alias.
+
+**How to apply:** Check the actual command and active deployment, not the success label. Also confirm required routes appear in the generated-page list before recommending promotion; do not promote an older preview merely because its build succeeded.

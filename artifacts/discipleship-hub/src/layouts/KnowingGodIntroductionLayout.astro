@@ -2,6 +2,7 @@
 import "@/styles/global.css";
 import "@/styles/knowing-god-theme.css";
 import EquipHeader from "@/components/EquipHeader.astro";
+import OpenAIAdsPixel from "@/components/OpenAIAdsPixel.astro";
 
 interface Props {
   title: string;
@@ -20,6 +21,7 @@ const canonicalUrl = `https://equip.jesusonline.com${Astro.url.pathname}`;
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <OpenAIAdsPixel />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />

@@ -7,6 +7,7 @@ interface Props {
   showBelowHeroCta?: boolean;
   ctaHref?: string;
   ctaPanelId?: string;
+  thankYouPath?: string;
 }
 
 const {
@@ -15,6 +16,7 @@ const {
   showBelowHeroCta = false,
   ctaHref = "#leader-kit-signup",
   ctaPanelId = "leader-kit-cta-panel",
+  thankYouPath,
 } = Astro.props;
 const pdfHref = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/books/adventure-of-living-with-jesus.pdf`;
 const kitCoverHref = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/leader-kits/covers/adventure-of-living-with-jesus.png`;
@@ -105,7 +107,7 @@ const heartFocuses = [
         <div class="max-w-md mx-auto w-full">
           {includeInlineForm ? (
             <div class="bg-white mb-4">
-              <LeaderKitSignup />
+              <LeaderKitSignup thankYouPath={thankYouPath} />
             </div>
           ) : (
             <div id={ctaPanelId} class="bg-white border border-[#d9dfe5] p-4 sm:p-5 mb-4 min-h-[300px] flex flex-col justify-center text-left">

@@ -1,0 +1,51 @@
+Update the existing Bible reader in JO EQUIP. Inspect the project’s current reader, Bible API, Knowing God Concordance, saved-study storage, and responsive layout before editing. Reuse its existing conventions and styling rather than creating a separate reader. Do not publish or deploy; I will handle Git and release myself.
+
+Required behavior
+
+1. Reader entry and navigation
+- “Read the NET Bible” must open John chapter 1 directly, without first showing a book/chapter dialog.
+- Keep NET as the default translation.
+- Make book selection, chapter selection, reference search, previous/next chapter, and direct verse links continue to work.
+- Add a NET/KJV translation selector. Preserve the chosen translation when navigating chapters, searching, opening a saved KJV verse, or sharing a verse link.
+- Display the correct translation attribution: retain the required NET Bible copyright acknowledgement and identify KJV as public domain.
+
+2. KJV passages
+- Prefer the KJV source already used by JO EQUIP’s Knowing God Concordance if it can provide complete chapters and is appropriate for this use. Otherwise, use a reliable public-domain KJV source, such as bible-api.com with translation=kjv.
+- Validate the requested translation on the server and keep NET as the default for existing callers.
+- Verify that chapter responses contain the full chapter, not merely a successful HTTP response. In particular, test Obadiah, Philemon, 2 John, 3 John, and Jude: some Bible APIs interpret “3 John 1” as verse 1 only. Request an explicit verse range for one-chapter books if the source needs it.
+- Keep the development API and the production/worker API behavior consistent if JO EQUIP has both.
+
+3. Responsive reading order
+- On small screens, show the search and book/chapter/translation navigation first, then the Scripture passage, then R.E.C.A.P., then the study panels that appear in the left column on desktop.
+- Retain a sensible three-column desktop layout.
+- Selecting a verse must show its reference and readable verse text in the desktop study sidebar or a phone-bottom study panel. The phone panel must also show all five highlight controls; do not truncate the verse so severely that its text cannot be read.
+
+4. R.E.C.A.P.
+- Remove the separate oblong/pill labels.
+- Put each key word directly in its question, bold and uppercase:
+  R — REVELATION, orange
+  E — EXAMPLE, blue
+  C — COMMAND, red
+  A — APPLICATION, green
+  P — PROMISE, purple
+- Keep each question grammatical; for example, “Is there an APPLICATION I should make in my life?”
+- Use accessible contrast and keep the questions easy to scan on phones.
+
+5. Verse study and continuing
+- Show five highlight dots when a verse is selected: yellow, blue, green, pink, and purple. Preserve existing saved highlight colors and add purple without breaking older saved data.
+- Keep bookmark, note, highlight, and share controls working on desktop and phone.
+- “Continue [chapter]” must actually move somewhere useful. If the reader is already showing the last-read chapter, offer the next chapter (including the next book at a book boundary); if there is no next chapter, do not show a link back to the current page.
+- Store a saved verse’s translation alongside its text where applicable, so a saved KJV verse is not later presented as a NET quotation. Keep older saved records and backups readable.
+
+6. Import and export
+- Fix the saved-study JSON import flow end to end: choose a file, validate it, show its contents/counts, choose merge or replace, persist it to browser storage, and confirm success only after persistence succeeds. Show a useful error for invalid files or blocked storage. Re-importing the same file should be possible.
+- Keep an importable JSON backup export.
+- Add a separate, human-readable TXT export containing saved chapter references, verse references and text, highlight colors, and notes. Label the two downloads clearly. Explain that TXT is for reading or printing and that only the JSON backup can be imported.
+- Ensure existing version-1 JSON backups still import; do not silently discard a user’s saved study.
+
+Verification before finishing
+- Check John 1 in both NET and KJV and verify their verse 1 wording differs appropriately.
+- Check a complete one-chapter KJV book, such as 3 John.
+- Check desktop and phone layouts and the phone selected-verse panel.
+- In a fresh browser context, save and highlight a verse, download JSON and TXT, remove the saved items, import the JSON with Merge, and verify the items remain after reload.
+- Run the project’s typecheck, relevant tests, and build. Report what changed and any limitations, but do not publish or deploy.

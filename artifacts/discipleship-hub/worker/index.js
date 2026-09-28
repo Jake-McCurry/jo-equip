@@ -284,6 +284,8 @@ async function handleSubscribe(request, env, ctx) {
   return jsonResponse({ ok: true }, 200);
 }
 
+import { handleBible } from "./bible.js";
+
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
@@ -334,6 +336,11 @@ export default {
     target = MOVED[target] ?? target;
     if (renamed || MOVED[url.pathname.replace(/\/+$/, "")]) {
       return Response.redirect(new URL(target + url.search, url.origin), 301);
+    }
+
+    if (url.pathname === "/api/bible") {
+      const response = await handleBible(request);
+      return isProd ? response : withNoIndexHeader(response);
     }
 
     if (url.pathname === "/api/geo") {

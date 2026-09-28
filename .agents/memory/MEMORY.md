@@ -36,3 +36,4 @@
 - [Word layout references](docx-layout-references.md) — Inspect editable shape fills and text styles alongside embedded screenshots; plain extraction misses visual hierarchy.
 - [Shell output fidelity](shell-output-file-fidelity.md) — For exact reconstruction, export command output to a temp file and read it; shell output strings can alter or truncate contents.
 - [Cloudflare build checks](cloudflare-build-checks.md) — A jo-equip check can be a staging preview; verify commit and preview alias before calling it a production deployment.
+- [Astro dev/build caches](astro-dev-build-caches.md) — Concurrent builds can invalidate preview dependencies; isolate caches and inspect transitive imports when hydration returns 504.

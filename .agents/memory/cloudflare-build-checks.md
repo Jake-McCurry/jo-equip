@@ -14,3 +14,9 @@ Cloudflare's “Success: Deploy command completed” can describe `wrangler vers
 **Why:** A supplied build log reported success while explicitly instructing a separate version deployment and showing a staging preview alias.
 
 **How to apply:** Check the actual command and active deployment, not the success label. Also confirm required routes appear in the generated-page list before recommending promotion; do not promote an older preview merely because its build succeeded.
+
+When builds stall at “Initializing build environment,” check Cloudflare's official status before suggesting retries or new pushes.
+
+**Why:** A prolonged initialization stall coincided with a published Workers Builds startup-delay incident; extra pushes did not address the underlying service delay. Preview upload logs alone also did not establish that production branch settings were wrong.
+
+**How to apply:** Read `https://www.cloudflarestatus.com/api/v2/incidents/unresolved.json`, distinguish preview checks from the latest main-branch check, and avoid changing build commands without inspecting the actual branch settings.

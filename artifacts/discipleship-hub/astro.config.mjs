@@ -29,6 +29,18 @@ export default defineConfig({
      Adds ~1KB of JS but eliminates next-page wait. */
   prefetch: { defaultStrategy: "viewport" },
   integrations: [
+    {
+      name: "isolated-vite-cache",
+      hooks: {
+        "astro:config:setup": ({ command, updateConfig }) => {
+          // Builds also optimize dependencies. Keep them from replacing files
+          // referenced by an already-running development server.
+          updateConfig({
+            vite: { cacheDir: path.resolve(__dirname, "node_modules", `.vite-${command}`) },
+          });
+        },
+      },
+    },
     react(),
     /* Sitemaps: generated post-build by scripts/build-sitemaps.mjs (SEO-010) —
        logical content-grouped sitemaps + accurate per-page lastmod values.

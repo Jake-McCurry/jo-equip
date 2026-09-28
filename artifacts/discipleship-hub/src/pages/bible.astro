@@ -1,0 +1,11 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import BibleReader from "@/components/bible-reader/BibleReader";
+const baseUrl = import.meta.env.BASE_URL;
+---
+<Layout
+  title="Read the Bible | JO EQUIP"
+  description="Read the NET or KJV Bible chapter by chapter, highlight and bookmark verses, keep notes, and reflect with R.E.C.A.P. A personal study space for pastors and disciple-makers."
+>
+  <BibleReader client:load baseUrl={baseUrl} />
+</Layout>

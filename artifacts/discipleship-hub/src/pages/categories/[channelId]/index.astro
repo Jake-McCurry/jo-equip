@@ -108,35 +108,6 @@ function exploreLabel(subId: string): string {
             {sub.description && (
               <p class="text-base leading-relaxed mb-4" style="color:var(--color-muted-foreground);">{sub.description}</p>
             )}
-            {sub.id === "this-sunday-leader-kit" && (
-              <ul class="space-y-3 mb-4 text-sm" style={`color:${accent};`}>
-                <li>
-                  <a href={join("/leader-kits/adventure-of-living-with-jesus-leader-kit.pdf")} class="font-semibold underline underline-offset-2">
-                    The Adventure of Living with Jesus <span class="whitespace-nowrap">(PDF)</span>
-                  </a>
-                </li>
-                <li>
-                  <a href={join("/leader-kits/a-heart-after-god-leader-kit.pdf")} class="font-semibold underline underline-offset-2">
-                    A Heart After God <span class="whitespace-nowrap">(PDF)</span>
-                  </a>
-                </li>
-                <li>
-                  <a href={join("/leader-kits/your-new-identity-in-christ-leader-kit.pdf")} class="font-semibold underline underline-offset-2">
-                    Your New Identity in Christ <span class="whitespace-nowrap">(PDF)</span>
-                  </a>
-                </li>
-                <li>
-                  <a href={join("/leader-kits/beholding-the-majesty-of-god-leader-kit.pdf")} class="font-semibold underline underline-offset-2">
-                    Beholding the Majesty of God <span class="whitespace-nowrap">(PDF)</span>
-                  </a>
-                </li>
-                <li>
-                  <a href={join("/leader-kits/walking-in-the-spirit-leader-kit.pdf")} class="font-semibold underline underline-offset-2">
-                    Walking in the Spirit <span class="whitespace-nowrap">(PDF)</span>
-                  </a>
-                </li>
-              </ul>
-            )}
             <a
               href={href}
               class="group inline-flex items-center gap-1.5 mt-auto text-sm font-semibold hover:underline"

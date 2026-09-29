@@ -1,11 +1,15 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import PersonaPage from "@/components/PersonaPage.astro";
+import PersonaPageLd from "@/components/PersonaPageLd.astro";
+
+const description = "Explore free chaplain resources for spiritual care, ministry, discipleship, and support in hospitals, military settings, hospice, prisons, and other care settings.";
 ---
 <Layout
   title="Chaplain Resources - Free Spiritual Care & Ministry Resources | JO EQUIP"
-  description="Explore free chaplain resources for spiritual care, ministry, discipleship, and support in hospitals, military settings, hospice, prisons, and other care settings."
+  description={description}
 >
+  <PersonaPageLd slot="head" pageName="Chaplains" pageUrl="https://equip.jesusonline.com/chaplains" pageDescription={description} />
   <PersonaPage
     heading="Helping Chaplains Bring Hope and Christ-Centered Transformation"
     intro={[

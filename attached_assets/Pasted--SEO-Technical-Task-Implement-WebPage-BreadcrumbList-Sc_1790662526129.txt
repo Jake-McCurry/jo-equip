@@ -1,0 +1,506 @@
+"# SEO Technical Task: Implement WebPage & BreadcrumbList Schema
+
+## Website
+
+https://equip.jesusonline.com/
+
+## Platform
+
+The website is built and managed on **Replit**.
+
+## Objective
+
+Implement valid **WebPage** and **BreadcrumbList** structured data on the following four persona pages:
+
+1. https://equip.jesusonline.com/pastors
+2. https://equip.jesusonline.com/home-church-leaders
+3. https://equip.jesusonline.com/chaplains
+4. https://equip.jesusonline.com/missionaries
+
+The implementation should be clean, reusable, and compatible with the existing Replit website architecture.
+
+---
+
+# Required Schemas
+
+| Schema                         | Recommendation | Purpose                                                                    |
+| ------------------------------ | -------------- | -------------------------------------------------------------------------- |
+| **WebPage**                    | Add          | Defines and describes each persona landing page                            |
+| **BreadcrumbList**             | Add          | Defines the relationship between the homepage and the current persona page |
+
+
+Do not create additional structured-data types unless they already exist and are required by the site's current implementation.
+
+---
+
+# Implementation Approach
+
+Use **JSON-LD** structured data.
+
+Where possible, use a shared/reusable schema component or function in Replit rather than creating four completely independent implementations.
+
+The implementation should dynamically accept:
+
+pageName
+pageUrl
+pageDescription
+
+and generate the appropriate `WebPage` and `BreadcrumbList` schema.
+
+---
+
+# 1. Pastors Page
+
+## URL
+
+`https://equip.jesusonline.com/pastors`
+
+## Breadcrumb
+
+**Home → Pastors**
+
+## Required WebPage Schema
+
+```json
+{
+  ""@type"": ""WebPage"",
+  ""@id"": ""https://equip.jesusonline.com/pastors#webpage"",
+  ""url"": ""https://equip.jesusonline.com/pastors"",
+  ""name"": ""Pastors"",
+  ""description"": ""USE THE EXISTING PAGE META DESCRIPTION"",
+  ""isPartOf"": {
+    ""@id"": ""https://equip.jesusonline.com/#website""
+  },
+  ""breadcrumb"": {
+    ""@id"": ""https://equip.jesusonline.com/pastors#breadcrumb""
+  }
+}
+
+
+## Required BreadcrumbList Schema
+
+
+{
+  ""@type"": ""BreadcrumbList"",
+  ""@id"": ""https://equip.jesusonline.com/pastors#breadcrumb"",
+  ""itemListElement"": [
+    {
+      ""@type"": ""ListItem"",
+      ""position"": 1,
+      ""name"": ""Home"",
+      ""item"": ""https://equip.jesusonline.com/""
+    },
+    {
+      ""@type"": ""ListItem"",
+      ""position"": 2,
+      ""name"": ""Pastors"",
+      ""item"": ""https://equip.jesusonline.com/pastors""
+    }
+  ]
+}
+
+
+---
+
+# 2. Home Church Leaders Page
+
+## URL
+
+`https://equip.jesusonline.com/home-church-leaders`
+
+## Breadcrumb
+
+**Home → Home Church Leaders**
+
+## Required WebPage Schema
+
+
+{
+  ""@type"": ""WebPage"",
+  ""@id"": ""https://equip.jesusonline.com/home-church-leaders#webpage"",
+  ""url"": ""https://equip.jesusonline.com/home-church-leaders"",
+  ""name"": ""Home Church Leaders"",
+  ""description"": ""USE THE EXISTING PAGE META DESCRIPTION"",
+  ""isPartOf"": {
+    ""@id"": ""https://equip.jesusonline.com/#website""
+  },
+  ""breadcrumb"": {
+    ""@id"": ""https://equip.jesusonline.com/home-church-leaders#breadcrumb""
+  }
+}
+
+
+## Required BreadcrumbList Schema
+
+
+{
+  ""@type"": ""BreadcrumbList"",
+  ""@id"": ""https://equip.jesusonline.com/home-church-leaders#breadcrumb"",
+  ""itemListElement"": [
+    {
+      ""@type"": ""ListItem"",
+      ""position"": 1,
+      ""name"": ""Home"",
+      ""item"": ""https://equip.jesusonline.com/""
+    },
+    {
+      ""@type"": ""ListItem"",
+      ""position"": 2,
+      ""name"": ""Home Church Leaders"",
+      ""item"": ""https://equip.jesusonline.com/home-church-leaders""
+    }
+  ]
+}
+
+---
+
+# 3. Chaplains Page
+
+## URL
+
+`https://equip.jesusonline.com/chaplains`
+
+## Breadcrumb
+
+**Home → Chaplains**
+
+## Required WebPage Schema
+
+
+{
+  ""@type"": ""WebPage"",
+  ""@id"": ""https://equip.jesusonline.com/chaplains#webpage"",
+  ""url"": ""https://equip.jesusonline.com/chaplains"",
+  ""name"": ""Chaplains"",
+  ""description"": ""USE THE EXISTING PAGE META DESCRIPTION"",
+  ""isPartOf"": {
+    ""@id"": ""https://equip.jesusonline.com/#website""
+  },
+  ""breadcrumb"": {
+    ""@id"": ""https://equip.jesusonline.com/chaplains#breadcrumb""
+  }
+}
+
+
+## Required BreadcrumbList Schema
+
+
+{
+  ""@type"": ""BreadcrumbList"",
+  ""@id"": ""https://equip.jesusonline.com/chaplains#breadcrumb"",
+  ""itemListElement"": [
+    {
+      ""@type"": ""ListItem"",
+      ""position"": 1,
+      ""name"": ""Home"",
+      ""item"": ""https://equip.jesusonline.com/""
+    },
+    {
+      ""@type"": ""ListItem"",
+      ""position"": 2,
+      ""name"": ""Chaplains"",
+      ""item"": ""https://equip.jesusonline.com/chaplains""
+    }
+  ]
+}
+
+
+---
+
+# 4. Missionaries Page
+
+## URL
+
+`https://equip.jesusonline.com/missionaries`
+
+## Breadcrumb
+
+**Home → Missionaries**
+
+## Required WebPage Schema
+
+
+{
+  ""@type"": ""WebPage"",
+  ""@id"": ""https://equip.jesusonline.com/missionaries#webpage"",
+  ""url"": ""https://equip.jesusonline.com/missionaries"",
+  ""name"": ""Missionaries"",
+  ""description"": ""USE THE EXISTING PAGE META DESCRIPTION"",
+  ""isPartOf"": {
+    ""@id"": ""https://equip.jesusonline.com/#website""
+  },
+  ""breadcrumb"": {
+    ""@id"": ""https://equip.jesusonline.com/missionaries#breadcrumb""
+  }
+}
+
+
+## Required BreadcrumbList Schema
+
+
+{
+  ""@type"": ""BreadcrumbList"",
+  ""@id"": ""https://equip.jesusonline.com/missionaries#breadcrumb"",
+  ""itemListElement"": [
+    {
+      ""@type"": ""ListItem"",
+      ""position"": 1,
+      ""name"": ""Home"",
+      ""item"": ""https://equip.jesusonline.com/""
+    },
+    {
+      ""@type"": ""ListItem"",
+      ""position"": 2,
+      ""name"": ""Missionaries"",
+      ""item"": ""https://equip.jesusonline.com/missionaries""
+    }
+  ]
+}
+
+
+---
+
+# Recommended Combined JSON-LD Structure
+
+Where practical, implement the two schemas together using `@graph`.
+
+Example for the Pastors page:
+
+
+<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@graph"": [
+    {
+      ""@type"": ""WebPage"",
+      ""@id"": ""https://equip.jesusonline.com/pastors#webpage"",
+      ""url"": ""https://equip.jesusonline.com/pastors"",
+      ""name"": ""Pastors"",
+      ""description"": ""USE THE EXISTING PAGE META DESCRIPTION"",
+      ""isPartOf"": {
+        ""@id"": ""https://equip.jesusonline.com/#website""
+      },
+      ""breadcrumb"": {
+        ""@id"": ""https://equip.jesusonline.com/pastors#breadcrumb""
+      }
+    },
+    {
+      ""@type"": ""BreadcrumbList"",
+      ""@id"": ""https://equip.jesusonline.com/pastors#breadcrumb"",
+      ""itemListElement"": [
+        {
+          ""@type"": ""ListItem"",
+          ""position"": 1,
+          ""name"": ""Home"",
+          ""item"": ""https://equip.jesusonline.com/""
+        },
+        {
+          ""@type"": ""ListItem"",
+          ""position"": 2,
+          ""name"": ""Pastors"",
+          ""item"": ""https://equip.jesusonline.com/pastors""
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+Use the same structure for the other three pages with their respective page names and URLs.
+
+---
+
+# Replit Implementation Requirements
+
+### 1. Use a Reusable Implementation
+
+If all four persona pages use the same page/template/component structure, create a reusable schema implementation.
+
+Do not unnecessarily duplicate the same JSON-LD code across four separate files.
+
+The implementation should dynamically generate:
+
+* Page name
+* Page URL
+* Page description
+* Breadcrumb name
+* Breadcrumb URL
+* `@id` values
+
+---
+
+### 2. Use Existing Page Information
+
+For each page:
+
+* Use the actual page URL.
+* Use the actual page name.
+* Use the existing meta description as the `WebPage.description`.
+* Do not create a new description solely for the schema if an appropriate existing meta description is already available.
+
+---
+
+### 3. Reuse Existing WebSite Schema
+
+If the website already has a site-wide `WebSite` schema with:
+
+
+@id: https://equip.jesusonline.com/#website
+
+
+reference it using:
+
+
+""isPartOf"": {
+  ""@id"": ""https://equip.jesusonline.com/#website""
+}
+
+
+Do **not** create another `WebSite` schema on these four pages.
+
+If the existing WebSite schema uses a different `@id`, use the existing ID instead of creating a duplicate.
+
+---
+
+### 4. Avoid Duplicate Schema
+
+Before implementation, inspect the existing structured data.
+
+Do not add a second:
+
+* `WebPage`
+* `BreadcrumbList`
+* `WebSite`
+
+schema if an equivalent schema already exists.
+
+If an existing implementation is present, update or extend it instead of creating duplicate structured data.
+
+---
+
+### 5. Do Not Modify Existing SEO Elements
+
+Do not change the following as part of this task:
+
+* `<title>`
+* Meta description
+* Canonical URL
+* Open Graph metadata
+* Twitter metadata
+* H1
+* Page content
+* Internal links
+* URL structure
+* Existing WebSite schema
+* Existing Organization schema
+
+Only make changes required for the WebPage and BreadcrumbList structured data.
+
+---
+
+# Breadcrumb Requirements
+
+The breadcrumb hierarchy should remain:
+
+
+Home → Current Persona Page
+
+
+Do not add additional levels such as:
+
+
+Home → Resources → Personas → Pastors
+
+
+unless those levels actually exist as part of the site's visible navigation and page hierarchy.
+
+The structured data must accurately represent the website's actual hierarchy.
+
+---
+
+# Important Requirement
+
+The structured data should describe the **actual page**, not artificially optimize the schema for additional keywords.
+
+Do not:
+
+* Add keyword-stuffed names
+* Add unrelated entities
+* Add fake breadcrumb levels
+* Add placeholder URLs
+* Add books or playlists as `ItemList`
+* Add `VideoObject` unnecessarily
+* Create duplicate schema
+
+Keep the implementation simple and semantically accurate.
+
+---
+
+# Validation
+
+After implementation, validate all four pages using:
+
+1. **Google Rich Results Test**
+2. **Schema.org Validator**
+3. View the final rendered HTML/source to confirm the JSON-LD is present.
+
+Validate:
+
+### WebPage
+
+* Correct `@type`
+* Correct `@id`
+* Correct `url`
+* Correct `name`
+* Correct `description`
+* Correct `isPartOf` relationship
+* No duplicate WebPage schema
+
+### BreadcrumbList
+
+* `Home` is position `1`
+* Current persona page is position `2`
+* Correct page URL
+* Absolute URLs are used
+* Correct `@id`
+* No duplicate BreadcrumbList schema
+
+---
+
+# URLs to Validate
+
+### Pastors
+
+https://equip.jesusonline.com/pastors
+
+### Home Church Leaders
+
+https://equip.jesusonline.com/home-church-leaders
+
+### Chaplains
+
+https://equip.jesusonline.com/chaplains
+
+### Missionaries
+
+https://equip.jesusonline.com/missionaries
+
+---
+
+# Expected Outcome
+
+Implement a clean and reusable JSON-LD solution for all four persona pages containing only:
+
+**WebPage + BreadcrumbList**
+
+The final implementation should be:
+
+* SEO-friendly
+* Semantically accurate
+* Reusable across the Replit codebase
+* Free from duplicate structured data
+* Consistent with the existing website architecture
+* Consistent with the actual page hierarchy
+* Easy to maintain if additional persona pages are added in the future
+"

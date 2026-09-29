@@ -9,6 +9,14 @@ Keep the original Leader Kits library page separate from the new signup-focused 
 
 **How to apply:** `/leader-kits` remains the original library. Respect the current request's version scope rather than propagating unrelated campaign changes.
 
+## Category-card content boundary
+
+Keep individual kit titles and download links inside the library, not on the Sunday Leader Kit category card.
+
+**Why:** The user explicitly wants visitors to open the card before seeing the contents.
+
+**How to apply:** Keep the category card limited to its title, short description, and library navigation; do not reintroduce direct PDF lists there.
+
 ## Form-placement A/B test
 
 Keep campaign wording, order, imagery, and styling identical between the two landing pages. Version 1 has the inline form; version 2 has a link to a separate form.

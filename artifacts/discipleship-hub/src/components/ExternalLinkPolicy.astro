@@ -5,6 +5,9 @@
     const normalizeHost = host => host.toLowerCase().replace(/\.$/, "");
     const internalHosts = new Set([
       "equip.jesusonline.com",
+      "app.jesusonline.com",
+      "jesusonline.com",
+      "jesusonlineministries.org",
       normalizeHost(window.location.hostname),
     ]);
     function updateLink(link) {

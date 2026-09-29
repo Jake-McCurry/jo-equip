@@ -68,8 +68,8 @@ const gtmEnabled = import.meta.env.PROD;
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
-    <link rel="icon" type="image/svg+xml" href={join("/favicon.svg")} />
-    <link rel="apple-touch-icon" href={join("/favicon.svg")} />
+    <link rel="icon" type="image/png" sizes="96x96" href={join("/favicon.png")} />
+    <link rel="apple-touch-icon" sizes="180x180" href={join("/apple-touch-icon.png")} />
     <meta name="theme-color" content="#0095ff" />
 
     {/* Early-connection hints — get DNS+TLS done before scripts request these origins.

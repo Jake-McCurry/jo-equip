@@ -12,11 +12,14 @@ import { decodeHTMLAttribute, escapeAttribute } from "entities";
 export const SITE_URL = "https://equip.jesusonline.com";
 
 /**
- * Only this site's hostname is internal. Related ministry sites and other
- * subdomains leave the domain and must receive nofollow too.
+ * This site and the three explicitly approved ministry hostnames are exempt.
+ * Other subdomains and lookalike hostnames remain external.
  */
 export const APPROVED_FIRST_PARTY_HOSTNAMES = Object.freeze([
   "equip.jesusonline.com",
+  "app.jesusonline.com",
+  "jesusonline.com",
+  "jesusonlineministries.org",
 ]);
 
 const approvedHostnames = new Set(APPROVED_FIRST_PARTY_HOSTNAMES);

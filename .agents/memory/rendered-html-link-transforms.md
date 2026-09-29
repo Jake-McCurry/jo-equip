@@ -20,8 +20,8 @@ idempotence.
 
 ## External-link scope
 
-Only equip.jesusonline.com is internal for the production site's nofollow policy; related JesusOnline websites are external too.
+The nofollow policy exempts equip.jesusonline.com plus app.jesusonline.com, jesusonline.com, and jesusonlineministries.org. Match these exact hostnames, not arbitrary subdomains.
 
-**Why:** The user explicitly requested all links leaving the domain be nofollow, superseding the older ministry-domain exemptions.
+**Why:** After requesting external links be nofollow, the user explicitly clarified that these three ministry hostnames must remain exceptions.
 
 **How to apply:** Preserve this boundary for both static HTML and client-created links. Keep ordinary internal navigation unchanged; nofollow applies to hyperlinks, not script, image, form, or canonical URLs.

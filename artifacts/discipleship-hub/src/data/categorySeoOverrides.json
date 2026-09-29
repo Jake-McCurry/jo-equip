@@ -2,5 +2,141 @@
   "/categories/church": {
     "title": "Church Resources for Ministry & Disciple-Making | JO EQUIP",
     "description": "Explore free church ministry resources, including practical tools and training to help pastors and leaders make disciples, share Jesus, and grow healthy churches."
+  },
+  "/categories/church/total-life-discipleship-principles": {
+    "title": "Total Life Discipleship Principles | JO EQUIP",
+    "description": "Explore a holistic, Kingdom-centered approach to discipleship, from personal transformation and spiritual growth to lasting impact in others' lives."
+  },
+  "/categories/church/tld-core-principles/identity-centered-heart-transformation": {
+    "title": "Identity-Centered Heart Transformation | JO EQUIP",
+    "description": "God transforms the heart through identity in Christ, a true view of God, and Spirit dependence."
+  },
+  "/categories/church/become-growing-church": {
+    "title": "Become a Growing Church: Kingdom-Focused Growth | JO EQUIP",
+    "description": "Explore a Kingdom-centered vision for church growth through transformational teaching, Spirit dependence, worship, relationships, and the Great Commission."
+  },
+  "/categories/church/sermon-toolbox": {
+    "title": "Sermon Toolbox: Biblical Teaching Resources | JO EQUIP",
+    "description": "Explore Bible study and sermon-planning resources for developing biblically grounded messages that encourage Kingdom maturity."
+  },
+  "/categories/church/bibleproject-ot": {
+    "title": "Old Testament Book Overview Videos | JO EQUIP",
+    "description": "Browse BibleProject video overviews of Old Testament books, from Genesis through the prophets, to follow the story and themes of Scripture."
+  },
+  "/categories/church/bibleproject-nt": {
+    "title": "New Testament Book Overview Videos | JO EQUIP",
+    "description": "Browse BibleProject video overviews of New Testament books, including the Gospels, Acts, letters, and Revelation."
+  },
+  "/categories/church/biblical-counseling-insights": {
+    "title": "Biblical Counseling Insights and Resources | JO EQUIP",
+    "description": "Explore biblical counseling topics for individuals and families, including spiritual healing, inner peace, and living in God's ways."
+  },
+  "/categories/church/rapid-church-planting": {
+    "title": "Rapid Church Planting Training | JO EQUIP",
+    "description": "Study Joshua Nations church planting lessons on vision, planning, teams, outreach, regular gatherings, and discipling new believers."
+  },
+  "/categories/growth/attributes-of-god": {
+    "title": "Attributes of God: His Character in Scripture | JO EQUIP",
+    "description": "Study God's character through lessons on his self-existence, sovereignty, holiness, love, and other attributes revealed in Scripture."
+  },
+  "/categories/growth/attributes-of-god/a-balanced-vision-of-god": {
+    "title": "A Balanced Vision of God's Character | JO EQUIP",
+    "description": "Consider both God's kindness and severity in Scripture and why knowing him means receiving his character as he reveals it."
+  },
+  "/categories/growth/attributes-of-god/god-is-self-existent": {
+    "title": "God Is Self-Existent: The Great I AM | JO EQUIP",
+    "description": "Explore God's self-existence through his name, I AM, and biblical passages that describe his life as depending on nothing outside himself."
+  },
+  "/categories/growth/attributes-of-god/god-is-eternal": {
+    "title": "God Is Eternal: Without Beginning or End | JO EQUIP",
+    "description": "Read Scripture on God's eternal nature, from his existence before creation to the Alpha and Omega who remains through every age."
+  },
+  "/categories/growth/attributes-of-god/god-is-transcendent": {
+    "title": "God Is Transcendent: Beyond Creation | JO EQUIP",
+    "description": "Explore biblical passages about the God whom heaven cannot contain, distinct from and greater than the creation he sustains."
+  },
+  "/categories/growth/attributes-of-god/god-is-spirit": {
+    "title": "God Is Spirit: Worship in Spirit and Truth | JO EQUIP",
+    "description": "Study what Scripture says about God's invisible, immaterial nature and Jesus' call to worship the Father in spirit and truth."
+  },
+  "/categories/growth/attributes-of-god/god-is-unchanging": {
+    "title": "God Is Unchanging: His Constant Character | JO EQUIP",
+    "description": "Reflect on God's unchanging character and purposes through Malachi, the Psalms, and other biblical passages."
+  },
+  "/categories/growth/attributes-of-god/god-is-sovereign": {
+    "title": "God Is Sovereign: His Rule Over Creation | JO EQUIP",
+    "description": "Study God's sovereignty in creation and history through Scripture's account of his rule over all he has made."
+  },
+  "/categories/growth/attributes-of-god/god-is-all-powerful": {
+    "title": "God Is All-Powerful: Understanding Omnipotence | JO EQUIP",
+    "description": "Explore God's power in the biblical accounts of creation and his promises, and consider what it means that nothing is too difficult for him."
+  },
+  "/categories/growth/attributes-of-god/god-is-all-knowing": {
+    "title": "God Is All-Knowing: Understanding Omniscience | JO EQUIP",
+    "description": "Explore Scripture on God's complete knowledge, including Psalm 139 and Jesus' knowledge of Nathanael."
+  },
+  "/categories/growth/attributes-of-god/god-is-present-everywhere": {
+    "title": "God Is Present Everywhere: Omnipresence | JO EQUIP",
+    "description": "Read Psalm 139 and other passages on God's presence in every place, from the heights of heaven to the depths of the sea."
+  },
+  "/categories/growth/attributes-of-god/god-is-free": {
+    "title": "God Is Free: Acting According to His Will | JO EQUIP",
+    "description": "Consider biblical teaching on God's freedom to act according to his own will, unconstrained by anything outside himself."
+  },
+  "/categories/growth/attributes-of-god/god-is-holy": {
+    "title": "God Is Holy: His Purity and Otherness | JO EQUIP",
+    "description": "Explore God's holiness through Isaiah's vision and Moses at the burning bush, where his purity calls for reverence."
+  },
+  "/categories/growth/attributes-of-god/god-is-righteous": {
+    "title": "God Is Righteous: Perfect in His Ways | JO EQUIP",
+    "description": "Study Scripture's portrait of God's righteousness: his morally perfect character and the rightness of all his ways."
+  },
+  "/categories/growth/attributes-of-god/god-is-just": {
+    "title": "God Is Just: Justice in His Judgments | JO EQUIP",
+    "description": "Explore biblical accounts of God's justice, including the flood and the Passover, alongside his mercy toward those he preserves."
+  },
+  "/categories/growth/attributes-of-god/god-is-faithful": {
+    "title": "God Is Faithful: Keeper of His Promises | JO EQUIP",
+    "description": "Read how God's faithfulness appears in his covenant with Israel and his promise to Abraham, and reflect on his trustworthy character."
+  },
+  "/categories/growth/attributes-of-god/god-is-absolute-truth": {
+    "title": "God Is Absolute Truth: His Trustworthy Word | JO EQUIP",
+    "description": "Study biblical passages about God's truthfulness, the impossibility of his lying, and the reliability of his word."
+  },
+  "/categories/growth/attributes-of-god/god-is-love": {
+    "title": "God Is Love: His Self-Giving Character | JO EQUIP",
+    "description": "Reflect on God's love in 1 John and the gift of his Son, and consider how Scripture describes his self-giving character."
+  },
+  "/categories/growth/attributes-of-god/god-is-merciful": {
+    "title": "God Is Merciful: Compassion and Forgiveness | JO EQUIP",
+    "description": "Explore God's mercy in Scripture, from his self-description in Exodus to his compassion and forgiveness toward sinners."
+  },
+  "/categories/growth/attributes-of-god/god-is-gracious": {
+    "title": "God Is Gracious: His Unearned Favor | JO EQUIP",
+    "description": "Study God's grace through biblical accounts of his freely given favor to people who could not earn it."
+  },
+  "/categories/growth/attributes-of-god/god-is-good": {
+    "title": "God Is Good: His Character and Works | JO EQUIP",
+    "description": "Reflect on God's goodness in Scripture, including his revelation to Moses and the psalmist's declaration that he is good and does good."
+  },
+  "/categories/growth/attributes-of-god/god-is-wise": {
+    "title": "God Is Wise: Wisdom in His Works | JO EQUIP",
+    "description": "Explore God's wisdom in creation and his works through passages from Proverbs, the Psalms, and Daniel."
+  },
+  "/categories/growth/identity-in-christ": {
+    "title": "Your Identity in Christ: Christian Growth | JO EQUIP",
+    "description": "Explore what the Bible says about your new identity in Christ and lessons on living as God's child, part of Christ's body, and a citizen of his Kingdom."
+  },
+  "/categories/growth/ministry-holy-spirit": {
+    "title": "Walking in the Spirit: Christian Living | JO EQUIP",
+    "description": "Study the Holy Spirit's work in believers through lessons on surrender, being filled with the Spirit, daily dependence, and spiritual fruit."
+  },
+  "/categories/growth/hope-times-crisis": {
+    "title": "Hope in Times of Crisis: Biblical Encouragement | JO EQUIP",
+    "description": "Find lessons on God's presence, promises, guidance, prayer, and peace for reflecting on biblical hope during difficult times."
+  },
+  "/categories/growth/bible-promises-hope": {
+    "title": "Bible Promises for Hope in Every Season | JO EQUIP",
+    "description": "Explore Bible promises about God's authority and encouragement for your circumstances, feelings, relationships, identity, and future."
   }
 }

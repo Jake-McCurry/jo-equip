@@ -13,8 +13,8 @@ for (const sub of subTopics) {
 }
 
 const unmatched = categorySeoRows.filter((row) => !routes.has(row.path));
-const workbookPaths = new Set(categorySeoRows.map((row) => row.path));
-const routesNotInWorkbook = [...routes].filter(([path]) => !workbookPaths.has(path));
+const metadataPaths = new Set(categorySeoRows.map((row) => row.path));
+const routesWithoutMetadata = [...routes].filter(([path]) => !metadataPaths.has(path));
 const duplicatePaths = categorySeoRows.filter(
   (row, index) => categorySeoRows.findIndex((candidate) => candidate.path === row.path) !== index,
 );
@@ -27,7 +27,7 @@ if (process.argv.includes("--json")) {
     matchedRoutes: categorySeoRows.length - unmatched.length,
     unmatchedWorkbookRows: unmatched.length,
     duplicateWorkbookPaths: duplicatePaths.length,
-    existingRoutesNotInWorkbook: routesNotInWorkbook.length,
+    existingRoutesWithoutMetadata: routesWithoutMetadata.length,
     matchedByType: Object.fromEntries(
       ["category root", "channel", "sub-topic", "article"].map((type) => [
         type,
@@ -37,7 +37,7 @@ if (process.argv.includes("--json")) {
   }, null, 2));
 }
 
-if (unmatched.length || duplicatePaths.length) {
-  console.error(JSON.stringify({ unmatched, duplicatePaths }, null, 2));
+if (unmatched.length || duplicatePaths.length || routesWithoutMetadata.length) {
+  console.error(JSON.stringify({ unmatched, duplicatePaths, routesWithoutMetadata }, null, 2));
   process.exitCode = 1;
 }

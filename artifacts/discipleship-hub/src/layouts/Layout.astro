@@ -4,6 +4,7 @@ import { Image } from "astro:assets";
 import logoSrc from "@/assets/jol-logo-white.png";
 import EquipHeader from "@/components/EquipHeader.astro";
 import OpenAIAdsPixel from "@/components/OpenAIAdsPixel.astro";
+import ExternalLinkPolicy from "@/components/ExternalLinkPolicy.astro";
 
 interface Props {
   title?: string;
@@ -263,5 +264,6 @@ const gtmEnabled = import.meta.env.PROD;
       document.addEventListener("click", onClick, true);
       document.addEventListener("auxclick", onClick, true);
     })();`} />
+    <ExternalLinkPolicy />
   </body>
 </html>

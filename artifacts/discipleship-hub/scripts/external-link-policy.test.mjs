@@ -17,9 +17,6 @@ test("classifies approved first-party, relative, and fragment links as internal"
     "#main",
     "https://equip.jesusonline.com/about",
     "HTTP://EQUIP.JESUSONLINE.COM./about",
-    "https://app.jesusonline.com/post/1",
-    "https://jesusonline.com/",
-    "https://jesusonlineministries.org/privacy-policy/",
   ]) {
     assert.equal(classifyHref(href).kind, "internal", href);
   }
@@ -27,6 +24,9 @@ test("classifies approved first-party, relative, and fragment links as internal"
 
 test("uses exact hostnames and rejects lookalike or unapproved subdomains", () => {
   for (const href of [
+    "https://app.jesusonline.com/post/1",
+    "https://jesusonline.com/",
+    "https://jesusonlineministries.org/privacy-policy/",
     "https://www.equip.jesusonline.com/page",
     "http://www.equip.jesusonline.com/page",
     "//www.equip.jesusonline.com/page",

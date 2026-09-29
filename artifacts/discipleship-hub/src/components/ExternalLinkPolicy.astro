@@ -1,0 +1,44 @@
+{/* The build transform covers static HTML; this also covers hydrated/dynamic
+    links and the development preview. Never alter the link destination. */}
+<script is:inline>
+  (() => {
+    const normalizeHost = host => host.toLowerCase().replace(/\.$/, "");
+    const internalHosts = new Set([
+      "equip.jesusonline.com",
+      normalizeHost(window.location.hostname),
+    ]);
+    function updateLink(link) {
+      if (!link.hasAttribute("href")) return;
+      let url;
+      try {
+        url = new URL(link.getAttribute("href"), document.baseURI);
+      } catch { return; }
+      if (!["http:", "https:"].includes(url.protocol) ||
+          internalHosts.has(normalizeHost(url.hostname))) return;
+      const tokens = (link.getAttribute("rel") || "").split(/[\t\n\f\r ]+/);
+      if (!tokens.some(token => token.toLowerCase() === "nofollow")) {
+        link.relList.add("nofollow");
+      }
+    }
+    function scan(node) {
+      if (!(node instanceof Element)) return;
+      if (node.matches("a[href]")) updateLink(node);
+      node.querySelectorAll("a[href]").forEach(updateLink);
+    }
+    scan(document.documentElement);
+    new MutationObserver(records => {
+      for (const record of records) {
+        if (record.type === "attributes") {
+          if (record.target.matches("a[href]")) updateLink(record.target);
+        } else {
+          record.addedNodes.forEach(scan);
+        }
+      }
+    }).observe(document.documentElement, {
+      subtree: true,
+      childList: true,
+      attributes: true,
+      attributeFilter: ["href", "rel"],
+    });
+  })();
+</script>

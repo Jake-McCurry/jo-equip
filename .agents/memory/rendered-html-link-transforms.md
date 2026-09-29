@@ -17,3 +17,11 @@ Unicode characters that browsers retain in relative URLs.
 inspects or rewrites rendered anchor attributes. Test named/numeric entities,
 Unicode versus ASCII whitespace, quote payloads, exact hostnames, and
 idempotence.
+
+## External-link scope
+
+Only equip.jesusonline.com is internal for the production site's nofollow policy; related JesusOnline websites are external too.
+
+**Why:** The user explicitly requested all links leaving the domain be nofollow, superseding the older ministry-domain exemptions.
+
+**How to apply:** Preserve this boundary for both static HTML and client-created links. Keep ordinary internal navigation unchanged; nofollow applies to hyperlinks, not script, image, form, or canonical URLs.

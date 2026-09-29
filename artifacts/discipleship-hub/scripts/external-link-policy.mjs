@@ -12,8 +12,8 @@ import { decodeHTMLAttribute, escapeAttribute } from "entities";
 export const SITE_URL = "https://equip.jesusonline.com";
 
 /**
- * Evidence-backed first-party websites approved by the project plan.
- * Hostnames are exact: arbitrary subdomains and lookalike domains are external.
+ * This site and the three explicitly approved ministry hostnames are exempt.
+ * Other subdomains and lookalike hostnames remain external.
  */
 export const APPROVED_FIRST_PARTY_HOSTNAMES = Object.freeze([
   "equip.jesusonline.com",

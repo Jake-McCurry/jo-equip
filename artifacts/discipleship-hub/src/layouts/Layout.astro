@@ -4,6 +4,7 @@ import { Image } from "astro:assets";
 import logoSrc from "@/assets/jol-logo-white.png";
 import EquipHeader from "@/components/EquipHeader.astro";
 import OpenAIAdsPixel from "@/components/OpenAIAdsPixel.astro";
+import ExternalLinkPolicy from "@/components/ExternalLinkPolicy.astro";
 
 interface Props {
   title?: string;
@@ -67,8 +68,8 @@ const gtmEnabled = import.meta.env.PROD;
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
-    <link rel="icon" type="image/svg+xml" href={join("/favicon.svg")} />
-    <link rel="apple-touch-icon" href={join("/favicon.svg")} />
+    <link rel="icon" type="image/png" sizes="96x96" href={join("/favicon.png")} />
+    <link rel="apple-touch-icon" sizes="180x180" href={join("/apple-touch-icon.png")} />
     <meta name="theme-color" content="#0095ff" />
 
     {/* Early-connection hints — get DNS+TLS done before scripts request these origins.
@@ -263,5 +264,6 @@ const gtmEnabled = import.meta.env.PROD;
       document.addEventListener("click", onClick, true);
       document.addEventListener("auxclick", onClick, true);
     })();`} />
+    <ExternalLinkPolicy />
   </body>
 </html>

@@ -66,13 +66,14 @@ export function initializeLeaderKitSignup() {
   const note = form.querySelector<HTMLElement>("[data-signup-note]");
   const thankYouUrl = form.dataset.thankYouUrl;
   if (!submitButton || !fallback || !feedback || !thankYouUrl) return;
+  const buttonLabel = submitButton.textContent;
   form.dataset.enhanced = "true";
   if (note) note.textContent = "We’ll take you to your kit after Mailchimp accepts your request.";
   let pending = false;
   const restoreButton = () => {
     pending = false;
     submitButton.disabled = false;
-    submitButton.textContent = "Get the Kit";
+    submitButton.textContent = buttonLabel;
     form.removeAttribute("aria-busy");
   };
   window.addEventListener("pageshow", event => {

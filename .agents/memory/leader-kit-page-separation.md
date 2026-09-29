@@ -16,3 +16,11 @@ Keep campaign wording, order, imagery, and styling identical between the two lan
 **Why:** On 2026-09-16 the user explicitly replaced the previously independent-variant approach with a controlled test of on-page versus click-through signup. Other differences would confound that comparison.
 
 **How to apply:** Apply future campaign copy revisions to both variants unless explicitly told otherwise. Preserve only the form-placement difference, including equivalent calls to action.
+
+## OpenAI campaign form isolation
+
+Keep page 3's OpenAI form settings independent of updates to the Sunday Leader Kit forms.
+
+**Why:** On 2026-09-29 the user supplied an updated Sunday Mailchimp embed and explicitly asked to keep the OpenAI version separate.
+
+**How to apply:** Do not propagate Sunday-specific Mailchimp tags or form revisions to the OpenAI campaign unless requested. Shared visual components are fine, but preserve its separate campaign settings and thank-you destination.

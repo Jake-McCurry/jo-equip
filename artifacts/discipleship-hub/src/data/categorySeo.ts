@@ -1,4 +1,5 @@
 import categorySeoJson from "./categorySeo.json" with { type: "json" };
+import categorySeoOverrides from "./categorySeoOverrides.json" with { type: "json" };
 
 export interface CategorySeoMetadata {
   title: string;
@@ -16,16 +17,17 @@ const EXPECTED_ROWS = 1264;
 const importedMetadata = categorySeoJson as Record<string, CategorySeoMetadata>;
 
 export const categorySeoByPath = new Map<string, CategorySeoMetadata>(
-  Object.entries(importedMetadata),
+  Object.entries({ ...importedMetadata, ...categorySeoOverrides }),
 );
 
-if (categorySeoByPath.size !== EXPECTED_ROWS) {
+if (Object.keys(importedMetadata).length !== EXPECTED_ROWS) {
   throw new Error(
-    `Expected ${EXPECTED_ROWS} checked-in category SEO records, found ${categorySeoByPath.size}`,
+    `Expected ${EXPECTED_ROWS} imported category SEO records, found ${Object.keys(importedMetadata).length}`,
   );
 }
 
-export const categorySeoRows: CategorySeoRow[] = Object.entries(importedMetadata).map(
+// Later approved overrides survive workbook reimports and use the same lookup.
+export const categorySeoRows: CategorySeoRow[] = [...categorySeoByPath].map(
   ([path, metadata], index) => ({
     row: index + 2,
     url: `${SITE}${path}`,

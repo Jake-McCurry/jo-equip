@@ -34,6 +34,8 @@ const channelImageAlts: Record<string, string> = {
 
 // JSON-LD structured data — Organization + WebSite. Helps search engines
 // build a knowledge panel and display the site name correctly in results.
+const title = "Free Christian Discipleship & Ministry Resources | JO EQUIP";
+const description = "Explore free Christian ministry and discipleship resources, including books, videos and practical tools to equip pastors and leaders to make and multiply disciples.";
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
@@ -66,9 +68,9 @@ const jsonLd = {
     {
       "@type": "WebSite",
       "@id": "https://equip.jesusonline.com/#website",
-      "name": "JO EQUIP | Free Discipleship & Ministry Resources",
+      "name": title,
       "url": "https://equip.jesusonline.com",
-      "description": "Access free discipleship resources for pastors and ministry leaders, including books, videos and playlists to help make and multiply disciples of Christ.",
+      "description": description,
       "publisher": { "@id": "https://jesusonlineministries.org/#org" },
       "inLanguage": "en-US",
     },
@@ -98,8 +100,8 @@ const personaLinks = [
 ];
 ---
 <Layout
-  title="JO EQUIP | Free Discipleship & Ministry Resources"
-  description="Access free discipleship resources for pastors and ministry leaders, including books, videos and playlists to help make and multiply disciples of Christ."
+  title={title}
+  description={description}
 >
   <Fragment slot="head">
     <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />

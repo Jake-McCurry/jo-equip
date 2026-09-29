@@ -1,11 +1,15 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import PersonaPage from "@/components/PersonaPage.astro";
+import PersonaPageLd from "@/components/PersonaPageLd.astro";
+
+const description = "Explore free missionary resources for training, discipleship, Bible study, leadership, church planting, and disciple making across cultures and among the unreached.";
 ---
 <Layout
   title="Missionary Resources - Free Training, Discipleship & Ministry Resources | JO EQUIP"
-  description="Explore free missionary resources for training, discipleship, Bible study, leadership, church planting, and disciple making across cultures and among the unreached."
+  description={description}
 >
+  <PersonaPageLd slot="head" pageName="Missionaries" pageUrl="https://equip.jesusonline.com/missionaries" pageDescription={description} />
   <PersonaPage
     heading="Helping Missionaries Multiply Disciples Among the Nations"
     intro={[

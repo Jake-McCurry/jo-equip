@@ -1,0 +1,35 @@
+---
+interface Props {
+  pageName: string;
+  pageUrl: string;
+  pageDescription: string;
+}
+
+const { pageName, pageUrl, pageDescription } = Astro.props;
+const SITE = "https://equip.jesusonline.com";
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${pageUrl}#webpage`,
+      url: pageUrl,
+      name: pageName,
+      description: pageDescription,
+      isPartOf: { "@id": `${SITE}/#website` },
+      breadcrumb: { "@id": `${pageUrl}#breadcrumb` },
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${pageUrl}#breadcrumb`,
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${SITE}/` },
+        { "@type": "ListItem", position: 2, name: pageName, item: pageUrl },
+      ],
+    },
+  ],
+};
+// Preserve valid JSON while preventing page text from ending the script tag.
+const serialized = JSON.stringify(jsonLd).replace(/</g, "\\u003c");
+---
+<script type="application/ld+json" is:inline set:html={serialized} />

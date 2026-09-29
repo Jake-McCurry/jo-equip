@@ -5,8 +5,12 @@
 const action = "https://jesusonline.us1.list-manage.com/subscribe/post?u=c02949f5de137184b156da9bc&id=e06ba0649d&f_id=00a687e5f0";
 interface Props {
   thankYouPath?: string;
+  variant?: "sunday" | "openai";
 }
-const { thankYouPath = "/lp/leader-kits-1/thank-you" } = Astro.props;
+const { thankYouPath = "/lp/leader-kits-1/thank-you", variant = "sunday" } = Astro.props;
+// The OpenAI campaign retains its original, untagged form independently.
+const tags = variant === "sunday" ? "5798268" : undefined;
+const buttonLabel = variant === "sunday" ? "Get the kit" : "Get the Kit";
 const thankYouUrl = `${import.meta.env.BASE_URL.replace(/\/$/, "")}${thankYouPath}`;
 ---
 
@@ -27,10 +31,11 @@ const thankYouUrl = `${import.meta.env.BASE_URL.replace(/\/$/, "")}${thankYouPat
       <label for="mce-CHURCH">Church or ministry name <span>(optional)</span></label>
       <input id="mce-CHURCH" name="CHURCH" type="text" autocomplete="organization" placeholder="Hope Fellowship" />
     </div>
+    {tags && <input type="hidden" name="tags" value={tags} />}
     <div class="honeypot" aria-hidden="true">
       <input type="text" name="b_c02949f5de137184b156da9bc_e06ba0649d" tabindex="-1" autocomplete="off" value="" aria-label="Leave this field empty" />
     </div>
-    <button type="submit" id="mc-embedded-subscribe" name="subscribe" value="Subscribe">Get the Kit</button>
+    <button type="submit" id="mc-embedded-subscribe" name="subscribe" value="Subscribe">{buttonLabel}</button>
     <p class="confirmation-note" data-signup-note>Mailchimp opens in a new tab to confirm your request.</p>
     <p class="signup-feedback" id="leader-kit-feedback" role="alert" tabindex="-1" hidden></p>
     <button class="fallback-button" type="button" data-mailchimp-fallback hidden>Continue with Mailchimp in a new tab</button>

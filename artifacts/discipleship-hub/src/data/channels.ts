@@ -1566,7 +1566,7 @@ export const subTopics: SubTopic[] = [
   {
     id: 'seven-habits',
     channelId: 'growth',
-    name: 'Seven Habits',
+    name: 'Seven Habits for Growing Closer to God',
     description: 'Instill seven essential habits that help people grow closer to God.',
     playlistId: '7-habits-deeper-relationship-with-god',
     items: [

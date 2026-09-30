@@ -1,7 +1,9 @@
 /**
- * User-approved exact article retirements (FIRST column survives).
+ * User-approved exact article retirements (FIRST column survives for the
+ * original 59 matching pairs; the six differing Majesty pairs retain the
+ * current local Attributes of God versions after separate editorial approval).
  * This is an exact manifest, NOT a topic/prefix redirect. Topic pages, sources,
- * media and PDFs stay intact. The six Majesty/Attributes pairs are excluded.
+ * media and PDFs stay intact.
  */
 const pairs = [
   ["church/struggle-inner-peace", "growth/inner-peace", [
@@ -50,6 +52,11 @@ const pairs = [
   ["growth/forever-loved", "growth/forever-loved-fathers-love", [
     "loving-the-rebellious", "loving-the-self-righteous", "loving-with-perfection",
     "parable-of-the-lost-son", "suggestions-for-study",
+  ]],
+  ["growth/bb-growing-closer-majesty", "growth/attributes-of-god", [
+    "attributes-of-holiness", "attributes-of-love",
+    "attributes-of-self-existence", "attributes-of-sovereignty",
+    "live-in-the-light-of-his-majesty", "the-supreme-pursuit-of-the-heart",
   ]],
 ];
 

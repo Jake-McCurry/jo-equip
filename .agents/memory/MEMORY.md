@@ -38,3 +38,4 @@
 - [Cloudflare build checks](cloudflare-build-checks.md) — A jo-equip check can be a staging preview; verify commit and preview alias before calling it a production deployment.
 - [Astro dev/build caches](astro-dev-build-caches.md) — Concurrent builds can invalidate preview dependencies; isolate caches and inspect transitive imports when hydration returns 504.
 - [Category SEO import overrides](category-seo-import-overrides.md) — Preserve the workbook snapshot; apply later approved metadata through the lookup’s override layer.
+- [Bible Study Tools scope](bible-study-tools-scope.md) — Approved web-only enhancements exclude PDF changes and preserve the existing resource heading.

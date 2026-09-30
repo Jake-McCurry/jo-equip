@@ -1,0 +1,1 @@
+export function canonicalArticleHtml(html: string, pagePath?: string, base?: string): string;

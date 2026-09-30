@@ -69,6 +69,13 @@ function youtubeEmbedOf(raw: unknown): string | undefined {
 
 const ROOT = resolve(process.cwd(), "..");
 const HUB = resolve(ROOT, "artifacts/discipleship-hub");
+// Runtime import keeps artifact-local modules outside this package's TS rootDir.
+const { canonicalArticlePath, canonicalizeArticleLinks } = await import(
+  pathToFileURL(resolve(HUB, "src/data/articleCanonicalPaths.mjs")).href
+) as {
+  canonicalArticlePath: (path: string) => string;
+  canonicalizeArticleLinks: <T>(value: T) => T;
+};
 const MAPPING_PATH = resolve(process.cwd(), "data/slug-mapping.json");
 const OUT_DIR = resolve(HUB, "src/data/generated/articles");
 const IMG_ROOT = resolve(HUB, "src/assets/articles");
@@ -164,7 +171,7 @@ function cleanInline(html: string, rw: Map<string, RwTarget>): string {
     const override = HREF_OVERRIDES[slug];
     if (override) return `href=${q}${override}${q}`;
     const target = rw.get(slug) ?? rw.get(articleIdOf(slug));
-    if (target) return `href=${q}/categories/${target.channelId}/${target.subId}/${target.id}${q}`;
+    if (target) return `href=${q}${canonicalArticlePath(`/categories/${target.channelId}/${target.subId}/${target.id}`)}${q}`;
     return `href=${q}https://app.jesusonline.com/post/${slug}${q}`;
   };
   s = s.replace(
@@ -198,7 +205,7 @@ function cleanInline(html: string, rw: Map<string, RwTarget>): string {
     .replace(/&#8230;|&hellip;/g, "\u2026")
     .replace(/&#038;/g, "&amp;")
     .replace(/&#039;/g, "'");
-  return s.replace(/\s+/g, " ").trim();
+  return canonicalizeArticleLinks(s.replace(/\s+/g, " ").trim());
 }
 
 function topLevelBlocks(html: string): { tag: string; outer: string; inner: string }[] {
@@ -431,7 +438,8 @@ async function main() {
       const appSlug = appSlugOf(item.links?.app);
       if (!appSlug || !mapping[appSlug]) continue;
       const id = articleIdOf(appSlug);
-      const target = { channelId: sub.channelId, subId: sub.id, id };
+      const canonical = canonicalArticlePath(`/categories/${sub.channelId}/${sub.id}/${id}`).split("/");
+      const target = { channelId: canonical[2], subId: canonical[3], id: canonical[4] };
       if (!rw.has(appSlug)) rw.set(appSlug, target);
       if (!rw.has(id)) rw.set(id, target);
     }
@@ -516,7 +524,7 @@ async function main() {
       throw new Error(`non-URL-safe article ids in ${sub.id}: ${badIds.map(a => a.id).join(", ")}`);
     }
     mkdirSync(OUT_DIR, { recursive: true });
-    writeFileSync(outPath, JSON.stringify(out, null, 2));
+    writeFileSync(outPath, JSON.stringify(canonicalizeArticleLinks(out), null, 2));
     console.log(`  → wrote ${out.length}/${work.length} articles → ${outPath}`);
   }
 }

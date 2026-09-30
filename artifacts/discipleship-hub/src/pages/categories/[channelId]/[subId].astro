@@ -1,5 +1,6 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import { canonicalArticlePath } from "@/data/articleCanonicalPaths.mjs";
 import { Image } from "astro:assets";
 import { subTopics, getChannel, getSubTopic, getSubTopicChildren, getNextSubTopic } from "@/data/channels";
 import { getBookCover } from "@/data/bookCovers";
@@ -15,7 +16,7 @@ import { getCategorySeo } from "@/data/categorySeo";
 
 const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
-  (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
+  (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + canonicalArticlePath(p);
 
 export function getStaticPaths() {
   return subTopics.map(s => ({

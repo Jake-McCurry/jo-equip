@@ -15,6 +15,7 @@
  * All share the ArticleBlock shape so the body renderer is source-agnostic.
  */
 import Layout from "@/layouts/Layout.astro";
+import { canonicalArticlePath, isRetiredArticlePath } from "@/data/articleCanonicalPaths.mjs";
 import { Image } from "astro:assets";
 import { subTopics, getChannel, getSubTopic } from "@/data/channels";
 import { bcgArticles, getBcgArticle } from "@/data/bcgArticles";
@@ -39,7 +40,7 @@ import { getCategorySeo } from "@/data/categorySeo";
 
 const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
-  (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
+  (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + canonicalArticlePath(p);
 
 export function getStaticPaths() {
   /* Walk all sub-topics, emit a path for every item that has an articleId
@@ -56,6 +57,7 @@ export function getStaticPaths() {
     if (!s.items) continue;
     for (const item of s.items) {
       if (!item.articleId) continue;
+      if (isRetiredArticlePath(`/categories/${s.channelId}/${s.id}/${item.articleId}`)) continue;
       if (!known.has(item.articleId) && !hasSiteArticle(s.id, item.articleId)) continue;
       paths.push({ params: { channelId: s.channelId, subId: s.id, articleId: item.articleId } });
     }

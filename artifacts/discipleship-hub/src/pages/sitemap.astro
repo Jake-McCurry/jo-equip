@@ -15,6 +15,7 @@
  * sitemap inventory after each build and fails the build on drift.
  */
 import Layout from "@/layouts/Layout.astro";
+import { canonicalArticlePath } from "@/data/articleCanonicalPaths.mjs";
 import { channels, subTopics } from "@/data/channels";
 import { books } from "@/data/books";
 import { playlists, getAllCanonicalVideos } from "@/data/playlists";
@@ -26,7 +27,7 @@ import { hasSiteArticle } from "@/data/siteArticles";
 
 const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
-  p === "/" ? baseUrl : (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
+  p === "/" ? baseUrl : (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + canonicalArticlePath(p);
 
 /* ---------- Top-level static pages, discovered from the file tree ----------
    Raw-source glob lets us (a) skip pages that declare a robots noindex meta

@@ -18,7 +18,7 @@ const faqs = [
   { question: "What is the best Bible study tool for beginners?", answer: "For beginners, a simple online Bible with an easy-to-understand translation is a good place to start. JO EQUIP from JesusOnline Ministries also offers free Bible study resources to help you read, understand, and apply Scripture. As you grow in your study, you can explore commentaries, Bible dictionaries, and other study tools." },
 ];
 ---
-<section aria-labelledby="bible-tools-ministry-needs">
+<section aria-labelledby="bible-tools-ministry-needs" class="tools-section">
   <h2 id="bible-tools-ministry-needs" class="scroll-mt-28">Bible Study Tools for Different Ministry Needs</h2>
   {ministryNeeds.map(need => (
     <Fragment>
@@ -27,7 +27,7 @@ const faqs = [
     </Fragment>
   ))}
 </section>
-<section aria-labelledby="bible-tools-benefits">
+<section aria-labelledby="bible-tools-benefits" class="tools-section">
   <h2 id="bible-tools-benefits" class="scroll-mt-28">Why Consider Free Online Bible Study Tools from JO EQUIP?</h2>
   <p>JO EQUIP, the ministry resource hub from JesusOnline, offers the best online Bible study tools for pastors, home church leaders, chaplains, missionaries and others at different stages of studying Scripture.</p>
   <p>Here are the benefits of choosing the JO EQUIP online Bible study tools and resources:</p>
@@ -35,7 +35,7 @@ const faqs = [
     {benefits.map(benefit => <li><strong>{benefit.title}:</strong> {benefit.text}</li>)}
   </ul>
 </section>
-<section aria-labelledby="bible-tools-faqs" class="bible-tools-faqs">
+<section aria-labelledby="bible-tools-faqs" class="tools-section bible-tools-faqs">
   <h2 id="bible-tools-faqs" class="scroll-mt-28">FAQs</h2>
   <div class="faq-list">
     {faqs.map(faq => (
@@ -50,17 +50,41 @@ const faqs = [
   </div>
 </section>
 <style>
-  .faq-list { border-top: 1px solid var(--color-border); }
+  /* Parent article styles are Astro-scoped and do not reach these elements.
+     Keep this component's prose spacing consistent with the existing article. */
+  .tools-section { margin-top: 2.25rem; line-height: 1.75; }
+  .tools-section h2 {
+    margin: 0 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-border, #e5e7eb);
+    font-size: 1.5rem;
+    line-height: 1.35;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+  .tools-section h3 {
+    margin: 1.75rem 0 0.5rem;
+    font-size: 1.15rem;
+    line-height: 1.45;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+  .tools-section p { margin: 1rem 0 0; }
+  .tools-section h3 + p { margin-top: 0.5rem; }
+  .tools-section ul { margin: 1rem 0 0; padding-left: 1.5rem; list-style: disc; }
+  .tools-section li + li { margin-top: 1rem; }
+  .tools-section strong { color: var(--color-text); }
+  .faq-list { margin-top: 1.25rem; }
   .faq-item { border-bottom: 1px solid var(--color-border); }
   .faq-item summary {
     display: flex; justify-content: space-between; align-items: center; gap: 1.25rem;
     cursor: pointer; padding: 1.25rem 0; list-style: none;
-    font-size: 1rem; font-weight: 600; color: var(--color-structure);
+    font-size: 1rem; line-height: 1.5; font-weight: 600; color: var(--color-structure);
   }
   .faq-item summary::-webkit-details-marker { display: none; }
   .faq-item summary:focus-visible { outline: 2px solid var(--color-brand, #0095ff); outline-offset: 4px; }
   .faq-icon { flex-shrink: 0; font-size: 1.5rem; line-height: 1; color: var(--color-accent); }
   .faq-item[open] .faq-icon { transform: rotate(45deg); }
   .faq-answer { padding: 0 1.75rem 1.25rem 0; }
-  .faq-answer p { margin: 0; }
+  .tools-section .faq-answer p { margin: 0; line-height: 1.75; }
 </style>

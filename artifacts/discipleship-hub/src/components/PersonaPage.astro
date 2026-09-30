@@ -28,6 +28,12 @@ interface Faq {
   answer: string[];
 }
 
+interface FaqLink {
+  sentence: string;
+  text: string;
+  href: string;
+}
+
 interface Props {
   heading: string;
   intro: string[]; // paragraphs
@@ -39,13 +45,39 @@ interface Props {
   playlistIds: string[];
   closing: string[]; // paragraphs
   faqs?: Faq[];
+  faqLinks?: FaqLink[];
+  linkIntroHome?: boolean;
+  linkLeadVideos?: boolean;
 }
 
-const { heading, intro, articles, booksNote, bookIds, topics, playlistsNote, playlistIds, closing, faqs = [] } = Astro.props;
+const { heading, intro, articles, booksNote, bookIds, topics, playlistsNote, playlistIds, closing, faqs = [], faqLinks = [], linkIntroHome = false, linkLeadVideos = false } = Astro.props;
 
 const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
   (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
+
+// Opt-in links leave the underlying paragraph/FAQ text unchanged.
+const introParagraphs = intro.map((p, index) =>
+  linkIntroHome && index === 0
+    ? p.replace(/(<strong[^>]*>JO EQUIP<\/strong>)/, `<a href="${join("/")}" class="persona-inline-link" data-testid="link-persona-intro-home">$1</a>`)
+    : p
+);
+const faqAnswerParts = (answer: string) => {
+  let parts: { text: string; href?: string }[] = [{ text: answer }];
+  for (const link of faqLinks.filter(link => answer.includes(link.sentence))) {
+    parts = parts.flatMap(part => {
+      if (part.href) return [part];
+      const index = part.text.indexOf(link.text);
+      if (index < 0) return [part];
+      return [
+        { text: part.text.slice(0, index) },
+        { text: link.text, href: join(link.href) },
+        { text: part.text.slice(index + link.text.length) },
+      ];
+    });
+  }
+  return parts;
+};
 
 const featuredBooks = bookIds
   .map(id => books.find(b => b.id === id))
@@ -94,7 +126,7 @@ const quickLinks = [
   <div class="container mx-auto px-4 py-12 md:py-16 max-w-4xl">
     <h1 class="text-2xl md:text-3xl mb-4" style="color:var(--color-structure);">{heading}</h1>
     <div class="h-0.5 w-12 mb-7" style="background-color:var(--color-accent);"></div>
-    {intro.map(p => (
+    {introParagraphs.map(p => (
       <p class="text-lg leading-relaxed mb-5 last:mb-0" style="color:var(--color-text-muted);" set:html={p} />
     ))}
     <p class="text-sm font-semibold tracking-wide uppercase mt-8" style="color:var(--color-text);">
@@ -233,15 +265,19 @@ const quickLinks = [
         Answers to common questions about free discipleship resources for pastors.
       </p>
       <div class="border-t" style="border-color:var(--color-border);">
-        {faqs.map(faq => (
+        {faqs.map((faq, faqIndex) => (
           <details class="group border-b" style="border-color:var(--color-border);">
             <summary class="flex items-center justify-between gap-5 cursor-pointer py-4 text-[15px] md:text-base font-semibold list-none" style="color:var(--color-structure);">
               <span>{faq.question}</span>
               <span aria-hidden="true" class="shrink-0 text-2xl leading-none transition-transform duration-200 group-open:rotate-45" style="color:var(--color-accent);">+</span>
             </summary>
             <div class="pb-5 pr-8">
-              {faq.answer.map(answer => (
-                <p class="text-[15px] md:text-base leading-relaxed mb-3 last:mb-0" style="color:var(--color-text-muted);">{answer}</p>
+              {faq.answer.map((answer, answerIndex) => (
+                <p class="text-[15px] md:text-base leading-relaxed mb-3 last:mb-0" style="color:var(--color-text-muted);">
+                  {faqAnswerParts(answer).map((part, partIndex) => part.href ? (
+                    <a href={part.href} class="persona-inline-link" data-testid={`link-persona-faq-${faqIndex}-${answerIndex}-${partIndex}`}>{part.text}</a>
+                  ) : part.text)}
+                </p>
               ))}
             </div>
           </details>
@@ -256,7 +292,10 @@ const quickLinks = [
   <div class="container mx-auto px-4 max-w-4xl">
     <h2 class="text-2xl md:text-3xl font-semibold mb-4" style="color:var(--color-structure);">Lead Them to Christ</h2>
     <p class="text-[15px] md:text-base leading-relaxed mb-6" style="color:var(--color-text-muted);">
-      Share the gospel with someone using one of these JO EQUIP videos. Many believers struggle
+      Share the gospel with someone using one of these{" "}
+      {linkLeadVideos ? (
+        <a href={join("/playlists")} class="persona-inline-link" data-testid="link-persona-lead-videos">JO EQUIP videos</a>
+      ) : "JO EQUIP videos"}. Many believers struggle
       with finding the right words when sharing the good news. These clear, approximately
       10-minute videos explain the gospel and end with a prayer of salvation.
     </p>
@@ -307,6 +346,19 @@ const quickLinks = [
 </section>
 
 <style>
+  :global(.persona-inline-link) {
+    color: var(--color-action-warm);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  :global(.persona-inline-link:hover) {
+    text-decoration-thickness: 2px;
+  }
+  :global(.persona-inline-link:focus-visible) {
+    outline: 2px solid var(--color-action-warm);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
   .topic-chip {
     border-color:var(--color-brand);
     color:var(--color-text);

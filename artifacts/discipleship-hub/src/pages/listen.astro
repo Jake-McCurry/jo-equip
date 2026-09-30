@@ -2,6 +2,10 @@
 import Layout from "@/layouts/Layout.astro";
 import { Headphones, Volume2, Chrome, Smartphone, Apple, ExternalLink } from "lucide-react";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
+
+const baseUrl = import.meta.env.BASE_URL;
+const join = (p: string) =>
+  (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
 ---
 <Layout
   title="Listen to JO EQUIP Articles | Free Text-to-Speech"
@@ -24,7 +28,7 @@ import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
       <h1 class="text-4xl md:text-5xl mb-4" style="color:var(--color-structure);">Listen to JO EQUIP</h1>
       <div class="h-0.5 w-12 mb-5" style="background-color:var(--color-accent);"></div>
       <p class="leading-relaxed text-lg" style="color:var(--color-muted-foreground);">
-        Prefer to listen instead of read? Have JO EQUIP articles read aloud to you with these free,
+        Prefer to listen instead of read? Have <a href={join("/")} class="underline underline-offset-2 hover:opacity-80">JO EQUIP</a> articles read aloud to you with these free,
         built-in tools — perfect for driving, exercising, or giving your eyes a rest. Pick the option
         that matches the device you're using right now.
       </p>

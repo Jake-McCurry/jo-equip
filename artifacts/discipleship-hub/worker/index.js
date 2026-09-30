@@ -285,6 +285,7 @@ async function handleSubscribe(request, env, ctx) {
 }
 
 import { handleBible } from "./bible.js";
+import { canonicalArticlePath } from "../src/data/articleCanonicalPaths.mjs";
 
 export default {
   async fetch(request, env, ctx) {
@@ -334,7 +335,9 @@ export default {
     const renamed = /^\/channels(\/|$)/.test(target);
     if (renamed) target = target.replace(/^\/channels/, "/categories") || "/categories";
     target = MOVED[target] ?? target;
-    if (renamed || MOVED[url.pathname.replace(/\/+$/, "")]) {
+    const canonicalTarget = canonicalArticlePath(target);
+    if (renamed || MOVED[url.pathname.replace(/\/+$/, "")] || canonicalTarget !== target) {
+      target = canonicalTarget;
       return Response.redirect(new URL(target + url.search, url.origin), 301);
     }
 

@@ -4,20 +4,22 @@
     "description": "Explore free church ministry resources, including practical tools and training to help pastors and leaders make disciples, share Jesus, and grow healthy churches."
   },
   "/categories/church/total-life-discipleship-principles": {
-    "title": "Total Life Discipleship Principles | JO EQUIP",
-    "description": "Explore a holistic, Kingdom-centered approach to discipleship, from personal transformation and spiritual growth to lasting impact in others' lives."
+    "title": "Total Life Discipleship: Principles for Holistic Christian Growth",
+    "description": "Explore Total Life Discipleship principles for holistic Christian growth, helping believers follow Jesus, grow in faith, and live out their identity in Christ."
   },
   "/categories/church/tld-core-principles/identity-centered-heart-transformation": {
     "title": "Identity-Centered Heart Transformation | JO EQUIP",
     "description": "God transforms the heart through identity in Christ, a true view of God, and Spirit dependence."
   },
   "/categories/church/become-growing-church": {
-    "title": "Become a Growing Church: Kingdom-Focused Growth | JO EQUIP",
-    "description": "Explore a Kingdom-centered vision for church growth through transformational teaching, Spirit dependence, worship, relationships, and the Great Commission."
+    "title": "Church Growth Resources: Become a Growing Church",
+    "description": "Explore church growth resources for growing a church through discipleship, church growth strategies, and practical tools for church leaders.",
+    "h1": "Church Growth Resources"
   },
   "/categories/church/sermon-toolbox": {
-    "title": "Sermon Toolbox: Biblical Teaching Resources | JO EQUIP",
-    "description": "Explore Bible study and sermon-planning resources for developing biblically grounded messages that encourage Kingdom maturity."
+    "title": "Sermon Resources: Tools for Sermon Preparation & Planning",
+    "description": "Explore sermon resources, preparation tools, and planning resources to help pastors and church leaders develop meaningful, Bible-based sermons.",
+    "h1": "Sermon Resources"
   },
   "/categories/church/bibleproject-ot": {
     "title": "Old Testament Book Overview Videos | JO EQUIP",
@@ -28,16 +30,18 @@
     "description": "Browse BibleProject video overviews of New Testament books, including the Gospels, Acts, letters, and Revelation."
   },
   "/categories/church/biblical-counseling-insights": {
-    "title": "Biblical Counseling Insights and Resources | JO EQUIP",
-    "description": "Explore biblical counseling topics for individuals and families, including spiritual healing, inner peace, and living in God's ways."
+    "title": "Biblical Counseling Resources for Churches & Ministry Leaders",
+    "description": "Discover biblical counseling resources and christian counseling tools designed to help pastors and ministry leaders offer wise, Scripture-based guidance and support.",
+    "h1": "Biblical Counseling Resources"
   },
   "/categories/church/rapid-church-planting": {
-    "title": "Rapid Church Planting Training | JO EQUIP",
-    "description": "Study Joshua Nations church planting lessons on vision, planning, teams, outreach, regular gatherings, and discipling new believers."
+    "title": "Church Planting Training, Resources & Tools | JO Equip",
+    "description": "Explore church planting resources, training, strategies, guides, and tools to help leaders start, multiply, develop, and grow healthy churches.",
+    "h1": "Church Planting Resources for Leaders"
   },
   "/categories/growth/attributes-of-god": {
-    "title": "Attributes of God: His Character in Scripture | JO EQUIP",
-    "description": "Study God's character through lessons on his self-existence, sovereignty, holiness, love, and other attributes revealed in Scripture."
+    "title": "Attributes of God: Biblical Resources on His Character | JO EQUIP",
+    "description": "Explore the attributes of God through biblical articles, videos, and PDFs covering His self-existence, sovereignty, holiness, love, and majestic character."
   },
   "/categories/growth/attributes-of-god/a-balanced-vision-of-god": {
     "title": "A Balanced Vision of God's Character | JO EQUIP",
@@ -124,19 +128,19 @@
     "description": "Explore God's wisdom in creation and his works through passages from Proverbs, the Psalms, and Daniel."
   },
   "/categories/growth/identity-in-christ": {
-    "title": "Your Identity in Christ: Christian Growth | JO EQUIP",
-    "description": "Explore what the Bible says about your new identity in Christ and lessons on living as God's child, part of Christ's body, and a citizen of his Kingdom."
+    "title": "Identity in Christ: Biblical Resources for Christian Growth | JO EQUIP",
+    "description": "Learn what the Bible teaches about identity in Christ, your new identity, and who you are in Christ through practical discipleship resources."
   },
   "/categories/growth/ministry-holy-spirit": {
-    "title": "Walking in the Spirit: Christian Living | JO EQUIP",
-    "description": "Study the Holy Spirit's work in believers through lessons on surrender, being filled with the Spirit, daily dependence, and spiritual fruit."
+    "title": "Walking in the Spirit: Christian Resources & Teaching | JO EQUIP",
+    "description": "Discover biblical articles, videos, and resources on walking in the Holy Spirit, being filled with the Spirit, and growing in life through the Spirit."
   },
   "/categories/growth/hope-times-crisis": {
-    "title": "Hope in Times of Crisis: Biblical Encouragement | JO EQUIP",
-    "description": "Find lessons on God's presence, promises, guidance, prayer, and peace for reflecting on biblical hope during difficult times."
+    "title": "Hope in Times of Crisis: Christian Resources for Difficult Times",
+    "description": "Explore Christian resources on finding hope in times of crisis, trusting God through difficult circumstances, and strengthening your faith when life is challenging."
   },
   "/categories/growth/bible-promises-hope": {
-    "title": "Bible Promises for Hope in Every Season | JO EQUIP",
-    "description": "Explore Bible promises about God's authority and encouragement for your circumstances, feelings, relationships, identity, and future."
+    "title": "Bible Promises for Hope: Encouragement for Difficult Times | JO EQUIP",
+    "description": "Explore Bible promises that offer hope and encouragement in difficult times, with Scripture-based reminders of God's faithfulness, presence, and promises."
   }
 }

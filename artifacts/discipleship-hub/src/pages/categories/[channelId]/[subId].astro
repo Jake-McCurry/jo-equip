@@ -1,5 +1,6 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import { canonicalArticlePath } from "@/data/articleCanonicalPaths.mjs";
 import { Image } from "astro:assets";
 import { subTopics, getChannel, getSubTopic, getSubTopicChildren, getNextSubTopic } from "@/data/channels";
 import { getBookCover } from "@/data/bookCovers";
@@ -15,7 +16,7 @@ import { getCategorySeo } from "@/data/categorySeo";
 
 const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
-  (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
+  (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + canonicalArticlePath(p);
 
 export function getStaticPaths() {
   return subTopics.map(s => ({
@@ -136,7 +137,7 @@ const seo = getCategorySeo(`/categories/${channel.id}/${sub.id}`);
     <div class="absolute inset-0 pointer-events-none" style="background-image:repeating-linear-gradient(45deg, rgba(255,255,255,0.05) 0, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 18px);"></div>
     <div class="absolute -top-20 -right-20 w-72 h-72 rounded-full pointer-events-none" style="background-color:rgba(255,255,255,0.08);filter:blur(20px);"></div>
     <div class="container mx-auto px-4 py-7 md:py-9 relative max-w-5xl">
-      <h1 class="text-3xl md:text-5xl mb-2" style="color:#ffffff;font-weight:600;">{showFullHeroTitle ? sub.name : heroTitle.main}</h1>
+      <h1 class="text-3xl md:text-5xl mb-2" style="color:#ffffff;font-weight:600;">{seo?.h1 ?? (showFullHeroTitle ? sub.name : heroTitle.main)}</h1>
       {sub.description && (
         <p class="text-base md:text-lg max-w-3xl" style="color:#ffffff;">{sub.description}</p>
       )}

@@ -5,6 +5,7 @@ import pagefind from "astro-pagefind";
 import tailwindcss from "@tailwindcss/vite";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { articleRedirectLocation } from "./src/data/articleCanonicalPaths.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -29,6 +30,22 @@ export default defineConfig({
      Adds ~1KB of JS but eliminates next-page wait. */
   prefetch: { defaultStrategy: "viewport" },
   integrations: [
+    {
+      name: "article-redirects-raw-dev-url",
+      hooks: {
+        "astro:server:setup": ({ server }) => {
+          // Static-route rendering discards search parameters before Astro
+          // middleware. Redirect earlier using Node's original request URL.
+          server.middlewares.use((request, response, next) => {
+            const location = request.url && articleRedirectLocation(request.url, base);
+            if (!location) return next();
+            response.statusCode = 301;
+            response.setHeader("Location", location);
+            response.end();
+          });
+        },
+      },
+    },
     {
       name: "isolated-vite-cache",
       hooks: {

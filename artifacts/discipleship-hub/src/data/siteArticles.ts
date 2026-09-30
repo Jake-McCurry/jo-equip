@@ -11,6 +11,7 @@
  */
 
 import type { ArticleBlock } from "./bcgArticles";
+import { canonicalizeArticleLinks } from "./articleCanonicalPaths.mjs";
 
 export interface SiteArticle {
   id: string;
@@ -60,7 +61,7 @@ for (const article of localArticles) {
   merged.set(`${article.subId}/${article.id}`, article);
 }
 
-export const siteArticles: SiteArticle[] = [...merged.values()];
+export const siteArticles: SiteArticle[] = canonicalizeArticleLinks([...merged.values()]);
 
 const byKey = new Map(siteArticles.map(a => [`${a.subId}/${a.id}`, a]));
 

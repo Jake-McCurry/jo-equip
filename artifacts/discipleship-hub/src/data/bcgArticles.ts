@@ -155,7 +155,7 @@ export const bcgArticles: BcgArticle[] = [
       { type: "p", html: "We provide high-quality, free media and discipleship resources created specifically to assist you in faithfully equipping the flock God has entrusted to you." },
       { type: "figure", src: "bgc2-3", alt: "The Toolkit for Engagement: JO EQUIP Resources — Watch (capture attention immediately), Learn (deepen your content), Live (drive lasting impact)." },
 
-      { type: "p", html: "<strong>JO EQUIP</strong> is a free digital library of practical discipleship tools for pastors and disciple-makers — carefully organized into three mission-driven categories so you can find exactly what you need, when you need it." },
+      { type: "p", html: '<strong>JO EQUIP</strong> is a free digital library of practical <a href="/pastors">discipleship tools for pastors</a> and disciple-makers — carefully organized into three mission-driven categories so you can find exactly what you need, when you need it.' },
       { type: "p", html: "JesusOnline offers free <em>Watch → Learn → Live</em> resources to strengthen engagement, depth, and retention in your ministry." },
 
       { type: "h3", text: "1. Watch" },
@@ -469,7 +469,7 @@ export const bcgArticles: BcgArticle[] = [
       { type: "figure", src: "bgc6s2-5", alt: "Five God-centered shifts in perspective — instead of your circumstances, focus on God’s majesty; instead of limited resources, God’s faithfulness; instead of worries about tomorrow, today’s blessings; instead of predicting the future, the next step; instead of adversity, God’s supernatural presence." },
       { type: "p", html: "Through such intentional, Scripture-saturated guidance, a church not only sustains its members but equips them to walk as beacons of hope in their daily lives." },
       { type: "p", html: "JesusOnline stands ready as a faithful partner, offering a treasury of free resources to help your church fully embrace and reflect this hope-filled identity. These resources equip you not merely to teach, but to create weekly encounters where the God of hope moves powerfully among His people. Through them, both first-time visitors and longtime believers can experience the refreshing work described in Romans 15:13 — being filled with joy and peace as they trust in Him, overflowing with hope by the power of the Holy Spirit." },
-      { type: "p", html: "In a world hungry for assurance, JesusOnline resources help transform your church into a vibrant wellspring of renewal: a place where burdens are lifted, perspectives are renewed, and hearts are continually pointed toward the living hope found in Christ alone." },
+      { type: "p", html: 'In a world hungry for assurance, <a href="/">JesusOnline resources</a> help transform your church into a vibrant wellspring of renewal: a place where burdens are lifted, perspectives are renewed, and hearts are continually pointed toward the living hope found in Christ alone.' },
 
       ...WLL,
       { type: "h3", text: "Hope Resources" },

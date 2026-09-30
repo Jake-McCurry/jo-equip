@@ -14,6 +14,8 @@ const bookDeepLinks = Object.fromEntries(
 );
 
 const categoryOrderedBooks = bookCategories.flatMap(c => c.books);
+const pageTitle = "Christian Books Online: Free Discipleship & Ministry Books";
+const pageDesc = "Browse free Christian books online for believers, pastors, believers, and ministry leaders, covering discipleship, evangelism, prayer, devotionals, and Christian growth.";
 
 /* JSON-LD: a CollectionPage that contains an ItemList of Book entries.
    Each Book is marked free + downloadable so Google can show it in
@@ -23,7 +25,8 @@ const booksJsonLd = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   "@id": `${SITE}/books#collection`,
-  "name": "Free Christian Discipleship Books (PDF) | JO EQUIP",
+  "name": pageTitle,
+  "description": pageDesc,
   "url": `${SITE}/books`,
   "isPartOf": { "@id": `${SITE}/#website` },
   "mainEntity": {
@@ -64,8 +67,8 @@ const booksJsonLd = {
 };
 ---
 <Layout
-  title="Free Christian Discipleship Books (PDF) | JO EQUIP"
-  description="Download free PDF books on discipleship, evangelism, evidence for Jesus, prayer and Christian growth for pastors, ministry leaders and believers."
+  title={pageTitle}
+  description={pageDesc}
 >
   <Fragment slot="head">
     <BreadcrumbsLd items={[
@@ -82,7 +85,7 @@ const booksJsonLd = {
         </div>
         <span class="text-xs font-semibold tracking-widest uppercase" style="color:var(--color-accent);">Reading Library</span>
       </div>
-      <h1 class="text-4xl md:text-5xl mb-4" style="color:var(--color-structure);">Books</h1>
+      <h1 class="text-4xl md:text-5xl mb-4" style="color:var(--color-structure);">Christian Books Online</h1>
       <div class="h-0.5 w-12 mb-5" style="background-color:var(--color-accent);"></div>
       <p class="leading-relaxed text-lg" style="color:var(--color-muted-foreground);">
         Read these free books online — open any of them in a new tab, then download to keep or share.

@@ -30,11 +30,15 @@ const join = (p: string) =>
 
 const byline = book.author ? ` by ${book.author}` : "";
 const fullTitle = book.subtitle ? `${book.title}: ${book.subtitle}` : book.title;
-const pageTitle = `${fullTitle} · Free Download · JO EQUIP`;
+const pageTitle = book.id === "a-heart-after-god"
+  ? "A Heart After God: Christian Devotional Book | JO EQUIP"
+  : `${fullTitle} · Free Download · JO EQUIP`;
 const languageNote = alternateEditions.length > 0
   ? ` Available in English and ${alternateEditions.map(edition => edition.language).join(", ")}.`
   : "";
-const pageDesc = book.description
+const pageDesc = book.id === "a-heart-after-god"
+  ? "Download A Heart After God, a Christian devotional book with seven reflections on the inner life, guarding your heart, identity in Christ, and the Holy Spirit."
+  : book.description
   ? `${book.description} Free PDF download from JesusOnline Ministries Equip.${languageNote}`
   : `Free PDF download — ${fullTitle}${byline}. A practical discipleship resource from JesusOnline Ministries Equip.${languageNote}`;
 

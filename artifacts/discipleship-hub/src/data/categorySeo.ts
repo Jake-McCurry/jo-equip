@@ -4,6 +4,7 @@ import categorySeoOverrides from "./categorySeoOverrides.json" with { type: "jso
 export interface CategorySeoMetadata {
   title: string;
   description: string;
+  h1?: string;
 }
 
 export interface CategorySeoRow extends CategorySeoMetadata {

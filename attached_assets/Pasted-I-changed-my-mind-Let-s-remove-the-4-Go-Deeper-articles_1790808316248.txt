@@ -1,0 +1,92 @@
+I changed my mind. Let’s remove the 4 Go Deeper articles (below) and 4 under “MORE TO EXPLORE”:
+The Holy Spirit
+The Bible
+Struggling with Destructive Behavior?
+Fleeing Temptation
+
+Here is why:
+The Holy Spirit and The Bible are lists of Bible verses. We have a different plan for this type of resource.
+Struggling with Destructive Behavior is a whole set of articles, which are currently missing. The introductory article we have now doesn’t help much by itself.
+Fleeing temptation also requires a lot more to make sense.
+
+
+The four Go Deeper articles are somewhat duplicates of what people can now find in the ALJ main and Go Deeper articles. To avoid confusion, I want to remove these as well.
+
+That means, however, the current links to these articles in FAQs need to be redirected.
+
+I also want to refine the FAQs.
+
+There should be no line under the main title.
+At the bottom, the white right box should be linked to "Begin the Adventure”.
+
+How Do I Know This Is Real?
+
+The first paragraph that ends with the link “Learn more about who God is” should go under “Has God really forgiven me for my sin?” That’s part of the answer.
+
+Delete “Learn more about “How to Experience God’s Forgiveness”
+Replace “Learn more about “Assurance of Your Salvation” with “Learn more about becoming a “Citizen of Heaven” >>>
+
+What Do I Do Now?
+
+“Congratulations!” goes with the first sentence in the box.
+
+I Want to Know Jesus Better
+
+Move the first paragraph under the title to the top of the main text box above “The Bible”
+
+How Should I Handle My Current Relationships?
+
+Move the first paragraph under the main title to the top of the text box above “1 Start with Love"
+
+Delete: “Learn more about how to “Experience God’s Love”
+
+I Am Afraid...
+
+Ditto. There should be no text under the main title
+
+I Have Questions About Church
+
+.The same with the first paragraph under the main title.
+
+More Questions?
+
+Ditto.
+
+Delete: Learn more about overcoming old habits and sins: “Struggling with Destructive Behavior?”
+Delete: Learn more about “Fleeing Temptation”
+Delete: Learn “Spiritual Breathing” to maintain your fellowship with God
+
+Questions for Returning to Jesus
+
+No text under the main title. This applies to all 7 articles
+
+I feel ashamed or distant...
+ 
+Place the passage (Luke 15:11-24) under the title “Have you read the story Jesus told?”
+Remove reference numbers from the passage. I thought it might be helpful for new believers, but actually they look more confusing. 
+Add paragraph breaks: a new paragraph starting 15:17, 15:20, and 15:22.
+
+There is a weird formatting issue: Romans 8:38-39)
+The parenthesis ( is separated, depending on the width of the window. 
+
+How Should I Handle the Relationships?
+
+Delete “Learn more about how to “Experience God’s Love”
+
+I Have Questions about Getting Connected Again
+
+Is it possible to link “Prodigal Son in Luke 15" under “Should I get baptized again?” to NET Bible Luke 15:11? If not, change Luke 15 to Luke 15:11-24.
+
+I Want to Know Jesus More Deeply
+
+Replace with a new version, v.092926 (attached).
+
+More Questions
+
+The paragraph under the main title should go under the first question, “Does God still want me after I walked away?”
+
+Change the first “Examine the evidence for yourself” to “Examine the evidence for Jesus’ true identity” and link to https://app.jesusonline.com/series/73
+
+Change the first “Examine the evidence for yourself” to “Examine the evidence for the reliability of the Bible” and link to https://app.jesusonline.com/series/72
+
+I think that’s it for refinement, for now. 😀

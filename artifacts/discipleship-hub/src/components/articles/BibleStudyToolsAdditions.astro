@@ -1,0 +1,90 @@
+---
+const ministryNeeds = [
+  { title: "Bible Study Tools for Pastors", text: "Pastors can use the Bible study tools to prepare sermons, explore Scripture in greater depth, and develop biblically grounded teaching." },
+  { title: "Bible Study Tools for Home Church Leaders", text: "Home church leaders can use JO EQUIP Bible study tools to study, prepare Bible discussions, and encourage meaningful discipleship." },
+  { title: "Bible Study Tools for Chaplains", text: "Chaplains can use our Bible study tools to better understand and communicate Scripture when providing spiritual care and encouragement." },
+  { title: "Bible Study Tools for Missionaries", text: "Missionaries can use the Bible study tools to deepen their understanding and prepare for teaching and discipleship across different ministry contexts." },
+];
+const benefits = [
+  { title: "Deeper Understanding", text: "Our free online Bible study tools help you gain a deeper understanding of God’s Word and explore connections between different passages." },
+  { title: "Historical and Cultural Clarity", text: "Resources like study Bibles and atlases reveal the original context, idioms, and backgrounds of ancient audiences." },
+  { title: "Structure and Consistency", text: "Workbooks and guided digital tools provide daily direction and keep you grounded in a steady routine." },
+  { title: "Practical Application", text: "Our Bible study tools and resources bridge the gap between academic interpretation and personal transformation in your everyday life." },
+];
+const faqs = [
+  { question: "What are Bible Study Tools?", answer: "Bible study tools are resources, books, and digital platforms that help readers understand, study, interpret, and apply Scripture. They include Bible translations, commentaries, dictionaries, concordances, study guides, and other resources that provide helpful context and insights into Scripture. JO EQUIP from JesusOnline Ministries brings many of these resources together to help pastors, leaders, and Bible students explore Scripture, know God more deeply, and grow in His Word." },
+  { question: "Where can I find free Bible study tools?", answer: "You can find free Bible study tools on websites like JO EQUIP from JesusOnline Ministries, which offers free animated overviews, podcasts, and guides." },
+  { question: "What Bible study tools are useful for pastors, chaplains, and home church leaders?", answer: "Essential Bible study tools that are useful for pastors, chaplains, and home church leaders include comprehensive platforms, background commentaries, and original-language references that streamline sermon and lesson preparation." },
+  { question: "What is the best Bible study tool for beginners?", answer: "For beginners, a simple online Bible with an easy-to-understand translation is a good place to start. JO EQUIP from JesusOnline Ministries also offers free Bible study resources to help you read, understand, and apply Scripture. As you grow in your study, you can explore commentaries, Bible dictionaries, and other study tools." },
+];
+---
+<section aria-labelledby="bible-tools-ministry-needs" class="tools-section">
+  <h2 id="bible-tools-ministry-needs" class="scroll-mt-28">Bible Study Tools for Different Ministry Needs</h2>
+  {ministryNeeds.map(need => (
+    <Fragment>
+      <h3>{need.title}</h3>
+      <p>{need.text}</p>
+    </Fragment>
+  ))}
+</section>
+<section aria-labelledby="bible-tools-benefits" class="tools-section">
+  <h2 id="bible-tools-benefits" class="scroll-mt-28">Why Consider Free Online Bible Study Tools from JO EQUIP?</h2>
+  <p>JO EQUIP, the ministry resource hub from JesusOnline, offers the best online Bible study tools for pastors, home church leaders, chaplains, missionaries and others at different stages of studying Scripture.</p>
+  <p>Here are the benefits of choosing the JO EQUIP online Bible study tools and resources:</p>
+  <ul>
+    {benefits.map(benefit => <li><strong>{benefit.title}:</strong> {benefit.text}</li>)}
+  </ul>
+</section>
+<section aria-labelledby="bible-tools-faqs" class="tools-section bible-tools-faqs">
+  <h2 id="bible-tools-faqs" class="scroll-mt-28">FAQs</h2>
+  <div class="faq-list">
+    {faqs.map(faq => (
+      <details class="faq-item">
+        <summary>
+          <span>{faq.question}</span>
+          <span aria-hidden="true" class="faq-icon">+</span>
+        </summary>
+        <div class="faq-answer"><p>{faq.answer}</p></div>
+      </details>
+    ))}
+  </div>
+</section>
+<style>
+  /* Parent article styles are Astro-scoped and do not reach these elements.
+     Keep this component's prose spacing consistent with the existing article. */
+  .tools-section { margin-top: 2.25rem; line-height: 1.75; }
+  .tools-section h2 {
+    margin: 0 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-border, #e5e7eb);
+    font-size: 1.5rem;
+    line-height: 1.35;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+  .tools-section h3 {
+    margin: 1.75rem 0 0.5rem;
+    font-size: 1.15rem;
+    line-height: 1.45;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+  .tools-section p { margin: 1rem 0 0; }
+  .tools-section h3 + p { margin-top: 0.5rem; }
+  .tools-section ul { margin: 1rem 0 0; padding-left: 1.5rem; list-style: disc; }
+  .tools-section li + li { margin-top: 1rem; }
+  .tools-section strong { color: var(--color-text); }
+  .faq-list { margin-top: 1.25rem; }
+  .faq-item { border-bottom: 1px solid var(--color-border); }
+  .faq-item summary {
+    display: flex; justify-content: space-between; align-items: center; gap: 1.25rem;
+    cursor: pointer; padding: 1.25rem 0; list-style: none;
+    font-size: 1rem; line-height: 1.5; font-weight: 600; color: var(--color-structure);
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary:focus-visible { outline: 2px solid var(--color-brand, #0095ff); outline-offset: 4px; }
+  .faq-icon { flex-shrink: 0; font-size: 1.5rem; line-height: 1; color: var(--color-accent); }
+  .faq-item[open] .faq-icon { transform: rotate(45deg); }
+  .faq-answer { padding: 0 1.75rem 1.25rem 0; }
+  .tools-section .faq-answer p { margin: 0; line-height: 1.75; }
+</style>

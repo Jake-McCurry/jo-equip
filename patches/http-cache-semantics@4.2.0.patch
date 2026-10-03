@@ -1,0 +1,41 @@
+diff --git a/index.js b/index.js
+--- a/index.js
++++ b/index.js
+@@ -385,6 +385,13 @@
+     evaluateRequest(req) {
+         this._assertRequestHasHeaders(req);
+ 
++        // GHSA-ch52-4w7c-c8xp: max-stale must not resurrect responses whose
++        // freshness was zeroed for security (cookies, private/no-store,
++        // authorization, no-cache, or proxy-revalidate).
++        if (this.maxAge() <= 0) {
++            return this._evaluateRequestMissResult(req);
++        }
++
+         // In all circumstances, a cache MUST NOT ignore the must-revalidate directive
+         if (this._rescc['must-revalidate']) {
+             return this._evaluateRequestMissResult(req);
+@@ -664,6 +671,7 @@
+      * @returns {number} Time-to-live in milliseconds.
+      */
+     timeToLive() {
++        if (this.maxAge() <= 0) return 0;
+         const age = this.maxAge() - this.age();
+         const staleIfErrorAge = age + toNumberOrZero(this._rescc['stale-if-error']);
+         const staleWhileRevalidateAge = age + toNumberOrZero(this._rescc['stale-while-revalidate']);
+@@ -683,6 +691,7 @@
+      * @returns {boolean} `true` if `stale-if-error` condition allows use of a stale response.
+      */
+     _useStaleIfError() {
++        if (this.maxAge() <= 0) return false;
+         return this.maxAge() + toNumberOrZero(this._rescc['stale-if-error']) > this.age();
+     }
+ 
+@@ -690,6 +699,7 @@
+      * @returns {boolean} `true` if `stale-while-revalidate` is currently allowed.
+      */
+     useStaleWhileRevalidate() {
++        if (this.maxAge() <= 0) return false;
+         const swr = toNumberOrZero(this._rescc['stale-while-revalidate']);
+         return swr > 0 && this.maxAge() + swr > this.age();
+     }

@@ -8,6 +8,7 @@
     "build": "pnpm run validate:books && pnpm run validate:worker && pnpm run test:consolidation && pnpm run validate:knowing-god && node scripts/check-book-gate-parity.mjs && astro build && node scripts/apply-external-link-nofollow.mjs && node scripts/build-sitemaps.mjs && VERIFY_CONSOLIDATION_BUILD=1 node --test scripts/article-consolidation.test.mjs",
     "serve": "astro preview --host 0.0.0.0",
     "typecheck": "astro check",
+    "test:dependency-security": "node --test scripts/dependency-security.test.mjs",
     "validate:books": "node --test scripts/book-library.test.mjs",
     "validate:worker": "node --test scripts/worker-subscribe.test.mjs",
     "test:consolidation": "node --test scripts/article-consolidation.test.mjs",

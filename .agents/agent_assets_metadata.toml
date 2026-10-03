@@ -469,3 +469,17 @@ mtime_ms = 1789680866611
 storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/02b15bec-734d-4816-bf3c-32f904c51c3c/9a47a36a-ebd2-4f09-ae78-56e8181e8a7c"
 storage_version_token = "1789680941822074"
 content_type = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+
+[[outputs]]
+id = "9LdXWm2ZRS4I29rmNhtZz"
+uri = "file://outputs/weekly-review/JO-EQUIP-Weekly-Changes-2026-09-27-to-2026-10-03.xlsx"
+type = "table"
+title = "Weekly Changes Review — September 27–October 3"
+description = "211 individual review rows with status dropdowns and notes, plus file history and exact code changes. Completed work, verification-only checks, and deferred requests are distinguished."
+logical_id = "662cb67b-23bf-439d-a802-b0729d39be97"
+content_hash = "sha256:46ef85806d8d0457918666a1925f435c7bc7f043d89670cf64cd17e27d119910"
+size = 164567
+mtime_ms = 1791047794807
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/662cb67b-23bf-439d-a802-b0729d39be97/f7a52e53-1b5d-427b-ae9a-348dd8a5e4cd"
+storage_version_token = "1791047799138368"
+content_type = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"

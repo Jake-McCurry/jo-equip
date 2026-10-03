@@ -2,11 +2,12 @@
 
 ## Project Overview
 
-This repository is a pnpm monorepo with several artifacts, but the meaningful production surface for this scan is the public JO EQUIP site in `artifacts/discipleship-hub`. That site is a static Astro application deployed behind a Cloudflare Worker (`worker/index.js`) that serves static assets and handles `POST /api/subscribe` for book-download email capture forwarding to Virtuous CRM. A separate Replit autoscale deployment exists for this workspace, but the checked-in Express app currently exposes only a health endpoint and does not process user accounts, payments, uploads, or user-owned server state.
+This repository is a pnpm monorepo with several artifacts, but the meaningful production surface for this scan is the public JO EQUIP site in `artifacts/discipleship-hub`. That site is a static Astro application deployed behind a Cloudflare Worker (`worker/index.js`) that serves static assets and handles `POST /api/subscribe` for book-download email capture forwarding to Virtuous CRM, plus read-only proxy endpoints `GET /api/bible` (Bible chapter reader) and `GET /api/geo` (visitor country). A separate Replit autoscale deployment exists for this workspace, but the checked-in Express app currently exposes only a health endpoint and does not process user accounts, payments, uploads, or user-owned server state.
 
 Production assumptions for this scan:
 - `artifacts/discipleship-hub` is public internet-facing.
 - `artifacts/mockup-sandbox` is dev-only and should be ignored unless production reachability is shown.
+- `artifacts/knowing-god-concordance` is a client-side React/Vite prototype (public-domain Bible text in local JSON, no backend calls, no secrets); treat as dev/prototype unless server state is added.
 - `artifacts/api-server` is production-reachable only as a minimal health service unless new routes are added.
 - TLS is provided by the platform.
 
@@ -20,18 +21,20 @@ Production assumptions for this scan:
 
 ## Trust Boundaries
 
-- **Browser to Cloudflare Worker** — all `/api/subscribe` requests cross from untrusted clients into server-side processing. Request bodies, query params, headers, and origin context are attacker-controlled.
-- **Worker to external services** — the Worker calls Cloudflare Turnstile verification and Virtuous CRM with secrets. Fail-open behavior or over-trusting upstream assumptions can enable abuse.
+- **Browser to Cloudflare Worker** — all `/api/subscribe`, `/api/bible`, and `/api/geo` requests cross from untrusted clients into server-side processing. Request bodies, query params, headers, and origin context are attacker-controlled.
+- **Worker to external services** — the Worker calls Cloudflare Turnstile verification and Virtuous CRM with secrets, and fetches read-only chapters from `labs.bible.org` / `bible-api.com`. Fail-open behavior or over-trusting upstream assumptions can enable abuse.
 - **First-party pages to third-party browser scripts** — GTM and the Virtuous newsletter embed execute in the user's browser with access to the same origin's DOM and storage context. Any sensitive state persisted in browser storage crosses into that trust boundary.
 - **Static content authors to rendered HTML** — some article content is rendered with `set:html`, so only repository-controlled content may flow into those sinks.
 - **Repository code to deployment configuration** — secrets and deployment visibility materially affect exploitability. Production security controls must not rely on optional, silently missing configuration for core abuse prevention.
 
 ## Scan Anchors
 
-- Production entry points: `artifacts/discipleship-hub/src/pages/**`, `artifacts/discipleship-hub/worker/index.js`, `artifacts/api-server/src/index.ts`, `artifacts/api-server/src/app.ts`.
+- Production entry points: `artifacts/discipleship-hub/src/pages/**`, `artifacts/discipleship-hub/worker/index.js`, `artifacts/discipleship-hub/worker/bible.js`, `artifacts/api-server/src/index.ts`, `artifacts/api-server/src/app.ts`.
 - Highest-risk code area: `artifacts/discipleship-hub/worker/index.js` because it accepts public input and forwards data to a privileged third-party API.
-- Public surfaces: all Astro routes under `artifacts/discipleship-hub/src/pages/**`, especially `/books`, `/newsletter`, `/playlist/[id]`, and Worker route `/api/subscribe`.
-- Dev-only areas usually out of scope: `artifacts/mockup-sandbox/**`, build scripts under `scripts/**`, generated static assets under `dist/**`.
+- Worker proxy endpoints reviewed (low risk): `GET /api/bible` (`worker/bible.js`) uses strict allowlists for book/chapter/translation, builds the upstream URL only from allowlisted values with `encodeURIComponent`, strips HTML from upstream verse text, and has a bounded success-only cache — no SSRF or injection path. `GET /api/geo` returns only a Cloudflare ISO country code.
+- Public surfaces: all Astro routes under `artifacts/discipleship-hub/src/pages/**`, especially `/books`, `/newsletter`, `/playlist/[id]`, and Worker routes `/api/subscribe`, `/api/bible`, `/api/geo`.
+- `set:html` sinks (Astro article/JSON-LD components) are fed only by repository-controlled data; keep user-controlled content out of them.
+- Dev-only / prototype areas usually out of scope: `artifacts/mockup-sandbox/**`, `artifacts/knowing-god-concordance/**` (static client prototype), build scripts under `scripts/**`, generated static assets under `dist/**`.
 
 ## Threat Categories
 
@@ -62,11 +65,11 @@ Required guarantees:
 
 ### Denial of Service
 
-The public site contains an unauthenticated endpoint that can trigger third-party API calls. Even if the client experience is decoupled with `ctx.waitUntil`, repeated abuse can still consume provider quota, pollute CRM data, or degrade operational usefulness.
+The public site contains unauthenticated endpoints that can trigger third-party API calls (`/api/subscribe` → Virtuous, `/api/bible` → external Bible APIs). Even if the client experience is decoupled with `ctx.waitUntil`, repeated abuse can still consume provider quota, pollute CRM data, or degrade operational usefulness.
 
 Required guarantees:
 - Public submission endpoints MUST include effective abuse controls proportionate to the cost of each downstream action.
-- External calls MUST remain bounded in latency and failure impact so abuse does not degrade the site.
+- External calls MUST remain bounded in latency and failure impact so abuse does not degrade the site (the Bible proxy already applies an `AbortSignal.timeout` and a bounded cache).
 - Production deployment instructions MUST treat anti-abuse secrets for privileged public endpoints as required configuration, not optional hardening.
 
 ### Elevation of Privilege

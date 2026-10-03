@@ -483,3 +483,31 @@ mtime_ms = 1791047794807
 storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/662cb67b-23bf-439d-a802-b0729d39be97/f7a52e53-1b5d-427b-ae9a-348dd8a5e4cd"
 storage_version_token = "1791047799138368"
 content_type = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+
+[[outputs]]
+id = "7sDC7IkhaNoPklxd4S8FX"
+uri = "file://outputs/knowing-god-replication/Knowing-God-Replication-Prompt.txt"
+type = "text"
+title = "Exact Knowing God Replication Prompt"
+description = "Full copy-and-paste instructions for porting the complete JO EQUIP concordance, including feature parity, content integrity, local NET delivery, introductory articles, and verification."
+logical_id = "2b840502-d9ff-474a-8fa1-7b93686505de"
+content_hash = "sha256:ff01fe1b41479ebdeefbb118855663e78d913b6c71c9a667eca514f19f17d79d"
+size = 18034
+mtime_ms = 1791061975029
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/2b840502-d9ff-474a-8fa1-7b93686505de/9a690815-346c-4e05-baf2-14c149c53ce2"
+storage_version_token = "1791061980947572"
+content_type = "text/plain"
+
+[[outputs]]
+id = "ovK8FraE6AOelBZGiAARM"
+uri = "file://outputs/knowing-god-replication/Knowing-God-Full-Replication-Source.zip"
+type = "unspecified"
+title = "Knowing God — Full Source Package"
+description = "220 source and asset files, complete topic and NET data, fonts, introductory articles, generators, tests and a verified SHA-256 inventory. Upload alongside the prompt and original document."
+logical_id = "01436aac-853a-4b6c-9f10-765658e064a4"
+content_hash = "sha256:d62ba93629947d3fe60bd391e7efb521bf1fdb7e473d7e8ccaab381c5d6219ad"
+size = 7440500
+mtime_ms = 1791061974842
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/01436aac-853a-4b6c-9f10-765658e064a4/5502f47f-74fa-47ba-b7a2-4d90a173bd07"
+storage_version_token = "1791061982061111"
+content_type = "application/octet-stream"

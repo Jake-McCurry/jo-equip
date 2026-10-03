@@ -67,6 +67,11 @@ catalog:
 
 autoInstallPeers: false
 
+patchedDependencies:
+  # No upstream fix exists for GHSA-ch52-4w7c-c8xp. Keep this explicit patch
+  # until an audited upstream release includes equivalent zero-TTL guards.
+  http-cache-semantics@4.2.0: patches/http-cache-semantics@4.2.0.patch
+
 packageExtensions:
   # These plugins expose Vite types but do not declare Vite as a peer. Declaring
   # it here keeps their types bound to each consuming app's Vite major.
@@ -171,7 +176,7 @@ overrides:
   # patch/minor bumps within the originally-installed major line; remove an
   # override once the parent dep ships a release that already pulls a safe
   # version on its own.
-  devalue: ">=5.9.2 <6"
+  devalue: ">=5.9.4 <6"
   "@babel/core@^7.0.0": ">=7.29.6 <8"
   "@xmldom/xmldom@^0.8.0": ">=0.8.15 <0.9"
   "baseline-browser-mapping@^2.0.0": ">=2.11.0 <3"

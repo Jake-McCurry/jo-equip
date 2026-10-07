@@ -511,3 +511,17 @@ mtime_ms = 1791061974842
 storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/01436aac-853a-4b6c-9f10-765658e064a4/5502f47f-74fa-47ba-b7a2-4d90a173bd07"
 storage_version_token = "1791061982061111"
 content_type = "application/octet-stream"
+
+[[outputs]]
+id = "hWSDyLNIvy-OSMaDaxwmA"
+uri = "file://outputs/daily-review/JO-EQUIP-Changes-2026-10-03.xlsx"
+type = "table"
+title = "Today’s Changes — October 3, 2026"
+description = "17 review items with status notes, review dropdowns and a column for your comments."
+logical_id = "4fc7b5e0-fdd3-4a06-9d77-05b687eda044"
+content_hash = "sha256:7dc5a6ebed6e217ab0dcc210309717799691c6634c12f1aead61797eef0acb12"
+size = 8667
+mtime_ms = 1791067402606
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/4fc7b5e0-fdd3-4a06-9d77-05b687eda044/d98e264a-62bc-4555-84c4-d16ade142eed"
+storage_version_token = "1791067406775420"
+content_type = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"

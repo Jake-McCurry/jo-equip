@@ -24,6 +24,7 @@ export const playlists: Playlist[] = [
     playlistId: "PLyI_AdjR33H1Bgpp_i6LAG4zN8lHZnIII",
     videos: [
       { title: "Did the Universe Have A Beginning?", videoId: yt("-z8D-mutYUg") },
+      { title: "Why is Only Earth Suitable for Life?", videoId: yt("DJO6PyxJmUo") },
     ],
   },
   {

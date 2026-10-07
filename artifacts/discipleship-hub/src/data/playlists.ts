@@ -39,6 +39,7 @@ export const playlists: Playlist[] = [
       { title: "Who is the Jewish Messiah?", videoId: yt("Jn1M1c9iNfg") },
       { title: "Is There a Jesus Conspiracy?", videoId: yt("kci8WYFedOQ") },
       { title: "Did Jesus Claim to be God?", videoId: yt("Mg4MrjR6KJU") },
+      { title: "Did the Apostles Believe Jesus is God?", videoId: yt("s1cURv0b1ak") },
       { title: "Is Jesus Relevant To You?", videoId: yt("e0jMauxD1Y0") },
     ],
   },

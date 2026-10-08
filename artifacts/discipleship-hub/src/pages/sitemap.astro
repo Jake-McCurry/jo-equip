@@ -41,7 +41,7 @@ const pageSources = import.meta.glob<string>("./*.astro", {
 /* Utility routes excluded by path, mirroring build-sitemaps.mjs EXCLUDE. */
 const UTILITY = new Set(["404", "search", "sitemap"]);
 /* Audience hub pages get their own section below. */
-const AUDIENCE_SLUGS = ["pastors", "home-church-leaders", "chaplains", "missionaries", "equip"];
+const AUDIENCE_SLUGS = ["pastors", "home-church-leaders", "chaplains", "missionaries", "discipleship"];
 
 function labelFrom(src: string, slug: string): string {
   const m = src.match(/\btitle="([^"]+)"/);

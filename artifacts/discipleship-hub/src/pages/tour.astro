@@ -1,0 +1,192 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { Picture } from "astro:assets";
+import { ArrowRight } from "lucide-react";
+import evidenceImg from "@/assets/channels/evidence.jpg";
+import growthImg from "@/assets/channels/growth.jpg";
+import churchImg from "@/assets/channels/church.jpg";
+
+const baseUrl = import.meta.env.BASE_URL;
+const join = (p: string) =>
+  (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
+
+/* Tour page — content from "JO EQUIP Welcome Tour Page" manuscript.
+   Manuscript links to equip.jesusonline.com are rendered as site-relative paths. */
+
+const beliefs = [
+  { lead: "Identity.", rest: "How you view your redeemed identity shapes how you live." },
+  { lead: "God.", rest: "How you view God’s divine identity shapes how you live." },
+  { lead: "Spirit.", rest: "How you view the Holy Spirit’s functional identity shapes how you live." },
+];
+
+const audiences = [
+  { lead: "Pastors.", rest: "Sermon starters, church vision, leadership reading.", label: "Pastors", href: join("/pastors") },
+  { lead: "Home church leaders.", rest: "Short studies for homes and neighborhoods.", label: "Home church leaders", href: join("/home-church-leaders") },
+  { lead: "Chaplains.", rest: "Crisis, hope, identity, and presence.", label: "Chaplains", href: join("/chaplains") },
+  { lead: "Missionaries.", rest: "Field training, church planting, easy-to-share tools.", label: "Missionaries", href: join("/missionaries") },
+];
+
+/* Evidence Resources has no hyperlink in the manuscript; linked to its category page for consistency. */
+const categories = [
+  { name: "Evidence", text: "Reach skeptics with facts about Jesus, God, and the Bible.", label: "Evidence Resources", href: join("/categories/evidence"), img: evidenceImg },
+  { name: "Growth", text: "Build believers into mature, fruitful disciples.", label: "Growth Resources", href: join("/categories/growth"), img: growthImg },
+  { name: "Church", text: "Multiply disciples and build vibrant churches.", label: "Church Resources", href: join("/categories/church"), img: churchImg },
+];
+
+const playlistGroups = [
+  { name: "Transformational Discipleship", count: "28 videos", tag: "A changed heart" },
+  { name: "Evidence for Faith", count: "12 videos", tag: "Who Jesus is" },
+  { name: "Evangelism", count: "6 videos", tag: "An invitation" },
+  { name: "Devotional", count: "13 videos", tag: "A closer walk" },
+  { name: "Attitudes and Behavior", count: "18 videos", tag: "A pattern to change" },
+];
+
+const bookGroups = [
+  { name: "Identity-Centered Heart Transformation", count: "5 books" },
+  { name: "Evidence-Based Evangelism", count: "4 books" },
+  { name: "Devotional Studies", count: "5 books" },
+  { name: "Attitudes and Behavior", count: "5 books" },
+  { name: "Marriage", count: "2 books" },
+];
+
+const featured = [
+  { title: "Knowing God / Topical Concordance", text: "Topical Bible verses on the nature and character of the Almighty.", href: join("/knowing-god") },
+  { title: "Become a Growing Church", text: "A unique, kingdom-centered vision for church growth.", href: join("/categories/church/become-growing-church") },
+  { title: "This Sunday Leader Kits", text: "5-minute Discipleship Moments, ready to use for heart transformation.", href: join("/leader-kits") },
+];
+
+const h2 = "text-2xl md:text-3xl font-semibold text-center";
+const linkCls = "inline-flex items-center gap-1 font-semibold hover:underline";
+---
+<Layout
+  title="A First Visit to JO EQUIP | Tour"
+  description="JO EQUIP is the free digital library of practical, biblically grounded tools that equip pastors and leaders to reach skeptics, grow disciples, and multiply healthy churches."
+>
+  <section class="bg-white">
+    <div class="container mx-auto px-4 py-12 md:py-16 max-w-4xl">
+      <p class="text-[12px] font-medium tracking-widest uppercase mb-3" style="color:var(--color-accent);">JesusOnline Ministries</p>
+      <h1 class="text-4xl md:text-5xl mb-4" style="color:var(--color-structure);">A First Visit to JO EQUIP</h1>
+      <div class="h-0.5 w-12 mb-7" style="background-color:var(--color-accent);"></div>
+      <p class="text-xl leading-relaxed mb-5 font-medium" style="color:var(--color-text);">
+        Equipping disciple-makers to guide others — from skeptic to believer, believer to growing disciple, disciple to disciple-maker.
+      </p>
+      <p class="text-lg leading-relaxed" style="color:var(--color-text-muted);">
+        <strong style="color:var(--color-text);">JO EQUIP</strong> is the free digital library of practical, biblically grounded tools that uniquely equip pastors and leaders to reach skeptics with evidence for Jesus, grow mature and fruitful disciples, and multiply healthy churches — uniting apologetics, identity-centered discipleship, and church multiplication in one accessible resource hub.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-10 md:py-14" style="background-color:var(--color-surface-soft);" aria-labelledby="heart">
+    <div class="container mx-auto px-4 max-w-3xl">
+      <h2 id="heart" class={`${h2} mb-6`} style="color:var(--color-structure);">Heart Transformation Through Identity-Centered Discipleship</h2>
+      <div class="space-y-4 text-[15px] md:text-base leading-relaxed" style="color:var(--color-text);">
+        <p>Many discipleship programs emphasize biblical knowledge, behavioral change, and spiritual disciplines. JO EQUIP acknowledges these essentials but starts with heart transformation through identity-centered discipleship.</p>
+        <p>
+          Identity-centered heart transformation starts in the inner person, not with trying harder on the outside. The biblical heart is the control center of beliefs, loves, trust, and choices. From it flow words, desires, and actions. God renews that heart as three realities are embraced together: who you now are in Christ, who God actually is, and how the Holy Spirit functions in daily life.{" "}
+          <a href={join("/categories/church/tld-core-principles/identity-centered-heart-transformation")} class={linkCls} style="color:var(--color-action-warm);">Learn more<ArrowRight className="w-4 h-4" aria-hidden="true" /></a>
+        </p>
+        <p class="font-semibold">Transformational growth depends on correct beliefs about:</p>
+      </div>
+      <ul class="mt-4 flex flex-col gap-3">
+        {beliefs.map(b => (
+          <li class="bg-white border rounded px-5 py-4 text-[15px] md:text-base leading-snug" style="border-color:var(--color-border);border-left:4px solid var(--color-accent);color:var(--color-text);">
+            <strong class="font-semibold" style="color:var(--color-action-warm);">{b.lead}</strong>{" "}{b.rest}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="py-10 md:py-14 bg-white" aria-labelledby="serves">
+    <div class="container mx-auto px-4 max-w-3xl">
+      <h2 id="serves" class={`${h2} mb-6`} style="color:var(--color-structure);">JO EQUIP Serves Disciple-Makers</h2>
+      <ul class="flex flex-col gap-3">
+        {audiences.map(a => (
+          <li>
+            <a href={a.href} class="group flex items-center justify-between gap-4 bg-white border rounded px-5 py-4 transition-all hover:shadow-md" style="border-color:var(--color-border);border-left:4px solid var(--color-accent);">
+              <span class="text-[15px] md:text-base leading-snug" style="color:var(--color-text);">
+                <strong class="font-semibold group-hover:underline" style="color:var(--color-action-warm);">{a.lead}</strong>{" "}{a.rest}
+                <span class="sr-only"> Go to {a.label}</span>
+              </span>
+              <ArrowRight className="w-5 h-5 shrink-0 transition-transform group-hover:translate-x-1" style={{ color: "var(--color-accent)" }} aria-hidden="true" />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="py-10 md:py-14" style="background-color:var(--color-surface-soft);" aria-labelledby="cats">
+    <div class="container mx-auto px-4">
+      <h2 id="cats" class={`${h2} mb-2`} style="color:var(--color-structure);">1,200 Articles in 3 Categories</h2>
+      <p class="text-center mb-6"><a href={join("/categories")} class={linkCls} style="color:var(--color-action-warm);">Ministry Categories<ArrowRight className="w-4 h-4" aria-hidden="true" /></a></p>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-md sm:max-w-lg lg:max-w-none mx-auto">
+        {categories.map(c => (
+          <a href={c.href} class="group flex flex-col bg-white border rounded overflow-hidden hover:shadow-lg transition-all" style="border-color:var(--color-border);border-top:6px solid var(--color-accent);">
+            <div class="relative aspect-[5/2] overflow-hidden">
+              <Picture src={c.img} alt="" widths={[480, 800]} sizes="(min-width: 1024px) 33vw, (min-width: 640px) 512px, 100vw" formats={["avif", "webp"]} quality={75} class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" />
+            </div>
+            <div class="p-5 flex flex-col gap-2 flex-grow">
+              <h3 class="text-xl font-semibold" style="color:var(--color-structure);">{c.name}</h3>
+              <p class="text-[15px] leading-snug" style="color:var(--color-muted-foreground);">{c.text}</p>
+              <span class="mt-auto pt-2 inline-flex items-center gap-1 font-semibold group-hover:underline" style="color:var(--color-action-warm);">{c.label}<ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" aria-hidden="true" /></span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-10 md:py-14 bg-white" aria-labelledby="vids">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <h2 id="vids" class={`${h2} mb-2`} style="color:var(--color-structure);">77 Videos in Playlists</h2>
+      <p class="text-center mb-6"><a href={join("/playlists")} class={linkCls} style="color:var(--color-action-warm);">Video Playlists<ArrowRight className="w-4 h-4" aria-hidden="true" /></a></p>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {playlistGroups.map(p => (
+          <li class="border rounded px-5 py-4" style="border-color:var(--color-border);border-left:4px solid var(--color-accent);">
+            <h3 class="font-semibold text-base leading-snug" style="color:var(--color-text);">{p.name}</h3>
+            <p class="text-sm mt-1" style="color:var(--color-muted-foreground);">{p.count} · {p.tag}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="py-10 md:py-14" style="background-color:var(--color-surface-soft);" aria-labelledby="books">
+    <div class="container mx-auto px-4 max-w-3xl">
+      <h2 id="books" class={`${h2} mb-2`} style="color:var(--color-structure);">21 Books for Free Download</h2>
+      <p class="text-center mb-6"><a href={join("/books")} class={linkCls} style="color:var(--color-action-warm);">Books<ArrowRight className="w-4 h-4" aria-hidden="true" /></a></p>
+      <ul class="flex flex-col gap-3">
+        {bookGroups.map(b => (
+          <li class="bg-white border rounded px-5 py-4 text-[15px] md:text-base" style="border-color:var(--color-border);color:var(--color-text);">
+            <strong class="font-semibold">{b.name}</strong> — <span style="color:var(--color-muted-foreground);">{b.count}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="py-10 md:py-14 bg-white" aria-labelledby="feat">
+    <div class="container mx-auto px-4">
+      <h2 id="feat" class={`${h2} mb-6`} style="color:var(--color-structure);">3 Featured Resources</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-md sm:max-w-4xl mx-auto">
+        {featured.map(f => (
+          <a href={f.href} class="group flex flex-col border rounded p-5 hover:shadow-lg transition-all" style="border-color:var(--color-border);border-top:4px solid var(--color-accent);">
+            <h3 class="text-lg font-semibold leading-snug group-hover:underline" style="color:var(--color-text);">{f.title}</h3>
+            <p class="text-[15px] leading-snug mt-2 flex-grow" style="color:var(--color-muted-foreground);">{f.text}</p>
+            <span class="mt-4 inline-flex items-center gap-1 font-semibold" style="color:var(--color-action-warm);">Open<span class="sr-only"> {f.title}</span><ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" aria-hidden="true" /></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-10 md:py-12" style="background-color:var(--color-surface-soft);">
+    <div class="container mx-auto px-4 max-w-3xl text-center">
+      <p class="text-[15px] md:text-base" style="color:var(--color-text);">
+        Pastors and leaders have written of what they found here.{" "}
+        <a href={join("/reviews")} class="font-semibold hover:underline" style="color:var(--color-action-warm);">Read the reviews</a>.
+      </p>
+    </div>
+  </section>
+</Layout>

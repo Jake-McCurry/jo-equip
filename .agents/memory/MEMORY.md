@@ -42,3 +42,4 @@
 - [Astro static redirect queries](astro-static-redirect-queries.md) — Dev redirects must use the original Node request URL before static-route middleware strips query parameters.
 - [Majesty editorial choice](majesty-editorial-choice.md) — User approved the six current local Attributes treatments, including regrouping and omissions; do not merge or restore older Majesty wording.
 - [Locally patched dependency audits](locally-patched-dependency-audits.md) — Version-based scanners do not recognize local security patches; report residual findings rather than suppressing them.
+- [Tour and Welcome separation](tour-welcome-separation.md) — Tour revisions belong on /tour; preserve the original /welcome page without a menu link.

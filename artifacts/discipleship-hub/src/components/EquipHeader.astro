@@ -9,11 +9,11 @@ const join = (p: string) =>
   (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
 
 const navLinks = [
-  { name: "Equip", path: "/equip" },
+  { name: "Discipleship", path: "/discipleship" },
   { name: "Categories", path: "/categories" },
   { name: "Playlists", path: "/playlists" },
   { name: "Books", path: "/books" },
-  { name: "Read the Bible", path: "/bible" },
+  { name: "Bible", path: "/bible" },
   { name: "More", path: "/more" },
 ];
 
@@ -32,8 +32,8 @@ function isActive(linkPath: string) {
 
 const navLinksWithActive = navLinks.map(l => ({ ...l, active: isActive(l.path) }));
 
-// Mobile menu mirrors the primary links (Equip is the first primary
-// link, pointing at /equip; the logo links home) and adds Contact at the bottom.
+// Mobile menu mirrors the primary links (Discipleship is the first primary
+// link, pointing at /discipleship; the logo links home) and adds Contact at the bottom.
 // /welcome is kept as a page but no longer linked from the nav (Aug 2026).
 const mobileNavLinks = [...navLinksWithActive];
 ---

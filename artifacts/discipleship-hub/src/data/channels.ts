@@ -968,9 +968,9 @@ export const subTopics: SubTopic[] = [
       { number: 4, title: 'Faith - The Key to Walking in the Spirit', articleId: 'faith-the-key-to-walking-in-the-spirit', links: { app: 'https://app.jesusonline.com/post/60103-3-faith-the-key-to-walking-in-the-spirit' } },
       { number: 5, title: 'The Bible - God\'s Love Letter to You!', articleId: 'the-bible-gods-love-letter-to-you', links: { app: 'https://app.jesusonline.com/post/60104-4-the-bible-gods-love-letter-to-you' } },
       { number: 6, title: 'Prayer - Talking to Your Heavenly Father', articleId: 'prayer-talking-to-your-heavenly-father', links: { app: 'https://app.jesusonline.com/post/60105-5-prayer-talking-to-your-heavenly-father' } },
-      { number: 7, title: 'Citizens of Heaven - God\'s Family…and You!', articleId: 'citizens-of-heaven-gods-family-and-you', links: { app: 'https://app.jesusonline.com/post/60106-6-citizens-of-heaven-gods-family-and-you' } },
+      { number: 7, title: 'Citizens of Heaven - God\'s Family…and You!', articleId: 'citizens-of-heaven-gods-family-and-you', links: { app: 'https://app.jesusonline.com/post/60106-6-citizens-of-heaven-gods-familyand-you' } },
       { number: 8, title: 'Obedience - Running to Win', articleId: 'obedience-running-to-win', links: { app: 'https://app.jesusonline.com/post/60107-7-obedience-running-to-win' } },
-      { number: 9, title: 'Next Steps for Your Spiritual Growth', articleId: 'next-steps-for-your-spiritual-growth', links: { app: 'https://app.jesusonline.com/post/60108-8-next-steps-for-your-spiritual-growth' } },
+      { number: 9, title: 'Next Steps for Your Spiritual Growth', articleId: 'next-steps-for-your-spiritual-growth', links: {} },
     ],
   },
   {

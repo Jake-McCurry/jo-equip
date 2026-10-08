@@ -88,6 +88,9 @@ const resolveBody = (aid: string) =>
   getBcgArticle(aid) ?? getBibleStudyMethod(aid) ?? getEvidenceArticle(aid) ?? getSiteArticle(subId!, aid);
 const seriesItems = (sub.items ?? []).filter(i => !i.unlisted && i.articleId);
 const curIdx = seriesItems.findIndex(i => i.articleId === article.id);
+const previousArticle = sub.id === "adventure-living-jesus" && curIdx > 0
+  ? seriesItems.slice(0, curIdx).reverse().map(i => resolveBody(i.articleId!)).find(Boolean)
+  : undefined;
 let nextArticle: { id: string; title: string } | undefined;
 if (curIdx !== -1 && seriesItems.length > 1) {
   for (let step = 1; step < seriesItems.length; step++) {
@@ -415,6 +418,14 @@ const heroTitle = splitTitle(article.title);
             <ArrowRight className="w-5 h-5" style={{ color: "#fff" }} />
           </div>
         </div>
+      </a>
+    )}
+    {previousArticle && (
+      <a href={join(`/categories/${channel.id}/${sub.id}/${previousArticle.id}`)}
+        class="inline-block mt-3 text-sm hover:underline"
+        style={`color:${channel.accentColor};`}
+        aria-label={`Back to previous article: ${previousArticle.title}`}>
+        ← Back to previous article
       </a>
     )}
     {joAppArticleUrl && (

@@ -51,5 +51,10 @@ export function getVerifiedJoAppArticleUrl({
   sourceAppSlug?: string;
   explicitAppUrl?: string;
 }): string | undefined {
+  // These local catalog IDs do not match available JO App destinations.
+  if (sourceAppSlug === "60108-8-next-steps-for-your-spiritual-growth") return undefined;
+  if (sourceAppSlug === "60106-6-citizens-of-heaven-gods-family-and-you") {
+    return `${APP_ORIGIN}/post/60106-6-citizens-of-heaven-gods-familyand-you`;
+  }
   return fromSourceSlug(sourceAppSlug) ?? fromExplicitUrl(explicitAppUrl);
 }

@@ -236,6 +236,7 @@ export function renderTemplate({
   disableLigatures?: boolean;
 }): string {
   const escTitle = title.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+  const adventure = /(?:6010[0-8]-|\/adventure-living-jesus\/)/.test(sourceUrl);
   const escLead = coverLead ? coverLead.replace(/&/g, "&amp;").replace(/</g, "&lt;") : "";
   return `<!doctype html>
 <html lang="en">
@@ -371,6 +372,14 @@ export function renderTemplate({
     border: 0; border-top: 1px solid #e5e7eb; margin: 1.4em 0;
   }
 ${END_PAGE_CSS}
+${adventure ? `
+  .article .joapp-question { break-inside: avoid; page-break-inside: avoid; }
+  .article .joapp-question::after {
+    content: ""; display: block; height: 48pt; margin-top: 6pt;
+    background: repeating-linear-gradient(to bottom, transparent 0, transparent 23pt, #9ca3af 23pt, #9ca3af 24pt);
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+` : ""}
 </style>
 </head>
 <body>
@@ -679,7 +688,11 @@ async function buildOne(
       bodyHtml,
       sourceUrl: localAttributeId
         ? `equip.jesusonline.com/categories/growth/attributes-of-god/${localAttributeId}`
-        : `app.jesusonline.com/post/${appSlug}`,
+        : appSlug === "60106-6-citizens-of-heaven-gods-family-and-you"
+          ? "app.jesusonline.com/post/60106-6-citizens-of-heaven-gods-familyand-you"
+          : appSlug === "60108-8-next-steps-for-your-spiritual-growth"
+            ? "equip.jesusonline.com/categories/growth/adventure-living-jesus/next-steps-for-your-spiritual-growth"
+            : `app.jesusonline.com/post/${appSlug}`,
       outPath,
       coverLead: coverLeadFor(appSlug),
       bibleProject: isBibleProjectSlug(appSlug),

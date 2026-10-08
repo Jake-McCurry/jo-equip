@@ -3,6 +3,13 @@ name: Adventure book PDF extraction
 description: Lessons from rebuilding the 2016 InDesign "Adventure of Living with Jesus" PDF via mutool stext
 ---
 
+- For the Adventure article series, answer-writing space is requested in the site's downloadable lesson PDFs, not browser Print → Save as PDF or the web article layout.
+- **Why:** The user clarified this scope explicitly; the standalone book and proof manuscripts are separate deliverables.
+- **How to apply:** Preserve lesson wording and give every question two writing lines in the article downloads without applying the change to unrelated publications.
+- The user confirmed that lesson 8, Next Steps, has no JO App article.
+- **Why:** A local article or an upstream content record is not proof of a corresponding published app destination.
+- **How to apply:** Keep the local lesson and PDF available, but do not restore an app link without independently confirming that it has been published.
+
 - The 2016 InDesign source PDF's fonts lack ToUnicode maps. `pdftotext`/poppler silently DROPS glyphs (whole word-initial letters, not just ligatures). `mutool draw -F stext` decodes everything correctly, emitting only fi/fl/ff ligatures as U+FFFD — repairable with a finite word whitelist (fail loudly on unknown words).
 - **Why:** poppler-based extraction looked plausible but was corrupt in hundreds of places; OCR was unnecessary once mutool was tried.
 - **How to apply:** for any legacy InDesign PDF with missing letters in extracted text, try `mutool draw -F stext` before reaching for OCR.

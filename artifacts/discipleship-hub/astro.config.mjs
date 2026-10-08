@@ -24,6 +24,7 @@ export default defineConfig({
   trailingSlash: "ignore",
   output: "static",
   redirects: {
+    "/equip": "/discipleship",
     "/lp/leader-kits": "/lp/leader-kits-1",
   },
   /* Prefetch in-viewport links so visitor navigation feels instant.
@@ -37,6 +38,14 @@ export default defineConfig({
           // Static-route rendering discards search parameters before Astro
           // middleware. Redirect earlier using Node's original request URL.
           server.middlewares.use((request, response, next) => {
+            const requested = new URL(request.url || "/", "http://localhost");
+            const prefix = base.replace(/\/+$/, "");
+            if (requested.pathname.replace(/\/+$/, "") === `${prefix}/equip`) {
+              response.statusCode = 301;
+              response.setHeader("Location", `${prefix}/discipleship${requested.search}`);
+              response.end();
+              return;
+            }
             const location = request.url && articleRedirectLocation(request.url, base);
             if (!location) return next();
             response.statusCode = 301;

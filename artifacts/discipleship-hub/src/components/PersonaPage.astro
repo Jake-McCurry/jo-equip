@@ -32,6 +32,7 @@ interface FaqLink {
   sentence: string;
   text: string;
   href: string;
+  faqIndex?: number;
 }
 
 interface Props {
@@ -62,9 +63,9 @@ const introParagraphs = intro.map((p, index) =>
     ? p.replace(/(<strong[^>]*>JO EQUIP<\/strong>)/, `<a href="${join("/")}" class="persona-inline-link" data-testid="link-persona-intro-home">$1</a>`)
     : p
 );
-const faqAnswerParts = (answer: string) => {
+const faqAnswerParts = (answer: string, faqIndex: number) => {
   let parts: { text: string; href?: string }[] = [{ text: answer }];
-  for (const link of faqLinks.filter(link => answer.includes(link.sentence))) {
+  for (const link of faqLinks.filter(link => (link.faqIndex === undefined || link.faqIndex === faqIndex) && answer.includes(link.sentence))) {
     parts = parts.flatMap(part => {
       if (part.href) return [part];
       const index = part.text.indexOf(link.text);
@@ -274,7 +275,7 @@ const quickLinks = [
             <div class="pb-5 pr-8">
               {faq.answer.map((answer, answerIndex) => (
                 <p class="text-[15px] md:text-base leading-relaxed mb-3 last:mb-0" style="color:var(--color-text-muted);">
-                  {faqAnswerParts(answer).map((part, partIndex) => part.href ? (
+                  {faqAnswerParts(answer, faqIndex).map((part, partIndex) => part.href ? (
                     <a href={part.href} class="persona-inline-link" data-testid={`link-persona-faq-${faqIndex}-${answerIndex}-${partIndex}`}>{part.text}</a>
                   ) : part.text)}
                 </p>

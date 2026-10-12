@@ -186,6 +186,9 @@ function withBaseLinks(html: string) {
 }
 // These web-only additions must not change other articles or their PDF sources.
 const isBibleStudyTools = channel.id === "church" && sub.id === "bible-study-tools" && article.id === "essential-bible-study-tools";
+const isEvangelismIntro = channel.id === "church" && sub.id === "understanding-evangelism" && article.id === "what-is-evangelism";
+const evangelismHeadingId = (text: string) => `evangelism-${text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`;
+const evangelismContents = isEvangelismIntro ? article.blocks.filter((b): b is Extract<ArticleBlock, { type: "h2" }> => b.type === "h2").map(b => ({ id: evangelismHeadingId(b.text), label: b.text })) : [];
 const toolsHeadingId = (text: string) => `bible-tools-${text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`;
 const toolsContents = isBibleStudyTools ? [
   ...article.blocks.filter((block): block is Extract<ArticleBlock, { type: "h2" }> => block.type === "h2")
@@ -296,13 +299,14 @@ const heroTitle = splitTitle(article.title);
     {/* Article body. Block types are author-controlled; html strings are
         rendered with set:html — never pipe untrusted content through this. */}
     <article class="bcg-prose">
+      {isEvangelismIntro && <BibleStudyToolsContents items={evangelismContents} />}
       {article.blocks.map((b: ArticleBlock, index: number) => {
         switch (b.type) {
           case "h2":
             return (
               <Fragment>
                 {isBibleStudyTools && index === firstToolsHeading && <BibleStudyToolsContents items={toolsContents} />}
-                <h2 id={isBibleStudyTools ? toolsHeadingId(b.text) : undefined} class={isBibleStudyTools ? "scroll-mt-28" : undefined}>{b.text}</h2>
+                <h2 id={isBibleStudyTools ? toolsHeadingId(b.text) : isEvangelismIntro ? evangelismHeadingId(b.text) : undefined} class={isBibleStudyTools || isEvangelismIntro ? "scroll-mt-28" : undefined}>{b.text}</h2>
               </Fragment>
             );
           case "h3":

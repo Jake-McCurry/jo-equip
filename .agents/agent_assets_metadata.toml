@@ -525,3 +525,17 @@ mtime_ms = 1791067402606
 storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/4fc7b5e0-fdd3-4a06-9d77-05b687eda044/d98e264a-62bc-4555-84c4-d16ade142eed"
 storage_version_token = "1791067406775420"
 content_type = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+
+[[outputs]]
+id = "jqzrEU4aHLrTy3c11DXyk"
+uri = "file://.agents/outputs/retired-duplicate-urls.csv"
+type = "table"
+title = "All 65 retired duplicate URLs"
+description = "Complete list of retired URLs, with the replacement URL each redirects to."
+logical_id = "dd9ad2b8-c901-4761-a576-01be99f850e1"
+content_hash = "sha256:930844aa901a675ea7df58ee035ec559bc9e9eb5b8cf4bf82d1e8ad42e1e3f91"
+size = 13131
+mtime_ms = 1791831499945
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/dd9ad2b8-c901-4761-a576-01be99f850e1/6ef5b007-d73f-4b46-8e0b-116252eb0806"
+storage_version_token = "1791831505585118"
+content_type = "text/csv"

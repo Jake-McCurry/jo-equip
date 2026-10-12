@@ -19,9 +19,11 @@ interface Props {
   heroTitle: string;
   heroIntro: string;
   sections: Section[];
+  contents?: { id: string; label: string }[];
 }
 
-const { title, description, heroTitle, heroIntro, sections } = Astro.props;
+const { title, description, heroTitle, heroIntro, sections, contents = [] } = Astro.props;
+const sectionId = (text: string) => text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
 const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
@@ -66,12 +68,20 @@ function bookCards(ids: string[]) {
     </div>
   </section>
 
+  {contents.length > 0 && (
+    <nav aria-label="Table of contents" class="container mx-auto max-w-3xl px-4 py-10">
+      <h2 class="text-2xl font-semibold mb-4">Table of Contents</h2>
+      <ul class="grid sm:grid-cols-2 gap-3">
+        {contents.map(item => <li><a class="underline" style="color:var(--color-action-warm);" href={`#${item.id}`}>{item.label}</a></li>)}
+      </ul>
+    </nav>
+  )}
   {sections.map((section, i) => {
     const bg = i % 2 === 0 ? "#e6f2fa" : "#ffffff";
 
     if (section.kind === "links") {
       return (
-        <section class="py-10 md:py-14" style={`background-color:${bg};`}>
+        <section id={contents.length ? sectionId(section.heading) : undefined} class="py-10 md:py-14 scroll-mt-28" style={`background-color:${bg};`}>
           <div class="container mx-auto px-4 max-w-3xl">
             <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-center" style="color:var(--color-structure);">{section.heading}</h2>
             <ul class="flex flex-col gap-3">
@@ -94,7 +104,7 @@ function bookCards(ids: string[]) {
     if (section.kind === "playlists") {
       const cards = playlistCards(section.ids);
       return (
-        <section class="py-10 md:py-14" style={`background-color:${bg};`}>
+        <section id={contents.length ? sectionId(section.heading) : undefined} class="py-10 md:py-14 scroll-mt-28" style={`background-color:${bg};`}>
           <div class="container mx-auto px-4">
             <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-center" style="color:var(--color-structure);">{section.heading}</h2>
             <div class={`grid grid-cols-1 ${colClasses[Math.min(cards.length, 3)]} gap-6 max-w-md sm:max-w-4xl mx-auto`}>
@@ -131,7 +141,7 @@ function bookCards(ids: string[]) {
       const cards = bookCards(section.ids);
       const cols = colClasses[Math.min(cards.length, 4)];
       return (
-        <section class="py-10 md:py-14" style={`background-color:${bg};`}>
+        <section id={contents.length ? sectionId(section.heading) : undefined} class="py-10 md:py-14 scroll-mt-28" style={`background-color:${bg};`}>
           <div class="container mx-auto px-4">
             <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-center" style="color:var(--color-structure);">{section.heading}</h2>
             <div class={`grid grid-cols-1 ${cols} gap-6 max-w-md sm:max-w-5xl mx-auto`}>
@@ -178,4 +188,5 @@ function bookCards(ids: string[]) {
       </section>
     );
   })}
+  <slot />
 </Layout>

@@ -969,7 +969,7 @@ export const articlePdfs: Record<string, ArticlePdfMeta> = {
   "38730-overview-jude": { title: "Overview: Jude", bytes: 161791, modified: "2021-08-07T18:12:26" },
   "38731-overview-revelation-ch-1-11": { title: "Overview: Revelation Ch. 1-11", bytes: 157522, modified: "2021-08-07T18:12:51" },
   "38732-overview-revelation-ch-12-22": { title: "Overview: Revelation Ch. 12-22", bytes: 115026, modified: "2020-03-27T22:38:17" },
-  "40101-what-is-evangelism": { title: "What Is Evangelism?", bytes: 115374, modified: "2024-07-26T17:59:37" },
+  "40101-what-is-evangelism": { title: "40101-what-is-evangelism", bytes: 164709, modified: "local:2026-10-12T18:54:39.403Z" },
   "40102-reasons-why-believers-should-witness": { title: "Reasons Why Believers Should Witness", bytes: 147099, modified: "2024-07-26T17:59:59" },
   "40103-why-christians-fail-to-witness": { title: "Why Christians Fail to Witness", bytes: 128907, modified: "2024-07-26T18:00:28" },
   "40104-the-importance-of-scripture-in-evangelism": { title: "The Importance of Scripture in Evangelism", bytes: 142169, modified: "2024-07-26T18:00:52" },

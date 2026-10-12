@@ -100,7 +100,7 @@ async function fetchT(url: string, tries = 2): Promise<Response> {
   }
 }
 
-type SlugEntry = { wp_id: number; wp_slug: string };
+type SlugEntry = { wp_id: number; wp_slug: string; localHtml?: string };
 const mapping: Record<string, SlugEntry> = JSON.parse(readFileSync(MAPPING_PATH, "utf8"));
 
 interface ChannelsModule {
@@ -482,6 +482,17 @@ async function main() {
     const results = new Map<string, SiteArticleOut>();
     await pool(work, CONCURRENCY, async w => {
       const entry = mapping[w.appSlug];
+      // Ministry-supplied replacements take precedence over the upstream post.
+      if (entry.localHtml) {
+        const html = readFileSync(resolve(process.cwd(), "data", entry.localHtml), "utf8");
+        const blocks = await convert(sub.id, w.id, html, rw);
+        if (!blocks.length) throw new Error(`Empty local article: ${entry.localHtml}`);
+        results.set(w.id, {
+          id: w.id, appSlug: w.appSlug, subId: sub.id, channelId: sub.channelId,
+          title: w.itemTitle, description: describeFrom(blocks), blocks,
+        });
+        return;
+      }
       const r = await fetchT(`${API}/posts/${entry.wp_id}?_fields=id,slug,title,content,video_url`);
       if (!r.ok) {
         console.warn(`  ! fetch failed (${r.status}) for ${w.appSlug} — skipped`);

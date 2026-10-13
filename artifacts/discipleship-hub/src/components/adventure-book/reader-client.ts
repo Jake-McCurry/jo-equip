@@ -4,10 +4,19 @@
 import { fetchPassage, errMsg } from "@/components/bible-reader/reader-utils";
 import type { Translation } from "@/components/bible-reader/study-storage";
 
-const KEY = "jo-adventure-book";
-const LAST = `${KEY}:last`;
-const PREFS = `${KEY}:prefs`;
+/* Storage namespace. The Adventure pages keep their original keys
+   (jo-adventure-book, :last, :prefs, :note:<slug>); every other web book sets
+   data-store="jo-web-book:<bookId>" so keys always carry book ID + slug. */
+let KEY = "jo-adventure-book";
+let LAST = `${KEY}:last`;
+let PREFS = `${KEY}:prefs`;
 const noteKey = (slug: string) => `${KEY}:note:${slug}`;
+function useStore(root: HTMLElement) {
+  const k = root.dataset.store;
+  if (k && /^jo-web-book:[a-z0-9-]+$/.test(k)) KEY = k;
+  LAST = `${KEY}:last`;
+  PREFS = `${KEY}:prefs`;
+}
 
 type Prefs = { size: number; dark: boolean };
 
@@ -31,6 +40,7 @@ export function readPrefs(): Prefs {
 
 /* ---------------- intro / contents page ---------------- */
 export function initResume(root: HTMLElement) {
+  useStore(root);
   const slot = root.querySelector<HTMLElement>("[data-resume]");
   if (!slot) return;
   let valid: Record<string, string> = {};
@@ -48,6 +58,7 @@ export function initResume(root: HTMLElement) {
 
 /* ---------------- reading page ---------------- */
 export function initReading(root: HTMLElement) {
+  useStore(root);
   const slug = root.dataset.slug!;
   safeSet(LAST, slug);
   initPrefs(root);

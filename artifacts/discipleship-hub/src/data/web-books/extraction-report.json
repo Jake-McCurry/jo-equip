@@ -1,0 +1,6153 @@
+{
+ "generatedBy": "scripts/extract-web-books.py",
+ "gates": {
+  "internal": 0.998,
+  "bag": 0.975
+ },
+ "books": [
+  {
+   "id": "a-heart-after-god",
+   "sourcePages": 30,
+   "bodyFontSize": 12.0,
+   "chapterHeadingSizes": [
+    28
+   ],
+   "readings": 11,
+   "figures": 11,
+   "twoColumnPages": 0,
+   "printedContentsPages": [
+    2
+   ],
+   "decodedShiftFonts": [],
+   "repairs": {
+    "ligature: � -> ☐": 14
+   },
+   "removed": {
+    "cover page text (shown as cover image)": 0,
+    "page number": 29,
+    "printed contents page lines (replaced by web contents)": 23
+   },
+   "internalCoverage": 1.0,
+   "internalMissingSample": [],
+   "independentCoverage": 1.0,
+   "independentMissingSample": [],
+   "independentWordBagCoverage": 1.0,
+   "independentWordBagMissingSample": [],
+   "structuredRegions": [
+    "p22 lines"
+   ],
+   "regionWordCoverage": 1.0,
+   "regionMissingSample": [],
+   "figuresWithoutReviewedAlt": [],
+   "unexpectedGlyphs": {},
+   "suspiciousTokens": [],
+   "words": 6326,
+   "chapters": [
+    {
+     "slug": "introduction",
+     "title": "Introduction",
+     "label": null,
+     "pdfPage": 3,
+     "blocks": 9
+    },
+    {
+     "slug": "before-you-begin",
+     "title": "Before You Begin",
+     "label": null,
+     "pdfPage": 4,
+     "blocks": 22
+    },
+    {
+     "slug": "the-heart-reflects-the-person",
+     "title": "The Heart Reflects the Person",
+     "label": "1",
+     "pdfPage": 6,
+     "blocks": 21
+    },
+    {
+     "slug": "god-looks-at-the-heart",
+     "title": "God Looks at the Heart",
+     "label": "2",
+     "pdfPage": 9,
+     "blocks": 19
+    },
+    {
+     "slug": "understanding-the-inner-life-of-the-heart",
+     "title": "Understanding the Inner Life of the Heart",
+     "label": "3",
+     "pdfPage": 12,
+     "blocks": 25
+    },
+    {
+     "slug": "the-need-for-a-new-heart",
+     "title": "The Need for a New Heart",
+     "label": "4",
+     "pdfPage": 16,
+     "blocks": 20
+    },
+    {
+     "slug": "adoption-and-fellowship-the-journey-begins",
+     "title": "Adoption and Fellowship — The Journey Begins",
+     "label": "5",
+     "pdfPage": 19,
+     "blocks": 18
+    },
+    {
+     "slug": "relationship-wholeheartedness-and-passion",
+     "title": "Relationship, Wholeheartedness, and Passion",
+     "label": "6",
+     "pdfPage": 21,
+     "blocks": 20
+    },
+    {
+     "slug": "the-holy-spirit-and-the-transformation-of-the-heart",
+     "title": "The Holy Spirit and the Transformation of the Heart",
+     "label": "7",
+     "pdfPage": 24,
+     "blocks": 20
+    },
+    {
+     "slug": "a-heart-that-remains",
+     "title": "A Heart That Remains",
+     "label": null,
+     "pdfPage": 27,
+     "blocks": 22
+    },
+    {
+     "slug": "go-further",
+     "title": "Go Further",
+     "label": null,
+     "pdfPage": 30,
+     "blocks": 13
+    }
+   ],
+   "status": "pass",
+   "failures": []
+  },
+  {
+   "id": "your-new-identity-in-christ",
+   "sourcePages": 125,
+   "bodyFontSize": 12.0,
+   "chapterHeadingSizes": [
+    28
+   ],
+   "readings": 16,
+   "figures": 4,
+   "twoColumnPages": 0,
+   "printedContentsPages": [
+    3,
+    4,
+    5
+   ],
+   "decodedShiftFonts": [],
+   "repairs": {
+    "ligature: � -> ☐": 256,
+    "ligature: Iden�ty -> Identity": 67,
+    "UNALIGNED glyph-code span": 33,
+    "ligature: Ci�zen -> Citizen": 19,
+    "ligature: ci�zen -> citizen": 14,
+    "ligature: Prac�cal -> Practical": 8,
+    "ligature: Iden��es -> Identities": 6,
+    "ligature: Addi�onal -> Additional": 5,
+    "ligature: Priori�es -> Priorities": 4,
+    "ligature: Bu�erfly -> Butterfly": 4,
+    "ligature: Applica�on -> Application": 4,
+    "ligature: Illustra�ons -> Illustrations": 3,
+    "ligature: Crea�on -> Creation": 2,
+    "ligature: uncondi�onally -> unconditionally": 2,
+    "ligature: Adop�on -> Adoption": 2,
+    "ligature: condemna�on -> condemnation": 2,
+    "ligature: gi�s -> gifts": 2,
+    "ligature: bap�zed -> baptized": 2,
+    "ligature: Essen�al -> Essential": 2,
+    "ligature: Recalcula�ng -> Recalculating": 2,
+    "ligature: Declara�on -> Declaration": 2,
+    "ligature: Prac�ces -> Practices": 2,
+    "ligature: Libera�ng -> Liberating": 2,
+    "ligature: Everlas�ng -> Everlasting": 2,
+    "ligature: Ba�lefield -> Battlefield": 2,
+    "ligature: Salva�on -> Salvation": 2,
+    "ligature: Chris�anus -> Christianus": 2,
+    "ligature: Reflec�ng -> Reflecting": 2,
+    "ligature: Augus�ne -> Augustine": 2,
+    "ligature: Transforma�on -> Transformation": 2,
+    "ligature: Mar�n -> Martin": 2,
+    "ligature: Con�nents -> Continents": 2,
+    "ligature: Mul�ple -> Multiple": 2,
+    "ligature: So�ware -> Software": 2,
+    "ligature: Direc�ng -> Directing": 2,
+    "ligature: Ambi�on -> Ambition": 2,
+    "ligature: Aboli�on -> Abolition": 2,
+    "ligature: Unconven�onal -> Unconventional": 2,
+    "ligature: Founda�on -> Foundation": 2,
+    "typed answer blank kept": 1
+   },
+   "removed": {
+    "cover page text (shown as cover image)": 0,
+    "page number": 125,
+    "printed contents page lines (replaced by web contents)": 94
+   },
+   "internalCoverage": 1.0,
+   "internalMissingSample": [],
+   "independentCoverage": 0.99823,
+   "independentMissingSample": [
+    "comrevewssareembracn",
+    "naccompsnongjon155wa",
+    "ns17youareamemberoeb",
+    "nans1227youareaczeno",
+    "0coosngwseywyournewd",
+    "ecromans122vngouyour",
+    "drenromanswenodabsre",
+    "nmcoossansvngsuperna",
+    "essandonessepesansvc",
+    "ercanepmupeccesasesm",
+    "nromansgvegreengsoae",
+    "romansbecauseosewome",
+    "epesansamaznggraceor"
+   ],
+   "independentWordBagCoverage": 0.99484,
+   "independentWordBagMissingSample": [
+    "den",
+    "y",
+    "crs",
+    "ne",
+    "c",
+    "jesusonneequpped",
+    "so",
+    "we",
+    "es",
+    "de",
+    "on",
+    "bu",
+    "zen",
+    "crea",
+    "cruc",
+    "ed",
+    "ers",
+    "gor",
+    "add",
+    "ona",
+    "er",
+    "sees",
+    "sepercepon",
+    "cose",
+    "made",
+    "un",
+    "re",
+    "4445",
+    "conorms",
+    "dscpnes",
+    "uncond",
+    "onay",
+    "acceps",
+    "adop",
+    "ca",
+    "prac",
+    "neurazed",
+    "condemna",
+    "maced",
+    "ensed"
+   ],
+   "structuredRegions": [],
+   "regionWordCoverage": 1.0,
+   "regionMissingSample": [],
+   "figuresWithoutReviewedAlt": [],
+   "unexpectedGlyphs": {},
+   "suspiciousTokens": [],
+   "words": 43866,
+   "chapters": [
+    {
+     "slug": "your-new-identity-in-christ",
+     "title": "Your New Identity in Christ",
+     "label": null,
+     "pdfPage": 2,
+     "blocks": 14
+    },
+    {
+     "slug": "embracing-your-new-identity-in-christ",
+     "title": "Embracing Your New Identity in Christ",
+     "label": "1",
+     "pdfPage": 6,
+     "blocks": 57
+    },
+    {
+     "slug": "walking-in-your-new-identity",
+     "title": "Walking in Your New Identity",
+     "label": "2",
+     "pdfPage": 12,
+     "blocks": 47
+    },
+    {
+     "slug": "you-are-a-child-of-god",
+     "title": "You Are a Child of God",
+     "label": "3",
+     "pdfPage": 17,
+     "blocks": 47
+    },
+    {
+     "slug": "you-are-a-saint-with-a-new-nature",
+     "title": "You Are a Saint with a New Nature",
+     "label": "4",
+     "pdfPage": 22,
+     "blocks": 40
+    },
+    {
+     "slug": "you-are-a-member-of-the-body-of-christ",
+     "title": "You Are a Member of the Body of Christ",
+     "label": "5",
+     "pdfPage": 26,
+     "blocks": 50
+    },
+    {
+     "slug": "you-are-a-citizen-of-gods-kingdom",
+     "title": "You Are a Citizen of God’s Kingdom",
+     "label": "6",
+     "pdfPage": 31,
+     "blocks": 47
+    },
+    {
+     "slug": "choosing-wisely-with-your-new-identity",
+     "title": "Choosing Wisely with Your New Identity",
+     "label": "7",
+     "pdfPage": 36,
+     "blocks": 52
+    },
+    {
+     "slug": "living-out-your-new-identity-daily",
+     "title": "Living Out Your New Identity Daily",
+     "label": "8",
+     "pdfPage": 41,
+     "blocks": 70
+    },
+    {
+     "slug": "living-supernaturally-in-your-new-identity",
+     "title": "Living Supernaturally in Your New Identity",
+     "label": "9",
+     "pdfPage": 47,
+     "blocks": 61
+    },
+    {
+     "slug": "conclusion-walking-worthy-of-your-calling",
+     "title": "Conclusion: Walking Worthy of Your Calling",
+     "label": null,
+     "pdfPage": 51,
+     "blocks": 14
+    },
+    {
+     "slug": "identity-based-spiritual-warfare",
+     "title": "Identity-Based Spiritual Warfare",
+     "label": "A",
+     "pdfPage": 54,
+     "blocks": 160
+    },
+    {
+     "slug": "all-key-verses",
+     "title": "All Key Verses",
+     "label": "B",
+     "pdfPage": 69,
+     "blocks": 54
+    },
+    {
+     "slug": "discussion-guide",
+     "title": "Discussion Guide",
+     "label": "C",
+     "pdfPage": 73,
+     "blocks": 119
+    },
+    {
+     "slug": "word-pictures-and-illustrations",
+     "title": "Word Pictures and Illustrations",
+     "label": "D",
+     "pdfPage": 79,
+     "blocks": 475
+    },
+    {
+     "slug": "additional-resources",
+     "title": "Additional Resources",
+     "label": null,
+     "pdfPage": 125,
+     "blocks": 8
+    }
+   ],
+   "status": "pass",
+   "failures": []
+  },
+  {
+   "id": "beholding-the-majesty-of-god",
+   "sourcePages": 96,
+   "bodyFontSize": 12.0,
+   "chapterHeadingSizes": [
+    28
+   ],
+   "readings": 28,
+   "figures": 3,
+   "twoColumnPages": 0,
+   "printedContentsPages": [
+    3,
+    4
+   ],
+   "decodedShiftFonts": [],
+   "repairs": {
+    "ligature: � -> ☐": 320,
+    "UNALIGNED glyph-code span": 37
+   },
+   "removed": {
+    "cover page text (shown as cover image)": 0,
+    "page number": 96,
+    "printed contents page lines (replaced by web contents)": 47,
+    "running header/footer": 7
+   },
+   "internalCoverage": 1.0,
+   "internalMissingSample": [],
+   "independentCoverage": 0.99255,
+   "independentMissingSample": [
+    "eeareddevoonabaanced",
+    "uesoseexsencearbueso",
+    "udngmeexssaparrommow",
+    "rcewoseessowneounann",
+    "wngewneverceaseobeow",
+    "beyondascreaonnwapre",
+    "gesepcuresremndusawe",
+    "anyngeasmadeesepcure",
+    "ssngwacangngcrcumsan",
+    "erasadedesepcuresrem",
+    "odsspeopewouaarbueso",
+    "submosruewasuaonbeyo",
+    "eaesepcuresremndusaw",
+    "dwampossbesuaonnmyed",
+    "asesnooodcuormesepcu",
+    "oncernomwasecreearau",
+    "ndwoscomesnearesepcu",
+    "yaoneweresweekavebee",
+    "reeygvesesepcuresrem",
+    "dogeerweareedarbueso",
+    "evoonwereavebeenrean",
+    "yaseendeseeksesepcur",
+    "ddeaarywoerswereamsc",
+    "sceseenwouremanderes",
+    "dsgaeredupnesonesepc",
+    "udmyeonwaeassadwerea",
+    "sacuayareesepcuresre",
+    "eesoyandeasmadeussar",
+    "savebeenovedbymwerea",
+    "dedandsbndsseesepcur",
+    "owmercyooerswereamsd",
+    "spondwanksgvngweream",
+    "ondereacoaroadesepcu",
+    "dseavywereavebeendou",
+    "roomswerewevevenegos"
+   ],
+   "independentWordBagCoverage": 0.9999,
+   "independentWordBagMissingSample": [
+    "seexsence",
+    "sereance",
+    "dscpemakers"
+   ],
+   "structuredRegions": [],
+   "regionWordCoverage": 1.0,
+   "regionMissingSample": [],
+   "figuresWithoutReviewedAlt": [],
+   "unexpectedGlyphs": {},
+   "suspiciousTokens": [],
+   "words": 31556,
+   "chapters": [
+    {
+     "slug": "beholding-the-majesty-of-god",
+     "title": "Beholding the Majesty of God",
+     "label": null,
+     "pdfPage": 2,
+     "blocks": 8
+    },
+    {
+     "slug": "the-supreme-pursuit-of-the-heart",
+     "title": "The Supreme Pursuit of the Heart",
+     "label": "1",
+     "pdfPage": 5,
+     "blocks": 10
+    },
+    {
+     "slug": "a-balanced-vision-of-god",
+     "title": "A Balanced Vision of God",
+     "label": "2",
+     "pdfPage": 6,
+     "blocks": 66
+    },
+    {
+     "slug": "attributes-of-self-existence",
+     "title": "Attributes of Self-Existence",
+     "label": "3",
+     "pdfPage": 12,
+     "blocks": 60
+    },
+    {
+     "slug": "god-is-eternal",
+     "title": "God Is Eternal",
+     "label": null,
+     "pdfPage": 16,
+     "blocks": 38
+    },
+    {
+     "slug": "god-is-transcendent",
+     "title": "God Is Transcendent",
+     "label": null,
+     "pdfPage": 18,
+     "blocks": 39
+    },
+    {
+     "slug": "god-is-spirit",
+     "title": "God Is Spirit",
+     "label": null,
+     "pdfPage": 21,
+     "blocks": 35
+    },
+    {
+     "slug": "god-is-unchanging-immutable",
+     "title": "God Is Unchanging (Immutable)",
+     "label": null,
+     "pdfPage": 23,
+     "blocks": 43
+    },
+    {
+     "slug": "attributes-of-sovereignty",
+     "title": "Attributes of Sovereignty",
+     "label": "4",
+     "pdfPage": 26,
+     "blocks": 13
+    },
+    {
+     "slug": "god-is-sovereign",
+     "title": "God Is Sovereign",
+     "label": null,
+     "pdfPage": 27,
+     "blocks": 40
+    },
+    {
+     "slug": "god-is-all-powerful-omnipotent",
+     "title": "God Is All-Powerful (Omnipotent)",
+     "label": null,
+     "pdfPage": 29,
+     "blocks": 38
+    },
+    {
+     "slug": "god-is-all-knowing-omniscient",
+     "title": "God Is All-Knowing (Omniscient)",
+     "label": null,
+     "pdfPage": 32,
+     "blocks": 36
+    },
+    {
+     "slug": "god-is-present-everywhere-omnipresent",
+     "title": "God Is Present Everywhere (Omnipresent)",
+     "label": null,
+     "pdfPage": 34,
+     "blocks": 78
+    },
+    {
+     "slug": "attributes-of-holiness",
+     "title": "Attributes of Holiness",
+     "label": "5",
+     "pdfPage": 40,
+     "blocks": 15
+    },
+    {
+     "slug": "god-is-holy",
+     "title": "God Is Holy",
+     "label": null,
+     "pdfPage": 41,
+     "blocks": 79
+    },
+    {
+     "slug": "god-is-just",
+     "title": "God Is Just",
+     "label": null,
+     "pdfPage": 46,
+     "blocks": 39
+    },
+    {
+     "slug": "god-is-faithful",
+     "title": "God Is Faithful",
+     "label": null,
+     "pdfPage": 48,
+     "blocks": 41
+    },
+    {
+     "slug": "god-is-absolute-truth",
+     "title": "God Is Absolute Truth",
+     "label": null,
+     "pdfPage": 51,
+     "blocks": 41
+    },
+    {
+     "slug": "attributes-of-love",
+     "title": "Attributes of Love",
+     "label": "6",
+     "pdfPage": 54,
+     "blocks": 13
+    },
+    {
+     "slug": "god-is-love",
+     "title": "God Is Love",
+     "label": null,
+     "pdfPage": 55,
+     "blocks": 36
+    },
+    {
+     "slug": "god-is-merciful",
+     "title": "God Is Merciful",
+     "label": null,
+     "pdfPage": 57,
+     "blocks": 42
+    },
+    {
+     "slug": "god-is-gracious",
+     "title": "God Is Gracious",
+     "label": null,
+     "pdfPage": 60,
+     "blocks": 41
+    },
+    {
+     "slug": "god-is-good",
+     "title": "God Is Good",
+     "label": null,
+     "pdfPage": 63,
+     "blocks": 38
+    },
+    {
+     "slug": "god-is-wise",
+     "title": "God Is Wise",
+     "label": null,
+     "pdfPage": 65,
+     "blocks": 41
+    },
+    {
+     "slug": "live-in-the-light-of-his-majesty",
+     "title": "Live in the Light of His Majesty",
+     "label": "7",
+     "pdfPage": 69,
+     "blocks": 16
+    },
+    {
+     "slug": "20-attributes-and-because-statements",
+     "title": "20 Attributes and Because Statements",
+     "label": null,
+     "pdfPage": 71,
+     "blocks": 64
+    },
+    {
+     "slug": "key-scriptures-by-chapter",
+     "title": "Key Scriptures by Chapter",
+     "label": null,
+     "pdfPage": 75,
+     "blocks": 327
+    },
+    {
+     "slug": "additional-resources",
+     "title": "Additional Resources",
+     "label": null,
+     "pdfPage": 96,
+     "blocks": 8
+    }
+   ],
+   "status": "pass",
+   "failures": []
+  },
+  {
+   "id": "walking-in-the-spirit",
+   "sourcePages": 86,
+   "bodyFontSize": 12.0,
+   "chapterHeadingSizes": [
+    28
+   ],
+   "readings": 15,
+   "figures": 2,
+   "twoColumnPages": 0,
+   "printedContentsPages": [
+    3,
+    4
+   ],
+   "decodedShiftFonts": [],
+   "repairs": {
+    "ligature: � -> ☐": 126,
+    "ligature: Prac�cal -> Practical": 34,
+    "ligature: Ma�ers -> Matters": 32,
+    "UNALIGNED glyph-code span": 7,
+    "ligature: Frui�ulness -> Fruitfulness": 7,
+    "ligature: Las�ng -> Lasting": 4,
+    "ligature: Sugges�on -> Suggestion": 4,
+    "ligature: Direc�on -> Direction": 4,
+    "ligature: Illumina�on -> Illumination": 4,
+    "ligature: Illustra�ons -> Illustrations": 3,
+    "ligature: Addi�onal -> Additional": 3,
+    "ligature: Chris�an -> Christian": 2,
+    "ligature: Bap�zed -> Baptized": 2,
+    "ligature: Ac�ons -> Actions": 2,
+    "ligature: Pa�ence -> Patience": 2,
+    "ligature: Reflec�on -> Reflection": 2,
+    "ligature: Iden�ty -> Identity": 2,
+    "ligature: Intui�on -> Intuition": 2,
+    "ligature: Wai�ng -> Waiting": 2
+   },
+   "removed": {
+    "cover page text (shown as cover image)": 0,
+    "page number": 85,
+    "printed contents page lines (replaced by web contents)": 49
+   },
+   "internalCoverage": 1.0,
+   "internalMissingSample": [],
+   "independentCoverage": 0.99714,
+   "independentMissingSample": [
+    "omrevewssarewoseoysp",
+    "esresoeesgaaansasyou",
+    "epossbeeexcangedecrs",
+    "poweroeoysprsurrende",
+    "egoddesresorusowcana",
+    "oeesgaaansaskgodoyou",
+    "asngrurmyesabsedeoys",
+    "beovedcdogodempowere",
+    "edesresoeesgaaansspr",
+    "sacsnsaccounesprojes",
+    "nmssonesprsworkoruun",
+    "aereruoesprevdenceoa",
+    "rwakngnesprvenarmony",
+    "onongnosrsorpaencena"
+   ],
+   "independentWordBagCoverage": 0.99587,
+   "independentWordBagMissingSample": [
+    "ru",
+    "uness",
+    "jesusonneequpped",
+    "crs",
+    "an",
+    "on",
+    "pa",
+    "wa",
+    "as",
+    "prac",
+    "ca",
+    "drec",
+    "add",
+    "ma",
+    "ers",
+    "re",
+    "ng",
+    "bap",
+    "zed",
+    "ac",
+    "ons",
+    "spred",
+    "oneme",
+    "seconro",
+    "ence",
+    "ec",
+    "den",
+    "y",
+    "sugges",
+    "umna",
+    "nu",
+    "sprempowered",
+    "usra",
+    "seapar",
+    "ona",
+    "dscpemakers"
+   ],
+   "structuredRegions": [],
+   "regionWordCoverage": 1.0,
+   "regionMissingSample": [],
+   "figuresWithoutReviewedAlt": [],
+   "unexpectedGlyphs": {},
+   "suspiciousTokens": [],
+   "words": 29347,
+   "chapters": [
+    {
+     "slug": "walking-in-the-spirit",
+     "title": "Walking in the Spirit",
+     "label": null,
+     "pdfPage": 2,
+     "blocks": 14
+    },
+    {
+     "slug": "who-is-the-holy-spirit",
+     "title": "Who Is the Holy Spirit?",
+     "label": "1",
+     "pdfPage": 5,
+     "blocks": 33
+    },
+    {
+     "slug": "the-exchanged-life-christ-living-in-you-through-the-holy-spirit",
+     "title": "The Exchanged Life: Christ Living in You Through the Holy Spirit",
+     "label": "2",
+     "pdfPage": 9,
+     "blocks": 30
+    },
+    {
+     "slug": "surrender-the-pathway-to-spirit-filled-living",
+     "title": "Surrender: The Pathway to Spirit-Filled Living",
+     "label": "3",
+     "pdfPage": 12,
+     "blocks": 26
+    },
+    {
+     "slug": "how-can-a-person-be-filled-and-empowered-by-the-holy-spirit",
+     "title": "How Can a Person Be Filled and Empowered by the Holy Spirit?",
+     "label": "4",
+     "pdfPage": 15,
+     "blocks": 38
+    },
+    {
+     "slug": "firmly-established-the-holy-spirits-permanent-work-in-you",
+     "title": "Firmly Established: The Holy Spirit’s Permanent Work in You",
+     "label": "5",
+     "pdfPage": 20,
+     "blocks": 39
+    },
+    {
+     "slug": "empowered-for-supernatural-living-walking-daily-in-the-spirits-power",
+     "title": "Empowered for Supernatural Living: Walking Daily in the Spirit’s Power",
+     "label": "6",
+     "pdfPage": 25,
+     "blocks": 72
+    },
+    {
+     "slug": "the-spirits-work-of-fruitfulness-growing-into-christlikeness",
+     "title": "The Spirit’s Work of Fruitfulness: Growing into Christlikeness",
+     "label": "7",
+     "pdfPage": 33,
+     "blocks": 42
+    },
+    {
+     "slug": "the-fruit-of-the-spirit-evidence-of-a-transformed-life",
+     "title": "The Fruit of the Spirit: Evidence of a Transformed Life",
+     "label": "8",
+     "pdfPage": 38,
+     "blocks": 46
+    },
+    {
+     "slug": "walking-in-the-spirit-live-in-harmony-with-god",
+     "title": "Walking in the Spirit: Live in Harmony with God",
+     "label": "9",
+     "pdfPage": 42,
+     "blocks": 32
+    },
+    {
+     "slug": "voices-from-the-past-on-following-the-holy-spirit",
+     "title": "Voices from the Past on Following the Holy Spirit",
+     "label": "A",
+     "pdfPage": 45,
+     "blocks": 73
+    },
+    {
+     "slug": "all-key-verses",
+     "title": "All Key Verses",
+     "label": "B",
+     "pdfPage": 54,
+     "blocks": 82
+    },
+    {
+     "slug": "discussion-guide",
+     "title": "Discussion Guide",
+     "label": "C",
+     "pdfPage": 59,
+     "blocks": 108
+    },
+    {
+     "slug": "word-pictures-and-illustrations",
+     "title": "Word Pictures and Illustrations",
+     "label": "D",
+     "pdfPage": 64,
+     "blocks": 194
+    },
+    {
+     "slug": "additional-resources",
+     "title": "Additional Resources",
+     "label": null,
+     "pdfPage": 86,
+     "blocks": 8
+    }
+   ],
+   "status": "pass",
+   "failures": []
+  },
+  {
+   "id": "who-is-the-real-jesus",
+   "sourcePages": 139,
+   "bodyFontSize": 13.0,
+   "chapterHeadingSizes": [
+    28,
+    27.1
+   ],
+   "readings": 15,
+   "figures": 0,
+   "twoColumnPages": 0,
+   "printedContentsPages": [
+    3,
+    4
+   ],
+   "decodedShiftFonts": [],
+   "repairs": {
+    "ligature: Resurrec8on -> Resurrection": 8,
+    "ligature: Chris8an -> Christian": 6,
+    "ligature: Tes8mony -> Testimony": 6,
+    "ligature: Gnos8c -> Gnostic": 4,
+    "ligature: Cri8cs -> Critics": 4,
+    "ligature: LeGers -> Letters": 4,
+    "ligature: VeriFied -> Verified": 2,
+    "ligature: Constan8ne -> Constantine": 2,
+    "ligature: Chris8anity -> Christianity": 2,
+    "ligature: Reda8ng -> Redating": 2,
+    "ligature: ChrisAan -> Christian": 2,
+    "ligature: CounterproducAve -> Counterproductive": 2,
+    "ligature: Prophe8c -> Prophetic": 2,
+    "ligature: Iden8ty -> Identity": 2,
+    "ligature: Skep8c -> Skeptic": 2,
+    "ligature: Hallucina8ng -> Hallucinating": 2,
+    "ligature: MulAple -> Multiple": 2,
+    "ligature: RelaAonal -> Relational": 2,
+    "ligature: RelaAonship -> Relationship": 2,
+    "ligature: SoluAon -> Solution": 2,
+    "ligature: Rela8onship -> Relationship": 2,
+    "ligature: Wri8ngs -> Writings": 2
+   },
+   "removed": {
+    "cover page text (shown as cover image)": 0,
+    "page number": 138,
+    "printed contents page lines (replaced by web contents)": 15,
+    "dingbat rule/ornament line": 85
+   },
+   "internalCoverage": 1.0,
+   "internalMissingSample": [],
+   "independentCoverage": 0.98929,
+   "independentMissingSample": [
+    "rynoncrs8anaccounssk",
+    "ojesus21earycrs8anac",
+    "n8neandcrs8anynecenu",
+    "esbeorencaeawyegnos8",
+    "rycr8csconraryobrown",
+    "eda8ngenewesamengerm",
+    "ewesamen2noncrsaanso",
+    "gerspauwroe13earyeer",
+    "rdsoancensorograpyeg",
+    "avemaeraegospeseusae",
+    "susueprope8cngerprno",
+    "n8yjesusasomadecamsa",
+    "susresurrec8onbernsn",
+    "resurrec8onundredsoy",
+    "ywa4askep8cexamnesee",
+    "eedscpesaucna8ngmors",
+    "econ4seresurrec8onju",
+    "resurrec8onreayappen",
+    "eempyombmuapeeyewnes",
+    "reaaonamossocaedgods",
+    "smadeorareaaonspwgod",
+    "oumsegodsperecsouaon",
+    "ans51623ncvanewrea8o",
+    "anguageworspedmdanen",
+    "posejonses8monywenje",
+    "engpauses8monyunkejo",
+    "oebrewses8monyenewes",
+    "eresecrewr8ngsabouje",
+    "vaormocrsany1earycr8",
+    "posesearycrs8anaccou",
+    "adereoreegospesmusav",
+    "eermnedyearsaercrsnu",
+    "anguagenonenumberoma",
+    "00caonsnoersorcadocu",
+    "mens36000concusonwer",
+    "reapersonquoedndavdc",
+    "dssersormunoma199711",
+    "usconspracydanbrowne",
+    "eday2003234brown233q",
+    "ercons199012bd1313bo"
+   ],
+   "independentWordBagCoverage": 0.99879,
+   "independentWordBagMissingSample": [
+    "crs8an",
+    "socaed",
+    "mdsecond",
+    "crsmyers",
+    "noncrsan",
+    "crsmy",
+    "consan8ne",
+    "crs8any",
+    "gnos8c",
+    "cr8cs",
+    "someng",
+    "reda8ng",
+    "crsaan",
+    "egers",
+    "counerproducave",
+    "nazare3",
+    "prope8c",
+    "den8y",
+    "resurrec8on",
+    "skep8c",
+    "aucna8ng",
+    "muape",
+    "reaaona",
+    "reaaonsp",
+    "souaon",
+    "rea8onsp",
+    "es8mony",
+    "ourayng",
+    "wr8ngs",
+    "4001500",
+    "1617",
+    "aja",
+    "omecaapas",
+    "bbejesus",
+    "rapuremarkeng"
+   ],
+   "structuredRegions": [
+    "p117 lines"
+   ],
+   "regionWordCoverage": 1.0,
+   "regionMissingSample": [],
+   "figuresWithoutReviewedAlt": [],
+   "unexpectedGlyphs": {},
+   "suspiciousTokens": [
+    "HarperCollins",
+    "InterVarsity"
+   ],
+   "words": 37651,
+   "chapters": [
+    {
+     "slug": "who-is-the-real-jesus",
+     "title": "Who Is the Real Jesus?",
+     "label": null,
+     "pdfPage": 2,
+     "blocks": 12
+    },
+    {
+     "slug": "was-jesus-a-real-person",
+     "title": "Was Jesus a Real Person?",
+     "label": null,
+     "pdfPage": 5,
+     "blocks": 103
+    },
+    {
+     "slug": "was-there-a-jesus-conspiracy",
+     "title": "Was There a Jesus Conspiracy?",
+     "label": null,
+     "pdfPage": 17,
+     "blocks": 105
+    },
+    {
+     "slug": "is-jesus-god",
+     "title": "Is Jesus God?",
+     "label": null,
+     "pdfPage": 31,
+     "blocks": 64
+    },
+    {
+     "slug": "are-the-gospel-accounts-of-jesus-true",
+     "title": "Are the Gospel Accounts of Jesus True?",
+     "label": null,
+     "pdfPage": 39,
+     "blocks": 85
+    },
+    {
+     "slug": "is-jesus-the-jewish-messiah",
+     "title": "Is Jesus the Jewish Messiah?",
+     "label": null,
+     "pdfPage": 49,
+     "blocks": 55
+    },
+    {
+     "slug": "did-jesus-rise-from-the-dead",
+     "title": "Did Jesus Rise from the Dead?",
+     "label": null,
+     "pdfPage": 57,
+     "blocks": 93
+    },
+    {
+     "slug": "is-jesus-relevant-today",
+     "title": "Is Jesus Relevant Today?",
+     "label": null,
+     "pdfPage": 67,
+     "blocks": 107
+    },
+    {
+     "slug": "what-is-jesus-plan-for-us",
+     "title": "What Is Jesus’ Plan for Us?",
+     "label": null,
+     "pdfPage": 81,
+     "blocks": 30
+    },
+    {
+     "slug": "appendix",
+     "title": "Appendix",
+     "label": null,
+     "pdfPage": 85,
+     "blocks": 5
+    },
+    {
+     "slug": "did-jesus-claim-to-be-god",
+     "title": "Did Jesus Claim to Be God?",
+     "label": null,
+     "pdfPage": 87,
+     "blocks": 90
+    },
+    {
+     "slug": "did-the-apostles-believe-jesus-is-god",
+     "title": "Did the Apostles Believe Jesus is God?",
+     "label": null,
+     "pdfPage": 97,
+     "blocks": 94
+    },
+    {
+     "slug": "why-were-other-gospels-excluded-from-the-new-testament",
+     "title": "Why Were Other Gospels Excluded from the New Testament?",
+     "label": null,
+     "pdfPage": 107,
+     "blocks": 97
+    },
+    {
+     "slug": "is-jesus-coming-back",
+     "title": "Is Jesus Coming Back?",
+     "label": null,
+     "pdfPage": 119,
+     "blocks": 58
+    },
+    {
+     "slug": "endnotes",
+     "title": "Endnotes",
+     "label": null,
+     "pdfPage": 127,
+     "blocks": 360
+    }
+   ],
+   "status": "pass",
+   "failures": []
+  },
+  {
+   "id": "has-science-discovered-god",
+   "sourcePages": 29,
+   "bodyFontSize": 13.0,
+   "chapterHeadingSizes": [
+    28.1
+   ],
+   "readings": 5,
+   "figures": 9,
+   "twoColumnPages": 0,
+   "printedContentsPages": [
+    3
+   ],
+   "decodedShiftFonts": [],
+   "repairs": {
+    "ligature: scienti1ic -> scientific": 12,
+    "ligature: baf1led -> baffled": 4,
+    "ligature: satis1ied -> satisfied": 4,
+    "ligature: ResurrecIon -> Resurrection": 4,
+    "ligature: unscienti1ic -> unscientific": 2,
+    "ligature: con1irmed -> confirmed": 2,
+    "ligature: de1ies -> defies": 2,
+    "ligature: scienti1ically -> scientifically": 2,
+    "ligature: unveri1iable -> unverifiable": 2,
+    "ligature: insigni1icant -> insignificant": 2,
+    "ligature: re1lection -> reflection": 2,
+    "ligature: speci1ic -> specific": 2,
+    "ligature: ful1illed -> fulfilled": 2,
+    "ligature: re1lects -> reflects": 2,
+    "ligature: ful1illment -> fulfillment": 2,
+    "ligature: veri1iable -> verifiable": 2,
+    "ligature: veri1ied -> verified": 2,
+    "ligature: cruci1ixion -> crucifixion": 2,
+    "ligature: Resurrec0on -> Resurrection": 2,
+    "ligature: cruci1ied -> crucified": 2,
+    "ligature: quali1ied -> qualified": 2,
+    "ligature: Re1lect -> Reflect": 2
+   },
+   "removed": {
+    "cover page text (shown as cover image)": 0,
+    "page number": 28,
+    "printed contents page lines (replaced by web contents)": 19
+   },
+   "internalCoverage": 1.0,
+   "internalMissingSample": [],
+   "independentCoverage": 0.97785,
+   "independentMissingSample": [
+    "1edegreaesscen1cmnds",
+    "yassunnedescen1cword",
+    "oudyrougouescen1ccom",
+    "egenbengbeyondscen1c",
+    "nscen1cbuwenebegnnng",
+    "wascon1rmedmanyormer",
+    "gbangde1eseawsoproba",
+    "vesumbeduponescen1cp",
+    "scen1cayunprovabeunv",
+    "ndunver1abedoesnmeee",
+    "1ceoryaougesasoanagn",
+    "uerynsgn1canre1econ2",
+    "doavebeensas1edogego",
+    "1canddeaedover300oes",
+    "u1edenwoousandyearsa",
+    "wordesonre1ecsegoryo",
+    "ngpromsedmessaeu1men",
+    "dorsbaseduponver1abe",
+    "edromaba1edandcowern",
+    "1edbybojewsandromans",
+    "oransaerscruc1xonaro",
+    "adoesjesusresurrec0o",
+    "wascruc1edonecrossor",
+    "1edbyedeaossonjesusc",
+    "qua1edopayepenayorou",
+    "osscenssre1econscenc"
+   ],
+   "independentWordBagCoverage": 0.99527,
+   "independentWordBagMissingSample": [
+    "ba1ed",
+    "scen1c",
+    "unscen1c",
+    "con1rmed",
+    "de1es",
+    "megamon",
+    "scen1cay",
+    "unver1abe",
+    "nsgn1can",
+    "re1econ",
+    "sas1ed",
+    "nonpersona",
+    "spec1c",
+    "u1ed",
+    "noncrsan",
+    "re1ecs",
+    "u1men",
+    "ver1abe",
+    "ver1ed",
+    "cruc1xon",
+    "resurrec0on",
+    "cruc1ed",
+    "qua1ed",
+    "8182",
+    "re1ec"
+   ],
+   "structuredRegions": [],
+   "regionWordCoverage": 1.0,
+   "regionMissingSample": [],
+   "figuresWithoutReviewedAlt": [],
+   "unexpectedGlyphs": {},
+   "suspiciousTokens": [
+    "InterVarsity",
+    "NavPress"
+   ],
+   "words": 6866,
+   "chapters": [
+    {
+     "slug": "has-science-discovered-god",
+     "title": "Has Science Discovered God?",
+     "label": null,
+     "pdfPage": 2,
+     "blocks": 9
+    },
+    {
+     "slug": "an-intelligent-designer",
+     "title": "An Intelligent Designer?",
+     "label": null,
+     "pdfPage": 4,
+     "blocks": 106
+    },
+    {
+     "slug": "a-personal-creator",
+     "title": "A Personal Creator?",
+     "label": null,
+     "pdfPage": 16,
+     "blocks": 112
+    },
+    {
+     "slug": "endnotes",
+     "title": "Endnotes",
+     "label": null,
+     "pdfPage": 27,
+     "blocks": 60
+    },
+    {
+     "slug": "resources",
+     "title": "Resources",
+     "label": null,
+     "pdfPage": 29,
+     "blocks": 7
+    }
+   ],
+   "status": "pass",
+   "failures": []
+  },
+  {
+   "id": "extraordinary-evangelism",
+   "sourcePages": 261,
+   "bodyFontSize": 14.0,
+   "chapterHeadingSizes": [
+    26
+   ],
+   "readings": 21,
+   "figures": 3,
+   "twoColumnPages": 5,
+   "printedContentsPages": [
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18
+   ],
+   "decodedShiftFonts": [],
+   "repairs": {
+    "wrap hyphen removed": 248,
+    "fill-in blank kept": 18,
+    "drop cap rejoined": 17
+   },
+   "removed": {
+    "cover page text (shown as cover image)": 0,
+    "tiny image/ornament": 1,
+    "repeated decorative image": 244,
+    "printed contents page lines (replaced by web contents)": 183,
+    "image inside a re-rendered diagram region": 1
+   },
+   "internalCoverage": 1.0,
+   "internalMissingSample": [],
+   "independentCoverage": 0.96533,
+   "independentMissingSample": [
+    "obanucearexraordnary",
+    "eeecvenroduconnwness",
+    "uexraordnaryevangesm",
+    "gvenessonroduconsnss",
+    "dcanuseyouyouexraord",
+    "peopeourmessageonjan",
+    "boodowandwasexraordn",
+    "geourmessagerunnersw",
+    "yeserdayexraordnarye",
+    "sageopponensendzonec",
+    "pecogooeuponerdeaexr",
+    "uwerecargedocrsexrao",
+    "eourmessageawaysbere",
+    "deveryonewywnesserew",
+    "mssonwywnessevangesu",
+    "ecanusesyoursenceexr",
+    "dreconwywnessjonadec",
+    "415esvexraordnaryeva",
+    "ssowngovernmenwevngn",
+    "urnsoverexraordnarye",
+    "deverdane123esvexrao",
+    "reekerswywnessopeuys",
+    "eeosexraordnaryevang",
+    "ndssxyearodwywnessda",
+    "gvemoreexraordnaryev",
+    "ongsomengogeerwoosar",
+    "earjacs18esverusaemr",
+    "rconerencecaexraordn",
+    "erwoosarecrsweocrswe",
+    "usacangedeumaeyexrao",
+    "crswaskedseveeougewa",
+    "sownamyearyexraordna",
+    "secondwoosarecrswone",
+    "pareasnoexraordnarye",
+    "coomywoosarecrswbroe",
+    "saexraordnaryevanges",
+    "ecrswreacngrendsoamy",
+    "yeexraordnaryevanges",
+    "arecrswmanypeopeoday",
+    "mndawwocdrenweexraor"
+   ],
+   "independentWordBagCoverage": 0.99881,
+   "independentWordBagMissingSample": [
+    "n",
+    "our",
+    "au",
+    "en",
+    "obedence",
+    "nonvocaona",
+    "d",
+    "urng",
+    "crss",
+    "gods",
+    "debraor",
+    "very",
+    "oucdown",
+    "rces",
+    "expense",
+    "j",
+    "esus",
+    "oand",
+    "p",
+    "yearod",
+    "erusaem",
+    "supercay",
+    "oowers",
+    "vangesm",
+    "anynggoes",
+    "downoad",
+    "y",
+    "requremens",
+    "aconsumng",
+    "evangesmexposon",
+    "oneorsrae",
+    "ume",
+    "companes",
+    "reaemnsres",
+    "ordans",
+    "counes",
+    "komeers",
+    "promsng",
+    "caenges",
+    "sourceced"
+   ],
+   "structuredRegions": [
+    "p96 cols",
+    "p97 cols",
+    "p123 lines",
+    "p146 render"
+   ],
+   "regionWordCoverage": 1.0,
+   "regionMissingSample": [],
+   "figuresWithoutReviewedAlt": [],
+   "unexpectedGlyphs": {},
+   "suspiciousTokens": [
+    "ChosenPeople",
+    "ExtraordInary",
+    "ExtraordinaryEvangelism",
+    "IrisReading",
+    "LinkedIn",
+    "LucidBooks",
+    "TikTok"
+   ],
+   "words": 44012,
+   "chapters": [
+    {
+     "slug": "endorsements",
+     "title": "Endorsements",
+     "label": null,
+     "pdfPage": 3,
+     "blocks": 34
+    },
+    {
+     "slug": "introduction",
+     "title": "Introduction",
+     "label": null,
+     "pdfPage": 19,
+     "blocks": 36
+    },
+    {
+     "slug": "our-message",
+     "title": "Our Message",
+     "label": null,
+     "pdfPage": 25,
+     "blocks": 61
+    },
+    {
+     "slug": "why-witness",
+     "title": "Why Witness?",
+     "label": null,
+     "pdfPage": 35,
+     "blocks": 93
+    },
+    {
+     "slug": "who-to-share-christ-with",
+     "title": "Who To Share Christ With",
+     "label": null,
+     "pdfPage": 49,
+     "blocks": 102
+    },
+    {
+     "slug": "why-christians-dont-witness",
+     "title": "Why Christians Don’t Witness",
+     "label": null,
+     "pdfPage": 67,
+     "blocks": 38
+    },
+    {
+     "slug": "the-power",
+     "title": "The Power",
+     "label": null,
+     "pdfPage": 73,
+     "blocks": 106
+    },
+    {
+     "slug": "your-personal-testimony",
+     "title": "Your Personal Testimony",
+     "label": null,
+     "pdfPage": 87,
+     "blocks": 81
+    },
+    {
+     "slug": "attitudes-and-approaches",
+     "title": "Attitudes And Approaches",
+     "label": null,
+     "pdfPage": 99,
+     "blocks": 71
+    },
+    {
+     "slug": "asking-questions-using-conversations-to-share-the-gospel",
+     "title": "Asking Questions Using Conversations To Share The Gospel",
+     "label": null,
+     "pdfPage": 111,
+     "blocks": 66
+    },
+    {
+     "slug": "the-process",
+     "title": "The Process",
+     "label": null,
+     "pdfPage": 119,
+     "blocks": 102
+    },
+    {
+     "slug": "articulating-the-gospel",
+     "title": "Articulating The Gospel",
+     "label": null,
+     "pdfPage": 139,
+     "blocks": 139
+    },
+    {
+     "slug": "how-christians-and-churches-reach-out",
+     "title": "How Christians And Churches Reach Out",
+     "label": null,
+     "pdfPage": 157,
+     "blocks": 97
+    },
+    {
+     "slug": "the-new-roman-roads",
+     "title": "The New Roman Roads",
+     "label": null,
+     "pdfPage": 173,
+     "blocks": 131
+    },
+    {
+     "slug": "answering-objections",
+     "title": "Answering Objections",
+     "label": null,
+     "pdfPage": 189,
+     "blocks": 84
+    },
+    {
+     "slug": "answering-specific-objections",
+     "title": "Answering Specific Objections",
+     "label": null,
+     "pdfPage": 201,
+     "blocks": 144
+    },
+    {
+     "slug": "make-disciples",
+     "title": "Make Disciples",
+     "label": null,
+     "pdfPage": 221,
+     "blocks": 44
+    },
+    {
+     "slug": "next-steps-and-final-thoughts",
+     "title": "Next Steps And Final Thoughts",
+     "label": null,
+     "pdfPage": 229,
+     "blocks": 45
+    },
+    {
+     "slug": "scripture-index",
+     "title": "Scripture Index",
+     "label": null,
+     "pdfPage": 237,
+     "blocks": 52
+    },
+    {
+     "slug": "resources",
+     "title": "Resources",
+     "label": null,
+     "pdfPage": 243,
+     "blocks": 34
+    },
+    {
+     "slug": "surveys",
+     "title": "Surveys",
+     "label": null,
+     "pdfPage": 251,
+     "blocks": 73
+    }
+   ],
+   "status": "pass",
+   "failures": []
+  },
+  {
+   "id": "extraordinary-evangelism-student-guide",
+   "sourcePages": 47,
+   "bodyFontSize": 16.0,
+   "chapterHeadingSizes": [
+    26
+   ],
+   "readings": 11,
+   "figures": 23,
+   "twoColumnPages": 0,
+   "printedContentsPages": [
+    5
+   ],
+   "decodedShiftFonts": [],
+   "repairs": {
+    "fill-in blank kept": 56,
+    "UNALIGNED glyph-code span": 38,
+    "typed answer blank kept": 8,
+    "image re-rendered from page (unsupported colour space)": 6,
+    "space after ligature removed": 4
+   },
+   "removed": {
+    "rotated text line": 4,
+    "cover page text (shown as cover image)": 0,
+    "tiny image/ornament": 1,
+    "printed contents page lines (replaced by web contents)": 20,
+    "page number": 40,
+    "running header/footer": 37,
+    "blank answer line": 47,
+    "image inside a re-rendered diagram region": 1
+   },
+   "internalCoverage": 1.0,
+   "internalMissingSample": [],
+   "independentCoverage": 0.92332,
+   "independentMissingSample": [
+    "usonnemnsrescomobjec",
+    "usareyourajesusnawor",
+    "ecaskeyscrpurepassag",
+    "amark1615acs18nuke19",
+    "akeasaresuerearevebb",
+    "1movaedby2cornans514",
+    "2aoyorgod2cornans511",
+    "3wearecrssorcrs2corn",
+    "esnknowcrs4ewordswou",
+    "crsjon146acs412mawer",
+    "egospegodsorersavaon",
+    "andoroseworusnjesuse",
+    "dreoroseworejecgodsa",
+    "ness5wewbeessaonans2",
+    "1920orourwnessdane12",
+    "3godspansoroneperson",
+    "rkeroersscrpuremedao",
+    "pec3se2greaesmovaors",
+    "sarngcrscecodszzngo5",
+    "ssorcrsobjecveequpsu",
+    "peopeaboucrsoremnjes",
+    "usuke210saysbeodbrng",
+    "raynancenwarmesadsan",
+    "speencompassesejesus",
+    "crso2epowerpurposeoe",
+    "gospewereoegosperoma",
+    "sdeaudesnaonromqueso",
+    "acespasorjonmacarurs",
+    "comeorepenance6eearo",
+    "wycrsansdonwnesswaoe",
+    "erdoearopeer315busan",
+    "rbe1jesus2jesusreeme",
+    "262831overcomesourea",
+    "28203epoweroeegreaap",
+    "egavesoneandernameer",
+    "eonysonabeevesnmerna",
+    "meerewnopersgooeerna",
+    "meerebuwaveeernaeern",
+    "eaon320godasgveneaco",
+    "orarendpowersource2s"
+   ],
+   "independentWordBagCoverage": 0.99976,
+   "independentWordBagMissingSample": [
+    "rscenury",
+    "rdpary"
+   ],
+   "structuredRegions": [
+    "p22 render",
+    "p23 lines",
+    "p44 cols",
+    "p45 cols"
+   ],
+   "regionWordCoverage": 1.0,
+   "regionMissingSample": [],
+   "figuresWithoutReviewedAlt": [],
+   "unexpectedGlyphs": {},
+   "suspiciousTokens": [],
+   "words": 8672,
+   "chapters": [
+    {
+     "slug": "welcome",
+     "title": "WELCOME",
+     "label": null,
+     "pdfPage": 3,
+     "blocks": 17
+    },
+    {
+     "slug": "session-one-our-mandate-motive",
+     "title": "SESSION ONE: OUR MANDATE & MOTIVE",
+     "label": null,
+     "pdfPage": 6,
+     "blocks": 81
+    },
+    {
+     "slug": "session-two-our-message",
+     "title": "SESSION TWO: OUR MESSAGE",
+     "label": null,
+     "pdfPage": 11,
+     "blocks": 88
+    },
+    {
+     "slug": "session-three-our-means-manner",
+     "title": "SESSION THREE: OUR MEANS & MANNER",
+     "label": null,
+     "pdfPage": 16,
+     "blocks": 72
+    },
+    {
+     "slug": "session-four-our-method",
+     "title": "SESSION FOUR: OUR METHOD",
+     "label": null,
+     "pdfPage": 22,
+     "blocks": 33
+    },
+    {
+     "slug": "4-simple-points-using-john-3-16",
+     "title": "4 SIMPLE POINTS USING JOHN 3:16",
+     "label": null,
+     "pdfPage": 27,
+     "blocks": 53
+    },
+    {
+     "slug": "appendix-a",
+     "title": "APPENDIX A",
+     "label": null,
+     "pdfPage": 32,
+     "blocks": 48
+    },
+    {
+     "slug": "for-more-detailed-answers",
+     "title": "FOR MORE DETAILED ANSWERS",
+     "label": null,
+     "pdfPage": 35,
+     "blocks": 33
+    },
+    {
+     "slug": "appendix-b",
+     "title": "APPENDIX B",
+     "label": null,
+     "pdfPage": 38,
+     "blocks": 44
+    },
+    {
+     "slug": "community-survey",
+     "title": "COMMUNITY SURVEY",
+     "label": null,
+     "pdfPage": 43,
+     "blocks": 15
+    },
+    {
+     "slug": "answers-to-the-student-guide",
+     "title": "ANSWERS TO THE STUDENT GUIDE",
+     "label": null,
+     "pdfPage": 44,
+     "blocks": 8
+    }
+   ],
+   "status": "pass",
+   "failures": []
+  },
+  {
+   "id": "new-life-in-christ",
+   "sourcePages": 164,
+   "bodyFontSize": 11.5,
+   "chapterHeadingSizes": [
+    18
+   ],
+   "readings": 40,
+   "figures": 0,
+   "twoColumnPages": 0,
+   "printedContentsPages": [
+    3
+   ],
+   "decodedShiftFonts": [],
+   "repairs": {
+    "wrap hyphen removed": 2,
+    "typed answer blank kept": 1
+   },
+   "removed": {
+    "cover page text (shown as cover image)": 0,
+    "running header/footer": 369,
+    "page number": 164,
+    "printed contents page lines (replaced by web contents)": 74
+   },
+   "internalCoverage": 1.0,
+   "internalMissingSample": [],
+   "independentCoverage": 0.98349,
+   "independentMissingSample": [
+    "anvngareeresourcerea",
+    "sonnecom34jesusemess",
+    "a35godsnamesnebbesev",
+    "ennamesoodono36godsn",
+    "syoucanreyon37wadoes",
+    "38prayersyoucanuse39",
+    "oneanoerbodye40veore",
+    "ernasgncance33jesuss",
+    "adamesson1o40ourmmed",
+    "godqwaexcesyoumosabo",
+    "ncrsandasapanoryourg",
+    "ooessonesson2o40owca",
+    "spwwenyoumakeedecson",
+    "mebrewswaeversnoroma",
+    "cangesnwawayscanyous",
+    "esson3o40aknowngwoyo",
+    "seekmebrewsaspersona",
+    "arkasanoerwordorrusa",
+    "askgodogrowyouraesso",
+    "n4o40yesyoucanaveare",
+    "aqwadoeversesromjere",
+    "enapoweruwayqbeorere",
+    "raceweneverweneedepe",
+    "sson5o40becomngkejes",
+    "oyouqwcareasoyoureav",
+    "ogodesson6o40woseoys",
+    "nsopayweqnwawayssavn",
+    "asaeygooessonesson7o",
+    "40pueruogodswordnoyo",
+    "ppansjesusansweredem",
+    "sogodsoayourewreecmq",
+    "yourvaesson8o40godsc",
+    "nesspeaceandsabyqona",
+    "ownesson9o40akogodpr",
+    "arogodjamesgodwansob",
+    "ndndgraceebrewsgodwa",
+    "boujerema3323qwaknds",
+    "uoaskmorqwadoesevers",
+    "ngwgodjames42esusyou",
+    "onogodsanswersqowcan"
+   ],
+   "independentWordBagCoverage": 0.98067,
+   "independentWordBagMissingSample": [
+    "or",
+    "a",
+    "e",
+    "n",
+    "o",
+    "can",
+    "sgn",
+    "cance",
+    "ss",
+    "1",
+    "4",
+    "0",
+    "bene",
+    "s",
+    "es",
+    "2",
+    "7",
+    "9",
+    "ers",
+    "enses",
+    "3",
+    "sacr",
+    "ce",
+    "de",
+    "5",
+    "pu",
+    "er",
+    "su",
+    "deny",
+    "uenced",
+    "abe",
+    "8",
+    "d",
+    "ereny",
+    "spec",
+    "c",
+    "eren",
+    "jus",
+    "cer",
+    "cae"
+   ],
+   "structuredRegions": [],
+   "regionWordCoverage": 1.0,
+   "regionMissingSample": [],
+   "figuresWithoutReviewedAlt": [],
+   "unexpectedGlyphs": {},
+   "suspiciousTokens": [
+    "KingdomNomics"
+   ],
+   "words": 51625,
+   "chapters": [
+    {
+     "slug": "four-immediate-benefits",
+     "title": "Four Immediate Benefits!",
+     "label": null,
+     "pdfPage": 5,
+     "blocks": 53
+    },
+    {
+     "slug": "how-can-you-be-sure-of-your-relationship-with-christ",
+     "title": "How Can You Be Sure of Your Relationship with Christ?",
+     "label": null,
+     "pdfPage": 9,
+     "blocks": 50
+    },
+    {
+     "slug": "faith-knowing-who-you-can-trust",
+     "title": "Faith: Knowing Who You Can Trust",
+     "label": null,
+     "pdfPage": 14,
+     "blocks": 29
+    },
+    {
+     "slug": "yes-you-can-have-a-relationship-with-god",
+     "title": "Yes, You Can Have a Relationship with God!",
+     "label": null,
+     "pdfPage": 17,
+     "blocks": 30
+    },
+    {
+     "slug": "becoming-like-jesus",
+     "title": "Becoming Like Jesus",
+     "label": null,
+     "pdfPage": 21,
+     "blocks": 29
+    },
+    {
+     "slug": "who-is-the-holy-spirit",
+     "title": "Who Is the Holy Spirit?",
+     "label": null,
+     "pdfPage": 24,
+     "blocks": 47
+    },
+    {
+     "slug": "put-the-truth-of-gods-word-into-your-life",
+     "title": "Put the Truth of God’s Word into Your Life!",
+     "label": null,
+     "pdfPage": 29,
+     "blocks": 28
+    },
+    {
+     "slug": "god-is-communicating-with-you",
+     "title": "God Is Communicating with You!",
+     "label": null,
+     "pdfPage": 33,
+     "blocks": 45
+    },
+    {
+     "slug": "talk-to-god",
+     "title": "Talk to God!",
+     "label": null,
+     "pdfPage": 37,
+     "blocks": 44
+    },
+    {
+     "slug": "get-connected",
+     "title": "Get Connected",
+     "label": null,
+     "pdfPage": 42,
+     "blocks": 33
+    },
+    {
+     "slug": "obedience",
+     "title": "Obedience",
+     "label": null,
+     "pdfPage": 46,
+     "blocks": 35
+    },
+    {
+     "slug": "spend-time-with-god-every-day",
+     "title": "Spend Time with God Every Day!",
+     "label": null,
+     "pdfPage": 50,
+     "blocks": 23
+    },
+    {
+     "slug": "gods-great-love-for-you",
+     "title": "God’s Great Love for You!",
+     "label": null,
+     "pdfPage": 53,
+     "blocks": 38
+    },
+    {
+     "slug": "gods-purpose-for-your-life",
+     "title": "God’s Purpose for Your Life",
+     "label": null,
+     "pdfPage": 57,
+     "blocks": 28
+    },
+    {
+     "slug": "living-by-the-spirit",
+     "title": "Living by the Spirit",
+     "label": null,
+     "pdfPage": 60,
+     "blocks": 28
+    },
+    {
+     "slug": "spirit-controlled-vs-self-controlled",
+     "title": "Spirit-Controlled vs. Self-Controlled",
+     "label": null,
+     "pdfPage": 64,
+     "blocks": 24
+    },
+    {
+     "slug": "spiritual-breathing",
+     "title": "Spiritual Breathing",
+     "label": null,
+     "pdfPage": 67,
+     "blocks": 27
+    },
+    {
+     "slug": "the-holy-spirits-power-to-resist-temptation",
+     "title": "The Holy Spirit’s Power to Resist Temptation",
+     "label": null,
+     "pdfPage": 71,
+     "blocks": 50
+    },
+    {
+     "slug": "the-holy-spirits-power-to-overcome-evil",
+     "title": "The Holy Spirit’s Power to Overcome Evil",
+     "label": null,
+     "pdfPage": 76,
+     "blocks": 37
+    },
+    {
+     "slug": "pray-with-confidence",
+     "title": "Pray with Confidence",
+     "label": null,
+     "pdfPage": 80,
+     "blocks": 35
+    },
+    {
+     "slug": "different-ways-to-pray",
+     "title": "Different Ways to Pray",
+     "label": null,
+     "pdfPage": 83,
+     "blocks": 43
+    },
+    {
+     "slug": "share-the-good-news",
+     "title": "Share the Good News",
+     "label": null,
+     "pdfPage": 88,
+     "blocks": 43
+    },
+    {
+     "slug": "knowing-our-great-god",
+     "title": "Knowing Our Great God",
+     "label": null,
+     "pdfPage": 92,
+     "blocks": 73
+    },
+    {
+     "slug": "knowing-our-perfect-god",
+     "title": "Knowing Our Perfect God",
+     "label": null,
+     "pdfPage": 96,
+     "blocks": 48
+    },
+    {
+     "slug": "hear-gods-word",
+     "title": "Hear God’s Word",
+     "label": null,
+     "pdfPage": 100,
+     "blocks": 49
+    },
+    {
+     "slug": "read-gods-word",
+     "title": "Read God’s Word",
+     "label": null,
+     "pdfPage": 104,
+     "blocks": 29
+    },
+    {
+     "slug": "study-gods-word",
+     "title": "Study God’s Word",
+     "label": null,
+     "pdfPage": 107,
+     "blocks": 73
+    },
+    {
+     "slug": "memorize-gods-word",
+     "title": "Memorize God’s Word",
+     "label": null,
+     "pdfPage": 112,
+     "blocks": 37
+    },
+    {
+     "slug": "meditate-on-gods-word",
+     "title": "Meditate on God’s Word",
+     "label": null,
+     "pdfPage": 115,
+     "blocks": 42
+    },
+    {
+     "slug": "anger",
+     "title": "Anger",
+     "label": null,
+     "pdfPage": 119,
+     "blocks": 32
+    },
+    {
+     "slug": "forgiveness",
+     "title": "Forgiveness",
+     "label": null,
+     "pdfPage": 123,
+     "blocks": 28
+    },
+    {
+     "slug": "know-what-god-wants-you-to-do-every-day",
+     "title": "Know What God Wants You to Do Every Day",
+     "label": null,
+     "pdfPage": 127,
+     "blocks": 43
+    },
+    {
+     "slug": "jesus-said-i-am",
+     "title": "Jesus Said, “I Am…”",
+     "label": null,
+     "pdfPage": 131,
+     "blocks": 34
+    },
+    {
+     "slug": "jesus-the-messiah",
+     "title": "Jesus, the “Messiah”",
+     "label": null,
+     "pdfPage": 136,
+     "blocks": 34
+    },
+    {
+     "slug": "gods-names-in-the-bible-seven-names-to-hold-on-to",
+     "title": "God’s Names in the Bible—Seven Names to Hold On to!",
+     "label": null,
+     "pdfPage": 140,
+     "blocks": 58
+    },
+    {
+     "slug": "gods-names-in-the-bible-ten-jehovah-names-you-can-rely-on",
+     "title": "God’s Names in the Bible—Ten “Jehovah” Names You Can Rely On!",
+     "label": null,
+     "pdfPage": 144,
+     "blocks": 63
+    },
+    {
+     "slug": "what-does-it-mean-to-ask-seek-and-knock",
+     "title": "What Does It Mean to “Ask, Seek, and Knock”?",
+     "label": null,
+     "pdfPage": 149,
+     "blocks": 45
+    },
+    {
+     "slug": "prayers-you-can-use",
+     "title": "Prayers You Can Use",
+     "label": null,
+     "pdfPage": 153,
+     "blocks": 59
+    },
+    {
+     "slug": "one-another-body-life",
+     "title": "“One Another” Body Life",
+     "label": null,
+     "pdfPage": 158,
+     "blocks": 55
+    },
+    {
+     "slug": "live-for-eternal-significance",
+     "title": "Live for Eternal Significance",
+     "label": null,
+     "pdfPage": 163,
+     "blocks": 10
+    }
+   ],
+   "status": "pass",
+   "failures": []
+  },
+  {
+   "id": "40-days-of-gods-love",
+   "sourcePages": 87,
+   "bodyFontSize": 12.0,
+   "chapterHeadingSizes": [
+    20
+   ],
+   "readings": 41,
+   "figures": 21,
+   "twoColumnPages": 0,
+   "printedContentsPages": [],
+   "decodedShiftFonts": [],
+   "repairs": {
+    "wrap hyphen removed": 112,
+    "ligature: �rst -> first": 36,
+    "ligature: �lled -> filled": 22,
+    "ligature: �nd -> find": 18,
+    "ligature: de�nition -> definition": 18,
+    "ligature: �esh -> flesh": 16,
+    "ligature: �ows -> flows": 14,
+    "ligature: ful�llment -> fulfillment": 14,
+    "ligature: �owing -> flowing": 10,
+    "ligature: dif�cult -> difficult": 10,
+    "ligature: �x -> fix": 10,
+    "ligature: cruci�ed -> crucified": 10,
+    "ligature: �ngers -> fingers": 8,
+    "ligature: �sh -> fish": 8,
+    "ligature: �t -> fit": 8,
+    "ligature: de�nes -> defines": 8,
+    "ligature: ful�lled -> fulfilled": 8,
+    "ligature: over�owing -> overflowing": 8,
+    "ligature: sacri�ce -> sacrifice": 6,
+    "ligature: �shing -> fishing": 6,
+    "ligature: af�ictions -> afflictions": 6,
+    "ligature: �ow -> flow": 6,
+    "ligature: re�ect -> reflect": 4,
+    "ligature: �rmly -> firmly": 4,
+    "ligature: �ower -> flower": 4,
+    "ligature: �oor -> floor": 4,
+    "ligature: �ne -> fine": 4,
+    "ligature: de�ne -> define": 4,
+    "ligature: ful�lls -> fulfills": 4,
+    "ligature: �ll -> fill": 4,
+    "ligature: con�dence -> confidence": 4,
+    "ligature: de�ned -> defined": 4,
+    "ligature: �rm -> firm": 4,
+    "ligature: �lls -> fills": 4,
+    "ligature: �sherman -> fisherman": 4,
+    "ligature: af�iction -> affliction": 4,
+    "ligature: dif�culties -> difficulties": 4,
+    "ligature: �ourishing -> flourishing": 4,
+    "ligature: �rstborn -> firstborn": 4,
+    "ligature: con�dent -> confident": 4,
+    "ligature: de�ning -> defining": 4,
+    "ligature: �sher -> fisher": 4,
+    "typed answer blank kept": 2,
+    "ligature: Ampli�ed -> Amplified": 2,
+    "ligature: Of�ce -> Office": 2,
+    "ligature: �ashing -> flashing": 2,
+    "ligature: dissatis�ed -> dissatisfied": 2,
+    "ligature: unsel�sh -> unselfish": 2,
+    "ligature: �ercely -> fiercely": 2,
+    "ligature: con�ict -> conflict": 2,
+    "ligature: �ooding -> flooding": 2,
+    "ligature: �lthy -> filthy": 2,
+    "ligature: cof�n -> coffin": 2,
+    "ligature: �ourish -> flourish": 2,
+    "ligature: �nding -> finding": 2,
+    "ligature: �sts -> fists": 2,
+    "ligature: dif� -> diffi": 2,
+    "ligature: af�liation -> affiliation": 2,
+    "ligature: �ung -> flung": 2,
+    "ligature: �elds -> fields": 2,
+    "ligature: �erce -> fierce": 2,
+    "ligature: �ght -> fight": 2,
+    "ligature: �aws -> flaws": 2,
+    "ligature: pro�ts -> profits": 2,
+    "ligature: disquali�ed -> disqualified": 2,
+    "ligature: �ashed -> flashed": 2,
+    "ligature: in�icted -> infiicted": 2,
+    "ligature: veri�es -> verifies": 2,
+    "ligature: sti�e -> stifie": 2,
+    "ligature: �nisher -> finisher": 2,
+    "ligature: bene�ts -> benefits": 2,
+    "ligature: satis�ed -> satisfied": 2,
+    "ligature: �ts -> fits": 2,
+    "ligature: speci�cally -> specifically": 2,
+    "ligature: re�ects -> reflects": 2,
+    "ligature: �ee -> flee": 2,
+    "ligature: insigni�cant -> insignificant": 2,
+    "ligature: �owed -> flowed": 2,
+    "ligature: �ourishes -> flourishes": 2,
+    "ligature: re�ected -> reflected": 2,
+    "ligature: identi�ed -> identified": 2,
+    "ligature: �lling -> filling": 2,
+    "ligature: �ooded -> flooded": 2,
+    "ligature: glori�ed -> glorified": 2,
+    "ligature: �awless -> flawless": 2,
+    "ligature: over�ows -> overflows": 2,
+    "ligature: �shers -> fishers": 2,
+    "ligature: �ing -> thing": 2,
+    "ligature: �nds -> finds": 2,
+    "ligature: satis�es -> satisfies": 2,
+    "ligature: suf�cient -> sufficient": 2,
+    "ligature: suf�ciency -> sufficiency": 2,
+    "ligature: in�nite -> infinite": 2,
+    "ligature: over�ow -> overflow": 2
+   },
+   "removed": {
+    "cover page text (shown as cover image)": 0,
+    "dingbat rule/ornament line": 42,
+    "page number": 83,
+    "running header/footer": 41
+   },
+   "internalCoverage": 1.0,
+   "internalMissingSample": [],
+   "independentCoverage": 0.99781,
+   "independentMissingSample": [
+    "aonans312wecomeoejou",
+    "sobeaccepedandbuwado",
+    "ey2boardesorymakesse",
+    "edomoknowngsponderor",
+    "eada42waysdonesaersw",
+    "eoeraandday24jonsden",
+    "avensperecmaewjesuse",
+    "eesarsogodsaabuourso",
+    "acerbe68comngkesgood",
+    "nsnourcorreceoogyabo"
+   ],
+   "independentWordBagCoverage": 0.99384,
+   "independentWordBagMissingSample": [
+    "a",
+    "e",
+    "amp",
+    "ed",
+    "n",
+    "ce",
+    "s",
+    "ways",
+    "ow",
+    "can",
+    "re",
+    "ec",
+    "de",
+    "dssas",
+    "key2",
+    "over",
+    "u",
+    "ows",
+    "andcraed",
+    "accordng",
+    "ne",
+    "unse",
+    "con",
+    "c",
+    "non",
+    "owng",
+    "nes",
+    "d",
+    "es",
+    "men",
+    "cu",
+    "comng",
+    "co",
+    "aon",
+    "earwarmng",
+    "sacr",
+    "pro",
+    "su",
+    "dsqua",
+    "ced"
+   ],
+   "structuredRegions": [],
+   "regionWordCoverage": 1.0,
+   "regionMissingSample": [],
+   "figuresWithoutReviewedAlt": [],
+   "unexpectedGlyphs": {},
+   "suspiciousTokens": [],
+   "words": 30204,
+   "chapters": [
+    {
+     "slug": "welcome-to-the-journey",
+     "title": "Welcome to the Journey",
+     "label": null,
+     "pdfPage": 5,
+     "blocks": 8
+    },
+    {
+     "slug": "everlasting-lovingkindness",
+     "title": "Everlasting Lovingkindness",
+     "label": "Day 1",
+     "pdfPage": 6,
+     "blocks": 24
+    },
+    {
+     "slug": "you-are-precious-to-god",
+     "title": "You Are Precious to God",
+     "label": "Day 2",
+     "pdfPage": 8,
+     "blocks": 13
+    },
+    {
+     "slug": "god-is-love",
+     "title": "God Is Love",
+     "label": "Day 3",
+     "pdfPage": 10,
+     "blocks": 18
+    },
+    {
+     "slug": "created-in-gods-image",
+     "title": "Created in God’s Image",
+     "label": "Day 4",
+     "pdfPage": 12,
+     "blocks": 15
+    },
+    {
+     "slug": "adam-in-the-first-garden",
+     "title": "Adam in the First Garden",
+     "label": "Day 5",
+     "pdfPage": 14,
+     "blocks": 19
+    },
+    {
+     "slug": "god-loved-the-world-and-gave-his-son",
+     "title": "God Loved the World … and Gave His Son",
+     "label": "Day 6",
+     "pdfPage": 16,
+     "blocks": 15
+    },
+    {
+     "slug": "god-really-is-love",
+     "title": "God Really Is Love",
+     "label": "Day 7",
+     "pdfPage": 18,
+     "blocks": 18
+    },
+    {
+     "slug": "love-in-our-language",
+     "title": "Love in Our Language",
+     "label": "Day 8",
+     "pdfPage": 20,
+     "blocks": 16
+    },
+    {
+     "slug": "te-compassion-of-christ",
+     "title": "Te Compassion of Christ",
+     "label": "Day 9",
+     "pdfPage": 22,
+     "blocks": 19
+    },
+    {
+     "slug": "desired-with-lovingkindness",
+     "title": "Desired with Lovingkindness",
+     "label": "Day 10",
+     "pdfPage": 24,
+     "blocks": 18
+    },
+    {
+     "slug": "change-your-mind",
+     "title": "Change Your Mind",
+     "label": "Day 11",
+     "pdfPage": 26,
+     "blocks": 19
+    },
+    {
+     "slug": "te-fathers-embrace",
+     "title": "Te Father’s Embrace",
+     "label": "Day 12",
+     "pdfPage": 28,
+     "blocks": 16
+    },
+    {
+     "slug": "god-loves-us-as-sinners",
+     "title": "God Loves Us as Sinners",
+     "label": "Day 13",
+     "pdfPage": 30,
+     "blocks": 16
+    },
+    {
+     "slug": "eternal-life-in-eternal-love",
+     "title": "Eternal Life in Eternal Love",
+     "label": "Day 14",
+     "pdfPage": 32,
+     "blocks": 18
+    },
+    {
+     "slug": "commanded-to-love-but-how",
+     "title": "Commanded to Love … But How?",
+     "label": "Day 15",
+     "pdfPage": 34,
+     "blocks": 17
+    },
+    {
+     "slug": "nothing-without-love",
+     "title": "Nothing without Love",
+     "label": "Day 16",
+     "pdfPage": 36,
+     "blocks": 17
+    },
+    {
+     "slug": "jesus-new-command",
+     "title": "Jesus’ New Command",
+     "label": "Day 17",
+     "pdfPage": 38,
+     "blocks": 17
+    },
+    {
+     "slug": "born-to-be-loved",
+     "title": "Born to Be Loved",
+     "label": "Day 18",
+     "pdfPage": 40,
+     "blocks": 18
+    },
+    {
+     "slug": "god-know-my-heart",
+     "title": "God, Know My Heart",
+     "label": "Day 19",
+     "pdfPage": 42,
+     "blocks": 16
+    },
+    {
+     "slug": "your-spirit-soul-and-body",
+     "title": "Your Spirit, Soul and Body",
+     "label": "Day 20",
+     "pdfPage": 44,
+     "blocks": 17
+    },
+    {
+     "slug": "jesus-in-the-last-garden",
+     "title": "Jesus in the Last Garden",
+     "label": "Day 21",
+     "pdfPage": 46,
+     "blocks": 14
+    },
+    {
+     "slug": "law-and-love",
+     "title": "Law and Love",
+     "label": "Day 22",
+     "pdfPage": 48,
+     "blocks": 15
+    },
+    {
+     "slug": "faith-and-love",
+     "title": "Faith and Love",
+     "label": "Day 23",
+     "pdfPage": 50,
+     "blocks": 16
+    },
+    {
+     "slug": "johns-identity-te-disciple-whom-jesus-loved",
+     "title": "John’s Identity: “Te Disciple Whom Jesus Loved”",
+     "label": "Day 24",
+     "pdfPage": 52,
+     "blocks": 17
+    },
+    {
+     "slug": "in-christ-nothing-can-separate-you-from-gods-love",
+     "title": "In Christ, Nothing Can Separate You from God’s Love",
+     "label": "Day 25",
+     "pdfPage": 54,
+     "blocks": 16
+    },
+    {
+     "slug": "transformed",
+     "title": "Transformed",
+     "label": "Day 26",
+     "pdfPage": 56,
+     "blocks": 19
+    },
+    {
+     "slug": "jesus-identity-my-beloved-son",
+     "title": "Jesus’ Identity: “My Beloved Son”",
+     "label": "Day 27",
+     "pdfPage": 58,
+     "blocks": 17
+    },
+    {
+     "slug": "abide-in-my-love",
+     "title": "Abide in My Love",
+     "label": "Day 28",
+     "pdfPage": 60,
+     "blocks": 15
+    },
+    {
+     "slug": "together-because-of-his-great-love",
+     "title": "Together … because of His Great Love",
+     "label": "Day 29",
+     "pdfPage": 62,
+     "blocks": 16
+    },
+    {
+     "slug": "how-do-we-love-god",
+     "title": "How Do We Love God?",
+     "label": "Day 30",
+     "pdfPage": 64,
+     "blocks": 14
+    },
+    {
+     "slug": "christ-in-you-the-hope-of-glory",
+     "title": "Christ in You, the Hope of Glory",
+     "label": "Day 31",
+     "pdfPage": 66,
+     "blocks": 16
+    },
+    {
+     "slug": "be-perfect-how",
+     "title": "“Be Perfect”? How?",
+     "label": "Day 32",
+     "pdfPage": 68,
+     "blocks": 17
+    },
+    {
+     "slug": "pauls-prayer-to-know-the-love-of-christ",
+     "title": "Paul’s Prayer: To Know the Love of Christ",
+     "label": "Day 33",
+     "pdfPage": 70,
+     "blocks": 16
+    },
+    {
+     "slug": "sufferings-character-hope-love-poured-out",
+     "title": "Sufferings … Character … Hope … Love Poured Out",
+     "label": "Day 34",
+     "pdfPage": 72,
+     "blocks": 14
+    },
+    {
+     "slug": "living-life-in-christ",
+     "title": "Living Life in Christ",
+     "label": "Day 35",
+     "pdfPage": 74,
+     "blocks": 15
+    },
+    {
+     "slug": "marked-by-love",
+     "title": "Marked by Love",
+     "label": "Day 36",
+     "pdfPage": 76,
+     "blocks": 17
+    },
+    {
+     "slug": "love-perfected-among-us-in-tis-world",
+     "title": "Love Perfected among Us … in Tis World",
+     "label": "Day 37",
+     "pdfPage": 78,
+     "blocks": 14
+    },
+    {
+     "slug": "one-in-glory-one-in-love",
+     "title": "One in Glory; One in Love",
+     "label": "Day 38",
+     "pdfPage": 80,
+     "blocks": 14
+    },
+    {
+     "slug": "come-to-me",
+     "title": "Come to Me",
+     "label": "Day 39",
+     "pdfPage": 82,
+     "blocks": 15
+    },
+    {
+     "slug": "arise-shine",
+     "title": "Arise! Shine!",
+     "label": "Day 40",
+     "pdfPage": 84,
+     "blocks": 54
+    }
+   ],
+   "status": "pass",
+   "failures": []
+  },
+  {
+   "id": "the-abiding-room",
+   "sourcePages": 273,
+   "bodyFontSize": 11.5,
+   "chapterHeadingSizes": [
+    20,
+    23,
+    26
+   ],
+   "readings": 33,
+   "figures": 39,
+   "twoColumnPages": 0,
+   "printedContentsPages": [
+    6,
+    7
+   ],
+   "decodedShiftFonts": [],
+   "repairs": {
+    "image re-rendered from page (unsupported colour space)": 29,
+    "drop cap rejoined": 19,
+    "space after ligature removed": 2
+   },
+   "removed": {
+    "cover page text (shown as cover image)": 0,
+    "printed contents page lines (replaced by web contents)": 43,
+    "page number": 237,
+    "running header/footer": 207,
+    "repeated decorative image": 24
+   },
+   "internalCoverage": 1.0,
+   "internalMissingSample": [],
+   "independentCoverage": 0.9927,
+   "independentMissingSample": [
+    "mquesonsncudedorndvd",
+    "eabdngaeendoeaccaper",
+    "nsrucononemparonecap",
+    "er1rougouebbegodasgv",
+    "snoeyoudonoaveepeace",
+    "sandabou2owdoweaprey",
+    "aurngobymaccaper2nca",
+    "ndocrs1cornansn1corn",
+    "weseeonceagane3evesa",
+    "urusoeoyabdngruenewe",
+    "arwocaper3busaywakby",
+    "rymomenbyenonggoodne",
+    "ynorponworspcaper4eb",
+    "reoynevereesseyoueru",
+    "uaskgodorebbedescrbe",
+    "aebypwckamcaper5youm",
+    "weadwonoverdeaukeers",
+    "doeagemaewenjusaeaer",
+    "rdbyepoweroeoyegreap",
+    "ovsonoepersondynamcp",
+    "aourpurposespowerord",
+    "ommandspoweroversnpo",
+    "wesprepesans518sweea",
+    "edbecauseesoywadoesm",
+    "caper7epurposeoscape",
+    "odaynupcomngcaperswe",
+    "meabdngruasyouabdenj",
+    "avenuenorcaper8edagr",
+    "panseyouvemosoeacday",
+    "nspwjesusneprevousca",
+    "9aseaerasovedmesoave",
+    "ydayonsasngbeoreecro",
+    "cueswwenyouareedweoy",
+    "sodskewrngbuamveryga",
+    "rourcaper10nomywbuyo",
+    "ursbedoneuke2242sweb",
+    "dagans1coossans26esu",
+    "sanaudeoegoande6nkab",
+    "wwescaper12youmayrem",
+    "ourwordnessnenewdono"
+   ],
+   "independentWordBagCoverage": 0.99459,
+   "independentWordBagMissingSample": [
+    "k",
+    "evn",
+    "roomm",
+    "d",
+    "uness",
+    "pubsers",
+    "nernaona",
+    "bbca",
+    "amercan",
+    "message",
+    "wou",
+    "provded",
+    "oowng",
+    "peope",
+    "reconsrucons",
+    "manuscrp",
+    "coosng",
+    "suggesons",
+    "mporan",
+    "sandpon",
+    "gudance",
+    "proeced",
+    "y",
+    "anymore",
+    "vng",
+    "experence",
+    "sprua",
+    "marrage",
+    "spred",
+    "oowers",
+    "queson",
+    "percenage",
+    "very",
+    "repeaedy",
+    "usraons",
+    "dagrams",
+    "undersand",
+    "saemens",
+    "connecon",
+    "nenon"
+   ],
+   "structuredRegions": [],
+   "regionWordCoverage": 1.0,
+   "regionMissingSample": [],
+   "figuresWithoutReviewedAlt": [],
+   "unexpectedGlyphs": {},
+   "suspiciousTokens": [
+    "HarperCollins",
+    "PowerPoint",
+    "TobyMac"
+   ],
+   "words": 56789,
+   "chapters": [
+    {
+     "slug": "acknowledgments",
+     "title": "Acknowledgments",
+     "label": null,
+     "pdfPage": 8,
+     "blocks": 11
+    },
+    {
+     "slug": "welcome-to-the-abiding-room",
+     "title": "Welcome to The Abiding Room",
+     "label": null,
+     "pdfPage": 10,
+     "blocks": 25
+    },
+    {
+     "slug": "the-3-levels-of-life",
+     "title": "THE 3 LEVELS OF LIFE",
+     "label": null,
+     "pdfPage": 14,
+     "blocks": 2
+    },
+    {
+     "slug": "the-3-levels-of-life-in-the-old-testament",
+     "title": "The 3 Levels of Life in the Old Testament",
+     "label": null,
+     "pdfPage": 16,
+     "blocks": 94
+    },
+    {
+     "slug": "the-3-levels-of-life-in-the-new-testament",
+     "title": "The 3 Levels of Life in the New Testament",
+     "label": null,
+     "pdfPage": 32,
+     "blocks": 71
+    },
+    {
+     "slug": "the-holy-spirit",
+     "title": "THE HOLY SPIRIT",
+     "label": null,
+     "pdfPage": 44,
+     "blocks": 2
+    },
+    {
+     "slug": "the-battle-of-the-spirit-and-the-flesh",
+     "title": "The Battle of the Spirit and the Flesh",
+     "label": null,
+     "pdfPage": 46,
+     "blocks": 79
+    },
+    {
+     "slug": "experiencing-the-holy-spirits-joy-and-peace",
+     "title": "Experiencing the Holy Spirit’s Joy and Peace",
+     "label": null,
+     "pdfPage": 58,
+     "blocks": 74
+    },
+    {
+     "slug": "the-power-of-the-holy-spirit",
+     "title": "The Power of the Holy Spirit",
+     "label": null,
+     "pdfPage": 70,
+     "blocks": 100
+    },
+    {
+     "slug": "be-filled-with-the-spirit",
+     "title": "Be Filled with the Spirit",
+     "label": null,
+     "pdfPage": 84,
+     "blocks": 74
+    },
+    {
+     "slug": "the-abiding-life",
+     "title": "THE ABIDING LIFE",
+     "label": null,
+     "pdfPage": 96,
+     "blocks": 2
+    },
+    {
+     "slug": "the-great-2-for-1",
+     "title": "The Great 2 for 1",
+     "label": null,
+     "pdfPage": 98,
+     "blocks": 51
+    },
+    {
+     "slug": "the-vine-and-the-branches",
+     "title": "The Vine and the Branches",
+     "label": null,
+     "pdfPage": 106,
+     "blocks": 79
+    },
+    {
+     "slug": "the-abiding-friendship",
+     "title": "The Abiding Friendship",
+     "label": null,
+     "pdfPage": 118,
+     "blocks": 85
+    },
+    {
+     "slug": "surrender",
+     "title": "SURRENDER",
+     "label": null,
+     "pdfPage": 132,
+     "blocks": 2
+    },
+    {
+     "slug": "surrender-your-will",
+     "title": "Surrender Your Will",
+     "label": null,
+     "pdfPage": 134,
+     "blocks": 83
+    },
+    {
+     "slug": "surrender-your-self-effort",
+     "title": "Surrender Your Self-Effort",
+     "label": null,
+     "pdfPage": 146,
+     "blocks": 77
+    },
+    {
+     "slug": "surrender-your-worldliness",
+     "title": "Surrender Your Worldliness",
+     "label": null,
+     "pdfPage": 160,
+     "blocks": 83
+    },
+    {
+     "slug": "holy-living",
+     "title": "HOLY LIVING",
+     "label": null,
+     "pdfPage": 174,
+     "blocks": 2
+    },
+    {
+     "slug": "god-is-holy",
+     "title": "God Is Holy",
+     "label": null,
+     "pdfPage": 176,
+     "blocks": 79
+    },
+    {
+     "slug": "repentance",
+     "title": "Repentance",
+     "label": null,
+     "pdfPage": 190,
+     "blocks": 91
+    },
+    {
+     "slug": "forgiveness",
+     "title": "Forgiveness",
+     "label": null,
+     "pdfPage": 204,
+     "blocks": 76
+    },
+    {
+     "slug": "hope-for-the-world",
+     "title": "HOPE FOR THE WORLD",
+     "label": null,
+     "pdfPage": 218,
+     "blocks": 2
+    },
+    {
+     "slug": "faith",
+     "title": "Faith",
+     "label": null,
+     "pdfPage": 220,
+     "blocks": 75
+    },
+    {
+     "slug": "church-unity-and-revival",
+     "title": "Church Unity and Revival",
+     "label": null,
+     "pdfPage": 232,
+     "blocks": 84
+    },
+    {
+     "slug": "a-call-to-action",
+     "title": "A Call to Action",
+     "label": null,
+     "pdfPage": 246,
+     "blocks": 47
+    },
+    {
+     "slug": "the-good-news",
+     "title": "The Good News",
+     "label": null,
+     "pdfPage": 254,
+     "blocks": 22
+    },
+    {
+     "slug": "recommended-reading-list",
+     "title": "Recommended Reading List",
+     "label": null,
+     "pdfPage": 256,
+     "blocks": 28
+    },
+    {
+     "slug": "compilation-of-abiding-truths",
+     "title": "Compilation of Abiding Truths",
+     "label": null,
+     "pdfPage": 258,
+     "blocks": 52
+    },
+    {
+     "slug": "compilation-of-suggested-songs",
+     "title": "Compilation of Suggested Songs",
+     "label": null,
+     "pdfPage": 262,
+     "blocks": 46
+    },
+    {
+     "slug": "suggested-12-week-group-schedule",
+     "title": "Suggested 12–Week Group Schedule",
+     "label": null,
+     "pdfPage": 266,
+     "blocks": 2
+    },
+    {
+     "slug": "notes",
+     "title": "Notes",
+     "label": null,
+     "pdfPage": 268,
+     "blocks": 10
+    },
+    {
+     "slug": "about-the-author",
+     "title": "About the Author",
+     "label": null,
+     "pdfPage": 270,
+     "blocks": 1
+    }
+   ],
+   "status": "pass",
+   "failures": []
+  },
+  {
+   "id": "timeless-love-transforming-love",
+   "sourcePages": 33,
+   "bodyFontSize": 12.0,
+   "chapterHeadingSizes": [
+    20
+   ],
+   "readings": 10,
+   "figures": 5,
+   "twoColumnPages": 0,
+   "printedContentsPages": [
+    3
+   ],
+   "decodedShiftFonts": [],
+   "repairs": {
+    "symbol-font ornament glyph dropped": 11,
+    "drop cap rejoined": 10,
+    "wrap hyphen removed": 6
+   },
+   "removed": {
+    "cover page text (shown as cover image)": 0,
+    "page number": 22,
+    "printed contents page lines (replaced by web contents)": 11,
+    "running header/footer": 40
+   },
+   "internalCoverage": 1.0,
+   "internalMissingSample": [],
+   "independentCoverage": 0.99286,
+   "independentMissingSample": [
+    "orempassmaryyoudonov",
+    "wencomesogodsovenema",
+    "earadamandeabeoreeaa",
+    "odsuredempvepanmoses",
+    "assnromansbysowngeoa",
+    "pwgodmgookkeoryougod",
+    "compass14ngoveaowedj",
+    "desresooryounewcoven",
+    "gwasversessayngnewco",
+    "npauswarnngooosgaaan",
+    "ooddonondromansoweve",
+    "ndervan201743goredra",
+    "rreaonspwoersransorm"
+   ],
+   "independentWordBagCoverage": 0.99538,
+   "independentWordBagMissingSample": [
+    "a",
+    "uness",
+    "er",
+    "someng",
+    "p",
+    "pedarcan",
+    "s",
+    "undersandng",
+    "m",
+    "reaonsp",
+    "any",
+    "desgned",
+    "accepng",
+    "emoons",
+    "expresson",
+    "orgnang",
+    "b",
+    "eore",
+    "connecon",
+    "ndependen",
+    "yourse",
+    "peopes",
+    "begnnng",
+    "commandmens",
+    "exodus",
+    "commands",
+    "deceved",
+    "appears",
+    "goddesses",
+    "sarvng",
+    "remaned",
+    "embraced",
+    "encompass14",
+    "canne",
+    "prosues",
+    "compasson",
+    "unbroken",
+    "caracer",
+    "gesemane",
+    "soubody"
+   ],
+   "structuredRegions": [],
+   "regionWordCoverage": 1.0,
+   "regionMissingSample": [],
+   "figuresWithoutReviewedAlt": [],
+   "unexpectedGlyphs": {},
+   "suspiciousTokens": [],
+   "words": 12453,
+   "chapters": [
+    {
+     "slug": "mary-you-dont-love",
+     "title": "“Mary, You Don't Love”",
+     "label": null,
+     "pdfPage": 4,
+     "blocks": 15
+    },
+    {
+     "slug": "in-the-image-of-god",
+     "title": "In the Image of God",
+     "label": null,
+     "pdfPage": 6,
+     "blocks": 16
+    },
+    {
+     "slug": "adam-and-the-fall",
+     "title": "Adam and the Fall",
+     "label": "3",
+     "pdfPage": 9,
+     "blocks": 14
+    },
+    {
+     "slug": "moses-and-the-law-you-shall-love",
+     "title": "Moses and the Law: “You Shall Love”",
+     "label": "4",
+     "pdfPage": 11,
+     "blocks": 21
+    },
+    {
+     "slug": "gods-solution-this-is-my-beloved-son",
+     "title": "God’s Solution: “This Is My Beloved Son”",
+     "label": "5",
+     "pdfPage": 14,
+     "blocks": 14
+    },
+    {
+     "slug": "new-covenant-faith-promises",
+     "title": "New Covenant: Faith Promises",
+     "label": "6",
+     "pdfPage": 17,
+     "blocks": 14
+    },
+    {
+     "slug": "new-covenant-love-promises",
+     "title": "New Covenant: Love Promises",
+     "label": "7",
+     "pdfPage": 20,
+     "blocks": 24
+    },
+    {
+     "slug": "pauls-warning-o-foolish-galatians",
+     "title": "Paul’s Warning: “O Foolish Galatians!”",
+     "label": "8",
+     "pdfPage": 24,
+     "blocks": 19
+    },
+    {
+     "slug": "glorified-radiating-gods-love",
+     "title": "Glorified: Radiating God’s Love",
+     "label": "9",
+     "pdfPage": 27,
+     "blocks": 21
+    },
+    {
+     "slug": "transformation-awaits",
+     "title": "Transformation Awaits!",
+     "label": "10",
+     "pdfPage": 30,
+     "blocks": 25
+    }
+   ],
+   "status": "pass",
+   "failures": []
+  },
+  {
+   "id": "soul-prescription",
+   "sourcePages": 316,
+   "bodyFontSize": 13.2,
+   "chapterHeadingSizes": [
+    24.2
+   ],
+   "readings": 27,
+   "figures": 24,
+   "twoColumnPages": 0,
+   "printedContentsPages": [
+    7
+   ],
+   "decodedShiftFonts": [
+    "MinionPro-BoldIt",
+    "MinionPro-It",
+    "MinionPro-Regular",
+    "TrajanPro-Bold",
+    "TrajanPro-Regular"
+   ],
+   "repairs": {
+    "space after ligature removed": 1692,
+    "wrap hyphen removed": 463,
+    "shift-31 font decoded (spans)": 369,
+    "UNALIGNED glyph-code span": 160,
+    "drop cap rejoined": 22,
+    "typed answer blank kept": 15,
+    "ligature: ���������� -> ☐": 6,
+    "ligature: � -> ☐": 6,
+    "ligature: ��������� -> ☐": 5,
+    "ligature: ������������������ -> ☐": 3,
+    "ligature: ������ -> ☐": 3,
+    "ligature: ��������������� -> ☐": 3,
+    "ligature: ���� -> ☐": 2,
+    "ligature: ������������ -> ☐": 2,
+    "ligature: ���������������������� -> ☐": 2
+   },
+   "removed": {
+    "cover page text (shown as cover image)": 0,
+    "printed contents page lines (replaced by web contents)": 26,
+    "page number": 27,
+    "repeated decorative image": 54,
+    "tiny image/ornament": 27,
+    "dingbat rule/ornament line": 13
+   },
+   "internalCoverage": 0.99977,
+   "internalMissingSample": [
+    "lowservantspartitheheali",
+    "ngprocesschapter1thehear",
+    "udiespartiithesinfamilie",
+    "schapter9prideitsallabou"
+   ],
+   "independentCoverage": 0.95917,
+   "independentMissingSample": [
+    "4pvmyqsjod5svbmjoboe",
+    "sepnsjuoszsboeupsxps",
+    "ecz5jnbbzcopyrg2014b",
+    "0854reparngabookorpu",
+    "ouoourpredcamenosnyo",
+    "eexpanedaeadorsomeme",
+    "brandpdsruyanonorowr",
+    "ryouaveaspeakngmnsry",
+    "sorsnecyereeurnedusa",
+    "esenedemoemanaworkwo",
+    "rvans1bsubqusranksab",
+    "cnessacewasoanddonad",
+    "encesooseweavecounse",
+    "dnmanyyouavesruggedm",
+    "gancywdecrsaneorseaw",
+    "nasswnmeowaamserabep",
+    "dovebueveryngasormen",
+    "osmdseaseaparouswans",
+    "waydoyouaveaaredorme",
+    "oepyound2nsouprescrp",
+    "eprobemongagowensrae",
+    "odopeacespeaceesaysw",
+    "medsbooksorpeopewoar",
+    "snbusargwasepeaceego",
+    "yoapaymaeandsoonyour",
+    "eaprobemereaprobemyo",
+    "awpreservedsodayners",
+    "jamesdespeourauresow",
+    "onwybecauseepoweroee",
+    "agneemsevesasreeassm",
+    "eromsnrougparensnsep",
+    "aconourprdebeeearean",
+    "gogeereresopeoryouan",
+    "essrebeonrresponsbyd",
+    "desbqusyoueeyoursene",
+    "abwecannosaynooempao",
+    "rbeernepasaveyouadro",
+    "ueabsweeaveavacancyn",
+    "genecrcumcsedoruncrc",
+    "kucoossans3515nobody"
+   ],
+   "independentWordBagCoverage": 0.99394,
+   "independentWordBagMissingSample": [
+    "4pvm",
+    "yqsjod",
+    "5sv",
+    "bmjo",
+    "boe",
+    "sepn",
+    "sju",
+    "osz",
+    "sboeu",
+    "psxpse",
+    "cz",
+    "5jn",
+    "bz",
+    "m",
+    "3",
+    "08",
+    "reparng",
+    "us",
+    "on",
+    "ou",
+    "y",
+    "ome",
+    "young",
+    "7",
+    "30",
+    "1bsu",
+    "bqus",
+    "acceerang",
+    "1",
+    "4",
+    "6",
+    "ne",
+    "5",
+    "8",
+    "perec",
+    "esabs",
+    "seconro",
+    "conden",
+    "9",
+    "13"
+   ],
+   "structuredRegions": [
+    "p98 lines",
+    "p111 sin family → virtue",
+    "p127 sin family → virtue",
+    "p141 sin family → virtue",
+    "p159 sin family → virtue",
+    "p177 sin family → virtue",
+    "p193 sin family → virtue",
+    "p213 sin family → virtue",
+    "p229 sin family → virtue",
+    "p245 sin family → virtue",
+    "p265 sin family → virtue"
+   ],
+   "regionWordCoverage": 1.0,
+   "regionMissingSample": [],
+   "figuresWithoutReviewedAlt": [],
+   "unexpectedGlyphs": {},
+   "suspiciousTokens": [
+    "BillBright",
+    "CampusCrusade",
+    "InterVarsity",
+    "JulAug",
+    "LifeChange",
+    "NavPress",
+    "PhDs",
+    "PowerPoint",
+    "SoulPrescription",
+    "TopicGuide",
+    "WaterBrook",
+    "WorldCom"
+   ],
+   "words": 96618,
+   "chapters": [
+    {
+     "slug": "acknowledgments",
+     "title": "ACKNOWLEDGMENTS",
+     "label": null,
+     "pdfPage": 9,
+     "blocks": 9
+    },
+    {
+     "slug": "preface",
+     "title": "PREFACE",
+     "label": null,
+     "pdfPage": 11,
+     "blocks": 11
+    },
+    {
+     "slug": "introduction",
+     "title": "INTRODUCTION",
+     "label": null,
+     "pdfPage": 13,
+     "blocks": 27
+    },
+    {
+     "slug": "the-heart-of-the-problem",
+     "title": "THE HEART OF THE PROBLEM",
+     "label": "Part I",
+     "pdfPage": 19,
+     "blocks": 119
+    },
+    {
+     "slug": "the-secret-to-lasting-health",
+     "title": "THE SECRET TO LASTING HEALTH",
+     "label": null,
+     "pdfPage": 31,
+     "blocks": 131
+    },
+    {
+     "slug": "knowing-god",
+     "title": "KNOWING GOD",
+     "label": null,
+     "pdfPage": 45,
+     "blocks": 161
+    },
+    {
+     "slug": "embracing-truth",
+     "title": "EMBRACING TRUTH",
+     "label": null,
+     "pdfPage": 57,
+     "blocks": 118
+    },
+    {
+     "slug": "turning-around",
+     "title": "TURNING AROUND",
+     "label": null,
+     "pdfPage": 69,
+     "blocks": 112
+    },
+    {
+     "slug": "defending-your-ground",
+     "title": "DEFENDING YOUR GROUND",
+     "label": null,
+     "pdfPage": 79,
+     "blocks": 96
+    },
+    {
+     "slug": "preventing-setbacks",
+     "title": "PREVENTING SETBACKS",
+     "label": null,
+     "pdfPage": 89,
+     "blocks": 79
+    },
+    {
+     "slug": "section",
+     "title": "☐",
+     "label": null,
+     "pdfPage": 97,
+     "blocks": 130
+    },
+    {
+     "slug": "pride-its-all-about-me",
+     "title": "PRIDE: IT'S ALL ABOUT ME",
+     "label": "Part II",
+     "pdfPage": 111,
+     "blocks": 168
+    },
+    {
+     "slug": "fear-from-doubt-to-dread",
+     "title": "FEAR: FROM DOUBT TO DREAD",
+     "label": null,
+     "pdfPage": 127,
+     "blocks": 155
+    },
+    {
+     "slug": "anger-when-mad-is-bad",
+     "title": "ANGER: WHEN MAD IS BAD",
+     "label": null,
+     "pdfPage": 141,
+     "blocks": 194
+    },
+    {
+     "slug": "overindulgence-enough-is-not",
+     "title": "OVERINDULGENCE: ENOUGH IS NOT ☐",
+     "label": null,
+     "pdfPage": 159,
+     "blocks": 196
+    },
+    {
+     "slug": "dissatisfaction-the-restless-heart",
+     "title": "DISSATISFACTION: THE RESTLESS HEART",
+     "label": null,
+     "pdfPage": 177,
+     "blocks": 168
+    },
+    {
+     "slug": "immorality-sex-misused",
+     "title": "IMMORALITY: SEX MISUSED",
+     "label": null,
+     "pdfPage": 193,
+     "blocks": 204
+    },
+    {
+     "slug": "deceit-showing-a-false-face",
+     "title": "DECEIT: SHOWING A FALSE FACE",
+     "label": null,
+     "pdfPage": 213,
+     "blocks": 171
+    },
+    {
+     "slug": "divisiveness-disturbing",
+     "title": "DIVISIVENESS: DISTURBING ☐",
+     "label": null,
+     "pdfPage": 229,
+     "blocks": 173
+    },
+    {
+     "slug": "rebellion-playing-against-your-own-team",
+     "title": "REBELLION: PLAYING AGAINST YOUR OWN TEAM",
+     "label": null,
+     "pdfPage": 245,
+     "blocks": 194
+    },
+    {
+     "slug": "irresponsibility-the-undisciplined-life",
+     "title": "IRRESPONSIBILITY: THE UNDISCIPLINED LIFE",
+     "label": null,
+     "pdfPage": 265,
+     "blocks": 196
+    },
+    {
+     "slug": "conclusion",
+     "title": "CONCLUSION",
+     "label": null,
+     "pdfPage": 281,
+     "blocks": 17
+    },
+    {
+     "slug": "how-to-know-god-personally",
+     "title": "HOW TO KNOW GOD PERSONALLY",
+     "label": null,
+     "pdfPage": 283,
+     "blocks": 101
+    },
+    {
+     "slug": "how-to-be-filled-with",
+     "title": "HOW TO BE FILLED WITH ☐",
+     "label": null,
+     "pdfPage": 291,
+     "blocks": 71
+    },
+    {
+     "slug": "spiritual-breathing",
+     "title": "SPIRITUAL BREATHING",
+     "label": null,
+     "pdfPage": 297,
+     "blocks": 4
+    },
+    {
+     "slug": "endnotes",
+     "title": "ENDNOTES",
+     "label": null,
+     "pdfPage": 299,
+     "blocks": 187
+    },
+    {
+     "slug": "about-the-authors",
+     "title": "ABOUT THE AUTHORS",
+     "label": null,
+     "pdfPage": 307,
+     "blocks": 88
+    }
+   ],
+   "status": "pass",
+   "failures": []
+  },
+  {
+   "id": "5-steps-to-break-destructive-behavior",
+   "sourcePages": 137,
+   "bodyFontSize": 12.0,
+   "chapterHeadingSizes": [
+    22,
+    28
+   ],
+   "readings": 19,
+   "figures": 12,
+   "twoColumnPages": 0,
+   "printedContentsPages": [
+    7
+   ],
+   "decodedShiftFonts": [],
+   "repairs": {
+    "space after ligature removed": 704,
+    "wrap hyphen removed": 169,
+    "drop cap rejoined": 15,
+    "typed answer blank kept": 1
+   },
+   "removed": {
+    "cover page text (shown as cover image)": 0,
+    "printed contents page lines (replaced by web contents)": 20,
+    "repeated decorative image": 36,
+    "tiny image/ornament": 18,
+    "dingbat rule/ornament line": 3,
+    "page number": 1
+   },
+   "internalCoverage": 1.0,
+   "internalMissingSample": [],
+   "independentCoverage": 0.95926,
+   "independentMissingSample": [
+    "redcamenosnpreacemyo",
+    "eexpanedaeadorsoupre",
+    "scrponsomemebeenworr",
+    "ryousouprescrponavea",
+    "ereeurnednroduconusa",
+    "uprescrponwordsoonsp",
+    "ssouprescrponsacewas",
+    "ougeexperenceseearoe",
+    "ndnmanyyouavesrugged",
+    "agansouprescrponcywd",
+    "earoeprobemmeowaamse",
+    "ormenspeoarrysevdend",
+    "veacoosmdseaseaparou",
+    "nganywaysouprescrpon",
+    "yound2eearoeprobemns",
+    "egeoeearoeprobemonga",
+    "aceesayswearenoneres",
+    "nayransormedsbooksor",
+    "epodeawmysnsouprescr",
+    "ponbusargwasepeaceeg",
+    "eyoapaymaeandsoonyou",
+    "mereaprobemyouacewes",
+    "ponrsvebooksoebbesec",
+    "sawayjamesdespeourau",
+    "ereearoeprobemoeegvn",
+    "eemsevesasreeassmaro",
+    "msnrougparensnsepowe",
+    "nourprdebeeeareanswe",
+    "eereresopeoryouanger",
+    "rebeonrresponsbysoup",
+    "rescrpondoyouremembe",
+    "oasnabwecannosaynooe",
+    "engarbeersouprescrpo",
+    "nnepasaveyouadroubem",
+    "sweeaveavacancynours",
+    "eaoruncrcumcsedbarba",
+    "awaysbeankucoossans3",
+    "byeobjecvesandardeer",
+    "gsowckednessbackonso",
+    "uprescrponoscrpureno"
+   ],
+   "independentWordBagCoverage": 0.99915,
+   "independentWordBagMissingSample": [
+    "o",
+    "b",
+    "m",
+    "a",
+    "s",
+    "p",
+    "reparng",
+    "us",
+    "y",
+    "young",
+    "very",
+    "acceerang",
+    "ne",
+    "perec",
+    "esabs",
+    "seconro",
+    "vomng",
+    "beedng",
+    "convc",
+    "ons",
+    "expec",
+    "sanng",
+    "onesded",
+    "nce",
+    "snowba",
+    "wedeveoped",
+    "j",
+    "sprdreced",
+    "accessed",
+    "greagrandcdren",
+    "aumnus"
+   ],
+   "structuredRegions": [
+    "p98 lines"
+   ],
+   "regionWordCoverage": 1.0,
+   "regionMissingSample": [],
+   "figuresWithoutReviewedAlt": [],
+   "unexpectedGlyphs": {},
+   "suspiciousTokens": [
+    "BillBright",
+    "LifeChange",
+    "PhDs",
+    "SoulPrescription",
+    "WaterBrook"
+   ],
+   "words": 40789,
+   "chapters": [
+    {
+     "slug": "acknowledgments",
+     "title": "ACKNOWLEDGMENTS",
+     "label": null,
+     "pdfPage": 9,
+     "blocks": 10
+    },
+    {
+     "slug": "preface",
+     "title": "PREFACE",
+     "label": null,
+     "pdfPage": 11,
+     "blocks": 11
+    },
+    {
+     "slug": "introduction",
+     "title": "INTRODUCTION",
+     "label": null,
+     "pdfPage": 13,
+     "blocks": 27
+    },
+    {
+     "slug": "the-healing-process",
+     "title": "THE HEALING PROCESS",
+     "label": "Part I",
+     "pdfPage": 17,
+     "blocks": 1
+    },
+    {
+     "slug": "the-heart-of-the-problem",
+     "title": "THE HEART OF THE PROBLEM",
+     "label": null,
+     "pdfPage": 19,
+     "blocks": 116
+    },
+    {
+     "slug": "the-secret-to-lasting-health",
+     "title": "THE SECRET TO LASTING HEALTH",
+     "label": null,
+     "pdfPage": 31,
+     "blocks": 130
+    },
+    {
+     "slug": "knowing-god",
+     "title": "KNOWING GOD",
+     "label": null,
+     "pdfPage": 45,
+     "blocks": 162
+    },
+    {
+     "slug": "embracing-truth",
+     "title": "EMBRACING TRUTH",
+     "label": null,
+     "pdfPage": 57,
+     "blocks": 116
+    },
+    {
+     "slug": "turning-around",
+     "title": "TURNING AROUND",
+     "label": null,
+     "pdfPage": 69,
+     "blocks": 113
+    },
+    {
+     "slug": "defending-your-ground",
+     "title": "DEFENDING YOUR GROUND",
+     "label": null,
+     "pdfPage": 79,
+     "blocks": 96
+    },
+    {
+     "slug": "preventing-setbacks",
+     "title": "PREVENTING SETBACKS",
+     "label": null,
+     "pdfPage": 89,
+     "blocks": 80
+    },
+    {
+     "slug": "your-sin-diagnosis",
+     "title": "YOUR SIN DIAGNOSIS",
+     "label": null,
+     "pdfPage": 97,
+     "blocks": 128
+    },
+    {
+     "slug": "conclusion",
+     "title": "CONCLUSION",
+     "label": null,
+     "pdfPage": 109,
+     "blocks": 16
+    },
+    {
+     "slug": "how-to-know-god-personally",
+     "title": "HOW TO KNOW GOD PERSONALLY",
+     "label": null,
+     "pdfPage": 111,
+     "blocks": 103
+    },
+    {
+     "slug": "how-to-be-filled-with-the-holy-spirit",
+     "title": "HOW TO BE FILLED WITH THE HOLY SPIRIT",
+     "label": null,
+     "pdfPage": 119,
+     "blocks": 72
+    },
+    {
+     "slug": "spiritual-breathing",
+     "title": "SPIRITUAL BREATHING",
+     "label": null,
+     "pdfPage": 125,
+     "blocks": 5
+    },
+    {
+     "slug": "endnotes",
+     "title": "ENDNOTES",
+     "label": null,
+     "pdfPage": 127,
+     "blocks": 52
+    },
+    {
+     "slug": "about-the-authors",
+     "title": "ABOUT THE AUTHORS",
+     "label": null,
+     "pdfPage": 131,
+     "blocks": 34
+    },
+    {
+     "slug": "more-resources",
+     "title": "More resources",
+     "label": null,
+     "pdfPage": 135,
+     "blocks": 15
+    }
+   ],
+   "status": "pass",
+   "failures": []
+  },
+  {
+   "id": "from-coping-to-cure",
+   "sourcePages": 134,
+   "bodyFontSize": 12.0,
+   "chapterHeadingSizes": [
+    24
+   ],
+   "readings": 18,
+   "figures": 2,
+   "twoColumnPages": 0,
+   "printedContentsPages": [
+    3
+   ],
+   "decodedShiftFonts": [],
+   "repairs": {
+    "fill-in blank kept": 4,
+    "typed answer blank kept": 2,
+    "wrap hyphen removed": 1
+   },
+   "removed": {
+    "cover page text (shown as cover image)": 0,
+    "page number": 133,
+    "printed contents page lines (replaced by web contents)": 19,
+    "dingbat rule/ornament line": 122
+   },
+   "internalCoverage": 1.0,
+   "internalMissingSample": [],
+   "independentCoverage": 0.99599,
+   "independentMissingSample": [
+    "scomemyocompexyougsa",
+    "drecevedemowcanndpea",
+    "ddsapponedyoumosousa",
+    "eessonaeendoecaperwy",
+    "esowwoudyoudeneumans",
+    "mgveexampesoowpeopec",
+    "anepoersobanreewadoe",
+    "smeanobecompeenmwasw",
+    "rongwreeowcandoroyan",
+    "eaonspgodssarpesoosm",
+    "nswern2cornans6wacan",
+    "youdoondreeromsnsnas",
+    "goresosns1snsoemnd2s",
+    "nuemoons3snsoemou4sn",
+    "sobeavorevougsunorgv",
+    "nessgreedusjeaousyan",
+    "nessbernessyngbackbn",
+    "menessdsobedenceopar",
+    "redadaywydonyoujusco",
+    "appyoeessonookdoyouw",
+    "ssamwrongamsorryorgv",
+    "emeceansemeempowerme",
+    "ysaweneedwysdcuowakb",
+    "eardoyouusedayawaage",
+    "usboomewngoepanesmac",
+    "eone5deneorgvngneedo",
+    "equesvnganddyngougsa",
+    "w2239prayedbusddneer",
+    "cesanyonewoaksaboure",
+    "nkuorangersoneeerawa",
+    "ngyoudonwanoyouareng",
+    "wgodeyouconusedeound"
+   ],
+   "independentWordBagCoverage": 0.99964,
+   "independentWordBagMissingSample": [
+    "srongwed",
+    "andsove",
+    "youname",
+    "nevermnd",
+    "reeyear",
+    "secenered",
+    "sereazaon",
+    "webeng",
+    "uned",
+    "seconro",
+    "enyear",
+    "seneres",
+    "semage",
+    "arcondoned",
+    "angerproducng"
+   ],
+   "structuredRegions": [
+    "p38 lines"
+   ],
+   "regionWordCoverage": 1.0,
+   "regionMissingSample": [],
+   "figuresWithoutReviewedAlt": [],
+   "unexpectedGlyphs": {},
+   "suspiciousTokens": [],
+   "words": 51618,
+   "chapters": [
+    {
+     "slug": "the-myth-of-complexity",
+     "title": "The Myth of Complexity",
+     "label": "1",
+     "pdfPage": 4,
+     "blocks": 147
+    },
+    {
+     "slug": "how-can-i-find-peace-and-satisfaction-in-this-world",
+     "title": "How Can I Find Peace and Satisfaction in this World?",
+     "label": "2",
+     "pdfPage": 16,
+     "blocks": 71
+    },
+    {
+     "slug": "most-of-us-have-had-a-poor-start-in-life",
+     "title": "Most of Us Have Had a Poor Start in Life!",
+     "label": "3",
+     "pdfPage": 22,
+     "blocks": 82
+    },
+    {
+     "slug": "gods-sharpest-tools-my-biggest-problems",
+     "title": "God’s Sharpest Tools, My Biggest Problems",
+     "label": "4",
+     "pdfPage": 30,
+     "blocks": 66
+    },
+    {
+     "slug": "sin-has-not-been-eliminated-as-of-the-date-of-publication-of-this-cour",
+     "title": "Sin Has Not Been Eliminated as of the Date of Publication of this Course",
+     "label": "5",
+     "pdfPage": 36,
+     "blocks": 43
+    },
+    {
+     "slug": "why-dont-you-just-concentrate-on-the-positive",
+     "title": "Why Don’t You Just Concentrate on the Positive?",
+     "label": "6",
+     "pdfPage": 41,
+     "blocks": 46
+    },
+    {
+     "slug": "look-do-you-want-me-to-drive-this-car-or-do-you-want-to-do-it",
+     "title": "Look! Do You Want Me to Drive this Car or Do You Want to Do It?",
+     "label": "7",
+     "pdfPage": 46,
+     "blocks": 177
+    },
+    {
+     "slug": "why-is-it-difficult-to-walk-by-a-mirror-without-looking-at-yourself",
+     "title": "Why Is It Difficult to Walk by a Mirror without Looking at Yourself?",
+     "label": "8",
+     "pdfPage": 58,
+     "blocks": 77
+    },
+    {
+     "slug": "at-what-age-is-it-acceptable-to-sulk-when-you-cant-have-what-you-want",
+     "title": "At What Age Is It Acceptable to Sulk When You Can’t Have What You Want?",
+     "label": "9",
+     "pdfPage": 65,
+     "blocks": 80
+    },
+    {
+     "slug": "boom-the-wing-of-the-plane-smacked-me-in-the-head",
+     "title": "Boom! The Wing of the Plane Smacked Me in the Head",
+     "label": "10",
+     "pdfPage": 71,
+     "blocks": 73
+    },
+    {
+     "slug": "i-need-to-forgive-those-soldiers",
+     "title": "I Need to Forgive those Soldiers",
+     "label": "11",
+     "pdfPage": 78,
+     "blocks": 74
+    },
+    {
+     "slug": "your-wife-has-inoperable-cancer",
+     "title": "Your Wife Has Inoperable Cancer",
+     "label": "12",
+     "pdfPage": 85,
+     "blocks": 69
+    },
+    {
+     "slug": "living-and-dying",
+     "title": "Living and Dying",
+     "label": "13",
+     "pdfPage": 90,
+     "blocks": 90
+    },
+    {
+     "slug": "i-prayed-but-i-still-didnt-feel-right",
+     "title": "I Prayed but I Still Didn’t Feel Right.",
+     "label": "14",
+     "pdfPage": 96,
+     "blocks": 79
+    },
+    {
+     "slug": "anyone-who-talks-about-rejoicing-always-just-doesnt-understand-the-rea",
+     "title": "Anyone Who Talks about “Rejoicing Always” Just Doesn’t Understand the Real Situation",
+     "label": "15",
+     "pdfPage": 102,
+     "blocks": 86
+    },
+    {
+     "slug": "anger-is-one-letter-away-from-danger",
+     "title": "Anger Is One Letter Away from Danger",
+     "label": "16",
+     "pdfPage": 109,
+     "blocks": 153
+    },
+    {
+     "slug": "if-you-dont-want-to-you-arent-going-to",
+     "title": "If You Don’t Want to, You Aren’t Going to",
+     "label": "17",
+     "pdfPage": 121,
+     "blocks": 106
+    },
+    {
+     "slug": "the-foundation",
+     "title": "The Foundation",
+     "label": "18",
+     "pdfPage": 130,
+     "blocks": 61
+    }
+   ],
+   "status": "pass",
+   "failures": []
+  },
+  {
+   "id": "i-want-happiness-now",
+   "sourcePages": 143,
+   "bodyFontSize": 12.0,
+   "chapterHeadingSizes": [
+    28
+   ],
+   "readings": 11,
+   "figures": 0,
+   "twoColumnPages": 1,
+   "printedContentsPages": [
+    5
+   ],
+   "decodedShiftFonts": [],
+   "repairs": {
+    "wrap hyphen removed": 79,
+    "drop cap rejoined": 11
+   },
+   "removed": {
+    "cover page text (shown as cover image)": 0,
+    "printed contents page lines (replaced by web contents)": 13,
+    "running header/footer": 115
+   },
+   "internalCoverage": 1.0,
+   "internalMissingSample": [],
+   "independentCoverage": 0.96841,
+   "independentMissingSample": [
+    "unsengnsgscomasaproe",
+    "serabeomeonygodcanco",
+    "personnersasyourrsyv",
+    "esasmewesepeopedscov",
+    "eredsousonygodaeywer",
+    "eoaveanyopeorrecanpr",
+    "ovdeoursorngorndngap",
+    "esrougoumymanyungrys",
+    "ouswyearsocounsengas",
+    "beenmyjoyandwaweruyn",
+    "eedsasaconoobserveou",
+    "yprayedogeerandaando",
+    "peenabedpaenywaedasr",
+    "sedsemoveaboveerreem",
+    "eoramyunndcucrcumsan",
+    "cesexpensveacvesocou",
+    "rseeywenonpcncsnepar",
+    "gngwenesawusesoppedo",
+    "akeussnoeonaquckoure",
+    "sowedusowodgaskasadc",
+    "eandunormydeepwrmsde",
+    "smporanbuesragareney",
+    "beauueexcamedsprwebr",
+    "ngewasacuayproudosdc",
+    "easngoaaskoneporcwac",
+    "aoakeweaveaeardsomeo",
+    "voursnunaurecomesrom",
+    "andwysepeaceandovead",
+    "cangedsodrascayjenny",
+    "smpyexpanedomasecome",
+    "romgodadbecomesopreo",
+    "empnesssawasbyssdeae",
+    "wayowappnessandevers",
+    "sconenmenarenoerewas",
+    "dscordamongecdrendep",
+    "endenonpeopeereweres",
+    "nddaveorcrcumsancesw",
+    "eycomeromaersoryoemp",
+    "nessandopeessnessper",
+    "sonsreaonspwaorweres"
+   ],
+   "independentWordBagCoverage": 0.99872,
+   "independentWordBagMissingSample": [
+    "a",
+    "s",
+    "e",
+    "o",
+    "er",
+    "mamed",
+    "recan",
+    "sorng",
+    "mos",
+    "rends",
+    "ndcu",
+    "expensve",
+    "ou",
+    "gr",
+    "burss",
+    "owappness",
+    "ever",
+    "serespec",
+    "obdecson",
+    "served",
+    "compmenary",
+    "rend",
+    "weknown",
+    "ur",
+    "yearod",
+    "coverup",
+    "cone",
+    "cer",
+    "coauored",
+    "sressnduced",
+    "mnae",
+    "decsonmakng",
+    "kemndedness",
+    "unnvoves",
+    "memoons",
+    "udes",
+    "porance",
+    "opwa",
+    "non",
+    "acdeang"
+   ],
+   "structuredRegions": [
+    "p25 cols",
+    "p81 list",
+    "p99 list",
+    "p111 lines",
+    "p112 lines"
+   ],
+   "regionWordCoverage": 1.0,
+   "regionMissingSample": [],
+   "figuresWithoutReviewedAlt": [],
+   "unexpectedGlyphs": {},
+   "suspiciousTokens": [],
+   "words": 39977,
+   "chapters": [
+    {
+     "slug": "indestructible",
+     "title": "Indestructible",
+     "label": null,
+     "pdfPage": 7,
+     "blocks": 65
+    },
+    {
+     "slug": "contentment",
+     "title": "Contentment",
+     "label": null,
+     "pdfPage": 15,
+     "blocks": 115
+    },
+    {
+     "slug": "it-takes-commitment",
+     "title": "It Takes Commitment",
+     "label": null,
+     "pdfPage": 25,
+     "blocks": 63
+    },
+    {
+     "slug": "living-with-yourself",
+     "title": "Living with Yourself",
+     "label": null,
+     "pdfPage": 33,
+     "blocks": 136
+    },
+    {
+     "slug": "living-with-others",
+     "title": "Living with Others",
+     "label": null,
+     "pdfPage": 45,
+     "blocks": 124
+    },
+    {
+     "slug": "how-are-you-using-your-words",
+     "title": "How Are You Using Your Words?",
+     "label": null,
+     "pdfPage": 57,
+     "blocks": 202
+    },
+    {
+     "slug": "are-your-feelings-and-emotions-positive-or-negative",
+     "title": "Are Your Feelings and Emotions Positive or Negative?",
+     "label": null,
+     "pdfPage": 77,
+     "blocks": 223
+    },
+    {
+     "slug": "what-s-in-your-head",
+     "title": "What ´s in Your Head?",
+     "label": null,
+     "pdfPage": 101,
+     "blocks": 188
+    },
+    {
+     "slug": "goals",
+     "title": "Goals",
+     "label": null,
+     "pdfPage": 119,
+     "blocks": 107
+    },
+    {
+     "slug": "marriage-and-parenting",
+     "title": "Marriage and Parenting",
+     "label": null,
+     "pdfPage": 131,
+     "blocks": 65
+    },
+    {
+     "slug": "happiness-it-s-your-choice",
+     "title": "Happiness_It ´s Your Choice!",
+     "label": null,
+     "pdfPage": 139,
+     "blocks": 26
+    }
+   ],
+   "status": "pass",
+   "failures": []
+  },
+  {
+   "id": "struggle-for-inner-peace",
+   "sourcePages": 121,
+   "bodyFontSize": 12.0,
+   "chapterHeadingSizes": [
+    28
+   ],
+   "readings": 11,
+   "figures": 1,
+   "twoColumnPages": 2,
+   "printedContentsPages": [
+    3
+   ],
+   "decodedShiftFonts": [],
+   "repairs": {
+    "wrap hyphen removed": 62,
+    "drop cap rejoined": 10
+   },
+   "removed": {
+    "cover page text (shown as cover image)": 0,
+    "printed contents page lines (replaced by web contents)": 13,
+    "running header/footer": 94
+   },
+   "internalCoverage": 1.0,
+   "internalMissingSample": [],
+   "independentCoverage": 0.94972,
+   "independentMissingSample": [
+    "ounsengnsgscomracewa",
+    "menawenouremoonaeasa",
+    "deessenaquayorweness",
+    "souokermenaeasove1wn",
+    "emsoonesnauraabes2we",
+    "endobeanusancewoerum",
+    "anbengs3appyand5woub",
+    "engoepeopearoundus4p",
+    "roducveyanusanceoves",
+    "assaemenwoubenganusa",
+    "ssmporanaweupseoreso",
+    "uoconroowwdespreadse",
+    "moonaaddressouremoon",
+    "asdsurbancesascseusn",
+    "orderobeeaedaorevery",
+    "cyaeasaoourpyscasdoz",
+    "weenyouandgodpeacere",
+    "quresasswereegospeco",
+    "mesnyourecognzeandea",
+    "crsdedoroursnsjusasd",
+    "eawesnescrpuressadew",
+    "asburedandeascausngy",
+    "ourwasrasedromedeado",
+    "ssad1cornansprobem15",
+    "oembracenyourejackan",
+    "aonans312mayareyouwn",
+    "goeordmakeyouroveoro",
+    "owandoverowonesyakea",
+    "ookgodswordsaveandpo",
+    "werusaowyouaresarper",
+    "anesarpeswoedgednera",
+    "cngwandswordcungbewe",
+    "andmarrowexposesresp",
+    "ondngooersournnermos",
+    "sam119105youmaybeacr",
+    "amsonengorapersonosa",
+    "roverbs2813panubecau",
+    "seencouragesuswesewo",
+    "swnoprosperuncoverss",
+    "reaksnbueyconessandu"
+   ],
+   "independentWordBagCoverage": 0.99913,
+   "independentWordBagMissingSample": [
+    "r",
+    "ace",
+    "w",
+    "em",
+    "does",
+    "dscomors",
+    "sepunsmen",
+    "deny",
+    "j",
+    "ack",
+    "nce",
+    "ca",
+    "b",
+    "kemnded",
+    "parrom",
+    "ners",
+    "nearcoapse",
+    "serejecon",
+    "ypscemng",
+    "eerperec",
+    "condemnng",
+    "erness",
+    "romnervous",
+    "probsander",
+    "mpusve",
+    "obeore",
+    "beor",
+    "avor",
+    "orono"
+   ],
+   "structuredRegions": [],
+   "regionWordCoverage": 1.0,
+   "regionMissingSample": [],
+   "figuresWithoutReviewedAlt": [],
+   "unexpectedGlyphs": {},
+   "suspiciousTokens": [],
+   "words": 36379,
+   "chapters": [
+    {
+     "slug": "lifes-many-stresses",
+     "title": "Life's Many Stresses",
+     "label": null,
+     "pdfPage": 5,
+     "blocks": 96
+    },
+    {
+     "slug": "self-discovery",
+     "title": "Self-Discovery",
+     "label": null,
+     "pdfPage": 17,
+     "blocks": 103
+    },
+    {
+     "slug": "after-self-discovery-what",
+     "title": "After Self-Discovery ... What?",
+     "label": null,
+     "pdfPage": 31,
+     "blocks": 113
+    },
+    {
+     "slug": "the-impact-of-our-emotions",
+     "title": "The Impact of Our Emotions",
+     "label": null,
+     "pdfPage": 45,
+     "blocks": 80
+    },
+    {
+     "slug": "embracing-the-truth",
+     "title": "Embracing the Truth",
+     "label": null,
+     "pdfPage": 55,
+     "blocks": 58
+    },
+    {
+     "slug": "behaviors-that-stand-in-the-way-of-your-peace",
+     "title": "Behaviors that Stand in the Way of Your Peace",
+     "label": null,
+     "pdfPage": 63,
+     "blocks": 62
+    },
+    {
+     "slug": "mind-and-body",
+     "title": "Mind and Body",
+     "label": null,
+     "pdfPage": 73,
+     "blocks": 55
+    },
+    {
+     "slug": "there-is-hope",
+     "title": "There IS Hope",
+     "label": null,
+     "pdfPage": 83,
+     "blocks": 78
+    },
+    {
+     "slug": "the-responsibility-is-yours",
+     "title": "The Responsibility Is Yours",
+     "label": null,
+     "pdfPage": 95,
+     "blocks": 85
+    },
+    {
+     "slug": "help-for-a-hard-journey",
+     "title": "Help for a Hard Journey",
+     "label": null,
+     "pdfPage": 107,
+     "blocks": 93
+    },
+    {
+     "slug": "notes",
+     "title": "Notes",
+     "label": null,
+     "pdfPage": 119,
+     "blocks": 21
+    }
+   ],
+   "status": "pass",
+   "failures": []
+  },
+  {
+   "id": "eight-great-ways-to-honor-your-husband",
+   "sourcePages": 193,
+   "bodyFontSize": 11.8,
+   "chapterHeadingSizes": [
+    26,
+    31,
+    38
+   ],
+   "readings": 14,
+   "figures": 5,
+   "twoColumnPages": 0,
+   "printedContentsPages": [
+    6
+   ],
+   "decodedShiftFonts": [],
+   "repairs": {
+    "wrap hyphen removed": 478,
+    "drop cap rejoined": 3,
+    "image re-rendered from page (unsupported colour space)": 1
+   },
+   "removed": {
+    "cover page text (shown as cover image)": 0,
+    "tiny image/ornament": 14,
+    "printed contents page lines (replaced by web contents)": 17,
+    "page number": 170,
+    "running header/footer": 143,
+    "printer slug": 2
+   },
+   "internalCoverage": 1.0,
+   "internalMissingSample": [],
+   "independentCoverage": 0.99642,
+   "independentMissingSample": [
+    "sndcaeauorsempasscop",
+    "ourneygancedaeyoungc",
+    "ggorgovereeadoasvesu",
+    "usbandmusrsgodcreaed",
+    "acanbesonormyoragrwo",
+    "eveebesorewomanwoend",
+    "gsespecaywmymarraged",
+    "mademyownaerasbeenad",
+    "sbandsweaveaedobeaue",
+    "dnowesexporewameanso",
+    "onesgvenousousgcangd",
+    "econnen112315408pmas",
+    "swedonnsdavdandsquee",
+    "odomarragewenpeopeme",
+    "cesonemorewayo22kdna",
+    "ereongausudyquesonsw",
+    "aynourveserearemanyw",
+    "ngsyouwreonyoursakey",
+    "onsoyourecanyounkoon",
+    "oprayosengsdaywakndo",
+    "cewnyourearsoranxees",
+    "curedrjamesdobsonasp",
+    "obgaonsorproresdream",
+    "usbandsdreamsweadesr",
+    "kesappenrusernsncsbe",
+    "amanogodencourageerg",
+    "susewordswseysareyou",
+    "rearrespeceropnonbea",
+    "guardanandgardeneras"
+   ],
+   "independentWordBagCoverage": 0.99893,
+   "independentWordBagMissingSample": [
+    "nernaona",
+    "copyrg",
+    "neson",
+    "y",
+    "unversy",
+    "carcaured",
+    "cdren",
+    "somemes",
+    "obe",
+    "15",
+    "kndeared",
+    "nerpreng",
+    "surveyed",
+    "23",
+    "overexpan",
+    "servaneadersp",
+    "seconro",
+    "11",
+    "ardcargng",
+    "reugee",
+    "souern",
+    "seceneredness",
+    "dsrespecs",
+    "nsng",
+    "gpowered",
+    "wpng",
+    "goodness",
+    "overnk",
+    "ousesng",
+    "emergences",
+    "reemnue",
+    "eegood",
+    "wderreacng",
+    "warrorke",
+    "ousework",
+    "mnexcursons",
+    "nvasve",
+    "grownups",
+    "robbery",
+    "pockebooks"
+   ],
+   "structuredRegions": [],
+   "regionWordCoverage": 1.0,
+   "regionMissingSample": [],
+   "figuresWithoutReviewedAlt": [],
+   "unexpectedGlyphs": {},
+   "suspiciousTokens": [
+    "JoAnn"
+   ],
+   "words": 51047,
+   "chapters": [
+    {
+     "slug": "whatever-happened-to-honor",
+     "title": "Whatever Happened to Honor?",
+     "label": null,
+     "pdfPage": 8,
+     "blocks": 28
+    },
+    {
+     "slug": "first-become-strong",
+     "title": "First, Become Strong",
+     "label": null,
+     "pdfPage": 14,
+     "blocks": 46
+    },
+    {
+     "slug": "believe-the-best",
+     "title": "Believe the Best",
+     "label": null,
+     "pdfPage": 26,
+     "blocks": 58
+    },
+    {
+     "slug": "build-him-up",
+     "title": "Build Him Up",
+     "label": null,
+     "pdfPage": 40,
+     "blocks": 70
+    },
+    {
+     "slug": "fight-for-him",
+     "title": "Fight for Him",
+     "label": null,
+     "pdfPage": 56,
+     "blocks": 74
+    },
+    {
+     "slug": "guard-your-home",
+     "title": "Guard Your Home",
+     "label": null,
+     "pdfPage": 72,
+     "blocks": 84
+    },
+    {
+     "slug": "lighten-his-load",
+     "title": "Lighten His Load",
+     "label": null,
+     "pdfPage": 88,
+     "blocks": 86
+    },
+    {
+     "slug": "dream-big-together",
+     "title": "Dream Big Together",
+     "label": null,
+     "pdfPage": 106,
+     "blocks": 92
+    },
+    {
+     "slug": "create-a-culture-of-honor",
+     "title": "Create a Culture of Honor",
+     "label": null,
+     "pdfPage": 124,
+     "blocks": 82
+    },
+    {
+     "slug": "keep-calm-and-carry-on",
+     "title": "Keep Calm and Carry On",
+     "label": null,
+     "pdfPage": 142,
+     "blocks": 41
+    },
+    {
+     "slug": "50-ways-to-leave-your-legacy",
+     "title": "50 Ways to Leave Your Legacy",
+     "label": null,
+     "pdfPage": 150,
+     "blocks": 99
+    },
+    {
+     "slug": "50-ways-you-can-begin-to-honor-your-husband-right-now",
+     "title": "50 Ways You Can Begin to Honor Your Husband Right Now",
+     "label": null,
+     "pdfPage": 158,
+     "blocks": 99
+    },
+    {
+     "slug": "study-questions",
+     "title": "Study Questions",
+     "label": null,
+     "pdfPage": 164,
+     "blocks": 52
+    },
+    {
+     "slug": "notes",
+     "title": "Notes",
+     "label": null,
+     "pdfPage": 182,
+     "blocks": 121
+    }
+   ],
+   "status": "pass",
+   "failures": []
+  },
+  {
+   "id": "eight-great-ways-to-honor-your-wife",
+   "sourcePages": 193,
+   "bodyFontSize": 11.5,
+   "chapterHeadingSizes": [
+    21,
+    23,
+    26
+   ],
+   "readings": 29,
+   "figures": 11,
+   "twoColumnPages": 0,
+   "printedContentsPages": [
+    6
+   ],
+   "decodedShiftFonts": [],
+   "repairs": {
+    "Adobe private-use glyph": 1436,
+    "wrap hyphen removed": 504,
+    "drop cap rejoined": 10,
+    "typed answer blank kept": 4,
+    "space after ligature removed": 4,
+    "UNMAPPED private-use glyph": 2,
+    "image re-rendered from page (unsupported colour space)": 2,
+    "ligature: Tousands -> Thousands": 2,
+    "ligature: Tanksgiving -> Thanksgiving": 2
+   },
+   "removed": {
+    "cover page text (shown as cover image)": 6,
+    "tiny image/ornament": 13,
+    "printed contents page lines (replaced by web contents)": 14,
+    "page number": 153,
+    "running header/footer": 125,
+    "printer slug": 4
+   },
+   "internalCoverage": 1.0,
+   "internalMissingSample": [],
+   "independentCoverage": 0.96154,
+   "independentMissingSample": [
+    "ersoncopyrgbycrosswa",
+    "sonargsreservedcopyr",
+    "gdavdcadwckomymomand",
+    "ouoowadoesmeanoeword",
+    "rsexodusruersnegover",
+    "nmenromansandeedersw",
+    "moywdowswoserveoersm",
+    "oyandrendswoabororus",
+    "pppanssoudasobegveno",
+    "naboveseromanswencrs",
+    "odpeerandonorssuppos",
+    "wepeeresoonorerasone",
+    "asuressweproverbssbo",
+    "ngenessevesaneebrews",
+    "sogeerngenessgodgave",
+    "arragewearenowamosye",
+    "becomeonesmarernsare",
+    "sgruyssomepeopecawom",
+    "oreangwasnuonseunusu",
+    "dowjesusmaewrommyexp",
+    "erneedrougeyearsveea",
+    "egodsesormeromanssew",
+    "dmucpanerearewogener",
+    "marynnwenruserguawwn",
+    "spruagodscernmencorn",
+    "ansnkasecasewmarynna",
+    "pserearesomepraccang",
+    "aeadapanoremoneedwau",
+    "ureandaopejeremaepro",
+    "remajesuspromsedeern",
+    "maeweasosadawensomeo",
+    "ewardneavenmarkesada",
+    "ardneavensgreamaewes",
+    "worksmaewpaumrrorsss",
+    "aceajudgmenoworkscor",
+    "nansereorenoonesoude",
+    "vesorewardsgaaanssou",
+    "gjesuscrsepesansanyw",
+    "rnymaewwewjudgewjesu",
+    "ucpancornanswewrecev"
+   ],
+   "independentWordBagCoverage": 0.99789,
+   "independentWordBagMissingSample": [
+    "a",
+    "m",
+    "w",
+    "vocabuary",
+    "k",
+    "s",
+    "g",
+    "mngng",
+    "mpercepby",
+    "d",
+    "u",
+    "oenmes",
+    "mpered",
+    "p",
+    "perncousy",
+    "documenary",
+    "bees",
+    "c",
+    "meods",
+    "b",
+    "q",
+    "convncngy",
+    "webaanced",
+    "y",
+    "eope",
+    "secenered",
+    "redscover",
+    "curcwde",
+    "saa",
+    "51",
+    "pm",
+    "enderson",
+    "vocaonay",
+    "asonconscous",
+    "asonabe",
+    "exacerbae",
+    "ankuy",
+    "undeservedy",
+    "aucon",
+    "veyears"
+   ],
+   "structuredRegions": [],
+   "regionWordCoverage": 1.0,
+   "regionMissingSample": [],
+   "figuresWithoutReviewedAlt": [],
+   "unexpectedGlyphs": {},
+   "suspiciousTokens": [],
+   "words": 49933,
+   "chapters": [
+    {
+     "slug": "what-does-it-mean-to-honor-your-wife",
+     "title": "What Does It Mean to Honor Your Wife?",
+     "label": null,
+     "pdfPage": 8,
+     "blocks": 29
+    },
+    {
+     "slug": "trust-her-gut",
+     "title": "Trust Her Gut",
+     "label": null,
+     "pdfPage": 12,
+     "blocks": 62
+    },
+    {
+     "slug": "staying-strong-past-the-halfway-point",
+     "title": "Staying Strong Past the Halfway Point",
+     "label": null,
+     "pdfPage": 20,
+     "blocks": 28
+    },
+    {
+     "slug": "be-a-man-of-god",
+     "title": "Be a Man of God",
+     "label": null,
+     "pdfPage": 24,
+     "blocks": 94
+    },
+    {
+     "slug": "an-honor-benefit-looking-like-one-another",
+     "title": "An Honor Benefit: Looking Like One Another",
+     "label": null,
+     "pdfPage": 36,
+     "blocks": 29
+    },
+    {
+     "slug": "encourage-her-gifts",
+     "title": "Encourage Her Gifts",
+     "label": null,
+     "pdfPage": 40,
+     "blocks": 91
+    },
+    {
+     "slug": "changed-lives",
+     "title": "Changed Lives",
+     "label": null,
+     "pdfPage": 52,
+     "blocks": 39
+    },
+    {
+     "slug": "respect-her-opinion",
+     "title": "Respect Her Opinion",
+     "label": null,
+     "pdfPage": 58,
+     "blocks": 125
+    },
+    {
+     "slug": "where-learning-to-show-honor-begins",
+     "title": "Where Learning to Show Honor Begins",
+     "label": null,
+     "pdfPage": 72,
+     "blocks": 34
+    },
+    {
+     "slug": "ask-this-question-often",
+     "title": "Ask This Question Often",
+     "label": null,
+     "pdfPage": 78,
+     "blocks": 95
+    },
+    {
+     "slug": "honor-through-de-escalation",
+     "title": "Honor Through De-Escalation",
+     "label": null,
+     "pdfPage": 90,
+     "blocks": 36
+    },
+    {
+     "slug": "share-your-heart",
+     "title": "Share Your Heart",
+     "label": null,
+     "pdfPage": 96,
+     "blocks": 77
+    },
+    {
+     "slug": "your-most-valuable-trophy",
+     "title": "Your Most Valuable Trophy",
+     "label": null,
+     "pdfPage": 108,
+     "blocks": 44
+    },
+    {
+     "slug": "be-a-guardian-and-gardener",
+     "title": "Be a Guardian and Gardener",
+     "label": null,
+     "pdfPage": 114,
+     "blocks": 133
+    },
+    {
+     "slug": "honor-collective-memories",
+     "title": "Honor Collective Memories",
+     "label": null,
+     "pdfPage": 128,
+     "blocks": 27
+    },
+    {
+     "slug": "use-words-wisely",
+     "title": "Use Words Wisely",
+     "label": null,
+     "pdfPage": 132,
+     "blocks": 108
+    },
+    {
+     "slug": "wise-words-from-president-carter",
+     "title": "Wise Words from President Carter",
+     "label": null,
+     "pdfPage": 146,
+     "blocks": 35
+    },
+    {
+     "slug": "epilogue-honor-in-action",
+     "title": "EPILOGUE: Honor in Action",
+     "label": null,
+     "pdfPage": 152,
+     "blocks": 67
+    },
+    {
+     "slug": "a-husbands-honor-code",
+     "title": "A Husband’s Honor Code",
+     "label": null,
+     "pdfPage": 162,
+     "blocks": 17
+    },
+    {
+     "slug": "study-questions",
+     "title": "Study Questions",
+     "label": null,
+     "pdfPage": 164,
+     "blocks": 1
+    },
+    {
+     "slug": "trust-her-gut-2",
+     "title": "Trust Her Gut",
+     "label": null,
+     "pdfPage": 166,
+     "blocks": 5
+    },
+    {
+     "slug": "be-a-man-of-god-2",
+     "title": "Be a Man of God",
+     "label": null,
+     "pdfPage": 168,
+     "blocks": 7
+    },
+    {
+     "slug": "encourage-her-gifts-2",
+     "title": "Encourage Her Gifts",
+     "label": null,
+     "pdfPage": 170,
+     "blocks": 11
+    },
+    {
+     "slug": "respect-her-opinion-2",
+     "title": "Respect Her Opinion",
+     "label": null,
+     "pdfPage": 172,
+     "blocks": 6
+    },
+    {
+     "slug": "ask-this-question-often-2",
+     "title": "Ask This Question Often",
+     "label": null,
+     "pdfPage": 174,
+     "blocks": 9
+    },
+    {
+     "slug": "share-your-heart-2",
+     "title": "Share Your Heart",
+     "label": null,
+     "pdfPage": 176,
+     "blocks": 5
+    },
+    {
+     "slug": "be-a-guardian-and-gardener-2",
+     "title": "Be a Guardian and Gardener",
+     "label": null,
+     "pdfPage": 178,
+     "blocks": 10
+    },
+    {
+     "slug": "use-words-wisely-2",
+     "title": "Use Words Wisely",
+     "label": null,
+     "pdfPage": 180,
+     "blocks": 6
+    },
+    {
+     "slug": "notes",
+     "title": "Notes",
+     "label": null,
+     "pdfPage": 182,
+     "blocks": 21
+    }
+   ],
+   "status": "pass",
+   "failures": []
+  },
+  {
+   "id": "hearing-the-voice-of-god",
+   "sourcePages": 256,
+   "bodyFontSize": 11.5,
+   "chapterHeadingSizes": [
+    18
+   ],
+   "readings": 125,
+   "figures": 3,
+   "twoColumnPages": 0,
+   "printedContentsPages": [],
+   "decodedShiftFonts": [],
+   "repairs": {
+    "wrap hyphen removed": 465,
+    "drop cap rejoined": 123,
+    "image re-rendered from page (unsupported colour space)": 3
+   },
+   "removed": {
+    "cover page text (shown as cover image)": 4,
+    "printer slug": 514,
+    "running header/footer": 371,
+    "page number": 248,
+    "dingbat rule/ornament line": 125
+   },
+   "internalCoverage": 1.0,
+   "internalMissingSample": [],
+   "independentCoverage": 0.99909,
+   "independentMissingSample": [
+    "ervedcopyrg2016davdc",
+    "ncsbeamanogodencoura",
+    "geergsusewordswseysa",
+    "reyourearrespeceropn",
+    "onbeaguardanandgarde",
+    "neraskaceranquesonoe",
+    "omesrongbeeveebesbud",
+    "mupgormguardyouromeg",
+    "ensoaddreambgogeercr"
+   ],
+   "independentWordBagCoverage": 0.99715,
+   "independentWordBagMissingSample": [
+    "a",
+    "e",
+    "o",
+    "s",
+    "w",
+    "m",
+    "on",
+    "en",
+    "g",
+    "ou",
+    "d",
+    "er",
+    "any",
+    "anennae",
+    "j",
+    "esus",
+    "very",
+    "nong",
+    "y",
+    "nyone",
+    "seexaaon",
+    "od",
+    "ndrew",
+    "wordcanger",
+    "regous",
+    "ome",
+    "woman",
+    "besada",
+    "angups",
+    "sepy",
+    "msappropraed",
+    "r",
+    "eec",
+    "p",
+    "ne",
+    "eope",
+    "nexrcabe",
+    "ack",
+    "sergeousness",
+    "eer"
+   ],
+   "structuredRegions": [],
+   "regionWordCoverage": 1.0,
+   "regionMissingSample": [],
+   "figuresWithoutReviewedAlt": [],
+   "unexpectedGlyphs": {},
+   "suspiciousTokens": [],
+   "words": 64862,
+   "chapters": [
+    {
+     "slug": "hearing-what-god-has-to-say-to-you",
+     "title": "Hearing What God Has to Say to You",
+     "label": null,
+     "pdfPage": 5,
+     "blocks": 12
+    },
+    {
+     "slug": "the-gifts-of-light-and-life",
+     "title": "The Gifts of Light and Life",
+     "label": null,
+     "pdfPage": 7,
+     "blocks": 13
+    },
+    {
+     "slug": "full-of-grace-and-truth",
+     "title": "Full of Grace and Truth",
+     "label": null,
+     "pdfPage": 9,
+     "blocks": 15
+    },
+    {
+     "slug": "who-are-you",
+     "title": "Who Are You?",
+     "label": null,
+     "pdfPage": 11,
+     "blocks": 16
+    },
+    {
+     "slug": "the-spirit-remains",
+     "title": "The Spirit Remains",
+     "label": null,
+     "pdfPage": 13,
+     "blocks": 13
+    },
+    {
+     "slug": "what-are-you-seeking",
+     "title": "What Are You Seeking?",
+     "label": null,
+     "pdfPage": 15,
+     "blocks": 15
+    },
+    {
+     "slug": "follow-me",
+     "title": "Follow Me",
+     "label": null,
+     "pdfPage": 17,
+     "blocks": 14
+    },
+    {
+     "slug": "the-best-till-last",
+     "title": "The Best Till Last",
+     "label": null,
+     "pdfPage": 19,
+     "blocks": 14
+    },
+    {
+     "slug": "live-on-purpose",
+     "title": "Live on Purpose",
+     "label": null,
+     "pdfPage": 21,
+     "blocks": 13
+    },
+    {
+     "slug": "people-make-lousy-gods",
+     "title": "People Make Lousy Gods",
+     "label": null,
+     "pdfPage": 23,
+     "blocks": 14
+    },
+    {
+     "slug": "you-must-be-born-again",
+     "title": "You Must Be Born Again",
+     "label": null,
+     "pdfPage": 25,
+     "blocks": 14
+    },
+    {
+     "slug": "gods-great-love",
+     "title": "God’s Great Love",
+     "label": null,
+     "pdfPage": 27,
+     "blocks": 14
+    },
+    {
+     "slug": "the-importance-of-humility",
+     "title": "The Importance of Humility",
+     "label": null,
+     "pdfPage": 29,
+     "blocks": 14
+    },
+    {
+     "slug": "eternal-water",
+     "title": "Eternal Water",
+     "label": null,
+     "pdfPage": 31,
+     "blocks": 15
+    },
+    {
+     "slug": "true-worshipers",
+     "title": "True Worshipers",
+     "label": null,
+     "pdfPage": 33,
+     "blocks": 15
+    },
+    {
+     "slug": "lift-up-your-eyes",
+     "title": "Lift Up Your Eyes",
+     "label": null,
+     "pdfPage": 35,
+     "blocks": 15
+    },
+    {
+     "slug": "gods-love-for-everyone",
+     "title": "God’s Love for Everyone",
+     "label": null,
+     "pdfPage": 37,
+     "blocks": 17
+    },
+    {
+     "slug": "miracles-still-happen",
+     "title": "Miracles Still Happen",
+     "label": null,
+     "pdfPage": 39,
+     "blocks": 15
+    },
+    {
+     "slug": "have-faith-in-god",
+     "title": "Have Faith in God",
+     "label": null,
+     "pdfPage": 41,
+     "blocks": 14
+    },
+    {
+     "slug": "do-you-want-to-be-healed",
+     "title": "Do You Want to Be Healed?",
+     "label": null,
+     "pdfPage": 43,
+     "blocks": 15
+    },
+    {
+     "slug": "the-proof-of-faith",
+     "title": "The Proof of Faith",
+     "label": null,
+     "pdfPage": 45,
+     "blocks": 15
+    },
+    {
+     "slug": "audacious-claims",
+     "title": "Audacious Claims",
+     "label": null,
+     "pdfPage": 47,
+     "blocks": 15
+    },
+    {
+     "slug": "honor-jesus",
+     "title": "Honor Jesus",
+     "label": null,
+     "pdfPage": 49,
+     "blocks": 15
+    },
+    {
+     "slug": "total-dependence",
+     "title": "Total Dependence",
+     "label": null,
+     "pdfPage": 51,
+     "blocks": 18
+    },
+    {
+     "slug": "moses-writes-about-jesus",
+     "title": "Moses Writes About Jesus",
+     "label": null,
+     "pdfPage": 53,
+     "blocks": 15
+    },
+    {
+     "slug": "the-test-of-faith",
+     "title": "The Test of Faith",
+     "label": null,
+     "pdfPage": 55,
+     "blocks": 18
+    },
+    {
+     "slug": "who-is-jesus",
+     "title": "Who Is Jesus?",
+     "label": null,
+     "pdfPage": 57,
+     "blocks": 15
+    },
+    {
+     "slug": "dont-be-afraid",
+     "title": "Don’t Be Afraid",
+     "label": null,
+     "pdfPage": 59,
+     "blocks": 16
+    },
+    {
+     "slug": "seek-jesus",
+     "title": "Seek Jesus",
+     "label": null,
+     "pdfPage": 61,
+     "blocks": 15
+    },
+    {
+     "slug": "the-work-of-faith",
+     "title": "The Work of Faith",
+     "label": null,
+     "pdfPage": 63,
+     "blocks": 15
+    },
+    {
+     "slug": "jesus-is-the-bread-of-life",
+     "title": "Jesus Is the Bread of Life",
+     "label": null,
+     "pdfPage": 65,
+     "blocks": 13
+    },
+    {
+     "slug": "stop-grumbling",
+     "title": "Stop Grumbling",
+     "label": null,
+     "pdfPage": 67,
+     "blocks": 15
+    },
+    {
+     "slug": "ingesting-eternal-life",
+     "title": "Ingesting Eternal Life",
+     "label": null,
+     "pdfPage": 69,
+     "blocks": 16
+    },
+    {
+     "slug": "the-words-of-eternal-life",
+     "title": "The Words of Eternal Life",
+     "label": null,
+     "pdfPage": 71,
+     "blocks": 15
+    },
+    {
+     "slug": "being-a-servant",
+     "title": "Being a Servant",
+     "label": null,
+     "pdfPage": 73,
+     "blocks": 14
+    },
+    {
+     "slug": "choose-to-obey-gods-will",
+     "title": "Choose to Obey God’s Will",
+     "label": null,
+     "pdfPage": 75,
+     "blocks": 16
+    },
+    {
+     "slug": "jesus-knows-the-father",
+     "title": "Jesus Knows the Father",
+     "label": null,
+     "pdfPage": 77,
+     "blocks": 16
+    },
+    {
+     "slug": "your-eternal-home",
+     "title": "Your Eternal Home",
+     "label": null,
+     "pdfPage": 79,
+     "blocks": 13
+    },
+    {
+     "slug": "living-water",
+     "title": "Living Water",
+     "label": null,
+     "pdfPage": 81,
+     "blocks": 15
+    },
+    {
+     "slug": "no-one-has-ever-taught-like-jesus",
+     "title": "No One Has Ever Taught Like Jesus",
+     "label": null,
+     "pdfPage": 83,
+     "blocks": 14
+    },
+    {
+     "slug": "realize-your-sinfulness",
+     "title": "Realize Your Sinfulness",
+     "label": null,
+     "pdfPage": 85,
+     "blocks": 15
+    },
+    {
+     "slug": "jesus-is-your-light",
+     "title": "Jesus Is Your Light",
+     "label": null,
+     "pdfPage": 87,
+     "blocks": 16
+    },
+    {
+     "slug": "desire-gods-will",
+     "title": "Desire God’s Will",
+     "label": null,
+     "pdfPage": 89,
+     "blocks": 16
+    },
+    {
+     "slug": "you-are-free",
+     "title": "You Are Free!",
+     "label": null,
+     "pdfPage": 91,
+     "blocks": 15
+    },
+    {
+     "slug": "seek-truth",
+     "title": "Seek Truth",
+     "label": null,
+     "pdfPage": 93,
+     "blocks": 15
+    },
+    {
+     "slug": "jesus-is-your-provision-today",
+     "title": "Jesus Is Your Provision Today",
+     "label": null,
+     "pdfPage": 95,
+     "blocks": 14
+    },
+    {
+     "slug": "theres-purpose-in-pain",
+     "title": "There’s Purpose in Pain",
+     "label": null,
+     "pdfPage": 97,
+     "blocks": 16
+    },
+    {
+     "slug": "simple-obedience",
+     "title": "Simple Obedience",
+     "label": null,
+     "pdfPage": 99,
+     "blocks": 14
+    },
+    {
+     "slug": "obedience-flows-from-his-love",
+     "title": "Obedience Flows from His Love",
+     "label": null,
+     "pdfPage": 101,
+     "blocks": 14
+    },
+    {
+     "slug": "all-things-are-possible-with-god",
+     "title": "All Things Are Possible with God",
+     "label": null,
+     "pdfPage": 103,
+     "blocks": 15
+    },
+    {
+     "slug": "remain-connected-to-jesus",
+     "title": "Remain Connected to Jesus",
+     "label": null,
+     "pdfPage": 105,
+     "blocks": 16
+    },
+    {
+     "slug": "let-jesus-find-you",
+     "title": "Let Jesus Find You",
+     "label": null,
+     "pdfPage": 107,
+     "blocks": 17
+    },
+    {
+     "slug": "jesus-is-your-shepherd",
+     "title": "Jesus Is Your Shepherd",
+     "label": null,
+     "pdfPage": 109,
+     "blocks": 17
+    },
+    {
+     "slug": "jesus-died-for-you",
+     "title": "Jesus Died for You",
+     "label": null,
+     "pdfPage": 111,
+     "blocks": 18
+    },
+    {
+     "slug": "the-charge-to-god",
+     "title": "The Charge to God",
+     "label": null,
+     "pdfPage": 113,
+     "blocks": 17
+    },
+    {
+     "slug": "you-can-hear-jesus-voice",
+     "title": "You Can Hear Jesus’ Voice",
+     "label": null,
+     "pdfPage": 115,
+     "blocks": 18
+    },
+    {
+     "slug": "take-the-first-step",
+     "title": "Take the First Step",
+     "label": null,
+     "pdfPage": 117,
+     "blocks": 15
+    },
+    {
+     "slug": "let-jesus-guide-you",
+     "title": "Let Jesus Guide You",
+     "label": null,
+     "pdfPage": 119,
+     "blocks": 16
+    },
+    {
+     "slug": "give-god-all-the-glory",
+     "title": "Give God All the Glory",
+     "label": null,
+     "pdfPage": 121,
+     "blocks": 15
+    },
+    {
+     "slug": "walk-in-jesus-light",
+     "title": "Walk in Jesus’ Light",
+     "label": null,
+     "pdfPage": 123,
+     "blocks": 16
+    },
+    {
+     "slug": "you-will-never-die",
+     "title": "You Will Never Die",
+     "label": null,
+     "pdfPage": 125,
+     "blocks": 14
+    },
+    {
+     "slug": "tell-jesus-your-feelings",
+     "title": "Tell Jesus Your Feelings",
+     "label": null,
+     "pdfPage": 127,
+     "blocks": 17
+    },
+    {
+     "slug": "your-eternal-destiny-is-secure",
+     "title": "Your Eternal Destiny Is Secure",
+     "label": null,
+     "pdfPage": 129,
+     "blocks": 15
+    },
+    {
+     "slug": "go-to-jesus-with-all-your-hurts",
+     "title": "Go to Jesus with All Your Hurts",
+     "label": null,
+     "pdfPage": 131,
+     "blocks": 14
+    },
+    {
+     "slug": "grieve-with-hope",
+     "title": "Grieve with Hope",
+     "label": null,
+     "pdfPage": 133,
+     "blocks": 19
+    },
+    {
+     "slug": "creating-something-from-nothing",
+     "title": "Creating Something from Nothing",
+     "label": null,
+     "pdfPage": 135,
+     "blocks": 15
+    },
+    {
+     "slug": "love-the-church",
+     "title": "Love the Church",
+     "label": null,
+     "pdfPage": 137,
+     "blocks": 16
+    },
+    {
+     "slug": "seek-jesus-first",
+     "title": "Seek Jesus First",
+     "label": null,
+     "pdfPage": 139,
+     "blocks": 16
+    },
+    {
+     "slug": "serve-the-poor",
+     "title": "Serve the Poor",
+     "label": null,
+     "pdfPage": 141,
+     "blocks": 18
+    },
+    {
+     "slug": "you-are-what-you-think",
+     "title": "You Are What You Think",
+     "label": null,
+     "pdfPage": 143,
+     "blocks": 14
+    },
+    {
+     "slug": "one-day-you-will-understand",
+     "title": "One Day You Will Understand",
+     "label": null,
+     "pdfPage": 145,
+     "blocks": 13
+    },
+    {
+     "slug": "the-purpose-of-brokenness",
+     "title": "The Purpose of Brokenness",
+     "label": null,
+     "pdfPage": 147,
+     "blocks": 15
+    },
+    {
+     "slug": "jesus-draws-you-to-himself",
+     "title": "Jesus Draws You to Himself",
+     "label": null,
+     "pdfPage": 149,
+     "blocks": 17
+    },
+    {
+     "slug": "fear-god-not-people",
+     "title": "Fear God, Not People",
+     "label": null,
+     "pdfPage": 151,
+     "blocks": 15
+    },
+    {
+     "slug": "you-are-forever-forgiven",
+     "title": "You Are Forever Forgiven",
+     "label": null,
+     "pdfPage": 153,
+     "blocks": 18
+    },
+    {
+     "slug": "called-to-serve",
+     "title": "Called to Serve",
+     "label": null,
+     "pdfPage": 155,
+     "blocks": 16
+    },
+    {
+     "slug": "daily-grace",
+     "title": "Daily Grace",
+     "label": null,
+     "pdfPage": 157,
+     "blocks": 15
+    },
+    {
+     "slug": "forgiving-those-who-hurt-you",
+     "title": "Forgiving Those Who Hurt You",
+     "label": null,
+     "pdfPage": 159,
+     "blocks": 15
+    },
+    {
+     "slug": "the-importance-of-love-and-humility",
+     "title": "The Importance of Love and Humility",
+     "label": null,
+     "pdfPage": 161,
+     "blocks": 18
+    },
+    {
+     "slug": "love-one-another",
+     "title": "Love One Another",
+     "label": null,
+     "pdfPage": 163,
+     "blocks": 18
+    },
+    {
+     "slug": "starting-over",
+     "title": "Starting Over",
+     "label": null,
+     "pdfPage": 165,
+     "blocks": 16
+    },
+    {
+     "slug": "choose-faith",
+     "title": "Choose Faith",
+     "label": null,
+     "pdfPage": 167,
+     "blocks": 16
+    },
+    {
+     "slug": "greater-works",
+     "title": "Greater Works",
+     "label": null,
+     "pdfPage": 169,
+     "blocks": 15
+    },
+    {
+     "slug": "another-helper",
+     "title": "Another Helper",
+     "label": null,
+     "pdfPage": 171,
+     "blocks": 18
+    },
+    {
+     "slug": "your-heart-gods-home",
+     "title": "Your Heart: God’s Home",
+     "label": null,
+     "pdfPage": 173,
+     "blocks": 16
+    },
+    {
+     "slug": "read-gods-word-with-confidence",
+     "title": "Read God’s Word with Confidence",
+     "label": null,
+     "pdfPage": 175,
+     "blocks": 15
+    },
+    {
+     "slug": "the-gift-of-peace",
+     "title": "The Gift of Peace",
+     "label": null,
+     "pdfPage": 177,
+     "blocks": 17
+    },
+    {
+     "slug": "created-to-bear-fruit-for-god",
+     "title": "Created to Bear Fruit for God",
+     "label": null,
+     "pdfPage": 179,
+     "blocks": 17
+    },
+    {
+     "slug": "jesus-is-your-friend",
+     "title": "Jesus Is Your Friend",
+     "label": null,
+     "pdfPage": 181,
+     "blocks": 13
+    },
+    {
+     "slug": "the-proof-of-faithfulness",
+     "title": "The Proof of Faithfulness",
+     "label": null,
+     "pdfPage": 183,
+     "blocks": 19
+    },
+    {
+     "slug": "a-faithful-witness",
+     "title": "A Faithful Witness",
+     "label": null,
+     "pdfPage": 185,
+     "blocks": 16
+    },
+    {
+     "slug": "the-work-of-the-holy-spirit",
+     "title": "The Work of the Holy Spirit",
+     "label": null,
+     "pdfPage": 187,
+     "blocks": 15
+    },
+    {
+     "slug": "the-spirit-of-truth",
+     "title": "The Spirit of Truth",
+     "label": null,
+     "pdfPage": 189,
+     "blocks": 17
+    },
+    {
+     "slug": "your-sorrow-turned-to-joy",
+     "title": "Your Sorrow Turned to Joy",
+     "label": null,
+     "pdfPage": 191,
+     "blocks": 14
+    },
+    {
+     "slug": "you-are-an-overcomer",
+     "title": "You Are an Overcomer",
+     "label": null,
+     "pdfPage": 193,
+     "blocks": 15
+    },
+    {
+     "slug": "the-glory-of-jesus",
+     "title": "The Glory of Jesus",
+     "label": null,
+     "pdfPage": 195,
+     "blocks": 16
+    },
+    {
+     "slug": "jesus-is-praying-for-you",
+     "title": "Jesus Is Praying for You",
+     "label": null,
+     "pdfPage": 197,
+     "blocks": 18
+    },
+    {
+     "slug": "jesus-prays-a-specific-prayer-for-you",
+     "title": "Jesus Prays a Specific Prayer for You",
+     "label": null,
+     "pdfPage": 199,
+     "blocks": 20
+    },
+    {
+     "slug": "a-purpose-for-gods-word",
+     "title": "A Purpose for God’s Word",
+     "label": null,
+     "pdfPage": 201,
+     "blocks": 15
+    },
+    {
+     "slug": "pursue-unity",
+     "title": "Pursue Unity",
+     "label": null,
+     "pdfPage": 203,
+     "blocks": 14
+    },
+    {
+     "slug": "the-cup-of-gods-wrath",
+     "title": "The Cup of God’s Wrath",
+     "label": null,
+     "pdfPage": 205,
+     "blocks": 15
+    },
+    {
+     "slug": "be-strong-and-courageous",
+     "title": "Be Strong and Courageous",
+     "label": null,
+     "pdfPage": 207,
+     "blocks": 18
+    },
+    {
+     "slug": "gods-plans-are-perfect",
+     "title": "God’s Plans Are Perfect",
+     "label": null,
+     "pdfPage": 209,
+     "blocks": 16
+    },
+    {
+     "slug": "you-can-always-begin-again",
+     "title": "You Can Always Begin Again",
+     "label": null,
+     "pdfPage": 211,
+     "blocks": 15
+    },
+    {
+     "slug": "all-authority-comes-from-jesus",
+     "title": "All Authority Comes from Jesus",
+     "label": null,
+     "pdfPage": 213,
+     "blocks": 16
+    },
+    {
+     "slug": "no-greater-love",
+     "title": "No Greater Love",
+     "label": null,
+     "pdfPage": 215,
+     "blocks": 15
+    },
+    {
+     "slug": "honor-your-parents",
+     "title": "Honor Your Parents",
+     "label": null,
+     "pdfPage": 217,
+     "blocks": 18
+    },
+    {
+     "slug": "it-is-finished",
+     "title": "It Is Finished",
+     "label": null,
+     "pdfPage": 219,
+     "blocks": 19
+    },
+    {
+     "slug": "jesus-was-dead",
+     "title": "Jesus Was Dead",
+     "label": null,
+     "pdfPage": 221,
+     "blocks": 19
+    },
+    {
+     "slug": "the-body-is-in-the-tomb",
+     "title": "The Body Is in the Tomb",
+     "label": null,
+     "pdfPage": 225,
+     "blocks": 16
+    },
+    {
+     "slug": "who-moved-the-stone",
+     "title": "Who Moved the Stone?",
+     "label": null,
+     "pdfPage": 227,
+     "blocks": 17
+    },
+    {
+     "slug": "jesus-resurrection-power-lives-in-you",
+     "title": "Jesus’ Resurrection Power Lives in You",
+     "label": null,
+     "pdfPage": 229,
+     "blocks": 14
+    },
+    {
+     "slug": "the-god-of-angelic-armies",
+     "title": "The God of Angelic Armies",
+     "label": null,
+     "pdfPage": 231,
+     "blocks": 15
+    },
+    {
+     "slug": "god-is-your-loving-daddy",
+     "title": "God Is Your Loving Daddy",
+     "label": null,
+     "pdfPage": 233,
+     "blocks": 17
+    },
+    {
+     "slug": "go-into-the-world",
+     "title": "Go into the World",
+     "label": null,
+     "pdfPage": 235,
+     "blocks": 16
+    },
+    {
+     "slug": "walk-by-faith-and-not-by-sight",
+     "title": "Walk by Faith and Not by Sight",
+     "label": null,
+     "pdfPage": 237,
+     "blocks": 18
+    },
+    {
+     "slug": "god-oversees-your-nothings",
+     "title": "God Oversees Your Nothings",
+     "label": null,
+     "pdfPage": 239,
+     "blocks": 16
+    },
+    {
+     "slug": "dont-give-up",
+     "title": "Don’t Give Up",
+     "label": null,
+     "pdfPage": 241,
+     "blocks": 17
+    },
+    {
+     "slug": "the-two-faces-of-grace",
+     "title": "The Two Faces of Grace",
+     "label": null,
+     "pdfPage": 243,
+     "blocks": 16
+    },
+    {
+     "slug": "gods-purpose-in-your-pain",
+     "title": "God’s Purpose in Your Pain",
+     "label": null,
+     "pdfPage": 245,
+     "blocks": 17
+    },
+    {
+     "slug": "total-obedience",
+     "title": "Total Obedience",
+     "label": null,
+     "pdfPage": 247,
+     "blocks": 15
+    },
+    {
+     "slug": "follow-me-2",
+     "title": "Follow Me",
+     "label": null,
+     "pdfPage": 249,
+     "blocks": 18
+    },
+    {
+     "slug": "jesus-will-return",
+     "title": "Jesus Will Return",
+     "label": null,
+     "pdfPage": 251,
+     "blocks": 17
+    },
+    {
+     "slug": "notes",
+     "title": "Notes",
+     "label": null,
+     "pdfPage": 253,
+     "blocks": 37
+    },
+    {
+     "slug": "other-good-reading",
+     "title": "Other Good Reading",
+     "label": null,
+     "pdfPage": 255,
+     "blocks": 19
+    }
+   ],
+   "status": "pass",
+   "failures": []
+  },
+  {
+   "id": "knowing-god",
+   "sourcePages": 1134,
+   "bodyFontSize": 9.1,
+   "chapterHeadingSizes": [
+    12.9
+   ],
+   "readings": 22,
+   "figures": 2,
+   "twoColumnPages": 14,
+   "printedContentsPages": [
+    21
+   ],
+   "decodedShiftFonts": [],
+   "repairs": {
+    "wrap hyphen removed": 25
+   },
+   "removed": {
+    "cover page text (shown as cover image)": 0,
+    "page number": 4,
+    "printed contents page lines (replaced by web contents)": 108
+   },
+   "internalCoverage": 1.0,
+   "internalMissingSample": [],
+   "independentCoverage": 0.96937,
+   "independentMissingSample": [
+    "ma92324esamasersayon",
+    "npeaceuke736404450or",
+    "rdoossmaac111aeresen",
+    "51andjesuscameandspa",
+    "ew281820comeyenearun",
+    "ew123eavenandearsapa",
+    "erujon171719nowwenae",
+    "uke32122ensaeoomasre",
+    "edjon202729orgodsoov",
+    "scoossans1914bujesus",
+    "waosayunoeeandamaykn",
+    "eearsuosgorysaa613or",
+    "weaveodoebrews41213e",
+    "esrongjesusavesenmne",
+    "16172021dane1132esew",
+    "areveaon1918bugrowng",
+    "anonybedvnecomperyou",
+    "yercondencenedvneorg",
+    "knowneceendomansokno",
+    "ersoncarkekennedyepr",
+    "nownbeeveebbesebesgg",
+    "abraamnconewordogods",
+    "eandnquresjeromeebbe",
+    "scueeresnoparoescrpu",
+    "okjesuseverquoedmygo",
+    "soswadcamberseonmorr",
+    "ennedyreadobewsebeev",
+    "onmearurwpnkeveryess",
+    "mperasngenenebbeasco",
+    "anuekanwaawonderroug",
+    "usnessogodanonymouso",
+    "eagescaresspurgeonwy",
+    "nowedgeogod1awozerme",
+    "carnockknownggoduyre",
+    "eryourmndwgodswordan",
+    "sesunknownxxnoabequo",
+    "y988urnngeear989wacu",
+    "pngeord1085wra1090ua",
+    "ppendcesunaccepng993",
+    "oong1027noes1101bbog"
+   ],
+   "independentWordBagCoverage": 0.99974,
+   "independentWordBagMissingSample": [
+    "nqures",
+    "nvgoraed"
+   ],
+   "structuredRegions": [],
+   "regionWordCoverage": 1.0,
+   "regionMissingSample": [],
+   "figuresWithoutReviewedAlt": [],
+   "unexpectedGlyphs": {},
+   "suspiciousTokens": [],
+   "words": 7772,
+   "chapters": [
+    {
+     "slug": "d",
+     "title": "D",
+     "label": null,
+     "pdfPage": 22,
+     "blocks": 1
+    },
+    {
+     "slug": "e",
+     "title": "E",
+     "label": null,
+     "pdfPage": 22,
+     "blocks": 2
+    },
+    {
+     "slug": "f",
+     "title": "F",
+     "label": null,
+     "pdfPage": 22,
+     "blocks": 1
+    },
+    {
+     "slug": "g",
+     "title": "G",
+     "label": null,
+     "pdfPage": 22,
+     "blocks": 3
+    },
+    {
+     "slug": "h",
+     "title": "H",
+     "label": null,
+     "pdfPage": 23,
+     "blocks": 1
+    },
+    {
+     "slug": "i",
+     "title": "I",
+     "label": null,
+     "pdfPage": 23,
+     "blocks": 2
+    },
+    {
+     "slug": "j",
+     "title": "J",
+     "label": null,
+     "pdfPage": 23,
+     "blocks": 1
+    },
+    {
+     "slug": "k",
+     "title": "K",
+     "label": null,
+     "pdfPage": 23,
+     "blocks": 1
+    },
+    {
+     "slug": "l",
+     "title": "L",
+     "label": null,
+     "pdfPage": 23,
+     "blocks": 1
+    },
+    {
+     "slug": "m",
+     "title": "M",
+     "label": null,
+     "pdfPage": 23,
+     "blocks": 2
+    },
+    {
+     "slug": "n",
+     "title": "N",
+     "label": null,
+     "pdfPage": 24,
+     "blocks": 1
+    },
+    {
+     "slug": "o",
+     "title": "O",
+     "label": null,
+     "pdfPage": 24,
+     "blocks": 1
+    },
+    {
+     "slug": "p",
+     "title": "P",
+     "label": null,
+     "pdfPage": 24,
+     "blocks": 2
+    },
+    {
+     "slug": "q",
+     "title": "Q",
+     "label": null,
+     "pdfPage": 24,
+     "blocks": 1
+    },
+    {
+     "slug": "r",
+     "title": "R",
+     "label": null,
+     "pdfPage": 24,
+     "blocks": 3
+    },
+    {
+     "slug": "s",
+     "title": "S",
+     "label": null,
+     "pdfPage": 25,
+     "blocks": 2
+    },
+    {
+     "slug": "t",
+     "title": "T",
+     "label": null,
+     "pdfPage": 25,
+     "blocks": 2
+    },
+    {
+     "slug": "u",
+     "title": "U",
+     "label": null,
+     "pdfPage": 26,
+     "blocks": 1
+    },
+    {
+     "slug": "v",
+     "title": "V",
+     "label": null,
+     "pdfPage": 26,
+     "blocks": 1
+    },
+    {
+     "slug": "w",
+     "title": "W",
+     "label": null,
+     "pdfPage": 26,
+     "blocks": 2
+    },
+    {
+     "slug": "z",
+     "title": "Z",
+     "label": null,
+     "pdfPage": 26,
+     "blocks": 1
+    },
+    {
+     "slug": "appendices",
+     "title": "APPENDICES",
+     "label": null,
+     "pdfPage": 26,
+     "blocks": 1
+    }
+   ],
+   "status": "pass",
+   "failures": []
+  }
+ ]
+}

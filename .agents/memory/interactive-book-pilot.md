@@ -1,10 +1,10 @@
 ---
 name: Interactive book pilot scope
-description: User-approved scope and source authority for the first JO EQUIP interactive book.
+description: User-approved interactive book treatment and library rollout scope.
 ---
 
-The user selected only the first book displayed on the Books page, The Adventure of Living with Jesus, as the interactive-reading prototype. Include optional reading tools but do not add listening controls to this reader. Do not roll the treatment out to other books without approval.
+The user approved The Adventure of Living with Jesus interactive-reading prototype and then authorized extending the same treatment to the rest of the books. Include optional reading tools but do not add reader-specific listening controls.
 
-**Why:** The user explicitly requested “just the first book on the book page as the prototype” and excluded “the listening part.”
+**Why:** The initial request excluded “the listening part.” After reviewing the prototype, the user said “I think its good lets do this with the rest of the books as well.”
 
-**How to apply:** Use displayed category ordering, not raw catalog order, to identify the first book. Preserve the approved current PDF and use its actual content rather than older Adventure articles or manuscripts. Existing global header audio is separate from the reader-specific scope.
+**How to apply:** Reuse the approved reading experience across the displayed library. Preserve current PDFs and use their actual content rather than older articles or manuscripts. Keep PDF downloads available. Existing global header audio is separate from the reader-specific scope.

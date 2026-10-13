@@ -19,7 +19,8 @@ export type Block =
   | { t: "ul"; items: Inline[] }
   | { t: "panel"; blocks: Block[] }
   | { t: "callout"; kind: "story" | "info" | "note"; title: string | null; blocks: Block[] }
-  | { t: "table"; head: string[]; rows: string[][] }
+  | { t: "table"; head: string[]; rows: string[][]; caption?: string; rowHeaders?: boolean; note?: string }
+  | { t: "checklist"; items: Inline[] }
   | { t: "figure"; src: string; alt: string; width: number; height: number; pdfPage: number; wide: boolean; caption?: string; href?: string }
   | { t: "continue"; note: string }
   | { t: "deeper"; label: string; optional: boolean; title: string; desc: string; url: string };
@@ -65,7 +66,8 @@ function blockText(b: Block): string {
     case "ul": return b.items.join(" ");
     case "panel": return b.blocks.map(blockText).join(" ");
     case "callout": return [b.title ?? "", ...b.blocks.map(blockText)].join(" ");
-    case "table": return [...b.head, ...b.rows.flat().filter(c => c !== "checkbox")].join(" ");
+    case "table": return [b.caption ?? "", ...b.head, ...b.rows.flat().filter(c => c !== "checkbox"), b.note ?? ""].join(" ");
+    case "checklist": return b.items.join(" ");
     case "figure": return b.caption ?? "";
     case "continue": return b.note;
     case "deeper": return `${b.title} ${b.desc}`;

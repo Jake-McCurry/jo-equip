@@ -41,21 +41,34 @@ const displayUrl = (u: string) => u.replace(/^https?:\/\//, "");
           <Astro.self blocks={b.blocks} />
         </aside>
       );
-    case "table":
+    case "table": {
+      const cell = (c: string) => c === "checkbox"
+        ? <span class="rb-box" role="img" aria-label="empty box to mark"></span>
+        : c.includes("\n") ? c.split("\n").map((ln, k) => <>{k > 0 && <br />}{ln}</>) : c;
       return (
         <div class="rb-table-wrap">
           <table class="rb-table">
-            <thead><tr>{b.head.map(h => <th scope="col">{h}</th>)}</tr></thead>
+            {b.caption && <caption>{b.caption}</caption>}
+            {b.head.length > 0 && <thead><tr>{b.head.map(h => <th scope="col">{cell(h)}</th>)}</tr></thead>}
             <tbody>
               {b.rows.map(r => (
                 <tr>
-                  {r.map((c, i) => i === 0
-                    ? <th scope="row">{c}</th>
-                    : <td>{c === "checkbox" ? <span class="rb-box" role="img" aria-label="empty box to mark"></span> : c}</td>)}
+                  {r.map((c, i) => i === 0 && b.rowHeaders !== false
+                    ? <th scope="row">{cell(c)}</th>
+                    : <td>{cell(c)}</td>)}
                 </tr>
               ))}
             </tbody>
           </table>
+          {b.note && <p class="rb-table-note">{b.note}</p>}
+        </div>
+      );
+    }
+    case "checklist":
+      return (
+        <div class="rb-checklist">
+          <p class="rb-checklist-label">Options to tick (print edition)</p>
+          <ul>{b.items.map(i => <li><span class="rb-checkbox" aria-hidden="true">&#9744;</span> <span set:html={rich(i)} /></li>)}</ul>
         </div>
       );
     case "figure": {

@@ -80,7 +80,9 @@
 @media (min-width: 1024px) {
   .rd-shell.has-toc { grid-template-columns: minmax(0, 1fr) 15rem; }
 }
-.rd-article { max-width: 42rem; width: 100%; margin: 0 auto; }
+.rd-article { max-width: 42rem; min-width: 0; width: 100%; margin: 0 auto; }
+.rd-shell { overflow-wrap: anywhere; }
+.rd-shell > * { min-width: 0; }
 
 .rd-eyebrow {
   font: 700 0.75rem/1 var(--font-sans); letter-spacing: 0.16em; text-transform: uppercase;
@@ -157,7 +159,15 @@
 .rb-table { width: 100%; border-collapse: collapse; font-size: 0.92em; }
 .rb-table th, .rb-table td { padding: 0.55em 0.75em; border-bottom: 1px solid var(--rd-rule); text-align: left; }
 .rb-table thead th { background: var(--rd-deeper-bg); color: var(--rd-deeper-ink); font-weight: 700; }
-.rb-table td { text-align: center; }
+.rb-table td { vertical-align: top; }
+.rb-table td:has(> .rb-box) { text-align: center; }
+.rb-table caption { caption-side: top; text-align: left; font-weight: 700; padding: 0 0 0.4em; color: var(--rd-heading); }
+.rb-table-note { font-size: 0.88em; margin-top: 0.5em; }
+.rb-checklist { margin: 0.6em 0 1.1em; }
+.rb-checklist-label { font-size: 0.78em; letter-spacing: 0.04em; text-transform: uppercase; opacity: 0.75; margin: 0 0 0.3em; }
+.rb-checklist ul { list-style: none; padding-left: 0.25em; margin: 0; }
+.rb-checklist li + li { margin-top: 0.35em; }
+.rb-checkbox { display: inline-block; width: 1.1em; }
 .rb-table tbody th { font-weight: 600; color: var(--rd-heading); }
 .rb-box { display: inline-block; width: 1em; height: 1em; border: 1.5px solid var(--rd-ink-soft); border-radius: 3px; vertical-align: -0.12em; }
 
@@ -256,3 +266,9 @@
 @media (prefers-reduced-motion: reduce) {
   .adv-reader *, .rd-contents * { transition: none !important; animation: none !important; }
 }
+
+/* Printed fill-in blanks from workbook editions. The small number is the
+   print edition's answer-key reference; the answer itself is never shown. */
+.rb-blank { display: inline-block; min-width: 5.5em; height: 1em; border-bottom: 1.5px solid var(--rd-ink-soft); vertical-align: -0.2em; margin: 0 0.15em; position: relative; }
+.rb-blank sup { position: absolute; right: -0.15em; top: -0.55em; font-size: 0.66em; line-height: 1; color: var(--rd-ink-soft); font-variant-numeric: tabular-nums; }
+.rb-scale { display: flex; justify-content: space-between; gap: 0.25em; max-width: 30em; border-bottom: 1.5px solid var(--rd-ink-soft); padding-bottom: 0.2em; font-variant-numeric: tabular-nums; }

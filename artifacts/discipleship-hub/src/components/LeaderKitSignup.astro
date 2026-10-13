@@ -56,12 +56,12 @@ const thankYouUrl = `${import.meta.env.BASE_URL.replace(/\/$/, "")}${thankYouPat
   input { box-sizing: border-box; width: 100%; min-width: 0; min-height: 44px; padding: 9px 10px; border: 1px solid #cbd2d9; border-radius: 0; background: white; color: #19212b; font: inherit; font-size: 16px; }
   input::placeholder { color: #727c88; opacity: 1; }
   input:focus-visible, button:focus-visible { outline: 3px solid var(--color-structure); outline-offset: 3px; }
-  button { display: block; width: 100%; min-height: 44px; margin-top: 16px; padding: 11px 10px; border: 0; background: #147bd1; color: #fff; font: inherit; font-weight: 700; font-size: 1rem; text-align: left; cursor: pointer; transition: background .15s; }
-  button:hover { background: #0964af; }
+  button { display: block; width: 100%; min-height: 44px; margin-top: 16px; padding: 11px 10px; border: 0; background: var(--color-action-warm); color: #fff; font: inherit; font-weight: 700; font-size: 1rem; text-align: left; cursor: pointer; transition: filter .15s; }
+  button:hover { filter: brightness(.9); }
   button:disabled { opacity: .65; cursor: wait; }
   .signup-feedback { margin-top: 12px; font-size: .875rem; line-height: 1.5; color: #9b2424; }
-  .fallback-button { background: transparent; color: #0964af; font-size: .875rem; text-decoration: underline; padding: 8px 0; margin-top: 4px; }
-  .fallback-button:hover { background: transparent; color: #0e2f60; }
+  .fallback-button { background: transparent; color: var(--color-action-warm); font-size: .875rem; text-decoration: underline; padding: 8px 0; margin-top: 4px; }
+  .fallback-button:hover { background: transparent; }
   [hidden] { display: none; }
   .confirmation-note { margin: 6px 0 0; color: #5d6673; font-size: .75rem; line-height: 1.4; }
   .honeypot { position: absolute; left: -5000px; width: 1px; height: 1px; overflow: hidden; }

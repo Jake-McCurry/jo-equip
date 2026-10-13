@@ -45,5 +45,5 @@
 - [Tour and Welcome separation](tour-welcome-separation.md) — Tour revisions belong on /tour; preserve the original /welcome page without a menu link.
 - [Editorial link placement](editorial-link-placement.md) — Repeated sentences do not imply repeated links; scope editorial requests to the intended occurrence.
 - [Header language and audio](header-language-audio.md) — Translation uses the authorized instructions fallback; direct browser speech retains an instructions fallback.
-- [Interactive book rollout](interactive-book-pilot.md) — Adventure treatment approved for remaining books; include optional tools except reader-specific listening; preserve current PDFs.
+- [Deferred online books](interactive-book-pilot.md) — User requested reversal and deferred online books; do not restart without approval. Retain the earlier concept for future use.
 - [Book conversion fidelity](book-conversion-fidelity.md) — Text coverage misses drawn blanks, diagram meaning, and table relationships; verify representative source layouts visually.

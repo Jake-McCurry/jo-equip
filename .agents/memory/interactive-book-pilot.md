@@ -1,10 +1,10 @@
 ---
 name: Interactive book pilot scope
-description: User-approved interactive book treatment and library rollout scope.
+description: Online-book work is deferred by user request; retain the approved concept for a future explicit restart.
 ---
 
-The user approved The Adventure of Living with Jesus interactive-reading prototype and then authorized extending the same treatment to the rest of the books. Include optional reading tools but do not add reader-specific listening controls.
+As of 2026-10-13, the user does not want online-readable books for now and requested reversal of that work. Do not resume or expand the feature without explicit authorization. Preserve the existing PDF-based library and the separate Knowing God concordance.
 
-**Why:** The initial request excluded “the listening part.” After reviewing the prototype, the user said “I think its good lets do this with the rest of the books as well.”
+**Why:** The user said “please reverse this and purge cache we don't want this task for now. Remember the task for the future.” This supersedes the earlier whole-library rollout approval.
 
-**How to apply:** Reuse the approved reading experience across the displayed library. Preserve current PDFs and use their actual content rather than older articles or manuscripts. Keep PDF downloads available. Existing global header audio is separate from the reader-specific scope.
+**How to apply:** Treat online books as deferred product scope, not active work. If explicitly restarted, the previously approved concept was the Adventure reading experience extended across the library, with optional reading tools but no reader-specific listening. Preserve PDF downloads and actual source content; global header audio is separate.

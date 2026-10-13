@@ -45,3 +45,4 @@
 - [Tour and Welcome separation](tour-welcome-separation.md) — Tour revisions belong on /tour; preserve the original /welcome page without a menu link.
 - [Editorial link placement](editorial-link-placement.md) — Repeated sentences do not imply repeated links; scope editorial requests to the intended occurrence.
 - [Header language and audio](header-language-audio.md) — Translation uses the authorized instructions fallback; direct browser speech retains an instructions fallback.
+- [Interactive book pilot](interactive-book-pilot.md) — Only the first displayed book, Adventure; optional tools included except new listening controls; preserve current PDF content.

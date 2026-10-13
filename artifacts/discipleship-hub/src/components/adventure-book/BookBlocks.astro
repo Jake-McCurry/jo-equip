@@ -1,0 +1,95 @@
+---
+import type { Block } from "@/data/adventure-book";
+import { enrichHtml } from "@/data/adventure-book";
+
+interface Props {
+  blocks: Block[];
+}
+
+const { blocks } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
+const base = baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl;
+const join = (p: string) => base + p;
+const rich = (h: string) => enrichHtml(h, base);
+const displayUrl = (u: string) => u.replace(/^https?:\/\//, "");
+---
+{blocks.map(b => {
+  switch (b.t) {
+    case "p":
+      return <p set:html={rich(b.html)} />;
+    case "h2":
+      return <h2 id={b.id} class="rb-h2">{b.text}</h2>;
+    case "quote":
+      return b.kind === "scripture"
+        ? <blockquote class="rb-scripture" set:html={rich(b.html)} />
+        : <blockquote class="rb-excerpt" set:html={rich(b.html)} />;
+    case "question":
+      return (
+        <div class="rb-question">
+          <p set:html={rich(b.html)} />
+          <span class="rb-lines" aria-hidden="true"><span></span><span></span></span>
+        </div>
+      );
+    case "ul":
+      return <ul class="rb-list">{b.items.map(i => <li set:html={rich(i)} />)}</ul>;
+    case "panel":
+      return <div class="rb-panel"><Astro.self blocks={b.blocks} /></div>;
+    case "callout":
+      return (
+        <aside class={`rb-callout rb-callout--${b.kind}`} aria-label={b.title ?? undefined}>
+          {b.title && <p class="rb-callout-title">{b.title}</p>}
+          <Astro.self blocks={b.blocks} />
+        </aside>
+      );
+    case "table":
+      return (
+        <div class="rb-table-wrap">
+          <table class="rb-table">
+            <thead><tr>{b.head.map(h => <th scope="col">{h}</th>)}</tr></thead>
+            <tbody>
+              {b.rows.map(r => (
+                <tr>
+                  {r.map((c, i) => i === 0
+                    ? <th scope="row">{c}</th>
+                    : <td>{c === "checkbox" ? <span class="rb-box" role="img" aria-label="empty box to mark"></span> : c}</td>)}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      );
+    case "figure": {
+      const img = (
+        <img
+          src={join(b.src)}
+          alt={b.alt}
+          width={b.width}
+          height={b.height}
+          loading="lazy"
+          decoding="async"
+        />
+      );
+      return (
+        <figure class={b.wide ? "rb-figure rb-figure--wide" : "rb-figure"}>
+          {b.href
+            ? <a href={b.href} target="_blank" rel="noopener noreferrer">{img}</a>
+            : img}
+          {b.caption && <figcaption>{b.caption}</figcaption>}
+        </figure>
+      );
+    }
+    case "continue":
+      return <p class="rb-continue">{b.note}</p>;
+    case "deeper":
+      return (
+        <a class="rb-deeper" href={b.url} target="_blank" rel="noopener noreferrer">
+          <span class="rb-deeper-label">{b.label}{b.optional && <> &middot; optional</>}</span>
+          <span class="rb-deeper-title">{b.title}</span>
+          <span class="rb-deeper-desc">{b.desc}</span>
+          <span class="rb-deeper-url">{displayUrl(b.url)}</span>
+        </a>
+      );
+    default:
+      return null;
+  }
+})}

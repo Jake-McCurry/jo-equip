@@ -1,0 +1,106 @@
+Begin forwarded message:
+
+From:
+Helmut <helmut@jesusonline.com>
+
+Subject:
+Make JO Equip books interactive
+
+Date:
+August 30, 2026 at 7:54:12 PM PDT
+
+To:
+Jake McCurry <Jake@jesusonline.com>
+
+Once the book is web pages, you can do far more than a PDF coating. The goal is still the same: easy to start, easy to stay, easy to come back. Add only what serves that.
+1. Make the path feel like a book, not a blog
+You already designed this. Keep it.
+
+Intro first, then linked titles
+Each title opens that reading
+Bottom of every reading: Next reading · Back to the list
+Flat site menu
+That is interactivity: choice without getting lost.
+Add one quiet extra: a thin
+progress bar at the top of each reading (“3 of 9”) so they know where they are. That raises finish rates more than page-flip animation.
+2. Make the page comfortable on a phone
+This is what people feel as “enjoyable.”
+
+16–18px type, short paragraphs, generous line spacing
+A Aa control (smaller / larger)
+Optional dark page
+3–8 min read under the title
+No interstitials, no full-width ads between paragraphs
+WordPress: many themes already have this. Plugins such as a reading-progress bar and a simple “estimated read time” block are enough.
+3. Let them move inside a long reading
+If a single reading runs past ~800 words:
+
+Short subheads
+A small sticky contents for that reading only (not a second site menu)
+Optional “Back to top”
+Do not paginate one reading across “page 1 of 4.” That is the old magazine trick and it loses people.
+4. Let them listen
+A Listen button (browser speech or a recorded voice) helps commuters and tired eyes. Keep it optional and under the title, never required before they can read.
+5. Let Scripture be tappable
+If verses sit in the text:
+
+The reference opens the NET Bible in a new view, or a clean overlay
+Do not dump them into a crowded Bible site with ads
+That one link makes the page feel alive without turning it into an app.
+6. Save place and notes (only if they want an account)
+Without a login you can still:
+
+Remember last reading in this browser (simple and worth doing)
+Offer Send this page to yourself (you already have this)
+With a light login (email magic link):
+
+Resume where they stopped
+A few private notes per reading
+“Send my notes to me”
+Do not require an account to start. Require it only to
+keep work.
+7. Light interaction inside a reading
+Use sparingly—one per reading is plenty.
+
+A single reflection question with a box they can type in (saved locally or emailed)
+“Talk to God about this” as a short prompt, not a quiz
+One related reading link: “If this stirred fear, open I’m afraid…”
+Skip scored quizzes, badges, and streaks. Those feel like a course. This is a companion.
+8. What usually makes it less enjoyable
+
+Flipbook overlay on HTML text
+Nested menus
+Auto-playing video above the first paragraph
+“Read more” under an already-linked title
+Locking chapter 2 until chapter 1 is finished
+Chat widgets that pop on load
+A simple stack for your site
+
+Need
+Do this
+
+Explore the book
+Linked titles + next / back
+
+Know where I am
+“3 of 9” + progress bar
+
+Comfort
+Big type, short paragraphs, optional listen
+
+Scripture
+Tap the verse → NET Bible
+
+Come back tomorrow
+Email-to-self + last-page memory in the browser
+
+Go deeper
+One related link, not a new menu
+
+You do not need a special “interactive book plugin” for most of this. You need clean pages, a progress cue, working chapter links, and a way to return. That is already the architecture of the opening pages you have
+written. Build those first. Add listen, notes, and verse popovers only after that path is live.
+
+Subject: Considering updating all JO Equip books + JOLF series UX
+From: Jake McCurry <Jake@jesusonline.com>
+To: "x@mail.asana.com" <x@mail.asana.com>
+Created: Aug 31, 2026 at 9:49pm UTC

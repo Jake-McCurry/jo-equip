@@ -1,0 +1,73 @@
+---
+import { Languages, Volume2, Square } from "lucide-react";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+<a href={`${base}/translate`} class="reading-tool" aria-label="Translate this page — instructions" title="Translate this page">
+  <Languages className="w-5 h-5" aria-hidden="true" />
+</a>
+<a href={`${base}/listen`} class="reading-tool" data-listen-page aria-label="Listen to this page" title="Listen to this page">
+  <span data-listen-start><Volume2 className="w-5 h-5" aria-hidden="true" /></span>
+  <span data-listen-stop hidden><Square className="w-5 h-5" aria-hidden="true" /></span>
+</a>
+<style>
+  .reading-tool { display:inline-flex; align-items:center; justify-content:center; width:2.5rem; height:2.5rem; flex-shrink:0; color:white; border-radius:.25rem; }
+  .reading-tool:hover { background:rgba(255,255,255,.1); }
+  .reading-tool:focus-visible { outline:2px solid white; outline-offset:2px; }
+</style>
+<script>
+  const controls = Array.from(document.querySelectorAll<HTMLAnchorElement>("[data-listen-page]"));
+  let reading = false;
+  let session = 0;
+  // Retain the active utterance until it ends (needed by some browser engines).
+  let utterance: SpeechSynthesisUtterance | undefined;
+  const supported = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
+  function update(active: boolean) {
+    reading = active;
+    for (const control of controls) {
+      const label = active ? "Stop reading" : "Listen to this page";
+      control.setAttribute("aria-label", label);
+      control.title = label;
+      control.querySelector<HTMLElement>("[data-listen-start]")!.hidden = active;
+      control.querySelector<HTMLElement>("[data-listen-stop]")!.hidden = !active;
+    }
+  }
+  function stop() {
+    session++;
+    update(false);
+    if (supported) window.speechSynthesis.cancel();
+    utterance = undefined;
+  }
+  for (const control of controls) {
+    control.addEventListener("click", event => {
+      if (!supported) return; // Normal link navigation opens the instructions.
+      event.preventDefault();
+      if (reading) { stop(); return; }
+      const main = document.querySelector<HTMLElement>("#main-content");
+      if (!main) { window.location.assign(control.href); return; }
+      // innerText reads visible page content, excluding the header/footer and
+      // collapsed FAQ answers. Short utterances avoid browser long-text limits.
+      const text = main.innerText.replace(/\s+/g, " ").trim();
+      const chunks = text.match(/.{1,220}(?:\s|$)|\S{1,220}/g) ?? [];
+      if (!chunks.length) { window.location.assign(control.href); return; }
+      stop();
+      const current = session;
+      update(true);
+      function speak(index: number) {
+        if (current !== session) return;
+        if (index >= chunks.length) { update(false); utterance = undefined; return; }
+        utterance = new SpeechSynthesisUtterance(chunks[index]);
+        utterance.lang = document.documentElement.lang || "en";
+        utterance.onend = () => speak(index + 1);
+        utterance.onerror = event => {
+          if (current !== session || event.error === "canceled" || event.error === "interrupted") return;
+          stop();
+          window.location.assign(control.href);
+        };
+        try { window.speechSynthesis.speak(utterance); }
+        catch { stop(); window.location.assign(control.href); }
+      }
+      speak(0);
+    });
+  }
+  window.addEventListener("pagehide", stop);
+</script>

@@ -88,10 +88,25 @@ test("book titles are centered native PDF links with a trailing download icon", 
   assert.match(link, /justify-center/);
   assert.match(link, /\{cardTitle\}<\/span>\s*<Download/);
   assert.doesNotMatch(link, /\sdownload(?:\s|=|>)/);
-  assert.doesNotMatch(carousel, /book-download-btn|<BookOpen\b|data-pdf-action="download"/);
+  assert.doesNotMatch(link, /<BookOpen\b/);
+  assert.doesNotMatch(carousel, /book-download-btn|data-pdf-action="download"/);
   const page = await read("src/pages/books.astro");
   assert.doesNotMatch(page, /book-download-btn/);
   assert.match(page, /requestBook\(catalogBook\.pdf, catalogBook\.title, true\)/);
+});
+
+test("online reading has a separate link and book icon without PDF actions", async () => {
+  const carousel = await read("src/components/BooksCarousel.astro");
+  const link = [...carousel.matchAll(/<a\b[\s\S]*?<\/a>/g)]
+    .map(match => match[0])
+    .find(anchor => /class="read-online-link\b/.test(anchor));
+  assert.ok(link, "Missing separate online-reading link.");
+  assert.match(carousel, /const webEdition = getWebEdition\(book\.id\)/);
+  assert.match(carousel, /\{webEdition && \(/);
+  assert.match(link, /href=\{join\(webEdition\)\}/);
+  assert.match(link, /<BookOpen\b/);
+  assert.match(link, /Read online/);
+  assert.doesNotMatch(link, /data-pdf-action|book\.pdf|<Download\b/);
 });
 
 test("only Knowing God has a concordance title and digital-version destination", async () => {

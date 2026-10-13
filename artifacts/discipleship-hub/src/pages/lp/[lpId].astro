@@ -129,10 +129,12 @@ const featuredPlaylists = [
       )}
       <div class="mt-5 text-sm md:text-base flex flex-col items-center justify-center gap-1.5 sm:flex-row sm:flex-wrap sm:gap-0" style="color:var(--color-text);">
         <span class="font-medium">Explore Free Resources for</span>
-        <span class="flex flex-wrap items-center justify-center">
-          {personaLinks.map(link => (
+        <span class:list={["flex flex-wrap items-center justify-center", { "mobile-persona-row": Astro.params.lpId === "ENG-1-resources" }]}>
+          {personaLinks.map((link, index) => (
             <Fragment>
-              <span aria-hidden="true" class="mx-1.5" style="color:var(--color-accent);">&bull;</span>
+              {(Astro.params.lpId !== "ENG-1-resources" || index > 0) && (
+                <span aria-hidden="true" class="mx-1.5" style="color:var(--color-accent);">{Astro.params.lpId === "ENG-1-resources" ? "|" : "•"}</span>
+              )}
               <a href={link.href} class="underline underline-offset-2 whitespace-nowrap hover:opacity-90" style="color:var(--color-action-warm);">{link.title}</a>
             </Fragment>
           ))}
@@ -285,3 +287,19 @@ const featuredPlaylists = [
     </div>
   </section>
 </Layout>
+
+<style>
+  @media (max-width: 639px) {
+    .mobile-persona-row {
+      flex-wrap: nowrap;
+      white-space: nowrap;
+      font-size: clamp(9px, 2.8vw, 14px);
+    }
+    .mobile-persona-row > span {
+      margin-inline: 0.3em;
+    }
+    .mobile-persona-row > a {
+      flex-shrink: 0;
+    }
+  }
+</style>

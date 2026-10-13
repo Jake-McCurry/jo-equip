@@ -103,6 +103,7 @@ const featuredPlaylists = [
     <meta name="robots" content="noindex, follow" />
   </Fragment>
 
+  <div class:list={{ "compact-resources": Astro.params.lpId === "ENG-1-resources" }}>
   {/* Hero — same as the home page at time of copy. */}
   <section class="relative py-10 md:py-16 px-4 text-center overflow-hidden" style="background-color:var(--color-hero);">
     <div
@@ -286,9 +287,39 @@ const featuredPlaylists = [
       </div>
     </div>
   </section>
+  </div>
 </Layout>
 
 <style>
+  .compact-resources > section {
+    padding-block: 1.5rem;
+  }
+  .compact-resources > section:first-child {
+    padding-block: 2rem;
+  }
+  .compact-resources > section:nth-child(2) {
+    padding-block: 1rem;
+  }
+  .compact-resources > section:last-child {
+    padding-block: 0;
+  }
+  .compact-resources .mt-5 { margin-top: 0; }
+  .compact-resources .mt-2 { margin-top: 0.375rem; }
+  .compact-resources .mt-1 { margin-top: 0.125rem; }
+  .compact-resources .mb-2 { margin-bottom: 0.375rem; }
+  .compact-resources .mb-4 { margin-bottom: 0.75rem; }
+  .compact-resources .mb-6 { margin-bottom: 1rem; }
+  .compact-resources .pb-2 { padding-bottom: 0.25rem; }
+  .compact-resources .p-6 { padding-block: 1rem; }
+  .compact-resources .py-5 { padding-block: 0.75rem; }
+  .compact-resources .gap-6 { row-gap: 1rem; }
+  .compact-resources .gap-4 { row-gap: 0.75rem; }
+  @media (min-width: 768px) {
+    .compact-resources > section { padding-block: 2rem; }
+    .compact-resources > section:first-child { padding-block: 2.5rem; }
+    .compact-resources > section:nth-child(2) { padding-block: 1.25rem; }
+    .compact-resources > section:last-child { padding-block: 0; }
+  }
   @media (max-width: 639px) {
     .mobile-persona-row {
       flex-wrap: nowrap;

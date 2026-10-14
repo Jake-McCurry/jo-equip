@@ -62,11 +62,11 @@ for (const id of ids) {
   });
 }
 
-test("Adventure keeps its dedicated pages and storage keys", () => {
+test("deferred Adventure source keeps its storage keys without publishing reader pages", () => {
   const client = readFileSync(resolve(ROOT, "src/components/adventure-book/reader-client.ts"), "utf8");
   assert.match(client, /let KEY = "jo-adventure-book";/);
   assert.match(client, /:note:\$\{slug\}/);
-  assert.ok(existsSync(resolve(ROOT, "src/pages/books/adventure-of-living-with-jesus/read/[slug].astro")));
+  assert.ok(!existsSync(resolve(ROOT, "src/pages/books/adventure-of-living-with-jesus/read/[slug].astro")));
   assert.ok(!existsSync(resolve(DIR, "adventure-of-living-with-jesus.json")), "Adventure must not be duplicated in the generic reader");
 });
 

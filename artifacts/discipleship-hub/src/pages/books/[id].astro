@@ -5,7 +5,6 @@ import { BookOpen, ArrowLeft, Download, Languages } from "lucide-react";
 import { books } from "@/data/books";
 import { getBookCover } from "@/data/bookCovers";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
-import { getWebEdition } from "@/data/webBooks";
 
 /* One static page per book, generated at build. Purpose:
    1. Give every book a unique, shareable URL with a proper Open Graph
@@ -24,7 +23,6 @@ export function getStaticPaths() {
 const { book } = Astro.props;
 const cover = getBookCover(book.id);
 const alternateEditions = book.editions ?? [];
-const webEdition = getWebEdition(book.id);
 
 const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
@@ -146,15 +144,6 @@ const bookJsonLd = {
         >
           <BookOpen className="w-4 h-4" /> Read PDF
         </a>
-        {webEdition && (
-          <a
-            href={join(webEdition)}
-            class="inline-flex items-center gap-2 px-6 py-3 ml-0 sm:ml-3 mt-3 sm:mt-0 rounded border font-semibold text-base transition-colors hover:bg-white"
-            style="border-color:var(--color-border-control); color:var(--color-hero);"
-          >
-            Read online
-          </a>
-        )}
         <p class="text-xs mt-3" style="color:var(--color-muted-foreground);">
            Opens in a new tab to read online — download it from there to keep or share.
            No signup is required.

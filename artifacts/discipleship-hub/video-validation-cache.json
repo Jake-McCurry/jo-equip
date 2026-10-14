@@ -388,6 +388,16 @@
     "ok": false,
     "status": 403,
     "reason": "embedding disabled / player configuration error (Error 153)",
-    "checked": "2026-09-28"
+    "checked": "2026-10-14"
+  },
+  "DJO6PyxJmUo": {
+    "ok": true,
+    "status": 200,
+    "checked": "2026-10-14"
+  },
+  "s1cURv0b1ak": {
+    "ok": true,
+    "status": 200,
+    "checked": "2026-10-14"
   }
 }

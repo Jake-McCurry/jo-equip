@@ -1,0 +1,1072 @@
+{
+"id": "knowing-god",
+"source": "public/books/knowing-god.pdf",
+"sourcePages": 1134,
+"sourceSha256": "c01fe503d25a6f6a4a954fd51c4511d9a04316bbf2b912f69aad6e474e929823",
+"frontMatter": [
+{
+"t": "figure",
+"src": "/books/knowing-god/read/img/p003-0-ddbdc8bf78.png",
+"alt": "Knowing God: Topical Bible Verses on the Nature and Character of the Almighty. Soli Deo Gloria.",
+"width": 960,
+"height": 1243,
+"pdfPage": 3,
+"wide": true
+},
+{
+"t": "p",
+"html": "The Zinzendorf Mission"
+},
+{
+"t": "p",
+"html": "203 E Main St. #1439 Jamestown NC 27282 www.zmission.org zmission@icloud.com Tel +1 (828) 209-8097"
+},
+{
+"t": "figure",
+"src": "/books/knowing-god/read/img/p004-0-f433590a62.jpg",
+"alt": "ZMission logo: Following Jesus Together.",
+"width": 238,
+"height": 206,
+"pdfPage": 4,
+"wide": false
+},
+{
+"t": "p",
+"html": "© 2026 by Zinzendorf Mission"
+},
+{
+"t": "p",
+"html": "All rights reserved by The Zinzendorf Mission. Permission is granted to duplicate or reproduce for discipleship purposes on the condition that it is distributed free of charge."
+},
+{
+"t": "p",
+"html": "Due to the changing nature of the Internet, if there are any web addresses, links, or URLs included in this manuscript, these may have been altered and may no longer be accessible. The views and opinions shared in this book belong solely to the author and do not necessarily reflect those of the publisher. The publisher therefore disclaims responsibility for the views or opinions expressed within the work."
+},
+{
+"t": "p",
+"html": "Ordering information:"
+},
+{
+"t": "p",
+"html": "Quantity sales, special discounts may be available on quantity purchases by corporations, associations, and others. For details, contact The Zinzendorf Mission at zmission@icloud.com."
+},
+{
+"t": "p",
+"html": "All Scripture quotations are from the King James Version (KJV), unless otherwise indicated."
+},
+{
+"t": "p",
+"html": "Scripture quotations taken from the Amplified® Bible (AMPC) are indicated. Copyright © 1954, 1958, 1962, 1964, 1965, 1987 by The Lockman Foundation. Used by permission. www.Lockman.org."
+},
+{
+"t": "p",
+"html": "Hard Cover ISBN-979-8-9952654-0-5"
+},
+{
+"t": "h2",
+"text": "Dedication"
+},
+{
+"t": "h2",
+"text": "O Worship the King"
+},
+{
+"t": "p",
+"html": "O worship the King, all-glorious above, O gratefully sing His pow’r and His love;"
+},
+{
+"t": "p",
+"html": "Our Shield and Defender, the Ancient of Days, Pavilioned in splendor, and girded with praise."
+},
+{
+"t": "p",
+"html": "O tell of His might, O sing of His grace, Whose robe is the light, whose canopy space;"
+},
+{
+"t": "p",
+"html": "His chariots of wrath the deep thunderclouds form, And dark is His path on the wings of the storm."
+},
+{
+"t": "p",
+"html": "The earth with its store of wonders untold, Almighty, Thy power has founded of old;"
+},
+{
+"t": "p",
+"html": "Has 'stablished it fast by a changeless decree, And round it hast cast, like a mantle, the sea."
+},
+{
+"t": "p",
+"html": "Thy bountiful care, what tongue can recite?"
+},
+{
+"t": "p",
+"html": "It breathes in the air, it shines in the light;"
+},
+{
+"t": "p",
+"html": "It streams from the hills, it descends to the plain,"
+},
+{
+"t": "p",
+"html": "And sweetly distills in the dew and the rain."
+},
+{
+"t": "p",
+"html": "Frail children of dust, and feeble as frail, In Thee do we trust, nor find Thee to fail;"
+},
+{
+"t": "p",
+"html": "Thy mercies how tender, how firm to the end, Our Maker, Defender, Redeemer, and Friend!"
+},
+{
+"t": "p",
+"html": "O measureless Might! Ineffable Love!"
+},
+{
+"t": "p",
+"html": "While angels delight to hymn Thee above, The humble creation, though feeble their lays, With true adoration lisp to Thy praise.*"
+},
+{
+"t": "p",
+"html": "Robert Grant"
+},
+{
+"t": "p",
+"html": "* Underlining was added to indicate those attributes, characteristics, and descriptions of God that are also in this book."
+},
+{
+"t": "h2",
+"text": "Introductory Foundational Scriptures"
+},
+{
+"t": "p",
+"html": "Thus saith the Lord, Let not the wise man glory in his wisdom, neither let the mighty man glory in his might, let not the rich man glory in his riches: But let him that glorieth glory in this, that he understandeth and knoweth me, that I am the Lord which exercise lovingkindness, judgment, and righteousness, in the earth: for in these things I delight, saith the Lord."
+},
+{
+"t": "p",
+"html": "Jeremiah 9:23-24"
+},
+{
+"t": "p",
+"html": "For from the rising of the sun even unto the going down of the same my name shall be great among the Gentiles; and in every place incense shall be offered unto my name, and a pure offering: for my name shall"
+},
+{
+"t": "p",
+"html": "Malachi 1:11 be great among the heathen, saith the LORD of hosts."
+},
+{
+"t": "p",
+"html": "After these things the word of the Lord came unto Abram in a vision, saying, Fear not, Abram: I am thy shield, and thy exceeding great reward."
+},
+{
+"t": "p",
+"html": "Genesis 15:1"
+},
+{
+"t": "p",
+"html": "Come ye near unto me, hear ye this; I have not spoken in secret from the beginning; from the time that it was, there am I: and now the Lord God, and his Spirit, hath sent me."
+},
+{
+"t": "p",
+"html": "Isaiah 48:16"
+},
+{
+"t": "p",
+"html": "Behold, a virgin shall be with child, and shall bring forth a son, and they shall call his name Emmanuel, which being interpreted is, God with us."
+},
+{
+"t": "p",
+"html": "Matthew 1:23"
+},
+{
+"t": "p",
+"html": "Now when all the people were baptized, it came to pass, that Jesus also being baptized, and praying, the heaven was opened, And the Holy Ghost descended in a bodily shape like a dove upon him, and a voice came from heaven, which said, Thou art my beloved Son; in thee I am well pleased<em>.</em>"
+},
+{
+"t": "p",
+"html": "Luke 3:21-22"
+},
+{
+"t": "p",
+"html": "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life. For God sent not his Son into the world to condemn the world; but that the world through him might be saved. He that believeth on him is not condemned: but he that believeth not is condemned already, because he hath not believed in the name of the only begotten Son of God."
+},
+{
+"t": "p",
+"html": "John 3:16-18"
+},
+{
+"t": "p",
+"html": "But Jesus answered them, My Father worketh hitherto, and I work. Therefore the Jews sought the more to kill him, because he not only had broken the sabbath, but said also that God was his Father, making himself equal with God."
+},
+{
+"t": "p",
+"html": "John 5:17-18"
+},
+{
+"t": "p",
+"html": "Jesus saith unto him, I am the way, the truth, and the life: no man cometh unto the Father, but by me."
+},
+{
+"t": "p",
+"html": "John 14:6"
+},
+{
+"t": "p",
+"html": "And one of the Pharisees desired him that he would eat with him. And he went into the Pharisee's house, and sat down to meat. And, behold, a woman in the city, which was a sinner, when she knew that Jesus sat at meat in the Pharisee's house, brought an alabaster box of ointment, And stood at his feet behind him weeping, and began to wash his feet with tears, and did wipe them with the hairs of her head, and kissed his feet, and anointed them with the ointment. Now when the Pharisee which had bidden him saw it, he spake within himself, saying, This man, if he were a prophet, would have known who and what manner of woman this is that toucheth him: for she is a sinner. And Jesus answering said unto him, Simon, I have somewhat to say unto thee. And"
+},
+{
+"t": "p",
+"html": "he saith, Master, say on . . . And he turned to the woman, and said unto Simon, Seest thou this woman? I entered into thine house, thou gavest me no water for my feet: but she hath washed my feet with tears, and wiped them with the hairs of her head. Thou gavest me no kiss: but this woman since the time I came in hath not ceased to kiss my feet. My head with oil thou didst not anoint: but this woman hath anointed my feet with ointment. Wherefore I say unto thee, Her sins, which are many, are forgiven; for she loved much: but to whom little is forgiven, the same loveth little. And he said unto her, Thy sins are forgiven. And they that sat at meat with him began to say within themselves, Who is this that forgiveth sins also? And he said to the woman, Thy faith hath saved thee; go in peace."
+},
+{
+"t": "p",
+"html": "Luke 7:36-40, 44-50"
+},
+{
+"t": "p",
+"html": "And Jesus came and spake unto them, saying, All power is given unto me in heaven and in earth. Go ye therefore, and teach all nations, baptizing them in the name of the Father, and of the Son, and of the Holy Ghost: Teaching them to observe all things whatsoever I have commanded you: and, lo, I am with you always, even unto the end of the world. Amen."
+},
+{
+"t": "p",
+"html": "Matthew 28:18-20"
+},
+{
+"t": "p",
+"html": "Heaven and earth shall pass away, but my words shall not pass away."
+},
+{
+"t": "p",
+"html": "Matthew 24:35"
+},
+{
+"t": "p",
+"html": "Sanctify them through thy truth: thy word is truth. As thou hast sent me into the world, even so have I also sent them into the world. And for their sakes I sanctify myself, that they also might be sanctified through the truth."
+},
+{
+"t": "p",
+"html": "John 17:17-19"
+},
+{
+"t": "p",
+"html": "Then saith he to Thomas, Reach hither thy finger, and behold my hands; and reach hither thy hand, and thrust it into my side: and be not faithless, but believing. And Thomas answered and said unto him, My Lord and my God. Jesus saith unto him, Thomas, because thou hast seen me, thou hast believed: blessed are they that have not seen, and yet have believed."
+},
+{
+"t": "p",
+"html": "John 20:27-29"
+},
+{
+"t": "p",
+"html": "For this cause we also, since the day we heard it, do not cease to pray for you, and to desire that ye might be filled with the knowledge of his will in all wisdom and spiritual understanding; That ye might walk worthy of the Lord unto all pleasing, being fruitful in every good work, and increasing in the knowledge of God; Strengthened with all might, according to his glorious power, unto all patience and longsuffering with joyfulness; Giving thanks unto the Father, which hath made us meet to be partakers of the inheritance of the saints in light: Who hath delivered us from the power of darkness, and hath translated us into the kingdom of his dear Son: In whom we have redemption through his blood, even the forgiveness of sins."
+},
+{
+"t": "p",
+"html": "Colossians 1:9-14"
+},
+{
+"t": "p",
+"html": "That I may know him, and the power of his resurrection, and the fellowship of his sufferings, being made conformable unto his death; If by any means I might attain unto the resurrection of the dead."
+},
+{
+"t": "p",
+"html": "Philippians 3:10-11"
+},
+{
+"t": "p",
+"html": "For I have not shunned to declare unto you all the counsel of God."
+},
+{
+"t": "p",
+"html": "Acts 20:27 The grace of the Lord Jesus Christ, and the love of God, and the communion of the Holy Ghost, be with you all. Amen."
+},
+{
+"t": "p",
+"html": "2 Corinthians 13:14 viii | Introductory Foundational Scriptures | Knowing God: Topical Bible Verses on the Nature and Character of the Almighty"
+},
+{
+"t": "p",
+"html": "In the year that king Uzziah died I saw also the Lord sitting upon a throne, high and lifted up, and his train filled the temple. Above it stood the seraphims: each one had six wings; with twain he covered his face, and with twain he covered his feet, and with twain he did fly."
+},
+{
+"t": "p",
+"html": "And one cried unto another, and said, Holy, holy, holy, is the Lord of hosts: the whole earth is full of his glory."
+},
+{
+"t": "p",
+"html": "Isaiah 6:1-3"
+},
+{
+"t": "p",
+"html": ". . . the people that do know their God shall be strong . . ."
+},
+{
+"t": "p",
+"html": "Daniel 11:32"
+},
+{
+"t": "p",
+"html": "These words spake Jesus, and lifted up his eyes to heaven, and said, Father, the hour is come; glorify thy Son, that thy Son also may glorify thee: As thou hast given him power over all flesh, that he should give eternal life to as many as thou hast given him. And this is life eternal, that they might know thee the only true God, and Jesus Christ, whom thou hast sent. I have glorified thee on the earth: I have finished the work which thou gavest me to do. And now, O Father, glorify thou me with thine own self with the glory which I had with thee before the world was."
+},
+{
+"t": "p",
+"html": "John 17:1-5"
+},
+{
+"t": "p",
+"html": "1 John, who also am your brother, and companion in tribulation, and in the kingdom and patience of Jesus Christ, was in the isle that is called Patmos, for the word of God, and for the testimony of Jesus Christ. I was in the Spirit on the Lord's day, and heard behind me a great voice, as of a trumpet, Saying, I am Alpha and Omega, the first and the last: and, What thou seest, write in a book, and send it unto the seven churches which are in Asia; unto Ephesus, and unto Smyrna, and unto Pergamos, and unto Thyatira, and unto Sardis, and unto Philadelphia, and unto Laodicea. And I turned to see the voice that spake with me. And being turned, I saw seven golden candlesticks; And in the midst of the seven candlesticks one like unto the Son of man, clothed with a garment down to the foot, and girt about the paps with a golden girdle. His head and his hairs were white like wool, as white as snow; and his eyes were as a flame of fire; And his feet like unto fine brass, as if they burned in a furnace; and his voice as the sound of many waters. And he had in his right hand seven stars:"
+},
+{
+"t": "p",
+"html": "and out of his mouth went a sharp twoedged sword: and his countenance was as the sun shineth in his strength. And when I saw him, I fell at his feet as dead. And he laid his right hand upon me, saying unto me, Fear not; I am the first and the last: I am he that liveth, and was dead; and, behold, I am alive for evermore, Amen; and have the keys of hell and of death."
+},
+{
+"t": "p",
+"html": "Revelation 1:9-18"
+},
+{
+"t": "p",
+"html": "For the word of God is quick, and powerful, and sharper than any twoedged sword, piercing even to the dividing asunder of soul and spirit, and of the joints and marrow, and is a discerner of the thoughts and intents of the heart. Neither is there any creature that is not manifest in his sight: but all things are naked and opened unto the eyes of him with whom we have to do."
+},
+{
+"t": "p",
+"html": "Hebrews 4:12-13"
+},
+{
+"t": "p",
+"html": "I Jesus have sent mine angel to testify unto you these things in the churches. I am the root and the offspring of David, and the bright and morning star. And the Spirit and the bride say, Come. And let him that heareth say, Come. And let him that is athirst come. And whosoever will, let him take the water of life freely … He which testifieth these things saith, Surely I come quickly. Amen. Even so, come, Lord Jesus. The grace of our Lord Jesus Christ be with you all. Amen."
+},
+{
+"t": "p",
+"html": "Revelation 22:16-17, 20-21"
+},
+{
+"t": "p",
+"html": "But grow in grace, and in the knowledge of our Lord and Saviour Jesus Christ. To him be glory both now and for ever. Amen."
+},
+{
+"t": "p",
+"html": "2 Peter 3:18"
+},
+{
+"t": "p",
+"html": "For the earth shall be filled with the knowledge of the glory of the Lord, as the waters cover the sea."
+},
+{
+"t": "p",
+"html": "Habakkuk 2:14"
+},
+{
+"t": "h2",
+"text": "Devotional Guide"
+},
+{
+"t": "p",
+"html": "<strong><em>Whereas the Table of Contents is a general reference for all the Attributes, Characteristics, and Qualities of God that are listed in this book, the Devotional Guide is a highlighted selection for the purpose of directed Bible study, worship, and prayer.</em></strong>"
+},
+{
+"t": "h2",
+"text": "ALMIGHTY"
+},
+{
+"t": "p",
+"html": "ABLE .............................................................................................. 5 ABSOLUTE .................................................................................. 8 ALL-SUFFICIENT...................................................................... 35 ALMIGHTY ................................................................................. 37 BRINGING THE DEAD BACK TO LIFE .............................. 100 GREAT ...................................................................................... 385 INVINCIBLE ............................................................................. 471 MIGHTY .................................................................................... 575 MIRACULOUS, THE ...............................................................576 OMNIPOTENT ......................................................................... 612 POWERFUL ............................................................................. 659 WONDERFUL ........................................................................1076 WONDROUS ..........................................................................1076 <strong>CREATORSHIP</strong> ANGELS ..................................................................................... 40 AUTHORING............................................................................. 66 BEAUTIFYING ........................................................................... 77 BUILDING ................................................................................102 CREATORSHIP ........................................................................ 174 DESIGNING ............................................................................ 209 ESTABLISHING ...................................................................... 270 FASHIONING .......................................................................... 287 FORMING ................................................................................ 323 FOUNDING ............................................................................. 325 MAKING .................................................................................. 549 MANIFOLD ............................................................................. 553 MARVELOUS .......................................................................... 558 NEWNESS ............................................................................... 596 NON-IMPOSSIBILITATION OF THE LORD .......................597 OMNIPOTENT ......................................................................... 174 OWNING .................................................................................. 629 PROPRIETARY ........................................................................ 701 PURPOSING ............................................................................ 734 REBUILDING ........................................................................... 753 RENEWING ..............................................................................787 SOVEREIGNTY ....................................................................... 882 <strong>DEVOTION TO THE LORD</strong> BAPTIZING................................................................................. 73 CHURCH ................................................................................... 128 CROWNING ............................................................................. 177 DEDICATION ........................................................................... 195 DELIGHT OF THE LORD .......................................................201 DEVOTION TO THE LORD ................................................... 217 DILIGENCE ............................................................................. 224 DISCIPLE-MAKING ................................................................ 231 EXALTING THE LORD ........................................................... 275 EXEMPLARY ........................................................................... 279 FAITHFUL ............................................................................... 286 FASTING .................................................................................. 288"
+},
+{
+"t": "p",
+"html": "INTIMATE ............................................................................... 469 LORD’S SUPPER ..................................................................... 533 LOVING THE LORD ............................................................... 539 MEDITATION ......................................................................... 564 MEMORIALS TO THE LORD ............................................... 567 OBEDIENCE OF CHRIST ...................................................... 606 PLEASURE OF THE LORD .................................................... 651 PRAISING THE LORD ........................................................... 660 PRAYER LIFE OF CHRIST .................................................... 664 PRAYER, INTERCESSORY .................................................... 668 PRAYER-ANSWERING .......................................................... 672 REWARDING .......................................................................... 816 SAVORING .............................................................................. 836 SEEKING THE LORD ............................................................ 847 STEWARDSHIP ...................................................................... 896 SUBMITTING TO GOD .......................................................... 905 THANKING THE LORD......................................................... 953 VOWING TO THE LORD ..................................................... 1039 WAITING ON THE LORD ................................................... 1043 WALK, THE CHRISTIAN .................................................... 1045 WORD OF THE LORD ......................................................... 1078 WORSHIPPING THE LORD ............................................... 1085 ZEAL ....................................................................................... 1095 <strong>ETERNAL</strong> ALL-EXISTENT ......................................................................... 33 ALPHA AND OMEGA ............................................................... 39 ENDLESS ................................................................................. 257 ENDURING ............................................................................. 259 ETERNAL ................................................................................. 272 ETERNAL LIFE ....................................................................... 273 EVERLASTING ....................................................................... 274 INFINITE ................................................................................. 460 <strong>FAITHFUL</strong> ASSURANCE ............................................................................. 60 FAITHFUL ............................................................................... 286 GUARANTEEING .................................................................... 391 IMPARTING FAITH ................................................................ 431 OATH OF THE LORD............................................................. 605 PROMISING ............................................................................ 692 RELIABLE ................................................................................ 779 SEALING .................................................................................. 840 STEADFAST ............................................................................. 895 SURE......................................................................................... 920 TRUE ........................................................................................ 981 TRUSTWORTHY ..................................................................... 985 TRUTH ..................................................................................... 986 UNFAILING ........................................................................... 1002 <strong>FORBEARANCE</strong> FORBEARANCE ...................................................................... 306 LONGSUFFERING ................................................................. 529 <em>xii | Devotional Guide | Knowing God: Topical Bible Verses on the Nature and Character of the Almighty</em>"
+},
+{
+"t": "p",
+"html": "LOVE OF THE LORD ............................................................. 534 LOVINGKINDNESS ................................................................ 538 MERCIFUL .............................................................................. 568 MERCY OF THE LORD .......................................................... 570 PATIENCE OF CHRIST .......................................................... 638 PITYING ................................................................................... 646 POSTPONING JUDGMENT .................................................. 656 RELENTING ............................................................................ 778 SLOW TO ANGER ................................................................... 879 <strong>GLORY OF THE LORD</strong> AWESOME ................................................................................. 69 BEAUTY OF THE LORD .......................................................... 78 GLORIFYING THE LORD ..................................................... 360 GLORY OF THE LORD........................................................... 362 HOLY ........................................................................................ 416 LIGHT ........................................................................................521 MAJESTIC ................................................................................ 547 POWERFUL ............................................................................. 659 RADIANT ................................................................................. 747 SPLENDOR .............................................................................. 891 UNFORGETTABLE ............................................................... 1004 <strong>GOODNESS</strong> ABOUNDING ............................................................................... 7 ABUNDANT ................................................................................ 11 ADDING ..................................................................................... 18 BENEFICENT ............................................................................ 82 BESTOWING ............................................................................. 85 BOUNTIFUL .............................................................................. 95 DOUBLING .............................................................................. 239 ENLARGING ............................................................................ 262 ENRICHING MATERIALLY .................................................. 264 ENRICHING SPIRITUALLY .................................................. 266 GENEROUS ............................................................................. 338 GOODNESS.............................................................................. 375 GRANTING .............................................................................. 384 GUIDING ................................................................................. 393 INCREASING........................................................................... 450 KINDNESS ............................................................................... 499 LEADING .................................................................................. 515 LOVE OF THE LORD ............................................................. 534 LOVINGKINDNESS ................................................................ 538 MERCIFUL .............................................................................. 568 MERCY OF THE LORD .......................................................... 570 MULTIPLYING ........................................................................ 584 PARTNERSHIP OF THE LORD ............................................ 635 PITYING ................................................................................... 646 PLENTIFUL ............................................................................. 653 PRAYER-ANSWERING .......................................................... 672 PROLONGING LIFE ............................................................... 691 PROSPERING .......................................................................... 702 PROTECTING .......................................................................... 705 PROVIDENCE ......................................................................... 708 PROVIDING .............................................................................. 716 REWARDING .......................................................................... 816 SHARING OF THE LORD ...................................................... 867 SPARING .................................................................................. 887 STRENGTHENING ................................................................. 902 SUPERABUNDANT ................................................................ 913 SUPPLYING ............................................................................. 916 SUPPORTING .......................................................................... 918 SUSTAINING ........................................................................... 921"
+},
+{
+"t": "p",
+"html": "TENDER ................................................................................... 943 UPHOLDING ......................................................................... 1024 <strong>GRACE OF THE LORD</strong> ETERNAL LIFE ....................................................................... 273 FORGIVING .............................................................................320 GIFT OF GOD, THE ................................................................ 342 GIVING (AN) INHERITANCE ............................................... 355 GIVING BLESSINGS .............................................................. 344 GIVING DOMINION .............................................................. 348 GIVING FAVOR ....................................................................... 349 GIVING HONOR ..................................................................... 352 GRACE OF THE LORD .......................................................... 380 GRACIOUS ............................................................................... 382 GRANTING .............................................................................. 384 IMPARTING FAITH ............................................................... 431 KINDNESS ............................................................................... 499 LOVE OF THE LORD.............................................................. 534 LOVINGKINDNESS ................................................................ 538 MERCIFUL ............................................................................... 568 MERCY OF THE LORD .......................................................... 570 PITYING ................................................................................... 646 PRAYER-ANSWERING .......................................................... 672 RELENTING ............................................................................ 778 REMISSION ............................................................................. 782 SALVATION .............................................................................829 <strong>HEALING</strong> ALMIGHTY ................................................................................ 37 CURING ..................................................................................... 181 EXPELLING EVIL SPIRITS .................................................. 280 HEALING .................................................................................403 IMPARTING SPIRITUAL GIFTS .......................................... 439 MAKING WHOLE ................................................................... 550 MIRACULOUS, THE ............................................................... 576 OMNIPOTENT ........................................................................ 612 POWERFUL ............................................................................. 659 PRAYER LIFE OF CHRIST .................................................... 664 PRAYER, INTERCESSORY ....................................................668 PRAYER-ANSWERING .......................................................... 672 SALVATION .............................................................................829 <strong>HOLY</strong> AWESOME ................................................................................. 69 BEAUTY OF THE LORD .......................................................... 78 EXEMPLARY ........................................................................... 279 FEAR OF THE LORD .............................................................. 294 FLAWLESS ............................................................................... 305 FORBIDDING .......................................................................... 307 GLORY OF THE LORD ........................................................... 362 GODLINESS ............................................................................. 372 HALLOWING ........................................................................... 396 HOLY ........................................................................................ 416 IMPECCABLE .......................................................................... 443 INCORRUPTIBLE ................................................................... 449 IRREFUTABLE ........................................................................ 475 JEALOUS .................................................................................. 477 LAW-GIVING ........................................................................... 512 PERFECT .................................................................................. 643 PURE ......................................................................................... 732 PURGING ................................................................................. 733 REFINING ................................................................................ 764 RIGHTEOUS ............................................................................ 821 SANCTIFICATION .................................................................. 833"
+},
+{
+"t": "p",
+"html": "<em>Knowing God: Topical Bible Verses on the Nature and Character of the Almighty | Devotional Guide | xiii</em>"
+},
+{
+"t": "p",
+"html": "SETTING APART .................................................................... 857 SINLESS ................................................................................... 875 STRAIGHT ............................................................................... 901 TRANSFORMING ................................................................... 972 UNIMPEACHABLE ............................................................... 1013 UPRIGHT ............................................................................... 1025 VIRTUE .................................................................................. 1034 ZEAL ....................................................................................... 1095 <strong>IMMANENCE</strong> ABIDING ....................................................................................... 4 DETERMINING ....................................................................... 215 GOD THE FATHER ................................................................ 364 GOD THE SON ........................................................................ 366 GOD THE SPIRIT ................................................................... 368 IMMANENCE .......................................................................... 425 INCOMPREHENSIBLE ......................................................... 449 INDWELLING ......................................................................... 459 INHERITANCE OF THE LORD ............................................ 463 LOVE OF THE LORD ............................................................. 534 OMNIPOTENT ......................................................................... 612 OMNIPRESENT ....................................................................... 614 OMNISCIENT .......................................................................... 615 PRESENCE OF THE LORD ................................................... 685 PROVIDENCE ......................................................................... 708 PURPOSING ............................................................................ 734 TRANSCENDENCE ................................................................ 970 UNFATHOMABLE................................................................ 1003 <strong>IMMUTABLE</strong> ASSURANCE ............................................................................. 60 CONSTANT ............................................................................... 158 COVENANT, NEW ................................................................... 173 FAITHFUL ............................................................................... 286 GUARANTEEING .................................................................... 391 IMMUTABLE .......................................................................... 429 OATH OF THE LORD ............................................................ 605 PROMISING ............................................................................ 692 STEADFAST ............................................................................ 895 SURE ........................................................................................ 920 UNCHANGEABLE .................................................................. 997 <strong>IMPARTING SPIRITUAL GIFTS</strong> ANOINTING ............................................................................... 47 APPOINTING ............................................................................ 50 ASSIGNING ............................................................................... 58 CHURCH ................................................................................... 128 DISCERNMENT ...................................................................... 229 EDIFYING ................................................................................. 251 EMPOWERING ....................................................................... 253 ENCOURAGING ..................................................................... 255 ENDUING ................................................................................ 258 FILLING ................................................................................... 303 FRUITFULNESS ..................................................................... 328 GIRDING ................................................................................. 343 GIVING BLESSINGS .............................................................. 344 GIVING GROWTH................................................................... 351 GOD THE SPIRIT ................................................................... 368 IMPARTING KNOWLEDGE AND WISDOM ...................... 436 IMPARTING SPIRITUAL GIFTS .......................................... 439 KINGDOM OF GOD ................................................................ 501 MIRACULOUS, THE ...............................................................576 PARACLETE ............................................................................ 633 POURING OUT ........................................................................657"
+},
+{
+"t": "p",
+"html": "POWERFUL ............................................................................. 659 PURPOSING ............................................................................ 734 SERVANTHOOD OF CHRIST ............................................... 852 STEWARDSHIP ...................................................................... 896 UNCTION OF THE LORD ..................................................... 999 <strong>IMPUTED RIGHTEOUSNESS OF CHRIST</strong> ATONEMENT ............................................................................. 61 BLOOD OF CHRIST ................................................................. 92 CRUCIFIXION OF CHRIST .................................................... 178 ETERNAL LIFE ....................................................................... 273 GIFT OF GOD, THE ................................................................ 342 GOSPEL, THE ..........................................................................377 GRACE OF THE LORD .......................................................... 380 GRACIOUS ............................................................................... 382 IMPUTED RIGHTEOUSNESS OF CHRIST ........................ 445 JUSTIFICATION ..................................................................... 494 LOVE OF THE LORD ............................................................. 534 MERCIFUL .............................................................................. 568 MERCY OF THE LORD .......................................................... 570 PROPITIATION....................................................................... 700 RECONCILIATION ................................................................. 760 REGENERATION ................................................................... 770 RIGHTEOUS ............................................................................ 821 SALVATION ............................................................................. 829 <strong>INCOMPARABLE</strong> INCOMPARABLE ................................................................... 448 INDESCRIBABLE ................................................................... 452 MATCHLESS ............................................................................ 561 MOST HIGH ............................................................................ 582 PEERLESS ............................................................................... 642 TRANSCENDENCE ................................................................ 970 UNEQUALED ........................................................................ 1001 UNFORGETTABLE ............................................................... 1004 UNIQUE ..................................................................................1018 WONDERFUL ....................................................................... 1076 WONDROUS ......................................................................... 1076 <strong>INFINITE</strong> AWESOME ................................................................................. 69 ENDLESS ................................................................................. 257 ETERNAL ................................................................................. 272 EVERLASTING ....................................................................... 274 IMMEASURABLE ................................................................... 427 INCOMPARABLE ................................................................... 448 INCOMPREHENSIBLE .......................................................... 449 INFINITE ................................................................................. 460 LIMITLESS .............................................................................. 523 UNFATHOMABLE ................................................................ 1003 <strong>JOY</strong> ADORING THE LORD ............................................................. 23 BETROTHAL ............................................................................. 87 BLESSEDNESS .......................................................................... 89 CELEBRATING ........................................................................ 119 DAY OF CHRIST ..................................................................... 189 DELIGHT OF THE LORD ...................................................... 201 ENJOYING THE LORD .......................................................... 260 FEASTS AND FESTIVALS ..................................................... 296 GATHERING ........................................................................... 337 GLADNESS .............................................................................. 358 GOSPEL, THE ..........................................................................377 HEAVEN ................................................................................... 411 JOY ............................................................................................ 483 <em>xiv | Devotional Guide | Knowing God: Topical Bible Verses on the Nature and Character of the Almighty</em>"
+},
+{
+"t": "p",
+"html": "MARRIAGE .............................................................................. 554 MUSIC ...................................................................................... 586 PEACE ...................................................................................... 640 PLEASURE OF THE LORD ................................................... 651 PRAISING THE LORD ........................................................... 660 REJOICING ............................................................................. 775 SATISFYING ............................................................................ 835 SECOND COMING OF CHRIST ............................................ 842 SINGING .................................................................................. 874 THANKING THE LORD ......................................................... 953 TRIUMPHANT ....................................................................... 980 VICTORIOUS ......................................................................... 1032 WORSHIPPING THE LORD ............................................... 1085 <strong>JUDGING</strong> ABASING ....................................................................................... 1 ACCOUNTABILITY .................................................................... 16 AFFLICTION.............................................................................. 30 ANGER OF THE LORD ............................................................ 45 AVENGING ................................................................................ 68 BEREAVEMENT ....................................................................... 84 CALAMITY ............................................................................... 105 CASTING OUT .......................................................................... 113 CHASTISING ........................................................................... 126 CONDEMNING ....................................................................... 145 CONFOUNDING ...................................................................... 151 CONSIGNING .......................................................................... 154 CONSUMING........................................................................... 159 CONTENDING ......................................................................... 161 CURSING ................................................................................. 183 CUTTING OFF ......................................................................... 186 DAY OF THE LORD ................................................................ 190 DENOUNCING ........................................................................ 205 DERIDING ...............................................................................208 DESOLATING ........................................................................... 211 DESTROYING.......................................................................... 213 DISPOSSESSING .................................................................... 236 EXECUTING JUDGMENT, JUSTICE, AND RIGHTEOUSNESS ................................................... 277 FIGHTING .............................................................................. 300 FORSAKING ............................................................................ 324 FURY ......................................................................................... 333 HANDING OVER .................................................................... 397 HARDENING THE HEART .................................................. 400 HATING.................................................................................... 401 INDICTING .............................................................................. 453 INDIGNATION ........................................................................ 456 INFLICTION ............................................................................ 460 JEALOUS ................................................................................. 477 JUDGING ................................................................................. 486 JUST.......................................................................................... 492 KINDLING A FIRE ................................................................. 498 PLAGUING ............................................................................... 647 POLLUTING ............................................................................ 654 POSTPONING JUDGMENT .................................................. 656 PUNISHING ............................................................................ 727 RECORDING ............................................................................ 761 REJECTING ............................................................................. 773 RIGHTEOUS ............................................................................ 821 RUINING.................................................................................. 823 SCATTERING .......................................................................... 839 SHAKING ................................................................................. 863"
+},
+{
+"t": "p",
+"html": "SHAMING ................................................................................ 865 SILENCING THE UNRIGHTEOUS ...................................... 871 SLAYING .................................................................................. 877 SMITING ................................................................................. 880 STULTIFYING .........................................................................903 SWALLOWING UP ................................................................. 922 THRESHING ............................................................................ 966 UNFORGIVING ...................................................................... 1011 UNSPARING .......................................................................... 1020 UPROOTING.......................................................................... 1027 VENGEANCE OF THE LORD .............................................. 1030 VISITATION .......................................................................... 1036 WARRING .............................................................................. 1051 WHIRLWIND ........................................................................ 1065 WINNOWING ........................................................................ 1068 WITHDRAWING ................................................................... 1072 WITHHOLDING RAIN ......................................................... 1074 WRATH .................................................................................. 1090 <strong>JUST</strong> EQUITABLE ............................................................................. 269 EXECUTING JUDGMENT, JUSTICE, AND RIGHTEOUSNESS ................................................... 492 FAIR .......................................................................................... 285 HOLY ........................................................................................ 416 IMPARTIAL .............................................................................430 IMPUTED RIGHTEOUSNESS OF CHRIST ......................... 445 JUDGING .................................................................................486 JUST .......................................................................................... 492 MAINTAINING THE CAUSE OF .......................................... 546 RIGHTEOUS ............................................................................ 821 STRAIGHT ............................................................................... 901 TRUE ......................................................................................... 981 TRUTH ......................................................................................986 UNBIASED ............................................................................... 996 UPRIGHT ............................................................................... 1025 <strong>LIGHT</strong> CREATORSHIP ....................................................................... 174 ENLIGHTENING .................................................................... 263 GLORY OF THE LORD ........................................................... 362 ILLUMINATING ..................................................................... 424 LIFE........................................................................................... 518 LIGHT ....................................................................................... 521 POWERFUL ............................................................................. 659 PURE ......................................................................................... 732 RADIANT ................................................................................. 747 SPLENDOR .............................................................................. 891 TRUE ......................................................................................... 981 TRUTH ......................................................................................986 UNCOVERING ......................................................................... 997 WISDOM ................................................................................ 1070 WORD OF THE LORD .......................................................... 1078 <strong>LOVE OF THE LORD</strong> AFFECTIONATE ....................................................................... 28 BETROTHAL ............................................................................. 87 CARING .................................................................................... 109 CHARITABLE .......................................................................... 124 COMMUNING ......................................................................... 140 COMPASSIONATE .................................................................. 142 CORRECTING ......................................................................... 170 DISCIPLINING ........................................................................ 233 ENCAMPING AROUND ......................................................... 254"
+},
+{
+"t": "p",
+"html": "<em>Knowing God: Topical Bible Verses on the Nature and Character of the Almighty | Devotional Guide | xv</em>"
+},
+{
+"t": "p",
+"html": "ETERNAL LIFE ....................................................................... 273 EXEMPLARY ........................................................................... 279 FAITHFUL ............................................................................... 286 FELLOWSHIPPING ............................................................... 298 FORBEARANCE...................................................................... 306 FORGIVING ............................................................................ 320 FRIENDSHIP OF THE LORD ............................................... 327 GENEROUS ............................................................................. 338 GENTLE .................................................................................... 341 GIFT OF GOD, THE ................................................................ 342 GIVING BLESSINGS .............................................................. 344 GOODNESS .............................................................................. 375 GRACE OF THE LORD .......................................................... 380 GRACIOUS .............................................................................. 382 HUMBLE................................................................................... 421 KINDNESS ............................................................................... 499 KNOWABLE ............................................................................ 505 LISTENING ............................................................................. 524 LONGSUFFERING ................................................................. 529 LOVE OF THE LORD ............................................................. 534 LOVINGKINDNESS ............................................................... 538 LOWLY (IN HEART) .............................................................. 542 MARRIAGE ............................................................................. 554 MERCIFUL .............................................................................. 568 MERCY OF THE LORD .......................................................... 570 NURTURING........................................................................... 602 OBLIVIOUS TO FORGIVEN SIN .......................................... 608 ONENESS AND UNITY .......................................................... 617 PARTNERSHIP OF THE LORD ............................................ 635 PITYING ................................................................................... 646 PRAYER-ANSWERING ......................................................... 672 PRESERVING .......................................................................... 686 QUINTESSENTIAL ................................................................ 744 RELENTING .............................................................................778 REMISSION ............................................................................ 782 SACRIFICE OF CHRIST ........................................................ 827 SALVATION ............................................................................ 829 SELFLESSNESS OF CHRIST ................................................ 849 SERVANTHOOD OF CHRIST ............................................... 852 SHARING OF THE LORD ..................................................... 867 SHEPHERDING ...................................................................... 869 SLOW TO ANGER .................................................................. 879 SUFFERINGS OF CHRIST .................................................... 909 TESTING .................................................................................. 948 TREASURING ..........................................................................975 UNFORGETTABLE .............................................................. 1004 UNFORSAKING ..................................................................... 1012 WELCOMING ........................................................................ 1063 <strong>LOVING THE LORD</strong> ADORING THE LORD ............................................................. 23 CHURCH ................................................................................... 128 DEDICATION ........................................................................... 195 DEVOTION TO THE LORD ................................................... 217 DILIGENCE ............................................................................. 224 ENJOYING THE LORD ......................................................... 260 FAITHFUL ............................................................................... 286 HONORING THE LORD......................................................... 419 KNOWLEDGE OF THE LORD .............................................. 507 LOVING THE LORD .............................................................. 539 MEDITATION ......................................................................... 564 OBEDIENCE OF CHRIST ...................................................... 606"
+},
+{
+"t": "p",
+"html": "PLEASURE OF THE LORD .................................................... 651 PRAISING THE LORD ........................................................... 660 PRAYER LIFE OF CHRIST .................................................... 664 PRAYER, INTERCESSORY .................................................... 668 SEEKING THE LORD ............................................................ 847 SERVANTHOOD OF CHRIST ............................................... 852 SUBMITTING TO GOD .......................................................... 905 THANKING THE LORD......................................................... 953 WAITING ON THE LORD ................................................... 1043 WALK, THE CHRISTIAN .................................................... 1045 WORD OF THE LORD ......................................................... 1078 WORSHIPPING THE LORD ............................................... 1085 <strong>MERCY OF THE LORD</strong> COMPASSIONATE ..................................................................142 FORGIVING ............................................................................. 320 GENTLE .................................................................................... 341 GOODNESS ............................................................................. 375 GRACE OF THE LORD .......................................................... 380 GRACIOUS ............................................................................... 382 KINDNESS ............................................................................... 499 LOVE OF THE LORD ............................................................. 534 LOVINGKINDNESS ............................................................... 538 MERCIFUL .............................................................................. 568 MERCY OF THE LORD .......................................................... 570 PITYING ................................................................................... 646 PRAYER-ANSWERING .......................................................... 672 RELENTING ............................................................................ 778 SPARING .................................................................................. 887 SYMPATHETIC ....................................................................... 925 TENDER ................................................................................... 943 VISITATION .......................................................................... 1036 <strong>OMNIPOTENT</strong> ABSOLUTE .................................................................................. 8 ALMIGHTY ................................................................................ 37 APPEARANCE OF THE LORD ................................................ 49 AWESOME ................................................................................. 69 BRINGING THE DEAD BACK TO LIFE .............................. 100 COUNTENANCE OF THE LORD .......................................... 172 EXPELLING EVIL SPIRITS................................................... 280 FEAR OF THE LORD ............................................................. 294 FEARFULNESS OF THE LORD ............................................ 292 GREAT ...................................................................................... 385 INDEFATIGABLE .................................................................... 451 INVINCIBLE ............................................................................. 471 LIFE ...........................................................................................518 MIGHTY ....................................................................................575 MIRACULOUS, THE .............................................................. 576 NAME OF THE LORD ............................................................. 591 NON-IMPOSSIBILITATION OF THE LORD ...................... 597 OMNIPOTENT .........................................................................612 OMNIPRESENT .......................................................................614 OVERWHELMING ................................................................. 627 POWERFUL ............................................................................. 659 RESURRECTION OF CHRIST .............................................. 807 RESURRECTION OF THE DEAD ......................................... 810 UNFATHOMABLE ................................................................ 1003 UNFORGETTABLE ............................................................... 1004 VANQUISHING..................................................................... 1029 WONDERFUL ....................................................................... 1076 WONDROUS ......................................................................... 1076 <strong>OMNIPRESENT</strong> <em>xvi | Devotional Guide | Knowing God: Topical Bible Verses on the Nature and Character of the Almighty</em>"
+},
+{
+"t": "p",
+"html": "ABIDING ...................................................................................... 4 APPEARANCE OF THE LORD ................................................ 49 AWESOME ................................................................................. 69 COUNTENANCE OF THE LORD ........................................... 172 DWELLING .............................................................................. 249 GOD THE SPIRIT.................................................................... 368 IMMANENCE .......................................................................... 425 INDWELLING ......................................................................... 459 INFINITE ................................................................................. 460 LIMITLESS .............................................................................. 523 MANIFESTING ....................................................................... 552 NEAR ........................................................................................ 595 OMNIPOTENT ........................................................................ 612 OMNIPRESENT ...................................................................... 614 PRESENCE OF THE LORD ................................................... 685 PROVIDENCE ......................................................................... 708 UNFATHOMABLE ................................................................ 1003 <strong>OMNISCIENT</strong> AWESOME ................................................................................. 69 DISCERNMENT ...................................................................... 229 ELECTING ................................................................................251 FOREKNOWING ..................................................................... 310 FORESHADOWING ............................................................... 312 FORETELLING ........................................................................315 FOREWARNING ..................................................................... 319 LOOKING ................................................................................. 530 OBSERVING ............................................................................ 609 OMNIPRESENT ...................................................................... 614 OMNISCIENT .......................................................................... 615 PREDESTINATING ................................................................ 681 PROPHECY IN THE CHURCH ............................................. 696 REMEMBERING ..................................................................... 781 SEEING .................................................................................... 845 UNDERSTANDING ................................................................ 999 UNFATHOMABLE ................................................................ 1003 WISDOM ................................................................................ 1070 <strong>PEACE</strong> ADORING THE LORD ............................................................. 23 BLESSEDNESS .......................................................................... 89 COMFORTING ........................................................................ 134 CONSOLING ............................................................................. 157 CONTENTMENT ..................................................................... 163 COVENANT, NEW ................................................................... 173 DISBURDENING .................................................................... 228 ENCOURAGING...................................................................... 255 FORGIVING ............................................................................. 320 GIVING CONFIDENCE .......................................................... 347 HEARTENING ......................................................................... 409 HEAVEN .................................................................................... 411 IMPARTING HOPE ................................................................ 435 JERUSALEM ........................................................................... 478 JESUS CHRIST ........................................................................ 482 JOY ............................................................................................ 483 ONENESS AND UNITY ........................................................... 617 PEACE ...................................................................................... 640 RECONCILIATION ................................................................. 760 REST ........................................................................................ 804 SALVATION ............................................................................. 829 SILENCING THE UNRIGHTEOUS ...................................... 871 STILLING THE STORM ......................................................... 899 THANKING THE LORD ......................................................... 953"
+},
+{
+"t": "p",
+"html": "UNINTIMIDATED ................................................................ 1014 WIPING AWAY TEARS ........................................................ 1069 WORSHIPPING THE LORD ................................................ 1085 <strong>REWARDING</strong> CROWNING .............................................................................. 177 ENTHRONING ........................................................................268 GENEROUS ............................................................................. 338 GIVING (AN) INHERITANCE ............................................... 355 GIVING BLESSINGS .............................................................. 344 GIVING DOMINION .............................................................. 348 GIVING HONOR ..................................................................... 351 GOODNESS .............................................................................. 375 PARTNERSHIP OF THE LORD ............................................ 635 PREPARING ............................................................................ 683 REAPING .................................................................................. 750 RECOMPENSING ................................................................... 759 REMEMBERING ..................................................................... 781 REMUNERATIVE ................................................................... 785 REPAYING ............................................................................... 790 REQUITING ............................................................................ 800 REWARDING .......................................................................... 816 RICHES OF THE LORD ......................................................... 819 SHARING OF THE LORD ...................................................... 867 TESTING ..................................................................................948 <strong>RIGHTEOUS</strong> EXECUTING JUDGMENT, JUSTICE, AND RIGHTEOUSNESS ................................................... 277 GODLINESS ............................................................................. 372 HOLY ........................................................................................ 416 IMPECCABLE .......................................................................... 443 IMPUTED RIGHTEOUSNESS OF CHRIST ......................... 445 JUDGING .................................................................................486 JUST .......................................................................................... 492 JUSTIFICATION ..................................................................... 494 PURE ......................................................................................... 732 REASONABLE ......................................................................... 752 RIGHTEOUS ............................................................................ 821 SINCERITY .............................................................................. 873 SINLESS ................................................................................... 875 STRAIGHT ............................................................................... 901 TRUE ......................................................................................... 981 TRUTH ......................................................................................986 UPRIGHT ............................................................................... 1025 WALK, THE CHRISTIAN ..................................................... 1045 <strong>SALVATION</strong> ACCEPTING ............................................................................... 13 ADOPTION................................................................................. 22 ASSURANCE .............................................................................. 60 ATONEMENT ............................................................................ 61 BLOOD OF CHRIST .................................................................. 92 CALLING OF THE LORD ....................................................... 107 CHOOSING .............................................................................. 127 CLEANSING ............................................................................. 132 CONFESSING CHRIST........................................................... 148 CONVERSION ......................................................................... 164 COVENANT, NEW .................................................................. 173 CRUCIFIXION OF CHRIST ................................................... 178 DELIVERING ...........................................................................203 ENRICHING SPIRITUALLY .................................................. 266 ETERNAL LIFE ....................................................................... 273 FORGIVING .............................................................................320"
+},
+{
+"t": "p",
+"html": "<em>Knowing God: Topical Bible Verses on the Nature and Character of the Almighty | Devotional Guide | xvii</em>"
+},
+{
+"t": "p",
+"html": "GOSPEL, THE .......................................................................... 377 GRACE OF THE LORD .......................................................... 380 GRACIOUS .............................................................................. 382 HERALDING ............................................................................ 415 INDISPENSABLE ....................................................................457 INVITING ................................................................................ 473 JESUS CHRIST ....................................................................... 482 LIBERATING ............................................................................ 517 MEDIATOR ............................................................................. 563 MERCIFUL .............................................................................. 568 MERCY OF THE LORD .......................................................... 570 PARDONING ........................................................................... 634 PASSOVER............................................................................... 637 PREACHING ............................................................................ 677 PRIESTHOOD OF CHRIST ................................................... 687 PROPITIATION ...................................................................... 700 PURCHASING ......................................................................... 730 RANSOMING .......................................................................... 749 REGENERATION ................................................................... 762 REMISSION ............................................................................ 782 REPENTANCE ......................................................................... 791 RESCUING .............................................................................. 801 RESURRECTION OF CHRIST .............................................. 807 RICHES OF THE LORD ..........................................................819 SACRIFICE OF CHRIST ........................................................ 827 SALVATION ............................................................................ 829 SELFLESSNESS OF CHRIST ................................................ 849 SENDING ................................................................................. 850 SETTING FREE ....................................................................... 860 SUFFERINGS OF CHRIST .................................................... 909 TRIUMPHANT ........................................................................ 980 VICTORIOUS ........................................................................ 1032 WASHING .............................................................................. 1054 WAY, THE .............................................................................. 1060 <strong>SOVEREIGNTY</strong> ABSOLUTE .................................................................................. 8 ALMIGHTY ................................................................................. 37 AUTHORITATIVE ..................................................................... 67 CONTENDING ......................................................................... 161 DEPOSING .............................................................................. 206 DISPOSSESSING .................................................................... 236 DOMINION ............................................................................. 238 ENTHRONING........................................................................ 268 FIGHTING ............................................................................... 300 FRUSTRATING ....................................................................... 330 GIVING DOMINION .............................................................. 348 GREAT ...................................................................................... 385 IMMANENCE .......................................................................... 425 INVINCIBLE ............................................................................. 471 JUDGING ................................................................................. 486 KINGDOM OF GOD ................................................................ 501 KINGSHIP OF CHRIST .......................................................... 503 LORDSHIP OF CHRIST .......................................................... 531 MAJESTIC ................................................................................547 MASTER ................................................................................... 560 MIGHTY .................................................................................... 575 NULLIFYING .......................................................................... 600 OVERTHROWING ................................................................. 626 OWNING .................................................................................. 629 POWERFUL ............................................................................. 659 PROPRIETARY ........................................................................ 701"
+},
+{
+"t": "p",
+"html": "PROVIDENCE ......................................................................... 708 RAISING UP ............................................................................ 748 REIGNING ................................................................................ 771 RULING.................................................................................... 825 SETTING BOUNDARIES ....................................................... 859 SETTING UP ............................................................................ 861 SOVEREIGNTY ....................................................................... 882 SUPREME .................................................................................919 TRIUMPHANT ........................................................................ 980 UNINTIMIDATED ................................................................. 1014 VICTORIOUS ......................................................................... 1032 WARRING ............................................................................... 1051 <strong>SUPREME</strong> ABSOLUTE .................................................................................. 8 ALMIGHTY ................................................................................ 37 AWESOME ................................................................................. 69 EXCELLENT ............................................................................ 276 GREAT ...................................................................................... 385 INCOMPARABLE ................................................................... 448 INVINCIBLE ............................................................................. 471 MAJESTIC ............................................................................... 547 MIGHTY ....................................................................................575 MOST HIGH ............................................................................ 582 OMNIPOTENT .........................................................................612 POWERFUL ............................................................................. 659 PRECIOUS ............................................................................... 680 PREEMINENT......................................................................... 682 QUINTESSENTIAL ................................................................. 744 SOVEREIGNTY ....................................................................... 882 SUPREME .................................................................................919 TREASURING ......................................................................... 975 <strong>TRANSCENDENCE</strong> EXALTING THE LORD .......................................................... 275 GLORY OF THE LORD .......................................................... 362 IMMANENCE .......................................................................... 425 INCOMPARABLE ................................................................... 448 INCOMPREHENSIBLE .......................................................... 449 INFINITE ................................................................................. 460 INVISIBLE ............................................................................... 473 LIFTING UP HANDS TO THE LORD .................................. 520 LIMITLESS .............................................................................. 523 MOST HIGH ............................................................................ 582 OMNIPOTENT .........................................................................612 OMNIPRESENT .......................................................................614 OMNISCIENT ........................................................................... 615 THEODICY .............................................................................. 956 TRANSCENDENCE ................................................................ 970 UNFATHOMABLE ................................................................ 1003 UNSEARCHABLE .................................................................. 1019 WORSHIPPING THE LORD ............................................... 1085 <strong>TRINITY</strong> ’I AM’ DECLARATIONS ......................................................... 423 BENEDICTION ......................................................................... 80 DEITY OF CHRIST ................................................................. 198 DOXOLOGY ............................................................................. 240 GLORIFYING THE LORD ..................................................... 360 GLORY OF THE LORD .......................................................... 362 GOD THE FATHER ................................................................ 364 GOD THE SON ........................................................................ 366 GOD THE SPIRIT ................................................................... 368 INCARNATION OF CHRIST ................................................. 446 <em>xviii | Devotional Guide | Knowing God: Topical Bible Verses on the Nature and Character of the Almighty</em>"
+},
+{
+"t": "p",
+"html": "INCOMPARABLE .................................................................... 448 INCOMPREHENSIBLE .......................................................... 449 INDIVISIBILITY OF THE LORD .......................................... 458 JESUS CHRIST ........................................................................ 482 KINGSHIP OF CHRIST .......................................................... 503 LOGOS ...................................................................................... 528 LORDSHIP OF CHRIST ..........................................................531 PARACLETE ............................................................................ 633 PROFOUND ............................................................................. 690 TRANSCENDENCE ................................................................ 970 TRINITY ................................................................................... 977 UNFATHOMABLE ................................................................ 1003 <strong>TRUTH</strong> ABSOLUTE................................................................................... 8 AMEN ......................................................................................... 39 BEARING WITNESS................................................................. 74 ENLIGHTENING .................................................................... 263 FAITHFUL ............................................................................... 286 GOSPEL, THE .......................................................................... 377 ILLUMINATING ..................................................................... 424 LAW-GIVING ...........................................................................512 LIGHT ........................................................................................521 LOGOS ...................................................................................... 528 SURE ......................................................................................... 920 TRUE ........................................................................................ 981 TRUTH ..................................................................................... 986 WORD OF THE LORD ......................................................... 1078 <strong>WILL OF GOD</strong> ACCOMPLISHING ..................................................................... 15 DELIGHT OF THE LORD ...................................................... 201 DESIGNING ............................................................................. 209 DESIRING ................................................................................ 210 DETERMINING .......................................................................215 DEVISING ................................................................................ 216 FULFILLING ........................................................................... 332 GLORY OF THE LORD........................................................... 362 HEART OF THE LORD ......................................................... 408 IMMANENCE .......................................................................... 425 JOY ............................................................................................ 483 PARTNERSHIP OF THE LORD ............................................ 635 PERFORMING ........................................................................ 645 PLEASURE OF THE LORD ................................................... 651 PROVIDENCE ......................................................................... 708 PURPOSING ............................................................................ 734 SHARING OF THE LORD ...................................................... 867 THOUGHTS OF THE LORD .................................................. 965 WILL OF GOD ....................................................................... 1066 WORKING.............................................................................. 1082 <strong>WISDOM</strong> COUNSELLING ........................................................................ 171 CREATORSHIP ........................................................................ 174 DISCERNMENT ...................................................................... 229 IMPARTING KNOWLEDGE AND WISDOM ...................... 436 INSTRUCTING ........................................................................ 468 LAW-GIVING ...........................................................................512 LIGHT ........................................................................................521 PARABLES OF CHRIST ......................................................... 631 PERFECT .................................................................................. 643 PRUDENCE ............................................................................. 723 REASONABLE ......................................................................... 752 SETTING A TIME ................................................................... 855"
+},
+{
+"t": "p",
+"html": "TEACHING ............................................................................... 933 TRUE ......................................................................................... 981 TRUTH ......................................................................................986 UNDERSTANDING ................................................................ 999 WISDOM ................................................................................ 1070 WORD OF THE LORD .......................................................... 1078 <strong>WORD OF THE LORD</strong> CHARGING .............................................................................. 122 COMMANDING ....................................................................... 135 COUNSELLING ........................................................................ 171 DECLARING ............................................................................ 193 DECREES ................................................................................. 194 INSPIRATION OF SCRIPTURE ............................................ 466 KNOWLEDGE OF THE LORD .............................................. 507 LAW-GIVING ........................................................................... 512 LIGHT ....................................................................................... 521 LOGOS ...................................................................................... 528 MEDITATION .......................................................................... 564 OATH OF THE LORD ............................................................. 605 ORDINANCES ......................................................................... 623 PRECEPTS................................................................................ 679 PROCLAIMING .......................................................................689 PROMISING ............................................................................ 692 PRONOUNCING ..................................................................... 694 PROPAGATION OF THE WORD OF THE LORD ............... 695 PROPHET, THE GREAT ........................................................698 SPEAKING .............................................................................. 888 TALKING ..................................................................................930 TEN COMMANDMENTS ....................................................... 941 TESTIMONIES ........................................................................ 947 TRUE ......................................................................................... 981 TRUTH ......................................................................................986 VOICE OF THE LORD .......................................................... 1037 WISDOM ................................................................................ 1070 WORD OF THE LORD .......................................................... 1078 <strong>WORSHIPPING THE LORD</strong> ADORING THE LORD .............................................................. 23 ASSEMBLING ............................................................................ 57 BLESSING THE LORD ............................................................. 91 BOWING DOWN TO THE LORD IN WORSHIP .................. 96 CHURCH .................................................................................. 128 CONGREGATING ................................................................... 152 DOXOLOGY ............................................................................ 240 ENJOYING THE LORD ......................................................... 260 EXALTING THE LORD .......................................................... 275 EXTOLLING THE LORD ....................................................... 283 GATHERING............................................................................ 337 GLORIFYING THE LORD ......................................................360 GLORY OF THE LORD ........................................................... 362 HALLELUJAH ......................................................................... 395 HONORING THE LORD ........................................................ 419 JOY ............................................................................................ 483 LIFTING UP HANDS TO THE LORD ................................... 520 MAGNIFYING THE LORD .................................................... 545 MUSIC ...................................................................................... 586 PRAISING THE LORD .......................................................... 660 RENOWN OF THE LORD ...................................................... 788 SINGING .................................................................................. 874 TEMPLE ................................................................................... 939 THANKING THE LORD ......................................................... 953 WORSHIPPING THE LORD ................................................ 1085"
+},
+{
+"t": "h2",
+"text": "Notable Quotations"
+},
+{
+"t": "p",
+"html": "<em>About forty different authors over a period of 1400-1500 years were inspired by the Holy Spirit to write the preserved sixty-six books of the Bible, all of which have a marvelous accuracy and unity that can only be divine.</em>"
+},
+{
+"t": "p",
+"html": "Compiler"
+},
+{
+"t": "p",
+"html": "<em>Confidence in the divine origin of Scripture does not rely on blind faith. There are reasonable explanations and acceptable corroborating evidence that point to the trustworthiness of the Bible.</em>"
+},
+{
+"t": "p",
+"html": "Unknown"
+},
+{
+"t": "p",
+"html": "<em>The primary purpose of reading the Bible is not to know the Bible but to know God.</em>"
+},
+{
+"t": "p",
+"html": "James Merritt"
+},
+{
+"t": "p",
+"html": "<em>The Bible is the only book whose Author is always present when one reads it.</em>"
+},
+{
+"t": "p",
+"html": "Unknown"
+},
+{
+"t": "p",
+"html": "<em>The Word of God is perfect, it is precious and pure; it is truth itself.</em>"
+},
+{
+"t": "p",
+"html": "Martin Luther"
+},
+{
+"t": "p",
+"html": "<em>Make knowledge of the Scripture your love . . . Live them, meditate on them, make them the sole object of your knowledge and inquir-ies.</em>"
+},
+{
+"t": "p",
+"html": "Jerome"
+},
+{
+"t": "p",
+"html": "<em>There is no part of the Scriptures which cannot contribute to our instruction and to the forming of our life and manners. Diligent study and reading of these records of unchanging wisdom cannot help but contribute to our holiness of life. Let us labor diligently to learn the contents of the book of God and never forget it is the only writing the Creator of heaven and earth condescends to converse with man.</em>"
+},
+{
+"t": "p",
+"html": "Unknown"
+},
+{
+"t": "p",
+"html": "<em>The Bible was the only book Jesus ever quoted.</em>"
+},
+{
+"t": "p",
+"html": "Leon Morris"
+},
+{
+"t": "p",
+"html": "<em>Read it to be wise, believe it to be safe, and practice it to be holy. Read it slowly, frequently, and prayerfully. It is a mine of wealth, a paradise of glory and a river of pleasure.</em>"
+},
+{
+"t": "p",
+"html": "The Gideons International"
+},
+{
+"t": "p",
+"html": "<em>He foresaw my every fault, my every sin, my every backsliding; yet, nevertheless, fixed His heart upon me.</em>"
+},
+{
+"t": "p",
+"html": "Arthur W. Pink"
+},
+{
+"t": "p",
+"html": "<em>A single line in the Bible has consoled me more than all the other books I ever read besides.</em>"
+},
+{
+"t": "p",
+"html": "Emmanuel Kant"
+},
+{
+"t": "p",
+"html": "<em>I hold one single sentence out of God’s word to be of more certainty, and of more power, than all the discoveries of all the learned men of all the ages.</em>"
+},
+{
+"t": "p",
+"html": "Charles H. Spurgeon"
+},
+{
+"t": "p",
+"html": "<em>Men do not reject the Bible because it contradicts itself, but because it contradicts them.</em>"
+},
+{
+"t": "p",
+"html": "E. Paul Hovey"
+},
+{
+"t": "p",
+"html": "<em>A man may be theologically knowing and spiritually ignorant.</em>"
+},
+{
+"t": "p",
+"html": "Stephen Charnock"
+},
+{
+"t": "p",
+"html": "<em>Fill your mind with God’s Word and you will have no room for the devil’s lies.</em>"
+},
+{
+"t": "p",
+"html": "Unknown"
+},
+{
+"t": "p",
+"html": "<em>If you disobey the Bible, you will find it to be true. If you obey the Bible, you will also find it to be true.</em>"
+},
+{
+"t": "p",
+"html": "Compiler <em>The mightiest prayers are often those drenched with the Word of God.</em>"
+},
+{
+"t": "p",
+"html": "Herbert Lockyer"
+},
+{
+"t": "p",
+"html": "<em>The CHIEF end of man is to know and glorify God, and to be a joy to Him forever. Enjoying God is the result of first being a delight to Him.</em>"
+},
+{
+"t": "p",
+"html": "Compiler"
+},
+{
+"t": "p",
+"html": "<em>The Bible affirms that God is real and eternal, that he Has made Himself known to humankind. He has revealed His power, righteousness and judgment; and His love is reaching out to heal and to redeem from sin the guilt that is the plague of every person.</em>"
+},
+{
+"t": "p",
+"html": "Clarke Kennedy"
+},
+{
+"t": "p",
+"html": "<em>I believe the Bible is the best gift God has ever given to man. All the good from the Savior of the world is communicated to us through this book.</em>"
+},
+{
+"t": "p",
+"html": "Abraham Lincoln"
+},
+{
+"t": "p",
+"html": "<em>The Bible was not given for our information but for our transformation.</em>"
+},
+{
+"t": "p",
+"html": "Unknown"
+},
+{
+"t": "p",
+"html": "<em>God wrote a love letter to imperfect people so we might embrace His perfect, lavish love.</em>"
+},
+{
+"t": "p",
+"html": "Shana Schutte"
+},
+{
+"t": "p",
+"html": "<em>My goal is God Himself; not joy, nor peace, nor even blessing, but Himself, my God.</em>"
+},
+{
+"t": "p",
+"html": "Frances Brook"
+},
+{
+"t": "p",
+"html": "<em>Christianity is not devotion to work, or to a cause, or a doctrine, but devotion to a Person, the Lord Jesus Christ.</em>"
+},
+{
+"t": "p",
+"html": "Oswald Chambers"
+},
+{
+"t": "p",
+"html": "<em>There is a distinct difference between knowing about God and knowing God personally through a holy and living relationship with Him. Trusting Christ opens the door to this relationship, and living as His disciple leads to a knowledge of God that is otherwise unknowable.</em>"
+},
+{
+"t": "p",
+"html": "Clarke Kennedy"
+},
+{
+"t": "p",
+"html": "<em>The very essence of knowing God the Father is by personally receiving His Son Jesus Christ as Savior and Lord through the ministry of the Holy Spirit.</em>"
+},
+{
+"t": "p",
+"html": "Compiler"
+},
+{
+"t": "p",
+"html": "<em>What a wonder: through the Gospel, we can know the righteousness of God!</em>"
+},
+{
+"t": "p",
+"html": "Anonymous"
+},
+{
+"t": "p",
+"html": "<em>Why, after years of Christian profession, do so many persons find themselves no farther along than when they first believed? . . . The causes of retarded growth are many. It would not be accurate to ascribe the trouble to one single fault. One there is, however, which is so universal that it may easily be the main cause: failure to give time to the cultivation to the knowledge of God</em> . . .1"
+},
+{
+"t": "p",
+"html": "A. W. Tozer"
+},
+{
+"t": "p",
+"html": "<em>Knowing God fully requires knowing all what the Bible says Who He is. A limited or partial study of Scripture can result in an incomplete and erroneous understanding of the Godhead.</em>"
+},
+{
+"t": "p",
+"html": "Compiler <em>xx | Notable Quotations | Knowing God: Topical Bible Verses on the Nature and Character of the Almighty</em>"
+},
+{
+"t": "p",
+"html": "<em>God's regenerating power is greater than the strength of the world, hell, or man's wicked heart. He can draw the worst sinners to Christ.</em>"
+},
+{
+"t": "p",
+"html": "Simeon Ashe <em>The key to all knowledge, wisdom and understanding is knowing God.</em>"
+},
+{
+"t": "p",
+"html": "Clarke Kennedy"
+},
+{
+"t": "p",
+"html": "<em>There is something exceedingly improving to the mind in a contemplation of the Divinity. It is a subject so vast, that all our thoughts are lost in its immensity; so deep, that our pride is drowned in its infinity . . . No subject of contemplation will tend more to humble the mind, than thoughts of God…But while the subject humbles the mind, it also expands it. He who often thinks of God, will have a larger mind than the man who simply plods around this narrow globe . . . The most excellent study for expanding the soul, is the science of Christ, and Him crucified, and the knowledge of the Godhead in the glorious Trinity. Nothing will so enlarge the intellect, nothing so magnify the whole soul of man, as a devout, earnest, continued investigation of the great subject of the Deity…And, while humbling and expanding, this subject is eminently consolatory. Oh, there is, in contemplating Christ, a balm for every wound; in musing on the Father, there is a quietus for every grief; and in the influence of the Holy Ghost, there is a balsam for every sore…Would you lose your sorrow? Would you drown your cares? Then go, plunge yourself in the Godhead’s deepest sea; be lost in his immensity; and you shall come forth as from a couch of rest, refreshed and invigor-ated. I know nothing which can so comfort the soul; so calm the swelling billows of sorrow and grief; so speak peace to the winds of trial, as a devout musing upon the subject of the Godhead.</em>"
+},
+{
+"t": "p",
+"html": "Charles H. Spurgeon"
+},
+{
+"t": "p",
+"html": "<em>Happy the soul that has been awed by a view of God’s majesty.</em>"
+},
+{
+"t": "p",
+"html": "Arthur W. Pink"
+},
+{
+"t": "p",
+"html": "<em>Power is God’s hand or arm, omniscience is God’s eye, mercy is God’s delight, eternity is God’s duration, but holiness is God’s beauty.</em>"
+},
+{
+"t": "p",
+"html": "Stephen Charnock"
+},
+{
+"t": "p",
+"html": "<em>According to the hymn Holy, Holy, Holy, God is \"perfect in power, in love, and purity.\" Indeed, the eternal God of the universe is infinite in Omnipotence, Lovingkindness, and Holiness.</em>"
+},
+{
+"t": "p",
+"html": "Compiler"
+},
+{
+"t": "p",
+"html": "<em>God's personality is so infinitely rich and manifold that it will take 1,000 years of close search and intimate communion to know even the outer edges of his glorious nature.</em>1"
+},
+{
+"t": "p",
+"html": "A. W. Tozer <em>xx | Table of Contents | Knowing God: Topical Bible Verses on the Nature and Character of the Almighty</em>"
+},
+{
+"t": "p",
+"html": "CROWNING ........................................................................................ 177 CRUCIFIXION OF CHRIST ............................................................... 178 CURING ............................................................................................... 181 CURSING ............................................................................................. 183 CUTTING DOWN ............................................................................... 185 CUTTING OFF..................................................................................... 186"
+}
+],
+"chapters": [
+{
+"slug": "d",
+"title": "D",
+"label": null,
+"number": null,
+"pdfPage": 22,
+"blocks": [
+{
+"t": "p",
+"html": "DASHING IN PIECES ........................................................................ 189 DAY OF CHRIST ................................................................................. 189 DAY OF THE LORD............................................................................ 190 DEALING ............................................................................................. 192 DECLARING ........................................................................................ 193 DECREES ............................................................................................. 194 DEDICATION ...................................................................................... 195 DEFENDING ....................................................................................... 197 DEITY OF CHRIST ............................................................................. 198 DELIGHT OF THE LORD .................................................................. 201 DELIVERING ..................................................................................... 203 DENOUNCING .................................................................................. 205 DEPOSING ......................................................................................... 206 DERIDING .......................................................................................... 208 DESIGNING ....................................................................................... 209 DESIRING ........................................................................................... 210 DESOLATING ..................................................................................... 211 DESTROYING ..................................................................................... 213 DETERMINING .................................................................................. 215 DEVISING ............................................................................................ 216 DEVOTION TO THE LORD .............................................................. 217 DILIGENCE ........................................................................................ 224 DIMINISHING .................................................................................... 225 DIRECTING ......................................................................................... 227 DISBURDENING ............................................................................... 228 DISCERNMENT ................................................................................. 229 DISCIPLE-MAKING ........................................................................... 231 DISCIPLINING .................................................................................. 233 DISPERSING ...................................................................................... 234 DISPLEASURE OF THE LORD ........................................................ 235 DISPOSSESSING ............................................................................... 236 DISTRESSING ..................................................................................... 237 DOMINION ........................................................................................ 238 DOUBLING ......................................................................................... 239 DOXOLOGY ........................................................................................ 240 DRAWING ........................................................................................... 241 DREADFULNESS OF THE LORD ................................................... 242 DREAMS AND VISIONS ................................................................... 243 DRIVING OUT .................................................................................... 247 DWELLING ........................................................................................ 249"
+}
+]
+},
+{
+"slug": "e",
+"title": "E",
+"label": null,
+"number": null,
+"pdfPage": 22,
+"blocks": [
+{
+"t": "p",
+"html": "EDIFYING ............................................................................................ 251 ELECTING ........................................................................................... 251 EMPOWERING ................................................................................... 253 ENCAMPING AROUND ....................................................................254 ENCOURAGING ................................................................................. 255 ENDLESS ............................................................................................. 257 ENDUING ........................................................................................... 258 ENDURING .........................................................................................259 ENJOYING THE LORD .................................................................... 260 ENLARGING ...................................................................................... 262 ENLIGHTENING ............................................................................... 263"
+},
+{
+"t": "p",
+"html": "ENRICHING MATERIALLY ............................................................. 264 ENRICHING SPIRITUALLY ............................................................ 266 ENTHRONING ................................................................................... 268 EQUITABLE ....................................................................................... 269 ESTABLISHING ................................................................................. 270 ETERNAL ............................................................................................ 272 ETERNAL LIFE ...................................................................................273 EVERLASTING .................................................................................. 274 EXALTING THE LORD ...................................................................... 275 EXCELLENT ....................................................................................... 276 EXECUTING JUDGMENT, JUSTICE, AND RIGHTEOUSNESS . 277 EXEMPLARY ...................................................................................... 279 EXPELLING EVIL SPIRITS.............................................................. 280 EXTINGUISHING.............................................................................. 282 EXTOLLING THE LORD .................................................................. 283"
+}
+]
+},
+{
+"slug": "f",
+"title": "F",
+"label": null,
+"number": null,
+"pdfPage": 22,
+"blocks": [
+{
+"t": "p",
+"html": "FAIR ..................................................................................................... 285 FAITHFUL .......................................................................................... 286 FASHIONING ..................................................................................... 287 FASTING ............................................................................................. 288 FEARFULNESS OF THE LORD ....................................................... 292 FEAR OF THE LORD ........................................................................ 294 FEASTS AND FESTIVALS ................................................................ 296 FELLOWSHIPPING .......................................................................... 298 FIGHTING .......................................................................................... 300 FILLING .............................................................................................. 303 FINISHING ......................................................................................... 304 FLAWLESS ......................................................................................... 305 FORBEARANCE ................................................................................. 306 FORBIDDING ..................................................................................... 307 FOREKNOWING................................................................................. 310 FORESHADOWING ........................................................................... 312 FORETELLING ................................................................................... 315 FOREWARNING ................................................................................. 319 FORGIVING ........................................................................................ 320 FORMING ........................................................................................... 323 FORSAKING ....................................................................................... 324 FOUNDING ........................................................................................ 325 FRIENDSHIP OF THE LORD ...........................................................327 FRUITFULNESS ................................................................................ 328 FRUSTRATING .................................................................................. 330 FULFILLING ...................................................................................... 332 FURY.................................................................................................... 333"
+}
+]
+},
+{
+"slug": "g",
+"title": "G",
+"label": null,
+"number": null,
+"pdfPage": 22,
+"blocks": [
+{
+"t": "p",
+"html": "GATHERING .......................................................................................337 GENEROUS ........................................................................................ 338 GENTLE ............................................................................................... 341 GIFT OF GOD, THE ........................................................................... 342 GIRDING............................................................................................. 343 GIVING BLESSINGS ......................................................................... 344 GIVING CONFIDENCE ..................................................................... 347 GIVING DOMINION ......................................................................... 348 GIVING FAVOR ................................................................................. 349 GIVING GROWTH .............................................................................. 351 GIVING HONOR ................................................................................ 352 GIVING (AN) INHERITANCE ..........................................................355 GLADNESS ......................................................................................... 358 GLORIFYING THE LORD ................................................................ 360 GLORY OF THE LORD ..................................................................... 362"
+},
+{
+"t": "p",
+"html": "<em>Knowing God: Topical Bible Verses on the Nature and Character of the Almighty | Table of Contents | xxi</em>"
+},
+{
+"t": "p",
+"html": "GOD THE FATHER ............................................................................ 364 GOD THE SON .................................................................................... 366 GOD THE SPIRIT ............................................................................... 368 GODLINESS ........................................................................................ 372 GOLD ................................................................................................... 373 GOODNESS ......................................................................................... 375 GOSPEL, THE ..................................................................................... 377 GRACE OF THE LORD ..................................................................... 380 GRACIOUS .......................................................................................... 382 GRANTING ......................................................................................... 384 GREAT ................................................................................................. 385 GRIEVABLE ........................................................................................ 387 GUARANTEEING ............................................................................... 391 GUARDING ......................................................................................... 392 GUIDING ............................................................................................. 393"
+}
+]
+},
+{
+"slug": "h",
+"title": "H",
+"label": null,
+"number": null,
+"pdfPage": 23,
+"blocks": [
+{
+"t": "p",
+"html": "HALLELUJAH .................................................................................... 395 HALLOWING ...................................................................................... 396 HANDING OVER................................................................................ 397 HARDENING THE HEART ............................................................. 400 HATING ............................................................................................... 401 HEALING ............................................................................................ 403 HEARKENING .................................................................................... 405 HEARLESS .......................................................................................... 407 HEART OF THE LORD ..................................................................... 408 HEARTENING ....................................................................................409 HEAVEN ............................................................................................... 411 HELPING ............................................................................................. 413 HERALDING ....................................................................................... 415 HOLY .................................................................................................... 416 HONEY ................................................................................................ 419 HONORING THE LORD ................................................................... 419 HUMBLE ............................................................................................. 421"
+}
+]
+},
+{
+"slug": "i",
+"title": "I",
+"label": null,
+"number": null,
+"pdfPage": 23,
+"blocks": [
+{
+"t": "p",
+"html": "‘I AM’ DECLARATIONS .................................................................... 423 ILLUMINATING ................................................................................. 424 IMMANENCE ..................................................................................... 425 IMMEASURABLE .............................................................................. 427 IMMORTAL ......................................................................................... 428 IMMUTABLE ...................................................................................... 429 IMPARTIAL ......................................................................................... 430 IMPARTING FAITH ........................................................................... 431 IMPARTING HOPE ............................................................................ 435 IMPARTING KNOWLEDGE AND WISDOM ................................. 436 IMPARTING SPIRITUAL GIFTS ...................................................... 439 IMPASSIBILITY..................................................................................440 IMPECCABLE ..................................................................................... 443 IMPLANTING ..................................................................................... 444 IMPUTED RIGHTEOUSNESS OF CHRIST .................................... 445 INCARNATION OF CHRIST ............................................................. 446 INCOMPARABLE ............................................................................... 448 INCOMPREHENSIBLE ..................................................................... 449 INCORRUPTIBLE .............................................................................. 449 INCREASING ...................................................................................... 450 INDEFATIGABLE............................................................................... 451 INDESCRIBABLE ............................................................................... 452 INDICTING ......................................................................................... 453 INDIGNATION ................................................................................... 456 INDISPENSABLE ............................................................................... 457"
+},
+{
+"t": "p",
+"html": "INDIVISIBILITY OF THE LORD ......................................................458 INDWELLING ..................................................................................... 459 INFINITE ............................................................................................ 460 INFLICTION ...................................................................................... 460 INHERITANCE OF THE LORD ........................................................ 463 INQUIRING OF THE LORD .............................................................464 INSPIRATION OF SCRIPTURE .......................................................466 INSTRUCTING .................................................................................. 468 INTIMATE ...........................................................................................469 INVINCIBLE ....................................................................................... 471 INVISIBLE ........................................................................................... 473 INVITING ............................................................................................ 473 IRREFUTABLE ................................................................................... 475 IRRESISTIBLE .................................................................................... 475"
+}
+]
+},
+{
+"slug": "j",
+"title": "J",
+"label": null,
+"number": null,
+"pdfPage": 23,
+"blocks": [
+{
+"t": "p",
+"html": "JEALOUS ............................................................................................. 477 JERUSALEM ....................................................................................... 478 JESUS CHRIST .................................................................................. 482 JOY. ..................................................................................................... 483 JUDGING ........................................................................................... 486 JUST .....................................................................................................492 JUSTIFICATION .................................................................................494"
+}
+]
+},
+{
+"slug": "k",
+"title": "K",
+"label": null,
+"number": null,
+"pdfPage": 23,
+"blocks": [
+{
+"t": "p",
+"html": "KEEPING ............................................................................................. 497 KINDLING A FIRE ............................................................................ 498 KINDNESS ..........................................................................................499 KINGDOM OF GOD ........................................................................... 501 KINGSHIP OF CHRIST .....................................................................503 KNOWABLE ........................................................................................ 505 KNOWLEDGE OF THE LORD .......................................................... 507"
+}
+]
+},
+{
+"slug": "l",
+"title": "L",
+"label": null,
+"number": null,
+"pdfPage": 23,
+"blocks": [
+{
+"t": "p",
+"html": "LAMB OF GOD ..................................................................................... 511 LAW-GIVING ...................................................................................... 512 LAYING STUMBLING BLOCKS ....................................................... 514 LEADING ............................................................................................. 515 LIBERATING ...................................................................................... 517 LIFE ...................................................................................................... 518 LIFTING UP ........................................................................................ 519 LIFTING UP HANDS TO THE LORD ..............................................520 LIGHT .................................................................................................. 521 LIMITLESS .......................................................................................... 523 LISTENING ......................................................................................... 524 LIVING ................................................................................................. 526 LOATHING .......................................................................................... 527 LOGOS ................................................................................................. 528 LONGSUFFERING ............................................................................. 529 LOOKING ............................................................................................530 LORDSHIP OF CHRIST..................................................................... 531 LORD’S SUPPER ................................................................................ 533 LOVE OF THE LORD ......................................................................... 534 LOVINGKINDNESS ........................................................................... 538 LOVING THE LORD .......................................................................... 539 LOWLY (IN HEART) .......................................................................... 542"
+}
+]
+},
+{
+"slug": "m",
+"title": "M",
+"label": null,
+"number": null,
+"pdfPage": 23,
+"blocks": [
+{
+"t": "p",
+"html": "MAGNIFYING THE LORD ................................................................ 545 MAINTAINING THE CAUSE OF ...................................................... 546 MAJESTIC ........................................................................................... 547 MAKING .............................................................................................. 549 <em>xxii | Table of Contents | Knowing God: Topical Bible Verses on the Nature and Character of the Almighty</em>"
+},
+{
+"t": "p",
+"html": "MAKING WHOLE .............................................................................. 550 MANIFESTING ................................................................................... 552 MANIFOLD ......................................................................................... 553 MARRIAGE ......................................................................................... 554 MARVELLING .................................................................................... 557 MARVELOUS ......................................................................................558 MASTER .............................................................................................. 560 MATCHLESS ....................................................................................... 561 MEASURING .......................................................................................562 MEDIATOR ......................................................................................... 563 MEDITATION .....................................................................................564 MEEK ................................................................................................... 565 MEMORIALS TO THE LORD ........................................................... 567 MERCIFUL ......................................................................................... 568 MERCY OF THE LORD ...................................................................... 570 MESSIAH ............................................................................................. 572 MIGHTY ............................................................................................... 575 MIRACULOUS, THE .......................................................................... 576 MOST HIGH ....................................................................................... 582 MULTIPLYING .................................................................................. 584 MUSIC ................................................................................................. 586 MYSTERY OF THE LORD ................................................................ 588"
+}
+]
+},
+{
+"slug": "n",
+"title": "N",
+"label": null,
+"number": null,
+"pdfPage": 24,
+"blocks": [
+{
+"t": "p",
+"html": "NAME OF THE LORD ........................................................................ 591 NAMING ..............................................................................................594 NEAR .................................................................................................... 595 NEWNESS ...........................................................................................596 NON-IMPOSSIBILITATION OF THE LORD .................................. 597 NULLIFYING ..................................................................................... 600 NUMBERING ...................................................................................... 601 NURTURING...................................................................................... 602"
+}
+]
+},
+{
+"slug": "o",
+"title": "O",
+"label": null,
+"number": null,
+"pdfPage": 24,
+"blocks": [
+{
+"t": "p",
+"html": "OATH OF THE LORD ....................................................................... 605 OBEDIENCE OF CHRIST ................................................................. 606 OBLIVIOUS TO FORGIVEN SIN ..................................................... 608 OBSERVING ....................................................................................... 609 OLIVE ................................................................................................... 610 OMNIPOTENT .................................................................................... 612 OMNIPRESENT .................................................................................. 614 OMNISCIENT ..................................................................................... 615 ONENESS AND UNITY ..................................................................... 617 OPENING DOORS .............................................................................. 619 OPPOSING .......................................................................................... 620 ORDAINING ....................................................................................... 622 ORDINANCES .................................................................................... 623 OVERCOMING ...................................................................................625 OVERTHROWING ............................................................................ 626 OVERWHELMING ............................................................................. 627 OWNING ............................................................................................. 629"
+}
+]
+},
+{
+"slug": "p",
+"title": "P",
+"label": null,
+"number": null,
+"pdfPage": 24,
+"blocks": [
+{
+"t": "p",
+"html": "PARABLES OF CHRIST ..................................................................... 631 PARACLETE ....................................................................................... 633 PARDONING ...................................................................................... 634 PARTNERSHIP OF THE LORD ........................................................ 635 PASSOVER........................................................................................... 637 PATIENCE OF CHRIST .................................................................... 638 PEACE ................................................................................................. 640 PEERLESS .......................................................................................... 642"
+},
+{
+"t": "p",
+"html": "PERFECT ............................................................................................ 643 PERFECTING ..................................................................................... 644 PERFORMING ................................................................................... 645 PITYING .............................................................................................. 646 PLAGUING ......................................................................................... 647 PLANTING .......................................................................................... 650 PLEASURE OF THE LORD ............................................................... 651 PLENTIFUL ........................................................................................ 653 POLLUTING ....................................................................................... 654 POSTPONING JUDGMENT ............................................................. 656 POURING OUT ................................................................................... 657 POWERFUL ........................................................................................ 659 PRAISING THE LORD ...................................................................... 660 PRAYER LIFE OF CHRIST ............................................................... 664 PRAYER, INTERCESSORY ............................................................... 668 PRAYER-ANSWERING ..................................................................... 672 PREACHING........................................................................................ 677 PRECEPTS .......................................................................................... 679 PRECIOUS .......................................................................................... 680 PREDESTINATING ............................................................................ 681 PREEMINENT.................................................................................... 682 PREPARING ....................................................................................... 683 PRESENCE OF THE LORD .............................................................. 685 PRESERVING ..................................................................................... 686 PRIESTHOOD OF CHRIST .............................................................. 687 PROCLAIMING .................................................................................. 689 PROFOUND ........................................................................................ 690 PROLONGING LIFE ........................................................................... 691 PROMISING ....................................................................................... 692 PRONOUNCING ................................................................................ 694 PROPAGATION OF THE WORD OF THE LORD ......................... 695 PROPHECY IN THE CHURCH ........................................................ 696 PROPHET, THE GREAT ................................................................... 698 PROPITIATION.................................................................................. 700 PROPRIETARY ................................................................................... 701 PROSPERING ..................................................................................... 702 PROTECTING ..................................................................................... 705 PROVIDENCE .................................................................................... 708 PROVIDING ........................................................................................ 716 PROVING ............................................................................................. 718 PROVOCABLE .................................................................................... 720 PRUDENCE .........................................................................................723 PUNISHING ........................................................................................ 727 PURCHASING .................................................................................... 730 PURE ....................................................................................................732 PURGING .............................................................................................733 PURPOSING ....................................................................................... 734 PUTTING HOOKS INTO ................................................................... 736"
+}
+]
+},
+{
+"slug": "q",
+"title": "Q",
+"label": null,
+"number": null,
+"pdfPage": 24,
+"blocks": [
+{
+"t": "p",
+"html": "QUESTIONING .................................................................................. 739 QUICK ................................................................................................. 742 QUICKENING .................................................................................... 743 QUINTESSENTIAL ............................................................................ 744"
+}
+]
+},
+{
+"slug": "r",
+"title": "R",
+"label": null,
+"number": null,
+"pdfPage": 24,
+"blocks": [
+{
+"t": "p",
+"html": "RADIANT ............................................................................................. 747 RAISING UP ....................................................................................... 748 RANSOMING ..................................................................................... 749 REAPING ............................................................................................ 750 REASONABLE ..................................................................................... 752"
+},
+{
+"t": "p",
+"html": "<em>Knowing God: Topical Bible Verses on the Nature and Character of the Almighty | Table of Contents | xxiii</em>"
+},
+{
+"t": "p",
+"html": "REBUILDING ..................................................................................... 753 REBUKING.......................................................................................... 754 RECEIVING ......................................................................................... 756 RECIPROCATING .............................................................................. 757 RECOMPENSING............................................................................... 759 RECONCILIATION ............................................................................ 760 RECORDING ....................................................................................... 761 REDEEMING ...................................................................................... 762 REFINING ........................................................................................... 764 REFRESHING ..................................................................................... 765 REFUGE .............................................................................................. 766 REFUSING .......................................................................................... 767 REGARDING ....................................................................................... 768 REGENERATION ............................................................................... 770 REIGNING ........................................................................................... 771 REJECTING ........................................................................................ 773 REJOICING ......................................................................................... 775 REJUVENATING................................................................................ 777 RELENTING ....................................................................................... 778 RELIABLE ........................................................................................... 779 REMEMBERING ................................................................................ 781 REMISSION ........................................................................................ 782 REMNANT .......................................................................................... 784 REMUNERATIVE .............................................................................. 785 RENAMING......................................................................................... 787 RENEWING ........................................................................................ 787 RENOWN OF THE LORD ................................................................. 788 REPAYING .......................................................................................... 790 REPENTANCE .................................................................................... 791 REPROVING ....................................................................................... 796 REQUIRING ........................................................................................ 798 REQUITING ....................................................................................... 800 RESCUING .......................................................................................... 801 RESERVING ....................................................................................... 803 REST .................................................................................................... 804 RESTORING .......................................................................................805 RESURRECTION OF CHRIST .......................................................... 807 RESURRECTION OF THE DEAD .................................................... 810 REVEALING ........................................................................................ 812 REVIVING ........................................................................................... 814 REWARDING ...................................................................................... 816 RICHES OF THE LORD .................................................................... 819 RIGHTEOUS ....................................................................................... 821 RUINING ............................................................................................. 823 RULING ............................................................................................... 825"
+}
+]
+},
+{
+"slug": "s",
+"title": "S",
+"label": null,
+"number": null,
+"pdfPage": 25,
+"blocks": [
+{
+"t": "p",
+"html": "SACRIFICE OF CHRIST .................................................................... 827 SAFETY ............................................................................................... 828 SALVATION ........................................................................................ 829 SANCTIFICATION ............................................................................. 833 SATISFYING ....................................................................................... 835 SAVORING .......................................................................................... 836 SCATTERING ...................................................................................... 839 SEALING ............................................................................................ 840 SEARCHING ....................................................................................... 842 SECOND COMING OF CHRIST ....................................................... 842 SEEING ................................................................................................ 845 SEEKING THE LORD ........................................................................ 847 SELFLESSNESS OF CHRIST ............................................................ 849 SENDING ............................................................................................850"
+},
+{
+"t": "p",
+"html": "SERVANTHOOD OF CHRIST ........................................................... 852 SETTING A TIME ............................................................................... 855 SETTING APART ................................................................................ 857 SETTING BOUNDARIES ...................................................................859 SETTING FREE ................................................................................. 860 SETTING UP ....................................................................................... 861 SEVEN LAST WORDS FROM THE CROSS ................................... 863 SHAKING............................................................................................ 863 SHAMING ............................................................................................865 SHARING OF THE LORD ................................................................. 867 SHEPHERDING ................................................................................ 869 SHIELDING ....................................................................................... 870 SILENCING THE UNRIGHTEOUS.................................................. 871 SINCERITY .......................................................................................... 873 SINGING .............................................................................................. 874 SINLESS ............................................................................................... 875 SLAYING .............................................................................................. 877 SLOW TO ANGER .............................................................................. 879 SMITING ............................................................................................ 880 SOBRIETY ........................................................................................... 881 SOVEREIGNTY .................................................................................. 882 SOWING ............................................................................................. 886 SPARING .............................................................................................887 SPEAKING .......................................................................................... 888 SPLENDOR.......................................................................................... 891 STATUTES .......................................................................................... 893 STEADFAST ........................................................................................895 STEWARDSHIP ................................................................................. 896 STILLING THE STORM ................................................................... 899 STIRRING UP .................................................................................... 900 STRAIGHT ........................................................................................... 901 STRENGTHENING ........................................................................... 902 STULTIFYING .................................................................................... 903 SUBDUING ......................................................................................... 904 SUBMITTING TO GOD..................................................................... 905 SUDDEN ............................................................................................. 908 SUFFERINGS OF CHRIST ............................................................... 909 SUMMONING ..................................................................................... 913 SUPERABUNDANT ............................................................................ 913 SUPPLYING......................................................................................... 916 SUPPORTING ..................................................................................... 918 SUPREME ............................................................................................ 919 SURE ................................................................................................... 920 SUSTAINING ...................................................................................... 921 SWALLOWING UP ............................................................................. 922 SWIFT ..................................................................................................924 SYMPATHETIC ................................................................................... 925"
+}
+]
+},
+{
+"slug": "t",
+"title": "T",
+"label": null,
+"number": null,
+"pdfPage": 25,
+"blocks": [
+{
+"t": "p",
+"html": "TABERNACLE .....................................................................................929 TALKING ............................................................................................ 930 TEACHING .......................................................................................... 933 TEARING IN PIECES ......................................................................... 935 TEARS OF CHRIST ............................................................................ 936 TEMPERANCE ................................................................................... 938 TEMPLE ............................................................................................... 939 TEN COMMANDMENTS................................................................... 941 TENDER .............................................................................................. 943 TERROR OF THE LORD ...................................................................944 TESTABLE ........................................................................................... 945 TESTIMONIES .................................................................................... 947 <em>xxiv | Table of Contents | Knowing God: Topical Bible Verses on the Nature and Character of the Almighty</em>"
+},
+{
+"t": "p",
+"html": "TESTING ............................................................................................. 948 THANKING THE LORD .................................................................... 953 THEODICY ..........................................................................................956 THOUGHTS OF THE LORD .............................................................965 THRESHING ...................................................................................... 966 THROWING DOWN .......................................................................... 966 TONGUES, GIFT OF ......................................................................... 968 TOUCHING ........................................................................................ 969 TRANSCENDENCE ........................................................................... 970 TRANSFORMING ............................................................................... 972 TRANSLATING ................................................................................... 973 TREADING .......................................................................................... 974 TREASURING ..................................................................................... 975 TRINITY ............................................................................................... 977 TRIUMPHANT ................................................................................... 980 TRUE .................................................................................................... 981 TRUMPETING ................................................................................... 982 TRUSTWORTHY ............................................................................... 985 TRUTH ................................................................................................ 986 TURNING THE CAPTIVITY ............................................................. 988 TURNING THE HEART .................................................................... 989"
+}
+]
+},
+{
+"slug": "u",
+"title": "U",
+"label": null,
+"number": null,
+"pdfPage": 26,
+"blocks": [
+{
+"t": "p",
+"html": "UNACCEPTING ................................................................................. 993 UNANSWERING ................................................................................995 UNBIASED ......................................................................................... 996 UNCHANGEABLE .............................................................................. 997 UNCOVERING .................................................................................... 997 UNCTION OF THE LORD ................................................................ 999 UNDERSTANDING ........................................................................... 999 UNEQUALED .................................................................................... 1001 UNFAILING ...................................................................................... 1002 UNFATHOMABLE........................................................................... 1003 UNFORGETTABLE ......................................................................... 1004 UNFORGIVING .................................................................................1011 UNFORSAKING ................................................................................ 1012 UNIMPEACHABLE .......................................................................... 1013 UNINTIMIDATED ............................................................................ 1014 UNIQUE ............................................................................................. 1018 UNSEARCHABLE ............................................................................. 1019 UNSPARING .................................................................................... 1020 UPBRAIDING ....................................................................................1022 UPHOLDING .....................................................................................1024 UPRIGHT ........................................................................................... 1025 UPROOTING ..................................................................................... 1027"
+}
+]
+},
+{
+"slug": "v",
+"title": "V",
+"label": null,
+"number": null,
+"pdfPage": 26,
+"blocks": [
+{
+"t": "p",
+"html": "VANQUISHING ................................................................................1029 VENGEANCE OF THE LORD ........................................................ 1030 VICTORIOUS .................................................................................... 1032 VIRTUE ..............................................................................................1034 VISITATION ......................................................................................1036 VOICE OF THE LORD ..................................................................... 1037 VOWING TO THE LORD .................................................................1039"
+}
+]
+},
+{
+"slug": "w",
+"title": "W",
+"label": null,
+"number": null,
+"pdfPage": 26,
+"blocks": [
+{
+"t": "p",
+"html": "WAITING ON THE LORD ...............................................................1043 WALK, THE CHRISTIAN ................................................................ 1045 WARNING ......................................................................................... 1047 WARRING ......................................................................................... 1051 WASHING .......................................................................................... 1054"
+},
+{
+"t": "p",
+"html": "WATCHFULNESS ............................................................................. 1055 WATER ............................................................................................... 1057 WAY, THE ......................................................................................... 1060 WEARINESS OF THE LORD .......................................................... 1061 WELCOMING ................................................................................... 1063 WHIRLWIND ................................................................................... 1065 WILL OF GOD .................................................................................. 1066 WINNOWING .................................................................................. 1068 WIPING AWAY TEARS ................................................................... 1069 WISDOM ........................................................................................... 1070 WITHDRAWING .............................................................................. 1072 WITHHOLDING RAIN .................................................................... 1074 WONDERFUL ................................................................................... 1076 WONDROUS ..................................................................................... 1076 WORD OF THE LORD .................................................................... 1078 WORKING ........................................................................................ 1082 WORSHIPPING THE LORD .......................................................... 1085 WRATH ............................................................................................. 1090"
+}
+]
+},
+{
+"slug": "z",
+"title": "Z",
+"label": null,
+"number": null,
+"pdfPage": 26,
+"blocks": [
+{
+"t": "p",
+"html": "ZEAL .................................................................................................. 1095"
+}
+]
+},
+{
+"slug": "appendices",
+"title": "APPENDICES",
+"label": null,
+"number": null,
+"pdfPage": 26,
+"blocks": [
+{
+"t": "p",
+"html": "Notes ................................................................................................... 1101 Bibliography ....................................................................................... 1101 Recommended Resources for Further Study ................................. 1101 Bible Memorization and Prayer ....................................................... 1103 Salvation Verses for Memorization ................................................. 1105"
+}
+]
+}
+],
+"audit": {
+"internalCoverage": 1.0,
+"independentCoverage": 0.96937,
+"figures": 2,
+"words": 7772
+}
+}

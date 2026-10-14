@@ -1,0 +1,1046 @@
+{
+"id": "a-heart-after-god",
+"source": "public/books/a-heart-after-god.pdf",
+"sourcePages": 30,
+"sourceSha256": "a59f66f46ed75b2489bc44ce8559a377afc868de4d4d24804a9445e385743945",
+"frontMatter": [],
+"chapters": [
+{
+"slug": "introduction",
+"title": "Introduction",
+"label": null,
+"number": null,
+"pdfPage": 3,
+"blocks": [
+{
+"t": "p",
+"html": "Something in every person longs to be whole."
+},
+{
+"t": "p",
+"html": "<em>“You have made us for Yourself, O Lord, and our heart is restless until it rests in You.” — Augustine</em>"
+},
+{
+"t": "p",
+"html": "We feel that restlessness when words come out sharper than we intended, when a hidden motive surfaces, when the life we present to others does not match the life we carry within. Scripture is not silent about that inner world. It gives it a name. It calls it the heart."
+},
+{
+"t": "p",
+"html": "<em>“The Bible term ‘heart’ is best understood if we simply say ‘me.’ It is the central citadel of a man’s personality.” — Oswald Chambers</em>"
+},
+{
+"t": "p",
+"html": "The heart is not merely the place of feeling. It is the inner person—the hidden center of thought, will, desire, emotion, conscience, and worship. From it flow the sources of life. What is true there will, in time, become visible in words, choices, and relationships. God does not look first at the street view of a life. He examines the foundation."
+},
+{
+"t": "p",
+"html": "These seven reflections are an invitation to that inner work. They begin where honesty must begin: with the heart as it is. They then move to the God who sees it fully and still draws near in Jesus Christ. They open the inner life so that thoughts, desires, and conscience can be named and guarded. They tell the gospel’s most necessary news—that the old heart cannot be repaired by effort, but must be made new by God. They announce the security of adoption and the warmth of fellowship. They show how ordinary practices deepen into wholehearted love. And they rest, at last, in the Holy Spirit, who alone supplies the power that transforms the heart from the inside out."
+},
+{
+"t": "p",
+"html": "This is not a call to try harder in private. It is a call to bring the inner life under the care of the God who gives a new heart and then forms it into the likeness of His Son."
+},
+{
+"t": "p",
+"html": "A heart after God is not produced in a moment of intensity. It is formed as we learn to live from what He has already given—quietly, honestly, and day by day. The waters of the inner life can become still again. The reflection can grow clear. And the life that follows can begin to tell the truth about the One who lives within."
+},
+{
+"t": "p",
+"html": "The journey starts where all true change starts. It starts with the heart."
+}
+]
+},
+{
+"slug": "before-you-begin",
+"title": "Before You Begin",
+"label": null,
+"number": null,
+"pdfPage": 4,
+"blocks": [
+{
+"t": "p",
+"html": "This is not a test of how mature you are. It is a walk through the inner life with the God who has already drawn near."
+},
+{
+"t": "p",
+"html": "You do not need to understand every term on the first reading. You do not need to finish a chapter in one sitting. Read slowly. Look up the verses. Speak honestly with God as you go. If a sentence feels heavy, pause there. The aim is not to complete these pages. The aim is to begin living with Jesus from the inside out."
+},
+{
+"t": "p",
+"html": "If you are new to faith, you are welcome here. These reflections were written so that a new believer can walk the path without being left behind, and so that a growing believer can return to the foundations with fresh honesty."
+},
+{
+"t": "h2",
+"text": "Words You Will Meet"
+},
+{
+"t": "p",
+"html": "A few words in these pages carry a biblical meaning that is easy to miss. They are kept because Scripture uses them. Here is their plain sense the first time they appear:"
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "Heart — who you are inside; the inner person God sees."
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "Soul — the living self that thinks, chooses, and feels (mind, will, and emotions)."
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "Spirit — the part of you that can know God; it includes the conscience."
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "Conscience — the inner warning light that knows right from wrong."
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "Flesh — the old self-centered pull that remains even after God gives a new heart."
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "Adoption — God legally making you His child through Jesus."
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "Fellowship — closeness with the Father in daily life."
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "Wholeheartedness — an undivided desire for God."
+},
+{
+"t": "h2",
+"text": "The Path of These Seven Reflections"
+},
+{
+"t": "p",
+"html": "☐. Your life shows your heart."
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "☐. God sees the heart and still invites you."
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "☐. The heart has inner movements that can be guarded."
+},
+{
+"t": "p",
+"html": "☐. God gives a new heart."
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "☐. You belong in the family; fellowship can be restored."
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "☐. Love for God grows through ordinary practices."
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "☐. The Spirit is the One who changes the heart."
+},
+{
+"t": "p",
+"html": "<em>Each reflection includes a picture to help you see the truth, a short glimpse of how this looks in an ordinary life, one primary step for the day, and a word of assurance. You are not asked to carry this work alone.</em>"
+}
+]
+},
+{
+"slug": "the-heart-reflects-the-person",
+"title": "The Heart Reflects the Person",
+"label": "1",
+"number": 1,
+"pdfPage": 6,
+"blocks": [
+{
+"t": "p",
+"html": "<em>“As in water the face is reflected as a face, so a person’s heart reflects the person.”</em> — Proverbs 27:19"
+},
+{
+"t": "figure",
+"src": "/books/a-heart-after-god/read/img/p006-0-26ec40c2a4.jpg",
+"alt": "",
+"width": 1009,
+"height": 567,
+"pdfPage": 6,
+"wide": true
+},
+{
+"t": "p",
+"html": "<em>A still pool gives a true reflection. Stirred water does not.</em>"
+},
+{
+"t": "p",
+"html": "What is my life revealing about my heart?"
+},
+{
+"t": "p",
+"html": "A calm, undisturbed pool of water offers a clear and accurate reflection of a face. Every detail appears as it truly is. The slightest breeze or a single stone thrown into the water distorts the image. Ripples spread, the reflection breaks apart, and what was once clear becomes blurred and unreliable."
+},
+{
+"t": "p",
+"html": "In the same way, a heart that is quiet before God and carefully guarded reflects truth, trust, and love with increasing clarity. When the heart is stirred by unchecked thoughts, restless desires, or neglected emotions, the reflection becomes distorted. That distortion shows itself in the outer life—through words, attitudes, decisions, and relationships. What is hidden within eventually becomes visible without."
+},
+{
+"t": "p",
+"html": "<em>A new believer once said, “I thought following Jesus would immediately change what people saw. Then I heard myself speak with the same sharpness as before.” The problem was not that Christ had failed. The surface of the water was being stirred. The heart was beginning to tell the truth about what still needed His care.</em>"
+},
+{
+"t": "p",
+"html": "In Scripture, the word heart is not limited to the physical organ that pumps blood. It describes the inner person—who you are inside. It includes the functions of the soul and the human spirit. The soul is the living self that thinks, chooses, and feels: the mind (how we think, reason, remember, and interpret life), the will (what we choose and commit ourselves to), and the emotions (what we feel, long for, and how we respond). The human spirit includes the conscience, that God-given inner warning light that can sense right and wrong and relate to God. The body, with its senses, physical drives, and outside voices, is the outer expression of whatever is already true in the heart."
+},
+{
+"t": "p",
+"html": "Everything we do eventually flows from this inner control center."
+},
+{
+"t": "figure",
+"src": "/books/a-heart-after-god/read/img/p007-0-ace323f011.jpg",
+"alt": "Diagram of four nested circles. BODY: our physical being. SOUL: our personality; mind, will, emotions. HEART: our inner person; thoughts, understanding, beliefs and values, desires, volition. SPIRIT (innermost): our connection with God; conscience.",
+"width": 902,
+"height": 902,
+"pdfPage": 7,
+"wide": true
+},
+{
+"t": "p",
+"html": "This is why Jesus paid such attention to the hidden life. He taught that what comes out of the mouth proceeds from the heart. He did not begin with appearances. He began with the wellspring. “Guard your heart with all vigilance, for from it are the sources of life” (Proverbs 4:23). The heart is not a private chamber that can be left unattended. A heart filled with the truth of God, settled trust in His character, and genuine love for Jesus will produce a life that reflects those realities. A heart left unguarded will reveal its true condition in ways that cannot stay concealed."
+},
+{
+"t": "p",
+"html": "The call to guard the heart is both urgent and hopeful. It is urgent because reflections cannot long hide what is happening beneath the surface. It is hopeful because the same God who searches the heart also invites us to place it under His care. When the waters grow still through attention to our thoughts, choices, feelings, and conscience, our lives begin to mirror the quiet work of Jesus within us."
+},
+{
+"t": "p",
+"html": "<strong><em>Your heart is already telling the truth. Learn to hear it before your life has to.</em></strong>"
+},
+{
+"t": "h2",
+"text": "Daily Application"
+},
+{
+"t": "p",
+"html": "Primary step: Begin the morning by quietly asking, “Lord Jesus, what is the true condition of my heart today?”"
+},
+{
+"t": "p",
+"html": "If you wish: Write one sentence about your thoughts, emotions, or desires, and notice whether your words later in the day match that inner state."
+},
+{
+"t": "p",
+"html": "<em>You do not guard your heart alone. The Lord who sees it also offers to keep it.</em>"
+},
+{
+"t": "h2",
+"text": "Further Reflection"
+},
+{
+"t": "p",
+"html": "<em>“The testimony of the lips indicates the state of the heart.” — H. A. Ironside</em>"
+},
+{
+"t": "p",
+"html": "Jesus taught that a tree is known by its fruit (Matthew 12:33–35; Luke 6:43–45). The quality of what appears on the branches is determined by the hidden life of the roots."
+},
+{
+"t": "p",
+"html": "In the same way, the words, attitudes, and actions that others observe are simply the fruit of what is already growing in the heart. A heart filled with the truth of God will gradually produce words and choices that reflect that truth. A heart left unguarded will ultimately reveal whatever has taken root—bitterness, fear, self-centered desire, or indifference toward God."
+}
+]
+},
+{
+"slug": "god-looks-at-the-heart",
+"title": "God Looks at the Heart",
+"label": "2",
+"number": 2,
+"pdfPage": 9,
+"blocks": [
+{
+"t": "p",
+"html": "<em>“Don’t be impressed by his appearance or his height, for I have rejected him. God does not view things the way men do. People look at the outward appearance, but the Lord looks at the heart.”</em> — 1 Samuel 16:7"
+},
+{
+"t": "figure",
+"src": "/books/a-heart-after-god/read/img/p009-0-92698c10e7.jpg",
+"alt": "",
+"width": 1168,
+"height": 784,
+"pdfPage": 9,
+"wide": true
+},
+{
+"t": "p",
+"html": "<em>People judge the street view. God examines the foundation.</em>"
+},
+{
+"t": "p",
+"html": "Imagine a house that looks well-kept from the street—fresh paint, neat landscaping, and polished windows. From the curb it appears solid and inviting. An inspection reveals cracked foundations, hidden water damage, and structural weakness behind the walls. What seemed impressive from a distance proves unstable upon closer examination."
+},
+{
+"t": "p",
+"html": "People often judge one another the way we judge houses. We notice looks, accomplishments, personalities, and performance. God does not. He examines the foundations."
+},
+{
+"t": "p",
+"html": "When the prophet Samuel was sent to anoint Israel’s next king, he first saw Jesse’s son Eliab and was drawn to his height and strength. The Lord corrected him at once: people look at the outward appearance, but the Lord looks at the heart. This truth runs throughout Scripture. “All a person’s ways seem right in their own opinion, but the Lord evaluates the motives” (Proverbs 16:2). Even the secret thoughts of the heart are open before Him (Psalm 44:21)."
+},
+{
+"t": "p",
+"html": "<em>Many new believers work hard to look the part—the right words, the right habits, the right impression at church. Then a quiet fear remains: If they knew what I still think, would I still belong? The freeing answer of this chapter is that God already knows, and Jesus still invites you near.</em>"
+},
+{
+"t": "p",
+"html": "God sees the full inner life. He perceives the thoughts that are never spoken, the values we actually live by, the desires that shape our choices, the attitudes we carry, and the identity from which we operate. He also understands the pull of the flesh—that old self-centered pattern—and the true condition of our conscience. Nothing in the heart is hidden from Him."
+},
+{
+"t": "p",
+"html": "This is both sobering and liberating. Performance cannot conceal what is true within. A life that looks impressive to others may rest on unstable foundations before God, while a quieter life may rest on a heart that is sound and true. Yet we never have to pretend before the Lord. Jesus does not ask us to manage His impression of us. He already sees, and He still calls us into relationship."
+},
+{
+"t": "p",
+"html": "The God who examines the foundations does not turn away in rejection when He sees weakness. He calls us to be honest, offers cleansing, and continues His patient work of making the heart whole. Living under His gaze is not a burden of constant scrutiny. It is an invitation to walk in the light with the One who sees us as we are and still loves us."
+},
+{
+"t": "p",
+"html": "<strong><em>God is not watching the performance. He sees the heart—and He has not turned away.</em></strong>"
+},
+{
+"t": "h2",
+"text": "Daily Application"
+},
+{
+"t": "p",
+"html": "Primary step: Begin the day by saying, “Lord, You see my heart completely. I choose to be honest with You today.”"
+},
+{
+"t": "p",
+"html": "If you wish: When you feel the urge to impress someone or hide a motive, pause and bring that thought to God in one honest sentence."
+},
+{
+"t": "p",
+"html": "<em>You do not have to perform for the God who already knows you. His knowledge is matched by His steadfast love.</em>"
+},
+{
+"t": "h2",
+"text": "Further Reflection"
+},
+{
+"t": "p",
+"html": "<em>“God is more concerned with the state of people’s hearts than He is with the state of their feelings.” — A. W. Tozer</em>"
+},
+{
+"t": "p",
+"html": "A physician does not rely on how healthy a patient appears in the waiting room. Clothing and a composed expression can create a reassuring first impression. An X-ray or MRI is ordered because it reveals what ordinary observation cannot see."
+},
+{
+"t": "p",
+"html": "God needs no technology. He sees the full inner life with perfect clarity—the values that quietly govern decisions, the hidden fears that shape reactions, the compromises that accumulate, and the genuine longings for Him that may never be spoken. Because He already sees everything, we are freed from the exhausting work of managing appearances before Him."
+}
+]
+},
+{
+"slug": "understanding-the-inner-life-of-the-heart",
+"title": "Understanding the Inner Life of the Heart",
+"label": "3",
+"number": 3,
+"pdfPage": 12,
+"blocks": [
+{
+"t": "p",
+"html": "<em>“Guard your heart with all vigilance, for from it are the sources of life.”</em> — Proverbs 4:23"
+},
+{
+"t": "figure",
+"src": "/books/a-heart-after-god/read/img/p012-0-3757e710f8.jpg",
+"alt": "",
+"width": 1168,
+"height": 784,
+"pdfPage": 12,
+"wide": true
+},
+{
+"t": "p",
+"html": "<em>Many instruments speak at once. Guarding the heart means reading them with the Spirit.</em>"
+},
+{
+"t": "p",
+"html": "Imagine the control room of a ship or aircraft. Many instruments operate at once. If one reading is ignored, the whole vessel is placed at risk. Guarding the heart means learning to notice what is happening inside, under the guidance of the Holy Spirit, rather than letting one strong feeling or thought run the whole life."
+},
+{
+"t": "p",
+"html": "You do not need to master every inner movement before you can walk with Jesus. Begin with three."
+},
+{
+"t": "h2",
+"text": "Begin Here"
+},
+{
+"t": "p",
+"html": "<strong>Thoughts</strong> belong to the mind. They are how we interpret life and form beliefs. Scripture calls us to renew the mind (Romans 12:2) because the quality of our thinking quietly shapes what follows. Jesus cares about what we believe to be true."
+},
+{
+"t": "p",
+"html": "<strong>Desires</strong> are what we long for, seek, or take pleasure in. Desire can be godly or fleshly. It often supplies the energy that moves the will to action. When desire is ordered by God, it supports obedience. When it is left unexamined, it can pull the heart away from Him."
+},
+{
+"t": "p",
+"html": "<strong>Conscience</strong> is the inner warning light. It belongs to the human spirit and evaluates our inner life against God’s standard (Romans 2:15; 1 Timothy 1:5). A healthy conscience produces conviction when we drift and confirmation when we walk in truth. A neglected conscience loses its clarifying power."
+},
+{
+"t": "p",
+"html": "If you attend to thoughts, desires, and conscience with the Lord today, you have already begun to guard the heart."
+},
+{
+"t": "h2",
+"text": "Other Movements in the Same Inner Life"
+},
+{
+"t": "p",
+"html": "The heart also holds <strong>values</strong>—the settled convictions about what is important. <strong>Emotions</strong> rise and fall: joy, fear, anger, affection, peace, anxiety. Emotions themselves are not sinful, but they must be governed rather than allowed to rule. <strong>Attitude</strong> is the combined posture of mind, will, and emotions toward God, people, and circumstances."
+},
+{
+"t": "p",
+"html": "<strong>Identity</strong> sits deeper still. In Christ a new identity is given at new birth. We are also becoming—learning to live as who we already are. The <strong>flesh</strong> is the remnant of the old self-centered nature. It continues to war against the Spirit, especially targeting desire, emotion, and the will (Galatians 5:16-17)."
+},
+{
+"t": "figure",
+"src": "/books/a-heart-after-god/read/img/p014-0-4542df6e8f.jpg",
+"alt": "Diagram inside a heart outline: IDENTITY at the centre, between old self (Colossians 3:9) and New Self (Colossians 3:10), surrounded by six circles: Thoughts, Values, Emotions, Desires, Attitude and Conscience (Human Spirit).",
+"width": 879,
+"height": 879,
+"pdfPage": 14,
+"wide": true
+},
+{
+"t": "p",
+"html": "<em>A young believer confessed, “I thought I had an anger problem. Then I saw that I had an untrue thought first: I am not safe unless I stay in control. The feeling followed the thought.” Guarding the heart often begins one step earlier than we expect.</em>"
+},
+{
+"t": "p",
+"html": "These movements interact. Thoughts form beliefs. Beliefs, shaped by identity, form values. Values and emotions generate desire. Desire influences the will. The combination produces attitude. The conscience evaluates the process. The flesh tries to pull everything back toward self. You do not have to watch all of this at once. Ask the Spirit to show you the one instrument that most needs attention today."
+},
+{
+"t": "figure",
+"src": "/books/a-heart-after-god/read/img/p015-0-28684399c4.jpg",
+"alt": "Diagram, The Interaction Pattern: a row of circles linked by arrows. Thoughts form Beliefs; Beliefs shape Values; Values and Emotions together generate Desires; Desires influence the Will; Choices collectively form our Attitude; Attitude shapes lifestyle. Below, Conscience (Human Spirit) influences and evaluates each element, with dashed arrows to every circle.",
+"width": 1099,
+"height": 504,
+"pdfPage": 15,
+"wide": true
+},
+{
+"t": "p",
+"html": "<strong><em>What you can name inside you, you can bring to God instead of being driven by it.</em></strong>"
+},
+{
+"t": "h2",
+"text": "Daily Application"
+},
+{
+"t": "p",
+"html": "Primary step: Identify which feels are strongest today—a thought, a desire, or the voice of conscience—and bring that one thing to Jesus."
+},
+{
+"t": "p",
+"html": "If you wish: Take one specific thought captive and replace it with a sentence from Scripture, or speak one truth about who you are in Christ."
+},
+{
+"t": "p",
+"html": "<em>The Spirit who lives in you can teach you to read the inner life. You are not left to figure out your heart by yourself.</em>"
+},
+{
+"t": "h2",
+"text": "Further Reflection"
+},
+{
+"t": "p",
+"html": "<em>“Set your heart and mind toward God and let the holy light of Jesus Christ search through every nook and cranny.” — Oswald Chambers</em>"
+},
+{
+"t": "p",
+"html": "An orchestra contains many instruments. When they play independently, the result is noise. When they follow a skilled conductor, the separate parts become one song. In the heart, thoughts, desires, emotions, and attitudes are like those instruments. The conscience helps us notice whether the music is becoming harmonious or chaotic. Jesus, by His Spirit, is the One who can bring the inner life into tune."
+}
+]
+},
+{
+"slug": "the-need-for-a-new-heart",
+"title": "The Need for a New Heart",
+"label": "4",
+"number": 4,
+"pdfPage": 16,
+"blocks": [
+{
+"t": "p",
+"html": "<em>“I will give you a new heart, and I will put a new spirit within you. I will remove the heart of stone from your body and give you a heart of flesh.”</em> — Ezekiel 36:26"
+},
+{
+"t": "figure",
+"src": "/books/a-heart-after-god/read/img/p016-0-d4c2343ce9.jpg",
+"alt": "",
+"width": 1168,
+"height": 784,
+"pdfPage": 16,
+"wide": true
+},
+{
+"t": "p",
+"html": "<em>Better habits may slow the decline. Only God can give a new heart.</em>"
+},
+{
+"t": "p",
+"html": "A person with a severely damaged heart may improve diet, exercise carefully, and take medication. These steps can slow the decline. They cannot create a new heart. At a certain point only a transplant gives life."
+},
+{
+"t": "p",
+"html": "The natural human heart is in a similar state. It is not merely weak or underdeveloped. “The human mind is more deceitful than anything else. It is incurably bad. Who can understand it?” (Jeremiah 17:9). Jesus said that evil ideas, theft, false testimony, and slander come out of the heart (Matthew 15:19). Religious activity, moral effort, and sincere intention may produce temporary outward improvement. They cannot solve the deeper problem. God does not offer repair to the old heart. He offers a new one through spiritual birth."
+},
+{
+"t": "p",
+"html": "Sin entered the human race through Adam, bringing spiritual death—separation from God—and the reality of physical death. “For just as in Adam all die, so also in Christ all will be made alive” (1 Corinthians 15:22). Before Christ, the human spirit is spiritually dead. Conscience either accuses or grows dull. Identity is rooted in the old self. Thoughts and desires remain under the influence of the flesh. The result is a heart of stone that cannot please God."
+},
+{
+"t": "p",
+"html": "God’s answer is not self-improvement but transformation. Jesus told Nicodemus, “I tell you the solemn truth, unless a person is born from above, he cannot see the kingdom of God” (John 3:3). What is required is not further effort from the old heart, but a new beginning by the Spirit of God."
+},
+{
+"t": "h2",
+"text": "If you have never received Christ"
+},
+{
+"t": "p",
+"html": "Spiritual birth happens when a person receives Jesus Christ and what He accomplished for us on the cross. “Christ died for our sins according to the scriptures, and that he was buried, and that he was raised on the third day according to the scriptures” (1 Corinthians 15:3-4). To all who receive Him, God gives the right to become His children (John 1:12)."
+},
+{
+"t": "p",
+"html": "You can turn to Him now in your own words, or pray: “Lord Jesus, I believe You died for my sins and rose again. I receive You as Savior and Lord. Give me a new heart and make me Yours.” The exact words matter less than the honest turning of the heart."
+},
+{
+"t": "p",
+"html": "The result is a new creation: “So then, if anyone is in Christ, he is a new creation; what is old has passed away—look, what is new has come!” (2 Corinthians 5:17). The human spirit is made alive by the Holy Spirit. Conscience can begin to function with clarity. A new identity is given. The soul—mind, will, and emotions—is now capable of being renewed. The flesh remains and still wars against the Spirit. The Christian life is the ongoing process of learning to live from the new heart rather than from the old patterns."
+},
+{
+"t": "p",
+"html": "<em>One man said after coming to Christ, “I expected the old desires to vanish overnight. They did not. What changed first was this: I was no longer alone with them, and they no longer had the last word.” That is the difference a new heart makes. The transplant is given. The daily dependence continues.</em>"
+},
+{
+"t": "p",
+"html": "<strong><em>God does not ask the old heart to try harder. He gives a new one.</em></strong>"
+},
+{
+"t": "h2",
+"text": "Daily Application"
+},
+{
+"t": "p",
+"html": "Primary step: Thank God specifically for the new heart He has given you—or ask Him for it if you have never received Christ."
+},
+{
+"t": "p",
+"html": "If you wish: Read 2 Corinthians 5:17 slowly and say, “I am a new creation in Christ.” Notice one old pattern and treat it as part of the old self."
+},
+{
+"t": "p",
+"html": "<em>God does not ask you to create a new heart. He gives one—and then stays to form it.</em>"
+},
+{
+"t": "h2",
+"text": "Further Reflection"
+},
+{
+"t": "p",
+"html": "<em>“For a clean heart to be created, the unclean one must be crushed.” — Augustine</em>"
+},
+{
+"t": "p",
+"html": "A tree may still produce leaves for a time, but if the root system is diseased, the whole tree is affected. Pruning the branches offers only temporary relief. The natural heart is like that diseased root. God’s solution is not further pruning. It is the gift of a new heart and a new spirit so that new life can grow from a living root."
+}
+]
+},
+{
+"slug": "adoption-and-fellowship-the-journey-begins",
+"title": "Adoption and Fellowship — The Journey Begins",
+"label": "5",
+"number": 5,
+"pdfPage": 19,
+"blocks": [
+{
+"t": "p",
+"html": "<em>“The Spirit himself bears witness to our spirit that we are God’s children. And if children, then heirs…”</em> — Romans 8:16-17"
+},
+{
+"t": "figure",
+"src": "/books/a-heart-after-god/read/img/p019-0-e689f80b17.jpg",
+"alt": "",
+"width": 1168,
+"height": 784,
+"pdfPage": 19,
+"wide": true
+},
+{
+"t": "p",
+"html": "<em>Adoption places you in the family. Fellowship is sitting at the table.</em>"
+},
+{
+"t": "p",
+"html": "Adoption places a child permanently inside the household. Fellowship is the daily experience of sitting at the family table—speaking freely, enjoying the Father’s presence, and living in the warmth of belonging."
+},
+{
+"t": "p",
+"html": "Sin does not cancel the adoption papers. It can cause the child to withdraw from the table in shame. Restoration does not require a second adoption. It requires returning: repentance, resistance to what caused the distance, and rest in the Father’s full forgiveness. The place at the table has never been taken away."
+},
+{
+"t": "p",
+"html": "Spiritual birth brings legal adoption into God’s family. “He did this by predestining us to adoption as his sons through Jesus Christ, according to the pleasure of his will” (Ephesians 1:5). This status carries unshakable security. Nothing in creation can separate us from the love of God in Christ Jesus (Romans 8:38-39)."
+},
+{
+"t": "p",
+"html": "Along with security comes a rich new identity. In Christ the believer is redeemed and forgiven, a member of Christ’s body, a citizen of heaven, a saint, free from condemnation, complete in Christ, and seated with Him. These realities are not earned. They are given through union with Jesus."
+},
+{
+"t": "p",
+"html": "<em>A new sister in Christ said, “I keep asking God to take me back.” Her friend answered, “He never sent you out of the family. He is asking you to come back to the table.” Adoption answers the fear of being discarded. Fellowship answers the ache of distance.</em>"
+},
+{
+"t": "p",
+"html": "When fellowship is hindered, restoration follows a clear path. Repent (1 John 1:9)—agree with God about the sin and turn from it. Resist (James 4:7)—renew the mind and put on the armor of God so the enemy finds no foothold. Rest—receive God’s complete forgiveness and refuse the false guilt the enemy brings (Romans 8:1)."
+},
+{
+"t": "p",
+"html": "Adoption establishes the unbreakable relationship. Fellowship keeps that relationship current. The Father’s welcome does not depend on perfect consistency. It rests on the finished work of His Son."
+},
+{
+"t": "p",
+"html": "<strong><em>You belong. Fellowship can be restored the same day.</em></strong>"
+},
+{
+"t": "h2",
+"text": "Daily Application"
+},
+{
+"t": "p",
+"html": "Primary step: Declare this morning, “I am an adopted child of God, fully accepted in Christ.”"
+},
+{
+"t": "p",
+"html": "If you wish: Confess any known sin as soon as conscience is stirred, and if condemnation returns, speak Romans 8:1 aloud."
+},
+{
+"t": "p",
+"html": "<em>Your place in the family is secure. The Father’s table still has a seat with your name on it.</em>"
+},
+{
+"t": "h2",
+"text": "Further Reflection"
+},
+{
+"t": "p",
+"html": "<em>“The Christian does not think God will love us because we are good, but that God will make us good because He loves us.” — C. S. Lewis</em>"
+},
+{
+"t": "p",
+"html": "In a courtroom a judge signs the final adoption papers. From that moment the child’s legal status is permanently changed. A new name is given. The relationship cannot be revoked by later failures or fluctuating feelings. Spiritual adoption is that kind of decree. Feelings may rise and fall. Standing in Christ remains secure."
+}
+]
+},
+{
+"slug": "relationship-wholeheartedness-and-passion",
+"title": "Relationship, Wholeheartedness, and Passion",
+"label": "6",
+"number": 6,
+"pdfPage": 21,
+"blocks": [
+{
+"t": "p",
+"html": "<em>“When you seek me in prayer and worship, you will find me available to you if you seek me with all your heart and soul.”</em> — Jeremiah 29:13"
+},
+{
+"t": "figure",
+"src": "/books/a-heart-after-god/read/img/p021-0-38b25047b8.jpg",
+"alt": "",
+"width": 1168,
+"height": 784,
+"pdfPage": 21,
+"wide": true
+},
+{
+"t": "p",
+"html": "<em>A strong fire is not made by one large log. It is tended, piece by piece.</em>"
+},
+{
+"t": "p",
+"html": "A deep human friendship does not appear overnight. It is built through ordinary practices: learning who the other person is, spending time in their presence, speaking honestly, noticing their character, and choosing to trust them. Over time, these simple actions deepen affection."
+},
+{
+"t": "p",
+"html": "Relationship with God grows in the same way. Five practices build it."
+},
+{
+"t": "h2",
+"text": "Practice"
+},
+{
+"t": "h2",
+"text": "What it is"
+},
+{
+"t": "h2",
+"text": "How it forms the heart"
+},
+{
+"t": "table",
+"head": [],
+"rows": [
+[
+"Knowledge",
+"Learning His character through Scripture",
+"Renews thoughts and reorders values"
+],
+[
+"Togetherness",
+"Living aware of His presence",
+"Shapes attitude and steadies emotions"
+],
+[
+"Communication",
+"Honest prayer that also listens",
+"Brings desire before Him"
+],
+[
+"Observation",
+"Noticing His work in ordinary days",
+"Strengthens faith"
+],
+[
+"Commitment",
+"Entrusting yourself to Him",
+"Expresses the will and deepens trust"
+]
+],
+"rowHeaders": true
+},
+{
+"t": "p",
+"html": "None of these practices is dramatic on its own. When they are pursued consistently, the heart becomes increasingly marked by an undivided desire, a settled attitude of love, and values that are fully aligned with God. This is wholeheartedness. Passion overflows from a heart that has been with and for Him over time."
+},
+{
+"t": "p",
+"html": "<em>A believer tried to be passionate but felt like a failure by the next day. Then, someone advised: “Do not begin with passion. Begin with showing up.” Ten honest minutes in Scripture and prayer did not feel spectacular or passionate. Day in and day out, over time, desire for God began to grow. The heart became more present, more attentive. Passion was there, as an undercurrent.”</em>"
+},
+{
+"t": "p",
+"html": "Jesus named the greatest commandment as loving God wholeheartedly (Matthew 22:37). Scripture gives us a picture of this undivided heart for God in David, whom God described as “a man after my heart, who will accomplish everything I want him to do” (Acts 13:22). Wholeheartedness is reciprocated. Those whose relationship with God is marked by a devoted heart are men and women after God’s own heart. This kind of wholeheartedness is formed as identity becomes secure, conscience stays clear, thoughts are renewed, desire is set on God, and the flesh is daily resisted—by one ordinary practice at a time."
+},
+{
+"t": "p",
+"html": "<strong><em>A heart after God is not a mood you wait for. It is formed by walking with Him.</em></strong>"
+},
+{
+"t": "h2",
+"text": "Daily Application"
+},
+{
+"t": "p",
+"html": "Primary step: Choose one of the five ingredients—knowledge, togetherness, communication, observation, or commitment—and give it five to ten unhurried minutes today."
+},
+{
+"t": "p",
+"html": "If you wish: Notice one place your desire still feels divided and turn that one area toward God."
+},
+{
+"t": "p",
+"html": "<em>Passion does not have to be forced. Seek Him in the small practices, and love will have room to grow.</em>"
+},
+{
+"t": "h2",
+"text": "Further Reflection"
+},
+{
+"t": "p",
+"html": "<em>“There are two kinds of people one can call reasonable: those who serve God with all their heart because they know Him, and those who seek Him with all their heart because they do not know Him.” — Blaise Pascal</em>"
+},
+{
+"t": "p",
+"html": "A strong fire is rarely created by a single large piece of wood. It is built by adding smaller pieces, protecting the flame, and giving it room to breathe. These five practices are that steady fuel. Wholeheartedness is the point where the fire burns with one focus. Passion is the sustained flame that comes when the heart has been tended over time."
+}
+]
+},
+{
+"slug": "the-holy-spirit-and-the-transformation-of-the-heart",
+"title": "The Holy Spirit and the Transformation of the Heart",
+"label": "7",
+"number": 7,
+"pdfPage": 24,
+"blocks": [
+{
+"t": "p",
+"html": "<em>“What is born of the flesh is flesh, and what is born of the Spirit is spirit.”</em> — John 3:6"
+},
+{
+"t": "figure",
+"src": "/books/a-heart-after-god/read/img/p024-0-899141d788.jpg",
+"alt": "",
+"width": 1168,
+"height": 784,
+"pdfPage": 24,
+"wide": true
+},
+{
+"t": "p",
+"html": "<em>You may set the sails. Only the Spirit supplies the wind.</em>"
+},
+{
+"t": "p",
+"html": "A sailboat may be well designed, with strong sails and a skilled captain. Without wind, it remains motionless. Spiritual disciplines, sincere effort, and careful attention to the heart matter. The power that actually transforms the heart belongs to the Holy Spirit. Our part is to set the sails through yielding and obedience. The Spirit supplies the wind."
+},
+{
+"t": "p",
+"html": "The new heart promised in Ezekiel 36:26 is given by the Spirit of God. At spiritual birth, He regenerates our human spirit, joins us to Christ, seals us as God’s own, and takes up residence within. The new heart is not a one-time upgrade that we then manage alone. It is a living heart that remains dependent on the Spirit who gave it."
+},
+{
+"t": "p",
+"html": "The Spirit continues that work in the inner life. He renews the mind, reorders values, purifies desire, steadies emotions, shapes attitude, clarifies the conscience, bears witness to our identity, and empowers us to put to death the deeds of the flesh. His presence does not eliminate the flesh. It creates a lifelong conflict (Galatians 5:17). Transformation happens as we learn to live by the Spirit rather than gratify the flesh."
+},
+{
+"t": "p",
+"html": "<em>A woman said, “I kept asking God to help me try harder.” Then she began to pray, “Holy Spirit, I depend on You today.” The same temptations still appeared. What changed was the source she drew from. Effort alone had left her exhausted. Dependence made obedience possible again.</em>"
+},
+{
+"t": "p",
+"html": "The same Spirit who gives the new heart also leads us through adoption, fellowship, growing relationship, wholeheartedness, and passion. The Christian life is not, “I work hard, and the Spirit helps a little.” It is, “I depend on the Spirit who is already at work in me, and I cooperate with Him.” He is a Person we relate to. He can be grieved, quenched, or walked with in increasing closeness."
+},
+{
+"t": "p",
+"html": "The God who began the good work of giving you a new heart will carry it on to completion (Philippians 1:6). He does so by the ongoing ministry of His Spirit within you."
+},
+{
+"t": "p",
+"html": "<strong><em>The Spirit who gave you a new heart is the One who keeps forming it.</em></strong>"
+},
+{
+"t": "h2",
+"text": "Daily Application"
+},
+{
+"t": "p",
+"html": "Primary step: Begin the day by yielding: “Holy Spirit, I depend on You today to form the heart of Christ in me.”"
+},
+{
+"t": "p",
+"html": "If you wish: When a fleshly desire or attitude rises, pause and ask the Spirit for power to respond differently."
+},
+{
+"t": "p",
+"html": "<em>Any real progress in the heart is His work. You set the sails. He supplies the wind.</em>"
+},
+{
+"t": "h2",
+"text": "Further Reflection"
+},
+{
+"t": "p",
+"html": "<em>“Let a man set his heart only on doing the will of God and he is instantly free.” — A. W. Tozer</em>"
+},
+{
+"t": "p",
+"html": "Jesus spells out the truth in John 15. A branch does not produce fruit by straining. It bears fruit by remaining connected to the vine. Separated from the vine, the branch withers no matter how determined it may be."
+},
+{
+"t": "p",
+"html": "The entire journey of the heart comes to rest in this truth. God does not ask us to create a new heart, repair the old one by our own strength, or force passion into existence. He gives a new heart, places His Spirit within us, and invites us to abide. The Holy Spirit is the living connection through which the life of Christ flows into the inner life."
+},
+{
+"t": "p",
+"html": "Transformation is not the result of the branch trying harder. It is the result of remaining dependent, responsive, and open to the Vine. Fruit appears not because we have mastered the inner life, but because His life is flowing through it."
+},
+{
+"t": "p",
+"html": "The call at the end of this series is quiet and hopeful: remain in Him. The heart that stays connected to Christ will, in time, reflect His life."
+}
+]
+},
+{
+"slug": "a-heart-that-remains",
+"title": "A Heart That Remains",
+"label": null,
+"number": null,
+"pdfPage": 27,
+"blocks": [
+{
+"t": "p",
+"html": "<em>“Remain in me, and I will remain in you. Just as the branch cannot bear fruit by itself, unless it remains in the vine, so neither can you unless you remain in me.”</em> — John 15:4"
+},
+{
+"t": "figure",
+"src": "/books/a-heart-after-god/read/img/p027-0-cbb08154f8.jpg",
+"alt": "",
+"width": 1168,
+"height": 784,
+"pdfPage": 27,
+"wide": true
+},
+{
+"t": "p",
+"html": "<em>A branch does not bear fruit by straining. It bears fruit by remaining.</em>"
+},
+{
+"t": "p",
+"html": "These seven reflections have traced a single journey. The heart reflects the person. God looks at that heart. The inner life has names that can be learned. The old heart cannot be repaired; a new one must be given. Adoption places you in the family. Fellowship keeps the table current. Relationship gathers the whole self toward God. The Holy Spirit does the work you cannot do."
+},
+{
+"t": "p",
+"html": "None of this was meant to end in a feeling of having arrived. A heart after God is not a certificate. It is a way of remaining."
+},
+{
+"t": "p",
+"html": "Jesus gave His disciples the image that holds the whole book together. “I am the vine; you are the branches. The one who remains in me – and I in him – bears much fruit, because apart from me you can accomplish nothing” (John 15:5). The still pool of the first reflection stays clear only while it is quiet in His presence. The house stands only while the foundation is maintained. The new heart lives only while it stays joined to its Giver."
+},
+{
+"t": "p",
+"html": "This is not a warning meant to frighten you. It is an invitation meant to free you. You were never asked to produce a holy heart by effort. You were asked to remain where life already is."
+},
+{
+"t": "p",
+"html": "Some days, remaining will feel like joy. You will see a desire change, a thought come under truth, or a conscience grow clear, and you will know the Spirit has been at work. Other days, remaining will feel like a small return. You will confess again. You will sit down at the table again. You will set the sail again and wait for wind. Both days belong to the same journey. Both are the life of a heart after God."
+},
+{
+"t": "p",
+"html": "David was not called a man after God’s heart because every hour of his life was undivided. He was called that because, when he wandered, he came back. He did not protect his image. He brought the truth of his heart into the light and found mercy there. That is still the way home for you."
+},
+{
+"t": "p",
+"html": "The question at the end of this book is not, “Have I arrived?” It is, “Will I remain?” Will the heart stay open? Will the branch stay joined? Will the inner life be guarded tomorrow morning in the same quiet way it was today?"
+},
+{
+"t": "p",
+"html": "The God who began this good work in you is not uncertain about finishing it. “For I am sure of this very thing, that the one who began a good work in you will perfect it until the day of Christ Jesus” (Philippians 1:6). Your part is not to complete yourself. Your part is to stay with the One who completes what He starts."
+},
+{
+"t": "p",
+"html": "Return often to the still water. Guard the heart. Be honest before the God who already sees. Live from the new heart, not from the flesh. Keep short accounts. Seek Him in the ordinary practices. Depend on the Spirit. And when the heart grows restless again, as it will, bring it back quickly. He has not moved."
+},
+{
+"t": "p",
+"html": "A heart after God is not the prize at the end of a long effort. It is the gift of remaining with the God who first sought you. Stay with Him. The fruit will come in season. The reflection will grow clearer. And the inner life, slowly and surely, will look more like the One it loves."
+},
+{
+"t": "p",
+"html": "<strong><em>You do not finish this journey. You remain in the One who does.</em></strong>"
+},
+{
+"t": "h2",
+"text": "Daily Application"
+},
+{
+"t": "p",
+"html": "Primary step: Pray once, slowly: “Lord Jesus, I choose to remain in You today.” Then live the next hour as if that prayer were true."
+},
+{
+"t": "p",
+"html": "If you wish: Return to the chapter that most exposed your heart, and practice only its primary step again."
+},
+{
+"t": "p",
+"html": "When the heart feels restless, do not interpret that as failure. Treat it as an invitation to come back."
+},
+{
+"t": "h2",
+"text": "Further Reflection"
+},
+{
+"t": "p",
+"html": "<em>“To fall in love with God is the greatest romance; to seek Him the greatest adventure; to find Him, the greatest human achievement.” — Augustine</em>"
+},
+{
+"t": "p",
+"html": "A gardener can prepare soil, plant, water, and wait. He cannot command the life inside the seed. In the same way, you can guard the heart, confess quickly, open Scripture, and yield to the Spirit. The life that changes what you love comes from God."
+},
+{
+"t": "p",
+"html": "The seven reflections are meant to clear a path toward that life. Walk the path again whenever you need to. The Vine is still holding you. The place at the table is still yours. The new heart God has given you is still His work in you. His invitation is still extended, unchanged: Remain."
+}
+]
+},
+{
+"slug": "go-further",
+"title": "Go Further",
+"label": null,
+"number": null,
+"pdfPage": 30,
+"blocks": [
+{
+"t": "p",
+"html": "These seven reflections have opened the inner life. The books below give that life room to keep growing."
+},
+{
+"t": "p",
+"html": "Each one stays with a single part of walking with Jesus—who you now are, who God is, and how the Spirit shapes ordinary days."
+},
+{
+"t": "p",
+"html": "You do not have to read them in order. Begin with the one that meets the need in front of you. Each series can be downloaded freely here:"
+},
+{
+"t": "p",
+"html": "<a href=\"https://equip.jesusonline.com/leader-kits\">equip.jesusonline.com/leader-kits</a>"
+},
+{
+"t": "p",
+"html": "<strong>Your New Identity in Christ</strong> · 10 lessons"
+},
+{
+"t": "p",
+"html": "<em>Embracing Who God Says You Are</em>"
+},
+{
+"t": "p",
+"html": "Settle the question of who you are now, so the old names lose their hold."
+},
+{
+"t": "p",
+"html": "<strong>Beholding the Majesty of God</strong> · 6 lessons"
+},
+{
+"t": "p",
+"html": "<em>Explore His Divine Attributes</em>"
+},
+{
+"t": "p",
+"html": "Lift your eyes from your own story long enough to see the God who holds it."
+},
+{
+"t": "p",
+"html": "<strong>Walking in the Spirit</strong> · 15 lessons"
+},
+{
+"t": "p",
+"html": "<em>A Practical Guide to the Holy Spirit’s Presence, Power, and Fruit</em>"
+},
+{
+"t": "p",
+"html": "Discover how the Spirit who lives in you shapes ordinary decisions, not only high moments."
+}
+]
+}
+],
+"audit": {
+"internalCoverage": 1.0,
+"independentCoverage": 1.0,
+"figures": 11,
+"words": 6326
+}
+}

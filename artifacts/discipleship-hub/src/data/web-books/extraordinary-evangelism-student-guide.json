@@ -1,0 +1,2666 @@
+{
+"id": "extraordinary-evangelism-student-guide",
+"source": "public/books/extraordinary-evangelism-student-guide.pdf",
+"sourcePages": 47,
+"sourceSha256": "d336ae2ab82c2efd18b5be5fc79e6fa730e67c4dd10510f11ef429213bb4708a",
+"frontMatter": [
+{
+"t": "figure",
+"src": "/books/extraordinary-evangelism-student-guide/read/img/p002-0-99e3a62d1e.jpg",
+"alt": "Extraordinary Evangelism: Equipping You to Reach Your World for Christ. A Student Guide.",
+"width": 489,
+"height": 487,
+"pdfPage": 2,
+"wide": false
+},
+{
+"t": "figure",
+"src": "/books/extraordinary-evangelism-student-guide/read/img/p002-1-af660bb441.jpg",
+"alt": "",
+"width": 490,
+"height": 487,
+"pdfPage": 2,
+"wide": false
+},
+{
+"t": "figure",
+"src": "/books/extraordinary-evangelism-student-guide/read/img/p002-2-16773f503f.jpg",
+"alt": "",
+"width": 489,
+"height": 487,
+"pdfPage": 2,
+"wide": false
+},
+{
+"t": "figure",
+"src": "/books/extraordinary-evangelism-student-guide/read/img/p002-3-cea01d9ebf.jpg",
+"alt": "",
+"width": 490,
+"height": 487,
+"pdfPage": 2,
+"wide": false
+},
+{
+"t": "figure",
+"src": "/books/extraordinary-evangelism-student-guide/read/img/p002-4-c0aace61dd.jpg",
+"alt": "“But you shall receive power when the Holy Spirit has come upon you, and you will be my witnesses in Jerusalem and in all Judea and Samaria, and to the end of the earth.” Acts 1:8 ESV",
+"width": 559,
+"height": 418,
+"pdfPage": 2,
+"wide": false
+},
+{
+"t": "figure",
+"src": "/books/extraordinary-evangelism-student-guide/read/img/p002-5-12a3f7d540.jpg",
+"alt": "",
+"width": 420,
+"height": 418,
+"pdfPage": 2,
+"wide": false
+}
+],
+"chapters": [
+{
+"slug": "welcome",
+"title": "WELCOME",
+"label": null,
+"number": null,
+"pdfPage": 3,
+"blocks": [
+{
+"t": "p",
+"html": "We are incredibly grateful that you have decided to take the next step in your preparation to share the gospel with others. There is nothing more important than sharing the life-changing message of Jesus Christ. Years ago, I took a training class on evangelism and it changed my life and witness for Christ from that time forward."
+},
+{
+"t": "p",
+"html": "The purpose of this Student Guide is to highlight some of the principles and truths found in the book, <strong>Extraordinary Evangelism</strong> which is a leader’s guide to this Student Guide. My prayer is that this Student Guide will equip you to confidently share the gospel with others. Let us boldly share the gospel so that we can by God’s grace turn others “… from darkness to light and from the power of Satan to God, that they may receive forgiveness of sins” (Acts 26:18)."
+},
+{
+"t": "p",
+"html": "May the Lord help you in this grand adventure to share the only news that will turn a person’s default destination from Hell to Heaven for all eternity!"
+},
+{
+"t": "ul",
+"items": [
+"Dave Chapman"
+]
+},
+{
+"t": "h2",
+"text": "Recommendation:"
+},
+{
+"t": "p",
+"html": "<strong><em>You are encouraged to get the book, Extraordinary Evangelism which is a leader’s guide to this Student Guide.</em></strong>"
+},
+{
+"t": "p",
+"html": "<strong><em>The book, Extraordinary Evangelism can be ordered online at Amazon or free on the JOApp along with a host of other resources. You can also scan the QR</em></strong>"
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "<strong><em>Code to access the book which is shown on page 37.</em></strong>"
+},
+{
+"t": "p",
+"html": "<strong><em>Starting on page 27, in the Appendix of this Study Guide you’ll find helpful resources to assist you in sharing the Gospel along with answers to fill in the</em></strong>"
+},
+{
+"t": "p",
+"html": "<strong><em>blank sections.</em></strong>"
+},
+{
+"t": "h2",
+"text": "Go to Jesusonline.com/app to download the JO App"
+},
+{
+"t": "h2",
+"text": "Questions?"
+},
+{
+"t": "h2",
+"text": "Reach out to the author of this"
+},
+{
+"t": "h2",
+"text": "Student Guide anytime:"
+},
+{
+"t": "p",
+"html": "<strong><em>Dave Chapman, 206-755-1696;</em></strong>"
+},
+{
+"t": "h2",
+"text": "Dave@Jesusonline.com"
+},
+{
+"t": "h2",
+"text": "Copyright © 2026, JesusOnlineMinistries.com"
+}
+]
+},
+{
+"slug": "session-one-our-mandate-motive",
+"title": "SESSION ONE: OUR MANDATE & MOTIVE",
+"label": null,
+"number": null,
+"pdfPage": 6,
+"blocks": [
+{
+"t": "h2",
+"text": "OBJECTIVES"
+},
+{
+"t": "ul",
+"items": [
+"Understand the biblical mandate for evangelism.",
+"Explore personal motivations for sharing the Gospel.",
+"Develop a personal action plan to live out the Great Commission."
+]
+},
+{
+"t": "h2",
+"text": "INTRODUCTION & INSPIRATION"
+},
+{
+"t": "p",
+"html": "Elon Musk of Space X and Tesla, has a relentless passion to colonize Mars in order to save humankind in the event of a nuclear war."
+},
+{
+"t": "p",
+"html": "If you are a Christian, what is your passion? Why not share—evangelize—about your passion for Jesus Christ? There is nothing more important for us to share."
+},
+{
+"t": "p",
+"html": "Regardless of your giftedness, personality, or shortcomings, God can use you to share Christ naturally and effectively."
+},
+{
+"t": "h2",
+"text": "Discussion Question:"
+},
+{
+"t": "p",
+"html": "1. In what ways have you shared your passions with others (sports, hobbies,"
+},
+{
+"t": "p",
+"html": "favorite places, etc.)?"
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "2. How does this compare to how you share your faith?"
+},
+{
+"t": "h2",
+"text": "OUR MANDATE"
+},
+{
+"t": "p",
+"html": "Jesus final words to every believer are what we call His <span class=\"rb-blank\" role=\"img\" aria-label=\"fill-in blank 1\"><sup>1</sup></span>"
+},
+{
+"t": "h2",
+"text": "Key Scripture Passages:"
+},
+{
+"t": "ul",
+"items": [
+"Luke 24:46-48",
+"Matt. 28:18-20 Evangelism is not a suggestion; it’s a <span class=\"rb-blank\" role=\"img\" aria-label=\"fill-in blank 2\"><sup>2</sup></span>",
+"Mark 16:15",
+"Acts 1:8"
+]
+},
+{
+"t": "p",
+"html": "In Luke 19:10, Jesus modeled evangelism, seeking and saving the lost."
+},
+{
+"t": "p",
+"html": "<em>“Evangelism is not a professional job for a few trained men but is instead the unrelenting responsibility of every person who belongs to the company of Jesus.”</em> – (Author and Theologian, D. Elton Trueblood)"
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "<em>“Whatever we do, we must not treat the Great Commission like it’s the Great Suggestion.”</em>"
+},
+{
+"t": "ul",
+"items": [
+"Chuck Swindoll"
+]
+},
+{
+"t": "p",
+"html": "<em>“The Great Commission is not an option to be considered; it is a command to be obeyed.”</em>"
+},
+{
+"t": "ul",
+"items": [
+"Hudson Taylor"
+]
+},
+{
+"t": "h2",
+"text": "Application:"
+},
+{
+"t": "ul",
+"items": [
+"How do these scriptures and quotes challenge your current approach to evangelism?",
+"What changes are you willing to make as a result?"
+]
+},
+{
+"t": "h2",
+"text": "OUR MOTIVE"
+},
+{
+"t": "p",
+"html": "Here Are Five Biblical Motivations to Share the Gospel:"
+},
+{
+"t": "p",
+"html": "<strong>1. Motivated by</strong> <span class=\"rb-blank\" role=\"img\" aria-label=\"fill-in blank 3\"><sup>3</sup></span> (2 Corinthians 5:14-15)"
+},
+{
+"t": "p",
+"html": "If there was a law against your sharing your faith, would there be enough evidence to convict you?"
+},
+{
+"t": "p",
+"html": "<strong>2. A Holy</strong> <span class=\"rb-blank\" role=\"img\" aria-label=\"fill-in blank 4\"><sup>4</sup></span> for God - (2 Corinthians 5:11)"
+},
+{
+"t": "p",
+"html": "<strong>3. We Are Christ’s</strong> <span class=\"rb-blank\" role=\"img\" aria-label=\"fill-in blank 5\"><sup>5</sup></span> for Christ. (2 Corinthians 5:20)"
+},
+{
+"t": "p",
+"html": "<strong>Question:</strong> What does it mean to be an ambassador for Christ?"
+},
+{
+"t": "p",
+"html": "<strong>Answer:</strong> We represent the King of the Universe to carry the good news (the Gospel) of the King, the Lord Jesus Christ, to those on earth."
+},
+{
+"t": "h2",
+"text": "Ask Yourself 2 Questions:"
+},
+{
+"t": "p",
+"html": "1. What’s the greatest thing that has happened to you?"
+},
+{
+"t": "p",
+"html": "2. What’s the greatest thing that you can do for someone else who doesn’t"
+},
+{
+"t": "p",
+"html": "know Christ?"
+},
+{
+"t": "p",
+"html": "<strong>4. The World is</strong> <span class=\"rb-blank\" role=\"img\" aria-label=\"fill-in blank 6\"><sup>6</sup></span> <strong>Without Christ</strong> (John 14:6; Acts 4:12; Matt."
+},
+{
+"t": "p",
+"html": "7:13-14)"
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "<em>If we really believe that men are lost apart from Christ, it would become a burning incentive to evangelize with zeal and passion.”</em>"
+},
+{
+"t": "ul",
+"items": [
+"Billy Graham"
+]
+},
+{
+"t": "h2",
+"text": "The two great motivators for sharing the Gospel:"
+},
+{
+"t": "ul",
+"items": [
+"God’s <span class=\"rb-blank\" role=\"img\" aria-label=\"fill-in blank 7\"><sup>7</sup></span> <span class=\"rb-blank\" role=\"img\" aria-label=\"fill-in blank 8\"><sup>8</sup></span> for those who trust in Jesus for their salvation, and",
+"The dire <span class=\"rb-blank\" role=\"img\" aria-label=\"fill-in blank 9\"><sup>9</sup></span> for those who reject God’s amazing offer of love and forgiveness."
+]
+},
+{
+"t": "p",
+"html": "<strong>5. We will Be</strong> <span class=\"rb-blank\" role=\"img\" aria-label=\"fill-in blank 10\"><sup>10</sup></span> for our Witness (Daniel 12:3;"
+},
+{
+"t": "p",
+"html": "I Thessalonians 2:19-20)"
+},
+{
+"t": "p",
+"html": "God’s plan is for … one person telling another person about the Savior!"
+},
+{
+"t": "p",
+"html": "<em>“The joy you will have when you meet that person in heaven will far exceed any discomfort you felt in sharing the gospel.”</em>"
+},
+{
+"t": "p",
+"html": "<em>“This may be your last day to choose, because there is not only a heaven, and there is not only a hell; there is a hurry.”</em>"
+},
+{
+"t": "ul",
+"items": [
+"Pastor Chuck Swindoll"
+]
+},
+{
+"t": "p",
+"html": "Time is short – John 9:4"
+},
+{
+"t": "p",
+"html": "If you had one week to live, would you be focused on reaching your loved ones to Christ?"
+},
+{
+"t": "p",
+"html": "The Lord is delaying His coming to give more people an opportunity for them to come to Christ!"
+},
+{
+"t": "h2",
+"text": "SECTION 4: PERSONAL CHALLENGE"
+},
+{
+"t": "p",
+"html": "ASSIGNMENT: Write down the names of 3 to 5 people you want to see come to Christ: • Family member: . • Friend: . • Neighbor: . • Coworker: . • Others: ."
+},
+{
+"t": "p",
+"html": "1. <span class=\"rb-blank\" role=\"img\" aria-label=\"fill-in blank\"></span>"
+},
+{
+"t": "p",
+"html": "2. <span class=\"rb-blank\" role=\"img\" aria-label=\"fill-in blank\"></span>"
+},
+{
+"t": "p",
+"html": "3. <span class=\"rb-blank\" role=\"img\" aria-label=\"fill-in blank\"></span>"
+},
+{
+"t": "p",
+"html": "4. <span class=\"rb-blank\" role=\"img\" aria-label=\"fill-in blank\"></span>"
+},
+{
+"t": "p",
+"html": "5. <span class=\"rb-blank\" role=\"img\" aria-label=\"fill-in blank\"></span>"
+},
+{
+"t": "p",
+"html": "Scripture Meditation: Read Matthew 9:35-38"
+},
+{
+"t": "p",
+"html": "Why do you think the workers are few?"
+},
+{
+"t": "p",
+"html": "What steps can you take to be a willing worker? Write down your response:"
+},
+{
+"t": "h2",
+"text": "SECTION 5: SELF-ASESSMENT"
+},
+{
+"t": "p",
+"html": "Evangelism Quiz: Circle the correct answer(s):"
+},
+{
+"t": "p",
+"html": "1. Evangelism is primarily:"
+},
+{
+"t": "p",
+"html": "a. Beating people over the head with the Bible"
+},
+{
+"t": "p",
+"html": "b. Telling people they’re going to hell"
+},
+{
+"t": "p",
+"html": "c. Encouraging people to go to church"
+},
+{
+"t": "p",
+"html": "d. Sharing the good news about Jesus’ life, death and resurrection."
+},
+{
+"t": "p",
+"html": "2. List 3 of 5 reasons why we should share the Gospel:"
+},
+{
+"t": "p",
+"html": "a. <span class=\"rb-blank\" role=\"img\" aria-label=\"fill-in blank\"></span>"
+},
+{
+"t": "p",
+"html": "b. <span class=\"rb-blank\" role=\"img\" aria-label=\"fill-in blank\"></span>"
+},
+{
+"t": "p",
+"html": "c. <span class=\"rb-blank\" role=\"img\" aria-label=\"fill-in blank\"></span>"
+},
+{
+"t": "p",
+"html": "3. List the 2 greatest motivators for evangelism:"
+},
+{
+"t": "p",
+"html": "4. Identify your evangelistic temperature at this time in your life."
+},
+{
+"t": "p",
+"html": "A 10 represents a heart and life that are sizzling hot for reaching the lost for Christ. 1 represents a heart that is cold when it comes to sharing Christ."
+},
+{
+"t": "p",
+"html": "<span class=\"rb-scale\" role=\"group\" aria-label=\"Scale from 1 to 10\"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></span>"
+},
+{
+"t": "p",
+"html": "Ice Cold"
+},
+{
+"t": "p",
+"html": "Sizzling Hot"
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "5. How can you change your evangelistic temperature by one degree?"
+},
+{
+"t": "h2",
+"text": "SESSION WRAP UP: TAKEAWAY & PRAYER"
+},
+{
+"t": "p",
+"html": "6. Reflect on your commitment."
+},
+{
+"t": "p",
+"html": "7. Close with group or personal prayer asking God to make you a faithful,"
+},
+{
+"t": "p",
+"html": "loving witness for Christ."
+}
+]
+},
+{
+"slug": "session-two-our-message",
+"title": "SESSION TWO: OUR MESSAGE",
+"label": null,
+"number": null,
+"pdfPage": 11,
+"blocks": [
+{
+"t": "p",
+"html": "Objective: Equip students to clearly understand and communicate the Good News of Jesus Christ."
+},
+{
+"t": "h2",
+"text": "1. What Is Evangelism?"
+},
+{
+"t": "p",
+"html": "Evangelism is believers <strong>telling</strong> people about <span class=\"rb-blank\" role=\"img\" aria-label=\"fill-in blank 11\"><sup>11</sup></span> for them in Jesus Christ."
+},
+{
+"t": "p",
+"html": "Luke 2:10 says, “Behold, I bring you good news of great joy, which will be for all the people.“"
+},
+{
+"t": "p",
+"html": "The word Greek words <strong>euangelion</strong> (eu=good; <strong>angelion</strong> = news). The gospel is literally <span class=\"rb-blank\" role=\"img\" aria-label=\"fill-in blank 12\"><sup>12</sup></span>"
+},
+{
+"t": "p",
+"html": "In ancient war times, a distant runner brought messages from a far-off battle to the city to let the residents know what was happening."
+},
+{
+"t": "p",
+"html": "The runners were called EVANGELISTS “those who bring good news.”"
+},
+{
+"t": "p",
+"html": "The analogy of a battlefield runner is to illustrate the urgency and importance of sharing the Gospel."
+},
+{
+"t": "p",
+"html": "Jesus’ example: Matthew 4:23 - Jesus “went throughout all Galilee … proclaiming the gospel of the kingdom…”"
+},
+{
+"t": "p",
+"html": "The gospel encompasses the <span class=\"rb-blank\" role=\"img\" aria-label=\"fill-in blank 13\"><sup>13</sup></span> of Jesus Christ."
+},
+{
+"t": "h2",
+"text": "2. The Power & Purpose of the Gospel"
+},
+{
+"t": "p",
+"html": "We’re <span class=\"rb-blank\" role=\"img\" aria-label=\"fill-in blank 14\"><sup>14</sup></span> of the Gospel."
+},
+{
+"t": "p",
+"html": "<strong>Romans 1:16 (ESV</strong>) says, “For I am not ashamed of the gospel, for it is the power of God for salvation to everyone who believes, to the Jew first and also to the Greek.”"
+},
+{
+"t": "p",
+"html": "The gospel is the only news that can change a person’s default destination from <span class=\"rb-blank\" role=\"img\" aria-label=\"fill-in blank 15\"><sup>15</sup></span><strong>.</strong>"
+},
+{
+"t": "p",
+"html": "<strong>Question:</strong> How has the Gospel impacted your own life?"
+},
+{
+"t": "p",
+"html": "The gospel contains both <strong>Good news</strong> and <strong>Bad news.</strong>"
+},
+{
+"t": "h2",
+"text": "3. The Bad News:"
+},
+{
+"t": "p",
+"html": "Romans 3:10 – “None is righteous, no, not one.”"
+},
+{
+"t": "p",
+"html": "James 2:10 – “For whoever keeps the whole law but fails in one point has become guilty of all of it.”"
+},
+{
+"t": "p",
+"html": "Matthew 5:48 – God desires that we reflect His character."
+},
+{
+"t": "p",
+"html": "“You therefore must be perfect, as your heavenly Father is perfect.”"
+},
+{
+"t": "h2",
+"text": "4. The Good News: Jesus Saves!"
+},
+{
+"t": "p",
+"html": "John 3:16 is the most famous verse in the Bible."
+},
+{
+"t": "p",
+"html": "“For God so loved the world, that he gave his only Son, that whoever believes in him should not perish but have eternal life.”"
+},
+{
+"t": "p",
+"html": "God offers us amazing grace!"
+},
+{
+"t": "p",
+"html": "An acronym for grace is = <span class=\"rb-blank\" role=\"img\" aria-label=\"fill-in blank 16\"><sup>16</sup></span>"
+},
+{
+"t": "p",
+"html": "Pastor John MacArthur said the greatest verse in the Bible on the gospel is 2 Corinthians 5:21 which says,"
+},
+{
+"t": "p",
+"html": "“He made Him who knew no sin to be sin on our behalf, so that we might become the righteousness of God in Him.”"
+},
+{
+"t": "p",
+"html": "We deserve judgment. We deserve hell. But Jesus in His infinite love and mercy paid our sins’ debt by dying on the cross in our place. Our sin and guilt were charged to Christ and through faith in Christ’s atoning sacrifice, Christ’s righteousness is credited to us. Now we can stand before God sinless, just as Jesus is sinless."
+},
+{
+"t": "p",
+"html": "Why is it important to share the “bad news” of the gospel?"
+},
+{
+"t": "p",
+"html": "Answer: Most people think that they are a pretty good person."
+},
+{
+"t": "p",
+"html": "A 2003 Barna survey showed that most Americans do not expect to experience hell first-hand, and just half of 1 percent expect to go to hell upon their death."
+},
+{
+"t": "p",
+"html": "Repentance and Faith are key requirements for true saving faith- Acts 3:19; Mark 1:15."
+},
+{
+"t": "p",
+"html": "<strong>What is repentance?</strong> Repentance involves <strong>turning</strong> from your sin and <strong>turning</strong> to God in faith for forgiveness with a sincere desire to follow the Lord."
+},
+{
+"t": "h2",
+"text": "5. Jesus’ Mission"
+},
+{
+"t": "p",
+"html": "Luke 19:10 – To seek and save the lost. “For the son of man has come to seek and to save that which was lost” (Luke 19:10 (ESV)."
+},
+{
+"t": "p",
+"html": "2 Peter 3:9 – “The Lord is not slow about His promise, as some count slowness, but is patient toward you, not wishing for any to perish but for all to come to repentance.”"
+},
+{
+"t": "h2",
+"text": "6. The ________ (17) – Why Christians Don’t Witness"
+},
+{
+"t": "h2",
+"text": "• Fear of ________ (18) & What Others Will Think of Us."
+},
+{
+"t": "p",
+"html": "They think that they will look stupid, or they are afraid of being labeled as a religious zealot or weirdo."
+},
+{
+"t": "h2",
+"text": "• Fear of ________ (19)"
+},
+{
+"t": "p",
+"html": "I Peter 3:15 - “But sanctify Christ as Lord in your hearts, always being ready to make a defense to everyone who asks you to give an account for the hope that is in you, yet with gentleness and reverence.”"
+},
+{
+"t": "h2",
+"text": "• If you don’t know the answer to a question –"
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "Say: “That’s a good question. “I’ll see what I can find out and let’s have coffee to discuss.”"
+},
+{
+"t": "ul",
+"items": [
+"Consider asking your Pastor or an Elder at your church the answer to their question.",
+"Find great answers to questions on the web such as: Y-Jesus.com; or Gotquesions.org"
+]
+},
+{
+"t": "p",
+"html": "Assignment: Rank your top fears about sharing the Gospel (rank in order):"
+},
+{
+"t": "p",
+"html": "<span class=\"rb-blank\" role=\"img\" aria-label=\"fill-in blank\"></span> Don’t know enough"
+},
+{
+"t": "p",
+"html": "<span class=\"rb-blank\" role=\"img\" aria-label=\"fill-in blank\"></span> Fear of rejection"
+},
+{
+"t": "p",
+"html": "<span class=\"rb-blank\" role=\"img\" aria-label=\"fill-in blank\"></span> Don’t have answers to tough questions"
+},
+{
+"t": "p",
+"html": "<span class=\"rb-blank\" role=\"img\" aria-label=\"fill-in blank\"></span> Fear of messing it up"
+},
+{
+"t": "p",
+"html": "<span class=\"rb-blank\" role=\"img\" aria-label=\"fill-in blank\"></span> Other: <span class=\"rb-blank\" role=\"img\" aria-label=\"fill-in blank\"></span>"
+},
+{
+"t": "h2",
+"text": "What Should Our Response to Fear Be?"
+},
+{
+"t": "h2",
+"text": "1. Jesus’ ________ (20)"
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "Three times Jesus told them, “Do not fear” (Mt. 10, 26, 28, 31)."
+},
+{
+"t": "h2",
+"text": "2. Jesus’ ________ (21) Overcomes our fear."
+},
+{
+"t": "quote",
+"kind": "scripture",
+"html": "In the Great Commission, Jesus told his disciples “…Lo, I am with your always, even to the end of the age.” Matthew 28:20."
+},
+{
+"t": "h2",
+"text": "3. The Power of the ________ (22)"
+},
+{
+"t": "p",
+"html": "The great apostle Paul said,"
+},
+{
+"t": "p",
+"html": "“I came to you in weakness and great fear and trembling. My message and my preaching were not with wise and persuasive words, but with a demonstration of the Spirit’s power, so that your faith might not rest on human wisdom, but on God’s power” (I Corinthians 2:3-5 NIV)."
+},
+{
+"t": "h2",
+"text": "What is Successful Witnessing?"
+},
+{
+"t": "p",
+"html": "“Successful Witnessing is simply <strong>taking the initiative</strong> to share Christ in the power of the <strong>Holy Spirit</strong> and leaving the <strong>results</strong> with God.”"
+},
+{
+"t": "h2",
+"text": "Quote to Discuss:"
+},
+{
+"t": "p",
+"html": "<em>“How much do you have to hate somebody to believe that everlasting life is possible and not tell them that?”</em>"
+},
+{
+"t": "ul",
+"items": [
+"Penn Jillette (Atheist)"
+]
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "<em>“I like my way of doing evangelism better than your way of not doing it.”</em>"
+},
+{
+"t": "ul",
+"items": [
+"D.L. Moody, 19th century evangelist."
+]
+},
+{
+"t": "h2",
+"text": "Challenge Question:"
+},
+{
+"t": "p",
+"html": "Ask “What’s stopping you from sharing today?”"
+},
+{
+"t": "p",
+"html": "<em>“God might take this seemingly routine day and surprise me with an opportunity to tell someone about the good news that has the power to turn their life inside out. . .. Our role is this: to be ready and willing—because God is always able.”</em>"
+},
+{
+"t": "ul",
+"items": [
+"Lee Strobel, The Unexpected Adventure."
+]
+},
+{
+"t": "h2",
+"text": "Assignments for Students:"
+},
+{
+"t": "ul",
+"items": [
+"Memorize John 3:16 and share it with someone this week by asking: “Do you know what the most famous promise is in the Bible? Ask them their name and put their name in this verse. “For God so loved <span class=\"rb-blank\" role=\"img\" aria-label=\"fill-in blank\"></span> that He gave His one and"
+]
+},
+{
+"t": "p",
+"html": "only son, that if <span class=\"rb-blank\" role=\"img\" aria-label=\"fill-in blank\"></span> believes in Him,"
+},
+{
+"t": "p",
+"html": "<span class=\"rb-blank\" role=\"img\" aria-label=\"fill-in blank\"></span> will not perish (go to Hell),"
+},
+{
+"t": "p",
+"html": "<span class=\"rb-blank\" role=\"img\" aria-label=\"fill-in blank\"></span> but will have eternal life.”"
+},
+{
+"t": "p",
+"html": "(John 3:16)"
+},
+{
+"t": "p",
+"html": "(their name here)"
+},
+{
+"t": "p",
+"html": "(their name here)"
+},
+{
+"t": "p",
+"html": "(their name here)"
+},
+{
+"t": "p",
+"html": "(their name here)"
+},
+{
+"t": "ul",
+"items": [
+"Ask Someone This Week: “Can I share something that changed my life?”"
+]
+},
+{
+"t": "h2",
+"text": "ASSIGNMENTS FOR THIS SESSION:"
+},
+{
+"t": "p",
+"html": "1. In the Appendix on page 34, write out your personal testimony so that you"
+},
+{
+"t": "p",
+"html": "can share it with others.”"
+},
+{
+"t": "p",
+"html": "2. Ask someone this week: “Has anyone ever taken the time to show you how"
+},
+{
+"t": "p",
+"html": "you can know God personally? May I? “"
+},
+{
+"t": "p",
+"html": "3. Then share the gospel with them using a gospel tract or having them"
+},
+{
+"t": "p",
+"html": "read some scriptures out loud with you (put these verses on your mobile device) Such as: John 3:16; Romans 3:10, 23; Romans 5:8; Ephesians 2:8-9; John 14:6 Romans 6:23; John 1:12; Revelation 3:20."
+}
+]
+},
+{
+"slug": "session-three-our-means-manner",
+"title": "SESSION THREE: OUR MEANS & MANNER",
+"label": null,
+"number": null,
+"pdfPage": 16,
+"blocks": [
+{
+"t": "p",
+"html": "God has given each one <strong>3 great power sources</strong> for witnessing:"
+},
+{
+"t": "h2",
+"text": "Power Source #1: ________ (23)"
+},
+{
+"t": "p",
+"html": "The Holy Spirit enables us to share the good news."
+},
+{
+"t": "p",
+"html": "1 Corinthians 2:4 (NKJV), “My message and preaching was not in persuasive words of wisdom, but in demonstration of the Spirit and of power.”"
+},
+{
+"t": "p",
+"html": "<em>“It is Christ himself, living within you in all of his resurrection power … speaking with your lips – who will empower you with the Holy Spirit. First-century Christians … controlled and empowered by the Holy Spirit … turned the world upside down…. This same omnipotent power, the power of the Holy Spirit is available to you to enable you to live a …fruitful life for Jesus.”</em>"
+},
+{
+"t": "ul",
+"items": [
+"Dr. Bill Bright, former President of Campus Crusade for Christ."
+]
+},
+{
+"t": "p",
+"html": "“And do not get drunk with wine, for that is dissipation, but be filled with the Spirit.” Ephesians 5:18"
+},
+{
+"t": "p",
+"html": "Ask the Lord to <strong>Fill You</strong> with the Holy Spirit as you share Christ with others, whether they are a neighbor, a relative, a coworker, or a friend."
+},
+{
+"t": "h2",
+"text": "Power Source #2: ________ (24)"
+},
+{
+"t": "p",
+"html": "Someone once said, “When we work, we work, but when we pray, God works.” Without prayer, evangelism is impotent."
+},
+{
+"t": "p",
+"html": "Prayer is an act of humility that aligns our hearts with God’s heart to open blind eyes and deaf ears to the Gospel."
+},
+{
+"t": "p",
+"html": "What should we pray for?"
+},
+{
+"t": "h2",
+"text": "1. Pray to Have a ________ (25) for the Lost."
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "Ask the Lord to forgive you for being apathetic toward the lost."
+},
+{
+"t": "p",
+"html": "Ask the Lord, “Lord, please forgive me, and give me a heart for those who don’t know You.” Trust the Lord and step out in faith as you look for divine appointments."
+},
+{
+"t": "p",
+"html": "The disciples Peter and John prayed: “Now, Lord, consider their threats and enable your servants to speak your word with great boldness.”"
+},
+{
+"t": "ul",
+"items": [
+"Acts 4:29"
+]
+},
+{
+"t": "h2",
+"text": "2. Pray for ________ (26)"
+},
+{
+"t": "p",
+"html": "The Apostle Paul, said in Ephesians 6:19: “And pray on my behalf, that utterance may be given to me in the opening of my mouth, to make known with boldness the mystery of the gospel . . . that . . . I may speak boldly, as I ought to speak.” Cf. Acts 4:29; I Timothy 1:7."
+},
+{
+"t": "h2",
+"text": "3. Pray for ________ (27) and ________ (28)"
+},
+{
+"t": "p",
+"html": "Read Colossians 4:3 (NKJV), “Meanwhile praying also for us, that God would open to us a door for the word.”"
+},
+{
+"t": "p",
+"html": "Open doors are divine opportunities bathed in prayer that produce fruit."
+},
+{
+"t": "p",
+"html": "Read: Acts 18:9-10"
+},
+{
+"t": "h2",
+"text": "4. Pray that Spiritual Eyes and Hearts will be ________ (29) to"
+},
+{
+"t": "h2",
+"text": "the Gospel"
+},
+{
+"t": "p",
+"html": "“And even if our gospel is veiled, it is veiled to those who are perishing, in whose case the god of this world has blinded the minds of the unbelieving so that they might not see the light of the gospel of the glory of Christ, who is the image of God” (2 Corinthians 4:3–4)."
+},
+{
+"t": "p",
+"html": "Satan’s main goal is to keep people locked in darkness and take as many people to hell as possible. (2 Timothy 2:25–26)."
+},
+{
+"t": "p",
+"html": "<strong>Ask a non-Christian if you can pray for them.</strong>"
+},
+{
+"t": "p",
+"html": "When you pray for them, use common language, lift up their needs and joys and pray in Jesus’s name, and stay in touch."
+},
+{
+"t": "h2",
+"text": "5. Pray That Satan Would Be ________ (30) from Stealing the"
+},
+{
+"t": "h2",
+"text": "Seed of the Gospel."
+},
+{
+"t": "p",
+"html": "Ephesians 6:10–13 says we are engaged in a great spiritual battle. See also 2 Corinthians 10:3–4; Matthew 13:19; Acts 26:18."
+},
+{
+"t": "p",
+"html": "<strong>Develop a system for prayer for your family.</strong>"
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "Pray for Men and Women to join God’s Harvest."
+},
+{
+"t": "p",
+"html": "Jesus said: “The harvest is plentiful, but the laborers are few: therefore, pray earnestly to the Lord of the harvest to send out laborers into his harvest” (Matthew 9:37–38 ESV)."
+},
+{
+"t": "p",
+"html": "Pray that your family, friends, coworkers, and neighbors will be open to the gospel."
+},
+{
+"t": "h2",
+"text": "Power Source # 3: ________ (31)"
+},
+{
+"t": "p",
+"html": "There are two things in this world that are eternal:"
+},
+{
+"t": "p",
+"html": "<strong>People</strong> and God’s <strong>Word.</strong>"
+},
+{
+"t": "p",
+"html": "Hebrews 4:12; Isaiah 55:11 speaks about the power of God’s Word."
+},
+{
+"t": "p",
+"html": "Scripture Memory will give you confidence in sharing your faith. (See also I Peter 1:23)."
+},
+{
+"t": "p",
+"html": "Pastor Dudley Rutherford, author of Compelled, states, “When you repeat important verses, they will be stored in your long-term memory just like the lyrics of your favorite songs.”"
+},
+{
+"t": "p",
+"html": "Here’s some key verses to memorize in sharing the Gospel with others:"
+},
+{
+"t": "ul",
+"items": [
+"<strong>• Romans 3:23 (ESV):</strong> “For all have sinned and fall short of the glory of God.”",
+"<strong>• Romans 5:8 (ESV):</strong> “But God shows his love for us in that while we were still sinners, Christ died for us.”",
+"<strong>• Romans 6:23 (ESV):</strong> “For the wages of sin is death, but the free gift of God is eternal life in Christ Jesus our Lord.”",
+"<strong>• John 3:3 (ESV):</strong> Jesus said: “Truly, truly, I say to you, unless one is born again, he cannot see the kingdom of God.”",
+"<strong>• John 14:6 (ESV):</strong> “Jesus said to him, “I am the way, and the truth, and the life. No one comes to the Father except through me.’”",
+"<strong>• Romans 10:9-10 (ESV):</strong> “If you confess with your mouth that Jesus is Lord and believe in your heart that God raised him from the dead, you will be saved.”",
+"<strong>• John 3:16 (ESV):</strong> “For God so loved the world, that He gave His only begotten Son, that whoever believes in Him shall not perish, but have eternal life.”",
+"<strong>• Revelation 3:30 (ESV):</strong> “Behold, I stand at the door and knock. If anyone hears my voice opens the door, I will come into him and eat with him and he with Me.”",
+"<strong>• John 1:12 (ESV):</strong> “But to all who did receive him, who believed in his name, he gave the right to become children of God”",
+"<strong>• Ephesians 2:8-9 (ESV</strong>): “For by grace you have been saved through faith; and this is not of yourselves, it is the gift of God; not a result of works, so that no one may boast.”",
+"<strong>• 2 Corinthians 5:15 (ESV):</strong> Those who live might no longer live for themselves but for Him…”",
+"<strong>• I John 5:11-12 (ESV):</strong> “And this is the testimony, that God gave us eternal life, and this is in his Son. Whoever has the Son has life; whoever does not have the Son of God does not have life.”"
+]
+},
+{
+"t": "h2",
+"text": "OUR MANNER"
+},
+{
+"t": "h2",
+"text": "1. ________ (32) and ________ (33)"
+},
+{
+"t": "p",
+"html": "We should be humble because Jesus was humble (Philip. 2:8). We should be humble because we don’t deserve the gift of Heaven."
+},
+{
+"t": "h2",
+"text": "2. Communicate the Message of ________ (34)"
+},
+{
+"t": "p",
+"html": "<strong>2 Corinthians 5:14 (NIV)</strong> says, “The love of Christ compels us.”"
+},
+{
+"t": "p",
+"html": "Our love for Christ should move us to share the gospel with others. People need to know that God loves them (John 3:16; Romans 5:8; Romans 10:14)."
+},
+{
+"t": "p",
+"html": "Jesus said “…let your light shine before others, so that they may see your good works and give glory to your Father who is in heaven.” Matthew 5:16."
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "<em>“I am convinced that the greatest act of love we can ever perform for people is to tell them about God’s love for them in Christ.”</em>"
+},
+{
+"t": "ul",
+"items": [
+"Billy Graham"
+]
+},
+{
+"t": "h2",
+"text": "3. Show an Interest in People’s ________ (35) for the Gospel."
+},
+{
+"t": "p",
+"html": "Ask yourself, “How might I extend the love of God and the grace of Jesus in this situation and impact others with the gospel?”"
+},
+{
+"t": "p",
+"html": "<strong>Be a good Listener</strong>."
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "James wrote, “Be quick to hear, slow to speak” (James1:19)"
+},
+{
+"t": "p",
+"html": "Listening shows that you care."
+},
+{
+"t": "p",
+"html": "People are more inclined to listen to us and share our beliefs if we listen to them."
+},
+{
+"t": "h2",
+"text": "4. Be ________ (36) and ________ (37)"
+},
+{
+"t": "p",
+"html": "Share with others as you would have wanted to be shared with before you came to Christ."
+},
+{
+"t": "p",
+"html": "<strong>Colossians 4:6 (ESV)</strong>: “Let your speech always be gracious, seasoned with salt, so that you may know how you ought to answer each person.”"
+},
+{
+"t": "h2",
+"text": "5. Talk about ________ (38)"
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "Paul said in I Corinthians 2:3 “For I decided to know nothing among you except Jesus Christ and him crucified.”"
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "In Andy Bannister’s book <em>How to Talk About Jesus Without Looking Like An Idiot</em>, he suggests a helpful tool is to offer a natural way to bringing a conversation back to Jesus by saying something like:"
+},
+{
+"t": "ul",
+"items": [
+"That reminds me of something Jesus <strong>SAID</strong>.",
+"That reminds me of something Jesus <strong>DID</strong>.",
+"That reminds me of a STORY JESUS <strong>TOLD</strong>."
+]
+},
+{
+"t": "p",
+"html": "Paul Little in his book How to Give Away Your Faith suggests, “In presenting the claims of Christ, it is helpful to use the words of Jesus where possible.”"
+},
+{
+"t": "h2",
+"text": "6. Be Yourself, and ________ (39)"
+},
+{
+"t": "p",
+"html": "You don’t need a script to share Christ. Keep it simple and trust the Lord for the results."
+},
+{
+"t": "h2",
+"text": "ASSIGNMENT FOR THIS SESSION"
+},
+{
+"t": "p",
+"html": "Look for opportunities this week to reflect the love of Christ with (Matthew 5:16) “Let your light shine before others” such as -"
+},
+{
+"t": "ul",
+"items": [
+"Help someone without being asked.",
+"Treat a coworker or neighbor to coffee or lunch.",
+"Speak works of encouragement or life to someone."
+]
+}
+]
+},
+{
+"slug": "session-four-our-method",
+"title": "SESSION FOUR: OUR METHOD",
+"label": null,
+"number": null,
+"pdfPage": 22,
+"blocks": [
+{
+"t": "p",
+"html": "There are many methods in sharing one’s faith. God wants to use your unique personality to share the Gospel."
+},
+{
+"t": "p",
+"html": "There are often many mini steps a person takes before receiving Christ as illustrated by the <strong>ENGEL SCALE</strong>."
+},
+{
+"t": "figure",
+"src": "/books/extraordinary-evangelism-student-guide/read/img/p022-9-a3a9b09c23.jpg",
+"alt": "Diagram, the Engel Scale. A large arrow labelled Process Evangelism points upward; at the top: Many more post-conversion steps are needed for spiritual maturity, and the heading A New Disciple Is Born. Two columns follow. Our Role (printed vertically beside the steps): Be a Friend and Be Available; Demonstrate God's Love and Power; Explain Practically; Persuade. Seeker's Condition, numbered from the top: 1. Asking forgiveness of sin and having faith in God. 2. Challenge and decision to act. 3. Awareness of his or her need for God. 4. Positive attitude toward Christianity. 5. Grasps the cost to be a Christian. 6. Awareness of the basic facts of Christianity. 7. Interest in Christianity. 8. Initial awareness of Christianity. 9. No effective knowledge of Christianity. 10. Awareness of spirituality. 11. No belief or interest in spirituality.",
+"width": 1060,
+"height": 800,
+"pdfPage": 22,
+"wide": true,
+"vector": true
+},
+{
+"t": "p",
+"html": "Witnessing is simply <strong>SOWING THE SEEDS</strong> of the gospel and the amount of the harvest is directly proportional to the amount of seed that is scattered – 2 Cor. 9:6; John 4:36-38."
+},
+{
+"t": "p",
+"html": "Jesus tells the parable to the <strong>SOWER</strong> to show various responses to the gospel."
+},
+{
+"t": "ul",
+"items": [
+"Matthew 13:1– 23; Mark 4:1–34; Luke 8:4–18)."
+]
+},
+{
+"t": "table",
+"head": [
+"Hard soil",
+"Shallow soil",
+"Infested soil",
+"Good soil"
+],
+"rows": [
+[
+"Seed snatched away",
+"Seed grows, withers; no deep roots",
+"Seed crowded out",
+"Seed produces bountiful harvest"
+]
+],
+"rowHeaders": false,
+"caption": "RESPONSES OF THE HEART TO THE SEED OF GOD’S WORD"
+},
+{
+"t": "p",
+"html": "“And the one on whom seed was sown on the good soil, this is the man who hears the word and understands it, who indeed bears fruit and brings forth, some a hundredfold, some sixty, and some thirty” (Matthew 13:23)."
+},
+{
+"t": "h2",
+"text": "ASSIGNMENT FOR THIS WEEK (You Choose): Share the Gospel this week by asking them either:"
+},
+{
+"t": "ul",
+"items": [
+"“Has anyone ever shared with you how you can be sure of going to Heaven—and may I share this with you?” – Or",
+"“Do you know what the most famous promise is in the Bible?” Most likely, they will not know. Ask them if you could share this with them. – Or",
+"“Could I share with you how a personal relationship with God is possible and how you can be sure of going to Heaven?”",
+"Ask them to take the Community Survey: “Our church is conducting a mini six (6) question survey. May I get you opinion to 6 questions?”",
+"See page 38 for the 6 Question Community Survey"
+]
+},
+{
+"t": "h2",
+"text": "ASKING QUESTIONS FOR GOSPEL CONVERSATIONS"
+},
+{
+"t": "p",
+"html": "Every day we have conversations about things such as sports, hobbies, health, diets, politics, finances, weather, shopping, family, children, pets – you name it. Questions help you to find out where they are at on their spiritual journey."
+},
+{
+"t": "h2",
+"text": "General Questions for Spiritual Conversations"
+},
+{
+"t": "ul",
+"items": [
+"How’s your day going?",
+"Do you have any kind of spiritual belief – or do you have any kind of faith background – or do you go to church anywhere?",
+"Do you believe that God exists and that you can know Him personally?",
+"Have you ever read the Bible? What do you think the main theme of the Bible is?",
+"Do you know what the most famous promise is in the Bible?",
+"To you, who is Jesus?",
+"When you and I leave this planet, what do you think is on the other side?",
+"Do you think that there is a heaven or hell?",
+"Has anyone ever taken the time to explain how a personal relationship with God is possible? May I?",
+"Could you read this verse (out loud) and tell me what it means to you."
+]
+},
+{
+"t": "h2",
+"text": "Questions Relating to Heaven:"
+},
+{
+"t": "ul",
+"items": [
+"Have you come to the place in your spiritual life that if you were to die today, would you go to Heaven?",
+"What do you think are the general entrance requirements into Heaven?",
+"On a scale of 1 to 100, how would you rate your certainty of going to Heaven?",
+"If you were to die tonight and God were to ask you, “Why should I let you into heaven?” What would you say to God?"
+]
+},
+{
+"t": "h2",
+"text": "Questions When Presenting the Gospel?"
+},
+{
+"t": "ul",
+"items": [
+"If what you believe is not true, would you want to know?",
+"What do you think it would take for you to receive Christ and to follow Him?"
+]
+},
+{
+"t": "p",
+"html": "Application: Write down 5–7 questions on a 3” x 5” card or on your mobile device so you can review it for an entry way into the gospel."
+},
+{
+"t": "p",
+"html": "Based on where they are at spiritually, you could ask:"
+},
+{
+"t": "ul",
+"items": [
+"Does this make sense to you?",
+"If they are ready to receive Christ, review what a commitment to Christ means such as:",
+"Do they understand that they have sinned and want forgiveness for their sins?",
+"Do they believe that Jesus is God, died on the cross for their sins and rose from the dead?",
+"Are you ready right now to repent of your sin and to receive Jesus as your Savior and Lord?"
+]
+},
+{
+"t": "h2",
+"text": "If they are not yet ready to receive Christ, you may ask them:"
+},
+{
+"t": "ul",
+"items": [
+"Why do you feel that you are not ready to receive Christ?",
+"What would it take for you to be ready to receive Christ?"
+]
+},
+{
+"t": "p",
+"html": "NOTE: When a person understands the gospel and makes a commitment to receive Christ into their life, you should review with them the promises of God such as: John 1:12, Revelation 3:20; John 3:16, I John 5:11-13; 2 Corinthians 5:17 – 21, John 10:27-30, etc."
+},
+{
+"t": "p",
+"html": "<span class=\"rb-blank\" role=\"img\" aria-label=\"fill-in blank 40\"><sup>40</sup></span> is important and here are some ways to follow up a new believer:"
+},
+{
+"t": "ul",
+"items": [
+"If possible, set up another time to meet with them.",
+"Invite them to your church and introduce them to other believers.",
+"Give them a new believer’s Bible.",
+"Encourage them to get baptized.",
+"Encourage them to join a home Bible study.",
+"Show them the JO App that has great resources for Christian growth."
+]
+},
+{
+"t": "h2",
+"text": "A SIMPLE WAY TO SHARE THE GOSPEL"
+},
+{
+"t": "p",
+"html": "The book, Extraordinary Evangelism, presents several effective ways to share the Gospel. One simple and powerful approach is rooted in John 3:16."
+},
+{
+"t": "p",
+"html": "John 3:16 has been dubbed “the Hope Diamond of the Bible.” It’s the Gospel in miniature. Every believer should know this verse."
+},
+{
+"t": "p",
+"html": "“For God so loved the world that He gave His one and only Son that whoever believes in Him shall not perish but have eternal life.”"
+},
+{
+"t": "p",
+"html": "You can go to jesusonline.com/app and download their free JOApp that has this gospel tract and others also."
+},
+{
+"t": "p",
+"html": "Here’s four simple points when sharing the gospel using John 3:16."
+},
+{
+"t": "figure",
+"src": "/books/extraordinary-evangelism-student-guide/read/img/p026-0-d1ef695dc3.jpg",
+"alt": "Cover of John 3:16, the most amazing promise in the Bible",
+"width": 544,
+"height": 787,
+"pdfPage": 26,
+"wide": false
+}
+]
+},
+{
+"slug": "4-simple-points-using-john-3-16",
+"title": "4 SIMPLE POINTS USING JOHN 3:16",
+"label": null,
+"number": null,
+"pdfPage": 27,
+"blocks": [
+{
+"t": "h2",
+"text": "GOD LOVES"
+},
+{
+"t": "h2",
+"text": "(“For God so loved the world”)"
+},
+{
+"t": "h2",
+"text": "God’s Love is Infinite!"
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "Have you ever felt like no one cares about you or you are unworthy of being loved?"
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "Good News! God loves you infinitely no matter who you are. No person will ever love you more than God loves you!"
+},
+{
+"t": "p",
+"html": "<em>“God is love.” I John 4:8</em>"
+},
+{
+"t": "h2",
+"text": "God’s Love is Forever!"
+},
+{
+"t": "quote",
+"kind": "scripture",
+"html": "Human love from imperfect beings will often fail you but God’s love is forever. <em>“I have loved you with an everlasting love.” Jeremiah 31:3 NIV</em>"
+},
+{
+"t": "h2",
+"text": "God’s Love is Unfathomable!"
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "Just as the Universe is unfathomable, so God’s love for you is unfathomable!"
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "The greatness of God’s love is seen in the greatness of the sacrifice that He gave …"
+},
+{
+"t": "h2",
+"text": "GOD GAVE"
+},
+{
+"t": "h2",
+"text": "(“His one and only Son”)"
+},
+{
+"t": "p",
+"html": "The holy, almighty Creator of the Universe was willing to leave His throne room in Heaven and die a horrific death on the cross in our place for your sins and mine. <em>John 10:18; Luke 9:22</em>"
+},
+{
+"t": "p",
+"html": "<em>“But God demonstrates his own love for us in this: While we were still sinners, Christ died for us.” Romans 5:8</em>"
+},
+{
+"t": "p",
+"html": "Jesus said, <em>“Greater love has no one than this, than to lay down one’s life for his friends” John 15:13,NKJV.</em>"
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "<strong>The Great Exchange</strong> – As Jesus was dying on the Cross, he said: <strong><em>“It is finished”</em></strong> (τετέλεσται) meaning <strong><em>“paid in full.”</em></strong> Jesus paid in full our sin debt on the cross. Christ’s righteousness is credited to us. Now we can stand before God sinless, just as Jesus is sinless."
+},
+{
+"t": "p",
+"html": "Author Randy Alcorn wrote: “God … so much wants us not to go to hell that he paid a horrible price on the cross so that we wouldn’t have to.”"
+},
+{
+"t": "h2",
+"text": "IF YOU BELIEVE"
+},
+{
+"t": "h2",
+"text": "(“That whoever believes in Him”)"
+},
+{
+"t": "quote",
+"kind": "scripture",
+"html": "What do you need to believe in order to have a right relationship with God and receive eternal life? Jesus said, <em>“I am the Way, the Truth and the Life: no one comes to the Father but through Me.” John 14:6.</em>"
+},
+{
+"t": "h2",
+"text": "Here are the “A,B,C”s of True Faith"
+},
+{
+"t": "quote",
+"kind": "scripture",
+"html": "<strong>Admit.</strong> Do you believe that you have sinned before God and need His forgiveness. <em>“For all have sinned and fall short of the glory of God.” Romans 3:23</em>"
+},
+{
+"t": "p",
+"html": "<strong>Believe.</strong> Do you believe that Jesus Christ is God and rose from the dead? <em>“If you confess with your mouth that ‘Jesus is Lord,’ and believe in your heart that God raised him from the dead, you will be saved.” Romans 10:9, John 11:25-26</em>"
+},
+{
+"t": "quote",
+"kind": "scripture",
+"html": "<strong>Choose.</strong> Are you ready by faith to receive Christ and to follow Him. <em>“But to all who did receive Him, who believed in his name, He gave the right to become children of God.” John 1:12</em>"
+},
+{
+"t": "h2",
+"text": "Admit + Believe + Choose = Become a child of God"
+},
+{
+"t": "h2",
+"text": "YOU WILL LIVE"
+},
+{
+"t": "h2",
+"text": "(“Shall not perish but have eternal life”)"
+},
+{
+"t": "quote",
+"kind": "scripture",
+"html": "<strong>Heaven’s Gate:</strong> <em>“…small is the gate and narrow the way that leads to life, and only a few find it” Matt. 7:14</em>"
+},
+{
+"t": "h2",
+"text": "Great News – HEAVEN is a FREE GIFT"
+},
+{
+"t": "p",
+"html": "Heaven is not something we earn, but an incredible gift we are offered. <em>“For it is by grace you have been saved, through faith—and this is not from yourselves, it is the gift of God—not by works, so that no one can boast” Eph. 2:8–9, NIV.</em>"
+},
+{
+"t": "p",
+"html": "<em>“The wages of sin is death, but the</em> <strong><em>free gift</em></strong> <em>of God is eternal life in Jesus Christ our Lord.” Romans 6:23</em>"
+},
+{
+"t": "p",
+"html": "Will you choose to accept God’s amazing offer of forgiveness and eternal life? If you have never invited Jesus into your life, you can simply pray the following words."
+},
+{
+"t": "p",
+"html": "“Dear Lord Jesus, thank you for dying for all my sins—past, present, and future. Thank you for giving me eternal life, which you made possible by your death and resurrection. I receive you as my Savior by faith, and desire you to be Lord of my life. Make me into the kind of person you want me to be.” I pray this in Jesus name, Amen!"
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "<em>If this prayer expresses the desire of your heart, I invite you pray this prayer right now.</em>"
+},
+{
+"t": "h2",
+"text": "IF YOU PRAYED TO RECEIVE CHRIST"
+},
+{
+"t": "ul",
+"items": [
+"You received His <strong>Pardon</strong> from sin (Colossians 1:27).",
+"You received His <strong>Purpose</strong> for living (John 10:10).",
+"You received His <strong>Peace</strong> to life (John 16:33).",
+"You received His <strong>Power</strong> to live the Christian life (Eph. 3:20).",
+"You received an eternal <strong>Place</strong> in Heaven as a Gift (Romans 6:23)"
+]
+},
+{
+"t": "h2",
+"text": "30 Second Example Using John 3:16"
+},
+{
+"t": "p",
+"html": "“The Bible says in John 3:16, “For God so loved the world that He gave His one and only Son, that whoever believes in Him will not perish but have eternal life.”"
+},
+{
+"t": "p",
+"html": "That means God loves you so much that He sent Jesus to take the punishment for your sins by dying on the cross. If you believe and trust in Him, you’re forgiven and given eternal life with God – not because of what you’ve done, but because of what Jesus did for you.”"
+},
+{
+"t": "h2",
+"text": "10 Second Example Using John 3:16"
+},
+{
+"t": "p",
+"html": "You might say: “God loves you so much that He sent Jesus to die for your sins, and if you trust in Him, you’ll have eternal life.”"
+},
+{
+"t": "h2",
+"text": "ASSIGNMENT FOR THIS SESSION"
+},
+{
+"t": "p",
+"html": "Look for an opportunity to share John 3:16 this week with someone"
+},
+{
+"t": "ul",
+"items": [
+"“For God so loved <span class=\"rb-blank\" role=\"img\" aria-label=\"fill-in blank\"></span> that He gave His one and"
+]
+},
+{
+"t": "p",
+"html": "only son, that if <span class=\"rb-blank\" role=\"img\" aria-label=\"fill-in blank\"></span> believes in Him,"
+},
+{
+"t": "p",
+"html": "<span class=\"rb-blank\" role=\"img\" aria-label=\"fill-in blank\"></span> will not perish (go to Hell),"
+},
+{
+"t": "p",
+"html": "<span class=\"rb-blank\" role=\"img\" aria-label=\"fill-in blank\"></span> but will have eternal life.”"
+},
+{
+"t": "p",
+"html": "(John 3:16)"
+},
+{
+"t": "p",
+"html": "(their name here)"
+},
+{
+"t": "p",
+"html": "(their name here)"
+},
+{
+"t": "p",
+"html": "(their name here)"
+},
+{
+"t": "p",
+"html": "(their name here)"
+}
+]
+},
+{
+"slug": "appendix-a",
+"title": "APPENDIX A",
+"label": null,
+"number": null,
+"pdfPage": 32,
+"blocks": [
+{
+"t": "h2",
+"text": "ANSWERING SPECIFIC OBJECTIONS"
+},
+{
+"t": "p",
+"html": "Most of the following are abbreviated answers from Extraordinary Evangelism by Dave Chapman."
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "1. <strong>I’m an atheist; I don’t believe in God.</strong> Answer: Acronym: CAUSE."
+},
+{
+"t": "p",
+"html": "<strong>C</strong>-CAUSE: Everything that exists has a cause. If you can’t believe that nothing caused something, then you don’t have enough faith to be an atheist. <strong>A</strong>-ACCURACY: The Universe is highly complex in its design. <strong>U</strong>-UNIVERSAL MORALITY: There must be a God to account for the sense of right and wrong. <strong>S</strong>-SUBJECTIVE EXPERIENCE: “Share your own story of how Jesus changed your life. Jeremiah 29:11 says, If you seek God, you will find Him.” <strong>E</strong>-EMPTY TOMB: Proves that Jesus is God. John 11:25-26. Jesus GRAVE is still EMPTY today!"
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "2. <strong>What about those who have never heard?</strong>"
+},
+{
+"t": "p",
+"html": "God is perfectly just and merciful. Many people worldwide are coming to Christ through dreams and visions. Have them read: Philippians 2:9-11. Ask: What does this say to you? When you die, God is not going to ask you: “What about those who have never heard?” He is going to ask you: “What have you done with my Son’s offer of forgiveness? Would you like to invite Jesus into your life and heart today?”"
+},
+{
+"t": "p",
+"html": "3. <strong>Did Jesus Rise from the Dead?</strong>"
+},
+{
+"t": "p",
+"html": "Christ’s tomb is empty. No other great religious leader every claimed that he would rise from the dead except Jesus. The vast majority of secular and religious scholars state that Jesus died by crucifixion on Friday and rose from the dead on Sunday as predicted. John 11:25-26; Psalms 16:9-10. His Tomb is Empty!"
+},
+{
+"t": "p",
+"html": "4. <strong>Why Do People Suffer?</strong>"
+},
+{
+"t": "p",
+"html": "If there is no God, where did we get the standard of goodness by which we judge evil? God could decree by midnight all evil cease, but by 12:01 AM, none of us would be left."
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "5. <strong>Isn’t the Christian Experience only a Psychological Crutch?</strong>"
+},
+{
+"t": "p",
+"html": "The ultimate answer to the argument of wish fulfillment or that Christianity is a psychological crutch is based on irrefutable, objective facts of the resurrection of Christ from the dead."
+},
+{
+"t": "p",
+"html": "6. <strong>How Do You Know the Bible is God’s Word?</strong>"
+},
+{
+"t": "ul",
+"items": [
+"<strong>• Internal Evidence:</strong> The Bible claims Divine Inspiration – 2 Tim. 3:16-17; 2 Pet. 1:21. Unity: 1,500 year; 40 authors, 3 continents – all say basically the same thing.",
+"<strong>• External Evidence:</strong> Archaeology confirms countless details.",
+"<strong>• Scientifically Accurate:</strong> The Bible is scientifically accurate.",
+"<strong>• Fulfilled Prophecies:</strong> Up to 1,000 prophecies have been fulfilled.",
+"<strong>• Experiential Evidence:</strong> The Bible has transformed millions of lives throughout history."
+]
+},
+{
+"t": "p",
+"html": "7. <strong>Won’t a Good Moral Life Get Me to Heaven?</strong>"
+},
+{
+"t": "quote",
+"kind": "scripture",
+"html": "Every person has broken God’s moral law and the 10 commandments. Have the person read: James 2:10; Matthew 5:48; Romans 3:10,23."
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "Ask: What do these verses say to you? Say: “I want you to know that I too have broken God’s moral law, but I found forgiveness through Jesus. Would you like to receive the forgiveness that Jesus alone offers?”"
+},
+{
+"t": "p",
+"html": "8. <strong>Why Would a Loving God send someone to Hell?</strong>"
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "Read: 2 Peter 3:9 where God desires all to come to repentance."
+},
+{
+"t": "p",
+"html": "C.S. Lewis said, ““There are only two kinds of people in the end: those who say to God, ‘Thy will be done,’ and those to whom God says, in the end, ‘Thy will be done.’ All that are in Hell, choose it.”"
+},
+{
+"t": "p",
+"html": "9. <strong>The Bible is full or errors and there are so many translations.</strong>"
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "Thousands of ancient manuscripts confirm its accuracy and reliability of the Bible."
+},
+{
+"t": "p",
+"html": "Ask your friend: “Would you show me an error?” If they have a question about the Bible, recommend the website: “Gotquestions.org"
+},
+{
+"t": "p",
+"html": "10. <strong>What about other religions?</strong>"
+},
+{
+"t": "p",
+"html": "All religions of the world are based upon trying to be good; one word – <strong>“DO”</strong> but no one is perfect and they offer no assurance of salvation. Christianity is based on the word <strong>“DONE”</strong> (our sins were paid in full at the Cross). Jesus said, “I am the way, the truth and the life; no one comes to the Father but through Me” (John 14:6)."
+},
+{
+"t": "p",
+"html": "11. <strong>I’m Not Ready</strong>"
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "Ask: “What would it take for you to be ready to receive Christ as your Savior and Lord?"
+},
+{
+"t": "p",
+"html": "12. <strong>There are too many hypocrites in the church?</strong>"
+},
+{
+"t": "p",
+"html": "Agreed, but if you were to join a perfect church, it wouldn’t be perfect anymore. Romans 3:23 says, “For all have sinned and fall short of the glory of God.” The only people who will get to heaven are forgiven people. Ask: “Would you like to receive the Lord’s offer of love and forgiveness?”"
+},
+{
+"t": "p",
+"html": "13. <strong>I’m a good person!</strong>"
+},
+{
+"t": "p",
+"html": "Ask: “Have you ever lived a perfect life?” Read them: James 2:10; Rom. 3:10; 23; Matt. 5:48; Isaiah 64:6. None of us are good enough to qualify for heaven. It would be like trying to swim to Hawaii. We’d all fall short no matter how good of a swimmer we may be."
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "14. <strong>I tried that, but it didn’t work for me.</strong>"
+},
+{
+"t": "p",
+"html": "Ask: What did you “try”? Review the gospel and share the story of the prodigal son – that God is there for them to return to Him (Luke 15)."
+},
+{
+"t": "p",
+"html": "15. <strong>I’m having too much fun.</strong>"
+},
+{
+"t": "p",
+"html": "Ask: According to what I’ve just shared with you (or what the Bible says), where will you go when you die? If they say “hell”, ask: Are you ready to accept Jesus Christ as your Savior? If their answer is “no”, you could say, “have a nice day!” – or say, “I’ll pray for you!”"
+},
+{
+"t": "p",
+"html": "16. <strong>God can’t forgive me.</strong>"
+},
+{
+"t": "p",
+"html": "Ask the person to read Romans 10:13 and reference the Thief on the Cross. Say: “If God can for forgive a murderer like the thief on the cross and the apostle Paul who killed Christians, He can forgive you.”"
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "17. <strong>I’m a Gay person and associated with LBGQ community.” How should you</strong>"
+},
+{
+"t": "h2",
+"text": "respond?"
+},
+{
+"t": "p",
+"html": "1. Start with Love as every person is created in the image of God (Genesis 1:27) and"
+},
+{
+"t": "p",
+"html": "everyone needs Christ equally (Romans 3:23). Jesus met people where they were at before addressing their sin (John 4:1-26, the Samaritan woman)."
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "2. Listen &amp; ask: “How did you come to understand your identity this way?”"
+},
+{
+"t": "p",
+"html": "3. Share your own story and the Gospel. Emphasize what Christ has done in your life –"
+},
+{
+"t": "quote",
+"kind": "scripture",
+"html": "forgiveness, peace, hope, transformation, heaven as a free gift (2 Cor. 5:17)."
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "Jesus offers the same to them if they surrender their life to Christ."
+},
+{
+"t": "p",
+"html": "4. Pray and Trust the Holy Spirit. The Holy Spirit convicts hearts (John 16:8). Pray for the"
+},
+{
+"t": "p",
+"html": "Lord to soften their heart to the Gospel. Emphasize God’s invitation (Matthew 11:28) to come to Christ."
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "5. Offer for them to come to a home bible study or to your church."
+}
+]
+},
+{
+"slug": "for-more-detailed-answers",
+"title": "FOR MORE DETAILED ANSWERS",
+"label": null,
+"number": null,
+"pdfPage": 35,
+"blocks": [
+{
+"t": "p",
+"html": "“See chapters 13 and 14 of, Extraordinary Evangelism” for a more though explanation."
+},
+{
+"t": "p",
+"html": "First Peter 3:15 says, “But sanctify Christ as Lord in your hearts, always being ready to make a defense to everyone who asks you to give an account for the hope that is in you, yet with gentleness and reverence.”"
+},
+{
+"t": "p",
+"html": "Theologian John Stott said, “We cannot pander to a man’s intellectual arrogance, but we must cater to his intellectual integrity.”"
+},
+{
+"t": "h2",
+"text": "Reasons Why People Object to the Gospel:"
+},
+{
+"t": "ul",
+"items": [
+"Moral Issue – Romans 1: 26-32; 2:15-16",
+"Emotional Issue – Romans 1:21; 2 Tim. 3:2-4",
+"Pride &amp; Will – I John 2:16; John 7:17"
+]
+},
+{
+"t": "p",
+"html": "“We use God’s mighty weapons, not worldly weapons to knock down the strongholds of human reasoning and to destroy false arguments” (2 Corinthians 10:4 NLT)."
+},
+{
+"t": "h2",
+"text": "Record book of Sins"
+},
+{
+"t": "p",
+"html": "Imagine you committed just 4 sins a day. Just 4 sins in thought, word or deed and even things that you should have done but didn’t do them (James 4:17). That would be over 1,000 sins on your record before a Holy God and if you lived to be 70 years of age, you would have more than 100,000 entries in God’s record book of your life. The consequence of sin is eternal separation from God. Place this <strong>record book</strong> with your name on it on your left hand. God loved us so much that He made a commitment to deal with all of our sins. The Bible says in Isaiah 53:6 (paraphrased): “We are all like sheep that have wandered away; each of us has decided to do our own thing. But God laid all of our sins and wrongs on Jesus. Put the record book of our sins on your right hand (on Jesus) to show that “God laid all our sins and wrongs on Jesus.” But when Jesus died on the cross, He took all your sins and wrote across your record: <strong>“Paid in Full.”</strong> Now your book is clean—<strong>your sins are forgiven</strong>, and your name will be written in the <strong>Book of Life if you ask Jesus to forgive you.</strong>"
+},
+{
+"t": "p",
+"html": "<strong>The A, B, C’s of Salvation (The main ideas start with the letter A, B. and C.</strong>"
+},
+{
+"t": "p",
+"html": "<strong>A</strong> is to accept Jesus as your Lord and Savior. When we accept Jesus, we agree to do our best to follow His ways as revealed in the Bible."
+},
+{
+"t": "p",
+"html": "<strong>B</strong> is to believe what the Bible says about Jesus – who He is and what He did for us."
+},
+{
+"t": "p",
+"html": "<strong>C</strong> is to confess the wrong things you have done, ask Him to forgive you and choose to follow Him."
+},
+{
+"t": "p",
+"html": "<strong>The Chasm of Sin Illustration (or “Bridge Illustration”)</strong> shows the separation between God and man because of sin."
+},
+{
+"t": "ul",
+"items": [
+"On one side is <strong>God</strong>, holy and perfect.",
+"On the other side is <strong>man</strong>, sinful and separated from God.",
+"Between them is a deep <strong>chasm of sin and death</strong> that no human effort—good works, religion, or morality—can cross.",
+"<strong>Jesus Christ’s death on the cross</strong> forms the bridge across the chasm, allowing anyone who trusts in Him to come to God and receive eternal life."
+]
+},
+{
+"t": "p",
+"html": "<strong>Key verse:</strong> <em>“For the wages of sin is death, but the gift of God is eternal life through Jesus Christ our Lord.”</em> —Romans 6:23"
+},
+{
+"t": "h2",
+"text": "GOD"
+},
+{
+"t": "h2",
+"text": "BELIEVE"
+},
+{
+"t": "h2",
+"text": "CHRIST JESUS"
+},
+{
+"t": "h2",
+"text": "WAGES"
+},
+{
+"t": "h2",
+"text": "GIFT For the wages of sin is death, but the"
+},
+{
+"t": "h2",
+"text": "gift of God is eternal life through"
+},
+{
+"t": "h2",
+"text": "SIN"
+},
+{
+"t": "p",
+"html": "<strong>OF GOD Christ Jesus our Lord.</strong>"
+},
+{
+"t": "h2",
+"text": "DEATH"
+},
+{
+"t": "h2",
+"text": "ETERNAL"
+},
+{
+"t": "h2",
+"text": "LIFE"
+},
+{
+"t": "h2",
+"text": "BUT"
+},
+{
+"t": "p",
+"html": "<strong>Jesus – Our Substitute</strong> (from Y-Jesus.com)"
+},
+{
+"t": "p",
+"html": "Imagine entering a courtroom and you are guilty of murder. As you approach the bench, you realize that the judge is your father. Knowing that he loves you, you immediately begin to plead, “Dad, just let me go!”"
+},
+{
+"t": "p",
+"html": "With tears in his eyes he responds, “I love you, son, but I’m a judge. I can’t simply let you go.” Presenting the evidence against you, he bangs the gavel down and declares you guilty. Justice cannot be compromised, at least not by a judge. But because he loves you, he steps down from the bench, takes off the robe, and offers to pay the penalty for you. And in fact, he takes your place in the electric chair."
+},
+{
+"t": "p",
+"html": "This is the picture painted by the New Testament. God stepped down into human history, in the person of Jesus Christ, and was crucified on the cross for us. Jesus is not a third-party whipping boy being punished for our sins, but rather he is God himself. Stated more bluntly, God had two choices: to punish us for our sin, or to receive the punishment himself. In Christ, he decided to pay the penalty for us."
+},
+{
+"t": "p",
+"html": "In other words, God’s perfect justice is completely satisfied by the death of his Son, Jesus Christ. All of our sins—no matter how bad they are or have been—are completely paid for by the blood of Christ. Paul writes,"
+},
+{
+"t": "p",
+"html": "<em>“…yet now he has brought you back as his friends. He has done this through his death on the cross in his own human body. As a result, he has brought you into the very presence of God, and you are holy and blameless as you stand before him without a single fault.”</em> —Colossians 1:22, NLT"
+}
+]
+},
+{
+"slug": "appendix-b",
+"title": "APPENDIX B",
+"label": null,
+"number": null,
+"pdfPage": 38,
+"blocks": [
+{
+"t": "h2",
+"text": "1. Personal Testimony"
+},
+{
+"t": "p",
+"html": "Your personal testimony is one of the greatest tools you have when you share the gospel. People like stories, especially ones that are true. Stories emotionalize information. Jesus often told stories (parables). No persuasive argument will ever be a substitute."
+},
+{
+"t": "p",
+"html": "Examples:"
+},
+{
+"t": "ul",
+"items": [
+"Gerasene demoniac – Mark 5",
+"Blind man healed by Jesus – John 9",
+"Woman at the well – John 4",
+"Paul the Apostle – Acts 22; 26"
+]
+},
+{
+"t": "p",
+"html": "Consider your Three Minute Personal Testimony based on five main parts:"
+},
+{
+"t": "p",
+"html": "1. The opening: Think of a theme you can use to share your story."
+},
+{
+"t": "p",
+"html": "2. Before you came to Christ: What your life was like before you met Christ."
+},
+{
+"t": "p",
+"html": "3. How you realized your need for Christ."
+},
+{
+"t": "p",
+"html": "4. After you became a Christian: The difference Jesus has made in your life."
+},
+{
+"t": "p",
+"html": "5. The closing"
+},
+{
+"t": "p",
+"html": "<strong>The Main Elements in a Personal Testimony</strong> (see chapter 6 of my book, Extraordinary Evangelism)."
+},
+{
+"t": "p",
+"html": "Assignment: Write out the main parts of your Personal Testimony using the following worksheet."
+},
+{
+"t": "h2",
+"text": "2. Testimony Worksheet"
+},
+{
+"t": "p",
+"html": "<strong><em>I. BEFORE I RECEIVED CHRIST—Focus on a need you had or a problem (3–4 sentences).</em></strong>"
+},
+{
+"t": "p",
+"html": "<strong><em>II. HOW YOU RECEIVED CHRIST OR BECAME A CHRISTIAN (3–4 sentences).</em></strong>"
+},
+{
+"t": "p",
+"html": "<strong><em>III. AFTER YOU BECAME A CHRISTIAN, WHAT CHANGES OCCURRED OR HOW DID GOD MET YOUR NEED? (3–4 sentences).</em></strong>"
+},
+{
+"t": "h2",
+"text": "Favorite Bible verse:"
+},
+{
+"t": "h2",
+"text": "3. Using The Internet To Share The Gospel"
+},
+{
+"t": "p",
+"html": "The internet is filled with tremendous resources to share Christ with others. You can send articles and videos to non-believers to help them understand the Gospel better."
+},
+{
+"t": "p",
+"html": "JesusOnline Ministries (Y-Jesus.com and JesusOnline.com) has a goal to reach 1 Billion people for Christ by the year 2030. Go to Y-Jesus.com which has many videos and articles such as:"
+},
+{
+"t": "ul",
+"items": [
+"Is Jesus God?",
+"Did Jesus Rise from the Dead?",
+"Has Science Discovered God?",
+"The Gift of Heaven video.",
+"Here’s a recent ebook that is free that I plan on sending to my non-Christian friends."
+]
+},
+{
+"t": "p",
+"html": "The following book is now available online at https://y-jesus.com/evidence/"
+},
+{
+"t": "figure",
+"src": "/books/extraordinary-evangelism-student-guide/read/img/p040-1-ad102b1656.jpg",
+"alt": "",
+"width": 143,
+"height": 827,
+"pdfPage": 40,
+"wide": false
+},
+{
+"t": "figure",
+"src": "/books/extraordinary-evangelism-student-guide/read/img/p040-0-d69a778724.jpg",
+"alt": "Cover of Who Is the Real Jesus?",
+"width": 497,
+"height": 483,
+"pdfPage": 40,
+"wide": false
+},
+{
+"t": "figure",
+"src": "/books/extraordinary-evangelism-student-guide/read/img/p040-2-df9293be7e.jpg",
+"alt": "Discover the Evidence and Decide for Yourself: Y-Jesus.com",
+"width": 497,
+"height": 345,
+"pdfPage": 40,
+"wide": false
+},
+{
+"t": "h2",
+"text": "4. Resources"
+},
+{
+"t": "p",
+"html": "See the back pages of my book, Extraordinary Evangelism."
+},
+{
+"t": "h2",
+"text": "Gospel Tracts:"
+},
+{
+"t": "figure",
+"src": "/books/extraordinary-evangelism-student-guide/read/img/p041-0-5a3aebd15e.jpg",
+"alt": "Cover of John 3:16",
+"width": 336,
+"height": 486,
+"pdfPage": 41,
+"wide": false
+},
+{
+"t": "figure",
+"src": "/books/extraordinary-evangelism-student-guide/read/img/p041-2-6c883b14ba.jpg",
+"alt": "Cover of God Loves India and God Loves You",
+"width": 336,
+"height": 486,
+"pdfPage": 41,
+"wide": false
+},
+{
+"t": "figure",
+"src": "/books/extraordinary-evangelism-student-guide/read/img/p041-1-11f11a7af8.jpg",
+"alt": "Cover of Eternal Answers to Life's Most Important Questions",
+"width": 336,
+"height": 486,
+"pdfPage": 41,
+"wide": false
+},
+{
+"t": "figure",
+"src": "/books/extraordinary-evangelism-student-guide/read/img/p041-3-f82e892394.jpg",
+"alt": "Cover of The Gift of Heaven: 5 Keys to God's Incredible Offer",
+"width": 336,
+"height": 486,
+"pdfPage": 41,
+"wide": false
+},
+{
+"t": "figure",
+"src": "/books/extraordinary-evangelism-student-guide/read/img/p041-4-63b9bc568d.jpg",
+"alt": "QR code from the print edition.",
+"width": 302,
+"height": 302,
+"pdfPage": 41,
+"wide": false
+},
+{
+"t": "p",
+"html": "Scan the QR Code for Gospel Tracts"
+},
+{
+"t": "p",
+"html": "Download the JO App at Jesusonline.com/app and find tons of resources along with my book, Extraordinary Evangelism and gospel tracts."
+},
+{
+"t": "h2",
+"text": "5. Extraordinary Evangelism"
+},
+{
+"t": "p",
+"html": "<strong>Extraordinary Evangelism</strong> has a complete index of scriptures to support the gospel and sharing one’s faith."
+},
+{
+"t": "figure",
+"src": "/books/extraordinary-evangelism-student-guide/read/img/p042-1-b7e8833892.jpg",
+"alt": "",
+"width": 419,
+"height": 360,
+"pdfPage": 42,
+"wide": false
+},
+{
+"t": "figure",
+"src": "/books/extraordinary-evangelism-student-guide/read/img/p042-2-c23fd988a1.jpg",
+"alt": "",
+"width": 280,
+"height": 575,
+"pdfPage": 42,
+"wide": false
+},
+{
+"t": "figure",
+"src": "/books/extraordinary-evangelism-student-guide/read/img/p042-3-44b6a0f860.jpg",
+"alt": "",
+"width": 419,
+"height": 360,
+"pdfPage": 42,
+"wide": false
+},
+{
+"t": "quote",
+"kind": "excerpt",
+"html": "Scan QR Code for a FREE COPY of the book."
+},
+{
+"t": "figure",
+"src": "/books/extraordinary-evangelism-student-guide/read/img/p042-0-29113f5b4c.jpg",
+"alt": "QR code from the print edition.",
+"width": 302,
+"height": 248,
+"pdfPage": 42,
+"wide": false
+},
+{
+"t": "figure",
+"src": "/books/extraordinary-evangelism-student-guide/read/img/p042-4-0976b51df6.jpg",
+"alt": "",
+"width": 280,
+"height": 504,
+"pdfPage": 42,
+"wide": false
+},
+{
+"t": "figure",
+"src": "/books/extraordinary-evangelism-student-guide/read/img/p042-5-5344475a08.jpg",
+"alt": "",
+"width": 419,
+"height": 360,
+"pdfPage": 42,
+"wide": false
+}
+]
+},
+{
+"slug": "community-survey",
+"title": "COMMUNITY SURVEY",
+"label": null,
+"number": null,
+"pdfPage": 43,
+"blocks": [
+{
+"t": "p",
+"html": "Can I get your input on a short 2-Minute Spiritual Interest Survey that our church is"
+},
+{
+"t": "p",
+"html": "conducting?"
+},
+{
+"t": "p",
+"html": "1. Do you have a spiritual belief—or do you attend church anywhere?"
+},
+{
+"t": "checklist",
+"items": [
+"Yes, I have a personal spiritual belief.",
+"Yes, I attend church regularly.",
+"No, I don’t",
+"Other: ________"
+]
+},
+{
+"t": "p",
+"html": "2. Who is Jesus to you?"
+},
+{
+"t": "checklist",
+"items": [
+"The Son of God / Savior",
+"A good teacher or prophet",
+"A myth or legend",
+"Other: ________"
+]
+},
+{
+"t": "p",
+"html": "3. Do you believe there is a Heaven or Hell after this life?"
+},
+{
+"t": "checklist",
+"items": [
+"Heaven and Hell both exist",
+"Only Heaven exists",
+"Only Hell exists",
+"Not sure"
+]
+},
+{
+"t": "p",
+"html": "4. What do you think someone must do to enter Heaven?"
+},
+{
+"t": "checklist",
+"items": [
+"Be a good person",
+"Follow the Bible / Ten Commandments",
+"Place faith in Jesus Christ",
+"Other: ________"
+]
+},
+{
+"t": "p",
+"html": "5. How certain are you that you would go to Heaven (1–100%)?"
+},
+{
+"t": "checklist",
+"items": [
+"0–25%",
+"26–50%",
+"51–75%",
+"76–99%",
+"100%"
+]
+},
+{
+"t": "p",
+"html": "6. Has anyone ever shared with you how you can be sure of going to Heaven—and may I share briefly?"
+},
+{
+"t": "checklist",
+"items": [
+"Yes",
+"No",
+"Yes, you may share",
+"Not right now"
+]
+},
+{
+"t": "p",
+"html": "Community Survey"
+}
+]
+},
+{
+"slug": "answers-to-the-student-guide",
+"title": "ANSWERS TO THE STUDENT GUIDE",
+"label": null,
+"number": null,
+"pdfPage": 44,
+"blocks": [
+{
+"t": "h2",
+"text": "Answers to the Student Guide – Fill in the Blanks"
+},
+{
+"t": "table",
+"head": [
+"Pages",
+"Underline #",
+"Answer"
+],
+"rows": [
+[
+"1",
+"1",
+"GREAT COMMISSION"
+],
+[
+"1",
+"2",
+"DIVINE DIRECTIVE"
+],
+[
+"2",
+"3",
+"LOVE"
+],
+[
+"2",
+"4",
+"REVERENCE"
+],
+[
+"2",
+"5",
+"AMBASSADORS"
+],
+[
+"3",
+"6",
+"LOST"
+],
+[
+"3",
+"7",
+"AMAZING"
+],
+[
+"3",
+"8",
+"OFFER"
+],
+[
+"3",
+"9",
+"WARNINGS"
+],
+[
+"3",
+"10",
+"REWARDED"
+],
+[
+"6",
+"11",
+"GOD'S LOVE"
+],
+[
+"6",
+"12",
+"GOOD NEWS"
+],
+[
+"6",
+"13",
+"LIFE, DEATH & RESURRECTION"
+],
+[
+"6",
+"14",
+"NOT TO BE ASHAMED"
+],
+[
+"6",
+"15",
+"HELL TO HEAVEN"
+],
+[
+"7",
+"16",
+"GOD'S RICHES AT CHRIST'S EXPENSE"
+],
+[
+"8",
+"17",
+"FEAR FACTOR"
+],
+[
+"8",
+"18",
+"REJECTION"
+],
+[
+"8",
+"19",
+"NOT KNOWING ENOUGH"
+],
+[
+"9",
+"20",
+"COMMAND"
+],
+[
+"9",
+"21",
+"PRESENCE"
+],
+[
+"9",
+"22",
+"HOLY SPIRIT"
+],
+[
+"11",
+"23",
+"HOLY SPIRIT"
+],
+[
+"11",
+"24",
+"PRAYER"
+],
+[
+"11",
+"25",
+"HEART"
+],
+[
+"12",
+"26",
+"BOLDNESS"
+],
+[
+"12",
+"27",
+"OPEN DOORS"
+],
+[
+"12",
+"28",
+"DIVINE OPPORTUNITIES"
+]
+],
+"rowHeaders": false
+},
+{
+"t": "p",
+"html": "Answers to the Student Guide"
+},
+{
+"t": "table",
+"head": [
+"Pages",
+"Underline #",
+"Answer"
+],
+"rows": [
+[
+"12",
+"29",
+"OPEN"
+],
+[
+"12",
+"30",
+"HINDERED"
+],
+[
+"13",
+"31",
+"GOD'S WORD"
+],
+[
+"14",
+"32",
+"BE HUMBLE"
+],
+[
+"14",
+"33",
+"POSITIVE"
+],
+[
+"14",
+"34",
+"LOVE"
+],
+[
+"15",
+"35",
+"LIVES"
+],
+[
+"15",
+"36",
+"GRACIOUS"
+],
+[
+"15",
+"37",
+"TACTIFUL"
+],
+[
+"15",
+"38",
+"JESUS"
+],
+[
+"15",
+"39",
+"KEEP IT SIMPLE"
+],
+[
+"20",
+"40",
+"FOLLOW UP"
+]
+],
+"rowHeaders": false
+},
+{
+"t": "p",
+"html": "Answers to the Student Guide"
+},
+{
+"t": "h2",
+"text": "The contact information of the author of this Student Guide is Dave Chapman"
+},
+{
+"t": "h2",
+"text": "206-755-1696 DAVE@JESUSONLINE.COM/JESUSONLINEMINISTRIES.ORG"
+},
+{
+"t": "figure",
+"src": "/books/extraordinary-evangelism-student-guide/read/img/p047-0-0a4a8fe7d6.jpg",
+"alt": "Back cover: Meet the Author, Dave Chapman, with his biography.",
+"width": 1275,
+"height": 1650,
+"pdfPage": 47,
+"wide": true
+}
+]
+}
+],
+"audit": {
+"internalCoverage": 1.0,
+"independentCoverage": 0.92332,
+"figures": 23,
+"words": 8672
+}
+}

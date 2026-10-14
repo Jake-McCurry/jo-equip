@@ -1,0 +1,174 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { ArrowLeft, ArrowUp, List, Mail, Moon, Download, X } from "lucide-react";
+import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
+import BookBlocks from "@/components/adventure-book/BookBlocks.astro";
+import { books } from "@/data/books";
+import { webBooks, readingLabel, type WebBook, type WebReading } from "@/data/web-books";
+import "@/components/adventure-book/reader.css";
+
+export function getStaticPaths() {
+  return webBooks.flatMap(wb => wb.readings.map(r => ({ params: { id: wb.id, slug: r.slug }, props: { wb, reading: r } })));
+}
+
+const { wb, reading } = Astro.props as { wb: WebBook; reading: WebReading };
+const book = books.find(b => b.id === wb.id)!;
+const total = wb.readings.length;
+const prev = wb.readings[reading.index - 1];
+const next = wb.readings[reading.index + 1];
+const baseUrl = import.meta.env.BASE_URL;
+const base = baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl;
+const join = (p: string) => base + p;
+const href = (slug: string) => `${wb.readBase}/${slug}`;
+const SITE = "https://equip.jesusonline.com";
+const label = readingLabel(reading);
+const position = reading.index + 1;
+const pct = (position / total) * 100;
+const showToc = reading.sections.length >= 3 && reading.sections.length <= 60;
+const eyebrow = reading.part ?? (reading.label ? (/^\d+$/.test(reading.label) ? `Chapter ${reading.label}` : reading.label) : `Reading ${position}`);
+const pageUrl = `${SITE}${href(reading.slug)}`;
+const mailPage = `mailto:?subject=${encodeURIComponent(`${reading.title} · ${wb.title}`)}&body=${encodeURIComponent(`${label}\nFrom ${wb.title}\n\n${pageUrl}`)}`;
+const reflectionPrompt = "What is one thing in this reading you want to remember or put into practice?";
+const pageRange = reading.pdfPageEnd > reading.pdfPage ? `PDF pages ${reading.pdfPage}–${reading.pdfPageEnd}` : `PDF page ${reading.pdfPage}`;
+const prefsKey = `${wb.storeKey}:prefs`;
+---
+<Layout
+  title={`${label} · ${wb.title} · JO EQUIP`}
+  description={`Read “${reading.title}” from ${wb.title} online. Reading ${position} of ${total}, about ${reading.minutes} minutes.`}
+  image={book.cover}
+  imageAlt={`${wb.title} — book cover`}
+  ogType="article"
+>
+  <Fragment slot="head">
+    <BreadcrumbsLd items={[
+      { name: "Home", url: "/" },
+      { name: "Books", url: "/books" },
+      { name: wb.title, url: wb.readBase },
+      { name: reading.title, url: href(reading.slug) },
+    ]} />
+  </Fragment>
+
+  <div class="adv-reader" id="adv-reader" data-store={wb.storeKey} data-slug={reading.slug} data-title={`${label} · ${wb.title}`} data-base={baseUrl} data-size="2" data-surface="light" data-prefs-key={prefsKey}>
+    <script is:inline>
+      (function () {
+        var el = document.currentScript && document.currentScript.parentElement;
+        try {
+          var p = JSON.parse(localStorage.getItem(el.dataset.prefsKey) || "{}");
+          if (p.size >= 1 && p.size <= 4) el.dataset.size = String(p.size);
+          if (p.dark === true) el.dataset.surface = "dark";
+        } catch (e) {}
+      })();
+    </script>
+
+    <div class="rd-progress" role="progressbar" aria-label="Position in book" aria-valuemin="1" aria-valuemax={total} aria-valuenow={position} aria-valuetext={`Reading ${position} of ${total}`}>
+      <span style={`width:${pct}%`}></span>
+    </div>
+
+    <div class="container mx-auto px-4 max-w-6xl" id="top">
+      <div class="rd-toolbar">
+        <a href={join(wb.readBase)} class="inline-flex items-center gap-1.5"><List className="w-4 h-4" /> Contents</a>
+        <span aria-hidden="true">·</span>
+        <span>Reading {position} of {total}</span>
+        <div class="rd-tools" role="group" aria-label="Reading display">
+          <button type="button" class="rd-btn" data-size-dec aria-label="Smaller text">A−</button>
+          <button type="button" class="rd-btn" data-size-inc aria-label="Larger text">A+</button>
+          <button type="button" class="rd-btn" data-dark aria-pressed="false"><Moon className="w-4 h-4" /><span data-dark-label>Dark page</span></button>
+        </div>
+      </div>
+
+      <div class={`rd-shell py-8 md:py-12 ${showToc ? "has-toc" : ""}`}>
+        <article class="rd-article" aria-labelledby="reading-title">
+          <header class="mb-8">
+            <p class="rd-eyebrow">{eyebrow}</p>
+            <h1 id="reading-title" class="rd-title">{reading.title}</h1>
+            <p class="rd-meta">
+              <span>{reading.minutes} min read</span>
+              <span>{pageRange}</span>
+              <a href={mailPage} class="inline-flex items-center gap-1 underline underline-offset-2" style="color:var(--rd-link);">
+                <Mail className="w-3.5 h-3.5" /> Email this page
+              </a>
+            </p>
+            <p class="rd-fine mt-1">Email links open your own email app with a draft. Nothing is sent from this site.</p>
+          </header>
+
+          {showToc && (
+            <details class="rd-toc-mobile mb-8">
+              <summary>In this reading ({reading.sections.length} sections)</summary>
+              <ol>{reading.sections.map(s => <li><a href={`#${s.id}`}>{s.text}</a></li>)}</ol>
+            </details>
+          )}
+
+          <div class="rd-body">
+            <BookBlocks blocks={reading.blocks} />
+          </div>
+
+          <section class="rd-reflect mt-12" data-reflection data-prompt={reflectionPrompt} aria-labelledby="reflect-heading">
+            <span class="rd-badge">Added for the web edition · not from the book</span>
+            <h2 id="reflect-heading" class="mt-3 text-xl" style="color:var(--rd-heading);">Your private reflection</h2>
+            <label for="reflection" class="block mt-2" style="color:var(--rd-ink);">{reflectionPrompt}</label>
+            <textarea id="reflection" class="rd-textarea" aria-describedby="reflect-storage reflect-status"></textarea>
+            <p id="reflect-status" class="rd-status mt-2" data-status role="status" aria-live="polite"></p>
+            <p id="reflect-storage" class="rd-fine mt-1">
+              Saved automatically in this browser only, on this device, for this book and this reading. It is not uploaded, and clearing your browser data removes it.
+            </p>
+            <div class="flex flex-wrap gap-2 mt-4">
+              <a class="rd-btn" data-mail-note href="mailto:" aria-disabled="true"><Mail className="w-4 h-4" /> Email my reflection</a>
+              <button type="button" class="rd-btn" data-clear disabled><X className="w-4 h-4" /> Clear note</button>
+            </div>
+            <p class="rd-fine mt-2">“Email my reflection” opens your email app with your note as a draft. Nothing is sent from this site.</p>
+          </section>
+
+          <nav class="mt-12" aria-label="Book navigation">
+            <div class="rd-pager">
+              {prev && (
+                <a href={join(href(prev.slug))} rel="prev">
+                  <small>Previous</small>
+                  <strong>{readingLabel(prev)}</strong>
+                </a>
+              )}
+              {next && (
+                <a href={join(href(next.slug))} rel="next" class="rd-next">
+                  <small>Next reading · {next.minutes} min</small>
+                  <strong>{readingLabel(next)}</strong>
+                </a>
+              )}
+            </div>
+            <div class="flex flex-wrap items-center justify-between gap-3 mt-6 text-sm">
+              <a href={join(wb.readBase)} class="inline-flex items-center gap-1.5 font-semibold" style="color:var(--rd-link);"><ArrowLeft className="w-4 h-4" /> Back to contents</a>
+              <a href="#top" class="inline-flex items-center gap-1.5 font-semibold" style="color:var(--rd-link);"><ArrowUp className="w-4 h-4" /> Back to top</a>
+              <a href={join(`/books?download=${wb.id}`)} class="inline-flex items-center gap-1.5 font-semibold" style="color:var(--rd-link);"><Download className="w-4 h-4" /> Read PDF</a>
+            </div>
+          </nav>
+        </article>
+
+        {showToc && (
+          <nav class="rd-toc hidden lg:block" aria-label="In this reading">
+            <p class="rd-toc-title">In this reading</p>
+            <ol>
+              {reading.sections.map(s => <li><a href={`#${s.id}`} data-sec={s.id} aria-current="false">{s.text}</a></li>)}
+            </ol>
+            <a href="#top" class="rd-toc-top">Back to top</a>
+          </nav>
+        )}
+      </div>
+    </div>
+
+    <dialog id="rd-scripture" class="rd-dialog" aria-labelledby="rd-scripture-title">
+      <div class="rd-dialog-head">
+        <h2 id="rd-scripture-title" data-title>Scripture</h2>
+        <button type="button" class="rd-btn" data-close aria-label="Close passage"><X className="w-4 h-4" /></button>
+      </div>
+      <div class="rd-dialog-body" data-body aria-live="polite"></div>
+      <div class="rd-dialog-foot">
+        <span data-attr>NET Bible</span>
+        <a data-open href={join("/bible")}>Open in the Bible reader</a>
+      </div>
+    </dialog>
+  </div>
+
+  <script>
+    import { initReading } from "@/components/adventure-book/reader-client";
+    const run = () => { const el = document.getElementById("adv-reader"); if (el) initReading(el); };
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run); else run();
+  </script>
+</Layout>

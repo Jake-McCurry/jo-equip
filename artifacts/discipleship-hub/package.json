@@ -14,6 +14,7 @@
     "test:consolidation": "node --test scripts/article-consolidation.test.mjs",
     "verify:consolidation": "node scripts/verify-article-consolidation-build.mjs",
     "test:nofollow": "node --test scripts/external-link-policy.test.mjs",
+    "test:web-books": "node --test scripts/web-books.test.mjs",
     "validate:category-seo": "python3 scripts/import-category-seo.py --check && node --experimental-strip-types scripts/validate-category-seo.mjs",
     "test:knowing-god": "python3 scripts/knowing-god-source-validation.test.py && python3 scripts/knowing-god-net-validation.test.py && node --experimental-strip-types --test scripts/knowing-god-regressions.test.mjs scripts/knowing-god-passages.test.mjs scripts/knowing-god-net.test.mjs scripts/knowing-god-net-loader.test.mjs",
     "generate:knowing-god": "python3 scripts/generate-knowing-god.py",

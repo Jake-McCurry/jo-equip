@@ -152,7 +152,7 @@ const gtmEnabled = import.meta.env.PROD;
     {/* Footer */}
     <footer class="pt-12 pb-8" style="background-color:var(--color-structure);">
       <div class="container mx-auto px-4 md:px-6">
-        <div class="flex flex-col md:flex-row justify-between items-start gap-10 pb-10" style="border-bottom:1px solid rgba(255,255,255,0.12);">
+        <div class="flex flex-col lg:flex-row justify-between items-start gap-10 pb-10" style="border-bottom:1px solid rgba(255,255,255,0.12);">
           <div class="max-w-xs">
             <div class="flex items-center gap-3 mb-2">
               <Image src={logoSrc} alt="JesusOnline" widths={[150, 300]} sizes="150px" format="webp" quality={85} class="h-6 w-auto" loading="lazy" />
@@ -171,20 +171,29 @@ const gtmEnabled = import.meta.env.PROD;
             </p>
           </div>
 
-          <div class="flex gap-12 text-base">
+          <div class="grid w-full grid-cols-2 gap-x-8 gap-y-8 sm:w-auto sm:grid-cols-[auto_auto_auto] sm:gap-x-12 text-base">
             <div class="flex flex-col gap-3">
               <h4 class="font-semibold text-sm" style="color:#ffffff;">Explore</h4>
               <a href={join("/categories")} class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.75);">Categories</a>
               <a href={join("/playlists")} class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.75);">Playlists</a>
               <a href={join("/books")} class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.75);">Books</a>
               <a href={join("/listen")} class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.75);">Listen</a>
+              <a href={join("/translate")} class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.75);">Translate</a>
             </div>
             <div class="flex flex-col gap-3">
+              <h4 class="font-semibold text-sm" style="color:#ffffff;">More</h4>
+              <a href="https://app.jesusonline.com" target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.75);">JO App</a>
+              <a href="https://follow.jesusonline.com" target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.75);">JO Follow</a>
+              <a href="https://y-jesus.org" target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.75);">Y-Jesus.org</a>
+              <a href={join("/newsletter")} class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.75);">Newsletter</a>
+            </div>
+            <div class="col-span-2 sm:col-span-1 flex flex-col gap-3">
               <h4 class="font-semibold text-sm" style="color:#ffffff;">Organization</h4>
               <a href="https://jesusonlineministries.org" target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.75);">JesusOnlineMinistries.org</a>
               <a href={join("/about")} class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.75);">About</a>
-              <a href={join("/newsletter")} class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.75);">Newsletter</a>
-              <a href="mailto:equip@jesusonline.com" class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.75);">equip@jesusonline.com</a>
+              <a href={join("/beliefs")} class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.75);">Beliefs</a>
+              <a href="mailto:equip@jesusonline.com" class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.75);">Contact Us</a>
+              <a href="https://jesusonlineministries.org/privacy-policy/" target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-white" style="color:rgba(255,255,255,0.75);">Privacy Policy</a>
             </div>
           </div>
         </div>
@@ -193,7 +202,6 @@ const gtmEnabled = import.meta.env.PROD;
           <p class="md:max-w-2xl md:text-left text-center">&copy; {year} JesusOnline Ministries. Site design and original JesusOnline content are protected by copyright. Third-party resources remain the property of their respective copyright owners and are used under license or permission.</p>
           <div class="flex gap-5">
             <a href={join("/sitemap")} class="hover:text-white transition-colors">Sitemap</a>
-            <a href="https://jesusonlineministries.org/privacy-policy/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Privacy Policy</a>
           </div>
         </div>
       </div>

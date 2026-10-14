@@ -5,6 +5,7 @@ import LeaderKitCampaign from "@/components/LeaderKitCampaign.astro";
 import ReturnToLeaderKitForm from "@/components/ReturnToLeaderKitForm.astro";
 
 const SITE = "https://equip.jesusonline.com";
+const signupHref = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/lp/leader-kits-2/signup`;
 const campaignDescription =
   "A free Leader Kit for pastors and home church leaders with Ten Discipleship Moments — all ready to teach. Encourage heart transformation.";
 
@@ -34,6 +35,6 @@ const leaderKitsJsonLd = {
     <script type="application/ld+json" is:inline set:html={JSON.stringify(leaderKitsJsonLd)} />
   </Fragment>
 
-  <LeaderKitCampaign includeInlineForm={true} />
-  <ReturnToLeaderKitForm />
+  <LeaderKitCampaign ctaHref={signupHref} showHeroSignup={false} showBelowHeroCta />
+  <ReturnToLeaderKitForm targetHref={signupHref} targetSelector="#leader-kit-hero" />
 </Layout>

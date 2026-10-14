@@ -103,6 +103,7 @@ const featuredPlaylists = [
     <meta name="robots" content="noindex, follow" />
   </Fragment>
 
+  <div class:list={{ "compact-resources": Astro.params.lpId === "ENG-1-resources" }}>
   {/* Hero — same as the home page at time of copy. */}
   <section class="relative py-10 md:py-16 px-4 text-center overflow-hidden" style="background-color:var(--color-hero);">
     <div
@@ -121,16 +122,20 @@ const featuredPlaylists = [
   {/* Tagline + persona links */}
   <section class="py-8 md:py-10 px-4 text-center bg-white">
     <div class="container mx-auto max-w-4xl">
+      {Astro.params.lpId !== "ENG-1-resources" && (
       <p class="text-base md:text-lg max-w-3xl mx-auto leading-relaxed" style="color:var(--color-text-muted);">
         Apologetics, identity-centered discipleship, and church vibrancy&mdash;united in one accessible free resource hub.
         <a href={join("/discipleship")} class="text-sm md:text-base whitespace-nowrap font-medium underline underline-offset-2" style="color:var(--color-accent);">Find out more</a>
       </p>
+      )}
       <div class="mt-5 text-sm md:text-base flex flex-col items-center justify-center gap-1.5 sm:flex-row sm:flex-wrap sm:gap-0" style="color:var(--color-text);">
         <span class="font-medium">Explore Free Resources for</span>
-        <span class="flex flex-wrap items-center justify-center">
-          {personaLinks.map(link => (
+        <span class:list={["flex flex-wrap items-center justify-center", { "mobile-persona-row": Astro.params.lpId === "ENG-1-resources" }]}>
+          {personaLinks.map((link, index) => (
             <Fragment>
-              <span aria-hidden="true" class="mx-1.5" style="color:var(--color-accent);">&bull;</span>
+              {(Astro.params.lpId !== "ENG-1-resources" || index > 0) && (
+                <span aria-hidden="true" class="mx-1.5" style="color:var(--color-accent);">{Astro.params.lpId === "ENG-1-resources" ? "|" : "•"}</span>
+              )}
               <a href={link.href} class="underline underline-offset-2 whitespace-nowrap hover:opacity-90" style="color:var(--color-action-warm);">{link.title}</a>
             </Fragment>
           ))}
@@ -282,4 +287,55 @@ const featuredPlaylists = [
       </div>
     </div>
   </section>
+  </div>
 </Layout>
+
+<style>
+  .compact-resources > section {
+    padding-block: 1.5rem;
+  }
+  .compact-resources > section:first-child {
+    padding-block: 2rem;
+  }
+  .compact-resources > section:nth-child(2) {
+    padding-block: 1rem;
+  }
+  .compact-resources > section:last-child {
+    padding-block: 0;
+  }
+  .compact-resources .mt-5 { margin-top: 0; }
+  .compact-resources .mt-2 { margin-top: 0.375rem; }
+  .compact-resources .mt-1 { margin-top: 0.125rem; }
+  .compact-resources .mb-2 { margin-bottom: 0.375rem; }
+  .compact-resources .mb-4 { margin-bottom: 0.75rem; }
+  .compact-resources .mb-6 { margin-bottom: 1rem; }
+  .compact-resources .pb-2 { padding-bottom: 0.25rem; }
+  .compact-resources .p-6 { padding-block: 1rem; }
+  .compact-resources .py-5 { padding-block: 0.75rem; }
+  .compact-resources .gap-6 { row-gap: 1rem; }
+  .compact-resources .gap-4 { row-gap: 0.75rem; }
+  @media (min-width: 640px) {
+    .compact-resources .mobile-persona-row {
+      margin-inline-start: 0.75rem;
+    }
+  }
+  @media (min-width: 768px) {
+    .compact-resources > section { padding-block: 2rem; }
+    .compact-resources > section:first-child { padding-block: 2.5rem; }
+    .compact-resources > section:nth-child(2) { padding-block: 1.25rem; }
+    .compact-resources > section:last-child { padding-block: 0; }
+  }
+  @media (max-width: 639px) {
+    .mobile-persona-row {
+      flex-wrap: nowrap;
+      white-space: nowrap;
+      font-size: clamp(9px, 2.8vw, 14px);
+    }
+    .mobile-persona-row > span {
+      margin-inline: 0.3em;
+    }
+    .mobile-persona-row > a {
+      flex-shrink: 0;
+    }
+  }
+</style>

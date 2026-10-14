@@ -32,3 +32,11 @@ Keep page 3's OpenAI form settings independent of updates to the Sunday Leader K
 **Why:** On 2026-09-29 the user supplied an updated Sunday Mailchimp embed and explicitly asked to keep the OpenAI version separate.
 
 **How to apply:** Do not propagate Sunday-specific Mailchimp tags or form revisions to the OpenAI campaign unless requested. Shared visual components are fine, but preserve its separate campaign settings and thank-you destination.
+
+## Approved booklet presentation
+
+Use the approved nearly front-facing booklet treatment on campaign pages: original cover artwork, thin page edge, subtle angle, soft shadow, no outer white card.
+
+**Why:** On 2026-10-14 the user approved the refined canvas mockup and asked to apply it. The request concerned website presentation, not redesigning the cover or modifying PDFs.
+
+**How to apply:** Preserve this treatment when revising the campaign section. Do not restore the heavy frame or alter the downloadable documents as part of image presentation work.

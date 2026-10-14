@@ -1,6 +1,5 @@
 ---
-import { Download, ChevronLeft, ChevronRight, BookOpen } from "lucide-react";
-import { getWebEdition } from "@/data/webBooks";
+import { Download, ChevronLeft, ChevronRight } from "lucide-react";
 import { getBookCover } from "@/data/bookCovers";
 import type { Book } from "@/data/books";
 import BookThumbnail from "@/components/BookThumbnail.astro";
@@ -36,7 +35,6 @@ const join = (p: string) =>
         const cardTitle = isConcordance ? "Knowing God / Topical Concordance" : book.title;
         const detailsHref = isConcordance ? "/knowing-god" : `/books/${book.id}`;
         const detailsLabel = isConcordance ? "View Digital Version" : "Details";
-        const webEdition = getWebEdition(book.id);
         return (
           <article id={book.id} class="book-card shrink-0 w-[220px] md:w-[240px] snap-start flex flex-col border rounded-lg bg-white overflow-hidden transition-shadow hover:shadow-md scroll-mt-24" style="border-color:var(--color-border);">
             <div class="book-cover-area">
@@ -69,16 +67,6 @@ const join = (p: string) =>
                   <Download className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
                 </a>
               </h3>
-              {webEdition && (
-                <a
-                  href={join(webEdition)}
-                  class="read-online-link inline-flex items-center justify-center gap-1.5 w-full mb-2 px-3 py-2 rounded text-[13px] font-semibold text-white transition-opacity hover:opacity-90"
-                  style="background-color:var(--color-action-warm);"
-                  aria-label={`Read ${book.title} online`}
-                >
-                  <BookOpen className="w-3.5 h-3.5" aria-hidden="true" /> Read online
-                </a>
-              )}
               <div class="flex mt-auto">
                 <a
                   href={join(detailsHref)}

@@ -95,18 +95,19 @@ test("book titles are centered native PDF links with a trailing download icon", 
   assert.match(page, /requestBook\(catalogBook\.pdf, catalogBook\.title, true\)/);
 });
 
-test("online reading has a separate link and book icon without PDF actions", async () => {
+test("deferred online-book entry points and routes are absent", async () => {
   const carousel = await read("src/components/BooksCarousel.astro");
-  const link = [...carousel.matchAll(/<a\b[\s\S]*?<\/a>/g)]
-    .map(match => match[0])
-    .find(anchor => /class="read-online-link\b/.test(anchor));
-  assert.ok(link, "Missing separate online-reading link.");
-  assert.match(carousel, /const webEdition = getWebEdition\(book\.id\)/);
-  assert.match(carousel, /\{webEdition && \(/);
-  assert.match(link, /href=\{join\(webEdition\)\}/);
-  assert.match(link, /<BookOpen\b/);
-  assert.match(link, /Read online/);
-  assert.doesNotMatch(link, /data-pdf-action|book\.pdf|<Download\b/);
+  const details = await read("src/pages/books/[id].astro");
+  assert.doesNotMatch(carousel, /read-online-link|getWebEdition|<BookOpen\b/);
+  assert.doesNotMatch(details, /getWebEdition|Read online/);
+  for (const route of [
+    "src/pages/books/[id]/read/index.astro",
+    "src/pages/books/[id]/read/[slug].astro",
+    "src/pages/books/adventure-of-living-with-jesus/read/index.astro",
+    "src/pages/books/adventure-of-living-with-jesus/read/[slug].astro",
+  ]) {
+    await assert.rejects(read(route), { code: "ENOENT" });
+  }
 });
 
 test("only Knowing God has a concordance title and digital-version destination", async () => {

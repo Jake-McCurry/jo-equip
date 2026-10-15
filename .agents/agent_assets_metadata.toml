@@ -539,3 +539,31 @@ mtime_ms = 1791831499945
 storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/dd9ad2b8-c901-4761-a576-01be99f850e1/6ef5b007-d73f-4b46-8e0b-116252eb0806"
 storage_version_token = "1791831505585118"
 content_type = "text/csv"
+
+[[outputs]]
+id = "gGEE4egl-2NdI1dQvBw_B"
+uri = "file://.agents/outputs/JO-EQUIP-Changes-2026-10-09-to-2026-10-15.xlsx"
+type = "table"
+title = "JO EQUIP Weekly Change Log — October 9–15"
+description = "36 page-level change records, 21 PDF size comparisons, and dated file history. Dates are Pacific Time; reversed work and publication status are marked."
+logical_id = "618a08f3-908f-4926-a9f1-435184febc59"
+content_hash = "sha256:afdf3fffe54f005460bba9fdbad4aef2ac70d64ed061736d1700bc7f5898750d"
+size = 31261
+mtime_ms = 1792095198163
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/618a08f3-908f-4926-a9f1-435184febc59/e0b675b9-ff7f-4f22-81bc-566f35dd1f6f"
+storage_version_token = "1792095217976291"
+content_type = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+
+[[outputs]]
+id = "xJ3U4h4YufMYCRq-6wUrf"
+uri = "file://.agents/outputs/JO-EQUIP-Changes-2026-10-02-to-2026-10-15.xlsx"
+type = "table"
+title = "JO EQUIP Change Log — October 2–15"
+description = "Expanded two-week report with 60 changes. Opens on the Change Log tab, newest first."
+logical_id = "b29f8c06-a929-4e74-80b3-00d6edc96e03"
+content_hash = "sha256:acab27d30d657022cc237754717844d1dafa7489fcfbe35f36e42a13208514b0"
+size = 36816
+mtime_ms = 1792095328091
+storage_uri = "gcs://replit-rams-assets-picard/rams/assets/repl:89d90917-151d-4be4-8bab-6025a9166e47/b29f8c06-a929-4e74-80b3-00d6edc96e03/7e8d4136-c7bf-449a-ac94-c77f1aa1210e"
+storage_version_token = "1792095340138999"
+content_type = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"

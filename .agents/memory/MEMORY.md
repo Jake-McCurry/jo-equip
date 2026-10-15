@@ -1,6 +1,7 @@
 - [OpenAI ad crawler access](openai-ad-crawler-access.md) — Rotating crawler IPs need a narrow public-page exception, not individual IP additions; user confirmed this worked.
 - [Hero subtitle treatment](hero-subtitle-treatment.md) — User approved a feathered contrast background blending into the photo, not a defined panel.
 - [Workspace-only Git policy](workspace-only-git-policy.md) — Keep commits, pushes, PRs, merges, and branch changes manual; edit only the Replit workspace.
+- [Staging change log](staging-change-log.md) — Update JOLE Change Log only after confirmed staging pushes; retain newest-first ordering and avoid workspace-only entries.
 - [Leader Kit page separation](leader-kit-page-separation.md) — Keep the original kit library intact; campaign signup updates belong on the separate landing page.
 - [Category brand separation](category-brand-separation.md) — Preserve pre-rebrand category identities while keeping the current global site branding.
 - [Approved section spacing](section-spacing-approval.md) — User approved the brand kit’s balanced, shared section spacing; avoid one-off promotional block padding.

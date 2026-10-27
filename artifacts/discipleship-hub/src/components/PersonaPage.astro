@@ -7,6 +7,7 @@ import { Play, ArrowRight, Users2, BookOpen, Smartphone, Star } from "lucide-rea
 import { books } from "@/data/books";
 import { getBookCover } from "@/data/bookCovers";
 import { playlists, playlistThumbnail } from "@/data/playlists";
+import { faqResourceLinks } from "@/data/faqResourceLinks";
 
 /* Shared layout for the JO EQUIP persona landing pages
    (/pastors, /home-church-leaders, /chaplains, /missionaries).
@@ -66,11 +67,18 @@ const introParagraphs = intro.map((p, index) =>
 );
 const faqAnswerParts = (answer: string, faqIndex: number) => {
   let parts: { text: string; href?: string }[] = [{ text: answer }];
-  for (const link of faqLinks.filter(link => (link.faqIndex === undefined || link.faqIndex === faqIndex) && answer.includes(link.sentence))) {
+  const links = [
+    ...faqLinks.filter(link => (link.faqIndex === undefined || link.faqIndex === faqIndex) && answer.includes(link.sentence)),
+    ...faqResourceLinks,
+  ];
+  for (const link of links) {
+    if (parts.some(part => part.href && part.text === link.text)) continue;
+    let linked = false;
     parts = parts.flatMap(part => {
-      if (part.href) return [part];
+      if (part.href || linked) return [part];
       const index = part.text.indexOf(link.text);
       if (index < 0) return [part];
+      linked = true;
       return [
         { text: part.text.slice(0, index) },
         { text: link.text, href: join(link.href) },

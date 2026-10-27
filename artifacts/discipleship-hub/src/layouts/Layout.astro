@@ -3,6 +3,8 @@ import "@/styles/global.css";
 import { Image } from "astro:assets";
 import logoSrc from "@/assets/jol-logo-white.png";
 import EquipHeader from "@/components/EquipHeader.astro";
+import TopicCarousel from "@/components/TopicCarousel.astro";
+import { getTopicCarousel } from "@/data/topicCarousels";
 import OpenAIAdsPixel from "@/components/OpenAIAdsPixel.astro";
 import ExternalLinkPolicy from "@/components/ExternalLinkPolicy.astro";
 
@@ -43,6 +45,8 @@ const stripBase = (p: string) => {
   return p;
 };
 const currentPath = stripBase(rawPath);
+
+const topicCarousel = getTopicCarousel(currentPath);
 
 const year = new Date().getFullYear();
 
@@ -144,6 +148,7 @@ const gtmEnabled = import.meta.env.PROD;
 
     {/* Header */}
     <EquipHeader navColor={navColor} tagline={navTagline} />
+    {topicCarousel && <TopicCarousel label={topicCarousel.label} links={topicCarousel.links} />}
 
     <main id="main-content" class="flex-grow">
       <slot />

@@ -61,7 +61,7 @@ export function ReaderNav({ loc, onGo }: Props) {
         </fieldset>
       </div>
 
-      <div className="br-chapter-nav mt-4 flex items-center justify-between gap-2 border-t border-[var(--color-border-soft)] pt-3">
+      <div className="br-chapter-nav mt-2 flex items-center justify-between gap-2 border-t border-[var(--color-border-soft)] pt-1">
         {prev ? <button type="button" onClick={() => onGo({ ...prev, translation: loc.translation })} className="br-link inline-flex items-center gap-1"><ChevronLeft size={16} /> {refLabel(prev.book, prev.chapter)}</button> : <span />}
         {next ? <button type="button" onClick={() => onGo({ ...next, translation: loc.translation })} className="br-link inline-flex items-center gap-1">{refLabel(next.book, next.chapter)} <ChevronRight size={16} /></button> : <span className="text-sm text-[var(--color-text-muted)]">End of the Bible</span>}
       </div>

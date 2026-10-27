@@ -3,6 +3,22 @@
 .br-eyebrow { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .2em; color: var(--color-action-warm); }
 .br-label { display: block; font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--color-text-muted); }
 .br-input { border: 1px solid var(--color-border-control); background: var(--color-surface); color: var(--color-text); border-radius: 4px; padding: .55rem .7rem; font-size: 1rem; }
+.br-reference-input { padding-left: 2.25rem; }
+.br-selectors > label { min-width: 0; }
+.br-selectors select { display: block; max-width: 100%; letter-spacing: normal; text-transform: none; }
+.br-selectors fieldset { min-width: 0; }
+.br-root .br-card { min-width: 0; overflow-wrap: anywhere; }
+.br-root .br-link svg { flex-shrink: 0; }
+.br-chapter-nav { gap: 1rem; }
+.br-chapter-nav > button { min-width: 0; max-width: calc(50% - .5rem); text-align: left; }
+.br-chapter-nav > button:last-child { text-align: right; }
+.br-sheet { padding-bottom: max(1rem, env(safe-area-inset-bottom)); overscroll-behavior-y: contain; }
+@media (max-width: 639px) {
+  .br-root .br-scripture { font-size: 1.125rem; line-height: 1.85; }
+  .br-root .br-input, .br-root .br-btn-primary, .br-root .br-btn-outline, .br-root .br-link { min-height: 44px; }
+  .br-selectors fieldset button { min-height: 44px; }
+  .br-root #br-title { font-size: 2rem; line-height: 1.2; }
+}
 .br-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: .4rem; background: var(--color-structure); color: #fffdfb; font-weight: 700; padding: .55rem 1rem; border-radius: 4px; font-size: .95rem; }
 .br-btn-primary:hover:not(:disabled) { background: var(--color-hero); }
 .br-btn-outline { display: inline-flex; align-items: center; justify-content: center; gap: .4rem; border: 1px solid var(--color-border-control); color: var(--color-text); font-weight: 700; padding: .5rem .9rem; border-radius: 4px; font-size: .92rem; background: var(--color-surface); }

@@ -26,17 +26,17 @@ export function ReaderNav({ loc, onGo }: Props) {
     <section aria-label="Bible navigation" className="br-card p-4 md:p-5">
       <form onSubmit={submit} role="search" className="flex gap-2">
         <label htmlFor="br-ref" className="sr-only">Go to a reference</label>
-        <div className="relative flex-1">
+        <div className="relative min-w-0 flex-1">
           <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--color-text-muted)]" aria-hidden="true" />
-          <input id="br-ref" value={query} onChange={e => { setQuery(e.target.value); setError(""); }} placeholder="Go to a reference, e.g. Romans 8:28"
+          <input id="br-ref" value={query} onChange={e => { setQuery(e.target.value); setError(""); }} placeholder="e.g. Romans 8:28"
             aria-invalid={!!error} aria-describedby={error ? "br-ref-err" : undefined}
-            className="br-input w-full pl-9" />
+            className="br-input br-reference-input w-full" />
         </div>
         <button type="submit" className="br-btn-primary">Go</button>
       </form>
       {error && <p id="br-ref-err" role="alert" className="mt-2 text-sm font-semibold text-[var(--color-action-warm)]">{error}</p>}
 
-      <div className="mt-4 grid grid-cols-[1fr_auto] sm:grid-cols-[1fr_auto_auto] gap-2 items-end">
+      <div className="br-selectors mt-4 grid grid-cols-[minmax(0,1fr)_auto] sm:grid-cols-[minmax(0,1fr)_auto_auto] gap-2 items-end">
         <label className="br-label">Book
           <select value={loc.book} onChange={e => onGo({ book: e.target.value, chapter: 1, translation: loc.translation })} className="br-input mt-1 w-full">
             {BOOKS.map(b => <option key={b.name}>{b.name}</option>)}
@@ -61,7 +61,7 @@ export function ReaderNav({ loc, onGo }: Props) {
         </fieldset>
       </div>
 
-      <div className="mt-4 flex items-center justify-between gap-2 border-t border-[var(--color-border-soft)] pt-3">
+      <div className="br-chapter-nav mt-4 flex items-center justify-between gap-2 border-t border-[var(--color-border-soft)] pt-3">
         {prev ? <button type="button" onClick={() => onGo({ ...prev, translation: loc.translation })} className="br-link inline-flex items-center gap-1"><ChevronLeft size={16} /> {refLabel(prev.book, prev.chapter)}</button> : <span />}
         {next ? <button type="button" onClick={() => onGo({ ...next, translation: loc.translation })} className="br-link inline-flex items-center gap-1">{refLabel(next.book, next.chapter)} <ChevronRight size={16} /></button> : <span className="text-sm text-[var(--color-text-muted)]">End of the Bible</span>}
       </div>

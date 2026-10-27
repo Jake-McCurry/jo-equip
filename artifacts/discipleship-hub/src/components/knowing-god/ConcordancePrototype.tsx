@@ -3,6 +3,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { AlertCircle, BookOpen, Bookmark, BookmarkCheck, Check, ChevronDown, ChevronRight, Clipboard, Copy, Menu, Printer, Search, SlidersHorizontal, X } from "lucide-react";
 import { fetchNetPassages, netCache, netNotes } from "./bible-api";
 import { formatSourcePassage } from "./passage-format";
+import { scriptureReaderPath } from "./scripture-link";
 import { isDevotionalTopic } from "./devotional-topics";
 import { pushTopicHash, subscribeToTopicHistory, topicIdFromHash } from "./topic-history.mjs";
 
@@ -19,7 +20,6 @@ const base = (path: string) => `${import.meta.env.BASE_URL.replace(/\/$/, "")}${
 const testamentFor = (ref: string) => ntBooks.some(book => ref.startsWith(book)) ? "New Testament" : "Old Testament";
 const normalized = (value: string) => value.trim().toLocaleLowerCase();
 
-const scriptureHref = (reference: string) => `https://www.biblegateway.com/passage/?search=${encodeURIComponent(reference.replace(/\.$/, ""))}`;
 export function ConcordancePrototype() {
   const [index, setIndex] = useState<Index | null>(null);
   const [indexError, setIndexError] = useState("");
@@ -44,6 +44,7 @@ export function ConcordancePrototype() {
   };
   const [study, setStudy] = useState<string[]>([]); const [studyLoaded, setStudyLoaded] = useState(false); const [copied, setCopied] = useState("");
   const [translation, setTranslation] = useState<"NET" | "KJV">("NET"); const [translationLoaded, setTranslationLoaded] = useState(false);
+  const scriptureHref = (reference: string) => base(scriptureReaderPath(reference, translation));
   const [netLoading, setNetLoading] = useState(false); const [netError, setNetError] = useState(false); const [, setNetTick] = useState(0);
   const [netRetry, setNetRetry] = useState(0);
   const [expandedLetter, setExpandedLetter] = useState("A");
@@ -253,7 +254,7 @@ export function ConcordancePrototype() {
           const net = netCache.get(p.reference);
           return <article key={`${p.reference}-${i}`} className="border-b border-[var(--color-border-soft,#CCEBFF)] py-5">
             <p className="kg-sans text-base font-bold text-[var(--color-hero,#006BB3)]">
-              {p.reference} <span className="text-xs text-[var(--color-text-muted,#2E5A7A)] font-normal ml-2">
+              <a href={scriptureHref(p.reference)} target="_blank" rel="noopener noreferrer" className="kg-focus underline underline-offset-4" title="Open this chapter in the Bible reader (new tab)">{p.reference}</a> <span className="text-xs text-[var(--color-text-muted,#2E5A7A)] font-normal ml-2">
                 {translation === "KJV" ? "KJV" : netCache.has(p.reference) ? "NET" : "Fallback KJV"}
               </span>
             </p>

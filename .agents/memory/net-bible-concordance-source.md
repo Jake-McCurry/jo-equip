@@ -11,6 +11,12 @@ Serve the concordance's NET passages from the site's own static assets. Use Bibl
 
 ## Genuine translation differences
 
+Knowing God Scripture references should open the matching book and chapter in the site's Bible reader in a new tab, preserving the selected translation. Additional Scripture follows the same rule; NET labels remain unlinked.
+
+**Why:** The user explicitly requested in-site Bible navigation without losing their place in Knowing God.
+
+**How to apply:** Link the Scripture reference itself, not the translation label. For multi-chapter ranges, open the first chapter; single-chapter book references must not mistake verse numbers for chapter numbers.
+
 NET omissions and verse-numbering differences must be distinguished from incomplete downloads and erroneous source citations.
 
 **Why:** Strict validation revealed both legitimate differences (including 2 Corinthians 13 numbering) and source ranges extending beyond chapter ends. Treating every absent verse as an API failure or a NET omission misleads readers.

@@ -8,7 +8,7 @@ export function Attribution({ translation, apiText }: { translation: Translation
       ) : (
         <p>
           Scripture quoted by permission. Quotations designated{" "}
-          <a href="https://netbible.org" target="_blank" rel="noopener noreferrer" className="underline">NET</a> are from the NET Bible&reg; copyright &copy;1996, 2019 by Biblical Studies Press, L.L.C.{" "}
+          NET are from the NET Bible&reg; copyright &copy;1996, 2019 by Biblical Studies Press, L.L.C.{" "}
           <a href="https://netbible.com" target="_blank" rel="noopener noreferrer" className="underline">netbible.com</a>. All rights reserved.
         </p>
       )}

@@ -7,7 +7,7 @@ Serve the concordance's NET passages from the site's own static assets. Use Bibl
 
 **Why:** After encountering a live API failure, the user explicitly requested local NET availability like KJV. On 2026-09-16, the user confirmed written permission from NET to use its Bible anywhere. Do not reopen publication permission as a blocker.
 
-**How to apply:** Keep NET independent of Bible.org at runtime and during normal builds. Preserve linked NET labels and copyright acknowledgement. Validate local text against retained official source data, and version asset filenames by content. Local file failures may offer retry and an explicitly labeled KJV fallback, not a claim that Bible.org is unreachable.
+**How to apply:** Keep NET independent of Bible.org at runtime and during normal builds. Preserve copyright acknowledgement, but render NET translation labels as plain text, not links. The user explicitly withdrew linked NET labels on October 27, 2026. Validate local text against retained official source data, and version asset filenames by content. Local file failures may offer retry and an explicitly labeled KJV fallback, not a claim that Bible.org is unreachable.
 
 ## Genuine translation differences
 

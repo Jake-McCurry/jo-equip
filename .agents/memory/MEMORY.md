@@ -1,3 +1,6 @@
+- [Missionary editorial scope](missionary-editorial-scope.md) — Approved consolidated FAQs and supplemental-training language; Making & Multiplying Disciples is a collection, not a course.
+- [Chaplain editorial scope](chaplain-editorial-scope.md) — Approved supplemental-resource claims, voluntary Christian care language, and no unsupported training or supply claims.
+- [Discipleship SEO H1](discipleship-seo-h1.md) — User excluded the suggested H1 change; preserve “Tools for Mature Disciple Making.”
 - [OpenAI ad crawler access](openai-ad-crawler-access.md) — Rotating crawler IPs need a narrow public-page exception, not individual IP additions; user confirmed this worked.
 - [Hero subtitle treatment](hero-subtitle-treatment.md) — User approved a feathered contrast background blending into the photo, not a defined panel.
 - [Workspace-only Git policy](workspace-only-git-policy.md) — Keep commits, pushes, PRs, merges, and branch changes manual; edit only the Replit workspace.
@@ -46,5 +49,6 @@
 - [Tour and Welcome separation](tour-welcome-separation.md) — Tour revisions belong on /tour; preserve the original /welcome page without a menu link.
 - [Editorial link placement](editorial-link-placement.md) — Repeated sentences do not imply repeated links; scope editorial requests to the intended occurrence.
 - [Header language and audio](header-language-audio.md) — Translation instructions remain; user withdrew browser audio due to quality, pending an approved replacement.
+- [Carousel navigation scope](carousel-navigation-scope.md) — Sitewide hamburger; distinct white carousel banners only on Home and the three category landing pages.
 - [Deferred online books](interactive-book-pilot.md) — User requested reversal and deferred online books; do not restart without approval. Retain the earlier concept for future use.
 - [Book conversion fidelity](book-conversion-fidelity.md) — Text coverage misses drawn blanks, diagram meaning, and table relationships; verify representative source layouts visually.

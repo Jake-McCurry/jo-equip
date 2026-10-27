@@ -1,5 +1,6 @@
 ---
 import ResourceLanding from "@/components/ResourceLanding.astro";
+import ChurchStrategiesContent from "@/components/ChurchStrategiesContent.astro";
 import type { Section } from "@/components/resourceLandingTypes";
 
 const baseUrl = import.meta.env.BASE_URL;
@@ -9,7 +10,7 @@ const join = (p: string) =>
 const sections: Section[] = [
   {
     kind: "links",
-    heading: "Read Church Growth Articles",
+    heading: "Read Key Church Growth Articles",
     items: [
       { lead: "God's Unique Vision for Kingdom-focused Growth", href: join("/categories/church/become-growing-church/gods-unique-vision-for-your-church") },
       { lead: "JO Equipped Church", href: join("/categories/church/become-growing-church/a-jesusonline-equipped-church") },
@@ -25,18 +26,35 @@ const sections: Section[] = [
       { lead: "Rapid Church Planting", rest: "(Joshua Nations)", href: join("/categories/church/rapid-church-planting") },
     ],
   },
-  {
-    kind: "cta",
-    heading: "Sign Up for Newsletter",
-    label: "Making & Multiplying Disciples Newsletter",
-    href: join("/categories/church/make-multiply-disciples-newsletter"),
-  },
 ];
+
+const headings = [
+  "Read Key Church Growth Articles",
+  "Explore Church Growth Topics",
+  "What are Church Growth Strategies?",
+  "4 Key Strategies for Church Growth",
+  "Church Growth Strategies for Different Ministry Needs",
+  "Why Consider JO EQUIP Church Growth Resources?",
+  "FAQs",
+];
+const contents = headings.map(label => ({
+  label,
+  id: label.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""),
+}));
 ---
 <ResourceLanding
-  title="Church Growth Strategies & Ideas for Ministry | JO EQUIP"
-  description="Find practical church growth strategies and ideas to strengthen your ministry, reach more people, develop mature disciples and build a growing church."
-  heroTitle="Featured Church Growth Strategies"
-  heroIntro="Explore these church growth resources, developed to help pastors and leaders build thriving, disciple-making churches."
+  title="Church Growth Strategies for Pastors, Leaders & Ministries | JO EQUIP"
+  description="Effective church growth strategies to help pastors and leaders reach their communities, strengthen their ministries, develop faithful disciples, and expand their church’s impact."
+  heroTitle="Church Growth Strategies"
+  heroIntro="Find practical church growth strategies and resources to help pastors, church leaders, & ministries build thriving, disciple-making churches."
   sections={sections}
-/>
+  contents={contents}
+>
+  <ChurchStrategiesContent />
+  <section class="py-10 md:py-14" style="background-color:var(--color-surface-soft);">
+    <div class="container mx-auto px-4 max-w-3xl text-center">
+      <h2 class="text-2xl md:text-3xl font-semibold mb-5" style="color:var(--color-structure);">Sign Up for Newsletter</h2>
+      <a href={join("/categories/church/make-multiply-disciples-newsletter")} class="inline-flex font-semibold text-white rounded px-6 py-3 hover:opacity-90" style="background-color:var(--color-action-warm);">Making &amp; Multiplying Disciples Newsletter</a>
+    </div>
+  </section>
+</ResourceLanding>

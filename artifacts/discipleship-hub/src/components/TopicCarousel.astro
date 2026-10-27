@@ -1,0 +1,77 @@
+---
+/* Reusable horizontal link carousel: native touch/trackpad scrolling, arrow
+   buttons (shown only when there is overflow in that direction), no
+   auto-scroll. Links are plain anchors so Tab order follows label order and
+   the focused link is scrolled into view by the browser. */
+import type { CarouselLink } from "@/data/topicCarousels";
+interface Props { label: string; links: CarouselLink[] }
+const { label, links } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+<nav class="topic-carousel" aria-label={label} data-topic-carousel>
+  <div class="tc-inner container mx-auto px-2 md:px-4">
+    <button type="button" class="tc-arrow tc-prev" aria-label={`Scroll ${label.toLowerCase()} left`} data-dir="-1" hidden>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <ul class="tc-track" data-track>
+      {links.map(l => (
+        <li><a href={base + l.path} class="tc-link">{l.label}</a></li>
+      ))}
+    </ul>
+    <button type="button" class="tc-arrow tc-next" aria-label={`Scroll ${label.toLowerCase()} right`} data-dir="1" hidden>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
+</nav>
+<style>
+  .topic-carousel { background:#fff; border-bottom:1px solid #ccebff; width:100%; max-width:100vw; overflow:hidden; }
+  .tc-inner { display:flex; align-items:center; gap:.25rem; min-width:0; }
+  .tc-track {
+    flex:1 1 auto; min-width:0; display:flex; gap:.125rem; margin:0; padding:.125rem .125rem; list-style:none;
+    overflow-x:auto; overscroll-behavior-x:contain; scroll-behavior:smooth; scrollbar-width:none;
+    -webkit-overflow-scrolling:touch; scroll-padding-inline:2.75rem;
+  }
+  .tc-track::-webkit-scrollbar { display:none; }
+  .tc-track li { flex:0 0 auto; }
+  .tc-link {
+    display:inline-flex; align-items:center; min-height:2.75rem; padding:0 .5rem; white-space:nowrap;
+    color:#0067b8; font-weight:700; font-size:.875rem; border-radius:999px; text-decoration:none;
+    transition:background-color .15s ease, color .15s ease;
+  }
+  .tc-link:hover { background:#e8f5ff; color:#004f8f; text-decoration:underline; text-underline-offset:4px; }
+  .tc-link:focus-visible { outline:2px solid var(--color-focus, #0067b8); outline-offset:-2px; }
+  .tc-arrow {
+    flex:0 0 auto; display:inline-flex; align-items:center; justify-content:center; width:2.5rem; height:2.5rem;
+    border-radius:999px; color:#0067b8; background:#fffdfb; border:1px solid #ccebff; cursor:pointer;
+  }
+  .tc-arrow[hidden] { display:none; }
+  .tc-arrow:hover { background:#e8f5ff; }
+  .tc-arrow:focus-visible { outline:2px solid #0067b8; outline-offset:2px; }
+  @media (prefers-reduced-motion: reduce) { .tc-track { scroll-behavior:auto; } }
+</style>
+<script>
+  function init(root: HTMLElement) {
+    const track = root.querySelector<HTMLElement>("[data-track]");
+    const prev = root.querySelector<HTMLButtonElement>(".tc-prev");
+    const next = root.querySelector<HTMLButtonElement>(".tc-next");
+    if (!track || !prev || !next) return;
+    const update = () => {
+      const max = track.scrollWidth - track.clientWidth;
+      const atStart = track.scrollLeft <= 2;
+      const atEnd = track.scrollLeft >= max - 2;
+      // Move focus off a button before hiding it so keyboard users aren't stranded.
+      if (atStart && document.activeElement === prev) next.focus();
+      if (atEnd && document.activeElement === next) prev.focus();
+      prev.hidden = max <= 2 || atStart;
+      next.hidden = max <= 2 || atEnd;
+    };
+    const step = (dir: number) => track.scrollBy({ left: dir * Math.max(160, track.clientWidth * 0.75) });
+    prev.addEventListener("click", () => step(-1));
+    next.addEventListener("click", () => step(1));
+    track.addEventListener("scroll", update, { passive: true });
+    if (typeof ResizeObserver !== "undefined") new ResizeObserver(update).observe(track);
+    else window.addEventListener("resize", update);
+    update();
+  }
+  document.querySelectorAll<HTMLElement>("[data-topic-carousel]").forEach(init);
+</script>

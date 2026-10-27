@@ -16,18 +16,21 @@ const foundations = [
     summary: "How you view your redeemed identity shapes how you live.",
     text: "When you received Christ, you were not improved; you were made new. “If anyone is in Christ, the new creation has come: The old has gone, the new is here!” (2 Cor. 5:17, NIV). God already sees you in Christ. Growth is learning to live as the person He has already made you. A weak view of that identity turns the Christian life into striving. A clear view turns it into alignment.",
     href: join("/categories/growth/identity-in-christ"),
+    linkText: "Explore Identity in Christ Resources",
   },
   {
     lead: "God Focus:",
     summary: "How you view God’s divine identity shapes how you live.",
     text: "A distorted view of His character produces a life different from what God envisioned for you; a true and balanced view does the opposite. You become like what you behold: “beholding the glory of the Lord, [we] are being transformed into the same image” (2 Cor. 3:18, ESV). Seeing only part of who God is warps the heart. Seeing Him as He is—holy and loving, just and merciful—forms worship, humility, and trust.",
     href: join("/categories/growth/attributes-of-god"),
+    linkText: "Explore Resources on God's Attributes",
   },
   {
     lead: "Spirit Focus:",
     summary: "How you view the Holy Spirit’s functional identity shapes how you live.",
     text: "If the Christian life is “me plus some help from God,” the reflex will be self-effort—try harder, white-knuckle holiness. That is Galatians 3:3: After beginning by the Spirit, are you now finishing by the flesh? Full dependence on the Spirit is not passivity, but active trust. You still choose, confess, obey, and put off the old self as a new person empowered by the Spirit who already lives in you.",
     href: join("/categories/growth/ministry-holy-spirit"),
+    linkText: "Explore Resources to Walking in the Holy Spirit",
   },
 ];
 
@@ -100,8 +103,8 @@ const quickLinks = [
 ];
 ---
 <Layout
-  title="Discipleship Tools for Growing Mature Disciples | JO EQUIP"
-  description="Build mature disciples with practical discipleship tools designed to strengthen faith, encourage spiritual growth and equip believers to disciple others."
+  title="Disciple Making Tools & Discipleship Training | JO EQUIP"
+  description="Find free, Bible-based disciple-making tools and discipleship training resources to help believers grow in faith, become mature disciples, and guide others."
 >
   {/* Heading + intro */}
   <section class="bg-white">
@@ -130,11 +133,23 @@ const quickLinks = [
       <p class="text-lg leading-relaxed" style="color:var(--color-text-muted);">
         How you view each of those identities is not extra theology. It is what either frees a new life or keeps an old pattern running.
       </p>
+      <nav aria-label="Table of contents" class="mt-8 border rounded p-5" style="border-color:var(--color-border);">
+        <p class="font-semibold mb-3">Table of Contents</p>
+        <ul class="space-y-2" style="color:var(--color-action-warm);">
+          <li><a class="hover:underline" href="#identity-centered-discipleship">Identity-Centered Discipleship</a></li>
+          <li><a class="hover:underline" href="#building-blocks">Give Them What They Need: 10 Building Blocks</a></li>
+          <li><a class="hover:underline" href="#what-is-mature-disciple-making">What Is Mature Disciple Making?</a></li>
+          <li><a class="hover:underline" href="#how-to-make-mature-disciples">How to Make Mature Disciples?</a></li>
+          <li><a class="hover:underline" href="#why-jo-equip">Why Consider JO EQUIP Mature Disciple Making Tools?</a></li>
+          <li><a class="hover:underline" href="#faqs">FAQs</a></li>
+          <li><a class="hover:underline" href="#explore-resources">Explore Free Resources</a></li>
+        </ul>
+      </nav>
     </div>
   </section>
 
   {/* Identity-Centered Discipleship */}
-  <section class="py-10 md:py-14" style="background-color:var(--color-surface-soft);">
+  <section id="identity-centered-discipleship" class="py-10 md:py-14" style="background-color:var(--color-surface-soft);">
     <div class="container mx-auto px-4 max-w-4xl">
       <h2 class="text-2xl md:text-3xl font-semibold mb-6" style="color:var(--color-structure);">Identity-Centered Discipleship</h2>
       <ol class="flex flex-col gap-4">
@@ -144,7 +159,7 @@ const quickLinks = [
             <div class="min-w-0 text-[15px] md:text-base leading-relaxed" style="color:var(--color-text-muted);">
               <h3 class="text-base md:text-lg font-semibold mb-3" style="color:var(--color-structure);">{f.lead} {f.summary}</h3>
               <p>{f.text}</p>
-              <a href={f.href} class="inline-block mt-3 whitespace-nowrap hover:underline" style="color:var(--color-action-warm);">[more]</a>
+              <a href={f.href} class="inline-block mt-3 hover:underline" style="color:var(--color-action-warm);">{f.linkText}</a>
             </div>
           </li>
         ))}
@@ -161,9 +176,9 @@ const quickLinks = [
   </section>
 
   {/* Give Them What They Need — 10 Building Blocks */}
-  <section class="py-10 md:py-14 bg-white">
+  <section id="building-blocks" class="py-10 md:py-14 bg-white">
     <div class="container mx-auto px-4 max-w-4xl">
-      <h2 class="text-2xl md:text-3xl font-semibold mb-4" style="color:var(--color-structure);">Give Them What They Need</h2>
+      <h2 class="text-2xl md:text-3xl font-semibold mb-4" style="color:var(--color-structure);">Give Them What They Need: 10 Building Blocks</h2>
       <p class="text-[15px] md:text-base leading-relaxed mb-7" style="color:var(--color-text-muted);">
         The <strong style="color:var(--color-text);">10 Building Blocks for Maturity</strong> help disciple-makers discern
         where a person needs growth, always beginning from the foundation of their new identity in Christ.
@@ -172,10 +187,11 @@ const quickLinks = [
         {buildingBlocks.map((b, i) => (
           <li class="flex gap-4 border rounded px-5 py-4" style="border-color:var(--color-border);background-color:var(--color-surface-soft);">
             <span class="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold text-white" style="background-color:var(--color-hero);">{i + 1}</span>
-            <p class="text-[15px] leading-relaxed" style="color:var(--color-text-muted);">
-              <strong class="font-semibold" style="color:var(--color-structure);">{b.lead}</strong>{" "}{b.text}{" "}
+            <div class="text-[15px] leading-relaxed" style="color:var(--color-text-muted);">
+              <h3 class="font-semibold mb-2" style="color:var(--color-structure);">{b.lead.replace(/:$/, "")}</h3>
+              <p>{b.text}</p>
               <a href={b.href} class="whitespace-nowrap hover:underline" style="color:var(--color-action-warm);">[more]</a>
-            </p>
+            </div>
           </li>
         ))}
       </ol>
@@ -188,10 +204,70 @@ const quickLinks = [
   </section>
 
   {/* Explore Free Resources for … (persona landing pages) */}
-  <section class="py-8 md:py-10" style="background-color:var(--color-surface-soft);">
+  <div class="seo-content">
+    <section id="what-is-mature-disciple-making">
+      <div>
+        <h2>What Is Mature Disciple Making?</h2>
+        <p>Mature Disciple Making is the process of moving a new believer to a fully formed follower of Christ who can feed themselves spiritually &amp; multiply by investing in others. Grounded in Paul's mandate in Colossians 1:28 to "present everyone fully mature in Christ," this framework moves beyond simple evangelism to long-term spiritual transformation.</p>
+      </div>
+    </section>
+    <section id="how-to-make-mature-disciples">
+      <div>
+        <h2>How to Make Mature Disciples?</h2>
+        <p>Making mature disciples involves helping believers grow in their faith, understand God’s Word, develop Christlike character, and live out their faith daily. It also means equipping them to share the Gospel and help others grow in Christ.</p>
+        <h3>Core Pillars of Disciple Making</h3>
+        <p>Disciple Making helps people follow Jesus, grow in faith, &amp; guide others to do the same. These four pillars can help believers grow into mature disciples.</p>
+        <h4>Lead by Example</h4>
+        <p>Live out obedience, character, and faith like an apprenticeship so others can watch and imitate your walk with Christ (1 Corinthians 11:1).</p>
+        <h4>Teach God's Word</h4>
+        <p>Discipleship making helps believers understand the Bible and apply it to everyday life. Bible study and group discussions can support their spiritual growth.</p>
+        <h4>Encourage and Guide Others</h4>
+        <p>Build trust through conversations, prayer, &amp; loving guidance. Help believers learn from their struggles and grow in faith.</p>
+        <h4>Build Relationships</h4>
+        <p>Spend time together, share experiences, and support one another. Real-life discipleship grows through meaningful relationships and everyday acts of care.</p>
+        <h3>Four-Step Process for Making Disciples</h3>
+        <h4>Share the Gospel</h4>
+        <p>Build relationships with family, friends, &amp; neighbours. Share the message of Jesus with love and respect.</p>
+        <h4>Guide New Believers</h4>
+        <p>Help new believers <a href={join("/categories/growth/discover-jesus-gospels")}>discover Jesus in the Gospels</a>, read the Bible, pray, and connect with a Christian community.</p>
+        <h4>Develop Mature Disciples</h4>
+        <p>Use <a href={join("/categories/church/bible-study-tools/essential-bible-study-tools")}>Bible study tools</a>, mentoring, and group discussions to help believers grow in faith and apply God's Word.</p>
+        <h4>Multiply Disciples</h4>
+        <p>Train and send mature disciples to invest in a brand-new generation of believers as mentioned in 2 Timothy 2:2.</p>
+      </div>
+    </section>
+    <section id="why-jo-equip">
+      <div>
+        <h2>Why Consider JO EQUIP Mature Disciple Making Tools?</h2>
+        <p>JO EQUIP offers free, practical, and biblically-based <a href={join("/categories/church")}>church resources</a> to help guide people step by step from skeptics to believers, disciple making believers, and disciple makers. Top Reasons why you should utilize JO EQUIP tools:</p>
+        <ul>
+          <li><strong>Heart Transformation Based on Identity:</strong> Unlike other courses that only focus on behavioral guidelines or external discipline, JO EQUIP begins with the heart by taking into account three vital facts about identity: your identity in Christ, God’s identity, and functioning of the Holy Spirit in our daily life.</li>
+          <li><strong>Three Core Realities:</strong> Provides a step-by-step process from apologetics for skeptics, growth for believers, to multiplying tools for leaders.</li>
+          <li><strong>Clear Progression Path:</strong> Offers all <a href={join("/discipleship-resources")}>discipleship resources</a> and digital evangelism tools, including books, articles, video courses, and sermons, totally free.</li>
+          <li><strong>Designed for Relational &amp; Home Contexts:</strong> Created so that ordinary believers, home church leaders, chaplains, &amp; missionaries can easily share, translate, and pass the tools on to others without relying on complex seminary-style disciples training.</li>
+          <li><strong>Free and Accessible:</strong> Designed to be used in various contexts, including personal study, leadership team, disciples training, small group, home gathering, or cross-cultural mission work.</li>
+        </ul>
+      </div>
+    </section>
+    <section id="faqs">
+      <div>
+        <h2>FAQs</h2>
+        <h3>How can you help someone become a mature disciple?</h3>
+        <p>You can help someone grow as a disciple through biblical teaching, prayer, encouragement, and intentional relationships. Understanding the person's spiritual needs can help you choose relevant resources and guide their next steps.</p>
+        <h3>What is the difference between discipleship and disciple making?</h3>
+        <p>Discipleship involves learning to follow Jesus and growing in faith. Disciple Making includes helping others follow Jesus, supporting their spiritual growth, and equipping them to guide others.</p>
+        <h3>How can disciple-makers identify areas for spiritual growth?</h3>
+        <p>Disciple-makers can observe a person's understanding of Scripture, relationship with God, daily choices, and willingness to serve others. JO EQUIP's <a href={join("/categories/growth/building-blocks")}>10 Building Blocks for Maturity</a> provide a framework for discerning where additional guidance may be helpful.</p>
+        <h3>Why is spiritual maturity important in disciple-making?</h3>
+        <p>Spiritual maturity helps believers develop a deeper understanding of God's Word and apply biblical truth in their lives. As they grow, they can become better equipped to encourage others and participate in making disciples.</p>
+      </div>
+    </section>
+  </div>
+  <section id="explore-resources" class="py-8 md:py-10" style="background-color:var(--color-surface-soft);">
     <div class="container mx-auto px-4 max-w-4xl text-center">
+      <h2 class="text-2xl font-semibold mb-4" style="color:var(--color-structure);">Explore Free Resources</h2>
       <p class="text-[15px] md:text-base font-semibold" style="color:var(--color-structure);">
-        Explore Free Resources for
+        Resources for
         {personas.map(p => (
           <span> <span aria-hidden="true" style="color:var(--color-accent);">•</span> <a href={p.href} class="hover:underline" style="color:var(--color-action-warm);">{p.name}</a></span>
         ))}
@@ -226,3 +302,23 @@ const quickLinks = [
     </div>
   </section>
 </Layout>
+
+<style>
+  section[id] { scroll-margin-top: 6rem; }
+  .seo-content section { padding: 2.5rem 1rem; }
+  .seo-content section:nth-child(odd) { background: var(--color-surface-soft); }
+  .seo-content section > div { max-width: 56rem; margin: auto; }
+  .seo-content h2, .seo-content h3, .seo-content h4 { color: var(--color-structure); font-weight: 600; line-height: 1.3; }
+  .seo-content h2 { font-size: 1.5rem; margin-bottom: 1.5rem; }
+  .seo-content h3 { font-size: 1.25rem; margin: 2rem 0 .75rem; }
+  .seo-content h4 { font-size: 1.125rem; margin: 1.5rem 0 .5rem; }
+  .seo-content p, .seo-content li { color: var(--color-text-muted); line-height: 1.75; }
+  .seo-content a { color: var(--color-action-warm); text-decoration: underline; text-underline-offset: 2px; }
+  .seo-content a:hover { opacity: .8; }
+  .seo-content ul { list-style: disc; padding-left: 1.5rem; }
+  .seo-content li { margin-top: 1rem; }
+  @media (min-width: 768px) {
+    .seo-content section { padding-block: 3.5rem; }
+    .seo-content h2 { font-size: 1.875rem; }
+  }
+</style>

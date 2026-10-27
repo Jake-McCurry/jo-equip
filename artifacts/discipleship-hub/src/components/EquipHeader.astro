@@ -3,8 +3,8 @@ import { Image } from "astro:assets";
 import logoSrc from "@/assets/jol-logo-white.png";
 import { Search as SearchIcon } from "lucide-react";
 import HeaderReadingTools from "./HeaderReadingTools.astro";
-interface Props { navColor?: string; tagline?: string; }
-const { navColor = "#0095ff", tagline } = Astro.props;
+interface Props { navColor?: string; tagline?: string; sticky?: boolean; }
+const { navColor = "#0095ff", tagline, sticky = true } = Astro.props;
 const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
   (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + p;
@@ -36,7 +36,7 @@ const navLinksWithActive = navLinks.map(l => ({ ...l, active: isActive(l.path) }
 // The hamburger menu (all breakpoints) lists the primary links and adds
 // Contact at the bottom. /welcome is kept as a page but not linked (Aug 2026).
 ---
-    <header class="equip-header sticky top-0 z-50 w-full" style={`background-color:${navColor};border-bottom:1px solid rgba(255,255,255,0.08);`}>
+    <header class:list={["equip-header z-50 w-full", sticky ? "sticky top-0" : "relative"]} style={`background-color:${navColor};border-bottom:1px solid rgba(255,255,255,0.08);`}>
       <div class="container mx-auto px-4 md:px-6 flex items-center justify-between gap-2 py-4 md:py-5 relative">
 
         <a href={join("/")} class="flex items-center gap-2 sm:gap-3 md:gap-5 hover:opacity-90 transition-opacity min-w-0">

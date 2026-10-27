@@ -13,3 +13,9 @@ When applying Word SEO recommendations, inspect embedded hyperlinks as well as e
 **Why:** Plain-text DOCX extraction omitted four inline destinations in the supplied disciple-making guidance. Text coverage alone did not mean the recommendations were fully implemented.
 
 **How to apply:** Compare Word hyperlink text and relationship targets against the rendered page links, including links in newly added prose.
+
+Review the entire supplied SEO document before declaring an update complete, including metadata, headings, every body section, FAQs, and embedded links.
+
+**Why:** After an initial link omission, the user explicitly reiterated full-document review for subsequent page recommendations.
+
+**How to apply:** Check the rendered page against every recommendation, not just the opening metadata table; keep page-specific exclusions scoped to the page for which they were requested.

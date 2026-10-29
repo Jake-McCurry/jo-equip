@@ -43,6 +43,7 @@ export const bookCategories: BookCategory[] = [
       "the-abiding-room",
       "40-days-of-gods-love",
       "timeless-love-transforming-love",
+      "waiting-on-god",
     ].map(id => {
       const b = books.find(b => b.id === id);
       if (!b) throw new Error(`Missing book ID: ${id}`);

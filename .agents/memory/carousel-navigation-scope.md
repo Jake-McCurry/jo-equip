@@ -11,3 +11,9 @@ Keep the existing blue-header navigation inside a hamburger on all screen sizes,
 The user approved the logical existing-site destination choices and requested a more compact banner with smaller text that remains bold.
 
 **Why:** Their follow-up confirmed the navigation approach, then specifically narrowed the visual adjustment to banner and text sizing.
+
+Keep each of the four carousel menus sticky together with the blue navigation, directly underneath it, on desktop and mobile.
+
+**Why:** The user reiterated that the new carousels were supposed to stay sticky with the blue nav.
+
+**How to apply:** Treat both rows as one sticky navigation unit, preserving their compact sizing and limiting carousels to the four approved landing pages.

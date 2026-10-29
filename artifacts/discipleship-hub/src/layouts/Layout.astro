@@ -146,9 +146,11 @@ const gtmEnabled = import.meta.env.PROD;
       <noscript set:html={`<iframe src="https://www.googletagmanager.com/ns.html?id=${GTM_ID}" height="0" width="0" style="display:none;visibility:hidden"></iframe>`} />
     )}
 
-    {/* Header */}
-    <EquipHeader navColor={navColor} tagline={navTagline} />
-    {topicCarousel && <TopicCarousel label={topicCarousel.label} links={topicCarousel.links} />}
+    {/* Keep both navigation rows together without hardcoded header heights. */}
+    <div class="sticky top-0 z-50 w-full">
+      <EquipHeader navColor={navColor} tagline={navTagline} sticky={false} />
+      {topicCarousel && <TopicCarousel label={topicCarousel.label} links={topicCarousel.links} />}
+    </div>
 
     <main id="main-content" class="flex-grow">
       <slot />

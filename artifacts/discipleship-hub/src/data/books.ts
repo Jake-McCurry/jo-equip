@@ -31,6 +31,15 @@ export interface Book {
 /* The catalog retains every book so direct URLs and retired download pages keep working. */
 const bookCatalog: Book[] = [
   {
+    id: "waiting-on-god",
+    title: "Waiting on God by Andrew Murray",
+    subtitle: "A 31-Day Adventure into the Heart of God—4th Edition",
+    author: "Andrew Murray",
+    description: "A 31-day devotional journey of Scripture, reflection, and learning to wait on God with patience, trust, and hope.",
+    cover: "/books/covers/waiting-on-god.jpg",
+    pdf: "/books/waiting-on-god.pdf",
+  },
+  {
     id: "knowing-god",
     title: "Knowing God",
     cover: "/books/covers/knowing-god.jpg",
@@ -241,6 +250,7 @@ const listedBookIds = [
   "the-abiding-room",
   "40-days-of-gods-love",
   "timeless-love-transforming-love",
+  "waiting-on-god",
   "eight-great-ways-to-honor-your-husband",
   "eight-great-ways-to-honor-your-wife",
   "from-coping-to-cure",

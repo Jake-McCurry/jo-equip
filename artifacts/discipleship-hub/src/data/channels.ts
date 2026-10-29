@@ -1,3 +1,5 @@
+import waitingOnGodArticles from "./local/articles/waiting-on-god.json";
+
 export type ResourceFormat = "book" | "playlist" | "app" | "pdf" | "video";
 
 export type ChannelId = "church" | "growth" | "evidence";
@@ -1910,6 +1912,20 @@ export const subTopics: SubTopic[] = [
     description: 'Inspire believers with these daily devotionals.',
   },
   {
+    id: 'waiting-on-god',
+    channelId: 'growth',
+    parentId: 'devotionals',
+    name: 'Waiting on God by Andrew Murray',
+    description: 'A 31-Day Adventure into the Heart of God—4th Edition',
+    bookId: 'waiting-on-god',
+    formats: ['book'],
+    items: waitingOnGodArticles.map((article, index) => ({
+      number: index + 1,
+      title: article.title,
+      articleId: article.id,
+    })),
+  },
+  {
     id: 'discover-jesus-gospels',
     channelId: 'growth',
     parentId: 'devotionals',
@@ -2471,7 +2487,7 @@ export const subTopics: SubTopic[] = [
     id: 'new-perspectives-life-change',
     channelId: 'growth',
     parentId: 'devotionals',
-    name: 'New Perspective on Life Change',
+    name: 'New Perspective on Life Changes',
     description: 'Change your life with a new perspective.',
     items: [
       { number: 1, title: 'Character Matters', articleId: 'character-matters', links: { app: 'https://app.jesusonline.com/post/22591-character-matters' } },
@@ -2563,7 +2579,15 @@ export function getSubTopicsByChannel(channelId: string): SubTopic[] {
 
 /** Children of a parent sub-topic, in declaration order. */
 export function getSubTopicChildren(parentId: string): SubTopic[] {
-  return subTopics.filter(s => s.parentId === parentId);
+  const children = subTopics.filter(s => s.parentId === parentId);
+  if (parentId !== "devotionals") return children;
+  const order = [
+    "discover-jesus-gospels", "days-god-s-love", "hearing-voice-god",
+    "waiting-on-god", "wisdom-trenches", "kingdomnomics-eternal-impact",
+    "understanding-god-s-will", "new-perspectives-life-change", "heart-problem",
+    "courage-under-fire", "thankfulness", "timeless-wisdom-from-proverbs",
+  ];
+  return children.sort((a, b) => order.indexOf(a.id) - order.indexOf(b.id));
 }
 
 export function getSubTopic(channelId: string, subId: string): SubTopic | undefined {

@@ -33,7 +33,7 @@ for (const b of blocks) {
       const s: Section = paren
         ? { id: `genesis-${sec[1].toLowerCase()}`, marker: `${sec[1]}.`, title: paren[1], range: paren[2], rangeFirst: false, items: [] }
         : lead
-          ? { id: `genesis-${sec[1].toLowerCase()}`, marker: `${sec[1]}.`, title: lead[2], range: lead[1], rangeFirst: true, items: [] }
+          ? { id: `genesis-${sec[1].toLowerCase()}`, marker: `${sec[1]}.`, title: lead[2], range: lead[1] === "Chapters one through five." ? "Chapters 1-5" : lead[1], rangeFirst: true, items: [] }
           : { id: `genesis-${sec[1].toLowerCase()}`, marker: `${sec[1]}.`, title: body, range: null, rangeFirst: false, items: [] };
       sections.push(s); pending = { kind: "section", s }; continue;
     }

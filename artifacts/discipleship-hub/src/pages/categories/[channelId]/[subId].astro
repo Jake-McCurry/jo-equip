@@ -83,7 +83,9 @@ const subTopicJsonLd = hasItems ? {
       "@type": "ListItem",
       "position": item.number,
       "name": item.title,
-      ...(item.articleId
+      ...(item.resourcePath
+        ? { url: `${SITE}${item.resourcePath}` }
+        : item.articleId
         ? { url: `${SITE}/categories/${channel.id}/${sub.id}/${item.articleId}` }
         : {}),
     })),
@@ -354,11 +356,13 @@ const seo = getCategorySeo(`/categories/${channel.id}/${sub.id}`);
               { label: "Video", icon: Video, href: videoHref, internal: videoInternal },
               { label: "PDF", icon: FileText, href: pdfHref, internal: pdfInternal },
               // App button is omitted for BCG article items (those with an articleId).
-              ...(item.articleId ? [] : [{ label: "App", icon: Smartphone, href: appHref, internal: false }]),
+              ...(item.articleId || item.resourcePath ? [] : [{ label: "App", icon: Smartphone, href: appHref, internal: false }]),
             ];
             // Article: when an item has an articleId, its title is a link
             // to /categories/<channelId>/<subId>/<articleId> (the per-article page).
-            const articleHref = item.articleId
+            const articleHref = item.resourcePath
+              ? join(item.resourcePath)
+              : item.articleId
               ? join(`/categories/${channel.id}/${sub.id}/${item.articleId}`)
               : undefined;
             return (

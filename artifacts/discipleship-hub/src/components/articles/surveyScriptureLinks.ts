@@ -11,30 +11,65 @@
  * - "chapter(s) N" / "chapters N-M" link the lesson's book (single-book only).
  * - Verse-only refs ("vs. 25") are never linked: no explicit chapter.
  * - Malformed/ambiguous refs (verse beyond the chapter, "25:7:7-10",
- *   "1st John 3:2" written with an ordinal, "Thessalonians 4:13" missing its
+ *   "4th John 3:2", "Thessalonians 4:13" missing its
  *   number) are left untouched. Visible text is never altered — only wrapped.
  */
 import { BOOKS, CHAPTER_VERSES, canonicalBook } from "../../../worker/bible-catalog.js";
 
 const verses = CHAPTER_VERSES as Record<string, number[]>;
 
-const bookAlternation = [...BOOKS.map((b: { name: string }) => b.name), "Psalm"]
+// Explicit, survey-only aliases: do not guess from arbitrary book prefixes.
+// In particular, "Ph" and unnumbered "Cor"/"Thess"/"Tim"/"Pet" are ambiguous.
+const abbreviations: Record<string, string[]> = {
+  Genesis: ["Gen", "Ge", "Gn"], Exodus: ["Ex", "Exod"], Leviticus: ["Lev", "Lv"],
+  Numbers: ["Num", "Nm"], Deuteronomy: ["Deut", "Dt"], Joshua: ["Josh", "Jos"],
+  Judges: ["Judg", "Jdg"], Samuel: ["Sam"], Kings: ["Kgs"], Chronicles: ["Chron", "Chr"],
+  Ezra: ["Ezr"], Nehemiah: ["Neh"], Esther: ["Est", "Esth"],
+  Psalms: ["Psalm", "Ps", "Psa", "Pss"], Proverbs: ["Prov", "Pr"],
+  Ecclesiastes: ["Eccl", "Eccles"], "Song of Solomon": ["Song of Songs", "Song", "Cant"],
+  Isaiah: ["Isa"], Jeremiah: ["Jer"], Lamentations: ["Lam"], Ezekiel: ["Ezek"],
+  Daniel: ["Dan"], Hosea: ["Hos"], Joel: ["Jl"], Obadiah: ["Obad"],
+  Jonah: ["Jon"], Micah: ["Mic"], Nahum: ["Nah"], Habakkuk: ["Hab"],
+  Zephaniah: ["Zeph"], Haggai: ["Hag"], Zechariah: ["Zech"], Malachi: ["Mal"],
+  Matthew: ["Matt", "Mt"], Mark: ["Mk"], Luke: ["Lk"], John: ["Jn", "Jhn"],
+  Acts: ["Ac"], Romans: ["Rom", "Ro"], Corinthians: ["Cor"],
+  Galatians: ["Gal"], Ephesians: ["Eph"], Philippians: ["Phil"], Colossians: ["Col"],
+  Thessalonians: ["Thess", "Thes"], Timothy: ["Tim"], Titus: ["Tit"],
+  Philemon: ["Phlm", "Philem"], Hebrews: ["Heb"], James: ["Jas"], Peter: ["Pet"],
+  Jude: ["Jud"], Revelation: ["Rev"],
+};
+const aliases = new Map<string, string>();
+const aliasPatterns: string[] = [];
+const normalizeAlias = (s: string) => s.toLowerCase().replace(/\.$/, "").replace(/\s+/g, "").trim();
+for (const { name } of BOOKS) {
+  const numbered = name.match(/^([123]) (.+)$/);
+  const stem = numbered?.[2] ?? name;
+  const forms = [stem, ...(abbreviations[stem] ?? [])];
+  const prefixes = numbered
+    ? [numbered[1], ...({ "1": ["1st", "First"], "2": ["2nd", "Second"], "3": ["3rd", "Third"] }[numbered[1]] ?? [])]
+    : [""];
+  for (const prefix of prefixes) for (const form of forms) {
+    aliases.set(normalizeAlias(`${prefix} ${form}`), name);
+    aliasPatterns.push(`${prefix ? `${prefix}\\s*` : ""}${form.replace(/ /g, "\\s+")}\\.?`);
+  }
+}
+const bookAlternation = aliasPatterns
   .sort((a, b) => b.length - a.length)
-  .map(n => n.replace(/ /g, "\\s+").replace(/^(\d)\\s\+/, "$1\\s*"))
   .join("|");
 
 // [1] book? [2] chapter [3] verse [4] end-a [5] end-b (verse when cross-chapter) [6] list tail
 const REF = new RegExp(
   `(?:\\b(${bookAlternation})\\s+)?(?<![\\d:])(\\d{1,3}):(\\d{1,3})(?:-(\\d{1,3})(?::(\\d{1,3}))?)?((?:,\\s*\\d{1,3}(?:-\\d{1,3})?)*)(?![\\d]|:\\d)`,
-  "g",
+  "gi",
 );
 const CHAPTERS = /\b([Cc]hapters?\s+)(\d{1,3})(-\d{1,3}|\s+and\s+\d{1,3})?(?![:\d])/g;
-const BOOK_BEFORE = new RegExp(`\\b(?:${bookAlternation})\\s*$`);
-/* "1st John", "Second Kings": the ordinal makes a bare book name ambiguous. */
-const ORDINAL_BEFORE = /(?:\d\s*(?:st|nd|rd|th)?|\b(?:first|second|third))\s*$/i;
+const BOOK_BEFORE = new RegExp(`\\b(?:${bookAlternation})\\s*$`, "i");
+/* Reject extra/unsupported prefixes rather than linking only a name's suffix. */
+const ORDINAL_BEFORE = /(?:\d\s*(?:st|nd|rd|th)?|\b(?:first|second|third|fourth|I|II|III|IV))\s*$/i;
+const AMBIGUOUS_BEFORE = /\b(?:cor(?:inthians)?|thes(?:s(?:alonians)?)?|tim(?:othy)?|pet(?:er)?|sam(?:uel)?|kings|kgs|chr(?:on(?:icles)?)?|ph)\.?\s*$/i;
 /* A capitalised word right before a bare ref is usually a book we don't
    recognise ("Thessalonians 4:13" after "1<sup>st</sup>"). Skip those. */
-const WORD_BEFORE = /\b([A-Z][a-z]+)\s+$/;
+const WORD_BEFORE = /\b([a-zA-Z]*[A-Z][a-zA-Z]*|[a-zA-Z]+(?=\.))\.?\s+$/;
 const SAFE_WORDS = new Set(["Vs", "Vss", "VS", "See", "Verse", "Verses", "Chapter", "Chapters", "In", "And", "Also", "Compare", "Cf", "Read", "Then", "From"]);
 
 function validRef(book: string, ch: number, v: number, endA?: number, endB?: number, tail = ""): boolean {
@@ -45,7 +80,10 @@ function validRef(book: string, ch: number, v: number, endA?: number, endB?: num
       if (endA <= ch || !vs[endA - 1] || endB < 1 || endB > vs[endA - 1]) return false;
     } else if (endA <= v || endA > vs[ch - 1]) return false;
   }
-  for (const n of tail.match(/\d+/g) ?? []) if (Number(n) > vs[ch - 1]) return false;
+  for (const part of tail.split(",").filter(s => s.trim())) {
+    const [start, end = start] = part.trim().split("-").map(Number);
+    if (start < 1 || end < start || end > vs[ch - 1]) return false;
+  }
   return true;
 }
 
@@ -63,11 +101,15 @@ function a(url: string, label: string, title: string, ranges: number[][]) {
 function linkText(text: string, base: string, context: string | null, prev: string): string {
   const out = text.replace(REF, (m, bookRaw, c, v, eA, eB, tail, offset: number) => {
     const before = prev + text.slice(0, offset);
+    const after = text.slice(offset + m.length);
+    // Never salvage a valid-looking substring of a malformed citation.
+    if (/[\w:]$/.test(before) || /^(?:[\w]|:\d|-\d|,\s*\d)/.test(after)) return m;
     let book: string | null;
     if (bookRaw) {
-      if (!/^\d/.test(bookRaw) && ORDINAL_BEFORE.test(before)) return m;
-      book = canonicalBook(bookRaw.replace(/^(\d)\s*/, "$1 "));
+      if (ORDINAL_BEFORE.test(before)) return m;
+      book = aliases.get(normalizeAlias(bookRaw)) ?? null;
     } else {
+      if (AMBIGUOUS_BEFORE.test(before)) return m;
       const w = before.match(WORD_BEFORE);
       if (w && !SAFE_WORDS.has(w[1])) return m;
       book = context;

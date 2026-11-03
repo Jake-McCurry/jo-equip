@@ -1,13 +1,13 @@
 ---
 name: Bible survey design approval scope
-description: Genesis-only design pilot before broader survey formatting rollout.
+description: Approved survey-wide formatting scope and source-preservation rules.
 ---
 
-Apply the Bible survey formatting redesign to Genesis only until the user approves the design. The intended later rollout includes everything under `/categories/church/survey-of-the-bible`, including its Old and New Testament survey collections.
+The user approved the Genesis design and authorized applying the relevant treatment throughout `/categories/church/survey-of-the-bible`, including the Old and New Testament survey collections and lessons.
 
-**Why:** The user explicitly requested Genesis as the review page before applying the design across the survey.
+**Why:** After reviewing the Genesis pilot and its revisions, the user explicitly approved the wider rollout.
 
-**How to apply:** Keep the current formatting change gated to Genesis; preserve source teaching and downloaded PDFs. Await approval before enabling the treatment on other survey pages.
+**How to apply:** Scope the treatment to the Bible survey, adapting to each lesson rather than assuming Genesis's outline. Preserve source teaching and downloaded PDFs. Discussion headings omit outline numerals; questions remain unbolded. Omit the JO App article CTA. Scripture previews use the closed Bible icon while reference clicks open the reader in a new tab.
 
 Use numeric, hyphenated chapter ranges throughout the Genesis web presentation (for example, “Chapters 1-5” and “Chapters 6-11”), including inline chapter citations, not just the first heading.
 

@@ -7,3 +7,7 @@ Keep the Knowing God entry compact: title, accurate topic/passage summary, copyr
 **Why:** The user supplied a compact reference and explicitly prioritized immediate access to the content over a spacious introductory screen. The reference's outdated 773 count and audio icon are not approved.
 
 **How to apply:** Preserve 649 topic wording, current devotional grouping, and cross-reference entries when adjusting spacing or responsive layouts.
+
+The no-Print rule applies to the entry view. The user subsequently requested Print in the topic-reading toolbar, alongside Save, Copy refs, and Copy verses. Keep that toolbar compact on one mobile line, replace the “A topical study” label, omit the “Scripture passages” heading, and show the small results count beside the topic title.
+
+**Why:** Topic-reading actions should be available without the tall, separated heading/action blocks pushing Scripture down the page.

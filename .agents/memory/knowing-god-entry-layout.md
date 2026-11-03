@@ -12,9 +12,9 @@ The no-Print rule applies to the entry view. The user subsequently requested Pri
 
 **Why:** Topic-reading actions should be available without the tall, separated heading/action blocks pushing Scripture down the page.
 
-On the entry view, keep “Knowing God Topical Bible” on one mobile line, show small gray counts alongside both topic-selection labels, and expose search through a magnifying glass immediately after Z rather than a permanently visible field.
+On the entry view, keep “Knowing God Topical Bible” on one mobile line and show small gray counts alongside both topic-selection labels. On mobile, show a full-width search field immediately below A–Z; desktop can retain the magnifying-glass disclosure after Z.
 
-**Why:** The user requested these further space reductions while keeping topic counts and search accessible.
+**Why:** The user first requested a magnifying-glass disclosure, then explicitly changed mobile search to a full-width visible field after search results were improved.
 
 Search results must show a bold “Topic results” section first and a bold “Scripture results” section second. Keep topic-title matches separate from passages containing the search term.
 

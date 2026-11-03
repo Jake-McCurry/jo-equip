@@ -1,0 +1,95 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { ChevronsLeft } from "lucide-react";
+
+const baseUrl = import.meta.env.BASE_URL;
+const join = (path: string) =>
+  (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + path;
+
+const resources = [
+  { title: "Knowing God / Topical Bible", description: "A biblical guide to the nature and character of God", href: "/knowing-god" },
+  { title: "Promises of God", description: "Discover promises for your situation, feelings, and relationships", href: "/categories/growth/bible-promises-hope" },
+  { title: "Bible Study Methods", description: "R.E.C.A.P. Method, Topical Study Method, Inductive Study Method", href: "/categories/church/bible-study-methods" },
+  {
+    title: "Gospel Devotionals",
+    description: "Discover Jesus in the Gospels and Hearing the Voice of God",
+    links: [
+      { label: "Discover Jesus in the Gospels", href: "/categories/growth/discover-jesus-gospels" },
+      { label: "Hearing the Voice of God", href: "/categories/growth/hearing-voice-god" },
+    ],
+  },
+  { title: "Survey of the Bible", description: "An overview of the books of the Bible by Joshua nations", href: "/categories/church/survey-of-the-bible" },
+  { title: "Read the online Bible", description: "See the New English Translation and the King James Version", href: "/bible" },
+];
+---
+
+<Layout
+  title="Bible Resources · JO EQUIP"
+  description="Bible resources from JO EQUIP: a topical Bible on the character of God, Bible promises, study methods, Gospel devotionals, a survey of the Bible, and the online Bible."
+>
+  <div class="br-main">
+    <nav class="br-breadcrumbs" aria-label="Breadcrumb">
+      <a class="br-back" href={join("/bible")} aria-label="Back to Bible"><ChevronsLeft size={18} aria-hidden="true" />Bible</a> <span aria-hidden="true">/</span> Bible Resources
+    </nav>
+
+    <p class="br-eyebrow">Study Tools</p>
+    <h1 class="br-title">Bible Resources</h1>
+    <p class="br-lede">
+      Go deeper in Scripture with guides to God's character and promises, practical study methods, Gospel devotionals, and a survey of every book of the Bible.
+    </p>
+
+    <section class="intro-grid" aria-label="Bible resources">
+      {resources.map((r, index) => {
+        const num = String(index + 1).padStart(2, "0");
+        return r.links ? (
+          <div class="intro-card">
+            <span class="intro-number">{num}</span>
+            <div>
+              <h2>{r.title}</h2>
+              <span>{r.description}</span>
+              <ul class="sub-links">
+                {r.links.map((l) => (
+                  <li><a href={join(l.href)}>{l.label}<strong aria-hidden="true">→</strong></a></li>
+                ))}
+              </ul>
+            </div>
+            <i aria-hidden="true"></i>
+          </div>
+        ) : (
+          <a class="intro-card" href={join(r.href!)}>
+            <span class="intro-number">{num}</span>
+            <div>
+              <h2>{r.title}</h2>
+              <span>{r.description}</span>
+            </div>
+            <strong aria-hidden="true">→</strong>
+          </a>
+        );
+      })}
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .br-main { max-width: 900px; margin: 0 auto; padding: 2rem 1rem 4rem; font-family: var(--font-sans, 'Source Sans 3', system-ui, sans-serif); }
+  .br-breadcrumbs { display: flex; align-items: center; gap: .4rem; flex-wrap: wrap; color: var(--color-text-muted, #2E5A7A); font-size: .95rem; }
+  .br-back { display: inline-flex; align-items: center; gap: .2rem; color: var(--color-hero, #006BB3); font-weight: 600; text-decoration: none; }
+  .br-back:hover { text-decoration: underline; }
+  .br-eyebrow { margin: 2rem 0 .4rem; color: var(--color-action-warm, #C45100); font-size: .75rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+  .br-title { margin: 0; color: var(--color-hero, #006BB3); font-size: clamp(2rem, 6vw, 3rem); font-weight: 700; line-height: 1.1; }
+  .br-lede { margin: 1rem 0 0; max-width: 680px; color: var(--color-text-muted, #2E5A7A); font-size: 1.1rem; line-height: 1.6; }
+  .intro-grid { display: grid; gap: 1px; margin-top: 2.5rem; border: 1px solid var(--color-border-soft, #CCEBFF); background: var(--color-border-soft, #CCEBFF); }
+  .intro-card { display: grid; grid-template-columns: 3rem 1fr auto; gap: 1.25rem; align-items: start; padding: 1.5rem; background: var(--color-surface, #FFFDFB); color: inherit; text-decoration: none; transition: background .18s ease; }
+  a.intro-card:hover { background: var(--color-surface-soft, #E6F5FF); }
+  .intro-number { color: var(--color-action-warm, #C45100); font-size: .75rem; font-weight: 800; letter-spacing: .12em; padding-top: .45rem; }
+  .intro-card h2 { margin: 0 0 .55rem; color: var(--color-hero, #006BB3); font-size: clamp(1.35rem, 3vw, 1.8rem); font-weight: 600; }
+  .intro-card div > span { display: block; max-width: 680px; color: var(--color-text-muted, #2E5A7A); font-size: 1rem; line-height: 1.55; }
+  .intro-card > strong, .sub-links strong { color: var(--color-action-warm, #C45100); font-size: 1.4rem; font-weight: 400; }
+  .sub-links { list-style: none; margin: 1rem 0 0; padding: 0; display: grid; gap: .5rem; }
+  .sub-links a { display: flex; justify-content: space-between; align-items: center; gap: 1rem; min-height: 44px; padding: .6rem 1rem; border: 1px solid var(--color-border-soft, #CCEBFF); color: var(--color-hero, #006BB3); font-weight: 600; text-decoration: none; transition: background .18s ease; }
+  .sub-links a:hover { background: var(--color-surface-soft, #E6F5FF); }
+  .sub-links strong { font-size: 1.2rem; }
+  @media (max-width: 560px) {
+    .intro-card { grid-template-columns: 2rem 1fr auto; gap: .65rem; padding: 1.2rem .9rem; }
+  }
+</style>

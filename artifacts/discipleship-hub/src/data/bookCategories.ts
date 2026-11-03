@@ -38,12 +38,12 @@ export const bookCategories: BookCategory[] = [
     title: "Devotional Studies",
     books: [
       "new-life-in-christ",
+      "waiting-on-god",
       "knowing-god",
       "hearing-the-voice-of-god",
       "the-abiding-room",
       "40-days-of-gods-love",
       "timeless-love-transforming-love",
-      "waiting-on-god",
     ].map(id => {
       const b = books.find(b => b.id === id);
       if (!b) throw new Error(`Missing book ID: ${id}`);

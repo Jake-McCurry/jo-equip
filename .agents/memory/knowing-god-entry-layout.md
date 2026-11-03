@@ -15,3 +15,7 @@ The no-Print rule applies to the entry view. The user subsequently requested Pri
 On the entry view, keep “Knowing God Topical Bible” on one mobile line, show small gray counts alongside both topic-selection labels, and expose search through a magnifying glass immediately after Z rather than a permanently visible field.
 
 **Why:** The user requested these further space reductions while keeping topic counts and search accessible.
+
+Search results must show a bold “Topic results” section first and a bold “Scripture results” section second. Keep topic-title matches separate from passages containing the search term.
+
+**Why:** The user explicitly requested separate, ordered results rather than mixing Scripture-text hits into a topic list.

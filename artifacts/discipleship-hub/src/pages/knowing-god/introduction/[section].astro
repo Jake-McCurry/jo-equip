@@ -12,6 +12,7 @@ import {
 } from "@/data/knowing-god/introduction/devotional-guide";
 import { notableQuotations } from "@/data/knowing-god/introduction/notable-quotations";
 import IntroductionAppendices from "@/components/knowing-god/IntroductionAppendices.astro";
+import { ChevronsLeft } from "lucide-react";
 
 export function getStaticPaths() {
   return knowingGodIntroductions.map((article, index) => ({
@@ -97,7 +98,7 @@ const markHymnLine = (line: string, stanzaIndex: number, lineIndex: number) => {
 <KnowingGodIntroductionLayout title={article.title} description={article.description}>
   <main class="kg-intro-main">
     <nav class="kg-intro-breadcrumbs" aria-label="Breadcrumb">
-      <a href={join("/knowing-god")}>Knowing God</a>
+      <a class="kg-intro-back" href={join("/knowing-god")} aria-label="Back to Knowing God"><ChevronsLeft size={18} aria-hidden="true" />Knowing God</a>
       <span aria-hidden="true">/</span>
       <a href={join("/knowing-god/introduction")}>Introductory Articles</a>
       <span aria-hidden="true">/</span>

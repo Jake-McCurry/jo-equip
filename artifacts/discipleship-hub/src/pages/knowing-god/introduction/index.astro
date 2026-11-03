@@ -1,6 +1,7 @@
 ---
 import KnowingGodIntroductionLayout from "@/layouts/KnowingGodIntroductionLayout.astro";
 import { knowingGodIntroductions } from "@/data/knowingGodIntroductions";
+import { ChevronsLeft } from "lucide-react";
 
 const baseUrl = import.meta.env.BASE_URL;
 const join = (path: string) =>
@@ -13,7 +14,7 @@ const join = (path: string) =>
 >
   <main class="kg-intro-main">
     <nav class="kg-intro-breadcrumbs" aria-label="Breadcrumb">
-      <a href={join("/knowing-god")}>Knowing God</a> <span aria-hidden="true">/</span> Introductory Articles
+      <a class="kg-intro-back" href={join("/knowing-god")} aria-label="Back to Knowing God"><ChevronsLeft size={18} aria-hidden="true" />Knowing God</a> <span aria-hidden="true">/</span> Introductory Articles
     </nav>
 
     <p class="kg-intro-eyebrow">Begin Here</p>

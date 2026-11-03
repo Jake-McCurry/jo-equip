@@ -10,7 +10,16 @@ import ScripturePreview from "./ScripturePreview.astro";
 
 interface Props { blocks: ArticleBlock[]; accent: string; base: string }
 const { blocks, accent, base } = Astro.props;
-const link = (html: string) => linkGenesisScripture(html, base);
+// Display-only chapter notation; preserve the downloadable source.
+function numericChapters(text: string): string {
+  const numbers: Record<string, string> = { one: "1", two: "2", three: "3", four: "4", five: "5", six: "6", seven: "7", eight: "8", nine: "9", ten: "10", eleven: "11" };
+  const number = (value: string) => numbers[value.toLowerCase()] ?? value;
+  return text.replace(
+    /\b(chapters?)\s+(\d+|one|two|three|four|five|six|seven|eight|nine|ten|eleven)\b(?:\s+(?:through|to|and)\s+(\d+|one|two|three|four|five|six|seven|eight|nine|ten|eleven)\b)?/gi,
+    (_match, label: string, start: string, end?: string) => `${label} ${number(start)}${end ? `-${number(end)}` : ""}`,
+  );
+}
+const link = (html: string) => linkGenesisScripture(numericChapters(html), base);
 
 type Section = { id: string; marker: string; title: string; range: string | null; rangeFirst: boolean; items: string[] };
 let intro: { label: string; html: string } | null = null;
@@ -22,7 +31,7 @@ let pending: { kind: "section"; s: Section } | { kind: "discussion" } | null = n
 
 for (const b of blocks) {
   if (b.type === "p") {
-    const t = b.html;
+    const t = numericChapters(b.html);
     const theme = t.match(/^(Overall Theme:)\s*([\s\S]*)$/);
     const sec = t.match(/^([A-E])\.\s+([\s\S]*)$/);
     const disc = t.match(/^(III\.)\s+(Discussion Questions and Application\.)\s*([\s\S]*)$/);
@@ -34,7 +43,7 @@ for (const b of blocks) {
       const s: Section = paren
         ? { id: `genesis-${sec[1].toLowerCase()}`, marker: `${sec[1]}.`, title: paren[1], range: paren[2], rangeFirst: false, items: [] }
         : lead
-          ? { id: `genesis-${sec[1].toLowerCase()}`, marker: `${sec[1]}.`, title: lead[2], range: lead[1] === "Chapters one through five." ? "Chapters 1-5" : lead[1], rangeFirst: true, items: [] }
+          ? { id: `genesis-${sec[1].toLowerCase()}`, marker: `${sec[1]}.`, title: lead[2], range: lead[1].replace(/\.$/, ""), rangeFirst: true, items: [] }
           : { id: `genesis-${sec[1].toLowerCase()}`, marker: `${sec[1]}.`, title: body, range: null, rangeFirst: false, items: [] };
       sections.push(s); pending = { kind: "section", s }; continue;
     }

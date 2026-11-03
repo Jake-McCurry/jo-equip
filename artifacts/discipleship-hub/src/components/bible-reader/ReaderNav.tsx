@@ -36,24 +36,24 @@ export function ReaderNav({ loc, onGo }: Props) {
       </form>
       {error && <p id="br-ref-err" role="alert" className="mt-2 text-sm font-semibold text-[var(--color-action-warm)]">{error}</p>}
 
-      <div className="br-selectors mt-4 grid grid-cols-[minmax(0,1fr)_auto] sm:grid-cols-[minmax(0,1fr)_auto_auto] gap-2 items-end">
-        <label className="br-label">Book
+      <div className="br-selectors mt-4 grid grid-cols-[minmax(0,1fr)_auto] sm:grid-cols-[minmax(0,1fr)_5rem_max-content] gap-2 items-end">
+        <label className="br-label min-w-0">Book
           <select value={loc.book} onChange={e => onGo({ book: e.target.value, chapter: 1, translation: loc.translation })} className="br-input mt-1 w-full">
             {BOOKS.map(b => <option key={b.name}>{b.name}</option>)}
           </select>
         </label>
         <label className="br-label">Chapter
-          <select value={loc.chapter} onChange={e => onGo({ book: loc.book, chapter: Number(e.target.value), translation: loc.translation })} className="br-input mt-1 w-24">
+          <select value={loc.chapter} onChange={e => onGo({ book: loc.book, chapter: Number(e.target.value), translation: loc.translation })} className="br-input mt-1 w-20">
             {Array.from({ length: book.chapters }, (_, i) => i + 1).map(n => <option key={n} value={n}>{n}</option>)}
           </select>
         </label>
-        <fieldset className="col-span-2 sm:col-span-1">
+        <fieldset className="min-w-max col-span-2 sm:col-span-1">
           <legend className="br-label">Translation</legend>
           <div className="mt-1 flex rounded border border-[var(--color-border-control)] bg-[var(--color-surface)] p-1">
             {TRANSLATIONS.map(t => (
               <button key={String(t.value)} type="button" aria-pressed={loc.translation === t.value}
                 onClick={() => onGo({ ...loc, verse: loc.verse, translation: t.value as Translation })}
-                className={`flex-1 rounded px-3 py-1.5 text-sm font-bold ${loc.translation === t.value ? "bg-[var(--color-selected-warm)] shadow-[inset_0_0_0_1px_var(--color-action-warm)] text-[var(--color-text)]" : "text-[var(--color-text-muted)]"}`}>
+                className={`flex-1 min-w-16 whitespace-nowrap rounded px-3 py-1.5 text-sm font-bold ${loc.translation === t.value ? "bg-[var(--color-selected-warm)] shadow-[inset_0_0_0_1px_var(--color-action-warm)] text-[var(--color-text)]" : "text-[var(--color-text-muted)]"}`}>
                 {t.label}
               </button>
             ))}

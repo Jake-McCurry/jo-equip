@@ -6,6 +6,7 @@
  */
 import type { ArticleBlock } from "@/data/bcgArticles";
 import { linkGenesisScripture } from "./genesisScriptureLinks";
+import ScripturePreview from "./ScripturePreview.astro";
 
 interface Props { blocks: ArticleBlock[]; accent: string; base: string }
 const { blocks, accent, base } = Astro.props;
@@ -124,6 +125,7 @@ const toc = [
 
   {credits.map(c => <p class="gen-credit" set:html={c} />)}
 </article>
+<ScripturePreview />
 
 <style>
   .gen { color: #1f2937; font-size: 1.0625rem; line-height: 1.75; max-width: 40rem; margin-inline: auto; }

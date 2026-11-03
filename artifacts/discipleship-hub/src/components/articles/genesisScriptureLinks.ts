@@ -44,8 +44,8 @@ function href(base: string, book: string, chapter: number, verse?: number) {
   return `${base}/bible?${q.toString().replace(/&/g, "&amp;")}`;
 }
 
-function a(url: string, label: string, title: string) {
-  return `<a href="${url}" class="scripture-ref" target="_blank" rel="noopener" title="${title} (opens the Bible reader in a new tab)">${label}</a>`;
+function a(url: string, label: string, title: string, ranges: number[][]) {
+  return `<a href="${url}" class="scripture-ref" data-preview-ranges="${JSON.stringify(ranges)}" target="_blank" rel="noopener" title="${title} (opens the Bible reader in a new tab)">${label}</a>`;
 }
 
 function linkText(text: string, base: string): string {
@@ -54,7 +54,16 @@ function linkText(text: string, base: string): string {
     if (!book) return m;
     const ch = Number(c), vs = Number(v);
     if (!validRef(book, ch, vs, eA ? Number(eA) : undefined, eB ? Number(eB) : undefined, tail ?? "")) return m;
-    return a(href(base, book, ch, vs), m, `${book} ${ch}:${vs}`);
+    const endChapter = eB ? Number(eA) : ch;
+    const ranges = Array.from({ length: endChapter - ch + 1 }, (_, i) => {
+      const chapter = ch + i;
+      return [chapter, i === 0 ? vs : 1, chapter === endChapter ? Number(eB || eA || vs) : verses[book][chapter - 1]];
+    });
+    for (const part of (tail ?? "").split(",").filter((s: string) => s.trim())) {
+      const [start, end] = part.trim().split("-").map(Number);
+      ranges.push([ch, start, end || start]);
+    }
+    return a(href(base, book, ch, vs), m, `${book} ${ch}:${vs}`, ranges);
   });
   // Chapter-range phrases are only linked outside anchors we just created.
   return out
@@ -65,7 +74,9 @@ function linkText(text: string, base: string): string {
         : seg.replace(CHAPTERS, (m, pre, c, rest = "") => {
             const ch = Number(c);
             if (!verses.Genesis[ch - 1]) return m;
-            return `${pre}${a(href(base, "Genesis", ch), `${c}${rest}`, `Genesis ${ch}`)}`;
+            const end = Number(rest.match(/\d+/)?.[0] || ch);
+            const ranges = Array.from({ length: end - ch + 1 }, (_, i) => [ch + i, 1, verses.Genesis[ch + i - 1]]);
+            return `${pre}${a(href(base, "Genesis", ch), `${c}${rest}`, `Genesis ${ch}`, ranges)}`;
           }),
     )
     .join("");

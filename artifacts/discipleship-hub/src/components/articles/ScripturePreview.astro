@@ -1,0 +1,160 @@
+---
+---
+<section id="genesis-scripture-preview" class="verse-preview" role="region" aria-label="NET Bible passage preview" hidden>
+  <header>
+    <strong data-preview-title>NET Bible</strong>
+    <button type="button" data-preview-close aria-label="Close Scripture preview">×</button>
+  </header>
+  <div class="verse-preview-body" tabindex="0" aria-label="Passage text">
+    <p data-preview-status role="status"></p>
+    <div data-preview-verses></div>
+    <button type="button" data-preview-retry hidden>Try again</button>
+  </div>
+  <footer><small>NET Bible®</small><a data-preview-open target="_blank" rel="noopener">Open in Bible ↗</a></footer>
+</section>
+
+<script>
+  import { fetchPassage, type Passage } from "../bible-reader/reader-utils";
+  const root = document.querySelector<HTMLElement>(".gen");
+  const panel = document.querySelector<HTMLElement>("#genesis-scripture-preview");
+  if (root && panel) {
+    const title = panel.querySelector<HTMLElement>("[data-preview-title]")!;
+    const status = panel.querySelector<HTMLElement>("[data-preview-status]")!;
+    const body = panel.querySelector<HTMLElement>("[data-preview-verses]")!;
+    const retry = panel.querySelector<HTMLButtonElement>("[data-preview-retry]")!;
+    const open = panel.querySelector<HTMLAnchorElement>("[data-preview-open]")!;
+    const cache = new Map<string, Passage>();
+    let active: HTMLAnchorElement | null = null;
+    let controller: AbortController | null = null;
+    let dismiss: ReturnType<typeof setTimeout> | undefined;
+    let pinned = false;
+    const buttons = new Map<HTMLAnchorElement, HTMLButtonElement>();
+    function cancelDismiss() { clearTimeout(dismiss); }
+    function close() {
+      cancelDismiss();
+      controller?.abort();
+      const returnFocus = panel!.contains(document.activeElement);
+      if (active) {
+        const button = buttons.get(active);
+        button?.setAttribute("aria-expanded", "false");
+        if (returnFocus) button?.focus({ preventScroll: true });
+      }
+      panel!.hidden = true; active = null; pinned = false;
+    }
+    function position(link: HTMLElement) {
+      const rect = link.getBoundingClientRect();
+      const mobile = window.innerWidth < 640;
+      panel!.style.width = `${Math.min(420, window.innerWidth - 24)}px`;
+      panel!.style.left = `${mobile ? 12 : Math.max(12, Math.min(rect.left, window.innerWidth - 432))}px`;
+      panel!.style.top = mobile ? "auto" : `${Math.max(12, Math.min(rect.bottom + 8, window.innerHeight - panel!.offsetHeight - 12))}px`;
+      panel!.style.bottom = mobile ? "12px" : "auto";
+    }
+    async function show(link: HTMLAnchorElement, pin = false) {
+      cancelDismiss();
+      if (active === link && !panel!.hidden) { pinned ||= pin; return; }
+      if (active) buttons.get(active)?.setAttribute("aria-expanded", "false");
+      controller?.abort(); controller = new AbortController();
+      const signal = controller.signal;
+      active = link; pinned = pin;
+      buttons.get(link)?.setAttribute("aria-expanded", "true");
+      const url = new URL(link.href);
+      const book = url.searchParams.get("book")!;
+      const ranges: number[][] = JSON.parse(link.dataset.previewRanges!);
+      const reference = link.textContent?.match(/\d+:\d+[\s\S]*/)?.[0] ?? link.textContent;
+      title.textContent = `${book} ${reference} · NET`;
+      open.href = link.href;
+      body.replaceChildren(); status.textContent = "Loading NET passage…";
+      retry.hidden = true; panel!.hidden = false; position(link);
+      try {
+        const chapters = [...new Set(ranges.map(r => r[0]))];
+        for (let i = 0; i < chapters.length; i += 3) {
+          await Promise.all(chapters.slice(i, i + 3).map(async chapter => {
+            const key = `${book}:${chapter}`;
+            if (!cache.has(key)) {
+              const result = await fetchPassage(import.meta.env.BASE_URL, { book, chapter, translation: "net" }, signal);
+              if (result.translation !== "net") throw new Error("NET text unavailable");
+              cache.set(key, result);
+            }
+          }));
+          if (signal.aborted) return;
+        }
+        const seen = new Set<string>();
+        for (const [chapter, start, end] of ranges) {
+          const passage = cache.get(`${book}:${chapter}`)!;
+          const selected = passage.verses.filter(v => v.verse >= start && v.verse <= end);
+          if (!selected.length) throw new Error("Passage unavailable");
+          for (const verse of selected) {
+            const key = `${chapter}:${verse.verse}`;
+            if (seen.has(key)) continue;
+            seen.add(key);
+            const p = document.createElement("p");
+            const number = document.createElement("strong");
+            number.textContent = `${key} `;
+            p.append(number, document.createTextNode(verse.text)); body.append(p);
+          }
+        }
+        status.textContent = "";
+        panel!.querySelector("small")!.textContent = cache.get(`${book}:${chapters[0]}`)!.attribution || "NET Bible®";
+        position(link);
+      } catch {
+        if (signal.aborted) return;
+        body.replaceChildren(); status.textContent = "Unable to load the NET passage. Try again or open the Bible.";
+        retry.hidden = false;
+      }
+    }
+    function scheduleClose() {
+      if (!pinned) dismiss = setTimeout(() => {
+        if (!panel!.contains(document.activeElement)) close();
+      }, 250);
+    }
+    root.querySelectorAll<HTMLAnchorElement>("a.scripture-ref[data-preview-ranges]").forEach(link => {
+      const button = document.createElement("button");
+      button.type = "button"; button.className = "scripture-preview-trigger";
+      button.textContent = "▤";
+      button.setAttribute("aria-label", `Preview ${new URL(link.href).searchParams.get("book")} ${link.textContent} in NET Bible`);
+      button.setAttribute("aria-expanded", "false");
+      button.setAttribute("aria-controls", panel.id);
+      link.after(button); buttons.set(link, button);
+      link.addEventListener("pointerenter", e => { if (e.pointerType === "mouse") void show(link); });
+      link.addEventListener("pointerleave", scheduleClose);
+      button.addEventListener("pointerenter", cancelDismiss);
+      button.addEventListener("pointerleave", scheduleClose);
+      button.addEventListener("click", () => {
+        if (active === link && pinned && !panel.hidden) close();
+        else {
+          void show(link, true);
+          panel.querySelector<HTMLButtonElement>("[data-preview-close]")!.focus({ preventScroll: true });
+        }
+      });
+    });
+    panel.addEventListener("pointerenter", cancelDismiss);
+    panel.addEventListener("pointerleave", scheduleClose);
+    panel.querySelector("[data-preview-close]")!.addEventListener("click", close);
+    retry.addEventListener("click", () => { const link = active; active = null; if (link) void show(link, true); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape" && !panel.hidden) close(); });
+    document.addEventListener("pointerdown", e => {
+      if (!panel.hidden && e.target instanceof Node && !panel.contains(e.target) &&
+          e.target !== active && e.target !== (active && buttons.get(active))) close();
+    });
+    window.addEventListener("resize", () => { if (active) position(active); });
+    window.addEventListener("scroll", () => { if (active) position(active); }, { passive: true });
+  }
+</script>
+
+<style is:global>
+  .gen .scripture-preview-trigger { display:inline-flex; align-items:center; justify-content:center; width:26px; min-height:28px; margin-left:2px; border:0; padding:0; background:transparent; color:var(--gen-accent); cursor:pointer; font-size:18px; vertical-align:baseline; border-radius:3px; }
+  .gen .scripture-preview-trigger:hover { background:#f0e9f3; }
+  .gen .scripture-preview-trigger:focus-visible { outline:2px solid var(--gen-accent); outline-offset:2px; }
+  .verse-preview[hidden] { display:none; }
+  .verse-preview { position:fixed; z-index:100; background:#fffdfb; border:1px solid #d7c5df; border-radius:8px; box-shadow:0 8px 32px #28103530; color:#1f2937; font-family:var(--font-sans); font-size:16px; line-height:1.6; }
+  .verse-preview header { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:8px 14px; background:#f5eff7; border-radius:8px 8px 0 0; color:#67347d; }
+  .verse-preview header button { border:0; background:none; font-size:26px; min-width:36px; min-height:36px; cursor:pointer; }
+  .verse-preview-body { padding:12px 16px; max-height:45dvh; overflow-y:auto; overscroll-behavior:contain; }
+  .verse-preview-body p { margin:0 0 12px; }
+  .verse-preview-body p:last-child { margin-bottom:0; }
+  .verse-preview-body strong { font-size:12px; color:#67347d; }
+  .verse-preview footer { padding:10px 14px; border-top:1px solid #eee; display:flex; flex-wrap:wrap; gap:8px 16px; justify-content:space-between; }
+  .verse-preview small { display:block; font-size:10px; max-width:100%; line-height:1.4; }
+  .verse-preview footer a, .verse-preview [data-preview-retry] { color:#67347d; text-decoration:underline; font-weight:600; }
+  @media print { .verse-preview, .scripture-preview-trigger { display:none!important; } }
+</style>

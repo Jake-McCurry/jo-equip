@@ -1,4 +1,4 @@
-import { Bookmark, BookmarkCheck, Clipboard, Copy, Printer } from "lucide-react";
+import { Bookmark, Check, Clipboard, Copy, Printer } from "lucide-react";
 
 type Props = {
   title: string;
@@ -16,7 +16,7 @@ export function TopicHeading({ title, definition, resultCount, saved, copied, on
     <header className="mb-3 border-b border-[var(--color-border-soft,#CCEBFF)] pb-3">
       <div role="toolbar" aria-label="Topic actions" className="kg-no-print kg-sans mb-1 grid grid-cols-[auto_auto_auto_auto] items-center gap-1 text-[var(--color-text,#003A66)] sm:flex sm:gap-4">
         <button type="button" onClick={onSave} aria-pressed={saved} className={buttonClass}>
-          {saved ? <BookmarkCheck size={14} aria-hidden="true" /> : <Bookmark size={14} aria-hidden="true" />}
+          {saved ? <Check size={14} aria-hidden="true" /> : <Bookmark size={14} aria-hidden="true" />}
           {saved ? "Saved" : "Save"}
         </button>
         <button type="button" onClick={() => onCopy("topic")} className={buttonClass} aria-label="Copy topic references">

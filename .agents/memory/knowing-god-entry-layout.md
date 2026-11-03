@@ -23,3 +23,7 @@ Search results must show a bold “Topic results” section first and a bold “
 On mobile topic-reading pages, omit the secondary “Topics & filters” hamburger. Use the “Topic study” breadcrumb as the return link to the Knowing God landing/index, prefixed with double-left chevrons instead of a book icon.
 
 **Why:** The user requested the breadcrumb replace the extra mobile navigation bar and recover vertical space.
+
+Saving a study must not automatically move the reader. Show a short “Saved to My study list” confirmation with an explicit “View saved” action that scrolls to the saved list only when requested.
+
+**Why:** The user approved this approach to explain where mobile saves can be found without interrupting reading or widening the compact toolbar.

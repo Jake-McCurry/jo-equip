@@ -34,6 +34,21 @@ export function ConcordancePrototype() {
   const [query, setQuery] = useState(""); const [testament, setTestament] = useState("All Testaments"); const [book, setBook] = useState("All books");
   const [filterOpen, setFilterOpen] = useState(false);
   const [study, setStudy] = useState<string[]>([]); const [studyLoaded, setStudyLoaded] = useState(false); const [copied, setCopied] = useState("");
+  const [savedNotice, setSavedNotice] = useState<string | null>(null);
+  const savedList = useRef<HTMLHeadingElement>(null);
+  useEffect(() => {
+    if (!savedNotice) return;
+    const timer = window.setTimeout(() => setSavedNotice(null), 8000);
+    return () => window.clearTimeout(timer);
+  }, [savedNotice]);
+  const viewSaved = () => {
+    setSavedNotice(null);
+    savedList.current?.focus({ preventScroll: true });
+    savedList.current?.scrollIntoView({
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
+      block: "start",
+    });
+  };
   const [translation, setTranslation] = useState<"NET" | "KJV">("NET"); const [translationLoaded, setTranslationLoaded] = useState(false);
   const scriptureHref = (reference: string) => base(scriptureReaderPath(reference, translation));
   const [netLoading, setNetLoading] = useState(false); const [netError, setNetError] = useState(false); const [, setNetTick] = useState(0);
@@ -203,7 +218,11 @@ export function ConcordancePrototype() {
     }).join("\n\n");
     await navigator.clipboard?.writeText(text); setCopied(what); window.setTimeout(() => setCopied(""), 1600);
   };
-  const toggleStudy = (id: string) => setStudy(list => list.includes(id) ? list.filter(value => value !== id) : [...list, id]);
+  const toggleStudy = (id: string) => {
+    const removing = study.includes(id);
+    setStudy(list => list.includes(id) ? list.filter(value => value !== id) : [...list, id]);
+    setSavedNotice(removing ? null : id);
+  };
   const topicById = (id: string) => index?.topics.find(t => t.id === id);
   const followCrossReference = (id: string) => {
     // A source "See…" link should not inherit filters from the previous topic.
@@ -258,7 +277,7 @@ export function ConcordancePrototype() {
             {translation === "NET" && netCache.has(p.reference) && netNotes.has(p.reference) && <p className="kg-sans mt-3 border-l-2 border-[var(--color-border-soft,#CCEBFF)] pl-3 text-sm leading-relaxed text-[var(--color-text-muted,#2E5A7A)]"><strong>Translation note:</strong> {netNotes.get(p.reference)}</p>}
           </article>;
         })}</div>}{visiblePassages.length === 0 && <div className="border border-dashed border-[var(--color-border-control,#5B9BC4)] py-10 text-center text-base text-[var(--color-text-muted,#2E5A7A)]">No passages match the current filters.</div>}</> : <TopicCrossReferences onNavigate={followCrossReference} related={selected.seeAlso} topics={index?.topics || []} />}{selected.additionalScripture.length > 0 && <div className="mt-10 border-t border-[var(--color-border-soft,#CCEBFF)] pt-6"><p className="kg-sans text-xs font-bold uppercase text-[var(--color-text-muted,#2E5A7A)]">Additional Scripture</p>{selected.additionalScripture.map((section, sectionIndex) => <p className="mt-2 text-base text-[var(--color-text,#003A66)]" key={`${selected.id}-additional-${sectionIndex}`}>{section.links.map((reference, index, all) => { const unchanged = reference.queries.length === 1 && normalized(reference.sourceLabel.replace(/\.$/, "")) === normalized(reference.queries[0]); return <span key={`${reference.sourceLabel}-${index}`}>{unchanged ? <a className="kg-focus text-[var(--color-hero,#006BB3)] underline hover:text-[var(--color-structure,#003A66)]" href={scriptureHref(reference.queries[0])} target="_blank" rel="noopener noreferrer">{reference.sourceLabel}</a> : <span>{reference.sourceLabel} <span className="kg-sans text-xs text-[var(--color-text-muted,#2E5A7A)]">({reference.queries.map((query, queryIndex) => <span key={query}><a className="kg-focus text-[var(--color-hero,#006BB3)] underline hover:text-[var(--color-structure,#003A66)]" href={scriptureHref(query)} target="_blank" rel="noopener noreferrer">{query}</a>{queryIndex < reference.queries.length - 1 ? ", " : ""}</span>)})</span></span>}{index < all.length - 1 ? "; " : ""}</span>; })}</p>)}</div>}</>}</section>}
-      <aside className={`kg-no-print bg-[var(--color-surface-soft,#E6F5FF)] p-5 md:p-6 ${view === "start" ? "md:self-start md:rounded md:border md:border-[var(--color-border-soft,#CCEBFF)] md:sticky md:top-[100px]" : "border-l border-[var(--color-border-soft,#CCEBFF)] md:col-span-2 lg:col-span-1 lg:min-h-[calc(100dvh-95px)]"}`}><div className="mb-8"><div className="mb-3 flex items-center gap-2 text-[var(--color-action-warm,#C45100)]"><Bookmark size={18}/><h3 className="kg-sans text-sm font-bold uppercase">My study list</h3></div>{study.length ? study.map(id => { const item = topicById(id); return item ? <div className="flex items-center border-b border-[var(--color-border-soft,#CCEBFF)]" key={id}><button className="kg-focus flex-1 py-3 text-left text-base font-semibold text-[var(--color-text,#003A66)] hover:text-[var(--color-hero,#006BB3)]" onClick={() => openTopic(item)}>{item.title}</button><button className="kg-focus text-[var(--color-text-muted,#2E5A7A)] hover:text-[var(--color-action-warm,#C45100)]" onClick={() => toggleStudy(id)} aria-label={`Remove ${item.title} from study list`}><X size={18}/></button></div> : null; }) : <p className="kg-sans text-base text-[var(--color-text-muted,#2E5A7A)]">Save topics here as you trace a theme through Scripture.</p>}</div>{view === "topic" && selected && (
+      <aside className={`kg-no-print bg-[var(--color-surface-soft,#E6F5FF)] p-5 md:p-6 ${view === "start" ? "md:self-start md:rounded md:border md:border-[var(--color-border-soft,#CCEBFF)] md:sticky md:top-[100px]" : "border-l border-[var(--color-border-soft,#CCEBFF)] md:col-span-2 lg:col-span-1 lg:min-h-[calc(100dvh-95px)]"}`}><div className="mb-8"><div className="mb-3 flex items-center gap-2 text-[var(--color-action-warm,#C45100)]"><Bookmark size={18}/><h3 id="knowing-god-saved-studies" ref={savedList} tabIndex={-1} className="kg-focus kg-sans scroll-mt-28 text-sm font-bold uppercase">My study list</h3></div>{study.length ? study.map(id => { const item = topicById(id); return item ? <div className="flex items-center border-b border-[var(--color-border-soft,#CCEBFF)]" key={id}><button className="kg-focus flex-1 py-3 text-left text-base font-semibold text-[var(--color-text,#003A66)] hover:text-[var(--color-hero,#006BB3)]" onClick={() => openTopic(item)}>{item.title}</button><button className="kg-focus text-[var(--color-text-muted,#2E5A7A)] hover:text-[var(--color-action-warm,#C45100)]" onClick={() => toggleStudy(id)} aria-label={`Remove ${item.title} from study list`}><X size={18}/></button></div> : null; }) : <p className="kg-sans text-base text-[var(--color-text-muted,#2E5A7A)]">Save topics here as you trace a theme through Scripture.</p>}</div>{view === "topic" && selected && (
         <div className="border-t border-[var(--color-border-soft,#CCEBFF)] pt-6">
           <p className="kg-sans text-xs font-bold uppercase text-[var(--color-text-muted,#2E5A7A)]">See also</p>
           <div className="mt-3 flex flex-wrap gap-2">
@@ -283,7 +302,7 @@ export function ConcordancePrototype() {
       <p className="kg-sans border-t border-[var(--color-border-soft,#CCEBFF)] px-5 py-5 text-sm leading-relaxed text-[var(--color-text-muted,#2E5A7A)]">
         Scripture quoted by permission. Quotations designated NET are from the NET Bible® copyright ©1996, 2019 by Biblical Studies Press, L.L.C. <a href="https://netbible.com" target="_blank" rel="noopener noreferrer" className="kg-focus underline">netbible.com</a>. All rights reserved.
       </p>
-    </div>{copied && <div role="status" className="kg-sans fixed bottom-5 left-1/2 z-50 flex items-center gap-2 -translate-x-1/2 rounded bg-[var(--color-structure,#003A66)] px-4 py-3 text-base font-bold text-white shadow-lg"><Check size={18}/> {copied === "topic" ? "Topic references copied" : "Passages copied"}</div>}
+    </div>{savedNotice && <div className="kg-no-print kg-sans fixed bottom-5 left-1/2 z-50 flex w-[calc(100%-2rem)] max-w-md -translate-x-1/2 items-center gap-2 rounded bg-[var(--color-structure,#003A66)] px-3 py-2 text-sm text-white shadow-lg"><span role="status" className="flex flex-1 items-center gap-2"><Check size={16} aria-hidden="true" className="shrink-0"/>Saved to My study list</span><button type="button" onClick={viewSaved} className="kg-focus min-h-11 whitespace-nowrap px-2 text-sm font-bold underline underline-offset-4">View saved</button><button type="button" onClick={() => setSavedNotice(null)} aria-label="Dismiss saved confirmation" className="kg-focus flex min-h-11 min-w-8 items-center justify-center"><X size={16}/></button></div>}{!savedNotice && copied && <div role="status" className="kg-sans fixed bottom-5 left-1/2 z-50 flex items-center gap-2 -translate-x-1/2 rounded bg-[var(--color-structure,#003A66)] px-4 py-3 text-base font-bold text-white shadow-lg"><Check size={18}/> {copied === "topic" ? "Topic references copied" : "Passages copied"}</div>}
   </div>;
 }
 

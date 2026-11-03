@@ -23,6 +23,8 @@ export interface SubTopicItem {
    * which renders the full long-form article. Items without an articleId are list-only.
    */
   articleId?: string;
+  /** Internal resource page used instead of a standalone article. */
+  resourcePath?: string;
   /**
    * When true, the item is NOT rendered in the sub-topic's visible list and is
    * omitted from the ItemList JSON-LD, but its `articleId` still generates a
@@ -1390,6 +1392,7 @@ export const subTopics: SubTopic[] = [
       { number: 7, title: 'Five Prayers of Repentance', articleId: 'five-prayers-of-repentance', links: { app: 'https://app.jesusonline.com/post/23531-five-prayers-of-repentance' } },
       { number: 8, title: 'Pray Without Ceasing', articleId: 'pray-without-ceasing', links: { app: 'https://app.jesusonline.com/post/23541-pray-without-ceasing' } },
       { number: 9, title: 'My Prayer List', articleId: 'my-prayer-list', links: { app: 'https://app.jesusonline.com/post/23590-my-prayer-list' } },
+      { number: 10, title: 'Waiting on God by Andrew Murray (31-Day Devotional)', resourcePath: '/categories/growth/waiting-on-god' },
     ],
   },
   {

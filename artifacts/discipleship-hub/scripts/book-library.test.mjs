@@ -65,15 +65,15 @@ test("carousel spacing has a single owner rather than stacked margins and gaps",
   assert.match(page, /class="book-carousel-stack flex flex-col gap-4 md:gap-5"/);
 });
 
-test("Devotional Studies lists Knowing God immediately before Hearing the Voice of God", async () => {
+test("Devotional Studies keeps Waiting on God second and Knowing God before Hearing the Voice of God", async () => {
   const categories = await readCategories();
   const devotional = categories.find(category => category.title === "Devotional Studies");
   assert.ok(devotional, "Devotional Studies category is missing.");
   assert.deepEqual(devotional.ids.slice(0, 4), [
     "new-life-in-christ",
+    "waiting-on-god",
     "knowing-god",
     "hearing-the-voice-of-god",
-    "the-abiding-room",
   ]);
 });
 

@@ -57,3 +57,4 @@
 - [Carousel navigation scope](carousel-navigation-scope.md) — Sitewide hamburger; distinct white carousel banners only on Home and the three category landing pages.
 - [Deferred online books](interactive-book-pilot.md) — User requested reversal and deferred online books; do not restart without approval. Retain the earlier concept for future use.
 - [Book conversion fidelity](book-conversion-fidelity.md) — Text coverage misses drawn blanks, diagram meaning, and table relationships; verify representative source layouts visually.
+- [Promises reader source](promises-reader-source.md) — Prepared corpus is separate from the existing eight-article collection; preserve printed wording and source-reference notes.

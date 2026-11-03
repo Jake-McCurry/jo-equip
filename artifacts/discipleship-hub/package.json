@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "ASTRO_DEV_BACKGROUND=0 astro dev --host 0.0.0.0",
-    "build": "pnpm run validate:books && pnpm run validate:worker && pnpm run test:consolidation && pnpm run validate:knowing-god && node scripts/check-book-gate-parity.mjs && astro build && node scripts/apply-external-link-nofollow.mjs && node scripts/build-sitemaps.mjs && VERIFY_CONSOLIDATION_BUILD=1 node --test scripts/article-consolidation.test.mjs",
+    "build": "pnpm run validate:books && pnpm run validate:worker && pnpm run test:consolidation && pnpm run validate:knowing-god && pnpm run test:promises && node scripts/check-book-gate-parity.mjs && astro build && node scripts/apply-external-link-nofollow.mjs && node scripts/build-sitemaps.mjs && VERIFY_CONSOLIDATION_BUILD=1 node --test scripts/article-consolidation.test.mjs",
     "serve": "astro preview --host 0.0.0.0",
     "typecheck": "astro check",
     "test:dependency-security": "node --test scripts/dependency-security.test.mjs",
@@ -15,6 +15,7 @@
     "verify:consolidation": "node scripts/verify-article-consolidation-build.mjs",
     "test:nofollow": "node --test scripts/external-link-policy.test.mjs",
     "test:web-books": "node --test scripts/web-books.test.mjs",
+    "test:promises": "node --experimental-strip-types --test scripts/promises.test.mjs",
     "validate:category-seo": "python3 scripts/import-category-seo.py --check && node --experimental-strip-types scripts/validate-category-seo.mjs",
     "test:knowing-god": "python3 scripts/knowing-god-source-validation.test.py && python3 scripts/knowing-god-net-validation.test.py && node --experimental-strip-types --test scripts/knowing-god-regressions.test.mjs scripts/knowing-god-passages.test.mjs scripts/knowing-god-net.test.mjs scripts/knowing-god-net-loader.test.mjs",
     "generate:knowing-god": "python3 scripts/generate-knowing-god.py",

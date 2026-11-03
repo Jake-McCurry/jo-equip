@@ -110,7 +110,17 @@
     root.querySelectorAll<HTMLAnchorElement>("a.scripture-ref[data-preview-ranges]").forEach(link => {
       const button = document.createElement("button");
       button.type = "button"; button.className = "scripture-preview-trigger";
-      button.textContent = "▤";
+      const icon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      for (const [name, value] of Object.entries({
+        viewBox: "0 0 24 24", width: "16", height: "16", fill: "none",
+        stroke: "currentColor", "stroke-width": "1.7", "stroke-linecap": "round",
+        "stroke-linejoin": "round", "aria-hidden": "true", "pointer-events": "none",
+      })) icon.setAttribute(name, value);
+      for (const d of ["M4 19.5A2.5 2.5 0 0 1 6.5 17H20", "M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z", "M12 6v7", "M9 9h6"]) {
+        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        path.setAttribute("d", d); icon.append(path);
+      }
+      button.append(icon);
       button.setAttribute("aria-label", `Preview ${new URL(link.href).searchParams.get("book")} ${link.textContent} in NET Bible`);
       button.setAttribute("aria-expanded", "false");
       button.setAttribute("aria-controls", panel.id);

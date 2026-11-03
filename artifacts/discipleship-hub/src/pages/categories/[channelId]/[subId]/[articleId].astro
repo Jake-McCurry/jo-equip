@@ -439,7 +439,7 @@ const heroTitle = splitTitle(article.title);
         ← Back to previous article
       </a>
     )}
-    {joAppArticleUrl && (
+    {joAppArticleUrl && !isGenesisSurvey && (
       <div class="mt-8 text-center">
         <a
           href={joAppArticleUrl}

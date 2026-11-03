@@ -34,6 +34,7 @@ import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 import IdentityCenteredHeartTransformation from "@/components/articles/IdentityCenteredHeartTransformation.astro";
 import BibleStudyToolsContents from "@/components/BibleStudyToolsContents.astro";
 import BibleStudyToolsAdditions from "@/components/articles/BibleStudyToolsAdditions.astro";
+import GenesisSurveyLesson from "@/components/articles/GenesisSurveyLesson.astro";
 import { gitDateOf } from "@/data/contentDates";
 import { ArrowRight, ChevronRight, Download } from "lucide-react";
 import { getCategorySeo } from "@/data/categorySeo";
@@ -186,6 +187,8 @@ function withBaseLinks(html: string) {
 }
 // These web-only additions must not change other articles or their PDF sources.
 const isBibleStudyTools = channel.id === "church" && sub.id === "bible-study-tools" && article.id === "essential-bible-study-tools";
+/* Approved web reformat — Genesis survey lesson only (source JSON untouched). */
+const isGenesisSurvey = !!site && channel.id === "church" && sub.id === "survey-of-the-bible-ot" && article.id === "genesis";
 const isEvangelismIntro = channel.id === "church" && sub.id === "understanding-evangelism" && article.id === "what-is-evangelism";
 const evangelismHeadingId = (text: string) => `evangelism-${text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`;
 const evangelismContents = isEvangelismIntro ? article.blocks.filter((b): b is Extract<ArticleBlock, { type: "h2" }> => b.type === "h2").map(b => ({ id: evangelismHeadingId(b.text), label: b.text })) : [];
@@ -298,6 +301,9 @@ const heroTitle = splitTitle(article.title);
 
     {/* Article body. Block types are author-controlled; html strings are
         rendered with set:html — never pipe untrusted content through this. */}
+    {isGenesisSurvey ? (
+      <GenesisSurveyLesson blocks={article.blocks} accent={channel.accentColor} base={baseUrl} />
+    ) : (
     <article class="bcg-prose">
       {isEvangelismIntro && <BibleStudyToolsContents items={evangelismContents} />}
       {article.blocks.map((b: ArticleBlock, index: number) => {
@@ -402,6 +408,7 @@ const heroTitle = splitTitle(article.title);
       })}
       {isBibleStudyTools && <BibleStudyToolsAdditions />}
     </article>
+    )}
 
     {parentArticle && (
       <a href={join(`/categories/${channel.id}/${sub.id}/${parentArticle.id}`)} class="inline-flex items-center gap-2 mt-10 font-semibold hover:underline" style={`color:${channel.accentColor};`}>

@@ -1,3 +1,4 @@
+- [Bible survey design scope](bible-survey-design-scope.md) — Genesis-only formatting pilot; broader Old/New Testament survey rollout awaits design approval.
 - [Missionary editorial scope](missionary-editorial-scope.md) — Approved consolidated FAQs and supplemental-training language; Making & Multiplying Disciples is a collection, not a course.
 - [Chaplain editorial scope](chaplain-editorial-scope.md) — Approved supplemental-resource claims, voluntary Christian care language, and no unsupported training or supply claims.
 - [Discipleship SEO H1](discipleship-seo-h1.md) — User excluded the suggested H1 change; preserve “Tools for Mature Disciple Making.”

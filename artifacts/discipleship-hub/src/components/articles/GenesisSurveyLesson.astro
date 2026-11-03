@@ -1,0 +1,190 @@
+---
+/**
+ * Web-only reformat of the Genesis survey lesson. Renders the EXISTING source
+ * blocks (no rewritten wording); structure is detected from the source text.
+ * Gated in [articleId].astro to church / survey-of-the-bible-ot / genesis.
+ */
+import type { ArticleBlock } from "@/data/bcgArticles";
+import { linkGenesisScripture } from "./genesisScriptureLinks";
+
+interface Props { blocks: ArticleBlock[]; accent: string; base: string }
+const { blocks, accent, base } = Astro.props;
+const link = (html: string) => linkGenesisScripture(html, base);
+
+type Section = { id: string; marker: string; title: string; range: string | null; rangeFirst: boolean; items: string[] };
+let intro: { label: string; html: string } | null = null;
+let discussion: { marker: string; heading: string; html: string; items: string[] } | null = null;
+const sections: Section[] = [];
+const credits: string[] = [];
+const leftovers: ArticleBlock[] = [];
+let pending: { kind: "section"; s: Section } | { kind: "discussion" } | null = null;
+
+for (const b of blocks) {
+  if (b.type === "p") {
+    const t = b.html;
+    const theme = t.match(/^(Overall Theme:)\s*([\s\S]*)$/);
+    const sec = t.match(/^([A-E])\.\s+([\s\S]*)$/);
+    const disc = t.match(/^(III\.)\s+(Discussion Questions and Application\.)\s*([\s\S]*)$/);
+    if (theme && !intro) { intro = { label: theme[1], html: theme[2] }; continue; }
+    if (sec) {
+      const body = sec[2];
+      const paren = body.match(/^(.*?)\s*(\([^()]*\)\.?)$/);
+      const lead = body.match(/^(Chapters [^.]+\.)\s+(.*)$/);
+      const s: Section = paren
+        ? { id: `genesis-${sec[1].toLowerCase()}`, marker: `${sec[1]}.`, title: paren[1], range: paren[2], rangeFirst: false, items: [] }
+        : lead
+          ? { id: `genesis-${sec[1].toLowerCase()}`, marker: `${sec[1]}.`, title: lead[2], range: lead[1], rangeFirst: true, items: [] }
+          : { id: `genesis-${sec[1].toLowerCase()}`, marker: `${sec[1]}.`, title: body, range: null, rangeFirst: false, items: [] };
+      sections.push(s); pending = { kind: "section", s }; continue;
+    }
+    if (disc) { discussion = { marker: disc[1], heading: disc[2], html: disc[3], items: [] }; pending = { kind: "discussion" }; continue; }
+    if (/^<em>This Old Testament survey/.test(t)) { credits.push(t); continue; }
+  }
+  if (b.type === "ol" && pending) {
+    if (pending.kind === "section") pending.s.items.push(...b.items);
+    else if (discussion) discussion.items.push(...b.items);
+    pending = null; continue;
+  }
+  leftovers.push(b);
+}
+
+/* Split an existing "<br>Note: …" tail into its own aside (wording intact). */
+function splitNote(html: string): { main: string; note: string | null } {
+  const i = html.indexOf("<br>Note:");
+  return i === -1 ? { main: html, note: null } : { main: html.slice(0, i), note: html.slice(i + 4 + "Note:".length).trimStart() };
+}
+const toc = [
+  ...sections.map(s => ({ id: s.id, label: `${s.marker} ${s.title.replace(/\.$/, "")}` })),
+  ...(discussion ? [{ id: "genesis-discussion", label: "Discussion & Application" }] : []),
+];
+---
+<article class="gen" style={`--gen-accent:${accent};`}>
+  {intro && (
+    <section class="gen-intro" aria-label="Overall Theme">
+      <p class="gen-intro-label">{intro.label.replace(/:$/, "")}<span class="sr-only">:</span></p>
+      <p class="gen-intro-text" set:html={link(intro.html)} />
+    </section>
+  )}
+
+  {toc.length > 0 && (
+    <nav class="gen-toc" aria-label="On this page">
+      <p class="gen-toc-label">On this page</p>
+      <ul>
+        {toc.map(t => <li><a href={`#${t.id}`}>{t.label}</a></li>)}
+      </ul>
+    </nav>
+  )}
+
+  {sections.map(s => (
+    <section class="gen-section" id={s.id} aria-labelledby={`${s.id}-h`}>
+      {s.range && s.rangeFirst && <p class="gen-range">{s.range}</p>}
+      <h2 id={`${s.id}-h`} class="gen-h2">
+        <span class="gen-marker">{s.marker}</span> <span>{s.title}</span>
+      </h2>
+      {s.range && !s.rangeFirst && <p class="gen-range">{s.range}</p>}
+      <ol class="gen-points">
+        {s.items.map((item, i) => {
+          const { main, note } = splitNote(item);
+          return (
+            <li>
+              <span class="gen-num" aria-hidden="true">{i + 1}.</span>
+              <div class="gen-point">
+                <p set:html={link(main)} />
+                {note !== null && (
+                  <aside class="gen-note" aria-label="Note">
+                    <span class="gen-note-label">Note:</span> <span set:html={link(note)} />
+                  </aside>
+                )}
+              </div>
+            </li>
+          );
+        })}
+      </ol>
+    </section>
+  ))}
+
+  {discussion && (
+    <section class="gen-discussion" id="genesis-discussion" aria-labelledby="genesis-discussion-h">
+      <h2 id="genesis-discussion-h" class="gen-h2">
+        <span class="gen-marker">{discussion.marker}</span> <span>{discussion.heading}</span>
+      </h2>
+      {discussion.html && <p class="gen-disc-intro" set:html={link(discussion.html)} />}
+      <ol class="gen-points">
+        {discussion.items.map((q, i) => (
+          <li>
+            <span class="gen-num" aria-hidden="true">{i + 1}.</span>
+            <div class="gen-point"><p set:html={link(q)} /></div>
+          </li>
+        ))}
+      </ol>
+    </section>
+  )}
+
+  {leftovers.map(b => b.type === "p" ? <p set:html={b.html} /> : b.type === "ol" ? <ol class="gen-fallback">{b.items.map(i => <li set:html={i} />)}</ol> : null)}
+
+  {credits.map(c => <p class="gen-credit" set:html={c} />)}
+</article>
+
+<style>
+  .gen { color: #1f2937; font-size: 1.0625rem; line-height: 1.75; max-width: 40rem; margin-inline: auto; }
+  .gen :global(a) { color: var(--gen-accent); text-decoration: underline; text-underline-offset: 2px; }
+  .gen :global(a:hover) { text-decoration-thickness: 2px; }
+  .gen :global(a.scripture-ref) { text-decoration-style: dotted; white-space: nowrap; font-weight: 500; }
+  .gen :global(a.scripture-ref:hover) { text-decoration-style: solid; }
+  .gen :global(a:focus-visible) { outline: 2px solid var(--gen-accent); outline-offset: 2px; border-radius: 2px; }
+
+  .gen-intro {
+    border-left: 4px solid var(--gen-accent);
+    background: color-mix(in srgb, var(--gen-accent) 7%, transparent);
+    border-radius: 0 6px 6px 0;
+    padding: 1.15rem 1.35rem 1.25rem;
+  }
+  .gen-intro-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gen-accent); margin: 0 0 0.35rem; }
+  .gen-intro-text { margin: 0; font-size: 1.125rem; line-height: 1.7; color: var(--color-text); }
+
+  .gen-toc { margin-top: 1.75rem; }
+  .gen-toc-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #6b7280; margin: 0 0 0.6rem; }
+  .gen-toc ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.45rem; }
+  .gen-toc a {
+    display: inline-block; font-size: 0.875rem; line-height: 1.3; padding: 0.4rem 0.75rem; border-radius: 999px;
+    border: 1px solid color-mix(in srgb, var(--gen-accent) 30%, transparent);
+    color: var(--gen-accent); text-decoration: none; transition: background-color .15s ease;
+  }
+  .gen-toc a:hover { background: color-mix(in srgb, var(--gen-accent) 9%, transparent); text-decoration: none; }
+
+  .gen-section { margin-top: 2.75rem; padding-top: 2.25rem; border-top: 1px solid #e7e2ee; scroll-margin-top: 7rem; }
+  .gen-range { margin: 0 0 0.35rem; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #6b7280; }
+  .gen-h2 + .gen-range { margin: 0.35rem 0 0; }
+  .gen-h2 { margin: 0; font-size: 1.75rem; line-height: 1.25; font-weight: 600; color: var(--color-text); }
+  .gen-marker { color: var(--gen-accent); font-weight: 700; margin-right: 0.2rem; }
+
+  .gen-points { list-style: none; padding: 0; margin: 1.35rem 0 0; }
+  .gen-points > li { display: grid; grid-template-columns: 2.1rem 1fr; gap: 0 0.25rem; margin-top: 1.15rem; }
+  .gen-points > li:first-child { margin-top: 0; }
+  .gen-num { font-weight: 700; color: var(--gen-accent); font-variant-numeric: tabular-nums; text-align: right; padding-right: 0.55rem; }
+  .gen-point p { margin: 0; }
+
+  .gen-note {
+    margin-top: 0.85rem; padding: 0.8rem 1rem; font-size: 0.98rem; line-height: 1.7;
+    border-left: 3px solid color-mix(in srgb, var(--gen-accent) 55%, transparent);
+    background: color-mix(in srgb, var(--gen-accent) 5%, transparent); border-radius: 0 4px 4px 0;
+  }
+  .gen-note-label { font-weight: 700; color: var(--gen-accent); }
+
+  .gen-discussion {
+    margin-top: 3rem; padding: 1.75rem 1.5rem 1.9rem; border-radius: 8px; scroll-margin-top: 7rem;
+    background: color-mix(in srgb, var(--gen-accent) 6%, #faf8fc);
+    border: 1px solid color-mix(in srgb, var(--gen-accent) 18%, transparent);
+  }
+  .gen-discussion .gen-h2 { font-size: 1.5rem; }
+  .gen-disc-intro { margin: 0.75rem 0 0; color: #374151; font-style: italic; }
+
+  .gen-credit { margin-top: 2.5rem; font-size: 0.9rem; color: #6b7280; }
+  .gen-fallback { margin-top: 1rem; padding-left: 1.5rem; list-style: decimal; }
+
+  @media (max-width: 640px) {
+    .gen-h2 { font-size: 1.45rem; }
+    .gen-points > li { grid-template-columns: 1.75rem 1fr; }
+    .gen-discussion { padding: 1.35rem 1rem 1.5rem; }
+  }
+</style>

@@ -3,7 +3,7 @@ import { TopicHeading } from "./TopicHeading";
 import { TopicCrossReferences } from "./TopicCrossReferences";
 import { DevotionalTopicGroups } from "./DevotionalTopicGroups";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { AlertCircle, BookOpen, Bookmark, Check, ChevronDown, ChevronRight, Menu, Search, SlidersHorizontal, X } from "lucide-react";
+import { AlertCircle, ChevronsLeft, Bookmark, Check, ChevronDown, ChevronRight, Search, SlidersHorizontal, X } from "lucide-react";
 import { fetchNetPassages, netCache, netNotes } from "./bible-api";
 import { formatSourcePassage } from "./passage-format";
 import { scriptureReaderPath } from "./scripture-link";
@@ -32,8 +32,7 @@ export function ConcordancePrototype() {
   const [selectedId, setSelectedId] = useState("abiding");
   const [view, setView] = useState<"start" | "topic">("start");
   const [query, setQuery] = useState(""); const [testament, setTestament] = useState("All Testaments"); const [book, setBook] = useState("All books");
-  const [mobileMenu, setMobileMenu] = useState(false); const [filterOpen, setFilterOpen] = useState(false);
-  const topicsToggle = useRef<HTMLButtonElement>(null);
+  const [filterOpen, setFilterOpen] = useState(false);
   const [study, setStudy] = useState<string[]>([]); const [studyLoaded, setStudyLoaded] = useState(false); const [copied, setCopied] = useState("");
   const [translation, setTranslation] = useState<"NET" | "KJV">("NET"); const [translationLoaded, setTranslationLoaded] = useState(false);
   const scriptureHref = (reference: string) => base(scriptureReaderPath(reference, translation));
@@ -92,12 +91,12 @@ export function ConcordancePrototype() {
   };
   const applyTopic = (item: TopicIndex) => {
     if (topicScope === "devotional" && !isDevotionalTopic(item)) setTopicScope("all");
-    setSelectedId(item.id); setExpandedLetter(item.letter); setView("topic"); setMobileMenu(false);
+    setSelectedId(item.id); setExpandedLetter(item.letter); setView("topic");
     loadLetter(item.letter).catch(() => undefined);
   };
   const openTopic = (item: TopicIndex) => {
     if (selectedId === item.id && view === "topic") {
-      setMobileMenu(false);
+     
       return;
     }
     applyTopic(item);
@@ -105,7 +104,7 @@ export function ConcordancePrototype() {
   };
   const openStart = () => {
     setView("start");
-    setMobileMenu(false);
+   
     if (window.location.hash) {
       window.history.pushState(null, "", window.location.pathname + window.location.search);
     }
@@ -137,7 +136,7 @@ export function ConcordancePrototype() {
       const hashId = topicIdFromHash(window.location.hash);
       const target = hashId ? index.topics.find(topic => topic.id === hashId) : undefined;
       if (target) applyTopic(target);
-      else { setView("start"); setMobileMenu(false); }
+      else { setView("start"); }
     };
     return subscribeToTopicHistory(window, restoreTopicFromHash);
   }, [index, payloads, topicScope]);
@@ -225,9 +224,9 @@ export function ConcordancePrototype() {
     <style>{`.kg-sans{font-family:var(--font-sans, 'Source Sans 3', system-ui, sans-serif)}.kg-focus:focus-visible{outline:3px solid var(--color-focus,#0095FF);outline-offset:2px}.kg-scroll::-webkit-scrollbar{width:6px}.kg-scroll::-webkit-scrollbar-thumb{background:var(--color-border-control,#5B9BC4);border-radius:8px}@media print{.kg-no-print{display:none!important}.kg-reading{max-width:none!important}.kg-shell{display:block!important}}`}</style>
     <div className="kg-warm-theme flex-1 flex flex-col bg-[var(--color-surface,#FFFDFB)]">
       {view === "start" && <header className="kg-no-print px-5 pt-4 pb-3 text-center md:pt-6"><h1 className="kg-cover-title text-[var(--color-hero,#006BB3)]" style={{fontFamily:"var(--font-display, 'Playfair Display', serif)",fontVariant:"small-caps",fontSize:"clamp(1rem,4.5vw,2.4rem)",whiteSpace:"nowrap",lineHeight:1.15,letterSpacing:".02em"}}>Knowing God Topical Bible</h1><p className="kg-sans mx-auto mt-1 max-w-[34rem] text-base leading-snug text-[var(--color-text,#003A66)] md:text-lg">{topicCount} topics and {index ? index.counts.passageCount.toLocaleString() : "thousands of"} curated passages on the Nature and Character of the Almighty</p><p className="kg-sans mt-0.5 text-sm text-[var(--color-text,#003A66)]"><a href="https://www.zmission.org/our-story.html" target="_blank" rel="noopener noreferrer" className="kg-focus underline underline-offset-4 decoration-[var(--color-action-warm,#C45100)] hover:text-[var(--color-action-warm,#C45100)]">© 2026 by Zinzendorf Mission</a></p><a href={base("/knowing-god/introduction")} className="kg-focus kg-sans mt-2 inline-flex min-h-11 items-center gap-1 text-base font-semibold text-[var(--color-hero,#006BB3)] underline-offset-4 hover:underline">See Introductory Articles <ChevronRight size={16} aria-hidden="true"/></a></header>}
-      {view === "topic" && <div className="kg-no-print border-b border-[var(--color-border-soft,#CCEBFF)] bg-[var(--color-surface-soft,#E6F5FF)] px-5 py-1 md:hidden"><button ref={topicsToggle} type="button" onClick={() => setMobileMenu(v => !v)} aria-expanded={mobileMenu} className="kg-focus kg-sans flex scroll-mt-24 items-center gap-2 min-h-11 text-base font-bold text-[var(--color-hero,#006BB3)]"><Menu size={18}/> Topics &amp; filters</button></div>}
+
       <main className={`kg-shell flex-1 mx-auto w-full grid grid-cols-1 ${view === "start" ? "max-w-[1100px] md:grid-cols-[minmax(0,1fr)_280px] md:gap-6 md:px-5" : "max-w-[1500px] md:grid-cols-[270px_1fr] lg:grid-cols-[290px_1fr_265px]"}`}>
-      <aside className={`${view === "start" || mobileMenu ? "block" : "hidden"} kg-no-print bg-[var(--color-surface-soft,#E6F5FF)] md:block ${view === "start" ? "md:rounded md:border md:border-[var(--color-border-soft,#CCEBFF)]" : "border-r border-[var(--color-border-soft,#CCEBFF)]"}`}><div className={view === "start" ? "px-5 py-4 md:p-6" : "sticky top-[95px] max-h-[calc(100dvh-95px)] overflow-y-auto kg-scroll p-5"}>
+      <aside className={`${view === "start" ? "block" : "hidden"} kg-no-print bg-[var(--color-surface-soft,#E6F5FF)] md:block ${view === "start" ? "md:rounded md:border md:border-[var(--color-border-soft,#CCEBFF)]" : "border-r border-[var(--color-border-soft,#CCEBFF)]"}`}><div className={view === "start" ? "px-5 py-4 md:p-6" : "sticky top-[95px] max-h-[calc(100dvh-95px)] overflow-y-auto kg-scroll p-5"}>
         {view === "start" ? null : <>
         <a href={base("/knowing-god")} onClick={event => { if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); openStart(); }} className="kg-focus kg-sans mb-4 flex min-h-11 items-center text-base text-[var(--color-hero,#006BB3)] underline underline-offset-2 hover:text-[var(--color-structure,#003A66)]">Return to Knowing God Intro</a></>}
         <p className="kg-sans mb-1 text-xs font-bold uppercase tracking-[.2em] text-[var(--color-action-warm,#C45100)]">Translation</p><div className="mb-4 flex rounded border border-[var(--color-border-control,#5B9BC4)] bg-[var(--color-surface,#FFFDFB)] p-1">{(["NET", "KJV"] as const).map(value => <button key={value} onClick={() => { setTranslation(value); localStorage.setItem("knowing-god-translation", value); }} aria-pressed={translation === value} className={`kg-focus kg-sans flex-1 min-h-11 whitespace-nowrap rounded px-2 py-1.5 text-sm font-bold ${translation === value ? "bg-[var(--color-selected-warm,#FFEADB)] text-[var(--color-text,#003A66)] shadow-[inset_0_0_0_1px_var(--color-action-warm,#C45100)]" : "text-[var(--color-text-muted,#2E5A7A)]"}`}>{value} Bible</button>)}</div>
@@ -245,7 +244,7 @@ export function ConcordancePrototype() {
           </div>
         </nav>}</div></aside>
       {view === "start" ? null :
-      <section className="kg-reading min-w-0 max-w-[920px] px-5 py-4 md:px-10 md:py-6 lg:px-14">{!selectedIndex ? <div role="status" className="kg-sans py-16 text-center text-base text-[var(--color-text-muted,#2E5A7A)]">Loading selected topic…</div> : !selected ? <div className="kg-sans py-16 text-center text-base text-[var(--color-text-muted,#2E5A7A)]">{payloadError[selectedIndex.letter] ? <div role="alert" className="text-[var(--color-action-warm,#C45100)]">{payloadError[selectedIndex.letter]} <button className="underline" onClick={() => loadLetter(selectedIndex.letter).catch(() => undefined)}>Try again</button></div> : <div role="status">Loading {selectedIndex.letter} topics…</div>}</div> : <><div className="kg-no-print mb-2 flex items-center gap-2 kg-sans text-sm text-[var(--color-text-muted,#2E5A7A)]"><BookOpen size={16}/>Topic study <ChevronRight size={14}/>{selected.title}</div><TopicHeading title={selected.title} definition={selected.definition} resultCount={visiblePassages.length} saved={study.includes(selected.id)} copied={copied} onSave={() => toggleStudy(selected.id)} onCopy={copy} />
+      <section className="kg-reading min-w-0 max-w-[920px] px-5 py-4 md:px-10 md:py-6 lg:px-14">{!selectedIndex ? <div role="status" className="kg-sans py-16 text-center text-base text-[var(--color-text-muted,#2E5A7A)]">Loading selected topic…</div> : !selected ? <div className="kg-sans py-16 text-center text-base text-[var(--color-text-muted,#2E5A7A)]">{payloadError[selectedIndex.letter] ? <div role="alert" className="text-[var(--color-action-warm,#C45100)]">{payloadError[selectedIndex.letter]} <button className="underline" onClick={() => loadLetter(selectedIndex.letter).catch(() => undefined)}>Try again</button></div> : <div role="status">Loading {selectedIndex.letter} topics…</div>}</div> : <><div className="kg-no-print mb-2 flex items-center gap-2 kg-sans text-sm text-[var(--color-text-muted,#2E5A7A)]"><a href={base("/knowing-god")} onClick={event => { if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); openStart(); }} aria-label="Back to Knowing God topic index" className="kg-focus inline-flex min-h-11 items-center gap-1 hover:underline"><ChevronsLeft size={18} aria-hidden="true"/>Topic study</a> <ChevronRight size={14}/>{selected.title}</div><TopicHeading title={selected.title} definition={selected.definition} resultCount={visiblePassages.length} saved={study.includes(selected.id)} copied={copied} onSave={() => toggleStudy(selected.id)} onCopy={copy} />
         {selected.passages.length > 0 && translation === "NET" && netError && <div role="alert" className="kg-no-print mb-4 flex flex-wrap items-center gap-2 text-base text-[var(--color-action-warm,#C45100)]"><AlertCircle size={18}/>Some NET passages could not be loaded from this site. Those passages are labeled KJV below. <button type="button" className="kg-focus underline font-bold" onClick={() => setNetRetry(value => value + 1)}>Try again</button></div>}
         {selected.passages.length > 0 ? <>{netLoading && translation === "NET" ? <div role="status" className="kg-sans py-10 text-center text-base text-[var(--color-text-muted,#2E5A7A)]">Loading NET Bible text…</div> : <div>{visiblePassages.map((p, i) => {
           const net = netCache.get(p.reference);

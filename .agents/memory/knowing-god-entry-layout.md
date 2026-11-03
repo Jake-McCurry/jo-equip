@@ -19,3 +19,7 @@ On the entry view, keep “Knowing God Topical Bible” on one mobile line, show
 Search results must show a bold “Topic results” section first and a bold “Scripture results” section second. Keep topic-title matches separate from passages containing the search term.
 
 **Why:** The user explicitly requested separate, ordered results rather than mixing Scripture-text hits into a topic list.
+
+On mobile topic-reading pages, omit the secondary “Topics & filters” hamburger. Use the “Topic study” breadcrumb as the return link to the Knowing God landing/index, prefixed with double-left chevrons instead of a book icon.
+
+**Why:** The user requested the breadcrumb replace the extra mobile navigation bar and recover vertical space.

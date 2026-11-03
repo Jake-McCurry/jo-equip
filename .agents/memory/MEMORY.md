@@ -58,3 +58,4 @@
 - [Deferred online books](interactive-book-pilot.md) — User requested reversal and deferred online books; do not restart without approval. Retain the earlier concept for future use.
 - [Book conversion fidelity](book-conversion-fidelity.md) — Text coverage misses drawn blanks, diagram meaning, and table relationships; verify representative source layouts visually.
 - [Promises reader source](promises-reader-source.md) — Prepared corpus is separate from the existing eight-article collection; preserve printed wording and source-reference notes.
+- [Deployment test fixtures](deployment-test-fixtures.md) — Local uploads can mask missing inputs in Cloudflare builds; keep validation fixtures with the repository.

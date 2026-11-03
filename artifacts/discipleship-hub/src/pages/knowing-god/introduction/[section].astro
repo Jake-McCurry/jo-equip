@@ -11,6 +11,7 @@ import {
   devotionalGuideIntroduction,
 } from "@/data/knowing-god/introduction/devotional-guide";
 import { notableQuotations } from "@/data/knowing-god/introduction/notable-quotations";
+import IntroductionAppendices from "@/components/knowing-god/IntroductionAppendices.astro";
 
 export function getStaticPaths() {
   return knowingGodIntroductions.map((article, index) => ({
@@ -231,6 +232,10 @@ const markHymnLine = (line: string, stanzaIndex: number, lineIndex: number) => {
           </figure>
         ))}
       </article>
+    )}
+
+    {["bible-memorization", "notes", "bibliography"].includes(article.slug) && (
+      <IntroductionAppendices section={article.slug} />
     )}
 
     <nav class="article-navigation" aria-label="Introductory article navigation">

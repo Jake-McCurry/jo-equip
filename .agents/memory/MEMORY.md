@@ -29,6 +29,9 @@
 - [PDF asset optimization tools](pdf-asset-optimization-tools.md) — Prefer installed Ghostscript/MuPDF; managed PyMuPDF conflicts with this workspace's legacy `.pythonlibs`.
 - [JO App slug opacity](jo-app-slug-opacity.md) — preserve source article slugs exactly; valid catalog paths can contain uppercase, doubled hyphens, or ampersands.
 - [Knowing God publication rights](knowing-god-publication-rights.md) — Written permission to publish the concordance is confirmed; do not treat general publication rights as an open blocker.
+- [Knowing God topic count](knowing-god-topic-count.md) — Advertise 649 topics while retaining all 124 cross-reference entries in A–Z.
+- [Knowing God entry layout](knowing-god-entry-layout.md) — Compact identity and intro link followed immediately by visible controls/index; no Print or browse gate.
+- [Translation label layout](translation-label-layout.md) — NET translation controls must stay on one line; allocate width rather than wrapping labels.
 - [Hydration and browser instrumentation](hydration-browser-instrumentation.md) — Test tools may mutate inputs before React hydration; distinguish injected attribute drift from application state mismatches.
 - [Concordance PDF extraction](concordance-pdf-extraction.md) — Use raw column order, normalize discretionary hyphens, and overlap sample boundaries before assembling topics.
 - [NET Bible concordance source](net-bible-concordance-source.md) — NET is locally hosted with confirmed permission; validate official text and distinguish translation differences from source errors.

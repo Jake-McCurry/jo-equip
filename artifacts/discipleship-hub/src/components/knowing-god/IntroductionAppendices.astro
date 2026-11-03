@@ -1,0 +1,220 @@
+---
+import appendices from "@/data/knowing-god/introduction/appendices.json";
+
+interface Props {
+  section: string;
+}
+
+const { section } = Astro.props;
+
+const titles = [
+  "Discourses upon the Existence and Attributes of God",
+  "Vine's Expository Dictionary of Old and New Testament Words",
+  "All the Divine Names and Titles in the Bible",
+  "All the Prayers in the Bible",
+  "The Compact Dictionary of Doctrinal Words",
+  "The New Unger’s Bible Dictionary",
+  "The Attributes of God, Volume 2",
+  "Tozer on the Almighty God",
+  "Nave’s Topical Bible",
+  "Gill's Commentary",
+  "Amplified® Bible",
+  "Knowing God",
+];
+
+const markTitle = (text: string) => {
+  for (const title of titles) {
+    const index = text.indexOf(title);
+    if (index >= 0) {
+      return [
+        { text: text.slice(0, index), title: false },
+        { text: title, title: true },
+        { text: text.slice(index + title.length), title: false },
+      ];
+    }
+  }
+  return [{ text, title: false }];
+};
+
+const stepId = (n: number) => `memory-step-${n}`;
+---
+
+{section === "bible-memorization" && (
+  <article class="content-section appendix memorization">
+    <p class="appendix-intro">{appendices.memoryIntroduction}</p>
+
+    <figure class="memory-example" aria-label="Example Bible memory card">
+      <section class="memory-side" aria-labelledby="card-front-label">
+        <h2 id="card-front-label" class="side-label">Front Side</h2>
+        <div class="memory-card front">
+          <div class="card-top">
+            <p><a class="num" href={`#${stepId(2)}`} aria-label="Step 2">2</a> <span>When I love and trust God fully,<br />He directs my steps perfectly.</span></p>
+            <p class="cue"><a class="num" href={`#${stepId(3)}`} aria-label="Step 3">3</a> <em>Trust in the . . .</em></p>
+          </div>
+          <p class="card-ref"><a class="num" href={`#${stepId(1)}`} aria-label="Step 1">1</a> <strong>Proverbs 3:5-6</strong></p>
+          <div class="card-bottom">
+            <p><a class="num" href={`#${stepId(4)}`} aria-label="Step 4">4</a> <span>Pastor’s Sermon<br />God will not let us depart from<br />His will if we submit to Him.<br />Quote by Hudson Taylor<br />“God’s work done in God’s way will<br />not lack God’s supply.”</span></p>
+            <p class="date"><a class="num" href={`#${stepId(5)}`} aria-label="Step 5">5</a> <em>January, 2026</em></p>
+          </div>
+        </div>
+      </section>
+      <section class="memory-side" aria-labelledby="card-back-label">
+        <h2 id="card-back-label" class="side-label">Back Side</h2>
+        <div class="memory-card back">
+          <p><a class="num" href={`#${stepId(6)}`} aria-label="Step 6">6</a> <span>Trust in the Lord with all thine heart;<br />and lean not unto thine own understanding.<br />In all thy ways acknowledge him,<br />and he shall direct thy paths.</span></p>
+          <p><a class="num" href={`#${stepId(7)}`} aria-label="Step 7">7</a> <span>{appendices.prayer}</span></p>
+        </div>
+      </section>
+    </figure>
+
+    <ol class="memory-steps">
+      {appendices.steps.map((step, index) => (
+        <li id={stepId(index + 1)}><span class="num" aria-hidden="true">{index + 1}</span><p>{step}</p></li>
+      ))}
+    </ol>
+
+    <blockquote class="closing-quote">
+      <p>Thy Word have I hid in mine heart, that I might not sin against Thee.</p>
+      <cite>Psalm 119:11</cite>
+    </blockquote>
+
+    <section class="salvation-verses" aria-labelledby="salvation-verses-heading">
+      <h2 id="salvation-verses-heading">Salvation Verses for Memorization</h2>
+      <ol>
+        {appendices.verses.map((verse) => (
+          <li>
+            <h3>{verse.reference}</h3>
+            <blockquote>{verse.text}</blockquote>
+          </li>
+        ))}
+      </ol>
+    </section>
+  </article>
+)}
+
+{section === "notes" && (
+  <article class="content-section appendix">
+    <ol class="citation-list numbered">
+      {appendices.notes.map((note) => (
+        <li>{markTitle(note).map((s) => (s.title ? <cite>{s.text}</cite> : s.text))}</li>
+      ))}
+    </ol>
+  </article>
+)}
+
+{section === "bibliography" && (
+  <article class="content-section appendix">
+    <ul class="citation-list">
+      {appendices.bibliography.map((entry) => (
+        <li>{markTitle(entry).map((s) => (s.title ? <cite>{s.text}</cite> : s.text))}</li>
+      ))}
+    </ul>
+    <section class="recommended" aria-labelledby="recommended-heading">
+      <h2 id="recommended-heading">Recommended Resources for Further Study</h2>
+      <ul class="citation-list">
+        {appendices.recommended.map((entry) => (
+          <li>{markTitle(entry).map((s) => (s.title ? <cite>{s.text}</cite> : s.text))}</li>
+        ))}
+      </ul>
+    </section>
+  </article>
+)}
+
+<style>
+  .content-section { margin-top: clamp(2.25rem, 6vw, 4rem); }
+  .appendix {
+    max-width: 860px;
+    color: var(--color-text, #003A66);
+    font-family: var(--font-sans, 'Source Sans 3', system-ui, sans-serif);
+  }
+  .appendix p { margin: 0; }
+  .appendix-intro {
+    padding: clamp(1.2rem, 4vw, 2rem);
+    border-left: 4px solid var(--color-accent, #E87722);
+    background: var(--color-surface-soft, #E6F5FF);
+    font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+    line-height: 1.65;
+  }
+  .memory-example { display: grid; gap: 1.5rem; margin: 2.5rem 0 0; }
+  .side-label {
+    margin: 0 0 .55rem;
+    color: var(--color-action-warm, #C45100);
+    font-size: .75rem;
+    font-weight: 800;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+  }
+  .memory-card {
+    display: grid;
+    gap: 1.25rem;
+    padding: clamp(1.1rem, 4vw, 2rem);
+    border: 1px solid var(--color-border-control, #5B9BC4);
+    background: var(--color-surface, #FFFDFB);
+    box-shadow: 0 18px 44px rgba(0,58,102,.06);
+    font-size: clamp(1rem, 1.8vw, 1.08rem);
+    line-height: 1.55;
+  }
+  .memory-card p { display: flex; gap: .6rem; align-items: baseline; }
+  .card-top, .card-bottom {
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: .75rem 1.5rem; align-items: flex-end;
+  }
+  .card-top { align-items: flex-start; }
+  .num {
+    flex: none;
+    display: inline-grid;
+    place-items: center;
+    width: 1.5rem; height: 1.5rem;
+    border: 1px solid var(--color-action-warm, #C45100);
+    border-radius: 50%;
+    color: var(--color-action-warm, #C45100);
+    font-size: .75rem;
+    font-weight: 800;
+    line-height: 1;
+    text-decoration: none;
+  }
+  a.num:focus-visible { outline: 3px solid var(--color-focus, #0095FF); outline-offset: 2px; }
+  .card-ref strong { color: var(--color-hero, #006BB3); }
+  .memory-steps { display: grid; gap: .9rem; margin: 2.5rem 0 0; padding: 0; list-style: none; }
+  .memory-steps li {
+    display: grid; grid-template-columns: 2rem 1fr; gap: .5rem;
+    padding: .9rem 0; border-bottom: 1px solid var(--color-border-soft, #CCEBFF);
+    font-size: 1.05rem; line-height: 1.7; scroll-margin-top: 2rem;
+  }
+  .memory-steps li:target { background: var(--color-surface-soft, #E6F5FF); }
+  .closing-quote {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem 1.5rem;
+    margin: 2.5rem 0 0; padding: 1.4rem 1rem;
+    border-block: 1px solid var(--color-border-soft, #CCEBFF);
+    text-align: center; font-weight: 700;
+  }
+  .closing-quote p { font-variant: small-caps; font-size: 1.15rem; letter-spacing: .03em; }
+  .closing-quote cite { font-style: normal; color: var(--color-action-warm, #C45100); }
+  .salvation-verses, .recommended { margin-top: clamp(2.5rem, 6vw, 4rem); }
+  .salvation-verses h2, .recommended h2 {
+    margin: 0 0 1.25rem; padding-bottom: .65rem;
+    border-bottom: 2px solid var(--color-accent, #E87722);
+    color: var(--color-hero, #006BB3);
+    font-family: var(--font-display, 'Playfair Display', serif);
+    font-size: clamp(1.6rem, 4.5vw, 2.4rem); font-weight: 600;
+  }
+  .salvation-verses ol { display: grid; gap: 1rem; margin: 0; padding: 0; list-style: none; }
+  .salvation-verses li {
+    padding: clamp(1rem, 3vw, 1.5rem);
+    border: 1px solid var(--color-border-soft, #CCEBFF);
+    background: var(--color-surface, #FFFDFB);
+  }
+  .salvation-verses h3 {
+    margin: 0 0 .5rem; color: var(--color-action-warm, #C45100);
+    font-size: .8rem; font-weight: 800; letter-spacing: .07em;
+  }
+  .salvation-verses blockquote { margin: 0; font-size: clamp(1rem, 1.8vw, 1.1rem); line-height: 1.72; }
+  .citation-list { display: grid; gap: .9rem; margin: 0; padding-left: 0; list-style: none; }
+  .citation-list li {
+    padding-left: 2rem; text-indent: -2rem;
+    font-size: 1.05rem; line-height: 1.65;
+  }
+  .citation-list.numbered { list-style: decimal; padding-left: 1.75rem; }
+  .citation-list.numbered li { padding-left: .35rem; text-indent: 0; }
+  .citation-list.numbered li::marker { color: var(--color-action-warm, #C45100); font-weight: 800; }
+  .citation-list cite { font-style: italic; }
+</style>

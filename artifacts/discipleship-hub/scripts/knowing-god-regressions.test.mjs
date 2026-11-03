@@ -11,6 +11,22 @@ import {
 
 const dataDirectory = new URL("../public/knowing-god/data/", import.meta.url);
 
+test("every devotional group entry resolves uniquely, including repeated topics", async () => {
+  const { topics } = JSON.parse(await readFile(new URL("index.json", dataDirectory), "utf8"));
+  let entries = 0;
+  const unique = new Set();
+  for (const group of devotionalGuideCategories) {
+    assert.ok(group.heading);
+    for (const entry of group.entries) {
+      const matches = topics.filter(topic => devotionalTopicKey(topic.title) === devotionalTopicKey(entry.topic));
+      assert.equal(matches.length, 1, `${group.heading}: ${entry.topic}`);
+      entries++;
+      unique.add(matches[0].id);
+    }
+  }
+  assert.ok(entries > unique.size, "Source group memberships must preserve repeated topics");
+});
+
 test("devotional selection includes exactly the guide's unique topics", async () => {
   const { topics } = JSON.parse(await readFile(new URL("index.json", dataDirectory), "utf8"));
   const expected = new Set(devotionalGuideCategories.flatMap(category =>

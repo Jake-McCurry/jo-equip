@@ -9,7 +9,9 @@ import { ARTICLE_REDIRECTS, canonicalArticlePath, canonicalArticleHref, canonica
 import { canonicalArticleHtml } from "../src/data/articleCanonicalHtml.mjs";
 
 const root = resolve(import.meta.dirname, "..");
-const sheet = resolve(root, "../../attached_assets/Pasted-S-No-URLs-Duplicated-With-Duplicate-Status-1-https-equi_1790802992178.txt");
+// Exact source-sheet snapshot, kept with the tests so clean deployment
+// checkouts validate the same approvals without uploaded workspace files.
+const sheet = resolve(import.meta.dirname, "fixtures/article-consolidation-approved.tsv");
 const rows = readFileSync(sheet, "utf8").trim().split("\n").slice(1).map(row => {
   const [, first, second] = row.split("\t");
   return [new URL(second).pathname, new URL(first).pathname];

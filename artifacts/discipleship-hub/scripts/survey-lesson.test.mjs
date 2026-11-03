@@ -56,6 +56,52 @@ test("scripture linking resolves correct books and rejects ambiguity", () => {
 const linkedBooks = html => [...html.matchAll(/book=([^&]+)&amp;chapter=(\d+)/g)]
   .map(m => `${decodeURIComponent(m[1].replace(/\+/g, " "))} ${m[2]}`);
 
+test("existing Scripture anchors and their destinations remain byte-for-byte unchanged", () => {
+  for (const anchor of [
+    '<a href="https://example.org/read?x=1&amp;y=2">John 3:16</a>',
+    '<A title="Read > study" HREF=\'/source?q=John%203%3A16\'><strong>John 3:16</strong> and chapter 4</A>',
+    '<a\nhref="/lesson"><span>3:16</span> and <em>chapters 2-3</em></a>',
+  ]) {
+    const html = `${anchor}; <em>John 3:17</em>`;
+    const linked = linkSurveyScripture(html, "/", "John");
+    assert.ok(linked.startsWith(`${anchor}; <em>`));
+    assert.deepEqual(linkedBooks(linked), ["John 3"]);
+    assert.equal((linked.match(/class="scripture-ref"/g) ?? []).length, 1);
+  }
+});
+
+test("linking is idempotent for verse, chapter, and existing source links", () => {
+  const html = '<a href="/original">John 3:16</a>; <strong>3:17</strong>; chapters 2-3; Rom. 4:3, 9, 22';
+  const once = linkSurveyScripture(html, "/hub/", "John");
+  assert.equal(linkSurveyScripture(once, "/hub/", "John"), once);
+});
+
+test("normal inline emphasis still links references without changing source text", () => {
+  const html = '<p>Read <strong>John 3:16</strong>; <em>3:17</em>; <span>chapters 2-3</span>.</p>';
+  const linked = linkSurveyScripture(html, "/", "John");
+  assert.deepEqual(linkedBooks(linked), ["John 3", "John 3", "John 2"]);
+  assert.equal(linked.replace(/<a\b[^>]*>(.*?)<\/a>/g, "$1"), html);
+  assert.match(linked, /<strong><a\b/);
+  assert.match(linked, /<em><a\b/);
+});
+
+test("non-prose elements and comments remain untouched while following prose links", () => {
+  for (const protectedHtml of [
+    '<script>const text = "John 3:16 <a> chapter 2";</script>',
+    '<STYLE>.example::after { content: "John 3:16 <a>"; }</STYLE>',
+    '<textarea>John 3:16 <em>chapter 2</em></textarea>',
+    '<pre><code>John 3:16</code> chapter 2</pre>',
+    '<code><span>John 3:16</span></code>',
+    '<template><div>John 3:16 <template>chapter 2</template></div></template>',
+    '<!-- John 3:16 > <a href="/source">chapter 2</a> -->',
+  ]) {
+    const linked = linkSurveyScripture(`${protectedHtml}; John 3:17`, "/", "John");
+    assert.ok(linked.startsWith(`${protectedHtml}; `));
+    assert.deepEqual(linkedBooks(linked), ["John 3"]);
+  }
+  assert.equal(linkSurveyScripture('<script>John 3:16', "/", "John"), '<script>John 3:16');
+});
+
 test("ordinal and abbreviated names always override lesson context without changing labels", () => {
   const cases = [
     ["1st Corinthians 13:4", "1 Corinthians 13"],

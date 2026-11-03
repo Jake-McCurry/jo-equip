@@ -159,15 +159,27 @@ function linkText(text: string, base: string, context: string | null, prev: stri
 export function linkSurveyScripture(html: string, base: string, book: string | null): string {
   const b = base.endsWith("/") ? base.slice(0, -1) : base;
   let prev = "";
-  return html
-    .split(/(<[^>]+>)/)
-    .map(part => {
-      if (part.startsWith("<")) return part;
-      const res = linkText(part, b, book, prev.slice(-24));
+  const protectedTags: string[] = [];
+  // Keep raw-text elements whole: apparent tags inside JS/CSS are not HTML.
+  // Quote-aware tags also preserve attributes containing literal ">" characters.
+  const tokens = /<(script|style|textarea)\b(?:[^>"']|"[^"]*"|'[^']*')*>[\s\S]*?(?:<\/\1\s*>|$)|<!--[\s\S]*?(?:-->|$)|<(?:[^>"']|"[^"]*"|'[^']*')*>|[^<]+|</gi;
+  return Array.from(html.matchAll(tokens), ([part]) => {
+      if (part.startsWith("<")) {
+        if (/^<(?:script|style|textarea)\b|^<!--/i.test(part)) return part;
+        const tag = part.match(/^<(\/?)([a-z][\w:-]*)\b/i);
+        if (tag) {
+          const name = tag[2].toLowerCase();
+          if (["a", "code", "pre", "template"].includes(name)) {
+            if (!tag[1]) protectedTags.push(name);
+            else if (protectedTags.at(-1) === name) protectedTags.pop();
+          }
+        }
+        return part;
+      }
+      const res = protectedTags.length ? part : linkText(part, b, book, prev.slice(-24));
       prev += part;
       return res;
-    })
-    .join("");
+    }).join("");
 }
 
 /** Single-book context for a lesson title, or null for grouped/intro lessons. */

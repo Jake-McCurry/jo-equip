@@ -67,6 +67,7 @@ topLevel.sort((a, b) => a.label.localeCompare(b.label));
 const mainPages = [
   { href: join("/"), label: "Home" },
   { href: join("/categories"), label: "All Categories" },
+  { href: join("/bible/resources"), label: "Bible Resources" },
   ...topLevel.filter(p => !AUDIENCE_SLUGS.includes(p.slug)).map(p => ({ href: join(`/${p.slug}`), label: p.label })),
 ];
 const audiencePages = AUDIENCE_SLUGS

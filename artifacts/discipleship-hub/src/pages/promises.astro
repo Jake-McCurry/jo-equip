@@ -1,0 +1,11 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import PromisesReader from "@/components/promises/PromisesReader";
+const baseUrl = import.meta.env.BASE_URL;
+---
+<Layout
+  title="Promises of God | JO EQUIP"
+  description="God’s Promises for Hope: Scripture promises for your situation, feelings, relationships, identity, future, and God’s character."
+>
+  <PromisesReader client:load baseUrl={baseUrl} />
+</Layout>

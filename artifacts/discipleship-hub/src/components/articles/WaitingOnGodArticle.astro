@@ -1,0 +1,263 @@
+---
+/**
+ * Web-only reading layout for "Waiting on God" (growth/waiting-on-god).
+ * Renders the exact source blocks — no text is added, removed or reordered.
+ * Structure is inferred from the source shape only:
+ *   - opening Scripture: leading quoted lines up to the first "—Book n:n" line
+ *   - closing refrain: final "“My soul, wait only on God…" block
+ *   - prayers: blocks opening with a direct address to God
+ *   - introduction: "By:" byline, salutation, and "Name:" contributor labels
+ */
+import type { ArticleBlock } from "@/data/bcgArticles";
+
+interface Props {
+  blocks: ArticleBlock[];
+  accent: string;
+  base: string;
+}
+const { blocks, accent, base } = Astro.props;
+
+const trimBase = base.endsWith("/") ? base.slice(0, -1) : base;
+const withBaseLinks = (html: string) =>
+  html.replace(/href=(["'])(\/(?!\/)[^"']*)\1/g, (_m, q: string, p: string) => `href=${q}${trimBase}${p}${q}`);
+
+const paras = blocks
+  .filter((b): b is Extract<ArticleBlock, { type: "p" }> => b.type === "p")
+  .map(b => b.html);
+// Every block in this source is a paragraph; fall back to nothing special otherwise.
+const allParas = paras.length === blocks.length;
+
+const REF = /[—–]\s*(?:[1-3]\s)?[A-Z][A-Za-z]+(?:\s[A-Z][A-Za-z]+)*\s\d+:\d[\d,:\-–\s]*(?:\([A-Z]+\))?$/;
+
+// Shorter visual paragraphs at existing sentence boundaries; words unchanged.
+function readingParagraphs(html: string): string[] {
+  if (html.length < 700 || html.includes("<")) return [html];
+  const sentences = html.split(/(?<=[.!?])\s+(?=[A-Z“])/);
+  const paragraphs: string[] = [];
+  let current = "";
+  for (const sentence of sentences) {
+    if (current.length >= 420) { paragraphs.push(current); current = ""; }
+    current += (current ? " " : "") + sentence;
+  }
+  if (current) paragraphs.push(current);
+  return paragraphs;
+}
+
+/* Opening Scripture */
+let openEnd = -1;
+if (allParas && paras[0]?.trimStart().startsWith("“")) {
+  for (let i = 0; i < Math.min(paras.length, 9); i++) {
+    if (REF.test(paras[i].trim())) { openEnd = i; break; }
+  }
+}
+const openLines = openEnd >= 0 ? paras.slice(0, openEnd + 1) : [];
+// Split the final line into quotation + citation at the reference dash (no characters dropped).
+let citation = "";
+if (openLines.length) {
+  const last = openLines[openLines.length - 1];
+  const m = last.match(REF);
+  if (m && m.index !== undefined) {
+    openLines[openLines.length - 1] = last.slice(0, m.index);
+    citation = last.slice(m.index);
+  }
+}
+const quoteLines = openLines.filter(l => l.length > 0);
+
+/* Closing refrain */
+const lastIdx = paras.length - 1;
+const hasRefrain = allParas && /^“My soul, wait only on God/.test(paras[lastIdx] ?? "");
+
+/* Introduction-specific markers */
+const isIntro = allParas && paras[0] === "By:";
+const PRAYER = /^“?(O God|Oh God|Dear Father|Father,|Our Heavenly Father|Thank you Lord|Blessed Father)/;
+const isPrayer = (h: string) => PRAYER.test(h);
+const isLabel = (h: string) => isIntro && /^[A-Z][a-z]+ [A-Z][a-z]+:$/.test(h);
+const isInvite = (h: string) => /^Will you PRAY NOW/.test(h);
+
+// Byline names: visual line breaks before known title openers, keeping the original spaces.
+const splitByline = (h: string) => h.split(/ (?=Pastor |Dr\. )/);
+
+type Item =
+  | { kind: "p" | "prayer" | "label" | "invite" | "salutation"; html: string; i: number }
+  | { kind: "byline"; label: string; names: string[]; i: number };
+
+const items: Item[] = [];
+const start = openEnd + 1;
+const end = hasRefrain ? lastIdx : paras.length;
+for (let i = start; i < end; i++) {
+  const h = paras[i];
+  if (isIntro && i === 0 && paras[1] !== undefined) {
+    items.push({ kind: "byline", label: h, names: splitByline(paras[1]), i });
+    i++;
+    continue;
+  }
+  if (isIntro && /,$/.test(h) && h.length < 40 && i < 4) items.push({ kind: "salutation", html: h, i });
+  else if (isLabel(h)) items.push({ kind: "label", html: h, i });
+  else if (isInvite(h)) items.push({ kind: "invite", html: h, i });
+  else if (isPrayer(h)) items.push({ kind: "prayer", html: h, i });
+  else items.push({ kind: "p", html: h, i });
+}
+---
+{allParas ? (
+<article class="wog" style={`--wog-accent:${accent};`}>
+  {quoteLines.length > 0 && (
+    <figure class="wog-scripture">
+      <blockquote>
+        {quoteLines.map(l => (<Fragment><span class="wog-line" set:html={withBaseLinks(l)} />{"\n"}</Fragment>))}
+      </blockquote>
+      {citation && <figcaption set:html={citation} />}
+    </figure>
+  )}
+
+  <div class="wog-body">
+    {items.map(it => {
+      switch (it.kind) {
+        case "byline":
+          return (
+            <div class="wog-byline">
+              <p class="wog-byline-label">{it.label}</p>{"\n"}
+              <p class="wog-byline-names">
+                {it.names.map((n, k) => (<Fragment>{k > 0 && " "}<span set:html={withBaseLinks(n)} /></Fragment>))}
+              </p>
+            </div>
+          );
+        case "salutation":
+          return <p class="wog-salutation" set:html={withBaseLinks(it.html)} />;
+        case "label":
+          return <p class="wog-label" set:html={withBaseLinks(it.html)} />;
+        case "invite":
+          return <p class="wog-invite" set:html={withBaseLinks(it.html)} />;
+        case "prayer":
+          return <div class="wog-prayer"><p set:html={withBaseLinks(it.html)} /></div>;
+        default:
+          return <Fragment>{readingParagraphs(it.html).map(html => <p set:html={withBaseLinks(html)} />)}</Fragment>;
+      }
+    })}
+  </div>
+
+  {hasRefrain && (
+    <div class="wog-refrain">
+      <span class="wog-rule" aria-hidden="true"></span>
+      <p set:html={withBaseLinks(paras[lastIdx])} />
+      <span class="wog-rule" aria-hidden="true"></span>
+    </div>
+  )}
+</article>
+) : (
+  <article class="wog"><div class="wog-body">{paras.map(h => <p set:html={withBaseLinks(h)} />)}</div></article>
+)}
+
+<style>
+  .wog {
+    --wog-ink: #24303a;
+    --wog-soft: color-mix(in srgb, var(--wog-accent) 7%, #fbfaf7);
+    color: var(--wog-ink);
+    max-width: 40rem;
+    margin-inline: auto;
+  }
+  .wog-scripture {
+    margin: 0 0 2.25rem;
+    padding: 1.5rem 1.5rem 1.25rem 1.75rem;
+    border-left: 3px solid var(--wog-accent);
+    background: var(--wog-soft);
+    border-radius: 0 10px 10px 0;
+  }
+  .wog-scripture blockquote {
+    margin: 0;
+    font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    font-style: italic;
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: #1d2a33;
+  }
+  .wog-line { display: inline; }
+  .wog-scripture figcaption {
+    margin-top: 0.75rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--wog-accent);
+  }
+  .wog-body {
+    font-size: 1.0625rem;
+    line-height: 1.8;
+  }
+  @media (min-width: 768px) {
+    .wog-body { font-size: 1.125rem; line-height: 1.85; }
+    .wog-scripture blockquote { font-size: 1.375rem; }
+  }
+  .wog-body > p, .wog-body > div { margin-top: 1.15em; }
+  .wog-body > :first-child { margin-top: 0; }
+  .wog-body :global(em) { font-style: italic; }
+  .wog-body :global(a) {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .wog-byline {
+    padding-bottom: 1.25rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--wog-accent) 22%, transparent);
+  }
+  .wog-byline-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--wog-accent);
+  }
+  .wog-byline-names { margin-top: 0.35rem; font-size: 0.975rem; line-height: 1.6; color: #3d4a54; }
+  .wog-byline-names span { display: block; }
+  .wog-byline-names span + span { margin-top: 0.3rem; }
+  .wog-salutation {
+    font-family: Georgia, "Iowan Old Style", serif;
+    font-style: italic;
+    font-size: 1.2em;
+  }
+  .wog-body > .wog-label {
+    margin-top: 2.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid color-mix(in srgb, var(--wog-accent) 22%, transparent);
+    font-weight: 700;
+    font-size: 0.95em;
+    letter-spacing: 0.04em;
+    color: var(--wog-accent);
+  }
+  .wog-invite { font-weight: 600; color: #1d2a33; }
+  .wog-prayer {
+    position: relative;
+    padding: 1.1rem 1.35rem 1.1rem 1.5rem;
+    background: var(--wog-soft);
+    border-radius: 10px;
+    border: 1px solid color-mix(in srgb, var(--wog-accent) 18%, transparent);
+    font-family: Georgia, "Iowan Old Style", serif;
+    font-style: italic;
+    line-height: 1.75;
+  }
+  .wog-prayer::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 1rem; bottom: 1rem;
+    width: 3px;
+    border-radius: 2px;
+    background: var(--wog-accent);
+  }
+  .wog-prayer :global(em) { font-style: normal; }
+  .wog-refrain {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2.75rem;
+  }
+  .wog-refrain p {
+    flex: 0 1 auto;
+    text-align: center;
+    font-family: Georgia, "Iowan Old Style", serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    line-height: 1.4;
+    color: var(--wog-accent);
+  }
+  .wog-rule { flex: 1 1 2rem; height: 1px; background: color-mix(in srgb, var(--wog-accent) 35%, transparent); }
+</style>

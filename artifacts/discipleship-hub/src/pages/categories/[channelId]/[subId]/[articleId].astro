@@ -34,6 +34,8 @@ import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
 import IdentityCenteredHeartTransformation from "@/components/articles/IdentityCenteredHeartTransformation.astro";
 import BibleStudyToolsContents from "@/components/BibleStudyToolsContents.astro";
 import BibleStudyToolsAdditions from "@/components/articles/BibleStudyToolsAdditions.astro";
+import SurveyLesson from "@/components/articles/SurveyLesson.astro";
+import WaitingOnGodArticle from "@/components/articles/WaitingOnGodArticle.astro";
 import { gitDateOf } from "@/data/contentDates";
 import { ArrowRight, ChevronRight, Download } from "lucide-react";
 import { getCategorySeo } from "@/data/categorySeo";
@@ -88,7 +90,7 @@ const resolveBody = (aid: string) =>
   getBcgArticle(aid) ?? getBibleStudyMethod(aid) ?? getEvidenceArticle(aid) ?? getSiteArticle(subId!, aid);
 const seriesItems = (sub.items ?? []).filter(i => !i.unlisted && i.articleId);
 const curIdx = seriesItems.findIndex(i => i.articleId === article.id);
-const previousArticle = sub.id === "adventure-living-jesus" && curIdx > 0
+const previousArticle = (sub.id === "adventure-living-jesus" || (channel.id === "growth" && sub.id === "waiting-on-god")) && curIdx > 0
   ? seriesItems.slice(0, curIdx).reverse().map(i => resolveBody(i.articleId!)).find(Boolean)
   : undefined;
 let nextArticle: { id: string; title: string } | undefined;
@@ -186,6 +188,10 @@ function withBaseLinks(html: string) {
 }
 // These web-only additions must not change other articles or their PDF sources.
 const isBibleStudyTools = channel.id === "church" && sub.id === "bible-study-tools" && article.id === "essential-bible-study-tools";
+/* Approved web reformat — every Survey of the Bible lesson (OT + NT); source JSON/PDFs untouched. */
+const isSurveyLesson = !!site && channel.id === "church" && (sub.id === "survey-of-the-bible-ot" || sub.id === "survey-of-the-bible-nt");
+/* Approved web reformat — Waiting on God devotional; source JSON/PDF untouched. */
+const isWaitingOnGod = !!site && channel.id === "growth" && sub.id === "waiting-on-god";
 const isEvangelismIntro = channel.id === "church" && sub.id === "understanding-evangelism" && article.id === "what-is-evangelism";
 const evangelismHeadingId = (text: string) => `evangelism-${text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`;
 const evangelismContents = isEvangelismIntro ? article.blocks.filter((b): b is Extract<ArticleBlock, { type: "h2" }> => b.type === "h2").map(b => ({ id: evangelismHeadingId(b.text), label: b.text })) : [];
@@ -298,6 +304,11 @@ const heroTitle = splitTitle(article.title);
 
     {/* Article body. Block types are author-controlled; html strings are
         rendered with set:html — never pipe untrusted content through this. */}
+    {isSurveyLesson ? (
+      <SurveyLesson blocks={article.blocks} accent={channel.accentColor} base={baseUrl} articleId={article.id} title={article.title} />
+    ) : isWaitingOnGod ? (
+      <WaitingOnGodArticle blocks={article.blocks} accent={channel.accentColor} base={baseUrl} />
+    ) : (
     <article class="bcg-prose">
       {isEvangelismIntro && <BibleStudyToolsContents items={evangelismContents} />}
       {article.blocks.map((b: ArticleBlock, index: number) => {
@@ -402,6 +413,7 @@ const heroTitle = splitTitle(article.title);
       })}
       {isBibleStudyTools && <BibleStudyToolsAdditions />}
     </article>
+    )}
 
     {parentArticle && (
       <a href={join(`/categories/${channel.id}/${sub.id}/${parentArticle.id}`)} class="inline-flex items-center gap-2 mt-10 font-semibold hover:underline" style={`color:${channel.accentColor};`}>
@@ -432,7 +444,7 @@ const heroTitle = splitTitle(article.title);
         ← Back to previous article
       </a>
     )}
-    {joAppArticleUrl && (
+    {joAppArticleUrl && !isSurveyLesson && (
       <div class="mt-8 text-center">
         <a
           href={joAppArticleUrl}

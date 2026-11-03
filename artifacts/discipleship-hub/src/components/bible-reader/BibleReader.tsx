@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { AlertTriangle } from "lucide-react";
+import { AlertTriangle, ChevronRight } from "lucide-react";
 import { EMPTY_STUDY, loadStudy, persistStudy, type ChapterRecord, type StudyData, type VerseRecord } from "./study-storage";
 import { errMsg, fetchPassage, locationSearch, readLocation, upsertVerse, type Location, type Passage } from "./reader-utils";
 import { ReaderNav } from "./ReaderNav";
@@ -136,6 +136,9 @@ export default function BibleReader({ baseUrl }: { baseUrl: string }) {
           </div>
         )}
         <div className="flex min-w-0 flex-col gap-4 xl:col-start-2 xl:row-start-2">
+          <a href={`${baseUrl.replace(/\/$/, "")}/bible/resources`} className="-mb-3 inline-flex min-h-7 items-center justify-center gap-1 self-center text-sm font-semibold text-[var(--color-hero)] hover:underline">
+            See Bible Resources <ChevronRight size={16} aria-hidden="true" />
+          </a>
           <ReaderNav loc={loc} onGo={go} />
           {verseNotice && <p role="status" className="rounded border border-[var(--color-border-control)] bg-[var(--color-surface-soft)] p-3 text-sm font-semibold">{verseNotice}</p>}
           <PassageView loc={loc} passage={current} loading={loading || (!current && !error)} error={error} onRetry={() => setRetry(r => r + 1)}

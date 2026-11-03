@@ -136,7 +136,7 @@ export default function BibleReader({ baseUrl }: { baseUrl: string }) {
           </div>
         )}
         <div className="flex min-w-0 flex-col gap-4 xl:col-start-2 xl:row-start-2">
-          <a href={`${baseUrl.replace(/\/$/, "")}/bible/resources`} className="br-link inline-flex min-h-11 items-center justify-center gap-1 self-center text-sm font-semibold">
+          <a href={`${baseUrl.replace(/\/$/, "")}/bible/resources`} className="-mb-3 inline-flex min-h-7 items-center justify-center gap-1 self-center text-sm font-semibold text-[var(--color-hero)] hover:underline">
             See Bible Resources <ChevronRight size={16} aria-hidden="true" />
           </a>
           <ReaderNav loc={loc} onGo={go} />

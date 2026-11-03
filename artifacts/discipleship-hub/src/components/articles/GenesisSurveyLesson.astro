@@ -20,19 +20,6 @@ function numericChapters(text: string): string {
   );
 }
 const link = (html: string) => linkGenesisScripture(numericChapters(html), base);
-// Emphasize the response prompts, not the surrounding teaching/context.
-function discussionHtml(html: string): string {
-  const prompts = [
-    "What other “seeds” do you see planted in Genesis that come to harvest later in Scripture?",
-    "Would you be able to present the gospel just using this chapter?",
-    "Explain how Abraham’s faith relates to our faith and being counted for righteousness.",
-    "Explain how this is a crucial foundational truth of the Christian faith.",
-    "Do you see a prefigure of Christ’s resurrection in this story?",
-    "What character traits do you see in the story of Joseph?",
-    "How could these traits be implemented in your life?",
-  ];
-  return link(prompts.reduce((text, prompt) => text.replace(prompt, `<strong>${prompt}</strong>`), html));
-}
 
 type Section = { id: string; marker: string; title: string; range: string | null; rangeFirst: boolean; items: string[] };
 let intro: { label: string; html: string } | null = null;
@@ -136,7 +123,7 @@ const toc = [
         {discussion.items.map((q, i) => (
           <li>
             <span class="gen-num" aria-hidden="true">{i + 1}.</span>
-            <div class="gen-point"><p set:html={discussionHtml(q)} /></div>
+            <div class="gen-point"><p set:html={link(q)} /></div>
           </li>
         ))}
       </ol>

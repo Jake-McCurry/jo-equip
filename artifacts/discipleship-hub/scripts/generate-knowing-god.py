@@ -19,6 +19,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
 PDF = ROOT / "attached_assets/ZMission-IngramSpark_03-30-26_260826_1788215966373.pdf"
+# Approved extraction-source fingerprint, independent of workspace-only uploads.
+# Deployment validates the committed corpus; regeneration still requires the PDF.
+APPROVED_SOURCE_SHA256 = "c01fe503d25a6f6a4a954fd51c4511d9a04316bbf2b912f69aad6e474e929823"
 OUTPUT = ROOT / "artifacts/discipleship-hub/public/knowing-god/data"
 FIRST_BODY_PAGE = 29
 LAST_BODY_PAGE = 1126
@@ -1138,9 +1141,12 @@ def validate_generated(source_check: bool = False) -> dict:
             seen_payloads.append(payload)
             data = json.loads((OUTPUT / payload).read_text(encoding="utf-8"))
             topics.extend(data["topics"])
-    actual_sha = hashlib.sha256(PDF.read_bytes()).hexdigest()
-    if index["sourceSha256"] != actual_sha:
-        raise ValueError("Generated corpus source SHA-256 does not match the current PDF")
+    if index["sourceSha256"] != APPROVED_SOURCE_SHA256:
+        raise ValueError("Generated corpus source SHA-256 does not match the approved PDF")
+    if source_check or PDF.exists():
+        actual_sha = hashlib.sha256(PDF.read_bytes()).hexdigest()
+        if actual_sha != APPROVED_SOURCE_SHA256:
+            raise ValueError("Current PDF SHA-256 does not match the approved PDF")
     if source_check:
         pages = extract_pages(PDF)
         blank_pages = {

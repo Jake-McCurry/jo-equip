@@ -22,6 +22,29 @@ GENERATOR = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(GENERATOR)
 
 
+class DeploymentSourceTests(unittest.TestCase):
+    def test_validation_without_workspace_upload(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            with patch.object(GENERATOR, "PDF", Path(temporary) / "absent.pdf"):
+                report = GENERATOR.validate_generated()
+                self.assertEqual(report["sourceSha256"], GENERATOR.APPROVED_SOURCE_SHA256)
+                with self.assertRaises(FileNotFoundError):
+                    GENERATOR.validate_generated(source_check=True)
+
+    def test_wrong_source_pdf_is_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            pdf = Path(temporary) / "wrong.pdf"
+            pdf.write_bytes(b"not the approved source")
+            with patch.object(GENERATOR, "PDF", pdf):
+                with self.assertRaisesRegex(ValueError, "Current PDF SHA-256"):
+                    GENERATOR.validate_generated()
+
+    def test_unapproved_corpus_fingerprint_is_rejected(self) -> None:
+        with patch.object(GENERATOR, "APPROVED_SOURCE_SHA256", "0" * 64):
+            with self.assertRaisesRegex(ValueError, "Generated corpus source SHA-256"):
+                GENERATOR.validate_generated()
+
+
 class PrimaryReferenceTests(unittest.TestCase):
     def test_every_canonical_chapter_boundary(self) -> None:
         counts = GENERATOR.BIBLE_VERSE_COUNTS

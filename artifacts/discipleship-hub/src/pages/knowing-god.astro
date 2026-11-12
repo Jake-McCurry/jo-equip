@@ -4,6 +4,7 @@ import "@/styles/knowing-god-theme.css";
 import { ConcordancePrototype } from "@/components/knowing-god/ConcordancePrototype";
 import EquipHeader from "@/components/EquipHeader.astro";
 import OpenAIAdsPixel from "@/components/OpenAIAdsPixel.astro";
+import RobotsMeta from "@/components/RobotsMeta.astro";
 
 const baseUrl = import.meta.env.BASE_URL;
 const join = (path: string) =>
@@ -23,6 +24,7 @@ const canonicalUrl = "https://equip.jesusonline.com/knowing-god";
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <RobotsMeta />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/svg+xml" href={join("/favicon.svg")} />
     <link rel="apple-touch-icon" href={join("/favicon.svg")} />

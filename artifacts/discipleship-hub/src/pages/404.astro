@@ -10,6 +10,9 @@ const join = (p: string) =>
   title="Page Not Found · JO EQUIP"
   description="The page you were looking for can't be found. Browse our categories, playlists, and free books from JO EQUIP — JesusOnline Ministries."
 >
+  <Fragment slot="head">
+    <meta name="robots" content="noindex, follow" />
+  </Fragment>
   <section class="container mx-auto px-4 py-16 md:py-24 max-w-3xl text-center">
     <div class="text-xs font-semibold tracking-widest uppercase mb-3" style="color:var(--color-hero);">Error 404</div>
     <h1 class="text-5xl md:text-6xl mb-4" style="color:var(--color-structure);">Page not found</h1>

@@ -7,6 +7,7 @@ import TopicCarousel from "@/components/TopicCarousel.astro";
 import { getTopicCarousel } from "@/data/topicCarousels";
 import OpenAIAdsPixel from "@/components/OpenAIAdsPixel.astro";
 import ExternalLinkPolicy from "@/components/ExternalLinkPolicy.astro";
+import RobotsMeta from "@/components/RobotsMeta.astro";
 
 interface Props {
   title?: string;
@@ -61,6 +62,9 @@ const absoluteImage = /^https?:\/\//i.test(image) ? image : SITE + image;
 // Gated on PROD so dev/preview builds don't pollute analytics.
 const GTM_ID = "GTM-PKJQNCS";
 const gtmEnabled = import.meta.env.PROD;
+// Render once so existing page-level noindex tags retain precedence without
+// emitting a second, conflicting default robots tag.
+const pageHead = await Astro.slots.render("head");
 ---
 <!doctype html>
 <html lang="en">
@@ -71,6 +75,7 @@ const gtmEnabled = import.meta.env.PROD;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <RobotsMeta pageHead={pageHead} />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/png" sizes="96x96" href={join("/favicon.png")} />
     <link rel="apple-touch-icon" sizes="180x180" href={join("/apple-touch-icon.png")} />
@@ -116,7 +121,7 @@ const gtmEnabled = import.meta.env.PROD;
     <meta name="twitter:image:alt" content={imageAlt} />
 
     {/* Per-page additions (e.g. JSON-LD) */}
-    <slot name="head" />
+    <Fragment set:html={pageHead} />
 
     {/* Google Tag Manager + Crazy Egg — production-only so dev builds don't
         pollute analytics. Both run on the MAIN THREAD (GTM was previously

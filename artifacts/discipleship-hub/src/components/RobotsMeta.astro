@@ -1,0 +1,11 @@
+---
+import { defaultRobotsDirective } from "@/data/robotsMeta.mjs";
+
+interface Props {
+  /** Rendered page head, including any existing page-specific robots tag. */
+  pageHead?: string;
+}
+const { pageHead = "" } = Astro.props;
+const directive = defaultRobotsDirective(pageHead, import.meta.env.DEV);
+---
+{directive && <meta name="robots" content={directive} />}

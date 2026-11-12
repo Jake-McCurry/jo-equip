@@ -3,6 +3,7 @@ import "@/styles/global.css";
 import "@/styles/knowing-god-theme.css";
 import EquipHeader from "@/components/EquipHeader.astro";
 import OpenAIAdsPixel from "@/components/OpenAIAdsPixel.astro";
+import RobotsMeta from "@/components/RobotsMeta.astro";
 
 interface Props {
   title: string;
@@ -25,6 +26,7 @@ const canonicalUrl = `https://equip.jesusonline.com${Astro.url.pathname}`;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
+    <RobotsMeta />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/svg+xml" href={join("/favicon.svg")} />
     <link rel="apple-touch-icon" href={join("/favicon.svg")} />

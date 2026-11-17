@@ -1,6 +1,6 @@
 /* Important declarations in the first layer take precedence over local reader
    themes, utilities, and inline font choices. Keep this policy first so every
-   web surface follows the same H1-only display-font rule. */
+   web surface follows the same display-font policy. */
 @layer site-typography;
 @import "tailwindcss";
 @import "./fonts.css";
@@ -11,8 +11,9 @@
     font-family: "Source Sans 3", Arial, sans-serif !important;
   }
 
-  /* Nested links, emphasis, and spans remain part of the H1 typography. */
-  :where(h1, h1 *) {
+  /* Knowing God topic titles are the sole H2 exception. Their result-count
+     spans retain the body font; nested H1 text retains the display font. */
+  :where(h1, h1 *, h2.kg-topic-title) {
     font-family: "Playfair Display", Georgia, serif !important;
   }
 }

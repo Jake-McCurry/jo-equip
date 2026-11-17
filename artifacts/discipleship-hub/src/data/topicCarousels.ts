@@ -1,6 +1,6 @@
 /* Horizontal topic carousels shown in a white banner directly beneath the
- * blue header on exactly four pages. Labels/order come verbatim from the
- * supplied DOCX. Category destinations are resolved against channels.ts at
+ * blue header on exactly four pages. Labels/order follow approved editorial
+ * sequences. Category destinations are resolved against channels.ts at
  * build time — a target that doesn't exist (bad sub-topic, missing or
  * unlisted article) throws, so the carousel can never ship a dead link. */
 import { subTopics, type ChannelId } from "./channels";
@@ -19,18 +19,16 @@ const carousels: Record<string, { label: string; items: CarouselEntry[] }> = {
   "/": {
     label: "Popular topics",
     items: [
-      t("Bible", { page: "/bible" }),
-      t("Sermon Tools", { page: "/sermon-helps" }),
-      t("Church Growth", { page: "/church-strategies" }),
-      t("Evangelism", { page: "/evangelism-tools" }),
-      t("Prayer", sub("growth", "prayer")),
-      t("Holy Spirit", sub("growth", "ministry-holy-spirit")),
       t("Discipleship", { page: "/discipleship" }),
+      t("Evangelism", { page: "/evangelism-tools" }),
+      t("Bible", { page: "/bible" }),
+      t("Topical Bible", { page: "/knowing-god" }),
+      t("Holy Spirit", sub("growth", "ministry-holy-spirit")),
       t("Identity in Christ", sub("growth", "identity-in-christ")),
-      t("Devotionals", sub("growth", "devotionals")),
-      t("Hope in Crisis", sub("growth", "hope-times-crisis")),
-      t("Godly Relationships", sub("growth", "godly-relationships")),
+      t("Sermon Tools", { page: "/sermon-helps" }),
+      t("Prayer", sub("growth", "prayer")),
       t("Attributes of God", sub("growth", "attributes-of-god")),
+      t("Hope in Crisis", sub("growth", "hope-times-crisis")),
     ],
   },
   "/categories/evidence": {

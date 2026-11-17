@@ -17,3 +17,9 @@ Keep each of the four carousel menus sticky together with the blue navigation, d
 **Why:** The user reiterated that the new carousels were supposed to stay sticky with the blue nav.
 
 **How to apply:** Treat both rows as one sticky navigation unit, preserving their compact sizing and limiting carousels to the four approved landing pages.
+
+The Home carousel prioritizes topics by observed engagement, highest volume first.
+
+**Why:** On 2026-11-17 the user supplied a revised ten-link sequence to maximize visibility on desktop and mobile, including Topical Bible linked to Knowing God.
+
+**How to apply:** Preserve the approved sequence rather than alphabetizing or prioritizing resources by category; keep the three category-specific carousels distinct.

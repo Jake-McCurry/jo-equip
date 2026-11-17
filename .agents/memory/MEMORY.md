@@ -1,4 +1,5 @@
 - [Waiting on God editorial scope](waiting-on-god-editorial-scope.md) — Readability improvements only; preserve all devotional text and leave the PDF unchanged.
+- [Site typography](site-typography.md) — Only H1 uses Playfair Display; all other JO EQUIP web text uses Source Sans 3, superseding reader serif exceptions.
 - [Bible survey design scope](bible-survey-design-scope.md) — Genesis design approved for the full OT/NT survey; preserve sources and adapt to each lesson's structure.
 - [Missionary editorial scope](missionary-editorial-scope.md) — Approved consolidated FAQs and supplemental-training language; Making & Multiplying Disciples is a collection, not a course.
 - [Chaplain editorial scope](chaplain-editorial-scope.md) — Approved supplemental-resource claims, voluntary Christian care language, and no unsupported training or supply claims.

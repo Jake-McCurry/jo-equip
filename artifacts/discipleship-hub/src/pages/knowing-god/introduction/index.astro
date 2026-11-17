@@ -79,7 +79,8 @@ const join = (path: string) =>
     color: var(--color-hero, #006BB3);
     font-family: var(--font-sans, 'Source Sans 3', system-ui, sans-serif);
     font-size: clamp(1.35rem, 3vw, 1.8rem);
-    font-weight: 600;
+    /* Override the shared Knowing God heading weight on these cards only. */
+    font-weight: 400 !important;
   }
   .intro-card div > span {
     display: block;

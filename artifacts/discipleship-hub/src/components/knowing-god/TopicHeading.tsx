@@ -29,7 +29,7 @@ export function TopicHeading({ title, definition, resultCount, saved, copied, on
           <Printer size={14} aria-hidden="true" />Print
         </button>
       </div>
-      <h2 className="text-4xl text-[var(--color-hero,#006BB3)] md:text-6xl" style={{ fontFamily: "var(--font-display, 'Playfair Display', serif)" }}>
+      <h2 className="kg-topic-title text-4xl text-[var(--color-hero,#006BB3)] md:text-6xl">
         {title}{" "}
         <span className="kg-sans inline-block whitespace-nowrap align-baseline text-xs font-normal text-[var(--color-text-muted,#2E5A7A)]">
           {resultCount} {resultCount === 1 ? "result" : "results"}

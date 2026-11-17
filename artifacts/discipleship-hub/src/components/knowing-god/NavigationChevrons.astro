@@ -1,0 +1,14 @@
+---
+interface Props {
+  direction?: "left" | "right";
+}
+const { direction = "right" } = Astro.props;
+---
+<svg class="navigation-chevrons" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <g transform={direction === "left" ? "translate(36 24) rotate(180)" : undefined}>
+    <path d="m3 5 7 7-7 7m11-14 7 7-7 7m11-14 7 7-7 7" />
+  </g>
+</svg>
+<style>
+  .navigation-chevrons { display: inline-block; width: 1.1em; height: .75em; vertical-align: -.03em; margin-inline: .12em; }
+</style>

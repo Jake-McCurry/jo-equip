@@ -2,6 +2,7 @@
 import KnowingGodIntroductionLayout from "@/layouts/KnowingGodIntroductionLayout.astro";
 import { knowingGodIntroductions } from "@/data/knowingGodIntroductions";
 import { ChevronsLeft } from "lucide-react";
+import NavigationChevrons from "@/components/knowing-god/NavigationChevrons.astro";
 
 const baseUrl = import.meta.env.BASE_URL;
 const join = (path: string) =>
@@ -17,7 +18,6 @@ const join = (path: string) =>
       <a class="kg-intro-back" href={join("/knowing-god")} aria-label="Back to Knowing God"><ChevronsLeft size={18} aria-hidden="true" />Knowing God</a> <span aria-hidden="true">/</span> Introductory Articles
     </nav>
 
-    <p class="kg-intro-eyebrow">Begin Here</p>
     <h1 class="kg-intro-title">Introductory Articles</h1>
     <p class="kg-intro-lede">
       Read the original introductory material and appendices, including Bible memorization, source notes, and bibliography, alongside the Topical Bible.
@@ -29,10 +29,9 @@ const join = (path: string) =>
           <span class="intro-number">{String(index + 1).padStart(2, "0")}</span>
           <div>
             <p>{article.eyebrow}</p>
-            <h2>{article.title}</h2>
+            <h2>{article.title} <NavigationChevrons /></h2>
             <span>{article.description}</span>
           </div>
-          <strong aria-hidden="true">→</strong>
         </a>
       ))}
     </section>
@@ -49,7 +48,7 @@ const join = (path: string) =>
   }
   .intro-card {
     display: grid;
-    grid-template-columns: 3rem 1fr auto;
+    grid-template-columns: 3rem minmax(0, 1fr);
     gap: 1.25rem;
     align-items: start;
     padding: 1.5rem;
@@ -80,7 +79,8 @@ const join = (path: string) =>
     color: var(--color-hero, #006BB3);
     font-family: var(--font-sans, 'Source Sans 3', system-ui, sans-serif);
     font-size: clamp(1.35rem, 3vw, 1.8rem);
-    font-weight: 600;
+    /* Override the shared Knowing God heading weight on these cards only. */
+    font-weight: 400 !important;
   }
   .intro-card div > span {
     display: block;
@@ -90,8 +90,7 @@ const join = (path: string) =>
     font-size: 1rem; /* 16px */
     line-height: 1.55;
   }
-  .intro-card strong { color: var(--color-action-warm, #C45100); font-size: 1.4rem; font-weight: 400; }
   @media (max-width: 560px) {
-    .intro-card { grid-template-columns: 2rem 1fr auto; gap: .65rem; padding: 1.2rem .9rem; }
+    .intro-card { grid-template-columns: 2rem minmax(0, 1fr); gap: .65rem; padding: 1.2rem .9rem; }
   }
 </style>

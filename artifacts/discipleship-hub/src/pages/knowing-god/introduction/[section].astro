@@ -13,6 +13,7 @@ import {
 import { notableQuotations } from "@/data/knowing-god/introduction/notable-quotations";
 import IntroductionAppendices from "@/components/knowing-god/IntroductionAppendices.astro";
 import { ChevronsLeft } from "lucide-react";
+import NavigationChevrons from "@/components/knowing-god/NavigationChevrons.astro";
 
 export function getStaticPaths() {
   return knowingGodIntroductions.map((article, index) => ({
@@ -243,18 +244,18 @@ const markHymnLine = (line: string, stanzaIndex: number, lineIndex: number) => {
       {previous ? (
         <a href={join(`/knowing-god/introduction/${previous.slug}`)}>
           <small>Previous</small>
-          <span>← {previous.title}</span>
+          <span><NavigationChevrons direction="left" /> {previous.title}</span>
         </a>
       ) : <span />}
       {next ? (
         <a class="next" href={join(`/knowing-god/introduction/${next.slug}`)}>
           <small>Next</small>
-          <span>{next.title} →</span>
+          <span>{next.title} <NavigationChevrons /></span>
         </a>
       ) : (
         <a class="next" href={join("/knowing-god")}>
           <small>Continue</small>
-          <span>Browse the topics →</span>
+          <span>Browse the topics <NavigationChevrons /></span>
         </a>
       )}
     </nav>

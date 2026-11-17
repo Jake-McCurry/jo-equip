@@ -2,7 +2,13 @@
 name: Knowing God entry layout
 description: Compact entry page prioritizes immediate access to the topic index.
 ---
-Keep the Knowing God entry compact: title, accurate topic/passage summary, copyright, and introductory-articles link immediately followed by translation controls, topic selection, and the index. The mobile index must be visible in normal page flow on entry rather than behind a browse button or collapsed menu. Do not restore the Print control.
+Keep the Knowing God mobile entry compact: title, accurate topic/passage summary, copyright, and introductory-articles link immediately followed by translation controls, topic selection, and the index. The mobile index must be visible in normal page flow on entry rather than behind a browse button or collapsed menu. Do not restore the Print control.
+
+Desktop uses the JO Follow reference's three-column structure: navigation/index left, title and reading area center, and My Study List right, while retaining JO EQUIP branding. Keep search visible as a bar on desktop and mobile. Let the subtitle occupy one line when space allows and wrap naturally otherwise.
+
+**Why:** On 2026-11-17 the user explicitly rejected the enlarged-mobile desktop structure and supplied the Follow screenshot as the desktop template.
+
+**How to apply:** Preserve the mobile entry flow while keeping the desktop navigation and study list alongside the central reading area.
 
 **Why:** The user supplied a compact reference and explicitly prioritized immediate access to the content over a spacious introductory screen. The reference's outdated 773 count and audio icon are not approved.
 

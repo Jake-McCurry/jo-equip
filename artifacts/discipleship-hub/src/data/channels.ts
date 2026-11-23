@@ -1,4 +1,5 @@
 import waitingOnGodArticles from "./local/articles/waiting-on-god.json";
+import birthOfJesusSource from "../../../../scripts/data/birth-of-jesus/catalog.json";
 
 export type ResourceFormat = "book" | "playlist" | "app" | "pdf" | "video";
 
@@ -1934,6 +1935,27 @@ export const subTopics: SubTopic[] = [
     parentId: 'devotionals',
     name: 'Discover Jesus in the Gospels',
     description: 'Explore a fresh perspective on Jesus\' teachings and life events.',
+  },
+  {
+    id: 'the-birth-of-jesus',
+    channelId: 'growth',
+    parentId: 'discover-jesus-gospels',
+    name: 'The Birth of Jesus',
+    description: 'Explore the Nativity story through twelve Gospel devotionals.',
+    appUrl: 'https://app.jesusonline.com/series/35',
+    items: birthOfJesusSource.posts.map((post, index) => ({
+      number: index + 1,
+      title: post.title,
+      articleId: post.slug.replace(/^22180-\d{3}-/, ""),
+      links: { app: `https://app.jesusonline.com/post/${post.slug}` },
+    })),
+  },
+  {
+    id: 'encounters-with-jesus',
+    channelId: 'growth',
+    parentId: 'discover-jesus-gospels',
+    name: 'Encounters with Jesus',
+    description: 'Discover Jesus through thirty encounters in the Gospels.',
     items: [
       { number: 1, title: 'The Humility of Jesus', articleId: 'the-humility-of-jesus', links: { app: 'https://app.jesusonline.com/post/22010-032-the-humility-of-jesus' } },
       { number: 2, title: 'Finding Security and Comfort', articleId: 'finding-security-and-comfort', links: { app: 'https://app.jesusonline.com/post/22010-033-finding-security-and-comfort' } },
@@ -2583,6 +2605,9 @@ export function getSubTopicsByChannel(channelId: string): SubTopic[] {
 /** Children of a parent sub-topic, in declaration order. */
 export function getSubTopicChildren(parentId: string): SubTopic[] {
   const children = subTopics.filter(s => s.parentId === parentId);
+  if (parentId === "discover-jesus-gospels") {
+    return children.sort((a, b) => (a.id === "encounters-with-jesus" ? -1 : b.id === "encounters-with-jesus" ? 1 : 0));
+  }
   if (parentId !== "devotionals") return children;
   const order = [
     "discover-jesus-gospels", "days-god-s-love", "hearing-voice-god",

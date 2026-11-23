@@ -70,6 +70,8 @@ export function getStaticPaths() {
 const { channelId, subId, articleId } = Astro.params;
 const channel = getChannel(channelId!);
 const sub = getSubTopic(channelId!, subId!);
+const collectionParent = sub?.parentId === "discover-jesus-gospels"
+  ? getSubTopic(channelId!, sub.parentId) : undefined;
 /* Resolve the article from whichever source owns this id. */
 const bcg = articleId ? getBcgArticle(articleId) : undefined;
 const bsm = articleId ? getBibleStudyMethod(articleId) : undefined;
@@ -241,6 +243,7 @@ const heroTitle = splitTitle(article.title);
       { name: "Home", url: "/" },
       { name: "Categories", url: "/categories" },
       { name: channel.shortName, url: `/categories/${channel.id}` },
+      ...(collectionParent ? [{ name: collectionParent.name, url: `/categories/${channel.id}/${collectionParent.id}` }] : []),
       { name: sub.name, url: `/categories/${channel.id}/${sub.id}` },
       { name: article.title, url: `/categories/${channel.id}/${sub.id}/${article.id}` },
     ]} />
@@ -267,6 +270,12 @@ const heroTitle = splitTitle(article.title);
         <a href={join("/categories")} class="transition-colors hover:text-primary">Categories</a>
         <ChevronRight className="w-3 h-3" />
         <a href={join(`/categories/${channel.id}`)} class="transition-colors hover:text-primary">{channel.shortName}</a>
+        {collectionParent && (
+          <>
+            <ChevronRight className="w-3 h-3" />
+            <a href={join(`/categories/${channel.id}/${collectionParent.id}`)} class="transition-colors hover:text-primary">{collectionParent.name}</a>
+          </>
+        )}
         <ChevronRight className="w-3 h-3" />
         <a href={join(`/categories/${channel.id}/${sub.id}`)} class="transition-colors hover:text-primary">{splitTitle(sub.name).main}</a>
       </nav>

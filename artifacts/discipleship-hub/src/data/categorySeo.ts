@@ -1,5 +1,6 @@
 import categorySeoJson from "./categorySeo.json" with { type: "json" };
 import categorySeoOverrides from "./categorySeoOverrides.json" with { type: "json" };
+import { canonicalArticlePath } from "./articleCanonicalPaths.mjs";
 
 export interface CategorySeoMetadata {
   title: string;
@@ -18,7 +19,8 @@ const EXPECTED_ROWS = 1264;
 const importedMetadata = categorySeoJson as Record<string, CategorySeoMetadata>;
 
 export const categorySeoByPath = new Map<string, CategorySeoMetadata>(
-  Object.entries({ ...importedMetadata, ...categorySeoOverrides }),
+  Object.entries({ ...importedMetadata, ...categorySeoOverrides })
+    .map(([path, metadata]) => [canonicalArticlePath(path), metadata]),
 );
 
 if (Object.keys(importedMetadata).length !== EXPECTED_ROWS) {

@@ -28,7 +28,12 @@ const majestyApproved = majestySlugs.map(slug => [
   `/categories/growth/bb-growing-closer-majesty/${slug}`,
   `/categories/growth/attributes-of-god/${slug}`,
 ]);
-const approved = [...originalApproved, ...majestyApproved];
+const encounters = JSON.parse(readFileSync(resolve(root, "src/data/generated/articles/encounters-with-jesus.json"), "utf8"));
+const encounterMoves = encounters.map(a => [
+  `/categories/growth/discover-jesus-gospels/${a.id}`,
+  `/categories/growth/encounters-with-jesus/${a.id}`,
+]);
+const approved = [...originalApproved, ...majestyApproved, ...encounterMoves];
 const localAttributes = JSON.parse(readFileSync(resolve(root, "src/data/local/articles/attributes-of-god.json"), "utf8"));
 const generatedMajesty = JSON.parse(readFileSync(resolve(root, "src/data/generated/articles/bb-growing-closer-majesty.json"), "utf8"));
 const authoritativeArticles = majestySlugs.map(id => {
@@ -43,10 +48,11 @@ const pdfPaths = new Set(authoritativeArticles.flatMap(({ local, generated }) =>
     .filter(path => existsSync(resolve(root, "public", "." + path))),
 ]));
 
-test("exact manifest matches 65 pairs: original 59 FIRST survive, six local Attributes survivors", () => {
+test("exact manifest matches 65 approved consolidations and 30 Encounter relocations", () => {
   assert.equal(originalApproved.length, 59);
   assert.equal(rows.length, 65);
-  assert.equal(approved.length, 65);
+  assert.equal(encounterMoves.length, 30);
+  assert.equal(approved.length, 95);
   assert.deepEqual(
     rows.filter(([, first]) => first.includes("/bb-growing-closer-majesty/")),
     majestyApproved.map(([from, to]) => [to, from]),
@@ -62,7 +68,7 @@ test("exact manifest matches 65 pairs: original 59 FIRST survive, six local Attr
   }
 });
 
-test("Worker HTTP301: all 65, slash/query, and old /channels converge in one hop", async () => {
+test("Worker HTTP301: all 95, slash/query, and old /channels converge in one hop", async () => {
   for (const [from, to] of approved) {
     for (const path of [from, from + "/", from.replace("/categories/", "/channels/"), from.replace("/categories/", "/channels/") + "/"]) {
       const response = await worker.fetch(new Request(`https://equip.jesusonline.com${path}?campaign=one%20two`), {
@@ -78,7 +84,7 @@ test("Worker HTTP301: all 65, slash/query, and old /channels converge in one hop
   }
 });
 
-test("raw dev request redirect preserves query parameters for all 65 paths", () => {
+test("raw dev request redirect preserves query parameters for all 95 paths", () => {
   for (const [from, to] of approved) {
     for (const path of [from, from + "/", from.replace("/categories/", "/channels/") + "/"]) {
       assert.equal(articleRedirectLocation(path + "?audit=1&encoded=one%20two"), to + "?audit=1&encoded=one%20two");
@@ -172,7 +178,9 @@ test("production build: all survivors/topics exist, retired pages/links/sitemap/
     for (const path of [from, to]) {
       const topic = resolve(dist, "." + path.slice(0, path.lastIndexOf("/")), "index.html");
       assert.ok(existsSync(topic));
-      assert.ok(readFileSync(topic, "utf8").includes(`href="${to}"`), `topic card must point directly to ${to}`);
+      const expected = path.startsWith("/categories/growth/discover-jesus-gospels/")
+        ? "/categories/growth/encounters-with-jesus" : to;
+      assert.ok(readFileSync(topic, "utf8").includes(`href="${expected}"`), `topic card must point directly to ${expected}`);
     }
   }
   for (const { local, generated } of authoritativeArticles) {

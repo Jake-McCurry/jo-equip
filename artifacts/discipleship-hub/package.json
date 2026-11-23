@@ -12,6 +12,7 @@
     "validate:books": "node --test scripts/book-library.test.mjs",
     "validate:worker": "node --test scripts/worker-subscribe.test.mjs",
     "test:consolidation": "node --test scripts/article-consolidation.test.mjs",
+    "test:discover-jesus": "node --test scripts/discover-jesus.test.mjs",
     "verify:consolidation": "node scripts/verify-article-consolidation-build.mjs",
     "test:nofollow": "node --test scripts/external-link-policy.test.mjs",
     "test:web-books": "node --test scripts/web-books.test.mjs",

@@ -325,7 +325,7 @@ const heroTitle = splitTitle(article.title);
           case "p":
             return <p set:html={withBaseLinks(b.html)} />;
           case "ul":
-            return <ul>{b.items.map(i => <li set:html={withBaseLinks(i)} />)}</ul>;
+            return <ul class:list={{ "recap-questions": bsm?.id === "bible-recap" }}>{b.items.map(i => <li set:html={withBaseLinks(i)} />)}</ul>;
           case "resourceList":
             /* Resource list with Read / Video / PDF chips — orange + linked
                when the URL is known, gray when not (matches topic pages).
@@ -465,6 +465,13 @@ const heroTitle = splitTitle(article.title);
 )}
 
 <style>
+  .bcg-prose ul.recap-questions { list-style: none; padding-left: 0; }
+  .recap-questions > li { padding: 1rem 1.25rem; margin-block: 1rem; border-radius: .375rem; color: #172b36; }
+  .recap-questions > li:nth-child(1) { background: #ffc247; }
+  .recap-questions > li:nth-child(2) { background: #8cdef2; }
+  .recap-questions > li:nth-child(3) { background: #ff8981; }
+  .recap-questions > li:nth-child(4) { background: #7cdb9b; }
+  .recap-questions > li:nth-child(5) { background: #c5a2e7; }
   .article-video {
     position: relative;
     width: 100%;

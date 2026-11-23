@@ -30,44 +30,49 @@ export interface BibleStudyMethodArticle {
 export const bibleStudyMethods: BibleStudyMethodArticle[] = [
   {
     id: "inductive-bible-study",
-    title: "Inductive Bible Study (OIA)",
+    title: "Inductive Bible Study",
     description:
       "The Inductive (OIA) method — Observation, Interpretation, Application — is a simple, powerful way to let Scripture speak for itself and lead you to Jesus.",
     blocks: [
-      { type: "p", html: "The Inductive Bible Study method (often called <strong>OIA</strong>) is a simple, powerful, and widely used way to dig into Scripture on your own. It helps you discover what the Bible actually says, what it means in its original context, and how it applies to your life today — without starting with someone else's opinions or preconceived ideas. The goal is to let the text speak for itself, leading you closer to Jesus and real transformation." },
-      { type: "p", html: "It boils down to three straightforward steps." },
+      { type: "p", html: "The Inductive Bible Study method, often called <strong>OIA—Observation, Interpretation, Application</strong>—is a simple, powerful, and widely used way to dig into Scripture on your own. It helps you discover what the Bible actually says, what it means in its original context, and how it applies to your life today. You start with the text of the Bible rather than with someone else’s opinions, commentaries, or preconceived ideas. The goal is to let the text speak for itself, leading you closer to Jesus and real transformation." },
 
       { type: "h2", text: "1. Observation — \u201CWhat does the passage say?\u201D" },
-      { type: "p", html: "Read the text carefully (multiple times if possible) like a detective. Jot down facts without jumping to meaning yet — this builds a solid foundation." },
+      { type: "p", html: "The first step is to read the text carefully and multiple times, if possible, like a detective. Pay attention to what is actually there. Notice the people, setting, repeated words, commands, promises, reasons, contrasts, connections between ideas, and other details. Jot down facts without jumping to meaning yet. Learn to see what the passage says. This is harder than you think. This builds a solid foundation for the next step." },
       { type: "ul", items: [
         "Who is speaking or writing? Who is the audience? Who are the main people involved?",
-        "What is happening? What keywords, ideas, or commands repeat?",
+        "What is happening? What are the circumstances?",
+        "What keywords, ideas, or commands repeat?",
         "When and where does this take place?",
         "Why is it said or done, and how is it expressed (commands, promises, contrasts like \u201Cbut\u201D or \u201Ctherefore\u201D)?",
       ] },
-      { type: "p", html: "Notice structure, repeated phrases, lists, questions, or connections between ideas." },
+      { type: "p", html: "The passages may not give you all the answers all the time. If you have time, read the surrounding passages, the entire chapter, or the entire book to find the answers." },
 
       { type: "h2", text: "2. Interpretation — \u201CWhat does the passage mean?\u201D" },
-      { type: "p", html: "Now figure out the author's intended message to the original readers. Use your observations to answer:" },
+      { type: "p", html: "The next step is to figure out the author’s intended message to the original readers in their particular situation. Use your observations to answer:" },
       { type: "ul", items: [
         "What was the main point or big idea?",
         "How does the context — surrounding verses, the book, or the whole Bible — shape it?",
         "What does this reveal about God, people, sin, salvation, or life with Christ?",
       ] },
-      { type: "p", html: "Let Scripture interpret Scripture by comparing related verses. Avoid forcing modern ideas onto the text — aim for the timeless truth the Holy Spirit inspired." },
+      { type: "p", html: "Let Scripture interpret Scripture by comparing related verses." },
+      { type: "p", html: "Since most of us do not know much about the world of the Bible, we naturally read Scripture through the lens of our own time, culture, and experience. That is not necessarily wrong, but it affects how we interpret what we read." },
+      { type: "p", html: "We cannot always know everything about the original situation when we first read a passage. We begin with what the text tells us and some of the discoveries we have made in observation, then use the Bible itself and reliable outside resources (commentaries, for example) to fill in what we do not yet know." },
+      { type: "p", html: "Your first interpretation may not be complete, and that is okay. As you learn more about the historical, cultural, and literary background of the Bible, your understanding will become more accurate and refined." },
+      { type: "p", html: "The amazing truth is that God works incarnationally. He is with us and deeply and intimately involved in our everyday life. That is why interpretation in this method is interested in discovering the original setting. God was there in the midst of real people in real history, dealing with real life." },
+      { type: "p", html: "The more we know about how God was with them, the more significant the next step becomes." },
 
       { type: "h2", text: "3. Application — \u201CHow does this change me?\u201D" },
-      { type: "p", html: "Bring it home personally. Ask, \u201CSo what?\u201D" },
+      { type: "p", html: "The last step is to bring it home personally. The question to answer is: “So what?”" },
       { type: "ul", items: [
         "What truth should I believe more deeply?",
         "What sin or attitude do I need to repent of?",
         "What action, prayer, or habit should I adopt?",
         "How can this help me love God and others better?",
       ] },
-      { type: "p", html: "Make it specific and actionable (for example, \u201CThis week I'll pray daily for patience in my relationships because\u2026\u201D). Then pray for God's help to live it out." },
+      { type: "p", html: "Application may mean changing your thinking, correcting an attitude, trusting a promise, confessing sin, making a decision, or obeying a command. This step turns biblical understanding into a response of faith and obedience. God who was with His people in the past is the same God “who works in you, both to will and to work for his good pleasure” (Philippians 2:13, ESV)." },
 
       { type: "h2", text: "Getting Started" },
-      { type: "p", html: "This method keeps things simple yet deep — perfect for daily quiet times, journaling, or group studies. Start with a short passage (a Psalm, a chapter in Philippians, or James 1), pray for the Holy Spirit's guidance, and watch how God's Word comes alive. It's not about being perfect at it right away — it's about consistently meeting Jesus in Scripture and growing in maturity." },
+      { type: "p", html: "This method keeps things simple yet deep. It’s perfect for daily quiet times, journaling, or group studies. Start with a short passage (a Psalm, a chapter in Philippians, or James 1), pray for the Holy Spirit’s guidance, and watch how God’s Word comes alive." },
     ],
   },
   {
@@ -107,43 +112,60 @@ export const bibleStudyMethods: BibleStudyMethodArticle[] = [
   },
   {
     id: "topical-bible-study",
-    title: "Topical & Thematic Bible Study",
+    title: "Topical Bible Study",
     description:
-      "Topical study gathers everything Scripture teaches on one subject — prayer, forgiveness, fear, God's love — so you see the whole biblical picture and apply it.",
+      "Learn to study a Bible topic in context: gather related passages, observe, interpret, summarize, and apply Scripture faithfully to your life.",
     blocks: [
-      { type: "p", html: "The <strong>Topical / Thematic</strong> Bible Study method (often just called topical study) is a straightforward way to explore what the whole Bible teaches about a specific subject or theme. Instead of studying one book, chapter, or verse at a time, you search across Scripture to gather all the relevant passages on a topic — like prayer, forgiveness, fear, marriage, God's love, attitude, or godly relationships — and see the big picture God gives." },
-      { type: "p", html: "It's especially helpful for answering real-life questions, building doctrine, or growing in areas like maturity and behavior, because it shows how Scripture consistently addresses an issue from Old Testament to New. Here's a simple breakdown of how it works." },
+      { type: "p", html: "A topical study asks what the whole Bible teaches about one subject. Instead of staying in one chapter, you gather the passages that speak to one topic — prayer, forgiveness, fear, generosity, marriage, the love of God. By gathering and examining passages that address the same subject, you can begin to recognize recurring themes, biblical principles, and patterns in how God instructs His people. A topical Bible study is especially useful when you have a real-life question, are facing a particular situation, or want to grow in a specific area of your Christian life." },
+      { type: "p", html: "However, a topical list of verses is the starting point for understanding and not the final authority for establishing doctrine. Individual verses can be misunderstood when separated from their literary, historical, and theological contexts. Some passages may address different circumstances or emphasize different aspects of a subject. Simply collecting verses that appear to support a particular conclusion can lead to a distorted understanding of what God actually says about the topic." },
+      { type: "p", html: "Sound biblical understanding requires more than gathering verses on a topic and piecing them together. It involves examining each passage in its original context, considering how it relates to the rest of Scripture, and paying attention to the overall message of the Bible. A topical study helps you discover what Bible verses say about a particular subject, while careful interpretation helps you understand what those passages actually mean." },
+      { type: "p", html: "The goal is not merely to find verses that answer the questions you have on a topic, but to allow the whole counsel of God’s Word to shape our thinking, correct our assumptions, and guide our lives." },
 
       { type: "h2", text: "1. Choose your topic" },
-      { type: "p", html: "Pick something you're curious about, struggling with, or want to understand better (for example, \u201Cpatience,\u201D \u201Cworry,\u201D or \u201Cfriendship\u201D). Start narrow if you're new — broad topics like \u201Clove\u201D can get overwhelming." },
+      { type: "p", html: "Pick something you are curious about, struggling with, or want to understand better (for example, “patience,” “worry,” or “friendship”). Start narrow. A broad topic like “love” will overwhelm a first study." },
 
       { type: "h2", text: "2. Gather related verses" },
-      { type: "p", html: "Use free tools to find passages, then collect a list (aim to be thorough, but start with 10\u201320 key verses if it's your first time)." },
+      { type: "p", html: "Start by searching for your topic or keyword in the Bible. Then look for related words and phrases that may express the same idea. Before adding a verse to your list, read the surrounding paragraph to understand its context. Do not use a verse to support a point until you understand what it means in its original setting. Gather 10–20 relevant verses for your initial study. Once you have examined them and identified the main themes and patterns, expand your search if needed." },
       { type: "ul", items: [
         "Search keywords in apps and sites like Bible Gateway, Blue Letter Bible, YouVersion, or OpenBible.info/topics.",
-        "Look up synonyms or related words (for \u201Cforgiveness,\u201D search \u201Cforgive,\u201D \u201Cpardon,\u201D \u201Cmercy\u201D).",
+        "Look up synonyms or related words (for example, to search related words for “forgiveness,” try “forgive,” “pardon,” “mercy”).",
         "Check topical resources like Nave's Topical Bible or Torrey's Topical Textbook (free on Bible Hub or StudyLight.org).",
       ] },
 
       { type: "h2", text: "3. Read and observe each passage" },
-      { type: "p", html: "Read them in context — don't just grab a verse, look at the surrounding verses. Note:" },
+      { type: "p", html: "Observation asks: “What does the passage actually say?” Don’t explain it yet or decide what you think it means. First, pay close attention to the words and ideas in the passage. Often, observation means simply repeating or restating what the passage says in your own words." },
       { type: "ul", items: [
-        "What does it actually say about the topic?",
+        "What does the passage actually say about the topic?",
         "Who is speaking, to whom, and in what situation?",
-        "Any commands, promises, examples, or warnings?",
+        "What is happening in the passage?",
+        "Are there any commands, promises, examples, warnings, or reasons given?",
+        "Are there words or ideas that are repeated or emphasized?",
       ] },
+      { type: "p", html: "Read the passage in its paragraph or surrounding context, not as an isolated verse. Your goal at this stage is to see what is there before deciding what it means." },
 
       { type: "h2", text: "4. Interpret and organize" },
-      { type: "p", html: "Ask: what is the main teaching or principle here? Group similar ideas together (for example, God's forgiveness of us versus our forgiving others). Look for patterns — what does the Bible emphasize most? Let Scripture interpret itself by comparing verses." },
+      { type: "p", html: "Interpretation asks, “What does this passage mean in its context?” Compare passages and note how they agree. Group similar ideas together (for example, God’s forgiveness of us versus our forgiving others). Look for what they emphasize most. Notice where passages complement one another." },
+      { type: "p", html: "Let clearer passages interpret less-clear ones. If two passages seem to disagree, leave them in tension for now. The goal is not to make every verse say the same thing, but to understand each passage accurately and see how the passages fit together. When they don’t all agree, God has reasons." },
 
       { type: "h2", text: "5. Summarize the big idea" },
-      { type: "p", html: "Write a clear summary: \u201CWhat does the Bible as a whole teach about this topic?\u201D Include key truths, balanced views (for example, grace and responsibility), and how it points to Jesus." },
+      { type: "p", html: "Now, step back and ask: “What does the Bible, taken together, teach about this topic?”" },
+      { type: "p", html: "Write your answer in one clear sentence or a few short sentences if necessary. Include the key truths and maintain the balance Scripture actually gives. Does this point us to God’s character, His work, or to Jesus? Keep in mind, however, that not every passage or topic points to the Lord in a direct or immediate way. Scripture also teaches us about human nature, history, evil, suffering, relationships, and spiritual realities. Do not force a reference to God or Jesus into every study simply to make it seem more spiritual. Faithful Bible study is drawing the truth out of Scripture and not reading our ideas into it." },
 
       { type: "h2", text: "6. Apply it personally" },
-      { type: "p", html: "Pray and ask: how should this change my thinking, attitudes, or actions? Make it practical (for example, \u201CBecause God commands forgiveness, I'll choose to release resentment toward\u2026\u201D)." },
+      { type: "p", html: "Finally and most importantly ask, “Because this is true, what should change in me?”" },
+      { type: "p", html: "Pray and ask God to show you how this truth should affect your thinking, attitudes, choices, relationships, and actions. Move from a general truth to a specific response. For example: “Because God commands me to forgive, I will choose to release my resentment toward ______ and pray for that person.”" },
+      { type: "ul", items: [
+        "What should I believe?",
+        "What attitude should I change?",
+        "What should I start or stop doing?",
+        "Is there a command I need to obey?",
+        "Is there a promise I need to trust?",
+        "Is there something I need to confess or make right?",
+      ] },
+      { type: "p", html: "Where Scripture commands, obey. Where it promises, trust. Where it warns, do not ignore it." },
 
       { type: "h2", text: "A Flexible, Powerful Tool" },
-      { type: "p", html: "This method is flexible — quick for a short devotional or deep for weeks of study. It's powerful for personal growth because it lets God's Word shape your views directly." },
+      { type: "p", html: "The goal is not simply to know more about what the Bible says about the topics of your interest, but to let God’s Word give you His perspective on them and let it shape the way you live." },
     ],
   },
   {
@@ -152,27 +174,26 @@ export const bibleStudyMethods: BibleStudyMethodArticle[] = [
     description:
       "R.E.C.A.P. — Revelation, Example, Command, Application, Promise — five questions that help you hear the Holy Spirit and obey God's Word every time you read.",
     blocks: [
+      { type: "p", html: '<a href="https://follow.jesusonline.com/bible/John/1" target="_blank" rel="noopener noreferrer">Read the NET Bible on JO Follow</a> and use the R.E.C.A.P. questions as you study.' },
       { type: "quote", html: "All Scripture is inspired by God and is useful to teach us what is true and to make us realize what is wrong in our lives. It corrects us when we are wrong and teaches us to do what is right. God uses it to prepare and equip his people to do every good work.", cite: "2 Timothy 3:16\u201317 (NLT)" },
-      { type: "p", html: "When we habitually renew our minds with the truth of God's Word and faithfully follow His directions and instructions, we become more Christ-like." },
-      { type: "p", html: "The Word of God is the language of the Holy Spirit. The Holy Spirit will open our minds to understand the Word and empower us to obey and live out its truth. Within its pages, He reveals what is true and exposes what is not." },
-      { type: "p", html: "Whenever you read the Bible, be prayerful, asking the Holy Spirit to guide you into all truth (John 16:13). Then trust His guidance and ask yourself questions: What does this mean? How does this apply to my life? The following method will help you ask key questions." },
+      { type: "p", html: "When you renew your mind with the truth of God’s Word and follow what it says, you become more like Christ. The Word of God is the language of the Holy Spirit. He will open your mind to understand it and give you power to obey it. Whenever you read, ask the Holy Spirit to guide you into all truth (John 16:13). Then trust His guidance and ask one or more of these five questions." },
 
       { type: "h2", text: "Five Questions to Ask" },
-      { type: "p", html: "When you read the Bible, you can ask one or more of the following five questions." },
       { type: "ul", items: [
-        "<strong>R</strong> — Is there a <strong>revelation</strong> about God that I should embrace?",
-        "<strong>E</strong> — Is there an <strong>example</strong> I should follow or avoid?",
-        "<strong>C</strong> — Is there a <strong>command</strong> I should obey?",
-        "<strong>A</strong> — Is there something I need to <strong>apply</strong> to my life?",
-        "<strong>P</strong> — Is there a <strong>promise</strong> I should claim?",
+        "<strong>R</strong> — Is there a <strong>REVELATION</strong> about God that I should embrace?<br /><em>Revelation is who God is. Highlight: orange.</em>",
+        "<strong>E</strong> — Is there an <strong>EXAMPLE</strong> I should follow or avoid?<br /><em>Highlight: light blue.</em>",
+        "<strong>C</strong> — Is there a <strong>COMMAND</strong> I should obey?<br /><em>Highlight: red.</em>",
+        "<strong>A</strong> — Is there something I need to <strong>APPLY</strong> to my life?<br /><em>Application is what this passage asks of you that is not already a command, an example, or a promise. Highlight: green.</em>",
+        "<strong>P</strong> — Is there a <strong>PROMISE</strong> I should claim?<br /><em>Highlight: purple.</em>",
       ] },
+      { type: "p", html: "You do not have to force all five. One clear answer is enough. Some verses do not fit any of them." },
 
       { type: "h2", text: "An Example" },
-      { type: "p", html: "John 3:16 is a revelation of God's unconditional love in His Son, so you can highlight the verse with orange (Revelation). John 13:34 is a command to love one another, so you can highlight the verse with red (Command). John 14:21 is a promise that Jesus will manifest Himself to us if we love and obey Him, so you can highlight the verse with purple (Promise)." },
-      { type: "p", html: "Highlight Bible passages and code them with a R.E.C.A.P. letter for future review in your Bible notes." },
+      { type: "p", html: "John 3:16 reveals God’s love in giving His Son, so you can highlight the verse with orange (Revelation). John 13:15 is an example to follow; Judas in the same chapter is an example to avoid, so you can highlight those verses with light blue (Example). John 13:34 is a command to love one another, so you can highlight the verse with red (Command). John 15:5 asks you to abide, because apart from Him you can do nothing, so you can highlight the verse with green (Application). John 14:21 is a promise that Jesus will manifest Himself to those who love and obey Him, so you can highlight the verse with purple (Promise)." },
+      { type: "p", html: "Identifying by the letter is what matters. Using color is optional. Mark the passage with a letter—R, E, C, A, or P— so you can find it again in your notes." },
 
-      { type: "h2", text: "Read Prayerfully" },
-      { type: "p", html: "As you read, talk to God about everything you are thinking. It may be helpful to write down what you have discovered from the reading and your reflection. Be mindful of His presence and His love. Thank Him for what you are reading, learning, and thinking. Give Him your focused attention and concentration." },
+      { type: "h2", text: "Treasure Them in Your Heart" },
+      { type: "p", html: "Write down what you have discovered from the reading and your reflection. Thank Him for His revelations, examples, commands, applications, and promises that are to mature your new identity in Christ and make you fruitful in the good works He prepared for you. Treasure them in your heart and put them into practice." },
     ],
   },
 

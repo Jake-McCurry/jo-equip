@@ -388,10 +388,10 @@ export const subTopics: SubTopic[] = [
     hideNumbers: true,
     /* Titles follow the Church sheet v.062526. */
     items: [
-      { number: 1, title: 'Inductive Bible Study Method', articleId: 'inductive-bible-study' },
+      { number: 1, title: 'Inductive Bible Study', articleId: 'inductive-bible-study' },
       { number: 2, title: 'S.O.A.P. Method', articleId: 'soap-method' },
-      { number: 3, title: 'Topical/Thematic Bible Study Method', articleId: 'topical-bible-study' },
-      { number: 4, title: 'R.E.C.A.P. Method', articleId: 'bible-recap' },
+      { number: 3, title: 'Topical Bible Study', articleId: 'topical-bible-study' },
+      { number: 4, title: 'Bible R.E.C.A.P.', articleId: 'bible-recap' },
     ],
   },
   {

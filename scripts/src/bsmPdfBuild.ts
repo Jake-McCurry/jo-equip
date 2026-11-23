@@ -225,6 +225,13 @@ function renderTemplate({ title, bodyHtml, sourceUrl }: { title: string; bodyHtm
   .article strong { color: #0b3c5d; }
   .article ul, .article ol { margin: 0.5em 0 1em 1.4em; padding: 0; }
   .article li { margin: 0.25em 0; }
+  .recap-article ul { list-style: none; margin-left: 0; }
+  .recap-article li { padding: 0.65em 1em; margin: 0.65em 0; break-inside: avoid; color: #172b36; }
+  .recap-article li:nth-child(1) { background: #ffc247; }
+  .recap-article li:nth-child(2) { background: #8cdef2; }
+  .recap-article li:nth-child(3) { background: #ff8981; }
+  .recap-article li:nth-child(4) { background: #7cdb9b; }
+  .recap-article li:nth-child(5) { background: #c5a2e7; }
   .article blockquote {
     margin: 1em 0; padding: 0.5em 1em;
     border-left: 3px solid #0083de; background: #e6f2fa;
@@ -278,7 +285,10 @@ async function buildOne(
   article: BsmArticle,
 ): Promise<{ ok: boolean; bytes?: number; error?: string }> {
   try {
-    const bodyHtml = article.blocks.map(blockToHtml).join("\n");
+    const blocksHtml = article.blocks.map(blockToHtml).join("\n");
+    const bodyHtml = article.id === "bible-recap"
+      ? `<div class="recap-article">${blocksHtml}</div>`
+      : blocksHtml;
     const html = renderTemplate({
       title: article.title,
       bodyHtml,

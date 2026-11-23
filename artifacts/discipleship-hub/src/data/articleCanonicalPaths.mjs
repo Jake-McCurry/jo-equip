@@ -6,6 +6,17 @@
  * media and PDFs stay intact.
  */
 const pairs = [
+  ["growth/discover-jesus-gospels", "growth/encounters-with-jesus", [
+    "the-humility-of-jesus", "finding-security-and-comfort", "jesus-is-calling-you",
+    "just-one-touch", "no-obstacles", "desperate", "jesus-has-the-power",
+    "let-others-know", "in-the-right-place-at-the-right-time", "living-water",
+    "are-you-thirsty", "making-things-right", "set-free", "you-matter-to-jesus",
+    "good-news", "lord-help-me", "in-the-presence-of-jesus", "priorities",
+    "the-holiness-of-god", "thank-you-jesus", "jesus-have-mercy-on-me",
+    "what-do-you-need-from-jesus", "praise-to-god", "we-have-hope-when-we-have-jesus",
+    "gods-faithfulness", "jesus-knows-our-every-need", "jesus-is-king",
+    "trusting-jesus", "follow-jesus", "beyond-our-imagination",
+  ]],
   ["church/struggle-inner-peace", "growth/inner-peace", [
     "after-discoverywhat", "behaviors-that-stand-in-the-way-of-your-peace",
     "embracing-the-truth", "help-for-a-hard-journey", "lifes-many-stresses",

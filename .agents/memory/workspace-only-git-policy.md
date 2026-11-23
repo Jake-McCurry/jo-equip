@@ -9,6 +9,14 @@ By default, make changes only in the Replit workspace. Do not commit, push, crea
 
 **How to apply:** Without current authorization, use read-only Git inspection only. With authorization, verify each destination branch's exact file diff and exclude unrelated workspace changes. Do not assume a workspace checkpoint is a feature-scoped commit.
 
+“Go now” means execute the requested task in the workspace only. It never
+authorizes publishing, pushing to Git, or other release operations.
+
+**Why:** The user explicitly clarified this wording and will handle the push.
+
+**How to apply:** Proceed with the task without asking whether “go now” means
+merge or publish. Keep any release authorization separate and explicit.
+
 ## Pending merges across chat turns
 
 Recheck the live merge state before acting on a Git-panel screenshot. When explicitly authorized to finish a local merge, resolve, stage, and commit in the same turn.

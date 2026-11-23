@@ -12,6 +12,7 @@
     "bsm:pdf": "tsx ./src/bsmPdfBuild.ts",
     "evidence:build": "tsx ./src/evidenceArticlesBuild.ts",
     "site-articles:build": "tsx ./src/siteArticlesBuild.ts",
+    "discover-jesus:prepare": "tsx ./src/discoverJesusImport.ts",
     "bible-pages:check": "tsx ./src/biblePagesCheck.ts",
     "book:new-identity": "tsx ./src/ebookDocxBuild.ts --book=identity",
     "book:walking-spirit": "tsx ./src/ebookDocxBuild.ts --book=walking",

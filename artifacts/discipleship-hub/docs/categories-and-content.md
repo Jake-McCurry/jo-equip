@@ -1,3 +1,28 @@
+# Discover Jesus in the Gospels
+
+The existing `/categories/growth/discover-jesus-gospels` collection contains
+two child topics: **Encounters with Jesus** (the original 30 articles, in their
+original order) and **The Birth of Jesus** (12 articles, ordered by JO App series 35).
+The parent has no direct article list. Existing Bible Resources and Discipleship
+links intentionally continue to point to this collection.
+
+The Birth source snapshot is `scripts/data/birth-of-jesus/catalog.json`, from
+`https://app.jesusonline.com/assets/data/posts.json`. It preserves exact source
+slugs, titles, HTML, series order and catalog timestamp. None of these 12 bodies
+contains images. The similarly named `22010-128-birth-of-jesus` is unrelated.
+
+To reproduce the import offline:
+
+```sh
+pnpm --filter @workspace/scripts run discover-jesus:prepare
+pnpm --filter @workspace/scripts run site-articles:build -- --sub=the-birth-of-jesus --force
+```
+
+The HTML inputs take precedence over WordPress refetches via `localHtml` mappings.
+No PDF generation is involved. Existing Encounter PDFs remain keyed by unchanged
+app slugs. Exact old article paths redirect through `articleCanonicalPaths.mjs`,
+shared by the dev server, Worker, internal link normalization and build checks.
+
 # Channels System & Content Pipelines
 
 ## Channels system

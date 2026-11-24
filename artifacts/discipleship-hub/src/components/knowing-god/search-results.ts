@@ -1,3 +1,20 @@
+import { BOOKS } from "../../../worker/bible-catalog.js";
+import { scriptureReaderPath } from "./scripture-link.ts";
+
+const bookOrder = new Map(BOOKS.map((book, index) => [book.name, index]));
+
+function scriptureOrder(reference: string): number[] {
+  try {
+    // Share alias and single-chapter interpretation with the destination link.
+    const query = new URLSearchParams(scriptureReaderPath(reference, "KJV").split("?")[1]);
+    return [bookOrder.get(query.get("book")!) ?? BOOKS.length,
+      Number(query.get("chapter")), Number(query.get("verse") || 1)];
+  } catch {
+    // Keep an unexpected source reference visible, after recognized references.
+    return [BOOKS.length, 0, 0];
+  }
+}
+
 export type SearchTopic = {
   id: string;
   title: string;
@@ -30,5 +47,10 @@ export function findScriptureResults(topics: LoadedTopic[], query: string) {
       if (!unique.has(key)) unique.set(key, { ...passage, topic });
     }
   }
-  return [...unique.values()];
+  return [...unique.values()]
+    .map(passage => ({ passage, order: scriptureOrder(passage.reference) }))
+    .sort((a, b) => a.order[0] - b.order[0] || a.order[1] - b.order[1] ||
+      a.order[2] - b.order[2] || a.passage.reference.localeCompare(b.passage.reference) ||
+      a.passage.text.localeCompare(b.passage.text))
+    .map(({ passage }) => passage);
 }

@@ -17,6 +17,7 @@ export default function BibleReader({ baseUrl }: { baseUrl: string }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [retry, setRetry] = useState(0);
+  const [navigationId, setNavigationId] = useState(0);
   const [verseNotice, setVerseNotice] = useState("");
   const [selected, setSelected] = useState<number | undefined>();
   const [study, setStudy] = useState<StudyData>(EMPTY_STUDY);
@@ -36,9 +37,11 @@ export default function BibleReader({ baseUrl }: { baseUrl: string }) {
       setLocked(true);
       setStorageError(`Your saved study in this browser could not be read (${errMsg(e, "unknown error")}). It has been left untouched. Importing a JSON backup will replace it.`);
     }
-    const onPop = () => { const n = readLocation(); setLoc(n); setSelected(n.verse); };
+    const restoration = window.history.scrollRestoration;
+    window.history.scrollRestoration = "manual";
+    const onPop = () => { const n = readLocation(); setLoc(n); setSelected(n.verse); setNavigationId(id => id + 1); };
     window.addEventListener("popstate", onPop);
-    return () => window.removeEventListener("popstate", onPop);
+    return () => { window.removeEventListener("popstate", onPop); window.history.scrollRestoration = restoration; };
   }, []);
 
   const commit = useCallback((next: StudyData, explicit = false): boolean => {
@@ -89,8 +92,8 @@ export default function BibleReader({ baseUrl }: { baseUrl: string }) {
   const go = (next: Location) => {
     setInitialLastRead(undefined);
     setLoc(next); setSelected(next.verse);
+    setNavigationId(id => id + 1);
     window.history.pushState(null, "", window.location.pathname + locationSearch(next));
-    if (!next.verse) document.getElementById("br-top")?.scrollIntoView({ block: "start" });
   };
 
   const selectVerse = (v: number) => {
@@ -141,7 +144,7 @@ export default function BibleReader({ baseUrl }: { baseUrl: string }) {
           </a>
           <ReaderNav loc={loc} onGo={go} />
           {verseNotice && <p role="status" className="rounded border border-[var(--color-border-control)] bg-[var(--color-surface-soft)] p-3 text-sm font-semibold">{verseNotice}</p>}
-          <PassageView loc={loc} passage={current} loading={loading || (!current && !error)} error={error} onRetry={() => setRetry(r => r + 1)}
+          <PassageView loc={loc} navigationId={navigationId} passage={current} loading={loading || (!current && !error)} error={error} onRetry={() => setRetry(r => r + 1)}
             records={chapterRecords} selected={selected} onSelect={selectVerse} chapterSaved={chapterSaved} onToggleChapter={toggleChapter} onGo={go} />
           <RecapPanel />
           <Attribution translation={loc.translation} apiText={current?.attribution} />

@@ -9,6 +9,7 @@
     "serve": "astro preview --host 0.0.0.0",
     "typecheck": "astro check",
     "test:resource-landing": "node --test scripts/resource-landing.test.mjs",
+    "test:bible-links": "node --experimental-strip-types --test scripts/bible-reference-scroll.test.mjs scripts/knowing-god-scripture-links.test.mjs",
     "test:dependency-security": "node --test scripts/dependency-security.test.mjs",
     "validate:books": "node --test scripts/book-library.test.mjs",
     "validate:worker": "node --test scripts/worker-subscribe.test.mjs",

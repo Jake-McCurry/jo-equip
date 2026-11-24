@@ -73,7 +73,7 @@ export function TopicSearchResults<T extends SearchTopic>({ topics, query, testa
         )) : <p className="py-2 text-sm text-[var(--color-text-muted,#2E5A7A)]">No topic titles match.</p>}
       </section>
       <section aria-labelledby="scripture-results-heading" className="border-t border-[var(--color-border-soft,#CCEBFF)] pt-4">
-        <h3 id="scripture-results-heading" className="text-base font-bold">Scripture results <span className="text-xs font-normal text-[var(--color-text-muted,#2E5A7A)]">({verseMatches.length}{pending || error ? "+" : ""})</span></h3>
+        <h3 id="scripture-results-heading" className="text-base font-bold">Curated Knowing God passage matches <span className="text-xs font-normal text-[var(--color-text-muted,#2E5A7A)]">({verseMatches.length}{pending || error ? "+" : ""})</span></h3>
         <p className="mt-1 text-xs text-[var(--color-text-muted,#2E5A7A)]">Matching words in the {translation} Scripture text.</p>
         {(testament !== "All Testaments" || book !== "All books") && <p className="mt-1 text-sm">Passage filters: {[testament, book].filter(value => value !== "All Testaments" && value !== "All books").join(" · ")}</p>}
         {pending && <p role="status" className="py-2 text-sm">Loading and searching {translation} Scripture across topics…</p>}

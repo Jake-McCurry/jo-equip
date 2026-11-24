@@ -23,6 +23,14 @@ NET omissions and verse-numbering differences must be distinguished from incompl
 
 **How to apply:** Allow only individually reviewed missing coordinates, reject extra discrepancies, and show concise editorial notes separately from Scripture. Preserve original source references unless a separate editorial correction is authorized. Compare every generated passage against the official source during build validation.
 
+## Curated versus complete-Bible search
+
+Complete-Bible search extends, rather than replaces, Knowing God's original curated collection. Keep topic-title matches, curated passage matches, and complete-Bible matches separate and in that order.
+
+**Why:** The user explicitly required preserving the original editorial collection while adding discovery of verses outside it.
+
+**How to apply:** Search only the selected translation in both Scripture sections. Never fill unavailable NET search text with KJV. Keep source omissions and numbering differences explicit, and keep publisher attribution links separate from internal Scripture-reader links.
+
 ## Disjoint verse ranges
 
 Do not send abbreviated comma-separated verse ranges directly to the NET service. Repeat the book and chapter for each segment, separated by semicolons, and validate returned book/chapter/verse identities.

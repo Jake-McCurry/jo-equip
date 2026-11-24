@@ -131,3 +131,20 @@ test("translation toggle updates the search translation and Bible link without c
     assert.equal(url.searchParams.get("verse"), "16");
   }
 });
+
+test("incompatible books reset with Testament and filters can be cleared", () => {
+  const h = harness();
+  h.state[9] = true;
+  let all = nodes(h.render());
+  all.find(n => n.type === "select" && n.props.value === "All books").props.onChange({ target: { value: "John" } });
+  all = nodes(h.render());
+  all.find(n => n.type === "select" && n.props.value === "All Testaments").props.onChange({ target: { value: "Old Testament" } });
+  all = nodes(h.render());
+  for (const name of ["TopicSearchResults", "FullBibleResults"]) {
+    const results = all.find(n => n.type === name);
+    assert.equal(results.props.testament, "Old Testament");
+    assert.equal(results.props.book, "All books");
+  }
+  all.find(n => n.type === "button" && n.props.children === "Clear passage filters").props.onClick();
+  assert.equal(nodes(h.render()).find(n => n.type === "FullBibleResults").props.testament, "All Testaments");
+});

@@ -1,11 +1,43 @@
+import { BOOKS } from "../../../worker/bible-catalog.js";
+import { scriptureReaderPath } from "./scripture-link.ts";
+
+const bookOrder = new Map(BOOKS.map((book, index) => [book.name, index]));
+
+function scriptureOrder(reference: string): number[] {
+  try {
+    // Share alias and single-chapter interpretation with the destination link.
+    const query = new URLSearchParams(scriptureReaderPath(reference, "KJV").split("?")[1]);
+    return [bookOrder.get(query.get("book")!) ?? BOOKS.length,
+      Number(query.get("chapter")), Number(query.get("verse") || 1)];
+  } catch {
+    // Keep an unexpected source reference visible, after recognized references.
+    return [BOOKS.length, 0, 0];
+  }
+}
+
 export type SearchTopic = {
   id: string;
   title: string;
   letter: string;
   passageCount: number;
 };
-type SearchPassage = { reference: string; text: string };
+type SearchPassage = { reference: string; text: string; note?: string };
 type LoadedTopic = SearchTopic & { passages: SearchPassage[] };
+
+/** Missing NET text is omitted, never replaced by KJV under a NET label. */
+export function translatedSearchTopics(
+  topics: LoadedTopic[], translation: "NET" | "KJV",
+  cache: ReadonlyMap<string, string>, notes: ReadonlyMap<string, string>,
+): LoadedTopic[] {
+  if (translation === "KJV") return topics;
+  return topics.map(topic => ({
+    ...topic,
+    passages: topic.passages.flatMap(passage => {
+      const text = cache.get(passage.reference);
+      return text === undefined ? [] : [{ reference: passage.reference, text, note: notes.get(passage.reference) }];
+    }),
+  }));
+}
 
 export function findTopicResults<T extends SearchTopic>(topics: T[], query: string): T[] {
   const q = query.trim().toLocaleLowerCase();
@@ -19,7 +51,10 @@ export function scriptureMatcher(query: string) {
   return new RegExp(`(?<![\\p{L}\\p{N}])${escaped}(?![\\p{L}\\p{N}])`, "iu");
 }
 
-export function findScriptureResults(topics: LoadedTopic[], query: string) {
+export function findScriptureResults(
+  topics: LoadedTopic[], query: string,
+  filters: { testament?: string; book?: string } = {},
+) {
   if (!query.trim()) return [];
   const matcher = scriptureMatcher(query);
   const unique = new Map<string, SearchPassage & { topic: SearchTopic }>();
@@ -30,5 +65,20 @@ export function findScriptureResults(topics: LoadedTopic[], query: string) {
       if (!unique.has(key)) unique.set(key, { ...passage, topic });
     }
   }
-  return [...unique.values()];
+  return [...unique.values()]
+    .map(passage => ({ passage, order: scriptureOrder(passage.reference) }))
+    .filter(({ order }) => {
+      const canonical = BOOKS[order[0]]?.name;
+      if (filters.book && filters.book !== "All books" && canonical !== filters.book) return false;
+      if (filters.testament && filters.testament !== "All Testaments") {
+        if (!canonical) return false;
+        const testament = order[0] < bookOrder.get("Matthew")! ? "Old Testament" : "New Testament";
+        if (testament !== filters.testament) return false;
+      }
+      return true;
+    })
+    .sort((a, b) => a.order[0] - b.order[0] || a.order[1] - b.order[1] ||
+      a.order[2] - b.order[2] || a.passage.reference.localeCompare(b.passage.reference) ||
+      a.passage.text.localeCompare(b.passage.text))
+    .map(({ passage }) => passage);
 }

@@ -17,7 +17,8 @@ test("all concordance passages and additional references open a valid Bible chap
           assert.equal(url.pathname, "/bible");
           assert.equal(url.searchParams.get("translation"), translation.toLowerCase());
           assert.ok(Number(url.searchParams.get("chapter")) >= 1);
-          assert.equal(url.searchParams.has("verse"), false);
+          const explicitVerse = reference.match(/:\s*(\d+)/)?.[1];
+          if (explicitVerse) assert.equal(url.searchParams.get("verse"), explicitVerse, reference);
         }
       }
     }
@@ -25,16 +26,19 @@ test("all concordance passages and additional references open a valid Bible chap
 });
 
 test("aliases, ranges and single-chapter books resolve correctly", () => {
-  for (const [ref, book, chapter] of [
-    ["Psalm 91:1-2", "Psalms", "91"],
-    ["Jude 20-21", "Jude", "1"],
-    ["Genesis 1-4", "Genesis", "1"],
-    ["II Chronicles 25:27-28", "2 Chronicles", "25"],
-    ["Kings 8:1-6", "1 Kings", "8"],
-    ["Kings 1:5-6", "1 Kings", "1"],
+  for (const [ref, book, chapter, verse] of [
+    ["Psalm 91:1-2", "Psalms", "91", "1"],
+    ["Jude 20-21", "Jude", "1", "20"],
+    ["Jude 1:20-21", "Jude", "1", "20"],
+    ["Genesis 1-4", "Genesis", "1", null],
+    ["John 3:16-4:2", "John", "3", "16"],
+    ["II Chronicles 25:27-28", "2 Chronicles", "25", "27"],
+    ["Kings 8:1-6", "1 Kings", "8", "1"],
+    ["Kings 1:5-6", "1 Kings", "1", "5"],
   ]) {
     const q = new URL(scriptureReaderPath(ref, "NET"), "https://example.org").searchParams;
     assert.equal(q.get("book"), book);
     assert.equal(q.get("chapter"), chapter);
+    assert.equal(q.get("verse"), verse);
   }
 });

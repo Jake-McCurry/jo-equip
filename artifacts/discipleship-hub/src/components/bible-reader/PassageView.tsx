@@ -3,9 +3,11 @@ import { AlertCircle, Bookmark, BookmarkCheck, ChevronRight, StickyNote } from "
 import { getNextChapter } from "./catalog";
 import { refLabel, translationLabel, washFor, type Location, type Passage } from "./reader-utils";
 import type { VerseRecord } from "./study-storage";
+import { scrollToPassage } from "./passage-scroll";
 
 type Props = {
   loc: Location;
+  navigationId: number;
   passage: Passage | null;
   loading: boolean;
   error: string;
@@ -18,17 +20,10 @@ type Props = {
   onGo: (loc: Location) => void;
 };
 
-export function PassageView({ loc, passage, loading, error, onRetry, records, selected, onSelect, chapterSaved, onToggleChapter, onGo }: Props) {
-  const scrolled = useRef("");
-  useEffect(() => {
-    if (!passage || !loc.verse) return;
-    const key = `${loc.book}-${loc.chapter}-${loc.verse}`;
-    if (scrolled.current === key) return;
-    const el = document.getElementById(`v${loc.verse}`);
-    if (!el) return;
-    scrolled.current = key;
-    requestAnimationFrame(() => el.scrollIntoView({ block: "center" }));
-  }, [passage, loc.book, loc.chapter, loc.verse]);
+export function PassageView({ loc, navigationId, passage, loading, error, onRetry, records, selected, onSelect, chapterSaved, onToggleChapter, onGo }: Props) {
+  const lastNavigation = useRef(-1);
+  useEffect(() => scrollToPassage(loc, passage, loading, error, navigationId, lastNavigation),
+    [passage, loading, error, loc.book, loc.chapter, loc.verse, loc.translation, navigationId]);
 
   const next = getNextChapter(loc.book, loc.chapter);
 

@@ -1,5 +1,5 @@
 /* Horizontal topic carousels shown in a white banner directly beneath the
- * blue header on exactly four pages. Labels/order follow approved editorial
+ * blue header on Home, three categories, and ENG-2. Labels/order follow approved editorial
  * sequences. Category destinations are resolved against channels.ts at
  * build time — a target that doesn't exist (bad sub-topic, missing or
  * unlisted article) throws, so the carousel can never ship a dead link. */
@@ -92,10 +92,10 @@ function resolve(to: Target, label: string): string {
   return `/categories/${to.channel}/${to.sub}/${to.article}`;
 }
 
-/** Returns the carousel for a base-stripped path, or null (only 4 pages have one). */
+/** Returns the carousel for a base-stripped path, or null. */
 export function getTopicCarousel(path: string): { label: string; links: CarouselLink[] } | null {
   const key = path.length > 1 ? path.replace(/\/+$/, "") : path;
-  const c = carousels[key];
+  const c = carousels[key === "/lp/ENG-2-resources" ? "/" : key];
   if (!c) return null;
   return { label: c.label, links: c.items.map(i => ({ label: i.label, path: resolve(i.to, i.label) })) };
 }

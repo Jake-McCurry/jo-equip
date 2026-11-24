@@ -21,8 +21,23 @@ export type SearchTopic = {
   letter: string;
   passageCount: number;
 };
-type SearchPassage = { reference: string; text: string };
+type SearchPassage = { reference: string; text: string; note?: string };
 type LoadedTopic = SearchTopic & { passages: SearchPassage[] };
+
+/** Missing NET text is omitted, never replaced by KJV under a NET label. */
+export function translatedSearchTopics(
+  topics: LoadedTopic[], translation: "NET" | "KJV",
+  cache: ReadonlyMap<string, string>, notes: ReadonlyMap<string, string>,
+): LoadedTopic[] {
+  if (translation === "KJV") return topics;
+  return topics.map(topic => ({
+    ...topic,
+    passages: topic.passages.flatMap(passage => {
+      const text = cache.get(passage.reference);
+      return text === undefined ? [] : [{ reference: passage.reference, text, note: notes.get(passage.reference) }];
+    }),
+  }));
+}
 
 export function findTopicResults<T extends SearchTopic>(topics: T[], query: string): T[] {
   const q = query.trim().toLocaleLowerCase();

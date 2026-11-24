@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import vm from "node:vm";
 import ts from "typescript";
+import { scriptureReaderPath } from "../src/components/knowing-god/scripture-link.ts";
 
 // Exercise the real component's JSX and event handlers with controlled hook
 // state. Search matching/loading is covered by the separate search tests.
@@ -40,7 +41,7 @@ function harness(view = "start") {
       return new Proxy({}, { get: (_, key) => {
         if (key === "netCache" || key === "netNotes") return new Map();
         if (key === "isDevotionalTopic") return () => true;
-        if (key === "scriptureReaderPath") return () => "/bible";
+        if (key === "scriptureReaderPath") return scriptureReaderPath;
         if (key === "formatSourcePassage") return (_, text) => text;
         if (key === "pushTopicHash") return (_, id) => events.push(id);
         return key;
@@ -49,6 +50,7 @@ function harness(view = "start") {
     requestAnimationFrame: fn => fn(),
     document: { querySelector: () => null, getElementById: () => ({ focus() {}, scrollIntoView() {} }) },
     window: { location: { hash: "", pathname: "/knowing-god", search: "" } },
+    localStorage: { setItem() {} },
   };
   vm.runInNewContext(compiled, context);
   return { state, events, render: () => { cursor = 0; return exports.ConcordancePrototype(); } };
@@ -113,4 +115,19 @@ test("passage filter controls pass their selections to the central search result
   assert.equal(results.props.testament, "New Testament");
   assert.equal(results.props.book, "John");
   assert.equal(results.props.query, "God");
+});
+
+test("translation toggle updates the search translation and Bible link without clearing the query", () => {
+  const h = harness();
+  for (const translation of ["NET", "KJV", "NET"]) {
+    const all = nodes(h.render());
+    const toggle = all.find(n => n.type === "button" && Array.isArray(n.props?.children) && n.props.children[0] === translation);
+    toggle.props.onClick();
+    const results = nodes(h.render()).find(n => n.type === "TopicSearchResults");
+    assert.equal(results.props.translation, translation);
+    assert.equal(results.props.query, "God");
+    const url = new URL(results.props.scriptureHref("John 3:16"), "https://example.org");
+    assert.equal(url.searchParams.get("translation"), translation.toLowerCase());
+    assert.equal(url.searchParams.get("verse"), "16");
+  }
 });

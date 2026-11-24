@@ -1,6 +1,8 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { findTopicResults, findScriptureResults } from "../src/components/knowing-god/search-results.ts";
+import { findTopicResults, findScriptureResults, translatedSearchTopics } from "../src/components/knowing-god/search-results.ts";
+import { createNetLoader } from "../src/components/knowing-god/bible-api.ts";
+import fs from "node:fs/promises";
 
 const topics = [
   { id: "love", title: "Love", letter: "L", passageCount: 1, passages: [{ reference: "John 3:16", text: "For God so loved the world." }] },
@@ -54,4 +56,39 @@ test("Scripture results follow Bible book, numeric chapter and starting verse or
   assert.deepEqual(findScriptureResults([...input].reverse(), "God").map(p => p.reference), expected,
     "order is independent of the order topic payloads finish loading");
   assert.deepEqual(input.map(t => t.passages[0].reference), references, "source order is not mutated");
+});
+
+test("NET search uses the authorized local corpus and changes matches without mutating KJV", async () => {
+  const data = new URL("../public/knowing-god/data/", import.meta.url);
+  const net = new URL("../public/knowing-god/net/", import.meta.url);
+  const all = [];
+  for (const file of (await fs.readdir(data)).filter(f => /^topics-.*\.json$/.test(f))) {
+    all.push(...JSON.parse(await fs.readFile(new URL(file, data), "utf8")).topics);
+  }
+  const loader = createNetLoader("/", async url => new Response(
+    await fs.readFile(new URL(url.split("/").at(-1), net), "utf8"), { status: 200 },
+  ));
+  const references = all.flatMap(t => t.passages.map(p => p.reference));
+  assert.equal(await loader.load(references), true, "every searchable source passage has local NET text");
+  const translated = translatedSearchTopics(all, "NET", loader.cache, loader.notes);
+  assert.equal(translated.flatMap(t => t.passages).length, references.length);
+  const kjv = translatedSearchTopics(all, "KJV", loader.cache, loader.notes);
+  assert.equal(kjv, all);
+  assert.ok(findScriptureResults(kjv, "only begotten", { book: "John" }).some(p => p.reference === "John 3:16"));
+  assert.ok(!findScriptureResults(translated, "only begotten", { book: "John" }).some(p => p.reference === "John 3:16"));
+  const result = findScriptureResults(translated, "one and only", { book: "John", testament: "New Testament" });
+  assert.ok(result.some(p => p.reference === "John 3:16"));
+  assert.equal(result.find(p => p.reference === "John 3:16").text, loader.cache.get("John 3:16"));
+  assert.ok(translated.flatMap(t => t.passages).some(p => p.note), "translation notes remain attached");
+  assert.deepEqual(findTopicResults(translated, "love").map(t => t.id), findTopicResults(kjv, "love").map(t => t.id));
+});
+
+test("missing or legitimately empty NET text never falls back to KJV", () => {
+  assert.equal(findScriptureResults(translatedSearchTopics(topics, "NET", new Map(), new Map()), "world").length, 0);
+  const notes = new Map([["John 3:16", "Example note"]]);
+  const empty = translatedSearchTopics(topics, "NET", new Map([["John 3:16", ""]]), notes);
+  assert.equal(empty[0].passages[0].text, "");
+  assert.equal(empty[0].passages[0].note, "Example note");
+  assert.equal(findScriptureResults(empty, "world").length, 0);
+  assert.equal(findScriptureResults(translatedSearchTopics(topics, "KJV", new Map(), notes), "world").length, 1);
 });

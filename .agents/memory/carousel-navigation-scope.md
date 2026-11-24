@@ -1,6 +1,6 @@
 ---
 name: Carousel navigation scope
-description: User-defined separation between sitewide hamburger navigation and four page-specific carousel menus.
+description: User-defined separation between sitewide hamburger navigation and approved page-specific carousel menus.
 ---
 Keep the existing blue-header navigation inside a hamburger on all screen sizes, with search and translation alongside. The supplied horizontal menus belong only on Home, Evidence Resources, Growth Resources and Church Resources, with their distinct labels and order, blue text on a white banner directly below the blue header.
 
@@ -23,3 +23,9 @@ The Home carousel prioritizes topics by observed engagement, highest volume firs
 **Why:** On 2026-11-17 the user supplied a revised ten-link sequence to maximize visibility on desktop and mobile, including Topical Bible linked to Knowing God.
 
 **How to apply:** Preserve the approved sequence rather than alphabetizing or prioritizing resources by category; keep the three category-specific carousels distinct.
+
+ENG-2 is an approved exception: reuse the Home carousel there, while keeping ENG-1 without a carousel.
+
+**Why:** The user explicitly requested the homepage navigation and hero treatment for ENG-2 only, not a broader campaign or sitewide redesign.
+
+**How to apply:** Keep campaign refinements isolated; this exception does not authorize adding carousels to other landing pages.

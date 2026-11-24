@@ -100,3 +100,14 @@
 
 /* Disjoint Scripture ranges remain separate in NET and source KJV text. */
 .kg-reading article > p:last-child { white-space: pre-line; }
+
+/* Search occupies the same center column as the introduction or open topic. */
+.kg-shell[data-searching="true"] > header { display: none; }
+.kg-shell[data-searching="true"] > aside:first-of-type { display: block; }
+.kg-reading { scroll-margin-top: 7rem; }
+@media (max-width: 767px) {
+  .kg-shell[data-searching="true"] > aside:first-of-type > div {
+    position: static;
+    max-height: none;
+  }
+}

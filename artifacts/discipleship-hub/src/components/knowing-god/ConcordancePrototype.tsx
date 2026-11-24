@@ -110,6 +110,10 @@ export function ConcordancePrototype() {
     loadLetter(item.letter).catch(() => undefined);
   };
   const openTopic = (item: TopicIndex) => {
+    setQuery("");
+    requestAnimationFrame(() => {
+      document.querySelector<HTMLElement>(".kg-reading")?.scrollIntoView({ block: "start", behavior: "instant" });
+    });
     if (selectedId === item.id && view === "topic") {
      
       return;
@@ -118,6 +122,7 @@ export function ConcordancePrototype() {
     pushTopicHash(window, item.id);
   };
   const openStart = () => {
+    setQuery("");
     setView("start");
    
     if (window.location.hash) {
@@ -148,6 +153,7 @@ export function ConcordancePrototype() {
   useEffect(() => {
     if (!index) return;
     const restoreTopicFromHash = () => {
+      setQuery("");
       const hashId = topicIdFromHash(window.location.hash);
       const target = hashId ? index.topics.find(topic => topic.id === hashId) : undefined;
       if (target) applyTopic(target);
@@ -199,7 +205,7 @@ export function ConcordancePrototype() {
       .sort((a, b) => a.rank - b.rank || a.item.title.localeCompare(b.item.title))
       .map(result => result.item);
   }, [index, scopedTopics, payloads, query]);
-  // Topic search only affects the index; the open study changes on selection.
+  // Searching temporarily replaces the reading pane without losing the open study.
   const visiblePassages = selected?.passages.filter(p => (testament === "All Testaments" || testamentFor(p.reference) === testament) && (book === "All books" || p.reference.startsWith(book))) || [];
   useEffect(() => {
     if (view !== "topic" || !translationLoaded || translation !== "NET" || !selected) return;
@@ -234,14 +240,41 @@ export function ConcordancePrototype() {
     if (target) openTopic(target);
   };
   const devotionalCount = index?.topics.filter(topic => topic.recordType === "topic" && isDevotionalTopic(topic)).length ?? 502;
-  const searchField = <div className="w-full"><div className="relative mb-3"><label className="sr-only" htmlFor="topic-search">Search topic titles and Scripture</label><input id="topic-search" value={query} onChange={e => setQuery(e.target.value)} onKeyDown={e => { if (e.key === "Escape") setQuery(""); }} placeholder="Search topics and Scripture" className="kg-focus min-h-11 w-full border border-[var(--color-border-control,#5B9BC4)] bg-[var(--color-surface,#FFFDFB)] py-2.5 pl-3 pr-10 text-base"/><button type="button" onClick={() => setQuery("")} aria-label="Clear topic search" className="kg-focus absolute right-0 top-0 flex min-h-11 w-10 items-center justify-center"><X size={16}/></button></div>{query.trim() && <TopicSearchResults topics={scopedTopics} query={query} payloads={payloads} loadLetter={loadLetter} onOpen={openTopic} scriptureHref={reference => base(scriptureReaderPath(reference, "KJV"))}/>}</div>;
+  const viewSearchResults = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    const results = document.getElementById("kg-search-results");
+    results?.focus({ preventScroll: true });
+    results?.scrollIntoView({ block: "start", behavior: "instant" });
+  };
+  const searchField = <div className="w-full">
+    <div className="relative mb-3">
+      <label className="sr-only" htmlFor="topic-search">Search topic titles and Scripture</label>
+      <input id="topic-search" aria-controls={query.trim() ? "kg-search-results" : undefined} value={query}
+        onChange={e => setQuery(e.target.value)} onKeyDown={e => { if (e.key === "Escape") setQuery(""); }}
+        placeholder="Search topics and Scripture"
+        className="kg-focus min-h-11 w-full border border-[var(--color-border-control,#5B9BC4)] bg-[var(--color-surface,#FFFDFB)] py-2.5 pl-3 pr-10 text-base"/>
+      <button type="button" onClick={() => setQuery("")} aria-label="Clear topic search"
+        className="kg-focus absolute right-0 top-0 flex min-h-11 w-10 items-center justify-center"><X size={16}/></button>
+    </div>
+    {query.trim() && <a href="#kg-search-results" onClick={viewSearchResults}
+      className="kg-focus inline-flex min-h-11 items-center text-sm font-semibold underline md:hidden">View search results</a>}
+  </div>;
   const isFiltering = Boolean(query.trim());
+  useEffect(() => {
+    if (!isFiltering || !window.matchMedia("(min-width: 768px)").matches) return;
+    // Reveal results when searching from a topic scrolled far down, without
+    // moving keyboard focus out of the search field or jumping on each key.
+    const frame = requestAnimationFrame(() => {
+      document.getElementById("kg-search-results")?.scrollIntoView({ block: "start", behavior: "instant" });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [isFiltering]);
 
   return <div className="flex flex-col min-h-[100dvh] text-[var(--color-text,#003A66)]" style={{ background: "var(--color-surface, #FFFDFB)", fontFamily: "var(--font-sans, 'Source Sans 3', system-ui, sans-serif)" }}>
     <style>{`.kg-sans{font-family:var(--font-sans, 'Source Sans 3', system-ui, sans-serif)}.kg-focus:focus-visible{outline:3px solid var(--color-focus,#0095FF);outline-offset:2px}.kg-scroll::-webkit-scrollbar{width:6px}.kg-scroll::-webkit-scrollbar-thumb{background:var(--color-border-control,#5B9BC4);border-radius:8px}@media print{.kg-no-print{display:none!important}.kg-reading{max-width:none!important}.kg-shell{display:block!important}}`}</style>
     <div className="kg-warm-theme flex-1 flex flex-col bg-[var(--color-surface,#FFFDFB)]">
 
-      <main className={`kg-shell flex-1 mx-auto w-full grid grid-cols-1 md:grid-cols-[240px_minmax(0,1fr)] lg:grid-cols-[minmax(230px,20%)_minmax(0,1fr)_minmax(210px,18%)]`}>
+      <main data-searching={isFiltering} className={`kg-shell flex-1 mx-auto w-full grid grid-cols-1 md:grid-cols-[240px_minmax(0,1fr)] lg:grid-cols-[minmax(230px,20%)_minmax(0,1fr)_minmax(210px,18%)]`}>
       {view === "start" && <header className="kg-no-print min-w-0 px-5 pt-4 pb-3 text-center md:text-left md:col-start-2 md:row-start-1 md:px-10 md:py-8 lg:px-14"><h1 className="kg-cover-title whitespace-nowrap text-[clamp(1rem,4.5vw,2.4rem)] text-[var(--color-hero,#006BB3)] md:whitespace-normal md:text-[clamp(1.5rem,2.6vw,2.4rem)]" style={{fontFamily:"var(--font-display, 'Playfair Display', serif)",fontVariant:"small-caps",lineHeight:1.15,letterSpacing:".02em"}}>Knowing God Topical Bible</h1><p className="kg-sans mx-auto mt-1 max-w-[1100px] text-balance md:mx-0 text-base leading-snug text-[var(--color-text,#003A66)] md:text-lg">{topicCount} topics and {index ? index.counts.passageCount.toLocaleString() : "thousands of"} curated passages on the Nature and Character of the Almighty</p><div className="md:mt-1 md:flex md:flex-wrap md:items-center md:gap-x-5"><p className="kg-sans mt-0.5 text-sm text-[var(--color-text,#003A66)]"><a href="https://www.zmission.org/our-story.html" target="_blank" rel="noopener noreferrer" className="kg-focus underline underline-offset-4 decoration-[var(--color-action-warm,#C45100)] hover:text-[var(--color-action-warm,#C45100)]">© 2026 by Zinzendorf Mission</a></p><a href={base("/knowing-god/introduction")} className="kg-focus kg-sans mt-2 inline-flex min-h-11 items-center gap-1 text-base font-semibold text-[var(--color-hero,#006BB3)] underline-offset-4 hover:underline">See Introductory Articles <ChevronRight size={16} aria-hidden="true"/></a></div><p className="kg-sans mt-4 hidden border-t border-[var(--color-border-soft,#CCEBFF)] pt-4 text-base text-[var(--color-text-muted,#2E5A7A)] md:block">Choose a topic from the index to begin.</p></header>}
       <aside className={`${view === "start" ? "block" : "hidden"} kg-no-print bg-[var(--color-surface-soft,#E6F5FF)] md:block md:border-r md:border-[var(--color-border-soft,#CCEBFF)] ${view === "start" ? "md:col-start-1 md:row-start-1 md:row-span-2 lg:row-span-1" : "border-r"}`}><div className={view === "start" ? "px-5 py-4 md:sticky md:top-[95px] md:max-h-[calc(100dvh-95px)] md:overflow-y-auto kg-scroll md:p-5" : "sticky top-[95px] max-h-[calc(100dvh-95px)] overflow-y-auto kg-scroll p-5"}>
         {view === "start" ? null : <>
@@ -251,7 +284,7 @@ export function ConcordancePrototype() {
         <div className="mb-3 flex items-end justify-between border-t border-[var(--color-border-soft,#CCEBFF)] pt-4"><div><p className="kg-sans text-xs font-bold uppercase tracking-[.2em] text-[var(--color-action-warm,#C45100)]">The index</p><h2 className="mt-1 text-2xl md:text-lg text-[var(--color-hero,#006BB3)]">Topics</h2></div><span className="kg-sans whitespace-nowrap text-xs text-[var(--color-text-muted,#2E5A7A)]">{filtered.filter(topic => topic.recordType === "topic").length} shown</span></div>
 
         <button onClick={() => setFilterOpen(v => !v)} className="kg-focus kg-sans mb-3 flex min-h-11 w-full items-center justify-between border-y border-[var(--color-border-soft,#CCEBFF)] py-2 text-left text-xs font-semibold uppercase tracking-widest text-[var(--color-text,#003A66)]"><span className="flex gap-2"><SlidersHorizontal size={14}/>Passage filters</span><ChevronDown size={14}/></button>
-        {filterOpen && <div className="kg-sans mb-4 space-y-3 border-b border-[var(--color-border-soft,#CCEBFF)] pb-4"><p className="text-xs text-[var(--color-text-muted,#2E5A7A)]">Filters apply to the open topic without loading other letters.</p><label className="block text-sm font-semibold">Testament<select value={testament} onChange={e => setTestament(e.target.value)} className="mt-1 w-full border border-[var(--color-border-control,#5B9BC4)] bg-[var(--color-surface,#FFFDFB)] p-2 text-base"><option>All Testaments</option><option>Old Testament</option><option>New Testament</option></select></label><label className="block text-sm font-semibold">Bible book<select value={book} onChange={e => setBook(e.target.value)} className="mt-1 w-full border border-[var(--color-border-control,#5B9BC4)] bg-[var(--color-surface,#FFFDFB)] p-2 text-base">{books.map(value => <option key={value}>{value}</option>)}</select></label></div>}
+        {filterOpen && <div className="kg-sans mb-4 space-y-3 border-b border-[var(--color-border-soft,#CCEBFF)] pb-4"><p className="text-xs text-[var(--color-text-muted,#2E5A7A)]">Filters apply to Scripture search results and passages in the open topic. Topic-title matches are unchanged.</p><label className="block text-sm font-semibold">Testament<select value={testament} onChange={e => setTestament(e.target.value)} className="mt-1 w-full border border-[var(--color-border-control,#5B9BC4)] bg-[var(--color-surface,#FFFDFB)] p-2 text-base"><option>All Testaments</option><option>Old Testament</option><option>New Testament</option></select></label><label className="block text-sm font-semibold">Bible book<select value={book} onChange={e => setBook(e.target.value)} className="mt-1 w-full border border-[var(--color-border-control,#5B9BC4)] bg-[var(--color-surface,#FFFDFB)] p-2 text-base">{books.map(value => <option key={value}>{value}</option>)}</select></label></div>}
         {indexError && <div role="alert" className="kg-sans py-6 text-base text-[var(--color-action-warm,#C45100)]">{indexError}</div>}{!index && !indexError && <div role="status" className="kg-sans py-6 text-base text-[var(--color-text-muted,#2E5A7A)]">Loading complete topical index…</div>}
         {index && topicScope === "devotional" && <nav aria-label="Devotional topics by group">{searchField}{!isFiltering && <DevotionalTopicGroups topics={scopedTopics} filtered={isFiltering ? filtered : null} query={query} selectedId={selectedId} onOpen={openTopic}/>}</nav>}
         {index && topicScope === "all" && <nav aria-label="Topical Bible topics"><div className="mb-3 grid grid-cols-9 gap-1 md:gap-1.5">{alphabet.map(letter => <button key={letter} disabled={!scopedTopics.some(topic => topic.letter === letter)} onClick={() => browseLetter(letter)} aria-label={`Browse ${letter} topics`} aria-expanded={!isFiltering && expandedLetter === letter} aria-controls="topic-letter-results" className={`kg-focus kg-sans h-9 min-w-0 rounded text-sm font-bold ${!scopedTopics.some(topic => topic.letter === letter) ? "cursor-not-allowed text-[var(--color-border-control,#5B9BC4)] border border-transparent" : !isFiltering && expandedLetter === letter ? "bg-[var(--color-selected-warm,#FFEADB)] text-[var(--color-text,#003A66)] shadow-[inset_0_0_0_1px_var(--color-action-warm,#C45100)]" : "border border-[var(--color-border-control,#5B9BC4)] bg-[var(--color-surface,#FFFDFB)] text-[var(--color-text,#003A66)]"}`}>{letter}</button>)}</div>{searchField}
@@ -260,7 +293,14 @@ export function ConcordancePrototype() {
             {(!isFiltering ? filtered.filter(item => item.letter === expandedLetter) : []).map(item => <button key={item.id} aria-pressed={selectedId === item.id} onClick={() => openTopic(item)} className={`kg-focus flex min-h-11 w-full items-center justify-between border-l-4 px-3 py-2 text-left text-base ${selectedId === item.id ? "border-[var(--color-action-warm,#C45100)] bg-[var(--color-selected-warm,#FFEADB)] text-[var(--color-text,#003A66)]" : "border-transparent text-[var(--color-text,#003A66)] hover:bg-[var(--color-surface-soft,#E6F5FF)]"}`}><span>{item.title}</span><span className="kg-sans text-xs text-[var(--color-text-muted,#2E5A7A)]">{item.passageCount}</span></button>)}
           </div>
         </nav>}</div></aside>
-      {view === "start" ? null :
+      {isFiltering && <section id="kg-search-results" aria-labelledby="kg-search-title" tabIndex={-1} className="kg-reading kg-focus min-w-0 scroll-mt-28 px-5 py-4 md:col-start-2 md:row-start-1 md:px-10 md:py-6 lg:px-14">
+        <div className="mb-5 flex flex-wrap items-start justify-between gap-3 border-b border-[var(--color-border-soft,#CCEBFF)] pb-4">
+          <div><h1 id="kg-search-title" className="text-2xl text-[var(--color-hero,#006BB3)]">Search results</h1><p className="kg-sans mt-2 break-words text-base">Results for “{query.trim()}”</p></div>
+          <button type="button" onClick={() => setQuery("")} className="kg-focus min-h-11 text-sm font-semibold underline">Clear search</button>
+        </div>
+        <TopicSearchResults topics={scopedTopics} query={query} testament={testament} book={book} payloads={payloads} loadLetter={loadLetter} onOpen={openTopic} scriptureHref={reference => base(scriptureReaderPath(reference, "KJV"))}/>
+      </section>}
+      {view === "start" || isFiltering ? null :
       <section className="kg-reading min-w-0 max-w-[920px] px-5 py-4 md:px-10 md:py-6 lg:px-14">{!selectedIndex ? <div role="status" className="kg-sans py-16 text-center text-base text-[var(--color-text-muted,#2E5A7A)]">Loading selected topic…</div> : !selected ? <div className="kg-sans py-16 text-center text-base text-[var(--color-text-muted,#2E5A7A)]">{payloadError[selectedIndex.letter] ? <div role="alert" className="text-[var(--color-action-warm,#C45100)]">{payloadError[selectedIndex.letter]} <button className="underline" onClick={() => loadLetter(selectedIndex.letter).catch(() => undefined)}>Try again</button></div> : <div role="status">Loading {selectedIndex.letter} topics…</div>}</div> : <><div className="kg-no-print mb-2 flex items-center gap-2 kg-sans text-sm text-[var(--color-text-muted,#2E5A7A)]"><a href={base("/knowing-god")} onClick={event => { if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); openStart(); }} aria-label="Back to Knowing God topic index" className="kg-focus inline-flex min-h-11 items-center gap-1 hover:underline"><ChevronsLeft size={18} aria-hidden="true"/>Topic study</a> <ChevronRight size={14}/>{selected.title}</div><TopicHeading title={selected.title} definition={selected.definition} resultCount={visiblePassages.length} saved={study.includes(selected.id)} copied={copied} onSave={() => toggleStudy(selected.id)} onCopy={copy} />
         {selected.passages.length > 0 && translation === "NET" && netError && <div role="alert" className="kg-no-print mb-4 flex flex-wrap items-center gap-2 text-base text-[var(--color-action-warm,#C45100)]"><AlertCircle size={18}/>Some NET passages could not be loaded from this site. Those passages are labeled KJV below. <button type="button" className="kg-focus underline font-bold" onClick={() => setNetRetry(value => value + 1)}>Try again</button></div>}
         {selected.passages.length > 0 ? <>{netLoading && translation === "NET" ? <div role="status" className="kg-sans py-10 text-center text-base text-[var(--color-text-muted,#2E5A7A)]">Loading NET Bible text…</div> : <div>{visiblePassages.map((p, i) => {

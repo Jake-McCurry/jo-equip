@@ -21,6 +21,20 @@ test("search accepts phrases and treats punctuation literally", () => {
   assert.deepEqual(findScriptureResults(topics, " "), []);
 });
 
+test("passage filters restrict Scripture matches using canonical book names and testament", () => {
+  const refs = ["Genesis 1:1", "Psalm 1:1", "II Chronicles 25:27", "John 3:16", "1 John 3:16", "Jude 20"];
+  const input = [{ ...topics[0], passages: refs.map(reference => ({ reference, text: "God is faithful." })) }];
+  const results = filters => findScriptureResults(input, "God", filters).map(p => p.reference);
+  assert.deepEqual(results({ testament: "Old Testament" }), ["Genesis 1:1", "II Chronicles 25:27", "Psalm 1:1"]);
+  assert.deepEqual(results({ testament: "New Testament" }), refs.slice(3));
+  assert.deepEqual(results({ book: "Psalms" }), ["Psalm 1:1"]);
+  assert.deepEqual(results({ book: "2 Chronicles" }), ["II Chronicles 25:27"]);
+  assert.deepEqual(results({ book: "John" }), ["John 3:16"]);
+  assert.deepEqual(results({ book: "John", testament: "Old Testament" }), []);
+  assert.equal(results({ book: "All books", testament: "All Testaments" }).length, 6);
+  assert.equal(findTopicResults(input, "love").length, 1);
+});
+
 test("Scripture results follow Bible book, numeric chapter and starting verse order", () => {
   const references = [
     "Revelation 1:1", "John 10:2", "Jude 20-21", "John 3:16",

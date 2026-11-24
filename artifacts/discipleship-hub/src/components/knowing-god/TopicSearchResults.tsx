@@ -5,13 +5,15 @@ type LoadedTopic = SearchTopic & { passages: { reference: string; text: string }
 type Props<T extends SearchTopic> = {
   topics: T[];
   query: string;
+  testament: string;
+  book: string;
   payloads: Record<string, LoadedTopic[]>;
   loadLetter: (letter: string) => Promise<LoadedTopic[]>;
   onOpen: (topic: T) => void;
   scriptureHref: (reference: string) => string;
 };
 
-export function TopicSearchResults<T extends SearchTopic>({ topics, query, payloads, loadLetter, onOpen, scriptureHref }: Props<T>) {
+export function TopicSearchResults<T extends SearchTopic>({ topics, query, testament, book, payloads, loadLetter, onOpen, scriptureHref }: Props<T>) {
   const [pending, setPending] = useState(true);
   const [error, setError] = useState(false);
   const [retry, setRetry] = useState(0);
@@ -37,12 +39,12 @@ export function TopicSearchResults<T extends SearchTopic>({ topics, query, paylo
     // Restart only for a new query, scope or an explicit retry.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, letters, retry]);
-  useEffect(() => setLimit(25), [query, letters]);
+  useEffect(() => setLimit(25), [query, letters, testament, book]);
   const titleMatches = useMemo(() => findTopicResults(topics, query), [topics, query]);
   const verseMatches = useMemo(() => {
     const ids = new Set(topics.map(topic => topic.id));
-    return findScriptureResults(Object.values(payloads).flat().filter(topic => ids.has(topic.id)), query);
-  }, [topics, payloads, query]);
+    return findScriptureResults(Object.values(payloads).flat().filter(topic => ids.has(topic.id)), query, { testament, book });
+  }, [topics, payloads, query, testament, book]);
   const snippet = (text: string) => {
     const match = scriptureMatcher(query).exec(text);
     const start = Math.max(0, (match?.index ?? 0) - 70);
@@ -60,9 +62,10 @@ export function TopicSearchResults<T extends SearchTopic>({ topics, query, paylo
       <section aria-labelledby="scripture-results-heading" className="border-t border-[var(--color-border-soft,#CCEBFF)] pt-4">
         <h3 id="scripture-results-heading" className="text-base font-bold">Scripture results <span className="text-xs font-normal text-[var(--color-text-muted,#2E5A7A)]">({verseMatches.length}{pending ? "+" : ""})</span></h3>
         <p className="mt-1 text-xs text-[var(--color-text-muted,#2E5A7A)]">Matching words in the original KJV Scripture text.</p>
+        {(testament !== "All Testaments" || book !== "All books") && <p className="mt-1 text-sm">Passage filters: {[testament, book].filter(value => value !== "All Testaments" && value !== "All books").join(" · ")}</p>}
         {pending && <p role="status" className="py-2 text-sm">Searching Scripture across topics…</p>}
         {error && <p role="alert" className="py-2 text-sm">Some Scripture could not be searched. <button type="button" onClick={() => setRetry(value => value + 1)} className="underline">Try again</button></p>}
-        {!pending && !error && !verseMatches.length && <p className="py-2 text-sm">No Scripture text matches.</p>}
+        {!pending && !error && !verseMatches.length && <p className="py-2 text-sm">No Scripture text matches{testament !== "All Testaments" || book !== "All books" ? " the current passage filters" : ""}.</p>}
         {verseMatches.slice(0, limit).map((passage, i) => (
           <article key={`${passage.reference}-${i}`} className="border-b border-[var(--color-border-soft,#CCEBFF)] py-3">
             <a href={scriptureHref(passage.reference)} target="_blank" rel="noopener noreferrer" className="kg-focus inline-flex min-h-11 items-center text-sm font-bold underline">{passage.reference} <span className="ml-2 text-xs font-normal">KJV</span></a>

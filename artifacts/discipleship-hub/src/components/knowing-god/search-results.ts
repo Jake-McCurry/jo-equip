@@ -36,7 +36,10 @@ export function scriptureMatcher(query: string) {
   return new RegExp(`(?<![\\p{L}\\p{N}])${escaped}(?![\\p{L}\\p{N}])`, "iu");
 }
 
-export function findScriptureResults(topics: LoadedTopic[], query: string) {
+export function findScriptureResults(
+  topics: LoadedTopic[], query: string,
+  filters: { testament?: string; book?: string } = {},
+) {
   if (!query.trim()) return [];
   const matcher = scriptureMatcher(query);
   const unique = new Map<string, SearchPassage & { topic: SearchTopic }>();
@@ -49,6 +52,16 @@ export function findScriptureResults(topics: LoadedTopic[], query: string) {
   }
   return [...unique.values()]
     .map(passage => ({ passage, order: scriptureOrder(passage.reference) }))
+    .filter(({ order }) => {
+      const canonical = BOOKS[order[0]]?.name;
+      if (filters.book && filters.book !== "All books" && canonical !== filters.book) return false;
+      if (filters.testament && filters.testament !== "All Testaments") {
+        if (!canonical) return false;
+        const testament = order[0] < bookOrder.get("Matthew")! ? "Old Testament" : "New Testament";
+        if (testament !== filters.testament) return false;
+      }
+      return true;
+    })
     .sort((a, b) => a.order[0] - b.order[0] || a.order[1] - b.order[1] ||
       a.order[2] - b.order[2] || a.passage.reference.localeCompare(b.passage.reference) ||
       a.passage.text.localeCompare(b.passage.text))

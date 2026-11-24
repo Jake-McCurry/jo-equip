@@ -31,7 +31,8 @@ test("campaign keeps metadata, shared spacing, mobile-only panel and original de
   assert.match(landing, /var\(--section-space-desktop\)/);
   assert.match(landing, /isEng2 && \(\s*<section[^>]+lg:hidden/);
   assert.ok(!landing.includes("Find out more"));
-  assert.match(landing, /isEng2 \? "--section-space-mobile:1rem;--section-space-desktop:1.25rem;"/);
+  assert.match(landing, /isEng2 \? "--section-space-mobile:0.5rem;--section-space-desktop:0.75rem;"/);
+  assert.match(landing, /\.eng2-resources > section\.bg-white\s*\{\s*--section-space-mobile: 1rem;\s*--section-space-desktop: 1.5rem;/);
   assert.match(home, /--section-space-mobile:1rem;--section-space-desktop:1.25rem;/);
   const copy = "A free Leader Kit for pastors and home church leaders with 5-minute Discipleship Moments—all ready to teach and encourage heart transformation";
   assert.ok(landing.includes(copy) && home.includes(copy));

@@ -134,7 +134,7 @@ const featuredPlaylists = [
 
   {/* Tagline + persona links */}
   <section class:list={["px-4 text-center bg-white", isEng2 ? "site-section" : "py-8 md:py-10"]}
-    style={isEng2 ? "--section-space-mobile:1rem;--section-space-desktop:1.25rem;" : undefined}>
+    style={isEng2 ? "--section-space-mobile:0.5rem;--section-space-desktop:0.75rem;" : undefined}>
     <div class="container mx-auto max-w-4xl">
       {isEng2 ? (
       <div class="text-base flex flex-col sm:flex-row sm:flex-wrap justify-center items-center gap-x-3 gap-y-2" style="color:var(--color-text);">
@@ -329,6 +329,10 @@ const featuredPlaylists = [
 </Layout>
 
 <style>
+  .eng2-resources > section.bg-white {
+    --section-space-mobile: 1rem;
+    --section-space-desktop: 1.5rem;
+  }
   .eng2-resources > section { padding-block: var(--section-space-mobile); }
   .eng2-resources > section:last-child { padding-block: 0; }
   .eng2-resources .mt-5:not(.hero-subtitle) { margin-top: 0; }

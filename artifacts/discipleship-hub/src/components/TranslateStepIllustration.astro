@@ -1,0 +1,213 @@
+---
+/**
+ * Language-light drawings of browser translation menus for /translate.
+ * These are illustrations (not real screenshots): browser chrome is drawn
+ * neutrally, and orange numbered markers match the numbered steps on the page
+ * so visitors who do not read English can follow along visually.
+ */
+interface Props {
+  variant: "chrome-menu" | "chrome-bar" | "android" | "safari" | "google-translate";
+  label: string;
+  caption?: string;
+}
+const { variant, label, caption } = Astro.props;
+
+const ACCENT = "#e87722";
+const BRAND = "#0095ff";
+const INK = "#003a66";
+const MUTED = "#8a98a8";
+const LINE = "#d5dde6";
+const HILITE = "#e5f4ff";
+const FONT = "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif";
+---
+<figure class="translate-illustration">
+  {variant === "chrome-menu" && (
+    <svg viewBox="0 0 360 280" role="img" aria-label={label} font-family={FONT}>
+      <rect x="1" y="1" width="358" height="278" rx="10" fill="#fff" stroke={LINE} stroke-width="2" />
+      <path d="M1 11a10 10 0 0 1 10-10h338a10 10 0 0 1 10 10v29H1z" fill="#eef2f6" />
+      <circle cx="16" cy="14" r="4" fill="#ff5f57" /><circle cx="29" cy="14" r="4" fill="#febc2e" /><circle cx="42" cy="14" r="4" fill="#28c840" />
+      <rect x="56" y="20" width="250" height="14" rx="7" fill="#fff" />
+      <text x="68" y="30.5" font-size="9" fill={MUTED}>equip.jesusonline.com</text>
+      <rect x="24" y="58" width="150" height="12" rx="3" fill={INK} opacity="0.85" />
+      <rect x="24" y="80" width="300" height="7" rx="3" fill={LINE} />
+      <rect x="24" y="94" width="280" height="7" rx="3" fill={LINE} />
+      <rect x="24" y="108" width="300" height="7" rx="3" fill={LINE} />
+      <rect x="24" y="122" width="240" height="7" rx="3" fill={LINE} />
+      <rect x="24" y="150" width="90" height="70" rx="4" fill="#e9f0f7" />
+      <g>
+        <rect x="118" y="92" width="214" height="172" rx="6" fill="#fff" stroke={LINE} />
+        <rect x="118" y="92" width="214" height="172" rx="6" fill="none" stroke="#000" stroke-opacity="0.06" stroke-width="4" />
+        <text x="134" y="115" font-size="10.5" fill={INK}>Back</text>
+        <text x="134" y="137" font-size="10.5" fill={INK}>Forward</text>
+        <text x="134" y="159" font-size="10.5" fill={INK}>Reload</text>
+        <line x1="118" y1="170" x2="332" y2="170" stroke={LINE} />
+        <text x="134" y="189" font-size="10.5" fill={INK}>Save as…</text>
+        <line x1="118" y1="200" x2="332" y2="200" stroke={LINE} />
+        <rect x="122" y="204" width="206" height="22" rx="4" fill={HILITE} stroke={BRAND} stroke-width="1.5" />
+        <rect x="130" y="208.5" width="14" height="13" rx="2.5" fill={BRAND} />
+        <text x="137" y="218.5" font-size="8.5" font-weight="700" fill="#fff" text-anchor="middle">G</text>
+        <text x="150" y="219" font-size="10.5" font-weight="700" fill={INK}>Translate to …</text>
+        <line x1="118" y1="230" x2="332" y2="230" stroke={LINE} />
+        <text x="134" y="249" font-size="10.5" fill={INK}>Inspect</text>
+      </g>
+      <path d="M108 80 l0 17 l4.5 -4.2 l3.2 7.2 l2.8 -1.3 l-3.2 -7 l6.2 -0.4 z" fill="#111" stroke="#fff" stroke-width="1.2" stroke-linejoin="round" />
+      <circle cx="94" cy="76" r="11" fill={ACCENT} /><text x="94" y="80.5" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">1</text>
+      <circle cx="342" cy="215" r="11" fill={ACCENT} /><text x="342" y="219.5" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">2</text>
+    </svg>
+  )}
+
+  {variant === "chrome-bar" && (
+    <svg viewBox="0 0 360 200" role="img" aria-label={label} font-family={FONT}>
+      <rect x="1" y="1" width="358" height="198" rx="10" fill="#fff" stroke={LINE} stroke-width="2" />
+      <path d="M1 11a10 10 0 0 1 10-10h338a10 10 0 0 1 10 10v35H1z" fill="#eef2f6" />
+      <circle cx="16" cy="14" r="4" fill="#ff5f57" /><circle cx="29" cy="14" r="4" fill="#febc2e" /><circle cx="42" cy="14" r="4" fill="#28c840" />
+      <rect x="20" y="22" width="300" height="18" rx="9" fill="#fff" />
+      <text x="34" y="34.5" font-size="10" fill={MUTED}>equip.jesusonline.com</text>
+      <rect x="290" y="24" width="20" height="14" rx="3" fill={HILITE} stroke={BRAND} stroke-width="1.5" />
+      <rect x="294" y="26.5" width="12" height="9" rx="2" fill={BRAND} />
+      <text x="300" y="33.6" font-size="7" font-weight="700" fill="#fff" text-anchor="middle">G</text>
+      <circle cx="338" cy="31" r="11" fill={ACCENT} /><text x="338" y="35.5" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">3</text>
+      <path d="M300 40 l-6 8 h12 z" fill="#fff" stroke={LINE} />
+      <rect x="150" y="47" width="190" height="96" rx="8" fill="#fff" stroke={LINE} />
+      <rect x="150" y="47" width="190" height="96" rx="8" fill="none" stroke="#000" stroke-opacity="0.06" stroke-width="4" />
+      <path d="M294 48 h12" stroke="#fff" stroke-width="2" />
+      <rect x="164" y="60" width="14" height="13" rx="2.5" fill={BRAND} />
+      <text x="171" y="70" font-size="8.5" font-weight="700" fill="#fff" text-anchor="middle">G</text>
+      <text x="186" y="70.5" font-size="10" fill={MUTED}>Google Translate</text>
+      <text x="172" y="100" font-size="11" fill={MUTED}>English</text>
+      <text x="236" y="100" font-size="11" font-weight="700" fill={BRAND}>Español</text>
+      <rect x="234" y="106" width="48" height="2.5" rx="1" fill={BRAND} />
+      <text x="304" y="100" font-size="13" font-weight="700" fill={MUTED}>⋮</text>
+      <line x1="164" y1="118" x2="326" y2="118" stroke={LINE} />
+      <text x="172" y="134" font-size="10" fill={MUTED}>Français · Português · 中文 · …</text>
+      <rect x="24" y="64" width="110" height="10" rx="3" fill={INK} opacity="0.85" />
+      <rect x="24" y="86" width="110" height="7" rx="3" fill={LINE} />
+      <rect x="24" y="100" width="96" height="7" rx="3" fill={LINE} />
+      <rect x="24" y="114" width="110" height="7" rx="3" fill={LINE} />
+      <rect x="24" y="128" width="80" height="7" rx="3" fill={LINE} />
+      <rect x="24" y="156" width="312" height="7" rx="3" fill={LINE} />
+      <rect x="24" y="170" width="280" height="7" rx="3" fill={LINE} />
+    </svg>
+  )}
+
+  {variant === "android" && (
+    <svg viewBox="0 0 200 360" role="img" aria-label={label} font-family={FONT}>
+      <rect x="2" y="2" width="196" height="356" rx="24" fill="#1f2933" />
+      <rect x="10" y="12" width="180" height="336" rx="16" fill="#fff" />
+      <text x="22" y="28" font-size="8" fill={INK}>9:41</text>
+      <rect x="18" y="36" width="140" height="22" rx="11" fill="#eef2f6" />
+      <text x="28" y="50.5" font-size="8.5" fill={MUTED}>equip.jesusonline.com</text>
+      <rect x="164" y="36" width="20" height="22" rx="5" fill={HILITE} stroke={BRAND} stroke-width="1.5" />
+      <circle cx="174" cy="41.5" r="1.8" fill={INK} /><circle cx="174" cy="47" r="1.8" fill={INK} /><circle cx="174" cy="52.5" r="1.8" fill={INK} />
+      <rect x="22" y="72" width="100" height="10" rx="3" fill={INK} opacity="0.85" />
+      <rect x="22" y="92" width="150" height="6" rx="3" fill={LINE} />
+      <rect x="22" y="104" width="130" height="6" rx="3" fill={LINE} />
+      <rect x="22" y="116" width="150" height="6" rx="3" fill={LINE} />
+      <rect x="22" y="128" width="110" height="6" rx="3" fill={LINE} />
+      <rect x="22" y="148" width="60" height="60" rx="4" fill="#e9f0f7" />
+      <g>
+        <rect x="70" y="62" width="114" height="216" rx="6" fill="#fff" stroke={LINE} />
+        <rect x="70" y="62" width="114" height="216" rx="6" fill="none" stroke="#000" stroke-opacity="0.07" stroke-width="5" />
+        <text x="82" y="84" font-size="9.5" fill={INK}>New tab</text>
+        <text x="82" y="108" font-size="9.5" fill={INK}>History</text>
+        <text x="82" y="132" font-size="9.5" fill={INK}>Downloads</text>
+        <text x="82" y="156" font-size="9.5" fill={INK}>Bookmarks</text>
+        <text x="82" y="180" font-size="9.5" fill={INK}>Share…</text>
+        <text x="82" y="204" font-size="9.5" fill={INK}>Find in page</text>
+        <rect x="74" y="214" width="106" height="24" rx="4" fill={HILITE} stroke={BRAND} stroke-width="1.5" />
+        <rect x="80" y="219.5" width="13" height="13" rx="2.5" fill={BRAND} />
+        <text x="86.5" y="229.5" font-size="8" font-weight="700" fill="#fff" text-anchor="middle">G</text>
+        <text x="98" y="230" font-size="9.5" font-weight="700" fill={INK}>Translate…</text>
+        <text x="82" y="260" font-size="9.5" fill={INK}>Settings</text>
+      </g>
+      <circle cx="150" cy="22" r="10" fill={ACCENT} /><text x="150" y="26.2" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">1</text>
+      <path d="M158 27 l6 6" stroke={ACCENT} stroke-width="2" stroke-linecap="round" />
+      <circle cx="58" cy="226" r="10" fill={ACCENT} /><text x="58" y="230.2" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">2</text>
+    </svg>
+  )}
+
+  {variant === "safari" && (
+    <svg viewBox="0 0 200 360" role="img" aria-label={label} font-family={FONT}>
+      <rect x="2" y="2" width="196" height="356" rx="28" fill="#1f2933" />
+      <rect x="10" y="10" width="180" height="340" rx="22" fill="#fff" />
+      <rect x="74" y="16" width="52" height="12" rx="6" fill="#1f2933" />
+      <rect x="22" y="44" width="100" height="10" rx="3" fill={INK} opacity="0.85" />
+      <rect x="22" y="64" width="150" height="6" rx="3" fill={LINE} />
+      <rect x="22" y="76" width="130" height="6" rx="3" fill={LINE} />
+      <rect x="22" y="88" width="150" height="6" rx="3" fill={LINE} />
+      <rect x="22" y="100" width="110" height="6" rx="3" fill={LINE} />
+      <g>
+        <rect x="18" y="122" width="140" height="152" rx="12" fill="#f7f8fa" stroke={LINE} />
+        <rect x="18" y="122" width="140" height="152" rx="12" fill="none" stroke="#000" stroke-opacity="0.07" stroke-width="5" />
+        <text x="32" y="145" font-size="10" fill={INK}>A</text>
+        <text x="88" y="145" font-size="9.5" fill={INK} text-anchor="middle">100%</text>
+        <text x="138" y="146" font-size="13" fill={INK} text-anchor="end">A</text>
+        <line x1="18" y1="156" x2="158" y2="156" stroke={LINE} />
+        <rect x="22" y="160" width="132" height="26" rx="6" fill={HILITE} stroke={BRAND} stroke-width="1.5" />
+        <rect x="30" y="166.5" width="13" height="13" rx="2.5" fill={BRAND} />
+        <text x="36.5" y="176.5" font-size="8" font-weight="700" fill="#fff" text-anchor="middle">G</text>
+        <text x="49" y="177" font-size="9.5" font-weight="700" fill={INK}>Translate to …</text>
+        <line x1="18" y1="190" x2="158" y2="190" stroke={LINE} />
+        <text x="32" y="208" font-size="9.5" fill={INK}>Show Reader</text>
+        <line x1="18" y1="217" x2="158" y2="217" stroke={LINE} />
+        <text x="32" y="235" font-size="9.5" fill={INK}>Hide Toolbar</text>
+        <line x1="18" y1="244" x2="158" y2="244" stroke={LINE} />
+        <text x="32" y="262" font-size="9.5" fill={INK}>Website Settings</text>
+      </g>
+      <rect x="18" y="308" width="164" height="28" rx="14" fill="#eef2f6" />
+      <rect x="22" y="311" width="28" height="22" rx="11" fill={HILITE} stroke={BRAND} stroke-width="1.5" />
+      <text x="36" y="326" font-size="10" font-weight="700" fill={INK} text-anchor="middle">aA</text>
+      <text x="60" y="325.5" font-size="8.5" fill={MUTED}>equip.jesusonline.com</text>
+      <circle cx="170" cy="173" r="10" fill={ACCENT} /><text x="170" y="177.2" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">2</text>
+      <circle cx="36" cy="292" r="10" fill={ACCENT} /><text x="36" y="296.2" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">1</text>
+    </svg>
+  )}
+
+  {variant === "google-translate" && (
+    <svg viewBox="0 0 360 220" role="img" aria-label={label} font-family={FONT}>
+      <rect x="1" y="1" width="358" height="218" rx="10" fill="#fff" stroke={LINE} stroke-width="2" />
+      <path d="M1 11a10 10 0 0 1 10-10h338a10 10 0 0 1 10 10v29H1z" fill="#eef2f6" />
+      <circle cx="16" cy="14" r="4" fill="#ff5f57" /><circle cx="29" cy="14" r="4" fill="#febc2e" /><circle cx="42" cy="14" r="4" fill="#28c840" />
+      <rect x="56" y="20" width="230" height="14" rx="7" fill="#fff" stroke={BRAND} stroke-width="1.5" />
+      <text x="68" y="30.5" font-size="9" font-weight="700" fill={INK}>translate.google.com</text>
+      <circle cx="302" cy="27" r="10" fill={ACCENT} /><text x="302" y="31.2" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">1</text>
+      <rect x="20" y="52" width="16" height="15" rx="3" fill={BRAND} />
+      <text x="28" y="63.5" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">G</text>
+      <text x="42" y="64" font-size="11" fill={INK}>Google Translate</text>
+      <text x="22" y="92" font-size="9.5" fill={MUTED}>Text</text>
+      <text x="62" y="92" font-size="9.5" fill={MUTED}>Images</text>
+      <text x="112" y="92" font-size="9.5" fill={MUTED}>Documents</text>
+      <rect x="172" y="78" width="64" height="20" rx="10" fill={HILITE} stroke={BRAND} stroke-width="1.5" />
+      <text x="204" y="92" font-size="9.5" font-weight="700" fill={BRAND} text-anchor="middle">Websites</text>
+      <circle cx="250" cy="88" r="10" fill={ACCENT} /><text x="250" y="92.2" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">2</text>
+      <line x1="20" y1="108" x2="340" y2="108" stroke={LINE} />
+      <text x="22" y="128" font-size="10" fill={INK}>English</text>
+      <text x="88" y="128" font-size="11" fill={MUTED}>⇄</text>
+      <text x="110" y="128" font-size="10" font-weight="700" fill={BRAND}>Español</text>
+      <rect x="20" y="146" width="250" height="34" rx="8" fill="#fff" stroke={BRAND} stroke-width="1.5" />
+      <text x="32" y="167" font-size="10" fill={INK}>https://equip.jesusonline.com</text>
+      <circle cx="294" cy="163" r="13" fill={BRAND} />
+      <path d="M288 163 h11 m-4.5 -4.5 l4.5 4.5 l-4.5 4.5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+      <circle cx="326" cy="163" r="10" fill={ACCENT} /><text x="326" y="167.2" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">3</text>
+    </svg>
+  )}
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>
+
+<style>
+  .translate-illustration {
+    margin: 0;
+    width: 100%;
+  }
+  .translate-illustration svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .translate-illustration figcaption {
+    margin-top: 0.4rem;
+    font-size: 0.8rem;
+    text-align: center;
+    color: var(--color-muted-foreground);
+  }
+</style>

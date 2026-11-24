@@ -2,6 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import { Languages, Globe, Chrome, Smartphone, ExternalLink } from "lucide-react";
 import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
+import TranslateStepIllustration from "@/components/TranslateStepIllustration.astro";
 ---
 <Layout
   title="Translate · JO EQUIP"
@@ -62,6 +63,16 @@ import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
           </div>
         </li>
       </ol>
+      <div class="grid gap-4 sm:grid-cols-2 mt-6 max-w-2xl">
+        <TranslateStepIllustration
+          variant="chrome-menu"
+          label="Drawing of Chrome: right-click the page (1), then choose Translate in the menu (2)."
+        />
+        <TranslateStepIllustration
+          variant="chrome-bar"
+          label="Drawing of Chrome: click the Google Translate icon in the address bar (3) to choose another language."
+        />
+      </div>
     </div>
 
     {/* Method 2: Mobile */}
@@ -86,6 +97,18 @@ import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
           </div>
         </li>
       </ol>
+      <div class="grid grid-cols-2 gap-4 sm:gap-8 mt-6 max-w-md">
+        <TranslateStepIllustration
+          variant="android"
+          label="Drawing of Chrome on Android: tap the three-dot menu (1), then tap Translate (2)."
+          caption="Chrome · Android"
+        />
+        <TranslateStepIllustration
+          variant="safari"
+          label="Drawing of Safari on iPhone: tap the aA button (1), then tap Translate (2)."
+          caption="Safari · iPhone"
+        />
+      </div>
     </div>
 
     {/* Method 3: Manual */}
@@ -125,6 +148,12 @@ import BreadcrumbsLd from "@/components/BreadcrumbsLd.astro";
           </div>
         </li>
       </ol>
+      <div class="max-w-sm">
+        <TranslateStepIllustration
+          variant="google-translate"
+          label="Drawing of Google Translate: open translate.google.com (1), choose Websites (2), paste the JO EQUIP address and click the arrow (3)."
+        />
+      </div>
     </div>
 
     <div class="p-5 rounded text-sm" style="background-color:rgba(0,149,255,0.06);border-left:4px solid var(--color-brand);color:var(--color-text);">

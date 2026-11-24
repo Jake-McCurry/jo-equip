@@ -30,7 +30,9 @@ test("campaign keeps metadata, shared spacing, mobile-only panel and original de
   assert.match(landing, /var\(--section-space-mobile\)/);
   assert.match(landing, /var\(--section-space-desktop\)/);
   assert.match(landing, /isEng2 && \(\s*<section[^>]+lg:hidden/);
-  assert.match(landing, /join\("\/discipleship"\)[\s\S]*?>Find out more<\/a>/);
+  assert.ok(!landing.includes("Find out more"));
+  assert.match(landing, /isEng2 \? "--section-space-mobile:1rem;--section-space-desktop:1.25rem;"/);
+  assert.match(home, /--section-space-mobile:1rem;--section-space-desktop:1.25rem;/);
   const copy = "A free Leader Kit for pastors and home church leaders with 5-minute Discipleship Moments—all ready to teach and encourage heart transformation";
   assert.ok(landing.includes(copy) && home.includes(copy));
   assert.ok(landing.includes("join('/lp/leader-kits-0')"));
@@ -56,7 +58,13 @@ test("rendered campaigns preserve resources and isolate hero, labels, navigation
   assert.equal(carousel(eng2), carousel(homeHtml));
   assert.equal(carousel(slash), carousel(eng2));
   const title = "Apologetics, identity-centered discipleship";
-  assert.equal(main(eng2).split(title).length - 1, 1);
+  assert.equal(main(eng2).split(title).length - 1, 0);
+  assert.ok(main(homeHtml).includes(title), "homepage hero subtitle remains");
+  for (const removed of ["Find out more", "Free PDF downloads suitable for personal reading", "Sermon resources for pastors: video series"]) {
+    assert.ok(!main(eng2).includes(removed), removed);
+  }
+  assert.ok(main(eng1).includes("Free PDF downloads suitable for personal reading"));
+  assert.ok(main(eng1).includes("Sermon resources for pastors: video series"));
   assert.ok(!main(eng1).includes(title));
   assert.ok(!main(eng1).includes("data-leader-kit"));
   assert.match(main(eng1), />Books<\/h2>/);
@@ -72,7 +80,7 @@ test("rendered campaigns preserve resources and isolate hero, labels, navigation
   const resources = html => [...main(html).matchAll(/href="([^"]*(?:\/books|\/playlist)[^"]*)"/g)].map(match => match[1]);
   assert.deepEqual(resources(eng2), resources(eng1));
   for (const html of [eng1, eng2, slash]) assert.match(html, /name="robots" content="noindex, follow"/);
-  for (const path of ["pastors", "home-church-leaders", "chaplains", "missionaries", "discipleship"]) {
+  for (const path of ["pastors", "home-church-leaders", "chaplains", "missionaries"]) {
     assert.ok(e2.includes(`href="/${path}"`));
   }
 });

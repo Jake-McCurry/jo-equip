@@ -96,3 +96,57 @@ All CrossWire modules are KJV versification and public domain; downloaded from
   NET/KJV search text (`public/knowing-god/bible-search/`).
 - Earlier candidates (helloao.org JSON copies) were rejected because they are
   missing chapters (e.g. JFB Psalm 146, Mark 15; Matthew Henry Isaiah).
+
+# Bible maps and timeline sources
+
+Pages: `/bible/maps`, `/bible/maps/<place>`, `/bible/timeline`, and the Places
+tab in the Bible reader. Runtime data lives in `public/bible-data/maps/` (three
+content-hashed files: place index, chapter→places index, base-map SVG);
+build-time page data and the hash manifest live in `src/data/bible-maps/`.
+Generated explicitly: `bash scripts/fetch-map-sources.sh /tmp/map-sources` then
+`node scripts/generate-bible-maps.mjs /tmp/map-sources`. Every download URL is
+pinned to a commit and the generator refuses inputs whose SHA-256 differs from
+its pinned digests. Sources are not committed. `scripts/bible-maps-data.test.mjs`
+(`pnpm run test:maps`, part of `pnpm run build`) validates the committed output
+against KJV versification. No map tiles, satellite imagery or map services are
+used, at build time or at runtime.
+
+- **OpenBible.info Bible Geocoding Data**, CC BY 4.0
+  (<https://github.com/openbibleinfo/Bible-Geocoding-Data>, commit
+  `7eb18a5ee62f27b9b93bd6689ea272d76dd23b8f`): `data/ancient.jsonl` sha256
+  `b8187aa4737e8517ccc090f765d2be11da4c548cd2a59d3cdcb62e952cb8c0f2`.
+  Places, verses, coordinates and confidence. The confidence shown is the
+  score (0–1000) of the best identification under current scholarship
+  (`time_total`, adjusted by the resolution's `best_time_score`): 700+ high,
+  300–699 moderate, below 300 low, none = location unknown. Up to five other
+  identifications with a positive score are kept as "other proposed
+  locations". 57 entries with no verses (deuterocanonical-only places) are
+  skipped.
+- **Theographic Bible Metadata** by Robert Rouse, CC BY-SA 4.0
+  (<https://github.com/robertrouse/theographic-bible-metadata>, commit
+  `a22047fe54aa5621f573d99222a82efb62741193`; the master branch changes, so the
+  commit pin matters): `json/events.json` sha256
+  `e21729678280c55455603a47df816656be9db75c5870c61fede0eb054f4c6c26`,
+  `json/people.json` `09b0a77f89c08196f5326bdad70d4bcbb1b9c7b0a770d521de470d24c63b9d83`,
+  `json/places.json` `cea8f1b960bc0d643b9e574cf888a3061c5e6cd628b29164770cbdf71ca304c6`,
+  `json/verses.json` `f4dc7cadeabf72ffa83499394cdfb9058e274441ecf3b577c69c550f8cdc2c05`.
+  Timeline events, participants, event locations (joined to OpenBible places by
+  their OpenBible id). Dates are astronomical years in the traditional,
+  largely Ussher chronology (Creation = −4003, i.e. 4004 BC); every page labels
+  them approximate and traditional. The eras on the timeline page are our own
+  grouping, anchored to Theographic events. Because of the share-alike
+  license, pages using this data say the adapted data is shared under CC BY-SA.
+- **Easton's Bible Dictionary** (M. G. Easton, 1897, public domain), as included
+  in Theographic `places.json` (`dictText`). Its markdown scripture links are
+  converted to reader links (KJV); unresolvable links stay as plain text.
+- **Natural Earth** 1:10m physical vectors, public domain
+  (<https://github.com/nvkelso/natural-earth-vector>, commit
+  `ca96624a56bd078437bca8184e78163e5039ad19`): `ne_10m_land.geojson` sha256
+  `1ac90796408bc6ad6911d69448485d3c4dbf2190370080368a09976e1c9f7416`,
+  `ne_10m_lakes.geojson` `2d036f53dedec578001c5c30c2959ee7d4eebc1306900fa4367c49929ec8f2d9`,
+  `ne_10m_rivers_lake_centerlines.geojson`
+  `bb854a900ecbd3b408df46d5e16e3e0f974ba55993f9d8b5c26e855273c0905a`.
+  Clipped to 10°W–70°E, 5°N–48°N, simplified (Douglas–Peucker, ~1 km) and drawn
+  in an equirectangular projection scaled for 32°N; the same projection
+  (`src/components/bible-maps/map-projection.ts`) places the markers. The map
+  shows modern coastlines and rivers, not ancient ones.

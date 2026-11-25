@@ -1,0 +1,32 @@
+---
+/* Source and license credits for pages that use the Bible maps / timeline data.
+   Keep in step with scripts/data/bible-search-sources.md. */
+interface Props { uses: ("openbible" | "naturalearth" | "theographic" | "easton")[] }
+const { uses } = Astro.props;
+const ext = { target: "_blank", rel: "noopener noreferrer" };
+---
+<section class="bmp-sources" aria-labelledby="bmp-sources-h">
+  <h2 id="bmp-sources-h">Sources and licenses</h2>
+  <ul>
+    {uses.includes("openbible") && (
+      <li>
+        Place identifications, coordinates and confidence scores: <a href="https://www.openbible.info/geo/" {...ext}>OpenBible.info Bible Geocoding Data</a>,
+        licensed <a href="https://creativecommons.org/licenses/by/4.0/" {...ext}>CC BY 4.0</a>. Scores show how strongly current scholarship supports each identification.
+      </li>
+    )}
+    {uses.includes("theographic") && (
+      <li>
+        Events, dates, people and event locations: <a href="https://theographic.netlify.app/" {...ext}>Theographic Bible Metadata</a> by Robert Rouse,
+        licensed <a href="https://creativecommons.org/licenses/by-sa/4.0/" {...ext}>CC BY-SA 4.0</a>. The timeline adapts this data (grouping into eras and
+        linking verses); the adapted timeline data is shared under the same license.
+      </li>
+    )}
+    {uses.includes("easton") && (
+      <li>Dictionary article: <em>Easton&rsquo;s Bible Dictionary</em> by M. G. Easton (1897, public domain), as distributed with Theographic Bible Metadata (<a href="https://creativecommons.org/licenses/by-sa/4.0/" {...ext}>CC BY-SA 4.0</a>).</li>
+    )}
+    {uses.includes("naturalearth") && (
+      <li>Base map: <a href="https://www.naturalearthdata.com/" {...ext}>Natural Earth</a> (public domain). It shows modern coastlines, lakes and rivers.</li>
+    )}
+  </ul>
+  <p>All of this data is hosted on JO EQUIP; the maps make no requests to outside map services.</p>
+</section>

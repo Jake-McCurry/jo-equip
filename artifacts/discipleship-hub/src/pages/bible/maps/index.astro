@@ -1,0 +1,60 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import MapExplorer from "@/components/bible-maps/MapExplorer";
+import MapSources from "@/components/bible-maps/MapSources.astro";
+import { places } from "@/data/bible-maps";
+import "@/components/bible-maps/bible-maps.css";
+
+const baseUrl = import.meta.env.BASE_URL;
+const join = (path: string) => (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + path;
+
+// Static A–Z list: every place page is reachable without JavaScript.
+const letters = new Map<string, typeof places>();
+for (const p of places) {
+  const l = p.label[0].toUpperCase();
+  letters.set(l, [...(letters.get(l) ?? []), p]);
+}
+---
+<Layout
+  title="Bible Maps: Every Place in the Bible · JO EQUIP"
+  description={`An interactive map of ${places.length.toLocaleString("en-US")} places in the Bible. Search by name, filter by book, see how certain each location is, and read every verse that mentions a place.`}
+>
+  <div class="bmp-main">
+    <nav class="bmp-crumbs" aria-label="Breadcrumb">
+      <a href={join("/bible")}>Bible</a> <span aria-hidden="true">/</span>
+      <a href={join("/bible/resources")}>Bible Resources</a> <span aria-hidden="true">/</span> Bible Maps
+    </nav>
+    <p class="bmp-eyebrow">Study Tools</p>
+    <h1 class="bmp-title">Bible Maps</h1>
+    <p class="bmp-lede">
+      Find the cities, regions, mountains, rivers and seas named in Scripture. Each place shows how confident scholars are of its location
+      and links to every verse that mentions it. Not every biblical place can be located; uncertain ones are marked.
+    </p>
+    <p class="bmp-lede" style="font-size:1rem;margin-top:.5rem">
+      Looking for when things happened? See the <a class="bmp-link" href={join("/bible/timeline")}>Bible Timeline</a>.
+    </p>
+
+    <section class="bmp-section" aria-label="Interactive Bible map">
+      <MapExplorer client:load baseUrl={baseUrl} />
+    </section>
+
+    <section class="bmp-section" aria-labelledby="az-h">
+      <h2 id="az-h">All places A–Z</h2>
+      <ul class="bmp-az" aria-label="Jump to letter">
+        {[...letters.keys()].map(l => <li><a href={`#az-${l}`}>{l}</a></li>)}
+      </ul>
+      {[...letters.entries()].map(([l, list]) => (
+        <>
+          <h3 id={`az-${l}`}>{l}</h3>
+          <ul class="bmp-az-list">
+            {list.map(p => (
+              <li><a href={join(`/bible/maps/${p.slug}`)}>{p.name}</a>{p.hint && <small> ({p.hint})</small>}</li>
+            ))}
+          </ul>
+        </>
+      ))}
+    </section>
+
+    <MapSources uses={["openbible", "naturalearth"]} />
+  </div>
+</Layout>

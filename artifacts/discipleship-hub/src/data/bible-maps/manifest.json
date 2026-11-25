@@ -1,0 +1,97 @@
+{
+ "schemaVersion": 1,
+ "projection": {
+  "lonMin": -10,
+  "lonMax": 70,
+  "latMin": 5,
+  "latMax": 48,
+  "width": 678.4384769251408,
+  "height": 430
+ },
+ "types": [
+  "altar",
+  "body of water",
+  "campsite",
+  "canal",
+  "cliff",
+  "district in settlement",
+  "field",
+  "ford",
+  "forest",
+  "fortification",
+  "garden",
+  "gate",
+  "hall",
+  "hill",
+  "island",
+  "mine",
+  "mountain",
+  "mountain pass",
+  "mountain range",
+  "mountain ridge",
+  "natural area",
+  "people group",
+  "pool",
+  "promontory",
+  "region",
+  "river",
+  "road",
+  "rock",
+  "room",
+  "settlement",
+  "spring",
+  "stone heap",
+  "structure",
+  "tree",
+  "valley",
+  "wadi",
+  "well"
+ ],
+ "files": {
+  "places": "e4da3c0366",
+  "chapters": "8adfcbbed0",
+  "basemap": "633417b884"
+ },
+ "stats": {
+  "places": 1285,
+  "located": 1278,
+  "events": 501,
+  "eastonLinks": 2648,
+  "eastonDropped": 2,
+  "skippedNoVerses": 57
+ },
+ "sources": [
+  {
+   "file": "ob-ancient.jsonl",
+   "sha256": "b8187aa4737e8517ccc090f765d2be11da4c548cd2a59d3cdcb62e952cb8c0f2"
+  },
+  {
+   "file": "tg-places.json",
+   "sha256": "cea8f1b960bc0d643b9e574cf888a3061c5e6cd628b29164770cbdf71ca304c6"
+  },
+  {
+   "file": "tg-events.json",
+   "sha256": "e21729678280c55455603a47df816656be9db75c5870c61fede0eb054f4c6c26"
+  },
+  {
+   "file": "tg-people.json",
+   "sha256": "09b0a77f89c08196f5326bdad70d4bcbb1b9c7b0a770d521de470d24c63b9d83"
+  },
+  {
+   "file": "tg-verses.json",
+   "sha256": "f4dc7cadeabf72ffa83499394cdfb9058e274441ecf3b577c69c550f8cdc2c05"
+  },
+  {
+   "file": "ne_10m_land.geojson",
+   "sha256": "1ac90796408bc6ad6911d69448485d3c4dbf2190370080368a09976e1c9f7416"
+  },
+  {
+   "file": "ne_10m_lakes.geojson",
+   "sha256": "2d036f53dedec578001c5c30c2959ee7d4eebc1306900fa4367c49929ec8f2d9"
+  },
+  {
+   "file": "ne_10m_rivers_lake_centerlines.geojson",
+   "sha256": "bb854a900ecbd3b408df46d5e16e3e0f974ba55993f9d8b5c26e855273c0905a"
+  }
+ ]
+}

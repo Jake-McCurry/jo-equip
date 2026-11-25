@@ -1,0 +1,122 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import MapSources from "@/components/bible-maps/MapSources.astro";
+import { readerHref, refText, yearLabel } from "@/components/bible-maps/maps-data";
+import { placeBySlug, timeline } from "@/data/bible-maps";
+import "@/components/bible-maps/bible-maps.css";
+
+const baseUrl = import.meta.env.BASE_URL;
+const join = (path: string) => (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + path;
+
+const MAX_REFS = 6;
+const eras = timeline.eras.map((era, i) => {
+  const events = timeline.events.filter(e => e.era === i);
+  const years = events.map(e => e.year);
+  return { ...era, events, from: Math.min(...years), to: Math.max(...years) };
+});
+const span = (e: { year: number; years: number }) =>
+  e.years >= 1 ? `c. ${yearLabel(e.year)} – ${yearLabel(e.year + e.years)}` : `c. ${yearLabel(e.year)}`;
+const lasting = (y: number) => (y >= 2 ? `about ${y} years` : y === 1 ? "about a year" : "");
+---
+<Layout
+  title="Bible Timeline: Events, People and Periods · JO EQUIP"
+  description={`A Bible timeline of ${timeline.events.length} events, lives and periods from Creation to the early church, in order, with traditional dates and links to every passage.`}
+>
+  <div class="bmp-main bmp-narrow">
+    <nav class="bmp-crumbs" aria-label="Breadcrumb">
+      <a href={join("/bible")}>Bible</a> <span aria-hidden="true">/</span>
+      <a href={join("/bible/resources")}>Bible Resources</a> <span aria-hidden="true">/</span> Bible Timeline
+    </nav>
+    <p class="bmp-eyebrow">Study Tools</p>
+    <h1 class="bmp-title">Bible Timeline</h1>
+    <p class="bmp-lede">
+      The events of Scripture in order, from Creation to the early church: key events, the lives of major figures, and the longer periods
+      that frame them. Every entry links to its passages in the online Bible reader, and places link to the <a class="bmp-link" href={join("/bible/maps")}>Bible Maps</a>.
+    </p>
+    <p class="bmp-note" style="margin-top:1.25rem">
+      <strong>About the dates.</strong> All dates are approximate. They follow the traditional chronology used by the source data, which is largely
+      that of Archbishop James Ussher (1650) and dates Creation to about 4004 BC. Many dates, especially before the time of the kings, are debated,
+      and other chronologies differ by decades or centuries. Use them to see the order of events, not as settled history.
+    </p>
+
+    <nav class="bmp-section" aria-labelledby="eras-h">
+      <h2 id="eras-h">Eras</h2>
+      <ol class="tl-eras">
+        {eras.map(era => (
+          <li><a href={`#${era.id}`}><span>{era.title}</span><small>c. {yearLabel(era.from)} – {yearLabel(era.to)}</small></a></li>
+        ))}
+      </ol>
+    </nav>
+
+    {eras.map(era => (
+      <section class="bmp-section" aria-labelledby={era.id}>
+        <h2 id={era.id}>{era.title} <small class="tl-range">c. {yearLabel(era.from)} – {yearLabel(era.to)}</small></h2>
+        <ol class="tl-list">
+          {era.events.map(e => {
+            const places = e.places.map(s => placeBySlug.get(s)!).filter(Boolean);
+            const refs = e.verses.slice(0, MAX_REFS);
+            return (
+              <li id={e.id} class={`tl-item is-${e.kind}`}>
+                <p class="tl-date">{span(e)}</p>
+                <div class="tl-body">
+                  <h3>
+                    {e.kind === "period" && <span class="tl-tag">Period</span>}
+                    {e.kind === "life" && <span class="tl-tag">Life</span>}
+                    {e.title}
+                  </h3>
+                  {e.years >= 1 && <p class="tl-meta">Lasting {lasting(e.years)} (traditional dating)</p>}
+                  {e.people.length > 0 && <p class="tl-meta"><span class="tl-k">People:</span> {e.people.join(", ")}</p>}
+                  {places.length > 0 && (
+                    <p class="tl-meta"><span class="tl-k">{places.length === 1 ? "Place:" : "Places:"}</span>{" "}
+                      {places.map((p, i) => <>{i > 0 && ", "}<a href={join(`/bible/maps/${p.slug}`)}>{p.name}</a></>)}
+                    </p>
+                  )}
+                  <ul class="bmp-refs tl-refs" aria-label={`Passages for ${e.title}`}>
+                    {refs.map(([from, to]) => <li><a href={readerHref(baseUrl, from)}>{refText(from, to)}</a></li>)}
+                  </ul>
+                  {e.verses.length > MAX_REFS && (
+                    <details class="tl-more">
+                      <summary>{e.verses.length - MAX_REFS} more passages</summary>
+                      <ul class="bmp-refs tl-refs">
+                        {e.verses.slice(MAX_REFS).map(([from, to]) => <li><a href={readerHref(baseUrl, from)}>{refText(from, to)}</a></li>)}
+                      </ul>
+                    </details>
+                  )}
+                </div>
+              </li>
+            );
+          })}
+        </ol>
+      </section>
+    ))}
+
+    <MapSources uses={["theographic", "openbible"]} />
+  </div>
+</Layout>
+
+<style>
+  .tl-eras { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); gap: .5rem; margin: 0; padding: 0; list-style: none; counter-reset: era; }
+  .tl-eras a { display: flex; flex-direction: column; height: 100%; padding: .6rem .8rem; border: 1px solid var(--color-border-soft, #ccebff); border-radius: 4px; color: var(--color-hero, #006bb3); font-weight: 700; text-decoration: none; }
+  .tl-eras a:hover { background: var(--color-surface-soft, #e6f5ff); }
+  .tl-eras small, .tl-range { font-weight: 600; font-size: .85rem; color: var(--color-text-muted, #2e5a7a); }
+  .tl-range { display: block; margin-top: .15rem; }
+  .tl-list { margin: 0; padding: 0; list-style: none; border-left: 3px solid var(--color-border-soft, #ccebff); }
+  .tl-item { position: relative; display: grid; grid-template-columns: 10.5rem minmax(0, 1fr); gap: 1rem; padding: .9rem 0 .9rem 1.1rem; scroll-margin-top: 110px; }
+  .tl-item::before { content: ""; position: absolute; left: -8px; top: 1.15rem; width: 13px; height: 13px; border-radius: 50%; background: var(--color-hero, #006bb3); border: 2px solid #fff; }
+  .tl-item.is-period::before { background: var(--color-action-warm, #c45100); border-radius: 2px; }
+  .tl-item.is-life::before { background: #fff; border: 2px solid var(--color-hero, #006bb3); }
+  .tl-item:target { background: #fff8e1; }
+  .tl-date { margin: .1rem 0 0; font-weight: 700; color: var(--color-text-muted, #2e5a7a); font-size: .95rem; }
+  .tl-body h3 { margin: 0; font-size: 1.1rem; font-weight: 700; color: var(--color-text, #12324a); }
+  .tl-tag { display: inline-block; margin-right: .4rem; padding: 0 .4rem; border-radius: 3px; background: var(--color-surface-soft, #e6f5ff); color: var(--color-hero, #006bb3); font-size: .72rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; vertical-align: 2px; }
+  .is-period .tl-tag { background: #fff1e6; color: #9a3f00; }
+  .tl-meta { margin: .25rem 0 0; font-size: .92rem; color: var(--color-text-muted, #2e5a7a); line-height: 1.5; }
+  .tl-meta a { color: var(--color-hero, #006bb3); font-weight: 600; }
+  .tl-k { font-weight: 700; }
+  .tl-refs { margin-top: .5rem; }
+  .tl-more { margin-top: .4rem; font-size: .9rem; }
+  .tl-more summary { cursor: pointer; font-weight: 700; color: var(--color-hero, #006bb3); }
+  @media (max-width: 600px) {
+    .tl-item { grid-template-columns: 1fr; gap: .2rem; }
+  }
+</style>

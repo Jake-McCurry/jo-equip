@@ -1,0 +1,131 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import MapSources from "@/components/bible-maps/MapSources.astro";
+import { MapLegend, MapView, type MapMarker } from "@/components/bible-maps/MapView";
+import { basemapUrl, bookName, confidenceOf, readerHref, refText, yearLabel } from "@/components/bible-maps/maps-data";
+import { project } from "@/components/bible-maps/map-projection";
+import { eventById, places, type Place } from "@/data/bible-maps";
+import "@/components/bible-maps/bible-maps.css";
+
+export function getStaticPaths() {
+  return places.map(place => ({ params: { slug: place.slug }, props: { place } }));
+}
+
+const { place } = Astro.props as { place: Place };
+const baseUrl = import.meta.env.BASE_URL;
+const join = (path: string) => (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + path;
+
+const located = place.lon !== null && place.lat !== null;
+const conf = confidenceOf(located ? place.score : 0);
+const n = place.verses.length;
+const verseWord = n === 1 ? "verse" : "verses";
+const displayName = place.hint ? `${place.name} (${place.hint.replace(/^first mentioned /, "")})` : place.name;
+
+const byBook: { book: string; verses: number[] }[] = [];
+for (const v of place.verses) {
+  const book = bookName(Math.floor(v / 1e6));
+  const last = byBook[byBook.length - 1];
+  if (last?.book === book) last.verses.push(v); else byBook.push({ book, verses: [v] });
+}
+
+const markers: MapMarker[] = [];
+if (located) {
+  place.alts.forEach((a, i) => {
+    const [x, y] = project(a.lon, a.lat);
+    markers.push({ id: `alt${i}`, x, y, label: a.name, tier: "low" });
+  });
+  const [x, y] = project(place.lon!, place.lat!);
+  markers.push({ id: place.slug, x, y, label: place.name, tier: conf.tier, active: true });
+}
+// Frame the best location plus nearby alternatives; far-off proposals stay listed below.
+const best = markers[markers.length - 1];
+const fitTo = markers.filter(m => best && Math.hypot(m.x - best.x, m.y - best.y) < 40);
+const events = (place.events ?? []).map(id => eventById.get(id)!).filter(Boolean);
+const first = refText(place.verses[0]);
+const lastRef = refText(place.verses[n - 1]);
+const description = `Where was ${place.name}? ${located ? `See it on a Bible map (${conf.label.toLowerCase()})` : "Its location is unknown, but you can"} and read all ${n} ${verseWord} that mention ${place.name}${n > 1 ? `, from ${first} to ${lastRef}` : ` (${first})`}.`.replace("read all 1 verse that mention", "read the verse that mentions");
+const easton = place.easton ?? [];
+---
+<Layout title={`${displayName} in the Bible: Map and Verses · JO EQUIP`} description={description}>
+  <div class="bmp-main bmp-narrow">
+    <nav class="bmp-crumbs" aria-label="Breadcrumb">
+      <a href={join("/bible/resources")}>Bible Resources</a> <span aria-hidden="true">/</span>
+      <a href={join("/bible/maps")}>Bible Maps</a> <span aria-hidden="true">/</span> {place.name}
+    </nav>
+    <p class="bmp-eyebrow">Bible place</p>
+    <h1 class="bmp-title">{place.name}</h1>
+    {place.hint && <p class="bmp-sub">The {place.name} {place.hint}</p>}
+    <p class="bmp-lede">
+      <span class={`bm-conf is-${conf.tier}`}>{conf.label}</span>{" "}
+      <span style="text-transform:capitalize">{place.types.join(", ")}</span>
+      {" · "}Mentioned in {n} {verseWord}{n > 1 ? `, from ${first} to ${lastRef}` : ` (${first})`}.
+    </p>
+
+    <section class="bmp-section" aria-labelledby="where-h">
+      <h2 id="where-h">Where was {place.name}?</h2>
+      {located ? (
+        <>
+          <MapView client:visible basemap={basemapUrl(baseUrl)} markers={markers} fitTo={fitTo} labels="all" minSpan={36} aspect={16 / 10}
+            label={`Map showing the most likely location of ${place.name}${place.alts.length ? " and other proposed locations" : ""}.`} />
+          {place.alts.length > 0 && <MapLegend />}
+          <p>
+            {place.bestName && place.bestName !== place.name
+              ? <>The most likely identification is <strong>{place.bestName}</strong></>
+              : <>The most likely location is shown</>}
+            {" "}(confidence score {place.score} of 1000 from OpenBible.info).{" "}
+            {conf.tier === "high" && "Scholars broadly agree on this location."}
+            {conf.tier === "moderate" && "This location is probable but not certain."}
+            {conf.tier === "low" && "This location is uncertain; treat it as a suggestion."}
+          </p>
+          {place.alts.length > 0 && (
+            <>
+              <h3>Other proposed locations</h3>
+              <ul>
+                {place.alts.map(a => <li>{a.name} <small>(score {a.score})</small></li>)}
+              </ul>
+            </>
+          )}
+          <p><a class="bmp-link" href={join(`/bible/maps?place=${place.slug}`)}>See {place.name} on the full Bible map →</a></p>
+        </>
+      ) : (
+        <p class="bmp-note">The location of {place.name} is unknown. No proposed site has enough support to place it on the map.</p>
+      )}
+    </section>
+
+    <section class="bmp-section" aria-labelledby="verses-h">
+      <h2 id="verses-h">{n === 1 ? `The verse that mentions ${place.name}` : `All ${n} verses that mention ${place.name}`}</h2>
+      <p>Each reference opens in the online Bible reader.</p>
+      {byBook.map(g => (
+        <>
+          <h3>{g.book} <small style="font-weight:400">({g.verses.length})</small></h3>
+          <ul class="bmp-refs">
+            {g.verses.map(v => <li><a href={readerHref(baseUrl, v)}>{refText(v).replace(`${g.book} `, "")}</a></li>)}
+          </ul>
+        </>
+      ))}
+    </section>
+
+    {events.length > 0 && (
+      <section class="bmp-section" aria-labelledby="events-h">
+        <h2 id="events-h">Events at {place.name}</h2>
+        <ul>
+          {events.map(e => (
+            <li><a class="bmp-link" style="font-weight:600" href={join(`/bible/timeline#${e.id}`)}>{e.title}</a> <small>(c. {yearLabel(e.year)}, traditional date)</small></li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {easton.length > 0 && (
+      <section class="bmp-section bmp-dict" aria-labelledby="dict-h">
+        <h2 id="dict-h">{place.name} in Easton&rsquo;s Bible Dictionary</h2>
+        {easton.map(para => (
+          <p>{para.map(seg => typeof seg === "string" ? seg : <a href={readerHref(baseUrl, seg[1], "kjv")}>{seg[0]}</a>)}</p>
+        ))}
+        <p><small>Easton&rsquo;s Bible Dictionary (1897) quotes the King James Version; its links open the KJV. It reflects scholarship of its time.</small></p>
+      </section>
+    )}
+
+    <MapSources uses={easton.length || events.length ? ["openbible", "naturalearth", "theographic", "easton"] : ["openbible", "naturalearth"]} />
+  </div>
+</Layout>

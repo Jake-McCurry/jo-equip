@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { AlertTriangle, BookOpenText, ChevronRight, Link2 } from "lucide-react";
+import { AlertTriangle, BookOpenText, ChevronRight, Link2, MapPin } from "lucide-react";
 import { EMPTY_STUDY, loadStudy, persistStudy, type ChapterRecord, type StudyData, type VerseRecord } from "./study-storage";
 import { errMsg, fetchPassage, locationSearch, readLocation, readStrongs, readStudyLink, upsertVerse, type Location, type Passage, type StudyLink } from "./reader-utils";
 import { ReaderNav } from "./ReaderNav";
@@ -14,6 +14,7 @@ import { WordStudyPanel } from "./WordStudyPanel";
 import { loadChapterWords } from "./strongs-data";
 import { CommentaryPanel } from "./CommentaryPanel";
 import { CrossRefPanel } from "./CrossRefPanel";
+import { PlacesPanel } from "./PlacesPanel";
 import { isCommentaryId, type CommentaryId } from "./commentary-format";
 import type { KjvTag } from "./strongs-align";
 import "./bible-reader.css";
@@ -46,7 +47,7 @@ export default function BibleReader({ baseUrl }: { baseUrl: string }) {
   // Tab state plus the deep link it implies (?commentary= / ?tab=xrefs); callers write the URL.
   const applyTab = (t: StudyTab, c: CommentaryId = commentaryRef.current) => {
     setTabState(t);
-    linkRef.current = t === "commentary" ? { tab: "commentary", commentary: c } : t === "xrefs" ? { tab: "xrefs" } : null;
+    linkRef.current = t === "commentary" ? { tab: "commentary", commentary: c } : t === "xrefs" || t === "places" ? { tab: t } : null;
   };
   const commentaryRef = useRef(commentary); commentaryRef.current = commentary;
 
@@ -230,7 +231,7 @@ export default function BibleReader({ baseUrl }: { baseUrl: string }) {
       <BackupPanel study={study} onPersist={next => { commit(next, true); }} />
     </>
   );
-  const studyTab = tab === "commentary" || tab === "xrefs";
+  const studyTab = tab === "commentary" || tab === "xrefs" || tab === "places";
   const commentaryPanel = (sheet: boolean) => (
     <CommentaryPanel baseUrl={baseUrl} loc={loc} verse={selected} commentary={commentary} onCommentary={chooseCommentary}
       onVerse={v => setVerse(v)} onClose={sheet ? closeStudySheet : undefined} hrefFor={hrefFor} onGo={go} />
@@ -238,9 +239,12 @@ export default function BibleReader({ baseUrl }: { baseUrl: string }) {
   const xrefPanel = (sheet: boolean) => (
     <CrossRefPanel baseUrl={baseUrl} loc={loc} verse={selected} hrefFor={hrefFor} onGo={go} onClose={sheet ? closeStudySheet : undefined} />
   );
+  const placesPanel = (sheet: boolean) => (
+    <PlacesPanel baseUrl={baseUrl} loc={loc} verse={selected} onVerse={v => setVerse(v)} onClose={sheet ? closeStudySheet : undefined} />
+  );
   const sheetOpen = !desktop && (!!panelProps || !!strongs || studyTab);
   const sheetTab: StudyTab = studyTab ? tab : !panelProps ? "words" : tab === "library" ? "notes" : tab;
-  const sheetLabel = sheetTab === "commentary" ? "Commentary" : sheetTab === "xrefs" ? "Cross references" : panelProps ? "Selected verse" : "Word study";
+  const sheetLabel = sheetTab === "commentary" ? "Commentary" : sheetTab === "xrefs" ? "Cross references" : sheetTab === "places" ? "Places" : panelProps ? "Selected verse" : "Word study";
 
   return (
     <div className="br-root" id="br-top">
@@ -270,6 +274,7 @@ export default function BibleReader({ baseUrl }: { baseUrl: string }) {
                 { id: "notes", label: "My notes", content: notes },
                 { id: "commentary", label: "Commentary", content: commentaryPanel(false) },
                 { id: "xrefs", label: "Cross-refs", content: xrefPanel(false) },
+                { id: "places", label: "Places", content: placesPanel(false) },
                 { id: "library", label: "My library", content: <div className="flex flex-col gap-4">{library}</div> },
               ]} />
             </div>
@@ -281,6 +286,7 @@ export default function BibleReader({ baseUrl }: { baseUrl: string }) {
               <div className="mt-2 flex flex-wrap gap-2">
                 <button type="button" onClick={() => chooseTab("commentary")} className="br-btn-outline"><BookOpenText size={16} aria-hidden="true" /> Commentary</button>
                 <button type="button" onClick={() => chooseTab("xrefs")} className="br-btn-outline"><Link2 size={16} aria-hidden="true" /> Cross references</button>
+                <button type="button" onClick={() => chooseTab("places")} className="br-btn-outline"><MapPin size={16} aria-hidden="true" /> Places</button>
               </div>
             </div>
             {library}
@@ -294,6 +300,7 @@ export default function BibleReader({ baseUrl }: { baseUrl: string }) {
             ...(panelProps ? [{ id: "notes" as StudyTab, label: "My notes", content: <VerseStudyPanel {...panelProps} compact /> }] : []),
             { id: "commentary", label: "Commentary", content: commentaryPanel(true) },
             { id: "xrefs", label: "Cross-refs", content: xrefPanel(true) },
+            { id: "places", label: "Places", content: placesPanel(true) },
           ]} />
         </div>
       )}

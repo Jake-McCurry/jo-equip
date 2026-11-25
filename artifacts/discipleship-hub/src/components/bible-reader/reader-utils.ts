@@ -42,8 +42,8 @@ export function readLocation(): Location {
   return { book: found.name, chapter, verse: Number.isInteger(v) && v > 0 ? v : undefined, translation };
 }
 
-/** Study tab deep link: `?commentary=mhc` opens the Commentary tab, `?tab=xrefs` the Cross-references tab. */
-export type StudyLink = { tab: "commentary"; commentary: CommentaryId } | { tab: "xrefs" };
+/** Study tab deep link: `?commentary=mhc` opens the Commentary tab, `?tab=xrefs` / `?tab=places` the Cross-references / Places tab. */
+export type StudyLink = { tab: "commentary"; commentary: CommentaryId } | { tab: "xrefs" } | { tab: "places" };
 
 export function locationSearch(loc: Location, strongs?: string | null, study?: StudyLink | null) {
   const q = new URLSearchParams({ book: loc.book, chapter: String(loc.chapter) });
@@ -51,7 +51,7 @@ export function locationSearch(loc: Location, strongs?: string | null, study?: S
   q.set("translation", String(loc.translation));
   if (strongs) q.set("strongs", strongs);
   if (study?.tab === "commentary") q.set("commentary", study.commentary);
-  else if (study?.tab === "xrefs") q.set("tab", "xrefs");
+  else if (study) q.set("tab", study.tab);
   return `?${q.toString()}`;
 }
 
@@ -62,6 +62,7 @@ export function readStudyLink(): StudyLink | null {
   if (c !== undefined) return { tab: "commentary", commentary: isCommentaryId(c) ? c : "mhc" };
   const t = q.get("tab")?.toLowerCase();
   if (t === "xrefs" || t === "cross-references") return { tab: "xrefs" };
+  if (t === "places" || t === "maps") return { tab: "places" };
   if (t === "commentary") return { tab: "commentary", commentary: "mhc" };
   return null;
 }

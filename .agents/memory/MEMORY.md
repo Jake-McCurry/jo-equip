@@ -62,3 +62,4 @@
 - [Deployment test fixtures](deployment-test-fixtures.md) — Local uploads can mask missing inputs in Cloudflare builds; keep validation fixtures with the repository.
 - [Strong's word-study data](strongs-word-study-data.md) — Match KJV tags to displayed text at runtime; STEP uses NRSV numbering with [KJV] brackets; skip X/empty-Qere rows.
 - [Public-domain commentary sources](public-domain-commentary-sources.md) — Use CrossWire SWORD modules, not helloao copies (missing chapters); Barnes NT-only; skip borrowed SWORD intro records.
+- [Bible map sources](bible-map-sources.md) — OpenBible/Theographic/Natural Earth pins; astronomical years; drop 'special' type; numbered slugs; basemap via <use>.

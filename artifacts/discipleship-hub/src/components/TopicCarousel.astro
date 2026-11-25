@@ -33,6 +33,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   }
   .tc-track::-webkit-scrollbar { display:none; }
   .tc-track li { flex:0 0 auto; }
+  /* Center the links when they all fit (desktop). Auto margins collapse to 0
+     once the track overflows, so scrolling still starts at the first link —
+     unlike justify-content:center, which would clip the start. */
+  .tc-track li:first-child { margin-left:auto; }
+  .tc-track li:last-child { margin-right:auto; }
   .tc-link {
     display:inline-flex; align-items:center; min-height:2.75rem; padding:0 .5rem; white-space:nowrap;
     color:#0067b8; font-weight:700; font-size:.875rem; border-radius:999px; text-decoration:none;

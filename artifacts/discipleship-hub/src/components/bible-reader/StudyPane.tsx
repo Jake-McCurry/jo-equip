@@ -1,8 +1,8 @@
 import { useRef, type KeyboardEvent, type ReactNode } from "react";
 
-// Add new study tabs (for example a commentary) by extending this union and
-// passing another entry in `tabs`; the tab list and keyboard behavior are generic.
-export type StudyTab = "words" | "notes" | "library";
+// Add new study tabs by extending this union and passing another entry in
+// `tabs`; the tab list and keyboard behavior are generic.
+export type StudyTab = "words" | "notes" | "commentary" | "xrefs" | "library";
 export type StudyPaneTab = { id: StudyTab; label: string; content: ReactNode };
 
 type Props = { tabs: StudyPaneTab[]; tab: StudyTab; onTab: (t: StudyTab) => void; idPrefix: string; compact?: boolean };

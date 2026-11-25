@@ -48,19 +48,19 @@ function Intro({ loc }: { loc: Location }) {
   );
 }
 
-function Header({ eyebrow, title, onClose, label, headingRef }: { eyebrow: string; title: ReactNode; onClose: () => void; label: string; headingRef?: Ref<HTMLHeadingElement> }) {
+export function Header({ eyebrow, title, onClose, label, headingRef }: { eyebrow: string; title: ReactNode; onClose?: () => void; label: string; headingRef?: Ref<HTMLHeadingElement> }) {
   return (
     <div className="flex items-start justify-between gap-3">
       <div className="min-w-0">
         <p className="br-eyebrow">{eyebrow}</p>
         <h2 ref={headingRef} tabIndex={-1} className="mt-0.5 text-xl text-[var(--color-hero)] outline-none">{title}</h2>
       </div>
-      <button type="button" onClick={onClose} aria-label={label} className="rounded p-1.5 text-[var(--color-text-muted)] hover:bg-[var(--color-surface-soft)]"><X size={18} /></button>
+      {onClose && <button type="button" onClick={onClose} aria-label={label} className="rounded p-1.5 text-[var(--color-text-muted)] hover:bg-[var(--color-surface-soft)]"><X size={18} /></button>}
     </div>
   );
 }
 
-function useLoad<T>(load: () => Promise<T>, deps: unknown[]) {
+export function useLoad<T>(load: () => Promise<T>, deps: unknown[]) {
   const [state, setState] = useState<{ data?: T; error?: string; loading: boolean }>({ loading: true });
   const [retry, setRetry] = useState(0);
   useEffect(() => {
@@ -74,8 +74,8 @@ function useLoad<T>(load: () => Promise<T>, deps: unknown[]) {
   return { ...state, retry: () => setRetry(r => r + 1) };
 }
 
-function LoadState({ loading, error, retry }: { loading: boolean; error?: string; retry: () => void }) {
-  if (loading) return <div role="status" aria-label="Loading word study" className="mt-4 space-y-2">{[0, 1, 2, 3].map(i => <div key={i} className="br-skel h-10" />)}</div>;
+export function LoadState({ loading, error, retry, label = "Loading word study" }: { loading: boolean; error?: string; retry: () => void; label?: string }) {
+  if (loading) return <div role="status" aria-label={label} className="mt-4 space-y-2">{[0, 1, 2, 3].map(i => <div key={i} className="br-skel h-10" />)}</div>;
   if (error) return (
     <div role="alert" className="mt-4 rounded border border-[var(--warm-300)] bg-[var(--warm-50)] p-3 text-sm font-semibold">
       {error} <button type="button" onClick={retry} className="br-link ml-1 underline">Try again</button>

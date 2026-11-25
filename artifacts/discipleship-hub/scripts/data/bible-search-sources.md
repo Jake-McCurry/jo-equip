@@ -56,3 +56,43 @@ at runtime, and normal builds only validate the committed output
 - NET text is never tagged or altered; NET readers use the verse-level word list.
 - Numbers H9001 and above are STEPBible's grammatical numbers (prefixes and
   suffixes), not Strong's numbers; their entries show STEPBible's short gloss.
+
+# Commentary and cross-reference sources (Bible reader)
+
+Data lives in `public/bible-data/commentary/` (about 76 MB, ~3,950 content-hashed
+files) and is generated explicitly:
+`bash scripts/fetch-commentary-sources.sh /tmp/commentary-sources` then
+`node scripts/generate-commentaries.mjs /tmp/commentary-sources`. Sources are not
+committed. The generator refuses inputs whose SHA-256 differs from the pinned
+digests below, and fails on missing chapters/verses or on more invalid
+references than its per-source limit (unparseable source references stay as
+plain text). Normal builds validate the committed output with
+`scripts/commentary-data.test.mjs` (`pnpm run test:commentary`, part of
+`pnpm run build`). Nothing is fetched at runtime.
+
+All CrossWire modules are KJV versification and public domain; downloaded from
+`https://www.crosswire.org/ftpmirror/pub/sword/packages/rawzip/`.
+
+- **Matthew Henry's Commentary on the Whole Bible** (1706–1721): CrossWire `MHC`,
+  `MHC.zip` sha256 `6bcb936873ca144e317805e5c1677940fd86e2403f7c14517752e44f25c8882b`.
+  Henry's reprinted KJV chapter text is dropped (the reader already shows it).
+- **Jamieson-Fausset-Brown** (1871): CrossWire `JFB`,
+  `JFB.zip` sha256 `f1e31fdf3281d7e69956341c8a3aa28f65dca77deb6853038f27c3a8e1085d9e`.
+- **Barnes' Notes on the New Testament** (1832–1851): CrossWire `Barnes`,
+  `Barnes.zip` sha256 `9e8edc0333875c214124371b3862df118ad3a76ade7753cb2faeed3484615baf`.
+  **New Testament only**: no clean public-domain digital text of Barnes on the
+  Old Testament was found; the reader says so for OT books.
+- **Treasury of Scripture Knowledge** (c. 1836): CrossWire `TSK`,
+  `TSK.zip` sha256 `6784c7099465995a8e66f02ead82b0bca66603c1bdeaf8332949774b7bfd4293`.
+- **OpenBible.info cross references**, CC BY
+  (<https://www.openbible.info/labs/cross-references/>), `cross_references.txt`
+  sha256 `d548f9ca1c66008f88bc3f175d1a403cd1c9b528fe8fe8460d0ef4592ba5e471`
+  (downloaded November 2026). OpenBible republishes this file regularly, so a
+  fresh download will not match the pin; review the new file and update the
+  digest deliberately. Rows with negative votes are excluded.
+- Cross references are merged and de-duplicated: passages in both sources come
+  first, then by OpenBible votes, then in TSK order. A range that crosses into
+  another book links to its first verse. Previews come from this repository's
+  NET/KJV search text (`public/knowing-god/bible-search/`).
+- Earlier candidates (helloao.org JSON copies) were rejected because they are
+  missing chapters (e.g. JFB Psalm 146, Mark 15; Matthew Henry Isaiah).

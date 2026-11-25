@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { AlertTriangle, ChevronRight } from "lucide-react";
+import { AlertTriangle, BookOpenText, ChevronRight, Link2 } from "lucide-react";
 import { EMPTY_STUDY, loadStudy, persistStudy, type ChapterRecord, type StudyData, type VerseRecord } from "./study-storage";
-import { errMsg, fetchPassage, locationSearch, readLocation, readStrongs, upsertVerse, type Location, type Passage } from "./reader-utils";
+import { errMsg, fetchPassage, locationSearch, readLocation, readStrongs, readStudyLink, upsertVerse, type Location, type Passage, type StudyLink } from "./reader-utils";
 import { ReaderNav } from "./ReaderNav";
 import { PassageView } from "./PassageView";
 import { RecapPanel } from "./RecapPanel";
@@ -12,6 +12,9 @@ import { Attribution } from "./Attribution";
 import { StudyPane, type StudyTab } from "./StudyPane";
 import { WordStudyPanel } from "./WordStudyPanel";
 import { loadChapterWords } from "./strongs-data";
+import { CommentaryPanel } from "./CommentaryPanel";
+import { CrossRefPanel } from "./CrossRefPanel";
+import { isCommentaryId, type CommentaryId } from "./commentary-format";
 import type { KjvTag } from "./strongs-align";
 import "./bible-reader.css";
 
@@ -32,19 +35,36 @@ export default function BibleReader({ baseUrl }: { baseUrl: string }) {
   const lockedRef = useRef(locked); lockedRef.current = locked;
   const [strongs, setStrongs] = useState<string | null>(null);
   const strongsRef = useRef(strongs); strongsRef.current = strongs;
-  const [tab, setTab] = useState<StudyTab>("notes");
+  const [tab, setTabState] = useState<StudyTab>("notes");
+  const [commentary, setCommentaryState] = useState<CommentaryId>("mhc");
+  const linkRef = useRef<StudyLink | null>(null);
   const [showStrongs, setShowStrongs] = useState(false);
   const [kjvTags, setKjvTags] = useState<{ key: string; tags: Record<string, KjvTag[]> | null; error: string }>({ key: "", tags: null, error: "" });
   const [desktop, setDesktop] = useState(false);
-  const url = (l: Location, s = strongsRef.current) => window.location.pathname + locationSearch(l, s);
+  const url = (l: Location, s = strongsRef.current) => window.location.pathname + locationSearch(l, s, linkRef.current);
+  const hrefFor = (l: Location) => url(l, null);
+  // Tab state plus the deep link it implies (?commentary= / ?tab=xrefs); callers write the URL.
+  const applyTab = (t: StudyTab, c: CommentaryId = commentaryRef.current) => {
+    setTabState(t);
+    linkRef.current = t === "commentary" ? { tab: "commentary", commentary: c } : t === "xrefs" ? { tab: "xrefs" } : null;
+  };
+  const commentaryRef = useRef(commentary); commentaryRef.current = commentary;
 
   useEffect(() => {
     const l = readLocation();
     const s = readStrongs();
     setLoc(l); setSelected(l.verse); setStrongs(s); strongsRef.current = s;
-    if (s) setTab("words");
-    try { setShowStrongs(window.localStorage.getItem("jo-bible-show-strongs") === "1"); } catch { /* optional preference */ }
-    window.history.replaceState(null, "", window.location.pathname + locationSearch(l, s));
+    let c: CommentaryId = "mhc";
+    try {
+      setShowStrongs(window.localStorage.getItem("jo-bible-show-strongs") === "1");
+      const saved = window.localStorage.getItem("jo-bible-commentary");
+      if (isCommentaryId(saved)) c = saved;
+    } catch { /* optional preference */ }
+    const st = readStudyLink();
+    if (st?.tab === "commentary") c = st.commentary;
+    setCommentaryState(c); commentaryRef.current = c;
+    if (st) applyTab(st.tab, c); else if (s) applyTab("words");
+    window.history.replaceState(null, "", window.location.pathname + locationSearch(l, s, linkRef.current));
     const mq = window.matchMedia("(min-width: 1280px)");
     const onMq = () => setDesktop(mq.matches);
     onMq(); mq.addEventListener("change", onMq);
@@ -57,8 +77,10 @@ export default function BibleReader({ baseUrl }: { baseUrl: string }) {
     const restoration = window.history.scrollRestoration;
     window.history.scrollRestoration = "manual";
     const onPop = () => {
-      const n = readLocation(); const ns = readStrongs();
+      const n = readLocation(); const ns = readStrongs(); const st = readStudyLink();
       setLoc(n); setSelected(n.verse); setStrongs(ns); strongsRef.current = ns; setNavigationId(id => id + 1);
+      if (st?.tab === "commentary") { setCommentaryState(st.commentary); commentaryRef.current = st.commentary; }
+      if (st) applyTab(st.tab); else if (linkRef.current) applyTab("notes");
     };
     window.addEventListener("popstate", onPop);
     return () => { window.removeEventListener("popstate", onPop); mq.removeEventListener("change", onMq); window.history.scrollRestoration = restoration; };
@@ -137,13 +159,24 @@ export default function BibleReader({ baseUrl }: { baseUrl: string }) {
   };
   const selectVerse = (v: number) => setVerse(selected === v ? undefined : v);
 
+  const chooseTab = (t: StudyTab) => {
+    applyTab(t);
+    if (loc) window.history.replaceState(null, "", url(loc));
+  };
+  const chooseCommentary = (c: CommentaryId) => {
+    setCommentaryState(c); commentaryRef.current = c;
+    try { window.localStorage.setItem("jo-bible-commentary", c); } catch { /* optional preference */ }
+    chooseTab("commentary");
+  };
+  const closeStudySheet = () => { applyTab("notes"); setVerse(undefined); };
+
   const openStrongs = (num: string | null) => {
     setStrongs(num); strongsRef.current = num;
-    if (num) setTab("words");
+    if (num) applyTab("words");
     if (loc) window.history.replaceState(null, "", url(loc, num));
   };
   const onWord = (verse: number, num: string) => {
-    setStrongs(num); strongsRef.current = num; setTab("words");
+    setStrongs(num); strongsRef.current = num; applyTab("words");
     setVerse(verse, num);
   };
   const closeWordStudy = () => {
@@ -197,12 +230,21 @@ export default function BibleReader({ baseUrl }: { baseUrl: string }) {
       <BackupPanel study={study} onPersist={next => { commit(next, true); }} />
     </>
   );
-  const sheetOpen = !desktop && (!!panelProps || !!strongs);
-  const sheetTab: StudyTab = !panelProps ? "words" : tab === "library" ? "notes" : tab;
+  const studyTab = tab === "commentary" || tab === "xrefs";
+  const commentaryPanel = (sheet: boolean) => (
+    <CommentaryPanel baseUrl={baseUrl} loc={loc} verse={selected} commentary={commentary} onCommentary={chooseCommentary}
+      onVerse={v => setVerse(v)} onClose={sheet ? closeStudySheet : undefined} hrefFor={hrefFor} onGo={go} />
+  );
+  const xrefPanel = (sheet: boolean) => (
+    <CrossRefPanel baseUrl={baseUrl} loc={loc} verse={selected} hrefFor={hrefFor} onGo={go} onClose={sheet ? closeStudySheet : undefined} />
+  );
+  const sheetOpen = !desktop && (!!panelProps || !!strongs || studyTab);
+  const sheetTab: StudyTab = studyTab ? tab : !panelProps ? "words" : tab === "library" ? "notes" : tab;
+  const sheetLabel = sheetTab === "commentary" ? "Commentary" : sheetTab === "xrefs" ? "Cross references" : panelProps ? "Selected verse" : "Word study";
 
   return (
     <div className="br-root" id="br-top">
-      <div className="mx-auto grid max-w-[1500px] grid-cols-1 gap-4 px-3 py-4 md:px-6 md:py-6 xl:grid-cols-[minmax(0,1fr)_minmax(360px,440px)] xl:gap-6">
+      <div className="mx-auto grid max-w-[1500px] grid-cols-1 gap-4 px-3 py-4 md:px-6 md:py-6 xl:grid-cols-[minmax(0,1fr)_minmax(400px,480px)] xl:gap-6">
         {storageError && (
           <div role="alert" className="xl:col-span-2 flex items-start gap-2 rounded border border-[var(--warm-300)] bg-[var(--warm-50)] p-3 text-sm font-semibold">
             <AlertTriangle size={17} className="mt-0.5 shrink-0 text-[var(--color-action-warm)]" /> {storageError}
@@ -223,22 +265,35 @@ export default function BibleReader({ baseUrl }: { baseUrl: string }) {
         {desktop ? (
           <aside aria-label="Study" className="xl:col-start-2 xl:row-start-2">
             <div className="br-card br-pane sticky top-[100px] flex flex-col">
-              <StudyPane idPrefix="d" tab={tab} onTab={setTab} tabs={[
+              <StudyPane idPrefix="d" tab={tab} onTab={chooseTab} tabs={[
                 { id: "words", label: "Word study", content: wordStudy(false) },
                 { id: "notes", label: "My notes", content: notes },
+                { id: "commentary", label: "Commentary", content: commentaryPanel(false) },
+                { id: "xrefs", label: "Cross-refs", content: xrefPanel(false) },
                 { id: "library", label: "My library", content: <div className="flex flex-col gap-4">{library}</div> },
               ]} />
             </div>
           </aside>
         ) : (
-          <aside aria-label="My study" className={`flex flex-col gap-4 ${sheetOpen ? "pb-72" : ""}`}>{library}</aside>
+          <aside aria-label="My study" className={`flex flex-col gap-4 ${sheetOpen ? "pb-72" : ""}`}>
+            <div className="br-card p-4">
+              <p className="br-eyebrow">Study {loc.book} {loc.chapter}</p>
+              <div className="mt-2 flex flex-wrap gap-2">
+                <button type="button" onClick={() => chooseTab("commentary")} className="br-btn-outline"><BookOpenText size={16} aria-hidden="true" /> Commentary</button>
+                <button type="button" onClick={() => chooseTab("xrefs")} className="br-btn-outline"><Link2 size={16} aria-hidden="true" /> Cross references</button>
+              </div>
+            </div>
+            {library}
+          </aside>
         )}
       </div>
       {sheetOpen && (
-        <div role="dialog" aria-label={panelProps ? "Selected verse" : "Word study"} className="br-sheet fixed inset-x-0 bottom-0 z-40 max-h-[70dvh] overflow-y-auto border-t-4 border-[var(--color-accent)] bg-[var(--color-surface)] p-4">
-          <StudyPane idPrefix="m" compact tab={sheetTab} onTab={setTab} tabs={[
+        <div role="dialog" aria-label={sheetLabel} className="br-sheet fixed inset-x-0 bottom-0 z-40 max-h-[70dvh] overflow-y-auto border-t-4 border-[var(--color-accent)] bg-[var(--color-surface)] p-4">
+          <StudyPane idPrefix="m" compact tab={sheetTab} onTab={chooseTab} tabs={[
             { id: "words", label: "Word study", content: wordStudy(true) },
             ...(panelProps ? [{ id: "notes" as StudyTab, label: "My notes", content: <VerseStudyPanel {...panelProps} compact /> }] : []),
+            { id: "commentary", label: "Commentary", content: commentaryPanel(true) },
+            { id: "xrefs", label: "Cross-refs", content: xrefPanel(true) },
           ]} />
         </div>
       )}

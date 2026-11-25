@@ -1,5 +1,6 @@
 import { BOOKS } from "./catalog";
 import { normalizeStrongs } from "./strongs-format";
+import { isCommentaryId, type CommentaryId } from "./commentary-format";
 import type { Highlight, StudyData, Translation, VerseRecord } from "./study-storage";
 
 export type Verse = { verse: number; text: string };
@@ -41,12 +42,28 @@ export function readLocation(): Location {
   return { book: found.name, chapter, verse: Number.isInteger(v) && v > 0 ? v : undefined, translation };
 }
 
-export function locationSearch(loc: Location, strongs?: string | null) {
+/** Study tab deep link: `?commentary=mhc` opens the Commentary tab, `?tab=xrefs` the Cross-references tab. */
+export type StudyLink = { tab: "commentary"; commentary: CommentaryId } | { tab: "xrefs" };
+
+export function locationSearch(loc: Location, strongs?: string | null, study?: StudyLink | null) {
   const q = new URLSearchParams({ book: loc.book, chapter: String(loc.chapter) });
   if (loc.verse) q.set("verse", String(loc.verse));
   q.set("translation", String(loc.translation));
   if (strongs) q.set("strongs", strongs);
+  if (study?.tab === "commentary") q.set("commentary", study.commentary);
+  else if (study?.tab === "xrefs") q.set("tab", "xrefs");
   return `?${q.toString()}`;
+}
+
+/** Study tab requested by the URL; null when none (or the value is not recognised). */
+export function readStudyLink(): StudyLink | null {
+  const q = new URLSearchParams(window.location.search);
+  const c = q.get("commentary")?.toLowerCase();
+  if (c !== undefined) return { tab: "commentary", commentary: isCommentaryId(c) ? c : "mhc" };
+  const t = q.get("tab")?.toLowerCase();
+  if (t === "xrefs" || t === "cross-references") return { tab: "xrefs" };
+  if (t === "commentary") return { tab: "commentary", commentary: "mhc" };
+  return null;
 }
 
 /** Open Strong's entry from the URL (`?strongs=G25`); null when absent. Invalid values are kept so the panel can explain them. */

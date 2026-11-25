@@ -12,6 +12,10 @@ export function Attribution({ translation, apiText }: { translation: Translation
           <a href="https://netbible.com" target="_blank" rel="noopener noreferrer" className="underline">netbible.com</a>. All rights reserved.
         </p>
       )}
+      <p className="mt-1">
+        Word study data: Strong&rsquo;s dictionaries (public domain; Open Scriptures digital edition, CC BY-SA),
+        STEPBible.org TAHOT and TAGNT (CC BY 4.0), and eBible.org&rsquo;s Strong&rsquo;s-tagged KJV (public domain).
+      </p>
       {apiText && !apiText.includes("Biblical Studies Press") && !/public domain/i.test(apiText) && <p className="mt-1">{apiText}</p>}
     </footer>
   );

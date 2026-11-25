@@ -60,3 +60,4 @@
 - [Book conversion fidelity](book-conversion-fidelity.md) — Text coverage misses drawn blanks, diagram meaning, and table relationships; verify representative source layouts visually.
 - [Promises reader source](promises-reader-source.md) — Prepared corpus is separate from the existing eight-article collection; preserve printed wording and source-reference notes.
 - [Deployment test fixtures](deployment-test-fixtures.md) — Local uploads can mask missing inputs in Cloudflare builds; keep validation fixtures with the repository.
+- [Strong's word-study data](strongs-word-study-data.md) — Match KJV tags to displayed text at runtime; STEP uses NRSV numbering with [KJV] brackets; skip X/empty-Qere rows.

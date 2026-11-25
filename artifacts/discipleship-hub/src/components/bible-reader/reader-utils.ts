@@ -1,4 +1,5 @@
 import { BOOKS } from "./catalog";
+import { normalizeStrongs } from "./strongs-format";
 import type { Highlight, StudyData, Translation, VerseRecord } from "./study-storage";
 
 export type Verse = { verse: number; text: string };
@@ -40,11 +41,19 @@ export function readLocation(): Location {
   return { book: found.name, chapter, verse: Number.isInteger(v) && v > 0 ? v : undefined, translation };
 }
 
-export function locationSearch(loc: Location) {
+export function locationSearch(loc: Location, strongs?: string | null) {
   const q = new URLSearchParams({ book: loc.book, chapter: String(loc.chapter) });
   if (loc.verse) q.set("verse", String(loc.verse));
   q.set("translation", String(loc.translation));
+  if (strongs) q.set("strongs", strongs);
   return `?${q.toString()}`;
+}
+
+/** Open Strong's entry from the URL (`?strongs=G25`); null when absent. Invalid values are kept so the panel can explain them. */
+export function readStrongs(): string | null {
+  const raw = new URLSearchParams(window.location.search).get("strongs");
+  if (!raw) return null;
+  return normalizeStrongs(raw) ?? raw.trim().slice(0, 12);
 }
 
 export function shareUrl(loc: Location) {

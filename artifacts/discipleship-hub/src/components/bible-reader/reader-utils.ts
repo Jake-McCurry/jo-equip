@@ -42,8 +42,14 @@ export function readLocation(): Location {
   return { book: found.name, chapter, verse: Number.isInteger(v) && v > 0 ? v : undefined, translation };
 }
 
-/** Study tab deep link: `?commentary=mhc` opens the Commentary tab, `?tab=xrefs` / `?tab=places` / `?tab=sermons` / `?tab=dictionary` the Cross-references / Places / Sermons / Dictionary tab. */
-export type StudyLink = { tab: "commentary"; commentary: CommentaryId } | { tab: "xrefs" } | { tab: "places" } | { tab: "sermons" } | { tab: "dictionary" };
+/** Study tab deep link: `?commentary=mhc` opens the Commentary tab, `?tab=xrefs` / `?tab=places` / `?tab=sermons` / `?tab=dictionary` the Cross-references / Places / Sermons / Dictionary tab; `&entry=<slug>` with the Dictionary tab opens that entry. */
+export type StudyLink = { tab: "commentary"; commentary: CommentaryId } | { tab: "xrefs" } | { tab: "places" } | { tab: "sermons" } | { tab: "dictionary"; entry?: string };
+
+/** Dictionary entry slugs are lower-case words joined by hyphens; anything else is dropped. */
+export const cleanEntrySlug = (raw: string | null | undefined) => {
+  const s = raw?.trim().toLowerCase() ?? "";
+  return /^[a-z0-9][a-z0-9-]{0,79}$/.test(s) ? s : undefined;
+};
 
 export function locationSearch(loc: Location, strongs?: string | null, study?: StudyLink | null) {
   const q = new URLSearchParams({ book: loc.book, chapter: String(loc.chapter) });
@@ -51,7 +57,10 @@ export function locationSearch(loc: Location, strongs?: string | null, study?: S
   q.set("translation", String(loc.translation));
   if (strongs) q.set("strongs", strongs);
   if (study?.tab === "commentary") q.set("commentary", study.commentary);
-  else if (study) q.set("tab", study.tab);
+  else if (study) {
+    q.set("tab", study.tab);
+    if (study.tab === "dictionary" && study.entry) q.set("entry", study.entry);
+  }
   return `?${q.toString()}`;
 }
 
@@ -64,7 +73,7 @@ export function readStudyLink(): StudyLink | null {
   if (t === "xrefs" || t === "cross-references") return { tab: "xrefs" };
   if (t === "places" || t === "maps") return { tab: "places" };
   if (t === "sermons") return { tab: "sermons" };
-  if (t === "dictionary") return { tab: "dictionary" };
+  if (t === "dictionary") return { tab: "dictionary", entry: cleanEntrySlug(q.get("entry")) };
   if (t === "commentary") return { tab: "commentary", commentary: "mhc" };
   return null;
 }

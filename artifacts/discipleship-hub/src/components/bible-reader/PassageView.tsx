@@ -1,5 +1,7 @@
-import { useEffect, useRef } from "react";
-import { AlertCircle, Bookmark, BookmarkCheck, ChevronRight, Languages, StickyNote } from "lucide-react";
+import { useEffect, useMemo, useRef } from "react";
+import { AlertCircle, BookA, Bookmark, BookmarkCheck, ChevronRight, Languages, StickyNote } from "lucide-react";
+import type { DictIndex } from "@/components/bible-dictionary/dictionary-data";
+import { chapterMarks, segmentByMarks } from "./dictionary-marks";
 import { getNextChapter } from "./catalog";
 import { refLabel, translationLabel, washFor, type Location, type Passage } from "./reader-utils";
 import type { VerseRecord } from "./study-storage";
@@ -21,15 +23,22 @@ type Props = {
   onGo: (loc: Location) => void;
   /** KJV only: Strong's-tagged words for this chapter (null while loading). */
   strongs?: { on: boolean; tags: Record<string, KjvTag[]> | null; error: string; onToggle: () => void; onWord: (verse: number, num: string) => void; active?: string | null };
+  /** Easton dictionary names marked in the text (NET and KJV); index is null while loading. */
+  dictionary: { on: boolean; index: DictIndex | null; error: string; onToggle: () => void; onRetry: () => void; onEntry: (slug: string) => void; active?: string | null };
 };
 
-export function PassageView({ loc, navigationId, passage, loading, error, onRetry, records, selected, onSelect, chapterSaved, onToggleChapter, onGo, strongs }: Props) {
+export function PassageView({ loc, navigationId, passage, loading, error, onRetry, records, selected, onSelect, chapterSaved, onToggleChapter, onGo, strongs, dictionary }: Props) {
   const lastNavigation = useRef(-1);
   useEffect(() => scrollToPassage(loc, passage, loading, error, navigationId, lastNavigation),
     [passage, loading, error, loc.book, loc.chapter, loc.verse, loc.translation, navigationId]);
 
   const next = getNextChapter(loc.book, loc.chapter);
   const tagged = strongs?.on ? strongs.tags : null;
+  const marks = useMemo(() => (dictionary.on && dictionary.index && passage ? chapterMarks(dictionary.index, `${loc.book} ${loc.chapter}`, passage.verses) : null),
+    [dictionary.on, dictionary.index, passage, loc.book, loc.chapter]);
+  const vnum = (v: number, isSel: boolean, label: string) => (
+    <button type="button" onClick={() => onSelect(v)} aria-pressed={isSel} aria-label={`Select ${label}`} className="br-vnum-btn"><sup className="br-vnum">{v}</sup></button>
+  );
 
   return (
     <article aria-labelledby="br-title" className="br-card px-5 py-6 md:px-10 md:py-9">
@@ -39,6 +48,9 @@ export function PassageView({ loc, navigationId, passage, loading, error, onRetr
           <h1 id="br-title" className="mt-1 text-4xl md:text-5xl text-[var(--color-hero)]">{loc.book} {loc.chapter}</h1>
         </div>
         <div className="flex flex-wrap items-center gap-x-5">
+        <button type="button" onClick={dictionary.onToggle} aria-pressed={dictionary.on} className={`br-link inline-flex items-center gap-2 ${dictionary.on ? "!text-[var(--color-action-warm)]" : ""}`}>
+          <BookA size={17} /> {dictionary.on ? "Hide names" : "Show names"}
+        </button>
         {strongs && (
           <button type="button" onClick={strongs.onToggle} aria-pressed={strongs.on} className={`br-link inline-flex items-center gap-2 ${strongs.on ? "!text-[var(--color-action-warm)]" : ""}`}>
             <Languages size={17} /> {strongs.on ? "Hide Strong’s" : "Show Strong’s"}
@@ -63,9 +75,19 @@ export function PassageView({ loc, navigationId, passage, loading, error, onRetr
       )}
       {!loading && !error && passage && (
         <>
-          <p className="mt-3 text-sm text-[var(--color-text-muted)]">
-            {tagged ? "Tap a word for its Strong’s entry, or a verse number to highlight, bookmark, note, or share the verse." : "Tap or click a verse to highlight, bookmark, note, or share it."}
-          </p>
+          {/* One hint line whose wording follows the mode, so loading the dictionary does not move the text. */}
+          {dictionary.on && dictionary.error ? (
+            <p role="alert" className="mt-3 text-sm font-semibold text-[var(--color-action-warm)]">
+              {dictionary.error}{" "}<button type="button" onClick={dictionary.onRetry} className="underline">Try again</button>
+            </p>
+          ) : (
+            <p className="mt-3 text-sm text-[var(--color-text-muted)]" aria-live="polite">
+              {tagged ? "Tap a word for its Strong’s entry, or a verse number to highlight, bookmark, note, or share the verse."
+                : marks ? "Tap a marked name for its dictionary entry, or a verse number for the verse."
+                : dictionary.on ? "Loading names from Easton’s Bible Dictionary…"
+                : "Tap or click a verse to highlight, bookmark, note, or share it."}
+            </p>
+          )}
           {strongs?.on && strongs.error && <p role="alert" className="mt-2 text-sm font-semibold text-[var(--color-action-warm)]">{strongs.error}</p>}
           {strongs?.on && !strongs.tags && !strongs.error && <p role="status" className="mt-2 text-sm text-[var(--color-text-muted)]">Loading Strong’s numbers…</p>}
           <div className="br-scripture mt-5">
@@ -77,10 +99,26 @@ export function PassageView({ loc, navigationId, passage, loading, error, onRetr
                 const segments = segmentKjv(v.text, alignKjv(v.text, tagged[String(v.verse)] ?? []));
                 return (
                   <span key={v.verse} id={`v${v.verse}`} className={`br-verse scroll-mt-28 ${isSel ? "is-selected" : ""}`} style={rec?.highlight ? { backgroundColor: washFor(rec.highlight) } : undefined}>
-                    <button type="button" onClick={() => onSelect(v.verse)} aria-pressed={isSel} aria-label={`Select ${label}`} className="br-vnum-btn"><sup className="br-vnum">{v.verse}</sup></button>
+                    {vnum(v.verse, isSel, label)}
                     {segments.map((seg, i) => seg.strongs
                       ? <button key={i} type="button" onClick={() => strongs!.onWord(v.verse, seg.strongs!)} aria-label={`${seg.text}, Strong's ${seg.strongs}`}
                           className={`br-sword ${strongs!.active === seg.strongs ? "is-active" : ""}`}>{seg.text}</button>
+                      : <span key={i}>{seg.text}</span>)}
+                    {rec?.bookmark && <BookmarkCheck size={13} className="inline ml-1 -mt-0.5 text-[var(--color-action-warm)]" aria-hidden="true" />}
+                    {rec?.note && <StickyNote size={13} className="inline ml-1 -mt-0.5 text-[var(--color-hero)]" aria-hidden="true" />}
+                    {" "}
+                  </span>
+                );
+              }
+              if (marks) {
+                const segments = segmentByMarks(v.text, marks[v.verse] ?? []);
+                return (
+                  <span key={v.verse} id={`v${v.verse}`} className={`br-verse br-verse-atomic scroll-mt-28 ${isSel ? "is-selected" : ""}`} style={rec?.highlight ? { backgroundColor: washFor(rec.highlight) } : undefined}>
+                    {vnum(v.verse, isSel, label)}
+                    {segments.map((seg, i) => seg.slug
+                      ? <button key={i} type="button" onClick={() => dictionary.onEntry(seg.slug!)} aria-label={`${seg.text}: dictionary entry “${seg.title}”`}
+                          aria-current={dictionary.active === seg.slug ? "true" : undefined}
+                          className={`br-dword ${dictionary.active === seg.slug ? "is-active" : ""}`}>{seg.text}</button>
                       : <span key={i}>{seg.text}</span>)}
                     {rec?.bookmark && <BookmarkCheck size={13} className="inline ml-1 -mt-0.5 text-[var(--color-action-warm)]" aria-hidden="true" />}
                     {rec?.note && <StickyNote size={13} className="inline ml-1 -mt-0.5 text-[var(--color-hero)]" aria-hidden="true" />}

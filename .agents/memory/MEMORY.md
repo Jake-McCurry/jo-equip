@@ -68,3 +68,4 @@
 - [Whitefield/Maclaren sermon sources](whitefield-maclaren-sermon-sources.md) — thresholds, known exclusions, modern-licence findings; user prefers Bible tools over more sermons.
 - [Bible tools roadmap](bible-tools-roadmap.md) — user prefers Bible tools over more content; Nave's topical index deferred to a later list.
 - [Easton dictionary source](easton-dictionary-source.md) — SWORD zLD module; bare-number refs mislinked to Genesis; Æ in KJV; 1893 scan for spot-check.
+- [Bible reader tappable-text modes](bible-reader-inline-modes.md) — verse buttons are atomic inline boxes; alternate render modes must copy that box or the chapter reflows.

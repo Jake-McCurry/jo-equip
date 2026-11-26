@@ -11,14 +11,14 @@ import { Header, LoadState, useLoad } from "./WordStudyPanel";
 type Props = {
   baseUrl: string; loc: Location; verse?: number;
   onVerse: (v: number | undefined) => void; onClose?: () => void;
+  /** Open entry slug (null shows the chapter list); owned by the reader so links and taps in the text can open it. */
+  entry: string | null; onEntry: (slug: string | null) => void;
   hrefFor: (l: Location) => string; onGo: (l: Location) => void;
 };
 
-export function DictionaryPanel({ baseUrl, loc, verse, onVerse, onClose, hrefFor, onGo }: Props) {
+export function DictionaryPanel({ baseUrl, loc, verse, onVerse, onClose, entry: open, onEntry: setOpen, hrefFor, onGo }: Props) {
   const { data, loading, error, retry } = useLoad(() => loadDictIndex(baseUrl), [baseUrl]);
-  const [open, setOpen] = useState<string | null>(null);
   const chapterName = `${loc.book} ${loc.chapter}`;
-  useEffect(() => setOpen(null), [chapterName]);
   const rows = useMemo(() => (data?.chapters[chapterName] ?? []).map(([i, verses]) => ({ slug: data!.entries[i][0], title: data!.entries[i][1], verses })), [data, chapterName]);
   const shown = verse ? rows.filter(r => r.verses.includes(verse)) : rows;
   const titleOf = useMemo(() => new Map(data?.entries ?? []), [data]);

@@ -17,6 +17,7 @@ import { CrossRefPanel } from "./CrossRefPanel";
 import { PlacesPanel } from "./PlacesPanel";
 import { SermonsPanel } from "./SermonsPanel";
 import { DictionaryPanel } from "./DictionaryPanel";
+import { loadDictIndex, type DictIndex } from "@/components/bible-dictionary/dictionary-data";
 import { isCommentaryId, type CommentaryId } from "./commentary-format";
 import type { KjvTag } from "./strongs-align";
 import "./bible-reader.css";
@@ -44,12 +45,24 @@ export default function BibleReader({ baseUrl }: { baseUrl: string }) {
   const [showStrongs, setShowStrongs] = useState(false);
   const [kjvTags, setKjvTags] = useState<{ key: string; tags: Record<string, KjvTag[]> | null; error: string }>({ key: "", tags: null, error: "" });
   const [desktop, setDesktop] = useState(false);
+  // Dictionary: entry open in the Dictionary tab (?tab=dictionary&entry=slug) and the optional
+  // marking of dictionary names in the passage (off by default, remembered in this browser).
+  const [dictEntry, setDictEntry] = useState<string | null>(null);
+  const dictEntryRef = useRef(dictEntry); dictEntryRef.current = dictEntry;
+  const [showDict, setShowDict] = useState(false);
+  const [dictIndex, setDictIndex] = useState<{ data: DictIndex | null; error: string }>({ data: null, error: "" });
+  const [dictRetry, setDictRetry] = useState(0);
   const url = (l: Location, s = strongsRef.current) => window.location.pathname + locationSearch(l, s, linkRef.current);
-  const hrefFor = (l: Location) => url(l, null);
+  // Links to other passages never carry the open dictionary entry along.
+  const hrefFor = (l: Location) => window.location.pathname + locationSearch(l, null, linkRef.current?.tab === "dictionary" ? { tab: "dictionary" } : linkRef.current);
+  const setEntry = (slug: string | null) => {
+    setDictEntry(slug); dictEntryRef.current = slug;
+    if (linkRef.current?.tab === "dictionary") linkRef.current = { tab: "dictionary", entry: slug ?? undefined };
+  };
   // Tab state plus the deep link it implies (?commentary= / ?tab=xrefs|places|sermons|dictionary); callers write the URL.
   const applyTab = (t: StudyTab, c: CommentaryId = commentaryRef.current) => {
     setTabState(t);
-    linkRef.current = t === "commentary" ? { tab: "commentary", commentary: c } : t === "xrefs" || t === "places" || t === "sermons" || t === "dictionary" ? { tab: t } : null;
+    linkRef.current = t === "commentary" ? { tab: "commentary", commentary: c } : t === "dictionary" ? { tab: t, entry: dictEntryRef.current ?? undefined } : t === "xrefs" || t === "places" || t === "sermons" ? { tab: t } : null;
   };
   const commentaryRef = useRef(commentary); commentaryRef.current = commentary;
 
@@ -59,12 +72,15 @@ export default function BibleReader({ baseUrl }: { baseUrl: string }) {
     setLoc(l); setSelected(l.verse); setStrongs(s); strongsRef.current = s;
     let c: CommentaryId = "mhc";
     try {
-      setShowStrongs(window.localStorage.getItem("jo-bible-show-strongs") === "1");
+      const dictOn = window.localStorage.getItem("jo-bible-show-dictionary") === "1";
+      setShowDict(dictOn);
+      setShowStrongs(!dictOn && window.localStorage.getItem("jo-bible-show-strongs") === "1");
       const saved = window.localStorage.getItem("jo-bible-commentary");
       if (isCommentaryId(saved)) c = saved;
     } catch { /* optional preference */ }
     const st = readStudyLink();
     if (st?.tab === "commentary") c = st.commentary;
+    if (st?.tab === "dictionary" && st.entry) { setDictEntry(st.entry); dictEntryRef.current = st.entry; }
     setCommentaryState(c); commentaryRef.current = c;
     if (st) applyTab(st.tab, c); else if (s) applyTab("words");
     window.history.replaceState(null, "", window.location.pathname + locationSearch(l, s, linkRef.current));
@@ -83,6 +99,8 @@ export default function BibleReader({ baseUrl }: { baseUrl: string }) {
       const n = readLocation(); const ns = readStrongs(); const st = readStudyLink();
       setLoc(n); setSelected(n.verse); setStrongs(ns); strongsRef.current = ns; setNavigationId(id => id + 1);
       if (st?.tab === "commentary") { setCommentaryState(st.commentary); commentaryRef.current = st.commentary; }
+      const e = st?.tab === "dictionary" ? st.entry ?? null : null;
+      setDictEntry(e); dictEntryRef.current = e;
       if (st) applyTab(st.tab); else if (linkRef.current) applyTab("notes");
     };
     window.addEventListener("popstate", onPop);
@@ -146,8 +164,20 @@ export default function BibleReader({ baseUrl }: { baseUrl: string }) {
     return () => { live = false; };
   }, [tagKey, baseUrl]);
 
+  // Dictionary index for marking names in the text: loaded only when the toggle is on.
+  useEffect(() => {
+    if (!showDict) return;
+    let live = true;
+    setDictIndex(d => (d.data ? d : { data: null, error: "" }));
+    loadDictIndex(baseUrl)
+      .then(data => live && setDictIndex({ data, error: "" }))
+      .catch(e => live && setDictIndex({ data: null, error: errMsg(e, "The dictionary could not be loaded.") }));
+    return () => { live = false; };
+  }, [showDict, baseUrl, dictRetry]);
+
   const go = (next: Location) => {
     setInitialLastRead(undefined);
+    if (loc && (next.book !== loc.book || next.chapter !== loc.chapter)) setEntry(null);
     setLoc(next); setSelected(next.verse);
     setNavigationId(id => id + 1);
     window.history.pushState(null, "", url(next));
@@ -171,7 +201,12 @@ export default function BibleReader({ baseUrl }: { baseUrl: string }) {
     try { window.localStorage.setItem("jo-bible-commentary", c); } catch { /* optional preference */ }
     chooseTab("commentary");
   };
-  const closeStudySheet = () => { applyTab("notes"); setVerse(undefined); };
+  const closeStudySheet = () => { setEntry(null); applyTab("notes"); setVerse(undefined); };
+  const openEntry = (slug: string | null) => {
+    setEntry(slug);
+    applyTab("dictionary");
+    if (loc) window.history.replaceState(null, "", url(loc));
+  };
 
   const openStrongs = (num: string | null) => {
     setStrongs(num); strongsRef.current = num;
@@ -186,10 +221,19 @@ export default function BibleReader({ baseUrl }: { baseUrl: string }) {
     setStrongs(null); strongsRef.current = null;
     setVerse(undefined, null);
   };
+  // Strong's words and dictionary names are both tappable, so only one can be shown at a time.
+  const setPref = (key: string, on: boolean) => {
+    try { window.localStorage.setItem(key, on ? "1" : "0"); } catch { /* optional preference */ }
+  };
   const toggleStrongs = () => {
     const on = !showStrongs;
-    setShowStrongs(on);
-    try { window.localStorage.setItem("jo-bible-show-strongs", on ? "1" : "0"); } catch { /* optional preference */ }
+    setShowStrongs(on); setPref("jo-bible-show-strongs", on);
+    if (on && showDict) { setShowDict(false); setPref("jo-bible-show-dictionary", false); }
+  };
+  const toggleDict = () => {
+    const on = !showDict;
+    setShowDict(on); setPref("jo-bible-show-dictionary", on);
+    if (on && showStrongs) { setShowStrongs(false); setPref("jo-bible-show-strongs", false); }
   };
 
   if (!loc) return <div className="br-root min-h-[60dvh]"><div className="mx-auto max-w-3xl p-6"><div className="br-skel h-64" /></div></div>;
@@ -248,7 +292,8 @@ export default function BibleReader({ baseUrl }: { baseUrl: string }) {
     <SermonsPanel baseUrl={baseUrl} loc={loc} verse={selected} onVerse={v => setVerse(v)} onClose={sheet ? closeStudySheet : undefined} />
   );
   const dictionaryPanel = (sheet: boolean) => (
-    <DictionaryPanel baseUrl={baseUrl} loc={loc} verse={selected} onVerse={v => setVerse(v)} onClose={sheet ? closeStudySheet : undefined} hrefFor={hrefFor} onGo={go} />
+    <DictionaryPanel baseUrl={baseUrl} loc={loc} verse={selected} onVerse={v => setVerse(v)} onClose={sheet ? closeStudySheet : undefined}
+      entry={dictEntry} onEntry={openEntry} hrefFor={hrefFor} onGo={go} />
   );
   const sheetOpen = !desktop && (!!panelProps || !!strongs || studyTab);
   const sheetTab: StudyTab = studyTab ? tab : !panelProps ? "words" : tab === "library" ? "notes" : tab;
@@ -270,7 +315,8 @@ export default function BibleReader({ baseUrl }: { baseUrl: string }) {
           {verseNotice && <p role="status" className="rounded border border-[var(--color-border-control)] bg-[var(--color-surface-soft)] p-3 text-sm font-semibold">{verseNotice}</p>}
           <PassageView loc={loc} navigationId={navigationId} passage={current} loading={loading || (!current && !error)} error={error} onRetry={() => setRetry(r => r + 1)}
             records={chapterRecords} selected={selected} onSelect={selectVerse} chapterSaved={chapterSaved} onToggleChapter={toggleChapter} onGo={go}
-            strongs={isKjv ? { on: showStrongs, tags: kjvTags.key === tagKey ? kjvTags.tags : null, error: kjvTags.key === tagKey ? kjvTags.error : "", onToggle: toggleStrongs, onWord, active: strongs } : undefined} />
+            strongs={isKjv ? { on: showStrongs, tags: kjvTags.key === tagKey ? kjvTags.tags : null, error: kjvTags.key === tagKey ? kjvTags.error : "", onToggle: toggleStrongs, onWord, active: strongs } : undefined}
+            dictionary={{ on: showDict, index: dictIndex.data, error: dictIndex.error, onToggle: toggleDict, onRetry: () => setDictRetry(r => r + 1), onEntry: openEntry, active: tab === "dictionary" ? dictEntry : null }} />
           <RecapPanel />
           <Attribution translation={loc.translation} apiText={current?.attribution} />
         </div>

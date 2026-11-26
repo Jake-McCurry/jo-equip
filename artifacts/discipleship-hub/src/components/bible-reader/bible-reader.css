@@ -60,6 +60,13 @@
 .br-vnum-btn:hover { background: var(--blue-100); }
 .br-sword { display: inline; padding: 0; border-radius: 2px; text-decoration: underline dotted var(--color-border-control); text-underline-offset: 5px; text-align: inherit; }
 .br-sword:hover, .br-sword.is-active { background: var(--blue-100); text-decoration-color: var(--color-hero); }
+/* Dictionary names in the passage: underline only, so marking never changes the text's layout. */
+/* Plain verses are <button>s, which lay out as atomic inline boxes; marked verses copy that box so the text does not reflow. */
+.br-verse-atomic { display: inline-block; }
+.br-verse-atomic .br-vnum-btn { padding: 0; }
+.br-dword { display: inline; padding: 0; border-radius: 2px; text-align: inherit; text-decoration: underline dashed var(--color-hero); text-decoration-thickness: 1px; text-underline-offset: 5px; }
+.br-dword:hover, .br-dword.is-active { background: var(--blue-100); text-decoration-style: solid; }
+.br-dword:focus-visible { outline: 2px solid var(--color-hero); outline-offset: 2px; }
 .br-hit { background: var(--blue-100); color: inherit; font-weight: 700; border-radius: 2px; padding: 0 1px; }
 /* Commentary and cross references */
 .br-seg { display: flex; flex-wrap: wrap; gap: .375rem; }

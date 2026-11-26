@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState, type KeyboardEvent, type PointerEvent as RPointerEvent } from "react";
 import { Minus, Plus, RotateCcw } from "lucide-react";
-import { MAP_SIZE } from "./maps-data";
+import { MAP_SIZE, terrainFor } from "./maps-data";
 
 export type Tier = "high" | "moderate" | "low" | "unknown";
 export type MapMarker = { id: string; x: number; y: number; label: string; tier: Tier; href?: string; active?: boolean };
@@ -38,6 +38,10 @@ function fit(markers: MapMarker[], aspect: number, minSpan: number): View {
   return { x: (x0 + x1) / 2 - w / 2, y: (y0 + y1) / 2 - w / aspect / 2, w };
 }
 
+// Finer terrain tiers are only fetched once the view is zoomed in far enough to
+// use them (map units across the view), and stay drawn after that.
+const TIER_MAX_SPAN: Record<string, number> = { region: 320, holyland: 90 };
+
 const FILL: Record<Tier, string> = { high: "#004f86", moderate: "#2f86c8", low: "#ffffff", unknown: "#ffffff" };
 
 export function MapView({ basemap, markers, label, aspect = 4 / 3, minSpan = 30, fitTo, labels = "none", interactive = true, onMarker, fitKey = "" }: Props) {
@@ -55,6 +59,13 @@ export function MapView({ basemap, markers, label, aspect = 4 / 3, minSpan = 30,
     return () => ro.disconnect();
   }, []);
   const h = view.w / aspect;
+  const tiers = useMemo(() => terrainFor(basemap), [basemap]);
+  const [shown, setShown] = useState<Set<string>>(() => new Set());
+  useEffect(() => {
+    const want = tiers.filter(t => !shown.has(t.name) && view.w <= (TIER_MAX_SPAN[t.name] ?? Infinity)
+      && view.x < t.x + t.width && view.x + view.w > t.x && view.y < t.y + t.height && view.y + h > t.y);
+    if (want.length) setShown(s => new Set([...s, ...want.map(t => t.name)]));
+  }, [tiers, shown, view.x, view.y, view.w, h]);
   const unit = view.w / px; // map units per CSS pixel
 
   const zoom = (f: number, cx = view.x + view.w / 2, cy = view.y + h / 2) => setView(v => {
@@ -133,7 +144,10 @@ export function MapView({ basemap, markers, label, aspect = 4 / 3, minSpan = 30,
           zoom(0.6, view.x + ((e.clientX - rc.left) / rc.width) * view.w, view.y + ((e.clientY - rc.top) / rc.height) * h);
         } : undefined}
         className={interactive ? "bm-svg is-interactive" : "bm-svg"}>
-        <rect x={-2000} y={-2000} width={MAP_SIZE.width + 4000} height={MAP_SIZE.height + 4000} fill="#d4e9f7" />
+        <rect x={-2000} y={-2000} width={MAP_SIZE.width + 4000} height={MAP_SIZE.height + 4000} fill="#bcdbee" />
+        {tiers.map(t => (t.name === tiers[0].name || shown.has(t.name)) && (
+          <image key={t.name} href={t.href} x={t.x} y={t.y} width={t.width} height={t.height} preserveAspectRatio="none" />
+        ))}
         <use href={`${basemap}#bm-base`} />
         {ordered.map(m => {
           const dot = (

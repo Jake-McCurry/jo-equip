@@ -1,5 +1,5 @@
 /* Bible maps: shared by the reader's Places tab and the /bible/maps and /bible/timeline pages. */
-.bm-map { position: relative; border: 1px solid var(--color-border-soft, #ccebff); border-radius: 6px; overflow: hidden; background: #d4e9f7; }
+.bm-map { position: relative; border: 1px solid var(--color-border-soft, #ccebff); border-radius: 6px; overflow: hidden; background: #bcdbee; }
 .bm-svg { display: block; width: 100%; height: auto; touch-action: manipulation; user-select: none; }
 .bm-svg.is-interactive { touch-action: none; cursor: grab; }
 .bm-svg.is-interactive:active { cursor: grabbing; }

@@ -1,0 +1,45 @@
+{
+ "schemaVersion": 1,
+ "tiers": [
+  {
+   "name": "world",
+   "file": "terrain-world.7bf48b8bd8.webp",
+   "x": 0,
+   "y": 0,
+   "width": 678.438,
+   "height": 430,
+   "pixels": [
+    1764,
+    1118
+   ]
+  },
+  {
+   "name": "region",
+   "file": "terrain-region.0a1c5f8630.webp",
+   "x": 279.856,
+   "y": 60,
+   "width": 228.973,
+   "height": 170,
+   "pixels": [
+    1832,
+    1360
+   ]
+  },
+  {
+   "name": "holyland",
+   "file": "terrain-holyland.ce9ca454ad.webp",
+   "x": 371.445,
+   "y": 143,
+   "width": 27.138,
+   "height": 44,
+   "pixels": [
+    923,
+    1496
+   ]
+  }
+ ],
+ "sources": {
+  "tiles": "112c3eb13061e2463aab5bca6db09eb4cc89e3447370e715166b39209e3302b6",
+  "land": "1ac90796408bc6ad6911d69448485d3c4dbf2190370080368a09976e1c9f7416"
+ }
+}

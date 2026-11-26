@@ -24,6 +24,8 @@
 # Bible maps (places, chapter index, base map) — filenames carry a content hash.
 /bible-data/maps/*
   Cache-Control: public, max-age=31536000, immutable
+/bible-data/maps-terrain/*
+  Cache-Control: public, max-age=31536000, immutable
 
 # PDFs and book covers — large but not hashed; revalidate after 30 days
 # so revisions propagate without forcing every visit to redownload.

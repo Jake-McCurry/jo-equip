@@ -25,7 +25,12 @@ const ext = { target: "_blank", rel: "noopener noreferrer" };
       <li>Dictionary article: <em>Easton&rsquo;s Bible Dictionary</em> by M. G. Easton (1897, public domain), as distributed with Theographic Bible Metadata (<a href="https://creativecommons.org/licenses/by-sa/4.0/" {...ext}>CC BY-SA 4.0</a>).</li>
     )}
     {uses.includes("naturalearth") && (
-      <li>Base map: <a href="https://www.naturalearthdata.com/" {...ext}>Natural Earth</a> (public domain). It shows modern coastlines, lakes and rivers.</li>
+      <li>Base map: coastlines, lakes and rivers from <a href="https://www.naturalearthdata.com/" {...ext}>Natural Earth</a> (public domain). They are modern, not ancient.</li>
+      <li>
+        Terrain shading and elevation colors: drawn by JO EQUIP from <a href="https://registry.opendata.aws/terrain-tiles/" {...ext}>Terrain Tiles on AWS</a>,
+        which combine public-domain elevation data including SRTM (NASA/USGS), GMTED2010 (USGS) and ETOPO1 (NOAA), with EU-DEM
+        (produced using Copernicus data and information funded by the European Union).
+      </li>
     )}
   </ul>
   <p>All of this data is hosted on JO EQUIP; the maps make no requests to outside map services.</p>

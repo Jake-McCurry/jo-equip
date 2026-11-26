@@ -245,10 +245,11 @@ function simplify(pts, tol) {
   while (stack.length) {
     const [a, b] = stack.pop();
     const [ax, ay] = pts[a], [bx, by] = pts[b];
-    const dx = bx - ax, dy = by - ay, len = Math.hypot(dx, dy) || 1e-12;
+    const dx = bx - ax, dy = by - ay, len = Math.hypot(dx, dy);
     let max = 0, idx = -1;
     for (let i = a + 1; i < b; i++) {
-      const d = Math.abs(dy * pts[i][0] - dx * pts[i][1] + bx * ay - by * ax) / len;
+      // Closed rings start and end on the same point: measure from that point.
+      const d = len ? Math.abs(dy * pts[i][0] - dx * pts[i][1] + bx * ay - by * ax) / len : Math.hypot(pts[i][0] - ax, pts[i][1] - ay);
       if (d > max) { max = d; idx = i; }
     }
     if (max > tol) { keep[idx] = 1; stack.push([a, idx], [idx, b]); }
@@ -330,10 +331,11 @@ const [W, H] = [PROJECTION.width, PROJECTION.height];
 const nss = `vector-effect="non-scaling-stroke"`;
 const basemap = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${fmt(W)} ${fmt(H)}" width="${fmt(W)}" height="${fmt(H)}">` +
   `<g id="bm-base">` +
-  `<rect width="${fmt(W)}" height="${fmt(H)}" fill="#d4e9f7"/>` +
-  `<path d="${landD}" fill="#f6f1e4" fill-rule="evenodd" stroke="#9fb6c6" stroke-width="0.8" stroke-linejoin="round" ${nss}/>` +
-  `<path d="${lakesD}" fill="#d4e9f7" stroke="#9fb6c6" stroke-width="0.7" ${nss}/>` +
-  `<path d="${riversD}" fill="none" stroke="#7fb2d6" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" ${nss}/>` +
+  // Lines only: the shaded-relief terrain images (scripts/generate-map-terrain.mjs)
+  // are drawn underneath and supply the land and sea colours.
+  `<path d="${landD}" fill="none" stroke="#6f98b4" stroke-width="0.7" stroke-linejoin="round" ${nss}/>` +
+  `<path d="${lakesD}" fill="#bfdcef" stroke="#6f98b4" stroke-width="0.6" ${nss}/>` +
+  `<path d="${riversD}" fill="none" stroke="#4f93c4" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" ${nss}/>` +
   `</g></svg>`;
 
 // ---- Write -----------------------------------------------------------------

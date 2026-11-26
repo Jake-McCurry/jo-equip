@@ -2,6 +2,7 @@
 // The manifest is bundled; the place index, chapter index and base map are
 // fetched lazily from /bible-data/maps/ only when a map is used.
 import manifest from "@/data/bible-maps/manifest.json";
+import terrain from "@/data/bible-maps/terrain.json";
 import { BOOKS } from "@/components/bible-reader/catalog";
 import { confidenceOf } from "./map-projection";
 
@@ -17,6 +18,14 @@ const trim = (baseUrl: string) => baseUrl.replace(/\/$/, "");
 export const mapFile = (baseUrl: string, name: "places" | "chapters" | "basemap") =>
   `${trim(baseUrl)}/bible-data/maps/${name}.${manifest.files[name]}.${name === "basemap" ? "svg" : "json"}`;
 export const basemapUrl = (baseUrl: string) => mapFile(baseUrl, "basemap");
+
+/** Shaded-relief terrain images, coarsest first (see scripts/generate-map-terrain.mjs). */
+export type TerrainTier = { name: string; href: string; x: number; y: number; width: number; height: number };
+/** Terrain tiers resolved relative to a base map URL from basemapUrl(). */
+export const terrainFor = (basemap: string): TerrainTier[] => {
+  const root = basemap.slice(0, basemap.lastIndexOf("/bible-data/maps/"));
+  return terrain.tiers.map(({ name, file, x, y, width, height }) => ({ name, href: `${root}/bible-data/maps-terrain/${file}`, x, y, width, height }));
+};
 export const placeHref = (baseUrl: string, slug: string) => `${trim(baseUrl)}/bible/maps/${slug}`;
 
 const cache = new Map<string, Promise<unknown>>();

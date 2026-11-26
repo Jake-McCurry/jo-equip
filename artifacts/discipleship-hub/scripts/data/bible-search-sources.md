@@ -108,8 +108,9 @@ Generated explicitly: `bash scripts/fetch-map-sources.sh /tmp/map-sources` then
 pinned to a commit and the generator refuses inputs whose SHA-256 differs from
 its pinned digests. Sources are not committed. `scripts/bible-maps-data.test.mjs`
 (`pnpm run test:maps`, part of `pnpm run build`) validates the committed output
-against KJV versification. No map tiles, satellite imagery or map services are
-used, at build time or at runtime.
+against KJV versification. The shaded-relief terrain images under the maps are
+pre-rendered by a separate maintenance step (below) and hosted locally; no map
+tiles, satellite imagery or map services are used at runtime.
 
 - **OpenBible.info Bible Geocoding Data**, CC BY 4.0
   (<https://github.com/openbibleinfo/Bible-Geocoding-Data>, commit
@@ -150,6 +151,21 @@ used, at build time or at runtime.
   in an equirectangular projection scaled for 32°N; the same projection
   (`src/components/bible-maps/map-projection.ts`) places the markers. The map
   shows modern coastlines and rivers, not ancient ones.
+- **Terrain Tiles on AWS** (<https://registry.opendata.aws/terrain-tiles/>,
+  Mapzen "terrarium" elevation PNGs), built from public-domain SRTM (NASA/USGS),
+  GMTED2010 (USGS) and ETOPO1 (NOAA) data, plus EU-DEM (Copernicus, attribution
+  required: "produced using Copernicus data and information funded by the
+  European Union"). Generated explicitly: `node scripts/fetch-terrain-tiles.mjs
+  /tmp/terrain-tiles`, then `node scripts/generate-map-terrain.mjs
+  /tmp/terrain-tiles /tmp/map-sources` (the Natural Earth land file is the
+  land/sea mask). The 160 tiles read are pinned by SHA-256 in
+  `scripts/data/terrain-tiles.json`; after a reviewed re-download, `--pin`
+  rewrites the pins. Output: three WebP images in
+  `public/bible-data/maps-terrain/` (whole map at zoom-5 detail; eastern
+  Mediterranean to Mesopotamia at zoom 7; the Holy Land at zoom 9), placed by
+  `src/data/bible-maps/terrain.json`. Colors are classic Bible-atlas
+  hypsometric tints (green lowlands to brown highlands) with north-west
+  hill shading; the finer images load only once the map is zoomed in.
 
 # Classic sermon sources (Bible reader Sermons tab, /bible/sermons)
 

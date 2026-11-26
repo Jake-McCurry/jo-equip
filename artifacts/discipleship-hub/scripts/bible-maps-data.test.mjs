@@ -129,10 +129,29 @@ test("base map is a self-contained SVG in the shared projection", () => {
   assert.ok(svg.length < 200_000);
 });
 
+test("terrain images exist, match their hashes, and cover the map", () => {
+  const terrain = JSON.parse(read("src/data/bible-maps/terrain.json"));
+  const dir = "public/bible-data/maps-terrain/";
+  assert.deepEqual(new Set(fs.readdirSync(new URL(dir, root))), new Set(terrain.tiers.map(t => t.file)), "no stale or missing images");
+  for (const t of terrain.tiers) {
+    const body = fs.readFileSync(new URL(dir + t.file, root));
+    assert.equal(t.file, `terrain-${t.name}.${createHash("sha256").update(body).digest("hex").slice(0, 10)}.webp`);
+    assert.equal(body.subarray(8, 12).toString("latin1"), "WEBP", t.file);
+    assert.ok(body.length < 300_000, `${t.file} stays small`);
+    assert.ok(t.x >= -0.01 && t.y >= -0.01 && t.x + t.width <= P.width + 0.01 && t.y + t.height <= P.height + 0.01, `${t.name} inside the map`);
+  }
+  const [world] = terrain.tiers;
+  assert.ok(world.x <= 0.01 && world.y <= 0.01 && world.width >= P.width - 0.01 && world.height >= P.height - 0.01, "first tier covers the whole map");
+  // Jerusalem must sit inside the detailed Holy Land image.
+  const [jx, jy] = project(35.2298, 31.7767), hl = terrain.tiers.find(t => t.name === "holyland");
+  assert.ok(jx > hl.x && jx < hl.x + hl.width && jy > hl.y && jy < hl.y + hl.height);
+  assert.match(read("public/_headers"), /\/bible-data\/maps-terrain\/\*\n\s+Cache-Control: public, max-age=31536000, immutable/);
+});
+
 test("sources are credited and hashed files are cached immutably", () => {
   const doc = read("scripts/data/bible-search-sources.md");
-  for (const s of ["Bible-Geocoding-Data", "CC BY 4.0", "theographic-bible-metadata", "CC BY-SA 4.0", "Natural Earth", "Easton"]) assert.ok(doc.includes(s), s);
+  for (const s of ["Bible-Geocoding-Data", "CC BY 4.0", "theographic-bible-metadata", "CC BY-SA 4.0", "Natural Earth", "Easton", "Terrain Tiles"]) assert.ok(doc.includes(s), s);
   assert.match(read("public/_headers"), /\/bible-data\/maps\/\*\n\s+Cache-Control: public, max-age=31536000, immutable/);
   const credits = read("src/components/bible-maps/MapSources.astro");
-  for (const s of ["openbible.info", "creativecommons.org/licenses/by/4.0", "creativecommons.org/licenses/by-sa/4.0", "naturalearthdata.com"]) assert.ok(credits.includes(s), s);
+  for (const s of ["openbible.info", "creativecommons.org/licenses/by/4.0", "creativecommons.org/licenses/by-sa/4.0", "naturalearthdata.com", "registry.opendata.aws/terrain-tiles"]) assert.ok(credits.includes(s), s);
 });

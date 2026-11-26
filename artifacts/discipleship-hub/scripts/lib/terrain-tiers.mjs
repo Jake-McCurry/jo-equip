@@ -26,3 +26,17 @@ export function tilesFor(tier) {
     for (let y = Math.floor(y0); y <= Math.floor(y1); y++) out.push(`${tier.zoom}/${x}/${y}`);
   return out;
 }
+
+/** Raster settings for a static atlas map whose longer side is `long` pixels (see generate-bible-atlas.mjs). */
+export const ATLAS_LONG_SIDE = 2000;
+export function atlasRaster(map, long = ATLAS_LONG_SIDE) {
+  const COS = Math.cos((32 * Math.PI) / 180);
+  const lonSpan = map.lon[1] - map.lon[0], latSpan = map.lat[1] - map.lat[0];
+  const ratio = (latSpan * 10) / (lonSpan * 10 * COS); // height / width
+  const W = ratio > 1 ? Math.round(long / ratio) : long, H = ratio > 1 ? long : Math.round(long * ratio);
+  const pxPerDeg = W / lonSpan;
+  const zoom = Math.min(12, Math.max(4, Math.ceil(Math.log2((pxPerDeg * 360) / 256))));
+  const metresPerPx = (lonSpan * 111320 * Math.cos((((map.lat[0] + map.lat[1]) / 2) * Math.PI) / 180)) / W;
+  const exaggeration = Math.round(2.6 * Math.pow(metresPerPx / 300, 0.38) * 100) / 100;
+  return { lon: map.lon, lat: map.lat, zoom, W, H, exaggeration };
+}

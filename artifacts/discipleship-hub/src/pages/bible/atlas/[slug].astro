@@ -1,0 +1,105 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import MapSources from "@/components/bible-maps/MapSources.astro";
+import { readerHref, refText } from "@/components/bible-maps/maps-data";
+import { atlasFile, atlasMaps, type AtlasMap } from "@/data/bible-atlas";
+import { placeBySlug } from "@/data/bible-maps";
+import "@/components/bible-maps/bible-maps.css";
+import "@/components/bible-maps/bible-atlas.css";
+
+export function getStaticPaths() {
+  return atlasMaps.map((map, i) => ({ params: { slug: map.slug }, props: { map, prev: atlasMaps[i - 1] ?? null, next: atlasMaps[i + 1] ?? null } }));
+}
+
+const { map, prev, next } = Astro.props as { map: AtlasMap; prev: AtlasMap | null; next: AtlasMap | null };
+const baseUrl = import.meta.env.BASE_URL;
+const join = (path: string) => (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + path;
+const file = (name: string) => atlasFile(baseUrl, name);
+const passage = refText(map.passage[0], map.passage[1]);
+const placeHref = (slug: string) => (placeBySlug.has(slug) ? join(`/bible/maps/${slug}`) : null);
+const alt = `Map: ${map.title} (${map.period}). ${map.routes.length ? `Shows ${map.routes.map(r => r.name.toLowerCase()).join("; ")} through ${[...new Set(map.routes.flatMap(r => r.stops.map(s => s.label)))].join(", ")}.` : `Shows ${map.places.map(p => p.label).join(", ")}.`}`;
+const downloadName = `${map.slug}-bible-map-jo-equip.jpg`;
+---
+<Layout
+  title={`${map.title}: Bible Map · JO EQUIP`}
+  description={`${map.summary} A free printable Bible map (${map.period}) with links to ${passage} and related passages.`}
+  image={file(map.files.half)}
+  imageAlt={`${map.title} map`}
+>
+  <div class="bmp-main">
+    <nav class="bmp-crumbs" aria-label="Breadcrumb">
+      <a href={join("/bible/resources")}>Bible Resources</a> <span aria-hidden="true">/</span>
+      <a href={join("/bible/atlas")}>Bible Atlas</a> <span aria-hidden="true">/</span> {map.title}
+    </nav>
+    <p class="bmp-eyebrow">Bible Atlas</p>
+    <h1 class="bmp-title">{map.title}</h1>
+    <p class="bmp-sub">{map.period} · <a class="bmp-link" href={readerHref(baseUrl, map.passage[0])}>{passage}</a></p>
+    <p class="bmp-lede">{map.summary}</p>
+
+    <figure class="ba-figure">
+      <a href={file(map.files.full)} title="Open the full-size map">
+        <img
+          src={file(map.files.half)}
+          srcset={`${file(map.files.half)} ${map.halfWidth}w, ${file(map.files.full)} ${map.width}w`}
+          sizes="(min-width: 1152px) 1088px, calc(100vw - 2rem)"
+          width={map.width} height={map.height} alt={alt} decoding="async" fetchpriority="high"
+        />
+      </a>
+      <figcaption>Select the map to open it full size; on a phone you can then pinch to zoom.</figcaption>
+    </figure>
+    <div class="ba-actions">
+      <a class="ba-btn is-primary" href={file(map.files.print)} download={downloadName}>Download map (JPEG)</a>
+      <button type="button" class="ba-btn" data-ba-print>Print this map</button>
+      <a class="ba-btn" href={join("/bible/maps")}>Explore on the interactive map</a>
+    </div>
+
+    <section class="bmp-section" aria-labelledby="about-h">
+      <h2 id="about-h">About this map</h2>
+      <p class="bmp-note">{map.notes}</p>
+    </section>
+
+    {map.routes.length > 0 && (
+      <section class="bmp-section" aria-labelledby="route-h">
+        <h2 id="route-h">{map.routes.length === 1 ? "The route, step by step" : "The routes, step by step"}</h2>
+        {map.routes.map(r => (
+          <div class="ba-route">
+            <h3><span class={`ba-swatch${r.proposed ? " is-proposed" : ""}`} style={`border-top-color:${r.color}`} aria-hidden="true"></span>{r.name}{r.proposed && " (one proposal)"}</h3>
+            <ol class="ba-stops">
+              {r.stops.map(s => {
+                const href = placeHref(s.slug);
+                return (
+                  <li>
+                    {href ? <a href={href}>{s.label}</a> : s.label}
+                    {s.ref && <> <span class="ba-ref">· <a href={readerHref(baseUrl, s.ref[0])}>{refText(s.ref[0], s.ref[1])}</a></span></>}
+                  </li>
+                );
+              })}
+            </ol>
+          </div>
+        ))}
+      </section>
+    )}
+
+    <section class="bmp-section" aria-labelledby="places-h">
+      <h2 id="places-h">Places on this map</h2>
+      <p>Each place links to its page on Bible Maps, with how certain its location is and every verse that mentions it.</p>
+      <ul class="ba-places">
+        {map.places.map(p => {
+          const href = placeHref(p.slug);
+          return <li>{href ? <a href={href}>{p.label}</a> : p.label}</li>;
+        })}
+      </ul>
+    </section>
+
+    <nav class="ba-pager" aria-label="More atlas maps">
+      {prev ? <a href={join(`/bible/atlas/${prev.slug}`)}>← {prev.title}</a> : <span></span>}
+      <a href={join("/bible/atlas")}>All atlas maps</a>
+      {next ? <a href={join(`/bible/atlas/${next.slug}`)}>{next.title} →</a> : <span></span>}
+    </nav>
+
+    <MapSources uses={["openbible", "naturalearth"]} />
+  </div>
+</Layout>
+<script>
+  document.querySelectorAll<HTMLButtonElement>("[data-ba-print]").forEach(b => b.addEventListener("click", () => window.print()));
+</script>

@@ -13,7 +13,7 @@
     "test:bible-search": "node --experimental-strip-types --test scripts/full-bible-search.test.mjs scripts/full-bible-controls.test.mjs scripts/knowing-god-search*.test.mjs",
     "test:strongs": "node --test scripts/strongs-data.test.mjs",
     "test:commentary": "node --test scripts/commentary-data.test.mjs",
-    "test:maps": "node --test scripts/bible-maps-data.test.mjs",
+    "test:maps": "node --test scripts/bible-maps-data.test.mjs scripts/bible-atlas-data.test.mjs",
     "test:sermons": "node --test scripts/sermons-data.test.mjs",
     "generate:strongs": "node scripts/generate-strongs.mjs",
     "test:dependency-security": "node --test scripts/dependency-security.test.mjs",

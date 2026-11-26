@@ -62,5 +62,5 @@
 - [Deployment test fixtures](deployment-test-fixtures.md) — Local uploads can mask missing inputs in Cloudflare builds; keep validation fixtures with the repository.
 - [Strong's word-study data](strongs-word-study-data.md) — Match KJV tags to displayed text at runtime; STEP uses NRSV numbering with [KJV] brackets; skip X/empty-Qere rows.
 - [Public-domain commentary sources](public-domain-commentary-sources.md) — Use CrossWire SWORD modules, not helloao copies (missing chapters); Barnes NT-only; skip borrowed SWORD intro records.
-- [Bible map sources](bible-map-sources.md) — OpenBible/Theographic/Natural Earth + AWS terrain rasters (atlas style); astronomical years; closed-ring simplify pitfall.
+- [Bible map sources](bible-map-sources.md) — OpenBible/Theographic/Natural Earth + AWS terrain (atlas style); tile-data defects and static atlas render pitfalls.
 - [Spurgeon sermon verification](spurgeon-sermon-verification.md) — CC0 markdown is a modernized edition; publish only scan-verified sermons via case-sensitive diff; IA uploader PDFs excluded.

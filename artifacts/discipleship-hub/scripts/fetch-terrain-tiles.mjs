@@ -1,15 +1,17 @@
-// Downloads the elevation tiles used by scripts/generate-map-terrain.mjs.
+// Downloads the elevation tiles used by scripts/generate-map-terrain.mjs and
+// scripts/generate-bible-atlas.mjs.
 // Maintenance only; normal builds never run it.
 // Source: Terrain Tiles on AWS Open Data (Mapzen "terrarium" encoding), built
 // from public-domain SRTM, GMTED2010 and ETOPO1 elevation data among others.
 // Usage: node scripts/fetch-terrain-tiles.mjs /tmp/terrain-tiles
 import fs from "node:fs/promises";
 import path from "node:path";
-import { TIERS, TILE_URL, tilesFor } from "./lib/terrain-tiers.mjs";
+import { TIERS, TILE_URL, atlasRaster, tilesFor } from "./lib/terrain-tiers.mjs";
+import { ATLAS } from "./data/bible-atlas-maps.mjs";
 
 const dir = process.argv[2];
 if (!dir) throw new Error("Usage: node scripts/fetch-terrain-tiles.mjs <directory>");
-const all = [...new Set(TIERS.flatMap(tilesFor))];
+const all = [...new Set([...TIERS, ...ATLAS.map(m => atlasRaster(m))].flatMap(tilesFor))];
 let fetched = 0;
 for (let i = 0; i < all.length; i += 8) {
   await Promise.all(all.slice(i, i + 8).map(async key => {

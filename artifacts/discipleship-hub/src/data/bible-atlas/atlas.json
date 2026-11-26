@@ -1,0 +1,2103 @@
+[
+ {
+  "slug": "world-of-the-patriarchs",
+  "title": "The World of the Patriarchs",
+  "period": "c. 2000–1800 BC (traditional dating)",
+  "summary": "Abraham's journey from Ur of the Chaldeans through Haran to Canaan, his stay in Egypt during a famine, and the places where he, Isaac and Jacob lived.",
+  "notes": "Ur is shown at Tell el-Muqayyar in southern Iraq, the most widely accepted identification; some scholars place Abraham's Ur in northern Mesopotamia. The line shows the order of places named in Genesis, not exact roads.",
+  "passage": [
+   1011031,
+   1013018
+  ],
+  "width": 2000,
+  "height": 1243,
+  "halfWidth": 1000,
+  "files": {
+   "full": "world-of-the-patriarchs.4cfabd7a1e.webp",
+   "half": "world-of-the-patriarchs-half.c0da400b2c.webp",
+   "thumb": "world-of-the-patriarchs-thumb.ccd6998ad9.webp",
+   "print": "world-of-the-patriarchs-print.b3ad6fdc5b.jpg"
+  },
+  "routes": [
+   {
+    "name": "Abraham's journey",
+    "color": "#b3261e",
+    "proposed": false,
+    "stops": [
+     {
+      "slug": "ur-1",
+      "label": "Ur",
+      "ref": [
+       1011031
+      ]
+     },
+     {
+      "slug": "babylon-1",
+      "label": "Babylon",
+      "ref": null
+     },
+     {
+      "slug": "haran",
+      "label": "Haran",
+      "ref": [
+       1011031
+      ]
+     },
+     {
+      "slug": "damascus",
+      "label": "Damascus",
+      "ref": null
+     },
+     {
+      "slug": "shechem",
+      "label": "Shechem",
+      "ref": [
+       1012006
+      ]
+     },
+     {
+      "slug": "bethel-1",
+      "label": "Bethel",
+      "ref": [
+       1012008
+      ]
+     },
+     {
+      "slug": "hebron",
+      "label": "Hebron",
+      "ref": null
+     },
+     {
+      "slug": "egypt",
+      "label": "Egypt",
+      "ref": [
+       1012010
+      ]
+     },
+     {
+      "slug": "bethel-1",
+      "label": "Bethel",
+      "ref": [
+       1013003
+      ]
+     },
+     {
+      "slug": "hebron",
+      "label": "Hebron",
+      "ref": [
+       1013018
+      ]
+     }
+    ]
+   }
+  ],
+  "places": [
+   {
+    "slug": "babylon-1",
+    "label": "Babylon"
+   },
+   {
+    "slug": "beersheba-1",
+    "label": "Beersheba"
+   },
+   {
+    "slug": "bethel-1",
+    "label": "Bethel"
+   },
+   {
+    "slug": "damascus",
+    "label": "Damascus"
+   },
+   {
+    "slug": "egypt",
+    "label": "Egypt (Nile delta)"
+   },
+   {
+    "slug": "haran",
+    "label": "Haran"
+   },
+   {
+    "slug": "hebron",
+    "label": "Hebron"
+   },
+   {
+    "slug": "shechem",
+    "label": "Shechem"
+   },
+   {
+    "slug": "ur-1",
+    "label": "Ur"
+   }
+  ],
+  "regions": [
+   "MESOPOTAMIA",
+   "CANAAN",
+   "EGYPT",
+   "ARABIAN DESERT",
+   "CHALDEA",
+   "ARAM",
+   "Mediterranean Sea",
+   "Euphrates",
+   "Tigris"
+  ]
+ },
+ {
+  "slug": "exodus",
+  "title": "The Exodus from Egypt",
+  "period": "15th or 13th century BC (dates debated)",
+  "summary": "Israel's departure from Egypt, the journey to Mount Sinai, the years in the wilderness around Kadesh-barnea, and the approach to Canaan from the plains of Moab.",
+  "notes": "Scripture names the stopping places but not where most of them were, so the route is uncertain. This map follows the traditional route to Mount Sinai at Jebel Musa in the southern Sinai peninsula. Other proposals place the sea crossing farther north and Mount Sinai in northern Sinai or in Arabia.",
+  "passage": [
+   2012037,
+   2019002
+  ],
+  "width": 2000,
+  "height": 1695,
+  "halfWidth": 1000,
+  "files": {
+   "full": "exodus.8973220196.webp",
+   "half": "exodus-half.e26007e5f8.webp",
+   "thumb": "exodus-thumb.cbfcde02e3.webp",
+   "print": "exodus-print.765f6ad658.jpg"
+  },
+  "routes": [
+   {
+    "name": "Traditional southern route",
+    "color": "#b3261e",
+    "proposed": true,
+    "stops": [
+     {
+      "slug": "rameses",
+      "label": "Rameses",
+      "ref": [
+       2012037
+      ]
+     },
+     {
+      "slug": "succoth-2",
+      "label": "Succoth",
+      "ref": [
+       2012037
+      ]
+     },
+     {
+      "slug": "marah",
+      "label": "Marah",
+      "ref": [
+       2015023
+      ]
+     },
+     {
+      "slug": "elim",
+      "label": "Elim",
+      "ref": [
+       2015027
+      ]
+     },
+     {
+      "slug": "rephidim",
+      "label": "Rephidim",
+      "ref": [
+       2017001
+      ]
+     },
+     {
+      "slug": "mount-sinai",
+      "label": "Mount Sinai",
+      "ref": [
+       2019001,
+       2019002
+      ]
+     },
+     {
+      "slug": "kadesh-barnea",
+      "label": "Kadesh-barnea",
+      "ref": [
+       4020001
+      ]
+     },
+     {
+      "slug": "ezion-geber",
+      "label": "Ezion-geber",
+      "ref": [
+       4033035,
+       4033036
+      ]
+     },
+     {
+      "slug": "mount-nebo",
+      "label": "Mount Nebo",
+      "ref": [
+       5034001
+      ]
+     },
+     {
+      "slug": "jericho-1",
+      "label": "Jericho",
+      "ref": [
+       6006001,
+       6006002
+      ]
+     }
+    ]
+   }
+  ],
+  "places": [
+   {
+    "slug": "elim",
+    "label": "Elim"
+   },
+   {
+    "slug": "ezion-geber",
+    "label": "Ezion-geber"
+   },
+   {
+    "slug": "jericho-1",
+    "label": "Jericho"
+   },
+   {
+    "slug": "jerusalem",
+    "label": "Jerusalem"
+   },
+   {
+    "slug": "kadesh-barnea",
+    "label": "Kadesh-barnea"
+   },
+   {
+    "slug": "marah",
+    "label": "Marah"
+   },
+   {
+    "slug": "memphis",
+    "label": "Memphis"
+   },
+   {
+    "slug": "mount-nebo",
+    "label": "Mount Nebo"
+   },
+   {
+    "slug": "mount-sinai",
+    "label": "Mount Sinai"
+   },
+   {
+    "slug": "rameses",
+    "label": "Rameses"
+   },
+   {
+    "slug": "rephidim",
+    "label": "Rephidim"
+   },
+   {
+    "slug": "succoth-2",
+    "label": "Succoth"
+   }
+  ],
+  "regions": [
+   "EGYPT",
+   "GOSHEN",
+   "WILDERNESS OF SHUR",
+   "WILDERNESS OF PARAN",
+   "WILDERNESS OF ZIN",
+   "SINAI",
+   "EDOM",
+   "MOAB",
+   "CANAAN",
+   "Mediterranean Sea",
+   "Gulf of Suez",
+   "Gulf of Aqaba"
+  ]
+ },
+ {
+  "slug": "twelve-tribes",
+  "title": "The Land Divided among the Twelve Tribes",
+  "period": "c. 1400–1050 BC",
+  "summary": "The general areas allotted to the tribes of Israel after the conquest under Joshua, with the main cities of the period of the judges.",
+  "notes": "Tribe names show the general area of each allotment; the boundary lists in Joshua 13–19 are detailed but many of their places cannot be located, so no borders are drawn. Dan first received land west of Benjamin and later moved north (Judges 18).",
+  "passage": [
+   6013001,
+   6019051
+  ],
+  "width": 1696,
+  "height": 2000,
+  "halfWidth": 848,
+  "files": {
+   "full": "twelve-tribes.a53c238979.webp",
+   "half": "twelve-tribes-half.f5e9e9563b.webp",
+   "thumb": "twelve-tribes-thumb.67a5f452f4.webp",
+   "print": "twelve-tribes-print.2aa5c1f4da.jpg"
+  },
+  "routes": [],
+  "places": [
+   {
+    "slug": "ashdod",
+    "label": "Ashdod"
+   },
+   {
+    "slug": "beersheba-1",
+    "label": "Beersheba"
+   },
+   {
+    "slug": "bethel-1",
+    "label": "Bethel"
+   },
+   {
+    "slug": "dan",
+    "label": "Dan"
+   },
+   {
+    "slug": "gath-1",
+    "label": "Gath"
+   },
+   {
+    "slug": "gaza",
+    "label": "Gaza"
+   },
+   {
+    "slug": "hazor-1",
+    "label": "Hazor"
+   },
+   {
+    "slug": "hebron",
+    "label": "Hebron"
+   },
+   {
+    "slug": "jericho-1",
+    "label": "Jericho"
+   },
+   {
+    "slug": "jerusalem",
+    "label": "Jerusalem"
+   },
+   {
+    "slug": "megiddo",
+    "label": "Megiddo"
+   },
+   {
+    "slug": "mount-carmel",
+    "label": "Mount Carmel"
+   },
+   {
+    "slug": "rabbah-1",
+    "label": "Rabbah"
+   },
+   {
+    "slug": "shechem",
+    "label": "Shechem"
+   },
+   {
+    "slug": "shiloh",
+    "label": "Shiloh"
+   }
+  ],
+  "regions": [
+   "ASHER",
+   "NAPHTALI",
+   "ZEBULUN",
+   "ISSACHAR",
+   "MANASSEH",
+   "EPHRAIM",
+   "GAD",
+   "DAN",
+   "BENJAMIN",
+   "JUDAH",
+   "REUBEN",
+   "SIMEON",
+   "PHILISTINES",
+   "Mediterranean Sea",
+   "Sea of Chinnereth",
+   "Salt Sea",
+   "Jordan"
+  ]
+ },
+ {
+  "slug": "david-and-solomon",
+  "title": "The Kingdom of David and Solomon",
+  "period": "c. 1010–930 BC",
+  "summary": "The united kingdom of Israel at its greatest extent, with Jerusalem as capital, and the neighbouring peoples David subdued.",
+  "notes": "Solomon ruled “from the Euphrates to the land of the Philistines, as far as the border of Egypt” (1 Kings 4:21). How directly David and Solomon governed the outer areas is debated, so no border is drawn.",
+  "passage": [
+   10008001,
+   10008014
+  ],
+  "width": 1461,
+  "height": 2000,
+  "halfWidth": 731,
+  "files": {
+   "full": "david-and-solomon.b165291e8a.webp",
+   "half": "david-and-solomon-half.1a31df87fb.webp",
+   "thumb": "david-and-solomon-thumb.f2dcfcaa0b.webp",
+   "print": "david-and-solomon-print.99bc72d990.jpg"
+  },
+  "routes": [],
+  "places": [
+   {
+    "slug": "damascus",
+    "label": "Damascus"
+   },
+   {
+    "slug": "dan",
+    "label": "Dan"
+   },
+   {
+    "slug": "ezion-geber",
+    "label": "Ezion-geber"
+   },
+   {
+    "slug": "gath-1",
+    "label": "Gath"
+   },
+   {
+    "slug": "gezer",
+    "label": "Gezer"
+   },
+   {
+    "slug": "hamath-1",
+    "label": "Hamath"
+   },
+   {
+    "slug": "hazor-1",
+    "label": "Hazor"
+   },
+   {
+    "slug": "hebron",
+    "label": "Hebron"
+   },
+   {
+    "slug": "jerusalem",
+    "label": "Jerusalem"
+   },
+   {
+    "slug": "megiddo",
+    "label": "Megiddo"
+   },
+   {
+    "slug": "rabbah-1",
+    "label": "Rabbah"
+   },
+   {
+    "slug": "sidon",
+    "label": "Sidon"
+   },
+   {
+    "slug": "tadmor",
+    "label": "Tadmor"
+   },
+   {
+    "slug": "tiphsah-1",
+    "label": "Tiphsah"
+   },
+   {
+    "slug": "tyre",
+    "label": "Tyre"
+   }
+  ],
+  "regions": [
+   "ISRAEL",
+   "JUDAH",
+   "PHILISTIA",
+   "PHOENICIA",
+   "ARAM (SYRIA)",
+   "AMMON",
+   "MOAB",
+   "EDOM",
+   "ARABIAN DESERT",
+   "Mediterranean Sea",
+   "Euphrates"
+  ]
+ },
+ {
+  "slug": "divided-kingdom",
+  "title": "The Divided Kingdom: Israel and Judah",
+  "period": "c. 930–722 BC",
+  "summary": "After Solomon, the ten northern tribes formed the kingdom of Israel with its capital at Samaria, while Judah remained loyal to David's line in Jerusalem.",
+  "notes": "Jeroboam set up golden calves at Bethel and Dan (1 Kings 12:29). Israel's capital moved from Shechem to Tirzah and then to Samaria under Omri (1 Kings 16:24).",
+  "passage": [
+   11012001,
+   11012033
+  ],
+  "width": 1583,
+  "height": 2000,
+  "halfWidth": 792,
+  "files": {
+   "full": "divided-kingdom.a7554854cc.webp",
+   "half": "divided-kingdom-half.c42bfb639d.webp",
+   "thumb": "divided-kingdom-thumb.24b2479c9c.webp",
+   "print": "divided-kingdom-print.64526ddbc9.jpg"
+  },
+  "routes": [],
+  "places": [
+   {
+    "slug": "beersheba-1",
+    "label": "Beersheba"
+   },
+   {
+    "slug": "bethel-1",
+    "label": "Bethel"
+   },
+   {
+    "slug": "damascus",
+    "label": "Damascus"
+   },
+   {
+    "slug": "dan",
+    "label": "Dan"
+   },
+   {
+    "slug": "gaza",
+    "label": "Gaza"
+   },
+   {
+    "slug": "hebron",
+    "label": "Hebron"
+   },
+   {
+    "slug": "jerusalem",
+    "label": "Jerusalem"
+   },
+   {
+    "slug": "jezreel-2",
+    "label": "Jezreel"
+   },
+   {
+    "slug": "lachish",
+    "label": "Lachish"
+   },
+   {
+    "slug": "megiddo",
+    "label": "Megiddo"
+   },
+   {
+    "slug": "mount-carmel",
+    "label": "Mount Carmel"
+   },
+   {
+    "slug": "rabbah-1",
+    "label": "Rabbah"
+   },
+   {
+    "slug": "samaria-1",
+    "label": "Samaria"
+   },
+   {
+    "slug": "shechem",
+    "label": "Shechem"
+   },
+   {
+    "slug": "tekoa",
+    "label": "Tekoa"
+   },
+   {
+    "slug": "tirzah",
+    "label": "Tirzah"
+   },
+   {
+    "slug": "tyre",
+    "label": "Tyre"
+   }
+  ],
+  "regions": [
+   "ISRAEL",
+   "JUDAH",
+   "PHILISTIA",
+   "ARAM",
+   "AMMON",
+   "MOAB",
+   "EDOM",
+   "PHOENICIA",
+   "Mediterranean Sea",
+   "Sea of Galilee",
+   "Dead Sea"
+  ]
+ },
+ {
+  "slug": "exile-and-return",
+  "title": "Assyria, Babylon, the Exile and the Return",
+  "period": "722–445 BC",
+  "summary": "Israel was carried away by Assyria in 722 BC and Judah by Babylon in 586 BC. Under Persian rule the exiles returned to rebuild Jerusalem.",
+  "notes": "Travellers between Judah and Babylon normally followed the Euphrates north-west and came south through Syria rather than crossing the desert. The exact roads are not given in Scripture; the return route is drawn as a likely path.",
+  "passage": [
+   12025001,
+   12025021
+  ],
+  "width": 2000,
+  "height": 1329,
+  "halfWidth": 1000,
+  "files": {
+   "full": "exile-and-return.23cf1f5f3c.webp",
+   "half": "exile-and-return-half.51c2430a06.webp",
+   "thumb": "exile-and-return-thumb.40296b6c6c.webp",
+   "print": "exile-and-return-print.3534197593.jpg"
+  },
+  "routes": [
+   {
+    "name": "Israel taken to Assyria (722 BC)",
+    "color": "#5b3f99",
+    "proposed": false,
+    "stops": [
+     {
+      "slug": "samaria-1",
+      "label": "Samaria",
+      "ref": [
+       12017006
+      ]
+     },
+     {
+      "slug": "damascus",
+      "label": "Damascus",
+      "ref": null
+     },
+     {
+      "slug": "gozan",
+      "label": "Gozan",
+      "ref": [
+       12017006
+      ]
+     },
+     {
+      "slug": "nineveh",
+      "label": "Nineveh",
+      "ref": null
+     }
+    ]
+   },
+   {
+    "name": "Judah taken to Babylon (586 BC)",
+    "color": "#b3261e",
+    "proposed": false,
+    "stops": [
+     {
+      "slug": "jerusalem",
+      "label": "Jerusalem",
+      "ref": [
+       12025011
+      ]
+     },
+     {
+      "slug": "damascus",
+      "label": "Damascus",
+      "ref": null
+     },
+     {
+      "slug": "riblah-1",
+      "label": "Riblah",
+      "ref": [
+       12025006
+      ]
+     },
+     {
+      "slug": "babylon-1",
+      "label": "Babylon",
+      "ref": [
+       12025007
+      ]
+     }
+    ]
+   },
+   {
+    "name": "The return under Persia (538 BC on)",
+    "color": "#1f6f43",
+    "proposed": true,
+    "stops": [
+     {
+      "slug": "babylon-1",
+      "label": "Babylon",
+      "ref": [
+       15001011
+      ]
+     },
+     {
+      "slug": "jerusalem",
+      "label": "Jerusalem",
+      "ref": [
+       15002001
+      ]
+     }
+    ]
+   }
+  ],
+  "places": [
+   {
+    "slug": "babylon-1",
+    "label": "Babylon"
+   },
+   {
+    "slug": "carchemish",
+    "label": "Carchemish"
+   },
+   {
+    "slug": "damascus",
+    "label": "Damascus"
+   },
+   {
+    "slug": "gozan",
+    "label": "Gozan"
+   },
+   {
+    "slug": "haran",
+    "label": "Haran"
+   },
+   {
+    "slug": "jerusalem",
+    "label": "Jerusalem"
+   },
+   {
+    "slug": "memphis",
+    "label": "Memphis"
+   },
+   {
+    "slug": "nineveh",
+    "label": "Nineveh"
+   },
+   {
+    "slug": "riblah-1",
+    "label": "Riblah"
+   },
+   {
+    "slug": "samaria-1",
+    "label": "Samaria"
+   },
+   {
+    "slug": "susa",
+    "label": "Susa"
+   },
+   {
+    "slug": "ur-1",
+    "label": "Ur"
+   }
+  ],
+  "regions": [
+   "ASSYRIA",
+   "BABYLONIA",
+   "MEDIA",
+   "PERSIA",
+   "ELAM",
+   "EGYPT",
+   "ARABIAN DESERT",
+   "ARAM",
+   "Mediterranean Sea",
+   "Persian Gulf",
+   "Euphrates",
+   "Tigris"
+  ]
+ },
+ {
+  "slug": "israel-in-the-time-of-jesus",
+  "title": "Israel in the Time of Jesus",
+  "period": "c. 6 BC–AD 30",
+  "summary": "The regions and towns of Jesus's life and ministry, from his birth in Bethlehem and boyhood in Nazareth to his ministry in Galilee and his death and resurrection in Jerusalem.",
+  "notes": "Galilee and Perea were ruled by Herod Antipas; Judea, Samaria and Idumea by a Roman governor (Pontius Pilate from AD 26); the Decapolis was a league of Greek cities.",
+  "passage": [
+   42004014,
+   42004015
+  ],
+  "width": 1408,
+  "height": 2000,
+  "halfWidth": 704,
+  "files": {
+   "full": "israel-in-the-time-of-jesus.f7d13146aa.webp",
+   "half": "israel-in-the-time-of-jesus-half.a94a42112c.webp",
+   "thumb": "israel-in-the-time-of-jesus-thumb.3f4659e708.webp",
+   "print": "israel-in-the-time-of-jesus-print.f608993070.jpg"
+  },
+  "routes": [],
+  "places": [
+   {
+    "slug": "bethany-1",
+    "label": "Bethany"
+   },
+   {
+    "slug": "bethlehem-1",
+    "label": "Bethlehem"
+   },
+   {
+    "slug": "bethsaida-1",
+    "label": "Bethsaida"
+   },
+   {
+    "slug": "caesarea",
+    "label": "Caesarea"
+   },
+   {
+    "slug": "caesarea-philippi",
+    "label": "Caesarea Philippi"
+   },
+   {
+    "slug": "cana",
+    "label": "Cana"
+   },
+   {
+    "slug": "capernaum",
+    "label": "Capernaum"
+   },
+   {
+    "slug": "emmaus",
+    "label": "Emmaus"
+   },
+   {
+    "slug": "gadara",
+    "label": "Gadara"
+   },
+   {
+    "slug": "jericho-2",
+    "label": "Jericho"
+   },
+   {
+    "slug": "jerusalem",
+    "label": "Jerusalem"
+   },
+   {
+    "slug": "joppa",
+    "label": "Joppa"
+   },
+   {
+    "slug": "nain",
+    "label": "Nain"
+   },
+   {
+    "slug": "nazareth",
+    "label": "Nazareth"
+   },
+   {
+    "slug": "sidon",
+    "label": "Sidon"
+   },
+   {
+    "slug": "sychar",
+    "label": "Sychar"
+   },
+   {
+    "slug": "tiberias",
+    "label": "Tiberias"
+   },
+   {
+    "slug": "tyre",
+    "label": "Tyre"
+   }
+  ],
+  "regions": [
+   "GALILEE",
+   "SAMARIA",
+   "JUDEA",
+   "PEREA",
+   "DECAPOLIS",
+   "IDUMEA",
+   "PHOENICIA",
+   "ITUREA",
+   "Mediterranean Sea",
+   "Sea of Galilee",
+   "Dead Sea",
+   "Jordan River"
+  ]
+ },
+ {
+  "slug": "jesus-around-the-sea-of-galilee",
+  "title": "Jesus's Ministry around the Sea of Galilee",
+  "period": "c. AD 27–30",
+  "summary": "The lakeside towns where Jesus called his first disciples, taught, healed and fed the crowds, with Capernaum as his base.",
+  "notes": "Many lakeside sites are identified with confidence; Bethsaida's exact location is still debated (et-Tell and el-Araj are both proposed). Gadara, Gerasa and Gergesa are named for the healing of the demon-possessed man; the event happened on the eastern shore.",
+  "passage": [
+   40004012,
+   40004025
+  ],
+  "width": 2000,
+  "height": 1387,
+  "halfWidth": 1000,
+  "files": {
+   "full": "jesus-around-the-sea-of-galilee.71dd0c5ba8.webp",
+   "half": "jesus-around-the-sea-of-galilee-half.a952f370a0.webp",
+   "thumb": "jesus-around-the-sea-of-galilee-thumb.67f8caa901.webp",
+   "print": "jesus-around-the-sea-of-galilee-print.5c6321e266.jpg"
+  },
+  "routes": [],
+  "places": [
+   {
+    "slug": "bethsaida-1",
+    "label": "Bethsaida"
+   },
+   {
+    "slug": "cana",
+    "label": "Cana"
+   },
+   {
+    "slug": "capernaum",
+    "label": "Capernaum"
+   },
+   {
+    "slug": "chorazin",
+    "label": "Chorazin"
+   },
+   {
+    "slug": "gadara",
+    "label": "Gadara"
+   },
+   {
+    "slug": "magadan",
+    "label": "Magdala"
+   },
+   {
+    "slug": "nain",
+    "label": "Nain"
+   },
+   {
+    "slug": "nazareth",
+    "label": "Nazareth"
+   },
+   {
+    "slug": "gennesaret",
+    "label": "Plain of Gennesaret"
+   },
+   {
+    "slug": "tiberias",
+    "label": "Tiberias"
+   }
+  ],
+  "regions": [
+   "GALILEE",
+   "DECAPOLIS",
+   "GAULANITIS",
+   "Sea of Galilee",
+   "Jordan River"
+  ]
+ },
+ {
+  "slug": "pauls-first-journey",
+  "title": "Paul's First Missionary Journey",
+  "period": "c. AD 46–48",
+  "summary": "Paul and Barnabas, sent out by the church at Antioch, preached in Cyprus and in the cities of southern Galatia before returning to Antioch.",
+  "notes": "Land routes follow the order of places in Acts; the roads Paul took between them are not described.",
+  "passage": [
+   44013001,
+   44014028
+  ],
+  "width": 2000,
+  "height": 1533,
+  "halfWidth": 1000,
+  "files": {
+   "full": "pauls-first-journey.2b5eb70f25.webp",
+   "half": "pauls-first-journey-half.4a110feffd.webp",
+   "thumb": "pauls-first-journey-thumb.efe7a3960a.webp",
+   "print": "pauls-first-journey-print.ac255900ed.jpg"
+  },
+  "routes": [
+   {
+    "name": "Paul and Barnabas",
+    "color": "#b3261e",
+    "proposed": false,
+    "stops": [
+     {
+      "slug": "antioch-1",
+      "label": "Antioch (Syria)",
+      "ref": [
+       44013001,
+       44013003
+      ]
+     },
+     {
+      "slug": "seleucia",
+      "label": "Seleucia",
+      "ref": [
+       44013004
+      ]
+     },
+     {
+      "slug": "salamis",
+      "label": "Salamis",
+      "ref": [
+       44013005
+      ]
+     },
+     {
+      "slug": "paphos",
+      "label": "Paphos",
+      "ref": [
+       44013006
+      ]
+     },
+     {
+      "slug": "perga",
+      "label": "Perga",
+      "ref": [
+       44013013
+      ]
+     },
+     {
+      "slug": "antioch-2",
+      "label": "Antioch (Pisidia)",
+      "ref": [
+       44013014
+      ]
+     },
+     {
+      "slug": "iconium",
+      "label": "Iconium",
+      "ref": [
+       44013051
+      ]
+     },
+     {
+      "slug": "lystra",
+      "label": "Lystra",
+      "ref": [
+       44014006
+      ]
+     },
+     {
+      "slug": "derbe",
+      "label": "Derbe",
+      "ref": [
+       44014020
+      ]
+     },
+     {
+      "slug": "lystra",
+      "label": "Lystra",
+      "ref": [
+       44014021
+      ]
+     },
+     {
+      "slug": "iconium",
+      "label": "Iconium",
+      "ref": [
+       44014021
+      ]
+     },
+     {
+      "slug": "antioch-2",
+      "label": "Antioch (Pisidia)",
+      "ref": [
+       44014021
+      ]
+     },
+     {
+      "slug": "perga",
+      "label": "Perga",
+      "ref": [
+       44014025
+      ]
+     },
+     {
+      "slug": "attalia",
+      "label": "Attalia",
+      "ref": [
+       44014025
+      ]
+     },
+     {
+      "slug": "seleucia",
+      "label": "Seleucia",
+      "ref": null
+     },
+     {
+      "slug": "antioch-1",
+      "label": "Antioch (Syria)",
+      "ref": [
+       44014026
+      ]
+     }
+    ]
+   }
+  ],
+  "places": [
+   {
+    "slug": "antioch-2",
+    "label": "Antioch (Pisidia)"
+   },
+   {
+    "slug": "antioch-1",
+    "label": "Antioch (Syria)"
+   },
+   {
+    "slug": "attalia",
+    "label": "Attalia"
+   },
+   {
+    "slug": "derbe",
+    "label": "Derbe"
+   },
+   {
+    "slug": "iconium",
+    "label": "Iconium"
+   },
+   {
+    "slug": "lystra",
+    "label": "Lystra"
+   },
+   {
+    "slug": "paphos",
+    "label": "Paphos"
+   },
+   {
+    "slug": "perga",
+    "label": "Perga"
+   },
+   {
+    "slug": "salamis",
+    "label": "Salamis"
+   },
+   {
+    "slug": "seleucia",
+    "label": "Seleucia"
+   },
+   {
+    "slug": "tarsus",
+    "label": "Tarsus"
+   }
+  ],
+  "regions": [
+   "CYPRUS",
+   "PAMPHYLIA",
+   "PISIDIA",
+   "LYCAONIA",
+   "GALATIA",
+   "CILICIA",
+   "SYRIA",
+   "Mediterranean Sea"
+  ]
+ },
+ {
+  "slug": "pauls-second-journey",
+  "title": "Paul's Second Missionary Journey",
+  "period": "c. AD 49–52",
+  "summary": "Paul and Silas revisited the Galatian churches, then crossed into Europe after Paul's vision of a man of Macedonia, founding churches in Philippi, Thessalonica, Berea and Corinth.",
+  "notes": "Acts 18:22 says Paul “went up and greeted the church” after landing at Caesarea; this is usually understood as a visit to Jerusalem. Berea to Athens may have been by sea (Acts 17:14–15).",
+  "passage": [
+   44015036,
+   44018022
+  ],
+  "width": 2000,
+  "height": 1621,
+  "halfWidth": 1000,
+  "files": {
+   "full": "pauls-second-journey.8221b6298f.webp",
+   "half": "pauls-second-journey-half.cb4cf6e719.webp",
+   "thumb": "pauls-second-journey-thumb.8e35e167e9.webp",
+   "print": "pauls-second-journey-print.57799e728d.jpg"
+  },
+  "routes": [
+   {
+    "name": "Paul and Silas (with Timothy from Lystra)",
+    "color": "#1f5fa8",
+    "proposed": false,
+    "stops": [
+     {
+      "slug": "antioch-1",
+      "label": "Antioch (Syria)",
+      "ref": [
+       44015040
+      ]
+     },
+     {
+      "slug": "tarsus",
+      "label": "Tarsus",
+      "ref": [
+       44015041
+      ]
+     },
+     {
+      "slug": "derbe",
+      "label": "Derbe",
+      "ref": [
+       44016001
+      ]
+     },
+     {
+      "slug": "lystra",
+      "label": "Lystra",
+      "ref": [
+       44016001
+      ]
+     },
+     {
+      "slug": "iconium",
+      "label": "Iconium",
+      "ref": null
+     },
+     {
+      "slug": "antioch-2",
+      "label": "Antioch (Pisidia)",
+      "ref": [
+       44016006
+      ]
+     },
+     {
+      "slug": "troas",
+      "label": "Troas",
+      "ref": [
+       44016008
+      ]
+     },
+     {
+      "slug": "samothrace",
+      "label": "Samothrace",
+      "ref": [
+       44016011
+      ]
+     },
+     {
+      "slug": "neapolis",
+      "label": "Neapolis",
+      "ref": [
+       44016011
+      ]
+     },
+     {
+      "slug": "philippi",
+      "label": "Philippi",
+      "ref": [
+       44016012
+      ]
+     },
+     {
+      "slug": "amphipolis",
+      "label": "Amphipolis",
+      "ref": [
+       44017001
+      ]
+     },
+     {
+      "slug": "apollonia",
+      "label": "Apollonia",
+      "ref": [
+       44017001
+      ]
+     },
+     {
+      "slug": "thessalonica",
+      "label": "Thessalonica",
+      "ref": [
+       44017001
+      ]
+     },
+     {
+      "slug": "berea",
+      "label": "Berea",
+      "ref": [
+       44017010
+      ]
+     },
+     {
+      "slug": "athens",
+      "label": "Athens",
+      "ref": [
+       44017015
+      ]
+     },
+     {
+      "slug": "corinth",
+      "label": "Corinth",
+      "ref": [
+       44018001
+      ]
+     },
+     {
+      "slug": "cenchreae",
+      "label": "Cenchreae",
+      "ref": [
+       44018018
+      ]
+     },
+     {
+      "slug": "ephesus",
+      "label": "Ephesus",
+      "ref": [
+       44018019
+      ]
+     },
+     {
+      "slug": "caesarea",
+      "label": "Caesarea",
+      "ref": [
+       44018022
+      ]
+     },
+     {
+      "slug": "jerusalem",
+      "label": "Jerusalem",
+      "ref": [
+       44018022
+      ]
+     },
+     {
+      "slug": "antioch-1",
+      "label": "Antioch (Syria)",
+      "ref": [
+       44018022
+      ]
+     }
+    ]
+   }
+  ],
+  "places": [
+   {
+    "slug": "amphipolis",
+    "label": "Amphipolis"
+   },
+   {
+    "slug": "antioch-2",
+    "label": "Antioch (Pisidia)"
+   },
+   {
+    "slug": "antioch-1",
+    "label": "Antioch (Syria)"
+   },
+   {
+    "slug": "apollonia",
+    "label": "Apollonia"
+   },
+   {
+    "slug": "athens",
+    "label": "Athens"
+   },
+   {
+    "slug": "berea",
+    "label": "Berea"
+   },
+   {
+    "slug": "caesarea",
+    "label": "Caesarea"
+   },
+   {
+    "slug": "cenchreae",
+    "label": "Cenchreae"
+   },
+   {
+    "slug": "corinth",
+    "label": "Corinth"
+   },
+   {
+    "slug": "derbe",
+    "label": "Derbe"
+   },
+   {
+    "slug": "ephesus",
+    "label": "Ephesus"
+   },
+   {
+    "slug": "iconium",
+    "label": "Iconium"
+   },
+   {
+    "slug": "jerusalem",
+    "label": "Jerusalem"
+   },
+   {
+    "slug": "lystra",
+    "label": "Lystra"
+   },
+   {
+    "slug": "neapolis",
+    "label": "Neapolis"
+   },
+   {
+    "slug": "philippi",
+    "label": "Philippi"
+   },
+   {
+    "slug": "samothrace",
+    "label": "Samothrace"
+   },
+   {
+    "slug": "tarsus",
+    "label": "Tarsus"
+   },
+   {
+    "slug": "thessalonica",
+    "label": "Thessalonica"
+   },
+   {
+    "slug": "troas",
+    "label": "Troas"
+   }
+  ],
+  "regions": [
+   "MACEDONIA",
+   "ACHAIA",
+   "ASIA",
+   "GALATIA",
+   "PHRYGIA",
+   "MYSIA",
+   "CILICIA",
+   "SYRIA",
+   "CYPRUS",
+   "Aegean Sea",
+   "Mediterranean Sea",
+   "Black Sea"
+  ]
+ },
+ {
+  "slug": "pauls-third-journey",
+  "title": "Paul's Third Missionary Journey",
+  "period": "c. AD 53–57",
+  "summary": "Paul strengthened the churches of Galatia and Phrygia, spent about three years in Ephesus, revisited Macedonia and Greece, and sailed back to Jerusalem with the collection for the poor.",
+  "notes": "Acts names Macedonia and Greece (Acts 20:1–3) without listing cities; Paul's letters show he visited the churches there, so the map links Philippi, Thessalonica, Berea and Corinth. He sailed past Cyprus on the left on the way to Tyre (Acts 21:3).",
+  "passage": [
+   44018023,
+   44021017
+  ],
+  "width": 2000,
+  "height": 1621,
+  "halfWidth": 1000,
+  "files": {
+   "full": "pauls-third-journey.ce90620b21.webp",
+   "half": "pauls-third-journey-half.6e89d2f655.webp",
+   "thumb": "pauls-third-journey-thumb.fa29790757.webp",
+   "print": "pauls-third-journey-print.fefae743d3.jpg"
+  },
+  "routes": [
+   {
+    "name": "Paul's route",
+    "color": "#1f6f43",
+    "proposed": false,
+    "stops": [
+     {
+      "slug": "antioch-1",
+      "label": "Antioch (Syria)",
+      "ref": [
+       44018023
+      ]
+     },
+     {
+      "slug": "tarsus",
+      "label": "Tarsus",
+      "ref": null
+     },
+     {
+      "slug": "derbe",
+      "label": "Derbe",
+      "ref": null
+     },
+     {
+      "slug": "lystra",
+      "label": "Lystra",
+      "ref": null
+     },
+     {
+      "slug": "iconium",
+      "label": "Iconium",
+      "ref": null
+     },
+     {
+      "slug": "antioch-2",
+      "label": "Antioch (Pisidia)",
+      "ref": [
+       44018023
+      ]
+     },
+     {
+      "slug": "ephesus",
+      "label": "Ephesus",
+      "ref": [
+       44019001
+      ]
+     },
+     {
+      "slug": "troas",
+      "label": "Troas",
+      "ref": [
+       44020001
+      ]
+     },
+     {
+      "slug": "philippi",
+      "label": "Philippi",
+      "ref": [
+       44020001
+      ]
+     },
+     {
+      "slug": "thessalonica",
+      "label": "Thessalonica",
+      "ref": null
+     },
+     {
+      "slug": "berea",
+      "label": "Berea",
+      "ref": null
+     },
+     {
+      "slug": "corinth",
+      "label": "Corinth",
+      "ref": [
+       44020002,
+       44020003
+      ]
+     },
+     {
+      "slug": "berea",
+      "label": "Berea",
+      "ref": null
+     },
+     {
+      "slug": "thessalonica",
+      "label": "Thessalonica",
+      "ref": null
+     },
+     {
+      "slug": "philippi",
+      "label": "Philippi",
+      "ref": [
+       44020006
+      ]
+     },
+     {
+      "slug": "troas",
+      "label": "Troas",
+      "ref": [
+       44020006
+      ]
+     },
+     {
+      "slug": "assos",
+      "label": "Assos",
+      "ref": [
+       44020013
+      ]
+     },
+     {
+      "slug": "mitylene",
+      "label": "Mitylene",
+      "ref": [
+       44020014
+      ]
+     },
+     {
+      "slug": "chios",
+      "label": "Chios",
+      "ref": [
+       44020015
+      ]
+     },
+     {
+      "slug": "samos",
+      "label": "Samos",
+      "ref": [
+       44020015
+      ]
+     },
+     {
+      "slug": "miletus",
+      "label": "Miletus",
+      "ref": [
+       44020015
+      ]
+     },
+     {
+      "slug": "cos",
+      "label": "Cos",
+      "ref": [
+       44021001
+      ]
+     },
+     {
+      "slug": "rhodes-2",
+      "label": "Rhodes",
+      "ref": [
+       44021001
+      ]
+     },
+     {
+      "slug": "patara",
+      "label": "Patara",
+      "ref": [
+       44021001
+      ]
+     },
+     {
+      "slug": "tyre",
+      "label": "Tyre",
+      "ref": [
+       44021003
+      ]
+     },
+     {
+      "slug": "ptolemais",
+      "label": "Ptolemais",
+      "ref": [
+       44021007
+      ]
+     },
+     {
+      "slug": "caesarea",
+      "label": "Caesarea",
+      "ref": [
+       44021008
+      ]
+     },
+     {
+      "slug": "jerusalem",
+      "label": "Jerusalem",
+      "ref": [
+       44021015,
+       44021017
+      ]
+     }
+    ]
+   }
+  ],
+  "places": [
+   {
+    "slug": "antioch-2",
+    "label": "Antioch (Pisidia)"
+   },
+   {
+    "slug": "antioch-1",
+    "label": "Antioch (Syria)"
+   },
+   {
+    "slug": "assos",
+    "label": "Assos"
+   },
+   {
+    "slug": "berea",
+    "label": "Berea"
+   },
+   {
+    "slug": "caesarea",
+    "label": "Caesarea"
+   },
+   {
+    "slug": "chios",
+    "label": "Chios"
+   },
+   {
+    "slug": "corinth",
+    "label": "Corinth"
+   },
+   {
+    "slug": "cos",
+    "label": "Cos"
+   },
+   {
+    "slug": "derbe",
+    "label": "Derbe"
+   },
+   {
+    "slug": "ephesus",
+    "label": "Ephesus"
+   },
+   {
+    "slug": "iconium",
+    "label": "Iconium"
+   },
+   {
+    "slug": "jerusalem",
+    "label": "Jerusalem"
+   },
+   {
+    "slug": "lystra",
+    "label": "Lystra"
+   },
+   {
+    "slug": "miletus",
+    "label": "Miletus"
+   },
+   {
+    "slug": "mitylene",
+    "label": "Mitylene"
+   },
+   {
+    "slug": "patara",
+    "label": "Patara"
+   },
+   {
+    "slug": "philippi",
+    "label": "Philippi"
+   },
+   {
+    "slug": "ptolemais",
+    "label": "Ptolemais"
+   },
+   {
+    "slug": "rhodes-2",
+    "label": "Rhodes"
+   },
+   {
+    "slug": "samos",
+    "label": "Samos"
+   },
+   {
+    "slug": "tarsus",
+    "label": "Tarsus"
+   },
+   {
+    "slug": "thessalonica",
+    "label": "Thessalonica"
+   },
+   {
+    "slug": "troas",
+    "label": "Troas"
+   },
+   {
+    "slug": "tyre",
+    "label": "Tyre"
+   }
+  ],
+  "regions": [
+   "MACEDONIA",
+   "ACHAIA",
+   "ASIA",
+   "GALATIA",
+   "PHRYGIA",
+   "CILICIA",
+   "SYRIA",
+   "CYPRUS",
+   "Aegean Sea",
+   "Mediterranean Sea",
+   "Black Sea"
+  ]
+ },
+ {
+  "slug": "pauls-voyage-to-rome",
+  "title": "Paul's Voyage to Rome",
+  "period": "c. AD 59–60",
+  "summary": "Paul, a prisoner appealing to Caesar, sailed from Caesarea, was shipwrecked on Malta after a fourteen-day storm, and finally reached Rome.",
+  "notes": "After leaving Fair Havens the ship was driven by a north-easterly storm past Cauda and drifted for fourteen days across the sea of Adria before running aground on Malta (Acts 27:13–44). The line across open sea is approximate.",
+  "passage": [
+   44027001,
+   44028016
+  ],
+  "width": 2000,
+  "height": 1105,
+  "halfWidth": 1000,
+  "files": {
+   "full": "pauls-voyage-to-rome.77dcc53778.webp",
+   "half": "pauls-voyage-to-rome-half.7ea027c5f1.webp",
+   "thumb": "pauls-voyage-to-rome-thumb.14ec71b781.webp",
+   "print": "pauls-voyage-to-rome-print.2df1ab588f.jpg"
+  },
+  "routes": [
+   {
+    "name": "Paul's voyage",
+    "color": "#b3261e",
+    "proposed": false,
+    "stops": [
+     {
+      "slug": "caesarea",
+      "label": "Caesarea",
+      "ref": [
+       44027001,
+       44027002
+      ]
+     },
+     {
+      "slug": "sidon",
+      "label": "Sidon",
+      "ref": [
+       44027003
+      ]
+     },
+     {
+      "slug": "myra",
+      "label": "Myra",
+      "ref": [
+       44027005
+      ]
+     },
+     {
+      "slug": "cnidus",
+      "label": "Cnidus",
+      "ref": [
+       44027007
+      ]
+     },
+     {
+      "slug": "fair-havens",
+      "label": "Fair Havens",
+      "ref": [
+       44027008
+      ]
+     },
+     {
+      "slug": "cauda",
+      "label": "Cauda",
+      "ref": [
+       44027016
+      ]
+     },
+     {
+      "slug": "malta",
+      "label": "Malta",
+      "ref": [
+       44028001
+      ]
+     },
+     {
+      "slug": "syracuse",
+      "label": "Syracuse",
+      "ref": [
+       44028012
+      ]
+     },
+     {
+      "slug": "rhegium",
+      "label": "Rhegium",
+      "ref": [
+       44028013
+      ]
+     },
+     {
+      "slug": "puteoli",
+      "label": "Puteoli",
+      "ref": [
+       44028013
+      ]
+     },
+     {
+      "slug": "rome",
+      "label": "Rome",
+      "ref": [
+       44028016
+      ]
+     }
+    ]
+   }
+  ],
+  "places": [
+   {
+    "slug": "athens",
+    "label": "Athens"
+   },
+   {
+    "slug": "caesarea",
+    "label": "Caesarea"
+   },
+   {
+    "slug": "cauda",
+    "label": "Cauda"
+   },
+   {
+    "slug": "cnidus",
+    "label": "Cnidus"
+   },
+   {
+    "slug": "corinth",
+    "label": "Corinth"
+   },
+   {
+    "slug": "fair-havens",
+    "label": "Fair Havens"
+   },
+   {
+    "slug": "malta",
+    "label": "Malta"
+   },
+   {
+    "slug": "myra",
+    "label": "Myra"
+   },
+   {
+    "slug": "puteoli",
+    "label": "Puteoli"
+   },
+   {
+    "slug": "rhegium",
+    "label": "Rhegium"
+   },
+   {
+    "slug": "rome",
+    "label": "Rome"
+   },
+   {
+    "slug": "sidon",
+    "label": "Sidon"
+   },
+   {
+    "slug": "syracuse",
+    "label": "Syracuse"
+   }
+  ],
+  "regions": [
+   "ITALY",
+   "SICILY",
+   "MACEDONIA",
+   "ACHAIA",
+   "ASIA",
+   "CRETE",
+   "CYPRUS",
+   "LIBYA",
+   "Mediterranean Sea",
+   "Adriatic Sea",
+   "Aegean Sea"
+  ]
+ },
+ {
+  "slug": "seven-churches-of-revelation",
+  "title": "The Seven Churches of Revelation",
+  "period": "c. AD 95",
+  "summary": "The seven churches in the Roman province of Asia to which John, exiled on Patmos, sent the letters of Revelation 2–3.",
+  "notes": "The letters follow a circuit a messenger landing at Ephesus could travel along the Roman roads. John received the vision on Patmos (Revelation 1:9).",
+  "passage": [
+   66001009,
+   66001011
+  ],
+  "width": 2000,
+  "height": 1656,
+  "halfWidth": 1000,
+  "files": {
+   "full": "seven-churches-of-revelation.c2d8dd2ba5.webp",
+   "half": "seven-churches-of-revelation-half.da9db40418.webp",
+   "thumb": "seven-churches-of-revelation-thumb.24c3340499.webp",
+   "print": "seven-churches-of-revelation-print.6f0b72f52a.jpg"
+  },
+  "routes": [
+   {
+    "name": "Order of the letters",
+    "color": "#5b3f99",
+    "proposed": false,
+    "stops": [
+     {
+      "slug": "ephesus",
+      "label": "Ephesus",
+      "ref": [
+       66002001
+      ]
+     },
+     {
+      "slug": "smyrna",
+      "label": "Smyrna",
+      "ref": [
+       66002008
+      ]
+     },
+     {
+      "slug": "pergamum",
+      "label": "Pergamum",
+      "ref": [
+       66002012
+      ]
+     },
+     {
+      "slug": "thyatira",
+      "label": "Thyatira",
+      "ref": [
+       66002018
+      ]
+     },
+     {
+      "slug": "sardis",
+      "label": "Sardis",
+      "ref": [
+       66003001
+      ]
+     },
+     {
+      "slug": "philadelphia",
+      "label": "Philadelphia",
+      "ref": [
+       66003007
+      ]
+     },
+     {
+      "slug": "laodicea",
+      "label": "Laodicea",
+      "ref": [
+       66003014
+      ]
+     }
+    ]
+   }
+  ],
+  "places": [
+   {
+    "slug": "ephesus",
+    "label": "Ephesus"
+   },
+   {
+    "slug": "laodicea",
+    "label": "Laodicea"
+   },
+   {
+    "slug": "miletus",
+    "label": "Miletus"
+   },
+   {
+    "slug": "patmos",
+    "label": "Patmos"
+   },
+   {
+    "slug": "pergamum",
+    "label": "Pergamum"
+   },
+   {
+    "slug": "philadelphia",
+    "label": "Philadelphia"
+   },
+   {
+    "slug": "sardis",
+    "label": "Sardis"
+   },
+   {
+    "slug": "smyrna",
+    "label": "Smyrna"
+   },
+   {
+    "slug": "thyatira",
+    "label": "Thyatira"
+   }
+  ],
+  "regions": [
+   "ASIA",
+   "Aegean Sea",
+   "Mysia",
+   "Lydia",
+   "Caria"
+  ]
+ },
+ {
+  "slug": "nations-at-pentecost",
+  "title": "The Nations at Pentecost",
+  "period": "AD 30",
+  "summary": "Jews and converts from across the Roman and Parthian worlds were in Jerusalem at Pentecost and heard the apostles speak in their own languages.",
+  "notes": "The names follow Acts 2:9–11. Lines point from each region to Jerusalem to show where the pilgrims had come from; they are not travel routes.",
+  "passage": [
+   44002005,
+   44002011
+  ],
+  "width": 2000,
+  "height": 1204,
+  "halfWidth": 1000,
+  "files": {
+   "full": "nations-at-pentecost.efea6f97d8.webp",
+   "half": "nations-at-pentecost-half.aa801537f0.webp",
+   "thumb": "nations-at-pentecost-thumb.b23a1ac382.webp",
+   "print": "nations-at-pentecost-print.fea1678a5a.jpg"
+  },
+  "routes": [],
+  "places": [
+   {
+    "slug": "cyrene",
+    "label": "Cyrene"
+   },
+   {
+    "slug": "jerusalem",
+    "label": "Jerusalem"
+   },
+   {
+    "slug": "rome",
+    "label": "Rome"
+   }
+  ],
+  "regions": [
+   "PARTHIA",
+   "MEDIA",
+   "ELAM",
+   "MESOPOTAMIA",
+   "CAPPADOCIA",
+   "PONTUS",
+   "ASIA",
+   "PHRYGIA",
+   "PAMPHYLIA",
+   "EGYPT",
+   "LIBYA",
+   "CRETE",
+   "ARABIA",
+   "JUDEA",
+   "Mediterranean Sea",
+   "Black Sea",
+   "Caspian Sea",
+   "Persian Gulf",
+   "Red Sea"
+  ]
+ }
+]

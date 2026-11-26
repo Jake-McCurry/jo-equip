@@ -1,0 +1,66 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import MapSources from "@/components/bible-maps/MapSources.astro";
+import { atlasFile, atlasMaps } from "@/data/bible-atlas";
+import "@/components/bible-maps/bible-maps.css";
+import "@/components/bible-maps/bible-atlas.css";
+
+const baseUrl = import.meta.env.BASE_URL;
+const join = (path: string) => (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + path;
+// Books 1–39 are the Old Testament (verse codes are book * 1e6 + …).
+const groups = [
+  { title: "Old Testament", maps: atlasMaps.filter(m => Math.floor(m.passage[0] / 1e6) <= 39) },
+  { title: "New Testament", maps: atlasMaps.filter(m => Math.floor(m.passage[0] / 1e6) > 39) },
+];
+---
+<Layout
+  title="Bible Atlas: Printable Maps of Bible Lands and Journeys · JO EQUIP"
+  description={`${atlasMaps.length} free Bible maps to view, download and print: Abraham's journey, the Exodus, the twelve tribes, David's kingdom, the exile, Israel in Jesus's time, and Paul's missionary journeys.`}
+  image={atlasFile(baseUrl, atlasMaps[0].files.half)}
+  imageAlt={`${atlasMaps[0].title} map`}
+>
+  <div class="bmp-main">
+    <nav class="bmp-crumbs" aria-label="Breadcrumb">
+      <a href={join("/bible/resources")}>Bible Resources</a> <span aria-hidden="true">/</span> Bible Atlas
+    </nav>
+    <p class="bmp-eyebrow">Study Tools</p>
+    <h1 class="bmp-title">Bible Atlas</h1>
+    <p class="bmp-lede">
+      Maps of the lands, kingdoms and journeys of the Bible, like the ones in the back of a study Bible. Open any map to see it full size,
+      follow the route with links to each passage, or download and print it for a class or Bible study.
+    </p>
+    <p class="bmp-lede" style="font-size:1rem;margin-top:.5rem">
+      Looking for a particular town? Search every place in Scripture on the <a class="bmp-link" href={join("/bible/maps")}>interactive Bible Maps</a>.
+    </p>
+
+    {groups.map(g => (
+      <section class="bmp-section" aria-labelledby={`g-${g.title.replace(/\s/g, "")}`}>
+        <h2 id={`g-${g.title.replace(/\s/g, "")}`}>{g.title}</h2>
+        <ul class="ba-grid">
+          {g.maps.map(m => (
+            <li>
+              <a class="ba-card" href={join(`/bible/atlas/${m.slug}`)}>
+                <img src={atlasFile(baseUrl, m.files.thumb)} alt="" width="560" height={Math.round((560 * m.height) / m.width)} loading="lazy" decoding="async" />
+                <span class="ba-card-body">
+                  <span class="ba-card-title" style="display:block">{m.title}</span>
+                  <span class="ba-card-period" style="display:block">{m.period}</span>
+                  <span class="ba-card-sum" style="display:block">{m.summary}</span>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+
+    <section class="bmp-section" aria-labelledby="use-h">
+      <h2 id="use-h">Using these maps</h2>
+      <p>
+        You may print these maps and share them for teaching, Bible study and ministry use, with the credit line that appears on each map.
+        Coastlines and rivers are modern. Where Scripture does not fix a route, the map says so and the route is drawn as one proposal.
+      </p>
+    </section>
+
+    <MapSources uses={["openbible", "naturalearth"]} />
+  </div>
+</Layout>

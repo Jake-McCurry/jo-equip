@@ -158,7 +158,7 @@ tiles, satellite imagery or map services are used at runtime.
   European Union"). Generated explicitly: `node scripts/fetch-terrain-tiles.mjs
   /tmp/terrain-tiles`, then `node scripts/generate-map-terrain.mjs
   /tmp/terrain-tiles /tmp/map-sources` (the Natural Earth land file is the
-  land/sea mask). The 160 tiles read are pinned by SHA-256 in
+  land/sea mask). The tiles read (shared with the Bible Atlas below) are pinned by SHA-256 in
   `scripts/data/terrain-tiles.json`; after a reviewed re-download, `--pin`
   rewrites the pins. Output: three WebP images in
   `public/bible-data/maps-terrain/` (whole map at zoom-5 detail; eastern
@@ -166,6 +166,25 @@ tiles, satellite imagery or map services are used at runtime.
   `src/data/bible-maps/terrain.json`. Colors are classic Bible-atlas
   hypsometric tints (green lowlands to brown highlands) with north-west
   hill shading; the finer images load only once the map is zoomed in.
+- **Bible Atlas** (`/bible/atlas`): 14 printable study-Bible-style maps defined
+  in `scripts/data/bible-atlas-maps.mjs` (places by OpenBible.info slug, routes
+  with the verse for each stop, region labels and notes). Rendered explicitly:
+  `node scripts/fetch-terrain-tiles.mjs /tmp/terrain-tiles`, `bash
+  scripts/fetch-map-sources.sh /tmp/map-sources`, `bash
+  scripts/fetch-atlas-fonts.sh /tmp/atlas-fonts` (Source Sans 3 TTF, SIL Open
+  Font License, release 3.052R, zip pinned by SHA-256), then `node
+  scripts/generate-bible-atlas.mjs /tmp/terrain-tiles /tmp/map-sources
+  /tmp/atlas-fonts`. Each map uses the same terrain tiles and relief colors as
+  the interactive map, at up to zoom 12 (Sea of Galilee), with a flat sea
+  color (some tiles lack bathymetry), corrupt tile rows re-interpolated, and the
+  Sea of Galilee traced from its flat water surface in the elevation data on the
+  close-up map. Coastlines, lakes and rivers are Natural Earth. Output:
+  content-hashed full, half-size and thumbnail WebP plus a print JPEG per map in
+  `public/bible-data/atlas/`, and page data in `src/data/bible-atlas/atlas.json`;
+  `scripts/bible-atlas-data.test.mjs` (in `test:maps`) checks hashes, verse
+  references and place links. Routes Scripture does not fix (the Exodus, the
+  return from exile) are drawn dashed and labeled as one proposal; tribal and
+  kingdom areas are labels only, with no borders.
 
 # Classic sermon sources (Bible reader Sermons tab, /bible/sermons)
 

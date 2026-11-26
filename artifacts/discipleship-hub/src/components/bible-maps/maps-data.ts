@@ -13,9 +13,13 @@ export const MAP_SIZE = { width: manifest.projection.width, height: manifest.pro
 export type PlaceRow = [string, string, number | null, number | null, number, number[], number[]];
 /** "Genesis 12" -> [[placeIndex, [verses]]] */
 export type ChapterIndex = Record<string, [number, number[]][]>;
+/** [id, title, astronomical year, years (0 when under a year), kind] */
+export type EventRow = [string, string, number, number, "event" | "period" | "life"];
+/** Timeline events by chapter: "Genesis 12" -> [[eventIndex, firstVerse, lastVerse]] in timeline order. */
+export type EventIndex = { events: EventRow[]; chapters: Record<string, [number, number, number][]> };
 
 const trim = (baseUrl: string) => baseUrl.replace(/\/$/, "");
-export const mapFile = (baseUrl: string, name: "places" | "chapters" | "basemap") =>
+export const mapFile = (baseUrl: string, name: "places" | "chapters" | "basemap" | "events") =>
   `${trim(baseUrl)}/bible-data/maps/${name}.${manifest.files[name]}.${name === "basemap" ? "svg" : "json"}`;
 export const basemapUrl = (baseUrl: string) => mapFile(baseUrl, "basemap");
 
@@ -27,6 +31,7 @@ export const terrainFor = (basemap: string): TerrainTier[] => {
   return terrain.tiers.map(({ name, file, x, y, width, height }) => ({ name, href: `${root}/bible-data/maps-terrain/${file}`, x, y, width, height }));
 };
 export const placeHref = (baseUrl: string, slug: string) => `${trim(baseUrl)}/bible/maps/${slug}`;
+export const timelineHref = (baseUrl: string, eventId?: string) => `${trim(baseUrl)}/bible/timeline${eventId ? `#${eventId}` : ""}`;
 
 const cache = new Map<string, Promise<unknown>>();
 function getJson<T>(url: string, what: string): Promise<T> {
@@ -43,6 +48,7 @@ function getJson<T>(url: string, what: string): Promise<T> {
 }
 export const loadPlaces = (baseUrl: string) => getJson<PlaceRow[]>(mapFile(baseUrl, "places"), "The place list");
 export const loadChapterIndex = (baseUrl: string) => getJson<ChapterIndex>(mapFile(baseUrl, "chapters"), "The places index");
+export const loadEventIndex = (baseUrl: string) => getJson<EventIndex>(mapFile(baseUrl, "events"), "The timeline index");
 
 export const placeTypes = (types: number[]) => types.map(t => manifest.types[t]);
 export const bookName = (index: number) => BOOKS[index - 1]?.name ?? "";
@@ -68,3 +74,6 @@ export function refText(from: number, to?: number) {
 
 /** Astronomical year (0 = 1 BC) -> "1491 BC" / "AD 30". */
 export const yearLabel = (y: number) => (y <= 0 ? `${1 - y} BC` : `AD ${y}`);
+/** "c. 1920 BC" or, for spans of a year or more, "c. 1491 BC – 1451 BC". */
+export const dateSpan = (year: number, years: number) =>
+  years >= 1 ? `c. ${yearLabel(year)} – ${yearLabel(year + years)}` : `c. ${yearLabel(year)}`;

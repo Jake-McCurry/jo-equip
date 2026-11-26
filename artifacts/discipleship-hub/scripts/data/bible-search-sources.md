@@ -100,8 +100,9 @@ All CrossWire modules are KJV versification and public domain; downloaded from
 # Bible maps and timeline sources
 
 Pages: `/bible/maps`, `/bible/maps/<place>`, `/bible/timeline`, and the Places
-tab in the Bible reader. Runtime data lives in `public/bible-data/maps/` (three
-content-hashed files: place index, chapter→places index, base-map SVG);
+tab in the Bible reader (places and the chapter's timeline events). Runtime data
+lives in `public/bible-data/maps/` (four content-hashed files: place index,
+chapter→places index, base-map SVG, chapter→timeline-events index);
 build-time page data and the hash manifest live in `src/data/bible-maps/`.
 Generated explicitly: `bash scripts/fetch-map-sources.sh /tmp/map-sources` then
 `node scripts/generate-bible-maps.mjs /tmp/map-sources`. Every download URL is

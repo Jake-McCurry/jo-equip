@@ -50,7 +50,8 @@
  "files": {
   "places": "e4da3c0366",
   "chapters": "8adfcbbed0",
-  "basemap": "77685974f7"
+  "basemap": "77685974f7",
+  "events": "b445280724"
  },
  "stats": {
   "places": 1285,

@@ -4,7 +4,7 @@
 //   node scripts/generate-bible-maps.mjs /tmp/map-sources
 // Writes:
 //   public/bible-data/maps/  content-hashed runtime data (place index, chapter
-//                            index, base map SVG)
+//                            index, base map SVG, timeline events by chapter)
 //   src/data/bible-maps/     manifest.json (hashes, bundled into the pages) and
 //                            build-time data for the place and timeline pages
 // See scripts/data/bible-search-sources.md for sources and licenses.
@@ -236,6 +236,24 @@ for (const [key, rows] of Object.entries(chapters)) {
   rows.sort((a, b) => a[1][0] - b[1][0] || places[a[0]].label.localeCompare(places[b[0]].label));
 }
 
+// ---- Timeline index for the reader -----------------------------------------
+// "Genesis 12" -> [[eventIndex, firstVerse, lastVerse]] in timeline order, so the
+// reader can show when the chapter's events happened without the full timeline.
+const eventChapters = {};
+events.forEach((e, i) => {
+  const byChapter = new Map();
+  for (const [from, to = from] of e.verses) {
+    if (Math.floor(from / 1000) !== Math.floor(to / 1000)) fail(`${e.title}: verse run crosses a chapter`);
+    const b = Math.floor(from / 1e6), c = Math.floor(from / 1000) % 1000;
+    const key = `${BOOKS[b - 1]} ${c}`;
+    const [lo, hi] = byChapter.get(key) ?? [from % 1000, to % 1000];
+    byChapter.set(key, [Math.min(lo, from % 1000), Math.max(hi, to % 1000)]);
+  }
+  for (const [key, [lo, hi]] of byChapter) (eventChapters[key] ??= []).push([i, lo, hi]);
+});
+// Runtime event index: [id, title, year, years, kind] per event, plus the chapter index.
+const eventIndex = { events: events.map(e => [e.id, e.title, e.year, e.years, e.kind]), chapters: eventChapters };
+
 // ---- Base map (Natural Earth) ----------------------------------------------
 const TOL = 0.012; // degrees; ~1 km
 function simplify(pts, tol) {
@@ -361,6 +379,7 @@ const manifest = {
     places: await hashed("places", "json", JSON.stringify(index)),
     chapters: await hashed("chapters", "json", JSON.stringify(chapters)),
     basemap: await hashed("basemap", "svg", basemap),
+    events: await hashed("events", "json", JSON.stringify(eventIndex)),
   },
   stats: { places: places.length, located: places.filter(p => p.lon !== null).length, events: events.length, eastonLinks, eastonDropped, skippedNoVerses: skippedNoVerses.length },
   sources: Object.entries(SOURCES).map(([file, sha256]) => ({ file, sha256 })),

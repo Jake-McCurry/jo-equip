@@ -21,7 +21,7 @@ const project = (lon, lat) => [(lon - P.lonMin) * 10 * COS, (P.latMax - lat) * 1
 
 test("hashed files exist, match their content hash, and nothing stale is left", () => {
   const expected = new Set();
-  for (const [name, ext] of [["places", "json"], ["chapters", "json"], ["basemap", "svg"]]) {
+  for (const [name, ext] of [["places", "json"], ["chapters", "json"], ["basemap", "svg"], ["events", "json"]]) {
     const body = fs.readFileSync(new URL(file(name, ext), root));
     assert.equal(createHash("sha256").update(body).digest("hex").slice(0, 10), manifest.files[name], name);
     expected.add(`${name}.${manifest.files[name]}.${ext}`);
@@ -120,6 +120,37 @@ test("timeline: ordered eras, every event linked to real passages", () => {
   assert.equal(creation.year, -4003, "traditional (Ussher) creation date, 4004 BC");
   assert.ok(events.some(e => e.title === "Birth of Jesus" && e.year === -3));
   for (const p of places) for (const id of p.events ?? []) assert.ok(events.some(e => e.id === id && e.places.includes(p.slug)));
+});
+
+test("reader timeline index mirrors the timeline, chapter by chapter", () => {
+  const runtime = JSON.parse(read(file("events", "json")));
+  const { events } = timeline;
+  assert.deepEqual(runtime.events, events.map(e => [e.id, e.title, e.year, e.years, e.kind]));
+  // Rebuild the chapter index from the timeline's own verse runs.
+  const expected = {};
+  events.forEach((e, i) => {
+    const spans = new Map();
+    for (const [from, to = from] of e.verses) for (let c = from; c <= to; c++) {
+      const key = `${BOOKS[Math.floor(c / 1e6) - 1]} ${Math.floor(c / 1000) % 1000}`;
+      const [lo, hi] = spans.get(key) ?? [c % 1000, c % 1000];
+      spans.set(key, [Math.min(lo, c % 1000), Math.max(hi, c % 1000)]);
+    }
+    for (const [key, [lo, hi]] of spans) (expected[key] ??= []).push([i, lo, hi]);
+  });
+  assert.deepEqual(runtime.chapters, expected);
+  for (const [key, rows] of Object.entries(runtime.chapters)) {
+    const [, book, c] = /^(.+) (\d+)$/.exec(key);
+    const max = CHAPTER_VERSES[book]?.[Number(c) - 1];
+    assert.ok(max, key);
+    let prev = -1;
+    for (const [i, lo, hi] of rows) {
+      assert.ok(i > prev, `${key} keeps timeline order`); prev = i;
+      assert.ok(lo >= 1 && lo <= hi && hi <= max, `${key}:${lo}-${hi}`);
+    }
+  }
+  assert.ok(runtime.chapters["Genesis 12"].some(([i]) => runtime.events[i][1] === "Abraham enters Canaan"));
+  assert.ok(runtime.chapters["Genesis 1"].some(([i]) => runtime.events[i][0] === "e1"), "Creation in Genesis 1");
+  assert.ok(runtime.chapters["Luke 2"].some(([i]) => runtime.events[i][1] === "Birth of Jesus"));
 });
 
 test("base map is a self-contained SVG in the shared projection", () => {

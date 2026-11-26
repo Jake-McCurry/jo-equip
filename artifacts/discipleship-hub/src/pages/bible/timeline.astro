@@ -1,7 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import MapSources from "@/components/bible-maps/MapSources.astro";
-import { readerHref, refText, yearLabel } from "@/components/bible-maps/maps-data";
+import { dateSpan, readerHref, refText, yearLabel } from "@/components/bible-maps/maps-data";
 import { placeBySlug, timeline } from "@/data/bible-maps";
 import "@/components/bible-maps/bible-maps.css";
 
@@ -14,8 +14,6 @@ const eras = timeline.eras.map((era, i) => {
   const years = events.map(e => e.year);
   return { ...era, events, from: Math.min(...years), to: Math.max(...years) };
 });
-const span = (e: { year: number; years: number }) =>
-  e.years >= 1 ? `c. ${yearLabel(e.year)} – ${yearLabel(e.year + e.years)}` : `c. ${yearLabel(e.year)}`;
 const lasting = (y: number) => (y >= 2 ? `about ${y} years` : y === 1 ? "about a year" : "");
 ---
 <Layout
@@ -57,7 +55,7 @@ const lasting = (y: number) => (y >= 2 ? `about ${y} years` : y === 1 ? "about a
             const refs = e.verses.slice(0, MAX_REFS);
             return (
               <li id={e.id} class={`tl-item is-${e.kind}`}>
-                <p class="tl-date">{span(e)}</p>
+                <p class="tl-date">{dateSpan(e.year, e.years)}</p>
                 <div class="tl-body">
                   <h3>
                     {e.kind === "period" && <span class="tl-tag">Period</span>}

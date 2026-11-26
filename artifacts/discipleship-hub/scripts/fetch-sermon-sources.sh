@@ -8,6 +8,8 @@
 #  - ocr/<id>.txt: Internet Archive OCR text of scanned original printings,
 #    listed in scripts/data/sermon-scan-sources.json (Spurgeon) and
 #    scripts/data/wesley-sources.json (Wesley). Used only to verify wording.
+#  - ocr/<id>.tesseract.txt: our own OCR of a scan's page images (scripts/ocr-wesley-scan.py),
+#    copied from scripts/data/wesley-ocr/ and checked against its pinned md5.
 #  - wesley/ccel-sermons.txt: CCEL plain text of Wesley's sermons (Jackson, 1872), for
 #    the later sermons (54-108), pinned by sha256 in wesley-sources.json.
 # Usage: bash scripts/fetch-sermon-sources.sh /tmp/sermon-sources
@@ -38,7 +40,7 @@ print(f"{len(sources)} OCR texts")
 PY
 # gutenberg.org itself is often unavailable to scripts; its official mirrors serve identical files.
 python3 - "$here/data/wesley-sources.json" "$dir" <<'PY'
-import hashlib, json, sys, urllib.request
+import gzip, hashlib, json, os, sys, urllib.request
 cfg, out = json.load(open(sys.argv[1])), sys.argv[2]
 MIRRORS = ["https://gutenberg.pglaf.org", "https://mirrors.xmission.com/gutenberg", "https://www.gutenberg.org/files"]
 def fetch(urls):
@@ -76,6 +78,13 @@ if hashlib.sha256(body).hexdigest() != t["sha256"]:
 open(f"{out}/wesley/{t['file']}", "wb").write(body)
 for v in later["volumes"]:
     for s in v["scans"]:
+        if "ocr" in s:
+            # Our own OCR of the item's page images (scripts/ocr-wesley-scan.py), committed in the repository.
+            body = gzip.decompress(open(os.path.join(os.path.dirname(sys.argv[1]), s["file"]), "rb").read())
+            if hashlib.md5(body).hexdigest() != s["md5"]:
+                raise SystemExit(f"{s['file']}: differs from the pinned md5.")
+            open(f"{out}/ocr/{s['id']}.tesseract.txt", "wb").write(body)
+            continue
         body = fetch([f"https://archive.org/download/{s['id']}/{s['file']}"])
         if hashlib.md5(body).hexdigest() != s["md5"]:
             raise SystemExit(f"{s['id']}: OCR text changed on Internet Archive (md5). Review it before updating wesley-sources.json.")

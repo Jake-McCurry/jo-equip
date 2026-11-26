@@ -1,0 +1,161 @@
+{
+  "note": "Typing errors in the CCEL transcription of Wesley's later sermons, corrected to the 1788 printing. `from` must occur exactly once in the sermon's generated text; `print` is the passage as read in the pinned re-read OCR of that volume (scripts/data/wesley-ocr/), long s read as f.",
+  "corrections": [
+    {
+      "sermon": 75,
+      "from": "reader, that is does not",
+      "to": "reader, that it does not",
+      "print": "reader, that it does not"
+    },
+    {
+      "sermon": 75,
+      "from": "which is to once forbidden",
+      "to": "which is not once forbidden",
+      "print": "which i1s not once forbidden"
+    },
+    {
+      "sermon": 75,
+      "from": "living Christian, with",
+      "to": "living Christians, with",
+      "print": "living Chriftians, with"
+    },
+    {
+      "sermon": 75,
+      "from": "our love grows could",
+      "to": "our love grows cold",
+      "print": "our love grows cold"
+    },
+    {
+      "sermon": 75,
+      "from": "unity of he Spirit in the bound of peace",
+      "to": "unity of the Spirit in the bond of peace",
+      "print": "unity of the Spirit in the bond of peace"
+    },
+    {
+      "sermon": 75,
+      "from": "forty year:",
+      "to": "forty years:",
+      "print": "forty years:. thefe"
+    },
+    {
+      "sermon": 75,
+      "from": "constrained to separate form that society",
+      "to": "constrained to separate from that society",
+      "print": "conftrainel to feparate from that Society"
+    },
+    {
+      "sermon": 75,
+      "from": "continue therein with breaking",
+      "to": "continue therein without breaking",
+      "print": "continue therein, without breaking"
+    },
+    {
+      "sermon": 75,
+      "from": "your bounded duty",
+      "to": "your bounden duty",
+      "print": "your bounden duty"
+    },
+    {
+      "sermon": 75,
+      "from": "I have do desire no design",
+      "to": "I have no desire nor design",
+      "print": "have no defire nor defign"
+    },
+    {
+      "sermon": 75,
+      "from": "to separate form it without delay",
+      "to": "to separate from it without delay",
+      "print": "feparate from 1t without delay"
+    },
+    {
+      "sermon": 75,
+      "from": "would not lie upon it, would not lie upon me",
+      "to": "would not lie upon me",
+      "print": "upon it, wodld not lie upon me"
+    },
+    {
+      "sermon": 75,
+      "from": "I am just chargeable",
+      "to": "I am justly chargeable",
+      "print": "I am juftly chargeable"
+    },
+    {
+      "sermon": 75,
+      "from": "desire to please hem",
+      "to": "desire to please him",
+      "print": "defire to pleafe him"
+    },
+    {
+      "sermon": 75,
+      "from": "how you tend the body",
+      "to": "how you rend the body",
+      "print": "how you rend the body"
+    },
+    {
+      "sermon": 75,
+      "from": "and Good will be present",
+      "to": "and God will be present",
+      "print": "lies, and Gad will be prefent"
+    },
+    {
+      "sermon": 95,
+      "from": "departed form it",
+      "to": "departed from it",
+      "print": "depasted from it"
+    },
+    {
+      "sermon": 95,
+      "from": "will by not means",
+      "to": "will by no means",
+      "print": "will by no means"
+    },
+    {
+      "sermon": 95,
+      "from": "So far form it",
+      "to": "So far from it",
+      "print": "So far from it"
+    },
+    {
+      "sermon": 95,
+      "from": "their children form evil",
+      "to": "their children from evil",
+      "print": "their children from evil"
+    },
+    {
+      "sermon": 95,
+      "from": "And education under Pythagoras",
+      "to": "An education under Pythagoras",
+      "print": "An education under Pythagoras"
+    },
+    {
+      "sermon": 100,
+      "from": "not the same with flattery",
+      "to": "not the same with lying",
+      "print": "not the fame with lying"
+    },
+    {
+      "sermon": 100,
+      "from": "these forward ones",
+      "to": "these froward ones",
+      "print": "thefe froward ones"
+    },
+    {
+      "sermon": 106,
+      "from": "the sin of tile world",
+      "to": "the sin of the world",
+      "print": "the fin of the world"
+    },
+    {
+      "sermon": 106,
+      "from": "a child of time devil",
+      "to": "a child of the devil",
+      "print": "a child of the devil"
+    },
+    {
+      "sermon": 108,
+      "from": "who are frees from",
+      "to": "who are free from",
+      "print": "Who are free from"
+    }
+  ]
+}

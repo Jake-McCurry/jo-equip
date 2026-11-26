@@ -309,6 +309,19 @@ const laterScans = new Map(later.volumes.flatMap(v => v.scans.map(s => [s.id, { 
 // "Will the Lord absent himself for ever? And will he be no more entreated?" (KJV: "cast off for ever ... favourable no more")
 const LATER_TEXT_VERSIONS = { 86: "Book of Common Prayer Psalter" };
 const LATER_NOTE = "Text of Thomas Jackson’s edition of Wesley’s Works (1872), whose numbering this sermon follows; its wording was checked against the 1788 printing.";
+// Typing errors in the transcription, corrected to the 1788 printing (each tied to the pinned re-read OCR).
+const laterCorrections = JSON.parse(fs.readFileSync(at("scripts/data/wesley-corrections.json"), "utf8")).corrections;
+const correctLater = (number, blocks) => {
+  for (const c of laterCorrections.filter(c => c.sermon === number)) {
+    const hits = blocks.flatMap((b, i) => Object.entries(b).filter(([, t]) => typeof t === "string" && t.includes(c.from)).map(([k]) => [i, k]));
+    const count = blocks.reduce((n, b) => n + Object.values(b).filter(t => typeof t === "string").reduce((m, t) => m + t.split(c.from).length - 1, 0), 0);
+    if (count !== 1) fail(`Wesley ${number}: correction "${c.from}" found ${count} times`);
+    const [i, k] = hits[0];
+    blocks[i] = { ...blocks[i], [k]: blocks[i][k].replace(c.from, c.to) };
+  }
+  return blocks;
+};
+for (const c of laterCorrections) if (!laterVerification.verified.some(v => v.number === c.sermon)) fail(`Wesley ${c.sermon}: correction for an unpublished sermon`);
 for (const v of laterVerification.verified) {
   const chunk = laterChunks.get(v.number) ?? fail(`Wesley sermon ${v.number} missing from ${later.transcription.file}`);
   if (laterSermonWords(chunk.lines) !== v.words) fail(`Wesley sermon ${v.number}: ${laterSermonWords(chunk.lines)} words, verified ${v.words}`);
@@ -330,7 +343,7 @@ for (const v of laterVerification.verified) {
     refs, quote: p.quote, words: v.words,
     scan: { id: scan.id, title: scan.title, date: scan.date, library: scan.library, coverage: v.coverage },
   });
-  bodies.set(slug, p.blocks);
+  bodies.set(slug, correctLater(v.number, p.blocks));
 }
 wesley.sort((a, b) => Number(a.number) - Number(b.number));
 problems.push(...wesleyProblems);

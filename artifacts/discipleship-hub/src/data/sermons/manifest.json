@@ -1,8 +1,8 @@
 {
  "files": {
-  "index": "a1c3dcd826"
+  "index": "40fe77c715"
  },
- "published": 372,
+ "published": 385,
  "preachers": {
   "spurgeon": {
    "counts": {
@@ -69,9 +69,9 @@
    "later": {
     "counts": {
      "checked": 55,
-     "published": 38,
+     "published": 51,
      "rejected": {
-      "too little of the text matched the scan": 14,
+      "too little of the text matched the scan": 1,
       "wording differs from the printing": 3
      }
     },

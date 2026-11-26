@@ -553,7 +553,7 @@
 },
 "checked": 55,
 "rejected": {
-"too little of the text matched the scan": 14,
+"too little of the text matched the scan": 1,
 "wording differs from the printing": 3
 },
 "verified": [
@@ -735,6 +735,114 @@
 },
 {
 "volume": 6,
+"number": 71,
+"source": "bim_eighteenth-century_sermons-on-several-occas_wesley-john_1788_6",
+"ocr": "tesseract",
+"words": 3772,
+"coverage": 0.897,
+"case": 9.01,
+"archaic": 0.27,
+"phrase": 3.18,
+"divine": 0.0
+},
+{
+"volume": 6,
+"number": 72,
+"source": "bim_eighteenth-century_sermons-on-several-occas_wesley-john_1788_6",
+"ocr": "tesseract",
+"words": 4426,
+"coverage": 0.874,
+"case": 7.68,
+"archaic": 0.45,
+"phrase": 4.07,
+"divine": 0.23
+},
+{
+"volume": 6,
+"number": 73,
+"source": "bim_eighteenth-century_sermons-on-several-occas_wesley-john_1788_6",
+"ocr": "tesseract",
+"words": 4482,
+"coverage": 0.876,
+"case": 8.7,
+"archaic": 0.0,
+"phrase": 2.45,
+"divine": 0.45
+},
+{
+"volume": 6,
+"number": 74,
+"source": "bim_eighteenth-century_sermons-on-several-occas_wesley-john_1788_6",
+"ocr": "tesseract",
+"words": 3829,
+"coverage": 0.88,
+"case": 12.54,
+"archaic": 0.26,
+"phrase": 4.18,
+"divine": 0.78
+},
+{
+"volume": 6,
+"number": 75,
+"source": "bim_eighteenth-century_sermons-on-several-occas_wesley-john_1788_6",
+"ocr": "tesseract",
+"words": 3963,
+"coverage": 0.847,
+"case": 6.31,
+"archaic": 0.0,
+"phrase": 3.03,
+"divine": 0.25
+},
+{
+"volume": 6,
+"number": 76,
+"source": "bim_eighteenth-century_sermons-on-several-occas_wesley-john_1788_6",
+"ocr": "tesseract",
+"words": 5816,
+"coverage": 0.864,
+"case": 9.97,
+"archaic": 0.52,
+"phrase": 3.09,
+"divine": 0.17
+},
+{
+"volume": 6,
+"number": 77,
+"source": "bim_eighteenth-century_sermons-on-several-occas_wesley-john_1788_6",
+"ocr": "tesseract",
+"words": 4336,
+"coverage": 0.866,
+"case": 12.68,
+"archaic": 0.0,
+"phrase": 5.77,
+"divine": 0.92
+},
+{
+"volume": 6,
+"number": 78,
+"source": "bim_eighteenth-century_sermons-on-several-occas_wesley-john_1788_6",
+"ocr": "tesseract",
+"words": 3785,
+"coverage": 0.904,
+"case": 10.83,
+"archaic": 0.26,
+"phrase": 3.43,
+"divine": 0.0
+},
+{
+"volume": 6,
+"number": 79,
+"source": "bim_eighteenth-century_sermons-on-several-occas_wesley-john_1788_6",
+"ocr": "tesseract",
+"words": 3242,
+"coverage": 0.848,
+"case": 9.56,
+"archaic": 0.0,
+"phrase": 3.39,
+"divine": 0.31
+},
+{
+"volume": 6,
 "number": 80,
 "source": "bim_eighteenth-century_sermons-on-several-occas_wesley-john_1788_6",
 "words": 5014,
@@ -889,6 +997,18 @@
 },
 {
 "volume": 8,
+"number": 95,
+"source": "bim_eighteenth-century_sermons-on-several-occas_wesley-john_1788_8",
+"ocr": "tesseract",
+"words": 5401,
+"coverage": 0.852,
+"case": 3.89,
+"archaic": 0.19,
+"phrase": 9.26,
+"divine": 0.19
+},
+{
+"volume": 8,
 "number": 96,
 "source": "bim_eighteenth-century_sermons-on-several-occas_wesley-john_1788_8",
 "words": 4267,
@@ -919,6 +1039,18 @@
 "archaic": 0.89,
 "phrase": 15.39,
 "divine": 0.45
+},
+{
+"volume": 8,
+"number": 100,
+"source": "bim_eighteenth-century_sermons-on-several-occas_wesley-john_1788_8",
+"ocr": "tesseract",
+"words": 3292,
+"coverage": 0.882,
+"case": 6.08,
+"archaic": 0.91,
+"phrase": 2.43,
+"divine": 0.0
 },
 {
 "volume": 8,
@@ -966,6 +1098,18 @@
 },
 {
 "volume": 8,
+"number": 106,
+"source": "bim_eighteenth-century_sermons-on-several-occas_wesley-john_1788_8",
+"ocr": "tesseract",
+"words": 3166,
+"coverage": 0.866,
+"case": 9.79,
+"archaic": 0.0,
+"phrase": 3.79,
+"divine": 0.32
+},
+{
+"volume": 8,
 "number": 107,
 "source": "bim_eighteenth-century_sermons-on-several-occas_wesley-john_1788_8",
 "words": 4712,
@@ -974,6 +1118,18 @@
 "archaic": 0.21,
 "phrase": 16.34,
 "divine": 0.21
+},
+{
+"volume": 8,
+"number": 108,
+"source": "bim_eighteenth-century_sermons-on-several-occas_wesley-john_1788_8",
+"ocr": "tesseract",
+"words": 3560,
+"coverage": 0.888,
+"case": 10.67,
+"archaic": 0.0,
+"phrase": 4.21,
+"divine": 0.28
 }
 ]
 }

@@ -16,5 +16,8 @@ description: Why Wesley (not Moody/Edwards), where the 1771 text and scans come 
 ## Later sermons (54–108, 1788 vols 5–8)
 - No transcription of the 1788 printing or Arminian Magazine exists; CCEL `sermons.txt` (Jackson 1872 text, "Rights: Public Domain") is the transcription, checked against 1788 scans (UCLA vols 5, 7; ESTC T17802 microfilm for all four — UCLA 6/8 are dark). Gutenberg Works vols 5–16 have no sermons.
 - 1788 print capitalizes nouns and Jackson normalizes, so the 1771 case criterion is unusable; the later check gates on raised divine-pronoun capitals and one-for-one archaic→modern swaps instead. The 1771 "archaic" rule flags microfilm OCR noise.
-- Microfilm OCR (vols 6, 8) is too noisy for many sermons (coverage < 0.75); better scans of those volumes would publish more.
+- No other viewable scan of 1788 vols 6/8 exists (IA, HathiTrust — same UCLA copy lacks v.6/v.8 — Google Books metadata-only, ECCO-TCP; searched Nov 2026). The 1804 Dublin "sixth edition" on IA is a reprint, not usable.
+- The microfilm images are legible; IA's OCR fails on show-through. Re-OCR with tesseract after thresholding at grey 40 (show-through is grey, type black) makes them verifiable; the re-read OCR is committed and md5-pinned since tesseract output is version-dependent.
+- More aligned text surfaces more real modernizations ("shew"→"show"), so a re-read can reject what noisy OCR merely failed to align.
+- The CCEL Jackson text has meaning-reversing typos ("with" for "without", "form" for "from") that pass the coverage threshold; review where independent OCRs agree against the transcription and pin corrections with the print reading.
 **Why:** only wording matching an original printing is published; pages disclose that spelling and numbering follow Jackson.

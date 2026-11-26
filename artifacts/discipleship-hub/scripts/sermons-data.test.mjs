@@ -3,6 +3,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
+import zlib from "node:zlib";
 import { createHash } from "node:crypto";
 import { BOOKS, code, decode, validRange } from "./lib/scripture-refs.mjs";
 
@@ -84,6 +85,27 @@ test("only verified sermons are published, each tied to a pinned scan", () => {
   const laterScans = new Map(wesleySources.later.volumes.flatMap(v => v.scans.map(s => [s.id, v.volume])));
   const laterVolumes = new Map(wesleySources.later.volumes.flatMap(v => Array.from({ length: v.sermons[1] - v.sermons[0] + 1 }, (_, k) => [v.sermons[0] + k, v.volume])));
   assert.equal(later.checked, laterVolumes.size);
+  // Re-read OCR of a scan's page images (scripts/ocr-wesley-scan.py) is committed and pinned; a result may use it only if listed.
+  const reread = wesleySources.later.volumes.flatMap(v => v.scans.filter(s => s.ocr));
+  for (const s of reread) {
+    const body = zlib.gunzipSync(fs.readFileSync(new URL(`scripts/data/${s.file}`, root)));
+    assert.equal(createHash("md5").update(body).digest("hex"), s.md5, `${s.file}: differs from the pinned md5`);
+  }
+  for (const v of later.verified.filter(v => v.ocr)) assert.ok(reread.some(s => s.id === v.source), `Wesley ${v.number}: unpinned re-read OCR`);
+  // Transcription typos corrected to the 1788 printing: the published text carries the correction, and the
+  // quoted print reading is in the pinned re-read OCR of that sermon's volume (line breaks and hyphenation joined).
+  const rereadText = new Map(wesleySources.later.volumes.map(v => [v.volume, v.scans.filter(s => s.ocr).map(s =>
+    zlib.gunzipSync(fs.readFileSync(new URL(`scripts/data/${s.file}`, root))).toString("utf8").replace(/\s+/g, " ").replace(/- /g, "")).join(" ")]));
+  const corrections = JSON.parse(read("scripts/data/wesley-corrections.json")).corrections;
+  assert.ok(corrections.length >= 1);
+  for (const c of corrections) {
+    const s = wesley.find(s => s.published === 1788 && Number(s.number) === c.sermon);
+    assert.ok(s, `correction for unpublished Wesley ${c.sermon}`);
+    const body = JSON.stringify(JSON.parse(read(`src/data/sermons/bodies/${s.slug}.json`)));
+    assert.ok(!body.includes(c.from), `${s.slug}: uncorrected "${c.from}"`);
+    assert.ok(body.includes(c.to), `${s.slug}: missing "${c.to}"`);
+    assert.ok(rereadText.get(s.volume)?.includes(c.print), `${s.slug}: "${c.print}" not in the re-read 1788 OCR`);
+  }
   const laterVerified = new Map(later.verified.map(v => [v.number, v]));
   assert.equal(manifest.preachers.wesley.later.counts.published, wesley.filter(s => s.published === 1788).length);
   for (const s of wesley) {

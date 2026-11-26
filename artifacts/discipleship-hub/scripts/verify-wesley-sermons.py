@@ -58,6 +58,12 @@ scan of its 1788 volume, as above, with these differences:
  - Coverage is unchanged (>= 75%).
  - A volume may list more than one scan; the scans are tried in order and the
    first that verifies the sermon is recorded.
+ - A scan entry with "ocr" is not Internet Archive's OCR but a re-reading of
+   the same item's page images (scripts/ocr-wesley-scan.py), committed under
+   scripts/data/wesley-ocr/. The microfilm of volumes 6 and 8 shows heavy
+   show-through that spoils Internet Archive's OCR of many pages; no clearer
+   scan of those volumes is viewable. Same criteria; the result records
+   "ocr": "tesseract".
 """
 import collections, difflib, hashlib, json, os, re, sys
 
@@ -278,6 +284,10 @@ def later_differences(words, starts, ot, idx):
     k = 1000 / len(words)
     return round(divine * k, 2), round(archaic * k, 2)
 
+def scan_key(s):
+    """File stem of a scan's OCR text in <src>/ocr/: the item id, plus ".tesseract" for a re-read."""
+    return s["id"] + (".tesseract" if "ocr" in s else "")
+
 def verify_later(src, later):
     t = later["transcription"]
     tpath = os.path.join(src, "wesley", t["file"])
@@ -288,14 +298,14 @@ def verify_later(src, later):
     scans = {}
     for vol in later["volumes"]:
         for s in vol["scans"]:
-            spath = os.path.join(src, "ocr", s["id"] + ".txt")
+            spath = os.path.join(src, "ocr", scan_key(s) + ".txt")
             if hashlib.md5(open(spath, "rb").read()).hexdigest() != s["md5"]:
                 sys.exit(f"{spath}: OCR text differs from the pinned md5")
             ot = ocr_tokens_longs(spath)
             idx = collections.defaultdict(list)
             for i in range(len(ot) - N + 1):
                 idx[" ".join(ot[i:i + N])].append(i)
-            scans[s["id"]] = (ot, idx)
+            scans[scan_key(s)] = (ot, idx)
     verified, reasons, checked = [], collections.Counter(), 0
     for vol in later["volumes"]:
         first, last = vol["sermons"]
@@ -305,7 +315,7 @@ def verify_later(src, later):
             words = [fold(w) for w in raw]
             reason = None
             for s in vol["scans"]:
-                ot, idx = scans[s["id"]]
+                ot, idx = scans[scan_key(s)]
                 whole = compare(words, ot, idx)
                 if not whole:
                     reason = reason or "no matching text in the scan"
@@ -318,8 +328,9 @@ def verify_later(src, later):
                 if r["coverage"] < MIN_COVERAGE:
                     reason = reason or "too little of the text matched the scan"
                     continue
-                verified.append({"volume": vol["volume"], "number": n, "source": s["id"], "words": len(raw), **r})
-                print(f"  {vol['volume']}/{n}: {s['id']} {r}")
+                ocr = {"ocr": "tesseract"} if "ocr" in s else {}
+                verified.append({"volume": vol["volume"], "number": n, "source": s["id"], **ocr, "words": len(raw), **r})
+                print(f"  {vol['volume']}/{n}: {scan_key(s)} {r}")
                 reason = None
                 break
             if reason:

@@ -11,3 +11,5 @@ STEPBible TAHOT/TAGNT use NRSV versification. TAGNT marks KJV coordinates in squ
 **How to apply:** check these quirks first if a regeneration reports missing words or verses that fall outside the expected range.
 
 Source files are ~110 MB and not committed; the generator pins SHA-256 digests. The eBible zip URL is unversioned and can change.
+
+The committed bible-search KJV text leaves a space where italic words were split off ("LORD ,"); tidy it for KJV display only, never touch NET text. NET omissions (e.g. Matt 17:21) are simply absent rows — show them as "not in the NET text".

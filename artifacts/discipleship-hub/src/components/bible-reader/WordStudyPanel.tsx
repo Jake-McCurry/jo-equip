@@ -2,6 +2,8 @@ import { useEffect, useRef, useState, type ReactNode, type Ref } from "react";
 import { ArrowLeft, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { BOOKS } from "./catalog";
 import { locationSearch, refLabel, translationLabel, type Location } from "./reader-utils";
+import { loadBookText } from "./commentary-data";
+import { alignKjv, segmentKjv } from "./strongs-align";
 import { loadChapterWords, loadEntry } from "./strongs-data";
 import { decodeVerse, expandVerses, type LexEntry, type WordRow } from "./strongs-format";
 
@@ -151,12 +153,12 @@ function EntryView({ baseUrl, loc, verse, num, onBack, onClose, onGo, compact }:
       {!loading && !error && !entry && (
         <p role="alert" className="mt-3 text-sm font-semibold">Strong&rsquo;s number {num} was not found. Hebrew numbers run H1–H8674 and Greek numbers G1–G5624.</p>
       )}
-      {entry && <EntryBody entry={entry} num={num} loc={loc} verse={verse} onGo={onGo} />}
+      {entry && <EntryBody baseUrl={baseUrl} entry={entry} num={num} loc={loc} verse={verse} onGo={onGo} />}
     </div>
   );
 }
 
-function EntryBody({ entry, num, loc, verse, onGo }: { entry: LexEntry; num: string; loc: Location; verse?: number; onGo: (loc: Location) => void }) {
+function EntryBody({ baseUrl, entry, num, loc, verse, onGo }: { baseUrl: string; entry: LexEntry; num: string; loc: Location; verse?: number; onGo: (loc: Location) => void }) {
   const refs = expandVerses(entry.v).map(decodeVerse);
   const pages = Math.max(1, Math.ceil(refs.length / PAGE));
   const currentIndex = refs.findIndex(r => BOOKS[r.book - 1]?.name === loc.book && r.chapter === loc.chapter && r.verse === verse);
@@ -185,22 +187,10 @@ function EntryBody({ entry, num, loc, verse, onGo }: { entry: LexEntry; num: str
       {entry.n && <p className="mt-2 text-sm text-[var(--color-text-muted)]">Strong&rsquo;s dictionary has no entry for this number; the short gloss is from STEPBible.</p>}
 
       <h3 className="br-label mt-5" id={listId}>Verses with {num} <span className="normal-case tracking-normal">({refs.length.toLocaleString()})</span></h3>
-      <ul aria-labelledby={listId} className="mt-2 grid grid-cols-2 gap-x-3 gap-y-0.5">
-        {shown.map(r => {
-          const book = BOOKS[r.book - 1]?.name ?? "";
-          const target: Location = { book, chapter: r.chapter, verse: r.verse, translation: loc.translation };
-          const here = book === loc.book && r.chapter === loc.chapter && r.verse === verse;
-          return (
-            <li key={`${r.book}.${r.chapter}.${r.verse}`}>
-              <a href={`${window.location.pathname}${locationSearch(target, num)}`} aria-current={here ? "location" : undefined}
-                onClick={e => { if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return; e.preventDefault(); onGo(target); }}
-                className={`br-link inline-flex min-h-9 items-center text-[15px] ${here ? "!text-[var(--color-action-warm)] underline" : ""}`}>
-                {refLabel(book, r.chapter, r.verse)}
-              </a>
-            </li>
-          );
-        })}
-      </ul>
+      {String(loc.translation) !== "kjv" && (
+        <p className="mt-1 text-sm text-[var(--color-text-muted)]">Text from the {translationLabel(loc.translation)}. Switch to KJV to see the matching word highlighted.</p>
+      )}
+      <VersePreviews baseUrl={baseUrl} num={num} loc={loc} verse={verse} refs={shown} listId={listId} onGo={onGo} />
       {pages > 1 && (
         <nav aria-label={`Pages of verses with ${num}`} className="mt-3 flex items-center justify-between gap-2">
           <button type="button" disabled={page === 0} onClick={() => setPage(p => p - 1)} className="br-btn-outline disabled:opacity-40"><ChevronLeft size={16} /> Previous</button>
@@ -209,6 +199,83 @@ function EntryBody({ entry, num, loc, verse, onGo }: { entry: LexEntry; num: str
         </nav>
       )}
     </div>
+  );
+}
+
+type VerseRef = ReturnType<typeof decodeVerse>;
+type Preview = { segments: { text: string; hit?: boolean }[] } | null;
+
+const refKey = (r: VerseRef) => r.book * 1_000_000 + r.chapter * 1_000 + r.verse;
+// The KJV search text keeps a space where italic words were split off ("LORD ,").
+const tidyKjv = (text: string) => text.replace(/ +(?=[,;:.!?])/g, "");
+
+/** Verse text for one page of results, from the locally hosted NET/KJV text. KJV gets the matching word marked. */
+function usePreviews(baseUrl: string, translation: Location["translation"], num: string, refs: VerseRef[]) {
+  const [state, setState] = useState<{ map: Map<number, Preview> | null; failed: boolean }>({ map: null, failed: false });
+  const keys = refs.map(refKey).join(",");
+  useEffect(() => {
+    let live = true;
+    setState({ map: null, failed: false });
+    const kjv = String(translation) === "kjv";
+    const books = [...new Set(refs.map(r => r.book))];
+    const chapters = kjv ? [...new Set(refs.map(r => `${r.book}:${r.chapter}`))] : [];
+    Promise.all([
+      Promise.all(books.map(b => loadBookText(baseUrl, translation, BOOKS[b - 1].name).then(m => [b, m] as const))),
+      // Tags only add highlighting; a missing chapter file just leaves the text unmarked.
+      Promise.all(chapters.map(key => {
+        const [b, c] = key.split(":").map(Number);
+        return loadChapterWords(baseUrl, BOOKS[b - 1].name, c).then(d => [key, d] as const, () => [key, null] as const);
+      })),
+    ]).then(([texts, tagged]) => {
+      if (!live) return;
+      const map = new Map<number, Preview>();
+      for (const r of refs) {
+        const raw = texts.find(([b]) => b === r.book)?.[1].get(r.chapter * 1000 + r.verse);
+        if (!raw) { map.set(refKey(r), null); continue; }
+        if (!kjv) { map.set(refKey(r), { segments: [{ text: raw }] }); continue; }
+        const text = tidyKjv(raw);
+        const tags = tagged.find(([k]) => k === `${r.book}:${r.chapter}`)?.[1]?.k[String(r.verse)] ?? [];
+        const spans = alignKjv(text, tags).filter(s => s.strongs === num);
+        map.set(refKey(r), { segments: segmentKjv(text, spans).map(s => ({ text: s.text, hit: !!s.strongs })) });
+      }
+      setState({ map, failed: false });
+    }).catch(() => live && setState({ map: null, failed: true }));
+    return () => { live = false; };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [baseUrl, translation, num, keys]);
+  return state;
+}
+
+function VersePreviews({ baseUrl, num, loc, verse, refs, listId, onGo }: { baseUrl: string; num: string; loc: Location; verse?: number; refs: VerseRef[]; listId: string; onGo: (loc: Location) => void }) {
+  const { map, failed } = usePreviews(baseUrl, loc.translation, num, refs);
+  const label = translationLabel(loc.translation);
+  return (
+    <ul aria-labelledby={listId} aria-busy={!map && !failed} className="mt-2 divide-y divide-[var(--color-border-soft)] border-y border-[var(--color-border-soft)]">
+      {refs.map(r => {
+        const book = BOOKS[r.book - 1]?.name ?? "";
+        const target: Location = { book, chapter: r.chapter, verse: r.verse, translation: loc.translation };
+        const here = book === loc.book && r.chapter === loc.chapter && r.verse === verse;
+        const preview = map?.get(refKey(r));
+        return (
+          <li key={refKey(r)} className="py-2">
+            <a href={`${window.location.pathname}${locationSearch(target, num)}`} aria-current={here ? "location" : undefined}
+              onClick={e => { if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return; e.preventDefault(); onGo(target); }}
+              className={`br-link inline-flex min-h-9 items-center text-[15px] ${here ? "!text-[var(--color-action-warm)] underline" : ""}`}>
+              {refLabel(book, r.chapter, r.verse)}
+            </a>
+            <p className="text-[15px] leading-6">
+              {preview
+                ? preview.segments.map((s, i) => s.hit ? <mark key={i} className="br-hit">{s.text}</mark> : <span key={i}>{s.text}</span>)
+                : map
+                  ? <span className="text-[var(--color-text-muted)]">This verse is not in the {label} text.</span>
+                  : failed
+                    ? <span className="text-[var(--color-text-muted)]">Verse text could not be loaded.</span>
+                    : <span className="br-skel block h-5" aria-hidden="true" />}
+            </p>
+          </li>
+        );
+      })}
+    </ul>
   );
 }
 

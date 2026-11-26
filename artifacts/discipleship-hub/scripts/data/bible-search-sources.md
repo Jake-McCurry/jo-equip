@@ -306,6 +306,13 @@ Regenerate with `bash scripts/fetch-dictionary-sources.sh /tmp/dictionary-source
 `node scripts/verify-easton-scan.mjs /tmp/dictionary-sources`. The build runs
 `pnpm run test:dictionary` (`scripts/bible-dictionary-data.test.mjs`).
 
+- **Full-text search:** `public/bible-data/dictionary/search.<hash>.json` holds
+  each entry's slug, title and readable text (as on its page, references kept as
+  printed). The /bible/dictionary page fetches it only when a reader chooses
+  "Full text of the articles". It is written by the generator and can be rebuilt
+  offline from the committed entries with `node scripts/build-dictionary-search.mjs`;
+  the data test checks it is byte-identical to a rebuild.
+
 - **Text:** M. G. Easton, *Illustrated Bible Dictionary*, third edition
   (T. Nelson & Sons, 1897), public domain.
 - **Transcription:** CrossWire SWORD module "Easton", version 2.0.1

@@ -29,6 +29,10 @@
 /bible-data/atlas/*
   Cache-Control: public, max-age=31536000, immutable
 
+# Bible dictionary (index, entry text, full-text search) — filenames carry a content hash.
+/bible-data/dictionary/*
+  Cache-Control: public, max-age=31536000, immutable
+
 # PDFs and book covers — large but not hashed; revalidate after 30 days
 # so revisions propagate without forcing every visit to redownload.
 /books/*.pdf

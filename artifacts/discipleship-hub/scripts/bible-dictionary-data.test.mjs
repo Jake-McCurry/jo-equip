@@ -5,6 +5,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import { createHash } from "node:crypto";
 import { BOOKS, code, validCode, validRange } from "./lib/scripture-refs.mjs";
+import { dictionarySearchFile, dictEntryPlainText } from "./lib/dictionary-search.mjs";
 
 const root = new URL("../", import.meta.url);
 const read = p => fs.readFileSync(new URL(p, root), "utf8");
@@ -63,7 +64,7 @@ test("no markup is left in entry text", () => {
 
 test("hashed reader files match their content and nothing stale is left", () => {
   const dir = new URL("public/bible-data/dictionary/", root);
-  const expected = [`index.${manifest.files.index}.json`, ...Object.entries(manifest.files.letters).map(([l, h]) => `${l}.${h}.json`)];
+  const expected = [`index.${manifest.files.index}.json`, `search.${manifest.files.search}.json`, ...Object.entries(manifest.files.letters).map(([l, h]) => `${l}.${h}.json`)];
   assert.deepEqual(new Set(fs.readdirSync(dir)), new Set(expected));
   for (const f of expected) assert.equal(hash10(fs.readFileSync(new URL(f, dir))), f.split(".")[1], f);
   // Letter files hold exactly the entries' paragraphs.
@@ -92,6 +93,30 @@ test("the chapter index lists real entries on real verses", () => {
   const john3 = index.chapters["John 3"].map(([i]) => index.entries[i][0]);
   for (const s of ["nicodemus", "jordan", "salim"]) assert.ok(john3.includes(s), `John 3 lists ${s}`);
   for (const [slug, list] of Object.entries(index.places)) assert.deepEqual(list, bySlug.get(slug).places);
+});
+
+test("the full-text search file holds every entry's readable text", () => {
+  assert.match(manifest.files.search ?? "", /^[0-9a-f]{10}$/);
+  const raw = read(`public/bible-data/dictionary/search.${manifest.files.search}.json`);
+  // Rebuilt from the committed entries, it is byte-identical (so it cannot drift from the pages).
+  assert.equal(raw, dictionarySearchFile(entries).payload);
+  const rows = JSON.parse(raw);
+  assert.deepEqual(rows.map(([slug, title]) => [slug, title]), entries.map(e => [e.slug, e.title]));
+  for (const [slug, , text] of rows) {
+    assert.ok(text.length > 0 && text === text.trim(), slug);
+    assert.doesNotMatch(text, /\s{2,}|<\/?[a-z]/i, slug);
+  }
+  const byText = new Map(rows.map(([slug, , text]) => [slug, text]));
+  assert.ok(byText.get("aaron").startsWith("The eldest son of Amram and Jochebed, a daughter of Levi (Ex. 6:20)."));
+  assert.equal(byText.get("nicodemus"), dictEntryPlainText(bySlug.get("nicodemus")));
+  // Topics named only inside articles are findable (the reason for the file).
+  const find = re => rows.filter(([, , text]) => re.test(text)).map(([slug]) => slug);
+  assert.ok(find(/Amarna/).length >= 15, "Amarna tablets");
+  assert.ok(find(/Tell Amarna/).length >= 3 && find(/Tell-el-Amarna/).length >= 3, "Tell Amarna spellings");
+  assert.ok(find(/phylacter/i).includes("frontlets"), "phylactery in Frontlets");
+  // Fetched only when a reader searches inside articles; keep it from growing unnoticed.
+  assert.ok(raw.length < 3_000_000, `${raw.length} bytes`);
+  assert.match(read("public/_headers"), /\/bible-data\/dictionary\/\*\n\s+Cache-Control: public, max-age=31536000, immutable/);
 });
 
 test("place links point to Bible map pages both ways", () => {

@@ -32,10 +32,20 @@ const count = dictEntries.length.toLocaleString("en-US");
 
     <section class="bmp-section" aria-labelledby="az-h">
       <h2 id="az-h">Find an entry</h2>
-      <label for="dict-q" class="dict-label">Search entry names</label>
+      <label for="dict-q" class="dict-label">Search the dictionary</label>
       <input id="dict-q" class="dict-search" type="search" autocomplete="off" spellcheck="false" placeholder="For example: Bethel" />
+      <fieldset class="dict-mode">
+        <legend>Search in</legend>
+        <label><input type="radio" name="dict-mode" value="names" checked /> Entry names</label>
+        <label><input type="radio" name="dict-mode" value="text" /> Full text of the articles</label>
+      </fieldset>
       <p id="dict-status" class="dict-status" role="status" aria-live="polite"></p>
-      <ul class="bmp-az" aria-label="Jump to a letter">
+      <button id="dict-to-text" class="dict-switch" type="button" hidden></button>
+      <div id="dict-text" hidden>
+        <ol id="dict-results" class="dict-results"></ol>
+        <button id="dict-more" class="dict-switch" type="button" hidden>Show more results</button>
+      </div>
+      <ul id="dict-az" class="bmp-az" aria-label="Jump to a letter">
         {[...letters.keys()].map(l => <li><a href={`#letter-${l.toLowerCase()}`}>{l}</a></li>)}
       </ul>
       <div id="dict-list">
@@ -55,11 +65,45 @@ const count = dictEntries.length.toLocaleString("en-US");
 </Layout>
 
 <script>
+  import manifest from "@/data/bible-dictionary/manifest.json";
+
+  type Row = [slug: string, title: string, text: string];
+  type Hit = { slug: string; title: string; text: string; folded: string; score: number };
+
+  const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+  const searchUrl = `${base}/bible-data/dictionary/search.${manifest.files.search}.json`;
   const input = document.getElementById("dict-q") as HTMLInputElement | null;
   const status = document.getElementById("dict-status");
+  const toText = document.getElementById("dict-to-text") as HTMLButtonElement | null;
+  const textBox = document.getElementById("dict-text");
+  const results = document.getElementById("dict-results");
+  const more = document.getElementById("dict-more") as HTMLButtonElement | null;
+  const list = document.getElementById("dict-list");
+  const az = document.getElementById("dict-az");
+  const radios = [...document.querySelectorAll<HTMLInputElement>('input[name="dict-mode"]')];
   const groups = [...document.querySelectorAll<HTMLElement>("#dict-list [data-letter]")];
   const fold = (s: string) => s.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/æ/g, "ae").replace(/[’']/g, "").trim();
-  const run = () => {
+  // Full-text folding is the same, minus the trim, with hyphens and dashes read as spaces
+  // ("Tell-el-Amarna" matches "tell el amarna"). foldMapped also returns, for every folded
+  // character, its position in the original text, for snippets and highlighting.
+  const foldText = (s: string) => s.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/æ/g, "ae").replace(/[’'‘]/g, "").replace(/[-–—]/g, " ");
+  const foldMapped = (s: string) => {
+    let out = "";
+    const map: number[] = [];
+    for (let i = 0; i < s.length; i++) {
+      const f = foldText(s[i]);
+      out += f;
+      for (let j = 0; j < f.length; j++) map.push(i);
+    }
+    map.push(s.length);
+    return { out, map };
+  };
+  const quoted = () => `“${input?.value.trim() ?? ""}”`;
+  const say = (msg: string) => { if (status) status.textContent = msg; };
+  const mode = () => (radios.find(r => r.checked)?.value === "text" ? "text" : "names");
+
+  // ---------- Entry names (filters the A–Z list) ----------
+  const runNames = () => {
     const q = fold(input?.value ?? "");
     let shown = 0;
     for (const g of groups) {
@@ -73,11 +117,170 @@ const count = dictEntries.length.toLocaleString("en-US");
       g.hidden = n === 0;
       shown += n;
     }
-    if (status) status.textContent = q ? (shown ? `${shown} ${shown === 1 ? "entry matches" : "entries match"} “${input!.value.trim()}”.` : `No entry name matches “${input!.value.trim()}”.`) : "";
+    say(q ? (shown ? `${shown} ${shown === 1 ? "entry name matches" : "entry names match"} ${quoted()}.` : `No entry name matches ${quoted()}.`) : "");
+    if (toText) {
+      toText.hidden = q.length < 3;
+      toText.textContent = `Search the full text of the articles for ${quoted()}`;
+    }
   };
-  input?.addEventListener("input", run);
-  const initial = new URLSearchParams(window.location.search).get("q");
-  if (input && initial) { input.value = initial; run(); }
+
+  // ---------- Full text (fetched only when first needed) ----------
+  let rows: { slug: string; title: string; text: string; folded: string; ftitle: string }[] | null = null;
+  let loading: Promise<void> | null = null;
+  const loadText = () => {
+    loading ??= fetch(searchUrl)
+      .then(res => {
+        if (!res.ok) throw new Error(`status ${res.status}`);
+        return res.json() as Promise<Row[]>;
+      })
+      .then(data => { rows = data.map(([slug, title, text]) => ({ slug, title, text, folded: foldText(text), ftitle: foldText(title) })); })
+      .catch(err => { loading = null; throw err; });
+    return loading;
+  };
+  const esc = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  // A term matches at the start of a word, so "phylacter" finds "phylacteries" but "ark" skips "dark";
+  // simple plurals are folded too ("phylactery" finds "phylacteries", "frontlets" finds "frontlet").
+  const stem = (t: string) =>
+    t.length > 4 && /ies$/.test(t) ? `${esc(t.slice(0, -3))}(?:y|ies)`
+    : t.length > 3 && /[^aeiou]y$/.test(t) ? `${esc(t.slice(0, -1))}(?:y|ies)`
+    : t.length > 4 && /[^eisu]s$/.test(t) ? `${esc(t.slice(0, -1))}s?`
+    : esc(t);
+  const termRe = (...ts: string[]) => new RegExp(`(?:^|[^a-z0-9])(${ts.map(stem).join(" ")})`, "g");
+  const PAGE = 50;
+  let hits: Hit[] = [];
+  let terms: string[] = [];
+  let shownCount = 0;
+
+  function snippet(h: Hit): Node[] {
+    const { out, map } = foldMapped(h.text);
+    const res = terms.map(t => termRe(t));
+    let at = -1;
+    if (terms.length > 1) { const m = termRe(...terms).exec(out); if (m) at = m.index + m[0].length - m[1].length; }
+    if (at < 0) for (const re of res) { re.lastIndex = 0; const m = re.exec(out); if (m) { at = m.index + m[0].length - m[1].length; break; } }
+    const pos = at < 0 ? 0 : map[at];
+    let start = Math.max(0, pos - 80), end = Math.min(h.text.length, pos + 160);
+    if (start > 0) start = h.text.indexOf(" ", start) + 1 || start;
+    if (end < h.text.length) { const sp = h.text.lastIndexOf(" ", end); if (sp > pos) end = sp; }
+    // Highlight every term inside the window.
+    const marks: [number, number][] = [];
+    for (const re of res) {
+      re.lastIndex = 0;
+      for (const m of out.matchAll(re)) {
+        const fs = m.index! + m[0].length - m[1].length;
+        const a = map[fs], b = map[fs + m[1].length - 1] + 1;
+        if (a >= start && b <= end) marks.push([a, b]);
+      }
+    }
+    marks.sort((x, y) => x[0] - y[0]);
+    const nodes: Node[] = [document.createTextNode(start > 0 ? "… " : "")];
+    let last = start;
+    for (const [a, b] of marks) {
+      if (a < last) continue;
+      nodes.push(document.createTextNode(h.text.slice(last, a)));
+      const mk = document.createElement("mark");
+      mk.textContent = h.text.slice(a, b);
+      nodes.push(mk);
+      last = b;
+    }
+    nodes.push(document.createTextNode(h.text.slice(last, end) + (end < h.text.length ? " …" : "")));
+    return nodes;
+  }
+
+  function renderMore() {
+    if (!results || !more) return;
+    const frag = document.createDocumentFragment();
+    for (const h of hits.slice(shownCount, shownCount + PAGE)) {
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      a.href = `${base}/bible/dictionary/${h.slug}`;
+      a.textContent = h.title;
+      const p = document.createElement("p");
+      p.append(...snippet(h));
+      li.append(a, p);
+      frag.append(li);
+    }
+    results.append(frag);
+    shownCount = Math.min(hits.length, shownCount + PAGE);
+    more.hidden = shownCount >= hits.length;
+    more.textContent = `Show ${Math.min(PAGE, hits.length - shownCount)} more results`;
+  }
+
+  let runId = 0;
+  async function runText() {
+    const id = ++runId;
+    const raw = input?.value.trim() ?? "";
+    terms = foldText(raw).split(/\s+/).filter(Boolean);
+    if (results) results.textContent = "";
+    if (more) more.hidden = true;
+    hits = [];
+    shownCount = 0;
+    if (!terms.length) { say("Type a word or phrase to search inside all the articles."); return; }
+    if (terms.join("").length < 3) { say("Type at least 3 letters to search inside the articles."); return; }
+    if (!rows) {
+      say("Loading the full text of the dictionary…");
+      try { await loadText(); } catch (err) {
+        if (id === runId) say(`The full text could not be loaded (${(err as Error).message}). Check your connection and try again.`);
+        return;
+      }
+      if (id !== runId) return;
+    }
+    const res = terms.map(t => termRe(t));
+    const phrase = terms.length > 1 ? termRe(...terms) : null;
+    const count = (re: RegExp, s: string) => { re.lastIndex = 0; let n = 0; while (n < 20 && re.exec(s)) n++; return n; };
+    for (const r of rows!) {
+      let score = 0, ok = true;
+      for (const re of res) {
+        const n = count(re, r.folded) + count(re, r.ftitle) * 5;
+        if (!n) { ok = false; break; }
+        score += n;
+      }
+      if (!ok) continue;
+      if (phrase) score += count(phrase, r.folded) * 10 + count(phrase, r.ftitle) * 100;
+      else if (count(res[0], r.ftitle)) score += 100;
+      hits.push({ ...r, score });
+    }
+    hits.sort((a, b) => b.score - a.score || a.title.localeCompare(b.title, "en", { sensitivity: "base" }));
+    say(hits.length
+      ? `${hits.length.toLocaleString("en-US")} ${hits.length === 1 ? "article mentions" : "articles mention"} ${quoted()}${hits.length > PAGE ? ", best matches first" : ""}.`
+      : `No article mentions ${quoted()}.`);
+    renderMore();
+  }
+
+  // ---------- Wiring ----------
+  let timer = 0;
+  const syncUrl = () => {
+    const u = new URL(window.location.href);
+    const q = input?.value.trim() ?? "";
+    if (q) u.searchParams.set("q", q); else u.searchParams.delete("q");
+    if (mode() === "text") u.searchParams.set("in", "text"); else u.searchParams.delete("in");
+    history.replaceState(history.state, "", u);
+  };
+  const run = () => {
+    const text = mode() === "text";
+    if (list) list.hidden = text;
+    if (az) az.hidden = text;
+    if (textBox) textBox.hidden = !text;
+    if (input) input.placeholder = text ? "For example: Tell Amarna" : "For example: Bethel";
+    if (text) { if (toText) toText.hidden = true; void runText(); } else runNames();
+  };
+  input?.addEventListener("input", () => {
+    clearTimeout(timer);
+    if (mode() === "names") run(); // instant on the in-page list
+    timer = window.setTimeout(() => { if (mode() === "text") run(); syncUrl(); }, 200);
+  });
+  for (const r of radios) r.addEventListener("change", () => { run(); syncUrl(); });
+  toText?.addEventListener("click", () => {
+    const r = radios.find(x => x.value === "text");
+    if (r) r.checked = true;
+    run(); syncUrl();
+    input?.focus();
+  });
+  more?.addEventListener("click", renderMore);
+  const params = new URLSearchParams(window.location.search);
+  const initial = params.get("q");
+  if (params.get("in") === "text") { const r = radios.find(x => x.value === "text"); if (r) r.checked = true; }
+  if (input && initial) input.value = initial;
+  if (initial || mode() === "text") run();
 </script>
 
 <style>
@@ -85,4 +288,16 @@ const count = dictEntries.length.toLocaleString("en-US");
   .dict-search { width: 100%; max-width: 32rem; min-height: 2.75rem; padding: .5rem .75rem; border: 1px solid var(--color-border-control, #7aa7c7); border-radius: 4px; font: inherit; font-size: 1.05rem; background: #fff; }
   .dict-search:focus-visible { outline: 2px solid var(--color-hero, #006bb3); outline-offset: 1px; }
   .dict-status { min-height: 1.5rem; margin: .5rem 0 .75rem; color: var(--color-text-muted, #2e5a7a); font-weight: 600; }
+  .dict-mode { display: flex; flex-wrap: wrap; align-items: center; gap: 0 1.25rem; margin: .5rem 0 0; padding: 0; border: 0; }
+  .dict-mode legend { float: left; margin-right: .25rem; padding: 0; font-weight: 700; }
+  .dict-mode label { display: inline-flex; align-items: center; gap: .4rem; min-height: 2.75rem; cursor: pointer; }
+  .dict-mode input { width: 1.1rem; height: 1.1rem; accent-color: var(--color-hero, #006bb3); }
+  .dict-switch { margin: 0 0 1rem; min-height: 2.75rem; padding: .4rem .9rem; border: 1px solid var(--color-hero, #006bb3); border-radius: 4px; background: #fff; color: var(--color-hero, #006bb3); font: inherit; font-weight: 700; text-align: left; cursor: pointer; }
+  .dict-switch:hover { background: #eef5fb; }
+  .dict-results { margin: 0 0 1rem; padding: 0; list-style: none; }
+  .dict-results :global(li) { padding: .7rem 0; border-bottom: 1px solid var(--color-border, #d6e4ef); }
+  .dict-results :global(a) { color: var(--color-hero, #006bb3); font-weight: 700; font-size: 1.05rem; text-decoration: none; }
+  .dict-results :global(a):hover { text-decoration: underline; }
+  .dict-results :global(p) { margin: .25rem 0 0; line-height: 1.5; }
+  .dict-results :global(mark) { background: #fff1a8; color: inherit; padding: 0 .05em; }
 </style>

@@ -4,12 +4,15 @@
 //   node scripts/generate-bible-dictionary.mjs /tmp/dictionary-sources
 //   node scripts/verify-easton-scan.mjs /tmp/dictionary-sources
 // Writes Easton's Bible Dictionary page data to src/data/bible-dictionary/ and
-// the content-hashed reader index and entry text to public/bible-data/dictionary/.
+// the content-hashed reader index, entry text and full-text search file to
+// public/bible-data/dictionary/. (The search file alone can be rebuilt offline
+// with node scripts/build-dictionary-search.mjs.)
 // See scripts/data/bible-search-sources.md.
 import fs from "node:fs";
 import path from "node:path";
 import { createHash } from "node:crypto";
 import { readZLD } from "./lib/sword-zld.mjs";
+import { dictionarySearchFile } from "./lib/dictionary-search.mjs";
 import { BOOKS, bookIndexOfAbbr, code, decode, parseOsis, validRange } from "./lib/scripture-refs.mjs";
 
 const src = process.argv[2];
@@ -313,6 +316,10 @@ for (const ck of [...hits.keys()].sort((a, b) => a - b)) {
 const index = JSON.stringify({ entries: entries.map(e => [e.slug, e.title]), chapters, places: Object.fromEntries(entries.filter(e => e.places).map(e => [e.slug, e.places])) });
 files.index = short(index);
 fs.writeFileSync(new URL(`index.${files.index}.json`, outPublic), index);
+// Full-text search over the entry text, fetched only when a reader searches inside articles.
+const search = dictionarySearchFile(entries);
+files.search = search.hash;
+fs.writeFileSync(new URL(`search.${search.hash}.json`, outPublic), search.payload);
 fs.writeFileSync(new URL("entries.json", outData), JSON.stringify(entries.map(e => ({ slug: e.slug, title: e.title, paras: e.paras, ...(e.places ? { places: e.places } : {}) }))));
 fs.writeFileSync(new URL("place-entries.json", outData), JSON.stringify(placeEntries));
 const chapterCount = Object.keys(chapters).length;

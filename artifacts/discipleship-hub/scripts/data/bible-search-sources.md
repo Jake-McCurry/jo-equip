@@ -66,7 +66,10 @@ files) and is generated explicitly:
 committed. The generator refuses inputs whose SHA-256 differs from the pinned
 digests below, and fails on missing chapters/verses or on more invalid
 references than its per-source limit (unparseable source references stay as
-plain text). Normal builds validate the committed output with
+plain text). Where a module's tagged reference is wrong but its printed text is
+right (Matthew Henry osisRef typos, JFB ranges that swallow the next list item),
+the printed text is used; plain-text continuations after a linked reference
+("Jas 1:12; 2:5") are linked to the same book. Normal builds validate the committed output with
 `scripts/commentary-data.test.mjs` (`pnpm run test:commentary`, part of
 `pnpm run build`). Nothing is fetched at runtime.
 

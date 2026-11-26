@@ -20,7 +20,7 @@ const ALIASES = {
   joe: 29, joel: 29, joell: 29, am: 30, amos: 30, ob: 31, obad: 31, jon: 32, jonah: 32, mi: 33, mic: 33, na: 34, nah: 34, nahh: 34,
   hab: 35, zep: 36, zeph: 36, hag: 37, zec: 38, zech: 38, mal: 39,
   mt: 40, mat: 40, matt: 40, mr: 41, mk: 41, mar: 41, mark: 41, lu: 42, lk: 42, luk: 42, luke: 42, lkke: 42,
-  joh: 43, jn: 43, jnn: 43, john: 43, ac: 44, acts: 44, actst: 44, actsts: 44, ro: 45, rom: 45, romm: 45,
+  jr: 24, joh: 43, jn: 43, jnn: 43, john: 43, ac: 44, acts: 44, actst: 44, actsts: 44, ro: 45, rom: 45, romm: 45,
   "1co": 46, "1cor": 46, "2co": 47, "2cor": 47, ga: 48, gal: 48, gall: 48, eph: 49, ep: 49, php: 50, phi: 50, phil: 50, ph: 50,
   col: 51, "1th": 52, "1thes": 52, "1thess": 52, "2th": 53, "2thes": 53, "2thess": 53,
   "1ti": 54, "1tim": 54, "1timm": 54, "2ti": 55, "2tim": 55, tit: 56, titus: 56, phm: 57, phlm: 57, philem: 57,
@@ -99,4 +99,130 @@ export function parseRefList(text, ctx) {
     if (m[0] !== ";" && m[0] !== ",") { afterBook = false; pendingStart = -1; }
   }
   return out;
+}
+
+// Full book names ("1 Kings", "Song of Solomon") and the longer abbreviations
+// Matthew Henry uses ("Chron.", "Philip.", "Cant."), consulted after ALIASES.
+const LONG_ALIASES = {
+  ...Object.fromEntries(BOOKS.map((name, i) => [name.toLowerCase().replace(/\s+/g, ""), i + 1])),
+  "1chron": 13, "2chron": 14, "1kgs": 11, "2kgs": 12, eccles: 21, cant: 22, canticles: 22, lament: 25, philip: 50,
+  "1thes": 52, "2thes": 53, "1pet": 60, "2pet": 61, rev: 66, apoc: 66,
+};
+const bookIndex = name => { const k = name.toLowerCase().replace(/[\s.]/g, ""); return ALIASES[k] ?? LONG_ALIASES[k] ?? null; };
+
+const ROMAN = { i: 1, v: 5, x: 10, l: 50, c: 100 };
+/** "xxiv" -> 24; null when the letters are not a well-formed numeral (≤ 150). */
+export function romanToInt(s) {
+  let n = 0;
+  for (let i = 0; i < s.length; i++) {
+    const a = ROMAN[s[i]], b = ROMAN[s[i + 1]] ?? 0;
+    if (!a) return null;
+    n += a < b ? -a : a;
+  }
+  return n > 0 && n <= 150 && intToRoman(n) === s ? n : null;
+}
+function intToRoman(n) {
+  let out = "";
+  for (const [v, r] of [[100, "c"], [90, "xc"], [50, "l"], [40, "xl"], [10, "x"], [9, "ix"], [5, "v"], [4, "iv"], [1, "i"]]) while (n >= v) { out += r; n -= v; }
+  return out;
+}
+
+/**
+ * Parses a Matthew Henry-style reference ("Jas. iii. 7", "ch. xvii. 20",
+ * "xxi. 13", "v. 7, 8", "ver. 9-15 and again ver. 20, 21", "1 Kings viii.
+ * and ix.") into linkable pieces [{ start, end, from, to? }]. `ctx` = { b, c }
+ * is the passage being commented on ("v. 26" = verse 26 of it); `lastB` is the
+ * book of the reference this one directly continues ("ch. xi.", "xxi. 13") and
+ * `bare` the passage a bare "28" continues; both are null when the reference
+ * does not directly continue another. Returns null when the
+ * text is not entirely a reference (apocryphal books, "second verse", or a
+ * verse number mis-tagged as a reference, such as "Dan. 15").
+ */
+export function parseClassicRef(text, ctx, lastB = ctx.b, bare = ctx) {
+  const out = [];
+  const re = /\s+|[,;]|&(?:amp;)?c\.?|\b(?:and|again)\b|(ch(?:ap)?\.|chapters?\b)|(v(?:er)?\.|verses?\b)|((?:[1-3] ?)?[A-Z][a-z]+)\.?|([ivxlc]+)\b\.?|(\d+)(?:\s*[-–]\s*(\d+))?|\S/gy;
+  let b = null, c = null, mode = null, start = -1; // mode: "book" | "chapter" | "verse" | "afterChapter"
+  for (let m; re.lastIndex < text.length && (m = re.exec(text));) {
+    const [tok, ch, ver, book, roman, n1, n2] = m;
+    if (ch) { if (!lastB) return null; b = lastB; mode = "chapter"; start = m.index; continue; }
+    if (ver && mode !== "book" && mode !== "chapter") {
+      if (mode === null) {
+        // "Neh. iv. 9; v. 7": continuing another book, "v." may be chapter v — ambiguous.
+        if (bare && bare.b !== ctx.b) return null;
+        b = ctx.b; c = ctx.c;
+      }
+      mode = "verse"; start = m.index; continue;
+    }
+    if (book) {
+      const idx = bookIndex(book);
+      if (!idx) return null;
+      b = idx; mode = "book"; start = m.index; continue;
+    }
+    if ((roman !== undefined && mode !== "verse") || ver) { // after a book or "ch.", "v." is chapter 5
+      const n = romanToInt(roman ?? "v");
+      if (n === null) return null;
+      b ??= lastB;
+      if (!b) return null;
+      c = n; mode = "afterChapter"; if (start < 0) start = m.index;
+      const rest = text.slice(re.lastIndex);
+      if (!/^\s*\d/.test(rest) || /^\s*[-–]/.test(rest)) {
+        // chapter only ("ch. xi.", "1 Kings viii. and ix."); a chapter range links to its first chapter
+        out.push({ start: start >= 0 ? start : m.index, end: m.index + tok.replace(/\.$/, "").length, from: code(b, c, 0) });
+        start = -1;
+        const range = /^\s*[-–]\s*([ivxlc]+)\b\.?/.exec(text.slice(re.lastIndex));
+        if (range) re.lastIndex += range[0].length;
+      }
+      continue;
+    }
+    if (n1) {
+      if (mode === "book") {
+        if (CHAPTER_VERSES[BOOKS[b - 1]].length !== 1) return null; // "Dan. 15": a mis-tagged verse number
+        c = 1; mode = "verse";
+      } else if (mode === null) { // bare "24": a verse of the passage it continues
+        if (!bare) return null;
+        b = bare.b; c = bare.c; mode = "verse";
+      }
+      else if (mode === "chapter") return null;
+      const from = code(b, c, Number(n1));
+      const to = n2 ? code(b, c, Number(n2)) : undefined;
+      out.push({ start: start >= 0 ? start : m.index, end: m.index + tok.length, from, ...(to ? { to } : {}) });
+      start = -1;
+      continue;
+    }
+    if (/^(\s+|[,;]|&(amp;)?c\.?|and|again)$/.test(tok)) continue;
+    return null;
+  }
+  return out.length ? out : null;
+}
+
+/**
+ * Finds references that continue a linked one in the plain text after it:
+ * "; 2:5" or ", 18-23" after "Jas 1:12" / "Mt 13:3-9". `ctx` = { b, c, verse }
+ * describes the previous reference (verse = it named a verse, so a bare number
+ * is another verse; otherwise a bare number is another chapter). Stops at the
+ * first piece that is not clearly a reference (", 2 Kings", ", 7 times") or does
+ * not exist in KJV versification. Returns { refs, ctx } with the updated context.
+ */
+export function parseContinuation(text, ctx) {
+  const refs = [];
+  const single = CHAPTER_VERSES[BOOKS[ctx.b - 1]].length === 1;
+  let { c, verse } = ctx, at = 0;
+  const re = /\s*[;,]\s*(?:and\s+)?(\d+)(?::(\d+))?(?:\s*[-–]\s*(\d+)(?::(\d+))?)?/y;
+  for (let m; (re.lastIndex = at), (m = re.exec(text));) {
+    const rest = text.slice(re.lastIndex);
+    const [, n1, n2, n3, n4] = m.map(x => (x === undefined ? undefined : Number(x)));
+    if (/^[\w:–-]/.test(rest)) break; // "1Co", "2:5a", "5:"
+    // Bare numbers need closing punctuation, and ", 2. They" is outline numbering.
+    if (n2 === undefined && !/^\s*[;,)\]]/.test(rest)) break;
+    let from, to;
+    if (n2 !== undefined) { from = code(ctx.b, n1, n2); if (n4 !== undefined) to = code(ctx.b, n3, n4); else if (n3 !== undefined) to = code(ctx.b, n1, n3); }
+    else if (verse || single) { from = code(ctx.b, single ? 1 : c, n1); if (n4 !== undefined) break; if (n3 !== undefined) to = code(ctx.b, single ? 1 : c, n3); }
+    else { if (n3 !== undefined) break; from = code(ctx.b, n1, 0); }
+    if (!validRange(from, to) || (to !== undefined && to <= from)) break;
+    const start = at + m[0].search(/\d/);
+    refs.push({ start, end: re.lastIndex, from, ...(to ? { to } : {}) });
+    at = re.lastIndex;
+    c = Math.floor((to ?? from) / 1000) % 1000; verse = (to ?? from) % 1000 !== 0;
+  }
+  return { refs, ctx: { b: ctx.b, c, verse } };
 }

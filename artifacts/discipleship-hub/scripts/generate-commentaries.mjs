@@ -10,7 +10,7 @@ import { createHash } from "node:crypto";
 import { gzipSync } from "node:zlib";
 import { CHAPTER_VERSES } from "../worker/bible-catalog.js";
 import { readZCom } from "./lib/sword-zcom.mjs";
-import { BOOKS, code, parseOsis, parseRefList, sameBookEnd, validRange } from "./lib/scripture-refs.mjs";
+import { BOOKS, code, parseClassicRef, parseContinuation, parseOsis, parseRefList, sameBookEnd, validRange } from "./lib/scripture-refs.mjs";
 
 const src = process.argv[2];
 if (!src) throw new Error("Usage: node scripts/generate-commentaries.mjs <sources directory>");
@@ -36,8 +36,9 @@ for (const [name, digest] of Object.entries(SOURCES)) {
 
 // Source references that do not exist in KJV versification are left as plain
 // text (never linked). More than this many per source means the parser or the
-// source has changed and needs review.
-const MAX_INVALID = { mhc: 400, jfb: 150, barnes: 50, tsk: 100, openbible: 25 };
+// source has changed and needs review. What remains is mostly Apocrypha (Matthew
+// Henry), source typos ("2Jn 2:15" for 1 John) and mis-tagged verse numbers.
+const MAX_INVALID = { mhc: 240, jfb: 10, barnes: 15, tsk: 30, openbible: 25 };
 const invalid = Object.fromEntries(Object.keys(MAX_INVALID).map(k => [k, []]));
 
 // ---- Markup -> paragraphs ----------------------------------------------------
@@ -71,6 +72,7 @@ function convert(raw, ctx, source, { dropScripture = false } = {}) {
     if (!text) return;
     if (inNote) { noteSegs.push(text); return; }
     if (ref) { refText += text; return; }
+    if (cont) { contBuf += text; return; }
     if (!para) open();
     const f = curFlags();
     para.segs.push(f ? [text, f] : text);
@@ -87,23 +89,70 @@ function convert(raw, ctx, source, { dropScripture = false } = {}) {
     }
     if (at < text.length) para.segs.push(f ? [text.slice(at), f] : text.slice(at));
   };
+  // Plain text right after a linked reference is held back until the next tag
+  // so continuations ("Jas 1:12; 2:5", "Mt 13:3-9, 18-23") can be linked too.
+  let cont = null, contBuf = "";
+  const linked = pieces => {
+    const last = [...pieces].reverse().find(r => validRange(r.from, r.to));
+    // After an unlinkable reference, a bare "10" or "xxi. 13" has no known book.
+    if (!last) { cont = { dead: true }; return; }
+    const end = last.to ?? last.from;
+    cont = { b: Math.floor(end / 1e6), c: Math.floor(end / 1000) % 1000, verse: end % 1000 !== 0 };
+  };
+  /** Links continuations in the held-back text; returns the context for an adjacent reference. */
+  const drainCont = () => {
+    if (!cont) return null;
+    const text = contBuf, from = cont;
+    cont = null; contBuf = "";
+    if (!text) return null;
+    if (from.dead) { pushRefs(text, []); return /^\s*[;,]\s*(?:and\s+)?$/.test(text) ? from : null; }
+    const { refs, ctx: next } = parseContinuation(text, from);
+    pushRefs(text, refs);
+    // "Php 2:1; <ref>3:10</ref>": a bare reference continuing a list.
+    return /^\s*[;,]\s*(?:and\s+)?$/.test(text.slice(refs.at(-1)?.end ?? 0)) ? next : null;
+  };
   const closeRef = () => {
     const text = decodeEntities(refText);
     const r = ref; ref = null; refText = "";
     if (inNote) { noteSegs.push(text); return; }
+    if (r.rangeEnd) {
+      if (/^\d+(?::\d+)?$/.test(text)) { contBuf += text; return; }
+      r.adj = drainCont();
+    }
+    // A book-less reference ("ch. i. 14", "xxi. 13", a bare "28") takes its book
+    // only from a reference it directly continues ("Gen. xvii. 20, and xxi. 13").
+    const live = !!r.adj && !r.adj.dead;
+    const here = live ? { b: r.adj.b, c: r.adj.c } : ctx;
+    let pieces = null, rest = "";
     if (r.osis) {
       const p = parseOsis(r.osis);
       if (p) p.to = sameBookEnd(p.from, p.to);
-      pushRefs(text, p ? [{ start: 0, end: text.length, ...p }] : []);
-      if (!p) invalid[source].push(r.osis);
+      if (source === "mhc") {
+        // Matthew Henry's osisRef attributes are often wrong where the printed
+        // reference is right ("Jas. iii. 7" tagged Jas.9.7); fall back to the text.
+        pieces = p && validRange(p.from, p.to) ? [{ start: 0, end: text.length, ...p }] : parseClassicRef(text, ctx, live ? here.b : null, live ? here : null);
+      } else {
+        // JFB's tagger sometimes swallows the next list item into a range:
+        // "Nu 15:4-7; 28" tagged Num.15.4-Num.7.28 (the text goes on ":7-14").
+        const shown = parseRefList(text, here);
+        const first = shown[0]?.start === 0 && validRange(shown[0].from, shown[0].to) ? shown[0] : null;
+        const bad = !p || !validRange(p.from, p.to) || (shown.length > 1 && p.from === first?.from && p.to !== first?.to);
+        if (first && bad) { pieces = [first]; rest = text.slice(first.end); }
+        else if (p) pieces = [{ start: 0, end: text.length, ...p }];
+      }
+      if (!pieces) { invalid[source].push(r.osis); pieces = []; }
     } else if (r.passage && r.passage.trim() !== text.trim()) {
-      const p = parseRefList(r.passage, ctx)[0];
-      pushRefs(text, p ? [{ ...p, start: 0, end: text.length }] : []);
+      const p = parseRefList(r.passage, here)[0];
+      pieces = p ? [{ ...p, start: 0, end: text.length }] : [];
     } else {
-      pushRefs(text, parseRefList(text, ctx));
+      pieces = parseRefList(text, here);
     }
+    pushRefs(rest ? text.slice(0, text.length - rest.length) : text, pieces);
+    linked(pieces);
+    // Only continue a recognisable reference: "1,5,7" in "Antiquities, 17.6.1,5,7,8" is a mis-tag.
+    if (!cont.dead && !/\d:\d|^\s*(?:[1-3] ?)?[A-Za-z]/.test(text)) cont = { dead: true };
+    contBuf = rest;
   };
-
   for (const tok of raw.replace(/\r/g, "").split(/(<[^>]+>)/)) {
     if (!tok) continue;
     if (tok[0] !== "<") {
@@ -114,6 +163,10 @@ function convert(raw, ctx, source, { dropScripture = false } = {}) {
     }
     const name = /^<\/?([a-zA-Z]+)/.exec(tok)?.[1]?.toLowerCase() ?? "";
     const closing = tok[1] === "/";
+    // JFB "Mt 13:3-9, 18</reference>-<reference osisRef="Matt.9.23">23</reference>":
+    // a range end tagged on its own belongs to the held-back continuation.
+    const rangeEnd = !ref && !closing && (name === "reference" || name === "scripref") && cont && !cont.dead && /\d\s*[-–]\s*$/.test(contBuf);
+    const adjacent = ref || rangeEnd ? null : drainCont();
     const type = attr(tok, "type");
     const sID = attr(tok, "sID"), eID = attr(tok, "eID");
     if (name === "div") {
@@ -155,7 +208,7 @@ function convert(raw, ctx, source, { dropScripture = false } = {}) {
     if (para) para.lastBr = false;
     if (name === "reference" || name === "scripref") {
       if (closing) { if (ref) closeRef(); }
-      else ref = { osis: attr(tok, "osisRef"), passage: attr(tok, "passage") };
+      else ref = { osis: attr(tok, "osisRef"), passage: attr(tok, "passage"), adj: adjacent, rangeEnd };
       continue;
     }
     if (name === "hi" || name === "i" || name === "b" || name === "em" || name === "strong") {
@@ -166,6 +219,7 @@ function convert(raw, ctx, source, { dropScripture = false } = {}) {
     }
     // chapter, milestone, verse, x-milestone divs, font, etc.: no content.
   }
+  drainCont();
   flush();
   res.body.push(...notes);
   for (const list of [res.book, res.intro, res.body]) for (const p of list) if (p[0] === "p" || p[0] === "q") cleanLines(p);

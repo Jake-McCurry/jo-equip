@@ -7,7 +7,7 @@ import fs from "node:fs";
 import { createHash } from "node:crypto";
 import { CHAPTER_VERSES } from "../worker/bible-catalog.js";
 import { COMMENTARIES } from "../src/components/bible-reader/commentary-format.ts";
-import { parseRefList, validRange } from "./lib/scripture-refs.mjs";
+import { parseClassicRef, parseContinuation, parseRefList, validRange } from "./lib/scripture-refs.mjs";
 
 const root = new URL("../", import.meta.url);
 const dir = new URL("public/bible-data/commentary/", root);
@@ -156,4 +156,70 @@ test("reference parser handles TSK and Barnes styles", () => {
   assert.deepEqual(pick("1Jo 2:29; 3:9"), [["1Jo 2:29", 62002029, undefined], ["3:9", 62003009, undefined]]);
   assert.deepEqual(pick("Ps 14:1; *title"), [["Ps 14:1", 19014001, undefined]]);
   assert.equal(validRange(43003037), false, "John 3:37 does not exist");
+});
+
+test("reference parser handles Matthew Henry styles", () => {
+  const gen25 = { b: 1, c: 25 };
+  const pick = (text, lastB = 1, bare = gen25) => parseClassicRef(text, gen25, lastB, bare)?.map(r => [text.slice(r.start, r.end), r.from, r.to]) ?? null;
+  assert.deepEqual(pick("Jas. iii. 7"), [["Jas. iii. 7", 59003007, undefined]]);
+  assert.deepEqual(pick("v. 26"), [["v. 26", 1025026, undefined]]);
+  assert.deepEqual(pick("xxi. 13"), [["xxi. 13", 1021013, undefined]]);
+  assert.deepEqual(pick("Ps. v. 16"), [["Ps. v. 16", 19005016, undefined]]);
+  assert.deepEqual(pick("1 Kings viii. and ix."), [["1 Kings viii", 11008000, undefined], ["ix", 11009000, undefined]]);
+  assert.deepEqual(pick("ver. 9-15 and again ver. 20, 21"), [["ver. 9-15", 1025009, 1025015], ["ver. 20", 1025020, undefined], ["21", 1025021, undefined]]);
+  assert.deepEqual(pick("28", 45, { b: 45, c: 3 }), [["28", 45003028, undefined]]);
+  assert.equal(pick("28", 1, null), null, "a bare number after an unlinkable reference");
+  assert.equal(pick("Dan. 15"), null, "a mis-tagged verse number");
+  assert.equal(pick("2 Macc. ii. 4, 5"), null, "Apocrypha");
+  assert.equal(pick("second verse"), null);
+  assert.equal(pick("v. 7", 16, { b: 16, c: 4 }), null, "\"Neh. iv. 9; v. 7\": chapter v or a local verse");
+  assert.deepEqual(pick("v. 7", 1, { b: 1, c: 25 }), [["v. 7", 1025007, undefined]], "continuing the same book");
+});
+
+test("continuations after a linked reference", () => {
+  const pick = (text, ctx) => parseContinuation(text, ctx).refs.map(r => [text.slice(r.start, r.end), r.from, r.to]);
+  const jas = { b: 59, c: 1, verse: true };
+  assert.deepEqual(pick("; 2:5) all things", jas), [["2:5", 59002005, undefined]]);
+  assert.deepEqual(pick(", 18-23; Mr", { b: 40, c: 13, verse: true }), [["18-23", 40013018, 40013023]]);
+  assert.deepEqual(pick(", 7; 16:10", { b: 5, c: 12, verse: true }), [["7", 5012007, undefined], ["16:10", 5016010, undefined]]);
+  assert.deepEqual(pick("; 24, 25)", { b: 19, c: 23, verse: false }), [["24", 19024000, undefined], ["25", 19025000, undefined]]);
+  assert.deepEqual(pick(", 2 Kings 3", jas), [], "a numbered book is not a verse");
+  assert.deepEqual(pick(", 7 times", jas), [], "a number in prose");
+  assert.deepEqual(pick("; 9:99.", jas), [], "outside KJV versification");
+  assert.deepEqual(pick(". 3. Free", jas), [], "outline numbering");
+  assert.deepEqual(pick(", 2. They", jas), [], "outline numbering after a comma");
+});
+
+test("commentary link fixtures: continuations and printed references", () => {
+  const chapter = (id, book, c) => JSON.parse(read(`${id}/${slug(book)}-${c}.${manifest.commentaries[id].books[book].chapters[c - 1]}.json`));
+  /** Every link in a chapter as [text before (40 chars), link text, from, to]. */
+  const links = (id, book, c) => {
+    const d = chapter(id, book, c), out = [];
+    for (const p of [...(d.i ?? []), ...d.e.flatMap(e => e[2])]) {
+      let before = "";
+      for (const s of p.slice(1)) {
+        if (Array.isArray(s) && s.length > 2) out.push([before.slice(-40), s[0], s[2], s[3]]);
+        before += typeof s === "string" ? s : s[0];
+      }
+    }
+    return out;
+  };
+  const has = (list, text, from, to) => list.some(l => l[1] === text && l[2] === from && l[3] === to);
+  // JFB on Romans 8:28: "Jas 1:12; 2:5" — the continuation links to James 2:5.
+  assert.ok(has(links("jfb", "Romans", 8), "2:5", 59002005, undefined), "JFB Romans 8: Jas 2:5 continuation");
+  // JFB tagged "Mt 13:3-9, 18" as Matt.13.3-Matt.9.18; the printed range wins and "18-23" continues it.
+  const mt13 = links("jfb", "Matthew", 13);
+  assert.ok(has(mt13, "Mt 13:3-9", 40013003, 40013009) && has(mt13, "18-23", 40013018, 40013023), "JFB Matthew 13 sower");
+  // Barnes: "Php 2:1; 3:10" continues Philippians, not the book being commented on.
+  assert.ok(has(links("barnes", "Philemon", 1), "3:10", 50003010, undefined), "Barnes Philemon 6: Php 3:10");
+  // Matthew Henry: printed "Jas. iii. 7" wins over the mistagged Jas.9.7.
+  assert.ok(has(links("mhc", "Genesis", 9), "Jas. iii. 7", 59003007, undefined), "MHC Genesis 9: Jas 3:7");
+  // Book-less references that do not continue another reference stay unlinked.
+  const bad = [
+    ["mhc", "John", 4, l => l[1] === "ch. xxiv. 15"], // "Joshua, ch. xxiv. 15": not Genesis 24:15
+    ["mhc", "1 John", 1, l => l[1] === "ch. i. 14"], // "in his gospel (ch. i. 14)": not 2 Peter 1:14
+    ["mhc", "Proverbs", 15, l => l[2] === 20015007 && /Neh\. [ivxlc]+\. \d+[;,] $/.test(l[0])], // "Neh. …; v. 7" is not Proverbs 15:7
+    ["mhc", "Deuteronomy", 30, l => l[1] === "1" && /last verse, $/.test(l[0])], // outline numbering
+  ];
+  for (const [id, book, c, match] of bad) assert.deepEqual(links(id, book, c).filter(match), [], `${id} ${book} ${c}: ambiguous reference linked`);
 });

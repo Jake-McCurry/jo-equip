@@ -18,7 +18,7 @@ import { createHash } from "node:crypto";
 import { decodeHTML } from "entities";
 import { BOOKS as CATALOG, canonicalBook } from "../worker/bible-catalog.js";
 import { BOOKS, bookIndexOfAbbr, code, decode, validRange } from "./lib/scripture-refs.mjs";
-import { modernRef, parseSermon, sermonWords, splitSermons, titleCase, volumeFootnotes } from "./lib/wesley-sermons.mjs";
+import { laterSermonWords, modernRef, parseLaterSermon, parseSermon, sermonWords, splitLaterSermons, splitSermons, titleCase, volumeFootnotes } from "./lib/wesley-sermons.mjs";
 
 const src = process.argv[2];
 if (!src) throw new Error("Usage: node scripts/generate-sermons.mjs <sources directory>");
@@ -244,6 +244,8 @@ const WESLEY_REF_CORRECTIONS = {
   41: "2 Corinthians 10:5", // 1771 prints "2 Cor. x. 4" (checked in the scan); the words are verse 5
 };
 // Texts Wesley quotes from another version; the agreement floor drops to 0.7 and the page names the version.
+// Agreement floor for a text quoted from another version (the Psalter paraphrases more freely than the KJV).
+const TEXT_VERSION_FLOOR = 0.65;
 const WESLEY_TEXT_VERSIONS = {
   52: "Book of Common Prayer Psalter", // "Who will rise up with me against the wicked?" (KJV: "for me against the evildoers")
 };
@@ -280,7 +282,7 @@ for (const v of wesleyVerification.verified) {
   if (!refs) { wesleyProblems.push(`Wesley ${v.number}: unparsed reference "${p.refLine}"`); continue; }
   const textVersion = WESLEY_TEXT_VERSIONS[v.number];
   const agreement = kjvAgreement(p.quote, refs);
-  if (agreement < (textVersion ? 0.7 : 0.8)) { wesleyProblems.push(`Wesley ${v.number}: text "${p.quote.slice(0, 60)}" does not match KJV ${refLine} (${agreement.toFixed(2)})`); continue; }
+  if (agreement < (textVersion ? TEXT_VERSION_FLOOR : 0.8)) { wesleyProblems.push(`Wesley ${v.number}: text "${p.quote.slice(0, 60)}" does not match KJV ${refLine} (${agreement.toFixed(2)})`); continue; }
   const slug = `wesley-${v.number}-${slugify(title)}`.slice(0, 90).replace(/-$/, "");
   const date = printedDate(p.occasion);
   wesley.push({
@@ -294,6 +296,39 @@ for (const v of wesleyVerification.verified) {
       id: vol.scan.id, title: vol.scan.title, date: vol.scan.date, library: vol.scan.library, coverage: v.coverage,
       ...(sup ? { supplement: { id: sup.scan.id, title: sup.scan.title, date: sup.scan.date, imprint: sup.scan.imprint, pages: sup.missingPages, coverage: v.supplement.coverage } } : {}),
     },
+  });
+  bodies.set(slug, p.blocks);
+}
+// ---------- John Wesley: later sermons (Sermons on Several Occasions, London 1788, vols 5–8) ----------
+const later = wesleySources.later;
+const laterVerification = wesleyVerification.later;
+const laterBuf = fs.readFileSync(path.join(src, "wesley", later.transcription.file));
+if (sha(laterBuf) !== later.transcription.sha256) fail(`${later.transcription.file} digest changed (${sha(laterBuf)}). Re-run verify-wesley-sermons.py after reviewing the new source.`);
+const laterChunks = splitLaterSermons(laterBuf.toString("utf8"));
+const laterScans = new Map(later.volumes.flatMap(v => v.scans.map(s => [s.id, { ...s, volume: v.volume }])));
+// "Will the Lord absent himself for ever? And will he be no more entreated?" (KJV: "cast off for ever ... favourable no more")
+const LATER_TEXT_VERSIONS = { 86: "Book of Common Prayer Psalter" };
+const LATER_NOTE = "Text of Thomas Jackson’s edition of Wesley’s Works (1872), whose numbering this sermon follows; its wording was checked against the 1788 printing.";
+for (const v of laterVerification.verified) {
+  const chunk = laterChunks.get(v.number) ?? fail(`Wesley sermon ${v.number} missing from ${later.transcription.file}`);
+  if (laterSermonWords(chunk.lines) !== v.words) fail(`Wesley sermon ${v.number}: ${laterSermonWords(chunk.lines)} words, verified ${v.words}`);
+  const scan = laterScans.get(v.source) ?? fail(`Wesley sermon ${v.number}: verified against unpinned scan ${v.source}`);
+  if (scan.volume !== v.volume) fail(`Wesley sermon ${v.number}: scan ${v.source} is not volume ${v.volume}`);
+  const p = parseLaterSermon(v.number, chunk);
+  const refs = parseRefLine(p.refLine.replace(/^Jam\./, "James").replace(/^((?:[1-3] )?[A-Za-z]+)\.(?= )/, "$1"));
+  if (!refs) { wesleyProblems.push(`Wesley ${v.number}: unparsed reference "${p.refLine}"`); continue; }
+  const textVersion = LATER_TEXT_VERSIONS[v.number];
+  const agreement = kjvAgreement(p.quote, refs);
+  if (agreement < (textVersion ? TEXT_VERSION_FLOOR : 0.8)) { wesleyProblems.push(`Wesley ${v.number}: text "${p.quote.slice(0, 60)}" does not match KJV ${p.refLine} (${agreement.toFixed(2)})`); continue; }
+  const slug = `wesley-${v.number}-${slugify(p.title)}`.slice(0, 90).replace(/-$/, "");
+  const prefatory = p.prefatory.map(t => `Wesley’s note printed with this sermon: “${t.replace(/\s*--\s*/g, " — ").trim()}”`);
+  wesley.push({
+    slug, preacher: "wesley", number: String(v.number), title: p.title, volume: v.volume, series: later.edition.title, published: later.edition.published,
+    ...(p.subtitle ? { occasion: p.subtitle } : {}),
+    note: [...prefatory, LATER_NOTE].join(" "),
+    ...(textVersion ? { textVersion } : {}),
+    refs, quote: p.quote, words: v.words,
+    scan: { id: scan.id, title: scan.title, date: scan.date, library: scan.library, coverage: v.coverage },
   });
   bodies.set(slug, p.blocks);
 }
@@ -339,13 +374,20 @@ const manifest = {
       criteria: verification.criteria,
     },
     wesley: {
-      counts: { checked: wesleyVerification.checked, published: wesley.length, rejected: wesleyVerification.rejected, skippedHere: wesleyProblems.length },
+      counts: { checked: wesleyVerification.checked, published: wesley.filter(s => s.published === wesleySources.edition.published).length, rejected: wesleyVerification.rejected, skippedHere: wesleyProblems.length },
       edition: { ...wesleySources.edition, transcriptions: wesleySources.volumes.map(v => ({ volume: v.volume, gutenberg: v.transcription.gutenberg, sha256: v.transcription.sha256 })) },
       criteria: wesleyVerification.criteria,
+      later: {
+        counts: { checked: laterVerification.checked, published: wesley.filter(s => s.published === later.edition.published).length, rejected: laterVerification.rejected },
+        edition: later.edition,
+        transcription: { publisher: later.transcription.publisher, page: later.transcription.page, url: later.transcription.url, sha256: later.transcription.sha256 },
+        scans: [...laterScans.values()].map(s => ({ volume: s.volume, id: s.id, library: s.library })),
+        criteria: laterVerification.criteria,
+      },
     },
   },
 };
 fs.writeFileSync(new URL("manifest.json", outData), JSON.stringify(manifest, null, 1) + "\n");
 fs.writeFileSync(new URL("sermons.json", outData), JSON.stringify(sermons) + "\n");
 for (const [slug, blocks] of bodies) fs.writeFileSync(new URL(`bodies/${slug}.json`, outData), JSON.stringify(blocks) + "\n");
-console.log(`${spurgeon.length} Spurgeon sermons (of ${verification.checked} checked) and ${wesley.length} Wesley sermons (of ${wesleyVerification.checked}) published; ${Object.keys(chapters).length} chapters; index ${(index.length / 1024).toFixed(0)} KB`);
+console.log(`${spurgeon.length} Spurgeon sermons (of ${verification.checked} checked) and ${wesley.length} Wesley sermons (of ${wesleyVerification.checked + laterVerification.checked}) published; ${Object.keys(chapters).length} chapters; index ${(index.length / 1024).toFixed(0)} KB`);

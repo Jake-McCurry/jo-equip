@@ -144,3 +144,111 @@ export function titleCase(s) {
     i > 0 && SMALL.has(w) ? w : w.replace(/(^|-)([a-z])/g, (_, a, b) => a + b.toUpperCase())).join(" ");
 }
 
+
+// ---------- Later sermons: 1788 Sermons on Several Occasions, volumes 5–8 ----------
+// Transcription: the Christian Classics Ethereal Library plain text, which gives the
+// text of Thomas Jackson's edition (1872), sermons numbered 54–108 as in Jackson.
+// splitLaterSermons() and laterSermonWords() must match split_later() and
+// later_tokens() in scripts/verify-wesley-sermons.py.
+
+const LATER_HEADING = /^Sermon (\d+)\b/;
+const LATER_END = /^ {5}_{10,}/;
+/** Jackson's bracketed editor's notes ("[Thus translated by Pitt: … -- Edit.]"); they are not Wesley's. */
+const EDITOR_NOTE = /\[[^[\]]*?(?:edit\.?|\(editors\s+note\))\s*\]/gi;
+
+/** Map of sermon number -> { lines (heading first, up to the rule before the notes), notes: { "60": "…" } }. */
+export function splitLaterSermons(text) {
+  const lines = text.replace(/\r/g, "").split("\n");
+  const heads = [];
+  lines.forEach((l, i) => { const m = LATER_HEADING.exec(l); if (m) heads.push([i, Number(m[1])]); });
+  const out = new Map();
+  heads.forEach(([i, n], k) => {
+    const stop = k + 1 < heads.length ? heads[k + 1][0] : lines.length;
+    let j = i + 1;
+    while (j < stop && !LATER_END.test(lines[j])) j++;
+    const notes = {};
+    let cur = null;
+    for (const l of lines.slice(j, stop)) {
+      const m = /^\s+\[(\d+)\]\s*(.*)$/.exec(l);
+      if (m) { cur = m[1]; notes[cur] = m[2].trim(); }
+      else if (cur && l.trim() && !/^\s*_{10,}/.test(l)) notes[cur] += " " + l.trim();
+    }
+    out.set(n, { lines: lines.slice(i, j), notes });
+  });
+  return out;
+}
+
+const laterClean = lines => lines.slice(1).join("\n").replace(EDITOR_NOTE, " ").replace(/\[\d+\]/g, " ").replace(/(\w)-(?=\w)/g, "$1");
+export const laterSermonWords = lines => (laterClean(lines).match(/[A-Za-z]+/g) ?? []).length;
+
+/** The transcription's "--" for a dash. */
+const dashes = t => t.replace(/\s*--\s*/g, " — ").replace(/^ — /, "— ").trim();
+const JACKSON_NOTE = /^[[(]?text (?:of|from) (?:the )?1872 ed(?:ition|\.)?[\])]?$/i;
+const NUMBERED = /^(?:\d+|[IVXL]+)\.\s/;
+
+/**
+ * Parses one later sermon. Returns { number, title, refLine, quote, subtitle, prefatory, blocks }.
+ * `prefatory` is Wesley's own note printed with the sermon (the 1775 advertisement to
+ * "On the Trinity", the 1788 note to "The Duty of Constant Communion"); Jackson's
+ * "text of the 1872 edition" notes are dropped.
+ */
+export function parseLaterSermon(number, { lines, notes }) {
+  const body = lines.slice(1).join("\n").replace(EDITOR_NOTE, "").split("\n");
+  let i = 0;
+  const skipBlank = () => { while (i < body.length && !body[i].trim()) i++; };
+  skipBlank();
+  const prefatory = [];
+  const takeNote = t => t.replace(/\s*\[(\d+)\]\s*/g, (_, n) => {
+    const note = notes[n];
+    if (note === undefined) throw new Error(`Later sermon ${number}: note [${n}] has no text`);
+    if (!JACKSON_NOTE.test(note)) prefatory.push(plain(note));
+    return " ";
+  }).trim();
+  const title = takeNote(body[i++]).replace(/\s+J\.\s?W\.$/, "").replace(/^"(.*)"$/, "$1").trim();
+  skipBlank();
+  // Margin lines before the text: a subtitle, or Wesley's "Advertisement" (its text is a note).
+  let subtitle = null;
+  while (i < body.length && indent(body[i]) === 0 && body[i].trim()) {
+    const l = takeNote(body[i++]);
+    if (l !== "Advertisement") subtitle = subtitle ? `${subtitle} ${l}` : l;
+    skipBlank();
+  }
+  // The text (indented 3) and its reference (indented 2). "The New Creation" prints its text without quotes.
+  const quote = [];
+  while (i < body.length && indent(body[i]) !== 2) { if (body[i].trim()) quote.push(body[i].trim()); i++; }
+  if (i >= body.length) throw new Error(`Later sermon ${number}: no text reference`);
+  const refLine = body[i++].trim();
+
+  const groups = [];
+  let group = [], blanks = 0;
+  for (; i <= body.length; i++) {
+    const l = body[i];
+    if (l === undefined || !l.trim()) {
+      if (group.length) { groups.push({ lines: group, gap: blanks }); group = []; blanks = 0; }
+      blanks++;
+      continue;
+    }
+    group.push(l.trim());
+  }
+  // Verse: runs of short one-line groups (two or more, or one set off by a double blank line).
+  const verse = g => g.lines.length === 1 && g.lines[0].length < 62 && !NUMBERED.test(g.lines[0]);
+  const blocks = [];
+  for (let k = 0; k < groups.length;) {
+    if (verse(groups[k])) {
+      let e = k;
+      while (e + 1 < groups.length && verse(groups[e + 1]) && groups[e + 1].gap <= 1) e++;
+      if (e > k || groups[k].gap >= 2) { blocks.push({ q: groups.slice(k, e + 1).map(g => plain(g.lines[0])) }); k = e + 1; continue; }
+    }
+    const text = plain(groups[k].lines.join(" "));
+    const prev = blocks[blocks.length - 1];
+    // The transcription sometimes breaks a sentence with a blank line ("… among these that" / "contained in …").
+    if (prev?.p && /[a-z,]$/.test(prev.p) && /^[a-z]/.test(text)) prev.p += ` ${text}`;
+    else blocks.push({ p: text });
+    k++;
+  }
+  for (const b of blocks) {
+    if (b.p) b.p = dashes(b.p);
+    if (b.q) b.q = b.q.map(dashes);
+  }
+  return { number, title, refLine, quote: dashes(plain(quote.join(" ")).replace(/^"(.*)"$/, "$1")), subtitle, prefatory, blocks };
+}

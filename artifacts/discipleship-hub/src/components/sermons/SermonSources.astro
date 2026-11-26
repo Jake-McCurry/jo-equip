@@ -8,7 +8,11 @@ const ext = { target: "_blank", rel: "noopener noreferrer" };
 const { spurgeon, wesley } = sermonManifest.preachers;
 const show = (id: "spurgeon" | "wesley") => !sermon || sermon.preacher === id;
 const gutenberg = (n: number) => `https://www.gutenberg.org/ebooks/${n}`;
-const wesleyVolume = sermon?.preacher === "wesley" ? wesley.edition.transcriptions.find(t => t.volume === sermon.volume) : undefined;
+const later = wesley.later;
+const isLater = sermon?.preacher === "wesley" && sermon.published === later.edition.published;
+const wesleyVolume = sermon?.preacher === "wesley" && !isLater ? wesley.edition.transcriptions.find(t => t.volume === sermon.volume) : undefined;
+const showEarly = show("wesley") && !isLater;
+const showLater = show("wesley") && (!sermon || isLater);
 ---
 <section class="bmp-sources" aria-labelledby="sermon-sources-h">
   <h2 id="sermon-sources-h">Sources and licenses</h2>
@@ -19,13 +23,19 @@ const wesleyVolume = sermon?.preacher === "wesley" ? wesley.edition.transcriptio
         Transcription from <a href={`https://github.com/${spurgeon.edition.repository}`} {...ext}>{spurgeon.edition.repository}</a>, dedicated to the public domain (<a href="https://creativecommons.org/publicdomain/zero/1.0/" {...ext}>CC0 1.0</a>).
       </li>
     )}
-    {show("wesley") && (
+    {showEarly && (
       <li>
         Sermon text: John Wesley (1703–1791), <em>Sermons on Several Occasions</em>, in <em>{wesley.edition.title}</em> ({wesley.edition.imprint.replace("1771–1774", "1771")}{sermon ? `, volume ${sermon.volume}` : ", volumes 1–4"}), public domain.
         Transcription by Project Gutenberg and its Distributed Proofreaders, public domain in the United States:{" "}
         {wesleyVolume
           ? <a href={gutenberg(wesleyVolume.gutenberg)} {...ext}>eBook #{wesleyVolume.gutenberg}</a>
           : wesley.edition.transcriptions.map((t, i) => <>{i > 0 && ", "}<a href={gutenberg(t.gutenberg)} {...ext}>volume {t.volume} (#{t.gutenberg})</a></>)}.
+      </li>
+    )}
+    {showLater && (
+      <li>
+        {sermon ? "Sermon text" : "Later sermons"}: John Wesley, <em>{later.edition.title}</em> ({later.edition.imprint}{sermon ? `, volume ${sermon.volume}` : `, volumes ${later.edition.volumes}`}), public domain.
+        Transcription from the <a href={later.transcription.page} {...ext}>{later.transcription.publisher}</a> (marked public domain), which gives the text of Thomas Jackson&rsquo;s edition of Wesley&rsquo;s <em>Works</em> (London, 1872); sermon numbers follow that edition.
       </li>
     )}
     {sermon ? (
@@ -41,7 +51,7 @@ const wesleyVolume = sermon?.preacher === "wesley" ? wesley.edition.transcriptio
     ) : (
       <li>
         Each sermon was checked word for word against a scan of an original printing on the <a href="https://archive.org/" {...ext}>Internet Archive</a>
-        {" "}(Spurgeon: 19th-century printings; Wesley: the 1771 volumes held by Duke University Libraries, and for the pages missing from Duke&rsquo;s copy of Sermon XLIX, Wesley&rsquo;s 1777 Bristol printing of that sermon). Each sermon page names the scan it was checked against.
+        {" "}(Spurgeon: 19th-century printings; Wesley: the 1771 volumes held by Duke University Libraries, and for the pages missing from Duke&rsquo;s copy of Sermon XLIX, Wesley&rsquo;s 1777 Bristol printing of that sermon; for the later sermons, the 1788 volumes held by the University of California Libraries or a microfilm of the 1788 edition). Each sermon page names the scan it was checked against.
       </li>
     )}
   </ul>
@@ -52,13 +62,22 @@ const wesleyVolume = sermon?.preacher === "wesley" ? wesley.edition.transcriptio
       American spellings (&ldquo;honor&rdquo; for &ldquo;honour&rdquo;); these are left as they are.
     </p>
   )}
-  {show("wesley") && (
+  {showEarly && (
     <p>
-      Wesley&rsquo;s sermons keep the spelling of the 1771 printing (&ldquo;shew&rdquo;, &ldquo;tho&rsquo;&rdquo;, &ldquo;compleat&rdquo;). The transcribers standardized punctuation,
+      Wesley&rsquo;s sermons of 1771 keep the spelling of the 1771 printing (&ldquo;shew&rdquo;, &ldquo;tho&rsquo;&rdquo;, &ldquo;compleat&rdquo;). The transcribers standardized punctuation,
       corrected obvious printer&rsquo;s errors, and kept Wesley&rsquo;s asterisks (*), which mark the passages he thought most worth attention; his footnotes are listed under &ldquo;Notes&rdquo;.
       The long &ldquo;ſ&rdquo; is printed as &ldquo;s&rdquo;. {wesley.counts.published === wesley.counts.checked
-        ? <>All {wesley.counts.published} sermons appear here.</>
-        : <>{wesley.counts.published} of the {wesley.counts.checked} sermons appear here; the others could not be checked against a scan.</>} Dates before 1752 are given as printed (Old Style).
+        ? <>All {wesley.counts.published} sermons of 1771 appear here.</>
+        : <>{wesley.counts.published} of the {wesley.counts.checked} sermons of 1771 appear here; the others could not be checked against a scan.</>} Dates before 1752 are given as printed (Old Style).
+    </p>
+  )}
+  {showLater && (
+    <p>
+      Wesley&rsquo;s later sermons{sermon ? ", including this one," : ""} follow Jackson&rsquo;s 1872 text, which standardized spelling, capitalization and punctuation
+      (the 1788 printing capitalizes many nouns, such as &ldquo;Eternity&rdquo;). Each was checked word for word against a scan of the 1788 printing; only sermons whose
+      wording matches, without modernized words (&ldquo;has&rdquo; for &ldquo;hath&rdquo;) or added capitals for pronouns referring to God, are published.
+      Jackson&rsquo;s own bracketed editor&rsquo;s notes are left out.{!sermon && <> {later.counts.published} of the {later.counts.checked} later sermons appear here so far. The rest are left out because too little of their
+      wording could be read in the available scans (some are microfilm copies), or because their wording differs from the 1788 printing.</>}
     </p>
   )}
   <p>Bible links open the reader in the King James Version.</p>

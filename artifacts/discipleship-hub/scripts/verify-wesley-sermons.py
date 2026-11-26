@@ -34,6 +34,30 @@ Method (deterministic; standard library only), the same as verify-sermons.py:
     difference counted once, and the same criteria apply to the whole sermon
     (the supplement must also match >= 75% of the missing stretch). The 1760
     printing is not used: it capitalizes nouns.
+
+Later sermons (the "later" section of wesley-sources.json): the sermons Wesley
+first printed in the Arminian Magazine and collected in volumes 5-8 of Sermons
+on Several Occasions (London, 1788), numbered 54-108 as in Thomas Jackson's
+edition. No transcription of the 1788 printing exists; the transcription is
+the Christian Classics Ethereal Library's public-domain plain text, which gives
+the text of Jackson's 1872 edition. Each sermon is aligned with the OCR of a
+scan of its 1788 volume, as above, with these differences:
+ - Jackson's bracketed editor's notes ("[The following is Dryden's
+   translation ... -- EDIT.]") are removed first; they are not Wesley's.
+ - The 1788 printing capitalizes many nouns ("Eternity", "Duration") and
+   Jackson standardized capitalization, so case differences cannot separate a
+   modernized text from typography. They are reported, not used to decide.
+   What is used is the modernization the Spurgeon check looks for: a pronoun
+   for God or Christ capitalized in the transcription ("He", "His") where the
+   printing has lower case, other than at the start of a sentence. At most
+   1 per 1,000 words.
+ - Archaic replacements are counted only as one-for-one swaps of an archaic
+   word in the printing for its modern form here ("hath" -> "has"), at most
+   1 per 1,000 words. Some scans are microfilm with noisy OCR, and the 1771
+   rule counted stray archaic-looking fragments of OCR noise.
+ - Coverage is unchanged (>= 75%).
+ - A volume may list more than one scan; the scans are tried in order and the
+   first that verifies the sermon is recorded.
 """
 import collections, difflib, hashlib, json, os, re, sys
 
@@ -180,9 +204,139 @@ def check_with_supplement(words, primary, sup, ocr_dir):
     info = {"source": sup["scan"]["id"], "pages": sup["missingPages"], "fromWord": a, "toWord": b, "coverage": round(gap["equal"] / gap["n"], 3)}
     return rates(have, gap), info
 
+# ---------- later sermons (1788 volumes 5-8; CCEL transcription of Jackson's 1872 text) ----------
+# Shared with scripts/lib/wesley-sermons.mjs (splitLaterSermons, laterSermonWords).
+LATER_HEADING = re.compile(r"^Sermon (\d+)\b")
+LATER_END = re.compile(r"^ {5}_{10,}")
+EDITOR_NOTE = re.compile(r"\[[^\[\]]*?(?:edit\.?|\(editors\s+note\))\s*\]", re.I)
+DIVINE = set("he him his himself thou thee thy thine thyself who whom whose".split())
+MAX_DIVINE = 1.0
+
+def split_later(text):
+    """{number: [lines]}: from each "Sermon n" heading to the rule before its notes."""
+    lines = text.replace("\r", "").split("\n")
+    heads = [(i, int(m.group(1))) for i, l in enumerate(lines) if (m := LATER_HEADING.match(l))]
+    out = {}
+    for k, (i, n) in enumerate(heads):
+        stop = heads[k + 1][0] if k + 1 < len(heads) else len(lines)
+        j = i + 1
+        while j < stop and not LATER_END.match(lines[j]):
+            j += 1
+        out[n] = lines[i:j]
+    return out
+
+def later_clean(lines):
+    t = EDITOR_NOTE.sub(" ", "\n".join(lines[1:]))
+    t = re.sub(r"\[\d+\]", " ", t)
+    return re.sub(r"(\w)-(?=\w)", r"\1", t)
+
+def later_tokens(lines):
+    """Words, and whether each starts a sentence (follows . ! ? : ; or an opening quote/bracket)."""
+    t = later_clean(lines)
+    words, starts = [], []
+    for m in re.finditer(r"[A-Za-z]+", t):
+        before = t[:m.start()].rstrip(" \n\"'(-")
+        words.append(m.group(0))
+        starts.append(not before or before[-1] in ".!?:;")
+    return words, starts
+
+def ocr_tokens_longs(path):
+    raw = open(path, encoding="utf-8", errors="replace").read().replace("ſ", "s")
+    raw = re.sub(r"[\u2010\u2011\u00ad]", "-", raw)
+    raw = re.sub(r"-\s*\n\s*", "", raw)
+    raw = re.sub(r"(\w)-(?=\w)", r"\1", raw)
+    return [fold(w) for w in tokens(raw)]
+
+# Modernizations of an archaic word, as single-word swaps (OCR noise rarely forms one).
+MODERN = {"ye": "you", "thee": "you", "thou": "you", "thy": "your", "thine": "your yours", "hath": "has", "doth": "does",
+          "saith": "says said", "unto": "to", "art": "are", "shalt": "shall", "wilt": "will", "hast": "have", "dost": "do",
+          "shew": "show", "shewed": "showed", "shewn": "shown", "spake": "spoke", "wist": "knew", "ere": "before",
+          "hither": "here", "thither": "there", "whence": "where", "yea": "yes", "nay": "no", "wherefore": "therefore why"}
+SWAPS = {(fold(m), fold(a)) for a, ms in MODERN.items() for m in ms.split()}
+
+def later_differences(words, starts, ot, idx):
+    """Per 1,000 words: pronouns for God capitalized here but lower case in the scan (mid-sentence),
+    and archaic words in the scan replaced by modern ones here."""
+    pos = []
+    for i in range(0, len(words) - N + 1, 3):
+        p = idx.get(" ".join(words[i:i + N]))
+        if p and len(p) <= 3:
+            pos += [x - i for x in p]
+    if not pos:
+        return None
+    off = collections.Counter(x // 200 for x in pos).most_common(1)[0][0] * 200
+    o = ot[max(0, off - 300):off + len(words) + 600]
+    divine = archaic = 0
+    for tag, i1, i2, j1, j2 in difflib.SequenceMatcher(None, words, o, autojunk=False).get_opcodes():
+        if tag != "replace" or i2 - i1 != j2 - j1 or i1 == 0 or i2 == len(words):
+            continue
+        for a, b, s in zip(words[i1:i2], o[j1:j2], starts[i1:i2]):
+            if a != b and a.lower() == b.lower() and a[0].isupper() and b[0].islower() and a.lower() in DIVINE and not s:
+                divine += 1
+            elif (a.lower(), b.lower()) in SWAPS:
+                archaic += 1
+    k = 1000 / len(words)
+    return round(divine * k, 2), round(archaic * k, 2)
+
+def verify_later(src, later):
+    t = later["transcription"]
+    tpath = os.path.join(src, "wesley", t["file"])
+    body = open(tpath, "rb").read()
+    if hashlib.sha256(body).hexdigest() != t["sha256"]:
+        sys.exit(f"{tpath}: transcription differs from the pinned sha256")
+    chunks = split_later(body.decode("utf-8"))
+    scans = {}
+    for vol in later["volumes"]:
+        for s in vol["scans"]:
+            spath = os.path.join(src, "ocr", s["id"] + ".txt")
+            if hashlib.md5(open(spath, "rb").read()).hexdigest() != s["md5"]:
+                sys.exit(f"{spath}: OCR text differs from the pinned md5")
+            ot = ocr_tokens_longs(spath)
+            idx = collections.defaultdict(list)
+            for i in range(len(ot) - N + 1):
+                idx[" ".join(ot[i:i + N])].append(i)
+            scans[s["id"]] = (ot, idx)
+    verified, reasons, checked = [], collections.Counter(), 0
+    for vol in later["volumes"]:
+        first, last = vol["sermons"]
+        for n in range(first, last + 1):
+            checked += 1
+            raw, starts = later_tokens(chunks[n])
+            words = [fold(w) for w in raw]
+            reason = None
+            for s in vol["scans"]:
+                ot, idx = scans[s["id"]]
+                whole = compare(words, ot, idx)
+                if not whole:
+                    reason = reason or "no matching text in the scan"
+                    continue
+                r = rates(whole)
+                r["divine"], r["archaic"] = later_differences(words, starts, ot, idx)
+                if r["divine"] > MAX_DIVINE or r["archaic"] > MAX_ARCHAIC:
+                    reason = reason or "wording differs from the printing"
+                    continue
+                if r["coverage"] < MIN_COVERAGE:
+                    reason = reason or "too little of the text matched the scan"
+                    continue
+                verified.append({"volume": vol["volume"], "number": n, "source": s["id"], "words": len(raw), **r})
+                print(f"  {vol['volume']}/{n}: {s['id']} {r}")
+                reason = None
+                break
+            if reason:
+                reasons[reason] += 1
+                print(f"  {vol['volume']}/{n}: not verified ({reason})")
+    return {
+        "criteria": {"minCoverage": MIN_COVERAGE, "maxDivineCapitalsPer1000": MAX_DIVINE, "maxArchaicPer1000": MAX_ARCHAIC},
+        "checked": checked,
+        "rejected": dict(sorted(reasons.items())),
+        "verified": verified,
+    }
+
 def main():
     src = sys.argv[1] if len(sys.argv) > 1 else sys.exit(__doc__)
     cfg = json.load(open(os.path.join(HERE, "data", "wesley-sources.json")))
+    later = verify_later(src, cfg["later"])
+    print(f"later sermons: {len(later['verified'])} of {later['checked']} verified; rejected: {later['rejected']}")
     verified, reasons, checked = [], collections.Counter(), 0
     supplements = {(x["volume"], x["sermon"]): x for x in cfg.get("supplements", [])}
     for vol in cfg["volumes"]:
@@ -223,6 +377,7 @@ def main():
         "checked": checked,
         "rejected": dict(sorted(reasons.items())),
         "verified": verified,
+        "later": later,
     }
     with open(os.path.join(HERE, "data", "wesley-verification.json"), "w") as fh:
         json.dump(out, fh, indent=0)

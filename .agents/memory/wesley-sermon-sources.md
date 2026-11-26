@@ -12,3 +12,9 @@ description: Why Wesley (not Moody/Edwards), where the 1771 text and scans come 
 - Gutenberg vol 4 prints transcriber correction notes inline (lines starting ♦ or ♠); drop them from bodies.
 **Why:** the ministry publishes only sermons whose wording matches an original-printing scan.
 **How to apply:** when adding another preacher, keep a separate verifier + pinned sources file so the Spurgeon pipeline stays untouched.
+
+## Later sermons (54–108, 1788 vols 5–8)
+- No transcription of the 1788 printing or Arminian Magazine exists; CCEL `sermons.txt` (Jackson 1872 text, "Rights: Public Domain") is the transcription, checked against 1788 scans (UCLA vols 5, 7; ESTC T17802 microfilm for all four — UCLA 6/8 are dark). Gutenberg Works vols 5–16 have no sermons.
+- 1788 print capitalizes nouns and Jackson normalizes, so the 1771 case criterion is unusable; the later check gates on raised divine-pronoun capitals and one-for-one archaic→modern swaps instead. The 1771 "archaic" rule flags microfilm OCR noise.
+- Microfilm OCR (vols 6, 8) is too noisy for many sermons (coverage < 0.75); better scans of those volumes would publish more.
+**Why:** only wording matching an original printing is published; pages disclose that spelling and numbering follow Jackson.

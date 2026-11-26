@@ -1,8 +1,8 @@
 {
  "files": {
-  "index": "b7ec9559e4"
+  "index": "a1c3dcd826"
  },
- "published": 334,
+ "published": 372,
  "preachers": {
   "spurgeon": {
    "counts": {
@@ -65,6 +65,66 @@
     "minCoverage": 0.75,
     "maxCasePer1000": 4,
     "maxArchaicPer1000": 1
+   },
+   "later": {
+    "counts": {
+     "checked": 55,
+     "published": 38,
+     "rejected": {
+      "too little of the text matched the scan": 14,
+      "wording differs from the printing": 3
+     }
+    },
+    "edition": {
+     "title": "Sermons on Several Occasions",
+     "imprint": "London: New Chapel, City-Road, 1788",
+     "volumes": "5–8",
+     "published": 1788,
+     "numbering": "Thomas Jackson's edition of Wesley's Works (London, 1872), sermons 54–108"
+    },
+    "transcription": {
+     "publisher": "Christian Classics Ethereal Library",
+     "page": "https://ccel.org/ccel/wesley/sermons",
+     "url": "https://www.ccel.org/ccel/w/wesley/sermons/cache/sermons.txt",
+     "sha256": "883dd705fa14ee7bb70b14b03c85b021f3c1ed04212d93f0492708d852944784"
+    },
+    "scans": [
+     {
+      "volume": 5,
+      "id": "sermonsonseveral05wesliala",
+      "library": "University of California Libraries"
+     },
+     {
+      "volume": 5,
+      "id": "bim_eighteenth-century_sermons-on-several-occas_wesley-john_1788_5",
+      "library": "Eighteenth Century microfilm (ESTC T17802)"
+     },
+     {
+      "volume": 6,
+      "id": "bim_eighteenth-century_sermons-on-several-occas_wesley-john_1788_6",
+      "library": "Eighteenth Century microfilm (ESTC T17802)"
+     },
+     {
+      "volume": 7,
+      "id": "sermonsonseveral07wesliala",
+      "library": "University of California Libraries"
+     },
+     {
+      "volume": 7,
+      "id": "bim_eighteenth-century_sermons-on-several-occas_wesley-john_1788_7",
+      "library": "Eighteenth Century microfilm (ESTC T17802)"
+     },
+     {
+      "volume": 8,
+      "id": "bim_eighteenth-century_sermons-on-several-occas_wesley-john_1788_8",
+      "library": "Eighteenth Century microfilm (ESTC T17802)"
+     }
+    ],
+    "criteria": {
+     "minCoverage": 0.75,
+     "maxDivineCapitalsPer1000": 1,
+     "maxArchaicPer1000": 1
+    }
    }
   }
  }

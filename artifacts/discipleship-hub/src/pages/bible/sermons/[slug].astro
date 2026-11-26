@@ -32,13 +32,13 @@ const description = `“${sermon.title}”, sermon No. ${sermon.number} by ${pre
       <a href={join("/bible/resources")}>Bible Resources</a> <span aria-hidden="true">/</span>
       <a href={join("/bible/sermons")}>Classic Sermons</a> <span aria-hidden="true">/</span> No. {sermon.number}
     </nav>
-    <p class="bmp-eyebrow">Sermon No. {sermon.number} · {sermon.series}</p>
+    <p class="bmp-eyebrow">Sermon No. {sermon.number} · {sermon.series}{sermon.preacher === "wesley" && sermon.published !== 1771 ? ` (${sermon.published})` : ""}</p>
     <h1 class="bmp-title">{sermon.title}</h1>
     <p class="bmp-sub">By {preacher.name}</p>
     {sermon.occasion && <p class="srm-meta"><span>{sermon.occasion}</span></p>}
     <p class="srm-meta">
       {when ? <span>Preached {when}</span> : <span>Published {sermon.published}</span>}
-      <span>{sermon.preacher === "wesley" ? `Works, Volume ${sermon.volume}` : `Volume ${sermon.volume}`}</span>
+      <span>{sermon.preacher === "wesley" && sermon.published === 1771 ? `Works, Volume ${sermon.volume}` : `Volume ${sermon.volume}`}</span>
       <span>About {minutes} minutes to read</span>
     </p>
 

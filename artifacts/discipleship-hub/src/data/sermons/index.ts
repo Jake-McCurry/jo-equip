@@ -9,7 +9,7 @@ export type SermonBlock = { p: string } | { q: string[] } | { h: string };
 export type Sermon = {
   slug: string;
   preacher: PreacherId;
-  /** Number in the original series, e.g. "1" or "39–40" (Wesley: the 1771 sermon number). */
+  /** Number in the original series, e.g. "1" or "39–40" (Wesley: the 1771 sermon number; 54–108 follow Jackson’s 1872 edition). */
   number: string;
   title: string;
   volume: number;

@@ -33,5 +33,25 @@
    "why": "The Duke copy of volume 4 lacks pp. 35–39. Those pages are checked against Wesley's separate printing of the sermon by the same Bristol printer (ESTC T167445).",
    "scan": { "id": "bim_eighteenth-century_the-cure-of-evil-speakin_wesley-john_1777", "title": "The cure of evil-speaking. A sermon on Matt. xviii. 15, 16, 17", "date": "1777", "imprint": "Bristol: printed by W. Pine, in Wine-Street, 1777", "estc": "T167445", "library": null, "file": "bim_eighteenth-century_the-cure-of-evil-speakin_wesley-john_1777_djvu.txt", "md5": "3645c63c2aebde2c4f10dc290127047f" }
   }
- ]
+ ],
+ "later": {
+  "edition": {"title": "Sermons on Several Occasions", "imprint": "London: New Chapel, City-Road, 1788", "volumes": "5–8", "published": 1788, "numbering": "Thomas Jackson's edition of Wesley's Works (London, 1872), sermons 54–108"},
+  "transcription": {"publisher": "Christian Classics Ethereal Library", "page": "https://ccel.org/ccel/wesley/sermons", "url": "https://www.ccel.org/ccel/w/wesley/sermons/cache/sermons.txt", "basis": "the text of Thomas Jackson's edition (London, 1872)", "rights": "Public Domain", "file": "ccel-sermons.txt", "sha256": "883dd705fa14ee7bb70b14b03c85b021f3c1ed04212d93f0492708d852944784"},
+  "volumes": [
+   { "volume": 5, "sermons": [54, 66], "scans": [
+    {"id": "sermonsonseveral05wesliala", "title": "Sermons on several occasions, volume 5", "date": "1788", "library": "University of California Libraries", "file": "sermonsonseveral05wesliala_djvu.txt", "md5": "d1e469e7402fefeb942d3c4207848019"},
+    {"id": "bim_eighteenth-century_sermons-on-several-occas_wesley-john_1788_5", "title": "Sermons on several occasions. By John Wesley, ... 1788: Vol 5", "date": "1788", "library": "Eighteenth Century microfilm (ESTC T17802)", "file": "bim_eighteenth-century_sermons-on-several-occas_wesley-john_1788_5_djvu.txt", "md5": "8de526c68b23961564f63f360408592e"}
+   ] },
+   { "volume": 6, "sermons": [67, 80], "scans": [
+    {"id": "bim_eighteenth-century_sermons-on-several-occas_wesley-john_1788_6", "title": "Sermons on several occasions. By John Wesley, ... 1788: Vol 6", "date": "1788", "library": "Eighteenth Century microfilm (ESTC T17802)", "file": "bim_eighteenth-century_sermons-on-several-occas_wesley-john_1788_6_djvu.txt", "md5": "26c5d679e4f2fa098c0c1480b8be42dc"}
+   ] },
+   { "volume": 7, "sermons": [81, 94], "scans": [
+    {"id": "sermonsonseveral07wesliala", "title": "Sermons on several occasions, volume 7", "date": "1788", "library": "University of California Libraries", "file": "sermonsonseveral07wesliala_djvu.txt", "md5": "5d476fd460f4657e3a46170075de3cab"},
+    {"id": "bim_eighteenth-century_sermons-on-several-occas_wesley-john_1788_7", "title": "Sermons on several occasions. By John Wesley, ... 1788: Vol 7", "date": "1788", "library": "Eighteenth Century microfilm (ESTC T17802)", "file": "bim_eighteenth-century_sermons-on-several-occas_wesley-john_1788_7_djvu.txt", "md5": "343256cef0cc2de50f556a863f5c55b7"}
+   ] },
+   { "volume": 8, "sermons": [95, 108], "scans": [
+    {"id": "bim_eighteenth-century_sermons-on-several-occas_wesley-john_1788_8", "title": "Sermons on several occasions. By John Wesley, ... 1788: Vol 8", "date": "1788", "library": "Eighteenth Century microfilm (ESTC T17802)", "file": "bim_eighteenth-century_sermons-on-several-occas_wesley-john_1788_8_djvu.txt", "md5": "c95864408c849bf6c7eaf6ebe478f791"}
+   ] }
+  ]
+ }
 }

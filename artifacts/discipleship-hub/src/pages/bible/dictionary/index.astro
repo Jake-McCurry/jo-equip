@@ -65,13 +65,11 @@ const count = dictEntries.length.toLocaleString("en-US");
 </Layout>
 
 <script>
-  import manifest from "@/data/bible-dictionary/manifest.json";
-
-  type Row = [slug: string, title: string, text: string];
-  type Hit = { slug: string; title: string; text: string; folded: string; score: number };
+  import { dictSearchHref } from "@/components/bible-dictionary/dictionary-data";
+  import { dictSearchTerms, dictSnippet, foldText, prepareDictSearch, searchDict, type DictSearchDoc, type DictSearchHit, type DictSearchRow } from "@/components/bible-dictionary/dictionary-search";
 
   const base = import.meta.env.BASE_URL.replace(/\/$/, "");
-  const searchUrl = `${base}/bible-data/dictionary/search.${manifest.files.search}.json`;
+  const searchUrl = dictSearchHref(import.meta.env.BASE_URL);
   const input = document.getElementById("dict-q") as HTMLInputElement | null;
   const status = document.getElementById("dict-status");
   const toText = document.getElementById("dict-to-text") as HTMLButtonElement | null;
@@ -83,21 +81,6 @@ const count = dictEntries.length.toLocaleString("en-US");
   const radios = [...document.querySelectorAll<HTMLInputElement>('input[name="dict-mode"]')];
   const groups = [...document.querySelectorAll<HTMLElement>("#dict-list [data-letter]")];
   const fold = (s: string) => s.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/æ/g, "ae").replace(/[’']/g, "").trim();
-  // Full-text folding is the same, minus the trim, with hyphens and dashes read as spaces
-  // ("Tell-el-Amarna" matches "tell el amarna"). foldMapped also returns, for every folded
-  // character, its position in the original text, for snippets and highlighting.
-  const foldText = (s: string) => s.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/æ/g, "ae").replace(/[’'‘]/g, "").replace(/[-–—]/g, " ");
-  const foldMapped = (s: string) => {
-    let out = "";
-    const map: number[] = [];
-    for (let i = 0; i < s.length; i++) {
-      const f = foldText(s[i]);
-      out += f;
-      for (let j = 0; j < f.length; j++) map.push(i);
-    }
-    map.push(s.length);
-    return { out, map };
-  };
   const quoted = () => `“${input?.value.trim() ?? ""}”`;
   const say = (msg: string) => { if (status) status.textContent = msg; };
   const mode = () => (radios.find(r => r.checked)?.value === "text" ? "text" : "names");
@@ -125,65 +108,30 @@ const count = dictEntries.length.toLocaleString("en-US");
   };
 
   // ---------- Full text (fetched only when first needed) ----------
-  let rows: { slug: string; title: string; text: string; folded: string; ftitle: string }[] | null = null;
+  let rows: DictSearchDoc[] | null = null;
   let loading: Promise<void> | null = null;
   const loadText = () => {
     loading ??= fetch(searchUrl)
       .then(res => {
         if (!res.ok) throw new Error(`status ${res.status}`);
-        return res.json() as Promise<Row[]>;
+        return res.json() as Promise<DictSearchRow[]>;
       })
-      .then(data => { rows = data.map(([slug, title, text]) => ({ slug, title, text, folded: foldText(text), ftitle: foldText(title) })); })
+      .then(data => { rows = prepareDictSearch(data); })
       .catch(err => { loading = null; throw err; });
     return loading;
   };
-  const esc = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  // A term matches at the start of a word, so "phylacter" finds "phylacteries" but "ark" skips "dark";
-  // simple plurals are folded too ("phylactery" finds "phylacteries", "frontlets" finds "frontlet").
-  const stem = (t: string) =>
-    t.length > 4 && /ies$/.test(t) ? `${esc(t.slice(0, -3))}(?:y|ies)`
-    : t.length > 3 && /[^aeiou]y$/.test(t) ? `${esc(t.slice(0, -1))}(?:y|ies)`
-    : t.length > 4 && /[^eisu]s$/.test(t) ? `${esc(t.slice(0, -1))}s?`
-    : esc(t);
-  const termRe = (...ts: string[]) => new RegExp(`(?:^|[^a-z0-9])(${ts.map(stem).join(" ")})`, "g");
   const PAGE = 50;
-  let hits: Hit[] = [];
+  let hits: DictSearchHit[] = [];
   let terms: string[] = [];
   let shownCount = 0;
 
-  function snippet(h: Hit): Node[] {
-    const { out, map } = foldMapped(h.text);
-    const res = terms.map(t => termRe(t));
-    let at = -1;
-    if (terms.length > 1) { const m = termRe(...terms).exec(out); if (m) at = m.index + m[0].length - m[1].length; }
-    if (at < 0) for (const re of res) { re.lastIndex = 0; const m = re.exec(out); if (m) { at = m.index + m[0].length - m[1].length; break; } }
-    const pos = at < 0 ? 0 : map[at];
-    let start = Math.max(0, pos - 80), end = Math.min(h.text.length, pos + 160);
-    if (start > 0) start = h.text.indexOf(" ", start) + 1 || start;
-    if (end < h.text.length) { const sp = h.text.lastIndexOf(" ", end); if (sp > pos) end = sp; }
-    // Highlight every term inside the window.
-    const marks: [number, number][] = [];
-    for (const re of res) {
-      re.lastIndex = 0;
-      for (const m of out.matchAll(re)) {
-        const fs = m.index! + m[0].length - m[1].length;
-        const a = map[fs], b = map[fs + m[1].length - 1] + 1;
-        if (a >= start && b <= end) marks.push([a, b]);
-      }
-    }
-    marks.sort((x, y) => x[0] - y[0]);
-    const nodes: Node[] = [document.createTextNode(start > 0 ? "… " : "")];
-    let last = start;
-    for (const [a, b] of marks) {
-      if (a < last) continue;
-      nodes.push(document.createTextNode(h.text.slice(last, a)));
+  function snippet(h: DictSearchHit): Node[] {
+    return dictSnippet(h.text, terms).map(([t, mark]) => {
+      if (!mark) return document.createTextNode(t);
       const mk = document.createElement("mark");
-      mk.textContent = h.text.slice(a, b);
-      nodes.push(mk);
-      last = b;
-    }
-    nodes.push(document.createTextNode(h.text.slice(last, end) + (end < h.text.length ? " …" : "")));
-    return nodes;
+      mk.textContent = t;
+      return mk;
+    });
   }
 
   function renderMore() {
@@ -215,7 +163,8 @@ const count = dictEntries.length.toLocaleString("en-US");
     hits = [];
     shownCount = 0;
     if (!terms.length) { say("Type a word or phrase to search inside all the articles."); return; }
-    if (terms.join("").length < 3) { say("Type at least 3 letters to search inside the articles."); return; }
+    const searchTerms = dictSearchTerms(raw);
+    if (!searchTerms) { say("Type at least 3 letters to search inside the articles."); return; }
     if (!rows) {
       say("Loading the full text of the dictionary…");
       try { await loadText(); } catch (err) {
@@ -224,22 +173,7 @@ const count = dictEntries.length.toLocaleString("en-US");
       }
       if (id !== runId) return;
     }
-    const res = terms.map(t => termRe(t));
-    const phrase = terms.length > 1 ? termRe(...terms) : null;
-    const count = (re: RegExp, s: string) => { re.lastIndex = 0; let n = 0; while (n < 20 && re.exec(s)) n++; return n; };
-    for (const r of rows!) {
-      let score = 0, ok = true;
-      for (const re of res) {
-        const n = count(re, r.folded) + count(re, r.ftitle) * 5;
-        if (!n) { ok = false; break; }
-        score += n;
-      }
-      if (!ok) continue;
-      if (phrase) score += count(phrase, r.folded) * 10 + count(phrase, r.ftitle) * 100;
-      else if (count(res[0], r.ftitle)) score += 100;
-      hits.push({ ...r, score });
-    }
-    hits.sort((a, b) => b.score - a.score || a.title.localeCompare(b.title, "en", { sensitivity: "base" }));
+    hits = searchDict(rows!, searchTerms);
     say(hits.length
       ? `${hits.length.toLocaleString("en-US")} ${hits.length === 1 ? "article mentions" : "articles mention"} ${quoted()}${hits.length > PAGE ? ", best matches first" : ""}.`
       : `No article mentions ${quoted()}.`);

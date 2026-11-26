@@ -3,6 +3,7 @@
 // /bible-data/dictionary/ only when the Dictionary tab is opened.
 import manifest from "@/data/bible-dictionary/manifest.json";
 import type { DictPara } from "@/data/bible-dictionary";
+import { prepareDictSearch, type DictSearchDoc, type DictSearchRow } from "./dictionary-search";
 
 /** entries: [slug, title]; chapters: "John 3" -> [[entryIndex, [verses]]]; places: entry slug -> Bible map place slugs. */
 export type DictIndex = { entries: [string, string][]; chapters: Record<string, [number, number[]][]>; places: Record<string, string[]> };
@@ -27,6 +28,18 @@ function getJson<T>(url: string, what: string): Promise<T> {
 }
 export const loadDictIndex = (baseUrl: string) =>
   getJson<DictIndex>(`${trim(baseUrl)}/bible-data/dictionary/index.${manifest.files.index}.json`, "The dictionary index");
+export const dictSearchHref = (baseUrl: string) =>
+  `${trim(baseUrl)}/bible-data/dictionary/search.${manifest.files.search}.json`;
+let searchDocs: Promise<DictSearchDoc[]> | null = null;
+/** The full text of every article, folded for searching (see dictionary-search.ts). */
+export function loadDictSearch(baseUrl: string): Promise<DictSearchDoc[]> {
+  if (!searchDocs) {
+    const p = getJson<DictSearchRow[]>(dictSearchHref(baseUrl), "The full text of the dictionary").then(prepareDictSearch);
+    p.catch(() => { if (searchDocs === p) searchDocs = null; }); // allow a retry
+    searchDocs = p;
+  }
+  return searchDocs;
+}
 export async function loadDictEntry(baseUrl: string, slug: string): Promise<DictPara[]> {
   const l = letterOf(slug);
   const hash = (manifest.files.letters as Record<string, string>)[l];

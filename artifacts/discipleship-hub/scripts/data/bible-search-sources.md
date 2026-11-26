@@ -188,6 +188,8 @@ tiles, satellite imagery or map services are used at runtime.
 
 # Classic sermon sources (Bible reader Sermons tab, /bible/sermons)
 
+## C. H. Spurgeon
+
 | Source | Use | License | Pinned |
 | --- | --- | --- | --- |
 | C. H. Spurgeon, *New Park Street Pulpit* (vols 1–6, 1855–1860) and *Metropolitan Tabernacle Pulpit* (vols 7–63) | Sermon text | Public domain | — |
@@ -206,10 +208,25 @@ Result (Nov 2026): 281 of 3,534 verified; 713 rejected as modernized; 2,538 had 
 
 **Text references.** The generator parses each sermon's reference line, applies four documented corrections (wrong verse numbers in the transcription, checked against the scans), and requires the quoted text to match the cited KJV verses (≥ 80% of words in order, against the site's own KJV files). The build test `scripts/sermons-data.test.mjs` repeats this check.
 
+## John Wesley
+
+| Source | Use | License | Pinned |
+| --- | --- | --- | --- |
+| John Wesley, *Sermons on Several Occasions* (Sermons I–LIII), in *The Works of the Rev. John Wesley, M.A.* (Bristol: William Pine, 1771), vols 1–4 | Sermon text | Public domain | — |
+| Project Gutenberg eBooks #59743, #63452, #63909, #68320 (Distributed Proofreaders transcriptions of those four volumes) | Plain-text transcription | Public domain in the USA (Gutenberg licence covers only the trademark) | sha256 of each `-0.txt` in `scripts/data/wesley-sources.json` |
+| Internet Archive scans of the same 1771 volumes, Duke University Libraries (`worksofrevjohnwe1wesl` … `4wesl`) | OCR text used **only to verify wording**; never published | Scans of public-domain books | md5 of each `_djvu.txt` file |
+
+**Why this edition.** Moody's printed books are mostly addresses without a single text, and no clean public-domain transcription of Edwards' sermons with an institutional scan of the original printing was found. Wesley's 53 standard sermons have a careful transcription of the 1771 printing and scans of that printing. gutenberg.org often refuses scripted downloads, so the fetch script uses its official mirrors (pglaf.org, xmission), which serve byte-identical files.
+
+**Method** (`scripts/verify-wesley-sermons.py`): each sermon (from its last "SERMON n." heading to the next) is aligned word by word with the OCR of the same volume, with lowercase "s" folded to "f" on both sides because OCR reads the long s as "f". Same criteria as Spurgeon (≥ 75% aligned, ≤ 4 case and ≤ 1 archaic differences per 1,000 words); differences at the very start and end of the alignment window are neighbouring text and are ignored. Result: 52 of 53 verified (91–95% aligned). Sermon XLIX ("The Cure of Evil-Speaking") is not published: the Duke copy of volume 4 lacks pages 35–39, and the only other scans are the 1760 printing (which capitalizes nouns, so it cannot confirm the 1771 wording) and a 20th-century reprint.
+
+**Generation** (`scripts/lib/wesley-sermons.mjs`): titles are the printed headings, title-cased; five sermons printed without a title (III, VII, XLVII, LII, LIII) use the titles later editions give them, and the page says so. Sermon III was preached by Charles Wesley (noted on the page). The note printed with a sermon about where it was preached is shown as its occasion, and a date in it as the preaching date, as printed (Old Style before 1752). Footnotes are renumbered per sermon and listed under "Notes". The transcribers' correction notes (lines starting ♦/♠) are dropped; their corrections stay. Wesley's asterisks, marking passages he thought most important, are kept and explained on the page. One reference correction: Sermon XLI prints "2 Cor. x. 4" but quotes verse 5. Sermon LII quotes Psalm 94:16 from the Prayer Book Psalter, so its KJV agreement floor is 0.7 and the page names the Psalter. The generator refuses any sermon whose word count differs from the verified count.
+
 **Regenerate:**
 ```
 bash scripts/fetch-sermon-sources.sh /tmp/sermon-sources
-python3 scripts/verify-sermons.py /tmp/sermon-sources     # writes scripts/data/sermon-verification.json
-node scripts/generate-sermons.mjs /tmp/sermon-sources     # writes src/data/sermons/ and public/bible-data/sermons/
+python3 scripts/verify-sermons.py /tmp/sermon-sources          # writes scripts/data/sermon-verification.json
+python3 scripts/verify-wesley-sermons.py /tmp/sermon-sources   # writes scripts/data/wesley-verification.json
+node scripts/generate-sermons.mjs /tmp/sermon-sources          # writes src/data/sermons/ and public/bible-data/sermons/
 ```
-To publish more sermons, add institutional scans of further volumes to `sermon-scan-sources.json` (id, file, md5 from the item's metadata) and re-run all three steps.
+To publish more Spurgeon sermons, add institutional scans of further volumes to `sermon-scan-sources.json` (id, file, md5 from the item's metadata) and re-run all the steps.

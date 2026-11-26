@@ -2,9 +2,11 @@
 // content-hashed index is fetched from /bible-data/sermons/ only when the
 // Sermons tab is opened; sermon text is on the static sermon pages.
 import manifest from "@/data/sermons/manifest.json";
+import { PREACHERS, type PreacherId } from "@/data/sermons/preachers";
 
-/** [slug, title, number, year, refs] — refs are verse codes [from] / [from, to]. */
-export type SermonRow = [string, string, string, number, ([number] | [number, number])[]];
+/** [slug, title, number, year, refs, preacher] — refs are verse codes [from] / [from, to]. */
+export type SermonRow = [string, string, string, number, ([number] | [number, number])[], PreacherId];
+export const preacherName = (id: PreacherId) => PREACHERS[id]?.name ?? id;
 /** "Malachi 3" -> [[sermonIndex, [[v1, v2], ...]]]; [0, 0] = the whole chapter. */
 export type SermonIndex = { sermons: SermonRow[]; chapters: Record<string, [number, [number, number][]][]> };
 

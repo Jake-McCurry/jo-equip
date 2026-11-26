@@ -1,0 +1,533 @@
+{
+"criteria": {
+"minCoverage": 0.75,
+"maxCasePer1000": 4.0,
+"maxArchaicPer1000": 1.0
+},
+"checked": 53,
+"rejected": {
+"too little of the text matched the scan": 1
+},
+"verified": [
+{
+"volume": 1,
+"number": 1,
+"source": "worksofrevjohnwe1wesl",
+"words": 4118,
+"coverage": 0.943,
+"case": 0.24,
+"archaic": 0.24,
+"phrase": 0.73
+},
+{
+"volume": 1,
+"number": 2,
+"source": "worksofrevjohnwe1wesl",
+"words": 3415,
+"coverage": 0.948,
+"case": 0.0,
+"archaic": 0.88,
+"phrase": 1.46
+},
+{
+"volume": 1,
+"number": 3,
+"source": "worksofrevjohnwe1wesl",
+"words": 4901,
+"coverage": 0.926,
+"case": 0.0,
+"archaic": 0.82,
+"phrase": 2.45
+},
+{
+"volume": 1,
+"number": 4,
+"source": "worksofrevjohnwe1wesl",
+"words": 6669,
+"coverage": 0.931,
+"case": 0.0,
+"archaic": 0.15,
+"phrase": 1.35
+},
+{
+"volume": 1,
+"number": 5,
+"source": "worksofrevjohnwe1wesl",
+"words": 5050,
+"coverage": 0.929,
+"case": 0.2,
+"archaic": 0.4,
+"phrase": 1.19
+},
+{
+"volume": 1,
+"number": 6,
+"source": "worksofrevjohnwe1wesl",
+"words": 4976,
+"coverage": 0.939,
+"case": 0.0,
+"archaic": 0.2,
+"phrase": 1.61
+},
+{
+"volume": 1,
+"number": 7,
+"source": "worksofrevjohnwe1wesl",
+"words": 4385,
+"coverage": 0.95,
+"case": 0.23,
+"archaic": 0.68,
+"phrase": 0.68
+},
+{
+"volume": 1,
+"number": 8,
+"source": "worksofrevjohnwe1wesl",
+"words": 4730,
+"coverage": 0.934,
+"case": 0.21,
+"archaic": 0.21,
+"phrase": 1.69
+},
+{
+"volume": 1,
+"number": 9,
+"source": "worksofrevjohnwe1wesl",
+"words": 5944,
+"coverage": 0.949,
+"case": 0.5,
+"archaic": 0.34,
+"phrase": 0.84
+},
+{
+"volume": 1,
+"number": 10,
+"source": "worksofrevjohnwe1wesl",
+"words": 5083,
+"coverage": 0.95,
+"case": 0.39,
+"archaic": 0.0,
+"phrase": 0.98
+},
+{
+"volume": 1,
+"number": 11,
+"source": "worksofrevjohnwe1wesl",
+"words": 4723,
+"coverage": 0.942,
+"case": 0.42,
+"archaic": 0.0,
+"phrase": 0.85
+},
+{
+"volume": 1,
+"number": 12,
+"source": "worksofrevjohnwe1wesl",
+"words": 4307,
+"coverage": 0.931,
+"case": 0.0,
+"archaic": 0.0,
+"phrase": 0.93
+},
+{
+"volume": 1,
+"number": 13,
+"source": "worksofrevjohnwe1wesl",
+"words": 5085,
+"coverage": 0.925,
+"case": 0.0,
+"archaic": 0.2,
+"phrase": 1.18
+},
+{
+"volume": 1,
+"number": 14,
+"source": "worksofrevjohnwe1wesl",
+"words": 6082,
+"coverage": 0.939,
+"case": 0.66,
+"archaic": 0.33,
+"phrase": 0.66
+},
+{
+"volume": 1,
+"number": 15,
+"source": "worksofrevjohnwe1wesl",
+"words": 5905,
+"coverage": 0.932,
+"case": 0.0,
+"archaic": 0.34,
+"phrase": 2.54
+},
+{
+"volume": 1,
+"number": 16,
+"source": "worksofrevjohnwe1wesl",
+"words": 7174,
+"coverage": 0.946,
+"case": 0.14,
+"archaic": 0.14,
+"phrase": 1.12
+},
+{
+"volume": 2,
+"number": 17,
+"source": "worksofrevjohnwe2wesl",
+"words": 4542,
+"coverage": 0.933,
+"case": 0.0,
+"archaic": 0.0,
+"phrase": 0.88
+},
+{
+"volume": 2,
+"number": 18,
+"source": "worksofrevjohnwe2wesl",
+"words": 4781,
+"coverage": 0.934,
+"case": 0.42,
+"archaic": 0.21,
+"phrase": 3.14
+},
+{
+"volume": 2,
+"number": 19,
+"source": "worksofrevjohnwe2wesl",
+"words": 4277,
+"coverage": 0.945,
+"case": 0.23,
+"archaic": 0.0,
+"phrase": 2.1
+},
+{
+"volume": 2,
+"number": 20,
+"source": "worksofrevjohnwe2wesl",
+"words": 5137,
+"coverage": 0.946,
+"case": 0.39,
+"archaic": 0.0,
+"phrase": 0.0
+},
+{
+"volume": 2,
+"number": 21,
+"source": "worksofrevjohnwe2wesl",
+"words": 6426,
+"coverage": 0.945,
+"case": 0.0,
+"archaic": 0.0,
+"phrase": 2.02
+},
+{
+"volume": 2,
+"number": 22,
+"source": "worksofrevjohnwe2wesl",
+"words": 6729,
+"coverage": 0.937,
+"case": 0.15,
+"archaic": 0.0,
+"phrase": 1.93
+},
+{
+"volume": 2,
+"number": 23,
+"source": "worksofrevjohnwe2wesl",
+"words": 7019,
+"coverage": 0.936,
+"case": 0.28,
+"archaic": 0.28,
+"phrase": 2.14
+},
+{
+"volume": 2,
+"number": 24,
+"source": "worksofrevjohnwe2wesl",
+"words": 6781,
+"coverage": 0.949,
+"case": 0.29,
+"archaic": 0.15,
+"phrase": 1.18
+},
+{
+"volume": 2,
+"number": 25,
+"source": "worksofrevjohnwe2wesl",
+"words": 7406,
+"coverage": 0.938,
+"case": 0.14,
+"archaic": 0.0,
+"phrase": 1.08
+},
+{
+"volume": 2,
+"number": 26,
+"source": "worksofrevjohnwe2wesl",
+"words": 6852,
+"coverage": 0.947,
+"case": 0.29,
+"archaic": 0.73,
+"phrase": 1.46
+},
+{
+"volume": 2,
+"number": 27,
+"source": "worksofrevjohnwe2wesl",
+"words": 7168,
+"coverage": 0.926,
+"case": 0.14,
+"archaic": 0.0,
+"phrase": 1.95
+},
+{
+"volume": 2,
+"number": 28,
+"source": "worksofrevjohnwe2wesl",
+"words": 7365,
+"coverage": 0.946,
+"case": 0.0,
+"archaic": 0.0,
+"phrase": 1.09
+},
+{
+"volume": 2,
+"number": 29,
+"source": "worksofrevjohnwe2wesl",
+"words": 6602,
+"coverage": 0.938,
+"case": 0.3,
+"archaic": 0.3,
+"phrase": 1.06
+},
+{
+"volume": 2,
+"number": 30,
+"source": "worksofrevjohnwe2wesl",
+"words": 5014,
+"coverage": 0.944,
+"case": 0.4,
+"archaic": 0.2,
+"phrase": 1.0
+},
+{
+"volume": 3,
+"number": 31,
+"source": "worksofrevjohnwe3wesl",
+"words": 3594,
+"coverage": 0.936,
+"case": 0.28,
+"archaic": 0.0,
+"phrase": 2.23
+},
+{
+"volume": 3,
+"number": 32,
+"source": "worksofrevjohnwe3wesl",
+"words": 4041,
+"coverage": 0.941,
+"case": 0.25,
+"archaic": 0.0,
+"phrase": 0.74
+},
+{
+"volume": 3,
+"number": 33,
+"source": "worksofrevjohnwe3wesl",
+"words": 4581,
+"coverage": 0.942,
+"case": 0.0,
+"archaic": 0.65,
+"phrase": 0.22
+},
+{
+"volume": 3,
+"number": 34,
+"source": "worksofrevjohnwe3wesl",
+"words": 5870,
+"coverage": 0.933,
+"case": 0.68,
+"archaic": 0.0,
+"phrase": 1.02
+},
+{
+"volume": 3,
+"number": 35,
+"source": "worksofrevjohnwe3wesl",
+"words": 4603,
+"coverage": 0.915,
+"case": 1.3,
+"archaic": 0.43,
+"phrase": 2.17
+},
+{
+"volume": 3,
+"number": 36,
+"source": "worksofrevjohnwe3wesl",
+"words": 3886,
+"coverage": 0.931,
+"case": 0.51,
+"archaic": 0.0,
+"phrase": 1.29
+},
+{
+"volume": 3,
+"number": 37,
+"source": "worksofrevjohnwe3wesl",
+"words": 5121,
+"coverage": 0.942,
+"case": 0.0,
+"archaic": 0.0,
+"phrase": 0.98
+},
+{
+"volume": 3,
+"number": 38,
+"source": "worksofrevjohnwe3wesl",
+"words": 5690,
+"coverage": 0.933,
+"case": 1.05,
+"archaic": 0.0,
+"phrase": 1.58
+},
+{
+"volume": 3,
+"number": 39,
+"source": "worksofrevjohnwe3wesl",
+"words": 5341,
+"coverage": 0.924,
+"case": 0.37,
+"archaic": 0.19,
+"phrase": 1.5
+},
+{
+"volume": 3,
+"number": 40,
+"source": "worksofrevjohnwe3wesl",
+"words": 9012,
+"coverage": 0.911,
+"case": 0.78,
+"archaic": 0.22,
+"phrase": 1.66
+},
+{
+"volume": 3,
+"number": 41,
+"source": "worksofrevjohnwe3wesl",
+"words": 3879,
+"coverage": 0.937,
+"case": 0.26,
+"archaic": 0.0,
+"phrase": 1.03
+},
+{
+"volume": 3,
+"number": 42,
+"source": "worksofrevjohnwe3wesl",
+"words": 4930,
+"coverage": 0.928,
+"case": 0.61,
+"archaic": 0.2,
+"phrase": 1.01
+},
+{
+"volume": 3,
+"number": 43,
+"source": "worksofrevjohnwe3wesl",
+"words": 4632,
+"coverage": 0.92,
+"case": 0.22,
+"archaic": 0.43,
+"phrase": 0.86
+},
+{
+"volume": 3,
+"number": 44,
+"source": "worksofrevjohnwe3wesl",
+"words": 4762,
+"coverage": 0.934,
+"case": 0.42,
+"archaic": 0.42,
+"phrase": 1.26
+},
+{
+"volume": 3,
+"number": 45,
+"source": "worksofrevjohnwe3wesl",
+"words": 5343,
+"coverage": 0.933,
+"case": 0.19,
+"archaic": 0.0,
+"phrase": 1.31
+},
+{
+"volume": 3,
+"number": 46,
+"source": "worksofrevjohnwe3wesl",
+"words": 6188,
+"coverage": 0.922,
+"case": 0.81,
+"archaic": 0.16,
+"phrase": 1.13
+},
+{
+"volume": 3,
+"number": 47,
+"source": "worksofrevjohnwe3wesl",
+"words": 4997,
+"coverage": 0.94,
+"case": 0.2,
+"archaic": 0.8,
+"phrase": 1.0
+},
+{
+"volume": 4,
+"number": 48,
+"source": "worksofrevjohnwe4wesl",
+"words": 4764,
+"coverage": 0.933,
+"case": 0.0,
+"archaic": 0.42,
+"phrase": 1.05
+},
+{
+"volume": 4,
+"number": 50,
+"source": "worksofrevjohnwe4wesl",
+"words": 5170,
+"coverage": 0.915,
+"case": 0.58,
+"archaic": 0.19,
+"phrase": 2.32
+},
+{
+"volume": 4,
+"number": 51,
+"source": "worksofrevjohnwe4wesl",
+"words": 5663,
+"coverage": 0.923,
+"case": 0.88,
+"archaic": 0.18,
+"phrase": 1.77
+},
+{
+"volume": 4,
+"number": 52,
+"source": "worksofrevjohnwe4wesl",
+"words": 7732,
+"coverage": 0.916,
+"case": 0.52,
+"archaic": 0.91,
+"phrase": 2.97
+},
+{
+"volume": 4,
+"number": 53,
+"source": "worksofrevjohnwe4wesl",
+"words": 6394,
+"coverage": 0.919,
+"case": 0.0,
+"archaic": 0.47,
+"phrase": 1.72
+}
+]
+}

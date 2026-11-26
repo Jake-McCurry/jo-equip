@@ -5,15 +5,29 @@ import { sermonManifest, type Sermon } from "@/data/sermons";
 interface Props { sermon?: Sermon }
 const { sermon } = Astro.props;
 const ext = { target: "_blank", rel: "noopener noreferrer" };
-const { edition, counts } = sermonManifest;
+const { spurgeon, wesley } = sermonManifest.preachers;
+const show = (id: "spurgeon" | "wesley") => !sermon || sermon.preacher === id;
+const gutenberg = (n: number) => `https://www.gutenberg.org/ebooks/${n}`;
+const wesleyVolume = sermon?.preacher === "wesley" ? wesley.edition.transcriptions.find(t => t.volume === sermon.volume) : undefined;
 ---
 <section class="bmp-sources" aria-labelledby="sermon-sources-h">
   <h2 id="sermon-sources-h">Sources and licenses</h2>
   <ul>
-    <li>
-      Sermon text: C. H. Spurgeon (1834–1892), <em>{sermon ? sermon.series : "The New Park Street Pulpit and The Metropolitan Tabernacle Pulpit"}</em>{sermon && <> (volume {sermon.volume}, published {sermon.published})</>}, public domain.
-      Transcription from <a href={`https://github.com/${edition.repository}`} {...ext}>{edition.repository}</a>, dedicated to the public domain (<a href="https://creativecommons.org/publicdomain/zero/1.0/" {...ext}>CC0 1.0</a>).
-    </li>
+    {show("spurgeon") && (
+      <li>
+        Sermon text: C. H. Spurgeon (1834–1892), <em>{sermon ? sermon.series : "The New Park Street Pulpit and The Metropolitan Tabernacle Pulpit"}</em>{sermon && <> (volume {sermon.volume}, published {sermon.published})</>}, public domain.
+        Transcription from <a href={`https://github.com/${spurgeon.edition.repository}`} {...ext}>{spurgeon.edition.repository}</a>, dedicated to the public domain (<a href="https://creativecommons.org/publicdomain/zero/1.0/" {...ext}>CC0 1.0</a>).
+      </li>
+    )}
+    {show("wesley") && (
+      <li>
+        Sermon text: John Wesley (1703–1791), <em>Sermons on Several Occasions</em>, in <em>{wesley.edition.title}</em> ({wesley.edition.imprint.replace("1771–1774", "1771")}{sermon ? `, volume ${sermon.volume}` : ", volumes 1–4"}), public domain.
+        Transcription by Project Gutenberg and its Distributed Proofreaders, public domain in the United States:{" "}
+        {wesleyVolume
+          ? <a href={gutenberg(wesleyVolume.gutenberg)} {...ext}>eBook #{wesleyVolume.gutenberg}</a>
+          : wesley.edition.transcriptions.map((t, i) => <>{i > 0 && ", "}<a href={gutenberg(t.gutenberg)} {...ext}>volume {t.volume} (#{t.gutenberg})</a></>)}.
+      </li>
+    )}
     {sermon ? (
       <li>
         Checked word for word against a scan of an original printing: <a href={`https://archive.org/details/${sermon.scan.id}`} {...ext}><em>{sermon.scan.title}</em></a>
@@ -22,14 +36,25 @@ const { edition, counts } = sermonManifest;
       </li>
     ) : (
       <li>
-        Each sermon was checked word for word against a scan of an original 19th-century printing on the <a href="https://archive.org/" {...ext}>Internet Archive</a>.
-        Each sermon page names the scan it was checked against.
+        Each sermon was checked word for word against a scan of an original printing on the <a href="https://archive.org/" {...ext}>Internet Archive</a>
+        {" "}(Spurgeon: 19th-century printings; Wesley: the 1771 volumes held by Duke University Libraries). Each sermon page names the scan it was checked against.
       </li>
     )}
   </ul>
-  <p>
-    Many modern editions of Spurgeon&rsquo;s sermons update his wording. JO EQUIP publishes only sermons whose wording matches the original printing,
-    so {counts.published} of the {counts.checked.toLocaleString("en-US")} sermons in the transcription appear here so far. The transcription sometimes uses
-    American spellings (&ldquo;honor&rdquo; for &ldquo;honour&rdquo;); these are left as they are. Bible links open the reader in the King James Version, which Spurgeon quoted.
-  </p>
+  {show("spurgeon") && (
+    <p>
+      Many modern editions of Spurgeon&rsquo;s sermons update his wording. JO EQUIP publishes only sermons whose wording matches the original printing,
+      so {spurgeon.counts.published} of the {spurgeon.counts.checked.toLocaleString("en-US")} sermons in the transcription appear here so far. The transcription sometimes uses
+      American spellings (&ldquo;honor&rdquo; for &ldquo;honour&rdquo;); these are left as they are.
+    </p>
+  )}
+  {show("wesley") && (
+    <p>
+      Wesley&rsquo;s sermons keep the spelling of the 1771 printing (&ldquo;shew&rdquo;, &ldquo;tho&rsquo;&rdquo;, &ldquo;compleat&rdquo;). The transcribers standardized punctuation,
+      corrected obvious printer&rsquo;s errors, and kept Wesley&rsquo;s asterisks (*), which mark the passages he thought most worth attention; his footnotes are listed under &ldquo;Notes&rdquo;.
+      The long &ldquo;ſ&rdquo; is printed as &ldquo;s&rdquo;. {wesley.counts.published} of the {wesley.counts.checked} sermons appear here: the scanned copy of volume 4 is missing
+      the pages of Sermon XLIX (&ldquo;The Cure of Evil-Speaking&rdquo;), so its wording could not be checked. Dates before 1752 are given as printed (Old Style).
+    </p>
+  )}
+  <p>Bible links open the reader in the King James Version.</p>
 </section>

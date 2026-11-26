@@ -1,0 +1,30 @@
+{
+ "edition": {
+  "title": "The Works of the Rev. John Wesley, M.A.",
+  "imprint": "Bristol: William Pine, 1771–1774",
+  "series": "Sermons on Several Occasions",
+  "published": 1771
+ },
+ "volumes": [
+  {
+   "volume": 1,
+   "transcription": { "gutenberg": 59743, "path": "5/9/7/4/59743/59743-0.txt", "file": "59743-0.txt", "sha256": "59280ad172bd7ffdc80e345845c2bbd794bb5e595b311b4ab94773b4b2c9db50" },
+   "scan": { "id": "worksofrevjohnwe1wesl", "title": "The works of the Rev. John Wesley, M.A., late fellow of Lincoln-College, Oxford, volume 1", "date": "1771", "library": "Duke University Libraries", "file": "worksofrevjohnwe1wesl_djvu.txt", "md5": "c823f3d0ca70b327de07644b6937321b" }
+  },
+  {
+   "volume": 2,
+   "transcription": { "gutenberg": 63452, "path": "6/3/4/5/63452/63452-0.txt", "file": "63452-0.txt", "sha256": "732320878cd92ee5192d7b1ce9f6daee14c015f17b1d89ddc775c8a5db196201" },
+   "scan": { "id": "worksofrevjohnwe2wesl", "title": "The works of the Rev. John Wesley, M.A., late fellow of Lincoln-College, Oxford, volume 2", "date": "1771", "library": "Duke University Libraries", "file": "worksofrevjohnwe2wesl_djvu.txt", "md5": "ff79fb54d6cdc218f75187330be9bbe1" }
+  },
+  {
+   "volume": 3,
+   "transcription": { "gutenberg": 63909, "path": "6/3/9/0/63909/63909-0.txt", "file": "63909-0.txt", "sha256": "608f9daebf53d62c1007b4837d47b0532dd8cd87e358cb28bdee0860cfbf8ab7" },
+   "scan": { "id": "worksofrevjohnwe3wesl", "title": "The works of the Rev. John Wesley, M.A., late fellow of Lincoln-College, Oxford, volume 3", "date": "1771", "library": "Duke University Libraries", "file": "worksofrevjohnwe3wesl_djvu.txt", "md5": "09e74ae693058094ba8a28e406e2bb79" }
+  },
+  {
+   "volume": 4,
+   "transcription": { "gutenberg": 68320, "path": "6/8/3/2/68320/68320-0.txt", "file": "68320-0.txt", "sha256": "ecadc4c1043c5f941c1969ab0e42b22d20ad91688c64798f0d98c11f21cbf0fc" },
+   "scan": { "id": "worksofrevjohnwe4wesl", "title": "The works of the Rev. John Wesley, M.A., late fellow of Lincoln-College, Oxford, volume 4", "date": "1771", "library": "Duke University Libraries", "file": "worksofrevjohnwe4wesl_djvu.txt", "md5": "007214bab0885c5d308efb332759ce67" }
+  }
+ ]
+}

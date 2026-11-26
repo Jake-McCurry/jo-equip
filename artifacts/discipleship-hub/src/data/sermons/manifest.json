@@ -1,25 +1,73 @@
 {
  "files": {
-  "index": "794c4f6b5b"
+  "index": "38d4b3729e"
  },
- "counts": {
-  "checked": 3534,
-  "published": 281,
-  "rejected": {
-   "no scan of an original printing found": 2538,
-   "too little of the text matched the scan": 2,
-   "wording modernized": 713
+ "published": 333,
+ "preachers": {
+  "spurgeon": {
+   "counts": {
+    "checked": 3534,
+    "published": 281,
+    "rejected": {
+     "no scan of an original printing found": 2538,
+     "too little of the text matched the scan": 2,
+     "wording modernized": 713
+    },
+    "skippedHere": 0
+   },
+   "edition": {
+    "repository": "lyteword/chspurgeon-sermons",
+    "commit": "eeec6efe01edb6b80ef43a2e90aee2b816e018a9",
+    "sha256": "6f45da64d5390c38083d55fd8f5adb7785cb887af33b2fdfca08cf71b1ed013b"
+   },
+   "criteria": {
+    "minCoverage": 0.75,
+    "maxCasePer1000": 4,
+    "maxArchaicPer1000": 1
+   }
   },
-  "skippedHere": 0
- },
- "edition": {
-  "repository": "lyteword/chspurgeon-sermons",
-  "commit": "eeec6efe01edb6b80ef43a2e90aee2b816e018a9",
-  "sha256": "6f45da64d5390c38083d55fd8f5adb7785cb887af33b2fdfca08cf71b1ed013b"
- },
- "criteria": {
-  "minCoverage": 0.75,
-  "maxCasePer1000": 4,
-  "maxArchaicPer1000": 1
+  "wesley": {
+   "counts": {
+    "checked": 53,
+    "published": 52,
+    "rejected": {
+     "too little of the text matched the scan": 1
+    },
+    "skippedHere": 0
+   },
+   "edition": {
+    "title": "The Works of the Rev. John Wesley, M.A.",
+    "imprint": "Bristol: William Pine, 1771–1774",
+    "series": "Sermons on Several Occasions",
+    "published": 1771,
+    "transcriptions": [
+     {
+      "volume": 1,
+      "gutenberg": 59743,
+      "sha256": "59280ad172bd7ffdc80e345845c2bbd794bb5e595b311b4ab94773b4b2c9db50"
+     },
+     {
+      "volume": 2,
+      "gutenberg": 63452,
+      "sha256": "732320878cd92ee5192d7b1ce9f6daee14c015f17b1d89ddc775c8a5db196201"
+     },
+     {
+      "volume": 3,
+      "gutenberg": 63909,
+      "sha256": "608f9daebf53d62c1007b4837d47b0532dd8cd87e358cb28bdee0860cfbf8ab7"
+     },
+     {
+      "volume": 4,
+      "gutenberg": 68320,
+      "sha256": "ecadc4c1043c5f941c1969ab0e42b22d20ad91688c64798f0d98c11f21cbf0fc"
+     }
+    ]
+   },
+   "criteria": {
+    "minCoverage": 0.75,
+    "maxCasePer1000": 4,
+    "maxArchaicPer1000": 1
+   }
+  }
  }
 }

@@ -11,6 +11,8 @@ const read = p => fs.readFileSync(new URL(p, root), "utf8");
 const manifest = JSON.parse(read("src/data/sermons/manifest.json"));
 const sermons = JSON.parse(read("src/data/sermons/sermons.json"));
 const verification = JSON.parse(read("scripts/data/sermon-verification.json"));
+const wesleyVerification = JSON.parse(read("scripts/data/wesley-verification.json"));
+const wesleySources = JSON.parse(read("scripts/data/wesley-sources.json"));
 const scans = new Map(JSON.parse(read("scripts/data/sermon-scan-sources.json")).map(s => [s.id, s]));
 const indexFile = `public/bible-data/sermons/index.${manifest.files.index}.json`;
 const index = JSON.parse(read(indexFile));
@@ -50,20 +52,42 @@ test("hashed reader index matches its content hash and nothing stale is left", (
 });
 
 test("only verified sermons are published, each tied to a pinned scan", () => {
-  const verified = new Map(verification.verified.map(v => [v.file, v]));
-  const { minCoverage, maxCasePer1000, maxArchaicPer1000 } = verification.criteria;
-  assert.ok(sermons.length >= 250, `${sermons.length} sermons`);
-  assert.equal(manifest.counts.published, sermons.length);
+  const spurgeon = sermons.filter(s => s.preacher === "spurgeon");
+  const wesley = sermons.filter(s => s.preacher === "wesley");
+  assert.equal(spurgeon.length + wesley.length, sermons.length, "unknown preacher");
+  assert.ok(spurgeon.length >= 250, `${spurgeon.length} Spurgeon sermons`);
+  assert.ok(wesley.length >= 50, `${wesley.length} Wesley sermons`);
+  assert.equal(manifest.published, sermons.length);
+  assert.equal(manifest.preachers.spurgeon.counts.published, spurgeon.length);
+  assert.equal(manifest.preachers.wesley.counts.published, wesley.length);
   assert.equal(new Set(sermons.map(s => s.slug)).size, sermons.length);
+
+  const { minCoverage, maxCasePer1000, maxArchaicPer1000 } = verification.criteria;
   const bySource = new Set(verification.verified.map(v => `${v.source}|${v.words}`));
-  for (const s of sermons) {
+  for (const s of spurgeon) {
     assert.match(s.slug, /^spurgeon-[0-9]+(-[0-9]+)?-[a-z0-9]+(-[a-z0-9]+)*$/, s.slug);
     assert.ok(scans.has(s.scan.id), `${s.slug}: unpinned scan ${s.scan.id}`);
     assert.ok(bySource.has(`${s.scan.id}|${s.words}`), `${s.slug}: not in the verification results`);
     assert.ok(s.scan.coverage >= minCoverage, s.slug);
     if (s.date) assert.match(s.date, /^18[5-9]\d-\d\d-\d\d$/, s.slug);
   }
-  for (const v of verified.values()) assert.ok(v.coverage >= minCoverage && v.case <= maxCasePer1000 && v.archaic <= maxArchaicPer1000, v.file);
+  for (const v of verification.verified) assert.ok(v.coverage >= minCoverage && v.case <= maxCasePer1000 && v.archaic <= maxArchaicPer1000, v.file);
+
+  const wc = wesleyVerification.criteria;
+  assert.deepEqual(wc, verification.criteria, "Wesley uses the Spurgeon criteria");
+  const wesleyScans = new Map(wesleySources.volumes.map(v => [v.volume, v.scan.id]));
+  const wesleyVerified = new Map(wesleyVerification.verified.map(v => [v.number, v]));
+  for (const s of wesley) {
+    assert.match(s.slug, /^wesley-[0-9]+-[a-z0-9]+(-[a-z0-9]+)*$/, s.slug);
+    const v = wesleyVerified.get(Number(s.number));
+    assert.ok(v, `${s.slug}: not in the verification results`);
+    assert.equal(v.words, s.words, s.slug);
+    assert.equal(v.volume, s.volume, s.slug);
+    assert.equal(s.scan.id, wesleyScans.get(s.volume), `${s.slug}: unpinned scan ${s.scan.id}`);
+    assert.ok(s.scan.coverage >= wc.minCoverage, s.slug);
+    if (s.date) assert.match(s.date, /^17[3-7]\d-\d\d-\d\d$/, s.slug);
+  }
+  for (const v of wesleyVerification.verified) assert.ok(v.coverage >= wc.minCoverage && v.case <= wc.maxCasePer1000 && v.archaic <= wc.maxArchaicPer1000, `Wesley ${v.number}`);
 });
 
 test("every sermon text is a real KJV passage and the quoted words match it", () => {
@@ -74,7 +98,8 @@ test("every sermon text is a real KJV passage and the quoted words match it", ()
     }
     if (!s.refs.length) continue;
     const share = inOrderShare(words(s.quote), words(s.refs.flatMap(versesOf).map(c => kjv.get(c)).join(" ")));
-    assert.ok(share >= 0.8, `${s.slug}: quoted text matches KJV ${(share * 100).toFixed(0)}%`);
+    // A text quoted from another version (Wesley's Prayer Book Psalter) is named on the page.
+    assert.ok(share >= (s.textVersion ? 0.7 : 0.8), `${s.slug}: quoted text matches KJV ${(share * 100).toFixed(0)}%`);
   }
 });
 
@@ -84,6 +109,12 @@ test("sermon bodies are clean, non-trivial text", () => {
     const text = blocks.map(b => b.p ?? b.h ?? b.q.join(" ")).join(" ");
     assert.ok(words(text).length >= 1500, `${s.slug}: body too short`);
     assert.doesNotMatch(text, /&[a-z]+;|<\/?[a-z]|Ages Software|C\.\s?H\. Spurgeon Collection/i, s.slug);
+    // Gutenberg markup and transcribers' notes must not leak into Wesley's text.
+    if (s.preacher === "wesley") assert.doesNotMatch(text, /[♦♠♥♣_|]|replaced with|Illustration:/, s.slug);
+    // Footnote anchors [n] must each have a note under "Notes".
+    const anchors = new Set((text.split(/ Notes \[1\] /)[0].match(/\[\d+\]/g) ?? []));
+    const notes = blocks.filter(b => b.p && /^\[\d+\] /.test(b.p)).map(b => b.p.match(/^\[\d+\]/)[0]);
+    for (const a of anchors) assert.ok(notes.includes(a), `${s.slug}: footnote ${a} has no note`);
   }
 });
 

@@ -26,7 +26,7 @@ import { evidenceArticles } from "@/data/evidenceArticles";
 import { hasSiteArticle } from "@/data/siteArticles";
 import { places as biblePlaces } from "@/data/bible-maps";
 import { atlasMaps } from "@/data/bible-atlas";
-import { sermons as classicSermons } from "@/data/sermons";
+import { PREACHERS, sermons as classicSermons } from "@/data/sermons";
 
 const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
@@ -126,7 +126,7 @@ const bibleStudyLinks = [
   { title: "Bible Timeline", href: join("/bible/timeline") },
   { title: "Classic Sermons", href: join("/bible/sermons") },
 ];
-const sermonLinks = classicSermons.map(s => ({ title: `${s.title} (Spurgeon, No. ${s.number})`, href: join(`/bible/sermons/${s.slug}`) }));
+const sermonLinks = classicSermons.map(s => ({ title: `${s.title} (${PREACHERS[s.preacher].name}, No. ${s.number})`, href: join(`/bible/sermons/${s.slug}`) }));
 const atlasLinks = atlasMaps.map(m => ({ title: m.title, href: join(`/bible/atlas/${m.slug}`) }));
 const placeLinks = biblePlaces.map(p => ({ title: p.hint ? `${p.name} (${p.hint})` : p.name, href: join(`/bible/maps/${p.slug}`) }));
 

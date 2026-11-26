@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { ChevronRight } from "lucide-react";
 import { refText } from "@/components/bible-maps/maps-data";
-import { coversVerse, loadSermonIndex, sermonHref, sermonsIndexHref } from "@/components/sermons/sermons-data";
+import { coversVerse, loadSermonIndex, preacherName, sermonHref, sermonsIndexHref } from "@/components/sermons/sermons-data";
 import type { Location } from "./reader-utils";
 import { Header, LoadState, useLoad } from "./WordStudyPanel";
 
@@ -14,10 +14,10 @@ export function SermonsPanel({ baseUrl, loc, verse, onVerse, onClose }: Props) {
     if (!data) return [];
     return (data.chapters[chapterName] ?? [])
       .map(([i, ranges]) => {
-        const [slug, title, number, year, refs] = data.sermons[i];
-        return { slug, title, number, year, ranges, ref: refs.map(([f, t]) => refText(f, t)).join("; ") };
+        const [slug, title, number, year, refs, preacher] = data.sermons[i];
+        return { slug, title, number, year, ranges, preacher: preacherName(preacher), ref: refs.map(([f, t]) => refText(f, t)).join("; ") };
       })
-      .sort((a, b) => (a.ranges[0][0] - b.ranges[0][0]) || (Number(a.number.split("–")[0]) - Number(b.number.split("–")[0])));
+      .sort((a, b) => (a.ranges[0][0] - b.ranges[0][0]) || a.year - b.year || (Number(a.number.split("–")[0]) - Number(b.number.split("–")[0])));
   }, [data, chapterName]);
   const onVerseCount = verse ? rows.filter(r => coversVerse(r.ranges, verse)).length : 0;
 
@@ -47,7 +47,7 @@ export function SermonsPanel({ baseUrl, loc, verse, onVerse, onClose }: Props) {
                     <span className="group-hover:underline">{r.title}</span>
                     <ChevronRight size={15} aria-hidden="true" className="ml-0.5 inline align-[-2px]" />
                   </a>
-                  <p className="text-xs font-semibold text-[var(--color-text-muted)]">C. H. Spurgeon · No. {r.number} · {r.year} · {r.ref}</p>
+                  <p className="text-xs font-semibold text-[var(--color-text-muted)]">{r.preacher} · No. {r.number} · {r.year} · {r.ref}</p>
                   {verses.length > 0 && (
                     <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
                       <span className="text-xs font-semibold text-[var(--color-text-muted)]">Text</span>
@@ -65,9 +65,10 @@ export function SermonsPanel({ baseUrl, loc, verse, onVerse, onClose }: Props) {
       )}
       <p className="mt-4 text-sm"><a className="br-link font-semibold underline" href={sermonsIndexHref(baseUrl)}>Browse all classic sermons by book</a></p>
       <p className="mt-5 border-t border-[var(--color-border-soft)] pt-3 text-xs leading-relaxed text-[var(--color-text-muted)]">
-        Sermons by C. H. Spurgeon (public domain), checked word for word against scans of the original printings. Transcription:{" "}
-        <a className="underline" href="https://github.com/lyteword/chspurgeon-sermons" target="_blank" rel="noopener noreferrer">lyteword/chspurgeon-sermons</a> (CC0).
-        Spurgeon quotes the King James Version.
+        Sermons by C. H. Spurgeon and John Wesley (public domain), checked word for word against scans of the original printings. Transcriptions:{" "}
+        <a className="underline" href="https://github.com/lyteword/chspurgeon-sermons" target="_blank" rel="noopener noreferrer">lyteword/chspurgeon-sermons</a> (CC0) and{" "}
+        <a className="underline" href="https://www.gutenberg.org/ebooks/59743" target="_blank" rel="noopener noreferrer">Project Gutenberg</a> (Wesley’s Works, 1771).
+        Bible links open the King James Version, which both preachers normally quote.
       </p>
     </div>
   );

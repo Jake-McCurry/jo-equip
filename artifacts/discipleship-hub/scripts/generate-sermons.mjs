@@ -1,9 +1,10 @@
 // Explicit maintenance command, never a network-dependent part of normal builds.
 // Usage:
 //   bash scripts/fetch-sermon-sources.sh /tmp/sermon-sources
-//   python3 scripts/verify-sermons.py /tmp/sermon-sources   (writes scripts/data/sermon-verification.json)
+//   python3 scripts/verify-sermons.py /tmp/sermon-sources          (Spurgeon: writes scripts/data/sermon-verification.json)
+//   python3 scripts/verify-wesley-sermons.py /tmp/sermon-sources   (Wesley: writes scripts/data/wesley-verification.json)
 //   node scripts/generate-sermons.mjs /tmp/sermon-sources
-// Publishes only the sermons listed as verified in sermon-verification.json.
+// Publishes only the sermons listed as verified in the two verification files.
 // Writes:
 //   src/data/sermons/sermons.json       sermon list (build-time: index and sermon pages)
 //   src/data/sermons/bodies/<slug>.json sermon text, one file per sermon (build-time)
@@ -17,6 +18,7 @@ import { createHash } from "node:crypto";
 import { decodeHTML } from "entities";
 import { BOOKS as CATALOG, canonicalBook } from "../worker/bible-catalog.js";
 import { BOOKS, bookIndexOfAbbr, code, decode, validRange } from "./lib/scripture-refs.mjs";
+import { modernRef, parseSermon, sermonWords, splitSermons, titleCase, volumeFootnotes } from "./lib/wesley-sermons.mjs";
 
 const src = process.argv[2];
 if (!src) throw new Error("Usage: node scripts/generate-sermons.mjs <sources directory>");
@@ -196,7 +198,7 @@ function datedService(v) {
   return named === day ? { date: v.date, service: v.service } : {};
 }
 
-const sermons = [];
+const spurgeon = [];
 const bodies = new Map();
 const problems = [];
 for (const v of verification.verified) {
@@ -210,7 +212,7 @@ for (const v of verification.verified) {
   const volume = Number(/^volume-(\d+)\//.exec(v.file)[1]);
   const slug = `spurgeon-${p.number.replace("–", "-")}-${slugify(p.title)}`.slice(0, 90).replace(/-$/, "");
   const scan = scans.get(v.source) ?? fail(`${v.source} not pinned`);
-  sermons.push({
+  spurgeon.push({
     slug, preacher: "spurgeon", number: p.number, title: p.title, volume, series: series(volume), published: 1854 + volume,
     ...datedService(v),
     refs, quote: p.quote, words: v.words,
@@ -218,8 +220,81 @@ for (const v of verification.verified) {
   });
   bodies.set(slug, p.blocks);
 }
+const spurgeonProblems = problems.length;
+spurgeon.sort((a, b) => Number(a.number.split("–")[0]) - Number(b.number.split("–")[0]));
+
+// ---------- John Wesley: Sermons on Several Occasions (Works, Bristol 1771, vols 1–4) ----------
+const wesleySources = JSON.parse(fs.readFileSync(at("scripts/data/wesley-sources.json"), "utf8"));
+const wesleyVerification = JSON.parse(fs.readFileSync(at("scripts/data/wesley-verification.json"), "utf8"));
+// Sermons printed without a title in 1771 take the title later editions use.
+const WESLEY_TITLES = {
+  3: "Awake, Thou That Sleepest",
+  7: "The Way to the Kingdom",
+  47: "Heaviness through Manifold Temptations",
+  52: "The Reformation of Manners",
+  53: "On the Death of the Rev. Mr. George Whitefield",
+};
+const UNTITLED = "No title is printed with this sermon in the 1771 edition; the title is the one later editions use.";
+const WESLEY_NOTES = {
+  3: `Preached by Charles Wesley, John Wesley’s brother; John Wesley included it among his Sermons on Several Occasions. ${UNTITLED}`,
+  7: UNTITLED, 47: UNTITLED, 52: UNTITLED,
+};
+// Same rule as REF_CORRECTIONS above: each correction must pass the KJV check.
+const WESLEY_REF_CORRECTIONS = {
+  41: "2 Corinthians 10:5", // 1771 prints "2 Cor. x. 4" (checked in the scan); the words are verse 5
+};
+// Texts Wesley quotes from another version; the agreement floor drops to 0.7 and the page names the version.
+const WESLEY_TEXT_VERSIONS = {
+  52: "Book of Common Prayer Psalter", // "Who will rise up with me against the wicked?" (KJV: "for me against the evildoers")
+};
+const MONTH_NAMES = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+/** "… on Sunday, January 30, 1763, at …" -> "1763-01-30" (the date as printed; dates before 1752 are Old Style). */
+function printedDate(occasion) {
+  const m = occasion && new RegExp(`(${MONTH_NAMES.join("|")}) (\\d{1,2}), (1[67]\\d\\d)`).exec(occasion);
+  return m ? `${m[3]}-${String(MONTH_NAMES.indexOf(m[1]) + 1).padStart(2, "0")}-${m[2].padStart(2, "0")}` : null;
+}
+const wesley = [];
+const wesleyProblems = [];
+const volumes = new Map();
+for (const vol of wesleySources.volumes) {
+  const buf = fs.readFileSync(path.join(src, "wesley", vol.transcription.file));
+  if (sha(buf) !== vol.transcription.sha256) fail(`${vol.transcription.file} digest changed (${sha(buf)}). Re-run verify-wesley-sermons.py after reviewing the new source.`);
+  const text = buf.toString("utf8");
+  volumes.set(vol.volume, { vol, sermons: splitSermons(text), footnotes: volumeFootnotes(text) });
+}
+for (const v of wesleyVerification.verified) {
+  const { vol, sermons: chunks, footnotes } = volumes.get(v.volume) ?? fail(`Wesley volume ${v.volume} not pinned`);
+  const lines = chunks.get(v.number) ?? fail(`Wesley sermon ${v.number} missing from volume ${v.volume}`);
+  if (sermonWords(lines) !== v.words) fail(`Wesley sermon ${v.number}: ${sermonWords(lines)} words, verified ${v.words}`);
+  if (v.source !== vol.scan.id) fail(`Wesley sermon ${v.number}: verified against unpinned scan ${v.source}`);
+  const p = parseSermon(v.number, lines, footnotes);
+  const heading = p.heading ? titleCase(p.heading) : null;
+  const base = WESLEY_TITLES[v.number] ?? heading ?? fail(`Wesley sermon ${v.number}: no title`);
+  const title = p.discourse ? `${base}: Discourse ${p.discourse}` : base;
+  const refLine = WESLEY_REF_CORRECTIONS[v.number] ?? modernRef(p.refLine);
+  const refs = refLine && parseRefLine(refLine);
+  if (!refs) { wesleyProblems.push(`Wesley ${v.number}: unparsed reference "${p.refLine}"`); continue; }
+  const textVersion = WESLEY_TEXT_VERSIONS[v.number];
+  const agreement = kjvAgreement(p.quote, refs);
+  if (agreement < (textVersion ? 0.7 : 0.8)) { wesleyProblems.push(`Wesley ${v.number}: text "${p.quote.slice(0, 60)}" does not match KJV ${refLine} (${agreement.toFixed(2)})`); continue; }
+  const slug = `wesley-${v.number}-${slugify(title)}`.slice(0, 90).replace(/-$/, "");
+  const date = printedDate(p.occasion);
+  wesley.push({
+    slug, preacher: "wesley", number: String(v.number), title, volume: v.volume, series: wesleySources.edition.series, published: wesleySources.edition.published,
+    ...(date ? { date } : {}),
+    ...(p.occasion ? { occasion: p.occasion } : {}),
+    ...(WESLEY_NOTES[v.number] ? { note: WESLEY_NOTES[v.number] } : {}),
+    ...(textVersion ? { textVersion } : {}),
+    refs, quote: p.quote, words: v.words,
+    scan: { id: vol.scan.id, title: vol.scan.title, date: vol.scan.date, library: vol.scan.library, coverage: v.coverage },
+  });
+  bodies.set(slug, p.blocks);
+}
+wesley.sort((a, b) => Number(a.number) - Number(b.number));
+problems.push(...wesleyProblems);
 if (problems.length) console.warn(`Skipped ${problems.length}:\n  ${problems.join("\n  ")}`);
-sermons.sort((a, b) => Number(a.number.split("–")[0]) - Number(b.number.split("–")[0]));
+
+const sermons = [...spurgeon, ...wesley];
 if (new Set(sermons.map(s => s.slug)).size !== sermons.length) fail("duplicate sermon slugs");
 
 // ---------- reader chapter index: "Malachi 3" -> [[sermon index, [[v1, v2], ...]], ...] (v1 = 0: whole chapter) ----------
@@ -237,7 +312,7 @@ sermons.forEach((s, i) => {
   }
   for (const [key, ranges] of per) (chapters[key] ??= []).push([i, ranges]);
 });
-const list = sermons.map(s => [s.slug, s.title, s.number, s.date ? Number(s.date.slice(0, 4)) : s.published, s.refs]);
+const list = sermons.map(s => [s.slug, s.title, s.number, s.date ? Number(s.date.slice(0, 4)) : s.published, s.refs, s.preacher]);
 
 const outPublic = at("public/bible-data/sermons/");
 const outData = at("src/data/sermons/");
@@ -249,11 +324,21 @@ const hashed = (name, text) => { const h = sha(text).slice(0, 10); fs.writeFileS
 const index = JSON.stringify({ sermons: list, chapters });
 const manifest = {
   files: { index: hashed("index", index) },
-  counts: { checked: verification.checked, published: sermons.length, rejected: verification.rejected, skippedHere: problems.length },
-  edition: verification.edition,
-  criteria: verification.criteria,
+  published: sermons.length,
+  preachers: {
+    spurgeon: {
+      counts: { checked: verification.checked, published: spurgeon.length, rejected: verification.rejected, skippedHere: spurgeonProblems },
+      edition: verification.edition,
+      criteria: verification.criteria,
+    },
+    wesley: {
+      counts: { checked: wesleyVerification.checked, published: wesley.length, rejected: wesleyVerification.rejected, skippedHere: wesleyProblems.length },
+      edition: { ...wesleySources.edition, transcriptions: wesleySources.volumes.map(v => ({ volume: v.volume, gutenberg: v.transcription.gutenberg, sha256: v.transcription.sha256 })) },
+      criteria: wesleyVerification.criteria,
+    },
+  },
 };
 fs.writeFileSync(new URL("manifest.json", outData), JSON.stringify(manifest, null, 1) + "\n");
 fs.writeFileSync(new URL("sermons.json", outData), JSON.stringify(sermons) + "\n");
 for (const [slug, blocks] of bodies) fs.writeFileSync(new URL(`bodies/${slug}.json`, outData), JSON.stringify(blocks) + "\n");
-console.log(`${sermons.length} sermons published (of ${verification.checked} checked); ${Object.keys(chapters).length} chapters; index ${(index.length / 1024).toFixed(0)} KB`);
+console.log(`${spurgeon.length} Spurgeon sermons (of ${verification.checked} checked) and ${wesley.length} Wesley sermons (of ${wesleyVerification.checked}) published; ${Object.keys(chapters).length} chapters; index ${(index.length / 1024).toFixed(0)} KB`);

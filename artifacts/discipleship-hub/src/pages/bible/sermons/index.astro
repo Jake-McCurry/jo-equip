@@ -2,7 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import SermonSources from "@/components/sermons/SermonSources.astro";
 import { bookName, refText } from "@/components/bible-maps/maps-data";
-import { PREACHERS, sermons, type PreacherId, type Sermon } from "@/data/sermons";
+import { PREACHERS, sermons, sermonsBy, type PreacherId, type Sermon } from "@/data/sermons";
 import "@/components/bible-maps/bible-maps.css";
 
 const baseUrl = import.meta.env.BASE_URL;
@@ -20,12 +20,14 @@ const multiText = sermons.filter(s => !s.refs.length);
 const refLabel = (s: Sermon) => s.refs.map(([f, t]) => refText(f, t)).join("; ");
 const year = (s: Sermon) => (s.date ? s.date.slice(0, 4) : String(s.published));
 
-const byPreacher = (Object.keys(PREACHERS) as PreacherId[]).map(id => ({ id, ...PREACHERS[id], list: sermons.filter(s => s.preacher === id) }));
+const byPreacher = (Object.keys(PREACHERS) as PreacherId[]).map(id => ({ id, ...PREACHERS[id], list: sermonsBy(id) }));
+const names = byPreacher.map(p => p.name);
+const nameList = names.length > 1 ? `${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}` : names[0];
 const otCount = sermons.filter(s => s.refs.length && s.refs[0][0] < 40e6).length;
 ---
 <Layout
-  title="Classic Sermons by Bible Passage: C. H. Spurgeon · JO EQUIP"
-  description={`Read ${sermons.length} classic sermons by C. H. Spurgeon, arranged by Bible book and checked word for word against the original 19th-century printings. Each sermon links to its text in the online Bible.`}
+  title={`Classic Sermons by Bible Passage: ${nameList} · JO EQUIP`}
+  description={`Read ${sermons.length} classic sermons by ${nameList}, arranged by Bible book and checked word for word against the original printings. Each sermon links to its text in the online Bible.`}
 >
   <div class="bmp-main bmp-narrow">
     <nav class="bmp-crumbs" aria-label="Breadcrumb">
@@ -35,8 +37,8 @@ const otCount = sermons.filter(s => s.refs.length && s.refs[0][0] < 40e6).length
     <p class="bmp-eyebrow">Study Tools</p>
     <h1 class="bmp-title">Classic Sermons</h1>
     <p class="bmp-lede">
-      {sermons.length} sermons by C. H. Spurgeon ({otCount} on Old Testament texts, {sermons.length - otCount - multiText.length} on New Testament texts),
-      in his original wording. Find a sermon on the passage you are studying, or open any chapter in the{" "}
+      {sermons.length} sermons by {byPreacher.map((p, i) => <>{i > 0 && (i === byPreacher.length - 1 ? " and " : ", ")}<a class="bmp-link" href={`#${p.id}`}>{p.name}</a> ({p.list.length})</>)}
+      {" "}in their original wording: {otCount} on Old Testament texts and {sermons.length - otCount - multiText.length} on New Testament texts. Find a sermon on the passage you are studying, or open any chapter in the{" "}
       <a class="bmp-link" href={join("/bible")}>online Bible</a> and choose the Sermons tab.
     </p>
 
@@ -52,7 +54,7 @@ const otCount = sermons.filter(s => s.refs.length && s.refs[0][0] < 40e6).length
             {b.list.map(s => (
               <li>
                 <a href={join(`/bible/sermons/${s.slug}`)}>{s.title}</a>
-                <small>{refLabel(s)} · No. {s.number} · {year(s)}</small>
+                <small>{PREACHERS[s.preacher].name} · {refLabel(s)} · No. {s.number} · {year(s)}</small>
               </li>
             ))}
           </ul>
@@ -62,7 +64,7 @@ const otCount = sermons.filter(s => s.refs.length && s.refs[0][0] < 40e6).length
         <>
           <h3 id="several-texts">Sermons on several texts</h3>
           <ul class="srm-list">
-            {multiText.map(s => <li><a href={join(`/bible/sermons/${s.slug}`)}>{s.title}</a><small>No. {s.number} · {year(s)}</small></li>)}
+            {multiText.map(s => <li><a href={join(`/bible/sermons/${s.slug}`)}>{s.title}</a><small>{PREACHERS[s.preacher].name} · No. {s.number} · {year(s)}</small></li>)}
           </ul>
         </>
       )}

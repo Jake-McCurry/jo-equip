@@ -67,3 +67,4 @@
 - [Wesley sermon sources](wesley-sermon-sources.md) — 1771 Works via Gutenberg + Duke scans (XLIX gap via 1777 pamphlet); later sermons via CCEL Jackson text vs 1788 scans.
 - [Whitefield/Maclaren sermon sources](whitefield-maclaren-sermon-sources.md) — thresholds, known exclusions, modern-licence findings; user prefers Bible tools over more sermons.
 - [Bible tools roadmap](bible-tools-roadmap.md) — user prefers Bible tools over more content; Nave's topical index deferred to a later list.
+- [Easton dictionary source](easton-dictionary-source.md) — SWORD zLD module; bare-number refs mislinked to Genesis; Æ in KJV; 1893 scan for spot-check.

@@ -1,0 +1,71 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import DictionarySources from "@/components/bible-dictionary/DictionarySources.astro";
+import { readerHref, refText } from "@/components/bible-maps/maps-data";
+import { placeBySlug } from "@/data/bible-maps";
+import { dictEntries, dictEntryBySlug, type DictEntry, type DictSeg } from "@/data/bible-dictionary";
+import "@/components/bible-maps/bible-maps.css";
+
+const sorted = [...dictEntries].sort((a, b) => a.title.localeCompare(b.title, "en", { sensitivity: "base" }));
+export function getStaticPaths() {
+  return dictEntries.map(entry => ({ params: { slug: entry.slug }, props: { entry } }));
+}
+const { entry } = Astro.props as { entry: DictEntry };
+const baseUrl = import.meta.env.BASE_URL;
+const join = (path: string) => (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + path;
+const i = sorted.findIndex(e => e.slug === entry.slug);
+const prev = sorted[i - 1], next = sorted[i + 1];
+const text = (s: DictSeg) => (typeof s === "string" ? s : s[0]);
+const plain = entry.paras.filter(p => p[0] === "p").map(p => p.slice(1).map(s => text(s as DictSeg)).join("")).join(" ").replace(/\s+/g, " ").trim();
+const cut = plain.length > 150 ? `${plain.slice(0, 150).replace(/\s+\S*$/, "")}…` : plain;
+const description = `${entry.title} in Easton’s Bible Dictionary: ${cut}`;
+const places = (entry.places ?? []).map(s => placeBySlug.get(s)).filter(p => !!p);
+const segs = (p: DictEntry["paras"][number]) => p.slice(1) as DictSeg[];
+---
+<Layout title={`${entry.title}: Easton’s Bible Dictionary · JO EQUIP`} description={description}>
+  <div class="bmp-main bmp-narrow">
+    <nav class="bmp-crumbs" aria-label="Breadcrumb">
+      <a href={join("/bible/resources")}>Bible Resources</a> <span aria-hidden="true">/</span>
+      <a href={join("/bible/dictionary")}>Bible Dictionary</a> <span aria-hidden="true">/</span> {entry.title}
+    </nav>
+    <p class="bmp-eyebrow">Easton’s Bible Dictionary</p>
+    <h1 class="bmp-title">{entry.title}</h1>
+
+    <div class="bmp-section bmp-dict dict-body">
+      {entry.paras.map(p => {
+        const body = segs(p).map(s => {
+          if (typeof s === "string") return s;
+          const inner = s[1] & 1 ? <em>{s[0]}</em> : s[0];
+          if (s.length === 2) return inner;
+          if (typeof s[2] === "string") return dictEntryBySlug.has(s[2]) ? <a href={join(`/bible/dictionary/${s[2]}`)}>{inner}</a> : inner;
+          const to = s.length === 4 ? (s[3] as number) : undefined;
+          return <a href={readerHref(baseUrl, s[2], "kjv")} title={`${refText(s[2], to)} (KJV)`}>{inner}</a>;
+        });
+        return p[0] === "h" ? <h2 class="dict-part">{body}</h2> : <p>{body}</p>;
+      })}
+    </div>
+
+    {places.length > 0 && (
+      <section class="bmp-section" aria-labelledby="map-h">
+        <h2 id="map-h">On the Bible map</h2>
+        <ul>
+          {places.map(p => <li><a class="bmp-link" href={join(`/bible/maps/${p!.slug}`)}>{p!.hint ? `${p!.name} (${p!.hint})` : p!.name}: map and every verse that mentions it →</a></li>)}
+        </ul>
+      </section>
+    )}
+
+    <nav class="srm-pager" aria-label="Neighbouring entries">
+      {prev ? <a class="bmp-link" href={join(`/bible/dictionary/${prev.slug}`)}>← {prev.title}</a> : <span />}
+      <a class="bmp-link" href={join("/bible/dictionary")}>All entries A–Z</a>
+      {next ? <a class="bmp-link" href={join(`/bible/dictionary/${next.slug}`)}>{next.title} →</a> : <span />}
+    </nav>
+
+    <DictionarySources />
+  </div>
+</Layout>
+
+<style>
+  .dict-body { margin-top: 1.5rem; font-size: 1.1rem; line-height: 1.75; overflow-wrap: break-word; }
+  .dict-body a { font-weight: 600; }
+  .dict-part { margin: 1.5rem 0 .5rem; color: var(--color-hero, #006bb3); font-size: 1.2rem; font-weight: 700; }
+</style>

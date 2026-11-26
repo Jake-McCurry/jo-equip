@@ -1,0 +1,88 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import DictionarySources from "@/components/bible-dictionary/DictionarySources.astro";
+import { dictEntries } from "@/data/bible-dictionary";
+import "@/components/bible-maps/bible-maps.css";
+
+const baseUrl = import.meta.env.BASE_URL;
+const join = (path: string) => (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + path;
+const letters = new Map<string, typeof dictEntries>();
+for (const e of [...dictEntries].sort((a, b) => a.title.localeCompare(b.title, "en", { sensitivity: "base" }))) {
+  const l = e.slug[0].toUpperCase();
+  letters.set(l, [...(letters.get(l) ?? []), e]);
+}
+const fold = (s: string) => s.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/æ/g, "ae").replace(/[’']/g, "");
+const count = dictEntries.length.toLocaleString("en-US");
+---
+<Layout
+  title="Easton’s Bible Dictionary A–Z: People, Places and Terms · JO EQUIP"
+  description={`Search ${count} articles from Easton’s Bible Dictionary (1897) on the people, places, customs and teachings of the Bible, with every reference linked to the King James Version.`}
+>
+  <div class="bmp-main bmp-narrow">
+    <nav class="bmp-crumbs" aria-label="Breadcrumb">
+      <a href={join("/bible")}>Bible</a> <span aria-hidden="true">/</span>
+      <a href={join("/bible/resources")}>Bible Resources</a> <span aria-hidden="true">/</span> Bible Dictionary
+    </nav>
+    <p class="bmp-eyebrow">Study Tools</p>
+    <h1 class="bmp-title">Easton’s Bible Dictionary</h1>
+    <p class="bmp-lede">
+      {count} short articles on the people, places, customs and teachings of the Bible, from M. G. Easton’s <em>Illustrated Bible Dictionary</em> (1897).
+      Every Bible reference opens in the <a class="bmp-link" href={join("/bible")}>online Bible</a>, where the Dictionary tab lists the entries for the chapter you are reading.
+    </p>
+
+    <section class="bmp-section" aria-labelledby="az-h">
+      <h2 id="az-h">Find an entry</h2>
+      <label for="dict-q" class="dict-label">Search entry names</label>
+      <input id="dict-q" class="dict-search" type="search" autocomplete="off" spellcheck="false" placeholder="For example: Bethel" />
+      <p id="dict-status" class="dict-status" role="status" aria-live="polite"></p>
+      <ul class="bmp-az" aria-label="Jump to a letter">
+        {[...letters.keys()].map(l => <li><a href={`#letter-${l.toLowerCase()}`}>{l}</a></li>)}
+      </ul>
+      <div id="dict-list">
+        {[...letters].map(([l, list]) => (
+          <div class="dict-letter" data-letter>
+            <h3 id={`letter-${l.toLowerCase()}`}>{l} <small style="font-weight:400">({list.length})</small></h3>
+            <ul class="bmp-az-list">
+              {list.map(e => <li data-k={fold(e.title)}><a href={join(`/bible/dictionary/${e.slug}`)}>{e.title}</a></li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <DictionarySources />
+  </div>
+</Layout>
+
+<script>
+  const input = document.getElementById("dict-q") as HTMLInputElement | null;
+  const status = document.getElementById("dict-status");
+  const groups = [...document.querySelectorAll<HTMLElement>("#dict-list [data-letter]")];
+  const fold = (s: string) => s.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/æ/g, "ae").replace(/[’']/g, "").trim();
+  const run = () => {
+    const q = fold(input?.value ?? "");
+    let shown = 0;
+    for (const g of groups) {
+      let n = 0;
+      for (const li of g.querySelectorAll<HTMLElement>("li[data-k]")) {
+        const k = li.dataset.k ?? "";
+        const hit = !q || k.split(/[\s,-]+/).some(w => w.startsWith(q)) || (q.length > 2 && k.includes(q));
+        li.hidden = !hit;
+        if (hit) n++;
+      }
+      g.hidden = n === 0;
+      shown += n;
+    }
+    if (status) status.textContent = q ? (shown ? `${shown} ${shown === 1 ? "entry matches" : "entries match"} “${input!.value.trim()}”.` : `No entry name matches “${input!.value.trim()}”.`) : "";
+  };
+  input?.addEventListener("input", run);
+  const initial = new URLSearchParams(window.location.search).get("q");
+  if (input && initial) { input.value = initial; run(); }
+</script>
+
+<style>
+  .dict-label { display: block; margin-bottom: .35rem; font-weight: 700; }
+  .dict-search { width: 100%; max-width: 32rem; min-height: 2.75rem; padding: .5rem .75rem; border: 1px solid var(--color-border-control, #7aa7c7); border-radius: 4px; font: inherit; font-size: 1.05rem; background: #fff; }
+  .dict-search:focus-visible { outline: 2px solid var(--color-hero, #006bb3); outline-offset: 1px; }
+  .dict-status { min-height: 1.5rem; margin: .5rem 0 .75rem; color: var(--color-text-muted, #2e5a7a); font-weight: 600; }
+</style>

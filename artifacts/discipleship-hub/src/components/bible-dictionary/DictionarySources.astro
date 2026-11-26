@@ -1,0 +1,22 @@
+---
+/* Source and license credits for Easton's Bible Dictionary.
+   Keep in step with scripts/data/bible-search-sources.md. */
+import { dictManifest } from "@/data/bible-dictionary";
+const ext = { target: "_blank", rel: "noopener noreferrer" };
+---
+<section class="bmp-sources" aria-labelledby="dict-sources-h">
+  <h2 id="dict-sources-h">Sources and licenses</h2>
+  <ul>
+    <li>
+      Text: M. G. Easton (1823–1894), <em>Illustrated Bible Dictionary</em>, third edition (Thomas Nelson, 1897), public domain.
+      Transcription from the <a href="https://www.crosswire.org/sword/modules/ModInfo.jsp?modName=Easton" {...ext}>CrossWire SWORD module “Easton”</a> (version {dictManifest.module.version}, from the <a href="https://ccel.org/ccel/easton/ebd2" {...ext}>Christian Classics Ethereal Library</a> text), public domain.
+    </li>
+    <li>
+      Wording checked against a scan of the first edition (Harper &amp; Brothers, 1893) at the <a href="https://archive.org/details/illustratedbible00east" {...ext}>Internet Archive</a> (Library of Congress copy).
+    </li>
+    <li>
+      Bible references link to the King James Version, which Easton quotes. Where the source links a reference to the wrong book, the link follows the printed reference instead; references that cannot be identified are left as plain text.
+    </li>
+  </ul>
+  <p>Easton’s articles reflect the scholarship of the 1890s; some identifications and dates have since been revised.</p>
+</section>

@@ -1,8 +1,8 @@
-import { useRef, type KeyboardEvent, type ReactNode } from "react";
+import { useEffect, useRef, type KeyboardEvent, type ReactNode } from "react";
 
 // Add new study tabs by extending this union and passing another entry in
 // `tabs`; the tab list and keyboard behavior are generic.
-export type StudyTab = "words" | "notes" | "commentary" | "xrefs" | "places" | "sermons" | "library";
+export type StudyTab = "words" | "notes" | "commentary" | "xrefs" | "places" | "sermons" | "dictionary" | "library";
 export type StudyPaneTab = { id: StudyTab; label: string; content: ReactNode };
 
 type Props = { tabs: StudyPaneTab[]; tab: StudyTab; onTab: (t: StudyTab) => void; idPrefix: string; compact?: boolean };
@@ -10,6 +10,14 @@ type Props = { tabs: StudyPaneTab[]; tab: StudyTab; onTab: (t: StudyTab) => void
 export function StudyPane({ tabs, tab, onTab, idPrefix, compact }: Props) {
   const refs = useRef<(HTMLButtonElement | null)[]>([]);
   const active = tabs.find(t => t.id === tab) ?? tabs[0];
+  // Keep the active tab visible when the tab row scrolls sideways (narrow panes).
+  useEffect(() => {
+    const el = refs.current[tabs.indexOf(active)], list = el?.parentElement;
+    if (!el || !list) return;
+    if (el.offsetLeft < list.scrollLeft) list.scrollLeft = el.offsetLeft;
+    else if (el.offsetLeft + el.offsetWidth > list.scrollLeft + list.clientWidth) list.scrollLeft = el.offsetLeft + el.offsetWidth - list.clientWidth;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [active.id]);
   const onKey = (e: KeyboardEvent, i: number) => {
     const next = e.key === "ArrowRight" ? i + 1 : e.key === "ArrowLeft" ? i - 1 : e.key === "Home" ? 0 : e.key === "End" ? tabs.length - 1 : null;
     if (next === null) return;

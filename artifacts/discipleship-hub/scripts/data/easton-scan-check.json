@@ -1,0 +1,315 @@
+{
+ "scan": {
+  "id": "illustratedbible00east",
+  "title": "Illustrated Bible Dictionary (Harper & Brothers, New York, 1893; first edition)",
+  "library": "Library of Congress",
+  "file": "illustratedbible00east_djvu.txt",
+  "url": "https://archive.org/download/illustratedbible00east/illustratedbible00east_djvu.txt",
+  "md5": "f6ba3e308d3295acbad4c22505860f92"
+ },
+ "method": "Every 66th entry (60 entries): the first 40 words of the transcription, matched in order against the OCR text (case, accents and line-end hyphens ignored). An entry passes at 85% agreement.",
+ "passRate": 0.9,
+ "results": [
+  {
+   "slug": "a",
+   "words": 40,
+   "agreement": 1
+  },
+  {
+   "slug": "achbor",
+   "words": 40,
+   "agreement": 0.95
+  },
+  {
+   "slug": "ahava",
+   "words": 40,
+   "agreement": 0.95
+  },
+  {
+   "slug": "ambush",
+   "words": 39,
+   "agreement": 0.949
+  },
+  {
+   "slug": "apollos",
+   "words": 40,
+   "agreement": 0.95
+  },
+  {
+   "slug": "ascension",
+   "words": 3,
+   "agreement": 1
+  },
+  {
+   "slug": "baalath",
+   "words": 35,
+   "agreement": 0.886
+  },
+  {
+   "slug": "bashan-hill-of",
+   "words": 18,
+   "agreement": 0.944
+  },
+  {
+   "slug": "berachah",
+   "words": 40,
+   "agreement": 0.9
+  },
+  {
+   "slug": "bith-ron",
+   "words": 40,
+   "agreement": 0.975
+  },
+  {
+   "slug": "bullock",
+   "words": 40,
+   "agreement": 1
+  },
+  {
+   "slug": "carpenter",
+   "words": 40,
+   "agreement": 0.975
+  },
+  {
+   "slug": "chesed",
+   "words": 9,
+   "agreement": 0.778
+  },
+  {
+   "slug": "coffin",
+   "words": 32,
+   "agreement": 0.938
+  },
+  {
+   "slug": "crimson",
+   "words": 3,
+   "agreement": 0,
+   "found": false
+  },
+  {
+   "slug": "dead-sea",
+   "words": 40,
+   "agreement": 1
+  },
+  {
+   "slug": "door-keeper",
+   "words": 40,
+   "agreement": 1
+  },
+  {
+   "slug": "ecclesiastes",
+   "words": 40,
+   "agreement": 0.825
+  },
+  {
+   "slug": "elparan",
+   "words": 40,
+   "agreement": 0.95
+  },
+  {
+   "slug": "esther-book-of",
+   "words": 40,
+   "agreement": 0.975
+  },
+  {
+   "slug": "fence",
+   "words": 40,
+   "agreement": 1
+  },
+  {
+   "slug": "frost",
+   "words": 40,
+   "agreement": 1
+  },
+  {
+   "slug": "gehenna",
+   "words": 40,
+   "agreement": 0.95
+  },
+  {
+   "slug": "gold",
+   "words": 40,
+   "agreement": 0.975
+  },
+  {
+   "slug": "haggai",
+   "words": 40,
+   "agreement": 0.925
+  },
+  {
+   "slug": "hart",
+   "words": 40,
+   "agreement": 1
+  },
+  {
+   "slug": "helbah",
+   "words": 17,
+   "agreement": 0.941
+  },
+  {
+   "slug": "hilkiah",
+   "words": 40,
+   "agreement": 0.9
+  },
+  {
+   "slug": "husbandman",
+   "words": 40,
+   "agreement": 0.975
+  },
+  {
+   "slug": "ituraea",
+   "words": 40,
+   "agreement": 0.95
+  },
+  {
+   "slug": "jattir",
+   "words": 15,
+   "agreement": 0.867
+  },
+  {
+   "slug": "jeshebeab",
+   "words": 17,
+   "agreement": 0.941
+  },
+  {
+   "slug": "joshua",
+   "words": 40,
+   "agreement": 0.9
+  },
+  {
+   "slug": "key",
+   "words": 40,
+   "agreement": 0.975
+  },
+  {
+   "slug": "lattice",
+   "words": 40,
+   "agreement": 0.925
+  },
+  {
+   "slug": "log",
+   "words": 40,
+   "agreement": 1
+  },
+  {
+   "slug": "mahlah",
+   "words": 29,
+   "agreement": 0.966
+  },
+  {
+   "slug": "mattithiah",
+   "words": 40,
+   "agreement": 0.775
+  },
+  {
+   "slug": "meshullemeth",
+   "words": 18,
+   "agreement": 0.944
+  },
+  {
+   "slug": "mixed-multitude",
+   "words": 40,
+   "agreement": 0.975
+  },
+  {
+   "slug": "naarath",
+   "words": 26,
+   "agreement": 0.962
+  },
+  {
+   "slug": "nergal-sharezer",
+   "words": 40,
+   "agreement": 0.85
+  },
+  {
+   "slug": "oil-tree",
+   "words": 40,
+   "agreement": 0.975
+  },
+  {
+   "slug": "paphos",
+   "words": 40,
+   "agreement": 0.975
+  },
+  {
+   "slug": "perseverance-of-the-saints",
+   "words": 40,
+   "agreement": 0.875
+  },
+  {
+   "slug": "pledge",
+   "words": 3,
+   "agreement": 1
+  },
+  {
+   "slug": "quotations",
+   "words": 40,
+   "agreement": 0.975
+  },
+  {
+   "slug": "repentance",
+   "words": 40,
+   "agreement": 0.975
+  },
+  {
+   "slug": "sabbath-days-journey",
+   "words": 40,
+   "agreement": 0.925
+  },
+  {
+   "slug": "schools-of-the-prophets",
+   "words": 35,
+   "agreement": 1
+  },
+  {
+   "slug": "shalisha-land-of",
+   "words": 24,
+   "agreement": 0.958
+  },
+  {
+   "slug": "shihon",
+   "words": 9,
+   "agreement": 0.778
+  },
+  {
+   "slug": "silverling",
+   "words": 20,
+   "agreement": 0.95
+  },
+  {
+   "slug": "star-morning",
+   "words": 40,
+   "agreement": 1
+  },
+  {
+   "slug": "tachmonite",
+   "words": 17,
+   "agreement": 0.941
+  },
+  {
+   "slug": "theophilus",
+   "words": 40,
+   "agreement": 0.95
+  },
+  {
+   "slug": "tooth",
+   "words": 40,
+   "agreement": 1
+  },
+  {
+   "slug": "vaticanus-codex",
+   "words": 40,
+   "agreement": 0.325
+  },
+  {
+   "slug": "word-of-god",
+   "words": 40,
+   "agreement": 1
+  },
+  {
+   "slug": "zelophehad",
+   "words": 40,
+   "agreement": 0.925
+  }
+ ]
+}

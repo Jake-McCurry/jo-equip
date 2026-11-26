@@ -42,8 +42,8 @@ export function readLocation(): Location {
   return { book: found.name, chapter, verse: Number.isInteger(v) && v > 0 ? v : undefined, translation };
 }
 
-/** Study tab deep link: `?commentary=mhc` opens the Commentary tab, `?tab=xrefs` / `?tab=places` / `?tab=sermons` the Cross-references / Places / Sermons tab. */
-export type StudyLink = { tab: "commentary"; commentary: CommentaryId } | { tab: "xrefs" } | { tab: "places" } | { tab: "sermons" };
+/** Study tab deep link: `?commentary=mhc` opens the Commentary tab, `?tab=xrefs` / `?tab=places` / `?tab=sermons` / `?tab=dictionary` the Cross-references / Places / Sermons / Dictionary tab. */
+export type StudyLink = { tab: "commentary"; commentary: CommentaryId } | { tab: "xrefs" } | { tab: "places" } | { tab: "sermons" } | { tab: "dictionary" };
 
 export function locationSearch(loc: Location, strongs?: string | null, study?: StudyLink | null) {
   const q = new URLSearchParams({ book: loc.book, chapter: String(loc.chapter) });
@@ -64,6 +64,7 @@ export function readStudyLink(): StudyLink | null {
   if (t === "xrefs" || t === "cross-references") return { tab: "xrefs" };
   if (t === "places" || t === "maps") return { tab: "places" };
   if (t === "sermons") return { tab: "sermons" };
+  if (t === "dictionary") return { tab: "dictionary" };
   if (t === "commentary") return { tab: "commentary", commentary: "mhc" };
   return null;
 }

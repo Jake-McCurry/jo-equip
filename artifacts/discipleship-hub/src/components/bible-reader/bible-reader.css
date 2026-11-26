@@ -40,7 +40,7 @@
 .br-scroll::-webkit-scrollbar-thumb { background: var(--color-border-control); border-radius: 8px; }
 /* Study pane (desktop split screen) and word study */
 .br-pane { max-height: calc(100dvh - 120px); overflow: hidden; }
-.br-tabs { flex-shrink: 0; display: flex; gap: .25rem; border-bottom: 1px solid var(--color-border-soft); overflow-x: auto; }
+.br-tabs { position: relative; flex-shrink: 0; display: flex; gap: .25rem; border-bottom: 1px solid var(--color-border-soft); overflow-x: auto; }
 .br-tab { flex: 0 0 auto; min-height: 44px; padding: .5rem .8rem; font-weight: 700; font-size: .95rem; color: var(--color-text-muted); border-bottom: 3px solid transparent; margin-bottom: -1px; white-space: nowrap; }
 .br-tab:hover { color: var(--color-hero); }
 .br-tab.is-active { color: var(--color-hero); border-bottom-color: var(--color-accent); }

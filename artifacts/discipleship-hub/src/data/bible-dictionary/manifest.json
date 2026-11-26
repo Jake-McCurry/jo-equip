@@ -1,0 +1,59 @@
+{
+ "schemaVersion": 1,
+ "source": {
+  "file": "Easton.zip",
+  "url": "https://www.crosswire.org/ftpmirror/pub/sword/packages/rawzip/Easton.zip",
+  "sha256": "f6dd054554764e2e97d5d189a697eb26039054578a9ccf98ce668ab810341c6e"
+ },
+ "module": {
+  "name": "Easton",
+  "version": "2.0.1",
+  "textSource": "CCEL",
+  "edition": "M. G. Easton, Illustrated Bible Dictionary, third edition (Thomas Nelson, 1897)"
+ },
+ "files": {
+  "letters": {
+   "a": "b2c0ff1ba7",
+   "b": "a932f463cd",
+   "c": "b0e7d25a30",
+   "d": "7e6ac98f73",
+   "e": "4f7474eb0e",
+   "f": "4deba3995c",
+   "g": "c8d536da93",
+   "h": "0a60da7f1e",
+   "i": "56b5cd6447",
+   "j": "f51ec80c3d",
+   "k": "e15ece07a8",
+   "l": "81f88d6cea",
+   "m": "0562d68079",
+   "n": "7163c59dee",
+   "o": "063ee527fe",
+   "p": "4354ebbbf2",
+   "q": "aaa5736978",
+   "r": "90013ac5ea",
+   "s": "9e943f4e7f",
+   "t": "4268a93412",
+   "u": "8764e7e085",
+   "v": "a311f8e04e",
+   "w": "36035231de",
+   "y": "70ec1cda15",
+   "z": "c00aa08712"
+  },
+  "index": "853e983e84"
+ },
+ "stats": {
+  "entries": 3960,
+  "sourceEntries": 3963,
+  "refs": 24092,
+  "refsFromText": 802,
+  "refsDropped": 48,
+  "refsCorrected": 31,
+  "entryLinks": 251,
+  "nameEntries": 2035,
+  "phraseEntries": 135,
+  "seeLinks": 618,
+  "seeUnlinked": 69,
+  "chapters": 1174,
+  "placeLinks": 573
+ }
+}

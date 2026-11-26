@@ -293,3 +293,72 @@ No modern sermon collection with an open licence that allows republishing whole 
 - **Bible.org**, [bible.org/permissions](https://bible.org/permissions): a custom policy. Free printed copies are allowed, but material "cannot be posted on other websites or servers" and may not be edited; reposting needs written permission (Bible.org's contact form, category Permissions).
 
 Both are custom policies, so nothing modern is published without the ministry's approval and the publisher's written permission. Because no modern sermons were added, the section keeps the name "Classic Sermons".
+
+# Easton's Bible Dictionary (Bible reader Dictionary tab, /bible/dictionary)
+
+Maintenance only; the build reads the committed files and never fetches.
+Regenerate with `bash scripts/fetch-dictionary-sources.sh /tmp/dictionary-sources`,
+`node scripts/generate-bible-dictionary.mjs /tmp/dictionary-sources` and
+`node scripts/verify-easton-scan.mjs /tmp/dictionary-sources`. The build runs
+`pnpm run test:dictionary` (`scripts/bible-dictionary-data.test.mjs`).
+
+- **Text:** M. G. Easton, *Illustrated Bible Dictionary*, third edition
+  (T. Nelson & Sons, 1897), public domain.
+- **Transcription:** CrossWire SWORD module "Easton", version 2.0.1
+  (TextSource CCEL, DistributionLicense Public Domain; zLD lexicon driver, TEI
+  markup, UTF-8), <https://www.crosswire.org/ftpmirror/pub/sword/packages/rawzip/Easton.zip>,
+  sha256 `f6dd054554764e2e97d5d189a697eb26039054578a9ccf98ce668ab810341c6e`.
+  `scripts/lib/sword-zld.mjs` reads the compressed module directly. This is a
+  separate, fuller copy of Easton from the Theographic `dictText` used on the
+  map place pages (above); the place pages keep their excerpt and link to the
+  dictionary entry.
+- **Entries:** 3,963 module records become 3,960 pages. Two headwords have two
+  separate articles each (Kadesh, Salmon); they share one page with numbered
+  parts. "AEnon" is shown as "Ænon". URLs are `/bible/dictionary/<slug>`
+  (lower case, hyphenated, no trailing slash).
+- **Normalization:** TEI is converted to paragraphs of text segments. `<foreign>`
+  becomes italics; underscores left inside two `<foreign>` runs are removed;
+  whitespace is collapsed. "(See MOSES.)" cross-references (`<ref target="Easton:…">`),
+  printed in capitals, are shown in the entry's own capitalization and link
+  to that entry (618 links; 69 whose target is missing from the module stay as
+  text). Plain "Name (q.v.)" mentions link to the named entry when it exists
+  (251 links). No wording is changed.
+- **Scripture references (KJV):** 24,092 references. A reference that names
+  a book keeps the module's link, provided the link is to that book (one
+  exception, "Lev. 42:6", which the module links to Numbers, is left
+  unlinked). The module often links bare continuation numbers ("Rev. 1:8, 11")
+  to Genesis 1, so bare numbers are re-read from the printed text in the
+  context of the previous reference in the same paragraph (a chapter after a
+  whole-chapter reference, otherwise a verse in the same chapter). When the
+  module's link is in the same book as that context, it is kept (it reads lists
+  such as "12:38; 22; 23-26" as chapters correctly). 802 links come from the
+  printed text this way, 31 of them replacing a module link to another book.
+  Every link is checked against KJV versification; 48 that cannot be resolved
+  (for example 1 Maccabees, "Judg. 8:33-9", misprinted chapter numbers) stay as
+  plain text. The test allows at most 100.
+- **Chapter index (reader tab):** an entry is listed for a chapter when
+  (1) its headword (or a spelling variant such as "Sharon, Saron") is a proper
+  name, capitalized and never lower case in the KJV, and the chapter's KJV text
+  contains it (2,035 entries); (2) a multi-word headword ("Son of man") occurs
+  as a phrase (134 entries); or (3) for other terms, a verse the entry itself
+  cites contains the word (or a simple plural). Entries matched in 1,174 of
+  1,189 chapters, about 16 per chapter. Two people with one name ("Agrippa I.",
+  "Agrippa II.") both appear wherever the name does.
+- **Places:** 573 Bible map places whose Theographic Easton excerpt matches a
+  dictionary entry with the same headword link to that entry, and the entry
+  page links back to the map page.
+- **Scan spot-check:** no institutional scan of the 1897 third edition was
+  found, so the check uses the Internet Archive OCR of the 1893 first edition
+  (Harper & Brothers, New York; Library of Congress copy),
+  <https://archive.org/details/illustratedbible00east>, `_djvu.txt` md5
+  `f6ba3e308d3295acbad4c22505860f92`. Every 66th entry (60 entries): the
+  headword and first 40 words, matched in order against the OCR (case, accents
+  and line-end hyphens ignored); result in `scripts/data/easton-scan-check.json`.
+  54 of 60 agree at 85% or better. Of the six below: Chesed, Shihon and
+  Ecclesiastes are short or OCR-damaged passages (accent marks printed in the
+  headwords); Crimson ("See Colour") is printed in 1893 as part of "Scarlet, or
+  Crimson"; Codex Vaticanus is not in the 1893 edition; and Mattithiah reads
+  more fully in 1893 ("chief of the fourteenth section of the temple musicians
+  (1 Chr. 25:3, 21; 16:5)…") than the module. These are edition or OCR
+  differences, not transcription errors, so the published text follows the
+  1897-based transcription.

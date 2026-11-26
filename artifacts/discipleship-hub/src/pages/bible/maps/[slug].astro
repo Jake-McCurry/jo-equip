@@ -5,6 +5,7 @@ import { MapLegend, MapView, type MapMarker } from "@/components/bible-maps/MapV
 import { basemapUrl, bookName, confidenceOf, readerHref, refText, yearLabel } from "@/components/bible-maps/maps-data";
 import { project } from "@/components/bible-maps/map-projection";
 import { eventById, places, type Place } from "@/data/bible-maps";
+import { dictEntryForPlace } from "@/data/bible-dictionary";
 import "@/components/bible-maps/bible-maps.css";
 
 export function getStaticPaths() {
@@ -45,6 +46,7 @@ const first = refText(place.verses[0]);
 const lastRef = refText(place.verses[n - 1]);
 const description = `Where was ${place.name}? ${located ? `See it on a Bible map (${conf.label.toLowerCase()})` : "Its location is unknown, but you can"} and read all ${n} ${verseWord} that mention ${place.name}${n > 1 ? `, from ${first} to ${lastRef}` : ` (${first})`}.`.replace("read all 1 verse that mention", "read the verse that mentions");
 const easton = place.easton ?? [];
+const dictSlug = dictEntryForPlace[place.slug];
 ---
 <Layout title={`${displayName} in the Bible: Map and Verses · JO EQUIP`} description={description}>
   <div class="bmp-main bmp-narrow">
@@ -122,6 +124,7 @@ const easton = place.easton ?? [];
         {easton.map(para => (
           <p>{para.map(seg => typeof seg === "string" ? seg : <a href={readerHref(baseUrl, seg[1], "kjv")}>{seg[0]}</a>)}</p>
         ))}
+        {dictSlug && <p><a class="bmp-link" href={join(`/bible/dictionary/${dictSlug}`)}>Read this entry in the Bible Dictionary →</a></p>}
         <p><small>Easton&rsquo;s Bible Dictionary (1897) quotes the King James Version; its links open the KJV. It reflects scholarship of its time.</small></p>
       </section>
     )}

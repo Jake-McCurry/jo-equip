@@ -85,6 +85,15 @@ test("only verified sermons are published, each tied to a pinned scan", () => {
     assert.equal(v.volume, s.volume, s.slug);
     assert.equal(s.scan.id, wesleyScans.get(s.volume), `${s.slug}: unpinned scan ${s.scan.id}`);
     assert.ok(s.scan.coverage >= wc.minCoverage, s.slug);
+    // Pages missing from a volume scan are checked against a pinned separate printing.
+    const sup = (wesleySources.supplements ?? []).find(x => x.volume === s.volume && x.sermon === Number(s.number));
+    assert.equal(Boolean(s.scan.supplement), Boolean(v.supplement), `${s.slug}: supplement mismatch`);
+    if (s.scan.supplement) {
+      assert.ok(sup, `${s.slug}: unpinned supplement`);
+      assert.equal(s.scan.supplement.id, sup.scan.id, s.slug);
+      assert.equal(v.supplement.source, sup.scan.id, s.slug);
+      assert.ok(v.supplement.coverage >= wc.minCoverage, `${s.slug}: supplement covers too little`);
+    }
     if (s.date) assert.match(s.date, /^17[3-7]\d-\d\d-\d\d$/, s.slug);
   }
   for (const v of wesleyVerification.verified) assert.ok(v.coverage >= wc.minCoverage && v.case <= wc.maxCasePer1000 && v.archaic <= wc.maxArchaicPer1000, `Wesley ${v.number}`);

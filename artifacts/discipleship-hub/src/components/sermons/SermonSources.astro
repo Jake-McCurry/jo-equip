@@ -32,12 +32,16 @@ const wesleyVolume = sermon?.preacher === "wesley" ? wesley.edition.transcriptio
       <li>
         Checked word for word against a scan of an original printing: <a href={`https://archive.org/details/${sermon.scan.id}`} {...ext}><em>{sermon.scan.title}</em></a>
         {" "}({sermon.scan.date}{sermon.scan.library && sermon.scan.library !== "Internet Archive" ? `, ${sermon.scan.library}` : ""}; Internet Archive).
-        {" "}{Math.round(sermon.scan.coverage * 100)}% of the words line up exactly; the rest are scanning errors, page headings and spacing.
+        {sermon.scan.supplement
+          ? <>{" "}That copy is missing pages {sermon.scan.supplement.pages}, so the end of the sermon was checked against Wesley&rsquo;s separate printing of it:{" "}
+              <a href={`https://archive.org/details/${sermon.scan.supplement.id}`} {...ext}><em>{sermon.scan.supplement.title}</em></a> ({sermon.scan.supplement.imprint}; Internet Archive).
+              {" "}{Math.round(sermon.scan.coverage * 100)}% of the words line up exactly with the two scans; the rest are scanning errors, page headings and spacing.</>
+          : <>{" "}{Math.round(sermon.scan.coverage * 100)}% of the words line up exactly; the rest are scanning errors, page headings and spacing.</>}
       </li>
     ) : (
       <li>
         Each sermon was checked word for word against a scan of an original printing on the <a href="https://archive.org/" {...ext}>Internet Archive</a>
-        {" "}(Spurgeon: 19th-century printings; Wesley: the 1771 volumes held by Duke University Libraries). Each sermon page names the scan it was checked against.
+        {" "}(Spurgeon: 19th-century printings; Wesley: the 1771 volumes held by Duke University Libraries, and for the pages missing from Duke&rsquo;s copy of Sermon XLIX, Wesley&rsquo;s 1777 Bristol printing of that sermon). Each sermon page names the scan it was checked against.
       </li>
     )}
   </ul>
@@ -52,8 +56,9 @@ const wesleyVolume = sermon?.preacher === "wesley" ? wesley.edition.transcriptio
     <p>
       Wesley&rsquo;s sermons keep the spelling of the 1771 printing (&ldquo;shew&rdquo;, &ldquo;tho&rsquo;&rdquo;, &ldquo;compleat&rdquo;). The transcribers standardized punctuation,
       corrected obvious printer&rsquo;s errors, and kept Wesley&rsquo;s asterisks (*), which mark the passages he thought most worth attention; his footnotes are listed under &ldquo;Notes&rdquo;.
-      The long &ldquo;ſ&rdquo; is printed as &ldquo;s&rdquo;. {wesley.counts.published} of the {wesley.counts.checked} sermons appear here: the scanned copy of volume 4 is missing
-      the pages of Sermon XLIX (&ldquo;The Cure of Evil-Speaking&rdquo;), so its wording could not be checked. Dates before 1752 are given as printed (Old Style).
+      The long &ldquo;ſ&rdquo; is printed as &ldquo;s&rdquo;. {wesley.counts.published === wesley.counts.checked
+        ? <>All {wesley.counts.published} sermons appear here.</>
+        : <>{wesley.counts.published} of the {wesley.counts.checked} sermons appear here; the others could not be checked against a scan.</>} Dates before 1752 are given as printed (Old Style).
     </p>
   )}
   <p>Bible links open the reader in the King James Version.</p>

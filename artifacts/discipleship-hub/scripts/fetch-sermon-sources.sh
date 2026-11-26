@@ -57,6 +57,13 @@ for v in cfg["volumes"]:
     if hashlib.md5(body).hexdigest() != s["md5"]:
         raise SystemExit(f"{s['id']}: OCR text changed on Internet Archive (md5). Review it before updating wesley-sources.json.")
     open(f"{out}/ocr/{s['id']}.txt", "wb").write(body)
-print(f"{len(cfg['volumes'])} Wesley volumes")
+# Separate printings that stand in for pages missing from a volume scan.
+for sup in cfg.get("supplements", []):
+    s = sup["scan"]
+    body = fetch([f"https://archive.org/download/{s['id']}/{s['file']}"])
+    if hashlib.md5(body).hexdigest() != s["md5"]:
+        raise SystemExit(f"{s['id']}: OCR text changed on Internet Archive (md5). Review it before updating wesley-sources.json.")
+    open(f"{out}/ocr/{s['id']}.txt", "wb").write(body)
+print(f"{len(cfg['volumes'])} Wesley volumes, {len(cfg.get('supplements', []))} supplementary scan(s)")
 PY
 echo "done: $dir"

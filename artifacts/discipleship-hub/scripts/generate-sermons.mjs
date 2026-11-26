@@ -253,6 +253,7 @@ function printedDate(occasion) {
   const m = occasion && new RegExp(`(${MONTH_NAMES.join("|")}) (\\d{1,2}), (1[67]\\d\\d)`).exec(occasion);
   return m ? `${m[3]}-${String(MONTH_NAMES.indexOf(m[1]) + 1).padStart(2, "0")}-${m[2].padStart(2, "0")}` : null;
 }
+const wesleySupplements = new Map((wesleySources.supplements ?? []).map(x => [`${x.volume}/${x.sermon}`, x]));
 const wesley = [];
 const wesleyProblems = [];
 const volumes = new Map();
@@ -267,6 +268,9 @@ for (const v of wesleyVerification.verified) {
   const lines = chunks.get(v.number) ?? fail(`Wesley sermon ${v.number} missing from volume ${v.volume}`);
   if (sermonWords(lines) !== v.words) fail(`Wesley sermon ${v.number}: ${sermonWords(lines)} words, verified ${v.words}`);
   if (v.source !== vol.scan.id) fail(`Wesley sermon ${v.number}: verified against unpinned scan ${v.source}`);
+  // Pages missing from the volume scan, checked against a separate printing of the sermon.
+  const sup = v.supplement && (wesleySupplements.get(`${v.volume}/${v.number}`) ?? fail(`Wesley sermon ${v.number}: unpinned supplement`));
+  if (sup && sup.scan.id !== v.supplement.source) fail(`Wesley sermon ${v.number}: verified against unpinned supplement ${v.supplement.source}`);
   const p = parseSermon(v.number, lines, footnotes);
   const heading = p.heading ? titleCase(p.heading) : null;
   const base = WESLEY_TITLES[v.number] ?? heading ?? fail(`Wesley sermon ${v.number}: no title`);
@@ -286,7 +290,10 @@ for (const v of wesleyVerification.verified) {
     ...(WESLEY_NOTES[v.number] ? { note: WESLEY_NOTES[v.number] } : {}),
     ...(textVersion ? { textVersion } : {}),
     refs, quote: p.quote, words: v.words,
-    scan: { id: vol.scan.id, title: vol.scan.title, date: vol.scan.date, library: vol.scan.library, coverage: v.coverage },
+    scan: {
+      id: vol.scan.id, title: vol.scan.title, date: vol.scan.date, library: vol.scan.library, coverage: v.coverage,
+      ...(sup ? { supplement: { id: sup.scan.id, title: sup.scan.title, date: sup.scan.date, imprint: sup.scan.imprint, pages: sup.missingPages, coverage: v.supplement.coverage } } : {}),
+    },
   });
   bodies.set(slug, p.blocks);
 }

@@ -29,7 +29,11 @@ export type Sermon = {
   refs: ([number] | [number, number])[];
   quote: string;
   words: number;
-  scan: { id: string; title: string; date: string; library: string | null; coverage: number };
+  scan: {
+    id: string; title: string; date: string; library: string | null; coverage: number;
+    /** Pages missing from the scanned copy, checked against a separate printing of the sermon instead. */
+    supplement?: { id: string; title: string; date: string; imprint: string; pages: string; coverage: number };
+  };
 };
 
 

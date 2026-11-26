@@ -1,8 +1,8 @@
 {
  "files": {
-  "index": "38d4b3729e"
+  "index": "b7ec9559e4"
  },
- "published": 333,
+ "published": 334,
  "preachers": {
   "spurgeon": {
    "counts": {
@@ -29,10 +29,8 @@
   "wesley": {
    "counts": {
     "checked": 53,
-    "published": 52,
-    "rejected": {
-     "too little of the text matched the scan": 1
-    },
+    "published": 53,
+    "rejected": {},
     "skippedHere": 0
    },
    "edition": {

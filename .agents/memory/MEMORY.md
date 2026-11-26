@@ -64,4 +64,4 @@
 - [Public-domain commentary sources](public-domain-commentary-sources.md) — Use CrossWire SWORD modules, not helloao copies (missing chapters); Barnes NT-only; skip borrowed SWORD intro records.
 - [Bible map sources](bible-map-sources.md) — OpenBible/Theographic/Natural Earth + AWS terrain (atlas style); tile-data defects and static atlas render pitfalls.
 - [Spurgeon sermon verification](spurgeon-sermon-verification.md) — CC0 markdown is a modernized edition; publish only scan-verified sermons via case-sensitive diff; IA uploader PDFs excluded.
-- [Wesley sermon sources](wesley-sermon-sources.md) — 1771 Works via Gutenberg mirrors + Duke scans; long-s folding; XLIX unverifiable (missing pages).
+- [Wesley sermon sources](wesley-sermon-sources.md) — 1771 Works via Gutenberg mirrors + Duke scans; long-s folding; XLIX's missing pages checked against approved 1777 pamphlet.

@@ -7,7 +7,8 @@ description: Why Wesley (not Moody/Edwards), where the 1771 text and scans come 
 - gutenberg.org (and gutendex) refuse/fail scripted downloads; pglaf.org and xmission mirrors serve byte-identical files.
 - OCR of long-s type reads "s" as "f": fold lowercase s→f on both sides before aligning, or coverage collapses.
 - Differences at the very start/end of the alignment window are neighbouring text; ignore them or short sermons fail.
-- Duke vol 4 lacks pp. 35–39 (Sermon XLIX). The 1760 printing capitalizes nouns (case ~117/1000) so it can't confirm 1771 wording; XLIX stays unpublished.
+- Duke vol 4 lacks pp. 35–39 (Sermon XLIX). No other 1771 vol-4 scan exists on IA/HathiTrust/Google Books (searched Nov 2026). User approved (Nov 2026) checking those pages against the 1777 Pine (Bristol) separate printing via the "supplements" mechanism; 1760 printing unusable (capitalizes nouns).
+- IA "bim_eighteenth-century_*" items are ECCO microfilm scans of 18th-c. separate printings; confirm imprint via ESTC (datb.cerl.org/estc/<no>), since the OCR'd title page is unreliable.
 - Gutenberg vol 4 prints transcriber correction notes inline (lines starting ♦ or ♠); drop them from bodies.
 **Why:** the ministry publishes only sermons whose wording matches an original-printing scan.
 **How to apply:** when adding another preacher, keep a separate verifier + pinned sources file so the Spurgeon pipeline stays untouched.

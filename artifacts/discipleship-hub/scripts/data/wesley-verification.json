@@ -5,9 +5,7 @@
 "maxArchaicPer1000": 1.0
 },
 "checked": 53,
-"rejected": {
-"too little of the text matched the scan": 1
-},
+"rejected": {},
 "verified": [
 {
 "volume": 1,
@@ -488,6 +486,23 @@
 "case": 0.0,
 "archaic": 0.42,
 "phrase": 1.05
+},
+{
+"volume": 4,
+"number": 49,
+"source": "worksofrevjohnwe4wesl",
+"words": 4445,
+"coverage": 0.921,
+"case": 1.8,
+"archaic": 0.45,
+"phrase": 1.35,
+"supplement": {
+"source": "bim_eighteenth-century_the-cure-of-evil-speakin_wesley-john_1777",
+"pages": "35\u201339",
+"fromWord": 3319,
+"toWord": 4391,
+"coverage": 0.852
+}
 },
 {
 "volume": 4,

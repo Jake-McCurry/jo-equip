@@ -26,5 +26,12 @@
    "transcription": { "gutenberg": 68320, "path": "6/8/3/2/68320/68320-0.txt", "file": "68320-0.txt", "sha256": "ecadc4c1043c5f941c1969ab0e42b22d20ad91688c64798f0d98c11f21cbf0fc" },
    "scan": { "id": "worksofrevjohnwe4wesl", "title": "The works of the Rev. John Wesley, M.A., late fellow of Lincoln-College, Oxford, volume 4", "date": "1771", "library": "Duke University Libraries", "file": "worksofrevjohnwe4wesl_djvu.txt", "md5": "007214bab0885c5d308efb332759ce67" }
   }
+ ],
+ "supplements": [
+  {
+   "volume": 4, "sermon": 49, "missingPages": "35–39",
+   "why": "The Duke copy of volume 4 lacks pp. 35–39. Those pages are checked against Wesley's separate printing of the sermon by the same Bristol printer (ESTC T167445).",
+   "scan": { "id": "bim_eighteenth-century_the-cure-of-evil-speakin_wesley-john_1777", "title": "The cure of evil-speaking. A sermon on Matt. xviii. 15, 16, 17", "date": "1777", "imprint": "Bristol: printed by W. Pine, in Wine-Street, 1777", "estc": "T167445", "library": null, "file": "bim_eighteenth-century_the-cure-of-evil-speakin_wesley-john_1777_djvu.txt", "md5": "3645c63c2aebde2c4f10dc290127047f" }
+  }
  ]
 }

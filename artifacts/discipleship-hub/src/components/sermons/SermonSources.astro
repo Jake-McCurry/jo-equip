@@ -1,18 +1,20 @@
 ---
 /* Source and license credits for the classic sermon pages.
    Keep in step with scripts/data/bible-search-sources.md. */
-import { sermonManifest, type Sermon } from "@/data/sermons";
+import { sermonManifest, type PreacherId, type Sermon } from "@/data/sermons";
 interface Props { sermon?: Sermon }
 const { sermon } = Astro.props;
 const ext = { target: "_blank", rel: "noopener noreferrer" };
-const { spurgeon, wesley } = sermonManifest.preachers;
-const show = (id: "spurgeon" | "wesley") => !sermon || sermon.preacher === id;
+const { spurgeon, wesley, whitefield, maclaren } = sermonManifest.preachers;
+const show = (id: PreacherId) => !sermon || sermon.preacher === id;
 const gutenberg = (n: number) => `https://www.gutenberg.org/ebooks/${n}`;
 const later = wesley.later;
 const isLater = sermon?.preacher === "wesley" && sermon.published === later.edition.published;
 const wesleyVolume = sermon?.preacher === "wesley" && !isLater ? wesley.edition.transcriptions.find(t => t.volume === sermon.volume) : undefined;
 const showEarly = show("wesley") && !isLater;
 const showLater = show("wesley") && (!sermon || isLater);
+const wfVolume = sermon?.preacher === "whitefield" ? whitefield.edition.transcriptions.find(t => t.volume === sermon.volume) : undefined;
+const mcText = maclaren.edition.transcriptions[0];
 ---
 <section class="bmp-sources" aria-labelledby="sermon-sources-h">
   <h2 id="sermon-sources-h">Sources and licenses</h2>
@@ -38,6 +40,21 @@ const showLater = show("wesley") && (!sermon || isLater);
         Transcription from the <a href={later.transcription.page} {...ext}>{later.transcription.publisher}</a> (marked public domain), which gives the text of Thomas Jackson&rsquo;s edition of Wesley&rsquo;s <em>Works</em> (London, 1872); sermon numbers follow that edition.
       </li>
     )}
+    {show("whitefield") && (
+      <li>
+        Sermon text: George Whitefield (1714–1770), <em>{whitefield.edition.title}</em> ({whitefield.edition.imprint}{sermon ? `, volume ${sermon.volume}, 1772` : ", volumes 5–6, 1772"}), public domain.
+        Transcription by Project Gutenberg and its Distributed Proofreaders, public domain in the United States:{" "}
+        {wfVolume
+          ? <a href={gutenberg(wfVolume.gutenberg)} {...ext}>eBook #{wfVolume.gutenberg}</a>
+          : whitefield.edition.transcriptions.map((t, i) => <>{i > 0 && ", "}<a href={gutenberg(t.gutenberg)} {...ext}>volume {t.volume} (#{t.gutenberg})</a></>)}.
+      </li>
+    )}
+    {show("maclaren") && (
+      <li>
+        Sermon text: Alexander Maclaren (1826–1910), <em>{maclaren.edition.title}</em> ({maclaren.edition.imprint}), public domain.
+        Transcription by Project Gutenberg, public domain in the United States: <a href={gutenberg(mcText.gutenberg)} {...ext}>eBook #{mcText.gutenberg}</a>.
+      </li>
+    )}
     {sermon ? (
       <li>
         Checked word for word against a scan of an original printing: <a href={`https://archive.org/details/${sermon.scan.id}`} {...ext}><em>{sermon.scan.title}</em></a>
@@ -51,7 +68,7 @@ const showLater = show("wesley") && (!sermon || isLater);
     ) : (
       <li>
         Each sermon was checked word for word against a scan of an original printing on the <a href="https://archive.org/" {...ext}>Internet Archive</a>
-        {" "}(Spurgeon: 19th-century printings; Wesley: the 1771 volumes held by Duke University Libraries, and for the pages missing from Duke&rsquo;s copy of Sermon XLIX, Wesley&rsquo;s 1777 Bristol printing of that sermon; for the later sermons, the 1788 volumes held by the University of California Libraries or a microfilm of the 1788 edition). Each sermon page names the scan it was checked against.
+        {" "}(Spurgeon: 19th-century printings; Wesley: the 1771 volumes held by Duke University Libraries, and for the pages missing from Duke&rsquo;s copy of Sermon XLIX, Wesley&rsquo;s 1777 Bristol printing of that sermon; for the later sermons, the 1788 volumes held by the University of California Libraries or a microfilm of the 1788 edition; Whitefield: the 1772 volumes held by Princeton Theological Seminary Library; Maclaren: the 1908 printing held by the University of Toronto). Each sermon page names the scan it was checked against.
       </li>
     )}
   </ul>
@@ -78,6 +95,22 @@ const showLater = show("wesley") && (!sermon || isLater);
       wording matches, without modernized words (&ldquo;has&rdquo; for &ldquo;hath&rdquo;) or added capitals for pronouns referring to God, are published.
       Jackson&rsquo;s own bracketed editor&rsquo;s notes are left out.{!sermon && <> {later.counts.published} of the {later.counts.checked} later sermons appear here so far. The rest are left out because too little of their
       wording could be read in the available scans (some are microfilm copies), or because their wording differs from the 1788 printing.</>}
+    </p>
+  )}
+  {show("whitefield") && (
+    <p>
+      Whitefield&rsquo;s sermons keep the spelling and wording of the 1772 printing (&ldquo;shew&rdquo;, &ldquo;compleat&rdquo;, &ldquo;falshood&rdquo;) and its capitals for nouns in titles.
+      The printing sets &ldquo;God&rdquo;, &ldquo;Christ&rdquo;, &ldquo;Lord&rdquo; and the first word of each sermon in small capitals; these are shown here in ordinary type.
+      The transcribers standardized punctuation and quotation marks and corrected obvious printer&rsquo;s errors; their notes on those corrections, and the printing&rsquo;s italics, are left out.
+      The long &ldquo;ſ&rdquo; is printed as &ldquo;s&rdquo;. Footnotes are listed under &ldquo;Notes&rdquo;.
+      {!sermon && <> {whitefield.counts.published} of the {whitefield.counts.checked} sermons appear here; Sermon VII quotes its text from the Prayer Book Psalter, which the automatic check of each sermon&rsquo;s Bible text against the King James Version cannot confirm, so it is left out for now.</>}
+    </p>
+  )}
+  {show("maclaren") && (
+    <p>
+      Maclaren&rsquo;s sermons follow the transcription, which matches the 1908 printing word for word; its italics are left out and its double hyphens are shown as dashes.
+      The volume does not number its sermons; the number shown here is the sermon&rsquo;s place in the volume. Texts marked &ldquo;Revised Version&rdquo; are quoted from the Revised Version (1885), as Maclaren gives them.
+      {!sermon && <> {maclaren.counts.published} of the {maclaren.counts.checked} sermons in the volume appear here. &ldquo;{maclaren.rejected.map(r => r.title).join("”, “")}&rdquo; is left out because a long passage in the transcription is not in the 1908 printing.</>}
     </p>
   )}
   <p>Bible links open the reader in the King James Version.</p>

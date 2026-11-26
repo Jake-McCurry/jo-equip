@@ -1,0 +1,48 @@
+{
+ "edition": {
+  "title": "The Works of the Reverend George Whitefield, M.A.",
+  "imprint": "London: Edward and Charles Dilly, 1771–1772",
+  "series": "Works of George Whitefield",
+  "published": 1772,
+  "volumes": "5–6",
+  "note": "Volumes 5 and 6 (1772) contain all 59 of Whitefield's sermons; volumes 1–4 hold his life, letters and tracts."
+ },
+ "volumes": [
+  {
+   "volume": 5,
+   "sermons": [1, 31],
+   "transcription": {
+    "gutenberg": 77034,
+    "file": "pg77034.txt",
+    "urls": ["https://gutenberg.pglaf.org/cache/epub/77034/pg77034.txt", "https://www.gutenberg.org/cache/epub/77034/pg77034.txt"],
+    "sha256": "27a33851ca5b4b7a437c8a20e3cedda69cacd9aa843e4bede872e87d63a6b8b1"
+   },
+   "scan": {
+    "id": "worksofreverendg05whit",
+    "file": "worksofreverendg05whit_djvu.txt",
+    "md5": "c45b05fded14c7819561c324824af4d1",
+    "title": "The Works of the Reverend George Whitefield, M.A., volume 5",
+    "date": "1772",
+    "library": "Princeton Theological Seminary Library"
+   }
+  },
+  {
+   "volume": 6,
+   "sermons": [32, 59],
+   "transcription": {
+    "gutenberg": 77041,
+    "file": "pg77041.txt",
+    "urls": ["https://gutenberg.pglaf.org/cache/epub/77041/pg77041.txt", "https://www.gutenberg.org/cache/epub/77041/pg77041.txt"],
+    "sha256": "171e89037fbc59f0645324be5a4836d8ca5f9e67b3028e4d402e70c13e620220"
+   },
+   "scan": {
+    "id": "worksofreverendg06whit",
+    "file": "worksofreverendg06whit_djvu.txt",
+    "md5": "989638d9a4b5cb7f0543f0435708940a",
+    "title": "The Works of the Reverend George Whitefield, M.A., volume 6",
+    "date": "1772",
+    "library": "Princeton Theological Seminary Library"
+   }
+  }
+ ]
+}

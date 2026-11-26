@@ -3,8 +3,10 @@
 //   bash scripts/fetch-sermon-sources.sh /tmp/sermon-sources
 //   python3 scripts/verify-sermons.py /tmp/sermon-sources          (Spurgeon: writes scripts/data/sermon-verification.json)
 //   python3 scripts/verify-wesley-sermons.py /tmp/sermon-sources   (Wesley: writes scripts/data/wesley-verification.json)
+//   python3 scripts/verify-whitefield-sermons.py /tmp/sermon-sources (Whitefield: writes scripts/data/whitefield-verification.json)
+//   python3 scripts/verify-maclaren-sermons.py /tmp/sermon-sources  (Maclaren: writes scripts/data/maclaren-verification.json)
 //   node scripts/generate-sermons.mjs /tmp/sermon-sources
-// Publishes only the sermons listed as verified in the two verification files.
+// Publishes only the sermons listed as verified in the verification files.
 // Writes:
 //   src/data/sermons/sermons.json       sermon list (build-time: index and sermon pages)
 //   src/data/sermons/bodies/<slug>.json sermon text, one file per sermon (build-time)
@@ -18,6 +20,8 @@ import { createHash } from "node:crypto";
 import { decodeHTML } from "entities";
 import { BOOKS as CATALOG, canonicalBook } from "../worker/bible-catalog.js";
 import { BOOKS, bookIndexOfAbbr, code, decode, validRange } from "./lib/scripture-refs.mjs";
+import { contentsRef, maclarenWords, parseMaclaren, splitMaclaren } from "./lib/maclaren-sermons.mjs";
+import { modernRef as whitefieldRef, parseWhitefield, splitSermons as splitWhitefield, sermonWords as whitefieldWords } from "./lib/whitefield-sermons.mjs";
 import { laterSermonWords, modernRef, parseLaterSermon, parseSermon, sermonWords, splitLaterSermons, splitSermons, titleCase, volumeFootnotes } from "./lib/wesley-sermons.mjs";
 
 const src = process.argv[2];
@@ -347,9 +351,92 @@ for (const v of laterVerification.verified) {
 }
 wesley.sort((a, b) => Number(a.number) - Number(b.number));
 problems.push(...wesleyProblems);
+// ---------- George Whitefield: Works (London: Dilly, 1771–1772), volumes 5–6 (1772) ----------
+const wfSources = JSON.parse(fs.readFileSync(at("scripts/data/whitefield-sources.json"), "utf8"));
+const wfVerification = JSON.parse(fs.readFileSync(at("scripts/data/whitefield-verification.json"), "utf8"));
+// Printed without a title in 1772; the title is taken from the sermon's text.
+const WHITEFIELD_TITLES = { 57: "The Day of Small Things" };
+const WHITEFIELD_NOTES = { 57: "No title is printed with this sermon in the 1772 edition; the title here is taken from its text." };
+const whitefield = [];
+const whitefieldProblems = [];
+const wfVolumes = new Map();
+for (const vol of wfSources.volumes) {
+  const buf = fs.readFileSync(path.join(src, "whitefield", vol.transcription.file));
+  if (sha(buf) !== vol.transcription.sha256) fail(`${vol.transcription.file} digest changed (${sha(buf)}). Re-run verify-whitefield-sermons.py after reviewing the new source.`);
+  wfVolumes.set(vol.volume, { vol, sermons: splitWhitefield(buf.toString("utf8")) });
+}
+for (const v of wfVerification.verified) {
+  const { vol, sermons: chunks } = wfVolumes.get(v.volume) ?? fail(`Whitefield volume ${v.volume} not pinned`);
+  const lines = chunks.get(v.number) ?? fail(`Whitefield sermon ${v.number} missing from volume ${v.volume}`);
+  if (whitefieldWords(lines) !== v.words) fail(`Whitefield sermon ${v.number}: ${whitefieldWords(lines)} words, verified ${v.words}`);
+  if (v.source !== vol.scan.id) fail(`Whitefield sermon ${v.number}: verified against unpinned scan ${v.source}`);
+  const p = parseWhitefield(v.number, lines);
+  const title = WHITEFIELD_TITLES[v.number] ?? p.title ?? fail(`Whitefield sermon ${v.number}: no title`);
+  const refLine = whitefieldRef(p.refLine);
+  // "Matthew 8:23-END" ("MATTHEW viii. 23, to the End."): to the last verse of the chapter.
+  const toEnd = refLine && /^(.+) (\d+):(\d+)-END$/.exec(refLine);
+  const refs = refLine && parseRefLine(toEnd ? `${toEnd[1]} ${toEnd[2]}:${toEnd[3]}-${versesOf(code(BOOKS.indexOf(canonicalBook(toEnd[1])) + 1, Number(toEnd[2]), 0)).length}` : refLine);
+  if (!refs) { whitefieldProblems.push(`Whitefield ${v.number}: unparsed reference "${p.refLine}"`); continue; }
+  // Sermon XLVI prints its text, then "The whole verse is:" and the verse; check the verse.
+  const agreement = kjvAgreement(p.quote.split("The whole verse is:").pop(), refs);
+  if (agreement < 0.8) { whitefieldProblems.push(`Whitefield ${v.number}: text "${p.quote.slice(0, 60)}" does not match KJV ${refLine} (${agreement.toFixed(2)})`); continue; }
+  const slug = `whitefield-${v.number}-${slugify(title)}`.slice(0, 90).replace(/-$/, "");
+  const date = printedDate(p.occasion);
+  const notes = [p.textNote && `Note printed with this sermon: “${p.textNote}”`, WHITEFIELD_NOTES[v.number]].filter(Boolean);
+  whitefield.push({
+    slug, preacher: "whitefield", number: String(v.number), title, volume: v.volume, series: wfSources.edition.series, published: wfSources.edition.published,
+    ...(date ? { date } : {}),
+    ...(p.occasion ? { occasion: p.occasion } : {}),
+    ...(notes.length ? { note: notes.join(" ") } : {}),
+    refs, quote: p.quote, words: v.words,
+    scan: { id: vol.scan.id, title: vol.scan.title, date: vol.scan.date, library: vol.scan.library, coverage: v.coverage },
+  });
+  bodies.set(slug, p.blocks);
+}
+whitefield.sort((a, b) => Number(a.number) - Number(b.number));
+problems.push(...whitefieldProblems);
+
+// ---------- Alexander Maclaren: Expositions of Holy Scripture, Psalms I.–XLIX. (1908 printing) ----------
+const mcSources = JSON.parse(fs.readFileSync(at("scripts/data/maclaren-sources.json"), "utf8"));
+const mcVerification = JSON.parse(fs.readFileSync(at("scripts/data/maclaren-verification.json"), "utf8"));
+const SMALL_WORDS = new Set("a an and as at but by for from in into of on or the to with".split(" "));
+/** "'SEEK YE'--'I WILL SEEK'" -> "‘Seek Ye’—‘I Will Seek’"; "MAN'S TRUE TREASURE IN GOD" -> "Man’s True Treasure in God". */
+const maclarenTitle = t => t.replace(/--/g, " — ").toLowerCase().split(/\s+/)
+  .map((w, i) => (i > 0 && SMALL_WORDS.has(w) ? w : w.replace(/[a-z]/, c => c.toUpperCase()))).join(" ")
+  .replace(/ — /g, "—").replace(/(^|[\s—])'/g, "$1‘").replace(/'/g, "’");
+const maclaren = [];
+const maclarenProblems = [];
+for (const vol of mcSources.volumes) {
+  const buf = fs.readFileSync(path.join(src, "maclaren", vol.transcription.file));
+  if (sha(buf) !== vol.transcription.sha256) fail(`${vol.transcription.file} digest changed (${sha(buf)}). Re-run verify-maclaren-sermons.py after reviewing the new source.`);
+  const chunks = splitMaclaren(buf.toString("utf8"));
+  for (const v of mcVerification.verified.filter(v => v.volume === vol.volume)) {
+    const chunk = chunks[v.position - 1] ?? fail(`Maclaren exposition ${v.position} missing`);
+    if (chunk.title !== v.title) fail(`Maclaren exposition ${v.position}: "${chunk.title}", verified "${v.title}"`);
+    if (maclarenWords(chunk.lines) !== v.words) fail(`Maclaren "${v.title}": ${maclarenWords(chunk.lines)} words, verified ${v.words}`);
+    if (v.source !== vol.scan.id) fail(`Maclaren "${v.title}": verified against unpinned scan ${v.source}`);
+    const p = parseMaclaren(chunk.title, chunk.lines);
+    const { refLine, revised } = contentsRef(chunk.ref);
+    const refs = parseRefLine(refLine);
+    if (!refs) { maclarenProblems.push(`Maclaren "${v.title}": unparsed reference "${chunk.ref}"`); continue; }
+    const textVersion = revised ? "Revised Version" : undefined;
+    const agreement = kjvAgreement(p.quote, refs);
+    if (agreement < (textVersion ? TEXT_VERSION_FLOOR : 0.8)) { maclarenProblems.push(`Maclaren "${v.title}": text does not match KJV ${refLine} (${agreement.toFixed(2)})`); continue; }
+    const title = maclarenTitle(chunk.title);
+    const slug = `maclaren-psalms-${slugify(title)}`.slice(0, 90).replace(/-$/, "");
+    maclaren.push({
+      slug, preacher: "maclaren", number: String(v.position), title, volume: vol.volume, series: mcSources.edition.series, part: vol.part, published: mcSources.edition.published,
+      ...(textVersion ? { textVersion } : {}),
+      refs, quote: p.quote, words: v.words,
+      scan: { id: vol.scan.id, title: vol.scan.title, date: vol.scan.date, library: vol.scan.library, coverage: v.coverage },
+    });
+    bodies.set(slug, p.blocks);
+  }
+}
+problems.push(...maclarenProblems);
 if (problems.length) console.warn(`Skipped ${problems.length}:\n  ${problems.join("\n  ")}`);
 
-const sermons = [...spurgeon, ...wesley];
+const sermons = [...spurgeon, ...wesley, ...whitefield, ...maclaren];
 if (new Set(sermons.map(s => s.slug)).size !== sermons.length) fail("duplicate sermon slugs");
 
 // ---------- reader chapter index: "Malachi 3" -> [[sermon index, [[v1, v2], ...]], ...] (v1 = 0: whole chapter) ----------
@@ -398,9 +485,20 @@ const manifest = {
         criteria: laterVerification.criteria,
       },
     },
+    whitefield: {
+      counts: { checked: wfVerification.checked, published: whitefield.length, rejected: wfVerification.rejected, skippedHere: whitefieldProblems.length },
+      edition: { ...wfSources.edition, transcriptions: wfSources.volumes.map(v => ({ volume: v.volume, gutenberg: v.transcription.gutenberg, sha256: v.transcription.sha256 })), scans: wfSources.volumes.map(v => ({ volume: v.volume, id: v.scan.id, library: v.scan.library })) },
+      criteria: wfVerification.criteria,
+    },
+    maclaren: {
+      counts: { checked: mcVerification.checked, published: maclaren.length, rejected: mcVerification.rejected, skippedHere: maclarenProblems.length },
+      edition: { ...mcSources.edition, transcriptions: mcSources.volumes.map(v => ({ part: v.part, gutenberg: v.transcription.gutenberg, sha256: v.transcription.sha256 })), scans: mcSources.volumes.map(v => ({ part: v.part, id: v.scan.id, library: v.scan.library })) },
+      criteria: mcVerification.criteria,
+      rejected: mcVerification.rejectedSermons.map(r => ({ title: maclarenTitle(r.title), coverage: r.coverage, reason: r.reason })),
+    },
   },
 };
 fs.writeFileSync(new URL("manifest.json", outData), JSON.stringify(manifest, null, 1) + "\n");
 fs.writeFileSync(new URL("sermons.json", outData), JSON.stringify(sermons) + "\n");
 for (const [slug, blocks] of bodies) fs.writeFileSync(new URL(`bodies/${slug}.json`, outData), JSON.stringify(blocks) + "\n");
-console.log(`${spurgeon.length} Spurgeon sermons (of ${verification.checked} checked) and ${wesley.length} Wesley sermons (of ${wesleyVerification.checked + laterVerification.checked}) published; ${Object.keys(chapters).length} chapters; index ${(index.length / 1024).toFixed(0)} KB`);
+console.log(`${spurgeon.length} Spurgeon sermons (of ${verification.checked} checked), ${wesley.length} Wesley sermons (of ${wesleyVerification.checked + laterVerification.checked}), ${whitefield.length} Whitefield (of ${wfVerification.checked}) and ${maclaren.length} Maclaren (of ${mcVerification.checked}) published; ${Object.keys(chapters).length} chapters; index ${(index.length / 1024).toFixed(0)} KB`);

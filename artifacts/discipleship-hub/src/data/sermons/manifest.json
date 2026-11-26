@@ -1,8 +1,8 @@
 {
  "files": {
-  "index": "40fe77c715"
+  "index": "5b1cfe3119"
  },
- "published": 385,
+ "published": 480,
  "preachers": {
   "spurgeon": {
    "counts": {
@@ -126,6 +126,92 @@
      "maxArchaicPer1000": 1
     }
    }
+  },
+  "whitefield": {
+   "counts": {
+    "checked": 59,
+    "published": 58,
+    "rejected": 0,
+    "skippedHere": 1
+   },
+   "edition": {
+    "title": "The Works of the Reverend George Whitefield, M.A.",
+    "imprint": "London: Edward and Charles Dilly, 1771–1772",
+    "series": "Works of George Whitefield",
+    "published": 1772,
+    "volumes": "5–6",
+    "note": "Volumes 5 and 6 (1772) contain all 59 of Whitefield's sermons; volumes 1–4 hold his life, letters and tracts.",
+    "transcriptions": [
+     {
+      "volume": 5,
+      "gutenberg": 77034,
+      "sha256": "27a33851ca5b4b7a437c8a20e3cedda69cacd9aa843e4bede872e87d63a6b8b1"
+     },
+     {
+      "volume": 6,
+      "gutenberg": 77041,
+      "sha256": "171e89037fbc59f0645324be5a4836d8ca5f9e67b3028e4d402e70c13e620220"
+     }
+    ],
+    "scans": [
+     {
+      "volume": 5,
+      "id": "worksofreverendg05whit",
+      "library": "Princeton Theological Seminary Library"
+     },
+     {
+      "volume": 6,
+      "id": "worksofreverendg06whit",
+      "library": "Princeton Theological Seminary Library"
+     }
+    ]
+   },
+   "criteria": {
+    "minCoverage": 0.75,
+    "maxCasePer1000": 4,
+    "maxArchaicPer1000": 1
+   }
+  },
+  "maclaren": {
+   "counts": {
+    "checked": 38,
+    "published": 37,
+    "rejected": 1,
+    "skippedHere": 0
+   },
+   "edition": {
+    "title": "Expositions of Holy Scripture: The Book of Psalms I. to XLIX.",
+    "imprint": "London: Hodder and Stoughton, 1908",
+    "series": "Expositions of Holy Scripture",
+    "published": 1908,
+    "note": "Maclaren's sermons as he revised them for his Expositions of Holy Scripture (1904–1910). Only the first Psalms volume is published here so far.",
+    "transcriptions": [
+     {
+      "part": "Psalms I. to XLIX.",
+      "gutenberg": 7925,
+      "sha256": "ca79e0cc06ef8dda8f7e139539f6db4e6782d3e0d5a6ebf94773b74b88e37c32"
+     }
+    ],
+    "scans": [
+     {
+      "part": "Psalms I. to XLIX.",
+      "id": "expositionsofhol11macl",
+      "library": "University of Toronto (Victoria College)"
+     }
+    ]
+   },
+   "criteria": {
+    "minCoverage": 0.98,
+    "maxCasePer1000": 4,
+    "maxArchaicPer1000": 1
+   },
+   "rejected": [
+    {
+     "title": "The Portrait of the Bride",
+     "coverage": 0.903,
+     "reason": "wording differs from the printing"
+    }
+   ]
   }
  }
 }

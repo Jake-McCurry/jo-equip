@@ -65,3 +65,5 @@
 - [Bible map sources](bible-map-sources.md) — OpenBible/Theographic/Natural Earth + AWS terrain (atlas style); tile-data defects and static atlas render pitfalls.
 - [Spurgeon sermon verification](spurgeon-sermon-verification.md) — CC0 markdown is a modernized edition; publish only scan-verified sermons via case-sensitive diff; IA uploader PDFs excluded.
 - [Wesley sermon sources](wesley-sermon-sources.md) — 1771 Works via Gutenberg + Duke scans (XLIX gap via 1777 pamphlet); later sermons via CCEL Jackson text vs 1788 scans.
+- [Whitefield/Maclaren sermon sources](whitefield-maclaren-sermon-sources.md) — thresholds, known exclusions, modern-licence findings; user prefers Bible tools over more sermons.
+- [Bible tools roadmap](bible-tools-roadmap.md) — user prefers Bible tools over more content; Nave's topical index deferred to a later list.

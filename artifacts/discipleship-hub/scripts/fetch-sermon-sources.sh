@@ -12,6 +12,8 @@
 #    copied from scripts/data/wesley-ocr/ and checked against its pinned md5.
 #  - wesley/ccel-sermons.txt: CCEL plain text of Wesley's sermons (Jackson, 1872), for
 #    the later sermons (54-108), pinned by sha256 in wesley-sources.json.
+#  - whitefield/, maclaren/: Project Gutenberg transcriptions for scripts/verify-whitefield-sermons.py
+#    and scripts/verify-maclaren-sermons.py, pinned in whitefield-sources.json / maclaren-sources.json.
 # Usage: bash scripts/fetch-sermon-sources.sh /tmp/sermon-sources
 set -euo pipefail
 dir="${1:?usage: fetch-sermon-sources.sh <directory>}"
@@ -90,5 +92,33 @@ for v in later["volumes"]:
             raise SystemExit(f"{s['id']}: OCR text changed on Internet Archive (md5). Review it before updating wesley-sources.json.")
         open(f"{out}/ocr/{s['id']}.txt", "wb").write(body)
 print(f"{sum(len(v['scans']) for v in later['volumes'])} scans of the 1788 volumes 5-8")
+PY
+# Whitefield (Works, 1771-1772, vols 5-6) and Maclaren (Expositions, Psalms I-XLIX, 1908):
+# Project Gutenberg transcriptions pinned by sha256, scan OCR pinned by md5.
+python3 - "$here/data" "$dir" <<'PY'
+import hashlib, json, os, sys, urllib.request
+data, out = sys.argv[1], sys.argv[2]
+def fetch(urls):
+    for url in urls:
+        for attempt in range(2):
+            try:
+                return urllib.request.urlopen(url, timeout=180).read()
+            except Exception:
+                pass
+    raise SystemExit(f"could not download {urls[0]}")
+for preacher in ("whitefield", "maclaren"):
+    cfg = json.load(open(os.path.join(data, f"{preacher}-sources.json")))
+    os.makedirs(f"{out}/{preacher}", exist_ok=True)
+    for v in cfg["volumes"]:
+        t, s = v["transcription"], v["scan"]
+        body = fetch(t["urls"])
+        if hashlib.sha256(body).hexdigest() != t["sha256"]:
+            raise SystemExit(f"Gutenberg #{t['gutenberg']} changed (sha256). Review it before updating {preacher}-sources.json.")
+        open(f"{out}/{preacher}/{t['file']}", "wb").write(body)
+        body = fetch([f"https://archive.org/download/{s['id']}/{s['file']}"])
+        if hashlib.md5(body).hexdigest() != s["md5"]:
+            raise SystemExit(f"{s['id']}: OCR text changed on Internet Archive (md5). Review it before updating {preacher}-sources.json.")
+        open(f"{out}/ocr/{s['id']}.txt", "wb").write(body)
+    print(f"{preacher}: {len(cfg['volumes'])} volume(s)")
 PY
 echo "done: $dir"

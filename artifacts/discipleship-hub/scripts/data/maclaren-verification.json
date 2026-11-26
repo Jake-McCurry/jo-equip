@@ -1,0 +1,395 @@
+{
+ "edition": "Expositions of Holy Scripture: The Book of Psalms I. to XLIX.",
+ "criteria": {
+  "minCoverage": 0.98,
+  "maxCasePer1000": 4.0,
+  "maxArchaicPer1000": 1.0
+ },
+ "checked": 38,
+ "rejected": 1,
+ "verified": [
+  {
+   "volume": 1,
+   "position": 1,
+   "title": "BLESSEDNESS AND PRAISE",
+   "words": 4700,
+   "source": "expositionsofhol11macl",
+   "coverage": 0.998,
+   "case": 0.0,
+   "archaic": 0.0
+  },
+  {
+   "volume": 1,
+   "position": 2,
+   "title": "A STAIRCASE OF THREE STEPS",
+   "words": 2507,
+   "source": "expositionsofhol11macl",
+   "coverage": 0.997,
+   "case": 0.0,
+   "archaic": 0.0
+  },
+  {
+   "volume": 1,
+   "position": 3,
+   "title": "ONE SAYING FROM THREE MEN",
+   "words": 2242,
+   "source": "expositionsofhol11macl",
+   "coverage": 0.997,
+   "case": 0.0,
+   "archaic": 0.0
+  },
+  {
+   "volume": 1,
+   "position": 4,
+   "title": "MAN'S TRUE TREASURE IN GOD",
+   "words": 4171,
+   "source": "expositionsofhol11macl",
+   "coverage": 0.998,
+   "case": 0.0,
+   "archaic": 0.0
+  },
+  {
+   "volume": 1,
+   "position": 5,
+   "title": "GOD WITH US, AND WE WITH GOD",
+   "words": 2757,
+   "source": "expositionsofhol11macl",
+   "coverage": 0.998,
+   "case": 0.0,
+   "archaic": 0.0
+  },
+  {
+   "volume": 1,
+   "position": 6,
+   "title": "THE TWO AWAKINGS",
+   "words": 4941,
+   "source": "expositionsofhol11macl",
+   "coverage": 0.997,
+   "case": 0.0,
+   "archaic": 0.0
+  },
+  {
+   "volume": 1,
+   "position": 7,
+   "title": "SECRET FAULTS",
+   "words": 2556,
+   "source": "expositionsofhol11macl",
+   "coverage": 0.998,
+   "case": 0.0,
+   "archaic": 0.0
+  },
+  {
+   "volume": 1,
+   "position": 8,
+   "title": "OPEN SINS",
+   "words": 2961,
+   "source": "expositionsofhol11macl",
+   "coverage": 0.998,
+   "case": 0.0,
+   "archaic": 0.0
+  },
+  {
+   "volume": 1,
+   "position": 9,
+   "title": "FEASTING ON THE SACRIFICE",
+   "words": 2883,
+   "source": "expositionsofhol11macl",
+   "coverage": 0.998,
+   "case": 0.0,
+   "archaic": 0.0
+  },
+  {
+   "volume": 1,
+   "position": 10,
+   "title": "THE SHEPHERD KING OF ISRAEL",
+   "words": 3375,
+   "source": "expositionsofhol11macl",
+   "coverage": 0.997,
+   "case": 0.3,
+   "archaic": 0.0
+  },
+  {
+   "volume": 1,
+   "position": 11,
+   "title": "A GREAT QUESTION AND ITS ANSWER",
+   "words": 2172,
+   "source": "expositionsofhol11macl",
+   "coverage": 0.996,
+   "case": 0.0,
+   "archaic": 0.0
+  },
+  {
+   "volume": 1,
+   "position": 12,
+   "title": "THE GOD WHO DWELLS WITH MEN",
+   "words": 3305,
+   "source": "expositionsofhol11macl",
+   "coverage": 0.997,
+   "case": 0.3,
+   "archaic": 0.0
+  },
+  {
+   "volume": 1,
+   "position": 13,
+   "title": "GUIDANCE IN JUDGMENT",
+   "words": 2627,
+   "source": "expositionsofhol11macl",
+   "coverage": 0.998,
+   "case": 0.0,
+   "archaic": 0.0
+  },
+  {
+   "volume": 1,
+   "position": 14,
+   "title": "A PRAYER FOR PARDON AND ITS PLEA",
+   "words": 3340,
+   "source": "expositionsofhol11macl",
+   "coverage": 0.999,
+   "case": 0.0,
+   "archaic": 0.0
+  },
+  {
+   "volume": 1,
+   "position": 15,
+   "title": "GOD'S GUESTS",
+   "words": 2381,
+   "source": "expositionsofhol11macl",
+   "coverage": 0.998,
+   "case": 0.0,
+   "archaic": 0.0
+  },
+  {
+   "volume": 1,
+   "position": 16,
+   "title": "'SEEK YE'--'I WILL SEEK'",
+   "words": 2620,
+   "source": "expositionsofhol11macl",
+   "coverage": 0.998,
+   "case": 0.0,
+   "archaic": 0.0
+  },
+  {
+   "volume": 1,
+   "position": 17,
+   "title": "THE TWO GUESTS",
+   "words": 2587,
+   "source": "expositionsofhol11macl",
+   "coverage": 0.998,
+   "case": 0.0,
+   "archaic": 0.0
+  },
+  {
+   "volume": 1,
+   "position": 18,
+   "title": "'BE ... FOR THOU ART'",
+   "words": 2095,
+   "source": "expositionsofhol11macl",
+   "coverage": 0.998,
+   "case": 0.0,
+   "archaic": 0.0
+  },
+  {
+   "volume": 1,
+   "position": 19,
+   "title": "'INTO THY HANDS'",
+   "words": 2939,
+   "source": "expositionsofhol11macl",
+   "coverage": 0.998,
+   "case": 0.0,
+   "archaic": 0.0
+  },
+  {
+   "volume": 1,
+   "position": 20,
+   "title": "GOODNESS WROUGHT AND GOODNESS LAID UP",
+   "words": 1991,
+   "source": "expositionsofhol11macl",
+   "coverage": 0.997,
+   "case": 0.0,
+   "archaic": 0.0
+  },
+  {
+   "volume": 1,
+   "position": 21,
+   "title": "HID IN LIGHT",
+   "words": 3116,
+   "source": "expositionsofhol11macl",
+   "coverage": 0.997,
+   "case": 0.32,
+   "archaic": 0.0
+  },
+  {
+   "volume": 1,
+   "position": 22,
+   "title": "A THREEFOLD THOUGHT OF SIN AND FORGIVENESS",
+   "words": 3477,
+   "source": "expositionsofhol11macl",
+   "coverage": 0.997,
+   "case": 0.0,
+   "archaic": 0.0
+  },
+  {
+   "volume": 1,
+   "position": 23,
+   "title": "THE ENCAMPING ANGEL",
+   "words": 2331,
+   "source": "expositionsofhol11macl",
+   "coverage": 0.994,
+   "case": 0.0,
+   "archaic": 0.0
+  },
+  {
+   "volume": 1,
+   "position": 24,
+   "title": "STRUGGLING AND SEEKING",
+   "words": 2143,
+   "source": "expositionsofhol11macl",
+   "coverage": 0.996,
+   "case": 0.0,
+   "archaic": 0.0
+  },
+  {
+   "volume": 1,
+   "position": 25,
+   "title": "NO CONDEMNATION",
+   "words": 2076,
+   "source": "expositionsofhol11macl",
+   "coverage": 0.999,
+   "case": 0.0,
+   "archaic": 0.0
+  },
+  {
+   "volume": 1,
+   "position": 26,
+   "title": "SKY, EARTH, AND SEA: A PARABLE OF GOD",
+   "words": 4110,
+   "source": "expositionsofhol11macl",
+   "coverage": 0.997,
+   "case": 0.0,
+   "archaic": 0.0
+  },
+  {
+   "volume": 1,
+   "position": 27,
+   "title": "WHAT MEN FIND BENEATH THE WINGS OF GOD",
+   "words": 3927,
+   "source": "expositionsofhol11macl",
+   "coverage": 0.998,
+   "case": 0.25,
+   "archaic": 0.0
+  },
+  {
+   "volume": 1,
+   "position": 28,
+   "title": "THE SECRET OF TRANQUILLITY",
+   "words": 4006,
+   "source": "expositionsofhol11macl",
+   "coverage": 0.998,
+   "case": 0.0,
+   "archaic": 0.0
+  },
+  {
+   "volume": 1,
+   "position": 29,
+   "title": "THE BITTERNESS AND BLESSEDNESS OF THE BREVITY OF LIFE",
+   "words": 4914,
+   "source": "expositionsofhol11macl",
+   "coverage": 0.997,
+   "case": 0.0,
+   "archaic": 0.0
+  },
+  {
+   "volume": 1,
+   "position": 30,
+   "title": "TWO INNUMERABLE SERIES",
+   "words": 3038,
+   "source": "expositionsofhol11macl",
+   "coverage": 0.998,
+   "case": 0.0,
+   "archaic": 0.0
+  },
+  {
+   "volume": 1,
+   "position": 31,
+   "title": "THIRSTING FOR GOD",
+   "words": 3642,
+   "source": "expositionsofhol11macl",
+   "coverage": 0.996,
+   "case": 0.0,
+   "archaic": 0.0
+  },
+  {
+   "volume": 1,
+   "position": 32,
+   "title": "THE PSALMIST'S REMONSTRANCE WITH HIS SOUL",
+   "words": 1928,
+   "source": "expositionsofhol11macl",
+   "coverage": 0.997,
+   "case": 0.0,
+   "archaic": 0.0
+  },
+  {
+   "volume": 1,
+   "position": 33,
+   "title": "THE KING IN HIS BEAUTY",
+   "words": 3220,
+   "source": "expositionsofhol11macl",
+   "coverage": 0.996,
+   "case": 0.0,
+   "archaic": 0.0
+  },
+  {
+   "volume": 1,
+   "position": 35,
+   "title": "THE CITY AND RIVER OF GOD",
+   "words": 4514,
+   "source": "expositionsofhol11macl",
+   "coverage": 0.997,
+   "case": 0.0,
+   "archaic": 0.0
+  },
+  {
+   "volume": 1,
+   "position": 36,
+   "title": "THE LORD OF HOSTS, THE GOD OF JACOB",
+   "words": 3044,
+   "source": "expositionsofhol11macl",
+   "coverage": 0.997,
+   "case": 0.0,
+   "archaic": 0.0
+  },
+  {
+   "volume": 1,
+   "position": 37,
+   "title": "A SONG OF DELIVERANCE",
+   "words": 4531,
+   "source": "expositionsofhol11macl",
+   "coverage": 0.996,
+   "case": 0.22,
+   "archaic": 0.0
+  },
+  {
+   "volume": 1,
+   "position": 38,
+   "title": "TWO SHEPHERDS AND TWO FLOCKS",
+   "words": 3177,
+   "source": "expositionsofhol11macl",
+   "coverage": 0.994,
+   "case": 0.0,
+   "archaic": 0.0
+  }
+ ],
+ "rejectedSermons": [
+  {
+   "volume": 1,
+   "position": 34,
+   "title": "THE PORTRAIT OF THE BRIDE",
+   "words": 3245,
+   "source": "expositionsofhol11macl",
+   "coverage": 0.903,
+   "case": 0.0,
+   "archaic": 0.0,
+   "reason": "wording differs from the printing"
+  }
+ ]
+}

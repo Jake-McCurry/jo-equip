@@ -65,10 +65,11 @@ export function SermonsPanel({ baseUrl, loc, verse, onVerse, onClose }: Props) {
       )}
       <p className="mt-4 text-sm"><a className="br-link font-semibold underline" href={sermonsIndexHref(baseUrl)}>Browse all classic sermons by book</a></p>
       <p className="mt-5 border-t border-[var(--color-border-soft)] pt-3 text-xs leading-relaxed text-[var(--color-text-muted)]">
-        Sermons by C. H. Spurgeon and John Wesley (public domain), checked word for word against scans of the original printings. Transcriptions:{" "}
-        <a className="underline" href="https://github.com/lyteword/chspurgeon-sermons" target="_blank" rel="noopener noreferrer">lyteword/chspurgeon-sermons</a> (CC0) and{" "}
-        <a className="underline" href="https://www.gutenberg.org/ebooks/59743" target="_blank" rel="noopener noreferrer">Project Gutenberg</a> (Wesley’s Works, 1771).
-        Bible links open the King James Version, which both preachers normally quote.
+        Sermons by C. H. Spurgeon, John Wesley, George Whitefield and Alexander Maclaren (public domain), checked word for word against scans of the original printings. Transcriptions:{" "}
+        <a className="underline" href="https://github.com/lyteword/chspurgeon-sermons" target="_blank" rel="noopener noreferrer">lyteword/chspurgeon-sermons</a> (CC0),{" "}
+        <a className="underline" href="https://ccel.org/ccel/wesley/sermons" target="_blank" rel="noopener noreferrer">CCEL</a> (Wesley’s later sermons) and{" "}
+        <a className="underline" href="https://www.gutenberg.org/" target="_blank" rel="noopener noreferrer">Project Gutenberg</a> (Wesley’s Works, 1771; Whitefield’s Works, 1772; Maclaren’s Expositions).
+        Bible links open the King James Version, which these preachers normally quote; each sermon page names its sources.
       </p>
     </div>
   );

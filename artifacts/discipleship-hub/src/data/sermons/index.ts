@@ -9,11 +9,13 @@ export type SermonBlock = { p: string } | { q: string[] } | { h: string };
 export type Sermon = {
   slug: string;
   preacher: PreacherId;
-  /** Number in the original series, e.g. "1" or "39–40" (Wesley: the 1771 sermon number; 54–108 follow Jackson’s 1872 edition). */
+  /** Number in the original series, e.g. "1" or "39–40" (Wesley: the 1771 sermon number; 54–108 follow Jackson’s 1872 edition; Maclaren: position in the volume, which does not number them). */
   number: string;
   title: string;
   volume: number;
   series: string;
+  /** Maclaren: the part of Scripture the volume covers ("Psalms I. to XLIX."); his volumes are not numbered. */
+  part?: string;
   /** Year the volume was published. */
   published: number;
   /** Preaching date (YYYY-MM-DD) as printed in the original (Wesley's dates before 1752 are Old Style). */

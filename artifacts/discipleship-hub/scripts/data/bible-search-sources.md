@@ -244,6 +244,52 @@ python3 scripts/ocr-wesley-scan.py <ia-id> scripts/data/wesley-ocr/<ia-id>.tesse
 bash scripts/fetch-sermon-sources.sh /tmp/sermon-sources
 python3 scripts/verify-sermons.py /tmp/sermon-sources          # writes scripts/data/sermon-verification.json
 python3 scripts/verify-wesley-sermons.py /tmp/sermon-sources   # writes scripts/data/wesley-verification.json (1771 and 1788)
+python3 scripts/verify-whitefield-sermons.py /tmp/sermon-sources # writes scripts/data/whitefield-verification.json
+python3 scripts/verify-maclaren-sermons.py /tmp/sermon-sources  # writes scripts/data/maclaren-verification.json
 node scripts/generate-sermons.mjs /tmp/sermon-sources          # writes src/data/sermons/ and public/bible-data/sermons/
 ```
 To publish more Spurgeon sermons, add institutional scans of further volumes to `sermon-scan-sources.json` (id, file, md5 from the item's metadata) and re-run all the steps.
+
+## George Whitefield
+
+| Source | Use | License | Pinned |
+| --- | --- | --- | --- |
+| George Whitefield, Sermons I–LIX, in *The Works of the Reverend George Whitefield, M.A.* (London: Edward and Charles Dilly, 1771–1772), vols 5–6 (both title pages dated MDCCLXXII) | Sermon text | Public domain | — |
+| Project Gutenberg eBooks #77034 (vol 5) and #77041 (vol 6), Distributed Proofreaders transcriptions | Plain-text transcription | Public domain in the USA | sha256 of each `pg<n>.txt` in `scripts/data/whitefield-sources.json` |
+| Internet Archive scans of the same volumes, Princeton Theological Seminary Library (`worksofreverendg05whit`, `worksofreverendg06whit`) | OCR text used **only to verify wording**; never published | Scans of public-domain books | md5 of each `_djvu.txt` file |
+
+**Method** (`scripts/verify-whitefield-sermons.py`): imports the 1771 Wesley functions from `verify-wesley-sermons.py` unchanged (same "SERMON n." splitting, long-s folding, alignment and Spurgeon criteria). The transcribers' correction notes (♦ paragraphs) are left out of the comparison. Result (Nov 2026): 59 of 59 verified (86–94% aligned, ≤ 2.6 case and ≤ 0.9 archaic differences per 1,000 words).
+
+**Generation** (`scripts/lib/whitefield-sermons.mjs`): titles and occasion notes as printed ("Preached at Philadelphia, …"; a date in the occasion becomes the preaching date). The printing's small capitals (GOD, CHRIST, LORD, and each sermon's first word), which the transcription gives as capitals, are shown in ordinary type; Roman numerals are kept. Italics, the transcribers' notes and "END of the FIFTH VOLUME." are dropped; footnotes are listed under "Notes". Sermons X and XXVI print a letter before the text; it opens the page, followed by the printed reference and text. Sermon LVII has no printed title; the page uses "The Day of Small Things" (from its text, Zechariah 4:10) and says so. "MATTHEW viii. 23, to the End." becomes Matthew 8:23–34 (the end of the chapter). Sermon XLVI prints "But ye are justified. The whole verse is: …"; the KJV check uses the whole verse. The pages disclose these normalizations.
+
+**Not published:** Sermon VII ("Thankfulness for Mercies Received") quotes Psalm 107:30–31 from the Prayer Book Psalter; its words match the KJV only 61%, below the 65% floor used for texts from another version, so the automatic text check cannot confirm the reference. It passes the scan check and could be added with a reviewed exception. Result: 58 published.
+
+## Alexander Maclaren
+
+| Source | Use | License | Pinned |
+| --- | --- | --- | --- |
+| Alexander Maclaren, *Expositions of Holy Scripture: The Book of Psalms I. to XLIX.* (London: Hodder and Stoughton, 1908 printing; the series appeared 1904–1910, in Maclaren's lifetime) | Sermon text | Public domain (author died 1910) | — |
+| Project Gutenberg eBook #7925 (*Expositions of Holy Scripture: Psalms*; the first volume, up to "VOLUME II:") | Plain-text transcription | Public domain in the USA | sha256 in `scripts/data/maclaren-sources.json` |
+| Internet Archive scan of the 1908 printing, University of Toronto (`expositionsofhol11macl`; the metadata says 1906, the title page reads MCMVIII) | OCR text used **only to verify wording**; never published | Scan of a public-domain book | md5 of the `_djvu.txt` file |
+
+**Method** (`scripts/verify-maclaren-sermons.py`): sermons are split by the titles in the volume's contents (their references come from the contents). Running heads are removed from the OCR (short lines mostly in capitals). Alignment as for Wesley, without long-s folding (modern type). Archaic replacements are counted only as one-for-one swaps, because running heads quoting a text ("SEEK YE") caused false hits. Criteria: ≥ 98% aligned (modern type gives clean OCR), ≤ 4 case and ≤ 1 archaic differences per 1,000 words. Result (Nov 2026): 37 of 38 verified (99.4–99.9% aligned).
+
+**Not published:** "The Portrait of the Bride" (Psalm 45:10–15) aligns only 90%: a long passage in the transcription is not in the 1908 printing.
+
+**Generation** (`scripts/lib/maclaren-sermons.mjs`): titles title-cased from the capitals; "--" shown as a dash; italics dropped; indented verse kept as quotations. The volume does not number its sermons, so the number shown is the sermon's place in the volume. Texts marked "R.V." in the contents are named "Revised Version" on the page (agreement floor 0.65). An alternative scan of the same volume (`expositionsholy02macluoft`) exists but is not needed.
+
+## Classic preachers considered and not published
+
+- **Jonathan Edwards**: the only transcription (Project Gutenberg #34632) is Gardiner's 1904 *Selected Sermons*, which modernizes spelling and punctuation; no institutional scans of the first printings of the sermons (searched 1730–1760 on Internet Archive) were found to check against.
+- **D. L. Moody**: printed books are mostly addresses without a single text, from stenographic reports in many versions.
+- **J. C. Ryle, R. M. M'Cheyne, C. G. Finney, J. H. Jowett, F. B. Meyer, Thomas Watson, Richard Sibbes, Phillips Brooks**: no Project Gutenberg (or equally clean public-domain) transcription in sermon form paired with an institutional scan of the same printing was found; not pursued further, to keep this addition modest.
+- **Maclaren, Psalms vol II** (Psalms LI–CXLV, also in Gutenberg #7925): not yet checked; needs an institutional scan of that volume.
+
+## Modern sermons (openly licensed): none usable
+
+No modern sermon collection with an open licence that allows republishing whole sermons on another website was found (Nov 2026). The best candidates and the permission each would need:
+
+- **Desiring God (John Piper)**, [desiringgod.org/permissions](https://www.desiringgod.org/permissions): a custom policy. Piper's content may be used for non-commercial purposes, but "only quotes and excerpts may be used, not the entire work" in text; required attribution "By John Piper. © Desiring God Foundation. Source: desiringGod.org". Full sermon texts would need written permission (permissions@desiringgod.org). Other authors on the site need each author's permission.
+- **Bible.org**, [bible.org/permissions](https://bible.org/permissions): a custom policy. Free printed copies are allowed, but material "cannot be posted on other websites or servers" and may not be edited; reposting needs written permission (Bible.org's contact form, category Permissions).
+
+Both are custom policies, so nothing modern is published without the ministry's approval and the publisher's written permission. Because no modern sermons were added, the section keeps the name "Classic Sermons".

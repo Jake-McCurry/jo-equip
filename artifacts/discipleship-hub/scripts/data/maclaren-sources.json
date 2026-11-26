@@ -1,0 +1,29 @@
+{
+ "edition": {
+  "title": "Expositions of Holy Scripture: The Book of Psalms I. to XLIX.",
+  "imprint": "London: Hodder and Stoughton, 1908",
+  "series": "Expositions of Holy Scripture",
+  "published": 1908,
+  "note": "Maclaren's sermons as he revised them for his Expositions of Holy Scripture (1904–1910). Only the first Psalms volume is published here so far."
+ },
+ "volumes": [
+  {
+   "volume": 1,
+   "part": "Psalms I. to XLIX.",
+   "transcription": {
+    "gutenberg": 7925,
+    "file": "pg7925.txt",
+    "urls": ["https://gutenberg.pglaf.org/cache/epub/7925/pg7925.txt", "https://www.gutenberg.org/cache/epub/7925/pg7925.txt"],
+    "sha256": "ca79e0cc06ef8dda8f7e139539f6db4e6782d3e0d5a6ebf94773b74b88e37c32"
+   },
+   "scan": {
+    "id": "expositionsofhol11macl",
+    "file": "expositionsofhol11macl_djvu.txt",
+    "md5": "c00cb3420176e163d5bcf0b4213efd2a",
+    "title": "Expositions of Holy Scripture: The Book of Psalms I. to XLIX.",
+    "date": "1908",
+    "library": "University of Toronto (Victoria College)"
+   }
+  }
+ ]
+}

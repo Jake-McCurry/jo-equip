@@ -24,6 +24,11 @@ const refLabel = refs.map(r => r.label).join("; ");
 const when = sermon.date && !sermon.occasion ? `${sermon.service ? `${sermon.service}, ` : ""}${dateLabel(sermon.date)}` : null;
 const versionName = sermon.textVersion ?? "King James Version";
 const minutes = Math.max(1, Math.round(sermon.words / 200));
+const eyebrow = sermon.preacher === "maclaren"
+  ? `${sermon.series} · The Book of ${sermon.part ?? ""} (${sermon.published})`
+  : `Sermon No. ${sermon.number} · ${sermon.series}${(sermon.preacher === "wesley" && sermon.published !== 1771) || sermon.preacher === "whitefield" ? ` (${sermon.published})` : ""}`;
+const volumeLabel = sermon.preacher === "maclaren" ? `The Book of ${sermon.part}`
+  : (sermon.preacher === "wesley" && sermon.published === 1771) || sermon.preacher === "whitefield" ? `Works, Volume ${sermon.volume}` : `Volume ${sermon.volume}`;
 const description = `“${sermon.title}”, sermon No. ${sermon.number} by ${preacher.name}${refLabel ? ` on ${refLabel}` : ""}${sermon.date ? `, preached ${dateLabel(sermon.date)}` : ""}. Full text from the ${sermon.series}, checked against the original printing.`;
 ---
 <Layout title={`${sermon.title}${refLabel ? ` (${refs[0].label})` : ""}: ${preacher.name} Sermon · JO EQUIP`} description={description}>
@@ -32,13 +37,13 @@ const description = `“${sermon.title}”, sermon No. ${sermon.number} by ${pre
       <a href={join("/bible/resources")}>Bible Resources</a> <span aria-hidden="true">/</span>
       <a href={join("/bible/sermons")}>Classic Sermons</a> <span aria-hidden="true">/</span> No. {sermon.number}
     </nav>
-    <p class="bmp-eyebrow">Sermon No. {sermon.number} · {sermon.series}{sermon.preacher === "wesley" && sermon.published !== 1771 ? ` (${sermon.published})` : ""}</p>
+    <p class="bmp-eyebrow">{eyebrow}</p>
     <h1 class="bmp-title">{sermon.title}</h1>
     <p class="bmp-sub">By {preacher.name}</p>
     {sermon.occasion && <p class="srm-meta"><span>{sermon.occasion}</span></p>}
     <p class="srm-meta">
       {when ? <span>Preached {when}</span> : <span>Published {sermon.published}</span>}
-      <span>{sermon.preacher === "wesley" && sermon.published === 1771 ? `Works, Volume ${sermon.volume}` : `Volume ${sermon.volume}`}</span>
+      <span>{volumeLabel}</span>
       <span>About {minutes} minutes to read</span>
     </p>
 

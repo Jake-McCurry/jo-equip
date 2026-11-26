@@ -1,0 +1,603 @@
+{
+ "edition": "The Works of the Reverend George Whitefield, M.A.",
+ "criteria": {
+  "minCoverage": 0.75,
+  "maxCasePer1000": 4.0,
+  "maxArchaicPer1000": 1.0
+ },
+ "checked": 59,
+ "rejected": 0,
+ "verified": [
+  {
+   "volume": 5,
+   "number": 1,
+   "words": 7492,
+   "source": "worksofreverendg05whit",
+   "coverage": 0.898,
+   "case": 1.2,
+   "archaic": 0.13,
+   "phrase": 0.67
+  },
+  {
+   "volume": 5,
+   "number": 2,
+   "words": 7026,
+   "source": "worksofreverendg05whit",
+   "coverage": 0.891,
+   "case": 1.43,
+   "archaic": 0.14,
+   "phrase": 2.14
+  },
+  {
+   "volume": 5,
+   "number": 3,
+   "words": 5797,
+   "source": "worksofreverendg05whit",
+   "coverage": 0.906,
+   "case": 0.86,
+   "archaic": 0.35,
+   "phrase": 1.38
+  },
+  {
+   "volume": 5,
+   "number": 4,
+   "words": 5114,
+   "source": "worksofreverendg05whit",
+   "coverage": 0.898,
+   "case": 0.78,
+   "archaic": 0.0,
+   "phrase": 0.39
+  },
+  {
+   "volume": 5,
+   "number": 5,
+   "words": 5524,
+   "source": "worksofreverendg05whit",
+   "coverage": 0.878,
+   "case": 1.27,
+   "archaic": 0.0,
+   "phrase": 1.45
+  },
+  {
+   "volume": 5,
+   "number": 6,
+   "words": 5691,
+   "source": "worksofreverendg05whit",
+   "coverage": 0.899,
+   "case": 0.7,
+   "archaic": 0.18,
+   "phrase": 1.58
+  },
+  {
+   "volume": 5,
+   "number": 7,
+   "words": 5085,
+   "source": "worksofreverendg05whit",
+   "coverage": 0.898,
+   "case": 0.59,
+   "archaic": 0.2,
+   "phrase": 0.79
+  },
+  {
+   "volume": 5,
+   "number": 8,
+   "words": 6067,
+   "source": "worksofreverendg05whit",
+   "coverage": 0.912,
+   "case": 0.66,
+   "archaic": 0.0,
+   "phrase": 2.31
+  },
+  {
+   "volume": 5,
+   "number": 9,
+   "words": 7413,
+   "source": "worksofreverendg05whit",
+   "coverage": 0.885,
+   "case": 0.67,
+   "archaic": 0.13,
+   "phrase": 2.97
+  },
+  {
+   "volume": 5,
+   "number": 10,
+   "words": 6778,
+   "source": "worksofreverendg05whit",
+   "coverage": 0.914,
+   "case": 0.74,
+   "archaic": 0.15,
+   "phrase": 0.89
+  },
+  {
+   "volume": 5,
+   "number": 11,
+   "words": 4307,
+   "source": "worksofreverendg05whit",
+   "coverage": 0.857,
+   "case": 0.7,
+   "archaic": 0.0,
+   "phrase": 3.71
+  },
+  {
+   "volume": 5,
+   "number": 12,
+   "words": 10926,
+   "source": "worksofreverendg05whit",
+   "coverage": 0.905,
+   "case": 0.64,
+   "archaic": 0.0,
+   "phrase": 0.73
+  },
+  {
+   "volume": 5,
+   "number": 13,
+   "words": 7609,
+   "source": "worksofreverendg05whit",
+   "coverage": 0.905,
+   "case": 1.31,
+   "archaic": 0.26,
+   "phrase": 0.53
+  },
+  {
+   "volume": 5,
+   "number": 14,
+   "words": 7461,
+   "source": "worksofreverendg05whit",
+   "coverage": 0.876,
+   "case": 0.94,
+   "archaic": 0.0,
+   "phrase": 0.81
+  },
+  {
+   "volume": 5,
+   "number": 15,
+   "words": 6462,
+   "source": "worksofreverendg05whit",
+   "coverage": 0.863,
+   "case": 1.86,
+   "archaic": 0.15,
+   "phrase": 0.77
+  },
+  {
+   "volume": 5,
+   "number": 16,
+   "words": 4102,
+   "source": "worksofreverendg05whit",
+   "coverage": 0.903,
+   "case": 1.95,
+   "archaic": 0.0,
+   "phrase": 1.46
+  },
+  {
+   "volume": 5,
+   "number": 17,
+   "words": 5834,
+   "source": "worksofreverendg05whit",
+   "coverage": 0.909,
+   "case": 0.69,
+   "archaic": 0.0,
+   "phrase": 1.2
+  },
+  {
+   "volume": 5,
+   "number": 18,
+   "words": 4369,
+   "source": "worksofreverendg05whit",
+   "coverage": 0.917,
+   "case": 1.6,
+   "archaic": 0.0,
+   "phrase": 1.14
+  },
+  {
+   "volume": 5,
+   "number": 19,
+   "words": 4676,
+   "source": "worksofreverendg05whit",
+   "coverage": 0.907,
+   "case": 1.07,
+   "archaic": 0.0,
+   "phrase": 1.28
+  },
+  {
+   "volume": 5,
+   "number": 20,
+   "words": 3419,
+   "source": "worksofreverendg05whit",
+   "coverage": 0.923,
+   "case": 0.88,
+   "archaic": 0.29,
+   "phrase": 1.75
+  },
+  {
+   "volume": 5,
+   "number": 21,
+   "words": 4243,
+   "source": "worksofreverendg05whit",
+   "coverage": 0.93,
+   "case": 0.24,
+   "archaic": 0.0,
+   "phrase": 0.24
+  },
+  {
+   "volume": 5,
+   "number": 22,
+   "words": 7001,
+   "source": "worksofreverendg05whit",
+   "coverage": 0.902,
+   "case": 1.29,
+   "archaic": 0.14,
+   "phrase": 1.72
+  },
+  {
+   "volume": 5,
+   "number": 23,
+   "words": 7391,
+   "source": "worksofreverendg05whit",
+   "coverage": 0.919,
+   "case": 0.68,
+   "archaic": 0.14,
+   "phrase": 0.41
+  },
+  {
+   "volume": 5,
+   "number": 24,
+   "words": 8277,
+   "source": "worksofreverendg05whit",
+   "coverage": 0.893,
+   "case": 0.73,
+   "archaic": 0.12,
+   "phrase": 0.97
+  },
+  {
+   "volume": 5,
+   "number": 25,
+   "words": 7958,
+   "source": "worksofreverendg05whit",
+   "coverage": 0.915,
+   "case": 0.88,
+   "archaic": 0.25,
+   "phrase": 1.13
+  },
+  {
+   "volume": 5,
+   "number": 26,
+   "words": 4320,
+   "source": "worksofreverendg05whit",
+   "coverage": 0.912,
+   "case": 1.16,
+   "archaic": 0.0,
+   "phrase": 1.62
+  },
+  {
+   "volume": 5,
+   "number": 27,
+   "words": 5817,
+   "source": "worksofreverendg05whit",
+   "coverage": 0.911,
+   "case": 0.86,
+   "archaic": 0.17,
+   "phrase": 1.03
+  },
+  {
+   "volume": 5,
+   "number": 28,
+   "words": 3445,
+   "source": "worksofreverendg05whit",
+   "coverage": 0.936,
+   "case": 0.29,
+   "archaic": 0.0,
+   "phrase": 0.29
+  },
+  {
+   "volume": 5,
+   "number": 29,
+   "words": 4624,
+   "source": "worksofreverendg05whit",
+   "coverage": 0.921,
+   "case": 1.3,
+   "archaic": 0.0,
+   "phrase": 1.08
+  },
+  {
+   "volume": 5,
+   "number": 30,
+   "words": 6643,
+   "source": "worksofreverendg05whit",
+   "coverage": 0.903,
+   "case": 0.75,
+   "archaic": 0.45,
+   "phrase": 1.51
+  },
+  {
+   "volume": 5,
+   "number": 31,
+   "words": 7634,
+   "source": "worksofreverendg05whit",
+   "coverage": 0.91,
+   "case": 1.44,
+   "archaic": 0.0,
+   "phrase": 1.44
+  },
+  {
+   "volume": 6,
+   "number": 32,
+   "words": 6919,
+   "source": "worksofreverendg06whit",
+   "coverage": 0.909,
+   "case": 0.72,
+   "archaic": 0.0,
+   "phrase": 1.3
+  },
+  {
+   "volume": 6,
+   "number": 33,
+   "words": 6430,
+   "source": "worksofreverendg06whit",
+   "coverage": 0.919,
+   "case": 0.62,
+   "archaic": 0.31,
+   "phrase": 0.62
+  },
+  {
+   "volume": 6,
+   "number": 34,
+   "words": 5392,
+   "source": "worksofreverendg06whit",
+   "coverage": 0.913,
+   "case": 0.74,
+   "archaic": 0.19,
+   "phrase": 0.37
+  },
+  {
+   "volume": 6,
+   "number": 35,
+   "words": 6100,
+   "source": "worksofreverendg06whit",
+   "coverage": 0.916,
+   "case": 0.98,
+   "archaic": 0.16,
+   "phrase": 0.66
+  },
+  {
+   "volume": 6,
+   "number": 36,
+   "words": 6332,
+   "source": "worksofreverendg06whit",
+   "coverage": 0.907,
+   "case": 0.16,
+   "archaic": 0.16,
+   "phrase": 1.26
+  },
+  {
+   "volume": 6,
+   "number": 37,
+   "words": 3751,
+   "source": "worksofreverendg06whit",
+   "coverage": 0.919,
+   "case": 0.53,
+   "archaic": 0.27,
+   "phrase": 1.6
+  },
+  {
+   "volume": 6,
+   "number": 38,
+   "words": 5573,
+   "source": "worksofreverendg06whit",
+   "coverage": 0.911,
+   "case": 0.36,
+   "archaic": 0.0,
+   "phrase": 0.9
+  },
+  {
+   "volume": 6,
+   "number": 39,
+   "words": 9960,
+   "source": "worksofreverendg06whit",
+   "coverage": 0.899,
+   "case": 0.3,
+   "archaic": 0.3,
+   "phrase": 0.8
+  },
+  {
+   "volume": 6,
+   "number": 40,
+   "words": 6240,
+   "source": "worksofreverendg06whit",
+   "coverage": 0.917,
+   "case": 0.16,
+   "archaic": 0.48,
+   "phrase": 0.96
+  },
+  {
+   "volume": 6,
+   "number": 41,
+   "words": 7131,
+   "source": "worksofreverendg06whit",
+   "coverage": 0.899,
+   "case": 1.12,
+   "archaic": 0.0,
+   "phrase": 1.12
+  },
+  {
+   "volume": 6,
+   "number": 42,
+   "words": 4837,
+   "source": "worksofreverendg06whit",
+   "coverage": 0.926,
+   "case": 1.86,
+   "archaic": 0.0,
+   "phrase": 0.83
+  },
+  {
+   "volume": 6,
+   "number": 43,
+   "words": 4889,
+   "source": "worksofreverendg06whit",
+   "coverage": 0.901,
+   "case": 2.25,
+   "archaic": 0.2,
+   "phrase": 2.25
+  },
+  {
+   "volume": 6,
+   "number": 44,
+   "words": 6387,
+   "source": "worksofreverendg06whit",
+   "coverage": 0.891,
+   "case": 0.94,
+   "archaic": 0.16,
+   "phrase": 0.63
+  },
+  {
+   "volume": 6,
+   "number": 45,
+   "words": 3535,
+   "source": "worksofreverendg06whit",
+   "coverage": 0.905,
+   "case": 2.55,
+   "archaic": 0.0,
+   "phrase": 1.41
+  },
+  {
+   "volume": 6,
+   "number": 46,
+   "words": 4346,
+   "source": "worksofreverendg06whit",
+   "coverage": 0.907,
+   "case": 0.69,
+   "archaic": 0.0,
+   "phrase": 0.69
+  },
+  {
+   "volume": 6,
+   "number": 47,
+   "words": 4628,
+   "source": "worksofreverendg06whit",
+   "coverage": 0.938,
+   "case": 0.43,
+   "archaic": 0.0,
+   "phrase": 0.86
+  },
+  {
+   "volume": 6,
+   "number": 48,
+   "words": 5172,
+   "source": "worksofreverendg06whit",
+   "coverage": 0.931,
+   "case": 2.32,
+   "archaic": 0.0,
+   "phrase": 0.19
+  },
+  {
+   "volume": 6,
+   "number": 49,
+   "words": 5207,
+   "source": "worksofreverendg06whit",
+   "coverage": 0.917,
+   "case": 0.38,
+   "archaic": 0.19,
+   "phrase": 0.96
+  },
+  {
+   "volume": 6,
+   "number": 50,
+   "words": 5102,
+   "source": "worksofreverendg06whit",
+   "coverage": 0.921,
+   "case": 0.39,
+   "archaic": 0.0,
+   "phrase": 0.79
+  },
+  {
+   "volume": 6,
+   "number": 51,
+   "words": 5175,
+   "source": "worksofreverendg06whit",
+   "coverage": 0.894,
+   "case": 0.58,
+   "archaic": 0.0,
+   "phrase": 0.39
+  },
+  {
+   "volume": 6,
+   "number": 52,
+   "words": 4620,
+   "source": "worksofreverendg06whit",
+   "coverage": 0.906,
+   "case": 1.95,
+   "archaic": 0.0,
+   "phrase": 1.74
+  },
+  {
+   "volume": 6,
+   "number": 53,
+   "words": 4028,
+   "source": "worksofreverendg06whit",
+   "coverage": 0.892,
+   "case": 1.24,
+   "archaic": 0.0,
+   "phrase": 0.99
+  },
+  {
+   "volume": 6,
+   "number": 54,
+   "words": 4288,
+   "source": "worksofreverendg06whit",
+   "coverage": 0.912,
+   "case": 0.93,
+   "archaic": 0.0,
+   "phrase": 1.17
+  },
+  {
+   "volume": 6,
+   "number": 55,
+   "words": 5737,
+   "source": "worksofreverendg06whit",
+   "coverage": 0.898,
+   "case": 2.62,
+   "archaic": 0.0,
+   "phrase": 0.52
+  },
+  {
+   "volume": 6,
+   "number": 56,
+   "words": 2176,
+   "source": "worksofreverendg06whit",
+   "coverage": 0.928,
+   "case": 0.92,
+   "archaic": 0.92,
+   "phrase": 0.0
+  },
+  {
+   "volume": 6,
+   "number": 57,
+   "words": 6780,
+   "source": "worksofreverendg06whit",
+   "coverage": 0.914,
+   "case": 1.33,
+   "archaic": 0.29,
+   "phrase": 1.03
+  },
+  {
+   "volume": 6,
+   "number": 58,
+   "words": 6586,
+   "source": "worksofreverendg06whit",
+   "coverage": 0.923,
+   "case": 1.37,
+   "archaic": 0.0,
+   "phrase": 1.82
+  },
+  {
+   "volume": 6,
+   "number": 59,
+   "words": 7286,
+   "source": "worksofreverendg06whit",
+   "coverage": 0.916,
+   "case": 0.41,
+   "archaic": 0.0,
+   "phrase": 1.65
+  }
+ ],
+ "rejectedSermons": []
+}

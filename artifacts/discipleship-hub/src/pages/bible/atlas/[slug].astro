@@ -4,6 +4,7 @@ import MapSources from "@/components/bible-maps/MapSources.astro";
 import { readerHref, refText } from "@/components/bible-maps/maps-data";
 import { atlasFile, atlasMaps, type AtlasMap } from "@/data/bible-atlas";
 import { placeBySlug } from "@/data/bible-maps";
+import { journeyForAtlas } from "@/data/bible-maps/journeys";
 import "@/components/bible-maps/bible-maps.css";
 import "@/components/bible-maps/bible-atlas.css";
 
@@ -18,6 +19,7 @@ const file = (name: string) => atlasFile(baseUrl, name);
 const passage = refText(map.passage[0], map.passage[1]);
 const placeHref = (slug: string) => (placeBySlug.has(slug) ? join(`/bible/maps/${slug}`) : null);
 const alt = `Map: ${map.title} (${map.period}). ${map.routes.length ? `Shows ${map.routes.map(r => r.name.toLowerCase()).join("; ")} through ${[...new Set(map.routes.flatMap(r => r.stops.map(s => s.label)))].join(", ")}.` : `Shows ${map.places.map(p => p.label).join(", ")}.`}`;
+const journey = journeyForAtlas(map.slug);
 const downloadName = `${map.slug}-bible-map-jo-equip.jpg`;
 ---
 <Layout
@@ -50,7 +52,7 @@ const downloadName = `${map.slug}-bible-map-jo-equip.jpg`;
     <div class="ba-actions">
       <a class="ba-btn is-primary" href={file(map.files.print)} download={downloadName}>Download map (JPEG)</a>
       <button type="button" class="ba-btn" data-ba-print>Print this map</button>
-      <a class="ba-btn" href={join("/bible/maps")}>Explore on the interactive map</a>
+      <a class="ba-btn" href={join(journey ? `/bible/maps?journey=${journey.id}` : "/bible/maps")}>{journey ? "Follow the route on the interactive map" : "Explore on the interactive map"}</a>
     </div>
 
     <section class="bmp-section" aria-labelledby="about-h">

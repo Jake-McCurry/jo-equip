@@ -1,7 +1,7 @@
 ---
 /* Source and license credits for pages that use the Bible maps / timeline data.
    Keep in step with scripts/data/bible-search-sources.md. */
-interface Props { uses: ("openbible" | "naturalearth" | "theographic" | "easton")[] }
+interface Props { uses: ("openbible" | "naturalearth" | "theographic" | "easton" | "journeys")[] }
 const { uses } = Astro.props;
 const ext = { target: "_blank", rel: "noopener noreferrer" };
 ---
@@ -23,6 +23,12 @@ const ext = { target: "_blank", rel: "noopener noreferrer" };
     )}
     {uses.includes("easton") && (
       <li>Dictionary article: <em>Easton&rsquo;s Bible Dictionary</em> by M. G. Easton (1897, public domain), as distributed with Theographic Bible Metadata (<a href="https://creativecommons.org/licenses/by-sa/4.0/" {...ext}>CC BY-SA 4.0</a>).</li>
+    )}
+    {uses.includes("journeys") && (
+      <li>
+        Journey routes: drawn by JO EQUIP from the places Scripture names, in the order the cited verses give them, using the OpenBible.info locations above.
+        Lines between stops show the general direction of travel, not exact roads or sea lanes; routes marked as debated (such as the Exodus) follow one traditional proposal.
+      </li>
     )}
     {uses.includes("naturalearth") && (
       <li>Base map: coastlines, lakes and rivers from <a href="https://www.naturalearthdata.com/" {...ext}>Natural Earth</a> (public domain). They are modern, not ancient.</li>

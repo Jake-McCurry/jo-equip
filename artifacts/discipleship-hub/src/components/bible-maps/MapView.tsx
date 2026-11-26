@@ -3,7 +3,10 @@ import { Minus, Plus, RotateCcw } from "lucide-react";
 import { MAP_SIZE, terrainFor } from "./maps-data";
 
 export type Tier = "high" | "moderate" | "low" | "unknown";
-export type MapMarker = { id: string; x: number; y: number; label: string; tier: Tier; href?: string; active?: boolean };
+/** `num` draws a numbered stop (a journey) instead of a confidence dot. */
+export type MapMarker = { id: string; x: number; y: number; label: string; tier: Tier; href?: string; active?: boolean; num?: string };
+/** A line drawn under the markers, in map units; `dashed` marks a debated route. */
+export type MapRoute = { points: [number, number][]; color: string; dashed?: boolean };
 type View = { x: number; y: number; w: number };
 
 type Props = {
@@ -23,6 +26,7 @@ type Props = {
   onMarker?: (m: MapMarker) => void;
   /** Changes whenever the caller wants the view re-fitted (for example a new search). */
   fitKey?: string;
+  routes?: MapRoute[];
 };
 
 const clampW = (w: number) => Math.min(Math.max(w, 4), MAP_SIZE.width * 1.2);
@@ -44,7 +48,7 @@ const TIER_MAX_SPAN: Record<string, number> = { region: 320, holyland: 90 };
 
 const FILL: Record<Tier, string> = { high: "#004f86", moderate: "#2f86c8", low: "#ffffff", unknown: "#ffffff" };
 
-export function MapView({ basemap, markers, label, aspect = 4 / 3, minSpan = 30, fitTo, labels = "none", interactive = true, onMarker, fitKey = "" }: Props) {
+export function MapView({ basemap, markers, label, aspect = 4 / 3, minSpan = 30, fitTo, labels = "none", interactive = true, onMarker, fitKey = "", routes = [] }: Props) {
   const home = useMemo(() => fit(fitTo ?? markers, aspect, minSpan), // eslint-disable-next-line react-hooks/exhaustive-deps
     [fitKey, aspect, minSpan, interactive ? "" : markers]);
   const [view, setView] = useState<View>(home);
@@ -117,7 +121,7 @@ export function MapView({ basemap, markers, label, aspect = 4 / 3, minSpan = 30,
   };
 
   const ordered = useMemo(() => [...markers].sort((a, b) => Number(!!a.active) - Number(!!b.active)), [markers]);
-  const r = (m: MapMarker) => (m.active ? 7 : markers.length > 200 ? 3.5 : 5) * unit;
+  const r = (m: MapMarker) => (m.num ? (m.active ? 11 : 9) : m.active ? 7 : markers.length > 200 ? 3.5 : 5) * unit;
   const font = 12.5 * unit;
   // Greedy label placement: active markers first, then skip any label that would overlap one already placed.
   const labelled = new Set<string>();
@@ -149,8 +153,25 @@ export function MapView({ basemap, markers, label, aspect = 4 / 3, minSpan = 30,
           <image key={t.name} href={t.href} x={t.x} y={t.y} width={t.width} height={t.height} preserveAspectRatio="none" />
         ))}
         <use href={`${basemap}#bm-base`} />
+        {routes.map((rt, i) => {
+          const d = "M" + rt.points.map(p => `${p[0]} ${p[1]}`).join("L");
+          return (
+            <g key={i} fill="none" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d={d} stroke="#ffffff" strokeOpacity={0.85} strokeWidth={6 * unit} />
+              <path d={d} stroke={rt.color} strokeWidth={3 * unit} strokeDasharray={rt.dashed ? `${8 * unit} ${5 * unit}` : undefined} />
+            </g>
+          );
+        })}
         {ordered.map(m => {
-          const dot = (
+          const dot = m.num ? (
+            <>
+              <circle cx={m.x} cy={m.y} r={r(m)} fill={m.active ? "#c45100" : "#12324a"} stroke="#ffffff" strokeWidth={1.5 * unit} />
+              <text x={m.x} y={m.y + (m.num.length > 2 ? 3 : 3.6) * unit} fontSize={(m.num.length > 2 ? 8.5 : 10.5) * unit} className="bm-num">{m.num}</text>
+              {showLabel(m) && (
+                <text x={m.x + r(m) + 3 * unit} y={m.y + font * 0.35} fontSize={font} className="bm-label" strokeWidth={3 * unit}>{m.label}</text>
+              )}
+            </>
+          ) : (
             <>
               <circle cx={m.x} cy={m.y} r={r(m)} fill={m.active ? "#c45100" : FILL[m.tier]}
                 stroke={m.active ? "#ffffff" : m.tier === "low" ? "#c45100" : "#ffffff"} strokeWidth={(m.tier === "low" && !m.active ? 1.6 : 1.2) * unit}

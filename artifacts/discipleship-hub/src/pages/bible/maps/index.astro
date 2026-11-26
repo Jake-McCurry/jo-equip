@@ -3,6 +3,7 @@ import Layout from "@/layouts/Layout.astro";
 import MapExplorer from "@/components/bible-maps/MapExplorer";
 import MapSources from "@/components/bible-maps/MapSources.astro";
 import { places } from "@/data/bible-maps";
+import { journeys } from "@/data/bible-maps/journeys";
 import "@/components/bible-maps/bible-maps.css";
 
 const baseUrl = import.meta.env.BASE_URL;
@@ -29,6 +30,7 @@ for (const p of places) {
     <p class="bmp-lede">
       Find the cities, regions, mountains, rivers and seas named in Scripture. Each place shows how confident scholars are of its location
       and links to every verse that mentions it. Not every biblical place can be located; uncertain ones are marked.
+      Choose a journey, such as the Exodus or Paul&rsquo;s missionary journeys, to see its route with numbered stops.
     </p>
     <p class="bmp-lede" style="font-size:1rem;margin-top:.5rem">
       Looking for when things happened? See the <a class="bmp-link" href={join("/bible/timeline")}>Bible Timeline</a>.
@@ -36,7 +38,7 @@ for (const p of places) {
     </p>
 
     <section class="bmp-section" aria-label="Interactive Bible map">
-      <MapExplorer client:load baseUrl={baseUrl} />
+      <MapExplorer client:load baseUrl={baseUrl} journeys={journeys} />
     </section>
 
     <section class="bmp-section" aria-labelledby="az-h">
@@ -56,6 +58,6 @@ for (const p of places) {
       ))}
     </section>
 
-    <MapSources uses={["openbible", "naturalearth"]} />
+    <MapSources uses={["openbible", "naturalearth", "journeys"]} />
   </div>
 </Layout>

@@ -1,0 +1,2630 @@
+{
+"edition": {
+"repository": "lyteword/chspurgeon-sermons",
+"commit": "eeec6efe01edb6b80ef43a2e90aee2b816e018a9",
+"sha256": "6f45da64d5390c38083d55fd8f5adb7785cb887af33b2fdfca08cf71b1ed013b"
+},
+"criteria": {
+"minCoverage": 0.75,
+"maxCasePer1000": 4.0,
+"maxArchaicPer1000": 1.0
+},
+"checked": 3534,
+"rejected": {
+"no scan of an original printing found": 2538,
+"too little of the text matched the scan": 2,
+"wording modernized": 713
+},
+"verified": [
+{
+"file": "volume-1/sermon-4.md",
+"source": "sermon0000chsp",
+"words": 6616,
+"coverage": 0.976,
+"case": 1.21,
+"archaic": 0.6,
+"phrase": 1.06
+},
+{
+"file": "volume-1/sermon-5.md",
+"source": "sermon0000chsp",
+"words": 5830,
+"coverage": 0.98,
+"case": 0.69,
+"archaic": 0.17,
+"phrase": 0.17
+},
+{
+"file": "volume-1/sermon-6.md",
+"source": "sermonsofrevchsp0002spur",
+"words": 6789,
+"coverage": 0.964,
+"case": 0.88,
+"archaic": 0.15,
+"phrase": 1.33
+},
+{
+"file": "volume-1/sermon-7-8.md",
+"source": "themodernwhitfie1856spur",
+"words": 8387,
+"coverage": 0.972,
+"case": 1.07,
+"archaic": 0.24,
+"phrase": 2.38
+},
+{
+"file": "volume-1/sermon-12.md",
+"source": "sermons02spur",
+"words": 6504,
+"coverage": 0.954,
+"case": 1.38,
+"archaic": 0.31,
+"phrase": 2.15
+},
+{
+"file": "volume-1/sermon-15.md",
+"source": "sermon0000chsp",
+"words": 6970,
+"coverage": 0.977,
+"case": 0.57,
+"archaic": 0.29,
+"phrase": 0.43
+},
+{
+"file": "volume-1/sermon-16.md",
+"source": "sermonsrevchspu02spurgoog",
+"words": 6725,
+"coverage": 0.977,
+"case": 2.23,
+"archaic": 0.15,
+"phrase": 1.64
+},
+{
+"file": "volume-1/sermon-17.md",
+"source": "sermon0000chsp",
+"words": 6067,
+"coverage": 0.984,
+"case": 0.16,
+"archaic": 0.16,
+"phrase": 0.33
+},
+{
+"file": "volume-1/sermon-18.md",
+"source": "sermonsofrevchsp01spur",
+"words": 5881,
+"coverage": 0.992,
+"case": 0.51,
+"archaic": 0.17,
+"phrase": 0.34
+},
+{
+"file": "volume-1/sermon-20.md",
+"source": "sermonsofrevchsp01spur",
+"words": 6763,
+"coverage": 0.992,
+"case": 0.89,
+"archaic": 0.0,
+"phrase": 0.15
+},
+{
+"file": "volume-1/sermon-21.md",
+"source": "sermon0000chsp",
+"words": 6934,
+"coverage": 0.981,
+"case": 0.14,
+"archaic": 0.0,
+"phrase": 0.14
+},
+{
+"file": "volume-1/sermon-23.md",
+"source": "sermonsrevchspu02spurgoog",
+"words": 6994,
+"coverage": 0.983,
+"case": 0.14,
+"archaic": 0.57,
+"phrase": 0.71
+},
+{
+"file": "volume-1/sermon-27.md",
+"source": "sermon0000chsp",
+"words": 4827,
+"coverage": 0.97,
+"case": 0.0,
+"archaic": 0.0,
+"phrase": 0.41
+},
+{
+"file": "volume-1/sermon-28.md",
+"source": "sermon0000chsp",
+"words": 6189,
+"coverage": 0.979,
+"case": 0.16,
+"archaic": 0.0,
+"phrase": 0.0
+},
+{
+"file": "volume-1/sermon-30.md",
+"source": "sermonsrevchspu02spurgoog",
+"words": 6654,
+"coverage": 0.978,
+"case": 2.25,
+"archaic": 0.15,
+"phrase": 1.05
+},
+{
+"file": "volume-1/sermon-39-40.md",
+"source": "sermonsrevchspu02spurgoog",
+"words": 8041,
+"coverage": 0.981,
+"case": 1.37,
+"archaic": 0.0,
+"phrase": 0.75
+},
+{
+"file": "volume-1/sermon-41-42.md",
+"source": "spurgeonssermonn00spuruoft",
+"words": 8934,
+"coverage": 0.992,
+"case": 0.22,
+"archaic": 0.0,
+"phrase": 0.56,
+"date": "1855-09-02",
+"service": "Sabbath morning"
+},
+{
+"file": "volume-1/sermon-46.md",
+"source": "sermonsofrevchsp0002spur",
+"words": 6679,
+"coverage": 0.978,
+"case": 0.15,
+"archaic": 0.15,
+"phrase": 0.75
+},
+{
+"file": "volume-1/sermon-50.md",
+"source": "twelvesermonsonh0000chsp_s5d8",
+"words": 7262,
+"coverage": 0.978,
+"case": 1.51,
+"archaic": 0.0,
+"phrase": 0.41
+},
+{
+"file": "volume-1/sermon-53.md",
+"source": "sermons0000chsp_d1a0",
+"words": 6381,
+"coverage": 0.978,
+"case": 0.16,
+"archaic": 0.0,
+"phrase": 1.1
+},
+{
+"file": "volume-2/sermon-60.md",
+"source": "sermon0000chsp",
+"words": 7027,
+"coverage": 0.977,
+"case": 1.57,
+"archaic": 0.43,
+"phrase": 0.28
+},
+{
+"file": "volume-2/sermon-64.md",
+"source": "sermonsofrevchsp01spur",
+"words": 6082,
+"coverage": 0.974,
+"case": 1.15,
+"archaic": 0.16,
+"phrase": 1.81
+},
+{
+"file": "volume-2/sermon-69.md",
+"source": "sermonsofrevchsp0002spur",
+"words": 6752,
+"coverage": 0.97,
+"case": 2.07,
+"archaic": 0.3,
+"phrase": 0.59
+},
+{
+"file": "volume-2/sermon-77.md",
+"source": "spurgeonssermonn00spuruoft",
+"words": 5819,
+"coverage": 0.993,
+"case": 0.34,
+"archaic": 0.17,
+"phrase": 0.17
+},
+{
+"file": "volume-2/sermon-79.md",
+"source": "spurgeonssermonn00spuruoft",
+"words": 6884,
+"coverage": 0.991,
+"case": 0.29,
+"archaic": 0.15,
+"phrase": 0.29
+},
+{
+"file": "volume-2/sermon-81-82.md",
+"source": "sermonsrevchspu06spurgoog",
+"words": 9678,
+"coverage": 0.768,
+"case": 1.65,
+"archaic": 0.93,
+"phrase": 3.41
+},
+{
+"file": "volume-2/sermon-85.md",
+"source": "sermonsofrevchsp0002spur",
+"words": 5845,
+"coverage": 0.964,
+"case": 3.93,
+"archaic": 0.17,
+"phrase": 0.68
+},
+{
+"file": "volume-2/sermon-94.md",
+"source": "sixsermons00spur",
+"words": 6898,
+"coverage": 0.966,
+"case": 2.46,
+"archaic": 0.29,
+"phrase": 1.01
+},
+{
+"file": "volume-2/sermon-95.md",
+"source": "sixsermons00spur",
+"words": 6516,
+"coverage": 0.981,
+"case": 0.61,
+"archaic": 0.46,
+"phrase": 1.07,
+"date": "1856-08-10",
+"service": "Sunday morning"
+},
+{
+"file": "volume-2/sermon-96.md",
+"source": "sixsermons00spur",
+"words": 5285,
+"coverage": 0.984,
+"case": 1.32,
+"archaic": 0.19,
+"phrase": 0.57,
+"date": "1856-08-10",
+"service": "Sunday evening"
+},
+{
+"file": "volume-2/sermon-97.md",
+"source": "sixsermons00spur",
+"words": 6393,
+"coverage": 0.981,
+"case": 2.66,
+"archaic": 0.16,
+"phrase": 0.31
+},
+{
+"file": "volume-2/sermon-98.md",
+"source": "sermonsparables00spuruoft",
+"words": 6889,
+"coverage": 0.98,
+"case": 0.44,
+"archaic": 0.44,
+"phrase": 0.87,
+"date": "1856-08-17",
+"service": "Sabbath evening"
+},
+{
+"file": "volume-2/sermon-100.md",
+"source": "sermons0000chsp_d1a0",
+"words": 6453,
+"coverage": 0.965,
+"case": 0.77,
+"archaic": 0.0,
+"phrase": 1.24
+},
+{
+"file": "volume-2/sermon-101.md",
+"source": "sermonsofrevchsp0002spur",
+"words": 6317,
+"coverage": 0.96,
+"case": 3.17,
+"archaic": 0.16,
+"phrase": 1.11
+},
+{
+"file": "volume-2/sermon-103.md",
+"source": "sermonsofrevchsp0002spur",
+"words": 6021,
+"coverage": 0.947,
+"case": 1.66,
+"archaic": 0.33,
+"phrase": 1.99
+},
+{
+"file": "volume-2/sermon-104.md",
+"source": "sermons02spur",
+"words": 6383,
+"coverage": 0.947,
+"case": 1.88,
+"archaic": 0.16,
+"phrase": 2.66
+},
+{
+"file": "volume-2/sermon-105.md",
+"source": "bwb_S0-CQK-492",
+"words": 6887,
+"coverage": 0.978,
+"case": 0.29,
+"archaic": 0.0,
+"phrase": 0.15
+},
+{
+"file": "volume-2/sermon-106.md",
+"source": "sermonsrevchspu06spurgoog",
+"words": 6662,
+"coverage": 0.965,
+"case": 2.25,
+"archaic": 0.0,
+"phrase": 1.5
+},
+{
+"file": "volume-3/sermon-107.md",
+"source": "sermonsofrevchsp01spur",
+"words": 6069,
+"coverage": 0.988,
+"case": 1.65,
+"archaic": 0.0,
+"phrase": 0.16
+},
+{
+"file": "volume-3/sermon-109.md",
+"source": "bwb_S0-CQK-492",
+"words": 6499,
+"coverage": 0.965,
+"case": 2.0,
+"archaic": 0.62,
+"phrase": 0.46
+},
+{
+"file": "volume-3/sermon-111.md",
+"source": "sixsermons00spur",
+"words": 6429,
+"coverage": 0.981,
+"case": 2.49,
+"archaic": 0.16,
+"phrase": 1.4,
+"date": "1857-01-04",
+"service": "Sunday morning"
+},
+{
+"file": "volume-3/sermon-113.md",
+"source": "sermonsofrevchsp00spur",
+"words": 5974,
+"coverage": 0.973,
+"case": 1.34,
+"archaic": 0.0,
+"phrase": 0.5
+},
+{
+"file": "volume-3/sermon-114.md",
+"source": "sermonsrevchspu00magogoog",
+"words": 6735,
+"coverage": 0.909,
+"case": 1.19,
+"archaic": 0.15,
+"phrase": 0.74
+},
+{
+"file": "volume-3/sermon-115.md",
+"source": "sermonsofrevchsp00spur",
+"words": 6088,
+"coverage": 0.974,
+"case": 3.78,
+"archaic": 0.49,
+"phrase": 1.15
+},
+{
+"file": "volume-3/sermon-116.md",
+"source": "sermonsofrevchsp00spur",
+"words": 6442,
+"coverage": 0.97,
+"case": 1.24,
+"archaic": 0.0,
+"phrase": 0.62
+},
+{
+"file": "volume-3/sermon-118.md",
+"source": "sermonsofrevchsp00spur",
+"words": 5013,
+"coverage": 0.974,
+"case": 1.8,
+"archaic": 0.2,
+"phrase": 0.8
+},
+{
+"file": "volume-3/sermon-119.md",
+"source": "bwb_S0-CQK-492",
+"words": 5677,
+"coverage": 0.977,
+"case": 0.35,
+"archaic": 0.0,
+"phrase": 0.53
+},
+{
+"file": "volume-3/sermon-120.md",
+"source": "sermonsofrevchsp00spur",
+"words": 6419,
+"coverage": 0.982,
+"case": 0.16,
+"archaic": 0.0,
+"phrase": 0.93
+},
+{
+"file": "volume-3/sermon-121.md",
+"source": "sermonsofrevchsp00spur",
+"words": 6183,
+"coverage": 0.988,
+"case": 0.16,
+"archaic": 0.16,
+"phrase": 0.32
+},
+{
+"file": "volume-3/sermon-123.md",
+"source": "sermonsrevchspu00magogoog",
+"words": 6508,
+"coverage": 0.969,
+"case": 1.69,
+"archaic": 0.15,
+"phrase": 0.92
+},
+{
+"file": "volume-3/sermon-124.md",
+"source": "sermonsrevchspu00magogoog",
+"words": 6695,
+"coverage": 0.989,
+"case": 0.3,
+"archaic": 0.0,
+"phrase": 0.3
+},
+{
+"file": "volume-3/sermon-125.md",
+"source": "sermonsofrevchsp00spur",
+"words": 6683,
+"coverage": 0.986,
+"case": 0.0,
+"archaic": 0.0,
+"phrase": 0.6
+},
+{
+"file": "volume-3/sermon-126.md",
+"source": "sermonsofrevchsp00spur",
+"words": 6455,
+"coverage": 0.97,
+"case": 2.01,
+"archaic": 0.31,
+"phrase": 0.15
+},
+{
+"file": "volume-3/sermon-127.md",
+"source": "sermonsofrevchsp00spur",
+"words": 6772,
+"coverage": 0.972,
+"case": 0.74,
+"archaic": 0.3,
+"phrase": 0.59
+},
+{
+"file": "volume-3/sermon-130.md",
+"source": "bwb_S0-CQK-492",
+"words": 6271,
+"coverage": 0.971,
+"case": 0.16,
+"archaic": 0.16,
+"phrase": 0.48
+},
+{
+"file": "volume-3/sermon-131.md",
+"source": "sermonsofrevchsp00spur",
+"words": 6538,
+"coverage": 0.983,
+"case": 0.15,
+"archaic": 0.0,
+"phrase": 0.92
+},
+{
+"file": "volume-3/sermon-132.md",
+"source": "bwb_S0-CQK-492",
+"words": 5894,
+"coverage": 0.98,
+"case": 0.17,
+"archaic": 0.0,
+"phrase": 0.85
+},
+{
+"file": "volume-3/sermon-134.md",
+"source": "bwb_S0-CQK-492",
+"words": 6226,
+"coverage": 0.983,
+"case": 0.48,
+"archaic": 0.0,
+"phrase": 0.8
+},
+{
+"file": "volume-3/sermon-135.md",
+"source": "sermonsrevchspu00magogoog",
+"words": 6795,
+"coverage": 0.973,
+"case": 0.29,
+"archaic": 0.0,
+"phrase": 0.88
+},
+{
+"file": "volume-3/sermon-136.md",
+"source": "bwb_S0-CQK-492",
+"words": 5080,
+"coverage": 0.983,
+"case": 0.39,
+"archaic": 0.0,
+"phrase": 0.79
+},
+{
+"file": "volume-3/sermon-137.md",
+"source": "bwb_S0-CQK-492",
+"words": 6588,
+"coverage": 0.978,
+"case": 0.61,
+"archaic": 0.15,
+"phrase": 0.91
+},
+{
+"file": "volume-3/sermon-143.md",
+"source": "sermonsparables00spuruoft",
+"words": 6668,
+"coverage": 0.979,
+"case": 0.15,
+"archaic": 0.0,
+"phrase": 0.9,
+"date": "1857-07-26",
+"service": "Sabbath morning"
+},
+{
+"file": "volume-3/sermon-145.md",
+"source": "sermonsofrevchsp0004spur",
+"words": 7356,
+"coverage": 0.971,
+"case": 0.14,
+"archaic": 0.95,
+"phrase": 0.27
+},
+{
+"file": "volume-3/sermon-151.md",
+"source": "sermonsofrevchsp0004spur",
+"words": 6958,
+"coverage": 0.986,
+"case": 0.14,
+"archaic": 0.14,
+"phrase": 0.43
+},
+{
+"file": "volume-3/sermon-154-55.md",
+"source": "spurgeonsfastday00spurrich",
+"words": 7255,
+"coverage": 0.982,
+"case": 4.0,
+"archaic": 0.0,
+"phrase": 1.93
+},
+{
+"file": "volume-3/sermon-156.md",
+"source": "sermonsofrevchsp0004spur",
+"words": 5415,
+"coverage": 0.979,
+"case": 0.37,
+"archaic": 0.18,
+"phrase": 0.37
+},
+{
+"file": "volume-3/sermon-162.md",
+"source": "sermonsofrevchsp0004spur",
+"words": 5923,
+"coverage": 0.984,
+"case": 0.17,
+"archaic": 0.0,
+"phrase": 0.51
+},
+{
+"file": "volume-3/sermon-163.md",
+"source": "sermonsofrevchsp0004spur",
+"words": 7026,
+"coverage": 0.984,
+"case": 0.28,
+"archaic": 0.0,
+"phrase": 1.0
+},
+{
+"file": "volume-3/sermon-164.md",
+"source": "sermonsofrevchsp0004spur",
+"words": 6866,
+"coverage": 0.983,
+"case": 0.29,
+"archaic": 0.15,
+"phrase": 0.87
+},
+{
+"file": "volume-4/sermon-165.md",
+"source": "sermonsofrevchsp0004spur",
+"words": 7288,
+"coverage": 0.983,
+"case": 0.55,
+"archaic": 0.0,
+"phrase": 0.27
+},
+{
+"file": "volume-4/sermon-169.md",
+"source": "sermonsrevchspu04spurgoog",
+"words": 6975,
+"coverage": 0.979,
+"case": 0.57,
+"archaic": 0.0,
+"phrase": 1.43
+},
+{
+"file": "volume-4/sermon-170.md",
+"source": "sermons04spur",
+"words": 5937,
+"coverage": 0.985,
+"case": 0.0,
+"archaic": 0.0,
+"phrase": 0.84
+},
+{
+"file": "volume-4/sermon-171.md",
+"source": "sermonsofrevchsp0004spur",
+"words": 6087,
+"coverage": 0.98,
+"case": 2.46,
+"archaic": 0.16,
+"phrase": 0.66
+},
+{
+"file": "volume-4/sermon-173.md",
+"source": "sermonsofrevchsp0004spur",
+"words": 5616,
+"coverage": 0.982,
+"case": 0.53,
+"archaic": 0.18,
+"phrase": 0.89
+},
+{
+"file": "volume-4/sermon-174.md",
+"source": "sermonsofrevchsp0004spur",
+"words": 6876,
+"coverage": 0.984,
+"case": 0.73,
+"archaic": 0.0,
+"phrase": 1.02
+},
+{
+"file": "volume-4/sermon-175.md",
+"source": "sermonsparables00spuruoft",
+"words": 6845,
+"coverage": 0.976,
+"case": 1.17,
+"archaic": 0.0,
+"phrase": 0.73,
+"date": "1858-01-31",
+"service": "Sabbath morning"
+},
+{
+"file": "volume-4/sermon-176.md",
+"source": "sermonsparables00spuruoft",
+"words": 6906,
+"coverage": 0.98,
+"case": 0.58,
+"archaic": 0.0,
+"phrase": 1.01,
+"date": "1858-02-07",
+"service": "Sabbath morning"
+},
+{
+"file": "volume-4/sermon-177.md",
+"source": "sermonsofrevchsp0000revc",
+"words": 6634,
+"coverage": 0.98,
+"case": 0.15,
+"archaic": 0.0,
+"phrase": 1.21
+},
+{
+"file": "volume-4/sermon-179.md",
+"source": "sermonsofrevchsp0004spur",
+"words": 6514,
+"coverage": 0.988,
+"case": 0.0,
+"archaic": 0.0,
+"phrase": 0.46
+},
+{
+"file": "volume-4/sermon-180.md",
+"source": "sermonsofrevchsp0004spur",
+"words": 5502,
+"coverage": 0.983,
+"case": 0.18,
+"archaic": 0.0,
+"phrase": 0.55
+},
+{
+"file": "volume-4/sermon-182.md",
+"source": "spurgeonssermonn00spuruoft",
+"words": 6913,
+"coverage": 0.995,
+"case": 0.58,
+"archaic": 0.14,
+"phrase": 0.29,
+"date": "1858-03-07",
+"service": "Sabbath morning"
+},
+{
+"file": "volume-4/sermon-185.md",
+"source": "sermons0000chsp_h1i0",
+"words": 6878,
+"coverage": 0.958,
+"case": 1.02,
+"archaic": 0.0,
+"phrase": 1.45
+},
+{
+"file": "volume-4/sermon-186.md",
+"source": "sermonspreachedr00spurrich",
+"words": 7162,
+"coverage": 0.973,
+"case": 2.65,
+"archaic": 0.0,
+"phrase": 0.7
+},
+{
+"file": "volume-4/sermon-187.md",
+"source": "sermonspreachedr00spurrich",
+"words": 6727,
+"coverage": 0.982,
+"case": 0.45,
+"archaic": 0.0,
+"phrase": 0.15
+},
+{
+"file": "volume-4/sermon-192.md",
+"source": "sermonsparables00spuruoft",
+"words": 7125,
+"coverage": 0.982,
+"case": 0.42,
+"archaic": 0.0,
+"phrase": 0.56
+},
+{
+"file": "volume-4/sermon-193.md",
+"source": "sermons0005revc",
+"words": 7110,
+"coverage": 0.977,
+"case": 1.55,
+"archaic": 0.0,
+"phrase": 0.42
+},
+{
+"file": "volume-4/sermon-194.md",
+"source": "spurgeonssermonn00spuruoft",
+"words": 7064,
+"coverage": 0.987,
+"case": 0.71,
+"archaic": 0.0,
+"phrase": 0.14,
+"date": "1858-05-16",
+"service": "Sabbath morning"
+},
+{
+"file": "volume-4/sermon-195.md",
+"source": "sermonspreachedr00spurrich",
+"words": 6743,
+"coverage": 0.971,
+"case": 3.26,
+"archaic": 0.3,
+"phrase": 0.15
+},
+{
+"file": "volume-4/sermon-201.md",
+"source": "twelvesermonsonh0000chsp_s5d8",
+"words": 6794,
+"coverage": 0.975,
+"case": 0.44,
+"archaic": 0.0,
+"phrase": 0.88,
+"date": "1858-06-20",
+"service": "Sabbath morning"
+},
+{
+"file": "volume-4/sermon-202.md",
+"source": "sermonsofrevchsp06spur",
+"words": 7401,
+"coverage": 0.989,
+"case": 0.54,
+"archaic": 0.14,
+"phrase": 0.27
+},
+{
+"file": "volume-4/sermon-203.md",
+"source": "sermonsrevchspu11spurgoog",
+"words": 5880,
+"coverage": 0.834,
+"case": 0.17,
+"archaic": 0.0,
+"phrase": 1.02
+},
+{
+"file": "volume-4/sermon-204.md",
+"source": "sermonsofrevchsp06spur",
+"words": 7155,
+"coverage": 0.986,
+"case": 0.84,
+"archaic": 0.0,
+"phrase": 0.42
+},
+{
+"file": "volume-4/sermon-205.md",
+"source": "sermonspreachedr00spurrich",
+"words": 7444,
+"coverage": 0.979,
+"case": 1.07,
+"archaic": 0.0,
+"phrase": 0.81
+},
+{
+"file": "volume-4/sermon-206.md",
+"source": "sermonspreachedr00spurrich",
+"words": 6844,
+"coverage": 0.979,
+"case": 2.19,
+"archaic": 0.44,
+"phrase": 0.58
+},
+{
+"file": "volume-4/sermon-207.md",
+"source": "spurgeonssermonn00spuruoft",
+"words": 7066,
+"coverage": 0.995,
+"case": 0.28,
+"archaic": 0.0,
+"phrase": 0.57,
+"date": "1858-08-01",
+"service": "Sabbath morning"
+},
+{
+"file": "volume-4/sermon-211.md",
+"source": "sermonspreachedr00spurrich",
+"words": 6451,
+"coverage": 0.978,
+"case": 1.86,
+"archaic": 0.31,
+"phrase": 0.62
+},
+{
+"file": "volume-4/sermon-212.md",
+"source": "sermonspreachedr00spurrich",
+"words": 6396,
+"coverage": 0.979,
+"case": 0.31,
+"archaic": 0.16,
+"phrase": 0.31
+},
+{
+"file": "volume-4/sermon-213.md",
+"source": "sermons0005revc",
+"words": 6527,
+"coverage": 0.975,
+"case": 1.38,
+"archaic": 0.0,
+"phrase": 0.77
+},
+{
+"file": "volume-4/sermon-214.md",
+"source": "sermons0005revc",
+"words": 6369,
+"coverage": 0.974,
+"case": 1.57,
+"archaic": 0.47,
+"phrase": 0.31
+},
+{
+"file": "volume-4/sermon-215.md",
+"source": "sermonsofrevchsp0005spur",
+"words": 7128,
+"coverage": 0.963,
+"case": 1.96,
+"archaic": 0.0,
+"phrase": 0.98
+},
+{
+"file": "volume-4/sermon-216.md",
+"source": "sermonsparables00spuruoft",
+"words": 6689,
+"coverage": 0.98,
+"case": 0.45,
+"archaic": 0.0,
+"phrase": 0.9,
+"date": "1858-10-03",
+"service": "Sabbath morning"
+},
+{
+"file": "volume-4/sermon-217.md",
+"source": "sermonspreachedr00spurrich",
+"words": 6609,
+"coverage": 0.979,
+"case": 0.91,
+"archaic": 0.0,
+"phrase": 1.21
+},
+{
+"file": "volume-4/sermon-220.md",
+"source": "sermons0000chsp_h1i0",
+"words": 7190,
+"coverage": 0.941,
+"case": 1.81,
+"archaic": 0.7,
+"phrase": 3.48
+},
+{
+"file": "volume-4/sermon-221.md",
+"source": "sermonspreachedr00spurrich",
+"words": 6899,
+"coverage": 0.808,
+"case": 1.45,
+"archaic": 0.87,
+"phrase": 6.09
+},
+{
+"file": "volume-4/sermon-222.md",
+"source": "sermons0000chsp_h1i0",
+"words": 4484,
+"coverage": 0.979,
+"case": 1.12,
+"archaic": 0.0,
+"phrase": 0.67
+},
+{
+"file": "volume-4/sermon-223.md",
+"source": "sermonspreachedr00spurrich",
+"words": 5529,
+"coverage": 0.982,
+"case": 2.35,
+"archaic": 0.0,
+"phrase": 0.72
+},
+{
+"file": "volume-4/sermon-224.md",
+"source": "sermonspreachedr00spurrich",
+"words": 6816,
+"coverage": 0.975,
+"case": 1.17,
+"archaic": 0.0,
+"phrase": 0.15
+},
+{
+"file": "volume-5/sermon-225.md",
+"source": "sermonspreachedr00spurrich",
+"words": 7840,
+"coverage": 0.973,
+"case": 1.66,
+"archaic": 0.13,
+"phrase": 0.26
+},
+{
+"file": "volume-5/sermon-226.md",
+"source": "sermonspreachedr00spurrich",
+"words": 5807,
+"coverage": 0.977,
+"case": 1.89,
+"archaic": 0.0,
+"phrase": 0.52
+},
+{
+"file": "volume-5/sermon-227.md",
+"source": "sermonsparables00spuruoft",
+"words": 6908,
+"coverage": 0.986,
+"case": 0.87,
+"archaic": 0.0,
+"phrase": 0.58
+},
+{
+"file": "volume-5/sermon-228.md",
+"source": "sermonspreachedr00spurrich",
+"words": 6477,
+"coverage": 0.977,
+"case": 1.7,
+"archaic": 0.0,
+"phrase": 0.31
+},
+{
+"file": "volume-5/sermon-229.md",
+"source": "sermonspreachedr00spurrich",
+"words": 5405,
+"coverage": 0.791,
+"case": 2.22,
+"archaic": 0.74,
+"phrase": 4.44
+},
+{
+"file": "volume-5/sermon-230.md",
+"source": "sermonsofrevchsp0005spur",
+"words": 6301,
+"coverage": 0.974,
+"case": 2.38,
+"archaic": 0.0,
+"phrase": 1.11
+},
+{
+"file": "volume-5/sermon-231.md",
+"source": "sermonspreachedr00spurrich",
+"words": 7300,
+"coverage": 0.946,
+"case": 1.23,
+"archaic": 0.0,
+"phrase": 0.82
+},
+{
+"file": "volume-5/sermon-237.md",
+"source": "sermonsofrevchsp06spur",
+"words": 7055,
+"coverage": 0.985,
+"case": 0.71,
+"archaic": 0.0,
+"phrase": 0.14
+},
+{
+"file": "volume-5/sermon-239.md",
+"source": "spurgeonssermonn00spuruoft",
+"words": 7488,
+"coverage": 0.987,
+"case": 0.93,
+"archaic": 0.0,
+"phrase": 0.13,
+"date": "1859-01-16",
+"service": "Sabbath evening"
+},
+{
+"file": "volume-5/sermon-242.md",
+"source": "sermonsofrevchsp06spur_0",
+"words": 7032,
+"coverage": 0.976,
+"case": 1.71,
+"archaic": 0.0,
+"phrase": 0.57
+},
+{
+"file": "volume-5/sermon-243.md",
+"source": "sermonsofrevchsp06spur",
+"words": 7048,
+"coverage": 0.984,
+"case": 0.71,
+"archaic": 0.0,
+"phrase": 0.71
+},
+{
+"file": "volume-5/sermon-248.md",
+"source": "sermonsofrevchsp06spur",
+"words": 6108,
+"coverage": 0.988,
+"case": 0.65,
+"archaic": 0.16,
+"phrase": 0.49
+},
+{
+"file": "volume-5/sermon-249.md",
+"source": "sermonsofrevchsp06spur",
+"words": 6046,
+"coverage": 0.988,
+"case": 0.5,
+"archaic": 0.0,
+"phrase": 0.17
+},
+{
+"file": "volume-5/sermon-251.md",
+"source": "sermonsofrevchsp06spur_0",
+"words": 6662,
+"coverage": 0.986,
+"case": 0.15,
+"archaic": 0.0,
+"phrase": 1.2
+},
+{
+"file": "volume-5/sermon-253.md",
+"source": "sermonsofrevchsp06spur",
+"words": 6043,
+"coverage": 0.98,
+"case": 0.5,
+"archaic": 0.0,
+"phrase": 0.33
+},
+{
+"file": "volume-5/sermon-256.md",
+"source": "sermonsofrevchsp06spur_0",
+"words": 6114,
+"coverage": 0.973,
+"case": 0.82,
+"archaic": 0.0,
+"phrase": 0.82
+},
+{
+"file": "volume-5/sermon-258.md",
+"source": "sermonsofrevchsp06spur_0",
+"words": 5952,
+"coverage": 0.971,
+"case": 1.68,
+"archaic": 0.5,
+"phrase": 2.18
+},
+{
+"file": "volume-5/sermon-260.md",
+"source": "sermonsofrevchsp06spur",
+"words": 6596,
+"coverage": 0.99,
+"case": 0.61,
+"archaic": 0.0,
+"phrase": 0.61
+},
+{
+"file": "volume-5/sermon-262.md",
+"source": "sermonsofrevchsp06spur",
+"words": 5513,
+"coverage": 0.988,
+"case": 0.91,
+"archaic": 0.18,
+"phrase": 0.36
+},
+{
+"file": "volume-5/sermon-264.md",
+"source": "sermonsofrevchsp06spur",
+"words": 7106,
+"coverage": 0.984,
+"case": 0.42,
+"archaic": 0.14,
+"phrase": 0.56
+},
+{
+"file": "volume-5/sermon-265.md",
+"source": "sermonsrevchspu11spurgoog",
+"words": 7081,
+"coverage": 0.984,
+"case": 1.41,
+"archaic": 0.0,
+"phrase": 0.28
+},
+{
+"file": "volume-5/sermon-266.md",
+"source": "sermonsofrevchsp06spur",
+"words": 6028,
+"coverage": 0.989,
+"case": 0.66,
+"archaic": 0.17,
+"phrase": 0.66
+},
+{
+"file": "volume-5/sermon-267.md",
+"source": "sermonsrevchspu11spurgoog",
+"words": 6098,
+"coverage": 0.986,
+"case": 1.31,
+"archaic": 0.16,
+"phrase": 0.49
+},
+{
+"file": "volume-5/sermon-271.md",
+"source": "sermons0000chsp_h0u3",
+"words": 6055,
+"coverage": 0.966,
+"case": 1.16,
+"archaic": 0.0,
+"phrase": 1.82
+},
+{
+"file": "volume-5/sermon-273.md",
+"source": "sermons0000chsp_h0u3",
+"words": 6253,
+"coverage": 0.934,
+"case": 2.88,
+"archaic": 0.48,
+"phrase": 2.56
+},
+{
+"file": "volume-5/sermon-277.md",
+"source": "sermons0000chsp_h0u3",
+"words": 6272,
+"coverage": 0.952,
+"case": 1.59,
+"archaic": 0.0,
+"phrase": 1.91
+},
+{
+"file": "volume-5/sermon-279.md",
+"source": "sermons0000chsp_h0u3",
+"words": 6751,
+"coverage": 0.941,
+"case": 1.19,
+"archaic": 0.15,
+"phrase": 2.96
+},
+{
+"file": "volume-5/sermon-280.md",
+"source": "sermons0000chsp_h0u3",
+"words": 7424,
+"coverage": 0.943,
+"case": 2.83,
+"archaic": 0.0,
+"phrase": 3.1
+},
+{
+"file": "volume-6/sermon-292.md",
+"source": "sermonsofrevchsp0007spur",
+"words": 7194,
+"coverage": 0.914,
+"case": 0.28,
+"archaic": 0.14,
+"phrase": 2.5
+},
+{
+"file": "volume-6/sermon-293.md",
+"source": "sermonsofrevch07spur",
+"words": 7159,
+"coverage": 0.969,
+"case": 0.56,
+"archaic": 0.0,
+"phrase": 2.51
+},
+{
+"file": "volume-6/sermon-294.md",
+"source": "sermonsofrevchsp07spur",
+"words": 7016,
+"coverage": 0.914,
+"case": 0.57,
+"archaic": 0.0,
+"phrase": 2.57,
+"date": "1860-01-15"
+},
+{
+"file": "volume-6/sermon-295.md",
+"source": "sermonsofrevchsp07spur",
+"words": 7259,
+"coverage": 0.956,
+"case": 1.93,
+"archaic": 0.0,
+"phrase": 1.38
+},
+{
+"file": "volume-6/sermon-296.md",
+"source": "sermonsofrevchsp07spur",
+"words": 7406,
+"coverage": 0.963,
+"case": 2.03,
+"archaic": 0.0,
+"phrase": 2.84
+},
+{
+"file": "volume-6/sermon-299.md",
+"source": "sermonsofrevchsp07spur",
+"words": 5503,
+"coverage": 0.954,
+"case": 0.91,
+"archaic": 0.0,
+"phrase": 3.27
+},
+{
+"file": "volume-6/sermon-301.md",
+"source": "sermonsofrevchsp07spur",
+"words": 7402,
+"coverage": 0.926,
+"case": 1.08,
+"archaic": 0.14,
+"phrase": 3.92
+},
+{
+"file": "volume-6/sermon-303.md",
+"source": "spurgeonssermonn00spuruoft",
+"words": 7908,
+"coverage": 0.99,
+"case": 0.38,
+"archaic": 0.13,
+"phrase": 0.51,
+"date": "1860-03-11",
+"service": "Sabbath morning"
+},
+{
+"file": "volume-6/sermon-304.md",
+"source": "sermonsofrevchsp07spur",
+"words": 6348,
+"coverage": 0.948,
+"case": 0.95,
+"archaic": 0.0,
+"phrase": 3.94
+},
+{
+"file": "volume-6/sermon-305.md",
+"source": "sermonsofrevchsp07spur",
+"words": 7448,
+"coverage": 0.901,
+"case": 0.81,
+"archaic": 0.0,
+"phrase": 2.55,
+"date": "1860-03-25"
+},
+{
+"file": "volume-6/sermon-306.md",
+"source": "sermonsofrevchsp07spur",
+"words": 7438,
+"coverage": 0.955,
+"case": 1.34,
+"archaic": 0.4,
+"phrase": 3.09
+},
+{
+"file": "volume-6/sermon-308.md",
+"source": "talkstofarmers00spuriala",
+"words": 4942,
+"coverage": 0.994,
+"case": 1.01,
+"archaic": 0.0,
+"phrase": 1.21
+},
+{
+"file": "volume-6/sermon-317.md",
+"source": "sermonsofrevchsp0007spur",
+"words": 7996,
+"coverage": 0.961,
+"case": 0.5,
+"archaic": 0.0,
+"phrase": 1.75
+},
+{
+"file": "volume-6/sermon-341.md",
+"source": "christinoldtesta00spur",
+"words": 7192,
+"coverage": 0.976,
+"case": 0.42,
+"archaic": 0.0,
+"phrase": 0.97
+},
+{
+"file": "volume-7/sermon_349.md",
+"source": "sermons0000chsp_h0u3",
+"words": 6794,
+"coverage": 0.937,
+"case": 0.74,
+"archaic": 0.15,
+"phrase": 3.97
+},
+{
+"file": "volume-7/sermon_361.md",
+"source": "sermonsofrevchsp07spur",
+"words": 7664,
+"coverage": 0.965,
+"case": 0.91,
+"archaic": 0.26,
+"phrase": 1.96
+},
+{
+"file": "volume-7/sermon_362.md",
+"source": "sermonsofrevchsp07spur",
+"words": 6823,
+"coverage": 0.971,
+"case": 1.91,
+"archaic": 0.0,
+"phrase": 2.49
+},
+{
+"file": "volume-7/sermon_406.md",
+"source": "spurgeonssermonn00spuruoft",
+"words": 6990,
+"coverage": 0.984,
+"case": 0.43,
+"archaic": 0.0,
+"phrase": 0.43
+},
+{
+"file": "volume-8/sermon_432.md",
+"source": "metropolitantab12spurgoog",
+"words": 6557,
+"coverage": 0.842,
+"case": 0.76,
+"archaic": 0.46,
+"phrase": 5.95
+},
+{
+"file": "volume-8/sermon_442.md",
+"source": "metropolitantab12spurgoog",
+"words": 7005,
+"coverage": 0.875,
+"case": 2.0,
+"archaic": 0.14,
+"phrase": 4.14
+},
+{
+"file": "volume-8/sermon_457.md",
+"source": "metropolitantab12spurgoog",
+"words": 7560,
+"coverage": 0.921,
+"case": 0.66,
+"archaic": 0.0,
+"phrase": 3.17
+},
+{
+"file": "volume-8/sermon_458.md",
+"source": "metropolitantab12spurgoog",
+"words": 7393,
+"coverage": 0.905,
+"case": 0.54,
+"archaic": 0.27,
+"phrase": 2.16
+},
+{
+"file": "volume-8/sermon_460.md",
+"source": "metropolitantab12spurgoog",
+"words": 7327,
+"coverage": 0.893,
+"case": 1.36,
+"archaic": 0.68,
+"phrase": 2.87
+},
+{
+"file": "volume-8/sermon_477.md",
+"source": "metropolitantab12spurgoog",
+"words": 7391,
+"coverage": 0.956,
+"case": 0.68,
+"archaic": 0.14,
+"phrase": 1.62,
+"date": "1862-10-26"
+},
+{
+"file": "volume-8/sermon_478.md",
+"source": "metropolitantab12spurgoog",
+"words": 7474,
+"coverage": 0.933,
+"case": 0.13,
+"archaic": 0.13,
+"phrase": 3.48,
+"date": "1862-11-02",
+"service": "Sunday morning"
+},
+{
+"file": "volume-8/sermon_479.md",
+"source": "metropolitantab12spurgoog",
+"words": 7042,
+"coverage": 0.936,
+"case": 0.71,
+"archaic": 0.85,
+"phrase": 1.85
+},
+{
+"file": "volume-8/sermon_480.md",
+"source": "metropolitantab12spurgoog",
+"words": 7422,
+"coverage": 0.783,
+"case": 0.27,
+"archaic": 0.27,
+"phrase": 1.35
+},
+{
+"file": "volume-8/sermon_481.md",
+"source": "metropolitantab12spurgoog",
+"words": 7452,
+"coverage": 0.929,
+"case": 0.67,
+"archaic": 0.54,
+"phrase": 2.15
+},
+{
+"file": "volume-8/sermon_482.md",
+"source": "metropolitantab12spurgoog",
+"words": 7089,
+"coverage": 0.946,
+"case": 0.56,
+"archaic": 0.0,
+"phrase": 1.27,
+"date": "1862-11-30"
+},
+{
+"file": "volume-8/sermon_484.md",
+"source": "metropolitantab12spurgoog",
+"words": 7658,
+"coverage": 0.911,
+"case": 0.65,
+"archaic": 0.39,
+"phrase": 3.66
+},
+{
+"file": "volume-8/sermon_485.md",
+"source": "metropolitantab12spurgoog",
+"words": 7559,
+"coverage": 0.925,
+"case": 0.13,
+"archaic": 0.13,
+"phrase": 3.31
+},
+{
+"file": "volume-8/sermon_486.md",
+"source": "metropolitantab12spurgoog",
+"words": 7090,
+"coverage": 0.935,
+"case": 1.13,
+"archaic": 0.0,
+"phrase": 2.68
+},
+{
+"file": "volume-9/sermon_504.md",
+"source": "christinoldtesta00spur",
+"words": 6732,
+"coverage": 0.983,
+"case": 0.59,
+"archaic": 0.0,
+"phrase": 1.04
+},
+{
+"file": "volume-9/sermon_531.md",
+"source": "spurgeonssermonn00spuruoft",
+"words": 7687,
+"coverage": 0.996,
+"case": 0.78,
+"archaic": 0.0,
+"phrase": 0.13,
+"date": "1863-09-20",
+"service": "Sunday morning"
+},
+{
+"file": "volume-10/sermon_553.md",
+"source": "sermonsofrevchsp0008spur",
+"words": 7493,
+"coverage": 0.976,
+"case": 2.0,
+"archaic": 0.0,
+"phrase": 1.73
+},
+{
+"file": "volume-10/sermon_556.md",
+"source": "sermonsofrevchsp08spur",
+"words": 6385,
+"coverage": 0.978,
+"case": 1.41,
+"archaic": 0.0,
+"phrase": 0.94
+},
+{
+"file": "volume-10/sermon_558.md",
+"source": "sermons0000chsp_z3j6",
+"words": 7310,
+"coverage": 0.973,
+"case": 2.74,
+"archaic": 0.0,
+"phrase": 0.27
+},
+{
+"file": "volume-10/sermon_559.md",
+"source": "sermons0000chsp_z3j6",
+"words": 6927,
+"coverage": 0.974,
+"case": 3.32,
+"archaic": 0.29,
+"phrase": 1.3
+},
+{
+"file": "volume-10/sermon_561.md",
+"source": "sermonsofrevchsp08spur",
+"words": 6188,
+"coverage": 0.986,
+"case": 0.16,
+"archaic": 0.32,
+"phrase": 0.16
+},
+{
+"file": "volume-10/sermon_563.md",
+"source": "sermonsofrevchsp0008spur",
+"words": 7226,
+"coverage": 0.976,
+"case": 0.14,
+"archaic": 0.55,
+"phrase": 2.21
+},
+{
+"file": "volume-10/sermon_581.md",
+"source": "sermonsofrevchsp08spur",
+"words": 7514,
+"coverage": 0.97,
+"case": 2.0,
+"archaic": 0.4,
+"phrase": 1.6
+},
+{
+"file": "volume-10/sermon_591.md",
+"source": "sermonsofrevchsp08spur",
+"words": 9592,
+"coverage": 0.993,
+"case": 1.04,
+"archaic": 0.52,
+"phrase": 0.1
+},
+{
+"file": "volume-13/sermon_742.md",
+"source": "sermonsparables00spuruoft",
+"words": 7667,
+"coverage": 0.981,
+"case": 0.13,
+"archaic": 0.0,
+"phrase": 0.78,
+"date": "1867-03-24",
+"service": "Lord's Day morning"
+},
+{
+"file": "volume-14/sermon_788.md",
+"source": "twelvenewyearser0000chsp",
+"words": 6820,
+"coverage": 0.986,
+"case": 0.44,
+"archaic": 0.15,
+"phrase": 0.73,
+"date": "1868-01-05"
+},
+{
+"file": "volume-16/sermon_915.md",
+"source": "metropolitantab02spurgoog",
+"words": 7069,
+"coverage": 0.929,
+"case": 0.28,
+"archaic": 0.71,
+"phrase": 2.83
+},
+{
+"file": "volume-16/sermon_924.md",
+"source": "metropolitantab02spurgoog",
+"words": 6675,
+"coverage": 0.952,
+"case": 1.05,
+"archaic": 0.0,
+"phrase": 0.9
+},
+{
+"file": "volume-17/sermon_969.md",
+"source": "sermonsrevchspu00spurgoog",
+"words": 7271,
+"coverage": 0.973,
+"case": 3.03,
+"archaic": 0.0,
+"phrase": 1.79
+},
+{
+"file": "volume-17/sermon_973.md",
+"source": "twelvesermonsonr0000spur_q5w7",
+"words": 7204,
+"coverage": 0.953,
+"case": 0.28,
+"archaic": 0.0,
+"phrase": 1.8,
+"date": "1871-01-29"
+},
+{
+"file": "volume-17/sermon_995.md",
+"source": "sermonsparables00spuruoft",
+"words": 6697,
+"coverage": 0.984,
+"case": 0.45,
+"archaic": 0.0,
+"phrase": 0.6
+},
+{
+"file": "volume-18/sermon_1028.md",
+"source": "metropolitantab13spurgoog",
+"words": 7315,
+"coverage": 0.978,
+"case": 1.23,
+"archaic": 0.14,
+"phrase": 0.41
+},
+{
+"file": "volume-18/sermon_1030.md",
+"source": "metropolitantab13spurgoog",
+"words": 6504,
+"coverage": 0.979,
+"case": 0.46,
+"archaic": 0.0,
+"phrase": 0.62
+},
+{
+"file": "volume-18/sermon_1031.md",
+"source": "metropolitantab13spurgoog",
+"words": 7287,
+"coverage": 0.945,
+"case": 0.82,
+"archaic": 0.27,
+"phrase": 0.96,
+"date": "1872-01-21"
+},
+{
+"file": "volume-18/sermon_1032.md",
+"source": "metropolitantab13spurgoog",
+"words": 7457,
+"coverage": 0.973,
+"case": 0.67,
+"archaic": 0.0,
+"phrase": 0.67
+},
+{
+"file": "volume-18/sermon_1033.md",
+"source": "metropolitantab13spurgoog",
+"words": 6920,
+"coverage": 0.98,
+"case": 0.87,
+"archaic": 0.0,
+"phrase": 0.58,
+"date": "1872-01-28"
+},
+{
+"file": "volume-18/sermon_1034.md",
+"source": "metropolitantab13spurgoog",
+"words": 6933,
+"coverage": 0.985,
+"case": 0.43,
+"archaic": 0.0,
+"phrase": 0.43
+},
+{
+"file": "volume-18/sermon_1035.md",
+"source": "metropolitantab13spurgoog",
+"words": 7484,
+"coverage": 0.982,
+"case": 0.53,
+"archaic": 0.13,
+"phrase": 0.27,
+"date": "1872-02-11"
+},
+{
+"file": "volume-18/sermon_1036.md",
+"source": "metropolitantab13spurgoog",
+"words": 7266,
+"coverage": 0.98,
+"case": 0.28,
+"archaic": 0.55,
+"phrase": 1.1
+},
+{
+"file": "volume-18/sermon_1037.md",
+"source": "metropolitantab13spurgoog",
+"words": 6807,
+"coverage": 0.982,
+"case": 1.47,
+"archaic": 0.0,
+"phrase": 0.44
+},
+{
+"file": "volume-18/sermon_1038.md",
+"source": "metropolitantab13spurgoog",
+"words": 7373,
+"coverage": 0.98,
+"case": 2.03,
+"archaic": 0.14,
+"phrase": 0.14,
+"date": "1872-03-03"
+},
+{
+"file": "volume-18/sermon_1039.md",
+"source": "metropolitantab13spurgoog",
+"words": 7119,
+"coverage": 0.982,
+"case": 0.56,
+"archaic": 0.14,
+"phrase": 0.98,
+"date": "1872-03-10"
+},
+{
+"file": "volume-18/sermon_1040.md",
+"source": "metropolitantab13spurgoog",
+"words": 7133,
+"coverage": 0.985,
+"case": 0.7,
+"archaic": 0.14,
+"phrase": 0.0,
+"date": "1872-02-26"
+},
+{
+"file": "volume-18/sermon_1041.md",
+"source": "metropolitantab13spurgoog",
+"words": 7393,
+"coverage": 0.974,
+"case": 0.27,
+"archaic": 0.14,
+"phrase": 0.68,
+"date": "1872-03-17"
+},
+{
+"file": "volume-18/sermon_1042.md",
+"source": "metropolitantab13spurgoog",
+"words": 7217,
+"coverage": 0.984,
+"case": 0.55,
+"archaic": 0.0,
+"phrase": 0.14,
+"date": "1872-02-29"
+},
+{
+"file": "volume-18/sermon_1043.md",
+"source": "metropolitantab13spurgoog",
+"words": 7199,
+"coverage": 0.983,
+"case": 1.25,
+"archaic": 0.0,
+"phrase": 0.42,
+"date": "1872-03-24"
+},
+{
+"file": "volume-18/sermon_1076.md",
+"source": "metropolitantab13spurgoog",
+"words": 6400,
+"coverage": 0.977,
+"case": 3.75,
+"archaic": 0.31,
+"phrase": 0.62,
+"date": "1872-08-25"
+},
+{
+"file": "volume-20/sermon_1154.md",
+"source": "metropolitantab01spurgoog",
+"words": 6320,
+"coverage": 0.902,
+"case": 0.32,
+"archaic": 0.32,
+"phrase": 10.92
+},
+{
+"file": "volume-20/sermon_1162-3.md",
+"source": "metropolitantab01spurgoog",
+"words": 7122,
+"coverage": 0.835,
+"case": 0.42,
+"archaic": 0.84,
+"phrase": 9.83
+},
+{
+"file": "volume-20/sermon_1189.md",
+"source": "sermonsparables00spuruoft",
+"words": 7241,
+"coverage": 0.976,
+"case": 0.69,
+"archaic": 0.14,
+"phrase": 1.1,
+"date": "1874-08-23",
+"service": "Lord's Day morning"
+},
+{
+"file": "volume-21/sermon_1236.md",
+"source": "metropolitantab10spurgoog",
+"words": 7294,
+"coverage": 0.951,
+"case": 1.1,
+"archaic": 0.0,
+"phrase": 2.19
+},
+{
+"file": "volume-21/sermon_1237.md",
+"source": "metropolitantab05spurgoog",
+"words": 7162,
+"coverage": 0.94,
+"case": 0.84,
+"archaic": 0.14,
+"phrase": 2.65
+},
+{
+"file": "volume-21/sermon_1238.md",
+"source": "metropolitantab10spurgoog",
+"words": 7047,
+"coverage": 0.929,
+"case": 3.26,
+"archaic": 0.14,
+"phrase": 1.84
+},
+{
+"file": "volume-21/sermon_1239.md",
+"source": "metropolitantab10spurgoog",
+"words": 6710,
+"coverage": 0.952,
+"case": 2.68,
+"archaic": 0.15,
+"phrase": 1.49
+},
+{
+"file": "volume-21/sermon_1240.md",
+"source": "metropolitantab10spurgoog",
+"words": 6788,
+"coverage": 0.932,
+"case": 1.33,
+"archaic": 0.15,
+"phrase": 1.77
+},
+{
+"file": "volume-21/sermon_1241.md",
+"source": "metropolitantab05spurgoog",
+"words": 7410,
+"coverage": 0.913,
+"case": 1.75,
+"archaic": 0.13,
+"phrase": 4.18
+},
+{
+"file": "volume-21/sermon_1242.md",
+"source": "metropolitantab10spurgoog",
+"words": 7164,
+"coverage": 0.966,
+"case": 1.68,
+"archaic": 0.0,
+"phrase": 1.68
+},
+{
+"file": "volume-22/sermon_1271.md",
+"source": "metropolitantab11spurgoog",
+"words": 7212,
+"coverage": 0.956,
+"case": 1.11,
+"archaic": 0.14,
+"phrase": 1.11
+},
+{
+"file": "volume-22/sermon_1272.md",
+"source": "metropolitantab11spurgoog",
+"words": 7111,
+"coverage": 0.941,
+"case": 0.84,
+"archaic": 0.28,
+"phrase": 1.41
+},
+{
+"file": "volume-22/sermon_1273.md",
+"source": "metropolitantab11spurgoog",
+"words": 7067,
+"coverage": 0.971,
+"case": 1.27,
+"archaic": 0.0,
+"phrase": 1.13
+},
+{
+"file": "volume-22/sermon_1274.md",
+"source": "metropolitantab11spurgoog",
+"words": 7512,
+"coverage": 0.973,
+"case": 0.93,
+"archaic": 0.27,
+"phrase": 0.53
+},
+{
+"file": "volume-22/sermon_1275.md",
+"source": "metropolitantab11spurgoog",
+"words": 7082,
+"coverage": 0.856,
+"case": 1.27,
+"archaic": 0.14,
+"phrase": 1.69
+},
+{
+"file": "volume-22/sermon_1276.md",
+"source": "metropolitantab11spurgoog",
+"words": 7034,
+"coverage": 0.911,
+"case": 1.0,
+"archaic": 0.14,
+"phrase": 1.28
+},
+{
+"file": "volume-22/sermon_1277.md",
+"source": "metropolitantab11spurgoog",
+"words": 7299,
+"coverage": 0.96,
+"case": 0.82,
+"archaic": 0.0,
+"phrase": 0.96
+},
+{
+"file": "volume-22/sermon_1325.md",
+"source": "metropolitantab11spurgoog",
+"words": 7051,
+"coverage": 0.922,
+"case": 1.13,
+"archaic": 0.43,
+"phrase": 3.12
+},
+{
+"file": "volume-22/sermon_1326.md",
+"source": "metropolitantab11spurgoog",
+"words": 7367,
+"coverage": 0.948,
+"case": 1.49,
+"archaic": 0.27,
+"phrase": 2.58
+},
+{
+"file": "volume-25/sermon_1469.md",
+"source": "metropolitantab09spurgoog",
+"words": 7496,
+"coverage": 0.955,
+"case": 1.33,
+"archaic": 0.0,
+"phrase": 1.87
+},
+{
+"file": "volume-25/sermon_1480.md",
+"source": "metropolitantab09spurgoog",
+"words": 7067,
+"coverage": 0.952,
+"case": 0.42,
+"archaic": 0.99,
+"phrase": 3.4
+},
+{
+"file": "volume-25/sermon_1503.md",
+"source": "metropolitantab09spurgoog",
+"words": 7399,
+"coverage": 0.929,
+"case": 2.97,
+"archaic": 0.41,
+"phrase": 2.03
+},
+{
+"file": "volume-26/sermon_1511.md",
+"source": "metropolitantab04spurgoog",
+"words": 2253,
+"coverage": 0.901,
+"case": 0.0,
+"archaic": 0.44,
+"phrase": 4.44
+},
+{
+"file": "volume-26/sermon_1513.md",
+"source": "metropolitantab04spurgoog",
+"words": 7378,
+"coverage": 0.958,
+"case": 0.81,
+"archaic": 0.0,
+"phrase": 2.98
+},
+{
+"file": "volume-26/sermon_1514.md",
+"source": "metropolitantab04spurgoog",
+"words": 7307,
+"coverage": 0.953,
+"case": 0.82,
+"archaic": 0.0,
+"phrase": 1.37
+},
+{
+"file": "volume-26/sermon_1516.md",
+"source": "metropolitantab04spurgoog",
+"words": 7679,
+"coverage": 0.95,
+"case": 1.82,
+"archaic": 0.13,
+"phrase": 2.73
+},
+{
+"file": "volume-26/sermon_1517.md",
+"source": "metropolitantab04spurgoog",
+"words": 7609,
+"coverage": 0.871,
+"case": 1.18,
+"archaic": 0.39,
+"phrase": 11.3
+},
+{
+"file": "volume-26/sermon_1532.md",
+"source": "metropolitantab04spurgoog",
+"words": 7262,
+"coverage": 0.883,
+"case": 2.48,
+"archaic": 0.41,
+"phrase": 6.75
+},
+{
+"file": "volume-26/sermon_1556.md",
+"source": "metropolitantab04spurgoog",
+"words": 7353,
+"coverage": 0.778,
+"case": 0.54,
+"archaic": 0.54,
+"phrase": 14.96
+},
+{
+"file": "volume-27/sermon_1596.md",
+"source": "metropolitantab08spurgoog",
+"words": 10027,
+"coverage": 0.93,
+"case": 0.4,
+"archaic": 0.0,
+"phrase": 3.29
+},
+{
+"file": "volume-27/sermon_1612.md",
+"source": "metropolitantab08spurgoog",
+"words": 7126,
+"coverage": 0.944,
+"case": 0.98,
+"archaic": 0.14,
+"phrase": 3.23,
+"date": "1881-08-07",
+"service": "Lord's Day morning"
+},
+{
+"file": "volume-27/sermon_1617.md",
+"source": "metropolitantab08spurgoog",
+"words": 7382,
+"coverage": 0.913,
+"case": 0.27,
+"archaic": 0.14,
+"phrase": 5.01
+},
+{
+"file": "volume-27/sermon_1622.md",
+"source": "metropolitantab08spurgoog",
+"words": 7198,
+"coverage": 0.897,
+"case": 0.42,
+"archaic": 0.14,
+"phrase": 3.75
+},
+{
+"file": "volume-27/sermon_1627.md",
+"source": "metropolitantab08spurgoog",
+"words": 7615,
+"coverage": 0.9,
+"case": 0.53,
+"archaic": 0.39,
+"phrase": 4.6
+},
+{
+"file": "volume-29/sermon_1714.md",
+"source": "handsfullofhoney00spur",
+"words": 7054,
+"coverage": 0.977,
+"case": 1.13,
+"archaic": 0.0,
+"phrase": 0.57
+},
+{
+"file": "volume-30/sermon_1763.md",
+"source": "metropolitan-tabernacle-pulpit_1884_30",
+"words": 7171,
+"coverage": 0.986,
+"case": 0.42,
+"archaic": 0.28,
+"phrase": 0.14
+},
+{
+"file": "volume-30/sermon_1778.md",
+"source": "metropolitan-tabernacle-pulpit_1884_30",
+"words": 7520,
+"coverage": 0.986,
+"case": 0.27,
+"archaic": 0.13,
+"phrase": 0.27
+},
+{
+"file": "volume-30/sermon_1792.md",
+"source": "metropolitan-tabernacle-pulpit_1884_30",
+"words": 7315,
+"coverage": 0.98,
+"case": 0.82,
+"archaic": 0.0,
+"phrase": 0.41,
+"date": "1884-05-11"
+},
+{
+"file": "volume-30/sermon_1793.md",
+"source": "metropolitan-tabernacle-pulpit_1884_30",
+"words": 7201,
+"coverage": 0.984,
+"case": 0.28,
+"archaic": 0.0,
+"phrase": 0.42
+},
+{
+"file": "volume-30/sermon_1794.md",
+"source": "metropolitan-tabernacle-pulpit_1884_30",
+"words": 7229,
+"coverage": 0.985,
+"case": 0.41,
+"archaic": 0.0,
+"phrase": 0.28,
+"date": "1884-08-10"
+},
+{
+"file": "volume-30/sermon_1795.md",
+"source": "metropolitan-tabernacle-pulpit_1884_30",
+"words": 7140,
+"coverage": 0.979,
+"case": 0.7,
+"archaic": 0.14,
+"phrase": 0.28
+},
+{
+"file": "volume-30/sermon_1804.md",
+"source": "metropolitan-tabernacle-pulpit_1884_30",
+"words": 7215,
+"coverage": 0.986,
+"case": 0.69,
+"archaic": 0.14,
+"phrase": 0.28
+},
+{
+"file": "volume-30/sermon_1806.md",
+"source": "metropolitan-tabernacle-pulpit_1884_30",
+"words": 7230,
+"coverage": 0.984,
+"case": 0.69,
+"archaic": 0.14,
+"phrase": 0.55,
+"date": "1884-10-26"
+},
+{
+"file": "volume-30/sermon_1814.md",
+"source": "metropolitan-tabernacle-pulpit_1884_30",
+"words": 7443,
+"coverage": 0.988,
+"case": 0.0,
+"archaic": 0.27,
+"phrase": 0.13
+},
+{
+"file": "volume-31/sermon_1816.md",
+"source": "metropolitantabe0031chsp",
+"words": 7250,
+"coverage": 0.988,
+"case": 0.28,
+"archaic": 0.0,
+"phrase": 0.41,
+"date": "1885-01-01",
+"service": "Thursday evening"
+},
+{
+"file": "volume-31/sermon_1817.md",
+"source": "metropolitantabe0031chsp",
+"words": 7233,
+"coverage": 0.984,
+"case": 0.41,
+"archaic": 0.0,
+"phrase": 0.28,
+"date": "1884-12-28",
+"service": "Lord's Day morning"
+},
+{
+"file": "volume-31/sermon_1819.md",
+"source": "metropolitantabe0031chsp",
+"words": 7420,
+"coverage": 0.988,
+"case": 0.27,
+"archaic": 0.0,
+"phrase": 0.27
+},
+{
+"file": "volume-31/sermon_1820.md",
+"source": "metropolitantabe0031chsp",
+"words": 7238,
+"coverage": 0.989,
+"case": 0.0,
+"archaic": 0.28,
+"phrase": 0.28
+},
+{
+"file": "volume-31/sermon_1821.md",
+"source": "metropolitantabe0031chsp",
+"words": 7481,
+"coverage": 0.986,
+"case": 0.13,
+"archaic": 0.13,
+"phrase": 0.13
+},
+{
+"file": "volume-31/sermon_1824.md",
+"source": "metropolitantabe0031chsp",
+"words": 4934,
+"coverage": 0.984,
+"case": 0.41,
+"archaic": 0.0,
+"phrase": 0.41
+},
+{
+"file": "volume-31/sermon_1826.md",
+"source": "metropolitantabe0031chsp",
+"words": 4723,
+"coverage": 0.978,
+"case": 0.85,
+"archaic": 0.42,
+"phrase": 0.21
+},
+{
+"file": "volume-31/sermon_1835.md",
+"source": "metropolitantabe0031chsp",
+"words": 7131,
+"coverage": 0.984,
+"case": 0.42,
+"archaic": 0.28,
+"phrase": 0.56,
+"date": "1885-04-12",
+"service": "Lord's Day morning"
+},
+{
+"file": "volume-31/sermon_1837.md",
+"source": "metropolitantabe0031chsp",
+"words": 7220,
+"coverage": 0.989,
+"case": 0.0,
+"archaic": 0.0,
+"phrase": 0.14
+},
+{
+"file": "volume-31/sermon_1843.md",
+"source": "metropolitantabe0031chsp",
+"words": 6974,
+"coverage": 0.987,
+"case": 0.0,
+"archaic": 0.14,
+"phrase": 0.29,
+"date": "1885-05-31"
+},
+{
+"file": "volume-31/sermon_1844.md",
+"source": "metropolitantabe0031chsp",
+"words": 7061,
+"coverage": 0.984,
+"case": 0.28,
+"archaic": 0.14,
+"phrase": 0.71,
+"date": "1885-06-07",
+"service": "Lord's Day morning"
+},
+{
+"file": "volume-31/sermon_1849.md",
+"source": "metropolitantabe0031chsp",
+"words": 7054,
+"coverage": 0.981,
+"case": 0.57,
+"archaic": 0.14,
+"phrase": 0.57,
+"date": "1885-07-12"
+},
+{
+"file": "volume-31/sermon_1850.md",
+"source": "metropolitantabe0031chsp",
+"words": 7378,
+"coverage": 0.979,
+"case": 0.14,
+"archaic": 0.27,
+"phrase": 0.41
+},
+{
+"file": "volume-31/sermon_1861.md",
+"source": "metropolitantabe0031chsp",
+"words": 7190,
+"coverage": 0.988,
+"case": 0.56,
+"archaic": 0.0,
+"phrase": 0.0,
+"date": "1885-06-25",
+"service": "Thursday evening"
+},
+{
+"file": "volume-32/sermon_1888.md",
+"source": "christinoldtesta00spur",
+"words": 7208,
+"coverage": 0.974,
+"case": 0.55,
+"archaic": 0.14,
+"phrase": 0.69
+},
+{
+"file": "volume-32/sermon_1891.md",
+"source": "sermons0017chsp_l1q5",
+"words": 7070,
+"coverage": 0.984,
+"case": 0.28,
+"archaic": 0.28,
+"phrase": 0.99
+},
+{
+"file": "volume-32/sermon_1892.md",
+"source": "sermons0017chsp_l1q5",
+"words": 7364,
+"coverage": 0.979,
+"case": 0.54,
+"archaic": 0.14,
+"phrase": 1.09
+},
+{
+"file": "volume-32/sermon_1926.md",
+"source": "sermons0017chsp_l1q5",
+"words": 7243,
+"coverage": 0.982,
+"case": 0.28,
+"archaic": 0.69,
+"phrase": 0.97
+},
+{
+"file": "volume-33/sermon_1979.md",
+"source": "sermons00spur",
+"words": 7524,
+"coverage": 0.988,
+"case": 0.13,
+"archaic": 0.13,
+"phrase": 0.66,
+"date": "1887-03-24",
+"service": "Thursday evening"
+},
+{
+"file": "volume-33/sermon_1980.md",
+"source": "sermons00spur",
+"words": 7509,
+"coverage": 0.988,
+"case": 0.4,
+"archaic": 0.0,
+"phrase": 0.4,
+"date": "1887-08-28",
+"service": "Lord's Day morning"
+},
+{
+"file": "volume-33/sermon_1981.md",
+"source": "sermons00spur",
+"words": 7285,
+"coverage": 0.988,
+"case": 0.41,
+"archaic": 0.0,
+"phrase": 0.55,
+"date": "1887-09-04",
+"service": "Lord's Day morning"
+},
+{
+"file": "volume-33/sermon_1982.md",
+"source": "sermons00spur",
+"words": 7445,
+"coverage": 0.986,
+"case": 0.54,
+"archaic": 0.0,
+"phrase": 0.27,
+"date": "1887-09-11",
+"service": "Lord's Day morning"
+},
+{
+"file": "volume-34/sermon_2001.md",
+"source": "metropolitantabe0034chsp_y3t8",
+"words": 7218,
+"coverage": 0.992,
+"case": 0.69,
+"archaic": 0.14,
+"phrase": 0.42
+},
+{
+"file": "volume-34/sermon_2008.md",
+"source": "metropolitantabe0034chsp_y3t8",
+"words": 7251,
+"coverage": 0.98,
+"case": 1.1,
+"archaic": 0.28,
+"phrase": 0.14,
+"date": "1888-02-12"
+},
+{
+"file": "volume-34/sermon_2023.md",
+"source": "metropolitantabe0034chsp_y3t8",
+"words": 7203,
+"coverage": 0.987,
+"case": 0.69,
+"archaic": 0.14,
+"phrase": 0.69
+},
+{
+"file": "volume-34/sermon_2026.md",
+"source": "metropolitantabe0034chsp_y3t8",
+"words": 7193,
+"coverage": 0.986,
+"case": 0.14,
+"archaic": 0.42,
+"phrase": 0.83
+},
+{
+"file": "volume-34/sermon_2029.md",
+"source": "metropolitantabe0034chsp_y3t8",
+"words": 7264,
+"coverage": 0.99,
+"case": 0.28,
+"archaic": 0.14,
+"phrase": 0.14,
+"date": "1888-06-17"
+},
+{
+"file": "volume-34/sermon_2047.md",
+"source": "metropolitantabe0034chsp_y3t8",
+"words": 7286,
+"coverage": 0.989,
+"case": 0.69,
+"archaic": 0.14,
+"phrase": 0.14
+},
+{
+"file": "volume-34/sermon_2050.md",
+"source": "sermons0019chsp",
+"words": 7236,
+"coverage": 0.985,
+"case": 0.14,
+"archaic": 0.14,
+"phrase": 0.55
+},
+{
+"file": "volume-34/sermon_2061.md",
+"source": "metropolitantabe0034chsp_y3t8",
+"words": 4723,
+"coverage": 0.984,
+"case": 0.42,
+"archaic": 0.21,
+"phrase": 0.42
+},
+{
+"file": "volume-36/sermon_2147.md",
+"source": "metropolitantabe0000chsu",
+"words": 7186,
+"coverage": 0.988,
+"case": 0.7,
+"archaic": 0.0,
+"phrase": 0.14
+},
+{
+"file": "volume-62/sermon_3494.md",
+"source": "sermonspreacheda0000spur",
+"words": 5890,
+"coverage": 0.824,
+"case": 2.21,
+"archaic": 0.51,
+"phrase": 0.68
+},
+{
+"file": "volume-62/sermon_3495.md",
+"source": "presenttruthcoll00spur",
+"words": 4517,
+"coverage": 0.984,
+"case": 1.33,
+"archaic": 0.0,
+"phrase": 0.89
+},
+{
+"file": "volume-62/sermon_3497.md",
+"source": "presenttruthaco00spurgoog",
+"words": 6001,
+"coverage": 0.975,
+"case": 2.33,
+"archaic": 0.33,
+"phrase": 3.33
+},
+{
+"file": "volume-62/sermon_3500.md",
+"source": "sermonsofrevchsp0012spur",
+"words": 4960,
+"coverage": 0.975,
+"case": 1.21,
+"archaic": 0.0,
+"phrase": 1.81
+},
+{
+"file": "volume-62/sermon_3502.md",
+"source": "presenttruthcoll00spur",
+"words": 4533,
+"coverage": 0.972,
+"case": 3.75,
+"archaic": 0.66,
+"phrase": 2.43
+},
+{
+"file": "volume-62/sermon_3511.md",
+"source": "stormsignalsbein00spur",
+"words": 6093,
+"coverage": 0.794,
+"case": 1.97,
+"archaic": 0.16,
+"phrase": 1.31
+}
+]
+}

@@ -1,0 +1,94 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import SermonSources from "@/components/sermons/SermonSources.astro";
+import { bookName, refText } from "@/components/bible-maps/maps-data";
+import { PREACHERS, sermons, type PreacherId, type Sermon } from "@/data/sermons";
+import "@/components/bible-maps/bible-maps.css";
+
+const baseUrl = import.meta.env.BASE_URL;
+const join = (path: string) => (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + path;
+const slugOf = (book: string) => book.toLowerCase().replace(/\s+/g, "-");
+
+// By Bible book: each sermon is listed under the book of its (first) text, in Bible order.
+const byBook = new Map<number, Sermon[]>();
+for (const s of [...sermons].filter(s => s.refs.length).sort((a, b) => a.refs[0][0] - b.refs[0][0])) {
+  const b = Math.floor(s.refs[0][0] / 1e6);
+  byBook.set(b, [...(byBook.get(b) ?? []), s]);
+}
+const books = [...byBook].map(([b, list]) => ({ name: bookName(b), list }));
+const multiText = sermons.filter(s => !s.refs.length);
+const refLabel = (s: Sermon) => s.refs.map(([f, t]) => refText(f, t)).join("; ");
+const year = (s: Sermon) => (s.date ? s.date.slice(0, 4) : String(s.published));
+
+const byPreacher = (Object.keys(PREACHERS) as PreacherId[]).map(id => ({ id, ...PREACHERS[id], list: sermons.filter(s => s.preacher === id) }));
+const otCount = sermons.filter(s => s.refs.length && s.refs[0][0] < 40e6).length;
+---
+<Layout
+  title="Classic Sermons by Bible Passage: C. H. Spurgeon · JO EQUIP"
+  description={`Read ${sermons.length} classic sermons by C. H. Spurgeon, arranged by Bible book and checked word for word against the original 19th-century printings. Each sermon links to its text in the online Bible.`}
+>
+  <div class="bmp-main bmp-narrow">
+    <nav class="bmp-crumbs" aria-label="Breadcrumb">
+      <a href={join("/bible")}>Bible</a> <span aria-hidden="true">/</span>
+      <a href={join("/bible/resources")}>Bible Resources</a> <span aria-hidden="true">/</span> Classic Sermons
+    </nav>
+    <p class="bmp-eyebrow">Study Tools</p>
+    <h1 class="bmp-title">Classic Sermons</h1>
+    <p class="bmp-lede">
+      {sermons.length} sermons by C. H. Spurgeon ({otCount} on Old Testament texts, {sermons.length - otCount - multiText.length} on New Testament texts),
+      in his original wording. Find a sermon on the passage you are studying, or open any chapter in the{" "}
+      <a class="bmp-link" href={join("/bible")}>online Bible</a> and choose the Sermons tab.
+    </p>
+
+    <section class="bmp-section" aria-labelledby="books-h">
+      <h2 id="books-h">Sermons by Bible book</h2>
+      <ul class="bmp-az" aria-label="Jump to a book">
+        {books.map(b => <li><a href={`#${slugOf(b.name)}`} style="padding:0 .5rem">{b.name}</a></li>)}
+      </ul>
+      {books.map(b => (
+        <>
+          <h3 id={slugOf(b.name)}>{b.name} <small style="font-weight:400">({b.list.length})</small></h3>
+          <ul class="srm-list">
+            {b.list.map(s => (
+              <li>
+                <a href={join(`/bible/sermons/${s.slug}`)}>{s.title}</a>
+                <small>{refLabel(s)} · No. {s.number} · {year(s)}</small>
+              </li>
+            ))}
+          </ul>
+        </>
+      ))}
+      {multiText.length > 0 && (
+        <>
+          <h3 id="several-texts">Sermons on several texts</h3>
+          <ul class="srm-list">
+            {multiText.map(s => <li><a href={join(`/bible/sermons/${s.slug}`)}>{s.title}</a><small>No. {s.number} · {year(s)}</small></li>)}
+          </ul>
+        </>
+      )}
+    </section>
+
+    <section class="bmp-section" aria-labelledby="preachers-h">
+      <h2 id="preachers-h">Sermons by preacher</h2>
+      {byPreacher.map(p => (
+        <>
+          <h3 id={p.id}>{p.full} ({p.life})</h3>
+          <p>{p.about}</p>
+          <details>
+            <summary class="bmp-link" style="cursor:pointer">All {p.list.length} sermons by {p.name}, in order</summary>
+            <ul class="srm-list">
+              {p.list.map(s => (
+                <li>
+                  <a href={join(`/bible/sermons/${s.slug}`)}>No. {s.number}: {s.title}</a>
+                  <small>{refLabel(s) || "Several texts"} · {year(s)}</small>
+                </li>
+              ))}
+            </ul>
+          </details>
+        </>
+      ))}
+    </section>
+
+    <SermonSources />
+  </div>
+</Layout>

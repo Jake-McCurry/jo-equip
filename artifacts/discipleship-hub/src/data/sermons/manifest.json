@@ -1,0 +1,25 @@
+{
+ "files": {
+  "index": "794c4f6b5b"
+ },
+ "counts": {
+  "checked": 3534,
+  "published": 281,
+  "rejected": {
+   "no scan of an original printing found": 2538,
+   "too little of the text matched the scan": 2,
+   "wording modernized": 713
+  },
+  "skippedHere": 0
+ },
+ "edition": {
+  "repository": "lyteword/chspurgeon-sermons",
+  "commit": "eeec6efe01edb6b80ef43a2e90aee2b816e018a9",
+  "sha256": "6f45da64d5390c38083d55fd8f5adb7785cb887af33b2fdfca08cf71b1ed013b"
+ },
+ "criteria": {
+  "minCoverage": 0.75,
+  "maxCasePer1000": 4,
+  "maxArchaicPer1000": 1
+ }
+}

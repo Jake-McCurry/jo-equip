@@ -1,0 +1,66 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import SermonSources from "@/components/sermons/SermonSources.astro";
+import { readerHref, refText } from "@/components/bible-maps/maps-data";
+import { dateLabel, loadSermonBody, PREACHERS, sermons, type Sermon } from "@/data/sermons";
+import "@/components/bible-maps/bible-maps.css";
+
+export function getStaticPaths() {
+  return sermons.map((sermon, i) => ({ params: { slug: sermon.slug }, props: { sermon, prev: sermons[i - 1] ?? null, next: sermons[i + 1] ?? null } }));
+}
+
+const { sermon, prev, next } = Astro.props as { sermon: Sermon; prev: Sermon | null; next: Sermon | null };
+const blocks = await loadSermonBody(sermon.slug);
+const baseUrl = import.meta.env.BASE_URL;
+const join = (path: string) => (baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl) + path;
+const preacher = PREACHERS[sermon.preacher];
+const refs = sermon.refs.map(([from, to]) => ({ label: refText(from, to), href: readerHref(baseUrl, from, "kjv") }));
+const refLabel = refs.map(r => r.label).join("; ");
+const when = sermon.date ? `${sermon.service ? `${sermon.service}, ` : ""}${dateLabel(sermon.date)}` : null;
+const minutes = Math.max(1, Math.round(sermon.words / 200));
+const description = `“${sermon.title}”, sermon No. ${sermon.number} by ${preacher.name}${refLabel ? ` on ${refLabel}` : ""}${sermon.date ? `, preached ${dateLabel(sermon.date)}` : ""}. Full text from the ${sermon.series}, checked against the original printing.`;
+---
+<Layout title={`${sermon.title}${refLabel ? ` (${refs[0].label})` : ""}: Spurgeon Sermon · JO EQUIP`} description={description}>
+  <article class="bmp-main bmp-narrow">
+    <nav class="bmp-crumbs" aria-label="Breadcrumb">
+      <a href={join("/bible/resources")}>Bible Resources</a> <span aria-hidden="true">/</span>
+      <a href={join("/bible/sermons")}>Classic Sermons</a> <span aria-hidden="true">/</span> No. {sermon.number}
+    </nav>
+    <p class="bmp-eyebrow">Sermon No. {sermon.number} · {sermon.series}</p>
+    <h1 class="bmp-title">{sermon.title}</h1>
+    <p class="bmp-sub">By {preacher.name}</p>
+    <p class="srm-meta">
+      {when ? <span>Preached {when}</span> : <span>Published {sermon.published}</span>}
+      <span>Volume {sermon.volume}</span>
+      <span>About {minutes} minutes to read</span>
+    </p>
+
+    {sermon.quote && (
+      <blockquote class="srm-text">
+        <p>{sermon.quote}</p>
+        {refs.length > 0 && (
+          <p class="srm-ref">
+            {refs.map((r, i) => <>{i > 0 && "; "}<a href={r.href}>{r.label}</a></>)}
+            {" "}<small>(King James Version)</small>
+          </p>
+        )}
+      </blockquote>
+    )}
+
+    <div class="srm-body">
+      {blocks.map(b =>
+        "p" in b ? <p>{b.p}</p>
+        : "h" in b ? <h2>{b.h}</h2>
+        : <blockquote><p>{b.q.map((line, i) => <>{i > 0 && <br />}{line}</>)}</p></blockquote>
+      )}
+    </div>
+
+    <nav class="srm-pager" aria-label="More sermons">
+      {prev ? <a class="bmp-link" href={join(`/bible/sermons/${prev.slug}`)}>← No. {prev.number}: {prev.title}</a> : <span />}
+      {next && <a class="bmp-link" href={join(`/bible/sermons/${next.slug}`)}>No. {next.number}: {next.title} →</a>}
+    </nav>
+    <p><a class="bmp-link" href={join("/bible/sermons")}>All classic sermons by Bible book</a></p>
+
+    <SermonSources sermon={sermon} />
+  </article>
+</Layout>

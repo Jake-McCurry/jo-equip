@@ -150,3 +150,31 @@ used, at build time or at runtime.
   in an equirectangular projection scaled for 32°N; the same projection
   (`src/components/bible-maps/map-projection.ts`) places the markers. The map
   shows modern coastlines and rivers, not ancient ones.
+
+# Classic sermon sources (Bible reader Sermons tab, /bible/sermons)
+
+| Source | Use | License | Pinned |
+| --- | --- | --- | --- |
+| C. H. Spurgeon, *New Park Street Pulpit* (vols 1–6, 1855–1860) and *Metropolitan Tabernacle Pulpit* (vols 7–63) | Sermon text | Public domain | — |
+| [lyteword/chspurgeon-sermons](https://github.com/lyteword/chspurgeon-sermons) | Markdown transcription (3,534 sermons) | CC0 1.0 | commit `eeec6efe01edb6b80ef43a2e90aee2b816e018a9`, tarball sha256 `6f45da64d5390c38083d55fd8f5adb7785cb887af33b2fdfca08cf71b1ed013b` |
+| Internet Archive scans of 19th-century printings (64 items, listed in `scripts/data/sermon-scan-sources.json`) | OCR text used **only to verify wording**; never published | Scans of public-domain books | md5 of each `_djvu.txt` file |
+
+**Why verification is needed.** The CC0 transcription descends from a modern commercial edition (the Ages Software "C. H. Spurgeon Collection"; its credit line is stripped). Many sermons in that edition, especially in later volumes, were modernized: pronouns for God capitalized, "ye"/"thee"/"hath" replaced, and King James quotations reworded. The ministry chose to publish **only sermons whose wording matches an original printing**.
+
+**Method** (`scripts/verify-sermons.py`, standard library only, ~10 minutes):
+1. Sampled, case-sensitive 5-word shingles find candidate scans for each sermon (≥ 50% of its sampled shingles).
+2. Each sermon is aligned word by word with up to four candidate scans; differences are classified as case-only, archaic-word replacements, OCR noise or other.
+3. Verified when, against the best scan, ≥ 75% of words align exactly, ≤ 4 case differences per 1,000 words and ≤ 1 archaic replacement per 1,000 words. Case differences are clearly bimodal (faithful sermons ≤ 4/1000, modernized ≥ 9/1000).
+4. Preaching dates are read from the scan's heading ("Delivered on Lord's Day Morning, …"). `generate-sermons.mjs` keeps a date only when its weekday matches the printed service (or is a Sunday/Thursday when the service is unreadable); otherwise the page shows the volume's publication year.
+
+Result (Nov 2026): 281 of 3,534 verified; 713 rejected as modernized; 2,538 had no matching scan among the institutional Internet Archive items (uploader-made PDFs of the modern edition were excluded). Remaining differences in verified sermons are OCR errors, running heads and some Americanized spellings ("honor"), which pages disclose.
+
+**Text references.** The generator parses each sermon's reference line, applies four documented corrections (wrong verse numbers in the transcription, checked against the scans), and requires the quoted text to match the cited KJV verses (≥ 80% of words in order, against the site's own KJV files). The build test `scripts/sermons-data.test.mjs` repeats this check.
+
+**Regenerate:**
+```
+bash scripts/fetch-sermon-sources.sh /tmp/sermon-sources
+python3 scripts/verify-sermons.py /tmp/sermon-sources     # writes scripts/data/sermon-verification.json
+node scripts/generate-sermons.mjs /tmp/sermon-sources     # writes src/data/sermons/ and public/bible-data/sermons/
+```
+To publish more sermons, add institutional scans of further volumes to `sermon-scan-sources.json` (id, file, md5 from the item's metadata) and re-run all three steps.

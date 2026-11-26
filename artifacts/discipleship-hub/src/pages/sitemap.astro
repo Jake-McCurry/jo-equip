@@ -25,6 +25,7 @@ import { bibleStudyMethods } from "@/data/bibleStudyMethods";
 import { evidenceArticles } from "@/data/evidenceArticles";
 import { hasSiteArticle } from "@/data/siteArticles";
 import { places as biblePlaces } from "@/data/bible-maps";
+import { sermons as classicSermons } from "@/data/sermons";
 
 const baseUrl = import.meta.env.BASE_URL;
 const join = (p: string) =>
@@ -121,11 +122,13 @@ const reviewLinks = [
 const bibleStudyLinks = [
   { title: "Bible Maps", href: join("/bible/maps") },
   { title: "Bible Timeline", href: join("/bible/timeline") },
+  { title: "Classic Sermons", href: join("/bible/sermons") },
 ];
+const sermonLinks = classicSermons.map(s => ({ title: `${s.title} (Spurgeon, No. ${s.number})`, href: join(`/bible/sermons/${s.slug}`) }));
 const placeLinks = biblePlaces.map(p => ({ title: p.hint ? `${p.name} (${p.hint})` : p.name, href: join(`/bible/maps/${p.slug}`) }));
 
 const totalLinks =
-  bibleStudyLinks.length + placeLinks.length +
+  bibleStudyLinks.length + placeLinks.length + sermonLinks.length +
   mainPages.length + audiencePages.length + bookLinks.length + playlistLinks.length + canonicalVideos.length + reviewLinks.length +
   categorySections.reduce((n, c) => n + 1 + c.subs.reduce((m, s) => m + 1 + s.articles.length, 0), 0);
 ---
@@ -230,7 +233,7 @@ const totalLinks =
     </section>
 
     <section>
-      <h2 class="text-xl md:text-2xl font-semibold mb-3 pb-2" style="color:var(--color-structure);border-bottom:2px solid var(--color-accent);">Bible Maps and Timeline</h2>
+      <h2 class="text-xl md:text-2xl font-semibold mb-3 pb-2" style="color:var(--color-structure);border-bottom:2px solid var(--color-accent);">Bible Maps, Timeline and Sermons</h2>
       <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-1.5">
         {bibleStudyLinks.map(p => (
           <li><a href={p.href} class="text-[15px] underline underline-offset-2 hover:opacity-80" style="color:var(--color-text);">{p.title}</a></li>
@@ -240,6 +243,14 @@ const totalLinks =
         <summary class="cursor-pointer text-base font-semibold" style="color:var(--color-hero);">Bible places ({placeLinks.length})</summary>
         <ul class="mt-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-1">
           {placeLinks.map(p => (
+            <li><a href={p.href} class="text-sm underline underline-offset-2 hover:opacity-80" style="color:var(--color-text-muted);">{p.title}</a></li>
+          ))}
+        </ul>
+      </details>
+      <details class="mt-3">
+        <summary class="cursor-pointer text-base font-semibold" style="color:var(--color-hero);">Classic sermons ({sermonLinks.length})</summary>
+        <ul class="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1">
+          {sermonLinks.map(p => (
             <li><a href={p.href} class="text-sm underline underline-offset-2 hover:opacity-80" style="color:var(--color-text-muted);">{p.title}</a></li>
           ))}
         </ul>

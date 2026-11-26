@@ -78,4 +78,4 @@
 .br-chip-btn:hover { background: var(--blue-50); }
 /* Five desktop tabs must stay visible without scrolling. */
 .br-pane .br-tabs { gap: 0; }
-.br-pane .br-tab { padding: .5rem .4rem; font-size: .86rem; }
+.br-pane .br-tab { padding: .5rem .3rem; font-size: .84rem; }

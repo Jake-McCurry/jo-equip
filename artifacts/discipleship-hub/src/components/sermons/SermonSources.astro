@@ -1,0 +1,35 @@
+---
+/* Source and license credits for the classic sermon pages.
+   Keep in step with scripts/data/bible-search-sources.md. */
+import { sermonManifest, type Sermon } from "@/data/sermons";
+interface Props { sermon?: Sermon }
+const { sermon } = Astro.props;
+const ext = { target: "_blank", rel: "noopener noreferrer" };
+const { edition, counts } = sermonManifest;
+---
+<section class="bmp-sources" aria-labelledby="sermon-sources-h">
+  <h2 id="sermon-sources-h">Sources and licenses</h2>
+  <ul>
+    <li>
+      Sermon text: C. H. Spurgeon (1834–1892), <em>{sermon ? sermon.series : "The New Park Street Pulpit and The Metropolitan Tabernacle Pulpit"}</em>{sermon && <> (volume {sermon.volume}, published {sermon.published})</>}, public domain.
+      Transcription from <a href={`https://github.com/${edition.repository}`} {...ext}>{edition.repository}</a>, dedicated to the public domain (<a href="https://creativecommons.org/publicdomain/zero/1.0/" {...ext}>CC0 1.0</a>).
+    </li>
+    {sermon ? (
+      <li>
+        Checked word for word against a scan of an original printing: <a href={`https://archive.org/details/${sermon.scan.id}`} {...ext}><em>{sermon.scan.title}</em></a>
+        {" "}({sermon.scan.date}{sermon.scan.library && sermon.scan.library !== "Internet Archive" ? `, ${sermon.scan.library}` : ""}; Internet Archive).
+        {" "}{Math.round(sermon.scan.coverage * 100)}% of the words line up exactly; the rest are scanning errors, page headings and spacing.
+      </li>
+    ) : (
+      <li>
+        Each sermon was checked word for word against a scan of an original 19th-century printing on the <a href="https://archive.org/" {...ext}>Internet Archive</a>.
+        Each sermon page names the scan it was checked against.
+      </li>
+    )}
+  </ul>
+  <p>
+    Many modern editions of Spurgeon&rsquo;s sermons update his wording. JO EQUIP publishes only sermons whose wording matches the original printing,
+    so {counts.published} of the {counts.checked.toLocaleString("en-US")} sermons in the transcription appear here so far. The transcription sometimes uses
+    American spellings (&ldquo;honor&rdquo; for &ldquo;honour&rdquo;); these are left as they are. Bible links open the reader in the King James Version, which Spurgeon quoted.
+  </p>
+</section>

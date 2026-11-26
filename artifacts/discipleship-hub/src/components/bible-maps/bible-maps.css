@@ -90,3 +90,19 @@
 .bmp-az-list a { color: var(--color-hero, #006bb3); text-decoration: none; }
 .bmp-az-list a:hover { text-decoration: underline; }
 .bmp-az-list small { color: var(--color-text-muted, #2e5a7a); }
+
+/* Classic sermons (/bible/sermons) */
+.srm-meta { display: flex; flex-wrap: wrap; gap: .25rem .9rem; margin: .75rem 0 0; color: var(--color-text-muted, #2e5a7a); font-weight: 600; }
+.srm-text { margin: 1.5rem 0 0; padding: 1rem 1.25rem; border-left: 4px solid var(--color-accent, #ffb800); background: var(--color-surface-soft, #e6f5ff); }
+.srm-text p { margin: 0; font-size: 1.15rem; line-height: 1.6; font-style: italic; }
+.srm-text .srm-ref { margin-top: .5rem; font-style: normal; font-size: 1rem; }
+.srm-text a, .srm-list a { color: var(--color-hero, #006bb3); font-weight: 700; }
+.srm-body { margin-top: 2rem; font-size: 1.1rem; line-height: 1.75; overflow-wrap: break-word; }
+.srm-body p { margin: 0 0 1.1rem; }
+.srm-body h2 { margin: 2rem 0 .75rem; color: var(--color-hero, #006bb3); font-size: 1.3rem; font-weight: 700; }
+.srm-body blockquote { margin: 0 0 1.1rem; padding: .25rem 0 .25rem 1rem; border-left: 3px solid var(--color-border-soft, #ccebff); color: var(--color-text-muted, #2e5a7a); }
+.srm-body blockquote p { margin: 0; }
+.srm-list { margin: 0; padding: 0; list-style: none; }
+.srm-list li { padding: .55rem 0; border-bottom: 1px solid var(--color-border-soft, #ccebff); }
+.srm-list small { display: block; color: var(--color-text-muted, #2e5a7a); }
+.srm-pager { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: 2.5rem; }
